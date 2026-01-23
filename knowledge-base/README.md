@@ -18,4 +18,9 @@ Within `sources/web-scrape/`:
 
 1. Place new markdown files into the appropriate `sources/<source-name>/incoming/` folder.
 2. Keep original filenames when possible to preserve traceability.
-3. Add or update a manifest entry in `manifests/` after upload (Phase 2).
+3. After upload, run `python scripts/kb/build_manifest.py` to generate manifests.
+
+## Manifests and canonical copies
+
+- Manifests live in `knowledge-base/manifests/` (`manifest.jsonl`, `manifest.json`).
+- Canonical copies live in `sources/<source-name>/canonical/` and provide a stable base for later processing.
