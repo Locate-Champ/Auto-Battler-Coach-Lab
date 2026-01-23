@@ -15,7 +15,7 @@ A machine learning model that:
 - Target variable: `placement` (1-8)
 - Key features: `traits_active`, `final_board_units`, `level`, `gold_left`, `last_round`
 
-**Already aggregated:** 
+**Already aggregated (in `data/personal/`):**
 - `carry_performance_corrected.csv` - which carries I win with
 - `trait_performance_corrected.csv` - which traits I win with
 - `item_performance_corrected.csv` - which items I win with
@@ -27,7 +27,7 @@ The `traits_active` and `final_board_units` columns need parsing:
 - Traits: `"Brawler:1 | Void:3"` → split on `|`, then on `:`
 - Units: `"KogMaw_2*(Item1,Item2)"` → regex: `(\w+)_(\d)\*\(([^)]*)\)`
 
-There's already parsing code in `src/data_parsing/tft_diagnostic.py` you can use.
+There's already parsing code in `src/tft_diagnostic.py` you can use.
 
 ## First Task
 Build `src/models/feature_engineering.py` that:
