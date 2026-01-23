@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge Base Manifest Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "source", "original_filename", "canonical_path"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable identifier for the entry."
+    },
+    "source": {
+      "type": "string",
+      "description": "Source label, e.g., 'web-scrape'."
+    },
+    "original_filename": {
+      "type": "string",
+      "description": "Original filename from the source upload."
+    },
+    "canonical_path": {
+      "type": "string",
+      "description": "Path to the normalized/canonical markdown file."
+    },
+    "title": {
+      "type": "string",
+      "description": "Optional extracted or assigned title."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional source URL."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "Optional ISO-8601 timestamp."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional free-form notes."
+    }
+  }
+}
