@@ -1,0 +1,437 @@
+﻿2026-01-20 17:48:51,086 (INFO) ================== new session ==================
+2026-01-20 17:48:51,086 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-20 17:48:51,087 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: es
+2026-01-20 17:48:51,087 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-20 17:48:51,088 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: de
+2026-01-20 17:48:51,088 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-20 17:48:51,089 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-20 17:48:51,090 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-20 17:48:51,090 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-20 17:48:51,091 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-20 17:48:51,091 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-20 17:48:51,092 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-20 17:48:51,092 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: el
+2026-01-20 17:48:51,093 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-20 17:48:51,093 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-20 17:48:51,094 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: it
+2026-01-20 17:48:51,094 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-20 17:48:51,094 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-20 17:48:51,095 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: th
+2026-01-20 17:48:51,095 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-20 17:48:51,096 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-20 17:48:51,097 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 17:48:51,097 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 17:48:51,098 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final current locale: en
+2026-01-20 17:48:51,098 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en_us to en_us
+2026-01-20 17:48:51,099 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 17:48:51,099 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 17:48:51,100 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 17:48:51,100 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 17:48:51,111 (INFO) </assets/index-x3LLM14k.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-20 17:48:51,125 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-20 17:48:51,126 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-20 17:48:51,538 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-20 17:48:51,539 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-20 17:48:51,540 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-20 17:48:51,542 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-20 17:48:51,543 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-20 17:48:51,544 (INFO) </assets/index-x3LLM14k.js> (:20808) - window name:  [object Object]
+2026-01-20 17:48:51,545 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:52,046 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay mounted
+2026-01-20 17:48:52,047 (INFO) </assets/index-x3LLM14k.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-20 17:48:52,048 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:52,049 (INFO) </assets/index-x3LLM14k.js> (:20808) - resized. New width:  1760
+2026-01-20 17:48:52,050 (INFO) </assets/index-x3LLM14k.js> (:20808) - New Height:  446
+2026-01-20 17:48:52,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - tierListData [object Object]
+2026-01-20 17:48:52,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - AugmentTiers [object Object]
+2026-01-20 17:48:52,068 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:52,070 (INFO) </assets/index-x3LLM14k.js> (:20808) - powerUpTierData [object Object]
+2026-01-20 17:48:52,070 (INFO) </assets/index-x3LLM14k.js> (:20808) - PowerUpTiers [object Object]
+2026-01-20 17:48:52,071 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:52,082 (INFO) </assets/index-x3LLM14k.js> (:20808) - changed position to:  400 993
+2026-01-20 17:48:52,084 (INFO) </assets/index-x3LLM14k.js> (:20808) - window info:  [object Object]
+2026-01-20 17:48:52,086 (INFO) </assets/index-x3LLM14k.js> (:20808) - game info:  [object Object]
+2026-01-20 17:48:52,136 (INFO) <Overwolf> () - [object Object]
+2026-01-20 17:48:57,491 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:57,522 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:58,716 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:58,780 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:58,865 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:58,972 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:59,016 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:48:59,527 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:11,709 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:44,438 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:44,448 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:44,729 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:44,771 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:44,806 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:45,050 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:45,166 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:49:59,714 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:18,761 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:19,051 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:19,216 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:39,768 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:58,772 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:59,040 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:59,065 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:59,066 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HardBargain","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-20 17:50:59,066 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HardBargain","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:50:59,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HardBargain
+2026-01-20 17:50:59,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:50:59,068 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-20 17:50:59,069 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay unmounted
+2026-01-20 17:50:59,220 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:59,221 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HardBargain","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-20 17:50:59,221 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HardBargain","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:50:59,222 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HardBargain
+2026-01-20 17:50:59,222 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:50:59,222 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-20 17:50:59,768 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:50:59,768 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HardBargain","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_HardBargain"},"augment_2":{"name":"TFT11_Augment_Slammin"},"augment_3":{"name":"TFT_Augment_InfinityProtection"}}
+2026-01-20 17:50:59,769 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HardBargain","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:50:59,770 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HardBargain
+2026-01-20 17:50:59,770 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:50:59,771 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-20 17:50:59,771 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 17:51:02,441 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:02,442 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_HardBargain"},"augment_2":{"name":"TFT11_Augment_Slammin"},"augment_3":{"name":"TFT_Augment_InfinityProtection"}}
+2026-01-20 17:51:02,442 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:51:02,443 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Epoch
+2026-01-20 17:51:02,443 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:51:02,444 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-20 17:51:02,767 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:02,768 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Epoch"},"augment_2":{"name":"TFT11_Augment_Slammin"},"augment_3":{"name":"TFT_Augment_InfinityProtection"}}
+2026-01-20 17:51:02,768 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:51:02,769 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Epoch
+2026-01-20 17:51:02,769 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:51:02,770 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-20 17:51:02,770 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 17:51:03,980 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:07,206 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:07,206 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Epoch"},"augment_2":{"name":"TFT11_Augment_Slammin"},"augment_3":{"name":"TFT_Augment_InfinityProtection"}}
+2026-01-20 17:51:07,207 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT_Augment_InfinityProtection"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:51:07,208 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Epoch
+2026-01-20 17:51:07,208 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:51:07,208 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-20 17:51:13,449 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:13,449 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT16_Augment_Yordle_WildGrowth"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Epoch"},"augment_2":{"name":"TFT11_Augment_Slammin"},"augment_3":{"name":"TFT_Augment_InfinityProtection"}}
+2026-01-20 17:51:13,450 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT16_Augment_Yordle_WildGrowth"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:51:13,452 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Epoch
+2026-01-20 17:51:13,453 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:51:13,453 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_Yordle_WildGrowth
+2026-01-20 17:51:13,770 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:13,771 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT16_Augment_Yordle_WildGrowth"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Epoch"},"augment_2":{"name":"TFT11_Augment_Slammin"},"augment_3":{"name":"TFT16_Augment_Yordle_WildGrowth"}}
+2026-01-20 17:51:13,771 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT16_Augment_Yordle_WildGrowth"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:51:13,771 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Epoch
+2026-01-20 17:51:13,772 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:51:13,772 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_Yordle_WildGrowth
+2026-01-20 17:51:13,773 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 17:51:15,342 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:15,342 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT16_Augment_Yordle_WildGrowth"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Epoch"},"augment_2":{"name":"TFT11_Augment_Slammin"},"augment_3":{"name":"TFT16_Augment_Yordle_WildGrowth"}}
+2026-01-20 17:51:15,343 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT16_Augment_Yordle_WildGrowth"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 17:51:15,343 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Epoch
+2026-01-20 17:51:15,344 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:51:15,344 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_Yordle_WildGrowth
+2026-01-20 17:51:15,764 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:15,766 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay mounted
+2026-01-20 17:51:15,793 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:20,142 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:21,264 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:23,161 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:48,777 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:51:48,831 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:52:20,762 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:52:23,772 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:52:23,811 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:52:24,040 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:52:54,773 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:52:54,840 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:53:27,788 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:53:30,797 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:53:30,851 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:53:31,104 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:54:00,788 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:54:00,846 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:54:32,792 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:55:12,814 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:55:12,871 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:55:13,040 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:55:13,126 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:55:42,803 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:55:42,858 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:56:16,802 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:56:19,842 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:56:19,903 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:56:20,061 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:56:50,800 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:56:50,846 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:57:32,808 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:57:36,060 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:57:36,233 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:57:55,799 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:58:17,799 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:58:17,833 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:58:17,855 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:58:18,117 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:58:47,807 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:58:47,859 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:25,808 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:28,828 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:28,864 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:29,006 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:29,006 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT16_Augment_Yordle_WildGrowth"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Coronation"},"augment_2":{"name":"TFT9_Augment_RollTheDice"},"augment_3":{"name":"TFT_Augment_MinMaxer"}}
+2026-01-20 17:59:29,007 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Epoch","TFT11_Augment_Slammin","TFT16_Augment_Yordle_WildGrowth"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 17:59:29,007 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Epoch
+2026-01-20 17:59:29,008 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin
+2026-01-20 17:59:29,008 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_Yordle_WildGrowth
+2026-01-20 17:59:29,009 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 17:59:29,015 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay unmounted
+2026-01-20 17:59:29,066 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:29,066 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT9_Augment_RollTheDice","TFT_Augment_MinMaxer"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Coronation"},"augment_2":{"name":"TFT9_Augment_RollTheDice"},"augment_3":{"name":"TFT_Augment_MinMaxer"}}
+2026-01-20 17:59:29,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT9_Augment_RollTheDice","TFT_Augment_MinMaxer"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:59:29,068 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Coronation
+2026-01-20 17:59:29,069 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_RollTheDice
+2026-01-20 17:59:29,069 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_MinMaxer
+2026-01-20 17:59:29,095 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:29,096 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT9_Augment_RollTheDice","TFT_Augment_MinMaxer"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Coronation"},"augment_2":{"name":"TFT9_Augment_RollTheDice"},"augment_3":{"name":"TFT_Augment_MinMaxer"}}
+2026-01-20 17:59:29,097 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT9_Augment_RollTheDice","TFT_Augment_MinMaxer"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:59:29,098 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Coronation
+2026-01-20 17:59:29,098 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_RollTheDice
+2026-01-20 17:59:29,099 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_MinMaxer
+2026-01-20 17:59:31,497 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:31,497 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_MinMaxer"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Coronation"},"augment_2":{"name":"TFT9_Augment_RollTheDice"},"augment_3":{"name":"TFT_Augment_MinMaxer"}}
+2026-01-20 17:59:31,498 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_MinMaxer"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:59:31,499 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Coronation
+2026-01-20 17:59:31,499 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_BandOfThieves2Plus
+2026-01-20 17:59:31,499 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_MinMaxer
+2026-01-20 17:59:31,801 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:31,802 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_MinMaxer"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Coronation"},"augment_2":{"name":"TFT6_Augment_BandOfThieves2Plus"},"augment_3":{"name":"TFT_Augment_TraitTreePlus"}}
+2026-01-20 17:59:31,802 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_MinMaxer"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:59:31,803 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Coronation
+2026-01-20 17:59:31,803 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_BandOfThieves2Plus
+2026-01-20 17:59:31,804 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_MinMaxer
+2026-01-20 17:59:31,804 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 17:59:31,890 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:31,890 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Coronation"},"augment_2":{"name":"TFT6_Augment_BandOfThieves2Plus"},"augment_3":{"name":"TFT_Augment_TraitTreePlus"}}
+2026-01-20 17:59:31,891 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Coronation","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:59:31,891 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Coronation
+2026-01-20 17:59:31,892 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_BandOfThieves2Plus
+2026-01-20 17:59:31,892 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TraitTreePlus
+2026-01-20 17:59:36,574 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:36,575 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Trifecta2","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Coronation"},"augment_2":{"name":"TFT6_Augment_BandOfThieves2Plus"},"augment_3":{"name":"TFT_Augment_TraitTreePlus"}}
+2026-01-20 17:59:36,575 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Trifecta2","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:59:36,576 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Trifecta2
+2026-01-20 17:59:36,576 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_BandOfThieves2Plus
+2026-01-20 17:59:36,576 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TraitTreePlus
+2026-01-20 17:59:36,797 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:36,797 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Trifecta2","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Trifecta2"},"augment_2":{"name":"TFT6_Augment_BandOfThieves2Plus"},"augment_3":{"name":"TFT_Augment_TraitTreePlus"}}
+2026-01-20 17:59:36,798 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Trifecta2","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 17:59:36,798 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Trifecta2
+2026-01-20 17:59:36,799 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_BandOfThieves2Plus
+2026-01-20 17:59:36,799 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TraitTreePlus
+2026-01-20 17:59:36,800 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 17:59:37,764 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:37,765 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Trifecta2","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_Trifecta2"},"augment_2":{"name":"TFT6_Augment_BandOfThieves2Plus"},"augment_3":{"name":"TFT_Augment_TraitTreePlus"}}
+2026-01-20 17:59:37,765 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_Trifecta2","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 17:59:37,766 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Trifecta2
+2026-01-20 17:59:37,766 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_BandOfThieves2Plus
+2026-01-20 17:59:37,766 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TraitTreePlus
+2026-01-20 17:59:37,802 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 17:59:37,806 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay mounted
+2026-01-20 17:59:37,821 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:00:18,811 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:00:18,861 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:00:56,813 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:00:59,830 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:00:59,857 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:01:00,102 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:01:30,808 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:01:30,859 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:02:14,808 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:02:54,837 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:02:54,876 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:02:55,099 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:02:55,149 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:03:24,803 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:03:24,865 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:04:02,806 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:04:05,872 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:04:05,901 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:04:06,124 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:04:35,838 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:04:35,889 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:14,833 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:17,847 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:17,908 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:18,068 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:32,897 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:32,898 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT16_Item_Piltover_90CaliberNets"},"item_2":{"name":"TFT16_Item_Piltover_ContinuumCogs"},"item_3":{"name":"TFT16_Item_Piltover_ElectricalOverload"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT11_Augment_Slammin\"}, \"slot_2\":{\"name\":\"TFT_Augment_TraitTreePlus\"}, \"slot_3\":{\"name\":\"\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT_Augment_Trifecta2","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 18:05:32,899 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-20 18:05:32,900 (INFO) </assets/index-x3LLM14k.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_Item_Piltover_90CaliberNets"},"item_2":{"name":"TFT16_Item_Piltover_ContinuumCogs"},"item_3":{"name":"TFT16_Item_Piltover_ElectricalOverload"}}
+2026-01-20 18:05:32,901 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemCategories Trait [object Object]
+2026-01-20 18:05:32,976 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay unmounted
+2026-01-20 18:05:32,977 (INFO) </assets/index-x3LLM14k.js> (:20808) - ItemStats mounted
+2026-01-20 18:05:32,977 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:32,978 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT16_Item_Piltover_90CaliberNets"},"item_2":{"name":"TFT16_Item_Piltover_ContinuumCogs"},"item_3":{"name":"TFT16_Item_Piltover_ElectricalOverload"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT11_Augment_Slammin\"}, \"slot_2\":{\"name\":\"TFT_Augment_TraitTreePlus\"}, \"slot_3\":{\"name\":\"\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT_Augment_Trifecta2","TFT6_Augment_BandOfThieves2Plus","TFT_Augment_TraitTreePlus"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 18:05:32,978 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-20 18:05:32,978 (INFO) </assets/index-x3LLM14k.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_Item_Piltover_90CaliberNets"},"item_2":{"name":"TFT16_Item_Piltover_ContinuumCogs"},"item_3":{"name":"TFT16_Item_Piltover_ElectricalOverload"}}
+2026-01-20 18:05:32,979 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemCategories Trait [object Object]
+2026-01-20 18:05:33,057 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-20 18:05:33,057 (INFO) </assets/index-x3LLM14k.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_Item_Piltover_90CaliberNets"},"item_2":{"name":"TFT16_Item_Piltover_ContinuumCogs"},"item_3":{"name":"TFT16_Item_Piltover_ElectricalOverload"}}
+2026-01-20 18:05:33,058 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemCategories Trait [object Object]
+2026-01-20 18:05:33,726 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-20 18:05:33,726 (INFO) </assets/index-x3LLM14k.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_Item_Piltover_90CaliberNets"},"item_2":{"name":"TFT16_Item_Piltover_ContinuumCogs"},"item_3":{"name":"TFT16_Item_Piltover_ElectricalOverload"}}
+2026-01-20 18:05:33,727 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemCategories Trait [object Object]
+2026-01-20 18:05:33,894 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-20 18:05:33,895 (INFO) </assets/index-x3LLM14k.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_Item_Piltover_90CaliberNets"},"item_2":{"name":"TFT16_Item_Piltover_ContinuumCogs"},"item_3":{"name":"TFT16_Item_Piltover_ElectricalOverload"}}
+2026-01-20 18:05:33,896 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemCategories Trait [object Object]
+2026-01-20 18:05:34,835 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:34,840 (INFO) </assets/index-x3LLM14k.js> (:20808) - ItemStats unmounted
+2026-01-20 18:05:34,841 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay mounted
+2026-01-20 18:05:34,852 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:34,872 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:37,861 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:59,837 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:59,873 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:05:59,924 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:06:00,098 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:06:29,845 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:06:29,893 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:15,836 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:18,875 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:18,907 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:19,055 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:19,056 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_SecondWind1","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-20 18:07:19,056 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_SecondWind1","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:19,057 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_SecondWind1
+2026-01-20 18:07:19,057 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BoxingLessons
+2026-01-20 18:07:19,058 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Corrosion
+2026-01-20 18:07:19,059 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay unmounted
+2026-01-20 18:07:19,130 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:19,130 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_SecondWind1","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-20 18:07:19,131 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_SecondWind1","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:19,131 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_SecondWind1
+2026-01-20 18:07:19,132 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BoxingLessons
+2026-01-20 18:07:19,132 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Corrosion
+2026-01-20 18:07:19,830 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:19,831 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_SecondWind1","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT6_Augment_SecondWind1"},"augment_2":{"name":"TFT_Augment_BoxingLessons"},"augment_3":{"name":"TFT_Augment_Corrosion"}}
+2026-01-20 18:07:19,831 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_SecondWind1","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:19,832 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_SecondWind1
+2026-01-20 18:07:19,832 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BoxingLessons
+2026-01-20 18:07:19,833 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Corrosion
+2026-01-20 18:07:19,833 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 18:07:24,425 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:24,426 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT6_Augment_SecondWind1"},"augment_2":{"name":"TFT_Augment_BoxingLessons"},"augment_3":{"name":"TFT_Augment_Corrosion"}}
+2026-01-20 18:07:24,427 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:24,427 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FindYourCenter
+2026-01-20 18:07:24,428 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BoxingLessons
+2026-01-20 18:07:24,429 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Corrosion
+2026-01-20 18:07:24,832 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:24,833 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FindYourCenter"},"augment_2":{"name":"TFT_Augment_BoxingLessons"},"augment_3":{"name":"TFT_Augment_Corrosion"}}
+2026-01-20 18:07:24,834 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_Corrosion"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:24,834 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FindYourCenter
+2026-01-20 18:07:24,835 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BoxingLessons
+2026-01-20 18:07:24,835 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_Corrosion
+2026-01-20 18:07:24,836 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 18:07:25,196 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:25,197 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_SmallGrabBag"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FindYourCenter"},"augment_2":{"name":"TFT_Augment_BoxingLessons"},"augment_3":{"name":"TFT_Augment_Corrosion"}}
+2026-01-20 18:07:25,197 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_SmallGrabBag"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:25,197 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FindYourCenter
+2026-01-20 18:07:25,198 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BoxingLessons
+2026-01-20 18:07:25,199 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SmallGrabBag
+2026-01-20 18:07:25,831 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:25,832 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_SmallGrabBag"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FindYourCenter"},"augment_2":{"name":"TFT_Augment_BoxingLessons"},"augment_3":{"name":"TFT_Augment_SmallGrabBag"}}
+2026-01-20 18:07:25,832 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_SmallGrabBag"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:25,833 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FindYourCenter
+2026-01-20 18:07:25,833 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BoxingLessons
+2026-01-20 18:07:25,833 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SmallGrabBag
+2026-01-20 18:07:25,835 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 18:07:29,827 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:29,828 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_SmallGrabBag"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FindYourCenter"},"augment_2":{"name":"TFT7_Augment_BestFriends1"},"augment_3":{"name":"TFT_Augment_SmallGrabBag"}}
+2026-01-20 18:07:29,828 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT_Augment_BoxingLessons","TFT_Augment_SmallGrabBag"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:29,828 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FindYourCenter
+2026-01-20 18:07:29,829 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BoxingLessons
+2026-01-20 18:07:29,829 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SmallGrabBag
+2026-01-20 18:07:29,830 (INFO) </assets/index-x3LLM14k.js> (:20808) - overwolf augments changed
+2026-01-20 18:07:30,066 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:30,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT7_Augment_BestFriends1","TFT_Augment_SmallGrabBag"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FindYourCenter"},"augment_2":{"name":"TFT7_Augment_BestFriends1"},"augment_3":{"name":"TFT_Augment_SmallGrabBag"}}
+2026-01-20 18:07:30,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT7_Augment_BestFriends1","TFT_Augment_SmallGrabBag"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 18:07:30,068 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FindYourCenter
+2026-01-20 18:07:30,068 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_BestFriends1
+2026-01-20 18:07:30,069 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SmallGrabBag
+2026-01-20 18:07:31,170 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:31,171 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT7_Augment_BestFriends1","TFT_Augment_SmallGrabBag"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FindYourCenter"},"augment_2":{"name":"TFT7_Augment_BestFriends1"},"augment_3":{"name":"TFT_Augment_SmallGrabBag"}}
+2026-01-20 18:07:31,172 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FindYourCenter","TFT7_Augment_BestFriends1","TFT_Augment_SmallGrabBag"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 18:07:31,172 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FindYourCenter
+2026-01-20 18:07:31,173 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_BestFriends1
+2026-01-20 18:07:31,173 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SmallGrabBag
+2026-01-20 18:07:31,835 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:07:31,854 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay mounted
+2026-01-20 18:07:31,854 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:08:08,842 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:08:08,908 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:08:53,893 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:08:56,890 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:08:56,918 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:08:57,143 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:09:26,882 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:09:26,935 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:10:03,933 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:10:43,896 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:10:43,926 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:10:44,149 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:10:44,201 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:11:14,879 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:11:14,926 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:11:51,889 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:11:55,902 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:11:55,938 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:11:56,157 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:12:25,877 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:12:25,920 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:02,890 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:05,893 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:05,920 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:06,163 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:29,877 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:47,877 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:47,906 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:47,927 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:48,146 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:57,888 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:57,888 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT_Item_SparringGloves"},"item_2":{"name":"TFT_Item_TearOfTheGoddess"},"item_3":{"name":"TFT_Item_NegatronCloak"},"item_4":{"name":"TFT_Item_RecurveBow"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT11_Augment_Slammin\"}, \"slot_2\":{\"name\":\"TFT_Augment_TraitTreePlus\"}, \"slot_3\":{\"name\":\"TFT_Augment_SmallGrabBag\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT_Augment_FindYourCenter","TFT7_Augment_BestFriends1","TFT_Augment_SmallGrabBag"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 18:13:57,889 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-20 18:13:57,889 (INFO) </assets/index-x3LLM14k.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT_Item_SparringGloves"},"item_2":{"name":"TFT_Item_TearOfTheGoddess"},"item_3":{"name":"TFT_Item_NegatronCloak"},"item_4":{"name":"TFT_Item_RecurveBow"}}
+2026-01-20 18:13:57,890 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemCategories Component [object Object]
+2026-01-20 18:13:57,907 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay unmounted
+2026-01-20 18:13:57,907 (INFO) </assets/index-x3LLM14k.js> (:20808) - ItemStats mounted
+2026-01-20 18:13:57,908 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:57,908 (INFO) </assets/index-x3LLM14k.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT_Item_SparringGloves"},"item_2":{"name":"TFT_Item_TearOfTheGoddess"},"item_3":{"name":"TFT_Item_NegatronCloak"},"item_4":{"name":"TFT_Item_RecurveBow"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT11_Augment_Slammin\"}, \"slot_2\":{\"name\":\"TFT_Augment_TraitTreePlus\"}, \"slot_3\":{\"name\":\"TFT_Augment_SmallGrabBag\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT_Augment_FindYourCenter","TFT7_Augment_BestFriends1","TFT_Augment_SmallGrabBag"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 18:13:57,909 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-20 18:13:57,909 (INFO) </assets/index-x3LLM14k.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT_Item_SparringGloves"},"item_2":{"name":"TFT_Item_TearOfTheGoddess"},"item_3":{"name":"TFT_Item_NegatronCloak"},"item_4":{"name":"TFT_Item_RecurveBow"}}
+2026-01-20 18:13:57,910 (INFO) </assets/index-x3LLM14k.js> (:20808) - itemCategories Component [object Object]
+2026-01-20 18:13:58,878 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:58,881 (INFO) </assets/index-x3LLM14k.js> (:20808) - ItemStats unmounted
+2026-01-20 18:13:58,882 (INFO) </assets/index-x3LLM14k.js> (:20808) - ShopOverlay mounted
+2026-01-20 18:13:58,894 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:13:58,916 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:14:18,880 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:14:18,923 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:15:01,894 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:15:04,894 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:15:04,920 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:15:05,168 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:15:34,882 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:15:34,923 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:16:04,887 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:16:04,978 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:16:05,000 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:16:10,204 (INFO) </assets/index-x3LLM14k.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-20 18:16:10,205 (INFO) </assets/index-x3LLM14k.js> (:20808) - resized. New width:  1760
+2026-01-20 18:16:10,206 (INFO) </assets/index-x3LLM14k.js> (:20808) - New Height:  446
+2026-01-20 18:16:10,291 (INFO) </assets/index-x3LLM14k.js> (:20808) - changed position to:  400 993
+2026-01-20 18:16:10,292 (INFO) </assets/index-x3LLM14k.js> (:20808) - window info:  [object Object]
+2026-01-20 18:16:10,294 (INFO) </assets/index-x3LLM14k.js> (:20808) - game info:  [object Object]
+2026-01-20 18:16:10,299 (INFO) <Overwolf> () - [object Object]

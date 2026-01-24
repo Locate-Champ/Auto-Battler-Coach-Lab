@@ -1,0 +1,260 @@
+﻿2026-01-20 17:51:19,493 (INFO) ================== new session ==================
+2026-01-20 17:51:19,496 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-20 17:51:19,497 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: es
+2026-01-20 17:51:19,498 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-20 17:51:19,502 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: de
+2026-01-20 17:51:19,503 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-20 17:51:19,504 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-20 17:51:19,504 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-20 17:51:19,505 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-20 17:51:19,505 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-20 17:51:19,506 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-20 17:51:19,509 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-20 17:51:19,509 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: el
+2026-01-20 17:51:19,510 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-20 17:51:19,510 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-20 17:51:19,511 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: it
+2026-01-20 17:51:19,511 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-20 17:51:19,512 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-20 17:51:19,512 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: th
+2026-01-20 17:51:19,513 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-20 17:51:19,513 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-20 17:51:19,514 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 17:51:19,514 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 17:51:19,515 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final current locale: en
+2026-01-20 17:51:19,515 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en_us to en_us
+2026-01-20 17:51:19,516 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 17:51:19,516 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 17:51:19,517 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 17:51:19,517 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 17:51:19,532 (INFO) </assets/index-x3LLM14k.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-20 17:51:19,558 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-20 17:51:19,559 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-20 17:51:19,563 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-20 17:51:19,565 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-20 17:51:19,566 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-20 17:51:19,566 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-20 17:51:19,567 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-20 17:51:19,567 (INFO) </assets/index-x3LLM14k.js> (:20808) - window name:  [object Object]
+2026-01-20 17:51:19,585 (INFO) </assets/index-x3LLM14k.js> (:20749) - healthcheck: {}
+2026-01-20 17:51:19,586 (INFO) </assets/index-x3LLM14k.js> (:20749) - healthcheck: {}
+2026-01-20 17:51:19,587 (INFO) </assets/index-x3LLM14k.js> (:20763) - Comps Page: Render true 1100
+2026-01-20 17:51:19,588 (INFO) </assets/index-x3LLM14k.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-20 17:51:19,590 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:19,676 (INFO) </assets/index-x3LLM14k.js> (:20808) - AppRoutes location [object Object]
+2026-01-20 17:51:19,693 (INFO) </assets/index-x3LLM14k.js> (:20765) - adbox state:  [object Object]
+2026-01-20 17:51:19,717 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters componentDidMount
+2026-01-20 17:51:19,718 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-20 17:51:19,718 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters: Calling updateFilterValues - filters need update
+2026-01-20 17:51:19,719 (INFO) </assets/index-x3LLM14k.js> (:27) - updateFilterValues: Starting filter values fetch
+2026-01-20 17:51:19,735 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-20 17:51:19,738 (INFO) </assets/index-x3LLM14k.js> (:20668) - scrollRef [object Object]
+2026-01-20 17:51:19,769 (INFO) </assets/index-x3LLM14k.js> (:20668) - CompTable: Mounted with activeFilters, updating data
+2026-01-20 17:51:19,770 (INFO) </assets/index-x3LLM14k.js> (:20763) - checking sync queue: from centralized filters: 1100 1100
+2026-01-20 17:51:19,771 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters componentDidMount
+2026-01-20 17:51:19,771 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-20 17:51:19,772 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters: Calling updateFilterValues - filters need update
+2026-01-20 17:51:19,772 (INFO) </assets/index-x3LLM14k.js> (:27) - updateFilterValues: Global initialization in progress, waiting for existing request
+2026-01-20 17:51:19,775 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-20 17:51:19,776 (INFO) </assets/index-x3LLM14k.js> (:20765) - Ad script loaded
+2026-01-20 17:51:19,776 (INFO) </assets/index-x3LLM14k.js> (:20765) - createAd 0
+2026-01-20 17:51:19,777 (INFO) </assets/index-x3LLM14k.js> (:20808) - resizing
+2026-01-20 17:51:19,778 (INFO) </assets/index-x3LLM14k.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-20 17:51:19,779 (INFO) </assets/index-x3LLM14k.js> (:20765) - ExplorerFilters: Skipping centralized filter update - not on explorer page: /comps
+2026-01-20 17:51:19,780 (INFO) </assets/index-x3LLM14k.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-20 17:51:19,781 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer: Centralized filters changed, updating filterRefCopy: [object Object]
+2026-01-20 17:51:19,781 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer: Updated filterRefCopy: [object Object]
+2026-01-20 17:51:19,782 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-20 17:51:19,782 (INFO) </assets/index-x3LLM14k.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-20 17:51:19,783 (INFO) </assets/index-x3LLM14k.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-20 17:51:19,784 (INFO) </assets/index-x3LLM14k.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-20 17:51:19,785 (INFO) </assets/index-x3LLM14k.js> (:20808) - navigate changed [object Object]
+2026-01-20 17:51:19,786 (INFO) </assets/index-x3LLM14k.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-20 17:51:19,787 (INFO) </assets/index-x3LLM14k.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-20 17:51:19,787 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:19,832 (INFO) </assets/index-x3LLM14k.js> (:20765) - adbox state:  [object Object]
+2026-01-20 17:51:19,835 (INFO) </assets/index-x3LLM14k.js> (:20668) - backing Up State
+2026-01-20 17:51:19,923 (INFO) </assets/index-x3LLM14k.js> (:20668) - CompTable: update_data from componentDidMount1 true
+2026-01-20 17:51:19,923 (INFO) </assets/index-x3LLM14k.js> (:20668) - update_data: updating comps data
+2026-01-20 17:51:19,924 (INFO) </assets/index-x3LLM14k.js> (:20668) - fetching /comps_data:  https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100
+2026-01-20 17:51:19,924 (INFO) </assets/index-x3LLM14k.js> (:20668) - fetching /comps_stats:  https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-20 17:51:19,925 (INFO) </assets/index-x3LLM14k.js> (:20808) - fetch language:  en_us  from LookupService
+2026-01-20 17:51:20,145 (INFO) </assets/index-x3LLM14k.js> (:27) - fetch language lookups:  [object Object]
+2026-01-20 17:51:20,149 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:20,200 (INFO) </assets/index-x3LLM14k.js> (:20668) - backing Up State
+2026-01-20 17:51:20,280 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-20 17:51:20,281 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:20,308 (INFO) </assets/index-x3LLM14k.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/pro-comps?region_hint=na1
+2026-01-20 17:51:20,308 (INFO) </assets/index-x3LLM14k.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/piltover-modules?region_hint=na1
+2026-01-20 17:51:20,309 (INFO) </assets/index-x3LLM14k.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100&region_hint=na1
+2026-01-20 17:51:20,310 (INFO) </assets/index-x3LLM14k.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&region_hint=na1
+2026-01-20 17:51:20,347 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-20 17:51:20,348 (INFO) </assets/index-x3LLM14k.js> (:20668) - update_data filters
+2026-01-20 17:51:20,349 (INFO) </assets/index-x3LLM14k.js> (:20668) - CompTable: update_data from updateActiveFilters3 true
+2026-01-20 17:51:20,349 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:20,359 (INFO) </assets/index-x3LLM14k.js> (:20668) - already fetching comps data https://api-hc.metatft.com/tft-comps-api/comps_data
+2026-01-20 17:51:20,360 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:20,370 (INFO) </assets/index-x3LLM14k.js> (:20668) - backing Up State
+2026-01-20 17:51:20,456 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:20,473 (INFO) </assets/index-x3LLM14k.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-20 17:51:20,474 (INFO) </assets/index-x3LLM14k.js> (:20765) - ExplorerFilters: User changed filters via legacy method: [object Object]
+2026-01-20 17:51:20,474 (INFO) </assets/index-x3LLM14k.js> (:20765) - sendFetchData: Skipping fetch - no dimension filters to warrant data request
+2026-01-20 17:51:20,475 (INFO) </assets/index-x3LLM14k.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-20 17:51:20,476 (INFO) </assets/index-x3LLM14k.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at Object.lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-x3LLM14k.js:20748:421170)
+    at async le (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-x3LLM14k.js:332:71011)
+2026-01-20 17:51:20,522 (INFO) </assets/index-x3LLM14k.js> (:20808) - AppRoutes location [object Object]
+2026-01-20 17:51:20,524 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-20 17:51:20,525 (INFO) </assets/index-x3LLM14k.js> (:20808) - draggable [object Object]
+2026-01-20 17:51:20,580 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,581 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,582 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,582 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,583 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,583 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,589 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-20 17:51:20,590 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,591 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,591 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-20 17:51:20,592 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,592 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,596 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,597 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,598 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,598 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,599 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,599 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,600 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-20 17:51:20,600 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,601 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,601 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,602 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,602 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,603 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,603 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-20 17:51:20,608 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,609 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,609 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,610 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,611 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,611 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,611 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,612 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,612 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,613 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,613 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,613 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,615 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,615 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,616 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,616 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,617 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,617 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,618 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,618 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,619 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,619 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,620 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,620 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,621 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,621 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,622 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,622 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,622 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,623 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,623 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,624 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,624 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,626 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,627 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,627 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,628 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,628 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,629 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,629 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,630 (INFO) </assets/index-x3LLM14k.js> (:27) - Formula not found:  TFT16_Bard_Num3Stars {39cfdb6d} [object Object] 
+2026-01-20 17:51:20,630 (INFO) </assets/index-x3LLM14k.js> (:27) - couldn't find variable:  1 TFT16_Bard_Num3Stars
+2026-01-20 17:51:20,631 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,631 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,632 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,636 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,636 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,637 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,638 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,639 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,639 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,640 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,640 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-20 17:51:20,641 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-20 17:51:20,641 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-20 17:51:20,642 (INFO) </assets/index-x3LLM14k.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-20 17:51:21,288 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:21,512 (INFO) </assets/index-x3LLM14k.js> (:20808) - current_window:  [object Object]
+2026-01-20 17:51:21,513 (INFO) </assets/index-x3LLM14k.js> (:20808) - result2:  [object Object]
+2026-01-20 17:51:21,514 (INFO) </assets/index-x3LLM14k.js> (:20808) - setting scaling:  -0.33333333333333326
+2026-01-20 17:51:21,526 (INFO) </assets/index-x3LLM14k.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-20 17:51:21,526 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-20 17:51:21,527 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-20 17:51:21,546 (INFO) </assets/index-x3LLM14k.js> (:20749) - userInfo: [object Object]
+2026-01-20 17:51:21,549 (INFO) </assets/index-x3LLM14k.js> (:27) - updateFilterValues: Successfully fetched filter values
+2026-01-20 17:51:21,582 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-20 17:51:21,583 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-20 17:51:21,585 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-20 17:51:21,586 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-20 17:51:21,587 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-20 17:51:21,587 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-20 17:51:21,588 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-20 17:51:21,588 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-20 17:51:21,589 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-20 17:51:21,589 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-20 17:51:21,590 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-20 17:51:21,590 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-20 17:51:21,591 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-20 17:51:21,591 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-20 17:51:21,592 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-20 17:51:21,592 (INFO) </assets/index-x3LLM14k.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-20 17:51:21,646 (INFO) </assets/index-x3LLM14k.js> (:20808) - MyTeams: selectedPortal state changed to: 
+2026-01-20 17:51:21,647 (INFO) </assets/index-x3LLM14k.js> (:20808) - MyTeams: portalSearch state changed to: 
+2026-01-20 17:51:21,951 (INFO) </assets/index-x3LLM14k.js> (:20749) - dragged to: 2029 21 ingamedesktopPosition
+2026-01-20 17:51:21,961 (INFO) </assets/index-x3LLM14k.js> (:20808) - Close Clicked
+2026-01-20 17:51:22,064 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:22,086 (INFO) </assets/index-x3LLM14k.js> (:20668) - backing Up State
+2026-01-20 17:51:22,200 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:22,224 (INFO) </assets/index-x3LLM14k.js> (:20668) - set key: TFTSet16 TFTSet16
+2026-01-20 17:51:22,232 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:22,341 (INFO) </assets/index-x3LLM14k.js> (:20668) - backing Up State
+2026-01-20 17:51:22,427 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:22,439 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:22,462 (INFO) </assets/index-x3LLM14k.js> (:20668) - backing Up State
+2026-01-20 17:51:22,562 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:22,640 (INFO) </assets/index-x3LLM14k.js> (:20749) - UpdateControls mounted [object Object] [object Object]
+2026-01-20 17:51:22,800 (INFO) <Overwolf> () - [object Object]
+2026-01-20 17:51:23,165 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 17:51:27,451 (INFO) </assets/index-x3LLM14k.js> (:20749) - healthcheck: {}
+2026-01-20 17:51:27,452 (INFO) </assets/index-x3LLM14k.js> (:20749) - healthcheck: {}
+2026-01-20 17:52:44,096 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:53:13,090 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:54:36,174 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:54:43,313 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:54:56,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:54:59,106 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:55:05,214 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:55:16,396 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:56:11,471 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:56:21,649 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:57:30,435 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 17:57:37,058 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 18:16:10,186 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 18:16:10,187 (INFO) </assets/index-x3LLM14k.js> (:20808) - resizing
+2026-01-20 18:16:10,201 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 18:16:10,274 (INFO) </assets/index-x3LLM14k.js> (:20808) - AppRoutes location [object Object]
+2026-01-20 18:16:10,276 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-20 18:16:10,296 (INFO) </assets/index-x3LLM14k.js> (:20808) - current_window:  [object Object]
+2026-01-20 18:16:10,297 (INFO) </assets/index-x3LLM14k.js> (:20808) - result2:  [object Object]
+2026-01-20 18:16:10,297 (INFO) </assets/index-x3LLM14k.js> (:20808) - setting scaling:  -0.33333333333333326
+2026-01-20 18:16:10,299 (INFO) <Overwolf> () - [object Object]
+2026-01-20 18:16:15,078 (INFO) </assets/index-x3LLM14k.js> (:20808) - AppRoutes location [object Object]
+2026-01-20 18:16:15,081 (INFO) </assets/index-x3LLM14k.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-20 18:16:15,082 (INFO) </assets/index-x3LLM14k.js> (:20668) - Comps Render
+2026-01-20 18:16:15,105 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 18:16:15,119 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]

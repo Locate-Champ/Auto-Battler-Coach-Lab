@@ -1,0 +1,576 @@
+﻿2026-01-21 16:58:16,902 (INFO) ================== new session ==================
+2026-01-21 16:58:16,903 (INFO) </index.html> (:91) - Sentry sample rate sent to:  0.1
+2026-01-21 16:58:16,903 (INFO) </libs/bundle.min.js> (:1) - [GEP] Sentry initialized
+2026-01-21 16:58:16,977 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:16,978 (INFO) </libs/bundle.min.js> (:1) - [GEP] launched
+2026-01-21 16:58:16,978 (INFO) </libs/bundle.min.js> (:1) - [INIT] main module loaded
+2026-01-21 16:58:17,098 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,101 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,243 (INFO) </libs/bundle.min.js> (:1) - [GEP] Running version 296.1.1
+2026-01-21 16:58:17,245 (INFO) </libs/bundle.min.js> (:1) - [GEP] appInit
+2026-01-21 16:58:17,246 (INFO) </libs/bundle.min.js> (:1) - [GEP] init
+2026-01-21 16:58:17,250 (INFO) </libs/bundle.min.js> (:1) - [GEP] reporting osbuild
+2026-01-21 16:58:17,251 (INFO) </libs/bundle.min.js> (:1) - [GEP] Loaded but no game is currently running
+2026-01-21 16:58:17,291 (INFO) </libs/bundle.min.js> (:1) - [Analytics] Usage: true
+2026-01-21 16:58:17,299 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,299 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,299 (INFO) </libs/bundle.min.js> (:1) - [WORLD OF WARCRAFT] onAppInit
+2026-01-21 16:58:17,300 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,300 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,300 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,320 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,321 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,321 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,322 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,322 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,359 (INFO) </libs/bundle.min.js> (:1) - [LoL] onAppInit
+2026-01-21 16:58:17,360 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,378 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,378 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,379 (INFO) </libs/bundle.min.js> (:1) - [FINAL FANTASY XIV] onAppInit
+2026-01-21 16:58:17,379 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,380 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,380 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,403 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,404 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,404 (INFO) </libs/bundle.min.js> (:1) - [PATH OF EXILE] onAppInit
+2026-01-21 16:58:17,405 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,405 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,406 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,441 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,443 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,444 (INFO) </libs/bundle.min.js> (:1) - [DOTA] onAppInit
+2026-01-21 16:58:17,444 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,444 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,445 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,488 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,488 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,489 (INFO) </libs/bundle.min.js> (:1) - [MINECRAFT] onAppInit
+2026-01-21 16:58:17,528 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:17,546 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:17,547 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,547 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,550 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,551 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,551 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,552 (INFO) </libs/bundle.min.js> (:1) - [WARFRAME] onAppInit
+2026-01-21 16:58:17,572 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,573 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,573 (INFO) </libs/bundle.min.js> (:1) - [Hearthstone] onAppInit
+2026-01-21 16:58:17,585 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:17,586 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:17,595 (INFO) </libs/bundle.min.js> (:1) - updating C:\Users\forre\AppData\Local/Blizzard/Hearthstone/log.config...
+2026-01-21 16:58:17,625 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,625 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,626 (INFO) </libs/bundle.min.js> (:1) - [Rocket League] onAppInit
+2026-01-21 16:58:17,643 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,644 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,648 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,677 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,678 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,678 (INFO) </libs/bundle.min.js> (:1) - [RAINBOW SIX SIEGE] onAppInit
+2026-01-21 16:58:17,699 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,699 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,700 (INFO) </libs/bundle.min.js> (:1) - [OVERWATCH] onAppInit
+2026-01-21 16:58:17,716 (INFO) </libs/bundle.min.js> (:1) - [PUBG] onAppInit
+2026-01-21 16:58:17,742 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:17,743 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:17,743 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,744 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,744 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,756 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,756 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,757 (INFO) </libs/bundle.min.js> (:1) - [FORTNITE] onAppInit
+2026-01-21 16:58:17,766 (INFO) </libs/bundle.min.js> (:1) - [PUBG] onAppInit
+2026-01-21 16:58:17,780 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,781 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,781 (INFO) </libs/bundle.min.js> (:1) - [MAGIC THE GATHERING ARENA] onAppInit
+2026-01-21 16:58:17,805 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:17,805 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:17,806 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,806 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,806 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,870 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:17,871 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:17,871 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,872 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,872 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:17,874 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,875 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,875 (INFO) </libs/bundle.min.js> (:1) - [APEX LEGENDS] onAppInit
+2026-01-21 16:58:17,933 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,934 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,934 (INFO) </libs/bundle.min.js> (:1) - [LEGENDS OF RUNETERRA] onAppInit
+2026-01-21 16:58:17,977 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:17 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:17,978 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:17,978 (INFO) </libs/bundle.min.js> (:1) - [ESCAPE FROM TARKOV] onAppInit
+2026-01-21 16:58:18,001 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,001 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,001 (INFO) </libs/bundle.min.js> (:1) - [VALORANT] onAppInit
+2026-01-21 16:58:18,033 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,034 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,034 (INFO) </libs/bundle.min.js> (:1) - [GENSHIN IMPACT] onAppInit
+2026-01-21 16:58:18,061 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,062 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,062 (INFO) </libs/bundle.min.js> (:1) - [NEW WORLD] onAppInit
+2026-01-21 16:58:18,078 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,078 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,079 (INFO) </libs/bundle.min.js> (:1) - [DIABLO2] onAppInit
+2026-01-21 16:58:18,084 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:18,085 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:18,085 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,086 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,086 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,092 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,093 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,095 (INFO) </libs/bundle.min.js> (:1) - [LOST ARK] onAppInit
+2026-01-21 16:58:18,112 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,113 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,113 (INFO) </libs/bundle.min.js> (:1) - [COD - VANGUARD] Creating goop installer
+2026-01-21 16:58:18,113 (INFO) </libs/bundle.min.js> (:1) - [COD - VANGUARD] onAppInit
+2026-01-21 16:58:18,150 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,150 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,151 (INFO) </libs/bundle.min.js> (:1) - [BALDURS GATE 3] onAppInit
+2026-01-21 16:58:18,176 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,176 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,177 (INFO) </libs/bundle.min.js> (:1) - [MINECRAFT BEDROCK] onAppInit
+2026-01-21 16:58:18,210 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,210 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,211 (INFO) </libs/bundle.min.js> (:1) - [COD] Creating goop installer
+2026-01-21 16:58:18,211 (INFO) </libs/bundle.min.js> (:1) - [COD] onAppInit
+2026-01-21 16:58:18,215 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:18,229 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:18,229 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:18,230 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,230 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,231 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,231 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,232 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,232 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,233 (INFO) </libs/bundle.min.js> (:1) - [DARK AND DARKER] onAppInit
+2026-01-21 16:58:18,244 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,244 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,245 (INFO) </libs/bundle.min.js> (:1) - [SONS OF THE FOREST] onAppInit
+2026-01-21 16:58:18,276 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,277 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,277 (INFO) </libs/bundle.min.js> (:1) - [DIABLO 4] onAppInit
+2026-01-21 16:58:18,324 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,328 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,329 (INFO) </libs/bundle.min.js> (:1) - [COUNTER-STRIKE 2] onAppInit
+2026-01-21 16:58:18,356 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,356 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,357 (INFO) </libs/bundle.min.js> (:1) - [HONKAI STAR RAIL] Creating goop installer
+2026-01-21 16:58:18,357 (INFO) </libs/bundle.min.js> (:1) - [HONKAI STAR RAIL] onAppInit
+2026-01-21 16:58:18,361 (INFO) </libs/bundle.min.js> (:1) - [LoL] onAppInit
+2026-01-21 16:58:18,374 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,375 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,375 (INFO) </libs/bundle.min.js> (:1) - [STREET FIGHTER 6] Creating goop installer
+2026-01-21 16:58:18,376 (INFO) </libs/bundle.min.js> (:1) - [STREET FIGHTER 6] onAppInit
+2026-01-21 16:58:18,377 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:18,378 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:18,378 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,378 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,379 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,381 (INFO) </libs/bundle.min.js> (:1) - [VALORANT] onAppInit
+2026-01-21 16:58:18,414 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,415 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,415 (INFO) </libs/bundle.min.js> (:1) - [COD-MW3] Creating goop installer
+2026-01-21 16:58:18,416 (INFO) </libs/bundle.min.js> (:1) - [COD-MW3] onAppInit
+2026-01-21 16:58:18,425 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,425 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,426 (INFO) </libs/bundle.min.js> (:1) - [THE FINALS] Creating goop installer
+2026-01-21 16:58:18,426 (INFO) </libs/bundle.min.js> (:1) - [THE FINALS] onAppInit
+2026-01-21 16:58:18,436 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,436 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,438 (INFO) </libs/bundle.min.js> (:1) - [LETHAL COMPANY] Creating goop installer
+2026-01-21 16:58:18,439 (INFO) </libs/bundle.min.js> (:1) - [LETHAL COMPANY] onAppInit
+2026-01-21 16:58:18,439 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:18,440 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:18,440 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,441 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,441 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,448 (INFO) </libs/bundle.min.js> (:1) - [DOTA] initializing DotaGsiListener from onAppInit
+2026-01-21 16:58:18,460 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,461 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,461 (INFO) </libs/bundle.min.js> (:1) - [ONCE HUMAN] Creating goop installer
+2026-01-21 16:58:18,462 (INFO) </libs/bundle.min.js> (:1) - [ONCE HUMAN] onAppInit
+2026-01-21 16:58:18,474 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,475 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,475 (INFO) </libs/bundle.min.js> (:1) - [PALWORLD] onAppInit
+2026-01-21 16:58:18,509 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:18,510 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,511 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,511 (INFO) </libs/bundle.min.js> (:1) - [HELLDIVERS 2] Creating goop installer
+2026-01-21 16:58:18,512 (INFO) </libs/bundle.min.js> (:1) - [HELLDIVERS 2] onAppInit
+2026-01-21 16:58:18,531 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,532 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,533 (INFO) </libs/bundle.min.js> (:1) - [CONTENT WARNING] Creating goop installer
+2026-01-21 16:58:18,533 (INFO) </libs/bundle.min.js> (:1) - [CONTENT WARNING] onAppInit
+2026-01-21 16:58:18,536 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:18,536 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:18,537 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,537 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,538 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,544 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,545 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,545 (INFO) </libs/bundle.min.js> (:1) - [WUTHERING WAVES] Creating goop installer
+2026-01-21 16:58:18,546 (INFO) </libs/bundle.min.js> (:1) - [WUTHERING WAVES] onAppInit
+2026-01-21 16:58:18,562 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,563 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,563 (INFO) </libs/bundle.min.js> (:1) - [SUPERVIVE] onAppInit
+2026-01-21 16:58:18,590 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,591 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,591 (INFO) </libs/bundle.min.js> (:1) - [DEADLOCK] onAppInit
+2026-01-21 16:58:18,604 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,604 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,605 (INFO) </libs/bundle.min.js> (:1) - [BLACK MYTH WUKONG] Creating goop installer
+2026-01-21 16:58:18,605 (INFO) </libs/bundle.min.js> (:1) - [BLACK MYTH WUKONG] onAppInit
+2026-01-21 16:58:18,615 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,616 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,616 (INFO) </libs/bundle.min.js> (:1) - [BLACK OPS 6] Creating goop installer
+2026-01-21 16:58:18,617 (INFO) </libs/bundle.min.js> (:1) - [BLACK OPS 6] onAppInit
+2026-01-21 16:58:18,638 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,639 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,639 (INFO) </libs/bundle.min.js> (:1) - [WARHAMMER 40000 SPACE MARINE 2] Creating goop installer
+2026-01-21 16:58:18,640 (INFO) </libs/bundle.min.js> (:1) - [WARHAMMER 40000 SPACE MARINE 2] onAppInit
+2026-01-21 16:58:18,656 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,656 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,657 (INFO) </libs/bundle.min.js> (:1) - [PATH OF EXILE 2] onAppInit
+2026-01-21 16:58:18,685 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,686 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,686 (INFO) </libs/bundle.min.js> (:1) - [MARVEL RIVALS] onAppInit
+2026-01-21 16:58:18,698 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,699 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,699 (INFO) </libs/bundle.min.js> (:1) - [MONSTER HUNTER WILDS] Creating goop installer
+2026-01-21 16:58:18,700 (INFO) </libs/bundle.min.js> (:1) - [MONSTER HUNTER WILDS] onAppInit
+2026-01-21 16:58:18,714 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,714 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,715 (INFO) </libs/bundle.min.js> (:1) - [REPO] Creating goop installer
+2026-01-21 16:58:18,715 (INFO) </libs/bundle.min.js> (:1) - [REPO] onAppInit
+2026-01-21 16:58:18,727 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:18,728 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:18,729 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,729 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,733 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,747 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,748 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,748 (INFO) </libs/bundle.min.js> (:1) - [SCHEDULE I] onAppInit
+2026-01-21 16:58:18,770 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,770 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,771 (INFO) </libs/bundle.min.js> (:1) - [SPLITGATE 2] Creating goop installer
+2026-01-21 16:58:18,771 (INFO) </libs/bundle.min.js> (:1) - [SPLITGATE 2] onAppInit
+2026-01-21 16:58:18,784 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,785 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,786 (INFO) </libs/bundle.min.js> (:1) - [ELDEN RING NIGHTREIGN] Creating goop installer
+2026-01-21 16:58:18,786 (INFO) </libs/bundle.min.js> (:1) - [ELDEN RING NIGHTREIGN] onAppInit
+2026-01-21 16:58:18,806 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,807 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,807 (INFO) </libs/bundle.min.js> (:1) - [PEAK] onAppInit
+2026-01-21 16:58:18,827 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,827 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,828 (INFO) </libs/bundle.min.js> (:1) - [REMATCH] onAppInit
+2026-01-21 16:58:18,839 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,840 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,840 (INFO) </libs/bundle.min.js> (:1) - [BATTLFIELD 6] Creating goop installer
+2026-01-21 16:58:18,840 (INFO) </libs/bundle.min.js> (:1) - [BATTLFIELD 6] onAppInit
+2026-01-21 16:58:18,863 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,864 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,864 (INFO) </libs/bundle.min.js> (:1) - [2XKO] onAppInit
+2026-01-21 16:58:18,867 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:18,877 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,877 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,878 (INFO) </libs/bundle.min.js> (:1) - [ARC RAIDERS] Creating goop installer
+2026-01-21 16:58:18,878 (INFO) </libs/bundle.min.js> (:1) - [ARC RAIDERS] onAppInit
+2026-01-21 16:58:18,883 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:18,884 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:18,884 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,885 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,885 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,901 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Wed Jan 21 2026 16:58:18 GMT-0500 (Eastern Standard Time)
+2026-01-21 16:58:18,901 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-21 16:58:18,902 (INFO) </libs/bundle.min.js> (:1) - [HYTALE] onAppInit
+2026-01-21 16:58:18,992 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:18,992 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:18,993 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,993 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:18,994 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,030 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:19,034 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:19,042 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,043 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,043 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,043 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,044 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,067 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,068 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,069 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,069 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,069 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,160 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,160 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,161 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,161 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,162 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,256 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,256 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,257 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,257 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,258 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,346 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,346 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,350 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 21876 not enabled {"success":false,"status":"error","gameClassId":21876,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:19,350 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,351 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,351 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,382 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,382 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,383 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,383 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,383 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,411 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,412 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,412 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,413 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,413 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,522 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:19,534 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,535 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,535 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 22328 not enabled {"success":false,"status":"error","gameClassId":22328,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:19,536 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,536 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,536 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,633 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,634 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,634 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,634 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,635 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,733 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,733 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,734 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,734 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,735 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,765 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,765 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,766 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,766 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,767 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,796 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,796 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,797 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,797 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,798 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,910 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:19,914 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:19,914 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:19,915 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 22804 not enabled {"success":false,"status":"error","gameClassId":22804,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:19,915 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,916 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,916 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:19,989 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,140 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,141 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 22894 not enabled {"success":false,"status":"error","gameClassId":22894,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,141 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,142 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,142 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,143 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,143 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,144 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 23424 not enabled {"success":false,"status":"error","gameClassId":23424,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,144 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,147 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,147 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,148 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,148 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,149 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 23478 not enabled {"success":false,"status":"error","gameClassId":23478,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,149 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,150 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,150 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,150 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,151 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,151 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 23522 not enabled {"success":false,"status":"error","gameClassId":23522,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,152 (INFO) </libs/bundle.min.js> (:1) - Could not find a valid DOTA installation. Reason: Game not installed
+2026-01-21 16:58:20,152 (INFO) </libs/bundle.min.js> (:1) - Aborting...
+2026-01-21 16:58:20,153 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,153 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,154 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,255 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,256 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,257 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 23930 not enabled {"success":false,"status":"error","gameClassId":23930,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,257 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,258 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,258 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,376 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:20,380 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,381 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,381 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,382 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,382 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,473 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,474 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,474 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24000 not enabled {"success":false,"status":"error","gameClassId":24000,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,474 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,475 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,475 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,497 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,597 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,597 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24110 not enabled {"success":false,"status":"error","gameClassId":24110,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,598 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,598 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,598 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,599 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:20,599 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,600 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,600 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24300 not enabled {"success":false,"status":"error","gameClassId":24300,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,601 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,601 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,602 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,641 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,641 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,642 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,642 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,642 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,736 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,737 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,737 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,738 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,738 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,838 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,839 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,839 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24504 not enabled {"success":false,"status":"error","gameClassId":24504,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,839 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,840 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,840 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,859 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:20,867 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,868 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,868 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24542 not enabled {"success":false,"status":"error","gameClassId":24542,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,868 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,869 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,869 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,889 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,890 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,890 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24548 not enabled {"success":false,"status":"error","gameClassId":24548,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:20,890 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,891 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,891 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,990 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:20,991 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:20,991 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,991 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:20,992 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,060 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,060 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,060 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,061 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,061 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,134 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,134 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,135 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 25446 not enabled {"success":false,"status":"error","gameClassId":25446,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:21,135 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,135 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,136 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,165 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,166 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,166 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 25448 not enabled {"success":false,"status":"error","gameClassId":25448,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:21,167 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,167 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,168 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,193 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,194 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,194 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,195 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,195 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,326 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,326 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,327 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 25884 not enabled {"success":false,"status":"error","gameClassId":25884,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:21,327 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,328 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,328 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,397 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,397 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,398 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 25918 not enabled {"success":false,"status":"error","gameClassId":25918,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:21,398 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,398 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,399 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,489 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,490 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,490 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,490 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,491 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,514 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:21,521 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,522 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,522 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,522 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,523 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,542 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,542 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,543 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 26462 not enabled {"success":false,"status":"error","gameClassId":26462,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:21,543 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,543 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,544 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,641 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,649 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,649 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,650 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,650 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,711 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,712 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,712 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 27168 not enabled {"success":false,"status":"error","gameClassId":27168,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-21 16:58:21,713 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,713 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,713 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-21 16:58:21,800 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,801 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,866 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,867 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:21,928 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:21,928 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:22,175 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:22,175 (INFO) </libs/bundle.min.js> (:1) - [GEP INTERNAL] - Trying to perform a manual update...
+2026-01-21 16:58:22,281 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.2.0\",\"is_updated\":false}"}
+2026-01-21 16:58:22,360 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.1.1\",\"public_version\":\"296.1.1\",\"is_updated\":true}"}
+2026-01-21 16:58:22,473 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,476 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,481 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,485 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,489 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,493 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,501 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,508 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,642 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:22,884 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,096 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,102 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,106 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,112 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,116 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,121 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,130 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,138 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,190 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,307 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,557 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,772 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,786 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,789 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,792 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,796 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,800 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,808 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,820 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,866 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:23,976 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,214 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,402 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,409 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,416 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,419 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,423 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,428 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,435 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,443 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,464 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,489 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,533 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,553 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"package has been downloaded already","success":false,"error":"DownloadError"}
+2026-01-21 16:58:24,846 (INFO) </libs/bundle.min.js> (:1) - Update extension, current phasing: 15, result: {"info":"new version 296.2.0 installed, restart app to apply.","state":"PendingRestart","success":true}

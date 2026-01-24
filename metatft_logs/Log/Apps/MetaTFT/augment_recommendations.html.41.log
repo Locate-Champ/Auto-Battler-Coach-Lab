@@ -1,0 +1,438 @@
+﻿2026-01-22 18:12:46,081 (INFO) ================== new session ==================
+2026-01-22 18:12:46,092 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-22 18:12:46,094 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-22 18:12:46,101 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-22 18:12:46,103 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-22 18:12:46,104 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-22 18:12:46,109 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-22 18:12:46,112 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-22 18:12:46,113 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-22 18:12:46,114 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-22 18:12:46,114 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-22 18:12:46,115 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-22 18:12:46,115 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-22 18:12:46,116 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-22 18:12:46,117 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-22 18:12:46,118 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-22 18:12:46,119 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-22 18:12:46,122 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-22 18:12:46,123 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-22 18:12:46,124 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-22 18:12:46,128 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-22 18:12:46,129 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:46,144 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:46,147 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-22 18:12:46,149 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-22 18:12:46,150 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:46,152 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:46,154 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:46,154 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:46,166 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-22 18:12:46,171 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-22 18:12:46,172 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-22 18:12:46,397 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-22 18:12:46,398 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-22 18:12:46,399 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-22 18:12:46,400 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-22 18:12:46,400 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-22 18:12:46,488 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-22 18:12:46,501 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:12:46,540 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay mounted
+2026-01-22 18:12:46,541 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-22 18:12:46,542 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:12:46,543 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  1760
+2026-01-22 18:12:46,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - New Height:  446
+2026-01-22 18:12:46,581 (INFO) </assets/index-C26oBRaL.js> (:20808) - changed position to:  400 993
+2026-01-22 18:12:46,582 (INFO) </assets/index-C26oBRaL.js> (:20808) - window info:  [object Object]
+2026-01-22 18:12:46,582 (INFO) </assets/index-C26oBRaL.js> (:20808) - game info:  [object Object]
+2026-01-22 18:12:46,718 (INFO) <Overwolf> () - [object Object]
+2026-01-22 18:12:46,871 (INFO) </assets/index-C26oBRaL.js> (:20808) - powerUpTierData [object Object]
+2026-01-22 18:12:46,873 (INFO) </assets/index-C26oBRaL.js> (:20808) - PowerUpTiers [object Object]
+2026-01-22 18:12:46,873 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:12:46,874 (INFO) </assets/index-C26oBRaL.js> (:20808) - tierListData [object Object]
+2026-01-22 18:12:46,874 (INFO) </assets/index-C26oBRaL.js> (:20808) - AugmentTiers [object Object]
+2026-01-22 18:12:46,876 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:12:54,975 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:12:54,981 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:12:55,266 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:13:58,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:13:58,568 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:13:58,637 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:14:15,513 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:14:16,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:14:48,526 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:14:48,539 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:14:48,550 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:14:48,769 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:14:48,998 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:14:49,004 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:15:03,513 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:15:24,520 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:15:24,761 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:15:24,973 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:15:45,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:05,347 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:05,348 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"} undefined
+2026-01-22 18:16:05,348 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:05,349 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:05,349 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SavingsAccount
+2026-01-22 18:16:05,350 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Prizefighter
+2026-01-22 18:16:05,353 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay unmounted
+2026-01-22 18:16:05,518 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:05,519 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"} undefined
+2026-01-22 18:16:05,519 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:05,520 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:05,520 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SavingsAccount
+2026-01-22 18:16:05,521 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Prizefighter
+2026-01-22 18:16:05,807 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:05,807 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"} undefined
+2026-01-22 18:16:05,807 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:05,808 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:05,808 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SavingsAccount
+2026-01-22 18:16:05,809 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Prizefighter
+2026-01-22 18:16:05,952 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:05,953 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"} undefined
+2026-01-22 18:16:05,953 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:05,953 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:05,954 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SavingsAccount
+2026-01-22 18:16:05,954 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Prizefighter
+2026-01-22 18:16:06,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:06,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_SpeedyDoubleKill"},"augment_2":{"name":"TFT_Augment_SavingsAccount"},"augment_3":{"name":"TFT11_Augment_Prizefighter"}}
+2026-01-22 18:16:06,513 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:06,513 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:06,514 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SavingsAccount
+2026-01-22 18:16:06,514 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Prizefighter
+2026-01-22 18:16:06,515 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:16:08,533 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:08,534 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_SpeedyDoubleKill"},"augment_2":{"name":"TFT16_Augment_TheDarkinForge"},"augment_3":{"name":"TFT11_Augment_Prizefighter"}}
+2026-01-22 18:16:08,534 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT_Augment_SavingsAccount","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:08,537 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:08,537 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SavingsAccount
+2026-01-22 18:16:08,538 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Prizefighter
+2026-01-22 18:16:08,539 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:16:08,841 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:08,842 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT16_Augment_TheDarkinForge","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_SpeedyDoubleKill"},"augment_2":{"name":"TFT16_Augment_TheDarkinForge"},"augment_3":{"name":"TFT11_Augment_Prizefighter"}}
+2026-01-22 18:16:08,842 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT16_Augment_TheDarkinForge","TFT11_Augment_Prizefighter"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:08,843 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:08,844 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_TheDarkinForge
+2026-01-22 18:16:08,844 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Prizefighter
+2026-01-22 18:16:10,020 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:10,021 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_SpeedyDoubleKill"},"augment_2":{"name":"TFT16_Augment_TheDarkinForge"},"augment_3":{"name":"TFT11_Augment_Prizefighter"}}
+2026-01-22 18:16:10,021 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:10,022 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:10,022 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_TheDarkinForge
+2026-01-22 18:16:10,022 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HeftyRolls
+2026-01-22 18:16:10,514 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:10,515 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_SpeedyDoubleKill"},"augment_2":{"name":"TFT16_Augment_TheDarkinForge"},"augment_3":{"name":"TFT_Augment_HeftyRolls"}}
+2026-01-22 18:16:10,516 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_SpeedyDoubleKill","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:10,516 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpeedyDoubleKill
+2026-01-22 18:16:10,517 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_TheDarkinForge
+2026-01-22 18:16:10,517 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HeftyRolls
+2026-01-22 18:16:10,518 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:16:24,913 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:24,914 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_SpeedyDoubleKill"},"augment_2":{"name":"TFT16_Augment_TheDarkinForge"},"augment_3":{"name":"TFT_Augment_HeftyRolls"}}
+2026-01-22 18:16:24,914 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:24,915 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_ClutteredMind
+2026-01-22 18:16:24,916 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_TheDarkinForge
+2026-01-22 18:16:24,917 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HeftyRolls
+2026-01-22 18:16:25,523 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:25,523 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT7_Augment_ClutteredMind"},"augment_2":{"name":"TFT16_Augment_TheDarkinForge"},"augment_3":{"name":"TFT_Augment_HeftyRolls"}}
+2026-01-22 18:16:25,524 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:16:25,525 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_ClutteredMind
+2026-01-22 18:16:25,526 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_TheDarkinForge
+2026-01-22 18:16:25,526 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HeftyRolls
+2026-01-22 18:16:25,527 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:16:26,124 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:26,125 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT7_Augment_ClutteredMind"},"augment_2":{"name":"TFT16_Augment_TheDarkinForge"},"augment_3":{"name":"TFT_Augment_HeftyRolls"}}
+2026-01-22 18:16:26,125 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-22 18:16:26,126 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_ClutteredMind
+2026-01-22 18:16:26,127 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_TheDarkinForge
+2026-01-22 18:16:26,127 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HeftyRolls
+2026-01-22 18:16:26,517 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:26,518 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay mounted
+2026-01-22 18:16:26,529 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:27,535 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:27,536 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT16_TheDarkinAegis"},"item_2":{"name":"TFT16_TheDarkinScythe"},"item_3":{"name":"TFT16_TheDarkinBow"},"item_4":{"name":"TFT16_TheDarkinStaff"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT16_Augment_TheDarkinForge\"}, \"slot_2\":{\"name\":\"\"}, \"slot_3\":{\"name\":\"\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-22 18:16:27,536 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-22 18:16:27,537 (INFO) </assets/index-C26oBRaL.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_TheDarkinAegis"},"item_2":{"name":"TFT16_TheDarkinScythe"},"item_3":{"name":"TFT16_TheDarkinBow"},"item_4":{"name":"TFT16_TheDarkinStaff"}}
+2026-01-22 18:16:27,537 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemCategories Artifact [object Object]
+2026-01-22 18:16:27,563 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay unmounted
+2026-01-22 18:16:27,564 (INFO) </assets/index-C26oBRaL.js> (:20808) - ItemStats mounted
+2026-01-22 18:16:27,565 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:27,565 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT16_TheDarkinAegis"},"item_2":{"name":"TFT16_TheDarkinScythe"},"item_3":{"name":"TFT16_TheDarkinBow"},"item_4":{"name":"TFT16_TheDarkinStaff"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT16_Augment_TheDarkinForge\"}, \"slot_2\":{\"name\":\"\"}, \"slot_3\":{\"name\":\"\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-22 18:16:27,566 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-22 18:16:27,567 (INFO) </assets/index-C26oBRaL.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_TheDarkinAegis"},"item_2":{"name":"TFT16_TheDarkinScythe"},"item_3":{"name":"TFT16_TheDarkinBow"},"item_4":{"name":"TFT16_TheDarkinStaff"}}
+2026-01-22 18:16:27,568 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemCategories Artifact [object Object]
+2026-01-22 18:16:27,650 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-22 18:16:27,651 (INFO) </assets/index-C26oBRaL.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_TheDarkinAegis"},"item_2":{"name":"TFT16_TheDarkinScythe"},"item_3":{"name":"TFT16_TheDarkinBow"},"item_4":{"name":"TFT16_TheDarkinStaff"}}
+2026-01-22 18:16:27,651 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemCategories Artifact [object Object]
+2026-01-22 18:16:28,029 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-22 18:16:28,030 (INFO) </assets/index-C26oBRaL.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT16_TheDarkinAegis"},"item_2":{"name":"TFT16_TheDarkinScythe"},"item_3":{"name":"TFT16_TheDarkinBow"},"item_4":{"name":"TFT16_TheDarkinStaff"}}
+2026-01-22 18:16:28,031 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemCategories Artifact [object Object]
+2026-01-22 18:16:30,526 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:30,529 (INFO) </assets/index-C26oBRaL.js> (:20808) - ItemStats unmounted
+2026-01-22 18:16:30,530 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay mounted
+2026-01-22 18:16:30,538 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:30,547 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:55,523 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:16:55,562 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:17:30,514 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:17:33,518 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:17:33,531 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:17:33,755 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:18:03,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:18:03,534 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:18:37,511 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:18:40,525 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:18:40,533 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:18:40,749 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:19:10,519 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:19:10,558 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:19:50,528 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:20:35,534 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:20:35,543 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:20:35,695 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:20:35,758 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:21:05,530 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:21:05,559 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:21:49,531 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:21:52,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:21:52,652 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:21:52,759 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:22:22,529 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:22:22,549 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:02,529 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:05,539 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:05,547 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:05,758 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:25,532 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:52,536 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:52,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:52,555 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:23:52,769 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:24:20,705 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:24:22,576 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:24:22,598 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:00,603 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:03,571 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:03,579 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:03,708 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:03,709 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_HighVoltage"},"augment_2":{"name":"TFT_Augment_SpreadingRootsPlus"},"augment_3":{"name":"TFT8_Augment_SalvageBinPlus"}}
+2026-01-22 18:25:03,709 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT7_Augment_ClutteredMind","TFT16_Augment_TheDarkinForge","TFT_Augment_HeftyRolls"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-22 18:25:03,710 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_ClutteredMind
+2026-01-22 18:25:03,711 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_TheDarkinForge
+2026-01-22 18:25:03,711 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HeftyRolls
+2026-01-22 18:25:03,712 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:25:03,712 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay unmounted
+2026-01-22 18:25:03,717 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:03,718 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HighVoltage","TFT_Augment_SpreadingRootsPlus","TFT8_Augment_SalvageBinPlus"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_HighVoltage"},"augment_2":{"name":"TFT_Augment_SpreadingRootsPlus"},"augment_3":{"name":"TFT8_Augment_SalvageBinPlus"}}
+2026-01-22 18:25:03,719 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HighVoltage","TFT_Augment_SpreadingRootsPlus","TFT8_Augment_SalvageBinPlus"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:25:03,719 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HighVoltage
+2026-01-22 18:25:03,720 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpreadingRootsPlus
+2026-01-22 18:25:03,720 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT8_Augment_SalvageBinPlus
+2026-01-22 18:25:03,791 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:03,791 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HighVoltage","TFT_Augment_SpreadingRootsPlus","TFT8_Augment_SalvageBinPlus"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_HighVoltage"},"augment_2":{"name":"TFT_Augment_SpreadingRootsPlus"},"augment_3":{"name":"TFT8_Augment_SalvageBinPlus"}}
+2026-01-22 18:25:03,792 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_HighVoltage","TFT_Augment_SpreadingRootsPlus","TFT8_Augment_SalvageBinPlus"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:25:03,792 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HighVoltage
+2026-01-22 18:25:03,793 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpreadingRootsPlus
+2026-01-22 18:25:03,793 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT8_Augment_SalvageBinPlus
+2026-01-22 18:25:05,244 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:05,245 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT8_Augment_SalvageBinPlus"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_HighVoltage"},"augment_2":{"name":"TFT_Augment_SpreadingRootsPlus"},"augment_3":{"name":"TFT8_Augment_SalvageBinPlus"}}
+2026-01-22 18:25:05,247 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT8_Augment_SalvageBinPlus"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:25:05,247 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ChallengerDash
+2026-01-22 18:25:05,248 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpreadingRootsPlus
+2026-01-22 18:25:05,248 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT8_Augment_SalvageBinPlus
+2026-01-22 18:25:05,574 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:05,575 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT8_Augment_SalvageBinPlus"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ChallengerDash"},"augment_2":{"name":"TFT_Augment_SpreadingRootsPlus"},"augment_3":{"name":"TFT8_Augment_SalvageBinPlus"}}
+2026-01-22 18:25:05,575 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT8_Augment_SalvageBinPlus"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:25:05,575 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ChallengerDash
+2026-01-22 18:25:05,576 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpreadingRootsPlus
+2026-01-22 18:25:05,576 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT8_Augment_SalvageBinPlus
+2026-01-22 18:25:05,577 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:25:08,358 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:08,358 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT_Augment_SpiritLink1"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ChallengerDash"},"augment_2":{"name":"TFT_Augment_SpreadingRootsPlus"},"augment_3":{"name":"TFT8_Augment_SalvageBinPlus"}}
+2026-01-22 18:25:08,359 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT_Augment_SpiritLink1"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:25:08,359 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ChallengerDash
+2026-01-22 18:25:08,360 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpreadingRootsPlus
+2026-01-22 18:25:08,360 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpiritLink1
+2026-01-22 18:25:08,591 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:08,591 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT_Augment_SpiritLink1"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ChallengerDash"},"augment_2":{"name":"TFT_Augment_SpreadingRootsPlus"},"augment_3":{"name":"TFT_Augment_SpiritLink1"}}
+2026-01-22 18:25:08,592 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT_Augment_SpiritLink1"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:25:08,592 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ChallengerDash
+2026-01-22 18:25:08,592 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpreadingRootsPlus
+2026-01-22 18:25:08,593 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpiritLink1
+2026-01-22 18:25:08,593 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:25:10,423 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:10,424 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT_Augment_SpiritLink1"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ChallengerDash"},"augment_2":{"name":"TFT_Augment_SpreadingRootsPlus"},"augment_3":{"name":"TFT_Augment_SpiritLink1"}}
+2026-01-22 18:25:10,425 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ChallengerDash","TFT_Augment_SpreadingRootsPlus","TFT_Augment_SpiritLink1"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-22 18:25:10,426 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ChallengerDash
+2026-01-22 18:25:10,426 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpreadingRootsPlus
+2026-01-22 18:25:10,427 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpiritLink1
+2026-01-22 18:25:10,611 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:10,615 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay mounted
+2026-01-22 18:25:10,638 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:53,617 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:25:53,635 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:26:31,588 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:26:34,687 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:26:34,711 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:26:34,901 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:27:04,601 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:27:04,626 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:27:38,602 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:28:18,631 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:28:18,841 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:28:19,062 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:28:19,163 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:28:49,650 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:28:49,679 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:29:24,662 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:29:32,632 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:29:32,798 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:29:33,058 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:30:02,644 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:30:02,652 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:30:38,639 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:30:45,653 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:30:45,668 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:30:45,871 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:31:06,640 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:31:24,682 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:31:24,691 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:31:24,701 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:31:24,915 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:31:54,703 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:31:54,723 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:46,715 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:49,339 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:49,340 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-22 18:32:49,341 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:49,341 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT10_Augment_LittleBuddies
+2026-01-22 18:32:49,342 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:49,343 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_NoxianInvasion
+2026-01-22 18:32:49,343 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay unmounted
+2026-01-22 18:32:49,718 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:49,719 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-22 18:32:49,720 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:49,720 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT10_Augment_LittleBuddies
+2026-01-22 18:32:49,721 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:49,721 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_NoxianInvasion
+2026-01-22 18:32:49,728 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:49,729 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-22 18:32:49,729 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:49,730 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT10_Augment_LittleBuddies
+2026-01-22 18:32:49,731 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:49,732 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_NoxianInvasion
+2026-01-22 18:32:49,823 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:49,824 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT10_Augment_LittleBuddies"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT16_Augment_NoxianInvasion"}}
+2026-01-22 18:32:49,824 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:49,825 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT10_Augment_LittleBuddies
+2026-01-22 18:32:49,825 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:49,826 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_NoxianInvasion
+2026-01-22 18:32:49,826 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:32:49,935 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:49,935 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT10_Augment_LittleBuddies"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT16_Augment_NoxianInvasion"}}
+2026-01-22 18:32:49,936 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT10_Augment_LittleBuddies","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:49,936 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT10_Augment_LittleBuddies
+2026-01-22 18:32:49,937 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:49,937 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_NoxianInvasion
+2026-01-22 18:32:55,208 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:55,209 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT10_Augment_LittleBuddies"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT16_Augment_NoxianInvasion"}}
+2026-01-22 18:32:55,209 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:55,210 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ForgeSword
+2026-01-22 18:32:55,210 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:55,211 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_NoxianInvasion
+2026-01-22 18:32:55,714 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:55,715 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ForgeSword"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT16_Augment_NoxianInvasion"}}
+2026-01-22 18:32:55,715 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT16_Augment_NoxianInvasion"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:55,716 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ForgeSword
+2026-01-22 18:32:55,717 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:55,717 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT16_Augment_NoxianInvasion
+2026-01-22 18:32:55,717 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:32:56,992 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:56,992 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT_Augment_BronzeForLifeI"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ForgeSword"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT16_Augment_NoxianInvasion"}}
+2026-01-22 18:32:56,993 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT_Augment_BronzeForLifeI"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:56,994 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ForgeSword
+2026-01-22 18:32:56,994 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:56,995 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BronzeForLifeI
+2026-01-22 18:32:57,717 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:57,717 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT_Augment_BronzeForLifeI"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ForgeSword"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT_Augment_BronzeForLifeI"}}
+2026-01-22 18:32:57,718 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT_Augment_BronzeForLifeI"],"armory_state":"active","armory_type":"regular"}
+2026-01-22 18:32:57,718 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ForgeSword
+2026-01-22 18:32:57,718 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:57,719 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BronzeForLifeI
+2026-01-22 18:32:57,719 (INFO) </assets/index-C26oBRaL.js> (:20808) - overwolf augments changed
+2026-01-22 18:32:58,444 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:58,444 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT_Augment_BronzeForLifeI"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ForgeSword"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT_Augment_BronzeForLifeI"}}
+2026-01-22 18:32:58,445 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT_Augment_BronzeForLifeI"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-22 18:32:58,445 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ForgeSword
+2026-01-22 18:32:58,446 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-22 18:32:58,446 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_BronzeForLifeI
+2026-01-22 18:32:58,718 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:32:58,720 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay mounted
+2026-01-22 18:32:58,727 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:33:39,733 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:33:39,746 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:34:29,741 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:34:32,740 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:34:32,748 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:34:32,981 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:35:02,732 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:35:02,750 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:35:38,743 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:36:18,751 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:36:18,791 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:36:19,001 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:36:19,079 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:36:48,747 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:36:48,756 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:37:30,743 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:37:33,748 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:37:33,758 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:37:33,970 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:38:03,754 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:38:03,773 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:38:52,746 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:38:55,767 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:38:55,800 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:38:56,023 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:18,761 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:33,762 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:33,766 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:33,780 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:33,991 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:49,769 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:49,769 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT_Item_RecurveBow"},"item_2":{"name":"TFT_Item_NegatronCloak"},"item_3":{"name":"TFT_Item_SparringGloves"},"item_4":{"name":"TFT_Item_BFSword"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT16_Augment_TheDarkinForge\"}, \"slot_2\":{\"name\":\"TFT_Augment_SpreadingRootsPlus\"}, \"slot_3\":{\"name\":\"TFT9_Augment_BigGrabBag\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT_Augment_BronzeForLifeI"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-22 18:39:49,770 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-22 18:39:49,770 (INFO) </assets/index-C26oBRaL.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT_Item_RecurveBow"},"item_2":{"name":"TFT_Item_NegatronCloak"},"item_3":{"name":"TFT_Item_SparringGloves"},"item_4":{"name":"TFT_Item_BFSword"}}
+2026-01-22 18:39:49,771 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemCategories Component [object Object]
+2026-01-22 18:39:49,771 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay unmounted
+2026-01-22 18:39:49,772 (INFO) </assets/index-C26oBRaL.js> (:20808) - ItemStats mounted
+2026-01-22 18:39:49,776 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:49,776 (INFO) </assets/index-C26oBRaL.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT_Item_RecurveBow"},"item_2":{"name":"TFT_Item_NegatronCloak"},"item_3":{"name":"TFT_Item_SparringGloves"},"item_4":{"name":"TFT_Item_BFSword"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT16_Augment_TheDarkinForge\"}, \"slot_2\":{\"name\":\"TFT_Augment_SpreadingRootsPlus\"}, \"slot_3\":{\"name\":\"TFT9_Augment_BigGrabBag\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT_Augment_ForgeSword","TFT9_Augment_BigGrabBag","TFT_Augment_BronzeForLifeI"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-22 18:39:49,778 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-22 18:39:49,778 (INFO) </assets/index-C26oBRaL.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT_Item_RecurveBow"},"item_2":{"name":"TFT_Item_NegatronCloak"},"item_3":{"name":"TFT_Item_SparringGloves"},"item_4":{"name":"TFT_Item_BFSword"}}
+2026-01-22 18:39:49,779 (INFO) </assets/index-C26oBRaL.js> (:20808) - itemCategories Component [object Object]
+2026-01-22 18:39:53,766 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:53,768 (INFO) </assets/index-C26oBRaL.js> (:20808) - ItemStats unmounted
+2026-01-22 18:39:53,769 (INFO) </assets/index-C26oBRaL.js> (:20808) - ShopOverlay mounted
+2026-01-22 18:39:53,775 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:39:53,781 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:40:03,752 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:40:03,759 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:40:37,805 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:40:40,822 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:40:41,012 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:40:41,108 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:41:11,793 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:41:11,815 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:41:48,821 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:41:48,843 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:41:48,889 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:41:52,632 (INFO) </assets/index-C26oBRaL.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-22 18:41:52,632 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  1760
+2026-01-22 18:41:52,633 (INFO) </assets/index-C26oBRaL.js> (:20808) - New Height:  446
+2026-01-22 18:41:52,710 (INFO) </assets/index-C26oBRaL.js> (:20808) - changed position to:  400 993
+2026-01-22 18:41:52,711 (INFO) </assets/index-C26oBRaL.js> (:20808) - window info:  [object Object]
+2026-01-22 18:41:52,711 (INFO) </assets/index-C26oBRaL.js> (:20808) - game info:  [object Object]
+2026-01-22 18:41:52,716 (INFO) <Overwolf> () - [object Object]
