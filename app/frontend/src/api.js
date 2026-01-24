@@ -1,4 +1,5 @@
-const API_BASE = 'http://127.0.0.1:8000'
+// Use relative path - Vite proxy handles routing to backend
+const API_BASE = ''
 
 export async function fetchStats() {
   const res = await fetch(`${API_BASE}/api/stats`)
