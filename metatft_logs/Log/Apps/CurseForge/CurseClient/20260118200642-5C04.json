@@ -1,0 +1,1351 @@
+{
+  "Name": "CurseClient",
+  "Process": "OverwolfBrowser",
+  "PID": 23556,
+  "Arguments": [
+    "C:\\Program Files (x86)\\Overwolf\\0.292.1.1\\OverwolfBrowser.exe",
+    "--type=renderer",
+    "--string-annotations=is-enterprise-managed=no",
+    "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "--start-stack-profiler",
+    "--user-data-dir=C:\\Users\\forre\\AppData\\Local\\Overwolf\\CefBrowserCache",
+    "--locales-dir-path=C:\\Program Files (x86)\\Overwolf\\0.292.1.1\\Locales",
+    "--log-severity=disable",
+    "--uncaught-exception-stack-size=20",
+    "--owapp=CurseForge - background",
+    "--ow-enable-features=osr-software-rendering,use-override-ad-domain-as-referrer,cef-native-ua,use-www-domain,extension-validation,read-opk-from-memory",
+    "--uid=cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj",
+    "--ow-allow-internal",
+    "--ow-permissions=534768",
+    "--ignore-certificate-errors",
+    "--remote-allow-origins=*",
+    "--ow-domain=www.overwolf.com",
+    "--enable-owc",
+    "--uid=cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj",
+    "--ow-process-id=23364",
+    "--no-sandbox",
+    "--js-flags=--expose-gc",
+    "--enable-blink-features=AudioVideoTracks",
+    "--video-capture-use-gpu-memory-buffer",
+    "--lang=en-US",
+    "--device-scale-factor=1",
+    "--num-raster-threads=4",
+    "--enable-main-frame-before-activation",
+    "--renderer-client-id=17",
+    "--time-ticks-at-unix-epoch=-1768784578241329",
+    "--launch-time-ticks=216217309",
+    "--field-trial-handle=7464,i,6365442681029048982,5202495807641980365,262144",
+    "--enable-features=AudioVideoTracks",
+    "--disable-features=HeavyAdIntervention,HeavyAdPrivacyMitigations,PictureInPicture,ProcessSharingWithDefaultSiteInstances,SpareRendererForSitePerProcess,UseModernMediaControls,WinUseBrowserSpellChecker",
+    "--variations-seed-version",
+    "--enable-logging=handle",
+    "--log-file=9928",
+    "--mojo-platform-channel-handle=8068",
+    "/prefetch:1"
+  ],
+  "ProcessStart": "2026-01-19T01:06:34.459511Z",
+  "Version": "1.296.1.30364",
+  "BuildDate": "2000-01-02T21:52:08Z",
+  "Start": "2026-01-18T20:06:42.2344678-05:00",
+  "Log": [
+{
+  "timestamp": "2026-01-18T20:06:38.4963266-05:00",
+  "level": "Info",
+  "thread": 1,
+  "memory": 0.0,
+  "message": "Unable to load game instances from disk. No file was found at: C:\\Users\\forre\\AppData\\Local\\Overwolf\\Curse\\GameInstances\\ModpackGameInstances.json"
+},
+{
+  "timestamp": "2026-01-18T20:06:42.2304674-05:00",
+  "level": "Info",
+  "thread": 1,
+  "memory": 0.0,
+  "message": "Startup Name: CurseForge, Version: 1.296.1.30364"
+},
+{
+  "timestamp": "2026-01-18T20:06:42.4614963-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Update simultaneous downloads '1' => '3'"
+},
+{
+  "timestamp": "2026-01-18T20:06:42.4684961-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "UpdateOverrideLauncher"
+},
+{
+  "timestamp": "2026-01-18T20:06:42.4734954-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Initializing Curse Mods Agent"
+},
+{
+  "timestamp": "2026-01-18T20:06:42.4764963-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "update client Info 'ey'..."
+},
+{
+  "timestamp": "2026-01-18T20:06:42.6514973-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Network connected and internet available"
+},
+{
+  "timestamp": "2026-01-18T20:06:42.6534964-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "AddonServiceClient - CfCore Url: https://api.curseforge.com"
+},
+{
+  "timestamp": "2026-01-18T20:06:43.8335249-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Attempt #1 of 2 on GameDatabase -> GetRemoteItems"
+},
+{
+  "timestamp": "2026-01-18T20:06:43.8365254-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Getting Games from server"
+},
+{
+  "timestamp": "2026-01-18T20:06:43.8975259-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Loaded 26 games from the server"
+},
+{
+  "timestamp": "2026-01-18T20:06:43.8985264-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Saving games to local cache at C:\\Users\\forre\\AppData\\Local\\Overwolf\\Curse\\gamesCache.json"
+},
+{
+  "timestamp": "2026-01-18T20:06:43.9530439-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "[GameRepository] Completed download of cache",
+  "data": {
+    "name": "Games",
+    "elapsedTime": "125.00"
+  }
+},
+{
+  "timestamp": "2026-01-18T20:06:44.017042-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Initializing local databases..."
+},
+{
+  "timestamp": "2026-01-18T20:06:44.0190416-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Initializing game instances."
+},
+{
+  "timestamp": "2026-01-18T20:06:44.0630438-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Found RegisterType on Type: 'Curse.Radium.Addons.AddonGameInstance'"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.0630438-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Found RegisterType on Type: 'Curse.Games.Minecraft.MinecraftGameInstance'"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.0640428-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Initializing game instance of type Curse.Radium.Addons.AddonGameInstance"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.3230722-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "[AddonGameInstance] LoadInstancesFromDisk loaded 3 instances"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.3450717-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Extracting Game instance \"Retail\" Version from E:\\World of Warcraft\\_retail_\\Wow.exe"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.3540715-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Extracting Game instance \"Classic\" Version from E:\\World of Warcraft\\_classic_era_\\WowClassic.exe"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.3880726-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Initializing game instance of type Curse.Games.Minecraft.MinecraftGameInstance"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.5520718-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "[MinecraftGameInstance] LoadInstancesFromDisk loaded 0 instances"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.5594523-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Game World of Warcraft (Id: 1) was detected at E:\\World of Warcraft\\_retail_\\"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.5930725-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Extracting Game instance \"Retail\" Version from E:\\World of Warcraft\\_retail_\\Wow.exe"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.5970705-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Checking for game instance Retail updates"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.6030728-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.6240728-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Game Sid Meier's Civilization VI (Id: 727) was detected at E:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization VI\\Base\\Binaries\\Win64Steam\\"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.6440738-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Checking for game instance Steam 2 updates"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.6450725-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.6450725-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Initialized game Steam 2 instance"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.6450725-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Game World of Warcraft (Id: 1) was detected at E:\\World of Warcraft\\_classic_era_\\"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.657074-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Extracting Game instance \"Classic\" Version from E:\\World of Warcraft\\_classic_era_\\WowClassic.exe"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.6580708-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Checking for game instance Classic updates"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.6590707-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.794586-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Retail. Operation took 197 ms"
+},
+{
+  "timestamp": "2026-01-18T20:06:44.794586-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "Initialized game Retail instance"
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9459834-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Classic. Operation took 15287 ms"
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9459834-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Initialized game Classic instance"
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9459834-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Game instances initialization completed. Operation took 15926 ms"
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9479839-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Initializing Modpack instances."
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9527603-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Running startup game detection"
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9556178-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Performing quick game detection for 26 games..."
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9839895-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "File c:\\program files (x86)\\steam\\steamapps\\common\\MinecraftDungeons\\Dungeons.exe does not exist. Minecraft Dungeons is not detected."
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9839895-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "File C:\\Program Files (x86)\\Steam\\steamapps\\common\\MinecraftDungeons\\Dungeons.exe does not exist. Minecraft Dungeons is not detected."
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9839895-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "File E:\\SteamLibrary\\steamapps\\common\\MinecraftDungeons\\Dungeons.exe does not exist. Minecraft Dungeons is not detected."
+},
+{
+  "timestamp": "2026-01-18T20:06:59.986989-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Completed startup game detection. We have a total of 3 detected game instances. Operation took 34 ms"
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9899891-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Validating Minecraft installation"
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9929905-05:00",
+  "level": "Warn",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "C:\\Users\\forre\\curseforge\\minecraft\\Install\\minecraft.exe not found."
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9975019-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Initializing tasks"
+},
+{
+  "timestamp": "2026-01-18T20:06:59.9975019-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Refreshing Minecraft instances list"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.0065027-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Discord RPC client initialized successfully."
+},
+{
+  "timestamp": "2026-01-18T20:07:00.0065027-05:00",
+  "level": "Info",
+  "thread": 15,
+  "memory": 0.0,
+  "message": "Initializing Periodic Tasks"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.0205035-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "update client Info 'ey'..."
+},
+{
+  "timestamp": "2026-01-18T20:07:00.0215019-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "Performing addon sync..."
+},
+{
+  "timestamp": "2026-01-18T20:07:00.0245054-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "Validating Minecraft installation"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.0245054-05:00",
+  "level": "Warn",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "C:\\Users\\forre\\curseforge\\minecraft\\Install\\minecraft.exe not found."
+},
+{
+  "timestamp": "2026-01-18T20:07:00.0385013-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Validating Minecraft installation"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.0385013-05:00",
+  "level": "Warn",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "C:\\Users\\forre\\curseforge\\minecraft\\Install\\minecraft.exe not found."
+},
+{
+  "timestamp": "2026-01-18T20:07:00.1265019-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "[AddonSyncManager] Got sync profile Successfully. Got 1 sync game instances"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.1785031-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "[ModLoaderRepository] Completed download of cache",
+  "data": {
+    "name": "Minecraft Modloaders",
+    "elapsedTime": "149.00"
+  }
+},
+{
+  "timestamp": "2026-01-18T20:07:00.2624129-05:00",
+  "level": "Info",
+  "thread": 13,
+  "memory": 0.0,
+  "message": "[MinecraftVersionDatabase] Completed download of cache",
+  "data": {
+    "name": "Minecraft Versions",
+    "elapsedTime": "50.00"
+  }
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6699831-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Starting Game Instance Retail scan"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6756943-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Retail. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6756943-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Retail"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6756943-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Checking for game instance Retail updates"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6766891-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Retail. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6796914-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Completed game instance Retail scan. Operation took 9 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6796914-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Starting Game Instance Classic scan"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6806904-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Classic. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6806904-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Classic"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6806904-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Checking for game instance Classic updates"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6806904-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Classic. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6816895-05:00",
+  "level": "Info",
+  "thread": 7,
+  "memory": 0.0,
+  "message": "Completed game instance Classic scan. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6816895-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Starting Game Instance Steam 2 scan"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6816895-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6816895-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Performing a full scan of Steam 2"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6926929-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Staring game instance Steam 2 mod files scan. Scanning 0 folders using 6 logical cores."
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6926929-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Completed scanning 0 folders from Steam 2 category section C:\\Users\\forre\\OneDrive\\Documents\\My Games\\Sid Meier's Civilization VI\\Mods. Operation took 00:00:00.0001135."
+},
+{
+  "timestamp": "2026-01-18T20:07:00.6926929-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Completed fingerprinting local mods for Steam 2. Operation took 8 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.7133704-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Checking for game instance Steam 2 updates"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.7133704-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:00.7133704-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Completed game instance Steam 2 scan. Operation took 32 ms"
+},
+{
+  "timestamp": "2026-01-18T20:07:01.0739895-05:00",
+  "level": "Info",
+  "thread": 18,
+  "memory": 0.0,
+  "message": "Discord RPC client is ready."
+},
+{
+  "timestamp": "2026-01-18T21:06:42.4143139-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "ModPack update interval of 60 minutes has elapsed. Checking for modpack updates..."
+},
+{
+  "timestamp": "2026-01-18T21:06:42.5482809-05:00",
+  "level": "Info",
+  "thread": 16,
+  "memory": 0.0,
+  "message": "Mods update interval of 60 minutes has elapsed. Checking for mod updates..."
+},
+{
+  "timestamp": "2026-01-18T21:06:42.5492812-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "Starting Game Instance Retail scan"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.5492812-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Retail. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.5492812-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Retail"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.5492812-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "Checking for game instance Retail updates"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.5492812-05:00",
+  "level": "Info",
+  "thread": 5,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.6242798-05:00",
+  "level": "Info",
+  "thread": 16,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Retail. Operation took 75 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.6242798-05:00",
+  "level": "Info",
+  "thread": 16,
+  "memory": 0.0,
+  "message": "Completed game instance Retail scan. Operation took 75 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.6242798-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Starting Game Instance Classic scan"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.626282-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Classic. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.626282-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Classic"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.626282-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Checking for game instance Classic updates"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.626282-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.776286-05:00",
+  "level": "Info",
+  "thread": 16,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Classic. Operation took 150 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.7772814-05:00",
+  "level": "Info",
+  "thread": 16,
+  "memory": 0.0,
+  "message": "Completed game instance Classic scan. Operation took 152 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.7772814-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Starting Game Instance Steam 2 scan"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.7772814-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.7772814-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Performing a full scan of Steam 2"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.778284-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Staring game instance Steam 2 mod files scan. Scanning 0 folders using 6 logical cores."
+},
+{
+  "timestamp": "2026-01-18T21:06:42.778284-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Completed scanning 0 folders from Steam 2 category section C:\\Users\\forre\\OneDrive\\Documents\\My Games\\Sid Meier's Civilization VI\\Mods. Operation took 00:00:00.0000069."
+},
+{
+  "timestamp": "2026-01-18T21:06:42.778284-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Completed fingerprinting local mods for Steam 2. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.778284-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Checking for game instance Steam 2 updates"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.778284-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T21:06:42.778284-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Completed game instance Steam 2 scan. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T22:06:42.8783599-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "ModPack update interval of 60 minutes has elapsed. Checking for modpack updates..."
+},
+{
+  "timestamp": "2026-01-18T22:07:11.0881025-05:00",
+  "level": "Info",
+  "thread": 22,
+  "memory": 0.0,
+  "message": "Mods update interval of 60 minutes has elapsed. Checking for mod updates..."
+},
+{
+  "timestamp": "2026-01-18T22:07:11.0891062-05:00",
+  "level": "Info",
+  "thread": 23,
+  "memory": 0.0,
+  "message": "Starting Game Instance Retail scan"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.0891062-05:00",
+  "level": "Info",
+  "thread": 23,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Retail. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.0891062-05:00",
+  "level": "Info",
+  "thread": 23,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Retail"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.0891062-05:00",
+  "level": "Info",
+  "thread": 23,
+  "memory": 0.0,
+  "message": "Checking for game instance Retail updates"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.0891062-05:00",
+  "level": "Info",
+  "thread": 23,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.163104-05:00",
+  "level": "Info",
+  "thread": 16,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Retail. Operation took 73 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.163104-05:00",
+  "level": "Info",
+  "thread": 16,
+  "memory": 0.0,
+  "message": "Completed game instance Retail scan. Operation took 74 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.163104-05:00",
+  "level": "Info",
+  "thread": 24,
+  "memory": 0.0,
+  "message": "Starting Game Instance Classic scan"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.1651059-05:00",
+  "level": "Info",
+  "thread": 24,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Classic. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.1651059-05:00",
+  "level": "Info",
+  "thread": 24,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Classic"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.1651059-05:00",
+  "level": "Info",
+  "thread": 24,
+  "memory": 0.0,
+  "message": "Checking for game instance Classic updates"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.1651059-05:00",
+  "level": "Info",
+  "thread": 24,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.335108-05:00",
+  "level": "Info",
+  "thread": 22,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Classic. Operation took 169 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.335108-05:00",
+  "level": "Info",
+  "thread": 22,
+  "memory": 0.0,
+  "message": "Completed game instance Classic scan. Operation took 171 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.335108-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Starting Game Instance Steam 2 scan"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.335108-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.335108-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Performing a full scan of Steam 2"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.336105-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Staring game instance Steam 2 mod files scan. Scanning 0 folders using 6 logical cores."
+},
+{
+  "timestamp": "2026-01-18T22:07:11.336105-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Completed scanning 0 folders from Steam 2 category section C:\\Users\\forre\\OneDrive\\Documents\\My Games\\Sid Meier's Civilization VI\\Mods. Operation took 00:00:00.0000050."
+},
+{
+  "timestamp": "2026-01-18T22:07:11.336105-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Completed fingerprinting local mods for Steam 2. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.336105-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Checking for game instance Steam 2 updates"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.336105-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T22:07:11.336105-05:00",
+  "level": "Info",
+  "thread": 25,
+  "memory": 0.0,
+  "message": "Completed game instance Steam 2 scan. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T23:06:43.5328637-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "ModPack update interval of 60 minutes has elapsed. Checking for modpack updates..."
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9056795-05:00",
+  "level": "Info",
+  "thread": 8,
+  "memory": 0.0,
+  "message": "Mods update interval of 60 minutes has elapsed. Checking for mod updates..."
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9056795-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Starting Game Instance Retail scan"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9066799-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Retail. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9066799-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Retail"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9066799-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Checking for game instance Retail updates"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9066799-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9911969-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Retail. Operation took 84 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9911969-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Starting Game Instance Classic scan"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9931946-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Classic. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9931946-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Classic"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9931946-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Checking for game instance Classic updates"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9931946-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-18T23:07:11.9931946-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Completed game instance Retail scan. Operation took 87 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1361957-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Classic. Operation took 143 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1361957-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Completed game instance Classic scan. Operation took 145 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1361957-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Starting Game Instance Steam 2 scan"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1361957-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1361957-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Performing a full scan of Steam 2"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1371949-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Staring game instance Steam 2 mod files scan. Scanning 0 folders using 6 logical cores."
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1371949-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Completed scanning 0 folders from Steam 2 category section C:\\Users\\forre\\OneDrive\\Documents\\My Games\\Sid Meier's Civilization VI\\Mods. Operation took 00:00:00.0000047."
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1371949-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Completed fingerprinting local mods for Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1371949-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Checking for game instance Steam 2 updates"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1371949-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-18T23:07:12.1371949-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Completed game instance Steam 2 scan. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-19T00:06:43.7311082-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "ModPack update interval of 60 minutes has elapsed. Checking for modpack updates..."
+},
+{
+  "timestamp": "2026-01-19T00:07:12.0987102-05:00",
+  "level": "Info",
+  "thread": 12,
+  "memory": 0.0,
+  "message": "Mods update interval of 60 minutes has elapsed. Checking for mod updates..."
+},
+{
+  "timestamp": "2026-01-19T00:07:12.0987102-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Starting Game Instance Retail scan"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.0987102-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Retail. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.0987102-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Retail"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.0987102-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Checking for game instance Retail updates"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.0987102-05:00",
+  "level": "Info",
+  "thread": 26,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.1912331-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Retail. Operation took 92 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.1912331-05:00",
+  "level": "Info",
+  "thread": 6,
+  "memory": 0.0,
+  "message": "Completed game instance Retail scan. Operation took 92 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.1912331-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Starting Game Instance Classic scan"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.1932313-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Classic. Operation took 1 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.1932313-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Performing a minimal scan of Classic"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.1932313-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Checking for game instance Classic updates"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.1932313-05:00",
+  "level": "Info",
+  "thread": 17,
+  "memory": 0.0,
+  "message": "Attempt #1 of 3 on InstalledAddonDatabase -> GetAddons"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3272552-05:00",
+  "level": "Info",
+  "thread": 12,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Classic. Operation took 133 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3272552-05:00",
+  "level": "Info",
+  "thread": 12,
+  "memory": 0.0,
+  "message": "Completed game instance Classic scan. Operation took 136 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3272552-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Starting Game Instance Steam 2 scan"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3272552-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Processed 0 invalid installed mods for Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3272552-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Performing a full scan of Steam 2"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3282543-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Staring game instance Steam 2 mod files scan. Scanning 0 folders using 6 logical cores."
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3282543-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Completed scanning 0 folders from Steam 2 category section C:\\Users\\forre\\OneDrive\\Documents\\My Games\\Sid Meier's Civilization VI\\Mods. Operation took 00:00:00.0000049."
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3282543-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Completed fingerprinting local mods for Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3282543-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Checking for game instance Steam 2 updates"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3282543-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Completed checking for updates in instance Steam 2. Operation took 0 ms"
+},
+{
+  "timestamp": "2026-01-19T00:07:12.3282543-05:00",
+  "level": "Info",
+  "thread": 14,
+  "memory": 0.0,
+  "message": "Completed game instance Steam 2 scan. Operation took 0 ms"
+}
+]}

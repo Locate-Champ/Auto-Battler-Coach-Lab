@@ -1,0 +1,207 @@
+﻿2026-01-23 17:47:12,061 (INFO) ================== new session ==================
+2026-01-23 17:47:12,062 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-23 17:47:12,062 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-23 17:47:12,063 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-23 17:47:12,063 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-23 17:47:12,064 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-23 17:47:12,064 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-23 17:47:12,064 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-23 17:47:12,065 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-23 17:47:12,065 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-23 17:47:12,066 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-23 17:47:12,066 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-23 17:47:12,067 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-23 17:47:12,068 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-23 17:47:12,068 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-23 17:47:12,068 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-23 17:47:12,068 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-23 17:47:12,069 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-23 17:47:12,069 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-23 17:47:12,069 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-23 17:47:12,070 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-23 17:47:12,070 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-23 17:47:12,070 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-23 17:47:12,071 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-23 17:47:12,071 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-23 17:47:12,071 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-23 17:47:12,072 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-23 17:47:12,072 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-23 17:47:12,073 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-23 17:47:12,082 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-23 17:47:12,098 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-23 17:47:12,099 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-23 17:47:12,304 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-23 17:47:12,305 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-23 17:47:12,306 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-23 17:47:12,307 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-23 17:47:12,307 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-23 17:47:12,308 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-23 17:47:12,311 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-23 17:47:12,314 (INFO) </assets/index-C26oBRaL.js> (:20765) - Ad script loaded
+2026-01-23 17:47:12,317 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-23 17:47:12,854 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:12,856 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:12,967 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:14,559 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:14,560 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:14,560 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:16,563 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:16,564 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:16,564 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:18,576 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:18,576 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:18,577 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:20,851 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:20,852 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:20,852 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:22,852 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:22,853 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:22,853 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:24,855 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:24,856 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:24,856 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:26,913 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:26,914 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:26,915 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:28,348 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-23 17:47:28,917 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:28,918 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:28,918 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:30,919 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:30,920 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:30,920 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:32,929 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:32,930 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:32,931 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:34,934 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:34,935 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:34,936 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:36,936 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:36,936 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:36,937 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:38,937 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:38,937 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:38,938 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:40,939 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:40,940 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:40,940 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:42,941 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:42,942 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:42,942 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:44,943 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:44,943 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:44,944 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:46,947 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:46,948 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:46,948 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:48,948 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:48,949 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:48,950 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:50,949 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:50,949 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:50,950 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:52,951 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:52,951 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:52,952 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:54,953 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:54,954 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:54,954 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:56,957 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:56,958 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:56,958 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:47:58,965 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:47:58,966 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:47:58,966 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:00,977 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:00,978 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:00,979 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:02,977 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:02,977 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:02,978 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:04,979 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:04,980 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:04,980 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:06,980 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:06,980 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:06,981 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:08,871 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-23 17:48:08,982 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:08,983 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:08,984 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:10,995 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:10,996 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:10,996 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:12,997 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:12,997 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:12,998 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:15,012 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:15,012 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:15,013 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:17,028 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:17,029 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:17,030 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:19,030 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:19,031 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:19,031 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:21,043 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:21,044 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:21,048 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:23,046 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:23,047 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:23,047 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:25,049 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:25,050 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:25,050 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:27,052 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:27,052 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:27,053 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:29,054 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:29,055 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:29,056 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:31,056 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:31,057 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:31,057 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:33,060 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:33,062 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:33,063 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:35,067 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:35,068 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:35,068 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:37,068 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:37,069 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:37,069 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:39,071 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:39,072 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:39,072 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:41,073 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:41,075 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:41,075 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:43,075 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:43,076 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:43,076 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:45,082 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:45,083 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:45,084 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:47,092 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:47,093 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:47,093 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:48,394 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-23 17:48:49,096 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:49,097 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:49,110 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:51,102 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:51,104 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:51,106 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:53,103 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:53,104 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:53,105 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:55,114 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:55,116 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:55,116 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:57,115 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  420
+2026-01-23 17:48:57,116 (INFO) </assets/index-C26oBRaL.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-23 17:48:57,122 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:48:58,332 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Starting close operation for 'loading': [object Object]
+2026-01-23 17:48:58,334 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Attempting to obtain window: loading
+2026-01-23 17:48:58,336 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Successfully obtained window 'loading': [object Object]
+2026-01-23 17:48:58,337 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Attempting to close window 'loading' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_loading)

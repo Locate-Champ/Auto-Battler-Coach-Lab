@@ -1,0 +1,159 @@
+﻿2026-01-18 19:26:37,728 (INFO) ================== new session ==================
+2026-01-18 19:26:37,728 (INFO) </scripts/controllers/splash.js> (:5) - OVERWOLF STORE VERSION 294.0.1
+2026-01-18 19:26:37,803 (INFO) </scripts/controllers/connection.js> (:50) - DOCUMENT READY 1/18/2026, 7:26:37 PM.787
+2026-01-18 19:26:37,805 (INFO) </scripts/controllers/window.js> (:34) - window init. location: /index.html
+2026-01-18 19:26:37,808 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Store Action: Action Label: open Value: undefined Custom: undefined
+2026-01-18 19:26:37,843 (INFO) </scripts/directives/page-background.js> (:17) - CURRENT ROUTE FOR DIRECTIVE {}
+2026-01-18 19:26:37,852 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:26:37,953 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 19:26:37,953 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 19:26:37,954 (INFO) <Overwolf> () - [object Object]
+2026-01-18 19:26:37,958 (INFO) </scripts/controllers/connection.js> (:87) - route {"section":"index.html"}
+2026-01-18 19:26:37,959 (INFO) </scripts/controllers/connection.js> (:88) - location /index.html
+2026-01-18 19:26:37,959 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:26:37,961 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:26:38,009 (INFO) </scripts/controllers/page.js> (:28) - page controller init
+2026-01-18 19:26:38,009 (INFO) </scripts/controllers/page.js> (:29) - Route params: {"section":"index.html"}
+2026-01-18 19:26:38,010 (INFO) </scripts/controllers/page.js> (:47) - Main_page_Initialized Client
+2026-01-18 19:26:38,189 (INFO) </scripts/controllers/connection.js> (:54) - WINDOW LOAD 1/18/2026, 7:26:38 PM.189
+2026-01-18 19:26:38,209 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 19:26:38,209 (INFO) </scripts/controllers/splash.js> (:145) - starting progress bar from splash controller function
+2026-01-18 19:26:38,216 (INFO) </scripts/services/user.js> (:246) - getCurrentUser result status: undefined
+2026-01-18 19:26:38,216 (INFO) </scripts/services/user.js> (:165) - complete progress from user service displaylogin window
+2026-01-18 19:26:38,870 (INFO) </scripts/controllers/window.js> (:118) - Navigate to section called [object Object] opener undefined
+2026-01-18 19:26:38,871 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:26:38,871 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:26:38,873 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:26:38,877 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:26:38,877 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:26:38,878 (INFO) </scripts/controllers/splash.js> (:152) - completing progress from splash ctrl function
+2026-01-18 19:26:38,878 (INFO) <Overwolf> () - [object Object]
+2026-01-18 19:26:39,222 (INFO) </scripts/controllers/splash.js> (:152) - completing progress from splash ctrl function
+2026-01-18 19:26:39,472 (INFO) </scripts/controllers/splash.js> (:158) - Splash removed
+2026-01-18 19:26:39,826 (INFO) </scripts/controllers/splash.js> (:158) - Splash removed
+2026-01-18 19:26:44,369 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:26:44,370 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 19:26:44,406 (INFO) </scripts/controllers/connection.js> (:87) - route {"section":"browse-by-game","category":"league-of-legends"}
+2026-01-18 19:26:44,407 (INFO) </scripts/controllers/connection.js> (:88) - location /browse-by-game/league-of-legends
+2026-01-18 19:26:44,409 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:26:44,409 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:26:44,424 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:26:44,425 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:44,547 (INFO) </scripts/controllers/page.js> (:28) - page controller init
+2026-01-18 19:26:44,548 (INFO) </scripts/controllers/page.js> (:29) - Route params: {"section":"browse-by-game","category":"league-of-legends"}
+2026-01-18 19:26:44,548 (INFO) </scripts/controllers/page.js> (:37) - MIXPANEL --- Game_page_Initialized
+2026-01-18 19:26:44,548 (INFO) </scripts/controllers/page.js> (:38) - PlatformClient
+2026-01-18 19:26:44,549 (INFO) </scripts/controllers/page.js> (:39) - Game name league-of-legends
+2026-01-18 19:26:47,092 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:26:47,093 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 19:26:47,095 (INFO) </scripts/controllers/connection.js> (:87) - route {}
+2026-01-18 19:26:47,096 (INFO) </scripts/controllers/connection.js> (:88) - location /browse-by-game
+2026-01-18 19:26:47,097 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:26:47,097 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:26:47,130 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:26:47,131 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:47,133 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:26:47,134 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 19:26:47,185 (INFO) </scripts/controllers/connection.js> (:87) - route {"section":"browse-by-game"}
+2026-01-18 19:26:47,186 (INFO) </scripts/controllers/connection.js> (:88) - location /browse-by-game
+2026-01-18 19:26:47,186 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:26:47,187 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:26:47,187 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:26:47,188 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:47,273 (INFO) </scripts/controllers/page.js> (:28) - page controller init
+2026-01-18 19:26:47,274 (INFO) </scripts/controllers/page.js> (:29) - Route params: {"section":"browse-by-game"}
+2026-01-18 19:26:52,056 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:26:52,057 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 19:26:52,091 (INFO) </scripts/controllers/connection.js> (:87) - route {"section":"appstore"}
+2026-01-18 19:26:52,091 (INFO) </scripts/controllers/connection.js> (:88) - location /appstore
+2026-01-18 19:26:52,092 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:26:52,093 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:26:52,116 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:26:52,117 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:52,157 (INFO) </scripts/controllers/page.js> (:28) - page controller init
+2026-01-18 19:26:52,157 (INFO) </scripts/controllers/page.js> (:29) - Route params: {"section":"appstore"}
+2026-01-18 19:26:52,158 (INFO) </scripts/controllers/page.js> (:47) - Main_page_Initialized Client
+2026-01-18 19:26:54,445 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:26:54,446 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 19:26:54,477 (INFO) </scripts/controllers/connection.js> (:87) - route {"section":"browse-by-game","category":"view-all"}
+2026-01-18 19:26:54,478 (INFO) </scripts/controllers/connection.js> (:88) - location /browse-by-game/view-all
+2026-01-18 19:26:54,478 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:26:54,479 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:26:54,491 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:26:54,491 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:54,492 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:54,497 (INFO) </scripts/controllers/page.js> (:28) - page controller init
+2026-01-18 19:26:54,498 (INFO) </scripts/controllers/page.js> (:29) - Route params: {"section":"browse-by-game","category":"view-all"}
+2026-01-18 19:26:54,498 (INFO) </scripts/controllers/page.js> (:37) - MIXPANEL --- Game_page_Initialized
+2026-01-18 19:26:54,499 (INFO) </scripts/controllers/page.js> (:38) - PlatformClient
+2026-01-18 19:26:54,499 (INFO) </scripts/controllers/page.js> (:39) - Game name view-all
+2026-01-18 19:26:56,682 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:26:56,682 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 19:26:56,686 (INFO) </scripts/controllers/connection.js> (:87) - route {}
+2026-01-18 19:26:56,687 (INFO) </scripts/controllers/connection.js> (:88) - location /browse-by-game/teamfight-tactics
+2026-01-18 19:26:56,687 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:26:56,687 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:26:56,688 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:26:56,688 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:56,688 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:56,689 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:26:56,689 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 19:26:56,738 (INFO) </scripts/controllers/connection.js> (:87) - route {"section":"browse-by-game","category":"teamfight-tactics"}
+2026-01-18 19:26:56,738 (INFO) </scripts/controllers/connection.js> (:88) - location /browse-by-game/teamfight-tactics
+2026-01-18 19:26:56,738 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:26:56,739 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:26:56,739 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:26:56,740 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:56,740 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:26:56,771 (INFO) </scripts/controllers/page.js> (:28) - page controller init
+2026-01-18 19:26:56,772 (INFO) </scripts/controllers/page.js> (:29) - Route params: {"section":"browse-by-game","category":"teamfight-tactics"}
+2026-01-18 19:26:56,772 (INFO) </scripts/controllers/page.js> (:37) - MIXPANEL --- Game_page_Initialized
+2026-01-18 19:26:56,773 (INFO) </scripts/controllers/page.js> (:38) - PlatformClient
+2026-01-18 19:26:56,774 (INFO) </scripts/controllers/page.js> (:39) - Game name teamfight-tactics
+2026-01-18 19:27:18,334 (INFO) </scripts/directives/modal.js> (:231) - AFTER ACTION FOR MODAL
+2026-01-18 19:27:18,380 (INFO) </scripts/factories/modal.js> (:41) - GET RESPONSE [object Object] FOR  https://storeclient.overwolf.com//ContentExtract/SingleAppPage/app-editor/mobalytics
+2026-01-18 19:27:18,400 (INFO) </scripts/controllers/app-modal.js> (:162) - SETAPP MODAL CALLED kccgdmdllebbgifgafjfmcjdgmhoknfhjdnobcho
+2026-01-18 19:27:18,401 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: OneApp Action: Open Label: null Value: 1 Custom: null
+2026-01-18 19:27:18,465 (INFO) </scripts/controllers/app-modal.js> (:197) - modal page get app [object Object]
+2026-01-18 19:27:18,478 (INFO) </scripts/factories/modal.js> (:152) - complete progress from modal factory show
+2026-01-18 19:27:18,479 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:27:39,346 (INFO) </scripts/directives/modal.js> (:231) - AFTER ACTION FOR MODAL
+2026-01-18 19:27:41,259 (INFO) </scripts/controllers/apps.js> (:133) - Trying to install app kccgdmdllebbgifgafjfmcjdgmhoknfhjdnobchofrom app tile
+2026-01-18 19:27:41,260 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: App Action: Install Label: null Value: 0 Custom: tile
+2026-01-18 19:27:41,263 (INFO) </scripts/services/apps.js> (:96) - Installing app kccgdmdllebbgifgafjfmcjdgmhoknfhjdnobcho
+2026-01-18 19:27:46,141 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 19:27:46,141 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 19:27:46,144 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,145 (INFO) </scripts/directives/modal.js> (:231) - AFTER ACTION FOR MODAL
+2026-01-18 19:27:46,145 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,145 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,146 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,146 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,146 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,147 (INFO) </scripts/directives/modal.js> (:231) - AFTER ACTION FOR MODAL
+2026-01-18 19:27:46,147 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,147 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,148 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,148 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 19:27:46,148 (INFO) </scripts/controllers/connection.js> (:87) - route {}
+2026-01-18 19:27:46,149 (INFO) </scripts/controllers/connection.js> (:88) - location /library
+2026-01-18 19:27:46,149 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 19:27:46,149 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 19:27:46,157 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 19:27:46,158 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:27:46,158 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 19:27:46,181 (INFO) </scripts/filters/translate.js> (:10) - translate filter called with empty input
+2026-01-18 19:27:46,188 (INFO) </scripts/controllers/library/library.js> (:227) - Updating skins
+2026-01-18 19:27:46,196 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 19:27:46,199 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 19:27:46,201 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 19:27:46,228 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 19:27:46,236 (INFO) </scripts/controllers/library/library.js> (:233) - GOT SKINS [object Object]
+2026-01-18 19:28:29,259 (INFO) </scripts/services/apps.js> (:67) - app desktop shortcut added {"uid":"kccgdmdllebbgifgafjfmcjdgmhoknfhjdnobcho"}
+2026-01-18 19:28:29,739 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 19:28:29,742 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 19:28:29,763 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 19:28:29,767 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 19:28:29,773 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 19:28:29,858 (INFO) </scripts/controllers/apps.js> (:154) - Install app result {"status":"success"}
+2026-01-18 19:28:29,859 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]

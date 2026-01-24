@@ -1,0 +1,512 @@
+﻿2026-01-22 18:12:45,598 (INFO) ================== new session ==================
+2026-01-22 18:12:45,599 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-22 18:12:45,599 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-22 18:12:45,602 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-22 18:12:45,603 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-22 18:12:45,606 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-22 18:12:45,609 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-22 18:12:45,610 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-22 18:12:45,611 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-22 18:12:45,612 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-22 18:12:45,613 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-22 18:12:45,613 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-22 18:12:45,614 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-22 18:12:45,614 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-22 18:12:45,615 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-22 18:12:45,615 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-22 18:12:45,616 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-22 18:12:45,616 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-22 18:12:45,617 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-22 18:12:45,618 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-22 18:12:45,619 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-22 18:12:45,620 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:45,621 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:45,621 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-22 18:12:45,622 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-22 18:12:45,623 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:45,624 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:45,637 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:45,639 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:45,641 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-22 18:12:45,671 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-22 18:12:45,677 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-22 18:12:45,796 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-22 18:12:45,803 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-22 18:12:45,804 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-22 18:12:45,809 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-22 18:12:45,813 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-22 18:12:46,310 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-22 18:12:46,316 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:12:46,318 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:12:46,320 (INFO) </assets/index-C26oBRaL.js> (:20808) - dragged pos:  null
+2026-01-22 18:12:46,323 (INFO) </assets/index-C26oBRaL.js> (:20808) - FilterMenu: Using existing centralized filters (preserving localStorage values): [object Object]
+2026-01-22 18:12:46,324 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:12:46.314Z] update_filter_values called: {
+  "baseUrl": "https://api-hc.metatft.com/tft-stat-api/games_small",
+  "finalUrl": "https://api-hc.metatft.com/tft-stat-api/games_small?server_patch=NA1",
+  "platformId": "NA1"
+}
+2026-01-22 18:12:46,325 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:12:46.315Z] Starting filter values API request: {
+  "url": "https://api-hc.metatft.com/tft-stat-api/games_small?server_patch=NA1",
+  "method": "GET",
+  "startTime": 1769123566314
+}
+2026-01-22 18:12:46,325 (INFO) </assets/index-C26oBRaL.js> (:20808) - getting selections for comp:  [object Object]
+2026-01-22 18:12:46,447 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-22 18:12:46,448 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:12:46,448 (INFO) </assets/index-C26oBRaL.js> (:20808) - getting selections for comp:  [object Object]
+2026-01-22 18:12:46,449 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:12:46,449 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  346
+2026-01-22 18:12:46,450 (INFO) </assets/index-C26oBRaL.js> (:20808) - New Height:  800
+2026-01-22 18:12:46,577 (INFO) </assets/index-C26oBRaL.js> (:20808) - changed position to:  0 640
+2026-01-22 18:12:46,579 (INFO) </assets/index-C26oBRaL.js> (:20808) - window info:  [object Object]
+2026-01-22 18:12:46,580 (INFO) </assets/index-C26oBRaL.js> (:20808) - game info:  [object Object]
+2026-01-22 18:12:46,585 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:12:46.581Z] get_comp_item_stats called: {
+  "clusterId": 385,
+  "pickedComp": null
+}
+2026-01-22 18:12:46,586 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:12:46.581Z] No picked comp - aborting comp item stats request
+2026-01-22 18:12:46,587 (INFO) </assets/index-C26oBRaL.js> (:20808) - no picked comp
+2026-01-22 18:12:46,590 (INFO) <Overwolf> () - [object Object]
+2026-01-22 18:12:46,742 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:12:46.742Z] Filter values API request completed successfully: {
+  "url": "https://api-hc.metatft.com/tft-stat-api/games_small?server_patch=NA1",
+  "statusCode": 200,
+  "statusText": "",
+  "durationMs": 428,
+  "responseSize": 20754
+}
+2026-01-22 18:12:46,744 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:12:46.742Z] Processing filter values data: {
+  "currentPatch": "16.3_",
+  "totalGames": 295,
+  "startProcessingTime": 1769123566742
+}
+2026-01-22 18:12:46,745 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:12:46.744Z] Filter values data processed and stored: {
+  "patchOptionsCount": 4,
+  "nestedResultsQueues": [
+    "1100",
+    "1160",
+    "1220",
+    "6110"
+  ],
+  "processingTime": 2,
+  "totalTime": 430
+}
+2026-01-22 18:12:46,746 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching ingame_filter_values [object Object]
+2026-01-22 18:12:46,754 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:12:54,975 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:12:54,980 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:12:55,266 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:13:58,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:13:58,567 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:13:58,636 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:14:15,513 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:14:16,543 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:14:48,525 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:14:48,538 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:14:48,549 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:14:48,769 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:15:03,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:15:24,519 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:15:24,760 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:15:24,972 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:15:45,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:05,517 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:05,806 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:05,952 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:06,511 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:08,532 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:10,514 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:25,522 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:26,516 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:26,528 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:27,511 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:27,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-22 18:16:27,513 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  queue regionCurrentPatch:  null options:  [object Object] values:  1100
+2026-01-22 18:16:27,514 (INFO) </assets/index-C26oBRaL.js> (:20808) - patch options:  null null
+2026-01-22 18:16:27,514 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  patch regionCurrentPatch:  null options:  [object Object] values:  current
+2026-01-22 18:16:27,515 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  days regionCurrentPatch:  null options:  [object Object] values:  3
+2026-01-22 18:16:27,517 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_state:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,518 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_rows:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,519 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_list:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,519 (INFO) </assets/index-C26oBRaL.js> (:20808) - compToggleOn:  true
+2026-01-22 18:16:27,525 (INFO) </assets/index-C26oBRaL.js> (:20808) - CompSearchProps:  [object Object] undefined
+2026-01-22 18:16:27,532 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:16:27.532Z] Item select detected - fetching stats: {
+  "itemName": "TFT16_TheDarkinAegis",
+  "hasCompFilter": false
+}
+2026-01-22 18:16:27,543 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:27,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-22 18:16:27,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  queue regionCurrentPatch:  null options:  [object Object] values:  1100
+2026-01-22 18:16:27,545 (INFO) </assets/index-C26oBRaL.js> (:20808) - patch options:  null null
+2026-01-22 18:16:27,545 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  patch regionCurrentPatch:  null options:  [object Object] values:  current
+2026-01-22 18:16:27,546 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  days regionCurrentPatch:  null options:  [object Object] values:  3
+2026-01-22 18:16:27,547 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_state:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,547 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_rows:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,548 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_list:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,548 (INFO) </assets/index-C26oBRaL.js> (:20808) - compToggleOn:  true
+2026-01-22 18:16:27,549 (INFO) </assets/index-C26oBRaL.js> (:20808) - CompSearchProps:  [object Object] undefined
+2026-01-22 18:16:27,635 (INFO) </assets/index-C26oBRaL.js> (:472) - QueryMaker https://api-hc.metatft.com/tft-stat-api/items [object Object] null [object Object]  false false [object Object]
+2026-01-22 18:16:27,636 (INFO) </assets/index-C26oBRaL.js> (:472) - full_url https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-22 18:16:27,636 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:16:27.635Z] get_item_stats called: {
+  "filters": {
+    "queue": [
+      "1100"
+    ],
+    "patch": [
+      "current"
+    ],
+    "days": [
+      3
+    ],
+    "rank": [
+      "CHALLENGER",
+      "DIAMOND",
+      "EMERALD",
+      "GRANDMASTER",
+      "MASTER"
+    ],
+    "permit_filter_adjustment": [
+      "true"
+    ]
+  },
+  "requestUrl": "https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "params": "queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true"
+}
+2026-01-22 18:16:27,637 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:16:27.635Z] Starting item stats API request: {
+  "url": "https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "method": "GET",
+  "startTime": 1769123787635,
+  "timeout": 30000
+}
+2026-01-22 18:16:27,637 (INFO) </assets/index-C26oBRaL.js> (:20808) - fetching items:  https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-22 18:16:27,640 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:27,641 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-22 18:16:27,641 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  queue regionCurrentPatch:  null options:  [object Object] values:  1100
+2026-01-22 18:16:27,642 (INFO) </assets/index-C26oBRaL.js> (:20808) - patch options:  null null
+2026-01-22 18:16:27,643 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  patch regionCurrentPatch:  null options:  [object Object] values:  current
+2026-01-22 18:16:27,643 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  days regionCurrentPatch:  null options:  [object Object] values:  3
+2026-01-22 18:16:27,644 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_state:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,644 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_rows:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,645 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_list:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:27,646 (INFO) </assets/index-C26oBRaL.js> (:20808) - compToggleOn:  true
+2026-01-22 18:16:27,647 (INFO) </assets/index-C26oBRaL.js> (:20808) - CompSearchProps:  [object Object] undefined
+2026-01-22 18:16:28,005 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:16:28.005Z] Item stats API request completed successfully: {
+  "url": "https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "statusCode": 200,
+  "statusText": "",
+  "durationMs": 370,
+  "responseSize": 14684,
+  "requestId": "item_stats_1769123787636_n2whxqjuf"
+}
+2026-01-22 18:16:28,006 (INFO) </assets/index-C26oBRaL.js> (:20808) - Results: [object Object]
+2026-01-22 18:16:28,006 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:16:28.006Z] Item stats data assembled and stored: {
+  "gameCount": 2105424,
+  "itemCount": 152,
+  "processingTime": 1
+}
+2026-01-22 18:16:28,011 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:28,012 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-22 18:16:28,013 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  queue regionCurrentPatch:  null options:  [object Object] values:  1100
+2026-01-22 18:16:28,014 (INFO) </assets/index-C26oBRaL.js> (:20808) - patch options:  null null
+2026-01-22 18:16:28,017 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  patch regionCurrentPatch:  null options:  [object Object] values:  current
+2026-01-22 18:16:28,018 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter:  days regionCurrentPatch:  null options:  [object Object] values:  3
+2026-01-22 18:16:28,018 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_state:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:28,019 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_rows:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:28,020 (INFO) </assets/index-C26oBRaL.js> (:20808) - comp_list:  [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-22 18:16:28,020 (INFO) </assets/index-C26oBRaL.js> (:20808) - compToggleOn:  true
+2026-01-22 18:16:28,021 (INFO) </assets/index-C26oBRaL.js> (:20808) - CompSearchProps:  [object Object] undefined
+2026-01-22 18:16:30,525 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:30,537 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:30,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:55,522 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:16:55,560 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:17:30,514 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:17:33,517 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:17:33,527 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:17:33,750 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:17:33,756 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:18:03,512 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:18:03,533 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:18:37,511 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:18:40,524 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:18:40,533 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:18:40,748 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:19:10,519 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:19:10,553 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:19:50,527 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:20:35,534 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:20:35,542 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:20:35,694 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:20:35,757 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:21:05,528 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:21:05,558 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:21:49,530 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:21:52,543 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:21:52,652 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:21:52,758 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:22:22,528 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:22:22,548 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:02,528 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:05,538 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:05,547 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:05,756 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:25,531 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:52,535 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:52,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:52,554 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:23:52,768 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:11,604 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:12,034 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:12,304 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:14,291 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:20,703 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:20,714 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:20,715 (INFO) </assets/index-C26oBRaL.js> (:20808) - getting selections for comp:  [object Object]
+2026-01-22 18:24:20,838 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:24:20.838Z] get_comp_item_stats called: {
+  "clusterId": 385,
+  "pickedComp": 385023
+}
+2026-01-22 18:24:20,839 (INFO) </assets/index-C26oBRaL.js> (:472) - QueryMaker https://api-hc.metatft.com/tft-comps-api/clustered_items [object Object] null [object Object]  false false [object Object]
+2026-01-22 18:24:20,839 (INFO) </assets/index-C26oBRaL.js> (:472) - full_url https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-22 18:24:20,840 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:24:20.839Z] Comp item stats request details: {
+  "filters": {
+    "queue": [
+      "1100"
+    ],
+    "patch": [
+      "current"
+    ],
+    "days": [
+      3
+    ],
+    "rank": [
+      "CHALLENGER",
+      "DIAMOND",
+      "EMERALD",
+      "GRANDMASTER",
+      "MASTER"
+    ],
+    "permit_filter_adjustment": [
+      "true"
+    ]
+  },
+  "baseUrl": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "fullUrl": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&cluster_id=385&cluster=385023",
+  "params": "queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true"
+}
+2026-01-22 18:24:20,841 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:24:20.839Z] Starting comp item stats API request: {
+  "url": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&cluster_id=385&cluster=385023",
+  "method": "GET",
+  "startTime": 1769124260838,
+  "timeout": 30000
+}
+2026-01-22 18:24:20,844 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:21,287 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:24:21.287Z] Comp item stats API request completed successfully: {
+  "url": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&cluster_id=385&cluster=385023",
+  "statusCode": 200,
+  "statusText": "",
+  "durationMs": 449,
+  "responseSize": 10724,
+  "comp": 385023,
+  "clusterId": 385,
+  "requestId": "comp_item_stats_385_385023_1769124260839_f9c9um40w"
+}
+2026-01-22 18:24:21,288 (INFO) </assets/index-C26oBRaL.js> (:20808) - assembling comp item stats [object Object]
+2026-01-22 18:24:21,288 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:24:21.287Z] Comp item stats data assembled and stored: {
+  "comp": 385023,
+  "clusterId": 385,
+  "gameCount": 44973,
+  "itemCount": 152,
+  "processingTime": 0
+}
+2026-01-22 18:24:21,292 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:22,575 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:24:22,597 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:00,602 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:03,570 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:03,578 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:03,707 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:03,791 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:05,574 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:08,590 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:10,611 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:10,632 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:53,616 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:25:53,634 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:26:31,587 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:26:34,686 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:26:34,701 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:26:34,897 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:26:34,904 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:27:04,600 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:27:04,625 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:27:38,601 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:28:18,631 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:28:18,840 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:28:19,062 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:28:19,163 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:28:49,650 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:28:49,679 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:29:24,661 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:29:32,632 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:29:32,796 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:29:33,057 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:30:02,643 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:30:02,652 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:30:38,639 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:30:45,653 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:30:45,663 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:30:45,870 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:31:06,640 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:31:24,682 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:31:24,690 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:31:24,701 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:31:24,915 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:31:54,702 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:31:54,722 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:46,715 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:49,718 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:49,728 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:49,822 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:49,935 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:55,714 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:57,716 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:58,717 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:32:58,726 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:33:39,732 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:33:39,744 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:34:29,739 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:34:32,740 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:34:32,747 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:34:32,981 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:35:02,732 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:35:02,749 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:35:38,742 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:36:18,750 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:36:18,790 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:36:19,001 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:36:19,079 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:36:48,746 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:36:48,755 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:37:30,743 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:37:33,748 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:37:33,757 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:37:33,970 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:38:03,754 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:38:03,772 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:38:52,746 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:38:55,766 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:38:55,799 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:38:56,022 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:18,760 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:33,761 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:33,766 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:33,780 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:33,991 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:49,765 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:49,766 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-22 18:39:49,767 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug] HIDING FilterMenu because first item category is: Component
+2026-01-22 18:39:49,768 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:39:49.766Z] Item select detected - fetching stats: {
+  "itemName": "TFT_Item_RecurveBow",
+  "hasCompFilter": true
+}
+2026-01-22 18:39:49,774 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:49,775 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-22 18:39:49,775 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug] HIDING FilterMenu because first item category is: Component
+2026-01-22 18:39:49,869 (INFO) </assets/index-C26oBRaL.js> (:472) - QueryMaker https://api-hc.metatft.com/tft-stat-api/items [object Object] null [object Object]  false false [object Object]
+2026-01-22 18:39:49,870 (INFO) </assets/index-C26oBRaL.js> (:472) - full_url https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-22 18:39:49,871 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:39:49.870Z] get_item_stats called: {
+  "filters": {
+    "queue": [
+      "1100"
+    ],
+    "patch": [
+      "current"
+    ],
+    "days": [
+      3
+    ],
+    "rank": [
+      "CHALLENGER",
+      "DIAMOND",
+      "EMERALD",
+      "GRANDMASTER",
+      "MASTER"
+    ],
+    "permit_filter_adjustment": [
+      "true"
+    ]
+  },
+  "requestUrl": "https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "params": "queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "currentStatus": "loaded",
+  "currentParams": "queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true"
+}
+2026-01-22 18:39:49,871 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:39:49.870Z] Using cached item stats data: {
+  "params": "queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "cacheAgeMs": 1401864,
+  "cacheAgeMinutes": 23
+}
+2026-01-22 18:39:49,872 (INFO) </assets/index-C26oBRaL.js> (:20808) - already have data for items:  queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true age:  1401864
+2026-01-22 18:39:49,872 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:39:49.871Z] get_comp_item_stats called: {
+  "clusterId": 385,
+  "pickedComp": 385023,
+  "currentCompItemsStatus": "loaded"
+}
+2026-01-22 18:39:49,873 (INFO) </assets/index-C26oBRaL.js> (:472) - QueryMaker https://api-hc.metatft.com/tft-comps-api/clustered_items [object Object] null [object Object]  false false [object Object]
+2026-01-22 18:39:49,873 (INFO) </assets/index-C26oBRaL.js> (:472) - full_url https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-22 18:39:49,873 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:39:49.871Z] Comp item stats request details: {
+  "filters": {
+    "queue": [
+      "1100"
+    ],
+    "patch": [
+      "current"
+    ],
+    "days": [
+      3
+    ],
+    "rank": [
+      "CHALLENGER",
+      "DIAMOND",
+      "EMERALD",
+      "GRANDMASTER",
+      "MASTER"
+    ],
+    "permit_filter_adjustment": [
+      "true"
+    ]
+  },
+  "baseUrl": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "fullUrl": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&cluster_id=385&cluster=385023",
+  "params": "queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true"
+}
+2026-01-22 18:39:49,874 (INFO) </assets/index-C26oBRaL.js> (:20808) - [FilterMenu Debug 2026-01-22T23:39:49.871Z] Using cached comp item stats data: {
+  "comp": 385023,
+  "clusterId": 385,
+  "params": "queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "cacheAgeMs": 928584,
+  "cacheAgeMinutes": 15
+}
+2026-01-22 18:39:49,875 (INFO) </assets/index-C26oBRaL.js> (:20808) - already have data for comp:  385023 cluster:  385 params:  queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true age:  928584
+2026-01-22 18:39:53,765 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:53,774 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:39:53,780 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:40:03,752 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:40:03,759 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:40:37,804 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:40:40,822 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:40:41,011 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:40:41,108 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:41:11,793 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:41:11,815 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:41:48,820 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:41:48,843 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:41:48,888 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:41:52,578 (INFO) </assets/index-C26oBRaL.js> (:20808) - dragged pos:  null
+2026-01-22 18:41:52,634 (INFO) </assets/index-C26oBRaL.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-22 18:41:52,634 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  346
+2026-01-22 18:41:52,635 (INFO) </assets/index-C26oBRaL.js> (:20808) - New Height:  800
+2026-01-22 18:41:52,712 (INFO) </assets/index-C26oBRaL.js> (:20808) - changed position to:  0 640
+2026-01-22 18:41:52,713 (INFO) </assets/index-C26oBRaL.js> (:20808) - window info:  [object Object]
+2026-01-22 18:41:52,714 (INFO) </assets/index-C26oBRaL.js> (:20808) - game info:  [object Object]
+2026-01-22 18:41:52,717 (INFO) <Overwolf> () - [object Object]

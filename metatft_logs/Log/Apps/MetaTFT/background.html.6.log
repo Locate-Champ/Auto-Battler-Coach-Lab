@@ -1,0 +1,637 @@
+﻿2026-01-20 12:33:13,805 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:33:13.805Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_BWLesserDuplicator\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:33:13,814 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:33:13.805Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_BWLesserDuplicator\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:33:13,970 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:33:13.969Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_BWLesserDuplicator\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:33:18,802 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:33:18.801Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ShopRefresh"} - clearing item_select
+2026-01-20 12:33:18,804 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:33:18.801Z: {}
+2026-01-20 12:33:18,864 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:33:18.864Z: null
+2026-01-20 12:33:18,865 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:33:18.864Z: null
+2026-01-20 12:33:18,901 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:33:18.900Z: null
+2026-01-20 12:33:22,812 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:33:22.813Z:  "{\"item_1\":{\"name\":\"TFT_Item_Artifact_LightshieldCrest\"}, \"item_2\":{\"name\":\"TFT_Item_Artifact_LichBane\"}, \"item_3\":{\"name\":\"TFT_Item_Artifact_ProwlersClaw\"}, \"item_4\":{\"name\":\"TFT_Item_Artifact_BlightingJewel\"}}"
+2026-01-20 12:33:22,813 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:33:22.813Z: "{\"item_1\":{\"name\":\"TFT_Item_Artifact_LightshieldCrest\"}, \"item_2\":{\"name\":\"TFT_Item_Artifact_LichBane\"}, \"item_3\":{\"name\":\"TFT_Item_Artifact_ProwlersClaw\"}, \"item_4\":{\"name\":\"TFT_Item_Artifact_BlightingJewel\"}}"
+2026-01-20 12:33:22,813 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:33:22.813Z: "{\"item_1\":{\"name\":\"TFT_Item_Artifact_LightshieldCrest\"}, \"item_2\":{\"name\":\"TFT_Item_Artifact_LichBane\"}, \"item_3\":{\"name\":\"TFT_Item_Artifact_ProwlersClaw\"}, \"item_4\":{\"name\":\"TFT_Item_Artifact_BlightingJewel\"}}"
+2026-01-20 12:33:23,162 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:33:23.162Z: "{\"item_1\":{\"name\":\"TFT_Item_Artifact_LightshieldCrest\"}, \"item_2\":{\"name\":\"TFT_Item_Artifact_LichBane\"}, \"item_3\":{\"name\":\"TFT_Item_Artifact_ProwlersClaw\"}, \"item_4\":{\"name\":\"TFT_Item_Artifact_BlightingJewel\"}}"
+2026-01-20 12:33:41,819 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:33:41.818Z: {"name":"picked_item","data":"TFT_Item_Artifact_LichBane"} - clearing item_select
+2026-01-20 12:33:41,820 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:33:41.819Z: {}
+2026-01-20 12:33:41,892 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:33:41.892Z: null
+2026-01-20 12:33:41,893 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:33:41.892Z: null
+2026-01-20 12:33:41,919 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:33:41.918Z: null
+2026-01-20 12:33:51,863 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 3-2
+2026-01-20 12:33:51,864 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:33:57,465 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT6_Augment_MaxLevel10 not in augment model lookups
+2026-01-20 12:34:24,400 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:34:29,303 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:34:29,553 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 7/60 -> 14/60
+2026-01-20 12:34:29,565 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 3-3
+2026-01-20 12:34:29,566 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "3-3"
+2026-01-20 12:34:29,566 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:34:29,875 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 3-2
+2026-01-20 12:34:29,938 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 3-2
+2026-01-20 12:34:29,940 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:34:29,941 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:34:30,107 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:34:31,232 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:34:34,984 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:34:34,985 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:34:35,813 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:34:35.813Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:34:35,814 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:34:35.813Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:34:35,814 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:34:35.813Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:34:35,969 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:34:35.968Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:34:59,959 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 3-3
+2026-01-20 12:34:59,960 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:35:04,802 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:35:04.801Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ShopRefresh"} - clearing item_select
+2026-01-20 12:35:04,802 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:35:04.801Z: {}
+2026-01-20 12:35:04,855 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:35:04.855Z: null
+2026-01-20 12:35:04,856 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:35:04.855Z: null
+2026-01-20 12:35:04,879 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:35:04.879Z: null
+2026-01-20 12:35:05,465 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"2":{"player_board":7,"opponent_board":1,"count":8}}
+2026-01-20 12:35:13,799 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:35:13.799Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:35:13,799 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:35:13.799Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:35:13,800 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:35:13.800Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:35:13,937 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:35:13.938Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:35:20,803 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:35:20.802Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ShopRefresh"} - clearing item_select
+2026-01-20 12:35:20,803 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:35:20.803Z: {}
+2026-01-20 12:35:20,859 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:35:20.859Z: null
+2026-01-20 12:35:20,860 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:35:20.859Z: null
+2026-01-20 12:35:20,887 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:35:20.887Z: null
+2026-01-20 12:35:38,814 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 3-3
+2026-01-20 12:35:38,814 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:35:38,815 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:35:38,847 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:35:38,900 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:39,044 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 3-4
+2026-01-20 12:35:39,045 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "3-4"
+2026-01-20 12:35:39,045 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:35:39,527 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:40,155 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:42,081 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:42,707 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:43,534 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:43,884 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:35:43,885 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:35:43,885 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Correcting health for player:  Full Bromo 49 61
+2026-01-20 12:35:44,167 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:44,924 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:45,579 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:46,574 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:47,240 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:35:48,020 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:15,893 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 3-3
+2026-01-20 12:36:15,972 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 3-3
+2026-01-20 12:36:15,972 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:36:15,973 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:36:16,034 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:36:16,052 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:36:16,389 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:17,269 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - setting carousel round
+2026-01-20 12:36:17,270 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 14/60 -> 21/60
+2026-01-20 12:36:17,293 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 3-5
+2026-01-20 12:36:17,294 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "3-5"
+2026-01-20 12:36:17,294 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:36:17,420 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:18,129 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:18,545 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:36:19,062 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:19,402 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:19,686 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:20,023 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:20,355 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:20,790 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:20,983 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:21,017 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:36:21,018 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:36:21,563 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:21,642 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:22,199 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:22,432 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:22,885 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:23,060 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:23,599 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:23,705 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:24,220 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:24,457 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:24,937 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:36:46,870 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 3-4
+2026-01-20 12:36:46,871 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:36:52,394 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT6_Augment_BandOfThieves2Plus not in augment model lookups
+2026-01-20 12:37:22,704 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:37:22,893 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 3-4
+2026-01-20 12:37:22,953 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 3-4
+2026-01-20 12:37:22,954 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:37:22,954 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:37:23,015 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 21/60 -> 28/60
+2026-01-20 12:37:23,029 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 3-6
+2026-01-20 12:37:23,030 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "3-6"
+2026-01-20 12:37:23,031 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:37:23,032 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:37:23,061 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:23,830 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:23,873 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:37:24,585 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:26,060 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:26,821 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:27,456 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:27,998 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:37:27,999 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:37:28,137 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:28,791 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:29,571 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:30,358 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:31,117 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:31,954 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:37:52,886 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 3-6
+2026-01-20 12:37:52,887 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:38:32,891 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 3-6
+2026-01-20 12:38:32,967 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 3-6
+2026-01-20 12:38:32,968 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:38:32,969 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:38:33,006 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:38:33,140 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:38:33,265 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 28/60 -> 35/60
+2026-01-20 12:38:33,280 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 3-7
+2026-01-20 12:38:33,280 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "3-7"
+2026-01-20 12:38:33,281 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:38:36,363 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:38:38,010 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:38:38,011 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:38:38,011 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Correcting health for player:  ValiantSquink 65 72
+2026-01-20 12:38:51,843 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:38:51.842Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}}"
+2026-01-20 12:38:51,844 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:38:51.843Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}}"
+2026-01-20 12:38:51,845 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:38:51.843Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}}"
+2026-01-20 12:38:52,010 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:38:52.009Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}}"
+2026-01-20 12:38:53,947 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 3-7
+2026-01-20 12:38:53,948 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:38:54,020 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - PVE round, shortening time:  {"round_type":{"stage":"3-7","name":"PVE","type":"PVE","native_name":"Wolves"}}
+2026-01-20 12:38:54,196 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"2":{"player_board":7,"opponent_board":1,"count":8}}
+2026-01-20 12:38:58,876 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:38:58.876Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_HealthTier1"} - clearing item_select
+2026-01-20 12:38:58,877 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:38:58.876Z: {}
+2026-01-20 12:38:58,931 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:38:58.931Z: null
+2026-01-20 12:38:58,931 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:38:58.931Z: null
+2026-01-20 12:38:58,953 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:38:58.952Z: null
+2026-01-20 12:39:12,985 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 3-7
+2026-01-20 12:39:13,043 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 3-7
+2026-01-20 12:39:13,043 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:39:13,044 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:39:13,101 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:39:13,140 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:39:13,183 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:39:13,367 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 35/60 -> 42/60
+2026-01-20 12:39:13,381 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 4-1
+2026-01-20 12:39:13,382 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "4-1"
+2026-01-20 12:39:13,383 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:39:13,806 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - retrying, scoreboard not visible
+2026-01-20 12:39:18,092 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:39:18,093 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:39:43,925 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 4-1
+2026-01-20 12:39:43,926 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:39:55,990 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 42/60 -> 50/60
+2026-01-20 12:39:57,892 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 50/60 -> 54/60
+2026-01-20 12:39:58,262 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 54/60 -> 2/68
+2026-01-20 12:39:58,629 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 2/68 -> 6/68
+2026-01-20 12:40:08,058 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:09,005 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:09,804 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:10,919 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:11,263 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:12,458 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:13,056 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:13,959 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:15,112 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:17,414 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:18,417 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:22,023 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 4-1
+2026-01-20 12:40:22,109 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 4-1
+2026-01-20 12:40:22,110 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:40:22,111 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:40:22,156 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 4-2
+2026-01-20 12:40:22,157 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "4-2"
+2026-01-20 12:40:22,158 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:40:22,160 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:40:22,241 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_MuseumHeist","TFT7_Augment_LuckyGlovesPlus","TFT9_Augment_GreaterJeweledLotus"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 12:40:26,113 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_MuseumHeist","TFT6_Augment_TradeSector2","TFT9_Augment_GreaterJeweledLotus"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 12:40:26,504 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT6_Augment_CelestialBlessing3","TFT6_Augment_TradeSector2","TFT9_Augment_GreaterJeweledLotus"],"armory_state":"active","armory_type":"regular"}
+2026-01-20 12:40:27,159 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:40:27,160 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:40:27,725 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:28,089 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 6/68 -> 13/68
+2026-01-20 12:40:28,154 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT6_Augment_CelestialBlessing3","TFT6_Augment_TradeSector2","TFT9_Augment_GreaterJeweledLotus"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 12:40:41,024 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:40:41.024Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_LuckyEyepatch\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BWLesserDuplicator\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:40:41,025 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:40:41.024Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_LuckyEyepatch\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BWLesserDuplicator\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:40:41,025 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:40:41.024Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_LuckyEyepatch\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BWLesserDuplicator\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:40:41,319 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:40:41.319Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_LuckyEyepatch\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BWLesserDuplicator\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}}"
+2026-01-20 12:40:43,895 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:40:43.895Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:40:43,896 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:40:43.896Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:40:43,896 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:40:43.896Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:40:44,101 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:40:44.101Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:40:56,892 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:40:56.891Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ADAPTier3"} - clearing item_select
+2026-01-20 12:40:56,893 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:40:56.892Z: {}
+2026-01-20 12:40:56,946 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:40:56.946Z: null
+2026-01-20 12:40:56,946 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:40:56.946Z: null
+2026-01-20 12:40:56,970 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:40:56.970Z: null
+2026-01-20 12:40:58,032 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:40:58,779 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:41:00,044 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:41:00,687 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:41:01,996 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:41:02,948 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:41:12,974 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 4-2
+2026-01-20 12:41:12,975 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:41:16,896 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:41:16.896Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:16,897 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:41:16.896Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:16,898 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:16.896Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:17,158 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:41:17.158Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:19,210 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 4-2
+2026-01-20 12:41:19,210 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:41:23,891 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:41:23.890Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ADAPTier3"} - clearing item_select
+2026-01-20 12:41:23,891 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:23.890Z: {}
+2026-01-20 12:41:23,966 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:41:23.966Z: null
+2026-01-20 12:41:23,967 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:23.966Z: null
+2026-01-20 12:41:23,994 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:41:23.995Z: null
+2026-01-20 12:41:25,900 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:41:25.900Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:25,900 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:41:25.900Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:25,900 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:25.900Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:26,153 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:41:26.153Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:27,918 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:41:27.917Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ADAPTier3"} - clearing item_select
+2026-01-20 12:41:27,918 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:27.917Z: {}
+2026-01-20 12:41:27,996 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:41:27.996Z: null
+2026-01-20 12:41:27,999 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:27.996Z: null
+2026-01-20 12:41:28,024 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:41:28.023Z: null
+2026-01-20 12:41:38,927 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:41:38.927Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:38,928 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:41:38.927Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:38,929 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:38.927Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:39,201 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:41:39.201Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:40,538 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 4-2
+2026-01-20 12:41:40,930 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:41:40.928Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ADAPTier3"} - clearing item_select
+2026-01-20 12:41:40,930 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:40.929Z: {}
+2026-01-20 12:41:41,007 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:41:41.007Z: null
+2026-01-20 12:41:41,007 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:41.007Z: null
+2026-01-20 12:41:41,033 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:41:41.033Z: null
+2026-01-20 12:41:47,923 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 4-2
+2026-01-20 12:41:47,924 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:41:50,792 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 4-3
+2026-01-20 12:41:50,792 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "4-3"
+2026-01-20 12:41:50,793 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:41:51,030 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 4-2
+2026-01-20 12:41:51,031 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:41:51,032 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:41:51,077 (INFO) </assets/index-CCJ9jrMe.js> (:17) - No item data, keeping old board data
+2026-01-20 12:41:51,236 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:41:51,409 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 13/68 -> 20/68
+2026-01-20 12:41:52,128 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:41:53,471 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"2":{"player_board":8,"opponent_board":1,"count":9}}
+2026-01-20 12:41:53,923 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:41:53.922Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:53,923 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:41:53.922Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:53,924 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:41:53.922Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:54,189 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:41:54.189Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:41:56,433 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:41:56,435 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:42:21,194 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 4-2
+2026-01-20 12:42:21,195 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:42:26,705 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT6_Augment_MaxLevel10 not in augment model lookups
+2026-01-20 12:42:29,936 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:42:29.936Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_4\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:42:29,937 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:42:29.936Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_4\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:42:29,937 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:42:29.936Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_4\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:42:30,168 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:42:30.168Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier3\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_4\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier3\"}}"
+2026-01-20 12:42:34,922 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:42:34.921Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ADAPTier3"} - clearing item_select
+2026-01-20 12:42:34,922 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:42:34.921Z: {}
+2026-01-20 12:42:34,991 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:42:34.991Z: null
+2026-01-20 12:42:34,992 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:42:34.991Z: null
+2026-01-20 12:42:35,018 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:42:35.018Z: null
+2026-01-20 12:42:45,185 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:42:46,529 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:42:50,659 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:42:53,849 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:42:56,238 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:43:00,053 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:43:07,409 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 4-4
+2026-01-20 12:43:07,410 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "4-4"
+2026-01-20 12:43:07,410 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:43:07,921 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 4-2
+2026-01-20 12:43:07,922 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:43:07,922 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:43:07,982 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:43:12,971 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:43:12,971 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:43:12,972 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Correcting health for player:  Karina Super Fan 67 78
+2026-01-20 12:43:44,306 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 4-5
+2026-01-20 12:43:44,306 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "4-5"
+2026-01-20 12:43:44,307 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:43:44,706 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 20/68 -> 27/68
+2026-01-20 12:43:45,077 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 4-2
+2026-01-20 12:43:45,158 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 4-2
+2026-01-20 12:43:45,159 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:43:45,159 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:43:45,216 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:43:45,589 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - setting carousel round
+2026-01-20 12:43:50,204 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:43:50,207 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:43:50,487 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:44:14,943 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 4-4
+2026-01-20 12:44:14,944 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:44:21,774 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:44:22,816 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:45:05,093 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 4-4
+2026-01-20 12:45:05,175 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 4-4
+2026-01-20 12:45:05,175 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:45:05,176 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:45:05,217 (INFO) </assets/index-CCJ9jrMe.js> (:17) - No item data, keeping old board data
+2026-01-20 12:45:05,338 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:45:05,418 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 4-6
+2026-01-20 12:45:05,419 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "4-6"
+2026-01-20 12:45:05,419 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:45:05,420 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:45:05,898 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 27/68 -> 34/68
+2026-01-20 12:45:10,303 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:45:10,304 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:45:35,030 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 4-6
+2026-01-20 12:45:35,031 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:45:40,608 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"2":{"player_board":8,"opponent_board":1,"count":9}}
+2026-01-20 12:46:21,096 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 4-6
+2026-01-20 12:46:21,175 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 4-6
+2026-01-20 12:46:21,179 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:46:21,179 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:46:21,224 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:46:21,463 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:46:21,717 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 34/68 -> 41/68
+2026-01-20 12:46:21,736 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 4-7
+2026-01-20 12:46:21,737 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "4-7"
+2026-01-20 12:46:21,737 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:46:26,224 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:46:26,225 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:46:45,068 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 4-7
+2026-01-20 12:46:45,068 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:46:45,127 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - PVE round, shortening time:  {"round_type":{"stage":"4-7","name":"PVE","type":"PVE","native_name":"Raptors"}}
+2026-01-20 12:46:45,262 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"2":{"player_board":3,"opponent_board":6,"count":9}}
+2026-01-20 12:47:03,216 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 5-1
+2026-01-20 12:47:03,217 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "5-1"
+2026-01-20 12:47:03,217 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:47:03,458 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:47:03,598 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 41/68 -> 48/68
+2026-01-20 12:47:04,104 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 4-7
+2026-01-20 12:47:04,160 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 4-7
+2026-01-20 12:47:04,161 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:47:04,161 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:47:04,194 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:47:09,204 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:47:09,205 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:47:10,014 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:47:10.014Z:  "{\"item_1\":{\"name\":\"TFT_Item_ChainVest\"}, \"item_2\":{\"name\":\"TFT_Item_BFSword\"}, \"item_3\":{\"name\":\"TFT_Item_NegatronCloak\"}, \"item_4\":{\"name\":\"TFT_Item_TearOfTheGoddess\"}}"
+2026-01-20 12:47:10,015 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:47:10.015Z: "{\"item_1\":{\"name\":\"TFT_Item_ChainVest\"}, \"item_2\":{\"name\":\"TFT_Item_BFSword\"}, \"item_3\":{\"name\":\"TFT_Item_NegatronCloak\"}, \"item_4\":{\"name\":\"TFT_Item_TearOfTheGoddess\"}}"
+2026-01-20 12:47:10,016 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:47:10.015Z: "{\"item_1\":{\"name\":\"TFT_Item_ChainVest\"}, \"item_2\":{\"name\":\"TFT_Item_BFSword\"}, \"item_3\":{\"name\":\"TFT_Item_NegatronCloak\"}, \"item_4\":{\"name\":\"TFT_Item_TearOfTheGoddess\"}}"
+2026-01-20 12:47:10,047 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:47:10.045Z: "{\"item_1\":{\"name\":\"TFT_Item_ChainVest\"}, \"item_2\":{\"name\":\"TFT_Item_BFSword\"}, \"item_3\":{\"name\":\"TFT_Item_NegatronCloak\"}, \"item_4\":{\"name\":\"TFT_Item_TearOfTheGoddess\"}}"
+2026-01-20 12:47:13,007 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:47:13.006Z: {"name":"picked_item","data":"TFT_Item_TearOfTheGoddess"} - clearing item_select
+2026-01-20 12:47:13,007 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:47:13.006Z: {}
+2026-01-20 12:47:13,032 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:47:13.031Z: null
+2026-01-20 12:47:13,033 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:47:13.032Z: null
+2026-01-20 12:47:13,059 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:47:13.058Z: null
+2026-01-20 12:47:24,593 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:47:25,447 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:47:34,005 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 5-1
+2026-01-20 12:47:34,005 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:47:39,965 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT6_Augment_BandOfThieves2Plus not in augment model lookups
+2026-01-20 12:48:00,479 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 48/68 -> 52/68
+2026-01-20 12:48:00,833 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 52/68 -> 64/68
+2026-01-20 12:48:01,196 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 64/68 -> 0/68
+2026-01-20 12:48:03,832 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting: Full Bromo
+2026-01-20 12:48:13,478 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting: 
+2026-01-20 12:48:20,397 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:48:20,460 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 5-2
+2026-01-20 12:48:20,461 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "5-2"
+2026-01-20 12:48:20,461 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:48:20,824 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 0/68 -> 7/68
+2026-01-20 12:48:21,094 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 5-1
+2026-01-20 12:48:21,159 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 5-1
+2026-01-20 12:48:21,159 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:48:21,160 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:48:21,324 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:48:21,621 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:48:26,220 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:48:26,221 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:48:47,006 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:48:47.004Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}}"
+2026-01-20 12:48:47,006 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:48:47.004Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}}"
+2026-01-20 12:48:47,007 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:48:47.004Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}}"
+2026-01-20 12:48:47,163 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:48:47.163Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}}"
+2026-01-20 12:48:48,021 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:48:48.021Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ASTier1"} - clearing item_select
+2026-01-20 12:48:48,022 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:48:48.021Z: {}
+2026-01-20 12:48:48,060 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:48:48.060Z: null
+2026-01-20 12:48:48,061 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:48:48.060Z: null
+2026-01-20 12:48:48,088 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:48:48.089Z: null
+2026-01-20 12:48:51,055 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 5-2
+2026-01-20 12:48:51,056 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:48:51,161 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:48:51.161Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}}"
+2026-01-20 12:48:51,162 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:48:51.161Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}}"
+2026-01-20 12:48:51,162 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:48:51.161Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}}"
+2026-01-20 12:48:51,315 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:48:51.315Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ASTier1\"}}"
+2026-01-20 12:48:56,724 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT7_Augment_BirthdayPresents not in augment model lookups
+2026-01-20 12:48:56,725 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT6_Augment_TheGoldenEgg not in augment model lookups
+2026-01-20 12:48:57,106 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 5-2
+2026-01-20 12:48:57,107 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:49:02,868 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT7_Augment_BirthdayPresents not in augment model lookups
+2026-01-20 12:49:02,869 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT6_Augment_TheGoldenEgg not in augment model lookups
+2026-01-20 12:49:05,029 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:49:05.029Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}}"
+2026-01-20 12:49:05,029 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:49:05.029Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}}"
+2026-01-20 12:49:05,030 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:49:05.029Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}}"
+2026-01-20 12:49:05,333 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:49:05.333Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}}"
+2026-01-20 12:49:07,035 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:49:07.035Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_BilgeratCutlass"} - clearing item_select
+2026-01-20 12:49:07,036 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:49:07.035Z: {}
+2026-01-20 12:49:07,067 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:49:07.067Z: null
+2026-01-20 12:49:07,068 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:49:07.068Z: null
+2026-01-20 12:49:07,092 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:49:07.091Z: null
+2026-01-20 12:49:26,993 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 5-3
+2026-01-20 12:49:26,994 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "5-3"
+2026-01-20 12:49:26,995 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:49:27,087 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 5-2
+2026-01-20 12:49:27,145 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 5-2
+2026-01-20 12:49:27,146 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:49:27,146 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:49:27,184 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:49:27,200 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:49:27,398 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 7/68 -> 14/68
+2026-01-20 12:49:30,925 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:49:32,202 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:49:32,203 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:49:46,034 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:49:46.034Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}}"
+2026-01-20 12:49:46,034 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:49:46.034Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}}"
+2026-01-20 12:49:46,035 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:49:46.034Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}}"
+2026-01-20 12:49:46,272 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:49:46.272Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_ShopRefresh\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier2\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_BilgeratCutlass\"}}"
+2026-01-20 12:49:57,253 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 5-3
+2026-01-20 12:49:57,254 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:50:05,032 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:50:05.032Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_BilgeratCutlass"} - clearing item_select
+2026-01-20 12:50:05,033 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:50:05.032Z: {}
+2026-01-20 12:50:05,072 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:50:05.071Z: null
+2026-01-20 12:50:05,073 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:50:05.071Z: null
+2026-01-20 12:50:05,099 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:50:05.099Z: null
+2026-01-20 12:50:27,936 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:50:38,150 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting: Trexyl
+2026-01-20 12:50:38,829 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting: 
+2026-01-20 12:50:40,566 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 5-4
+2026-01-20 12:50:40,567 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "5-4"
+2026-01-20 12:50:40,568 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:50:41,038 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 5-3
+2026-01-20 12:50:41,039 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:50:41,039 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:50:41,086 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:50:46,072 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:50:46,073 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:50:46,074 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Correcting health for player:  ValiantSquink 11 26
+2026-01-20 12:51:11,389 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [EVT] stage: 5-5
+2026-01-20 12:51:11,390 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - New Stage: "5-5"
+2026-01-20 12:51:11,390 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:51:11,562 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:51:11,759 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - XP: 14/68 -> 21/68
+2026-01-20 12:51:12,139 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round end - stage 5-3
+2026-01-20 12:51:12,220 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - round start - stage 5-3
+2026-01-20 12:51:12,221 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:51:12,222 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:51:12,408 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-20 12:51:12,654 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - setting carousel round
+2026-01-20 12:51:17,265 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting round start health
+2026-01-20 12:51:17,266 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Round start health:  [object Object]
+2026-01-20 12:51:39,030 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-20T17:51:39.030Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_LuckyEyepatch\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}}"
+2026-01-20 12:51:39,030 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:51:39.030Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_LuckyEyepatch\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}}"
+2026-01-20 12:51:39,031 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:51:39.030Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_LuckyEyepatch\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}}"
+2026-01-20 12:51:39,283 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:51:39.284Z: "{\"item_1\":{\"name\":\"TFT16_Item_Bilgewater_LuckyEyepatch\"}, \"item_2\":{\"name\":\"TFT16_Item_Bilgewater_HealthTier1\"}, \"item_3\":{\"name\":\"TFT16_Item_Bilgewater_ADAPTier1\"}}"
+2026-01-20 12:51:42,286 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 5-4
+2026-01-20 12:51:42,287 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:51:43,038 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-20T17:51:43.038Z: {"name":"picked_item","data":"TFT16_Item_Bilgewater_ADAPTier1"} - clearing item_select
+2026-01-20 12:51:43,039 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:51:43.038Z: {}
+2026-01-20 12:51:43,233 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-20T17:51:43.227Z: null
+2026-01-20 12:51:43,234 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-20T17:51:43.227Z: null
+2026-01-20 12:51:43,358 (INFO) </assets/index-CCJ9jrMe.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-20T17:51:43.358Z: null
+2026-01-20 12:51:44,813 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:51:46,319 (INFO) </assets/index-CCJ9jrMe.js> (:17) - Store update:  [object Object]
+2026-01-20 12:51:47,939 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT6_Augment_MaxLevel10 not in augment model lookups
+2026-01-20 12:51:48,107 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - battle start - stage 5-4
+2026-01-20 12:51:48,107 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting duration info: [object Object]
+2026-01-20 12:51:53,622 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - TFT6_Augment_MaxLevel10 not in augment model lookups
+2026-01-20 12:52:09,657 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting: Kino Sakura
+2026-01-20 12:52:11,463 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Scouting: Full Bromo
+2026-01-20 12:52:14,406 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Augment Armory Changed: {"augment_options":[],"armory_state":"inactive","armory_type":"regular"}
+2026-01-20 12:52:14,624 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - tft_stage - 0.6999999955296516ms  - error
+2026-01-20 12:52:14,624 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - plugin error: "{\"error\":\"Exception: Couldn't find 'ClientStates/Gameplay/UX/TFT/TFTStage/UIBase/TFT_Stage'.\"}"
+2026-01-20 12:52:14,625 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - no err.error present
+2026-01-20 12:52:14,625 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - "{\"error\":\"Exception: Couldn't find 'ClientStates/Gameplay/UX/TFT/TFTStage/UIBase/TFT_Stage'.\"}"
+2026-01-20 12:52:14,625 (ERROR) </assets/index-CCJ9jrMe.js> (:20748) - {"error":"Exception: Couldn't find 'ClientStates/Gameplay/UX/TFT/TFTStage/UIBase/TFT_Stage'."}
+2026-01-20 12:52:14,626 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - tft_scoreboard - 1ms  - error
+2026-01-20 12:52:14,626 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - plugin error: "{\"error\":\"Exception: Unable to determine scoreboard.\"}"
+2026-01-20 12:52:14,627 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - no err.error present
+2026-01-20 12:52:14,627 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - tft_shop - 1.0999999940395355ms  - error
+2026-01-20 12:52:14,628 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - plugin error: "{\"error\":\"Exception: Couldn't find 'ClientStates/Gameplay/UX/TFT/TFTUnitShop/UIBase/TFT_UnitShop'.\"}"
+2026-01-20 12:52:14,628 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - no err.error present
+2026-01-20 12:52:19,694 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - tft_stage - 0.8000000044703484ms  - error
+2026-01-20 12:52:19,694 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - plugin error: "{\"error\":\"Exception: Failed to read unsigned __int64 at 0x20 +0x0\"}"
+2026-01-20 12:52:19,695 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - no err.error present
+2026-01-20 12:52:19,695 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - "{\"error\":\"Exception: Failed to read unsigned __int64 at 0x20 +0x0\"}"
+2026-01-20 12:52:19,695 (ERROR) </assets/index-CCJ9jrMe.js> (:20748) - {"error":"Exception: Failed to read unsigned __int64 at 0x20 +0x0"}
+2026-01-20 12:52:19,696 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - tft_scoreboard - 0.8999999985098839ms  - error
+2026-01-20 12:52:19,696 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - plugin error: "{\"error\":\"Exception: Unable to determine scoreboard.\"}"
+2026-01-20 12:52:19,696 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - no err.error present
+2026-01-20 12:52:19,697 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - tft_shop - 1ms  - error
+2026-01-20 12:52:19,697 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - plugin error: "{\"error\":\"Exception: Failed to read unsigned __int64 at 0x20 +0x0\"}"
+2026-01-20 12:52:19,697 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - no err.error present
+2026-01-20 12:52:23,110 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - game_finished, closing in game windows
+2026-01-20 12:52:23,111 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.setGameStopped
+2026-01-20 12:52:23,111 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-20 12:52:23,112 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting EndGame operation: [object Object]
+2026-01-20 12:52:23,112 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Closing 11 windows: [object Object]
+2026-01-20 12:52:23,113 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'ingamecontroller': [object Object]
+2026-01-20 12:52:23,113 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: ingamecontroller
+2026-01-20 12:52:23,115 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'ingamedesktop': [object Object]
+2026-01-20 12:52:23,115 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: ingamedesktop
+2026-01-20 12:52:23,116 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'matchups': [object Object]
+2026-01-20 12:52:23,116 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: matchups
+2026-01-20 12:52:23,117 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'matchups_map': [object Object]
+2026-01-20 12:52:23,118 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: matchups_map
+2026-01-20 12:52:23,118 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'loading': [object Object]
+2026-01-20 12:52:23,119 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: loading
+2026-01-20 12:52:23,119 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'pinned_comp': [object Object]
+2026-01-20 12:52:23,120 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-20 12:52:23,120 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'win_chance': [object Object]
+2026-01-20 12:52:23,121 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: win_chance
+2026-01-20 12:52:23,121 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'augment_recommendations': [object Object]
+2026-01-20 12:52:23,122 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: augment_recommendations
+2026-01-20 12:52:23,122 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'filter_menu': [object Object]
+2026-01-20 12:52:23,123 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: filter_menu
+2026-01-20 12:52:23,123 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'headliner_countdown': [object Object]
+2026-01-20 12:52:23,124 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: headliner_countdown
+2026-01-20 12:52:23,125 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting close operation for 'replay_controls': [object Object]
+2026-01-20 12:52:23,125 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: replay_controls
+2026-01-20 12:52:23,570 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-20 12:52:23,570 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:421170)
+    at async get_end_game (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:419634)
+2026-01-20 12:52:23,571 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-20 12:52:23,571 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:421170)
+    at async get_lcu_version (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:420851)
+    at async Object.match_end (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:428857)
+2026-01-20 12:52:23,572 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'ingamecontroller': [object Object]
+2026-01-20 12:52:23,572 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'ingamecontroller' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_ingamecontroller)
+2026-01-20 12:52:23,572 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'ingamedesktop': [object Object]
+2026-01-20 12:52:23,573 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'ingamedesktop' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_ingamedesktop)
+2026-01-20 12:52:23,573 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'matchups': [object Object]
+2026-01-20 12:52:23,573 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'matchups' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_matchups)
+2026-01-20 12:52:23,574 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'matchups_map': [object Object]
+2026-01-20 12:52:23,574 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'matchups_map' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_matchups_map)
+2026-01-20 12:52:23,575 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'loading': [object Object]
+2026-01-20 12:52:23,576 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'loading' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_loading)
+2026-01-20 12:52:23,577 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-20 12:52:23,577 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-20 12:52:23,577 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'win_chance': [object Object]
+2026-01-20 12:52:23,578 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'win_chance' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_win_chance)
+2026-01-20 12:52:23,587 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'augment_recommendations': [object Object]
+2026-01-20 12:52:23,587 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'augment_recommendations' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_augment_recommendations)
+2026-01-20 12:52:23,588 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'filter_menu': [object Object]
+2026-01-20 12:52:23,590 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'filter_menu' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_filter_menu)
+2026-01-20 12:52:23,591 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'headliner_countdown': [object Object]
+2026-01-20 12:52:23,591 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'headliner_countdown' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_headliner_countdown)
+2026-01-20 12:52:23,592 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'replay_controls': [object Object]
+2026-01-20 12:52:23,593 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to close window 'replay_controls' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_replay_controls)
+2026-01-20 12:52:23,608 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'ingamecontroller': [object Object]
+2026-01-20 12:52:23,609 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'ingamedesktop': [object Object]
+2026-01-20 12:52:23,610 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'matchups': [object Object]
+2026-01-20 12:52:23,659 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'matchups_map': [object Object]
+2026-01-20 12:52:23,703 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'loading': [object Object]
+2026-01-20 12:52:23,704 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'pinned_comp': [object Object]
+2026-01-20 12:52:23,704 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'win_chance': [object Object]
+2026-01-20 12:52:23,705 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'augment_recommendations': [object Object]
+2026-01-20 12:52:23,705 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'filter_menu': [object Object]
+2026-01-20 12:52:23,706 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'headliner_countdown': [object Object]
+2026-01-20 12:52:23,706 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully closed window 'replay_controls': [object Object]
+2026-01-20 12:52:23,706 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'ingamecontroller': [object Object]
+2026-01-20 12:52:23,708 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'ingamedesktop': [object Object]
+2026-01-20 12:52:23,708 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'matchups': [object Object]
+2026-01-20 12:52:23,709 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'matchups_map': [object Object]
+2026-01-20 12:52:23,709 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'loading': [object Object]
+2026-01-20 12:52:23,710 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'pinned_comp': [object Object]
+2026-01-20 12:52:23,710 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'win_chance': [object Object]
+2026-01-20 12:52:23,710 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'augment_recommendations': [object Object]
+2026-01-20 12:52:23,711 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'filter_menu': [object Object]
+2026-01-20 12:52:23,711 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'headliner_countdown': [object Object]
+2026-01-20 12:52:23,711 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Successfully closed 'replay_controls': [object Object]
+2026-01-20 12:52:23,712 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Using global window.reduxStore
+2026-01-20 12:52:24,526 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame: Monitor list result: [object Object]
+2026-01-20 12:52:24,528 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] EndGame completed: [object Object]
+2026-01-20 12:52:26,441 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-20 12:52:26,442 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:421170)
+    at async get_lcu_version (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:420851)
+    at async Object.match_end (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:428857)
+2026-01-20 12:52:26,945 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-20 12:52:26,945 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:421170)
+    at async get_lcu_version (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:420851)
+    at async Object.match_end (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:428857)
+2026-01-20 12:52:27,456 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-20 12:52:27,457 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:421170)
+    at async get_lcu_version (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:420851)
+    at async Object.match_end (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:428857)
+2026-01-20 12:52:28,581 (ERROR) </assets/index-CCJ9jrMe.js> (:193) - Uncaught (in promise) SecurityError: Failed to read the 'state' property from 'History': May not use a History object associated with a Document that is not fully active
+2026-01-20 12:52:28,655 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - data successfully stored
+2026-01-20 12:52:29,756 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] TriggerReopen called: [object Object]
+2026-01-20 12:52:29,757 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - dispatching navigate
+2026-01-20 12:52:30,510 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] TriggerReopen: Obtained main window: [object Object]
+2026-01-20 12:52:30,511 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] TriggerReopen: Window state check: [object Object]
+2026-01-20 12:52:30,512 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] TriggerReopen: Flashing window (minimize then restore): [object Object]
+2026-01-20 12:52:30,558 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] TriggerReopen: Successfully minimized, restoring in 500ms: [object Object]
+2026-01-20 12:52:31,149 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] TriggerReopen: Successfully restored, bringing to front: [object Object]
+2026-01-20 12:52:31,314 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] TriggerReopen: Bring to front result: [object Object]

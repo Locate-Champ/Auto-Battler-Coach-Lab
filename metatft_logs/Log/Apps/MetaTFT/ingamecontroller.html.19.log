@@ -1,0 +1,62 @@
+﻿2026-01-20 15:25:23,469 (INFO) ================== new session ==================
+2026-01-20 15:25:23,470 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-20 15:25:23,470 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: es
+2026-01-20 15:25:23,473 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-20 15:25:23,474 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: de
+2026-01-20 15:25:23,475 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-20 15:25:23,476 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-20 15:25:23,476 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-20 15:25:23,477 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-20 15:25:23,479 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-20 15:25:23,480 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-20 15:25:23,481 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-20 15:25:23,482 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: el
+2026-01-20 15:25:23,483 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-20 15:25:23,484 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-20 15:25:23,484 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: it
+2026-01-20 15:25:23,485 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-20 15:25:23,487 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-20 15:25:23,488 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: th
+2026-01-20 15:25:23,488 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-20 15:25:23,489 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-20 15:25:23,490 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 15:25:23,490 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 15:25:23,491 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final current locale: en
+2026-01-20 15:25:23,491 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en_us to en_us
+2026-01-20 15:25:23,492 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 15:25:23,493 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 15:25:23,494 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 15:25:23,494 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 15:25:23,512 (INFO) </assets/index-x3LLM14k.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-20 15:25:23,529 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-20 15:25:23,531 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-20 15:25:23,792 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-20 15:25:23,793 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-20 15:25:23,794 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-20 15:25:23,795 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-20 15:25:23,796 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-20 15:25:23,796 (INFO) </assets/index-x3LLM14k.js> (:20808) - window name:  [object Object]
+2026-01-20 15:25:24,069 (INFO) </assets/index-x3LLM14k.js> (:20808) - resizing:  1
+2026-01-20 15:25:24,282 (ERROR) </assets/index-x3LLM14k.js> (:20808) - Uncaught ReferenceError: last_position is not defined
+2026-01-20 15:25:28,856 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:25:44,650 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:25:56,368 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:25:59,924 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:26:08,029 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:26:22,751 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:26:34,939 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:26:43,612 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:26:46,652 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:28:01,049 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:28:20,985 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:30:52,006 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:31:10,328 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:33:26,795 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:33:36,528 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:33:37,543 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:33:46,706 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:59:49,220 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:59:49,231 (INFO) </assets/index-x3LLM14k.js> (:20808) - resizing:  1
+2026-01-20 15:59:49,239 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]
+2026-01-20 15:59:49,251 (ERROR) </assets/index-x3LLM14k.js> (:20808) - Uncaught ReferenceError: last_position is not defined
+2026-01-20 15:59:59,727 (INFO) </assets/index-x3LLM14k.js> (:20808) - matchup game info change:  [object Object]

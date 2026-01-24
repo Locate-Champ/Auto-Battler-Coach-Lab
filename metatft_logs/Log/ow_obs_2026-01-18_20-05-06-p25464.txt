@@ -1,0 +1,181 @@
+20:05:06.382(INFO)[1b84]: running from: C:\Users\forre\AppData\Local\Overwolf\Extensions\ncfplpkmiejjaklknfnkgcpapnhkggmlcppckhcb\270.0.25\obs\bin\64bit\ow-obs.exe
+20:05:06.382(INFO)[1b84]: obs version: 31.0.0
+20:05:06.382(INFO)[1b84]: Initializing server
+20:05:06.382(INFO)[1b84]: Channel: 23364.1.25730
+20:05:06.382(INFO)[1b84]: MessageLoop::Run - Start
+20:05:06.383(INFO)[3520]: starting up obs
+20:05:06.394(INFO)[3520]: CoInitializeEx success
+20:05:06.396(INFO)[3520]: CPU Name: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz
+20:05:06.397(INFO)[3520]: CPU Speed: 2904MHz
+20:05:06.397(INFO)[3520]: Physical Cores: 6, Logical Cores: 12
+20:05:06.397(INFO)[3520]: Physical Memory: 65462MB Total, 52930MB Free
+20:05:06.397(INFO)[3520]: Windows Version: 10.0 Build 19045 (release: 22H2; revision: 6809; 64-bit)
+20:05:06.397(INFO)[3520]: Running as administrator: false
+20:05:06.397(INFO)[3520]: Windows 10/11 Gaming Features:
+20:05:06.397(INFO)[3520]: 	Game DVR: On
+20:05:06.397(INFO)[3520]: 	Game Mode: Probably On (no reg key set)
+20:05:06.401(INFO)[3520]: Sec. Software Status:
+20:05:06.413(INFO)[3520]: ---------------------------------
+20:05:06.413(INFO)[3520]: audio settings reset:
+20:05:06.413(INFO)[3520]: 	samples per sec: 48000
+20:05:06.413(INFO)[3520]: 	speakers:        2
+20:05:06.413(INFO)[3520]: 	max buffering:   960 milliseconds
+20:05:06.413(INFO)[3520]: 	buffering type:  dynamically increasing
+20:05:06.413(INFO)[3520]: ---------------------------------
+20:05:06.413(INFO)[3520]: ow-obs video settings reset:
+20:05:06.413(INFO)[3520]: 	base resolution:   1920x1080
+20:05:06.413(INFO)[3520]: 	output resolution: 1920x1080
+20:05:06.413(INFO)[3520]: 	fps:               30
+20:05:06.413(INFO)[3520]: 
+20:05:06.413(INFO)[3520]: Starting the background worker timer
+20:05:06.417(INFO)[3520]: ---------------------------------
+20:05:06.417(INFO)[3520]: Initializing D3D11...
+20:05:06.417(INFO)[3520]: Available Video Adapters: 
+20:05:06.420(INFO)[3520]: 	Adapter 0: NVIDIA GeForce RTX 3060
+20:05:06.420(INFO)[3520]: 	  Dedicated VRAM: 12703498240 (11.8 GiB)
+20:05:06.420(INFO)[3520]: 	  Shared VRAM:    34321358848 (32.0 GiB)
+20:05:06.420(INFO)[3520]: 	  PCI ID:         10de:2503
+20:05:06.420(INFO)[3520]: 	  HAGS Status:    Disabled (Default: No, Driver status: Supported)
+20:05:06.420(INFO)[3520]: 	  Driver Version: 32.0.15.8157
+20:05:06.422(INFO)[3520]: 	  output 0:
+20:05:06.422(INFO)[3520]: 	    name=LG ULTRAGEAR
+20:05:06.422(INFO)[3520]: 	    pos={0, 0}
+20:05:06.422(INFO)[3520]: 	    size={2560, 1440}
+20:05:06.422(INFO)[3520]: 	    attached=true
+20:05:06.422(INFO)[3520]: 	    refresh=144
+20:05:06.422(INFO)[3520]: 	    bits_per_color=8
+20:05:06.422(INFO)[3520]: 	    space=RGB_FULL_G22_NONE_P709
+20:05:06.422(INFO)[3520]: 	    primaries=[r=(0.685547, 0.308594), g=(0.264648, 0.667969), b=(0.150391, 0.057617), wp=(0.313477, 0.329102)]
+20:05:06.422(INFO)[3520]: 	    relative_gamut_area=[709=1.329573, P3=0.980123, 2020=0.703173]
+20:05:06.422(INFO)[3520]: 	    sdr_white_nits=80
+20:05:06.422(INFO)[3520]: 	    nit_range=[min=0.249600, max=351.276398, max_full_frame=351.276398]
+20:05:06.422(INFO)[3520]: 	    dpi=96 (100%)
+20:05:06.422(INFO)[3520]: 	    id=\\?\DISPLAY#GSM5BB4#5&63b2a2c&0&UID4353#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}
+20:05:06.422(INFO)[3520]: 	    alt_id=\\.\DISPLAY1
+20:05:06.425(INFO)[3520]: 	  output 1:
+20:05:06.425(INFO)[3520]: 	    name=LG ULTRAGEAR
+20:05:06.425(INFO)[3520]: 	    pos={0, -1440}
+20:05:06.425(INFO)[3520]: 	    size={2560, 1440}
+20:05:06.425(INFO)[3520]: 	    attached=true
+20:05:06.425(INFO)[3520]: 	    refresh=144
+20:05:06.425(INFO)[3520]: 	    bits_per_color=8
+20:05:06.425(INFO)[3520]: 	    space=RGB_FULL_G2084_NONE_P2020
+20:05:06.425(INFO)[3520]: 	    primaries=[r=(0.685547, 0.308594), g=(0.264648, 0.667969), b=(0.150391, 0.057617), wp=(0.313477, 0.329102)]
+20:05:06.425(INFO)[3520]: 	    relative_gamut_area=[709=1.329573, P3=0.980123, 2020=0.703173]
+20:05:06.425(INFO)[3520]: 	    sdr_white_nits=240
+20:05:06.425(INFO)[3520]: 	    nit_range=[min=0.249600, max=351.276398, max_full_frame=351.276398]
+20:05:06.425(INFO)[3520]: 	    dpi=96 (100%)
+20:05:06.425(INFO)[3520]: 	    id=\\?\DISPLAY#GSM5BB3#5&63b2a2c&0&UID4352#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}
+20:05:06.425(INFO)[3520]: 	    alt_id=\\.\DISPLAY2
+20:05:06.427(INFO)[3520]: 	  output 2:
+20:05:06.427(INFO)[3520]: 	    name=
+20:05:06.427(INFO)[3520]: 	    pos={-1920, -121}
+20:05:06.427(INFO)[3520]: 	    size={1920, 1080}
+20:05:06.427(INFO)[3520]: 	    attached=true
+20:05:06.427(INFO)[3520]: 	    refresh=60
+20:05:06.427(INFO)[3520]: 	    bits_per_color=8
+20:05:06.427(INFO)[3520]: 	    space=RGB_FULL_G22_NONE_P709
+20:05:06.427(INFO)[3520]: 	    primaries=[r=(0.652344, 0.330078), g=(0.221680, 0.680664), b=(0.148438, 0.053711), wp=(0.309570, 0.330078)]
+20:05:06.427(INFO)[3520]: 	    relative_gamut_area=[709=1.319428, P3=0.972644, 2020=0.697807]
+20:05:06.427(INFO)[3520]: 	    sdr_white_nits=80
+20:05:06.427(INFO)[3520]: 	    nit_range=[min=0.500000, max=270.000000, max_full_frame=270.000000]
+20:05:06.427(INFO)[3520]: 	    dpi=96 (100%)
+20:05:06.427(INFO)[3520]: 	    id=\\?\DISPLAY#@@@0000#5&63b2a2c&0&UID4356#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}
+20:05:06.427(INFO)[3520]: 	    alt_id=\\.\DISPLAY3
+20:05:06.429(INFO)[3520]: Loading up D3D11 on adapter NVIDIA GeForce RTX 3060 (0)
+20:05:06.736(INFO)[3520]: D3D11 loaded successfully, feature level used: b000
+20:05:06.736(INFO)[3520]: DXGI increase maximum frame latency success
+20:05:09.002(INFO)[3520]: ---------------------------------
+20:05:09.002(INFO)[3520]: video settings reset:
+20:05:09.002(INFO)[3520]: 	base resolution:   1920x1080
+20:05:09.002(INFO)[3520]: 	output resolution: 1920x1080
+20:05:09.002(INFO)[3520]: 	downscale filter:  Bicubic
+20:05:09.002(INFO)[3520]: 	fps:               30/1
+20:05:09.002(INFO)[3520]: 	format:            NV12
+20:05:09.002(INFO)[3520]: 	YUV mode:          Rec. 709/Partial
+20:05:09.002(INFO)[3520]: NV12 texture support enabled
+20:05:09.002(INFO)[3520]: P010 texture support not available
+20:05:09.005(INFO)[3520]: SDR: 0 HDR: 0
+20:05:09.005(INFO)[3520]: init obs video [width:1920 height:1080]
+20:05:09.016(WARNING)[3520]: [CoreAudio encoder]: CoreAudio AAC encoder not installed on the system or couldn't be loaded
+20:05:09.374(INFO)[3520]: [obs-nvenc] NVENC version: 12.2 (compiled) / 13.0 (driver), CUDA driver version: 13.0, AV1 supported: false
+20:05:09.442(INFO)[3520]: Handle command 2 (0)
+20:05:09.442(INFO)[3520]: QueryMachine: retrieve audio input devices
+20:05:09.447(INFO)[3520]: QueryMachine: retrieve audio output devices
+20:05:09.460(INFO)[3520]: QueryMachine: retrieve supported video encoders
+20:05:09.461(INFO)[3520]: testing IsEncoderValid (ffmpeg_svt_av1)
+20:05:09.461(INFO)[3520]: Add supported encoder: SVT-AV1
+20:05:09.461(INFO)[3520]: testing IsEncoderValid (ffmpeg_aom_av1)
+20:05:09.461(INFO)[3520]: Add supported encoder: AOM AV1
+20:05:09.461(INFO)[3520]: testing IsEncoderValid (obs_nvenc_h264_tex)
+20:05:09.556(INFO)[3520]: [obs-nvenc: 'recording_h264'] settings:
+20:05:09.556(INFO)[3520]: 	codec:        H264
+20:05:09.556(INFO)[3520]: 	rate_control: cbr
+20:05:09.556(INFO)[3520]: 	bitrate:      10000
+20:05:09.556(INFO)[3520]: 	keyint:       250
+20:05:09.556(INFO)[3520]: 	preset:       p5
+20:05:09.556(INFO)[3520]: 	tuning:       hq
+20:05:09.556(INFO)[3520]: 	multipass:    qres
+20:05:09.556(INFO)[3520]: 	profile:      high
+20:05:09.556(INFO)[3520]: 	width:        1920
+20:05:09.556(INFO)[3520]: 	height:       1080
+20:05:09.556(INFO)[3520]: 	b-frames:     2
+20:05:09.556(INFO)[3520]: 	b-ref-mode:   0
+20:05:09.556(INFO)[3520]: 	lookahead:    true (8 frames)
+20:05:09.556(INFO)[3520]: 	aq:           true
+20:05:09.556(INFO)[3520]: 
+20:05:09.872(INFO)[3520]: IsEncoderValid (obs_nvenc_h264_tex) ended successfully
+20:05:09.872(INFO)[3520]: Convert NVIDIA encoder name(new to old) from: obs_nvenc_h264_tex, to jim_nvenc.
+20:05:09.872(INFO)[3520]: Add supported encoder: NVIDIA NVENC H.264
+20:05:09.872(INFO)[3520]: testing IsEncoderValid (obs_nvenc_hevc_tex)
+20:05:09.907(INFO)[3520]: [obs-nvenc: 'recording_h264'] settings:
+20:05:09.907(INFO)[3520]: 	codec:        HEVC
+20:05:09.907(INFO)[3520]: 	rate_control: cbr
+20:05:09.907(INFO)[3520]: 	bitrate:      10000
+20:05:09.907(INFO)[3520]: 	keyint:       250
+20:05:09.907(INFO)[3520]: 	preset:       p5
+20:05:09.907(INFO)[3520]: 	tuning:       hq
+20:05:09.907(INFO)[3520]: 	multipass:    qres
+20:05:09.907(INFO)[3520]: 	profile:      main
+20:05:09.907(INFO)[3520]: 	width:        1920
+20:05:09.907(INFO)[3520]: 	height:       1080
+20:05:09.907(INFO)[3520]: 	b-frames:     2
+20:05:09.907(INFO)[3520]: 	b-ref-mode:   0
+20:05:09.907(INFO)[3520]: 	lookahead:    true (8 frames)
+20:05:09.907(INFO)[3520]: 	aq:           true
+20:05:09.907(INFO)[3520]: 
+20:05:10.050(INFO)[3520]: IsEncoderValid (obs_nvenc_hevc_tex) ended successfully
+20:05:10.050(INFO)[3520]: Convert NVIDIA encoder name(new to old) from: obs_nvenc_hevc_tex, to jim_hevc_nvenc.
+20:05:10.050(INFO)[3520]: Add supported encoder: NVIDIA NVENC HEVC
+20:05:10.050(INFO)[3520]: testing IsEncoderValid (obs_x264)
+20:05:10.050(INFO)[3520]: ---------------------------------
+20:05:10.050(INFO)[3520]: [x264 encoder: 'recording_h264'] preset: veryfast
+20:05:10.051(INFO)[3520]: [x264 encoder: 'recording_h264'] settings:
+20:05:10.051(INFO)[3520]: 	rate_control: CBR
+20:05:10.051(INFO)[3520]: 	bitrate:      2500
+20:05:10.051(INFO)[3520]: 	buffer size:  2500
+20:05:10.051(INFO)[3520]: 	crf:          23
+20:05:10.051(INFO)[3520]: 	fps_num:      30
+20:05:10.051(INFO)[3520]: 	fps_den:      1
+20:05:10.051(INFO)[3520]: 	width:        1920
+20:05:10.051(INFO)[3520]: 	height:       1080
+20:05:10.051(INFO)[3520]: 	keyint:       250
+20:05:10.051(INFO)[3520]: 
+20:05:10.060(INFO)[3520]: IsEncoderValid (obs_x264) ended successfully
+20:05:10.060(INFO)[3520]: Add supported encoder: x264
+20:05:10.060(INFO)[3520]: wgc supported
+20:05:10.060(INFO)[3520]: QueryMachine: sending result
+20:05:10.060(INFO)[3520]: shut down command
+20:05:10.060(INFO)[1b84]: MessageLoop::Run - End
+20:05:10.060(INFO)[1b84]: releasing obs control
+20:05:10.060(INFO)[32e4]: start termination watch dog
+20:05:10.060(INFO)[1b84]: releasing obs
+20:05:10.060(INFO)[1b84]: releasing scene
+20:05:10.060(INFO)[1b84]: remove all scenes and sources
+20:05:10.060(INFO)[1b84]: wait for destroy queue
+20:05:10.130(INFO)[1b84]: All scene data cleared
+20:05:10.130(INFO)[1b84]: ------------------------------------------------
+20:05:10.130(INFO)[1b84]: obs shutdown
+20:05:12.288(INFO)[1b84]: Freeing OBS context data
+20:05:12.288(INFO)[1b84]: 	3 encoder(s) were remaining
+20:05:12.336(INFO)[32e4]: cancel termination watch dog

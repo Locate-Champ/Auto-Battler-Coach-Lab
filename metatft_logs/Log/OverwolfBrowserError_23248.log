@@ -1,0 +1,34 @@
+﻿2026-01-23 17:47:07,130 (INFO) process command Line:
+2026-01-23 17:47:07,143 (INFO) =====================
+2026-01-23 17:47:07,143 (INFO) C:\Program Files (x86)\Overwolf\0.292.142.12\OverwolfBrowser.exe --type=renderer --user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 --no-pre-read-main-dll --user-data-dir=C:\Users\forre\AppData\Local\Overwolf\CefBrowserCache --locales-dir-path=C:\Program Files (x86)\Overwolf\0.292.142.12\Locales --log-severity=disable --libcef-path=C:\Program Files (x86)\Overwolf\0.292.142.12\libcef.DLL --uncaught-exception-stack-size=20 --owapp=MetaTFT - background --ow-enable-features=osr-software-rendering,use-override-ad-domain-as-referrer,cef-native-ua,use-www-domain,backup-cef-cache,extension-validation,read-opk-from-memory --uid=aheglebeeekjdnkljmpngplhpedgejncjhojnndh --ow-permissions=143088 --ignore-certificate-errors --remote-allow-origins=* --ow-domain=www.overwolf.com --enable-owc --uid=aheglebeeekjdnkljmpngplhpedgejncjhojnndh --ow-process-id=23924 --no-sandbox --js-flags=--expose-gc --enable-blink-features=AudioVideoTracks --video-capture-use-gpu-memory-buffer --lang=en-US --device-scale-factor=1 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=6 --time-ticks-at-unix-epoch=-1768867142144675 --launch-time-ticks=165547926617 --metrics-shmem-handle=7612,i,3195695917487430386,15349517582210205818,2097152 --field-trial-handle=4692,i,16419919349608355867,8344671646486105771,262144 --enable-features=AudioVideoTracks --disable-features=HeavyAdIntervention,HeavyAdPrivacyMitigations,LocalNetworkAccessChecks,PictureInPicture,ProcessSharingWithDefaultSiteInstances,SpareRendererForSitePerProcess,UseModernMediaControls,WinUseBrowserSpellChecker --variations-seed-version --trace-process-track-uuid=3190708991934122588 --enable-logging=handle --log-file=8552 --mojo-platform-channel-handle=8432 /prefetch:1
+2026-01-23 17:47:07,144 (INFO) active frames:
+2026-01-23 17:47:07,145 (INFO) ================
+2026-01-23 17:47:07,146 (INFO) url: 'overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/index.html' name:'background'
+2026-01-23 17:47:07,147 (INFO) url: 'overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/index.html' name:'main'
+2026-01-23 17:47:07,147 (INFO) 
+2026-01-23 17:47:07,148 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:26:35,807 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:26:35,807 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:26:35,808 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:26:35,808 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:26:39,812 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:26:39,813 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:26:39,813 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:26:39,814 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:44:27,961 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:44:27,962 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:44:27,963 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 18:44:27,963 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:19:35,526 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:19:35,527 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:19:35,528 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:19:35,528 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:19:40,084 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:19:40,084 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:19:40,084 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:19:40,085 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:20:53,899 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:20:53,902 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:20:53,903 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:20:53,903 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
+2026-01-23 19:20:54,142 (WARN) exucute callback [overwolf.windows.getCurrentWindow] error. frame disposed?
