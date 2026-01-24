@@ -15,7 +15,7 @@ set "SCRIPT_DIR=%~dp0"
 set "ROOT_DIR=%SCRIPT_DIR%.."
 cd /d "%ROOT_DIR%"
 
-echo  Working directory: %ROOT_DIR%
+echo  Working directory: %CD%
 echo.
 
 :: ============================================
@@ -23,9 +23,11 @@ echo.
 :: ============================================
 
 echo [1/5] Checking dependencies...
+echo.
 
 :: Check Python
-python --version >nul 2>&1
+echo       Checking Python...
+python --version 2>&1
 if %errorlevel% neq 0 (
     echo.
     echo  ERROR: Python not found!
@@ -35,10 +37,12 @@ if %errorlevel% neq 0 (
     pause
     exit /b 1
 )
-for /f "tokens=*" %%i in ('python --version 2^>^&1') do echo       %%i: OK
+echo       Python: OK
+echo.
 
 :: Check Node.js
-node --version >nul 2>&1
+echo       Checking Node.js...
+node --version 2>&1
 if %errorlevel% neq 0 (
     echo.
     echo  ERROR: Node.js not found!
@@ -47,64 +51,125 @@ if %errorlevel% neq 0 (
     pause
     exit /b 1
 )
-for /f "tokens=*" %%i in ('node --version 2^>^&1') do echo       Node.js %%i: OK
+echo       Node.js: OK
+echo.
+
+echo  Press any key to continue to package installation...
+pause >nul
 
 :: ============================================
 :: INSTALL PYTHON DEPENDENCIES
 :: ============================================
 
 echo.
+echo  ========================================
 echo [2/5] Installing Python packages...
-echo       (fastapi, uvicorn, pandas, numpy, scikit-learn)
+echo  ========================================
+echo.
 
-pip install fastapi uvicorn pandas numpy scikit-learn --quiet
-echo       Python packages: OK
+echo  Running: pip install fastapi uvicorn pandas numpy scikit-learn
+echo.
+pip install fastapi uvicorn pandas numpy scikit-learn
+echo.
+
+if %errorlevel% neq 0 (
+    echo  WARNING: pip install had errors. Check above.
+    echo.
+) else (
+    echo  Python packages: DONE
+    echo.
+)
+
+echo  Press any key to continue to frontend installation...
+pause >nul
 
 :: ============================================
 :: INSTALL NODE DEPENDENCIES
 :: ============================================
 
 echo.
+echo  ========================================
 echo [3/5] Installing frontend packages...
+echo  ========================================
+echo.
 
 cd /d "%ROOT_DIR%\app\frontend"
+echo  Current directory: %CD%
+echo.
+
 if not exist "node_modules" (
-    echo       Running npm install (this may take a minute)...
+    echo  Running: npm install
+    echo  (This may take 1-2 minutes on first run)
+    echo.
     call npm install
+    echo.
 ) else (
-    echo       node_modules exists, skipping install
+    echo  node_modules already exists, skipping npm install
+    echo.
 )
-echo       Frontend packages: OK
+
+echo  Frontend packages: DONE
+echo.
+
+echo  Press any key to start the servers...
+pause >nul
 
 :: ============================================
-:: START BACKEND SERVER (visible window)
+:: START BACKEND SERVER
 :: ============================================
 
 echo.
+echo  ========================================
 echo [4/5] Starting backend server...
+echo  ========================================
+echo.
 
 cd /d "%ROOT_DIR%"
-start "TFT Coach - Backend" cmd /k "cd /d "%ROOT_DIR%" && python -m uvicorn app.api.server:app --host 127.0.0.1 --port 8000"
+echo  Current directory: %CD%
+echo  Running: python -m uvicorn app.api.server:app --host 127.0.0.1 --port 8000
+echo.
+echo  A NEW WINDOW will open for the backend server.
+echo  Watch that window for any errors!
+echo.
 
-:: Wait for backend to initialize
-echo       Waiting for backend to start...
-timeout /t 5 /nobreak >nul
-echo       Backend: http://127.0.0.1:8000
+start "TFT Coach - Backend" cmd /k "cd /d %ROOT_DIR% && echo Starting backend... && echo. && python -m uvicorn app.api.server:app --host 127.0.0.1 --port 8000"
+
+echo  Waiting 8 seconds for backend to initialize...
+timeout /t 8
+
+echo.
+echo  Backend should be running at: http://127.0.0.1:8000
+echo.
+
+echo  Press any key to start frontend...
+pause >nul
 
 :: ============================================
-:: START FRONTEND SERVER (visible window)
+:: START FRONTEND SERVER
 :: ============================================
 
 echo.
+echo  ========================================
 echo [5/5] Starting frontend server...
+echo  ========================================
+echo.
 
 cd /d "%ROOT_DIR%\app\frontend"
-start "TFT Coach - Frontend" cmd /k "cd /d "%ROOT_DIR%\app\frontend" && npm run dev"
+echo  Current directory: %CD%
+echo  Running: npm run dev
+echo.
+echo  A NEW WINDOW will open for the frontend server.
+echo  Watch that window for any errors!
+echo.
 
-:: Wait for frontend to start
-echo       Waiting for frontend to start...
-timeout /t 5 /nobreak >nul
-echo       Frontend: http://localhost:5173
+start "TFT Coach - Frontend" cmd /k "cd /d %ROOT_DIR%\app\frontend && echo Starting frontend... && echo. && npm run dev"
+
+echo  Waiting 5 seconds for frontend to start...
+timeout /t 5
+
+echo.
+echo  Frontend should be running at: http://localhost:5173
+echo.
 
 :: ============================================
 :: OPEN BROWSER
@@ -112,24 +177,31 @@ echo       Frontend: http://localhost:5173
 
 echo.
 echo  ========================================
-echo       TFT COACH IS RUNNING!
+echo       ALL SERVERS STARTED!
 echo  ========================================
 echo.
-echo  Two new windows opened:
-echo    - Backend (Python/FastAPI)
-echo    - Frontend (Node/Vite)
+echo  Backend:  http://127.0.0.1:8000
+echo  Frontend: http://localhost:5173
 echo.
-echo  Opening browser in 3 seconds...
+echo  Check the two server windows for any errors.
+echo.
+echo  Press any key to open browser...
+pause >nul
 
-timeout /t 3 /nobreak >nul
 start "" "http://localhost:5173"
 
 echo.
-echo  ----------------------------------------
-echo  To stop: Close the Backend and Frontend
-echo  command prompt windows, then press any
-echo  key here to exit.
-echo  ----------------------------------------
+echo  ========================================
+echo  Browser opened! App should be loading.
+echo  ========================================
 echo.
-
-pause
+echo  If you see "refused to connect":
+echo    1. Check the Backend window for errors
+echo    2. Check the Frontend window for errors
+echo    3. Make sure ports 8000 and 5173 are free
+echo.
+echo  To STOP the app:
+echo    Close the Backend and Frontend windows
+echo.
+echo  Press any key to exit this launcher...
+pause >nul
