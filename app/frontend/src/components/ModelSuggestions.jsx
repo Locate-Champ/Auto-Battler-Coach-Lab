@@ -3,11 +3,11 @@ function ModelSuggestions({ recommendations, counts }) {
 
   return (
     <div className="panel-card p-3">
-      <h2 className="text-sm font-bold text-[#00d4ff] border-b border-gray-700 pb-2 mb-3">
+      <h2 className="text-sm font-bold text-[#00d4ff] border-b border-[#374151] pb-2 mb-3">
         Recommended
       </h2>
 
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         {recommendations.slice(0, 4).map((comp, index) => {
           const isTop = index === 0
           const contested = comp.contested > 0
@@ -17,8 +17,8 @@ function ModelSuggestions({ recommendations, counts }) {
               key={comp.id}
               className={`p-2 rounded ${
                 isTop
-                  ? 'bg-cyan-900/30 border border-cyan-600/30'
-                  : 'bg-gray-800/50'
+                  ? 'bg-[rgba(8,145,178,0.15)] border border-[rgba(6,182,212,0.3)]'
+                  : 'bg-[rgba(31,41,55,0.5)]'
               }`}
             >
               {/* Row 1: Medal, Name, Score */}
@@ -34,13 +34,19 @@ function ModelSuggestions({ recommendations, counts }) {
 
               {/* Row 2: Contestation warning */}
               {contested && (
-                <div className="text-xs text-yellow-500 mt-1">
+                <div className="text-xs text-[#eab308] mt-1">
                   ⚠ {comp.contested} contesting
                 </div>
               )}
             </div>
           )
         })}
+
+        {recommendations.length === 0 && (
+          <div className="text-xs text-[#6b7280] text-center py-2">
+            Loading recommendations...
+          </div>
+        )}
       </div>
     </div>
   )

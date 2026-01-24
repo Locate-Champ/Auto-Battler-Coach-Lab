@@ -1,13 +1,13 @@
 function LobbyTracker({ comps, counts, onUpdateCount }) {
   const getStatusIcon = (count) => {
-    if (count === 0) return { icon: '✓', color: 'text-green-500' }
-    if (count === 1) return { icon: '⚠', color: 'text-yellow-500' }
-    return { icon: '⛔', color: 'text-red-500' }
+    if (count === 0) return { icon: '✓', color: 'text-[#22c55e]' }
+    if (count === 1) return { icon: '⚠', color: 'text-[#eab308]' }
+    return { icon: '⛔', color: 'text-[#ef4444]' }
   }
 
   return (
     <div className="panel-card p-3">
-      <h2 className="text-sm font-bold text-[#00d4ff] border-b border-gray-700 pb-2 mb-3">
+      <h2 className="text-sm font-bold text-[#00d4ff] border-b border-[#374151] pb-2 mb-3">
         Lobby Tracker
       </h2>
 
@@ -33,7 +33,7 @@ function LobbyTracker({ comps, counts, onUpdateCount }) {
               <div className="flex items-center gap-0.5">
                 <button
                   onClick={() => onUpdateCount(comp.id, -1)}
-                  className="w-5 h-5 rounded bg-gray-700 hover:bg-gray-600 text-gray-300 text-xs flex items-center justify-center"
+                  className="w-5 h-5 rounded bg-[#374151] hover:bg-[#4b5563] active:bg-[#1f2937] text-[#d1d5db] text-xs flex items-center justify-center transition-colors"
                 >
                   -
                 </button>
@@ -42,7 +42,7 @@ function LobbyTracker({ comps, counts, onUpdateCount }) {
                 </span>
                 <button
                   onClick={() => onUpdateCount(comp.id, 1)}
-                  className="w-5 h-5 rounded bg-gray-700 hover:bg-gray-600 text-gray-300 text-xs flex items-center justify-center"
+                  className="w-5 h-5 rounded bg-[#374151] hover:bg-[#4b5563] active:bg-[#1f2937] text-[#d1d5db] text-xs flex items-center justify-center transition-colors"
                 >
                   +
                 </button>

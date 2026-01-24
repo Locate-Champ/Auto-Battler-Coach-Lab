@@ -3,7 +3,7 @@ function PriorityUnits({ units, boardUnits }) {
   const boardUnitNames = new Set(boardUnits.map(u => u.name))
   const filteredUnits = units.filter(u => !boardUnitNames.has(u.name))
 
-  // Cost tier colors
+  // Cost tier colors (matching Figma spec)
   const getCostColor = (cost) => {
     const colors = {
       1: '#6b7280',
@@ -17,13 +17,13 @@ function PriorityUnits({ units, boardUnits }) {
 
   return (
     <div className="panel-card p-3">
-      <h2 className="text-sm font-bold text-[#00d4ff] border-b border-gray-700 pb-2 mb-3">
+      <h2 className="text-sm font-bold text-[#00d4ff] border-b border-[#374151] pb-2 mb-3">
         Find These
       </h2>
 
       <div className="space-y-1">
         {filteredUnits.slice(0, 5).map(unit => (
-          <div key={unit.name} className="flex justify-between items-center h-6">
+          <div key={unit.name} className="flex justify-between items-center h-[22px]">
             {/* Left side: Name with cost */}
             <div className="flex items-center gap-1">
               <span
@@ -32,20 +32,20 @@ function PriorityUnits({ units, boardUnits }) {
               >
                 {unit.name}
               </span>
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-[#6b7280]">
                 ({unit.cost}💰)
               </span>
             </div>
 
             {/* Right side: Win rate */}
-            <span className="text-sm text-gray-400">
+            <span className="text-sm text-[#9ca3af]">
               {unit.top4_rate}%
             </span>
           </div>
         ))}
 
         {filteredUnits.length === 0 && (
-          <div className="text-xs text-gray-500 text-center py-2">
+          <div className="text-xs text-[#6b7280] text-center py-2">
             All priority units on board!
           </div>
         )}

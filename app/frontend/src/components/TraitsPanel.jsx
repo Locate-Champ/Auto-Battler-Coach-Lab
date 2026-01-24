@@ -16,17 +16,17 @@ function TraitsPanel({ traits, unitCount, boardCost, stats }) {
 
   return (
     <div className="panel-card p-3">
-      <h2 className="text-sm font-bold text-[#00d4ff] border-b border-gray-700 pb-2 mb-3">
+      <h2 className="text-sm font-bold text-[#00d4ff] border-b border-[#374151] pb-2 mb-3">
         Traits
       </h2>
 
       {/* Stats Row */}
       <div className="flex gap-4 mb-3 text-sm">
-        <span>
+        <span className="flex items-center">
           <span className="mr-1">👥</span>
           <span className="font-bold text-white">{unitCount}</span>
         </span>
-        <span>
+        <span className="flex items-center">
           <span className="mr-1">💰</span>
           <span className="font-bold text-white">{boardCost}g</span>
         </span>
@@ -39,30 +39,36 @@ function TraitsPanel({ traits, unitCount, boardCost, stats }) {
           return (
             <div key={trait.name} className="flex justify-between items-center h-6">
               <div className="flex items-center gap-1">
-                <span className="text-sm text-gray-300">{trait.name}</span>
+                <span className="text-sm text-[#d1d5db]">{trait.name}</span>
                 {tier && <TierBadge tier={tier} />}
               </div>
-              <span className="text-sm text-gray-500">{trait.count}</span>
+              <span className="text-sm text-[#6b7280]">{trait.count}</span>
             </div>
           )
         })}
+
+        {traits.length === 0 && (
+          <div className="text-xs text-[#6b7280] text-center py-2">
+            No active traits
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
 function TierBadge({ tier }) {
-  const colorClass = {
-    'S': 'tier-s',
-    'A': 'tier-a',
-    'B': 'tier-b',
-    'C': 'tier-c',
-    'D': 'tier-d',
-    'F': 'tier-f',
-  }[tier] || 'tier-c'
+  const colors = {
+    'S': 'bg-[#eab308]',
+    'A': 'bg-[#22c55e]',
+    'B': 'bg-[#3b82f6]',
+    'C': 'bg-[#6b7280]',
+    'D': 'bg-[#f97316]',
+    'F': 'bg-[#ef4444]',
+  }
 
   return (
-    <span className={`text-[10px] font-bold text-white px-1 py-0.5 rounded ${colorClass}`}>
+    <span className={`text-[10px] font-bold text-white px-1 py-0.5 rounded ${colors[tier] || colors['C']}`}>
       {tier}
     </span>
   )
