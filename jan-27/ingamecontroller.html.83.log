@@ -1,0 +1,89 @@
+﻿2026-01-26 23:45:07,715 (INFO) ================== new session ==================
+2026-01-26 23:45:07,715 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-26 23:45:07,716 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: es
+2026-01-26 23:45:07,717 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-26 23:45:07,717 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: de
+2026-01-26 23:45:07,718 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-26 23:45:07,719 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-26 23:45:07,719 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-26 23:45:07,719 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-26 23:45:07,720 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-26 23:45:07,720 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-26 23:45:07,721 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-26 23:45:07,721 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: el
+2026-01-26 23:45:07,721 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-26 23:45:07,722 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-26 23:45:07,722 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: it
+2026-01-26 23:45:07,722 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-26 23:45:07,723 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-26 23:45:07,724 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: th
+2026-01-26 23:45:07,724 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-26 23:45:07,725 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-26 23:45:07,725 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-26 23:45:07,726 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-26 23:45:07,726 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final current locale: en
+2026-01-26 23:45:07,727 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en_us to en_us
+2026-01-26 23:45:07,727 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-26 23:45:07,728 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-26 23:45:07,728 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-26 23:45:07,729 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-26 23:45:07,736 (INFO) </assets/index-5njaiL6Z.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-26 23:45:07,747 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-26 23:45:07,748 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-26 23:45:08,079 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-26 23:45:08,079 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-26 23:45:08,080 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-26 23:45:08,080 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-26 23:45:08,081 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-26 23:45:08,081 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window name:  [object Object]
+2026-01-26 23:45:08,264 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resizing:  1
+2026-01-26 23:45:08,327 (ERROR) </assets/index-5njaiL6Z.js> (:20808) - Uncaught ReferenceError: last_position is not defined
+2026-01-26 23:45:59,635 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:46:10,813 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:46:27,601 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:46:44,902 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:47:07,841 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:49:41,686 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:50:01,045 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:50:17,860 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:50:30,084 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:51:02,200 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:51:49,977 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:51:58,129 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:52:00,191 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:52:02,720 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:52:20,058 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:52:39,429 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:52:56,705 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:53:06,892 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:53:09,967 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:53:37,134 (INFO) </assets/index-5njaiL6Z.js> (:20749) - not significant move
+2026-01-26 23:53:37,169 (INFO) </assets/index-5njaiL6Z.js> (:27) - restoring ingame
+2026-01-26 23:53:37,268 (INFO) </assets/index-5njaiL6Z.js> (:20749) - dragged to: 1 33 ingamecontrollerPosition
+2026-01-26 23:57:46,218 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:58:01,480 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:58:36,061 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:58:47,269 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:58:55,411 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-26 23:59:02,024 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:00:51,149 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:00:56,726 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:07:01,436 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:07:05,511 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:09:19,229 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:09:46,516 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:13:19,588 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:13:34,829 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:14:59,350 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:15:04,449 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:15:34,011 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:15:50,837 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:18:08,544 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:18:15,150 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:18:17,171 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:18:17,686 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:18:17,690 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resizing:  1
+2026-01-27 00:18:17,756 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:18:17,758 (ERROR) </assets/index-5njaiL6Z.js> (:20808) - Uncaught ReferenceError: last_position is not defined
+2026-01-27 00:18:20,094 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
+2026-01-27 00:18:20,109 (INFO) </assets/index-5njaiL6Z.js> (:20808) - matchup game info change:  [object Object]
