@@ -1,0 +1,495 @@
+﻿2026-01-27 13:03:17,087 (INFO) ================== new session ==================
+2026-01-27 13:03:17,088 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-27 13:03:17,088 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: es
+2026-01-27 13:03:17,089 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-27 13:03:17,090 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: de
+2026-01-27 13:03:17,090 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-27 13:03:17,091 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-27 13:03:17,091 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-27 13:03:17,091 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-27 13:03:17,092 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-27 13:03:17,092 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-27 13:03:17,092 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-27 13:03:17,093 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: el
+2026-01-27 13:03:17,093 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-27 13:03:17,093 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-27 13:03:17,094 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: it
+2026-01-27 13:03:17,094 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-27 13:03:17,095 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-27 13:03:17,095 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: th
+2026-01-27 13:03:17,096 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-27 13:03:17,096 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-27 13:03:17,097 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 13:03:17,097 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 13:03:17,098 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final current locale: en
+2026-01-27 13:03:17,098 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en_us to en_us
+2026-01-27 13:03:17,099 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 13:03:17,099 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 13:03:17,100 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 13:03:17,100 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 13:03:17,146 (INFO) </assets/index-5njaiL6Z.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-27 13:03:17,168 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-27 13:03:17,168 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-27 13:03:17,171 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-27 13:03:17,172 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-27 13:03:17,172 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-27 13:03:17,173 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-27 13:03:17,174 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-27 13:03:17,174 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window name:  [object Object]
+2026-01-27 13:03:17,174 (INFO) </assets/index-5njaiL6Z.js> (:20808) - Desktop Render
+2026-01-27 13:03:17,184 (INFO) </assets/index-5njaiL6Z.js> (:20749) - healthcheck: {}
+2026-01-27 13:03:17,185 (INFO) </assets/index-5njaiL6Z.js> (:20763) - Comps Page: Render false 1100
+2026-01-27 13:03:17,186 (INFO) </assets/index-5njaiL6Z.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-27 13:03:17,187 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:17,245 (INFO) </assets/index-5njaiL6Z.js> (:20808) - AppRoutes location [object Object]
+2026-01-27 13:03:17,249 (INFO) </assets/index-5njaiL6Z.js> (:20765) - adbox state:  [object Object]
+2026-01-27 13:03:17,272 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters componentDidMount
+2026-01-27 13:03:17,272 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-27 13:03:17,273 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters: Calling updateFilterValues - filters need update
+2026-01-27 13:03:17,273 (INFO) </assets/index-5njaiL6Z.js> (:27) - updateFilterValues: Starting filter values fetch
+2026-01-27 13:03:17,415 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-27 13:03:17,416 (INFO) </assets/index-5njaiL6Z.js> (:20668) - scrollRef [object Object]
+2026-01-27 13:03:17,433 (INFO) </assets/index-5njaiL6Z.js> (:20668) - CompTable: Mounted with activeFilters, updating data
+2026-01-27 13:03:17,433 (INFO) </assets/index-5njaiL6Z.js> (:20763) - checking sync queue: from centralized filters: 1100 1100
+2026-01-27 13:03:17,434 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters componentDidMount
+2026-01-27 13:03:17,434 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-27 13:03:17,434 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters: Calling updateFilterValues - filters need update
+2026-01-27 13:03:17,435 (INFO) </assets/index-5njaiL6Z.js> (:27) - updateFilterValues: Global initialization in progress, waiting for existing request
+2026-01-27 13:03:17,435 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-27 13:03:17,436 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidMount [object Object]
+2026-01-27 13:03:17,436 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE - fetch_players() will NOT be triggered
+2026-01-27 13:03:17,437 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Ad script loaded
+2026-01-27 13:03:17,438 (INFO) </assets/index-5njaiL6Z.js> (:20765) - observing ad space
+2026-01-27 13:03:17,438 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Initializing winrate model for TFTSet16
+2026-01-27 13:03:17,439 (INFO) </assets/index-5njaiL6Z.js> (:27) - Fetching unit items
+2026-01-27 13:03:17,440 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 13:03:17,440 (INFO) </assets/index-5njaiL6Z.js> (:20765) - ExplorerFilters: Skipping centralized filter update - not on explorer page: /comps
+2026-01-27 13:03:17,441 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-27 13:03:17,441 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters changed, updating filterRefCopy: [object Object]
+2026-01-27 13:03:17,442 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Updated filterRefCopy: [object Object]
+2026-01-27 13:03:17,442 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-27 13:03:17,443 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 13:03:17,444 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 13:03:17,444 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 13:03:17,445 (INFO) </assets/index-5njaiL6Z.js> (:20808) - navigate changed [object Object]
+2026-01-27 13:03:17,445 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 13:03:17,446 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 13:03:17,446 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:17,499 (INFO) </assets/index-5njaiL6Z.js> (:20765) - adbox state:  [object Object]
+2026-01-27 13:03:17,503 (INFO) </assets/index-5njaiL6Z.js> (:452) - getting comps options:  [object Object] undefined
+2026-01-27 13:03:17,504 (INFO) </assets/index-5njaiL6Z.js> (:452) - getBuildData
+2026-01-27 13:03:17,505 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:03:17,515 (INFO) </assets/index-5njaiL6Z.js> (:20668) - CompTable: update_data from componentDidMount1 true
+2026-01-27 13:03:17,516 (INFO) </assets/index-5njaiL6Z.js> (:20668) - update_data: updating comps data
+2026-01-27 13:03:17,516 (INFO) </assets/index-5njaiL6Z.js> (:20668) - fetching /comps_data:  https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100
+2026-01-27 13:03:17,517 (INFO) </assets/index-5njaiL6Z.js> (:20668) - fetching /comps_stats:  https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-27 13:03:17,517 (INFO) </assets/index-5njaiL6Z.js> (:20808) - fetch language:  en_us  from LookupService
+2026-01-27 13:03:17,592 (INFO) </assets/index-5njaiL6Z.js> (:27) - fetch language lookups:  [object Object]
+2026-01-27 13:03:17,593 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:17,646 (INFO) </assets/index-5njaiL6Z.js> (:452) - process builds [object Object]
+2026-01-27 13:03:17,647 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:03:17,656 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:03:17,657 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:17,675 (INFO) </assets/index-5njaiL6Z.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/unit_items_processed?region_hint=na1
+2026-01-27 13:03:17,675 (INFO) </assets/index-5njaiL6Z.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/pro-comps?region_hint=na1
+2026-01-27 13:03:17,676 (INFO) </assets/index-5njaiL6Z.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/piltover-modules?region_hint=na1
+2026-01-27 13:03:17,676 (INFO) </assets/index-5njaiL6Z.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comp_options?region_hint=na1
+2026-01-27 13:03:17,677 (INFO) </assets/index-5njaiL6Z.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comp_builds?region_hint=na1
+2026-01-27 13:03:17,677 (INFO) </assets/index-5njaiL6Z.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100&region_hint=na1
+2026-01-27 13:03:17,677 (INFO) </assets/index-5njaiL6Z.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&region_hint=na1
+2026-01-27 13:03:17,700 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-27 13:03:17,700 (INFO) </assets/index-5njaiL6Z.js> (:20668) - update_data filters
+2026-01-27 13:03:17,701 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:17,715 (INFO) </assets/index-5njaiL6Z.js> (:20668) - CompTable: update_data from updateActiveFilters1 true
+2026-01-27 13:03:17,716 (INFO) </assets/index-5njaiL6Z.js> (:20668) - update_data: updating comps data
+2026-01-27 13:03:17,717 (INFO) </assets/index-5njaiL6Z.js> (:20668) - already fetching comps data https://api-hc.metatft.com/tft-comps-api/comps_data
+2026-01-27 13:03:17,717 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:17,731 (INFO) </assets/index-5njaiL6Z.js> (:452) - process builds [object Object]
+2026-01-27 13:03:17,732 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:03:17,742 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:17,757 (INFO) </assets/index-5njaiL6Z.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-27 13:03:17,757 (INFO) </assets/index-5njaiL6Z.js> (:20765) - ExplorerFilters: User changed filters via legacy method: [object Object]
+2026-01-27 13:03:17,758 (INFO) </assets/index-5njaiL6Z.js> (:20765) - sendFetchData: Skipping fetch - no dimension filters to warrant data request
+2026-01-27 13:03:17,758 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-27 13:03:17,759 (INFO) </assets/index-5njaiL6Z.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at Object.lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-5njaiL6Z.js:20748:423765)
+    at async le (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-5njaiL6Z.js:332:71011)
+2026-01-27 13:03:17,760 (INFO) </assets/index-5njaiL6Z.js> (:20808) - draggable [object Object]
+2026-01-27 13:03:17,801 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,802 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,802 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,802 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,803 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,803 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,819 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-27 13:03:17,820 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,820 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,820 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-27 13:03:17,821 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,821 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,824 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,825 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,825 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,825 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,826 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,826 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,827 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-27 13:03:17,827 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,827 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,828 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,828 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,828 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,829 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,829 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-27 13:03:17,829 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,830 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,830 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,831 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,831 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,831 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,832 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,832 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,833 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,834 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,834 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,834 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,835 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,835 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,836 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,836 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,836 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,837 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,837 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,837 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,838 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,838 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,839 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,839 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,840 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,840 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,840 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,841 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,841 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,842 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,842 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,842 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,843 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,843 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,843 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,844 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,844 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,844 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,845 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,845 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,846 (INFO) </assets/index-5njaiL6Z.js> (:27) - Formula not found:  TFT16_Bard_Num3Stars {39cfdb6d} [object Object] 
+2026-01-27 13:03:17,846 (INFO) </assets/index-5njaiL6Z.js> (:27) - couldn't find variable:  1 TFT16_Bard_Num3Stars
+2026-01-27 13:03:17,846 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,847 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,847 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,847 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,848 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,848 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,848 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,849 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,849 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,849 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,850 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-27 13:03:17,850 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:03:17,851 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-27 13:03:17,851 (INFO) </assets/index-5njaiL6Z.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-27 13:03:17,957 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:17,995 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-27 13:03:17,996 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:03:17,996 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-27 13:03:18,032 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Model lookups loaded for TFTSet16
+2026-01-27 13:03:18,033 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Loading model for TFTSet16
+2026-01-27 13:03:18,041 (INFO) </assets/index-5njaiL6Z.js> (:20749) - healthcheck: {}
+2026-01-27 13:03:18,042 (INFO) </assets/index-5njaiL6Z.js> (:20749) - UpdateControls mounted [object Object] [object Object]
+2026-01-27 13:03:18,280 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Model loaded for TFTSet16
+2026-01-27 13:03:18,299 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Model details for TFTSet16:  WinRateModelImproved_BoardStrength_TFTSet16_Tue, 27 Jan 2026 09:17:56 GMT
+2026-01-27 13:03:18,989 (INFO) </assets/index-5njaiL6Z.js> (:20749) - userInfo: [object Object]
+2026-01-27 13:03:19,257 (INFO) </assets/index-5njaiL6Z.js> (:27) - updateFilterValues: Successfully fetched filter values
+2026-01-27 13:03:19,268 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-27 13:03:19,268 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-27 13:03:19,269 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-27 13:03:19,270 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-27 13:03:19,270 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-27 13:03:19,271 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-27 13:03:19,271 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-27 13:03:19,272 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-27 13:03:19,272 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-27 13:03:19,273 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-27 13:03:19,273 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-27 13:03:19,274 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-27 13:03:19,274 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-27 13:03:19,275 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-27 13:03:19,275 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-27 13:03:19,275 (INFO) </assets/index-5njaiL6Z.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-27 13:03:19,362 (INFO) </assets/index-5njaiL6Z.js> (:20808) - MyTeams: selectedPortal state changed to: 
+2026-01-27 13:03:19,363 (INFO) </assets/index-5njaiL6Z.js> (:20808) - MyTeams: portalSearch state changed to: 
+2026-01-27 13:03:19,570 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:19,610 (INFO) </assets/index-5njaiL6Z.js> (:20668) - set key: TFTSet16 TFTSet16
+2026-01-27 13:03:19,613 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:19,626 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:03:19,638 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:19,651 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:19,664 (INFO) </assets/index-5njaiL6Z.js> (:452) - process builds [object Object]
+2026-01-27 13:03:19,664 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:03:19,682 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:19,739 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:19,765 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:03:19,780 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:03:20,355 (INFO) </assets/index-5njaiL6Z.js> (:452) - process builds [object Object]
+2026-01-27 13:03:21,202 (INFO) </assets/index-5njaiL6Z.js> (:20808) - Desktop Render
+2026-01-27 13:03:21,389 (INFO) </assets/index-5njaiL6Z.js> (:20808) - AppRoutes location [object Object]
+2026-01-27 13:03:21,393 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:04,728 (INFO) </assets/index-5njaiL6Z.js> (:20808) - Desktop Render
+2026-01-27 13:14:04,792 (INFO) </assets/index-5njaiL6Z.js> (:20808) - AppRoutes location [object Object]
+2026-01-27 13:14:04,795 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:05,692 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:05,728 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:06,684 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:06,685 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:06,952 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:06,954 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:07,121 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:07,334 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:07,337 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:07,531 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:07,533 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:07,749 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:07,752 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:07,866 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:08,394 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:08,395 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:11,579 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:11,580 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:13,187 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:13,223 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:21,674 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:14:25,188 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:25,189 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:25,408 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:25,409 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:25,542 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:25,817 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:25,819 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:26,069 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:26,072 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:26,223 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:27,345 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:14:27,347 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:14:53,323 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:15:36,921 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:16:02,356 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:16:41,625 (INFO) </assets/index-5njaiL6Z.js> (:20808) - Desktop Render
+2026-01-27 13:16:41,691 (INFO) </assets/index-5njaiL6Z.js> (:20808) - AppRoutes location [object Object]
+2026-01-27 13:16:41,695 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:16:41,697 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:41,749 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:41,751 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:16:41,752 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:41,799 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:16:41,820 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:41,883 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:16:41,904 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:41,958 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:16:41,978 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:42,121 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:42,302 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:16:42,303 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:42,330 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:42,418 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:42,480 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:16:42,490 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:42,541 (INFO) </assets/index-5njaiL6Z.js> (:20668) - backing Up State
+2026-01-27 13:16:42,562 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:42,628 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:42,672 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:42,673 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] NEW GAME CYCLE DETECTED - resetting deduplication state
+2026-01-27 13:16:42,673 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] resetFetchPlayersState: Clearing deduplication state for new game
+2026-01-27 13:16:42,673 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-27 13:16:42,674 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] No actual changes detected in players_tagline or roster.player_status (stable comparison)
+2026-01-27 13:16:42,757 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:42,757 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-27 13:16:42,758 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] No actual changes detected in players_tagline or roster.player_status (stable comparison)
+2026-01-27 13:16:42,998 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:16:42,998 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:43,950 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:16:43,951 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:44,038 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:44,080 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:44,518 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:16:53,587 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:53,588 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-27 13:16:53,588 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] No actual changes detected in players_tagline or roster.player_status (stable comparison)
+2026-01-27 13:16:53,621 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:53,622 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-27 13:16:53,622 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] Updating Roster via players_tagline change (stable comparison): Flash#00013,Karina Super Fan#8148,Kdot#4617,Kirae#NA1,Mars0903#Mars,cherry hoopla#fruit,mawr#rawr
+2026-01-27 13:16:53,623 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Getting Players [object Object]
+2026-01-27 13:16:53,623 (INFO) </assets/index-5njaiL6Z.js> (:20748) - should update:  false
+2026-01-27 13:16:53,624 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: summoner_info available, checking conditions...
+2026-01-27 13:16:53,625 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: fetching_player_lookups = false
+2026-01-27 13:16:53,625 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: refresh_player_lookups = true
+2026-01-27 13:16:53,626 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: player_lookups = [object Object]
+2026-01-27 13:16:53,626 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: Error in player_lookups = false
+2026-01-27 13:16:53,627 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: NOT currently fetching, checking refresh condition...
+2026-01-27 13:16:53,627 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: Condition met - proceeding with player lookup
+2026-01-27 13:16:53,652 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: Set FETCHING_PLAYER_LOOKUPS=true immediately, fetchKey: Flash#00013,Karina Super Fan#8148,Kdot#4617,Kirae#NA1,Mars0903#Mars,cherry hoopla#fruit,mawr#rawr
+2026-01-27 13:16:53,652 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] fetch_players: players_tagline = [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:16:53,653 (INFO) </assets/index-5njaiL6Z.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/latest_cluster_id?region_hint=na1
+2026-01-27 13:16:53,670 (INFO) </assets/index-5njaiL6Z.js> (:20749) - healthcheck: {}
+2026-01-27 13:16:53,779 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:53,823 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] execute_player_query: Setting FETCHING_PLAYER_LOOKUPS=true and REFRESH_PLAYER_LOOKUPS=false
+2026-01-27 13:16:53,824 (INFO) </assets/index-5njaiL6Z.js> (:20748) - [PlayerScouting] execute_player_query: Players list: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-27 13:16:53,855 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:53,856 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:16:53,857 (INFO) </assets/index-5njaiL6Z.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Mars0903/Mars?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-27 13:16:53,858 (INFO) </assets/index-5njaiL6Z.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/mawr/rawr?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-27 13:16:53,859 (INFO) </assets/index-5njaiL6Z.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/cherry hoopla/fruit?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-27 13:16:53,859 (INFO) </assets/index-5njaiL6Z.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Kirae/NA1?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-27 13:16:53,860 (INFO) </assets/index-5njaiL6Z.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Karina Super Fan/8148?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-27 13:16:53,860 (INFO) </assets/index-5njaiL6Z.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Flash/00013?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-27 13:16:53,861 (INFO) </assets/index-5njaiL6Z.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Kdot/4617?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-27 13:16:53,995 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Got Player mawr#rawr
+2026-01-27 13:16:54,047 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:54,130 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Got Player Flash#00013
+2026-01-27 13:16:54,159 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:54,204 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Got Player Mars0903#Mars
+2026-01-27 13:16:54,244 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:54,284 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Got Player cherry hoopla#fruit
+2026-01-27 13:16:54,308 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:54,348 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Got Player Karina Super Fan#8148
+2026-01-27 13:16:54,371 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:54,445 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Got Player Kdot#4617
+2026-01-27 13:16:54,469 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:54,506 (INFO) </assets/index-5njaiL6Z.js> (:20748) - Got Player Kirae#NA1
+2026-01-27 13:16:54,533 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:54,661 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:54,662 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:16:54,744 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:54,745 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:16:54,806 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:54,807 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:16:54,871 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:54,871 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:16:55,006 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:55,006 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:16:55,023 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:16:55,024 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:16:55,199 (INFO) </assets/index-5njaiL6Z.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-27 13:16:55,200 (INFO) </assets/index-5njaiL6Z.js> (:20668) - Comps Render
+2026-01-27 13:16:55,258 (INFO) </assets/index-5njaiL6Z.js> (:20749) - healthcheck: {}
+2026-01-27 13:17:00,592 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:00,593 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:17:24,780 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:17:33,575 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:33,576 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:17:33,611 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:33,612 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:17:33,657 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:33,658 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:17:33,700 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:33,701 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:17:33,964 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:33,965 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:17:34,120 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:34,120 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:17:39,712 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:39,712 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:17:48,608 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:17:48,609 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:03,562 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:18:09,570 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:09,571 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:09,614 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:09,615 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:10,016 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:10,017 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:10,285 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:10,286 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:29,600 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:29,601 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:30,159 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:18:51,638 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:51,639 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:51,994 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:51,995 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:52,104 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:52,105 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:18:59,604 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:18:59,605 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:19:02,618 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:19:02,618 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:19:05,432 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:19:12,608 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:19:12,609 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:19:15,612 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:19:15,613 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:19:16,605 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:19:16,605 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:19:30,624 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:19:30,625 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:19:35,270 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:19:41,653 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:19:41,654 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:19:41,734 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:19:41,735 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:06,805 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:20:26,660 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:26,660 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:29,622 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:29,623 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:29,681 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:29,682 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:29,748 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:29,748 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:30,003 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:30,004 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:36,277 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:36,278 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:36,638 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:36,639 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:50,467 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:20:59,668 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:59,669 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:20:59,764 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:20:59,765 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:21:15,934 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:21:32,687 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:21:32,687 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:21:35,621 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:21:35,622 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:21:35,674 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:21:35,675 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:21:35,730 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:21:35,731 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:21:35,988 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:21:35,989 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:21:41,742 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:21:41,742 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:21:56,672 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:22:05,970 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:22:05,970 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:22:06,376 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:22:06,376 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:22:36,217 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:22:51,698 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:22:51,698 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:23:14,959 (INFO) </assets/index-5njaiL6Z.js> (:20765) - incrementing tip
+2026-01-27 13:23:31,677 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:23:31,678 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:23:31,744 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:23:31,745 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:23:31,815 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:23:31,816 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:23:32,071 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:23:32,072 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:23:32,168 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:23:32,169 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:23:34,660 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:23:34,661 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:23:37,825 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:23:37,826 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-27 13:23:38,687 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-27 13:23:38,688 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
