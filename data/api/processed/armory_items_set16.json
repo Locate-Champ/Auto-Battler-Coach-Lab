@@ -1,0 +1,3645 @@
+[
+  {
+    "apiName": "TFT16_ChampionItem_Fizz_2Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 2-star Fizz",
+    "effects": {
+      "Amount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Fizz/HUD/TFT16_Fizz_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star Fizz",
+    "tags": [],
+    "unique": true,
+    "en_name": "2-star Fizz"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Illaoi_2Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 2-star Illaoi",
+    "effects": {
+      "Amount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Illaoi/HUD/TFT16_Illaoi_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star Illaoi",
+    "tags": [],
+    "unique": true,
+    "en_name": "2-star Illaoi"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_TahmKench_3Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 3-star Tahm Kench",
+    "effects": {
+      "Amount": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_TahmKench/HUD/TFT16_TahmKench_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star Tahm Kench",
+    "tags": [],
+    "unique": true,
+    "en_name": "3-star Tahm Kench"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Gangplank_2Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 2-star Gangplank",
+    "effects": {
+      "Amount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Gangplank/HUD/TFT16_Gangplank_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star Gangplank",
+    "tags": [],
+    "unique": true,
+    "en_name": "2-star Gangplank"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Fizz_3Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 3-star Fizz",
+    "effects": {
+      "Amount": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Fizz/HUD/TFT16_Fizz_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star Fizz",
+    "tags": [],
+    "unique": true,
+    "en_name": "3-star Fizz"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Nautilus_2Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 2-star Nautilus",
+    "effects": {
+      "Amount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Nautilus/HUD/TFT16_Nautilus_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star Nautilus",
+    "tags": [],
+    "unique": true,
+    "en_name": "2-star Nautilus"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_TwistedFate",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 1-star Twisted Fate",
+    "effects": {
+      "Amount": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_TwistedFate/HUD/TFT16_TwistedFate_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star Twisted Fate",
+    "tags": [],
+    "unique": true,
+    "en_name": "1-star Twisted Fate"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Illaoi_3Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 3-star Illaoi",
+    "effects": {
+      "Amount": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Illaoi/HUD/TFT16_Illaoi_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star Illaoi",
+    "tags": [],
+    "unique": true,
+    "en_name": "3-star Illaoi"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Illaoi",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 1-star Illaoi",
+    "effects": {
+      "Amount": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Illaoi/HUD/TFT16_Illaoi_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star Illaoi",
+    "tags": [],
+    "unique": true,
+    "en_name": "1-star Illaoi"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Graves_3Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 3-star Graves",
+    "effects": {
+      "Amount": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Graves/HUD/TFT16_Graves_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star Graves",
+    "tags": [],
+    "unique": true,
+    "en_name": "3-star Graves"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_TahmKench",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 1-star Tahm Kench",
+    "effects": {
+      "Amount": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_TahmKench/HUD/TFT16_TahmKench_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star Tahm Kench",
+    "tags": [],
+    "unique": true,
+    "en_name": "1-star Tahm Kench"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_MissFortune",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 1-star Miss Fortune",
+    "effects": {
+      "Amount": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_MissFortune/HUD/TFT16_MissFortune_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star Miss Fortune",
+    "tags": [],
+    "unique": true,
+    "en_name": "1-star Miss Fortune"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_TahmKench_2Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 2-star Tahm Kench",
+    "effects": {
+      "Amount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_TahmKench/HUD/TFT16_TahmKench_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star Tahm Kench",
+    "tags": [],
+    "unique": true,
+    "en_name": "2-star Tahm Kench"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Fizz",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 1-star Fizz",
+    "effects": {
+      "Amount": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Fizz/HUD/TFT16_Fizz_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star Fizz",
+    "tags": [],
+    "unique": true,
+    "en_name": "1-star Fizz"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Gangplank_3Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 3-star Gangplank",
+    "effects": {
+      "Amount": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Gangplank/HUD/TFT16_Gangplank_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star Gangplank",
+    "tags": [],
+    "unique": true,
+    "en_name": "3-star Gangplank"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Gangplank",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 1-star Gangplank",
+    "effects": {
+      "Amount": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Gangplank/HUD/TFT16_Gangplank_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star Gangplank",
+    "tags": [],
+    "unique": true,
+    "en_name": "1-star Gangplank"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_MissFortune_2Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 2-star Miss Fortune",
+    "effects": {
+      "Amount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_MissFortune/HUD/TFT16_MissFortune_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star Miss Fortune",
+    "tags": [],
+    "unique": true,
+    "en_name": "2-star Miss Fortune"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_MissFortune_3Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 3-star Miss Fortune",
+    "effects": {
+      "Amount": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_MissFortune/HUD/TFT16_MissFortune_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star Miss Fortune",
+    "tags": [],
+    "unique": true,
+    "en_name": "3-star Miss Fortune"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Nautilus",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 1-star Nautilus",
+    "effects": {
+      "Amount": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Nautilus/HUD/TFT16_Nautilus_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star Nautilus",
+    "tags": [],
+    "unique": true,
+    "en_name": "1-star Nautilus"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Graves",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 1-star Graves",
+    "effects": {
+      "Amount": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Graves/HUD/TFT16_Graves_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star Graves",
+    "tags": [],
+    "unique": true,
+    "en_name": "1-star Graves"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Nautilus_3Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 3-star Nautilus",
+    "effects": {
+      "Amount": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Nautilus/HUD/TFT16_Nautilus_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star Nautilus",
+    "tags": [],
+    "unique": true,
+    "en_name": "3-star Nautilus"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_TwistedFate_3Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 3-star Twisted Fate",
+    "effects": {
+      "Amount": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_TwistedFate/HUD/TFT16_TwistedFate_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star Twisted Fate",
+    "tags": [],
+    "unique": true,
+    "en_name": "3-star Twisted Fate"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_TwistedFate_2Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 2-star Twisted Fate",
+    "effects": {
+      "Amount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_TwistedFate/HUD/TFT16_TwistedFate_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star Twisted Fate",
+    "tags": [],
+    "unique": true,
+    "en_name": "2-star Twisted Fate"
+  },
+  {
+    "apiName": "TFT16_ChampionItem_Graves_2Star",
+    "associatedTraits": [
+      "TFT16_Bilgewater"
+    ],
+    "composition": [],
+    "desc": "Gain a 2-star Graves",
+    "effects": {
+      "Amount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Characters/TFT16_Graves/HUD/TFT16_Graves_Square.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star Graves",
+    "tags": [],
+    "unique": true,
+    "en_name": "2-star Graves"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_30",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "30 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "30 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "30 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_18",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "18 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "18 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "18 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_15",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "15 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "15 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "15 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_12",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "12 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "12 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "12 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_55",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "55 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "55 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "55 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_25",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "25 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "25 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "25 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_20",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "20 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "20 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "20 gold"
+  },
+  {
+    "apiName": "TFT16_Explorer_1HPQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Have exactly @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player health.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Have exactly @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player health."
+  },
+  {
+    "apiName": "TFT16_Explorer_ClutteredMindQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Have a full bench at the end of combat for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ rounds.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Have a full bench at the end of combat for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ rounds."
+  },
+  {
+    "apiName": "TFT16_Explorer_ShopRerollMediumQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reroll the shop @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ times.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reroll the shop @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ times."
+  },
+  {
+    "apiName": "TFT16_Explorer_ShopRerollHardQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reroll the shop @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ times.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reroll the shop @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ times."
+  },
+  {
+    "apiName": "TFT16_Explorer_BuyXPQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Buy @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ XP.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Buy @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ XP."
+  },
+  {
+    "apiName": "TFT16_Explorer_3StarQiyanaQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Field a 3-star Qiyana in combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Field a 3-star Qiyana in combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_LoseBigStreakQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats in a row.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats in a row."
+  },
+  {
+    "apiName": "TFT16_Explorer_BigHealthLossQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Have less than @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player health.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Have less than @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player health."
+  },
+  {
+    "apiName": "TFT16_Explorer_LowHealthQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Have less than @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player health.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Have less than @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player health."
+  },
+  {
+    "apiName": "TFT16_Explorer_WinLateQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Win @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Win @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_Explorer3TraitQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Field the Ixtal trait for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Field the Ixtal trait for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_BrockSurviveQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Brock survives @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Brock survives @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_LoseHardQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_EarnInterestQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Earn @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ interest.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Earn @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ interest."
+  },
+  {
+    "apiName": "TFT16_Explorer_2StarNeekoQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Field a 2-star Neeko in combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Field a 2-star Neeko in combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_ClearMindQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Have an empty bench at the end of combat for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ rounds.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Have an empty bench at the end of combat for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ rounds."
+  },
+  {
+    "apiName": "TFT16_Explorer_ShopRerollQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reroll the shop @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ times.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reroll the shop @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ times."
+  },
+  {
+    "apiName": "TFT16_Explorer_DamageBlockedQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "An Ixtal champion blocks @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ damage in 1 combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "An Ixtal champion blocks @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ damage in 1 combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_LowStreakShortQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Alternate winning and losing for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Alternate winning and losing for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_LoseSmallStreakQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats in a row.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats in a row."
+  },
+  {
+    "apiName": "TFT16_Explorer_QiyanaTakedownQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Qiyana scores @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ takedowns in 1 player combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Qiyana scores @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ takedowns in 1 player combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_TotalMRQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "An Ixtal champion reaches @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ Magic Resist in combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "An Ixtal champion reaches @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ Magic Resist in combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_DamageDealtQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "An Ixtal champion deals @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ damage in 1 combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "An Ixtal champion deals @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ damage in 1 combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_KillQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Kill @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ enemies.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Kill @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ enemies."
+  },
+  {
+    "apiName": "TFT16_Explorer_1UnitAliveQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Win @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats with only 1 unit surviving.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Win @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats with only 1 unit surviving."
+  },
+  {
+    "apiName": "TFT16_Explorer_LoseQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_BuyXPHardQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Buy @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ XP.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Buy @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ XP."
+  },
+  {
+    "apiName": "TFT16_Explorer_NeekoSurviveQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Neeko survives player combat for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ seconds.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Neeko survives player combat for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ seconds."
+  },
+  {
+    "apiName": "TFT16_Explorer_ChampsDiedQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Have @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ of your units die in player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Have @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ of your units die in player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_BuyXPMediumQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Buy @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ XP.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Buy @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ XP."
+  },
+  {
+    "apiName": "TFT16_Explorer_WinStreakShortQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Win @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats in a row.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Win @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats in a row."
+  },
+  {
+    "apiName": "TFT16_Explorer_Cashout",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Total %i:Set16Ixtal%: <b>@TFTUnitProperty.:TFT16_Explorer_CurrentExplorerPoints@</b><br>Est. Value: ~<b>@TFTUnitProperty.:TFT16_Explorer_CurrentCashoutLevel@</b> gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "<b>Spend all %i:Set16Ixtal%. Start a new Quest next round!</b>",
+    "tags": [],
+    "unique": false,
+    "en_name": "<b>Spend all %i:Set16Ixtal%. Start a new Quest next round!</b>"
+  },
+  {
+    "apiName": "TFT16_Explorer_ClearItemBenchQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Have no items on your bench for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ rounds. ",
+    "tags": [],
+    "unique": false,
+    "en_name": "Have no items on your bench for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ rounds. "
+  },
+  {
+    "apiName": "TFT16_Explorer_ZeroGoldQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Start combat with zero gold @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ times.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Start combat with zero gold @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ times."
+  },
+  {
+    "apiName": "TFT16_Explorer_Lose2Quest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Lose @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_LowStreakQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Alternate winning and losing for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Alternate winning and losing for @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ player combats."
+  },
+  {
+    "apiName": "TFT16_Explorer_TotalGoldQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Have @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@+ gold at the end of combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Have @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@+ gold at the end of combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_2StarMilioQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Field a 2-Star Milio in combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Field a 2-Star Milio in combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_TotalArmorQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "An Ixtal champion reaches @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ Armor in player combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "An Ixtal champion reaches @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@ Armor in player combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_2StarSkarnerQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Field a 2-star Skarner in combat.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Field a 2-star Skarner in combat."
+  },
+  {
+    "apiName": "TFT16_Explorer_LevelUpQuest",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reward: @TFTUnitProperty.:TFT16_Explorer_QuestExplorerPoints@ %i:Set16Ixtal%",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/ChoiceUI/ADMIN_Armorery_Icon.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reach level @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reach level @TFTUnitProperty.:TFT16_Explorer_QuestVariable1@."
+  },
+  {
+    "apiName": "TFT14_CypherArmoryItem_Specific5Costs",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 star Zac, Aurora, Urgot, and Samira",
+    "effects": {
+      "starLevel": 2
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 star Zac, Aurora, Urgot, and Samira",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 star Zac, Aurora, Urgot, and Samira"
+  },
+  {
+    "apiName": "TFT14_CypherArmoryItem_SpecificRadiantItems",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Covalent Spark, Jak'sho the Protean, Bulwark's Oath, Spear of Hirana, Rabadon's Ascended Deathcap, Glamorous Gauntlet, Guinsoo's Reckoning, Runaan's Tempest, Luminous Deathblade, Zenith Edge, Fist of Fairness, Eternal Whisper",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_RandomItem_Radiant.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "12 radiant items",
+    "tags": [],
+    "unique": false,
+    "en_name": "12 radiant items"
+  },
+  {
+    "apiName": "TFT_Assist_TacticiansCape_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Tacticians' Capes",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Tacticians_Ring.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Tacticians' Capes",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Tacticians' Capes"
+  },
+  {
+    "apiName": "TFT_Assist_Dummy_Shroud",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "A training dummy with a Shroud of Stillness, an item which increases enemies' mana costs.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT_TrainingDummy/HUD/Icons2D/TFT_TrainingDummy_DoNothing.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Dummy with Shroud",
+    "tags": [],
+    "unique": false,
+    "en_name": "Dummy with Shroud"
+  },
+  {
+    "apiName": "TFT_Assist_Dummy_2xZekes",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "A training dummy with 2 Zeke's Heralds, which provides Attack Speed to nearby allies.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT_TrainingDummy/HUD/Icons2D/TFT_TrainingDummy_DoNothing.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Dummy with 2 Zeke's",
+    "tags": [],
+    "unique": false,
+    "en_name": "Dummy with 2 Zeke's"
+  },
+  {
+    "apiName": "TFT_Assist_2x3cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 3-cost champions",
+    "effects": {
+      "NumUnits": 2,
+      "{7e1ab625}": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_3c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 3-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 3-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_5x4cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "5 4-cost champions",
+    "effects": {
+      "NumUnits": 5,
+      "{7e1ab625}": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "5 4-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "5 4-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_6x5cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "6 5-cost champions",
+    "effects": {
+      "NumUnits": 6,
+      "{7e1ab625}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "6 5-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "6 5-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_1x2star2cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2-star 2-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "starLevel": 2,
+      "{7e1ab625}": 2
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_2c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star 2-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "2-star 2-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_1x3star5cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3-star 5-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "starLevel": 3,
+      "{7e1ab625}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star 5-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "3-star 5-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_7x5cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "7 5-cost champions",
+    "effects": {
+      "NumUnits": 7,
+      "{7e1ab625}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "7 5-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "7 5-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_Dummy_2xLocked",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "A training dummy with 2 Lockets of The Iron Solari, an item which shields allies on combat start.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT_TrainingDummy/HUD/Icons2D/TFT_TrainingDummy_DoNothing.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Dummy with 2 Lockets",
+    "tags": [],
+    "unique": false,
+    "en_name": "Dummy with 2 Lockets"
+  },
+  {
+    "apiName": "TFT_Assist_3x2cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 2-cost champions",
+    "effects": {
+      "NumUnits": 3,
+      "{7e1ab625}": 2
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_2c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 2-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 2-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_AllDoubleNonSpatItems",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Deathblade, Rabadon's Deathcap, Red Buff, Bramble Vest, Dragon's Claw, Warmog's Armor, Blue Buff, Thief's Gloves.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistRandomComponent.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "All double component items",
+    "tags": [],
+    "unique": false,
+    "en_name": "All double component items"
+  },
+  {
+    "apiName": "TFT_Assist_2x4cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 4-cost champions",
+    "effects": {
+      "NumUnits": 2,
+      "{7e1ab625}": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 4-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 4-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_Deathblade_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Deathblades",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Death_Blade.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Deathblades",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Deathblades"
+  },
+  {
+    "apiName": "TFT_Assist_Reforger_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Reforgers",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_ItemReroller.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Reforgers",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Reforgers"
+  },
+  {
+    "apiName": "TFT_Assist_5x1cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "5 1-cost champions",
+    "effects": {
+      "NumUnits": 5,
+      "{7e1ab625}": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_1c.TFT_Set14.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "5 1-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "5 1-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_MasterworkUpgrade_3",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 Masterwork Upgrades",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/MasterworkUpgrade.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 Masterwork Upgrades",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 Masterwork Upgrades"
+  },
+  {
+    "apiName": "TFT_Assist_1x3cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "{7e1ab625}": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_3c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "3-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_Remover_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Item Removers",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_ItemRemover.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Item Removers",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Item Removers"
+  },
+  {
+    "apiName": "TFT_Assist_1x2star3cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2-star 3-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "starLevel": 2,
+      "{7e1ab625}": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_3c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star 3-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "2-star 3-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_1x2cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "{7e1ab625}": 2
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_2c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "2-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_3x3cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 3-cost champions",
+    "effects": {
+      "NumUnits": 3,
+      "{7e1ab625}": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_3c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 3-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 3-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_RandomRadiantItem_3",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 Radiant Items",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_RandomItem_Radiant.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 Radiant Items",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 Radiant Items"
+  },
+  {
+    "apiName": "TFT_Assist_RandomRadiantItem_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Radiant Items",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_RandomItem_Radiant.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Radiant Items",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Radiant Items"
+  },
+  {
+    "apiName": "TFT_Assist_Golem_2xAegis",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "A golem with 2 Aegises of the Legion, an item which provides Armor, Magic Resist, and Attack Speed to allies behind it.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT_BlueGolem/HUD/TFT_BlueGolem_Spell.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Golem with 2 Aegises.",
+    "tags": [],
+    "unique": false,
+    "en_name": "Golem with 2 Aegises."
+  },
+  {
+    "apiName": "TFT_Assist_1x2star5cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2-star 5-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "starLevel": 2,
+      "{7e1ab625}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star 5-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "2-star 5-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_3x4cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 4-cost champions",
+    "effects": {
+      "NumUnits": 3,
+      "{7e1ab625}": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 4-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 4-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_LesserDuplicator_6",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "6 Lesser Champion Duplicators",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/ChampionDuplicator_III.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "6 Lesser Champion Duplicators",
+    "tags": [],
+    "unique": false,
+    "en_name": "6 Lesser Champion Duplicators"
+  },
+  {
+    "apiName": "TFT_Assist_1x4cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "1-star 4-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "{7e1ab625}": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star 4-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "1-star 4-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_RandomComponent_4",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "4 components",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistRandomComponent.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "4 components",
+    "tags": [],
+    "unique": false,
+    "en_name": "4 components"
+  },
+  {
+    "apiName": "TFT_Assist_1x5cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "1-star 5-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "{7e1ab625}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1-star 5-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "1-star 5-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_2x2star2cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 2-star 2-cost champions",
+    "effects": {
+      "NumUnits": 2,
+      "starLevel": 2,
+      "{7e1ab625}": 2
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_2c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 2-star 2-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 2-star 2-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_RandomComponent_9",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "9 components",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistRandomComponent.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "9 components",
+    "tags": [],
+    "unique": false,
+    "en_name": "9 components"
+  },
+  {
+    "apiName": "TFT_Assist_1x2star4cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2-star 4-cost champion",
+    "effects": {
+      "NumUnits": 1,
+      "starLevel": 2,
+      "{7e1ab625}": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2-star 4-cost champion",
+    "tags": [],
+    "unique": false,
+    "en_name": "2-star 4-cost champion"
+  },
+  {
+    "apiName": "TFT_Assist_3x5cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 5-cost champions",
+    "effects": {
+      "NumUnits": 3,
+      "{7e1ab625}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 5-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 5-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_4x2cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "4 2-cost champions",
+    "effects": {
+      "NumUnits": 4,
+      "{7e1ab625}": 2
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_2c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "4 2-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "4 2-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_4x5cost",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "4 5-cost champions",
+    "effects": {
+      "NumUnits": 4,
+      "{7e1ab625}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "4 5-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "4 5-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_ChampionDuplicator_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Champion Duplicators",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/ChampionDuplicator_V.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Champion Duplicators",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Champion Duplicators"
+  },
+  {
+    "apiName": "TFT_Assist_Spatula_3",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 Spatulas",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Spatula.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 Spatulas",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 Spatulas"
+  },
+  {
+    "apiName": "TFT_Consumable_ChampionDuplicator_I",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a 1-cost champion to create a 1-star copy of them.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ChampionDuplicator_I.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Tiny Champion Duplicator",
+    "tags": [],
+    "unique": false,
+    "en_name": "Tiny Champion Duplicator"
+  },
+  {
+    "apiName": "TFT_Assist_TomeOfTraits",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Tome of Traits and Reforger",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT8_TeamUpProp/HUD/Icons2D/TFT5_EmblemArmoryKey_Square.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Tome of Traits and Reforger",
+    "tags": [],
+    "unique": false,
+    "en_name": "Tome of Traits and Reforger"
+  },
+  {
+    "apiName": "TFT_Assist_RandomComponent",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Random Component",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistRandomComponent.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Random Component",
+    "tags": [],
+    "unique": false,
+    "en_name": "Random Component"
+  },
+  {
+    "apiName": "TFT_Assist_TacticiansCrown",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Tactician's Crown",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Tacticians_Crown.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Tactician's Crown",
+    "tags": [],
+    "unique": false,
+    "en_name": "Tactician's Crown"
+  },
+  {
+    "apiName": "TFT_Assist_TacticiansShield",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Tactician's Shield",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Tacticians_Scepter.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Tactician's Shield",
+    "tags": [],
+    "unique": false,
+    "en_name": "Tactician's Shield"
+  },
+  {
+    "apiName": "TFT_Assist_ThiefsGloves",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Thief's Gloves",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Thieves_Gloves.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Thief's Gloves",
+    "tags": [],
+    "unique": false,
+    "en_name": "Thief's Gloves"
+  },
+  {
+    "apiName": "TFT_Assist_Tier2_Units",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 2-cost champions",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_2c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 2-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 2-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_Spatula",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Spatula",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Spatula.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Spatula",
+    "tags": [],
+    "unique": false,
+    "en_name": "Spatula"
+  },
+  {
+    "apiName": "TFT_Assist_MasterworkUpgrade",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Masterwork Upgrade",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/MasterworkUpgrade.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Masterwork Upgrade",
+    "tags": [],
+    "unique": false,
+    "en_name": "Masterwork Upgrade"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_9",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "9 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "9 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "9 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_8",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "8 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "8 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "8 gold"
+  },
+  {
+    "apiName": "TFT_Assist_TacticiansCape",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Tactician's Cape",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Tacticians_Ring.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Tactician's Cape",
+    "tags": [],
+    "unique": false,
+    "en_name": "Tactician's Cape"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_3",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_1",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "1 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "1 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_7",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "7 Gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "7 Gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "7 Gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_6",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "6 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "6 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "6 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_5",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "5 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "5 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "5 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_4",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "4 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "4 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "4 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Rerolls_8",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "8 Rerolls",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/TFT14/TFT14_CypherArmoryItem_FreeRerolls.TFT_Set14.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "8 Rerolls",
+    "tags": [],
+    "unique": false,
+    "en_name": "8 Rerolls"
+  },
+  {
+    "apiName": "TFT_Assist_Tier5_Units_And_Gold",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "5-cost champion and 10 Gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "5-cost champion and 10 Gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "5-cost champion and 10 Gold"
+  },
+  {
+    "apiName": "TFT_Assist_Reforger_And_Gold",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Reforger and 5 Gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_ItemReroller.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger and 5 Gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger and 5 Gold"
+  },
+  {
+    "apiName": "TFT_Assist_Tier5_Units",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 5-cost champions",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_5c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 5-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 5-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_ItemArmorySupport",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Support Anvil",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT_ArmoryKeyOrnn/HUD/Icons2D/TFT_ArmoryKeyOrnn_Square.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Support Anvil",
+    "tags": [],
+    "unique": false,
+    "en_name": "Support Anvil"
+  },
+  {
+    "apiName": "TFT_Assist_Tier4_Units_3",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 4-cost champions",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 4-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 4-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_Tier4_Units_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 4-cost champions",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 4-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 4-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_Spatula_And_ItemArmoryComponent",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Spatula and Component Anvil",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_AnvilSpatula.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Spatula and Component Anvil",
+    "tags": [],
+    "unique": false,
+    "en_name": "Spatula and Component Anvil"
+  },
+  {
+    "apiName": "TFT_Assist_RandomOrnnItem",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Artifact Item",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_RandomItem_Ornn.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Artifact Item",
+    "tags": [],
+    "unique": false,
+    "en_name": "Artifact Item"
+  },
+  {
+    "apiName": "TFT_Assist_Tier3_Units",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 3-cost champions",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_3c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 3-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 3-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_Rerolls_11",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "11 Rerolls",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/TFT14/TFT14_CypherArmoryItem_FreeRerolls.TFT_Set14.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "11 Rerolls",
+    "tags": [],
+    "unique": false,
+    "en_name": "11 Rerolls"
+  },
+  {
+    "apiName": "TFT_Assist_RandomCompletedItems_And_Reforger",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Completed Items and Reforger",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistRandomComponent.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Completed Items and Reforger",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Completed Items and Reforger"
+  },
+  {
+    "apiName": "TFT_Assist_TrainingDummy",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "1 Training Dummy",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_Dummy.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "1 Training Dummy",
+    "tags": [],
+    "unique": false,
+    "en_name": "1 Training Dummy"
+  },
+  {
+    "apiName": "TFT_Assist_LoadedDice",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Loaded Dice",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_ShopReroll.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Loaded Dice",
+    "tags": [],
+    "unique": false,
+    "en_name": "Loaded Dice"
+  },
+  {
+    "apiName": "TFT_Assist_LesserDuplicator_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Lesser Champion Duplicators",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/ChampionDuplicator_III.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Lesser Champion Duplicators",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Lesser Champion Duplicators"
+  },
+  {
+    "apiName": "TFT_Assist_LesserDuplicator_3",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3 Lesser Champion Duplicators",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/ChampionDuplicator_III.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3 Lesser Champion Duplicators",
+    "tags": [],
+    "unique": false,
+    "en_name": "3 Lesser Champion Duplicators"
+  },
+  {
+    "apiName": "TFT_Assist_Remover_And_Gold",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Remover and 5 Gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/TFT_Item_Consumable_ItemRemover.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Remover and 5 Gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "Remover and 5 Gold"
+  },
+  {
+    "apiName": "TFT_Assist_ItemArmoryCompleted",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Completed Item Anvil",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT_ArmoryKeyCompleted/HUD/Icons2D/TFT_ArmoryKeyCompleted_Square.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Completed Item Anvil",
+    "tags": [],
+    "unique": false,
+    "en_name": "Completed Item Anvil"
+  },
+  {
+    "apiName": "TFT_Assist_Spatula_And_Gold",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Spatula",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Spatula.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Spatula and 5 Gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "Spatula and 5 Gold"
+  },
+  {
+    "apiName": "TFT_Assist_Gold_10",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "10 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistGiveGold.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "10 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "10 gold"
+  },
+  {
+    "apiName": "TFT_Assist_RandomComponent_2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "2 Components",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistRandomComponent.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "2 Components",
+    "tags": [],
+    "unique": false,
+    "en_name": "2 Components"
+  },
+  {
+    "apiName": "TFT_Assist_Tier4_Units",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "4 4-cost champions",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "4 4-cost champions",
+    "tags": [],
+    "unique": false,
+    "en_name": "4 4-cost champions"
+  },
+  {
+    "apiName": "TFT_Assist_RandomRadiantItem",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Radiant Item",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_RandomItem_Radiant.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Radiant Item",
+    "tags": [],
+    "unique": false,
+    "en_name": "Radiant Item"
+  },
+  {
+    "apiName": "TFT_Assist_ItemArmoryComponent",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Component Anvil",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT_ArmoryKeyComponent/HUD/Icons2D/TFT_ArmoryKeyComponent_Square.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Component Anvil",
+    "tags": [],
+    "unique": false,
+    "en_name": "Component Anvil"
+  },
+  {
+    "apiName": "TFT_Assist_RandomCompletedItem",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Completed Item",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/AssistRandomComponent.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Completed Item",
+    "tags": [],
+    "unique": false,
+    "en_name": "Completed Item"
+  },
+  {
+    "apiName": "TFT_Assist_LesserRuneOfAllegiance",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Place on a Tier 1, 2, or 3 champion to transfer them to your partner. Any items held will pop off.<br><br>Once used, this item regenerates in @RoundsToRegain@ rounds. At 4-1 it upgrades into a Rune of Allegiance.<br><br><tftitemrules>[Cannot be used in combat.] <br>[CONSUMABLE - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "RoundsToRegain": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/RuneOfAllegiance_Lesser.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Lesser Rune of Allegiance",
+    "tags": [],
+    "unique": false,
+    "en_name": "Lesser Rune of Allegiance",
+    "variable_matches": [
+      {
+        "match": "RoundsToRegain",
+        "type": "variable",
+        "full_match": "@RoundsToRegain@",
+        "hash": "00b84517",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "apiName": "TFT_Assist_Tier1_3Star_And_Gold",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "3-star 1-cost champion and 7 gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_2c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "3-star 1-cost champion and 7 gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "3-star 1-cost champion and 7 gold"
+  },
+  {
+    "apiName": "TFT_Assist_Tier4_Units_And_Gold",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "4-cost Champion and 4 Gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/DoubleUp_AssistArmory_Champ_4c.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "4-cost Champion and 4 Gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "4-cost Champion and 4 Gold"
+  },
+  {
+    "apiName": "TFT_Assist_ItemArmoryOrnn",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Artifact Anvil",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Characters/TFT_ArmoryKeyOrnn/HUD/Icons2D/TFT_ArmoryKeyOrnn_Square.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Artifact Anvil",
+    "tags": [],
+    "unique": false,
+    "en_name": "Artifact Anvil"
+  },
+  {
+    "apiName": "TFT_Assist_RuneOfAllegiance",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on any champion to transfer them to your partner. Any items held will pop off.<br><br>Once used, this item regenerates in @RoundsToRegain@ rounds.<br><br><tftitemrules>[Cannot be used in combat.] <br>[Consumable - this item disappears when used.]</tftitemrules>",
+    "effects": {
+      "RoundsToRegain": 7
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Pairs/RuneOfAllegiance.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Rune of Allegiance",
+    "tags": [],
+    "unique": false,
+    "en_name": "Rune of Allegiance",
+    "variable_matches": [
+      {
+        "match": "RoundsToRegain",
+        "type": "variable",
+        "full_match": "@RoundsToRegain@",
+        "hash": "00b84517",
+        "value": 7
+      }
+    ]
+  },
+  {
+    "apiName": "TFT_Assist_ChampionDuplicator_And_Gold",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Champion Duplicator and 10 Gold",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/ChampionDuplicator_V.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Champion Duplicator and 10 Gold",
+    "tags": [],
+    "unique": false,
+    "en_name": "Champion Duplicator and 10 Gold"
+  },
+  {
+    "apiName": "TFT_Assist_ChampionDuplicator",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Champion Duplicator",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Consumables/ChampionDuplicator_V.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Champion Duplicator",
+    "tags": [],
+    "unique": false,
+    "en_name": "Champion Duplicator"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft8",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 8
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft8.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(8 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(8 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft9",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft9.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(9 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(9 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 2
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft2.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(2 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(2 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft10",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 10
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft10.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(10 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(10 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft3",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft3.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(3 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(3 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft4",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft4.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(4 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(4 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft5",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft5.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(5 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(5 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft6",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 6
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft6.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(6 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(6 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft7",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 7
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft7.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(7 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(7 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 1
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover"
+  },
+  {
+    "apiName": "TFT_Consumable_RecommendedArmoryRadiant",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to open an armory of <TFTRadiantItemBonus>Radiant</TFTRadiantItemBonus> items especially suited for them.<br><br><rules>These items are based on the champion's recommended items.</rules>",
+    "effects": {
+      "NumChoices": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_LuckyItemChest.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Radiant Lucky Item Chest",
+    "tags": [],
+    "unique": false,
+    "en_name": "Radiant Lucky Item Chest"
+  },
+  {
+    "apiName": "TFT_Consumable_TrashToTreasure_Reforger",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><TFTRadiantItemBonus>Trash to Treasure: Completed items transform into Artifacts and do not consume the Reforger</TFTRadiantItemBonus><br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_TrashToTreasure_Reforger.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger"
+  },
+  {
+    "apiName": "TFT_Consumable_NeekosHelp",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to create a 1-star copy on your bench.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_NeekosHelp.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Champion Duplicator",
+    "tags": [],
+    "unique": false,
+    "en_name": "Champion Duplicator"
+  },
+  {
+    "apiName": "TFT_Consumable_PocketRecombobulator",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a 1 or 2 cost champion to upgrade them to a unit of 1 higher cost.<br><br><tftitemrules>Not for use on living, mechanical, experimental, imaginary, or reanimated creatures . Keep out of reach of Yordles.</tftitemrules>",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/Magnetron_Enchant.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Pocket Recombobulator<br><br>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Pocket Recombobulator<br><br>"
+  },
+  {
+    "apiName": "TFT_Consumable_MasterworkUpgrade",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a unit to open an armory containing Radiant versions of that unit's craftable completed items. Upgrade the item you choose to its Radiant equivalent, and unequip it.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_MasterworkUpgrade.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Masterwork Upgrade",
+    "tags": [],
+    "unique": false,
+    "en_name": "Masterwork Upgrade"
+  },
+  {
+    "apiName": "TFT_Consumable_ChampionDuplicator_III",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a 3-cost champion or less to create a 1-star copy on your bench.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ChampionDuplicator_III.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Lesser Champion Duplicator",
+    "tags": [],
+    "unique": false,
+    "en_name": "Lesser Champion Duplicator"
+  },
+  {
+    "apiName": "TFT_Consumable_TrainingDummy",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to spawn a movable Training Dummy nearby. <br><br><tftitemrules> [Cannot be used in combat. <br>Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_TrainingDummy.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Training Dummy",
+    "tags": [],
+    "unique": false,
+    "en_name": "Training Dummy"
+  },
+  {
+    "apiName": "TFT_Consumable_ShopReroller",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to reroll a special Shop that contains only champions sharing a Trait with the source champion. <br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ShopReroller.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Loaded Dice",
+    "tags": [],
+    "unique": false,
+    "en_name": "Loaded Dice"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemRemover_UsesLeft10",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to unequip all items. <br><br><tftitemrules> [Cannot be used on champions in combat.]<br>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 10
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemRemover_UsesLeft10.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Magnetic Remover <rules>(10 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Magnetic Remover <rules>(10 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_RecommendedArmory",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Use on a champion to open an armory of items especially suited for them.<br><br><rules>These items are based on the champion's recommended items.</rules>",
+    "effects": {
+      "NumChoices": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_LuckyItemChest.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Lucky Item Chest",
+    "tags": [],
+    "unique": false,
+    "en_name": "Lucky Item Chest"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft5",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft5.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(5 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(5 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft4",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 4
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft4.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(4 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(4 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft7",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 7
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft7.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(7 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(7 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft6",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 6
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft6.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(6 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(6 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft3",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft3.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(3 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(3 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft2",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 2
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft2.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(2 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(2 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft9",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 9
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft9.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(9 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(9 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT_Consumable_ItemReroller_UsesLeft8",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><tftitemrules>[Consumable - This item disappears when used.]</tftitemrules>",
+    "effects": {
+      "{27d80030}": 8
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Consumable_ItemReroller_UsesLeft8.TFT_Set13.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Reforger <rules>(8 uses left!)</rules>",
+    "tags": [],
+    "unique": false,
+    "en_name": "Reforger <rules>(8 uses left!)</rules>"
+  },
+  {
+    "apiName": "TFT16_XerathZap_ScaleOfJudgement",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: If you win, gain @GoldOnWin@ gold; if you lose, gain @HPOnLose@ player health.",
+    "effects": {
+      "GoldOnWin": 12,
+      "HPOnLose": 5
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Scale Of Judgment",
+    "tags": [],
+    "unique": false,
+    "en_name": "Scale Of Judgment",
+    "variable_matches": [
+      {
+        "match": "GoldOnWin",
+        "type": "variable",
+        "full_match": "@GoldOnWin@",
+        "hash": "69c9e8c8",
+        "value": 12
+      },
+      {
+        "match": "HPOnLose",
+        "type": "variable",
+        "full_match": "@HPOnLose@",
+        "hash": "f3ba6f89",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_EmperorsProsperity",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: Shurimans gain @DamageAmp*100@% Damage Amp and crowd control immunity.",
+    "effects": {
+      "AttacksRequired": 4
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Rite Of Negation",
+    "tags": [
+      "{5b609ae2}",
+      "{b2bb5786}"
+    ],
+    "unique": false,
+    "en_name": "Rite Of Negation",
+    "disabled": true,
+    "variable_matches": []
+  },
+  {
+    "apiName": "TFT16_XerathZap_AscendedsCall",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: Shurimans gain @AD*100@% %i:scaleAD%%i:scaleAP% per second. After @ASDelay@ seconds, gain @AttackSpeed*100@% %i:scaleAS%.",
+    "effects": {
+      "AD": 0.009999999776482582,
+      "AP": 1,
+      "ASDelay": 22,
+      "AttackSpeed": 2,
+      "ProcDelay": 1
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Ascended's Call",
+    "tags": [],
+    "unique": false,
+    "en_name": "Ascended's Call",
+    "variable_matches": [
+      {
+        "match": "ASDelay",
+        "type": "variable",
+        "full_match": "@ASDelay@",
+        "hash": "155a8930",
+        "value": 22
+      },
+      {
+        "match": "AD",
+        "type": "multiplier",
+        "multiplier": "100",
+        "full_match": "@AD*100@",
+        "hash": "4724fc58",
+        "value": 0.01
+      },
+      {
+        "match": "AttackSpeed",
+        "type": "multiplier",
+        "multiplier": "100",
+        "full_match": "@AttackSpeed*100@",
+        "hash": "7a209a48",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_DesertGolem",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: Gain 2 powerful golems.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Desert Golems",
+    "tags": [],
+    "unique": false,
+    "en_name": "Desert Golems"
+  },
+  {
+    "apiName": "TFT16_XerathZap_FatefulFind",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Roll @DiceAmount@ dice. Gain gold equal to the sum.",
+    "effects": {
+      "DiceAmount": 3
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Fateful Find",
+    "tags": [],
+    "unique": false,
+    "en_name": "Fateful Find",
+    "variable_matches": [
+      {
+        "match": "DiceAmount",
+        "type": "variable",
+        "full_match": "@DiceAmount@",
+        "hash": "891bb72a",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_CrumblingSands",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: Stun all enemies for @StunDuration@ seconds.",
+    "effects": {
+      "StunDuration": 2
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Crumbling Sands",
+    "tags": [],
+    "unique": false,
+    "en_name": "Crumbling Sands",
+    "variable_matches": [
+      {
+        "match": "StunDuration",
+        "type": "variable",
+        "full_match": "@StunDuration@",
+        "hash": "29f3d7f1",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_TheEmperor",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: Xerath gains @XerathDamageAmp*100@% Damage Amp. All other allies gain @TeamDamageAmp*100@%.",
+    "effects": {
+      "TeamDamageAmp": 0.10000000149011612,
+      "XerathDamageAmp": 0.20000000298023224
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "The Emperor",
+    "tags": [
+      "{5b609ae2}",
+      "{b2bb5786}"
+    ],
+    "unique": false,
+    "en_name": "The Emperor",
+    "disabled": true,
+    "variable_matches": [
+      {
+        "match": "XerathDamageAmp",
+        "type": "multiplier",
+        "multiplier": "100",
+        "full_match": "@XerathDamageAmp*100@",
+        "hash": "390490a4",
+        "value": 0.2
+      },
+      {
+        "match": "TeamDamageAmp",
+        "type": "multiplier",
+        "multiplier": "100",
+        "full_match": "@TeamDamageAmp*100@",
+        "hash": "cf07e581",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_OasissReprieve",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: After @Delay@ seconds, your team rapidly recovers @PercentHeal*100@% maximum Health.",
+    "effects": {
+      "Delay": 10,
+      "HealDuration": 2,
+      "PercentHeal": 0.25
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Oasis's Reprieve",
+    "tags": [],
+    "unique": false,
+    "en_name": "Oasis's Reprieve",
+    "variable_matches": [
+      {
+        "match": "Delay",
+        "type": "variable",
+        "full_match": "@Delay@",
+        "hash": "4ed1f1d8",
+        "value": 10
+      },
+      {
+        "match": "PercentHeal",
+        "type": "multiplier",
+        "multiplier": "100",
+        "full_match": "@PercentHeal*100@",
+        "hash": "9132d4dc",
+        "value": 0.25
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_AncientTreasures",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Gain a Lucky Item Chest.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Ancient Treasures",
+    "tags": [],
+    "unique": false,
+    "en_name": "Ancient Treasures"
+  },
+  {
+    "apiName": "TFT16_XerathZap_TheWorld",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Gain a copy of every unlocked 4-cost champion.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Faithful Followers",
+    "tags": [],
+    "unique": false,
+    "en_name": "Faithful Followers"
+  },
+  {
+    "apiName": "TFT16_XerathZap_RiteOfNegation",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: Shurimans gain @DamageAmp*100@% Damage Amp and crowd control immunity.",
+    "effects": {
+      "DamageAmp": 0.15000000596046448
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Rite Of Negation",
+    "tags": [],
+    "unique": false,
+    "en_name": "Rite Of Negation",
+    "variable_matches": [
+      {
+        "match": "DamageAmp",
+        "type": "multiplier",
+        "multiplier": "100",
+        "full_match": "@DamageAmp*100@",
+        "hash": "4c67d4fe",
+        "value": 0.15
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_TheMoon",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Increase your 5-cost odds by @IncreasedOddsPercent@% permanently.",
+    "effects": {
+      "IncreasedOddsPercent": 4,
+      "LIMIT": 5
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "The Moon",
+    "tags": [
+      "{b2bb5786}",
+      "{5b609ae2}"
+    ],
+    "unique": false,
+    "en_name": "The Moon",
+    "disabled": true,
+    "variable_matches": [
+      {
+        "match": "IncreasedOddsPercent",
+        "type": "variable",
+        "full_match": "@IncreasedOddsPercent@",
+        "hash": "8a2e6e3a",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_PersistentArcanery",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: Xerath gains @ManaRegen@ Mana Regen and his spell fires @ExtraBlasts@ extra blasts.<br>",
+    "effects": {
+      "ExtraBlasts": 3,
+      "ManaRegen": 2
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Persistent Arcanery",
+    "tags": [],
+    "unique": false,
+    "en_name": "Persistent Arcanery",
+    "variable_matches": [
+      {
+        "match": "ManaRegen",
+        "type": "variable",
+        "full_match": "@ManaRegen@",
+        "hash": "d8f646f3",
+        "value": 2
+      },
+      {
+        "match": "ExtraBlasts",
+        "type": "variable",
+        "full_match": "@ExtraBlasts@",
+        "hash": "31917202",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_TheSun",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Gain an Artifact Anvil.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Artifact Excavation",
+    "tags": [
+      "{b2bb5786}",
+      "{5b609ae2}"
+    ],
+    "unique": false,
+    "en_name": "Artifact Excavation",
+    "disabled": true
+  },
+  {
+    "apiName": "TFT16_XerathZap_TheChariot",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "This round, rerolls cost you @RerollCost@ gold and buying XP costs you @XPCost@ gold.",
+    "effects": {
+      "RerollCost": 1,
+      "XPCost": 3
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "The Chariot",
+    "tags": [
+      "{b2bb5786}",
+      "{5b609ae2}"
+    ],
+    "unique": false,
+    "en_name": "The Chariot",
+    "disabled": true,
+    "variable_matches": [
+      {
+        "match": "RerollCost",
+        "type": "variable",
+        "full_match": "@RerollCost@",
+        "hash": "271a4b12",
+        "value": 1
+      },
+      {
+        "match": "XPCost",
+        "type": "variable",
+        "full_match": "@XPCost@",
+        "hash": "35c6c7c8",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_TheLovers",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Gain a 5-cost champion and a 2* 2-cost champion that share traits.",
+    "effects": {},
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "The Lovers",
+    "tags": [
+      "{b2bb5786}",
+      "{5b609ae2}"
+    ],
+    "unique": false,
+    "en_name": "The Lovers",
+    "disabled": true
+  },
+  {
+    "apiName": "TFT16_XerathZap_Judgement",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: If you win, gain @GoldOnWin@ gold; if you lose, gain @XPOnLose@ XP. ",
+    "effects": {
+      "GoldOnWin": 12,
+      "XPOnLose": 20
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Judgment",
+    "tags": [
+      "{b2bb5786}",
+      "{5b609ae2}"
+    ],
+    "unique": false,
+    "en_name": "Judgment",
+    "disabled": true,
+    "variable_matches": [
+      {
+        "match": "GoldOnWin",
+        "type": "variable",
+        "full_match": "@GoldOnWin@",
+        "hash": "69c9e8c8",
+        "value": 12
+      },
+      {
+        "match": "XPOnLose",
+        "type": "variable",
+        "full_match": "@XPOnLose@",
+        "hash": "7ce22c59",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "apiName": "TFT16_XerathZap_SacrificialGuard",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Next combat: Azir's Guards explode on death, dealing @ExplosionDamage@ magic damage in a 2 hex area.",
+    "effects": {
+      "ExplosionDamage": 750
+    },
+    "from": null,
+    "icon": "ASSETS/UX/TFT/Hud/ZAPS/Wands/ZAPS_ScoreboardBadge_XerathWand_Self.TFT_Set12.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Sacrificial Guard",
+    "tags": [
+      "{5b609ae2}",
+      "{b2bb5786}",
+      "{ed170a2f}"
+    ],
+    "unique": false,
+    "en_name": "Sacrificial Guard",
+    "disabled": true,
+    "variable_matches": [
+      {
+        "match": "ExplosionDamage",
+        "type": "variable",
+        "full_match": "@ExplosionDamage@",
+        "hash": "43138551",
+        "value": 750
+      }
+    ]
+  }
+]
