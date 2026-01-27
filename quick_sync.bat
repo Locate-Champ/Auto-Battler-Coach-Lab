@@ -8,7 +8,7 @@ if "%FOLDER%"=="" set FOLDER=live-logs
 
 REM Copy MetaTFT logs to repo folder
 set METATFT_LOGS=%localappdata%\Overwolf\Log\Apps\MetaTFT
-set REPO_PATH=C:\path\to\your\tft-coach-234
+set REPO_PATH=E:\VS Code\tft-coach-234
 
 mkdir "%REPO_PATH%\%FOLDER%" 2>nul
 copy "%METATFT_LOGS%\background.html.log" "%REPO_PATH%\%FOLDER%\"
