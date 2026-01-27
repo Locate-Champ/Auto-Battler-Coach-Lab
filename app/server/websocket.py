@@ -122,6 +122,8 @@ class WebSocketServer:
     def on_state_change(self, state: GameState):
         """Callback for state changes - thread-safe broadcast."""
         self._current_state = state
+        num_clients = len(self.manager.active_connections)
+        print(f"[WS] State change -> broadcasting to {num_clients} client(s)")
 
         # Use thread-safe method to schedule broadcast in the event loop
         if self._event_loop is not None:
@@ -133,6 +135,8 @@ class WebSocketServer:
                 )
             except Exception as e:
                 print(f"[WS] Broadcast error: {e}")
+        else:
+            print("[WS] Warning: Event loop not ready yet")
 
     def run(self):
         """Run the server (blocking)."""
