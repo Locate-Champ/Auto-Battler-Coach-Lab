@@ -12,8 +12,21 @@ on:
       - completed
 
 jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    # Only run on PRs from claude/* branches
+    if: startsWith(github.head_ref, 'claude/')
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Auto Approve
+        uses: hmarr/auto-approve-action@v4.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
   automerge:
     runs-on: ubuntu-latest
+    needs: auto-approve
     # Only run on PRs from claude/* branches
     if: startsWith(github.head_ref, 'claude/')
     steps:
