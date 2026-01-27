@@ -2,9 +2,9 @@
 
 import asyncio
 import json
+import threading
 from typing import Set, Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 import uvicorn
 from pathlib import Path
@@ -17,25 +17,31 @@ class ConnectionManager:
 
     def __init__(self):
         self.active_connections: Set[WebSocket] = set()
+        self._lock = threading.Lock()
 
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
-        self.active_connections.add(websocket)
+        with self._lock:
+            self.active_connections.add(websocket)
         print(f"[WS] Client connected. Total: {len(self.active_connections)}")
 
     def disconnect(self, websocket: WebSocket):
-        self.active_connections.discard(websocket)
+        with self._lock:
+            self.active_connections.discard(websocket)
         print(f"[WS] Client disconnected. Total: {len(self.active_connections)}")
 
     async def broadcast(self, message: dict):
         """Send message to all connected clients."""
-        if not self.active_connections:
+        with self._lock:
+            connections = list(self.active_connections)
+
+        if not connections:
             return
 
         message_json = json.dumps(message)
         disconnected = set()
 
-        for connection in self.active_connections:
+        for connection in connections:
             try:
                 await connection.send_text(message_json)
             except Exception:
@@ -55,10 +61,17 @@ class WebSocketServer:
         self.app = FastAPI(title="TFT Coach")
         self.manager = ConnectionManager()
         self._current_state: Optional[GameState] = None
+        self._event_loop: Optional[asyncio.AbstractEventLoop] = None
         self._setup_routes()
 
     def _setup_routes(self):
         """Set up FastAPI routes."""
+
+        @self.app.on_event("startup")
+        async def startup_event():
+            """Capture event loop on startup."""
+            self._event_loop = asyncio.get_running_loop()
+            print("[WS] Event loop captured for cross-thread communication")
 
         @self.app.get("/")
         async def root():
@@ -107,15 +120,19 @@ class WebSocketServer:
         await self.manager.broadcast(state.to_dict())
 
     def on_state_change(self, state: GameState):
-        """Callback for state changes (sync wrapper)."""
+        """Callback for state changes - thread-safe broadcast."""
         self._current_state = state
-        # Schedule broadcast in event loop
-        try:
-            loop = asyncio.get_running_loop()
-            loop.create_task(self.manager.broadcast(state.to_dict()))
-        except RuntimeError:
-            # No running loop - we'll broadcast on next connection
-            pass
+
+        # Use thread-safe method to schedule broadcast in the event loop
+        if self._event_loop is not None:
+            try:
+                # Schedule the coroutine from any thread
+                asyncio.run_coroutine_threadsafe(
+                    self.manager.broadcast(state.to_dict()),
+                    self._event_loop
+                )
+            except Exception as e:
+                print(f"[WS] Broadcast error: {e}")
 
     def run(self):
         """Run the server (blocking)."""
