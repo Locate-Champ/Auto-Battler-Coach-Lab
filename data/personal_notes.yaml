@@ -1,0 +1,86 @@
+# TFT Coach - Personal Notes
+# Add your own strategies, reminders, and preferences here!
+
+# Your preferred augments and notes about them
+augments:
+  # S-tier augments (always consider taking)
+  TFT_Augment_PortableForge:
+    tier: S
+    note: "Always take early - artifact items are flexible"
+
+  TFT_Augment_JeweledLotus:
+    tier: A
+    note: "Great with AP comps, especially Sorcerer"
+
+  TFT9_Augment_SilverSpoon:
+    tier: A
+    note: "Free gold is always good"
+
+  # Augments to avoid
+  TFT_Augment_WeaknessAnalyzer:
+    tier: D
+    note: "Rarely worth it"
+
+# Champion priorities
+champions:
+  # Early game carries
+  TFT16_Sivir:
+    priority: high
+    note: "Strong early, good item holder"
+    preferred_items:
+      - TFT_Item_GuinsoosRageblade
+      - TFT_Item_GiantSlayer
+
+  TFT16_Ekko:
+    priority: high
+    note: "My comfort pick for AD comps"
+
+  # Late game carries
+  TFT16_Draven:
+    priority: high
+    note: "Best AD carry late game"
+
+# Situational reminders
+situations:
+  low_health_stage_4:
+    condition: "health < 40 AND stage >= 4-1"
+    reminder: "Time to all-in! Stop saving gold."
+
+  level_8_timing:
+    condition: "stage == 4-2 AND level == 7 AND gold >= 50"
+    reminder: "Good spot to level 8 and roll"
+
+  first_augment:
+    condition: "stage == 2-1 AND augment_count == 0"
+    reminder: "Economy augments are usually best first"
+
+  prismatic_augment:
+    condition: "augment_type == prismatic"
+    reminder: "Take the highest impact option, not just economy"
+
+# Level timing goals
+level_timing:
+  level_5: "Stage 2-5"
+  level_6: "Stage 3-2"
+  level_7: "Stage 3-5 or 4-1"
+  level_8: "Stage 4-2 or 4-5"
+  level_9: "Stage 5-1 (if winstreaking)"
+
+# Economy rules
+economy:
+  early_game:
+    note: "50 gold by 3-1 is the goal"
+  mid_game:
+    note: "Stay above 50 unless rolling for upgrades"
+  late_game:
+    note: "Don't die with gold in pocket"
+
+# Trait priorities
+traits:
+  vertical_traits:
+    - Punk
+    - Sorcerer
+    - Bruiser
+  splash_traits:
+    - Family
+    - Rebel
