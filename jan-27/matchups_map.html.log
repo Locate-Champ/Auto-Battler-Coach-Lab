@@ -1,0 +1,58 @@
+﻿2026-01-27 12:23:44,919 (INFO) ================== new session ==================
+2026-01-27 12:23:44,920 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-27 12:23:44,920 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: es
+2026-01-27 12:23:44,920 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-27 12:23:44,921 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: de
+2026-01-27 12:23:44,921 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-27 12:23:44,923 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-27 12:23:44,924 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-27 12:23:44,924 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-27 12:23:44,925 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-27 12:23:44,925 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-27 12:23:44,925 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-27 12:23:44,925 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: el
+2026-01-27 12:23:44,925 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-27 12:23:44,927 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-27 12:23:44,927 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: it
+2026-01-27 12:23:44,927 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-27 12:23:44,927 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-27 12:23:44,927 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: th
+2026-01-27 12:23:44,927 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-27 12:23:44,928 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-27 12:23:44,928 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 12:23:44,928 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 12:23:44,929 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final current locale: en
+2026-01-27 12:23:44,929 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en_us to en_us
+2026-01-27 12:23:44,931 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 12:23:44,931 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 12:23:44,931 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 12:23:44,931 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 12:23:44,941 (INFO) </assets/index-5njaiL6Z.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-27 12:23:44,952 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-27 12:23:44,952 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-27 12:23:45,154 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-27 12:23:45,154 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-27 12:23:45,155 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-27 12:23:45,156 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-27 12:23:45,156 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-27 12:23:45,157 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window name:  [object Object]
+2026-01-27 12:23:45,324 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resized. New width:  233
+2026-01-27 12:23:45,358 (INFO) </assets/index-5njaiL6Z.js> (:20808) - changed position to:  2327 -334080
+2026-01-27 12:23:45,388 (INFO) <Overwolf> () - [object Object]
+2026-01-27 12:23:54,373 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [MatchUpsMap] New game detected (stage_data.length=0), clearing all matchup state
+2026-01-27 12:24:39,409 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:27:24,370 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:28:32,365 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:30:22,781 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:32:49,371 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:34:50,544 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:36:21,598 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:38:08,429 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:40:21,685 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:42:12,423 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:43:43,442 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:45:23,488 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:47:53,565 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:49:46,531 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:50:56,522 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]
+2026-01-27 12:52:31,566 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching:  [object Object]

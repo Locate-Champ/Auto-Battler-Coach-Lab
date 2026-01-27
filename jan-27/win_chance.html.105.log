@@ -1,0 +1,298 @@
+﻿2026-01-27 09:38:31,160 (INFO) ================== new session ==================
+2026-01-27 09:38:31,161 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-27 09:38:31,161 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: es
+2026-01-27 09:38:31,162 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-27 09:38:31,162 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: de
+2026-01-27 09:38:31,163 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-27 09:38:31,164 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-27 09:38:31,164 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-27 09:38:31,165 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-27 09:38:31,165 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-27 09:38:31,166 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-27 09:38:31,166 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-27 09:38:31,167 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: el
+2026-01-27 09:38:31,167 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-27 09:38:31,168 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-27 09:38:31,168 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: it
+2026-01-27 09:38:31,169 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-27 09:38:31,169 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-27 09:38:31,170 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: th
+2026-01-27 09:38:31,170 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-27 09:38:31,171 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-27 09:38:31,171 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 09:38:31,172 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 09:38:31,172 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final current locale: en
+2026-01-27 09:38:31,173 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en_us to en_us
+2026-01-27 09:38:31,173 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 09:38:31,174 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 09:38:31,174 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 09:38:31,174 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 09:38:31,219 (INFO) </assets/index-5njaiL6Z.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-27 09:38:31,230 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-27 09:38:31,231 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-27 09:38:31,515 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-27 09:38:31,516 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-27 09:38:31,516 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-27 09:38:31,517 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-27 09:38:31,518 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-27 09:38:31,518 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window name:  [object Object]
+2026-01-27 09:38:31,520 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-27 09:38:31,521 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:38:31,616 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 09:38:31,660 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-27 09:38:31,661 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resized. New width:  600
+2026-01-27 09:38:32,043 (INFO) </assets/index-5njaiL6Z.js> (:20808) - changed position to:  980 72
+2026-01-27 09:38:32,136 (INFO) <Overwolf> () - [object Object]
+2026-01-27 09:38:38,053 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:38:42,467 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-27 09:38:42,467 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:38:42,593 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-27 09:39:00,473 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-27 09:39:31,514 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-27 09:39:31,598 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:39:37,412 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:39:38,438 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:39:45,440 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:40:05,464 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-27 09:40:05,543 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:40:13,466 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:40:46,486 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-27 09:41:02,469 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:41:03,447 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:41:04,447 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:41:06,458 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:41:07,463 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:41:20,450 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:41:27,449 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:41:42,085 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:41:42,086 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:41:42,086 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:42:16,530 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:42:16,531 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:42:16,610 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:42:35,451 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:42:37,449 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:42:53,087 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:42:53,087 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:42:53,088 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:43:31,517 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:43:31,518 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:43:43,482 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:43:45,488 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:43:48,471 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:44:06,993 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:44:06,994 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~20%
+2026-01-27 09:44:06,994 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:44:48,429 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:44:48,430 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~20%
+2026-01-27 09:45:25,565 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:45:25,566 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~20%
+2026-01-27 09:45:34,475 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:46:01,023 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:46:01,024 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:46:01,024 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:46:29,550 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:46:29,551 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:46:29,611 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:46:30,473 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:47:05,102 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:47:05,102 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:47:05,103 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:47:41,527 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:47:41,528 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:48:37,550 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:48:37,551 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:48:43,495 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:49:13,032 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:49:13,033 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~46%
+2026-01-27 09:49:13,034 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:49:49,557 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:49:49,557 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~46%
+2026-01-27 09:50:17,478 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:50:45,018 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:50:45,019 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:50:45,019 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:51:16,531 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:51:16,532 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:51:53,028 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:51:53,029 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~66%
+2026-01-27 09:51:53,030 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:52:26,435 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:52:26,436 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~66%
+2026-01-27 09:53:03,491 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:53:03,492 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~66%
+2026-01-27 09:53:03,566 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:53:04,490 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:53:16,472 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:53:17,482 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:53:19,475 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:53:24,453 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:53:27,466 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:53:29,452 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:53:39,067 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:53:39,068 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:53:39,068 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:54:16,519 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:54:16,520 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~97%
+2026-01-27 09:54:16,584 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:54:18,462 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:54:19,469 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:54:42,471 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:54:44,483 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:54:45,479 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:54:52,138 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:54:52,138 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-27 09:54:52,139 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:55:24,444 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:55:24,445 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-27 09:55:24,508 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:55:25,461 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:55:26,462 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:55:27,465 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:07,544 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:56:07,545 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-27 09:56:07,599 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:08,473 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:10,461 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:18,470 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:19,477 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:24,471 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:25,454 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:35,466 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:56:43,080 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:56:43,081 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~75%
+2026-01-27 09:56:43,082 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:57:20,600 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:57:20,601 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~75%
+2026-01-27 09:57:22,458 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:57:23,465 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:57:46,474 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:58:02,484 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:58:16,146 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:58:16,147 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~3%
+2026-01-27 09:58:16,147 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:58:50,573 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:58:50,574 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~3%
+2026-01-27 09:58:50,632 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:58:51,480 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:58:52,473 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:58:53,483 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:59:03,473 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:59:06,453 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 09:59:26,025 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 09:59:26,026 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~40%
+2026-01-27 09:59:26,026 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:01,434 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:00:01,434 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~40%
+2026-01-27 10:00:38,552 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:00:38,553 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~40%
+2026-01-27 10:00:39,478 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:40,504 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:41,485 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:43,464 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:44,451 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:48,472 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:49,470 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:58,464 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:00:59,463 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:01:15,029 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:01:15,030 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-27 10:01:15,030 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:01:45,550 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:01:45,551 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-27 10:01:45,616 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:01:48,477 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:01:54,485 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:02:08,486 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:02:09,461 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:02:21,100 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:02:21,101 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~93%
+2026-01-27 10:02:21,101 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:02:53,525 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:02:53,526 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~93%
+2026-01-27 10:02:53,576 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:02:54,469 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:02:55,480 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:02:56,490 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:05,478 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:07,465 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:08,458 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:33,512 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:03:33,513 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~93%
+2026-01-27 10:03:33,564 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:34,464 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:36,474 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:37,465 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:38,454 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:03:52,471 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:04:09,030 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:04:09,030 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~51%
+2026-01-27 10:04:09,031 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:04:46,518 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:04:46,519 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~51%
+2026-01-27 10:04:46,573 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:04:47,486 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:04:49,466 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:08,455 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:09,464 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:10,460 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:11,455 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:12,465 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:13,458 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:14,460 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:15,454 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:22,028 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:05:22,029 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-27 10:05:22,029 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:56,560 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:05:56,561 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-27 10:05:56,622 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:05:59,471 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:01,450 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:02,453 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:03,451 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:08,484 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:09,469 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:10,474 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:16,480 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:17,457 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:19,456 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:21,460 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:23,457 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:24,450 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:06:32,031 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:06:32,032 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~34%
+2026-01-27 10:06:32,032 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:07:08,434 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:07:08,435 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~34%
+2026-01-27 10:07:45,544 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:07:45,544 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~34%
+2026-01-27 10:07:45,602 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:07:46,485 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:07:47,493 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:07:49,494 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:07:53,459 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:07:55,459 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:07:56,473 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:07:57,497 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:08:09,476 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:08:22,048 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:08:22,048 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~3%
+2026-01-27 10:08:22,049 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:08:58,558 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:08:58,559 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~3%
+2026-01-27 10:08:59,484 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:09:01,461 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:09:06,489 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:09:07,456 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:09:16,467 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:09:34,124 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:09:34,125 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~30%
+2026-01-27 10:09:34,125 (INFO) </assets/index-5njaiL6Z.js> (:20808) - model_data:  [object Object]
+2026-01-27 10:10:09,478 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:10:09,479 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~30%
+2026-01-27 10:10:12,362 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 10:10:12,362 (INFO) </assets/index-5njaiL6Z.js> (:20808) - WinChanceNumber:  ~30%
+2026-01-27 10:10:12,363 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resized. New width:  600
+2026-01-27 10:10:12,371 (INFO) </assets/index-5njaiL6Z.js> (:20808) - changed position to:  980 72
+2026-01-27 10:10:12,395 (INFO) <Overwolf> () - [object Object]
