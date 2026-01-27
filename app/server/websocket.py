@@ -32,6 +32,7 @@ class ConnectionManager:
         if not self.active_connections:
             return
 
+        print(f"[WS] Broadcasting to {len(self.active_connections)} client(s)")
         message_json = json.dumps(message)
         disconnected = set()
 
@@ -55,10 +56,17 @@ class WebSocketServer:
         self.app = FastAPI(title="TFT Coach")
         self.manager = ConnectionManager()
         self._current_state: Optional[GameState] = None
+        self._event_loop: Optional[asyncio.AbstractEventLoop] = None
         self._setup_routes()
 
     def _setup_routes(self):
         """Set up FastAPI routes."""
+
+        @self.app.on_event("startup")
+        async def startup_event():
+            """Capture the event loop on startup for cross-thread broadcasts."""
+            self._event_loop = asyncio.get_running_loop()
+            print(f"[WS] Event loop captured for cross-thread broadcasts")
 
         @self.app.get("/")
         async def root():
@@ -107,15 +115,25 @@ class WebSocketServer:
         await self.manager.broadcast(state.to_dict())
 
     def on_state_change(self, state: GameState):
-        """Callback for state changes (sync wrapper)."""
+        """Callback for state changes (sync wrapper for cross-thread calls)."""
         self._current_state = state
-        # Schedule broadcast in event loop
-        try:
-            loop = asyncio.get_running_loop()
-            loop.create_task(self.manager.broadcast(state.to_dict()))
-        except RuntimeError:
-            # No running loop - we'll broadcast on next connection
-            pass
+
+        # Schedule broadcast in the server's event loop (thread-safe)
+        if self._event_loop and self._event_loop.is_running():
+            # Use run_coroutine_threadsafe for cross-thread async scheduling
+            future = asyncio.run_coroutine_threadsafe(
+                self.manager.broadcast(state.to_dict()),
+                self._event_loop
+            )
+            # Optional: log errors from the broadcast
+            def handle_broadcast_error(f):
+                try:
+                    f.result()
+                except Exception as e:
+                    print(f"[WS] Broadcast error: {e}")
+            future.add_done_callback(handle_broadcast_error)
+        else:
+            print("[WS] Warning: No event loop available for broadcast")
 
     def run(self):
         """Run the server (blocking)."""
