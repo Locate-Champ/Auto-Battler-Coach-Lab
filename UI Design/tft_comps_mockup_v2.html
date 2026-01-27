@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TFT Top Comps Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #1a1a2e;
+      padding: 20px;
+    }
+    
+    .comps-panel {
+      width: 340px;
+      background: #252538;
+      border-radius: 8px;
+      border: 1px solid #3a3a4f;
+      overflow: hidden;
+    }
+    
+    .panel-header {
+      background: linear-gradient(180deg, #c9a033 0%, #8b6914 100%);
+      padding: 12px 16px;
+      text-align: center;
+    }
+    
+    .panel-title {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    .comps-list {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 700px;
+      overflow-y: auto;
+    }
+    
+    .comp-card {
+      background: #1e1e2f;
+      border-radius: 6px;
+      padding: 12px;
+      border: 1px solid #3a3a4f;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    
+    .comp-card:hover {
+      border-color: #c9a033;
+      transform: translateX(2px);
+    }
+    
+    .comp-card.contested {
+      opacity: 0.5;
+      border-color: #ff6b6b;
+    }
+    
+    .comp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    
+    .comp-name-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .comp-name {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .play-style {
+      font-size: 10px;
+      color: #888;
+      font-weight: 500;
+    }
+    
+    .tier-badge {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    
+    .tier-s { background: linear-gradient(135deg, #ff6b6b, #c92a2a); color: #fff; }
+    .tier-a { background: linear-gradient(135deg, #ffa94d, #e67700); color: #fff; }
+    .tier-b { background: linear-gradient(135deg, #69db7c, #2f9e44); color: #fff; }
+    
+    .meta-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .meta-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: #2a2a3f;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      color: #aaa;
+    }
+    
+    .meta-badge svg { width: 12px; height: 12px; }
+    .cost-badge { color: #f1c40f; }
+    .difficulty-easy { color: #69db7c; }
+    .difficulty-medium { color: #ffa94d; }
+    .difficulty-hard { color: #ff6b6b; }
+    
+    .champions-row {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .champion-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      background: #3a3a4f;
+      border: 2px solid #4a4a5f;
+      overflow: hidden;
+    }
+    
+    .champion-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .cost-1 { border-color: #5a5a6f; }
+    .cost-2 { border-color: #2ecc71; }
+    .cost-3 { border-color: #3498db; }
+    .cost-4 { border-color: #9b59b6; }
+    .cost-5 { border-color: #f1c40f; }
+    
+    .traits-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .trait-badge {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      background: #2a2a3f;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      color: #aaa;
+    }
+    
+    .trait-badge.active {
+      background: #3a3a1f;
+      color: #c9a033;
+      border: 1px solid #c9a033;
+    }
+    
+    .trait-count { font-weight: 600; }
+    
+    .comp-stats {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stat-value { font-size: 14px; font-weight: 600; color: #fff; }
+    .stat-value.good { color: #69db7c; }
+    .stat-value.mid { color: #ffa94d; }
+    .stat-value.bad { color: #ff6b6b; }
+    .stat-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #3a3a4f;
+    }
+    
+    .core-items { display: flex; gap: 4px; align-items: center; }
+    .core-items-label { font-size: 10px; color: #666; margin-right: 4px; }
+    .item-icon { width: 24px; height: 24px; border-radius: 4px; background: #3a3a4f; overflow: hidden; }
+    .item-icon img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .contested-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      background: #2a2a3f;
+      border: 1px solid #3a3a4f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .contested-toggle:hover { border-color: #c9a033; }
+    .contested-toggle svg { width: 16px; height: 16px; color: #555; }
+    .contested-toggle.active { background: #4a1a1a; border-color: #ff6b6b; }
+    .contested-toggle.active svg { color: #ff6b6b; }
+    .contested-toggle.clear svg { color: #69db7c; }
+    .contested-toggle.clear { background: #1a3a1a; border-color: #69db7c; }
+  </style>
+</head>
+<body>
+  <div class="comps-panel">
+    <div class="panel-header">
+      <div class="panel-title">Top Comps</div>
+    </div>
+    
+    <div class="comps-list">
+      <!-- Comp 1: S-Tier Fiddlesticks -->
+      <div class="comp-card">
+        <div class="comp-header">
+          <div class="comp-name-group">
+            <span class="comp-name">Fiddlesticks Carry</span>
+            <span class="play-style">Fast 9</span>
+          </div>
+          <span class="tier-badge tier-s">S</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-badge cost-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            38g
+          </span>
+          <span class="meta-badge difficulty-easy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            Easy
+          </span>
+        </div>
+        <div class="champions-row">
+          <div class="champion-icon cost-1"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_anivia.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-2"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_neeko.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_nautilus.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_sejuani.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_braum.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_taric.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_fiddlesticks.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_ornn.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_zilean.tft_set16.png" alt=""></div>
+        </div>
+        <div class="traits-row">
+          <span class="trait-badge active"><span class="trait-count">4</span> Harbinger</span>
+          <span class="trait-badge active"><span class="trait-count">2</span> Invoker</span>
+        </div>
+        <div class="comp-stats">
+          <div class="stat"><span class="stat-value good">70%</span><span class="stat-label">Top 4</span></div>
+          <div class="stat"><span class="stat-value good">18%</span><span class="stat-label">Win</span></div>
+          <div class="stat"><span class="stat-value good">3.2</span><span class="stat-label">Avg</span></div>
+          <div class="stat"><span class="stat-value">12%</span><span class="stat-label">Play</span></div>
+        </div>
+        <div class="card-footer">
+          <div class="core-items">
+            <span class="core-items-label">Core:</span>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_morellonomicon.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft5_item_bluebuffradiant.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_jeweledgauntlet.tft_set13.png" alt=""></div>
+          </div>
+          <div class="contested-toggle clear">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Comp 2: S-Tier Ryze -->
+      <div class="comp-card">
+        <div class="comp-header">
+          <div class="comp-name-group">
+            <span class="comp-name">Ryze Arcanist</span>
+            <span class="play-style">Fast 8</span>
+          </div>
+          <span class="tier-badge tier-s">S</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-badge cost-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            35g
+          </span>
+          <span class="meta-badge difficulty-medium">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            Medium
+          </span>
+        </div>
+        <div class="champions-row">
+          <div class="champion-icon cost-1"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_lulu.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-2"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_twistedfate.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_ahri.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_zoe.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_lux.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_seraphine.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_taric.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_ryze.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_zilean.tft_set16.png" alt=""></div>
+        </div>
+        <div class="traits-row">
+          <span class="trait-badge active"><span class="trait-count">6</span> Arcanist</span>
+          <span class="trait-badge active"><span class="trait-count">2</span> Scholar</span>
+        </div>
+        <div class="comp-stats">
+          <div class="stat"><span class="stat-value good">68%</span><span class="stat-label">Top 4</span></div>
+          <div class="stat"><span class="stat-value good">15%</span><span class="stat-label">Win</span></div>
+          <div class="stat"><span class="stat-value good">3.4</span><span class="stat-label">Avg</span></div>
+          <div class="stat"><span class="stat-value">8%</span><span class="stat-label">Play</span></div>
+        </div>
+        <div class="card-footer">
+          <div class="core-items">
+            <span class="core-items-label">Core:</span>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_archangelsstaff.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_rabadonsdeathcap.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_jeweledgauntlet.tft_set13.png" alt=""></div>
+          </div>
+          <div class="contested-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Comp 3: A-Tier Ambessa (Contested) -->
+      <div class="comp-card contested">
+        <div class="comp-header">
+          <div class="comp-name-group">
+            <span class="comp-name">Ambessa Slayer</span>
+            <span class="play-style">Fast 8</span>
+          </div>
+          <span class="tier-badge tier-a">A</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-badge cost-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            32g
+          </span>
+          <span class="meta-badge difficulty-medium">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            Medium
+          </span>
+        </div>
+        <div class="champions-row">
+          <div class="champion-icon cost-1"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_viego.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-2"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_ekko.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_draven.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_leona.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_ambessa.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_swain.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_garen.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_kindred.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_shyvana.tft_set16.png" alt=""></div>
+        </div>
+        <div class="traits-row">
+          <span class="trait-badge active"><span class="trait-count">4</span> Slayer</span>
+          <span class="trait-badge active"><span class="trait-count">4</span> Noxus</span>
+        </div>
+        <div class="comp-stats">
+          <div class="stat"><span class="stat-value mid">58%</span><span class="stat-label">Top 4</span></div>
+          <div class="stat"><span class="stat-value mid">12%</span><span class="stat-label">Win</span></div>
+          <div class="stat"><span class="stat-value mid">3.8</span><span class="stat-label">Avg</span></div>
+          <div class="stat"><span class="stat-value">15%</span><span class="stat-label">Play</span></div>
+        </div>
+        <div class="card-footer">
+          <div class="core-items">
+            <span class="core-items-label">Core:</span>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_deathblade.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_bloodthirster.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_quicksilver.tft_set13.png" alt=""></div>
+          </div>
+          <div class="contested-toggle active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Comp 4: A-Tier Ornn -->
+      <div class="comp-card">
+        <div class="comp-header">
+          <div class="comp-name-group">
+            <span class="comp-name">Ornn Tank</span>
+            <span class="play-style">Fast 9</span>
+          </div>
+          <span class="tier-badge tier-a">A</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-badge cost-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            36g
+          </span>
+          <span class="meta-badge difficulty-easy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            Easy
+          </span>
+        </div>
+        <div class="champions-row">
+          <div class="champion-icon cost-1"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_anivia.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-2"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_ashe.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_sejuani.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_braum.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_lissandra.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_taric.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_ornn.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_fiddlesticks.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_zilean.tft_set16.png" alt=""></div>
+        </div>
+        <div class="traits-row">
+          <span class="trait-badge active"><span class="trait-count">4</span> Freljord</span>
+          <span class="trait-badge active"><span class="trait-count">2</span> Invoker</span>
+        </div>
+        <div class="comp-stats">
+          <div class="stat"><span class="stat-value mid">55%</span><span class="stat-label">Top 4</span></div>
+          <div class="stat"><span class="stat-value mid">10%</span><span class="stat-label">Win</span></div>
+          <div class="stat"><span class="stat-value mid">4.0</span><span class="stat-label">Avg</span></div>
+          <div class="stat"><span class="stat-value">6%</span><span class="stat-label">Play</span></div>
+        </div>
+        <div class="card-footer">
+          <div class="core-items">
+            <span class="core-items-label">Core:</span>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_warmogsarmor.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_gargoylestoneplate.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_dragonsclaw.tft_set13.png" alt=""></div>
+          </div>
+          <div class="contested-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Comp 5: B-Tier Tristana Reroll -->
+      <div class="comp-card">
+        <div class="comp-header">
+          <div class="comp-name-group">
+            <span class="comp-name">Tristana Reroll</span>
+            <span class="play-style">2-Cost Reroll</span>
+          </div>
+          <span class="tier-badge tier-b">B</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-badge cost-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            22g
+          </span>
+          <span class="meta-badge difficulty-hard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            Hard
+          </span>
+        </div>
+        <div class="champions-row">
+          <div class="champion-icon cost-1"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_caitlyn.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-1"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_rumble.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-2"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_tristana.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-2"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_teemo.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_jinx.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-3"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_gangplank.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_missfortune.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-4"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_braum.tft_set16.png" alt=""></div>
+          <div class="champion-icon cost-5"><img src="https://tftflow.com/wp-content/uploads/tftImages/champions/icon/tft16_lucian.tft_set16.png" alt=""></div>
+        </div>
+        <div class="traits-row">
+          <span class="trait-badge active"><span class="trait-count">4</span> Gunslinger</span>
+          <span class="trait-badge active"><span class="trait-count">3</span> Yordle</span>
+        </div>
+        <div class="comp-stats">
+          <div class="stat"><span class="stat-value bad">42%</span><span class="stat-label">Top 4</span></div>
+          <div class="stat"><span class="stat-value bad">6%</span><span class="stat-label">Win</span></div>
+          <div class="stat"><span class="stat-value bad">4.8</span><span class="stat-label">Avg</span></div>
+          <div class="stat"><span class="stat-value">20%</span><span class="stat-label">Play</span></div>
+        </div>
+        <div class="card-footer">
+          <div class="core-items">
+            <span class="core-items-label">Core:</span>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_infinityedge.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_lastwhisper.tft_set13.png" alt=""></div>
+            <div class="item-icon"><img src="https://tftflow.com/wp-content/uploads/tftImages/items/icon/tft_item_giantslayer.tft_set13.png" alt=""></div>
+          </div>
+          <div class="contested-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <script>
+    document.querySelectorAll('.contested-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = toggle.closest('.comp-card');
+        const isContested = toggle.classList.contains('active');
+        
+        if (isContested) {
+          toggle.classList.remove('active');
+          toggle.classList.add('clear');
+          toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
+          card.classList.remove('contested');
+        } else if (toggle.classList.contains('clear')) {
+          toggle.classList.remove('clear');
+          toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+        } else {
+          toggle.classList.add('active');
+          toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+          card.classList.add('contested');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
