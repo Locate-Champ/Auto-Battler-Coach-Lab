@@ -1,0 +1,130 @@
+﻿2026-01-23 18:44:33,497 (INFO) ================== new session ==================
+2026-01-23 18:44:33,498 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-23 18:44:33,498 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-23 18:44:33,499 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-23 18:44:33,499 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-23 18:44:33,500 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-23 18:44:33,500 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-23 18:44:33,500 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-23 18:44:33,501 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-23 18:44:33,501 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-23 18:44:33,502 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-23 18:44:33,502 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-23 18:44:33,503 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-23 18:44:33,503 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-23 18:44:33,504 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-23 18:44:33,504 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-23 18:44:33,505 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-23 18:44:33,505 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-23 18:44:33,506 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-23 18:44:33,506 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-23 18:44:33,507 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-23 18:44:33,507 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-23 18:44:33,508 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-23 18:44:33,508 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-23 18:44:33,509 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-23 18:44:33,509 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-23 18:44:33,509 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-23 18:44:33,510 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-23 18:44:33,510 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-23 18:44:33,516 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-23 18:44:33,527 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-23 18:44:33,527 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-23 18:44:33,885 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-23 18:44:33,886 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-23 18:44:33,886 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-23 18:44:33,887 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-23 18:44:33,887 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-23 18:44:33,888 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-23 18:44:34,031 (INFO) </assets/index-C26oBRaL.js> (:20808) - resizing:  1
+2026-01-23 18:44:34,043 (ERROR) </assets/index-C26oBRaL.js> (:20808) - Uncaught ReferenceError: last_position is not defined
+2026-01-23 18:44:54,969 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:45:05,175 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:45:17,381 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:45:18,909 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:46:05,144 (INFO) </assets/index-C26oBRaL.js> (:20749) - dragged to: 26 39 ingamecontrollerPosition
+2026-01-23 18:46:05,145 (INFO) </assets/index-C26oBRaL.js> (:27) - restoring ingame
+2026-01-23 18:48:29,676 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:48:36,299 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:50:08,170 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:50:23,943 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:52:06,623 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:52:18,285 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:52:19,843 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:52:26,955 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:53:37,807 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:53:42,381 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:53:45,961 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:54:11,321 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:54:58,142 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:55:18,933 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:55:26,053 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:55:40,761 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:56:22,959 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:56:42,805 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:56:50,612 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:57:13,253 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:57:28,527 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:58:16,224 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:58:20,312 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:58:47,724 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:59:22,357 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 18:59:25,370 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:00:17,183 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:00:33,896 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:01:01,325 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:01:37,338 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:01:40,409 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:02:03,274 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:03:15,892 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:03:30,551 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:04:19,801 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:05:04,616 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:05:42,224 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:05:45,792 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:05:48,323 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:05:50,361 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:06:31,132 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:06:35,736 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:06:38,794 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:06:44,343 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:06:52,464 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:07:02,110 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:07:44,743 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:08:16,765 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:08:40,692 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:09:20,251 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:11:10,393 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:12:07,186 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:12:20,399 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:12:37,574 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:12:59,382 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:13:09,059 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:13:17,192 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:13:28,385 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:13:30,912 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:13:32,448 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:13:44,626 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:14:02,917 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:14:25,249 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:14:46,609 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:15:23,106 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:16:03,748 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:16:20,545 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:16:35,792 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:16:38,332 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:17:09,719 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:17:53,171 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:17:57,778 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:18:02,346 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:18:25,652 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:18:52,618 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:18:54,618 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:19:21,579 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:19:24,130 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:19:32,227 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:19:32,242 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:19:32,253 (INFO) </assets/index-C26oBRaL.js> (:20808) - resizing:  1
+2026-01-23 19:19:32,401 (ERROR) </assets/index-C26oBRaL.js> (:20808) - Uncaught ReferenceError: last_position is not defined
+2026-01-23 19:19:35,697 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 19:19:35,722 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]

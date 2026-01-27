@@ -27,7 +27,7 @@ class FeatureEngineer:
     def _load_reference_data(self):
         """Load champion and trait reference data from JSONL files"""
         # Load champions
-        champ_file = self.data_dir / 'champions.jsonl'
+        champ_file = self.data_dir / 'data' / 'game_data' / 'champions.jsonl'
         if champ_file.exists():
             with open(champ_file, 'r') as f:
                 for line in f:
@@ -45,7 +45,7 @@ class FeatureEngineer:
                     self.champions[api_name] = self.champions[name]
 
         # Load traits
-        traits_file = self.data_dir / 'traits.jsonl'
+        traits_file = self.data_dir / 'data' / 'game_data' / 'traits.jsonl'
         if traits_file.exists():
             with open(traits_file, 'r') as f:
                 for line in f:
@@ -269,7 +269,7 @@ class FeatureEngineer:
     def load_and_transform(self, csv_path: str = None) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame]:
         """Load CSV and transform to ML-ready features"""
         if csv_path is None:
-            csv_path = self.data_dir / 'tft_since_16_2_enhanced.csv'
+            csv_path = self.data_dir / 'data' / 'personal' / 'tft_since_16_2_enhanced.csv'
 
         df = pd.read_csv(csv_path)
         return self.get_ml_features(df)

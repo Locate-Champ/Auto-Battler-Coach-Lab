@@ -1,0 +1,65 @@
+﻿2026-01-22 18:12:45,852 (INFO) ================== new session ==================
+2026-01-22 18:12:45,852 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-22 18:12:45,853 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-22 18:12:45,853 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-22 18:12:45,859 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-22 18:12:45,859 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-22 18:12:45,860 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-22 18:12:45,864 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-22 18:12:45,865 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-22 18:12:45,865 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-22 18:12:45,866 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-22 18:12:45,866 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-22 18:12:45,867 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-22 18:12:45,867 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-22 18:12:45,870 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-22 18:12:45,871 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-22 18:12:45,872 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-22 18:12:45,872 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-22 18:12:45,873 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-22 18:12:45,874 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-22 18:12:45,875 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-22 18:12:45,876 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:45,877 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:45,878 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-22 18:12:45,878 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-22 18:12:45,879 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:45,880 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:45,880 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:45,881 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:45,881 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-22 18:12:45,893 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-22 18:12:45,895 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-22 18:12:46,349 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-22 18:12:46,350 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-22 18:12:46,350 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-22 18:12:46,351 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-22 18:12:46,352 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-22 18:12:46,450 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-22 18:12:46,538 (INFO) </assets/index-C26oBRaL.js> (:20808) - resizing:  1
+2026-01-22 18:12:46,591 (ERROR) </assets/index-C26oBRaL.js> (:20808) - Uncaught ReferenceError: last_position is not defined
+2026-01-22 18:12:50,839 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:12:53,722 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:13:33,985 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:13:48,003 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:14:17,289 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:14:20,853 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:14:32,112 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:14:38,732 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:14:50,947 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:19:22,311 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:19:38,055 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:19:40,097 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:20:11,497 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:21:11,493 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:21:51,433 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:22:54,007 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:23:04,638 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:24:05,524 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:24:23,271 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:41:52,577 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:41:52,625 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:41:52,630 (INFO) </assets/index-C26oBRaL.js> (:20808) - resizing:  1
+2026-01-22 18:41:52,691 (ERROR) </assets/index-C26oBRaL.js> (:20808) - Uncaught ReferenceError: last_position is not defined
+2026-01-22 18:41:55,573 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-22 18:41:55,677 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]

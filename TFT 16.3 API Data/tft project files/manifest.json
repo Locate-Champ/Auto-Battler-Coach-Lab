@@ -1,0 +1,38 @@
+{
+  "created_at_utc": "2026-01-21T20:13:54.605169Z",
+  "source_zip": "tft_set16_2_snapshot_cdragon.zip",
+  "files": [
+    "README.txt",
+    "ability_variables.jsonl",
+    "augments.jsonl",
+    "champion_traits.jsonl",
+    "champions.jsonl",
+    "item_components.jsonl",
+    "items.jsonl",
+    "metadata.json",
+    "set16_all_records.jsonl",
+    "set16_augments.jsonl",
+    "set16_champions_all.jsonl",
+    "set16_champions_shop.jsonl",
+    "set16_items.jsonl",
+    "set16_traits.jsonl",
+    "trait_effects.jsonl",
+    "traits.jsonl"
+  ],
+  "row_counts_from_csv": {
+    "ability_variables": 609,
+    "augments": 208,
+    "champion_traits": 207,
+    "champions": 101,
+    "item_components": 0,
+    "items": 444,
+    "trait_effects": 113,
+    "traits": 53
+  },
+  "combined_row_count": 1735,
+  "notes": [
+    "CSV-derived JSONL files preserve the same columns as the CSV exports.",
+    "set16_all_records.jsonl merges all CSV-derived records into one JSONL with a record_type field.",
+    "The existing set16_*.jsonl files are included as-is from the snapshot pack."
+  ]
+}

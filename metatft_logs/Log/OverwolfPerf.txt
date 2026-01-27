@@ -1,0 +1,34 @@
+Report Timestamp: 01/23/2026 19:41:59 
+
+ id  | Running | Session length | Average CPU | Average memory | Avg last CPU | Avg last Memory | Avg. 5 min CPU | Avg 5 min memory | Last Run
+----------------------------------------------------------------------------------------------------------------------------------------------
+1    | True    | 02:43:44       | 0.0%        | 168,679K       | 0.0%         | 168,679K        | 0.1%           | 222,901K         |                
+2    | True    | 02:43:44       | 0.0%        | 2,464K         | 0.0%         | 2,464K          | 0.0%           | 2,496K           |                
+3    | True    | 02:43:44       | 0.0%        | 11,084K        | 0.0%         | 11,084K         | 0.0%           | 12,123K          |                
+4    | True    | 02:43:44       | 0.0%        | 3,327K         | 0.0%         | 3,327K          | 0.0%           | 3,700K           |                
+5    | True    | 02:43:44       | 0.2%        | 140,893K       | 0.2%         | 140,893K        | 0.0%           | 348,982K         |                
+6    | True    | 02:43:44       | 0.3%        | 780,319K       | 0.3%         | 780,319K        | 0.3%           | 1,336,923K       |                
+7    | True    | 02:43:44       | 0.0%        | 2,659K         | 0.0%         | 2,659K          | 0.0%           | 2,700K           |                
+8    | True    | 00:21:02       | 0.0%        | 39,002K        | 0.0%         | 38,779K         | 0.0%           | 39,697K          |                
+9    | True    | 02:43:34       | 0.0%        | 88,823K        | 0.0%         | 88,823K         | 0.0%           | 97,207K          |                
+10   | True    | 00:21:07       | 0.0%        | 15,775K        | 0.0%         | 15,087K         | 0.0%           | 19,384K          |                
+11   | True    | 02:36:41       | 0.0%        | 61,659K        | 0.0%         | 49,578K         | 0.0%           | 51,460K          |                
+12   | False   | 00:00:06       | 0.0%        | 3,279K         | 0.0%         | 3,228K          | 0.0%           | 0K               | 01/23/2026 19:20:57 
+13   | False   | 00:00:15       | 0.0%        | 6,490K         | 0.0%         | 6,490K          | 0.0%           | 0K               | 01/22/2026 14:42:41 
+14   | False   | 00:00:00       | 0.0%        | 0K             | 0.0%         | 0K              | 0.0%           | 0K               | 01/23/2026 09:10:52 
+
+1. Overwolf
+2. Overwolf CEF Crash Handler
+3. Utility: Network Service
+4. Utility: Storage Service
+5. GPU Process
+6. aheglebeeekjdnkljmpngplhpedgejncjhojnndh - MetaTFT
+7. Utility: Audio Service
+8. ggfmakpbllghoepnmfelddbminamnbmfelbahfdp - Overwolf General GameEvents Provider
+9. cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj - CurseForge
+10. oldfhfbggeglgjgenidckaneodejpjkaggklojma - Overwolf notifications
+11. ecbhmmfmjonpojpbedhhhbjanafifbbcjofikdim - Launcher Events Provider
+12. ppagiehdogdjlomggmoejfamedbjggdggnjbilhe - Overwolf Remote Configurations
+13. Overwolf notifications Subframe: https://overwolf.com/ - Overwolf notifications
+14. Utility: Unzip Service
+

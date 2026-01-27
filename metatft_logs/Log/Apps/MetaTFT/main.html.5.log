@@ -1,0 +1,533 @@
+﻿2026-01-19 15:43:50,414 (INFO) ================== new session ==================
+2026-01-19 15:43:50,415 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-19 15:43:50,415 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: es
+2026-01-19 15:43:50,416 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-19 15:43:50,416 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: de
+2026-01-19 15:43:50,417 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-19 15:43:50,417 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-19 15:43:50,418 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-19 15:43:50,418 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-19 15:43:50,418 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-19 15:43:50,419 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-19 15:43:50,419 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-19 15:43:50,420 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: el
+2026-01-19 15:43:50,420 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-19 15:43:50,421 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-19 15:43:50,421 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: it
+2026-01-19 15:43:50,421 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-19 15:43:50,422 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-19 15:43:50,422 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: th
+2026-01-19 15:43:50,423 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-19 15:43:50,423 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-19 15:43:50,424 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-19 15:43:50,424 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-19 15:43:50,424 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Final current locale: en
+2026-01-19 15:43:50,425 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en_us to en_us
+2026-01-19 15:43:50,425 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en-US to en_us
+2026-01-19 15:43:50,426 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en to en_us
+2026-01-19 15:43:50,426 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en-US to en_us
+2026-01-19 15:43:50,427 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en to en_us
+2026-01-19 15:43:50,482 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-19 15:43:50,503 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-19 15:43:50,504 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-19 15:43:50,506 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-19 15:43:50,506 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-19 15:43:50,507 (INFO) </assets/index-CCJ9jrMe.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-19 15:43:50,507 (INFO) </assets/index-CCJ9jrMe.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-19 15:43:50,507 (INFO) </assets/index-CCJ9jrMe.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-19 15:43:50,508 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - window name:  [object Object]
+2026-01-19 15:43:50,508 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - Desktop Render
+2026-01-19 15:43:50,520 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - healthcheck: {}
+2026-01-19 15:43:50,521 (INFO) </assets/index-CCJ9jrMe.js> (:20763) - Comps Page: Render true 1100
+2026-01-19 15:43:50,521 (INFO) </assets/index-CCJ9jrMe.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-19 15:43:50,525 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:50,577 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - AppRoutes location [object Object]
+2026-01-19 15:43:50,582 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - adbox state:  [object Object]
+2026-01-19 15:43:50,598 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters componentDidMount
+2026-01-19 15:43:50,599 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-19 15:43:50,599 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters: Calling updateFilterValues - filters need update
+2026-01-19 15:43:50,599 (INFO) </assets/index-CCJ9jrMe.js> (:27) - updateFilterValues: Starting filter values fetch
+2026-01-19 15:43:50,643 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-19 15:43:50,644 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - scrollRef [object Object]
+2026-01-19 15:43:50,667 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - CompTable: Mounted with activeFilters, updating data
+2026-01-19 15:43:50,667 (INFO) </assets/index-CCJ9jrMe.js> (:20763) - checking sync queue: from centralized filters: 1100 1100
+2026-01-19 15:43:50,668 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters componentDidMount
+2026-01-19 15:43:50,668 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-19 15:43:50,668 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters: Calling updateFilterValues - filters need update
+2026-01-19 15:43:50,669 (INFO) </assets/index-CCJ9jrMe.js> (:27) - updateFilterValues: Global initialization in progress, waiting for existing request
+2026-01-19 15:43:50,669 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-19 15:43:50,670 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidMount [object Object]
+2026-01-19 15:43:50,670 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE - fetch_players() will NOT be triggered
+2026-01-19 15:43:50,671 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Ad script loaded
+2026-01-19 15:43:50,671 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - createAd 0
+2026-01-19 15:43:50,672 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - OwAd is undefined
+2026-01-19 15:43:50,672 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - observing ad space
+2026-01-19 15:43:50,673 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Initializing winrate model for TFTSet16
+2026-01-19 15:43:50,673 (INFO) </assets/index-CCJ9jrMe.js> (:27) - Fetching unit items
+2026-01-19 15:43:50,675 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-19 15:43:50,677 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - ExplorerFilters: Skipping centralized filter update - not on explorer page: /comps
+2026-01-19 15:43:50,678 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-19 15:43:50,678 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters changed, updating filterRefCopy: [object Object]
+2026-01-19 15:43:50,679 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Updated filterRefCopy: [object Object]
+2026-01-19 15:43:50,679 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-19 15:43:50,680 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-19 15:43:50,680 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-19 15:43:50,681 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-19 15:43:50,681 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - navigate changed [object Object]
+2026-01-19 15:43:50,682 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-19 15:43:50,682 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-19 15:43:50,689 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:50,728 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - adbox state:  [object Object]
+2026-01-19 15:43:50,731 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - backing Up State
+2026-01-19 15:43:50,748 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - CompTable: update_data from componentDidMount1 true
+2026-01-19 15:43:50,748 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - update_data: updating comps data
+2026-01-19 15:43:50,749 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - fetching /comps_data:  https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100
+2026-01-19 15:43:50,749 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - fetching /comps_stats:  https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-19 15:43:50,750 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - fetch language:  en_us  from LookupService
+2026-01-19 15:43:50,788 (INFO) </assets/index-CCJ9jrMe.js> (:27) - fetch language lookups:  [object Object]
+2026-01-19 15:43:50,788 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:50,827 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - backing Up State
+2026-01-19 15:43:50,838 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:43:50,839 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:50,855 (INFO) </assets/index-CCJ9jrMe.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/unit_items_processed?region_hint=na1
+2026-01-19 15:43:50,856 (INFO) </assets/index-CCJ9jrMe.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/pro-comps?region_hint=na1
+2026-01-19 15:43:50,856 (INFO) </assets/index-CCJ9jrMe.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/piltover-modules?region_hint=na1
+2026-01-19 15:43:50,856 (INFO) </assets/index-CCJ9jrMe.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100&region_hint=na1
+2026-01-19 15:43:50,857 (INFO) </assets/index-CCJ9jrMe.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&region_hint=na1
+2026-01-19 15:43:50,878 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-19 15:43:50,879 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - update_data filters
+2026-01-19 15:43:50,880 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - CompTable: update_data from updateActiveFilters3 true
+2026-01-19 15:43:50,880 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:50,889 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - already fetching comps data https://api-hc.metatft.com/tft-comps-api/comps_data
+2026-01-19 15:43:50,890 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:50,902 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - backing Up State
+2026-01-19 15:43:50,916 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:50,929 (INFO) </assets/index-CCJ9jrMe.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-19 15:43:50,930 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - ExplorerFilters: User changed filters via legacy method: [object Object]
+2026-01-19 15:43:50,930 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - sendFetchData: Skipping fetch - no dimension filters to warrant data request
+2026-01-19 15:43:50,931 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-19 15:43:50,931 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at Object.lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:20748:421170)
+    at async le (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-CCJ9jrMe.js:332:71011)
+2026-01-19 15:43:50,932 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - draggable [object Object]
+2026-01-19 15:43:50,969 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,969 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,970 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,970 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,970 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,971 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,975 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-19 15:43:50,976 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,976 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,977 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-19 15:43:50,977 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,978 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,983 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,983 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,984 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,985 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,985 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,985 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,986 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-19 15:43:50,986 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,987 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,987 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,987 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,988 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,988 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,988 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-19 15:43:50,989 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,989 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,990 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,990 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,991 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,991 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,992 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,992 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,992 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,993 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,993 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,993 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,994 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,994 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,995 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,996 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,996 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,997 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,997 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,998 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,998 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,999 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:50,999 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:50,999 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,000 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,000 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,001 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,001 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,001 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,002 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,002 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,002 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,003 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,003 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,003 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,004 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,004 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,005 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,005 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,006 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,006 (INFO) </assets/index-CCJ9jrMe.js> (:27) - Formula not found:  TFT16_Bard_Num3Stars {39cfdb6d} [object Object] 
+2026-01-19 15:43:51,007 (INFO) </assets/index-CCJ9jrMe.js> (:27) - couldn't find variable:  1 TFT16_Bard_Num3Stars
+2026-01-19 15:43:51,007 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,008 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,008 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,009 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,009 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,009 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,010 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,010 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,011 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,011 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,012 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-19 15:43:51,012 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:43:51,013 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-19 15:43:51,013 (INFO) </assets/index-CCJ9jrMe.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-19 15:43:51,076 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:51,112 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Model lookups loaded for TFTSet16
+2026-01-19 15:43:51,113 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Loading model for TFTSet16
+2026-01-19 15:43:51,114 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-19 15:43:51,115 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:43:51,116 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-19 15:43:51,116 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - healthcheck: {}
+2026-01-19 15:43:51,159 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - userInfo: [object Object]
+2026-01-19 15:43:51,434 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Model loaded for TFTSet16
+2026-01-19 15:43:51,480 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:51,503 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - MyTeams: selectedPortal state changed to: 
+2026-01-19 15:43:51,504 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - MyTeams: portalSearch state changed to: 
+2026-01-19 15:43:51,728 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:51,740 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - backing Up State
+2026-01-19 15:43:51,757 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:51,777 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - set key: TFTSet16 TFTSet16
+2026-01-19 15:43:51,780 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:51,790 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - backing Up State
+2026-01-19 15:43:51,804 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:51,811 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:51,828 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - backing Up State
+2026-01-19 15:43:51,851 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:43:51,992 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Model details for TFTSet16:  WinRateModelImproved_BoardStrength_TFTSet16_Mon, 19 Jan 2026 10:46:45 GMT
+2026-01-19 15:43:52,000 (INFO) </assets/index-CCJ9jrMe.js> (:27) - updateFilterValues: Successfully fetched filter values
+2026-01-19 15:43:52,024 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-19 15:43:52,025 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-19 15:43:52,026 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-19 15:43:52,027 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-19 15:43:52,027 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-19 15:43:52,028 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-19 15:43:52,028 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-19 15:43:52,028 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-19 15:43:52,029 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-19 15:43:52,029 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-19 15:43:52,030 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-19 15:43:52,030 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-19 15:43:52,031 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-19 15:43:52,031 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-19 15:43:52,032 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-19 15:43:52,032 (INFO) </assets/index-CCJ9jrMe.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-19 15:43:52,061 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - createAd 1
+2026-01-19 15:43:52,062 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - OwAd is undefined
+2026-01-19 15:43:53,062 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - createAd 2
+2026-01-19 15:43:53,062 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - OwAd is undefined
+2026-01-19 15:43:54,163 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - createAd 3
+2026-01-19 15:43:54,165 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - OwAd is undefined
+2026-01-19 15:43:55,148 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - createAd 4
+2026-01-19 15:43:55,148 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - OwAd is undefined
+2026-01-19 15:43:56,171 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - createAd 5
+2026-01-19 15:43:56,172 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - OwAd is undefined
+2026-01-19 15:43:57,221 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - createAd 6
+2026-01-19 15:43:57,222 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - OwAd is undefined
+2026-01-19 15:43:58,223 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - createAd 7
+2026-01-19 15:43:58,235 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - creating ad with size:  [object Object]
+2026-01-19 15:44:06,094 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - UpdateControls mounted [object Object] [object Object]
+2026-01-19 15:44:10,092 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - not significant move
+2026-01-19 15:44:10,168 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - Desktop Render
+2026-01-19 15:44:10,244 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - AppRoutes location [object Object]
+2026-01-19 15:44:10,247 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:44:38,534 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - Desktop Render
+2026-01-19 15:44:38,627 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - AppRoutes location [object Object]
+2026-01-19 15:44:38,634 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:44:38,639 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:38,683 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:44:38,684 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:44:38,685 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:38,736 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - backing Up State
+2026-01-19 15:44:38,752 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:38,865 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:39,048 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:44:39,051 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:39,185 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:44:39,200 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:39,277 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:39,384 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:44:39,406 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:39,460 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:44:39,461 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-19 15:44:39,461 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] No changes detected in players_tagline or roster.player_status
+2026-01-19 15:44:39,506 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:44:39,507 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-19 15:44:39,507 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] No changes detected in players_tagline or roster.player_status
+2026-01-19 15:44:40,380 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - Desktop Render
+2026-01-19 15:44:40,509 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - AppRoutes location [object Object]
+2026-01-19 15:44:40,510 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:44:51,133 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - healthcheck: {}
+2026-01-19 15:44:51,212 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:44:51,213 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-19 15:44:51,214 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] No changes detected in players_tagline or roster.player_status
+2026-01-19 15:44:51,238 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:44:51,238 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-19 15:44:51,239 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] Updating Roster via players_tagline change: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:44:51,239 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Getting Players [object Object]
+2026-01-19 15:44:51,240 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - should update:  false
+2026-01-19 15:44:51,241 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] fetch_players: summoner_info available, checking conditions...
+2026-01-19 15:44:51,247 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] fetch_players: fetching_player_lookups = false
+2026-01-19 15:44:51,248 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] fetch_players: refresh_player_lookups = true
+2026-01-19 15:44:51,249 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] fetch_players: player_lookups = [object Object]
+2026-01-19 15:44:51,249 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] fetch_players: Error in player_lookups = false
+2026-01-19 15:44:51,250 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] fetch_players: NOT currently fetching, checking refresh condition...
+2026-01-19 15:44:51,250 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] fetch_players: Condition met - proceeding with player lookup
+2026-01-19 15:44:51,251 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] fetch_players: players_tagline = [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:44:51,253 (INFO) </assets/index-CCJ9jrMe.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/latest_cluster_id?region_hint=na1
+2026-01-19 15:44:51,358 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:44:51,400 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:51,439 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] execute_player_query: Setting FETCHING_PLAYER_LOOKUPS=true and REFRESH_PLAYER_LOOKUPS=false
+2026-01-19 15:44:51,440 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - [PlayerScouting] execute_player_query: Players list: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-19 15:44:51,465 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:44:51,466 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:44:51,468 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Orlane/NA1?source=app_scouting&tft_set=TFTSet16
+2026-01-19 15:44:51,469 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Karina Super Fan/8148?source=app_scouting&tft_set=TFTSet16
+2026-01-19 15:44:51,470 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Slakz/NA1?source=app_scouting&tft_set=TFTSet16
+2026-01-19 15:44:51,470 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Wadermelion/NA2?source=app_scouting&tft_set=TFTSet16
+2026-01-19 15:44:51,471 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/bigbadbadgermole/2017?source=app_scouting&tft_set=TFTSet16
+2026-01-19 15:44:51,471 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/JebronLames/Jebro?source=app_scouting&tft_set=TFTSet16
+2026-01-19 15:44:51,615 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Got Player Karina Super Fan#8148
+2026-01-19 15:44:51,657 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:51,736 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Got Player bigbadbadgermole#2017
+2026-01-19 15:44:51,769 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:51,807 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Got Player Slakz#NA1
+2026-01-19 15:44:51,839 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:51,892 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Got Player JebronLames#Jebro
+2026-01-19 15:44:51,917 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:51,963 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Got Player Wadermelion#NA2
+2026-01-19 15:44:51,993 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:52,054 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - Got Player Orlane#NA1
+2026-01-19 15:44:52,090 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:52,259 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:44:52,260 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:44:52,401 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-19 15:44:52,412 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:44:52,453 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - healthcheck: {}
+2026-01-19 15:44:53,231 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - refresh complete
+2026-01-19 15:44:53,232 (INFO) </assets/index-CCJ9jrMe.js> (:20748) - getting player after refresh: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Orlane/NA1?source=app_scouting
+2026-01-19 15:44:53,363 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:45:30,210 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:45:56,792 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:46:31,433 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:46:38,796 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:46:38,796 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:46:38,855 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:46:38,855 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:46:38,909 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:46:38,910 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:46:38,945 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:46:38,945 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:46:56,811 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:46:56,812 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:01,277 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:47:25,787 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:25,788 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:25,806 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:25,807 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:25,839 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:25,840 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:25,862 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:25,863 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:26,137 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:26,138 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:26,222 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:26,223 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:31,872 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:31,873 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:31,888 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:31,889 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:47:32,843 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:47:40,792 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:47:40,793 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:06,790 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:06,791 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:06,809 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:06,809 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:07,125 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:07,126 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:07,283 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:07,283 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:16,440 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:48:26,794 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:26,795 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:41,890 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:48:47,808 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:47,808 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:47,839 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:47,840 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:47,862 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:47,863 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:48:48,081 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:48:48,082 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:49:07,791 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:49:07,792 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:49:09,792 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:49:09,793 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:49:22,410 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:49:27,790 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:49:27,791 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:49:33,790 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:49:33,791 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:49:37,796 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:49:37,797 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:49:37,845 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:49:37,846 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:49:38,792 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:49:38,793 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:01,940 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:50:06,795 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:06,796 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:09,789 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:09,790 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:09,817 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:09,818 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:09,890 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:09,891 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:10,125 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:10,126 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:10,792 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:10,793 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:15,901 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:15,902 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:15,914 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:15,915 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:40,764 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:50:40,842 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:40,842 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:50:40,872 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:50:40,873 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:07,471 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:51:10,806 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:10,807 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:13,791 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:13,792 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:13,858 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:13,858 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:13,918 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:13,919 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:14,085 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:14,086 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:14,790 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:14,791 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:19,929 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:19,930 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:19,940 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:19,941 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:42,234 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:51:43,799 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:43,799 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:51:43,823 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:51:43,825 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:52:12,115 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:52:18,812 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:52:18,813 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:52:43,743 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:52:59,791 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:52:59,792 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:52:59,823 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:52:59,824 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:52:59,853 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:52:59,854 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:53:00,005 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:53:00,006 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:53:00,132 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:53:00,133 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:53:05,864 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:53:05,865 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:53:05,876 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:53:05,876 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:53:10,790 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:53:10,791 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:53:27,411 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:53:29,817 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:53:29,818 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:53:29,851 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:53:29,852 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:53:52,875 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:54:00,837 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:00,838 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:03,820 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:03,821 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:03,853 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:03,854 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:03,892 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:03,893 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:04,242 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:04,242 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:09,905 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:09,905 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:09,917 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:09,918 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:33,499 (INFO) </assets/index-CCJ9jrMe.js> (:20765) - incrementing tip
+2026-01-19 15:54:33,828 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:33,829 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:33,874 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:54:33,875 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-19 15:54:59,232 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - pinning in game comp
+2026-01-19 15:54:59,248 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting restore operation for 'pinned_comp': [object Object]
+2026-01-19 15:54:59,249 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-19 15:54:59,250 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:54:59,338 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-19 15:54:59,339 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to restore window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-19 15:54:59,341 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully restored window 'pinned_comp': [object Object]
+2026-01-19 15:55:01,561 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - pinning in game comp
+2026-01-19 15:55:01,562 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - removing comp
+2026-01-19 15:55:01,573 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting minimize operation for 'pinned_comp': [object Object]
+2026-01-19 15:55:01,574 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-19 15:55:01,575 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:55:01,740 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-19 15:55:01,740 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to minimize window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-19 15:55:01,752 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully minimized window 'pinned_comp': [object Object]
+2026-01-19 15:55:05,237 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - pinning in game comp
+2026-01-19 15:55:05,248 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting restore operation for 'pinned_comp': [object Object]
+2026-01-19 15:55:05,248 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-19 15:55:05,250 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:55:05,346 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - pinning in game comp
+2026-01-19 15:55:05,346 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - removing comp
+2026-01-19 15:55:05,358 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting minimize operation for 'pinned_comp': [object Object]
+2026-01-19 15:55:05,358 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-19 15:55:05,360 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:55:05,467 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - pinning in game comp
+2026-01-19 15:55:05,479 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting restore operation for 'pinned_comp': [object Object]
+2026-01-19 15:55:05,479 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-19 15:55:05,484 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:55:05,619 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - pinning in game comp
+2026-01-19 15:55:05,620 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - removing comp
+2026-01-19 15:55:05,629 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Starting minimize operation for 'pinned_comp': [object Object]
+2026-01-19 15:55:05,630 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-19 15:55:05,632 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - Comps Render
+2026-01-19 15:55:05,728 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-19 15:55:05,729 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to restore window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-19 15:55:05,746 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-19 15:55:05,747 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to minimize window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-19 15:55:05,747 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-19 15:55:05,748 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to restore window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-19 15:55:05,748 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-19 15:55:05,749 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Attempting to minimize window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-19 15:55:05,769 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully restored window 'pinned_comp': [object Object]
+2026-01-19 15:55:05,773 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully minimized window 'pinned_comp': [object Object]
+2026-01-19 15:55:05,774 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully restored window 'pinned_comp': [object Object]
+2026-01-19 15:55:05,775 (INFO) </assets/index-CCJ9jrMe.js> (:27) - [WindowService] Successfully minimized window 'pinned_comp': [object Object]
+2026-01-19 15:55:06,843 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-19 15:55:06,844 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken

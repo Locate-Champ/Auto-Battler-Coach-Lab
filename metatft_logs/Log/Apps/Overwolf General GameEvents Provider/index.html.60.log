@@ -1,0 +1,463 @@
+﻿2026-01-22 18:42:27,957 (INFO) ================== new session ==================
+2026-01-22 18:42:27,957 (INFO) </index.html> (:91) - Sentry sample rate sent to:  0.1
+2026-01-22 18:42:27,958 (INFO) </libs/bundle.min.js> (:1) - [GEP] Sentry initialized
+2026-01-22 18:42:28,014 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,015 (INFO) </libs/bundle.min.js> (:1) - [GEP] launched
+2026-01-22 18:42:28,015 (INFO) </libs/bundle.min.js> (:1) - [INIT] main module loaded
+2026-01-22 18:42:28,121 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,122 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,243 (INFO) </libs/bundle.min.js> (:1) - [GEP] Running version 296.2.2
+2026-01-22 18:42:28,244 (INFO) </libs/bundle.min.js> (:1) - [GEP] appInit
+2026-01-22 18:42:28,244 (INFO) </libs/bundle.min.js> (:1) - [GEP] init
+2026-01-22 18:42:28,249 (INFO) </libs/bundle.min.js> (:1) - [GEP] skipped reporting osbuild
+2026-01-22 18:42:28,250 (INFO) </libs/bundle.min.js> (:1) - [GEP] Loaded but no game is currently running
+2026-01-22 18:42:28,275 (INFO) </libs/bundle.min.js> (:1) - [Analytics] Usage: true
+2026-01-22 18:42:28,290 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,291 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,291 (INFO) </libs/bundle.min.js> (:1) - [WORLD OF WARCRAFT] onAppInit
+2026-01-22 18:42:28,292 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,292 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,293 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,309 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,309 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,310 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,310 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,311 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,356 (INFO) </libs/bundle.min.js> (:1) - [LoL] onAppInit
+2026-01-22 18:42:28,357 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,370 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,370 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,370 (INFO) </libs/bundle.min.js> (:1) - [FINAL FANTASY XIV] onAppInit
+2026-01-22 18:42:28,371 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,371 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,371 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,389 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,390 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,390 (INFO) </libs/bundle.min.js> (:1) - [PATH OF EXILE] onAppInit
+2026-01-22 18:42:28,390 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,391 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,391 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,419 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,420 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,420 (INFO) </libs/bundle.min.js> (:1) - [DOTA] onAppInit
+2026-01-22 18:42:28,421 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,421 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,422 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,451 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,451 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,452 (INFO) </libs/bundle.min.js> (:1) - [MINECRAFT] onAppInit
+2026-01-22 18:42:28,473 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,473 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,474 (INFO) </libs/bundle.min.js> (:1) - [WARFRAME] onAppInit
+2026-01-22 18:42:28,499 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,499 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,500 (INFO) </libs/bundle.min.js> (:1) - [Hearthstone] onAppInit
+2026-01-22 18:42:28,520 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:28,536 (INFO) </libs/bundle.min.js> (:1) - updating C:\Users\forre\AppData\Local/Blizzard/Hearthstone/log.config...
+2026-01-22 18:42:28,538 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,539 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,540 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,557 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,557 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,558 (INFO) </libs/bundle.min.js> (:1) - [Rocket League] onAppInit
+2026-01-22 18:42:28,604 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,605 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,605 (INFO) </libs/bundle.min.js> (:1) - [RAINBOW SIX SIEGE] onAppInit
+2026-01-22 18:42:28,628 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,628 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,629 (INFO) </libs/bundle.min.js> (:1) - [OVERWATCH] onAppInit
+2026-01-22 18:42:28,643 (INFO) </libs/bundle.min.js> (:1) - [PUBG] onAppInit
+2026-01-22 18:42:28,679 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,680 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,680 (INFO) </libs/bundle.min.js> (:1) - [FORTNITE] onAppInit
+2026-01-22 18:42:28,688 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:28,689 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,689 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,689 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,691 (INFO) </libs/bundle.min.js> (:1) - [PUBG] onAppInit
+2026-01-22 18:42:28,708 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,708 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,709 (INFO) </libs/bundle.min.js> (:1) - [MAGIC THE GATHERING ARENA] onAppInit
+2026-01-22 18:42:28,716 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:28,717 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,717 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,717 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,749 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:28,750 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,751 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,751 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,777 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,777 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,778 (INFO) </libs/bundle.min.js> (:1) - [APEX LEGENDS] onAppInit
+2026-01-22 18:42:28,778 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:28,779 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,779 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,779 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,792 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,793 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,793 (INFO) </libs/bundle.min.js> (:1) - [LEGENDS OF RUNETERRA] onAppInit
+2026-01-22 18:42:28,814 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,814 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,815 (INFO) </libs/bundle.min.js> (:1) - [ESCAPE FROM TARKOV] onAppInit
+2026-01-22 18:42:28,837 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,838 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,838 (INFO) </libs/bundle.min.js> (:1) - [VALORANT] onAppInit
+2026-01-22 18:42:28,861 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,862 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,862 (INFO) </libs/bundle.min.js> (:1) - [GENSHIN IMPACT] onAppInit
+2026-01-22 18:42:28,874 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:28,874 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,875 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,875 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:28,879 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,880 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,880 (INFO) </libs/bundle.min.js> (:1) - [NEW WORLD] onAppInit
+2026-01-22 18:42:28,892 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,892 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,892 (INFO) </libs/bundle.min.js> (:1) - [DIABLO2] onAppInit
+2026-01-22 18:42:28,908 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,909 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,909 (INFO) </libs/bundle.min.js> (:1) - [LOST ARK] onAppInit
+2026-01-22 18:42:28,927 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,928 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,928 (INFO) </libs/bundle.min.js> (:1) - [COD - VANGUARD] Creating goop installer
+2026-01-22 18:42:28,929 (INFO) </libs/bundle.min.js> (:1) - [COD - VANGUARD] onAppInit
+2026-01-22 18:42:28,942 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,943 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,943 (INFO) </libs/bundle.min.js> (:1) - [BALDURS GATE 3] onAppInit
+2026-01-22 18:42:28,970 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,971 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,972 (INFO) </libs/bundle.min.js> (:1) - [MINECRAFT BEDROCK] onAppInit
+2026-01-22 18:42:28,988 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:28 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:28,989 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:28,989 (INFO) </libs/bundle.min.js> (:1) - [COD] Creating goop installer
+2026-01-22 18:42:28,990 (INFO) </libs/bundle.min.js> (:1) - [COD] onAppInit
+2026-01-22 18:42:29,003 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,004 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,005 (INFO) </libs/bundle.min.js> (:1) - [DARK AND DARKER] onAppInit
+2026-01-22 18:42:29,016 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,016 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,017 (INFO) </libs/bundle.min.js> (:1) - [SONS OF THE FOREST] onAppInit
+2026-01-22 18:42:29,051 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,051 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,052 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,052 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,053 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,059 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,059 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,060 (INFO) </libs/bundle.min.js> (:1) - [DIABLO 4] onAppInit
+2026-01-22 18:42:29,083 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,084 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,084 (INFO) </libs/bundle.min.js> (:1) - [COUNTER-STRIKE 2] onAppInit
+2026-01-22 18:42:29,089 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,089 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,090 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,090 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,096 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,097 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,097 (INFO) </libs/bundle.min.js> (:1) - [HONKAI STAR RAIL] Creating goop installer
+2026-01-22 18:42:29,098 (INFO) </libs/bundle.min.js> (:1) - [HONKAI STAR RAIL] onAppInit
+2026-01-22 18:42:29,102 (INFO) </libs/bundle.min.js> (:1) - [LoL] onAppInit
+2026-01-22 18:42:29,103 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,103 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,104 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,104 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,116 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,117 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,118 (INFO) </libs/bundle.min.js> (:1) - [STREET FIGHTER 6] Creating goop installer
+2026-01-22 18:42:29,118 (INFO) </libs/bundle.min.js> (:1) - [STREET FIGHTER 6] onAppInit
+2026-01-22 18:42:29,122 (INFO) </libs/bundle.min.js> (:1) - [VALORANT] onAppInit
+2026-01-22 18:42:29,127 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,127 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,131 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,132 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,137 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,138 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,138 (INFO) </libs/bundle.min.js> (:1) - [COD-MW3] Creating goop installer
+2026-01-22 18:42:29,139 (INFO) </libs/bundle.min.js> (:1) - [COD-MW3] onAppInit
+2026-01-22 18:42:29,151 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,152 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,152 (INFO) </libs/bundle.min.js> (:1) - [THE FINALS] Creating goop installer
+2026-01-22 18:42:29,153 (INFO) </libs/bundle.min.js> (:1) - [THE FINALS] onAppInit
+2026-01-22 18:42:29,164 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,164 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,165 (INFO) </libs/bundle.min.js> (:1) - [LETHAL COMPANY] Creating goop installer
+2026-01-22 18:42:29,165 (INFO) </libs/bundle.min.js> (:1) - [LETHAL COMPANY] onAppInit
+2026-01-22 18:42:29,176 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,177 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,177 (INFO) </libs/bundle.min.js> (:1) - [ONCE HUMAN] Creating goop installer
+2026-01-22 18:42:29,178 (INFO) </libs/bundle.min.js> (:1) - [ONCE HUMAN] onAppInit
+2026-01-22 18:42:29,192 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,193 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,194 (INFO) </libs/bundle.min.js> (:1) - [PALWORLD] onAppInit
+2026-01-22 18:42:29,205 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,206 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,206 (INFO) </libs/bundle.min.js> (:1) - [HELLDIVERS 2] Creating goop installer
+2026-01-22 18:42:29,207 (INFO) </libs/bundle.min.js> (:1) - [HELLDIVERS 2] onAppInit
+2026-01-22 18:42:29,214 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,214 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,215 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,215 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,217 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,218 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,218 (INFO) </libs/bundle.min.js> (:1) - [CONTENT WARNING] Creating goop installer
+2026-01-22 18:42:29,219 (INFO) </libs/bundle.min.js> (:1) - [CONTENT WARNING] onAppInit
+2026-01-22 18:42:29,231 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,231 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,231 (INFO) </libs/bundle.min.js> (:1) - [WUTHERING WAVES] Creating goop installer
+2026-01-22 18:42:29,232 (INFO) </libs/bundle.min.js> (:1) - [WUTHERING WAVES] onAppInit
+2026-01-22 18:42:29,244 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,244 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,245 (INFO) </libs/bundle.min.js> (:1) - [SUPERVIVE] onAppInit
+2026-01-22 18:42:29,264 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,265 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,265 (INFO) </libs/bundle.min.js> (:1) - [DEADLOCK] onAppInit
+2026-01-22 18:42:29,276 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,277 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,278 (INFO) </libs/bundle.min.js> (:1) - [BLACK MYTH WUKONG] Creating goop installer
+2026-01-22 18:42:29,278 (INFO) </libs/bundle.min.js> (:1) - [BLACK MYTH WUKONG] onAppInit
+2026-01-22 18:42:29,290 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,291 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,291 (INFO) </libs/bundle.min.js> (:1) - [BLACK OPS 6] Creating goop installer
+2026-01-22 18:42:29,292 (INFO) </libs/bundle.min.js> (:1) - [BLACK OPS 6] onAppInit
+2026-01-22 18:42:29,304 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,305 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,305 (INFO) </libs/bundle.min.js> (:1) - [WARHAMMER 40000 SPACE MARINE 2] Creating goop installer
+2026-01-22 18:42:29,305 (INFO) </libs/bundle.min.js> (:1) - [WARHAMMER 40000 SPACE MARINE 2] onAppInit
+2026-01-22 18:42:29,321 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,321 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,322 (INFO) </libs/bundle.min.js> (:1) - [PATH OF EXILE 2] onAppInit
+2026-01-22 18:42:29,340 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,341 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,341 (INFO) </libs/bundle.min.js> (:1) - [MARVEL RIVALS] onAppInit
+2026-01-22 18:42:29,353 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,353 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,354 (INFO) </libs/bundle.min.js> (:1) - [MONSTER HUNTER WILDS] Creating goop installer
+2026-01-22 18:42:29,354 (INFO) </libs/bundle.min.js> (:1) - [MONSTER HUNTER WILDS] onAppInit
+2026-01-22 18:42:29,368 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,368 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,369 (INFO) </libs/bundle.min.js> (:1) - [REPO] Creating goop installer
+2026-01-22 18:42:29,369 (INFO) </libs/bundle.min.js> (:1) - [REPO] onAppInit
+2026-01-22 18:42:29,389 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,390 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,390 (INFO) </libs/bundle.min.js> (:1) - [SCHEDULE I] onAppInit
+2026-01-22 18:42:29,394 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,395 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,395 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,396 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,408 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,409 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,409 (INFO) </libs/bundle.min.js> (:1) - [SPLITGATE 2] Creating goop installer
+2026-01-22 18:42:29,410 (INFO) </libs/bundle.min.js> (:1) - [SPLITGATE 2] onAppInit
+2026-01-22 18:42:29,422 (INFO) </libs/bundle.min.js> (:1) - [DOTA] initializing DotaGsiListener from onAppInit
+2026-01-22 18:42:29,422 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,423 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,423 (INFO) </libs/bundle.min.js> (:1) - [ELDEN RING NIGHTREIGN] Creating goop installer
+2026-01-22 18:42:29,424 (INFO) </libs/bundle.min.js> (:1) - [ELDEN RING NIGHTREIGN] onAppInit
+2026-01-22 18:42:29,425 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,426 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,426 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,427 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,437 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,438 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,439 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,439 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,444 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,445 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,445 (INFO) </libs/bundle.min.js> (:1) - [PEAK] onAppInit
+2026-01-22 18:42:29,463 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,464 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,465 (INFO) </libs/bundle.min.js> (:1) - [REMATCH] onAppInit
+2026-01-22 18:42:29,465 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,465 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,466 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,466 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,478 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,479 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,479 (INFO) </libs/bundle.min.js> (:1) - [BATTLFIELD 6] Creating goop installer
+2026-01-22 18:42:29,480 (INFO) </libs/bundle.min.js> (:1) - [BATTLFIELD 6] onAppInit
+2026-01-22 18:42:29,502 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,503 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,503 (INFO) </libs/bundle.min.js> (:1) - [2XKO] onAppInit
+2026-01-22 18:42:29,516 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,517 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,517 (INFO) </libs/bundle.min.js> (:1) - [ARC RAIDERS] Creating goop installer
+2026-01-22 18:42:29,518 (INFO) </libs/bundle.min.js> (:1) - [ARC RAIDERS] onAppInit
+2026-01-22 18:42:29,543 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] session start time: Thu Jan 22 2026 18:42:29 GMT-0500 (Eastern Standard Time)
+2026-01-22 18:42:29,543 (INFO) </libs/bundle.min.js> (:1) - [TRACKING] Monitoring features
+2026-01-22 18:42:29,544 (INFO) </libs/bundle.min.js> (:1) - [HYTALE] onAppInit
+2026-01-22 18:42:29,557 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,558 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,558 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,559 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,715 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,716 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,716 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,717 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,742 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,742 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 21876 not enabled {"success":false,"status":"error","gameClassId":21876,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:29,743 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,743 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,744 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,757 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,758 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,758 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,758 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,788 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,788 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,789 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,789 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,855 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:29,856 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 22328 not enabled {"success":false,"status":"error","gameClassId":22328,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:29,856 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,856 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:29,857 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,004 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,005 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,005 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,006 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,033 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,033 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,034 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,034 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,048 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,048 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,049 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,049 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,078 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,078 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,079 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,079 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,139 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,140 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 22804 not enabled {"success":false,"status":"error","gameClassId":22804,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,140 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,141 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,141 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,290 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,291 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 22894 not enabled {"success":false,"status":"error","gameClassId":22894,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,291 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,292 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,292 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,322 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,322 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 23424 not enabled {"success":false,"status":"error","gameClassId":23424,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,322 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,323 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,323 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,334 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,334 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 23478 not enabled {"success":false,"status":"error","gameClassId":23478,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,335 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,335 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,335 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,365 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,365 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 23522 not enabled {"success":false,"status":"error","gameClassId":23522,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,366 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,366 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,366 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,427 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,428 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 23930 not enabled {"success":false,"status":"error","gameClassId":23930,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,428 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,428 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,429 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,585 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,586 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,586 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,587 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,614 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,615 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24000 not enabled {"success":false,"status":"error","gameClassId":24000,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,616 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,616 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,616 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,626 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,626 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24110 not enabled {"success":false,"status":"error","gameClassId":24110,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,627 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,627 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,627 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,656 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,656 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24300 not enabled {"success":false,"status":"error","gameClassId":24300,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,657 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,657 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,658 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,720 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,721 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,721 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,721 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,868 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,868 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,869 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,869 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,896 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,896 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24504 not enabled {"success":false,"status":"error","gameClassId":24504,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,897 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,897 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,897 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,910 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,911 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24542 not enabled {"success":false,"status":"error","gameClassId":24542,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,911 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,911 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,912 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,940 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:30,941 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 24548 not enabled {"success":false,"status":"error","gameClassId":24548,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:30,941 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,941 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:30,942 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,006 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,006 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,007 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,007 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,153 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,154 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,154 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,155 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,181 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,182 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 25446 not enabled {"success":false,"status":"error","gameClassId":25446,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:31,182 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,183 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,183 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,196 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,196 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 25448 not enabled {"success":false,"status":"error","gameClassId":25448,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:31,197 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,197 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,197 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,225 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,226 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,226 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,226 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,286 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,287 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 25884 not enabled {"success":false,"status":"error","gameClassId":25884,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:31,291 (INFO) </libs/bundle.min.js> (:1) - Could not find a valid DOTA installation. Reason: Game not installed
+2026-01-22 18:42:31,292 (INFO) </libs/bundle.min.js> (:1) - Aborting...
+2026-01-22 18:42:31,292 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,292 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,293 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,437 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,438 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 25918 not enabled {"success":false,"status":"error","gameClassId":25918,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:31,438 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,439 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,439 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,466 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,466 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,467 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,467 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,481 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,482 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,482 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,483 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,511 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,511 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 26462 not enabled {"success":false,"status":"error","gameClassId":26462,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:31,512 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,512 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,513 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,575 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,576 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,576 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,577 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,726 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,727 (INFO) </libs/bundle.min.js> (:1) - [GoopInstaller] skip goop installation, game 27168 not enabled {"success":false,"status":"error","gameClassId":27168,"reason":"no settings exist for this game","error":"no settings exist for this game"}
+2026-01-22 18:42:31,727 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,729 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,729 (INFO) </libs/bundle.min.js> (:1) - [Monitor] Usage: true
+2026-01-22 18:42:31,760 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,775 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,795 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,826 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}
+2026-01-22 18:42:31,857 (INFO) </libs/bundle.min.js> (:1) - [InfoDBContainer] UPDATING INFO (decoded): {"feature":"gep_internal","category":"gep_internal","key":"version_info","value":"{\"local_version\":\"296.2.2\",\"public_version\":\"296.2.2\",\"is_updated\":true}"}

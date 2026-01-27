@@ -1,0 +1,325 @@
+﻿2026-01-23 17:13:07,671 (INFO) ================== new session ==================
+2026-01-23 17:13:07,672 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-23 17:13:07,672 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-23 17:13:07,672 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-23 17:13:07,673 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-23 17:13:07,674 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-23 17:13:07,674 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-23 17:13:07,685 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-23 17:13:07,686 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-23 17:13:07,686 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-23 17:13:07,687 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-23 17:13:07,687 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-23 17:13:07,688 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-23 17:13:07,688 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-23 17:13:07,689 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-23 17:13:07,689 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-23 17:13:07,690 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-23 17:13:07,691 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-23 17:13:07,691 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-23 17:13:07,692 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-23 17:13:07,692 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-23 17:13:07,693 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-23 17:13:07,693 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-23 17:13:07,694 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-23 17:13:07,694 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-23 17:13:07,695 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-23 17:13:07,695 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-23 17:13:07,696 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-23 17:13:07,696 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-23 17:13:07,738 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-23 17:13:07,762 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-23 17:13:07,762 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-23 17:13:07,764 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-23 17:13:07,765 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-23 17:13:07,766 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-23 17:13:07,766 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-23 17:13:07,767 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-23 17:13:07,767 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-23 17:13:07,781 (INFO) </assets/index-C26oBRaL.js> (:20749) - healthcheck: {}
+2026-01-23 17:13:07,782 (INFO) </assets/index-C26oBRaL.js> (:20749) - healthcheck: {}
+2026-01-23 17:13:07,784 (INFO) </assets/index-C26oBRaL.js> (:20763) - Comps Page: Render true 1100
+2026-01-23 17:13:07,784 (INFO) </assets/index-C26oBRaL.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-23 17:13:07,785 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:07,859 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-23 17:13:07,867 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-23 17:13:07,894 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters componentDidMount
+2026-01-23 17:13:07,894 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-23 17:13:07,895 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Calling updateFilterValues - filters need update
+2026-01-23 17:13:07,895 (INFO) </assets/index-C26oBRaL.js> (:27) - updateFilterValues: Starting filter values fetch
+2026-01-23 17:13:07,903 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-23 17:13:07,904 (INFO) </assets/index-C26oBRaL.js> (:20668) - scrollRef [object Object]
+2026-01-23 17:13:07,923 (INFO) </assets/index-C26oBRaL.js> (:20668) - CompTable: Mounted with activeFilters, updating data
+2026-01-23 17:13:07,923 (INFO) </assets/index-C26oBRaL.js> (:20763) - checking sync queue: from centralized filters: 1100 1100
+2026-01-23 17:13:07,924 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters componentDidMount
+2026-01-23 17:13:07,924 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-23 17:13:07,924 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Calling updateFilterValues - filters need update
+2026-01-23 17:13:07,925 (INFO) </assets/index-C26oBRaL.js> (:27) - updateFilterValues: Global initialization in progress, waiting for existing request
+2026-01-23 17:13:07,925 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-23 17:13:07,926 (INFO) </assets/index-C26oBRaL.js> (:20765) - Ad script loaded
+2026-01-23 17:13:07,926 (INFO) </assets/index-C26oBRaL.js> (:20808) - resizing
+2026-01-23 17:13:07,927 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-23 17:13:07,928 (INFO) </assets/index-C26oBRaL.js> (:20765) - ExplorerFilters: Skipping centralized filter update - not on explorer page: /comps
+2026-01-23 17:13:07,929 (INFO) </assets/index-C26oBRaL.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-23 17:13:07,929 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters changed, updating filterRefCopy: [object Object]
+2026-01-23 17:13:07,930 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Updated filterRefCopy: [object Object]
+2026-01-23 17:13:07,931 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-23 17:13:07,931 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-23 17:13:07,932 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-23 17:13:07,933 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-23 17:13:07,933 (INFO) </assets/index-C26oBRaL.js> (:20808) - navigate changed [object Object]
+2026-01-23 17:13:07,934 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-23 17:13:07,934 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-23 17:13:07,934 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:07,991 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-23 17:13:07,994 (INFO) </assets/index-C26oBRaL.js> (:452) - getting comps options:  [object Object] undefined
+2026-01-23 17:13:07,995 (INFO) </assets/index-C26oBRaL.js> (:452) - getBuildData
+2026-01-23 17:13:07,996 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:13:08,057 (INFO) </assets/index-C26oBRaL.js> (:20668) - CompTable: update_data from componentDidMount1 true
+2026-01-23 17:13:08,057 (INFO) </assets/index-C26oBRaL.js> (:20668) - update_data: updating comps data
+2026-01-23 17:13:08,058 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching /comps_data:  https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100
+2026-01-23 17:13:08,058 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching /comps_stats:  https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-23 17:13:08,059 (INFO) </assets/index-C26oBRaL.js> (:20808) - fetch language:  en_us  from LookupService
+2026-01-23 17:13:08,239 (INFO) </assets/index-C26oBRaL.js> (:27) - fetch language lookups:  [object Object]
+2026-01-23 17:13:08,241 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:08,309 (INFO) </assets/index-C26oBRaL.js> (:452) - process builds [object Object]
+2026-01-23 17:13:08,310 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:13:08,389 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-23 17:13:08,390 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:08,415 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/pro-comps?region_hint=na1
+2026-01-23 17:13:08,416 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/piltover-modules?region_hint=na1
+2026-01-23 17:13:08,416 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comp_options?region_hint=na1
+2026-01-23 17:13:08,417 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comp_builds?region_hint=na1
+2026-01-23 17:13:08,417 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100&region_hint=na1
+2026-01-23 17:13:08,418 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&region_hint=na1
+2026-01-23 17:13:08,442 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-23 17:13:08,443 (INFO) </assets/index-C26oBRaL.js> (:20668) - update_data filters
+2026-01-23 17:13:08,444 (INFO) </assets/index-C26oBRaL.js> (:20668) - CompTable: update_data from updateActiveFilters3 true
+2026-01-23 17:13:08,445 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:08,459 (INFO) </assets/index-C26oBRaL.js> (:20668) - already fetching comps data https://api-hc.metatft.com/tft-comps-api/comps_data
+2026-01-23 17:13:08,460 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:08,473 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:13:08,534 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:08,552 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-23 17:13:08,553 (INFO) </assets/index-C26oBRaL.js> (:20765) - ExplorerFilters: User changed filters via legacy method: [object Object]
+2026-01-23 17:13:08,553 (INFO) </assets/index-C26oBRaL.js> (:20765) - sendFetchData: Skipping fetch - no dimension filters to warrant data request
+2026-01-23 17:13:08,554 (INFO) </assets/index-C26oBRaL.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-23 17:13:08,554 (INFO) </assets/index-C26oBRaL.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at Object.lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-C26oBRaL.js:20748:422505)
+    at async le (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-C26oBRaL.js:332:71011)
+2026-01-23 17:13:08,596 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-23 17:13:08,597 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-23 17:13:08,598 (INFO) </assets/index-C26oBRaL.js> (:20808) - draggable [object Object]
+2026-01-23 17:13:08,661 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,662 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,663 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,663 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,664 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,664 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,680 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-23 17:13:08,681 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,682 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,682 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-23 17:13:08,682 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,683 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,684 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,685 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,685 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,686 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,686 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,687 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,687 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-23 17:13:08,688 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,688 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,689 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,689 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,690 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,690 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,690 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-23 17:13:08,691 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,691 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,692 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,692 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,693 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,694 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,694 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,695 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,695 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,696 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,696 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,697 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,697 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,698 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,698 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,699 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,699 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,700 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,700 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,700 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,701 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,701 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,702 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,702 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,702 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,703 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,703 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,703 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,704 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,704 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,705 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,705 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,706 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,706 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,707 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,707 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,708 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,709 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,710 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,710 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,710 (INFO) </assets/index-C26oBRaL.js> (:27) - Formula not found:  TFT16_Bard_Num3Stars {39cfdb6d} [object Object] 
+2026-01-23 17:13:08,711 (INFO) </assets/index-C26oBRaL.js> (:27) - couldn't find variable:  1 TFT16_Bard_Num3Stars
+2026-01-23 17:13:08,712 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,713 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,713 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,714 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,715 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,715 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,716 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,717 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,717 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,718 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,719 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-23 17:13:08,720 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-23 17:13:08,720 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-23 17:13:08,721 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-23 17:13:09,338 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:09,412 (INFO) </assets/index-C26oBRaL.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-23 17:13:09,413 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-23 17:13:09,414 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-23 17:13:09,596 (INFO) </assets/index-C26oBRaL.js> (:20749) - healthcheck: {}
+2026-01-23 17:13:09,597 (INFO) </assets/index-C26oBRaL.js> (:20749) - healthcheck: {}
+2026-01-23 17:13:09,612 (INFO) </assets/index-C26oBRaL.js> (:20808) - current_window:  [object Object]
+2026-01-23 17:13:09,613 (INFO) </assets/index-C26oBRaL.js> (:20808) - result2:  [object Object]
+2026-01-23 17:13:09,613 (INFO) </assets/index-C26oBRaL.js> (:20808) - setting scaling:  -0.33333333333333326
+2026-01-23 17:13:09,629 (INFO) </assets/index-C26oBRaL.js> (:20749) - userInfo: [object Object]
+2026-01-23 17:13:09,632 (INFO) </assets/index-C26oBRaL.js> (:27) - updateFilterValues: Successfully fetched filter values
+2026-01-23 17:13:09,671 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-23 17:13:09,672 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-23 17:13:09,672 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-23 17:13:09,673 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-23 17:13:09,674 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-23 17:13:09,674 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-23 17:13:09,675 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-23 17:13:09,675 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-23 17:13:09,676 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-23 17:13:09,676 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-23 17:13:09,677 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-23 17:13:09,677 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-23 17:13:09,678 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-23 17:13:09,678 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-23 17:13:09,679 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-23 17:13:09,679 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-23 17:13:09,696 (INFO) </assets/index-C26oBRaL.js> (:20808) - MyTeams: selectedPortal state changed to: 
+2026-01-23 17:13:09,697 (INFO) </assets/index-C26oBRaL.js> (:20808) - MyTeams: portalSearch state changed to: 
+2026-01-23 17:13:09,879 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:09,895 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:13:09,958 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:10,014 (INFO) </assets/index-C26oBRaL.js> (:20668) - set key: TFTSet16 TFTSet16
+2026-01-23 17:13:10,019 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:10,034 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:13:10,093 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:10,121 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:10,157 (INFO) </assets/index-C26oBRaL.js> (:452) - process builds [object Object]
+2026-01-23 17:13:10,158 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:13:10,248 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:13:10,353 (INFO) </assets/index-C26oBRaL.js> (:20749) - UpdateControls mounted [object Object] [object Object]
+2026-01-23 17:13:10,354 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:13:11,672 (INFO) </assets/index-C26oBRaL.js> (:452) - process builds [object Object]
+2026-01-23 17:13:30,394 (INFO) </assets/index-C26oBRaL.js> (:20808) - Min Clicked
+2026-01-23 17:13:30,426 (INFO) </assets/index-C26oBRaL.js> (:20749) - not significant move
+2026-01-23 17:13:30,466 (INFO) </assets/index-C26oBRaL.js> (:20749) - dragged to: 2085 26 ingamedesktopPosition
+2026-01-23 17:14:31,598 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:14:36,703 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:15:37,251 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:37,401 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:15:37,591 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:37,765 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:38,288 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:38,365 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:15:38,436 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:38,565 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:39,057 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-23 17:15:40,139 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:40,194 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:15:40,292 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:40,435 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:52,936 (INFO) </assets/index-C26oBRaL.js> (:20808) - Close Clicked
+2026-01-23 17:15:59,196 (INFO) </assets/index-C26oBRaL.js> (:332) - onInputChange [object Object] a
+2026-01-23 17:15:59,198 (INFO) </assets/index-C26oBRaL.js> (:332) - input onchange [object Object]
+2026-01-23 17:15:59,334 (INFO) </assets/index-C26oBRaL.js> (:332) - onInputChange [object Object] an
+2026-01-23 17:15:59,335 (INFO) </assets/index-C26oBRaL.js> (:332) - input onchange [object Object]
+2026-01-23 17:15:59,439 (INFO) </assets/index-C26oBRaL.js> (:332) - onInputChange [object Object] ani
+2026-01-23 17:15:59,441 (INFO) </assets/index-C26oBRaL.js> (:332) - input onchange [object Object]
+2026-01-23 17:15:59,499 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:59,580 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:15:59,746 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:59,919 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:15:59,995 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:16:00,071 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:16:00,258 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:16:00,435 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:16:01,595 (INFO) </assets/index-C26oBRaL.js> (:332) - onInputChange [object Object] 
+2026-01-23 17:16:01,596 (INFO) </assets/index-C26oBRaL.js> (:332) - onChange [object Object] [object Object]
+2026-01-23 17:16:01,596 (INFO) </assets/index-C26oBRaL.js> (:332) - selectPortal [object Object]
+2026-01-23 17:16:01,597 (INFO) </assets/index-C26oBRaL.js> (:332) - selectPortal adding portal
+2026-01-23 17:16:01,707 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:16:01,809 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-23 17:16:01,883 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:16:08,482 (INFO) </assets/index-C26oBRaL.js> (:20668) - pinning in game comp
+2026-01-23 17:16:08,559 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Starting restore operation for 'pinned_comp': [object Object]
+2026-01-23 17:16:08,560 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-23 17:16:08,561 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:16:08,739 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-23 17:16:08,740 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Attempting to restore window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-23 17:16:08,805 (INFO) </assets/index-C26oBRaL.js> (:27) - [WindowService] Successfully restored window 'pinned_comp': [object Object]
+2026-01-23 17:16:08,856 (INFO) </assets/index-C26oBRaL.js> (:20749) - dragged to: 1995 25 ingamedesktopPosition
+2026-01-23 17:16:09,533 (INFO) </assets/index-C26oBRaL.js> (:20808) - Min Clicked
+2026-01-23 17:16:09,561 (INFO) </assets/index-C26oBRaL.js> (:20749) - dragged to: 2098 20 ingamedesktopPosition
+2026-01-23 17:17:05,367 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:17:32,757 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:18:14,532 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:18:38,814 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:18:51,516 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:18:57,109 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:23:23,220 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:23:46,071 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:23:47,578 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:23:58,277 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:25:53,526 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:26:09,757 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:26:11,792 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:26:15,326 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:26:20,396 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:26:37,174 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:29:55,391 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:29:58,965 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:31:04,521 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:31:09,597 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:32:53,693 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:32:56,739 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:34:30,126 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:34:40,269 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:45:43,534 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:45:43,535 (INFO) </assets/index-C26oBRaL.js> (:20808) - resizing
+2026-01-23 17:45:43,563 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:45:43,721 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-23 17:45:43,724 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-23 17:45:43,776 (INFO) </assets/index-C26oBRaL.js> (:20808) - current_window:  [object Object]
+2026-01-23 17:45:43,776 (INFO) </assets/index-C26oBRaL.js> (:20808) - result2:  [object Object]
+2026-01-23 17:45:43,777 (INFO) </assets/index-C26oBRaL.js> (:20808) - setting scaling:  -0.33333333333333326
+2026-01-23 17:45:43,781 (INFO) <Overwolf> () - [object Object]
+2026-01-23 17:45:46,439 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-23 17:45:46,443 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-23 17:45:46,444 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-23 17:45:46,537 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]
+2026-01-23 17:45:46,573 (INFO) </assets/index-C26oBRaL.js> (:20808) - matchup game info change:  [object Object]

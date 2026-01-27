@@ -1,0 +1,197 @@
+﻿2026-01-19 00:16:57,074 (INFO) ================== new session ==================
+2026-01-19 00:16:57,075 (INFO) </dist/background/background.js> (:21) - Initializing Sentry service 
+2026-01-19 00:16:57,092 (INFO) </dist/background/background.js> (:26) - [EleriumCommunicationLayer] setCfCoreHost called with https://api.curseforge.com 
+2026-01-19 00:16:57,104 (INFO) </dist/background/background.js> (:26) - [ConfigurationServiceImpl] Current env: production 
+2026-01-19 00:16:57,122 (INFO) </dist/background/background.js> (:26) - [AppEntryPoint] Launched from: overwolfstartlaunchevent 
+2026-01-19 00:16:57,282 (INFO) </dist/background/background.js> (:26) - [BackgroundController] App version: 1.296.1.364 
+2026-01-19 00:16:57,283 (INFO) </dist/background/background.js> (:26) - [BackgroundController] OS version: 10.0 64Bit 
+2026-01-19 00:16:59,202 (INFO) </dist/background/background.js> (:26) - [RadiumApiOWPluginImpl] Created curse-core-api plugin instance 
+2026-01-19 00:16:59,203 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Starting Auto Updater Service 
+2026-01-19 00:16:59,205 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 00:16:59,205 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Starting the idle timer. Idle time is set to 3600000 milliseconds 
+2026-01-19 00:16:59,206 (INFO) </dist/background/background.js> (:26) - [LoginService] Validating login status 
+2026-01-19 00:16:59,206 (INFO) </dist/background/background.js> (:26) - [SessionInfoRepositoryImpl] Loading login tokens from storage 
+2026-01-19 00:16:59,207 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 00:16:59,234 (INFO) </dist/background/background.js> (:26) - [LoginService] Found login tokens. Attempting to refresh tokens 
+2026-01-19 00:16:59,235 (INFO) </dist/background/background.js> (:26) - [LoginService] Refreshing login tokens 
+2026-01-19 00:16:59,750 (INFO) </dist/background/background.js> (:26) - [LoginService] Checking login status 
+2026-01-19 00:16:59,902 (ERROR) </dist/background/background.js> (:26) - [LoggedInEventHandler] Failed to update client session info 
+2026-01-19 00:16:59,902 (INFO) </dist/background/background.js> (:26) - [GameAuthUsersChangedEventHandler] Minecraft Users info loaded 
+2026-01-19 00:16:59,907 (INFO) </dist/background/background.js> (:26) - [MarketingVideosServiceImpl] Fetching https://mrkt.forgecdn.net/app-vids/onboarding_videos.json ... 
+2026-01-19 00:16:59,911 (INFO) </dist/background/background.js> (:26) - [OWPlatformServiceImpl] Set hashes successfully 
+2026-01-19 00:16:59,912 (INFO) </dist/background/background.js> (:26) - [ClientOverridesImpl] Fetching https://curseforge.overwolf.com/downloads/ow-client-overrides-v2.json ... 
+2026-01-19 00:17:03,572 (INFO) </dist/background/background.js> (:26) - [LoggedInEventHandler] User is logged in 
+2026-01-19 00:17:08,584 (INFO) </dist/background/background.js> (:26) - [GameInstanceDetectedEventHandler] Instance detected: Retail (517) - fe4e6a04-d233-4faf-989b-6d69d4de73d0 (E:\World of Warcraft\_retail_\) 
+2026-01-19 00:17:08,586 (INFO) </dist/background/background.js> (:26) - [AnalyzingGameInstanceEventHandler] Analyzing Instance: Retail (517) - fe4e6a04-d233-4faf-989b-6d69d4de73d0 (E:\World of Warcraft\_retail_\) 
+2026-01-19 00:17:08,632 (INFO) </dist/background/background.js> (:26) - [GameInstanceDetectedEventHandler] Instance detected: Sid Meier's Civilization VI (no flavor) - c8c817cd-b899-47f7-9246-ba314a7fedaa (E:\SteamLibrary\steamapps\common\Sid Meier's Civilization VI\Base\Binaries\Win64Steam\) 
+2026-01-19 00:17:08,632 (INFO) </dist/background/background.js> (:26) - [AnalyzingGameInstanceEventHandler] Analyzing Instance: Sid Meier's Civilization VI (616) - c8c817cd-b899-47f7-9246-ba314a7fedaa (E:\SteamLibrary\steamapps\common\Sid Meier's Civilization VI\Base\Binaries\Win64Steam\) 
+2026-01-19 00:17:08,650 (INFO) </dist/background/background.js> (:26) - [GameInstanceDetectedEventHandler] Instance detected: Classic (67408) - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef (E:\World of Warcraft\_classic_era_\) 
+2026-01-19 00:17:08,651 (INFO) </dist/background/background.js> (:26) - [AnalyzingGameInstanceEventHandler] Analyzing Instance: Classic (67408) - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef (E:\World of Warcraft\_classic_era_\) 
+2026-01-19 00:17:11,949 (INFO) </dist/background/background.js> (:26) - [EleriumCommunicationLayer] Request - GET v1/categories - params: {"gameId":1,"classesOnly":true} 
+2026-01-19 00:17:11,952 (INFO) </dist/background/background.js> (:26) - [GamesScanStartedEventHandler] Games scan started. Comprehensive: false 
+2026-01-19 00:17:11,984 (INFO) </dist/background/background.js> (:26) - [GamesScanCompletedEventHandler] Games scan completed. Comprehensive: false. Canceled: false 
+2026-01-19 00:17:12,024 (INFO) </dist/background/background.js> (:26) - [CoreServiceImpl] Mods agent was initialized successfully 
+2026-01-19 00:17:12,063 (INFO) </dist/background/background.js> (:26) - [AnalyticsService] Executing GET request https://analyticsnew.overwolf.com/analytics/Counter?Name=cf_app_session_info&MUID=da0a78b9-3bed-4c83-a82b-cef161ab8fe4&MUIDV2=72bc5547-6864-4113-989e-395ca0d084c0&owver=0.292.1.1&Extra=%7B%22app_ver%22%3A%221.296.1-30364%22%2C%22os_ver%22%3A%22win+x64%22%2C%22app_type%22%3A%22Overwolf%22%2C%22isLoggedIn%22%3Atrue%2C%22isSyncEnabled%22%3Afalse%2C%22appLanguage%22%3A%22en%22%2C%22groupsCount%22%3A%7B%7D%2C%22isMojangLoggedIn%22%3Afalse%2C%22minecraftLauncherTypes%22%3A%5B%5D%7D 
+2026-01-19 00:17:12,776 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 00:17:12,776 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 00:17:12,781 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 00:17:12,783 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 00:17:12,784 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 00:17:12,785 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 00:17:12,786 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 00:17:12,787 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 00:17:12,787 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 00:17:12,788 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan start event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 00:17:12,823 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 00:17:12,824 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 00:17:15,454 (INFO) </dist/background/background.js> (:26) - [AnalyticsService] Executed GET request https://analyticsnew.overwolf.com/analytics/Counter?Name=cf_app_session_info&MUID=da0a78b9-3bed-4c83-a82b-cef161ab8fe4&MUIDV2=72bc5547-6864-4113-989e-395ca0d084c0&owver=0.292.1.1&Extra=%7B%22app_ver%22%3A%221.296.1-30364%22%2C%22os_ver%22%3A%22win+x64%22%2C%22app_type%22%3A%22Overwolf%22%2C%22isLoggedIn%22%3Atrue%2C%22isSyncEnabled%22%3Afalse%2C%22appLanguage%22%3A%22en%22%2C%22groupsCount%22%3A%7B%7D%2C%22isMojangLoggedIn%22%3Afalse%2C%22minecraftLauncherTypes%22%3A%5B%5D%7D. Status code: 200 
+2026-01-19 00:17:40,379 (INFO) </dist/background/background.js> (:26) - [ProjectInstanceChangedEventHandler] Project instance 334372 - Questie changed 
+2026-01-19 00:17:40,380 (INFO) </dist/background/background.js> (:26) - [EleriumCommunicationLayer] Request - GET v1/categories - params: {"gameId":1} 
+2026-01-19 00:31:59,217 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 00:31:59,317 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 00:46:59,322 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 00:46:59,352 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 01:01:59,366 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 01:01:59,461 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 01:16:59,220 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] App idle state timer is triggered after 3600000 milliseconds of inactivity 
+2026-01-19 01:16:59,221 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Checking for application updates 
+2026-01-19 01:16:59,221 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Application has not updates 
+2026-01-19 01:16:59,472 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 01:16:59,473 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 01:17:00,873 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 01:17:00,873 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 01:17:00,945 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 01:17:00,945 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 01:17:00,946 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 01:17:00,946 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 01:17:01,083 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 01:17:01,084 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 01:17:01,084 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 01:17:01,084 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan start event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 01:17:01,085 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 01:17:01,085 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 01:31:59,481 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 01:32:03,590 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 01:47:03,593 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 01:47:03,623 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 02:02:03,638 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 02:02:04,739 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 02:16:59,227 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] App idle state timer is triggered after 3600000 milliseconds of inactivity 
+2026-01-19 02:16:59,228 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Checking for application updates 
+2026-01-19 02:16:59,229 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Application has not updates 
+2026-01-19 02:17:04,742 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 02:17:04,744 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 02:17:05,778 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 02:17:05,779 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 02:17:05,851 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 02:17:05,852 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 02:17:05,852 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 02:17:05,853 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 02:17:06,015 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 02:17:06,016 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 02:17:06,017 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 02:17:06,018 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan start event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 02:17:06,018 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 02:17:06,019 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 02:32:04,754 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 02:32:04,845 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 02:47:04,853 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 02:47:04,880 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 03:02:04,890 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 03:02:48,052 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 03:16:59,235 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] App idle state timer is triggered after 3600000 milliseconds of inactivity 
+2026-01-19 03:16:59,236 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Checking for application updates 
+2026-01-19 03:16:59,264 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Application has not updates 
+2026-01-19 03:17:06,207 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 03:17:06,208 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 03:17:06,285 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 03:17:06,285 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 03:17:06,286 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 03:17:06,286 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 03:17:06,428 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 03:17:06,428 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 03:17:06,429 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 03:17:06,429 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan start event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 03:17:06,429 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 03:17:06,430 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 03:17:48,066 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 03:17:48,095 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 03:32:48,097 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 03:32:48,350 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 03:47:48,355 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 03:47:48,383 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 04:02:48,386 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 04:02:49,481 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 04:13:19,334 (INFO) </dist/background/background.js> (:26) - [NetworkStatusChangedEventHandler] Network Status Changed, Status:Offline 
+2026-01-19 15:07:00,221 (INFO) </dist/background/background.js> (:26) - [NetworkStatusChangedEventHandler] Network Status Changed, Status:Offline 
+2026-01-19 15:07:00,237 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 15:07:00,242 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 15:07:00,242 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 15:07:00,243 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 15:07:00,243 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 15:07:00,244 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 15:07:00,244 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 15:07:00,245 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 15:07:00,245 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 15:07:00,246 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan start event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 15:07:00,246 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 15:07:00,247 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 15:07:02,616 (INFO) </dist/background/background.js> (:26) - [NetworkStatusChangedEventHandler] Network Status Changed, Status:Offline 
+2026-01-19 15:07:02,779 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] App idle state timer is triggered after 3600000 milliseconds of inactivity 
+2026-01-19 15:07:02,792 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Checking for application updates 
+2026-01-19 15:07:02,803 (INFO) </dist/background/background.js> (:26) - [ClientOverridesImpl] Fetching https://curseforge.overwolf.com/downloads/ow-client-overrides-v2.json ... 
+2026-01-19 15:07:02,805 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 15:07:02,964 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Application has not updates 
+2026-01-19 15:07:02,972 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] No app update. Scheduling the next update check in 900000 milliseconds 
+2026-01-19 15:07:11,815 (INFO) </dist/background/background.js> (:26) - [NetworkStatusChangedEventHandler] Network Status Changed, Status:Online 
+2026-01-19 15:22:02,969 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 15:22:03,168 (INFO) </dist/background/background.js> (:26) - [AppUpdateServiceImpl] Check for update: UpdateAvailable (ver: 1.296.3.577) 
+2026-01-19 15:22:03,169 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Version available since: Mon Jan 19 2026 15:22:03 GMT-0500 (Eastern Standard Time). 
+2026-01-19 15:22:03,169 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Triggering show update notification event 
+2026-01-19 15:37:03,180 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 15:37:27,318 (INFO) </dist/background/background.js> (:26) - [AppUpdateServiceImpl] Check for update: UpdateAvailable (ver: 1.296.3.577) 
+2026-01-19 15:37:27,318 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Version available since: Mon Jan 19 2026 15:22:03 GMT-0500 (Eastern Standard Time). 
+2026-01-19 15:37:27,319 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Triggering show update notification event 
+2026-01-19 15:52:27,331 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 15:52:27,361 (INFO) </dist/background/background.js> (:26) - [AppUpdateServiceImpl] Check for update: UpdateAvailable (ver: 1.296.3.577) 
+2026-01-19 15:52:27,362 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Version available since: Mon Jan 19 2026 15:22:03 GMT-0500 (Eastern Standard Time). 
+2026-01-19 15:52:27,363 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Triggering show update notification event 
+2026-01-19 16:06:59,784 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 16:06:59,785 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 16:06:59,972 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: fe4e6a04-d233-4faf-989b-6d69d4de73d0 - ["ScanningChanged"] 
+2026-01-19 16:06:59,972 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Retail - fe4e6a04-d233-4faf-989b-6d69d4de73d0 
+2026-01-19 16:06:59,973 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 16:06:59,973 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan started for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 16:07:00,128 (INFO) </dist/background/background.js> (:26) - [EleriumCommunicationLayer] Request - GET v1/categories - params: {"gameId":1,"classesOnly":true} 
+2026-01-19 16:07:00,130 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: 6262e87b-5e82-4f7b-b6b9-5e41c99578ef - ["ScanningChanged"] 
+2026-01-19 16:07:00,132 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete for game 1 - Classic - 6262e87b-5e82-4f7b-b6b9-5e41c99578ef 
+2026-01-19 16:07:00,132 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 16:07:00,133 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanStartedEventHandler] Scan start event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 16:07:00,134 (INFO) </dist/background/background.js> (:26) - [GameInstanceChangedEventHandler] Game instance changed: c8c817cd-b899-47f7-9246-ba314a7fedaa - ["ScanningChanged"] 
+2026-01-19 16:07:00,134 (INFO) </dist/background/background.js> (:26) - [GameInstanceScanCompletedEventHandler] Scan complete event is ignored for game 727 - Steam 2 - c8c817cd-b899-47f7-9246-ba314a7fedaa - Game is not supported by client application 
+2026-01-19 16:07:00,234 (INFO) </dist/background/background.js> (:26) - [ProjectInstanceChangedEventHandler] Project instance 267285 - ALL THE THINGS changed 
+2026-01-19 16:07:00,235 (INFO) </dist/background/background.js> (:26) - [ProjectInstanceChangedEventHandler] Project instance 61284 - Details! Damage Meter changed 
+2026-01-19 16:07:00,235 (INFO) </dist/background/background.js> (:26) - [ProjectInstanceChangedEventHandler] Project instance 334372 - Questie changed 
+2026-01-19 16:07:00,236 (INFO) </dist/background/background.js> (:26) - [EleriumCommunicationLayer] Request - GET v1/categories - params: {"gameId":1} 
+2026-01-19 16:07:02,644 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] App idle state timer is triggered after 3600000 milliseconds of inactivity 
+2026-01-19 16:07:02,645 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Checking for application updates 
+2026-01-19 16:07:03,748 (INFO) </dist/background/background.js> (:26) - [AppUpdateServiceImpl] Check for update: UpdateAvailable (ver: 1.296.3.577) 
+2026-01-19 16:07:03,748 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Application has an update. New version is 1.296.3.577 
+2026-01-19 16:07:03,749 (INFO) </dist/background/background.js> (:26) - [AutoUpdaterServiceImpl] Scheduling application update 
+2026-01-19 16:07:03,749 (INFO) </dist/background/background.js> (:26) - [AppUpdateScheduler] Scheduling app update in 4877282 milliseconds 
+2026-01-19 16:07:27,366 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 16:07:27,396 (INFO) </dist/background/background.js> (:26) - [AppUpdateServiceImpl] Check for update: UpdateAvailable (ver: 1.296.3.577) 
+2026-01-19 16:07:27,397 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Version available since: Mon Jan 19 2026 15:22:03 GMT-0500 (Eastern Standard Time). 
+2026-01-19 16:07:27,397 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Triggering show update notification event 
+2026-01-19 16:22:27,409 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 16:22:27,500 (INFO) </dist/background/background.js> (:26) - [AppUpdateServiceImpl] Check for update: UpdateAvailable (ver: 1.296.3.577) 
+2026-01-19 16:22:27,501 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Version available since: Mon Jan 19 2026 15:22:03 GMT-0500 (Eastern Standard Time). 
+2026-01-19 16:22:27,501 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Triggering show update notification event 
+2026-01-19 16:37:27,510 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 16:37:27,796 (INFO) </dist/background/background.js> (:26) - [AppUpdateServiceImpl] Check for update: UpdateAvailable (ver: 1.296.3.577) 
+2026-01-19 16:37:27,796 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Version available since: Mon Jan 19 2026 15:22:03 GMT-0500 (Eastern Standard Time). 
+2026-01-19 16:37:27,797 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Triggering show update notification event 
+2026-01-19 16:52:27,799 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Running periodic app update check 
+2026-01-19 16:52:51,957 (INFO) </dist/background/background.js> (:26) - [AppUpdateServiceImpl] Check for update: UpdateAvailable (ver: 1.296.3.577) 
+2026-01-19 16:52:51,957 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Version available since: Mon Jan 19 2026 15:22:03 GMT-0500 (Eastern Standard Time). 
+2026-01-19 16:52:51,958 (INFO) </dist/background/background.js> (:26) - [AppUpdatePeriodicChecker] Triggering show update notification event 
