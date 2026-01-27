@@ -1,0 +1,238 @@
+[INIT] Starting log watcher...
+Started watching: C:\Users\forre\AppData\Local\Overwolf\Log\Apps\MetaTFT
+Patterns: ['background.html.log', 'win_chance.html.log']
+
+[READY] TFT Coach is running!
+
+[SERVER] Overlay URL: http://127.0.0.1:8765/overlay
+[SERVER] WebSocket:  ws://127.0.0.1:8765/ws
+
+[INFO] Waiting for game events... (Ctrl+C to quit)
+
+[SERVER] Starting on http://127.0.0.1:8765
+[SERVER] Overlay: http://127.0.0.1:8765/overlay
+[SERVER] WebSocket: ws://127.0.0.1:8765/ws
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\tft-coach-234\app\server\websocket.py", line 76, in overlay
+    return HTMLResponse(content=overlay_path.read_text())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py", line 1028, in read_text
+    return f.read()
+           ^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 5369: character maps to <undefined>
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\tft-coach-234\app\server\websocket.py", line 76, in overlay
+    return HTMLResponse(content=overlay_path.read_text())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py", line 1028, in read_text
+    return f.read()
+           ^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 5369: character maps to <undefined>
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\tft-coach-234\app\server\websocket.py", line 76, in overlay
+    return HTMLResponse(content=overlay_path.read_text())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py", line 1028, in read_text
+    return f.read()
+           ^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 5369: character maps to <undefined>
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\VS Code\tft-coach-234\tft-coach-234\app\server\websocket.py", line 76, in overlay
+    return HTMLResponse(content=overlay_path.read_text())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\pathlib.py", line 1028, in read_text
+    return f.read()
+           ^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 5369: character maps to <undefined>
+
+[SHUTDOWN] Stopping TFT Coach...
+Stopped watching logs
+[SHUTDOWN] Goodbye!
