@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFT Coach - Overlay</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 10px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .stage {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .stats {
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-icon {
+            font-size: 16px;
+        }
+
+        .panel {
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .panel-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .suggestion {
+            background: rgba(102, 126, 234, 0.2);
+            border-left: 3px solid #667eea;
+            padding: 10px;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 8px;
+        }
+
+        .suggestion:last-child {
+            margin-bottom: 0;
+        }
+
+        .augments {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .augment {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .augment-name {
+            font-weight: 500;
+        }
+
+        .augment-tier {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .tier-S { background: #ffd700; color: #000; }
+        .tier-A { background: #4ade80; color: #000; }
+        .tier-B { background: #60a5fa; color: #000; }
+        .tier-C { background: #9ca3af; color: #000; }
+        .tier-D { background: #ef4444; color: #fff; }
+
+        .note {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+
+        .win-chance {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .win-chance-value {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .win-chance-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .status-connected {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+        }
+
+        .status-disconnected {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .opponents {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .opponent {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .opponent-health {
+            color: #ef4444;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Connection Status -->
+        <div id="status" class="status status-disconnected">
+            <span class="status-dot"></span>
+            <span id="status-text">Connecting...</span>
+        </div>
+
+        <!-- Header with stage and stats -->
+        <div class="header">
+            <div class="stage" id="stage">--</div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-icon">❤️</span>
+                    <span id="health">100</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-icon">⭐</span>
+                    <span id="level">1</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-icon">✨</span>
+                    <span id="xp">0/0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Win Chance -->
+        <div class="panel win-chance" id="win-chance-panel" style="display: none;">
+            <div class="win-chance-value" id="win-chance">--%</div>
+            <div class="win-chance-label">Win Probability</div>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="panel" id="suggestions-panel">
+            <div class="panel-title">💡 Suggestions</div>
+            <div id="suggestions">
+                <div class="empty-state">Waiting for game events...</div>
+            </div>
+        </div>
+
+        <!-- Augment Options -->
+        <div class="panel" id="augments-panel" style="display: none;">
+            <div class="panel-title">🎰 Augment Options</div>
+            <div class="augments" id="augments"></div>
+        </div>
+
+        <!-- Opponents -->
+        <div class="panel">
+            <div class="panel-title">👥 Opponents</div>
+            <div class="opponents" id="opponents">
+                <div class="empty-state">No opponent data yet</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // WebSocket connection
+        let ws = null;
+        let reconnectInterval = null;
+
+        function connect() {
+            ws = new WebSocket('ws://127.0.0.1:8765/ws');
+
+            ws.onopen = () => {
+                console.log('Connected to TFT Coach');
+                document.getElementById('status').className = 'status status-connected';
+                document.getElementById('status-text').textContent = 'Connected';
+                if (reconnectInterval) {
+                    clearInterval(reconnectInterval);
+                    reconnectInterval = null;
+                }
+            };
+
+            ws.onclose = () => {
+                console.log('Disconnected from TFT Coach');
+                document.getElementById('status').className = 'status status-disconnected';
+                document.getElementById('status-text').textContent = 'Disconnected - Reconnecting...';
+                if (!reconnectInterval) {
+                    reconnectInterval = setInterval(connect, 3000);
+                }
+            };
+
+            ws.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                updateUI(data);
+            };
+        }
+
+        function updateUI(state) {
+            // Update stage
+            document.getElementById('stage').textContent = state.stage || '--';
+
+            // Update player stats
+            document.getElementById('health').textContent = state.player?.health || 100;
+            document.getElementById('level').textContent = state.player?.level || 1;
+            document.getElementById('xp').textContent = state.xp || '0/0';
+
+            // Update win chance
+            const winChancePanel = document.getElementById('win-chance-panel');
+            if (state.win_chance !== null && state.win_chance !== undefined) {
+                winChancePanel.style.display = 'block';
+                document.getElementById('win-chance').textContent = `~${state.win_chance}%`;
+            } else {
+                winChancePanel.style.display = 'none';
+            }
+
+            // Update augment options
+            const augmentsPanel = document.getElementById('augments-panel');
+            const augmentsContainer = document.getElementById('augments');
+            if (state.augment_armory_active && state.augment_options?.length > 0) {
+                augmentsPanel.style.display = 'block';
+                augmentsContainer.innerHTML = state.augment_options.map(aug => {
+                    const name = aug.split('_').slice(-1)[0];
+                    return `
+                        <div class="augment">
+                            <span class="augment-name">${name}</span>
+                            <span class="augment-tier tier-B">?</span>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                augmentsPanel.style.display = 'none';
+            }
+
+            // Update opponents
+            const opponentsContainer = document.getElementById('opponents');
+            if (state.opponents && Object.keys(state.opponents).length > 0) {
+                opponentsContainer.innerHTML = Object.values(state.opponents)
+                    .sort((a, b) => b.health - a.health)
+                    .map(opp => `
+                        <div class="opponent">
+                            <span>${opp.name}</span>
+                            <span class="opponent-health">❤️ ${opp.health}</span>
+                        </div>
+                    `).join('');
+            }
+
+            // Update suggestions based on state
+            updateSuggestions(state);
+        }
+
+        function updateSuggestions(state) {
+            const suggestionsContainer = document.getElementById('suggestions');
+            const suggestions = [];
+
+            // Stage-based suggestions
+            if (state.stage === '2-1' && state.augment_armory_active) {
+                suggestions.push('First augment - economy augments are usually best!');
+            }
+
+            if (state.stage?.startsWith('4-') && state.player?.health < 40) {
+                suggestions.push('Low HP in stage 4 - consider all-in!');
+            }
+
+            // Default message if no suggestions
+            if (suggestions.length === 0) {
+                if (state.game_phase === 'not_in_game') {
+                    suggestionsContainer.innerHTML = '<div class="empty-state">Waiting for game to start...</div>';
+                } else {
+                    suggestionsContainer.innerHTML = '<div class="empty-state">No specific suggestions right now</div>';
+                }
+            } else {
+                suggestionsContainer.innerHTML = suggestions
+                    .map(s => `<div class="suggestion">${s}</div>`)
+                    .join('');
+            }
+        }
+
+        // Start connection
+        connect();
+
+        // For testing without server - simulate some data
+        if (window.location.search.includes('demo')) {
+            setInterval(() => {
+                updateUI({
+                    stage: '3-2',
+                    player: { name: 'Test', health: 78, level: 6 },
+                    xp: '12/36',
+                    win_chance: 72,
+                    augment_armory_active: false,
+                    augment_options: [],
+                    opponents: {
+                        'Player1': { name: 'Player1', health: 85 },
+                        'Player2': { name: 'Player2', health: 62 },
+                        'Player3': { name: 'Player3', health: 44 },
+                    },
+                    game_phase: 'pvp'
+                });
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
