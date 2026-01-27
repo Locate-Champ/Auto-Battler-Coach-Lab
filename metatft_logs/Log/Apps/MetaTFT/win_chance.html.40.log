@@ -1,0 +1,269 @@
+﻿2026-01-20 18:58:03,583 (INFO) ================== new session ==================
+2026-01-20 18:58:03,583 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-20 18:58:03,584 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: es
+2026-01-20 18:58:03,584 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-20 18:58:03,585 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: de
+2026-01-20 18:58:03,585 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-20 18:58:03,586 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-20 18:58:03,587 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-20 18:58:03,588 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-20 18:58:03,588 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-20 18:58:03,588 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-20 18:58:03,589 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-20 18:58:03,589 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: el
+2026-01-20 18:58:03,590 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-20 18:58:03,590 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-20 18:58:03,591 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: it
+2026-01-20 18:58:03,591 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-20 18:58:03,592 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-20 18:58:03,592 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: th
+2026-01-20 18:58:03,593 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-20 18:58:03,593 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-20 18:58:03,594 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 18:58:03,594 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 18:58:03,594 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final current locale: en
+2026-01-20 18:58:03,595 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en_us to en_us
+2026-01-20 18:58:03,595 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 18:58:03,596 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 18:58:03,596 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 18:58:03,597 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 18:58:03,601 (INFO) </assets/index-x3LLM14k.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-20 18:58:03,613 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-20 18:58:03,614 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-20 18:58:04,047 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-20 18:58:04,048 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-20 18:58:04,048 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-20 18:58:04,049 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-20 18:58:04,049 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-20 18:58:04,050 (INFO) </assets/index-x3LLM14k.js> (:20808) - window name:  [object Object]
+2026-01-20 18:58:04,050 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-20 18:58:04,052 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 18:58:04,270 (INFO) </assets/index-x3LLM14k.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-20 18:58:04,387 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-20 18:58:04,388 (INFO) </assets/index-x3LLM14k.js> (:20808) - resized. New width:  600
+2026-01-20 18:58:04,454 (INFO) </assets/index-x3LLM14k.js> (:20808) - changed position to:  980 72
+2026-01-20 18:58:04,762 (INFO) <Overwolf> () - [object Object]
+2026-01-20 18:58:10,154 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 18:58:11,043 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-20 18:58:11,045 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 18:58:11,166 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-20 18:58:23,072 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-20 18:58:55,183 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-20 18:58:55,256 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 18:59:03,049 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 18:59:30,053 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-20 18:59:34,057 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 18:59:35,042 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 18:59:43,046 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:12,069 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-20 19:00:22,068 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:27,054 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:28,052 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:29,047 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:31,084 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:32,060 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:34,056 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:37,049 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:38,048 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:00:40,045 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:01:07,748 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:01:07,749 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~5%
+2026-01-20 19:01:07,750 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:01:41,167 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:01:41,168 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~5%
+2026-01-20 19:01:47,080 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:01:48,060 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:01:49,061 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:01:52,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:02:16,761 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:02:16,762 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~90%
+2026-01-20 19:02:16,764 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:02:54,131 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:02:54,132 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~90%
+2026-01-20 19:02:56,072 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:02:58,091 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:02:59,064 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:03:00,070 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:03:02,066 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:03:05,065 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:03:06,064 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:03:29,840 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:03:29,841 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~73%
+2026-01-20 19:03:29,841 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:04:05,044 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:04:05,045 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~73%
+2026-01-20 19:04:42,170 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:04:42,171 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~73%
+2026-01-20 19:04:52,107 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:04:53,091 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:04:54,083 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:04:56,092 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:04:57,081 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:04:58,078 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:04:59,101 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:05:01,081 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:05:02,104 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:05:17,383 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:05:18,504 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:05:20,317 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:05:20,318 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-20 19:05:20,318 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:05:53,183 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:05:53,183 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-20 19:06:00,090 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:06:16,094 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:06:17,121 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:06:20,075 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:06:28,873 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:06:28,873 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-20 19:06:28,874 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:00,137 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:07:00,137 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-20 19:07:05,109 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:11,079 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:12,082 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:13,083 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:14,075 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:49,169 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:07:49,170 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-20 19:07:56,109 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:57,067 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:58,075 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:07:59,061 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:08:09,077 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:08:13,074 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:08:15,069 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:08:24,845 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:08:24,847 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~13%
+2026-01-20 19:08:24,847 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:08:54,162 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:08:54,163 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~13%
+2026-01-20 19:08:54,231 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:09:08,089 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:09:21,089 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:09:42,084 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:09:43,075 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:09:49,819 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:09:49,820 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~30%
+2026-01-20 19:09:49,821 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:10:28,156 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:10:28,157 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~30%
+2026-01-20 19:10:28,237 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:10:29,076 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:10:33,090 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:10:52,092 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:11:04,986 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:11:04,988 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~84%
+2026-01-20 19:11:04,989 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:11:20,413 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:11:20,539 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:11:46,138 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:11:46,139 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~84%
+2026-01-20 19:12:23,048 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:12:23,049 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~84%
+2026-01-20 19:12:23,113 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:12:31,107 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:12:32,087 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:12:58,827 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:12:58,828 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~56%
+2026-01-20 19:12:58,828 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:13:34,098 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:13:34,100 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~56%
+2026-01-20 19:13:34,155 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:13:38,095 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:13:48,058 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:14:09,782 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:14:09,783 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~82%
+2026-01-20 19:14:09,783 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:14:51,471 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:14:51,471 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~82%
+2026-01-20 19:15:17,137 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:15:17,137 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~85%
+2026-01-20 19:15:17,138 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:15:34,535 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:15:34,536 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~85%
+2026-01-20 19:15:34,590 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:15:36,445 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:15:45,445 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:16:10,231 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:16:10,232 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-20 19:16:10,232 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:16:46,515 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:16:46,517 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-20 19:16:46,571 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:16:47,456 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:17:26,446 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:17:32,446 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:17:36,434 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:17:43,161 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:17:43,162 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~22%
+2026-01-20 19:17:43,163 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:18:14,523 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:18:14,524 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~22%
+2026-01-20 19:18:26,450 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:18:28,461 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:18:33,452 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:18:50,120 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:18:50,121 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-20 19:18:50,121 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:19:18,415 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:19:18,415 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-20 19:19:55,508 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:19:55,510 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-20 19:20:11,465 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:20:14,482 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:20:21,479 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:20:22,480 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:20:23,473 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:20:24,466 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:20:31,399 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:20:31,400 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~53%
+2026-01-20 19:20:31,401 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:21:03,564 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:21:03,565 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~53%
+2026-01-20 19:21:03,628 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:21:29,484 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:21:39,172 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:21:39,173 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~64%
+2026-01-20 19:21:39,173 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:22:12,535 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:22:12,535 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~64%
+2026-01-20 19:22:12,593 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:22:13,492 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:22:51,578 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:22:51,579 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~64%
+2026-01-20 19:23:02,491 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:12,519 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:15,503 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:16,491 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:19,492 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:20,490 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:28,182 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:23:28,183 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~85%
+2026-01-20 19:23:28,184 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:34,272 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:23:34,272 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~85%
+2026-01-20 19:23:34,273 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:42,948 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:23:45,941 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:00,562 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:24:00,563 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~85%
+2026-01-20 19:24:00,615 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:01,483 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:11,489 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:12,491 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:13,510 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:18,489 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:19,487 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:26,490 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:28,490 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:24:36,201 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:24:36,202 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~19%
+2026-01-20 19:24:36,202 (INFO) </assets/index-x3LLM14k.js> (:20808) - model_data:  [object Object]
+2026-01-20 19:25:04,494 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:25:04,494 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~19%
+2026-01-20 19:25:06,609 (INFO) </assets/index-x3LLM14k.js> (:20808) - [object Object]
+2026-01-20 19:25:06,610 (INFO) </assets/index-x3LLM14k.js> (:20808) - WinChanceNumber:  ~19%
+2026-01-20 19:25:06,610 (INFO) </assets/index-x3LLM14k.js> (:20808) - resized. New width:  600
+2026-01-20 19:25:06,685 (INFO) </assets/index-x3LLM14k.js> (:20808) - changed position to:  980 72
+2026-01-20 19:25:06,703 (INFO) <Overwolf> () - [object Object]

@@ -1,0 +1,25 @@
+﻿2026-01-18 19:11:00,597 (INFO) [UI][21308] AppCenter - 
+
+<------------------------------+ 0.292.1.1 +-------------------------------->
+
+2026-01-18 19:11:00,612 (INFO) [UI][21308] AppCenter - command line: C:\Program Files (x86)\Overwolf\Overwolf.exe -installapp cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj -frominstaller -urlparams source=&medium=&campaign=&term=&content=&referrer=download.curseforge.com&extra=&
+2026-01-18 19:11:00,613 (INFO) [UI][21308] AppCenter - Running dll folder: C:\Program Files (x86)\Overwolf\0.292.1.1
+2026-01-18 19:11:00,613 (INFO) [UI][21308] AppCenter - Registering for restart with commandline: -installapp cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj -frominstaller -urlparams source=&medium=&campaign=&term=&content=&referrer=download.curseforge.com&extra=& -ARR 1
+2026-01-18 19:11:00,614 (INFO) [UI][21308] AppCenter - Process tree:
+2026-01-18 19:11:00,633 (INFO) [UI][21308] AppCenter - Found 2 processes named 'Overwolf'
+2026-01-18 19:11:00,633 (INFO) [UI][21308] AppCenter - is unique process: False
+2026-01-18 19:11:00,634 (INFO) [UI][21308] AppCenter - make sure is not unique C:\Program Files (x86)\Overwolf\Overwolf.exe-installappcchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj-frominstaller-urlparamssource=&medium=&campaign=&term=&content=&referrer=download.curseforge.com&extra=&
+2026-01-18 19:11:00,651 (INFO) [UI][21308] AppCenter - Send app install message to main instance, exiting.
+2026-01-18 19:11:01,802 (INFO) [ 4][23524] AppCenter - Sending message to other instance - SecondInstanceWithArguments - [
+  "-installapp",
+  "cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj",
+  "-frominstaller",
+  "-urlparams",
+  "source=&medium=&campaign=&term=&content=&referrer=download.curseforge.com&extra=&"
+]
+2026-01-18 19:11:01,840 (INFO) [ 4][23524] AppCenter - Sending message to primary overwolf instance: {"MessageType":"SecondInstanceWithArguments","Args":["-installapp","cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj","-frominstaller","-urlparams","source=&medium=&campaign=&term=&content=&referrer=download.curseforge.com&extra=&"]} (System.Text.SBCSCodePageEncoding)
+2026-01-18 19:11:01,884 (INFO) [UI][21308] AppCenter - Cleaning up.
+2026-01-18 19:11:02,290 (INFO) [UI][21308] AppCenter - kill process 28940
+2026-01-18 19:11:02,294 (INFO) [UI][21308] LoginSession - Shuting down login service
+2026-01-18 19:11:02,294 (INFO) [UI][21308] AppCenter - not restarting OW
+2026-01-18 19:11:02,296 (INFO) [UI][21308] AppCenter - Done cleanup, goodbye.

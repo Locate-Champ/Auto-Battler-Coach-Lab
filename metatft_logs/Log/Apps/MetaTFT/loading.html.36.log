@@ -1,0 +1,70 @@
+﻿2026-01-20 16:01:51,451 (INFO) ================== new session ==================
+2026-01-20 16:01:51,452 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-20 16:01:51,453 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: es
+2026-01-20 16:01:51,453 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-20 16:01:51,455 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: de
+2026-01-20 16:01:51,455 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-20 16:01:51,456 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-20 16:01:51,457 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-20 16:01:51,457 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-20 16:01:51,457 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-20 16:01:51,458 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-20 16:01:51,458 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-20 16:01:51,459 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: el
+2026-01-20 16:01:51,459 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-20 16:01:51,460 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-20 16:01:51,461 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: it
+2026-01-20 16:01:51,462 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-20 16:01:51,464 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-20 16:01:51,464 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: th
+2026-01-20 16:01:51,465 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-20 16:01:51,465 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-20 16:01:51,466 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 16:01:51,466 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-20 16:01:51,466 (INFO) </assets/index-x3LLM14k.js> (:184) - moment-config: Final current locale: en
+2026-01-20 16:01:51,467 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en_us to en_us
+2026-01-20 16:01:51,467 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 16:01:51,468 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 16:01:51,468 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en-US to en_us
+2026-01-20 16:01:51,469 (INFO) </assets/index-x3LLM14k.js> (:184) - Language detection: converting en to en_us
+2026-01-20 16:01:51,477 (INFO) </assets/index-x3LLM14k.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-20 16:01:51,491 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-20 16:01:51,492 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-20 16:01:52,157 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-20 16:01:52,159 (INFO) </assets/index-x3LLM14k.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-20 16:01:52,159 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-20 16:01:52,160 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-20 16:01:52,161 (INFO) </assets/index-x3LLM14k.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-20 16:01:52,162 (INFO) </assets/index-x3LLM14k.js> (:20808) - window name:  [object Object]
+2026-01-20 16:01:52,164 (INFO) </assets/index-x3LLM14k.js> (:20765) - adbox state:  [object Object]
+2026-01-20 16:01:52,168 (INFO) </assets/index-x3LLM14k.js> (:20765) - Ad script loaded
+2026-01-20 16:01:52,169 (INFO) </assets/index-x3LLM14k.js> (:20765) - createAd 0
+2026-01-20 16:01:52,173 (INFO) </assets/index-x3LLM14k.js> (:20765) - adbox state:  [object Object]
+2026-01-20 16:01:52,496 (INFO) </assets/index-x3LLM14k.js> (:20808) - resized. New width:  420
+2026-01-20 16:01:52,514 (INFO) </assets/index-x3LLM14k.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-20 16:01:52,551 (INFO) <Overwolf> () - [object Object]
+2026-01-20 16:01:54,431 (INFO) </assets/index-x3LLM14k.js> (:20808) - resized. New width:  420
+2026-01-20 16:01:54,432 (INFO) </assets/index-x3LLM14k.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-20 16:01:54,516 (INFO) <Overwolf> () - [object Object]
+2026-01-20 16:01:56,424 (INFO) </assets/index-x3LLM14k.js> (:20808) - resized. New width:  420
+2026-01-20 16:01:56,425 (INFO) </assets/index-x3LLM14k.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-20 16:01:56,426 (INFO) <Overwolf> () - [object Object]
+2026-01-20 16:01:58,664 (INFO) </assets/index-x3LLM14k.js> (:20808) - resized. New width:  420
+2026-01-20 16:01:58,665 (INFO) </assets/index-x3LLM14k.js> (:20808) - 2560 1440 1 2560 1440
+2026-01-20 16:01:59,411 (INFO) <Overwolf> () - [object Object]
+2026-01-20 16:02:01,798 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Starting close operation for 'loading': [object Object]
+2026-01-20 16:02:01,799 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Attempting to obtain window: loading
+2026-01-20 16:02:01,799 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Starting close operation for 'loading': [object Object]
+2026-01-20 16:02:01,800 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Attempting to obtain window: loading
+2026-01-20 16:02:01,800 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Starting close operation for 'loading': [object Object]
+2026-01-20 16:02:01,802 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Attempting to obtain window: loading
+2026-01-20 16:02:01,802 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Starting close operation for 'loading': [object Object]
+2026-01-20 16:02:01,803 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Attempting to obtain window: loading
+2026-01-20 16:02:02,059 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Successfully obtained window 'loading': [object Object]
+2026-01-20 16:02:02,066 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Attempting to close window 'loading' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_loading)
+2026-01-20 16:02:02,067 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Successfully obtained window 'loading': [object Object]
+2026-01-20 16:02:02,067 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Attempting to close window 'loading' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_loading)
+2026-01-20 16:02:02,068 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Successfully obtained window 'loading': [object Object]
+2026-01-20 16:02:02,069 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Attempting to close window 'loading' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_loading)
+2026-01-20 16:02:02,069 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Successfully obtained window 'loading': [object Object]
+2026-01-20 16:02:02,070 (INFO) </assets/index-x3LLM14k.js> (:27) - [WindowService] Attempting to close window 'loading' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_loading)

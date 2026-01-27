@@ -1,0 +1,16 @@
+﻿2026-01-23 17:05:15,649 (INFO) ================== new session ==================
+2026-01-23 17:05:15,650 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:15,642 INFO  [AppEntryPointService] Started with game ID: 10902
+2026-01-23 17:05:15,652 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:15,644 INFO  [AppEntryPointService] Launched source: gamelaunchevent param: 10902
+2026-01-23 17:05:15,652 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:15,649 INFO  [BackgroundController] App version: 287.0.4
+2026-01-23 17:05:15,653 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:15,651 INFO  [ContentRecommendationService] Game Id 10902 started
+2026-01-23 17:05:15,773 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:15,773 INFO  [RemoteObjectRetrieverService] Retrieved remote config Thu Jan 22 2026 10:25:21 GMT-0500 (Eastern Standard Time)
+2026-01-23 17:05:15,963 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:15,949 INFO  [ContentRecommendationService] *** Starting notification display conditions evaluation process ...
+2026-01-23 17:05:16,151 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,146 INFO  [GlobalConditionCooldownOwLaunch] launched: 2887 Minutes ago, config: 1Mins, ret:true
+2026-01-23 17:05:16,153 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,146 INFO  [ContentRecommendationService] GlobalConditionCooldownOwLaunch: [Passed]
+2026-01-23 17:05:16,204 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,204 INFO  [GlobalConditionCooldownFromInstall] Installed: 116 hrs ago, config: 72hrs, ret:true
+2026-01-23 17:05:16,205 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,204 INFO  [ContentRecommendationService] GlobalConditionCooldownFromInstall: [Passed]
+2026-01-23 17:05:16,206 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,207 INFO  [GlobalConditionCooldownFromLastNotification] Previous notification displayed: 26 hrs ago, config:144 hrs, ret:false
+2026-01-23 17:05:16,207 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,207 INFO  [ContentRecommendationService] GlobalConditionCooldownFromLastNotification: [Failed] (CooldownDisplay)
+2026-01-23 17:05:16,207 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,207 INFO  [NotificationAnalyticsService] ConditionResult update: - {"gameId":10902,"reason":"CooldownDisplay"}
+2026-01-23 17:05:16,208 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,207 INFO  [ContentRecommendationService] No recommendation triggered with reason: CooldownDisplay
+2026-01-23 17:05:16,226 (INFO) </dist/background/background.js> (:2) - 2026-01-23 17:05:16,226 INFO  [BackgroundController] Shutting down ...

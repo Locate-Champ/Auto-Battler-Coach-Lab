@@ -1,0 +1,183 @@
+00:16:42.740(INFO)[cfc]: running from: C:\Users\forre\AppData\Local\Overwolf\Extensions\ncfplpkmiejjaklknfnkgcpapnhkggmlcppckhcb\270.0.25\obs\bin\64bit\ow-obs.exe
+00:16:42.740(INFO)[cfc]: obs version: 31.0.0
+00:16:42.740(INFO)[cfc]: Initializing server
+00:16:42.740(INFO)[cfc]: Channel: 4596.1.9491
+00:16:42.740(INFO)[cfc]: MessageLoop::Run - Start
+00:16:42.741(INFO)[6aa8]: starting up obs
+00:16:42.743(INFO)[6aa8]: CoInitializeEx success
+00:16:42.745(INFO)[6aa8]: CPU Name: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz
+00:16:42.745(INFO)[6aa8]: CPU Speed: 2904MHz
+00:16:42.746(INFO)[6aa8]: Physical Cores: 6, Logical Cores: 12
+00:16:42.746(INFO)[6aa8]: Physical Memory: 65462MB Total, 42173MB Free
+00:16:42.746(INFO)[6aa8]: Windows Version: 10.0 Build 19045 (release: 22H2; revision: 6809; 64-bit)
+00:16:42.746(INFO)[6aa8]: Running as administrator: false
+00:16:42.746(INFO)[6aa8]: Windows 10/11 Gaming Features:
+00:16:42.746(INFO)[6aa8]: 	Game DVR: On
+00:16:42.746(INFO)[6aa8]: 	Game Mode: Probably On (no reg key set)
+00:16:42.749(INFO)[6aa8]: Sec. Software Status:
+00:16:42.752(INFO)[6aa8]: 	Microsoft Defender Antivirus: enabled (AV)
+00:16:42.752(INFO)[6aa8]: 	Windows Firewall: enabled (FW)
+00:16:42.753(INFO)[6aa8]: ---------------------------------
+00:16:42.753(INFO)[6aa8]: audio settings reset:
+00:16:42.753(INFO)[6aa8]: 	samples per sec: 48000
+00:16:42.753(INFO)[6aa8]: 	speakers:        2
+00:16:42.753(INFO)[6aa8]: 	max buffering:   960 milliseconds
+00:16:42.753(INFO)[6aa8]: 	buffering type:  dynamically increasing
+00:16:42.753(INFO)[6aa8]: ---------------------------------
+00:16:42.753(INFO)[6aa8]: ow-obs video settings reset:
+00:16:42.753(INFO)[6aa8]: 	base resolution:   1920x1080
+00:16:42.753(INFO)[6aa8]: 	output resolution: 1920x1080
+00:16:42.753(INFO)[6aa8]: 	fps:               30
+00:16:42.753(INFO)[6aa8]: 
+00:16:42.753(INFO)[6aa8]: Starting the background worker timer
+00:16:42.756(INFO)[6aa8]: ---------------------------------
+00:16:42.756(INFO)[6aa8]: Initializing D3D11...
+00:16:42.756(INFO)[6aa8]: Available Video Adapters: 
+00:16:42.760(INFO)[6aa8]: 	Adapter 0: NVIDIA GeForce RTX 3060
+00:16:42.760(INFO)[6aa8]: 	  Dedicated VRAM: 12703498240 (11.8 GiB)
+00:16:42.760(INFO)[6aa8]: 	  Shared VRAM:    34321358848 (32.0 GiB)
+00:16:42.760(INFO)[6aa8]: 	  PCI ID:         10de:2503
+00:16:42.760(INFO)[6aa8]: 	  HAGS Status:    Disabled (Default: No, Driver status: Supported)
+00:16:42.761(INFO)[6aa8]: 	  Driver Version: 32.0.15.8157
+00:16:42.763(INFO)[6aa8]: 	  output 0:
+00:16:42.763(INFO)[6aa8]: 	    name=LG ULTRAGEAR
+00:16:42.763(INFO)[6aa8]: 	    pos={0, 0}
+00:16:42.763(INFO)[6aa8]: 	    size={2560, 1440}
+00:16:42.763(INFO)[6aa8]: 	    attached=true
+00:16:42.763(INFO)[6aa8]: 	    refresh=144
+00:16:42.763(INFO)[6aa8]: 	    bits_per_color=8
+00:16:42.763(INFO)[6aa8]: 	    space=RGB_FULL_G22_NONE_P709
+00:16:42.763(INFO)[6aa8]: 	    primaries=[r=(0.685547, 0.308594), g=(0.264648, 0.667969), b=(0.150391, 0.057617), wp=(0.313477, 0.329102)]
+00:16:42.763(INFO)[6aa8]: 	    relative_gamut_area=[709=1.329573, P3=0.980123, 2020=0.703173]
+00:16:42.763(INFO)[6aa8]: 	    sdr_white_nits=80
+00:16:42.763(INFO)[6aa8]: 	    nit_range=[min=0.249600, max=351.276398, max_full_frame=351.276398]
+00:16:42.763(INFO)[6aa8]: 	    dpi=96 (100%)
+00:16:42.763(INFO)[6aa8]: 	    id=\\?\DISPLAY#GSM5BB4#5&63b2a2c&0&UID4353#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}
+00:16:42.763(INFO)[6aa8]: 	    alt_id=\\.\DISPLAY1
+00:16:42.766(INFO)[6aa8]: 	  output 1:
+00:16:42.766(INFO)[6aa8]: 	    name=LG ULTRAGEAR
+00:16:42.766(INFO)[6aa8]: 	    pos={0, -1440}
+00:16:42.766(INFO)[6aa8]: 	    size={2560, 1440}
+00:16:42.766(INFO)[6aa8]: 	    attached=true
+00:16:42.766(INFO)[6aa8]: 	    refresh=144
+00:16:42.766(INFO)[6aa8]: 	    bits_per_color=8
+00:16:42.766(INFO)[6aa8]: 	    space=RGB_FULL_G2084_NONE_P2020
+00:16:42.766(INFO)[6aa8]: 	    primaries=[r=(0.685547, 0.308594), g=(0.264648, 0.667969), b=(0.150391, 0.057617), wp=(0.313477, 0.329102)]
+00:16:42.766(INFO)[6aa8]: 	    relative_gamut_area=[709=1.329573, P3=0.980123, 2020=0.703173]
+00:16:42.766(INFO)[6aa8]: 	    sdr_white_nits=240
+00:16:42.766(INFO)[6aa8]: 	    nit_range=[min=0.249600, max=351.276398, max_full_frame=351.276398]
+00:16:42.766(INFO)[6aa8]: 	    dpi=96 (100%)
+00:16:42.766(INFO)[6aa8]: 	    id=\\?\DISPLAY#GSM5BB3#5&63b2a2c&0&UID4352#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}
+00:16:42.766(INFO)[6aa8]: 	    alt_id=\\.\DISPLAY2
+00:16:42.768(INFO)[6aa8]: 	  output 2:
+00:16:42.768(INFO)[6aa8]: 	    name=
+00:16:42.768(INFO)[6aa8]: 	    pos={-1920, -121}
+00:16:42.768(INFO)[6aa8]: 	    size={1920, 1080}
+00:16:42.768(INFO)[6aa8]: 	    attached=true
+00:16:42.768(INFO)[6aa8]: 	    refresh=60
+00:16:42.768(INFO)[6aa8]: 	    bits_per_color=8
+00:16:42.768(INFO)[6aa8]: 	    space=RGB_FULL_G22_NONE_P709
+00:16:42.768(INFO)[6aa8]: 	    primaries=[r=(0.652344, 0.330078), g=(0.221680, 0.680664), b=(0.148438, 0.053711), wp=(0.309570, 0.330078)]
+00:16:42.768(INFO)[6aa8]: 	    relative_gamut_area=[709=1.319428, P3=0.972644, 2020=0.697807]
+00:16:42.768(INFO)[6aa8]: 	    sdr_white_nits=80
+00:16:42.768(INFO)[6aa8]: 	    nit_range=[min=0.500000, max=270.000000, max_full_frame=270.000000]
+00:16:42.768(INFO)[6aa8]: 	    dpi=96 (100%)
+00:16:42.768(INFO)[6aa8]: 	    id=\\?\DISPLAY#@@@0000#5&63b2a2c&0&UID4356#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}
+00:16:42.768(INFO)[6aa8]: 	    alt_id=\\.\DISPLAY3
+00:16:42.770(INFO)[6aa8]: Loading up D3D11 on adapter NVIDIA GeForce RTX 3060 (0)
+00:16:43.189(INFO)[6aa8]: D3D11 loaded successfully, feature level used: b000
+00:16:43.189(INFO)[6aa8]: DXGI increase maximum frame latency success
+00:16:45.698(INFO)[6aa8]: ---------------------------------
+00:16:45.698(INFO)[6aa8]: video settings reset:
+00:16:45.698(INFO)[6aa8]: 	base resolution:   1920x1080
+00:16:45.698(INFO)[6aa8]: 	output resolution: 1920x1080
+00:16:45.698(INFO)[6aa8]: 	downscale filter:  Bicubic
+00:16:45.698(INFO)[6aa8]: 	fps:               30/1
+00:16:45.698(INFO)[6aa8]: 	format:            NV12
+00:16:45.698(INFO)[6aa8]: 	YUV mode:          Rec. 709/Partial
+00:16:45.699(INFO)[6aa8]: NV12 texture support enabled
+00:16:45.699(INFO)[6aa8]: P010 texture support not available
+00:16:45.701(INFO)[6aa8]: SDR: 0 HDR: 0
+00:16:45.701(INFO)[6aa8]: init obs video [width:1920 height:1080]
+00:16:45.710(WARNING)[6aa8]: [CoreAudio encoder]: CoreAudio AAC encoder not installed on the system or couldn't be loaded
+00:16:46.320(INFO)[6aa8]: [obs-nvenc] NVENC version: 12.2 (compiled) / 13.0 (driver), CUDA driver version: 13.0, AV1 supported: false
+00:16:46.519(INFO)[6aa8]: Handle command 2 (0)
+00:16:46.519(INFO)[6aa8]: QueryMachine: retrieve audio input devices
+00:16:46.529(INFO)[6aa8]: QueryMachine: retrieve audio output devices
+00:16:46.544(INFO)[6aa8]: QueryMachine: retrieve supported video encoders
+00:16:46.544(INFO)[6aa8]: testing IsEncoderValid (ffmpeg_svt_av1)
+00:16:46.544(INFO)[6aa8]: Add supported encoder: SVT-AV1
+00:16:46.544(INFO)[6aa8]: testing IsEncoderValid (ffmpeg_aom_av1)
+00:16:46.544(INFO)[6aa8]: Add supported encoder: AOM AV1
+00:16:46.544(INFO)[6aa8]: testing IsEncoderValid (obs_nvenc_h264_tex)
+00:16:46.592(INFO)[6aa8]: [obs-nvenc: 'recording_h264'] settings:
+00:16:46.592(INFO)[6aa8]: 	codec:        H264
+00:16:46.592(INFO)[6aa8]: 	rate_control: cbr
+00:16:46.592(INFO)[6aa8]: 	bitrate:      10000
+00:16:46.592(INFO)[6aa8]: 	keyint:       250
+00:16:46.592(INFO)[6aa8]: 	preset:       p5
+00:16:46.592(INFO)[6aa8]: 	tuning:       hq
+00:16:46.592(INFO)[6aa8]: 	multipass:    qres
+00:16:46.592(INFO)[6aa8]: 	profile:      high
+00:16:46.592(INFO)[6aa8]: 	width:        1920
+00:16:46.592(INFO)[6aa8]: 	height:       1080
+00:16:46.592(INFO)[6aa8]: 	b-frames:     2
+00:16:46.592(INFO)[6aa8]: 	b-ref-mode:   0
+00:16:46.592(INFO)[6aa8]: 	lookahead:    true (8 frames)
+00:16:46.592(INFO)[6aa8]: 	aq:           true
+00:16:46.592(INFO)[6aa8]: 
+00:16:46.745(INFO)[6aa8]: IsEncoderValid (obs_nvenc_h264_tex) ended successfully
+00:16:46.745(INFO)[6aa8]: Convert NVIDIA encoder name(new to old) from: obs_nvenc_h264_tex, to jim_nvenc.
+00:16:46.745(INFO)[6aa8]: Add supported encoder: NVIDIA NVENC H.264
+00:16:46.745(INFO)[6aa8]: testing IsEncoderValid (obs_nvenc_hevc_tex)
+00:16:46.805(INFO)[6aa8]: [obs-nvenc: 'recording_h264'] settings:
+00:16:46.805(INFO)[6aa8]: 	codec:        HEVC
+00:16:46.805(INFO)[6aa8]: 	rate_control: cbr
+00:16:46.805(INFO)[6aa8]: 	bitrate:      10000
+00:16:46.805(INFO)[6aa8]: 	keyint:       250
+00:16:46.805(INFO)[6aa8]: 	preset:       p5
+00:16:46.805(INFO)[6aa8]: 	tuning:       hq
+00:16:46.805(INFO)[6aa8]: 	multipass:    qres
+00:16:46.805(INFO)[6aa8]: 	profile:      main
+00:16:46.805(INFO)[6aa8]: 	width:        1920
+00:16:46.805(INFO)[6aa8]: 	height:       1080
+00:16:46.805(INFO)[6aa8]: 	b-frames:     2
+00:16:46.805(INFO)[6aa8]: 	b-ref-mode:   0
+00:16:46.805(INFO)[6aa8]: 	lookahead:    true (8 frames)
+00:16:46.805(INFO)[6aa8]: 	aq:           true
+00:16:46.805(INFO)[6aa8]: 
+00:16:46.946(INFO)[6aa8]: IsEncoderValid (obs_nvenc_hevc_tex) ended successfully
+00:16:46.946(INFO)[6aa8]: Convert NVIDIA encoder name(new to old) from: obs_nvenc_hevc_tex, to jim_hevc_nvenc.
+00:16:46.946(INFO)[6aa8]: Add supported encoder: NVIDIA NVENC HEVC
+00:16:46.946(INFO)[6aa8]: testing IsEncoderValid (obs_x264)
+00:16:46.946(INFO)[6aa8]: ---------------------------------
+00:16:46.947(INFO)[6aa8]: [x264 encoder: 'recording_h264'] preset: veryfast
+00:16:46.947(INFO)[6aa8]: [x264 encoder: 'recording_h264'] settings:
+00:16:46.947(INFO)[6aa8]: 	rate_control: CBR
+00:16:46.947(INFO)[6aa8]: 	bitrate:      2500
+00:16:46.947(INFO)[6aa8]: 	buffer size:  2500
+00:16:46.947(INFO)[6aa8]: 	crf:          23
+00:16:46.947(INFO)[6aa8]: 	fps_num:      30
+00:16:46.947(INFO)[6aa8]: 	fps_den:      1
+00:16:46.947(INFO)[6aa8]: 	width:        1920
+00:16:46.947(INFO)[6aa8]: 	height:       1080
+00:16:46.947(INFO)[6aa8]: 	keyint:       250
+00:16:46.947(INFO)[6aa8]: 
+00:16:46.955(INFO)[6aa8]: IsEncoderValid (obs_x264) ended successfully
+00:16:46.955(INFO)[6aa8]: Add supported encoder: x264
+00:16:46.955(INFO)[6aa8]: wgc supported
+00:16:46.955(INFO)[6aa8]: QueryMachine: sending result
+00:16:46.955(INFO)[6aa8]: shut down command
+00:16:46.956(INFO)[cfc]: MessageLoop::Run - End
+00:16:46.956(INFO)[cfc]: releasing obs control
+00:16:46.956(INFO)[3be8]: start termination watch dog
+00:16:46.956(INFO)[cfc]: releasing obs
+00:16:46.956(INFO)[cfc]: releasing scene
+00:16:46.956(INFO)[cfc]: remove all scenes and sources
+00:16:46.956(INFO)[cfc]: wait for destroy queue
+00:16:47.020(INFO)[cfc]: All scene data cleared
+00:16:47.020(INFO)[cfc]: ------------------------------------------------
+00:16:47.020(INFO)[cfc]: obs shutdown
+00:16:51.989(INFO)[cfc]: Freeing OBS context data
+00:16:51.990(INFO)[cfc]: 	3 encoder(s) were remaining
+00:16:52.279(INFO)[3be8]: cancel termination watch dog

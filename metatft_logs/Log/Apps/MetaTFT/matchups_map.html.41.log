@@ -1,0 +1,59 @@
+﻿2026-01-22 18:12:45,418 (INFO) ================== new session ==================
+2026-01-22 18:12:45,419 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-22 18:12:45,420 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-22 18:12:45,433 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-22 18:12:45,434 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-22 18:12:45,436 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-22 18:12:45,444 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-22 18:12:45,446 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-22 18:12:45,448 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-22 18:12:45,449 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-22 18:12:45,450 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-22 18:12:45,451 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-22 18:12:45,453 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-22 18:12:45,454 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-22 18:12:45,455 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-22 18:12:45,459 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-22 18:12:45,460 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-22 18:12:45,462 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-22 18:12:45,463 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-22 18:12:45,464 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-22 18:12:45,465 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-22 18:12:45,466 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:45,467 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:45,467 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-22 18:12:45,468 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-22 18:12:45,468 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:45,469 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:45,469 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:45,470 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:45,503 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-22 18:12:45,533 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-22 18:12:45,539 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-22 18:12:45,785 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-22 18:12:45,787 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-22 18:12:45,787 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-22 18:12:45,788 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-22 18:12:45,789 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-22 18:12:46,309 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-22 18:12:46,446 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  233
+2026-01-22 18:12:46,536 (INFO) </assets/index-C26oBRaL.js> (:20808) - changed position to:  2327 -334080
+2026-01-22 18:12:46,580 (INFO) <Overwolf> () - [object Object]
+2026-01-22 18:17:39,550 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:18:46,540 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:20:41,560 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:21:58,667 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:23:11,558 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:25:09,580 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:26:40,708 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:28:24,853 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:29:38,795 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:30:51,673 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:32:55,731 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:34:38,763 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:36:24,799 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:39:01,799 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:40:47,013 (INFO) </assets/index-C26oBRaL.js> (:20808) - dispatching:  [object Object]
+2026-01-22 18:41:52,635 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  233
+2026-01-22 18:41:52,715 (INFO) </assets/index-C26oBRaL.js> (:20808) - changed position to:  2327 -334080
+2026-01-22 18:41:52,717 (INFO) <Overwolf> () - [object Object]

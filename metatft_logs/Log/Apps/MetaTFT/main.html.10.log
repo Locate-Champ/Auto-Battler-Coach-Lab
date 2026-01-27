@@ -1,0 +1,428 @@
+﻿2026-01-21 16:34:51,956 (INFO) ================== new session ==================
+2026-01-21 16:34:51,956 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-21 16:34:51,957 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-21 16:34:51,957 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-21 16:34:51,957 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-21 16:34:51,957 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-21 16:34:51,958 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-21 16:34:51,958 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-21 16:34:51,959 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-21 16:34:51,959 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-21 16:34:51,959 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-21 16:34:51,959 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-21 16:34:51,960 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-21 16:34:51,960 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-21 16:34:51,960 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-21 16:34:51,961 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-21 16:34:51,961 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-21 16:34:51,961 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-21 16:34:51,962 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-21 16:34:51,962 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-21 16:34:51,963 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-21 16:34:51,963 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-21 16:34:51,963 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-21 16:34:51,964 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-21 16:34:51,964 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-21 16:34:51,964 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-21 16:34:51,965 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-21 16:34:51,965 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-21 16:34:51,965 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-21 16:34:51,973 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-21 16:34:51,980 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-21 16:34:51,981 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-21 16:34:51,995 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-21 16:34:51,996 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-21 16:34:51,996 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-21 16:34:51,996 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-21 16:34:51,997 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-21 16:34:51,997 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-21 16:34:51,997 (INFO) </assets/index-C26oBRaL.js> (:20808) - Desktop Render
+2026-01-21 16:34:52,014 (INFO) </assets/index-C26oBRaL.js> (:20749) - healthcheck: {}
+2026-01-21 16:34:52,016 (INFO) </assets/index-C26oBRaL.js> (:20763) - Comps Page: Render true 1100
+2026-01-21 16:34:52,016 (INFO) </assets/index-C26oBRaL.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-21 16:34:52,020 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,069 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-21 16:34:52,080 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-21 16:34:52,095 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters componentDidMount
+2026-01-21 16:34:52,095 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Initializing centralized filters for first time
+2026-01-21 16:34:52,096 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Initializing centralized filters for first time with queue: 1100
+2026-01-21 16:34:52,096 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: Checking localStorage...
+2026-01-21 16:34:52,096 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: savedFilters raw: {"queue":["1100"],"patch":["current"],"days":[3],"rank":["CHALLENGER","DIAMOND","EMERALD","GRANDMASTER","MASTER"],"permit_filter_adjustment":["true"]}
+2026-01-21 16:34:52,097 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: filterAdjustment: null
+2026-01-21 16:34:52,097 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: queue_prop: 1100
+2026-01-21 16:34:52,097 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: parsed savedFilters: [object Object]
+2026-01-21 16:34:52,098 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: otherFilters (excluding patch): [object Object]
+2026-01-21 16:34:52,098 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: Before merge: [object Object]
+2026-01-21 16:34:52,098 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: After merge: [object Object]
+2026-01-21 16:34:52,099 (INFO) </assets/index-C26oBRaL.js> (:333) - Successfully loaded filters from localStorage (excluding patch)
+2026-01-21 16:34:52,099 (INFO) </assets/index-C26oBRaL.js> (:333) - Defaulting patch to 'current' for new/expired session
+2026-01-21 16:34:52,099 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: Final filters being dispatched: [object Object]
+2026-01-21 16:34:52,100 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: Dispatching updateCentralizedFilters  from initializeCentralizedFilters with queue:  1100
+2026-01-21 16:34:52,101 (INFO) </assets/index-C26oBRaL.js> (:333) - initializeCentralizedFilters: Successfully initialized centralized filters: [object Object]
+2026-01-21 16:34:52,102 (INFO) </assets/index-C26oBRaL.js> (:20668) - scrollRef [object Object]
+2026-01-21 16:34:52,154 (INFO) </assets/index-C26oBRaL.js> (:20668) - CompTable: Mounted with activeFilters, updating data
+2026-01-21 16:34:52,155 (INFO) </assets/index-C26oBRaL.js> (:20763) - checking sync queue: from centralized filters: 1100 1100
+2026-01-21 16:34:52,155 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters componentDidMount
+2026-01-21 16:34:52,155 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-21 16:34:52,156 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Skipping updateFilterValues - filters already loaded/loading
+2026-01-21 16:34:52,157 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,157 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,158 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-21 16:34:52,159 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-21 16:34:52,159 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,160 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,160 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,160 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,160 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-21 16:34:52,161 (INFO) </assets/index-C26oBRaL.js> (:20808) - [PlayerScouting] StoreController componentDidMount [object Object]
+2026-01-21 16:34:52,161 (INFO) </assets/index-C26oBRaL.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE, checking conditions...
+2026-01-21 16:34:52,161 (INFO) </assets/index-C26oBRaL.js> (:20808) - [PlayerScouting] No valid player data found - players_tagline: undefined roster.player_status: [object Object]
+2026-01-21 16:34:52,162 (INFO) </assets/index-C26oBRaL.js> (:20765) - Ad script loaded
+2026-01-21 16:34:52,162 (INFO) </assets/index-C26oBRaL.js> (:20765) - createAd 0
+2026-01-21 16:34:52,162 (INFO) </assets/index-C26oBRaL.js> (:20765) - OwAd is undefined
+2026-01-21 16:34:52,163 (INFO) </assets/index-C26oBRaL.js> (:20765) - observing ad space
+2026-01-21 16:34:52,164 (INFO) </assets/index-C26oBRaL.js> (:20668) - Initializing winrate model for TFTSet16
+2026-01-21 16:34:52,164 (INFO) </assets/index-C26oBRaL.js> (:27) - Fetching unit items
+2026-01-21 16:34:52,171 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-21 16:34:52,172 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,172 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,172 (INFO) </assets/index-C26oBRaL.js> (:27) - fetch language lookups:  [object Object]
+2026-01-21 16:34:52,173 (INFO) </assets/index-C26oBRaL.js> (:20765) - ExplorerFilters: Skipping centralized filter update - not on explorer page: /comps
+2026-01-21 16:34:52,173 (INFO) </assets/index-C26oBRaL.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-21 16:34:52,190 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters changed, updating filterRefCopy: [object Object]
+2026-01-21 16:34:52,191 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Updated filterRefCopy: [object Object]
+2026-01-21 16:34:52,191 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-21 16:34:52,192 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,192 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,192 (INFO) </assets/index-C26oBRaL.js> (:27) - fetch language lookups:  [object Object]
+2026-01-21 16:34:52,193 (INFO) </assets/index-C26oBRaL.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-21 16:34:52,193 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-21 16:34:52,193 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,194 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,194 (INFO) </assets/index-C26oBRaL.js> (:27) - fetch language lookups:  [object Object]
+2026-01-21 16:34:52,194 (INFO) </assets/index-C26oBRaL.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-21 16:34:52,195 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-21 16:34:52,195 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,195 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,196 (INFO) </assets/index-C26oBRaL.js> (:27) - fetch language lookups:  [object Object]
+2026-01-21 16:34:52,196 (INFO) </assets/index-C26oBRaL.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-21 16:34:52,196 (INFO) </assets/index-C26oBRaL.js> (:20808) - navigate changed [object Object]
+2026-01-21 16:34:52,197 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-21 16:34:52,197 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,197 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,198 (INFO) </assets/index-C26oBRaL.js> (:27) - fetch language lookups:  [object Object]
+2026-01-21 16:34:52,198 (INFO) </assets/index-C26oBRaL.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-21 16:34:52,198 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-21 16:34:52,198 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,199 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-21 16:34:52,199 (INFO) </assets/index-C26oBRaL.js> (:27) - fetch language lookups:  [object Object]
+2026-01-21 16:34:52,199 (INFO) </assets/index-C26oBRaL.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-21 16:34:52,200 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,215 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-21 16:34:52,216 (INFO) </assets/index-C26oBRaL.js> (:27) - updateFilterValues: Starting filter values fetch
+2026-01-21 16:34:52,217 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,218 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,218 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-21 16:34:52,219 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-21 16:34:52,219 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,219 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,220 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,220 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,220 (INFO) </assets/index-C26oBRaL.js> (:20668) - CompTable: activeFilters prop changed, updating data
+2026-01-21 16:34:52,221 (INFO) </assets/index-C26oBRaL.js> (:20668) - Previous activeFilters: [object Object]
+2026-01-21 16:34:52,221 (INFO) </assets/index-C26oBRaL.js> (:20668) - New activeFilters: [object Object]
+2026-01-21 16:34:52,221 (INFO) </assets/index-C26oBRaL.js> (:20668) - CompTable: update_data from componentDidMount1 true
+2026-01-21 16:34:52,222 (INFO) </assets/index-C26oBRaL.js> (:20668) - update_data: updating comps data
+2026-01-21 16:34:52,222 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching /comps_data:  https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100
+2026-01-21 16:34:52,222 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching /comps_stats:  https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER,PLATINUM&permit_filter_adjustment=true
+2026-01-21 16:34:52,223 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,223 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,223 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-21 16:34:52,224 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-21 16:34:52,224 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,224 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,225 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,225 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,225 (INFO) </assets/index-C26oBRaL.js> (:20808) - fetch language:  en_us  from LookupService
+2026-01-21 16:34:52,225 (INFO) </assets/index-C26oBRaL.js> (:27) - fetch language lookups:  [object Object]
+2026-01-21 16:34:52,226 (INFO) </assets/index-C26oBRaL.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-21 16:34:52,226 (INFO) </assets/index-C26oBRaL.js> (:20765) - ExplorerFilters: Skipping centralized filter update - not on explorer page: /comps
+2026-01-21 16:34:52,226 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters changed, updating filterRefCopy: [object Object]
+2026-01-21 16:34:52,227 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Updated filterRefCopy: [object Object]
+2026-01-21 16:34:52,227 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,241 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-21 16:34:52,241 (INFO) </assets/index-C26oBRaL.js> (:20668) - CompTable: update_data from ComponentDidUpdate1 false 1100 1100
+2026-01-21 16:34:52,242 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:34:52,243 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,256 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Successfully initialized centralized filters
+2026-01-21 16:34:52,257 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Skipping updateFilterValues - filters already loaded/loading
+2026-01-21 16:34:52,257 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Initialized prevRegionHint: NA1
+2026-01-21 16:34:52,257 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/unit_items_processed?region_hint=na1
+2026-01-21 16:34:52,258 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/pro-comps?region_hint=na1
+2026-01-21 16:34:52,258 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/piltover-modules?region_hint=na1
+2026-01-21 16:34:52,259 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100&region_hint=na1
+2026-01-21 16:34:52,259 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER,PLATINUM&permit_filter_adjustment=true&region_hint=na1
+2026-01-21 16:34:52,305 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,351 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-21 16:34:52,352 (INFO) </assets/index-C26oBRaL.js> (:20765) - ExplorerFilters: User changed filters via legacy method: [object Object]
+2026-01-21 16:34:52,352 (INFO) </assets/index-C26oBRaL.js> (:20765) - sendFetchData: Skipping fetch - no dimension filters to warrant data request
+2026-01-21 16:34:52,373 (INFO) </assets/index-C26oBRaL.js> (:20748) - Launcher:  The system cannot find the file specified
+2026-01-21 16:34:52,374 (INFO) </assets/index-C26oBRaL.js> (:20748) - error with lcu_get:  Couldn't parse lcu info The system cannot find the file specified | stack: Error: Couldn't parse lcu info The system cannot find the file specified
+    at Object.lcu_get (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-C26oBRaL.js:20748:422505)
+    at async le (overwolf-extension://aheglebeeekjdnkljmpngplhpedgejncjhojnndh/assets/index-C26oBRaL.js:332:71011)
+2026-01-21 16:34:52,375 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-21 16:34:52,375 (INFO) </assets/index-C26oBRaL.js> (:20668) - update_data filters
+2026-01-21 16:34:52,376 (INFO) </assets/index-C26oBRaL.js> (:20668) - CompTable: update_data from updateActiveFilters3 true
+2026-01-21 16:34:52,376 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,383 (INFO) </assets/index-C26oBRaL.js> (:20668) - already fetching comps data https://api-hc.metatft.com/tft-comps-api/comps_data
+2026-01-21 16:34:52,384 (INFO) </assets/index-C26oBRaL.js> (:20668) - fetching /comps_stats:  https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-21 16:34:52,384 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,391 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-21 16:34:52,392 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,398 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&region_hint=na1
+2026-01-21 16:34:52,405 (INFO) </assets/index-C26oBRaL.js> (:20748) - active plans: {"plans":null,"success":false,"error":"user not logged in"}
+2026-01-21 16:34:52,406 (INFO) </assets/index-C26oBRaL.js> (:20748) - Could not get plans
+2026-01-21 16:34:52,407 (INFO) </assets/index-C26oBRaL.js> (:20808) - Desktop Render
+2026-01-21 16:34:52,409 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,420 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-21 16:34:52,423 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:34:52,423 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,431 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-21 16:34:52,432 (INFO) </assets/index-C26oBRaL.js> (:20748) - active plans: {"plans":null,"success":false,"error":"user not logged in"}
+2026-01-21 16:34:52,433 (INFO) </assets/index-C26oBRaL.js> (:20748) - Could not get plans
+2026-01-21 16:34:52,433 (INFO) </assets/index-C26oBRaL.js> (:20808) - Desktop Render
+2026-01-21 16:34:52,441 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-21 16:34:52,442 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-21 16:34:52,443 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:34:52,443 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,448 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,453 (INFO) </assets/index-C26oBRaL.js> (:20808) - draggable [object Object]
+2026-01-21 16:34:52,454 (INFO) </assets/index-C26oBRaL.js> (:20808) - Desktop Render
+2026-01-21 16:34:52,459 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-21 16:34:52,460 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:34:52,465 (INFO) </assets/index-C26oBRaL.js> (:20668) - Model lookups loaded for TFTSet16
+2026-01-21 16:34:52,465 (INFO) </assets/index-C26oBRaL.js> (:20668) - Loading model for TFTSet16
+2026-01-21 16:34:52,487 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,488 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,488 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,488 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,489 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,489 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,494 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-21 16:34:52,494 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,494 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,495 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-21 16:34:52,495 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,496 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,497 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,497 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,498 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,498 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,499 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,499 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,500 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-21 16:34:52,500 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,501 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,501 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,502 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,502 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,503 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,503 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-21 16:34:52,504 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,504 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,505 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,505 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,506 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,506 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,506 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,507 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,507 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,508 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,508 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,509 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,509 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,510 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,510 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,511 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,511 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,512 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,512 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,512 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,514 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,514 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,515 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,515 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,515 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,516 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,516 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,517 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,517 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,517 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,518 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,518 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,518 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,519 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,519 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,519 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,520 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,520 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,520 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,521 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,527 (INFO) </assets/index-C26oBRaL.js> (:27) - Formula not found:  TFT16_Bard_Num3Stars {39cfdb6d} [object Object] 
+2026-01-21 16:34:52,527 (INFO) </assets/index-C26oBRaL.js> (:27) - couldn't find variable:  1 TFT16_Bard_Num3Stars
+2026-01-21 16:34:52,528 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,528 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,529 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,529 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,530 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,530 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,531 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,531 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,532 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,532 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,532 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-21 16:34:52,533 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-21 16:34:52,533 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-21 16:34:52,533 (INFO) </assets/index-C26oBRaL.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-21 16:34:52,551 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,595 (INFO) </assets/index-C26oBRaL.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-21 16:34:52,596 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:34:52,596 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-21 16:34:52,597 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,617 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-21 16:34:52,618 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,624 (INFO) </assets/index-C26oBRaL.js> (:20668) - already fetching comps data https://api-hc.metatft.com/tft-comps-api/comps_data
+2026-01-21 16:34:52,638 (INFO) </assets/index-C26oBRaL.js> (:20808) - MyTeams: selectedPortal state changed to: 
+2026-01-21 16:34:52,639 (INFO) </assets/index-C26oBRaL.js> (:20808) - MyTeams: portalSearch state changed to: 
+2026-01-21 16:34:52,808 (INFO) </assets/index-C26oBRaL.js> (:27) - updateFilterValues: Successfully fetched filter values
+2026-01-21 16:34:52,813 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,813 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,814 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-21 16:34:52,814 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-21 16:34:52,815 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,815 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,816 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,816 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,817 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,817 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:52,818 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-21 16:34:52,818 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-21 16:34:52,819 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,819 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:52,820 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,820 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:52,821 (INFO) </assets/index-C26oBRaL.js> (:20749) - healthcheck: {}
+2026-01-21 16:34:52,827 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,841 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-21 16:34:52,843 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,860 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,911 (INFO) </assets/index-C26oBRaL.js> (:452) - loading_screen: null
+2026-01-21 16:34:52,914 (INFO) </assets/index-C26oBRaL.js> (:20749) - UpdateControls mounted [object Object] [object Object]
+2026-01-21 16:34:52,915 (INFO) </assets/index-C26oBRaL.js> (:452) - error in authentication User not linked to Patreon
+2026-01-21 16:34:52,916 (INFO) </assets/index-C26oBRaL.js> (:20808) - Desktop Render
+2026-01-21 16:34:52,963 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-21 16:34:52,966 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:34:52,967 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,973 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-21 16:34:52,973 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:52,985 (INFO) </assets/index-C26oBRaL.js> (:20749) - userInfo: [object Object]
+2026-01-21 16:34:52,987 (INFO) </assets/index-C26oBRaL.js> (:452) - loading_screen: null
+2026-01-21 16:34:52,995 (INFO) </assets/index-C26oBRaL.js> (:452) - error in authentication User not linked to Patreon
+2026-01-21 16:34:52,995 (INFO) </assets/index-C26oBRaL.js> (:20808) - Desktop Render
+2026-01-21 16:34:53,060 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-21 16:34:53,063 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:34:53,064 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:53,068 (INFO) </assets/index-C26oBRaL.js> (:20765) - adbox state:  [object Object]
+2026-01-21 16:34:53,069 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:53,100 (INFO) </assets/index-C26oBRaL.js> (:20668) - set key: TFTSet16 TFTSet16
+2026-01-21 16:34:53,103 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:53,112 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-21 16:34:53,113 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:53,119 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:53,138 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-21 16:34:53,142 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:53,222 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:53,232 (INFO) </assets/index-C26oBRaL.js> (:20668) - backing Up State
+2026-01-21 16:34:53,234 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:53,279 (INFO) </assets/index-C26oBRaL.js> (:20765) - createAd 1
+2026-01-21 16:34:53,279 (INFO) </assets/index-C26oBRaL.js> (:20765) - OwAd is undefined
+2026-01-21 16:34:53,579 (INFO) </assets/index-C26oBRaL.js> (:20668) - Model loaded for TFTSet16
+2026-01-21 16:34:53,627 (INFO) </assets/index-C26oBRaL.js> (:20668) - Model details for TFTSet16:  WinRateModelImproved_BoardStrength_TFTSet16_Wed, 21 Jan 2026 09:36:54 GMT
+2026-01-21 16:34:54,279 (INFO) </assets/index-C26oBRaL.js> (:20765) - createAd 2
+2026-01-21 16:34:54,287 (INFO) </assets/index-C26oBRaL.js> (:20765) - creating ad with size:  [object Object]
+2026-01-21 16:34:56,369 (ERROR) <Overwolf> () - Potential permissions policy violation: fullscreen is not allowed in this document.
+2026-01-21 16:34:56,391 (ERROR) <Overwolf> () - Potential permissions policy violation: fullscreen is not allowed in this document.
+2026-01-21 16:34:58,781 (INFO) </assets/index-C26oBRaL.js> (:20763) - checking sync queue: from centralized filters: 1100 1100
+2026-01-21 16:34:58,782 (INFO) </assets/index-C26oBRaL.js> (:20763) - Comps Page: Render true 1100
+2026-01-21 16:34:58,782 (INFO) </assets/index-C26oBRaL.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-21 16:34:58,783 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:34:58,834 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-21 16:34:58,836 (INFO) </assets/index-C26oBRaL.js> (:20808) - compListProps:  [object Object]
+2026-01-21 16:34:58,840 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Location changed, applying context overrides for new page
+2026-01-21 16:34:58,841 (INFO) </assets/index-C26oBRaL.js> (:333) - Previous: /comps Current: /comp-lists
+2026-01-21 16:34:58,841 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:58,841 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:58,842 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-21 16:34:58,842 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-21 16:34:58,842 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:58,843 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:58,843 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:58,843 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:58,844 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Location changed, applying context overrides for new page
+2026-01-21 16:34:58,844 (INFO) </assets/index-C26oBRaL.js> (:333) - Previous: /comps Current: /comp-lists
+2026-01-21 16:34:58,844 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:58,845 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:34:58,845 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-21 16:34:58,845 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-21 16:34:58,845 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:58,846 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:34:58,846 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:58,846 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:34:58,847 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:34:58,847 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comp-lists
+2026-01-21 16:34:58,848 (INFO) </assets/index-C26oBRaL.js> (:20808) - MyTeams mounted
+2026-01-21 16:34:58,848 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-21 16:34:58,939 (INFO) </assets/index-C26oBRaL.js> (:20808) - error [object Object]
+2026-01-21 16:34:58,940 (INFO) </assets/index-C26oBRaL.js> (:20808) - compListProps:  [object Object]
+2026-01-21 16:34:58,941 (INFO) </assets/index-C26oBRaL.js> (:20808) - error [object Object]
+2026-01-21 16:34:58,941 (INFO) </assets/index-C26oBRaL.js> (:20808) - compListProps:  [object Object]
+2026-01-21 16:34:58,942 (INFO) </assets/index-C26oBRaL.js> (:20808) - sessionResponse [object Object]
+2026-01-21 16:34:58,942 (INFO) </assets/index-C26oBRaL.js> (:20808) - compListProps:  [object Object]
+2026-01-21 16:34:59,020 (INFO) </assets/index-C26oBRaL.js> (:20808) - error [object Object]
+2026-01-21 16:34:59,021 (INFO) </assets/index-C26oBRaL.js> (:20808) - compListProps:  [object Object]
+2026-01-21 16:35:01,649 (INFO) </assets/index-C26oBRaL.js> (:20668) - Comps Render
+2026-01-21 16:35:01,691 (INFO) </assets/index-C26oBRaL.js> (:20808) - AppRoutes location [object Object]
+2026-01-21 16:35:01,693 (INFO) </assets/index-C26oBRaL.js> (:20765) - early comps props [object Object]
+2026-01-21 16:35:01,702 (INFO) </assets/index-C26oBRaL.js> (:333) - StatsFilters: Location changed, applying context overrides for new page
+2026-01-21 16:35:01,703 (INFO) </assets/index-C26oBRaL.js> (:333) - Previous: /comp-lists Current: /early
+2026-01-21 16:35:01,703 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:35:01,703 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-21 16:35:01,704 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-21 16:35:01,704 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-21 16:35:01,704 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:35:01,704 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-21 16:35:01,705 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:35:01,705 (INFO) </assets/index-C26oBRaL.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-21 16:35:01,705 (INFO) </assets/index-C26oBRaL.js> (:20765) - fetching first carousel data
+2026-01-21 16:35:01,706 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-21 16:35:01,706 (INFO) </assets/index-C26oBRaL.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /early
+2026-01-21 16:35:01,706 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-21 16:35:01,707 (INFO) </assets/index-C26oBRaL.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/first_carousel?region_hint=na1
+2026-01-21 16:35:01,937 (INFO) </assets/index-C26oBRaL.js> (:20765) - early comps props [object Object]
+2026-01-21 16:35:02,168 (INFO) </assets/index-C26oBRaL.js> (:20765) - item_stats:  [object Object]
+2026-01-21 16:35:22,545 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-21 16:36:01,279 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-21 16:36:27,795 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-21 16:37:02,439 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-21 16:37:15,456 (INFO) <Overwolf> (:1) - 2026-01-21T21:37:15.456Z [LOG] {"duration":30,"skippableState":false,"vuInstr":"https://aax-events-cell02-cf.us-east.3px.axp.amazon-adsystem.com/x/px/RF19ykrrn6qelv1-VApAboIAAAGb4n2BBwEAAAZzBEEzcHhfdHhuX2JpZDMgICAzcHhfdHhuX2ltcDEgICCAj2xN/","adCfid":"588601334373963714","vuParams":{"bidRequestId":"XX3KSuufqp6W.X5UCkBugg","sourceid":"1651","su":"https://aax-events-cell02-cf.us-east.3px.axp.amazon-adsystem.com/x/px/RF19ykrrn6qelv1-VApAboIAAAGb4n2BBwEAAAZzBEEzcHhfdHhuX2JpZDMgICAzcHhfdHhuX2ltcDEgICCAj2xN/?t=%24%7BAAX_TYPE%7D&p=%24%7BAAX_PAYLOAD%7D&bx=v1_CGvnR2IB_cuR_hWlQ_9z_GTgHU1QUZAou5h9mWXUqroFE6Uz7yEDhwIf-V90rGqXvLUm0o1FxUCOh36cSgZUGkdsT-n_ZPKRaRxdNh8pEgD6QN0j5m4owaQ2KRSZbLX9Ed7RaUyn7JZGTR9-wgChHj0RZxFSXZkhWA07BPpgC0HUlaXA8wprAg3ubcC0bvBzXihCLYSB09r2K3N2PMcFIroCjsmuj5w_Ah_ePqovyEoZv8NplLzlT08hlUS-glNDADr2KfXSsR1jz1cCPtR6a0OvK0frqxvhN8yr1pDMU5QiZRy5waK60j2cXjXBMamPxKoyxs9OQ-jlyqPlCv2SNZxJ6dx2VRof9pQz59dlPqRx7EhCVxiK0Sqa168AW2OAF0FXpWmvtnpTohPpLLWrXl5bXYjinMRieMYdInY0ngd7T7kOoiZZAEYvx7xdfmpsArmueNDd6e-yT3pUImnLw8RRHRDV3xXiM3k3Id8n-ofwSC8OlM71mXSxoCQFdPKYmsp32DtvMJ4vzi2ooQHNvk30WAVVV0EpChmGcxGyLu_PXx2ZBwtB81BfYQybaGDqTf8hto_CF_5F8Ou1zQJF5p7woEuHsrc","expbucket":"C","ep":["vue","forensics","forensics-ntd"],"bidId":"XX3KSuufqp6W.X5UCkBugg","tungstenCSMLoggingFrameworkUrl":"tungsten-service.prod.na.adsqtungsten.a9.amazon.dev/csm/","expname":"UNITAG_VIDEO_ROLLOUT_5486","au":"https://aes.us-east.3px.axp.amazon-adsystem.com/x/px?t=${AAX_TYPE}&bi=v1_CGvnR2IB_cuR_hWlQ_9z_GTgHU1QUZAou5h9mWXUqroFE6Uz7yEDhwIf-V90rGqXvLUm0o1FxUCOh36cSgZUGkdsT-n_ZPKRaRxdNh8pEgD6QN0j5m4owaQ2KRSZbLX9Ed7RaUyn7JZGTR9-wgChHj0RZxFSXZkhWA07BPpgC0HUlaXA8wprAg3ubcC0bvBzXihCLYSB09r2K3N2PMcFIroCjsmuj5w_Ah_ePqovyEoZv8NplLzlT08hlUS-glNDADr2KfXSsR1jz1cCPtR6a0OvK0frqxvhN8yr1pDMU5QiZRy5waK60j2cXjXBMamPxKoyxs9OQ-jlyqPlCv2SNZxJ6dx2VRof9pQz59dlPqRx7EhCVxiK0Sqa168AW2OAF0FXpWmvtnpTohPpLLWrXl5bXYjinMRieMYdInY0ngd7T7kOoiZZAEYvx7xdfmpsArmueNDd6e-yT3pUImnLw8RRHRDV3xXiM3k3Id8n-ofwSC8OlM71mXSxoCQFdPKYmsp32DtvMJ4vzi2ooQHNvk30WAVVV0EpChmGcxGyLu_PXx2ZBwtB81BfYQybaGDqTf8hto_CF_5F8Ou1zQJF5p7woEuHsrc&c=${AAX_PAYLOAD}","zone":"USEast","ntdUrl":"www.btd-cmh.tq-tungsten.com/","sourcetype":"rtb","traffictype":"site","msrTechnique":"vpaid","pm":{"bt":["au"],"ac":["su"],"at":["su"],"av":["su"],"v":["su"],"vp":["su"]},"mediatype":"video","instrUrl":"https://aax-events-cell02-cf.us-east.3px.axp.amazon-adsystem.com/x/px/RF19ykrrn6qelv1-VApAboIAAAGb4n2BBwEAAAZzBEEzcHhfdHhuX2JpZDMgICAzcHhfdHhuX2ltcDEgICCAj2xN/"},"creativeCfid":"583995933169851198","vastUrl":"https://servedby.flashtalking.com/imp/8/262189;10344039;208;xml;Amazon;BPMAMAZONID45236mochihealthAMAZONStreamingOLVAntiAgingShoppers/?gdpr=0&gdpr_consent=&us_privacy=${US_PRIVACY}&cachebuster=7722997520861955837&ft_id=[INSERT_DEVICEID]&ft_partnerid=[INSERT_USERID]","iconsElem":"<Icons> <Icon program=\"adchoices\" width=\"15\" height=\"15\" xPosition=\"left\" yPosition=\"top\"> <StaticResource creativeType=\"image/png\"> https://images-na.ssl-images-amazon.com/images/G/01/da/adchoices.png </StaticResource> <IconClicks> <IconClickThrough> https://www.amazon.com/adprefs/ref=third_party_video_{%creative_cfid} </IconClickThrough> </IconClicks> </Icon> </Icons>","vpaidVersion":"2.0","vu":"https://ts.amazon-adsystem.com/?s=%7B%22sourceid%22%3A%221651%22%2C%22expname%22%3A%22UNITAG_VIDEO_ROLLOUT_5486%22%2C%22expbucket%22%3A%22C%22%2C%22sourcetype%22%3A%22rtb%22%2C%22traffictype%22%3A%22site%22%2C%22msrTechnique%22%3A%22vpaid%22%2C%22mediatype%22%3A%22video%22%7D&p=%7B%22bidRequestId%22%3A%22XX3KSuufqp6W.X5UCkBugg%22%2C%22tungstenCSMLoggingFrameworkUrl%22%3A%22tungsten-service.prod.na.adsqtungsten.a9.amazon.dev%2Fcsm%2F%22%2C%22su%22%3A%22https%3A%2F%2Faax-events-cell02-cf.us-east.3px.axp.amazon-adsystem.com%2Fx%2Fpx%2FRF19ykrrn6qelv1-VApAboIAAAGb4n2BBwEAAAZzBEEzcHhfdHhuX2JpZDMgICAzcHhfdHhuX2ltcDEgICCAj2xN%2F%3Ft%3D%2524%257BAAX_TYPE%257D%26p%3D%2524%257BAAX_PAYLOAD%257D%26bx%3Dv1_CGvnR2IB_cuR_hWlQ_9z_GTgHU1QUZAou5h9mWXUqroFE6Uz7yEDhwIf-V90rGqXvLUm0o1FxUCOh36cSgZUGkdsT-n_ZPKRaRxdNh8pEgD6QN0j5m4owaQ2KRSZbLX9Ed7RaUyn7JZGTR9-wgChHj0RZxFSXZkhWA07BPpgC0HUlaXA8wprAg3ubcC0bvBzXihCLYSB09r2K3N2PMcFIroCjsmuj5w_Ah_ePqovyEoZv8NplLzlT08hlUS-glNDADr2KfXSsR1jz1cCPtR6a0OvK0frqxvhN8yr1pDMU5QiZRy5waK60j2cXjXBMamPxKoyxs9OQ-jlyqPlCv2SNZxJ6dx2VRof9pQz59dlPqRx7EhCVxiK0Sqa168AW2OAF0FXpWmvtnpTohPpLLWrXl5bXYjinMRieMYdInY0ngd7T7kOoiZZAEYvx7xdfmpsArmueNDd6e-yT3pUImnLw8RRHRDV3xXiM3k3Id8n-ofwSC8OlM71mXSxoCQFdPKYmsp32DtvMJ4vzi2ooQHNvk30WAVVV0EpChmGcxGyLu_PXx2ZBwtB81BfYQybaGDqTf8hto_CF_5F8Ou1zQJF5p7woEuHsrc%22%2C%22au%22%3A%22https%3A%2F%2Faes.us-east.3px.axp.amazon-adsystem.com%2Fx%2Fpx%3Ft%3D%24%7BAAX_TYPE%7D%26bi%3Dv1_CGvnR2IB_cuR_hWlQ_9z_GTgHU1QUZAou5h9mWXUqroFE6Uz7yEDhwIf-V90rGqXvLUm0o1FxUCOh36cSgZUGkdsT-n_ZPKRaRxdNh8pEgD6QN0j5m4owaQ2KRSZbLX9Ed7RaUyn7JZGTR9-wgChHj0RZxFSXZkhWA07BPpgC0HUlaXA8wprAg3ubcC0bvBzXihCLYSB09r2K3N2PMcFIroCjsmuj5w_Ah_ePqovyEoZv8NplLzlT08hlUS-glNDADr2KfXSsR1jz1cCPtR6a0OvK0frqxvhN8yr1pDMU5QiZRy5waK60j2cXjXBMamPxKoyxs9OQ-jlyqPlCv2SNZxJ6dx2VRof9pQz59dlPqRx7EhCVxiK0Sqa168AW2OAF0FXpWmvtnpTohPpLLWrXl5bXYjinMRieMYdInY0ngd7T7kOoiZZAEYvx7xdfmpsArmueNDd6e-yT3pUImnLw8RRHRDV3xXiM3k3Id8n-ofwSC8OlM71mXSxoCQFdPKYmsp32DtvMJ4vzi2ooQHNvk30WAVVV0EpChmGcxGyLu_PXx2ZBwtB81BfYQybaGDqTf8hto_CF_5F8Ou1zQJF5p7woEuHsrc%26c%3D%24%7BAAX_PAYLOAD%7D%22%2C%22zone%22%3A%22USEast%22%2C%22ntdUrl%22%3A%22www.btd-cmh.tq-tungsten.com%2F%22%2C%22ep%22%3A%5B%22vue%22%2C%22forensics%22%2C%22forensics-ntd%22%5D%2C%22pm%22%3A%7B%22bt%22%3A%5B%22au%22%5D%2C%22ac%22%3A%5B%22su%22%5D%2C%22at%22%3A%5B%22su%22%5D%2C%22av%22%3A%5B%22su%22%5D%2C%22v%22%3A%5B%22su%22%5D%2C%22vp%22%3A%5B%22su%22%5D%7D%2C%22instrUrl%22%3A%22https%3A%2F%2Faax-events-cell02-cf.us-east.3px.axp.amazon-adsystem.com%2Fx%2Fpx%2FRF19ykrrn6qelv1-VApAboIAAAGb4n2BBwEAAAZzBEEzcHhfdHhuX2JpZDMgICAzcHhfdHhuX2ltcDEgICCAj2xN%2F%22%2C%22bidId%22%3A%22XX3KSuufqp6W.X5UCkBugg%22%7D"}
+2026-01-21 16:37:15,536 (INFO) <Overwolf> (:1) - 2026-01-21T21:37:15.537Z [LOG] [startAd] invoked
+2026-01-21 16:37:15,800 (INFO) <Overwolf> (:1) - 2026-01-21T21:37:15.801Z [LOG] AdVideoStart
+2026-01-21 16:37:23,302 (INFO) <Overwolf> (:1) - 2026-01-21T21:37:23.302Z [LOG] AdVideoFirstQuartile
+2026-01-21 16:37:30,755 (INFO) <Overwolf> (:1) - 2026-01-21T21:37:30.755Z [LOG] AdVideoMidpoint
+2026-01-21 16:37:32,252 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-21 16:37:38,192 (INFO) <Overwolf> (:1) - 2026-01-21T21:37:38.192Z [LOG] AdVideoThirdQuartile
+2026-01-21 16:37:45,643 (INFO) <Overwolf> (:1) - 2026-01-21T21:37:45.643Z [LOG] AdVideoComplete
+2026-01-21 16:38:03,752 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-21 16:38:47,332 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-21 16:39:12,733 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip
+2026-01-21 16:39:53,188 (INFO) </assets/index-C26oBRaL.js> (:20765) - incrementing tip

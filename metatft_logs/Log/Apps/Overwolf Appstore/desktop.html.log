@@ -1,0 +1,74 @@
+﻿2026-01-18 22:59:10,824 (INFO) ================== new session ==================
+2026-01-18 22:59:10,826 (INFO) </scripts/controllers/splash.js> (:5) - OVERWOLF STORE VERSION 294.0.1
+2026-01-18 22:59:10,964 (INFO) </scripts/controllers/connection.js> (:50) - DOCUMENT READY 1/18/2026, 10:59:10 PM.941
+2026-01-18 22:59:10,966 (INFO) </scripts/controllers/window.js> (:34) - window init. location: /index.html
+2026-01-18 22:59:10,968 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Store Action: Action Label: open Value: undefined Custom: undefined
+2026-01-18 22:59:11,021 (INFO) </scripts/directives/page-background.js> (:17) - CURRENT ROUTE FOR DIRECTIVE {}
+2026-01-18 22:59:11,034 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 22:59:11,173 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 22:59:11,174 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 22:59:11,176 (INFO) <Overwolf> () - [object Object]
+2026-01-18 22:59:11,182 (INFO) </scripts/controllers/connection.js> (:87) - route {"section":"index.html"}
+2026-01-18 22:59:11,184 (INFO) </scripts/controllers/connection.js> (:88) - location /index.html
+2026-01-18 22:59:11,185 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 22:59:11,186 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 22:59:11,247 (INFO) </scripts/controllers/page.js> (:28) - page controller init
+2026-01-18 22:59:11,248 (INFO) </scripts/controllers/page.js> (:29) - Route params: {"section":"index.html"}
+2026-01-18 22:59:11,248 (INFO) </scripts/controllers/page.js> (:47) - Main_page_Initialized Client
+2026-01-18 22:59:11,532 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 22:59:11,534 (INFO) </scripts/controllers/connection.js> (:54) - WINDOW LOAD 1/18/2026, 10:59:11 PM.535
+2026-01-18 22:59:11,537 (INFO) </scripts/controllers/splash.js> (:145) - starting progress bar from splash controller function
+2026-01-18 22:59:11,548 (INFO) </scripts/services/user.js> (:246) - getCurrentUser result status: undefined
+2026-01-18 22:59:11,549 (INFO) </scripts/services/user.js> (:165) - complete progress from user service displaylogin window
+2026-01-18 22:59:11,871 (INFO) </scripts/controllers/window.js> (:118) - Navigate to section called [object Object] opener undefined
+2026-01-18 22:59:11,872 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:11,874 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:11,875 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:11,875 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:11,876 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:11,892 (INFO) </scripts/controllers/splash.js> (:152) - completing progress from splash ctrl function
+2026-01-18 22:59:11,894 (INFO) <Overwolf> () - [object Object]
+2026-01-18 22:59:12,475 (INFO) </scripts/controllers/splash.js> (:158) - Splash removed
+2026-01-18 22:59:12,592 (INFO) </scripts/controllers/splash.js> (:152) - completing progress from splash ctrl function
+2026-01-18 22:59:13,196 (INFO) </scripts/controllers/splash.js> (:158) - Splash removed
+2026-01-18 22:59:14,671 (INFO) </scripts/controllers/connection.js> (:62) - ROUTE CHANGE STARTED
+2026-01-18 22:59:14,672 (INFO) </scripts/controllers/connection.js> (:67) - Starting progress from connection controller route change start
+2026-01-18 22:59:14,674 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:14,674 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:14,675 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:14,675 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:14,676 (INFO) </scripts/directives/modal.js> (:304) - close all recieved
+2026-01-18 22:59:14,681 (INFO) </scripts/controllers/connection.js> (:87) - route {}
+2026-01-18 22:59:14,682 (INFO) </scripts/controllers/connection.js> (:88) - location /library
+2026-01-18 22:59:14,684 (INFO) </scripts/services/tracking.js> (:64) - Event Tracked Category: Page Action: Load Label: null Value: 1 Custom: null
+2026-01-18 22:59:14,684 (INFO) </scripts/controllers/connection.js> (:131) - Stopping progress from connection ctrl route change success
+2026-01-18 22:59:14,699 (INFO) </scripts/directives/page-background.js> (:35) - SHOWING ELEMENT [object Object]
+2026-01-18 22:59:14,700 (INFO) </scripts/directives/ftue-tooltip.js> (:110) - dismissing FTUE tooltip
+2026-01-18 22:59:14,734 (INFO) </scripts/filters/translate.js> (:10) - translate filter called with empty input
+2026-01-18 22:59:14,741 (INFO) </scripts/controllers/library/library.js> (:227) - Updating skins
+2026-01-18 22:59:14,759 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 22:59:14,762 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 22:59:14,763 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 22:59:14,765 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 22:59:14,804 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 22:59:14,815 (INFO) </scripts/controllers/library/library.js> (:233) - GOT SKINS [object Object]
+2026-01-18 22:59:18,269 (INFO) </scripts/controllers/library/library.js> (:272) - uninstalling  aheglebeeekjdnkljmpngplhpedgejncjhojnndh
+2026-01-18 22:59:18,389 (INFO) </scripts/services/apps.js> (:74) - app desktop shortcut removed {"uid":"aheglebeeekjdnkljmpngplhpedgejncjhojnndh"}
+2026-01-18 22:59:18,542 (INFO) </scripts/controllers/library/library.js> (:276) - app uninstalled successfully
+2026-01-18 22:59:18,544 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 22:59:18,552 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 22:59:18,572 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 22:59:18,591 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 22:59:18,606 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 22:59:21,329 (INFO) </scripts/services/apps.js> (:53) - app removed from dock {"uid":"aheglebeeekjdnkljmpngplhpedgejncjhojnndh"}
+2026-01-18 23:04:18,933 (INFO) </scripts/controllers/library/library.js> (:284) - Trying to install app aheglebeeekjdnkljmpngplhpedgejncjhojnndhfrom library
+2026-01-18 23:04:18,934 (INFO) </scripts/controllers/library/library.js> (:10) - $rootScope.dockWasShownThisSession = false
+2026-01-18 23:04:18,934 (INFO) </scripts/controllers/library/library.js> (:320) - installing  aheglebeeekjdnkljmpngplhpedgejncjhojnndh
+2026-01-18 23:04:18,940 (INFO) </scripts/controllers/library/library.js> (:16) - response.wasOpenedByDock = true
+2026-01-18 23:04:18,944 (INFO) </scripts/controllers/library/library.js> (:290) - install app API result {"status":"success"}
+2026-01-18 23:04:26,091 (INFO) </scripts/services/apps.js> (:67) - app desktop shortcut added {"uid":"aheglebeeekjdnkljmpngplhpedgejncjhojnndh"}
+2026-01-18 23:04:26,326 (INFO) </scripts/services/ItemsServiceBase.js> (:62) - inited local items [object Object]
+2026-01-18 23:04:26,329 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 23:04:26,372 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 23:04:26,468 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en
+2026-01-18 23:04:26,468 (ERROR) </scripts/filters/translate.js> (:23) - Cannot find localized string for input View in Appstore for lang en

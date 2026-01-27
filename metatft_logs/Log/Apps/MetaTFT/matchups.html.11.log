@@ -1,0 +1,69 @@
+﻿2026-01-19 01:52:12,549 (INFO) ================== new session ==================
+2026-01-19 01:52:12,550 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-19 01:52:12,550 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: es
+2026-01-19 01:52:12,551 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-19 01:52:12,551 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: de
+2026-01-19 01:52:12,552 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-19 01:52:12,552 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-19 01:52:12,553 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-19 01:52:12,553 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-19 01:52:12,554 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-19 01:52:12,554 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-19 01:52:12,554 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-19 01:52:12,555 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: el
+2026-01-19 01:52:12,555 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-19 01:52:12,555 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-19 01:52:12,556 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: it
+2026-01-19 01:52:12,556 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-19 01:52:12,557 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-19 01:52:12,557 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: th
+2026-01-19 01:52:12,558 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-19 01:52:12,567 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-19 01:52:12,567 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-19 01:52:12,568 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-19 01:52:12,568 (INFO) </assets/index-CCJ9jrMe.js> (:184) - moment-config: Final current locale: en
+2026-01-19 01:52:12,568 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en_us to en_us
+2026-01-19 01:52:12,569 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en-US to en_us
+2026-01-19 01:52:12,569 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en to en_us
+2026-01-19 01:52:12,569 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en-US to en_us
+2026-01-19 01:52:12,570 (INFO) </assets/index-CCJ9jrMe.js> (:184) - Language detection: converting en to en_us
+2026-01-19 01:52:12,625 (INFO) </assets/index-CCJ9jrMe.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-19 01:52:12,652 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-19 01:52:12,653 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-19 01:52:12,656 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-19 01:52:12,657 (INFO) </assets/index-CCJ9jrMe.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-19 01:52:12,658 (INFO) </assets/index-CCJ9jrMe.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-19 01:52:12,658 (INFO) </assets/index-CCJ9jrMe.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-19 01:52:12,659 (INFO) </assets/index-CCJ9jrMe.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-19 01:52:12,661 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - window name:  [object Object]
+2026-01-19 01:52:12,663 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - [object Object]
+2026-01-19 01:52:12,668 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - matchups result:  [object Object]
+2026-01-19 01:52:12,669 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - resized. New width:  400
+2026-01-19 01:52:12,669 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - Changing Position to:  2260 242
+2026-01-19 01:52:12,671 (INFO) <Overwolf> () - [object Object]
+2026-01-19 01:56:17,839 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 01:57:25,813 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 01:59:20,824 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:00:22,824 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:01:15,894 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:02:17,903 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:07:08,869 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:10:21,837 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:12:55,966 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:15:06,844 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:16:17,834 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:17:35,924 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:19:26,866 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:20:44,913 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:22:16,878 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:23:26,185 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:24:27,888 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:26:11,895 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:27:10,051 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:28:35,187 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:29:34,971 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:30:33,344 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - dispatching:  [object Object]
+2026-01-19 02:32:04,853 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - matchups result:  [object Object]
+2026-01-19 02:32:04,854 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - resized. New width:  400
+2026-01-19 02:32:04,854 (INFO) </assets/index-CCJ9jrMe.js> (:20808) - Changing Position to:  2260 242
+2026-01-19 02:32:04,897 (INFO) <Overwolf> () - [object Object]

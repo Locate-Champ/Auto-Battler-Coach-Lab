@@ -1,0 +1,24 @@
+﻿2026-01-18 19:10:59,491 (INFO) [ 1][20488] Program - Installer version: 2.222.0.0
+2026-01-18 19:10:59,504 (INFO) [ 1][20488] Program - Command line: Sel=1&Partner=4047&Extension=cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj&Name=CurseForge&Thanks=https%3A%2F%2Fgo.overwolf.com%2Fcurseforge-thank-you%2F&Referer=download.curseforge.com&Browser=firefox, /UAC:150BE4, /NCRC, -partnerCustomizationLevel, 0, -customPromoPages, --app-name=CurseForge, -exepath, C:\Users\forre\Downloads\CurseForge, -, Installer.exe, 
+2026-01-18 19:10:59,504 (INFO) [ 1][20488] Program - 
+Account name: DESKTOP-OUF1PHN\forre
+IsSystemAccount: false
+IsAnonymous: false
+IsGuest: false
+IsAuthenticated: true
+2026-01-18 19:10:59,505 (INFO) [ 1][20488] Program - initialize sentry
+2026-01-18 19:10:59,506 (INFO) [ 1][20488] Program - initialize sentry
+2026-01-18 19:10:59,636 (INFO) [ 1][20488] OverwolfInstaller - Initializing Installer Object
+2026-01-18 19:10:59,637 (INFO) [ 1][20488] OverwolfInstaller - .Net vrsion Version: 4.8 or later (release 533325)
+2026-01-18 19:10:59,681 (INFO) [ 1][20488] OverwolfInstaller - OW Installer - TenDigitsSemiUniqueOW_Name: 1218896545
+2026-01-18 19:10:59,690 (INFO) [ 1][20488] GoogleAnalyticsHelper - Overwolf setup - Auditing To Google event category Funnel2, Action Installer Launched, label 2.0.50727 SP2, 3.0 SP2, 3.5 SP1, 4 Client, 4 Full, 4.0 Client
+2026-01-18 19:10:59,697 (INFO) [ 1][20488] GoogleAnalyticsHelper - Overwolf setup - Auditing to Datacenter counter Manual_Funnel2_Installer_Launched
+2026-01-18 19:10:59,698 (INFO) [ 1][20488] GoogleAnalyticsHelper - Overwolf setup - Auditing to Datacenter counter Manual_Installer_Launched
+2026-01-18 19:10:59,757 (INFO) [ 1][20488] AppManifest - web app_version = 222.0.1
+2026-01-18 19:10:59,868 (INFO) [ 1][20488] InstallerWindowWebView - Initializing Web Installer Window
+2026-01-18 19:10:59,906 (INFO) [ 1][20488] StateBase - Started state: idle
+2026-01-18 19:10:59,916 (INFO) [ 1][20488] GoogleAnalyticsHelper - Overwolf setup - Auditing to analyticsnew installer_webbrowser_init
+2026-01-18 19:11:00,011 (INFO) [ 1][20488] Program - Overwolf.exe found - adding extension to dock...
+2026-01-18 19:11:00,540 (INFO) [ 1][20488] ThankYouPageHandler - Thank you url with query: https://go.overwolf.com/curseforge-thank-you/?muid=da0a78b9-3bed-4c83-a82b-cef161ab8fe4&extensionId=cchhcaiapeikjbdbpfplgmpobbcdkdaphclbmkbj
+2026-01-18 19:11:00,542 (INFO) [ 1][20488] ThankYouPageHandler - Tagged browser detected, firefox
+2026-01-18 19:11:00,543 (INFO) [ 1][20488] BrowserLauncher - User is an admin

@@ -1,0 +1,252 @@
+﻿2026-01-22 18:12:45,164 (INFO) ================== new session ==================
+2026-01-22 18:12:45,165 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-22 18:12:45,166 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: es
+2026-01-22 18:12:45,168 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-22 18:12:45,168 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: de
+2026-01-22 18:12:45,170 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-22 18:12:45,171 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-22 18:12:45,172 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-22 18:12:45,172 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-22 18:12:45,176 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-22 18:12:45,177 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-22 18:12:45,178 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-22 18:12:45,178 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: el
+2026-01-22 18:12:45,179 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-22 18:12:45,179 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-22 18:12:45,180 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: it
+2026-01-22 18:12:45,181 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-22 18:12:45,181 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-22 18:12:45,182 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: th
+2026-01-22 18:12:45,182 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-22 18:12:45,183 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-22 18:12:45,183 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:45,184 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-22 18:12:45,184 (INFO) </assets/index-C26oBRaL.js> (:184) - moment-config: Final current locale: en
+2026-01-22 18:12:45,185 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en_us to en_us
+2026-01-22 18:12:45,189 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:45,212 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:45,219 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en-US to en_us
+2026-01-22 18:12:45,220 (INFO) </assets/index-C26oBRaL.js> (:184) - Language detection: converting en to en_us
+2026-01-22 18:12:45,310 (INFO) </assets/index-C26oBRaL.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-22 18:12:45,370 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-22 18:12:45,371 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-22 18:12:45,693 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-22 18:12:45,695 (INFO) </assets/index-C26oBRaL.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-22 18:12:45,696 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-22 18:12:45,697 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-22 18:12:45,698 (INFO) </assets/index-C26oBRaL.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-22 18:12:45,814 (INFO) </assets/index-C26oBRaL.js> (:20808) - window name:  [object Object]
+2026-01-22 18:12:45,821 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-22 18:12:45,822 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:12:46,326 (INFO) </assets/index-C26oBRaL.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-22 18:12:46,338 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-22 18:12:46,341 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  600
+2026-01-22 18:12:46,453 (INFO) </assets/index-C26oBRaL.js> (:20808) - changed position to:  980 72
+2026-01-22 18:12:46,539 (INFO) <Overwolf> () - [object Object]
+2026-01-22 18:12:55,265 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:13:58,566 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-22 18:13:58,567 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:13:58,629 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-22 18:14:15,523 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-22 18:14:48,571 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-22 18:14:48,644 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:14:53,586 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:14:56,559 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:14:57,543 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:15:24,535 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-22 18:15:28,653 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:15:29,563 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:16:05,534 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  [object Object]
+2026-01-22 18:16:05,596 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:16:36,556 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:16:40,546 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:16:52,558 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:17:01,300 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:17:01,301 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-22 18:17:01,302 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:17:33,544 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:17:33,545 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-22 18:17:33,615 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:17:39,547 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:17:48,573 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:17:49,540 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:17:50,548 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:17:55,555 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:18:00,561 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:18:01,547 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:18:02,536 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:18:09,149 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:18:09,149 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~80%
+2026-01-22 18:18:09,150 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:18:40,542 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:18:40,543 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~80%
+2026-01-22 18:18:40,594 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:18:41,542 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:19:16,150 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:19:16,151 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-22 18:19:16,152 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:19:58,529 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:19:58,530 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-22 18:20:35,553 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:20:35,554 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~4%
+2026-01-22 18:20:49,582 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:21:00,575 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:21:11,195 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:21:11,196 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~51%
+2026-01-22 18:21:11,197 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:21:52,564 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:21:52,564 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~51%
+2026-01-22 18:21:52,628 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:21:53,571 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:22:00,569 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:22:01,566 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:22:28,106 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:22:28,107 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~42%
+2026-01-22 18:22:28,108 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:23:05,559 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:23:05,560 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~42%
+2026-01-22 18:23:05,610 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:23:52,567 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:23:52,568 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~42%
+2026-01-22 18:23:58,565 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:24:28,491 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:24:28,492 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~5%
+2026-01-22 18:24:28,492 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:25:03,587 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:25:03,588 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~5%
+2026-01-22 18:25:03,650 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:25:22,677 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:25:34,702 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:25:43,665 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:25:45,751 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:25:47,650 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:25:59,198 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:25:59,199 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~87%
+2026-01-22 18:25:59,200 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:26:34,730 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:26:34,731 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~87%
+2026-01-22 18:26:45,638 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:26:58,743 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:27:02,662 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:27:10,181 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:27:10,182 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-22 18:27:10,183 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:27:37,435 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:27:37,585 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:27:41,619 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:27:41,620 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-22 18:28:18,642 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:28:18,643 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~95%
+2026-01-22 18:28:18,755 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:28:20,692 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:28:26,714 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:28:27,702 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:28:31,669 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:28:55,358 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:28:55,359 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~17%
+2026-01-22 18:28:55,359 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:29:32,641 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:29:32,642 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~17%
+2026-01-22 18:29:32,730 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:29:33,668 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:29:53,699 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:29:57,690 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:30:01,672 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:30:08,215 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:30:08,216 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-22 18:30:08,216 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:30:45,681 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:30:45,681 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-22 18:31:00,694 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:31:02,692 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:31:03,679 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:31:05,692 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:31:24,721 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:31:24,722 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-22 18:31:34,753 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:31:36,766 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:31:40,768 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:31:45,747 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:31:52,761 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:32:00,269 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:32:00,270 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~73%
+2026-01-22 18:32:00,271 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:32:49,740 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:32:49,741 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~73%
+2026-01-22 18:32:49,812 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:10,784 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:15,779 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:16,795 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:17,795 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:18,796 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:19,769 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:20,755 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:24,754 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:30,768 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:33,763 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:36,763 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:33:45,258 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:33:45,259 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~10%
+2026-01-22 18:33:45,260 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:34:32,764 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:34:32,766 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~10%
+2026-01-22 18:34:32,878 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:34:49,795 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:35:08,383 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:35:08,383 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~12%
+2026-01-22 18:35:08,384 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:35:41,749 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:35:41,750 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~12%
+2026-01-22 18:36:18,801 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:36:18,802 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~12%
+2026-01-22 18:36:19,800 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:21,799 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:26,822 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:30,796 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:31,792 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:33,799 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:36,835 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:37,830 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:38,849 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:39,816 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:45,797 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:46,806 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:36:54,393 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:36:54,394 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~38%
+2026-01-22 18:36:54,394 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:37:33,765 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:37:33,765 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~38%
+2026-01-22 18:37:33,844 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:37:34,790 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:37:46,798 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:37:47,793 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:38:01,787 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:38:09,311 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:38:09,312 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-22 18:38:09,312 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:38:55,811 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:38:55,812 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-22 18:38:55,897 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:38:56,831 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:39:33,806 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:39:33,807 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~96%
+2026-01-22 18:40:00,827 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:40:01,805 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:40:09,314 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:40:09,315 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~10%
+2026-01-22 18:40:09,315 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:40:40,899 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:40:40,900 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~10%
+2026-01-22 18:40:40,984 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:40:41,861 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:40:42,844 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:41:17,601 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:41:17,602 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~5%
+2026-01-22 18:41:17,602 (INFO) </assets/index-C26oBRaL.js> (:20808) - model_data:  [object Object]
+2026-01-22 18:41:48,814 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:41:48,815 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~5%
+2026-01-22 18:41:52,627 (INFO) </assets/index-C26oBRaL.js> (:20808) - [object Object]
+2026-01-22 18:41:52,628 (INFO) </assets/index-C26oBRaL.js> (:20808) - WinChanceNumber:  ~5%
+2026-01-22 18:41:52,629 (INFO) </assets/index-C26oBRaL.js> (:20808) - resized. New width:  600
+2026-01-22 18:41:52,637 (INFO) </assets/index-C26oBRaL.js> (:20808) - changed position to:  980 72
+2026-01-22 18:41:52,716 (INFO) <Overwolf> () - [object Object]
