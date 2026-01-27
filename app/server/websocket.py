@@ -73,7 +73,7 @@ class WebSocketServer:
             """Serve the overlay HTML."""
             overlay_path = Path(__file__).parent.parent.parent / "overlay" / "index.html"
             if overlay_path.exists():
-                return HTMLResponse(content=overlay_path.read_text())
+                return HTMLResponse(content=overlay_path.read_text(encoding="utf-8"))
             return HTMLResponse(content="<h1>Overlay not found</h1>")
 
         @self.app.get("/api/state")
