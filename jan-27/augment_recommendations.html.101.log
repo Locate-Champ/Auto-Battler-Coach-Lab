@@ -1,0 +1,429 @@
+﻿2026-01-27 01:01:14,358 (INFO) ================== new session ==================
+2026-01-27 01:01:14,359 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-27 01:01:14,359 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: es
+2026-01-27 01:01:14,360 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-27 01:01:14,361 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: de
+2026-01-27 01:01:14,361 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-27 01:01:14,362 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-27 01:01:14,362 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-27 01:01:14,363 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-27 01:01:14,363 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-27 01:01:14,363 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-27 01:01:14,364 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-27 01:01:14,364 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: el
+2026-01-27 01:01:14,364 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-27 01:01:14,365 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-27 01:01:14,365 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: it
+2026-01-27 01:01:14,366 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-27 01:01:14,366 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-27 01:01:14,366 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: th
+2026-01-27 01:01:14,367 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-27 01:01:14,367 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-27 01:01:14,367 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 01:01:14,368 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 01:01:14,368 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final current locale: en
+2026-01-27 01:01:14,368 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en_us to en_us
+2026-01-27 01:01:14,369 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 01:01:14,370 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 01:01:14,370 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 01:01:14,370 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 01:01:14,380 (INFO) </assets/index-5njaiL6Z.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-27 01:01:14,389 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-27 01:01:14,390 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-27 01:01:14,610 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-27 01:01:14,611 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-27 01:01:14,611 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-27 01:01:14,612 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-27 01:01:14,612 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-27 01:01:14,613 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window name:  [object Object]
+2026-01-27 01:01:14,613 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:14,667 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay mounted
+2026-01-27 01:01:14,668 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 01:01:14,669 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:14,671 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resized. New width:  1760
+2026-01-27 01:01:14,671 (INFO) </assets/index-5njaiL6Z.js> (:20808) - New Height:  446
+2026-01-27 01:01:14,696 (INFO) </assets/index-5njaiL6Z.js> (:20808) - changed position to:  400 993
+2026-01-27 01:01:14,697 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window info:  [object Object]
+2026-01-27 01:01:14,697 (INFO) </assets/index-5njaiL6Z.js> (:20808) - game info:  [object Object]
+2026-01-27 01:01:14,865 (INFO) <Overwolf> () - [object Object]
+2026-01-27 01:01:15,048 (INFO) </assets/index-5njaiL6Z.js> (:20808) - tierListData [object Object]
+2026-01-27 01:01:15,049 (INFO) </assets/index-5njaiL6Z.js> (:20808) - AugmentTiers [object Object]
+2026-01-27 01:01:15,050 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:15,050 (INFO) </assets/index-5njaiL6Z.js> (:20808) - powerUpTierData [object Object]
+2026-01-27 01:01:15,051 (INFO) </assets/index-5njaiL6Z.js> (:20808) - PowerUpTiers [object Object]
+2026-01-27 01:01:15,051 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:22,038 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:22,079 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:22,938 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:22,971 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:23,202 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:23,257 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:23,332 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:23,420 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:28,487 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:01:36,120 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:08,119 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:08,156 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:08,180 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:08,415 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:08,444 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:08,452 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:08,499 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:24,120 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:44,116 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:44,380 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:02:44,601 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:05,119 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:28,122 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:28,371 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:28,484 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:28,485 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_CalculatedLoss","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-27 01:03:28,485 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_CalculatedLoss","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:28,486 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_CalculatedLoss
+2026-01-27 01:03:28,487 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-27 01:03:28,487 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TheVidalion
+2026-01-27 01:03:28,492 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay unmounted
+2026-01-27 01:03:28,594 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:28,595 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_CalculatedLoss","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-27 01:03:28,595 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_CalculatedLoss","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:28,596 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_CalculatedLoss
+2026-01-27 01:03:28,596 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-27 01:03:28,597 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TheVidalion
+2026-01-27 01:03:30,107 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:30,108 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_CalculatedLoss","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT6_Augment_CalculatedLoss"},"augment_2":{"name":"TFT_Augment_InfinityProtection"},"augment_3":{"name":"TFT_Augment_TheVidalion"}}
+2026-01-27 01:03:30,108 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_CalculatedLoss","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:30,109 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_CalculatedLoss
+2026-01-27 01:03:30,110 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-27 01:03:30,110 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TheVidalion
+2026-01-27 01:03:30,111 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:03:39,549 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:40,234 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:40,235 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_CalculatedLoss","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT6_Augment_CalculatedLoss"},"augment_2":{"name":"TFT_Augment_InfinityProtection"},"augment_3":{"name":"TFT_Augment_TheVidalion"}}
+2026-01-27 01:03:40,236 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT6_Augment_CalculatedLoss","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:40,236 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_CalculatedLoss
+2026-01-27 01:03:40,237 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-27 01:03:40,237 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TheVidalion
+2026-01-27 01:03:42,398 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:42,398 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT6_Augment_CalculatedLoss"},"augment_2":{"name":"TFT_Augment_InfinityProtection"},"augment_3":{"name":"TFT_Augment_TheVidalion"}}
+2026-01-27 01:03:42,399 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:42,399 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_LegionOfThrees
+2026-01-27 01:03:42,400 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-27 01:03:42,400 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TheVidalion
+2026-01-27 01:03:43,108 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:43,109 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_LegionOfThrees"},"augment_2":{"name":"TFT_Augment_InfinityProtection"},"augment_3":{"name":"TFT_Augment_TheVidalion"}}
+2026-01-27 01:03:43,109 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:43,110 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_LegionOfThrees
+2026-01-27 01:03:43,110 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-27 01:03:43,111 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TheVidalion
+2026-01-27 01:03:43,111 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:03:48,106 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:48,106 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_LegionOfThrees"},"augment_2":{"name":"TFT_Augment_InfinityProtection"},"augment_3":{"name":"TFT7_Augment_Preparation2"}}
+2026-01-27 01:03:48,107 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT_Augment_InfinityProtection","TFT_Augment_TheVidalion"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:48,107 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_LegionOfThrees
+2026-01-27 01:03:48,108 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-27 01:03:48,108 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_TheVidalion
+2026-01-27 01:03:48,108 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:03:48,277 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:48,277 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT_Augment_InfinityProtection","TFT7_Augment_Preparation2"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_LegionOfThrees"},"augment_2":{"name":"TFT_Augment_InfinityProtection"},"augment_3":{"name":"TFT7_Augment_Preparation2"}}
+2026-01-27 01:03:48,278 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT_Augment_InfinityProtection","TFT7_Augment_Preparation2"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:48,278 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_LegionOfThrees
+2026-01-27 01:03:48,278 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_InfinityProtection
+2026-01-27 01:03:48,279 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_Preparation2
+2026-01-27 01:03:52,013 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:52,014 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT6_Augment_PortableForge","TFT7_Augment_Preparation2"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_LegionOfThrees"},"augment_2":{"name":"TFT_Augment_InfinityProtection"},"augment_3":{"name":"TFT7_Augment_Preparation2"}}
+2026-01-27 01:03:52,014 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT6_Augment_PortableForge","TFT7_Augment_Preparation2"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:52,015 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_LegionOfThrees
+2026-01-27 01:03:52,015 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_PortableForge
+2026-01-27 01:03:52,015 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_Preparation2
+2026-01-27 01:03:52,109 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:52,109 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT6_Augment_PortableForge","TFT7_Augment_Preparation2"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_LegionOfThrees"},"augment_2":{"name":"TFT6_Augment_PortableForge"},"augment_3":{"name":"TFT7_Augment_Preparation2"}}
+2026-01-27 01:03:52,110 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT6_Augment_PortableForge","TFT7_Augment_Preparation2"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:03:52,110 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_LegionOfThrees
+2026-01-27 01:03:52,111 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_PortableForge
+2026-01-27 01:03:52,112 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_Preparation2
+2026-01-27 01:03:52,112 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:03:53,741 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:53,742 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT6_Augment_PortableForge","TFT7_Augment_Preparation2"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_LegionOfThrees"},"augment_2":{"name":"TFT6_Augment_PortableForge"},"augment_3":{"name":"TFT7_Augment_Preparation2"}}
+2026-01-27 01:03:53,743 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_LegionOfThrees","TFT6_Augment_PortableForge","TFT7_Augment_Preparation2"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-27 01:03:53,743 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_LegionOfThrees
+2026-01-27 01:03:53,744 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT6_Augment_PortableForge
+2026-01-27 01:03:53,744 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT7_Augment_Preparation2
+2026-01-27 01:03:54,109 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:03:54,112 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay mounted
+2026-01-27 01:03:54,125 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:04:19,120 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:04:19,170 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:04:58,116 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:05:01,154 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:05:01,187 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:05:01,410 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:05:31,120 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:05:31,168 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:06:06,186 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:06:09,214 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:06:09,242 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:06:09,464 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:06:39,184 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:06:39,232 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:07:12,179 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:07:49,385 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:07:50,355 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:07:52,397 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:07:52,444 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:07:52,736 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:07:52,884 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:08:22,179 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:08:22,230 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:09:00,183 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:09:03,191 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:09:03,220 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:09:03,447 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:09:33,178 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:09:33,226 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:00,226 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:06,189 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:10,398 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:10,767 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:11,014 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:30,185 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:57,184 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:57,227 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:57,261 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:10:57,491 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:11:27,194 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:11:27,264 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:06,179 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:09,192 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:09,228 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:09,462 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:09,548 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:09,549 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT_Augment_HomeCooking","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-27 01:12:09,549 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT_Augment_HomeCooking","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:12:09,550 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin_Plus
+2026-01-27 01:12:09,551 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HomeCooking
+2026-01-27 01:12:09,551 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_GuardbreakerSpirit
+2026-01-27 01:12:09,552 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay unmounted
+2026-01-27 01:12:10,280 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:10,281 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT_Augment_HomeCooking","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Slammin_Plus"},"augment_2":{"name":"TFT_Augment_HomeCooking"},"augment_3":{"name":"TFT_Augment_GuardbreakerSpirit"}}
+2026-01-27 01:12:10,281 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT_Augment_HomeCooking","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:12:10,282 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin_Plus
+2026-01-27 01:12:10,282 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_HomeCooking
+2026-01-27 01:12:10,282 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_GuardbreakerSpirit
+2026-01-27 01:12:10,283 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:12:11,705 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:11,705 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Slammin_Plus"},"augment_2":{"name":"TFT_Augment_HomeCooking"},"augment_3":{"name":"TFT_Augment_GuardbreakerSpirit"}}
+2026-01-27 01:12:11,706 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:12:11,706 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin_Plus
+2026-01-27 01:12:11,707 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-27 01:12:11,707 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_GuardbreakerSpirit
+2026-01-27 01:12:12,169 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:12,170 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Slammin_Plus"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT_Augment_GuardbreakerSpirit"}}
+2026-01-27 01:12:12,170 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:12:12,171 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin_Plus
+2026-01-27 01:12:12,171 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-27 01:12:12,172 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_GuardbreakerSpirit
+2026-01-27 01:12:12,172 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:12:13,172 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:13,172 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Slammin_Plus"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT_Augment_GainGold"}}
+2026-01-27 01:12:13,173 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GuardbreakerSpirit"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:12:13,174 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin_Plus
+2026-01-27 01:12:13,174 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-27 01:12:13,175 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_GuardbreakerSpirit
+2026-01-27 01:12:13,175 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:12:13,197 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:13,197 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GainGold"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT11_Augment_Slammin_Plus"},"augment_2":{"name":"TFT9_Augment_BigGrabBag"},"augment_3":{"name":"TFT_Augment_GainGold"}}
+2026-01-27 01:12:13,198 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GainGold"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:12:13,198 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin_Plus
+2026-01-27 01:12:13,199 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-27 01:12:13,199 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_GainGold
+2026-01-27 01:12:21,187 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:21,188 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GainGold"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":""},"augment_2":{"name":""},"augment_3":{"name":""}}
+2026-01-27 01:12:21,189 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GainGold"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:12:21,189 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin_Plus
+2026-01-27 01:12:21,191 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-27 01:12:21,192 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_GainGold
+2026-01-27 01:12:21,206 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:21,206 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GainGold"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-27 01:12:21,206 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT11_Augment_Slammin_Plus","TFT9_Augment_BigGrabBag","TFT_Augment_GainGold"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:12:21,207 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT11_Augment_Slammin_Plus
+2026-01-27 01:12:21,207 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT9_Augment_BigGrabBag
+2026-01-27 01:12:21,208 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_GainGold
+2026-01-27 01:12:21,237 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:21,239 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay mounted
+2026-01-27 01:12:59,248 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:12:59,312 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:13:39,246 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:13:42,263 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:13:42,300 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:13:42,532 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:14:12,260 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:14:12,351 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:14:45,257 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:15:24,446 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:15:24,483 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:15:24,712 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:15:24,766 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:15:55,404 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:15:55,453 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:16:34,415 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:16:37,421 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:16:37,460 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:16:37,694 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:17:07,398 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:17:07,446 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:17:45,411 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:17:48,417 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:17:48,460 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:17:48,701 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:18:08,405 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:18:28,411 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:18:28,452 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:18:28,484 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:18:28,712 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:18:58,403 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:18:58,462 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:40,461 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:43,470 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:43,503 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:43,729 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:44,136 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:44,137 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ArcaneViktory","TFT_Augment_SpiritLink1","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"} {"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}}
+2026-01-27 01:19:44,137 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ArcaneViktory","TFT_Augment_SpiritLink1","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:19:44,138 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ArcaneViktory
+2026-01-27 01:19:44,138 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpiritLink1
+2026-01-27 01:19:44,139 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_DuoQueue
+2026-01-27 01:19:44,139 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay unmounted
+2026-01-27 01:19:44,545 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:44,545 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ArcaneViktory","TFT_Augment_SpiritLink1","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ArcaneViktory"},"augment_2":{"name":"TFT_Augment_SpiritLink1"},"augment_3":{"name":"TFT_Augment_DuoQueue"}}
+2026-01-27 01:19:44,546 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_ArcaneViktory","TFT_Augment_SpiritLink1","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:19:44,546 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_ArcaneViktory
+2026-01-27 01:19:44,547 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpiritLink1
+2026-01-27 01:19:44,547 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_DuoQueue
+2026-01-27 01:19:44,548 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:19:49,915 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:49,916 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_SpiritLink1","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_ArcaneViktory"},"augment_2":{"name":"TFT_Augment_SpiritLink1"},"augment_3":{"name":"TFT_Augment_DuoQueue"}}
+2026-01-27 01:19:49,916 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_SpiritLink1","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:19:49,917 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FoodfightTactics
+2026-01-27 01:19:49,917 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpiritLink1
+2026-01-27 01:19:49,918 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_DuoQueue
+2026-01-27 01:19:50,453 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:50,454 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_SpiritLink1","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FoodfightTactics"},"augment_2":{"name":"TFT_Augment_SpiritLink1"},"augment_3":{"name":"TFT_Augment_DuoQueue"}}
+2026-01-27 01:19:50,454 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_SpiritLink1","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:19:50,455 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FoodfightTactics
+2026-01-27 01:19:50,455 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_SpiritLink1
+2026-01-27 01:19:50,455 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_DuoQueue
+2026-01-27 01:19:50,456 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:19:51,363 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:51,364 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_MaxBuild","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FoodfightTactics"},"augment_2":{"name":"TFT_Augment_SpiritLink1"},"augment_3":{"name":"TFT_Augment_DuoQueue"}}
+2026-01-27 01:19:51,364 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_MaxBuild","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:19:51,365 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FoodfightTactics
+2026-01-27 01:19:51,365 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_MaxBuild
+2026-01-27 01:19:51,366 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_DuoQueue
+2026-01-27 01:19:51,450 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:51,451 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_MaxBuild","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FoodfightTactics"},"augment_2":{"name":"TFT_Augment_MaxBuild"},"augment_3":{"name":"TFT_Augment_DuoQueue"}}
+2026-01-27 01:19:51,451 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_MaxBuild","TFT_Augment_DuoQueue"],"armory_state":"active","armory_type":"regular"}
+2026-01-27 01:19:51,452 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FoodfightTactics
+2026-01-27 01:19:51,452 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_MaxBuild
+2026-01-27 01:19:51,453 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_DuoQueue
+2026-01-27 01:19:51,453 (INFO) </assets/index-5njaiL6Z.js> (:20808) - overwolf augments changed
+2026-01-27 01:19:54,151 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:54,151 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_MaxBuild","TFT_Augment_DuoQueue"],"armory_state":"inactive","armory_type":"regular"} {"augment_1":{"name":"TFT_Augment_FoodfightTactics"},"augment_2":{"name":"TFT_Augment_MaxBuild"},"augment_3":{"name":"TFT_Augment_DuoQueue"}}
+2026-01-27 01:19:54,152 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] augment_armory data: {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_MaxBuild","TFT_Augment_DuoQueue"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-27 01:19:54,152 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_FoodfightTactics
+2026-01-27 01:19:54,152 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_MaxBuild
+2026-01-27 01:19:54,153 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] Displaying augment TFT_Augment_DuoQueue
+2026-01-27 01:19:54,465 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:19:54,467 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay mounted
+2026-01-27 01:19:54,495 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:20:34,466 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:20:34,522 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:21:10,472 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:21:18,479 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:21:18,515 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:21:18,744 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:21:48,463 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:21:48,522 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:22:27,467 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:23:07,512 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:23:07,544 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:23:07,773 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:23:07,816 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:23:37,471 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:23:37,530 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:24:13,468 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:24:16,481 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:24:16,518 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:24:16,745 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:24:46,476 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:24:46,539 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:25:21,482 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:25:24,523 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:25:24,560 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:25:24,808 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:25:48,482 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:03,499 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:03,530 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:03,564 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:03,791 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:11,481 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:11,482 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT_Item_GiantsBelt"},"item_2":{"name":"TFT_Item_NeedlesslyLargeRod"},"item_3":{"name":"TFT_Item_BFSword"},"item_4":{"name":"TFT_Item_RecurveBow"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT_Augment_LegionOfThrees\"}, \"slot_2\":{\"name\":\"TFT11_Augment_Slammin_Plus\"}, \"slot_3\":{\"name\":\"TFT_Augment_DuoQueue\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_MaxBuild","TFT_Augment_DuoQueue"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-27 01:26:11,482 (INFO) </assets/index-5njaiL6Z.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-27 01:26:11,483 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT_Item_GiantsBelt"},"item_2":{"name":"TFT_Item_NeedlesslyLargeRod"},"item_3":{"name":"TFT_Item_BFSword"},"item_4":{"name":"TFT_Item_RecurveBow"}}
+2026-01-27 01:26:11,483 (INFO) </assets/index-5njaiL6Z.js> (:20808) - itemCategories Component [object Object]
+2026-01-27 01:26:11,483 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay unmounted
+2026-01-27 01:26:11,484 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ItemStats mounted
+2026-01-27 01:26:11,506 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:11,507 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [AugmentStats] displaying item stat overlay because of item_select and item_recommendations {"item_1":{"name":"TFT_Item_GiantsBelt"},"item_2":{"name":"TFT_Item_NeedlesslyLargeRod"},"item_3":{"name":"TFT_Item_BFSword"},"item_4":{"name":"TFT_Item_RecurveBow"}} true {"me":{"augment_0":{"name":""},"augment_1":{"name":""},"augment_2":{"name":""}},"picked_augment":"{\"slot_1\":{\"name\":\"TFT_Augment_LegionOfThrees\"}, \"slot_2\":{\"name\":\"TFT11_Augment_Slammin_Plus\"}, \"slot_3\":{\"name\":\"TFT_Augment_DuoQueue\"}, \"slot_4\":{\"name\":\"\"}}"} {"augment_options":["TFT_Augment_FoodfightTactics","TFT_Augment_MaxBuild","TFT_Augment_DuoQueue"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-27 01:26:11,507 (INFO) </assets/index-5njaiL6Z.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-27 01:26:11,508 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT_Item_GiantsBelt"},"item_2":{"name":"TFT_Item_NeedlesslyLargeRod"},"item_3":{"name":"TFT_Item_BFSword"},"item_4":{"name":"TFT_Item_RecurveBow"}}
+2026-01-27 01:26:11,508 (INFO) </assets/index-5njaiL6Z.js> (:20808) - itemCategories Component [object Object]
+2026-01-27 01:26:11,593 (INFO) </assets/index-5njaiL6Z.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-27 01:26:11,593 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT_Item_GiantsBelt"},"item_2":{"name":"TFT_Item_NeedlesslyLargeRod"},"item_3":{"name":"TFT_Item_BFSword"},"item_4":{"name":"TFT_Item_RecurveBow"}}
+2026-01-27 01:26:11,594 (INFO) </assets/index-5njaiL6Z.js> (:20808) - itemCategories Component [object Object]
+2026-01-27 01:26:12,001 (INFO) </assets/index-5njaiL6Z.js> (:20808) - itemStatOverlayProps [object Object]
+2026-01-27 01:26:12,002 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [ItemStats] item_select data: {"item_1":{"name":"TFT_Item_GiantsBelt"},"item_2":{"name":"TFT_Item_NeedlesslyLargeRod"},"item_3":{"name":"TFT_Item_BFSword"},"item_4":{"name":"TFT_Item_RecurveBow"}}
+2026-01-27 01:26:12,002 (INFO) </assets/index-5njaiL6Z.js> (:20808) - itemCategories Component [object Object]
+2026-01-27 01:26:15,477 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:15,479 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ItemStats unmounted
+2026-01-27 01:26:15,481 (INFO) </assets/index-5njaiL6Z.js> (:20808) - ShopOverlay mounted
+2026-01-27 01:26:15,501 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:15,531 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:34,485 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:26:34,543 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:27:10,543 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:27:13,592 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:27:13,632 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:27:13,865 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:27:43,549 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:27:43,609 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:28:18,555 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:28:20,544 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:28:21,572 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:28:21,612 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:28:21,654 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:28:21,906 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:28:51,545 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:28:51,609 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:29:35,548 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:30:09,551 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:30:09,588 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:30:09,820 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:30:09,973 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:30:39,569 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:30:39,618 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:31:16,571 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:31:19,583 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:31:19,614 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:31:19,842 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:31:49,561 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:31:49,619 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:32:22,556 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:32:22,648 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:32:22,686 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:32:29,721 (INFO) </assets/index-5njaiL6Z.js> (:20808) - augment props: [object Object] [object Object]
+2026-01-27 01:32:29,722 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resized. New width:  1760
+2026-01-27 01:32:29,723 (INFO) </assets/index-5njaiL6Z.js> (:20808) - New Height:  446
+2026-01-27 01:32:29,809 (INFO) </assets/index-5njaiL6Z.js> (:20808) - changed position to:  400 993
+2026-01-27 01:32:29,811 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window info:  [object Object]
+2026-01-27 01:32:29,811 (INFO) </assets/index-5njaiL6Z.js> (:20808) - game info:  [object Object]
+2026-01-27 01:32:29,817 (INFO) <Overwolf> () - [object Object]

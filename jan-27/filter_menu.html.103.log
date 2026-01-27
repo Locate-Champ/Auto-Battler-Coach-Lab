@@ -1,0 +1,400 @@
+﻿2026-01-27 08:18:37,785 (INFO) ================== new session ==================
+2026-01-27 08:18:37,785 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-27 08:18:37,786 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: es
+2026-01-27 08:18:37,786 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-27 08:18:37,787 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: de
+2026-01-27 08:18:37,787 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-27 08:18:37,788 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-27 08:18:37,789 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-27 08:18:37,789 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-27 08:18:37,789 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-27 08:18:37,790 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-27 08:18:37,790 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-27 08:18:37,791 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: el
+2026-01-27 08:18:37,791 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-27 08:18:37,792 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-27 08:18:37,792 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: it
+2026-01-27 08:18:37,792 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-27 08:18:37,793 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-27 08:18:37,793 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: th
+2026-01-27 08:18:37,794 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-27 08:18:37,794 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-27 08:18:37,794 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 08:18:37,795 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-27 08:18:37,795 (INFO) </assets/index-5njaiL6Z.js> (:184) - moment-config: Final current locale: en
+2026-01-27 08:18:37,796 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en_us to en_us
+2026-01-27 08:18:37,796 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 08:18:37,796 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 08:18:37,797 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en-US to en_us
+2026-01-27 08:18:37,797 (INFO) </assets/index-5njaiL6Z.js> (:184) - Language detection: converting en to en_us
+2026-01-27 08:18:37,806 (INFO) </assets/index-5njaiL6Z.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-27 08:18:37,816 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-27 08:18:37,816 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-27 08:18:38,128 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-27 08:18:38,128 (INFO) </assets/index-5njaiL6Z.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-27 08:18:38,129 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-27 08:18:38,129 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-27 08:18:38,130 (INFO) </assets/index-5njaiL6Z.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-27 08:18:38,130 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window name:  [object Object]
+2026-01-27 08:18:38,131 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:18:38,131 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [object Object]
+2026-01-27 08:18:38,132 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dragged pos:  null
+2026-01-27 08:18:38,132 (INFO) </assets/index-5njaiL6Z.js> (:20808) - FilterMenu: Using existing centralized filters (preserving localStorage values): [object Object]
+2026-01-27 08:18:38,133 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:18:38.133Z] update_filter_values called: {
+  "baseUrl": "https://api-hc.metatft.com/tft-stat-api/games_small",
+  "finalUrl": "https://api-hc.metatft.com/tft-stat-api/games_small?server_patch=NA1",
+  "platformId": "NA1"
+}
+2026-01-27 08:18:38,133 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:18:38.133Z] Starting filter values API request: {
+  "url": "https://api-hc.metatft.com/tft-stat-api/games_small?server_patch=NA1",
+  "method": "GET",
+  "startTime": 1769519918133
+}
+2026-01-27 08:18:38,215 (INFO) </assets/index-5njaiL6Z.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-27 08:18:38,216 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:18:38,217 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resized. New width:  346
+2026-01-27 08:18:38,217 (INFO) </assets/index-5njaiL6Z.js> (:20808) - New Height:  800
+2026-01-27 08:18:38,237 (INFO) </assets/index-5njaiL6Z.js> (:20808) - changed position to:  0 640
+2026-01-27 08:18:38,238 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window info:  [object Object]
+2026-01-27 08:18:38,239 (INFO) </assets/index-5njaiL6Z.js> (:20808) - game info:  [object Object]
+2026-01-27 08:18:38,257 (INFO) <Overwolf> () - [object Object]
+2026-01-27 08:18:38,510 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:18:38.511Z] Filter values API request completed successfully: {
+  "url": "https://api-hc.metatft.com/tft-stat-api/games_small?server_patch=NA1",
+  "statusCode": 200,
+  "statusText": "",
+  "durationMs": 378,
+  "responseSize": 22778
+}
+2026-01-27 08:18:38,511 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:18:38.511Z] Processing filter values data: {
+  "currentPatch": "16.3_b",
+  "totalGames": 322,
+  "startProcessingTime": 1769519918511
+}
+2026-01-27 08:18:38,511 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:18:38.512Z] Filter values data processed and stored: {
+  "patchOptionsCount": 5,
+  "nestedResultsQueues": [
+    "1100",
+    "1160",
+    "1220",
+    "6110"
+  ],
+  "processingTime": 1,
+  "totalTime": 379
+}
+2026-01-27 08:18:38,512 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dispatching ingame_filter_values [object Object]
+2026-01-27 08:18:38,518 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:18:46,389 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:18:46,439 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:18:46,704 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:18:46,734 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:18:46,943 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:19:33,895 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:19:33,989 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:19:34,111 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:19:34,164 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:19:50,894 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:19:51,917 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:20:22,926 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:20:22,969 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:20:23,007 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:20:23,254 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:20:38,900 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:20:58,924 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:20:59,341 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:20:59,591 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:19,166 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:38,901 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:39,204 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:39,338 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:39,897 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:44,888 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:45,890 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:47,891 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:21:47,912 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:22:28,903 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:22:28,959 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:22:59,899 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:02,944 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:03,031 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:03,178 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:09,781 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:09,931 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:10,045 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:10,258 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:10,879 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:11,564 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:11,641 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:11,778 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:14,369 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:15,873 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:20,611 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:20,612 (INFO) </assets/index-5njaiL6Z.js> (:20808) - getting selections for comp:  [object Object]
+2026-01-27 08:23:20,924 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:23:20.924Z] get_comp_item_stats called: {
+  "clusterId": 387,
+  "pickedComp": 387015,
+  "currentCompItemsStatus": "loaded"
+}
+2026-01-27 08:23:20,925 (INFO) </assets/index-5njaiL6Z.js> (:472) - QueryMaker https://api-hc.metatft.com/tft-comps-api/clustered_items [object Object] null [object Object]  false false [object Object]
+2026-01-27 08:23:20,926 (INFO) </assets/index-5njaiL6Z.js> (:472) - full_url https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-27 08:23:20,926 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:23:20.925Z] Comp item stats request details: {
+  "filters": {
+    "queue": [
+      "1100"
+    ],
+    "patch": [
+      "16.3_"
+    ],
+    "days": [
+      3
+    ],
+    "rank": [
+      "CHALLENGER",
+      "DIAMOND",
+      "EMERALD",
+      "GRANDMASTER",
+      "MASTER"
+    ],
+    "permit_filter_adjustment": [
+      "true"
+    ]
+  },
+  "baseUrl": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "fullUrl": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&cluster_id=387&cluster=387015",
+  "params": "queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true"
+}
+2026-01-27 08:23:20,927 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:23:20.925Z] Starting comp item stats API request: {
+  "url": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&cluster_id=387&cluster=387015",
+  "method": "GET",
+  "startTime": 1769520200924,
+  "timeout": 30000
+}
+2026-01-27 08:23:20,933 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:21,217 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:23:21.217Z] Comp item stats API request completed successfully: {
+  "url": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&cluster_id=387&cluster=387015",
+  "statusCode": 200,
+  "statusText": "",
+  "durationMs": 293,
+  "responseSize": 10834,
+  "comp": 387015,
+  "clusterId": 387,
+  "requestId": "comp_item_stats_387_387015_1769520200925_7ymrha42o"
+}
+2026-01-27 08:23:21,218 (INFO) </assets/index-5njaiL6Z.js> (:20808) - assembling comp item stats [object Object]
+2026-01-27 08:23:21,219 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:23:21.218Z] Comp item stats data assembled and stored: {
+  "comp": 387015,
+  "clusterId": 387,
+  "gameCount": 79953,
+  "itemCount": 153,
+  "processingTime": 1
+}
+2026-01-27 08:23:21,228 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:32,935 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:23:33,005 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:24:06,958 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:24:10,022 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:24:10,065 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:24:10,301 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:24:40,986 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:24:41,080 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:25:11,996 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:25:51,970 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:25:52,011 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:25:52,245 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:25:52,321 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:26:21,961 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:26:22,035 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:26:55,036 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:26:58,063 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:26:58,106 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:26:58,424 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:27:28,017 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:27:28,093 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:01,018 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:04,037 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:04,075 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:04,315 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:24,014 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:47,008 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:47,054 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:47,090 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:28:47,324 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:29:18,042 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:29:18,101 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:29:54,018 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:29:59,073 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:29:59,124 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:29:59,348 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:29:59,459 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:30:02,997 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:30:04,001 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:30:06,991 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:30:07,024 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:30:49,202 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:30:49,633 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:31:21,030 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:31:24,032 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:31:24,072 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:31:24,352 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:31:54,022 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:31:54,093 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:32:24,004 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:33:04,094 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:33:04,155 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:33:04,478 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:33:04,627 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:33:34,003 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:33:34,069 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:34:09,003 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:34:12,014 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:34:12,055 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:34:12,291 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:34:42,052 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:34:42,143 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:35:16,028 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:35:19,032 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:35:19,068 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:35:19,364 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:35:38,997 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:36:00,025 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:36:00,061 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:36:00,105 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:36:00,344 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:36:31,004 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:36:31,086 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:07,007 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:10,036 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:10,075 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:10,310 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:11,146 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:13,150 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:16,027 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:17,026 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:18,017 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:37:18,038 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:38:01,022 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:38:01,087 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:38:37,004 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:38:40,065 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:38:40,106 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:38:40,341 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:39:10,032 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:39:10,088 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:39:48,005 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:40:28,074 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:40:28,123 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:40:28,395 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:40:28,569 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:40:58,004 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:40:58,069 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:41:38,036 (INFO) </assets/index-5njaiL6Z.js> (:20808) - filter props: [object Object] [object Object]
+2026-01-27 08:41:41,071 (WARN) log entry 'filter props: [object Object] [object Object]' repeated to many times, block it
+2026-01-27 08:44:11,068 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-27 08:44:11,069 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug] HIDING FilterMenu because first item category is: Component
+2026-01-27 08:44:11,069 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:44:11.069Z] Item select detected - fetching stats: {
+  "itemName": "TFT_Item_SparringGloves",
+  "hasCompFilter": true
+}
+2026-01-27 08:44:11,104 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-27 08:44:11,105 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug] HIDING FilterMenu because first item category is: Component
+2026-01-27 08:44:11,180 (INFO) </assets/index-5njaiL6Z.js> (:472) - QueryMaker https://api-hc.metatft.com/tft-stat-api/items [object Object] null [object Object]  false false [object Object]
+2026-01-27 08:44:11,181 (INFO) </assets/index-5njaiL6Z.js> (:472) - full_url https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-27 08:44:11,181 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:44:11.180Z] get_item_stats called: {
+  "filters": {
+    "queue": [
+      "1100"
+    ],
+    "patch": [
+      "16.3_"
+    ],
+    "days": [
+      3
+    ],
+    "rank": [
+      "CHALLENGER",
+      "DIAMOND",
+      "EMERALD",
+      "GRANDMASTER",
+      "MASTER"
+    ],
+    "permit_filter_adjustment": [
+      "true"
+    ]
+  },
+  "requestUrl": "https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "params": "queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "currentStatus": "loaded",
+  "currentParams": "queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true"
+}
+2026-01-27 08:44:11,182 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:44:11.180Z] Starting item stats API request: {
+  "url": "https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "method": "GET",
+  "startTime": 1769521451180,
+  "timeout": 30000
+}
+2026-01-27 08:44:11,183 (INFO) </assets/index-5njaiL6Z.js> (:20808) - fetching items:  https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-27 08:44:11,190 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-27 08:44:11,191 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug] HIDING FilterMenu because first item category is: Component
+2026-01-27 08:44:11,197 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:44:11.197Z] get_comp_item_stats called: {
+  "clusterId": 387,
+  "pickedComp": 387015,
+  "currentCompItemsStatus": "loaded"
+}
+2026-01-27 08:44:11,197 (INFO) </assets/index-5njaiL6Z.js> (:472) - QueryMaker https://api-hc.metatft.com/tft-comps-api/clustered_items [object Object] null [object Object]  false false [object Object]
+2026-01-27 08:44:11,198 (INFO) </assets/index-5njaiL6Z.js> (:472) - full_url https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-27 08:44:11,198 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:44:11.197Z] Comp item stats request details: {
+  "filters": {
+    "queue": [
+      "1100"
+    ],
+    "patch": [
+      "16.3_"
+    ],
+    "days": [
+      3
+    ],
+    "rank": [
+      "CHALLENGER",
+      "DIAMOND",
+      "EMERALD",
+      "GRANDMASTER",
+      "MASTER"
+    ],
+    "permit_filter_adjustment": [
+      "true"
+    ]
+  },
+  "baseUrl": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "fullUrl": "https://api-hc.metatft.com/tft-comps-api/clustered_items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true&cluster_id=387&cluster=387015",
+  "params": "queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true"
+}
+2026-01-27 08:44:11,199 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:44:11.197Z] Using cached comp item stats data: {
+  "comp": 387015,
+  "clusterId": 387,
+  "params": "queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "cacheAgeMs": 1249979,
+  "cacheAgeMinutes": 21
+}
+2026-01-27 08:44:11,200 (INFO) </assets/index-5njaiL6Z.js> (:20808) - already have data for comp:  387015 cluster:  387 params:  queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true age:  1249979
+2026-01-27 08:44:11,647 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:44:11.648Z] Item stats API request completed successfully: {
+  "url": "https://api-hc.metatft.com/tft-stat-api/items?queue=1100&patch=16.3&b_patch=&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true",
+  "statusCode": 200,
+  "statusText": "",
+  "durationMs": 468,
+  "responseSize": 15371,
+  "requestId": "item_stats_1769521451181_cmepgfyi4"
+}
+2026-01-27 08:44:11,648 (INFO) </assets/index-5njaiL6Z.js> (:20808) - Results: [object Object]
+2026-01-27 08:44:11,648 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug 2026-01-27T13:44:11.648Z] Item stats data assembled and stored: {
+  "gameCount": 7966840,
+  "itemCount": 152,
+  "processingTime": 0
+}
+2026-01-27 08:44:11,662 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug] Item analysis: [object Object]
+2026-01-27 08:44:11,663 (INFO) </assets/index-5njaiL6Z.js> (:20808) - [FilterMenu Debug] HIDING FilterMenu because first item category is: Component
+2026-01-27 08:48:31,682 (INFO) </assets/index-5njaiL6Z.js> (:20808) - dragged pos:  null
+2026-01-27 08:48:31,697 (INFO) </assets/index-5njaiL6Z.js> (:20808) - resized. New width:  346
+2026-01-27 08:48:31,699 (INFO) </assets/index-5njaiL6Z.js> (:20808) - New Height:  800
+2026-01-27 08:48:31,814 (INFO) </assets/index-5njaiL6Z.js> (:20808) - changed position to:  0 640
+2026-01-27 08:48:31,814 (INFO) </assets/index-5njaiL6Z.js> (:20808) - window info:  [object Object]
+2026-01-27 08:48:31,815 (INFO) </assets/index-5njaiL6Z.js> (:20808) - game info:  [object Object]
+2026-01-27 08:48:31,821 (INFO) <Overwolf> () - [object Object]
