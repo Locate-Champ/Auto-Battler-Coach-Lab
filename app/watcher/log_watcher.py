@@ -46,6 +46,8 @@ class LogFileHandler(FileSystemEventHandler):
         if not self._should_watch(path):
             return
 
+        print(f"[WATCHER] File modified: {path.name}")
+
         # Process new lines
         self._process_file(path)
 
@@ -93,8 +95,11 @@ class LogFileHandler(FileSystemEventHandler):
                 pos.position = f.tell()
 
             # Parse and emit events
+            if new_lines:
+                print(f"[WATCHER] Read {len(new_lines)} new lines from {path.name}")
             for line in new_lines:
                 if event := self.parser.parse_line(line):
+                    print(f"[WATCHER] Event: {event.event_type.value} - {event.data}")
                     self.on_event(event)
 
         except (IOError, OSError) as e:
