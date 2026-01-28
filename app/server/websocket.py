@@ -2,9 +2,9 @@
 
 import asyncio
 import json
+import threading
 from typing import Set, Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 import uvicorn
 from pathlib import Path
@@ -17,26 +17,32 @@ class ConnectionManager:
 
     def __init__(self):
         self.active_connections: Set[WebSocket] = set()
+        self._lock = threading.Lock()
 
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
-        self.active_connections.add(websocket)
+        with self._lock:
+            self.active_connections.add(websocket)
         print(f"[WS] Client connected. Total: {len(self.active_connections)}")
 
     def disconnect(self, websocket: WebSocket):
-        self.active_connections.discard(websocket)
+        with self._lock:
+            self.active_connections.discard(websocket)
         print(f"[WS] Client disconnected. Total: {len(self.active_connections)}")
 
     async def broadcast(self, message: dict):
         """Send message to all connected clients."""
-        if not self.active_connections:
+        with self._lock:
+            connections = list(self.active_connections)
+
+        if not connections:
             return
 
         print(f"[WS] Broadcasting to {len(self.active_connections)} client(s)")
         message_json = json.dumps(message)
         disconnected = set()
 
-        for connection in self.active_connections:
+        for connection in connections:
             try:
                 await connection.send_text(message_json)
             except Exception:
@@ -66,7 +72,7 @@ class WebSocketServer:
         async def startup_event():
             """Capture the event loop on startup for cross-thread broadcasts."""
             self._event_loop = asyncio.get_running_loop()
-            print(f"[WS] Event loop captured for cross-thread broadcasts")
+            print("[WS] Event loop captured for cross-thread broadcasts")
 
         @self.app.get("/")
         async def root():

@@ -133,6 +133,7 @@
             font-weight: bold;
             background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -200,6 +201,7 @@
         <div id="status" class="status status-disconnected">
             <span class="status-dot"></span>
             <span id="status-text">Connecting...</span>
+            <span style="margin-left: auto; opacity: 0.7;">Last: <span id="last-update">--</span></span>
         </div>
 
         <!-- Header with stage and stats -->
@@ -254,8 +256,10 @@
         // WebSocket connection
         let ws = null;
         let reconnectInterval = null;
+        let messageCount = 0;
 
         function connect() {
+            console.log('Attempting to connect to WebSocket...');
             ws = new WebSocket('ws://127.0.0.1:8765/ws');
 
             ws.onopen = () => {
@@ -282,12 +286,17 @@
             };
 
             ws.onmessage = (event) => {
+                messageCount++;
                 const data = JSON.parse(event.data);
+                console.log(`[MSG #${messageCount}] Received:`, data);
+                document.getElementById('status-text').textContent = `Connected (${messageCount} updates)`;
                 updateUI(data);
             };
         }
 
         function updateUI(state) {
+            console.log('Updating UI with state:', state);
+
             // Update stage
             document.getElementById('stage').textContent = state.stage || '--';
 
@@ -301,6 +310,7 @@
             if (state.win_chance !== null && state.win_chance !== undefined) {
                 winChancePanel.style.display = 'block';
                 document.getElementById('win-chance').textContent = `~${state.win_chance}%`;
+                console.log('Win chance updated to:', state.win_chance);
             } else {
                 winChancePanel.style.display = 'none';
             }
@@ -325,6 +335,7 @@
 
             // Update opponents
             const opponentsContainer = document.getElementById('opponents');
+            console.log('Opponents data:', state.opponents);
             if (state.opponents && Object.keys(state.opponents).length > 0) {
                 opponentsContainer.innerHTML = Object.values(state.opponents)
                     .sort((a, b) => b.health - a.health)
@@ -334,10 +345,15 @@
                             <span class="opponent-health">❤️ ${opp.health}</span>
                         </div>
                     `).join('');
+            } else {
+                opponentsContainer.innerHTML = '<div class="empty-state">No opponent data yet</div>';
             }
 
             // Update suggestions based on state
             updateSuggestions(state);
+
+            // Update last update time
+            document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
         }
 
         function updateSuggestions(state) {
