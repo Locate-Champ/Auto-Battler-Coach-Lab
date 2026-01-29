@@ -21,9 +21,12 @@ function App() {
         <BoardBase />
 
         {/* Items panel - right-aligned below board */}
-        <div className="self-end mt-4">
+        <div
+          className="self-end mt-4 rounded-lg overflow-hidden"
+          style={{ border: '2px solid #9ca3af' }}
+        >
           <ItemsBar defaultTab={activeTab} onTabChange={(tab) => setActiveTab(tab)} />
-          <div className="mt-2">
+          <div className="bg-[#232422]">
             {activeTab === 'Craftable' && <CraftableItems />}
             {activeTab === 'Artifact' && <ArtifactItems />}
             {activeTab === 'Emblem' && <EmblemItems />}
