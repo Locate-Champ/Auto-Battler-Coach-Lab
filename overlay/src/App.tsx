@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BoardBase from '../boardbase'
+import GameBoard, { SAMPLE_PLAYER_UNITS, SAMPLE_OPPONENT_UNITS } from '../GameBoard'
 import ItemsBar from '../ItemsBar'
 import CraftableItems from '../craftable items'
 import ArtifactItems from '../artifact items'
@@ -23,10 +23,29 @@ function App() {
         {/* Left: Coaching Panel */}
         <CoachingPanel />
 
-        {/* Center: Board + Items */}
+        {/* Center: Boards + Items */}
         <div className="flex flex-col" style={{ width: '787px' }}>
-          {/* Board */}
-          <BoardBase />
+          {/* Opponent Board (mirrored) */}
+          <GameBoard
+            units={SAMPLE_OPPONENT_UNITS}
+            mirrored={true}
+            showEmptyHexes={true}
+          />
+
+          {/* Divider line between boards */}
+          <div
+            className="w-full h-1"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, #c9a033 20%, #c9a033 80%, transparent 100%)',
+            }}
+          />
+
+          {/* Player Board */}
+          <GameBoard
+            units={SAMPLE_PLAYER_UNITS}
+            mirrored={false}
+            showEmptyHexes={true}
+          />
 
           {/* Items panel - right-aligned below board */}
           <div
