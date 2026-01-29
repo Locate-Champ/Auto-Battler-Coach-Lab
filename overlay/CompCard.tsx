@@ -11,6 +11,7 @@ interface CompChampion {
   name: string;
   cost: ChampionCost;
   imageFile: string;
+  isCarry?: boolean;
 }
 
 interface CompTrait {
@@ -71,6 +72,7 @@ const COLORS = {
   difficultyMedium: '#ffa94d',
   difficultyHard: '#ff6b6b',
   gold: '#c9a033',
+  carryGlow: '#c9a033',
 };
 
 // Helper functions
@@ -136,8 +138,13 @@ const ChampionIcon: React.FC<{ champion: CompChampion; size?: number }> = ({ cha
     style={{
       width: size,
       height: size,
-      border: `2px solid ${COLORS.cost[champion.cost]}`,
+      border: champion.isCarry
+        ? `2px solid ${COLORS.carryGlow}`
+        : `2px solid ${COLORS.cost[champion.cost]}`,
       backgroundColor: '#3a3a4f',
+      boxShadow: champion.isCarry
+        ? `0 0 8px ${COLORS.carryGlow}, 0 0 12px ${COLORS.carryGlow}`
+        : 'none',
     }}
   >
     <img
