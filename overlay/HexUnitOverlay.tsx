@@ -54,6 +54,9 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
   const hexHeight = 109;
   const borderColor = COST_COLORS[unit.cost];
 
+  // Counter-rotation to keep items/stars/name right-side up when board is rotated
+  const counterRotate = isRotated ? 'rotate(180deg)' : 'none';
+
   return (
     <div
       className="absolute"
@@ -111,13 +114,13 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
         />
       </div>
 
-      {/* Items bar at bottom - wrapper for centering */}
+      {/* Items bar at bottom - wrapper for centering, inner for counter-rotation */}
       {unit.items.length > 0 && (
         <div
           className="absolute z-20 w-full flex justify-center"
           style={{ bottom: 6 }}
         >
-          <div className="flex gap-0.5">
+          <div className="flex gap-0.5" style={{ transform: counterRotate }}>
             {unit.items.slice(0, 3).map((item, idx) => (
               <div
                 key={idx}
@@ -141,12 +144,12 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
         </div>
       )}
 
-      {/* Stars - wrapper for centering */}
+      {/* Stars - wrapper for centering, inner for counter-rotation */}
       <div
         className="absolute z-20 w-full flex justify-center"
         style={{ top: 18 }}
       >
-        <div className="flex gap-px">
+        <div className="flex gap-px" style={{ transform: counterRotate }}>
           {Array.from({ length: unit.stars }).map((_, idx) => (
             <span
               key={idx}
@@ -162,7 +165,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
         </div>
       </div>
 
-      {/* Champion name - wrapper for centering */}
+      {/* Champion name - wrapper for centering, inner for counter-rotation */}
       <div
         className="absolute z-20 w-full flex justify-center"
         style={{ bottom: 28 }}
@@ -170,6 +173,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
         <div
           className="whitespace-nowrap font-semibold text-white text-center"
           style={{
+            transform: counterRotate,
             fontSize: 12,
             textShadow: '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)',
           }}
@@ -187,6 +191,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
           <div
             className="flex items-center justify-center rounded-sm"
             style={{
+              transform: counterRotate,
               width: 14,
               height: 14,
               backgroundColor: 'rgba(192,192,192,0.9)',
