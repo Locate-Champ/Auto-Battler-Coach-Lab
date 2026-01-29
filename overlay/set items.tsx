@@ -66,7 +66,7 @@ const SetItems: React.FC<SetItemsProps> = ({ inventory, onItemClick, className }
       data-layer="Frame"
       className={`relative w-[491.99px] h-36 p-1 ${className ?? ''}`}
     >
-      <div className="grid grid-cols-[repeat(12,32px)] gap-0 mx-auto">
+      <div className="flex flex-wrap justify-center gap-0 max-w-[384px] mx-auto">
         {SET_ITEMS.map((item) => {
           const isOwned = ownedItems.has(item.name);
           const imageSrc = item.file
