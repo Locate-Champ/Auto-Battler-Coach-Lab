@@ -18,13 +18,11 @@ const ItemsBar: React.FC<ItemsBarProps> = ({ defaultTab = 'Set', onTabChange }) 
   };
 
   return (
-    <div 
-      className="w-[491.99px] px-5 inline-flex flex-col justify-start items-start"
-      style={{ 
+    <div
+      className="w-[491.99px] px-5 inline-flex flex-col justify-start items-start rounded-t-lg"
+      style={{
         backgroundColor: '#232422',
-        boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)',
-        outline: '1px solid black',
-        outlineOffset: '-1px'
+        boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.25)'
       }}
     >
       <div className="self-stretch relative inline-flex justify-center items-start">
