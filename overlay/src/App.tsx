@@ -14,13 +14,16 @@ function App() {
   const [activeTab, setActiveTab] = useState<ItemTab>('Craftable')
 
   return (
-    <div className="min-h-screen bg-gray-900 p-4">
-      <h1 className="text-white text-2xl mb-4">TFT Coach Overlay</h1>
-      <div className="flex flex-col items-center justify-center gap-6 lg:flex-row lg:items-start">
+    <div className="min-h-screen bg-gray-900 flex justify-center p-8">
+      {/* Container matched to board width for alignment */}
+      <div className="flex flex-col" style={{ width: '787px' }}>
+        {/* Board - centered by parent flex */}
         <BoardBase />
-        <div className="flex flex-col items-start">
+
+        {/* Items panel - right-aligned below board */}
+        <div className="self-end mt-4">
           <ItemsBar defaultTab={activeTab} onTabChange={(tab) => setActiveTab(tab)} />
-          <div className="mt-3">
+          <div className="mt-2">
             {activeTab === 'Craftable' && <CraftableItems />}
             {activeTab === 'Artifact' && <ArtifactItems />}
             {activeTab === 'Emblem' && <EmblemItems />}
