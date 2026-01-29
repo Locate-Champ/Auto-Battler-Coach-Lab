@@ -110,94 +110,102 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
           src={getChampionImage(unit.name)}
           alt={unit.name}
           className="w-full h-full object-cover"
-          style={{ transform: 'scale(1.1)' }}
+          style={{ transform: isRotated ? 'scale(1.1) rotate(180deg)' : 'scale(1.1)' }}
         />
       </div>
 
-      {/* Items bar at bottom - using flexbox to auto-center */}
+      {/* Items bar at bottom - wrapper for centering, inner for rotation */}
       {unit.items.length > 0 && (
         <div
-          className="absolute z-20 flex justify-center gap-0.5"
-          style={{
-            bottom: 6,
-            left: '50%',
-            transform: `translateX(-50%) ${counterRotate}`,
-          }}
+          className="absolute z-20 w-full flex justify-center"
+          style={{ bottom: 6 }}
         >
-          {unit.items.slice(0, 3).map((item, idx) => (
-            <div
-              key={idx}
-              className="rounded-sm overflow-hidden"
-              style={{
-                width: 20,
-                height: 20,
-                backgroundColor: 'rgba(0,0,0,0.7)',
-                border: '1px solid rgba(255,255,255,0.4)',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.6)',
-              }}
-            >
-              <img
-                src={getItemImage(item.imageFile)}
-                alt={item.name}
-                className="w-full h-full object-contain"
-              />
-            </div>
-          ))}
+          <div
+            className="flex gap-0.5"
+            style={{ transform: counterRotate }}
+          >
+            {unit.items.slice(0, 3).map((item, idx) => (
+              <div
+                key={idx}
+                className="rounded-sm overflow-hidden"
+                style={{
+                  width: 20,
+                  height: 20,
+                  backgroundColor: 'rgba(0,0,0,0.7)',
+                  border: '1px solid rgba(255,255,255,0.4)',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.6)',
+                }}
+              >
+                <img
+                  src={getItemImage(item.imageFile)}
+                  alt={item.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
-      {/* Stars */}
+      {/* Stars - wrapper for centering, inner for rotation */}
       <div
-        className="absolute flex gap-px z-20"
-        style={{
-          top: 18,
-          left: '50%',
-          transform: `translateX(-50%) ${counterRotate}`,
-        }}
+        className="absolute z-20 w-full flex justify-center"
+        style={{ top: 18 }}
       >
-        {Array.from({ length: unit.stars }).map((_, idx) => (
-          <span
-            key={idx}
-            style={{
-              fontSize: 12,
-              color: '#ffd700',
-              textShadow: '0 0 4px rgba(0,0,0,1), 1px 1px 0 #000',
-            }}
-          >
-            ★
-          </span>
-        ))}
+        <div
+          className="flex gap-px"
+          style={{ transform: counterRotate }}
+        >
+          {Array.from({ length: unit.stars }).map((_, idx) => (
+            <span
+              key={idx}
+              style={{
+                fontSize: 12,
+                color: '#ffd700',
+                textShadow: '0 0 4px rgba(0,0,0,1), 1px 1px 0 #000',
+              }}
+            >
+              ★
+            </span>
+          ))}
+        </div>
       </div>
 
-      {/* Champion name - slightly bigger text */}
+      {/* Champion name - wrapper for centering, inner for rotation */}
       <div
-        className="absolute z-20 whitespace-nowrap font-semibold text-white text-center"
-        style={{
-          bottom: 28,
-          left: '50%',
-          transform: `translateX(-50%) ${counterRotate}`,
-          fontSize: 12,
-          textShadow: '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)',
-        }}
+        className="absolute z-20 w-full flex justify-center"
+        style={{ bottom: 28 }}
       >
-        {unit.name}
+        <div
+          className="whitespace-nowrap font-semibold text-white text-center"
+          style={{
+            transform: counterRotate,
+            fontSize: 12,
+            textShadow: '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)',
+          }}
+        >
+          {unit.name}
+        </div>
       </div>
 
       {/* Lock icon if locked */}
       {unit.isLocked && (
         <div
-          className="absolute flex items-center justify-center rounded-sm z-20"
-          style={{
-            left: 8,
-            top: '50%',
-            transform: `translateY(-50%) ${counterRotate}`,
-            width: 14,
-            height: 14,
-            backgroundColor: 'rgba(192,192,192,0.9)',
-            fontSize: 8,
-          }}
+          className="absolute z-20 h-full flex items-center"
+          style={{ left: 8 }}
         >
-          🔒
+          <div
+            className="flex items-center justify-center rounded-sm"
+            style={{
+              transform: counterRotate,
+              width: 14,
+              height: 14,
+              backgroundColor: 'rgba(192,192,192,0.9)',
+              fontSize: 8,
+            }}
+          >
+            🔒
+          </div>
         </div>
       )}
     </div>
