@@ -35,20 +35,6 @@ const COST_COLORS: Record<ChampionCost, string> = {
   5: '#D88810', // Gold/Orange
 };
 
-// Icon positioning from icon config.txt (converted to pixels for 95x109 hex)
-const ICON_POSITIONS = {
-  // Items at bottom (3 slots) - cx/cy are center positions
-  bottomLeft:  { cx: 19.6, cy: 91.8, w: 21.5, h: 20.6 },
-  bottomMid:   { cx: 45.5, cy: 92.3, w: 20.6, h: 21.6 },
-  bottomRight: { cx: 71.0, cy: 92.3, w: 20.6, h: 21.6 },
-};
-
-// Helper to get item position by index
-const getItemPosition = (index: number) => {
-  const positions = [ICON_POSITIONS.bottomLeft, ICON_POSITIONS.bottomMid, ICON_POSITIONS.bottomRight];
-  return positions[index];
-};
-
 // Image helpers
 const getChampionImage = (name: string): string => {
   return new URL(`./images/champion images/${name}.png`, import.meta.url).href;
@@ -60,12 +46,16 @@ const getItemImage = (imageFile: string): string => {
 
 interface HexUnitOverlayProps {
   unit: BoardUnit;
+  isRotated?: boolean; // True when on opponent board (rotated 180deg)
 }
 
-const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit }) => {
+const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false }) => {
   const hexWidth = 95;
   const hexHeight = 109;
   const borderColor = COST_COLORS[unit.cost];
+
+  // Counter-rotation for text/items when board is rotated
+  const counterRotate = isRotated ? 'rotate(180deg)' : 'none';
 
   return (
     <div
@@ -124,30 +114,37 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit }) => {
         />
       </div>
 
-      {/* Items at bottom */}
-      {unit.items.slice(0, 3).map((item, idx) => {
-        const pos = getItemPosition(idx);
-        return (
-          <div
-            key={idx}
-            className="absolute rounded-sm overflow-hidden z-20"
-            style={{
-              left: pos.cx - pos.w / 2,
-              top: pos.cy - pos.h / 2,
-              width: pos.w,
-              height: pos.h,
-              backgroundColor: 'rgba(0,0,0,0.6)',
-              border: '1px solid rgba(255,255,255,0.3)',
-            }}
-          >
-            <img
-              src={getItemImage(item.imageFile)}
-              alt={item.name}
-              className="w-full h-full object-contain"
-            />
-          </div>
-        );
-      })}
+      {/* Items bar at bottom - using flexbox to auto-center */}
+      {unit.items.length > 0 && (
+        <div
+          className="absolute z-20 flex justify-center gap-0.5"
+          style={{
+            bottom: 6,
+            left: '50%',
+            transform: `translateX(-50%) ${counterRotate}`,
+          }}
+        >
+          {unit.items.slice(0, 3).map((item, idx) => (
+            <div
+              key={idx}
+              className="rounded-sm overflow-hidden"
+              style={{
+                width: 20,
+                height: 20,
+                backgroundColor: 'rgba(0,0,0,0.7)',
+                border: '1px solid rgba(255,255,255,0.4)',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.6)',
+              }}
+            >
+              <img
+                src={getItemImage(item.imageFile)}
+                alt={item.name}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Stars */}
       <div
@@ -155,7 +152,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit }) => {
         style={{
           top: 18,
           left: '50%',
-          transform: 'translateX(-50%)',
+          transform: `translateX(-50%) ${counterRotate}`,
         }}
       >
         {Array.from({ length: unit.stars }).map((_, idx) => (
@@ -172,15 +169,15 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit }) => {
         ))}
       </div>
 
-      {/* Champion name at bottom */}
+      {/* Champion name - slightly bigger text */}
       <div
         className="absolute z-20 whitespace-nowrap font-semibold text-white text-center"
         style={{
           bottom: 28,
           left: '50%',
-          transform: 'translateX(-50%)',
-          fontSize: 10,
-          textShadow: '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0 2px 3px rgba(0,0,0,0.8)',
+          transform: `translateX(-50%) ${counterRotate}`,
+          fontSize: 12,
+          textShadow: '1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)',
         }}
       >
         {unit.name}
@@ -193,7 +190,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit }) => {
           style={{
             left: 8,
             top: '50%',
-            transform: 'translateY(-50%)',
+            transform: `translateY(-50%) ${counterRotate}`,
             width: 14,
             height: 14,
             backgroundColor: 'rgba(192,192,192,0.9)',
