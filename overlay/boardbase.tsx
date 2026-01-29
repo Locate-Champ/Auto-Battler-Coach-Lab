@@ -62,29 +62,23 @@ const BoardBase: React.FC = () => {
   });
 
   return (
-    <div 
-      data-layer="base board design" 
-      className="BaseBoardDesign relative bg-neutral-700 min-h-screen"
+    <div
+      data-layer="base board design"
+      className="BaseBoardDesign relative"
+      style={{
+        width: '787px',
+        height: '450px',
+        backgroundColor: '#404040'
+      }}
     >
-      <div 
-        data-layer="Frame" 
-        className="Frame absolute"
-        style={{ 
-          width: '787.33px', 
-          height: '450px', 
-          left: '100px', 
-          top: '100px' 
-        }}
-      >
-        {hexagons.map((hex) => (
-          <Hexagon 
-            key={hex.id} 
-            left={hex.left} 
-            top={hex.top} 
-            id={hex.id} 
-          />
-        ))}
-      </div>
+      {hexagons.map((hex) => (
+        <Hexagon
+          key={hex.id}
+          left={hex.left}
+          top={hex.top}
+          id={hex.id}
+        />
+      ))}
     </div>
   );
 };
