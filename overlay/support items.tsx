@@ -49,7 +49,7 @@ const SupportItems: React.FC<SupportItemsProps> = ({ inventory, onItemClick, cla
       data-layer="Frame"
       className={`relative w-[491.99px] h-28 p-1 ${className ?? ''}`}
     >
-      <div className="grid grid-cols-[repeat(12,32px)] gap-[1px] w-fit">
+      <div className="grid grid-cols-[repeat(12,32px)] gap-0 mx-auto">
         {SUPPORT_ITEMS.map((item) => {
           const isOwned = ownedItems.has(item.name);
           const imageSrc = new URL(
