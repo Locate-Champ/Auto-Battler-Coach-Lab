@@ -118,7 +118,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
       {unit.items.length > 0 && (
         <div
           className="absolute z-20 w-full flex justify-center"
-          style={{ bottom: 6 }}
+          style={isRotated ? { top: 6 } : { bottom: 6 }}
         >
           <div className="flex gap-0.5" style={{ transform: counterRotate }}>
             {unit.items.slice(0, 3).map((item, idx) => (
@@ -147,7 +147,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
       {/* Stars - wrapper for centering, inner for counter-rotation */}
       <div
         className="absolute z-20 w-full flex justify-center"
-        style={{ top: 18 }}
+        style={isRotated ? { bottom: 18 } : { top: 18 }}
       >
         <div className="flex gap-px" style={{ transform: counterRotate }}>
           {Array.from({ length: unit.stars }).map((_, idx) => (
@@ -168,7 +168,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
       {/* Champion name - wrapper for centering, inner for counter-rotation */}
       <div
         className="absolute z-20 w-full flex justify-center"
-        style={{ bottom: 28 }}
+        style={isRotated ? { top: 28 } : { bottom: 28 }}
       >
         <div
           className="whitespace-nowrap font-semibold text-white text-center"
@@ -186,7 +186,7 @@ const HexUnitOverlay: React.FC<HexUnitOverlayProps> = ({ unit, isRotated = false
       {unit.isLocked && (
         <div
           className="absolute z-20 h-full flex items-center"
-          style={{ left: 8 }}
+          style={isRotated ? { right: 8 } : { left: 8 }}
         >
           <div
             className="flex items-center justify-center rounded-sm"
