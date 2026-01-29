@@ -26,7 +26,7 @@ function App() {
           style={{ border: '2px solid #9ca3af' }}
         >
           <ItemsBar defaultTab={activeTab} onTabChange={(tab) => setActiveTab(tab)} />
-          <div className="bg-[#232422]">
+          <div className="bg-[#232422] flex justify-center py-2">
             {activeTab === 'Craftable' && <CraftableItems />}
             {activeTab === 'Artifact' && <ArtifactItems />}
             {activeTab === 'Emblem' && <EmblemItems />}
