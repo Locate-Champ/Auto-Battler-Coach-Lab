@@ -23,15 +23,17 @@ const getHexPosition = (row: number, col: number): { left: number; top: number }
 
 interface BoardWithUnitsProps {
   units: PositionedUnit[];
+  isRotated?: boolean; // True for opponent board (rotated 180deg)
 }
 
-const BoardWithUnits: React.FC<BoardWithUnitsProps> = ({ units }) => {
+const BoardWithUnits: React.FC<BoardWithUnitsProps> = ({ units, isRotated = false }) => {
   return (
     <div
       className="relative"
       style={{
         width: 787,
         height: 450,
+        transform: isRotated ? 'rotate(180deg)' : 'none',
       }}
     >
       {/* Base hex grid (unchanged) */}
@@ -53,7 +55,7 @@ const BoardWithUnits: React.FC<BoardWithUnitsProps> = ({ units }) => {
                 top: pos.top,
               }}
             >
-              <HexUnitOverlay unit={unit} />
+              <HexUnitOverlay unit={unit} isRotated={isRotated} />
             </div>
           );
         })}
