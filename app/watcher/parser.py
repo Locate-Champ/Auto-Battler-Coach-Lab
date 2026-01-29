@@ -21,6 +21,9 @@ class EventType(Enum):
     GAME_START = "game_start"
     GAME_END = "game_end"
     SHOP_UPDATE = "shop_update"
+    BOARD_UPDATE = "board_update"
+    BENCH_UPDATE = "bench_update"
+    ROSTER_UPDATE = "roster_update"
     UNKNOWN = "unknown"
 
 
@@ -77,6 +80,16 @@ class LogParser:
 
         # First shop indicator
         "first_shop": re.compile(r"First Shop"),
+
+        # Board state: tft_board with cell data
+        # Matches: "key":"tft_board","value":"{\"cell_1\":{...},...}"
+        "board": re.compile(r'"key":"tft_board","value":"(\{[^}]+(?:\}[^}]+)*\})"'),
+
+        # Bench state: tft_bench with slot data
+        "bench": re.compile(r'"key":"tft_bench","value":"(\{[^}]+(?:\}[^}]+)*\})"'),
+
+        # Roster state: tft_roster with all 8 players
+        "roster": re.compile(r'"key":"tft_roster","value":"(\[[^\]]+\])"'),
     }
 
     def parse_line(self, line: str) -> Optional[GameEvent]:
@@ -188,6 +201,49 @@ class LogParser:
                 data={"indicator": "first_shop"},
                 raw_line=line,
             )
+
+        # Board update: tft_board with cell positions
+        if match := self.PATTERNS["board"].search(line):
+            try:
+                # The value is escaped JSON, need to unescape it
+                board_json = match.group(1).replace('\\"', '"')
+                board_data = json.loads(board_json)
+                return GameEvent(
+                    event_type=EventType.BOARD_UPDATE,
+                    timestamp=timestamp,
+                    data={"board": board_data},
+                    raw_line=line,
+                )
+            except json.JSONDecodeError:
+                pass
+
+        # Bench update: tft_bench with slot positions
+        if match := self.PATTERNS["bench"].search(line):
+            try:
+                bench_json = match.group(1).replace('\\"', '"')
+                bench_data = json.loads(bench_json)
+                return GameEvent(
+                    event_type=EventType.BENCH_UPDATE,
+                    timestamp=timestamp,
+                    data={"bench": bench_data},
+                    raw_line=line,
+                )
+            except json.JSONDecodeError:
+                pass
+
+        # Roster update: tft_roster with all 8 players
+        if match := self.PATTERNS["roster"].search(line):
+            try:
+                roster_json = match.group(1).replace('\\"', '"')
+                roster_data = json.loads(roster_json)
+                return GameEvent(
+                    event_type=EventType.ROSTER_UPDATE,
+                    timestamp=timestamp,
+                    data={"roster": roster_data},
+                    raw_line=line,
+                )
+            except json.JSONDecodeError:
+                pass
 
         return None
 
