@@ -2,29 +2,16 @@ import React from 'react';
 import BoardWithUnits from './BoardWithUnits';
 import { PositionedUnit } from './HexUnitOverlay';
 
-// Mirror row positions for opponent board
-// Their row 0 (back line) should display at our row 3 position (closest to us)
-const getMirroredRow = (row: number): number => 3 - row;
-
 interface DualBoardProps {
   playerUnits: PositionedUnit[];
   opponentUnits: PositionedUnit[];
 }
 
 const DualBoard: React.FC<DualBoardProps> = ({ playerUnits, opponentUnits }) => {
-  // Transform opponent units to mirrored positions
-  const mirroredOpponentUnits = opponentUnits.map((unit) => ({
-    ...unit,
-    position: {
-      ...unit.position,
-      row: getMirroredRow(unit.position.row),
-    },
-  }));
-
   return (
     <div className="flex flex-col" style={{ width: 787 }}>
-      {/* Opponent Board (mirrored via position swapping) */}
-      <BoardWithUnits units={mirroredOpponentUnits} />
+      {/* Opponent Board (rotated 180 degrees so front lines face each other) */}
+      <BoardWithUnits units={opponentUnits} isRotated={true} />
 
       {/* Divider line between boards */}
       <div
@@ -36,7 +23,7 @@ const DualBoard: React.FC<DualBoardProps> = ({ playerUnits, opponentUnits }) => 
       />
 
       {/* Player Board */}
-      <BoardWithUnits units={playerUnits} />
+      <BoardWithUnits units={playerUnits} isRotated={false} />
     </div>
   );
 };
