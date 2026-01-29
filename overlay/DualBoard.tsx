@@ -13,12 +13,12 @@ const DualBoard: React.FC<DualBoardProps> = ({ playerUnits, opponentUnits }) => 
       {/* Opponent Board (rotated 180 degrees so front lines face each other) */}
       <BoardWithUnits units={opponentUnits} isRotated={true} />
 
-      {/* Divider line between boards */}
+      {/* Thin black line between boards */}
       <div
         className="w-full"
         style={{
-          height: 4,
-          background: 'linear-gradient(90deg, transparent 0%, #c9a033 20%, #c9a033 80%, transparent 100%)',
+          height: 1,
+          backgroundColor: '#000',
         }}
       />
 
