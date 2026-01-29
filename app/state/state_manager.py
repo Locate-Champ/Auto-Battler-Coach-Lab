@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Callable, Optional
 
 from app.watcher.parser import GameEvent, EventType
-from .game_state import GameState, GamePhase, PlayerState
+from .game_state import GameState, GamePhase, PlayerState, Unit
 
 
 class StateManager:
@@ -124,6 +124,92 @@ class StateManager:
         """Handle win chance prediction event."""
         win_chance = event.data.get("win_chance", 0)
         self.state.win_chance = win_chance
+
+    def _handle_board_update(self, event: GameEvent):
+        """Handle board update event with unit positions."""
+        board_data = event.data.get("board", {})
+        units = []
+
+        for cell_key, unit_data in board_data.items():
+            try:
+                # Parse cell_X to get position
+                cell_id = int(cell_key.replace("cell_", ""))
+                row = cell_id // 7
+                col = cell_id % 7
+
+                # Parse items (filter empty strings)
+                items = [
+                    unit_data.get(f"item_{i}", "")
+                    for i in range(1, 4)
+                ]
+                items = [item for item in items if item]
+
+                # Create Unit
+                unit = Unit(
+                    character_id=unit_data.get("name", ""),
+                    star_level=int(unit_data.get("level", "1")),
+                    items=items,
+                    position=(row, col),
+                )
+                units.append(unit)
+            except (ValueError, KeyError) as e:
+                print(f"[STATE] Error parsing board unit {cell_key}: {e}")
+
+        self.state.player.board_units = units
+        print(f"[STATE] Board updated: {len(units)} units")
+
+    def _handle_bench_update(self, event: GameEvent):
+        """Handle bench update event with bench units."""
+        bench_data = event.data.get("bench", {})
+        units = []
+
+        for slot_key, unit_data in bench_data.items():
+            try:
+                # Parse items (filter empty strings)
+                items = [
+                    unit_data.get(f"item_{i}", "")
+                    for i in range(1, 4)
+                ]
+                items = [item for item in items if item]
+
+                # Create Unit (no position for bench)
+                unit = Unit(
+                    character_id=unit_data.get("name", ""),
+                    star_level=int(unit_data.get("level", "1")),
+                    items=items,
+                    position=None,
+                )
+                units.append(unit)
+            except (ValueError, KeyError) as e:
+                print(f"[STATE] Error parsing bench unit {slot_key}: {e}")
+
+        self.state.bench_units = units
+        print(f"[STATE] Bench updated: {len(units)} units")
+
+    def _handle_roster_update(self, event: GameEvent):
+        """Handle roster update event with all 8 players."""
+        roster_data = event.data.get("roster", [])
+
+        for player_data in roster_data:
+            try:
+                name = player_data.get("summoner", "")
+                is_local = player_data.get("localplayer") == "1"
+                health = int(player_data.get("health", "100"))
+                xp = int(player_data.get("xp", "1"))
+
+                if is_local:
+                    # Update our player
+                    self.state.player.name = name
+                    self.state.player.health = health
+                    # XP is already tracked via xp_change events
+                else:
+                    # Update opponent
+                    if name not in self.state.opponents:
+                        self.state.opponents[name] = PlayerState(name=name)
+                    self.state.opponents[name].health = health
+
+            except (ValueError, KeyError) as e:
+                print(f"[STATE] Error parsing roster player: {e}")
 
     def _parse_stage(self, stage: str) -> tuple[int, int]:
         """Parse stage string into (stage_num, round_num)."""
