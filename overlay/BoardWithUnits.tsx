@@ -45,7 +45,9 @@ const BoardWithUnits: React.FC<BoardWithUnitsProps> = ({ units, isRotated = fals
         style={{ pointerEvents: 'none' }}
       >
         {units.map((unit) => {
-          const pos = getHexPosition(unit.position.row, unit.position.col);
+          // When board is rotated, flip row positions so front lines face each other
+          const transformedRow = isRotated ? (3 - unit.position.row) : unit.position.row;
+          const pos = getHexPosition(transformedRow, unit.position.col);
           return (
             <div
               key={unit.id}
