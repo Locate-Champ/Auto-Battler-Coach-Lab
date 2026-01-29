@@ -8,6 +8,7 @@ import RadiantItems from '../radiant items'
 import SupportItems from '../support items'
 import SetItems from '../set items'
 import CompsPanel from '../CompsPanel'
+import CoachingPanel from '../CoachingPanel'
 
 type ItemTab = 'Craftable' | 'Artifact' | 'Emblem' | 'Radiant' | 'Support' | 'Set'
 
@@ -19,8 +20,8 @@ function App() {
       {/* Three-column layout */}
       <div className="flex gap-4 items-start">
 
-        {/* Left: Placeholder for future Coaching Panel */}
-        <div className="w-[280px]" />
+        {/* Left: Coaching Panel */}
+        <CoachingPanel />
 
         {/* Center: Board + Items */}
         <div className="flex flex-col" style={{ width: '787px' }}>
