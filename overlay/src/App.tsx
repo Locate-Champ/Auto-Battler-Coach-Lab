@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DualBoard, { SAMPLE_PLAYER_UNITS, SAMPLE_OPPONENT_UNITS } from '../DualBoard'
+import LiveBoard from '../LiveBoard'
 import ItemsBar from '../ItemsBar'
 import CraftableItems from '../craftable items'
 import ArtifactItems from '../artifact items'
@@ -14,6 +15,7 @@ type ItemTab = 'Craftable' | 'Artifact' | 'Emblem' | 'Radiant' | 'Support' | 'Se
 
 function App() {
   const [activeTab, setActiveTab] = useState<ItemTab>('Craftable')
+  const [useLiveData, setUseLiveData] = useState(false)
 
   return (
     <div className="min-h-screen bg-gray-900 flex justify-center p-8">
@@ -25,11 +27,32 @@ function App() {
 
         {/* Center: Boards + Items */}
         <div className="flex flex-col" style={{ width: '787px' }}>
-          {/* Dual Board: Opponent (mirrored) + Player */}
-          <DualBoard
-            playerUnits={SAMPLE_PLAYER_UNITS}
-            opponentUnits={SAMPLE_OPPONENT_UNITS}
-          />
+          {/* Toggle for live data */}
+          <div className="flex items-center gap-2 mb-2">
+            <button
+              onClick={() => setUseLiveData(!useLiveData)}
+              className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
+                useLiveData
+                  ? 'bg-green-600 text-white'
+                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+              }`}
+            >
+              {useLiveData ? '● LIVE' : '○ Sample Data'}
+            </button>
+            <span className="text-gray-500 text-xs">
+              {useLiveData ? 'Connected to backend' : 'Using demo data'}
+            </span>
+          </div>
+
+          {/* Board: Live or Sample */}
+          {useLiveData ? (
+            <LiveBoard showDualBoard={true} />
+          ) : (
+            <DualBoard
+              playerUnits={SAMPLE_PLAYER_UNITS}
+              opponentUnits={SAMPLE_OPPONENT_UNITS}
+            />
+          )}
 
           {/* Items panel - right-aligned below board */}
           <div

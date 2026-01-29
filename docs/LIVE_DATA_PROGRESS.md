@@ -32,14 +32,17 @@ Connecting the TFT overlay to real-time game data from MetaTFT/Overwolf logs.
 | Serialize board_units | `app/state/game_state.py` | ✅ Added to to_dict() |
 | Serialize bench_units | `app/state/game_state.py` | ✅ Added to to_dict() |
 
+| Create WebSocket hook | `overlay/hooks/useGameState.ts` | ✅ Auto-reconnect, state management |
+| Create data transformer | `overlay/utils/transformBoardData.ts` | ✅ Log format → PositionedUnit[] |
+| Add champion cost lookup | `overlay/utils/transformBoardData.ts` | ✅ All Set 16 champions mapped |
+| Add item image mapping | `overlay/utils/transformBoardData.ts` | ✅ Component + completed items |
+| Create LiveBoard component | `overlay/LiveBoard.tsx` | ✅ Connects WS to DualBoard |
+| Add live data toggle | `overlay/src/App.tsx` | ✅ Switch between sample/live |
+
 ### ⏳ Up Next
 
 | Task | File | Notes |
 |------|------|-------|
-| Connect overlay to WebSocket | `overlay/` | Subscribe to live updates |
-| Create data transformer | `overlay/` | Log format → PositionedUnit[] |
-| Add champion cost lookup | `overlay/` | Map TFT16_Name → cost |
-| Add item image mapping | `overlay/` | TFT_Item_X → image file |
 | Test with live game | - | End-to-end verification |
 
 ---
@@ -99,19 +102,61 @@ ROSTER_UPDATE = "roster_update"
 "bench_units": [...]
 ```
 
+### Overlay WebSocket Hook (`overlay/hooks/useGameState.ts`)
+
+**Features:**
+- Connects to `ws://127.0.0.1:8765/ws`
+- Auto-reconnect on disconnect (3s interval)
+- Returns `{ state, isConnected, error, reconnect }`
+
+**Usage:**
+```tsx
+const { state, isConnected, error } = useGameState();
+const playerUnits = state?.board_units ? transformBoardUnits(state.board_units) : [];
+```
+
+### Data Transformer (`overlay/utils/transformBoardData.ts`)
+
+**Functions:**
+- `getChampionCost(characterId)` - Returns cost 1-5 for TFT16 champions
+- `getChampionName(characterId)` - Strips TFT16_ prefix
+- `parseItem(itemId)` - Converts item ID to `{name, imageFile}`
+- `transformBoardUnits(units)` - Converts backend format to `PositionedUnit[]`
+
+**Champion costs:** All 106 Set 16 champions mapped (1-cost through 5-cost)
+
+**Item mappings:** 9 components + 30 completed items with display names and image files
+
+### LiveBoard Component (`overlay/LiveBoard.tsx`)
+
+**Features:**
+- Shows connection status (green/red indicator)
+- Displays player name, health, stage
+- Uses sample opponent data (Overwolf doesn't provide opponent board)
+- Shows debug info: phase, XP, win chance, bench units, augments
+
 ---
 
 ## Files Modified
 
+### Backend
 | File | Changes |
 |------|---------|
 | `app/watcher/parser.py` | +3 event types, +3 regex patterns, +3 parse handlers |
 | `app/state/state_manager.py` | +3 event handlers (board, bench, roster) |
 | `app/state/game_state.py` | +board_units, +bench_units in to_dict() |
 
+### Frontend (Overlay)
+| File | Changes |
+|------|---------|
+| `overlay/hooks/useGameState.ts` | New: WebSocket hook with auto-reconnect |
+| `overlay/utils/transformBoardData.ts` | New: Data transformer, champion costs, item mappings |
+| `overlay/LiveBoard.tsx` | New: Component connecting WebSocket to DualBoard |
+| `overlay/src/App.tsx` | Updated: Added toggle for live/sample data |
+
 ---
 
-## Data Flow (Now Working)
+## Data Flow (Complete)
 
 ```
 MetaTFT Logs
@@ -126,18 +171,31 @@ Game State (board_units, bench_units populated)
      ↓
 WebSocket (broadcasts state to clients)
      ↓
-Overlay (needs: subscribe + transform)
+useGameState hook (receives state updates)
+     ↓
+transformBoardUnits (converts to PositionedUnit[])
+     ↓
+LiveBoard → DualBoard (renders units on hex grid)
 ```
 
 ---
 
 ## What's Left
 
-1. **Overlay WebSocket connection** - Subscribe to state updates
-2. **Data transformer** - Convert `board_units[]` → `PositionedUnit[]`
-3. **Champion cost lookup** - Need to map TFT16_Name → cost (1-5)
-4. **Item image mapping** - TFT_Item_X → local image file name
+1. ~~**Overlay WebSocket connection**~~ ✅ Done
+2. ~~**Data transformer**~~ ✅ Done
+3. ~~**Champion cost lookup**~~ ✅ Done
+4. ~~**Item image mapping**~~ ✅ Done
 5. **Testing** - Run with live game to verify end-to-end
+
+### Testing Checklist
+- [ ] Start backend: `python -m app.main`
+- [ ] Start overlay: `cd overlay && npm run dev`
+- [ ] Click "○ Sample Data" toggle to switch to "● LIVE"
+- [ ] Start a TFT game with MetaTFT running
+- [ ] Verify units appear on player board
+- [ ] Verify items display correctly
+- [ ] Verify star levels show correctly
 
 ---
 
