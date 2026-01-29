@@ -148,12 +148,116 @@ MetaTFT Logs → Log Watcher → Parser → State Manager → WebSocket → Over
   Overwolf GEP                                              React Components
 ```
 
-### What Needs to Be Done
+---
 
-1. **Add `tft_board` parsing** to `parser.py` (if not already there)
-2. **Add board state** to `game_state.py` model
-3. **Connect overlay** to existing WebSocket
-4. **Transform data** from parsed format to `PositionedUnit[]`
+## Current Implementation Status
+
+### Parser (`app/watcher/parser.py`)
+
+**Currently parses:**
+- ✅ Stage changes (`[EVT] stage: 2-1`)
+- ✅ XP changes (`XP: 0/6 -> 2/6`)
+- ✅ Health updates (`Correcting health for player: Name 93 100`)
+- ✅ Win chance (`WinChanceNumber: ~96%`)
+- ✅ Scouting (`Scouting: PlayerName`)
+- ✅ Augment armory (JSON data)
+- ✅ Item select (JSON data)
+- ✅ Game start indicators
+
+**Missing:**
+- ❌ `tft_board` - Board unit positions
+- ❌ `tft_bench` - Bench units
+- ❌ `tft_roster` - All 8 players roster
+
+### Game State (`app/state/game_state.py`)
+
+**Data structures exist:**
+```python
+@dataclass
+class Unit:
+    character_id: str      # e.g., "TFT16_Ekko"
+    star_level: int = 1
+    items: list[str] = field(default_factory=list)
+    position: Optional[tuple[int, int]] = None  # (row, col)
+
+@dataclass
+class PlayerState:
+    name: str
+    health: int = 100
+    level: int = 1
+    is_self: bool = False
+    board_units: list[Unit] = field(default_factory=list)  # ← Exists!
+    traits: dict[str, int] = field(default_factory=dict)
+```
+
+**Issues:**
+- ❌ `to_dict()` doesn't serialize `board_units` or `bench_units`
+- ❌ No code to populate `board_units` from parsed events
+
+---
+
+## What Needs to Be Done
+
+### Step 1: Add Board Parsing to `parser.py`
+
+Add new event type and pattern:
+
+```python
+# In EventType enum:
+BOARD_UPDATE = "board_update"
+BENCH_UPDATE = "bench_update"
+
+# In PATTERNS dict:
+"board": re.compile(r'"key":"tft_board","value":"(\{.+?\})"'),
+"bench": re.compile(r'"key":"tft_bench","value":"(\{.+?\})"'),
+```
+
+### Step 2: Update State Manager
+
+Handle new events in `state_manager.py`:
+
+```python
+def handle_board_update(self, event: GameEvent):
+    board_data = event.data.get("board", {})
+    units = []
+    for cell_key, unit_data in board_data.items():
+        cell_id = int(cell_key.replace("cell_", ""))
+        row = cell_id // 7
+        col = cell_id % 7
+        units.append(Unit(
+            character_id=unit_data["name"],
+            star_level=int(unit_data["level"]),
+            items=[unit_data[f"item_{i}"] for i in range(1,4) if unit_data.get(f"item_{i}")],
+            position=(row, col)
+        ))
+    self.state.player.board_units = units
+```
+
+### Step 3: Fix `to_dict()` Serialization
+
+Add board units to JSON output in `game_state.py`:
+
+```python
+def to_dict(self) -> dict:
+    return {
+        # ... existing fields ...
+        "board_units": [
+            {
+                "id": f"cell_{u.position[0]*7 + u.position[1]}",
+                "name": u.name,
+                "character_id": u.character_id,
+                "stars": u.star_level,
+                "items": u.items,
+                "position": {"row": u.position[0], "col": u.position[1]}
+            }
+            for u in self.player.board_units if u.position
+        ],
+    }
+```
+
+### Step 4: Connect Overlay to WebSocket
+
+In overlay React components, subscribe to WebSocket updates
 
 ---
 
