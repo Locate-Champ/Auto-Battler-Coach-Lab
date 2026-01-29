@@ -106,6 +106,28 @@ class GameState:
             },
             "currently_scouting": self.currently_scouting,
             "win_chance": self.win_chance,
+            # Board units with positions
+            "board_units": [
+                {
+                    "id": f"cell_{u.position[0] * 7 + u.position[1]}" if u.position else None,
+                    "character_id": u.character_id,
+                    "name": u.name,
+                    "stars": u.star_level,
+                    "items": u.items,
+                    "position": {"row": u.position[0], "col": u.position[1]} if u.position else None,
+                }
+                for u in self.player.board_units
+            ],
+            # Bench units
+            "bench_units": [
+                {
+                    "character_id": u.character_id,
+                    "name": u.name,
+                    "stars": u.star_level,
+                    "items": u.items,
+                }
+                for u in self.bench_units
+            ],
         }
 
     @property
