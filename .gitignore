@@ -39,3 +39,9 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
+
+# Node
+node_modules/
+
+# Local scratch
+overlay_list.txt
