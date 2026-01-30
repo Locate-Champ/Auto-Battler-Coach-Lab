@@ -75,7 +75,14 @@ interface UseGameStateResult {
   reconnect: () => void;
 }
 
-const DEFAULT_WS_URL = 'ws://127.0.0.1:8765/ws';
+// Use proxy in development, direct connection in production
+const getDefaultWsUrl = () => {
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  // In dev mode, Vite proxies /ws to the backend
+  return `${protocol}//${window.location.host}/ws`;
+};
+
+const DEFAULT_WS_URL = getDefaultWsUrl();
 
 export function useGameState(options: UseGameStateOptions = {}): UseGameStateResult {
   const {
