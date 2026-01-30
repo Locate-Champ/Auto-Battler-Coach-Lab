@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MetaCompCard from './MetaCompCard';
 import { useMetaComps } from './hooks/useMetaComps';
+import { useEarlyComps } from './hooks/useEarlyComps';
 
 interface CompsPanelProps {
   className?: string;
@@ -8,6 +9,7 @@ interface CompsPanelProps {
 
 const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
   const { data, loading, error, refetch } = useMetaComps({ limit: 30 });
+  const { getTransitionsTo, loading: earlyLoading } = useEarlyComps();
   const [sortBy, setSortBy] = useState<'tier' | 'top4' | 'winRate' | 'games'>('tier');
 
   // Tier order for sorting
@@ -123,6 +125,7 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
             comp={comp}
             rank={index + 1}
             isHighlighted={index === 0}
+            earlyTransitions={getTransitionsTo(comp.cluster_id)}
           />
         ))}
       </div>
