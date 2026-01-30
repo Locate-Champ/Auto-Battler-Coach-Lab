@@ -1,0 +1,13 @@
+{
+  "name": "tft-coach-234",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:full": "cd app/frontend && npm run dev:full",
+    "dev:frontend": "cd app/frontend && npm run dev",
+    "dev:overlay": "cd overlay && npm run dev",
+    "build:frontend": "cd app/frontend && npm run build",
+    "build:overlay": "cd overlay && npm run build"
+  },
+  "description": "TFT Coach Application"
+}
