@@ -1,9 +1,0 @@
-﻿2026-01-23 18:44:22,671 (INFO) ================== new session ==================
-2026-01-23 18:44:22,702 (INFO) </dist/background/background.js> (:2) - 2026-01-23 18:44:22,553 INFO  [RemoteObjectRetrieverService] Retrieved remote config Sun Nov 30 2025 08:18:28 GMT-0500 (Eastern Standard Time)
-2026-01-23 18:44:22,914 (INFO) </dist/background/background.js> (:2) - 2026-01-23 18:44:22,882 INFO  [AppEntryPointService] Launched source: gamelaunchevent param: 5426
-2026-01-23 18:44:22,915 (INFO) </dist/background/background.js> (:2) - 2026-01-23 18:44:22,885 INFO  [BackgroundController] App version: 282.0.7
-2026-01-23 18:44:22,938 (INFO) </dist/background/background.js> (:2) - 2026-01-23 18:44:22,933 INFO  [ContentRecommendationService] Game Id 5426 started
-2026-01-23 18:44:22,939 (INFO) </dist/background/background.js> (:2) - 2026-01-23 18:44:22,934 INFO  [ContentRecommendationService] No game configuration found
-2026-01-23 18:44:22,940 (INFO) </dist/background/background.js> (:2) - 2026-01-23 18:44:22,934 INFO  [ContentRecommendationService] No recommendation triggered with reason: NoGameConfig
-2026-01-23 18:44:22,940 (INFO) </dist/background/background.js> (:2) - 2026-01-23 18:44:22,936 INFO  [ContentRecommendationService] No recommendation triggered with reason: ConfiguredForEnd
-2026-01-23 18:44:22,941 (INFO) </dist/background/background.js> (:2) - 2026-01-23 18:44:22,937 INFO  [BackgroundController] Shutting down ...
