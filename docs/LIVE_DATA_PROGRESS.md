@@ -301,3 +301,171 @@ https://metatft-matches-2.ams3.digitaloceanspaces.com/{UUID}.json
 - [ ] Extract new `app_matches` entries with UUIDs
 - [ ] Fetch DigitalOcean URLs for detailed round-by-round data
 - [ ] Display opponent boards from historical data
+
+---
+
+## Redux Store Bridge Approach (2026-01-30)
+
+### Discovery: Why Log Parsing Doesn't Find Board Data
+
+After analyzing MetaTFT's JavaScript (`index-Beck-RJr.js`), we discovered:
+
+1. **Board/bench data flows through Redux, NOT through logged JSON strings**
+2. The GEP (Game Events Provider) dispatches events directly to the Redux store
+3. Logs show `[object Object]` instead of actual data - it's not serialized to logs
+
+### MetaTFT's Redux Store Structure
+
+```javascript
+{
+  board: { board_pieces: {} },      // Live board state
+  bench: { bench_pieces: {} },      // Live bench state
+  carousel: { carousel_pieces: {} },
+  store: { shop_pieces: {} },       // Shop contents
+  game_info: {},
+  gep_internal: {},
+  me: {
+    gold: "",
+    health: "",
+    xp: {},
+    rank: "",
+    summoner_name: ""
+  },
+  roster: { player_status: {} },    // All 8 players
+  match_info: {},
+  item_select: {}
+}
+```
+
+### Board Pieces Data Format
+
+```javascript
+{
+  "cell_1": {
+    "name": "TFT16_Ekko",
+    "level": "2",
+    "item_1": "TFT_Item_Deathblade",
+    "item_2": "TFT_Item_LastWhisper",
+    "item_3": "TFT_Item_InfinityEdge",
+    "items": ["TFT_Item_Deathblade", "TFT_Item_LastWhisper", "TFT_Item_InfinityEdge"]
+  },
+  "cell_8": { ... }
+}
+```
+
+### Cell Number to Grid Position
+
+```javascript
+const cellNum = parseInt(cellId.split("_")[1]);  // "cell_8" -> 8
+const row = Math.floor((cellNum - 1) / 7);       // 8 -> row 1
+const col = (cellNum - 1) % 7;                    // 8 -> col 0
+```
+
+### GEP Features Registered (from background.html.log)
+
+```
+["gep_internal", "augments", "match_info", "me", "roster", "store", "board", "bench", "carousel"]
+```
+
+### Riot's Live Client Data API
+
+Also discovered MetaTFT calls:
+```
+https://127.0.0.1:2999/liveclientdata/allgamedata
+https://127.0.0.1:2999/replay/game
+```
+
+This is Riot's local API that runs during games - could be an alternative data source.
+
+---
+
+## Redux Bridge Implementation
+
+### New Files Created
+
+| File | Purpose |
+|------|---------|
+| `app/redux_bridge/inject.js` | JavaScript to inject into MetaTFT window |
+| `app/redux_bridge/handler.py` | Python handler for Redux WebSocket messages |
+
+### How It Works
+
+```
+MetaTFT Window
+     │
+     ├─→ inject.js (injected via DevTools or Overwolf API)
+     │      │
+     │      ├─→ Accesses window.reduxStore
+     │      ├─→ Subscribes to state changes
+     │      └─→ Sends board/bench data via WebSocket
+     │
+     └─→ WebSocket (ws://127.0.0.1:8765/redux)
+            │
+            └─→ handler.py → StateManager → Overlay
+```
+
+### Usage Instructions
+
+**Option 1: DevTools Injection**
+1. Open MetaTFT in Overwolf
+2. Press `Ctrl+Shift+I` to open DevTools
+3. Go to Console tab
+4. Paste contents of `app/redux_bridge/inject.js`
+5. Script will connect to backend and forward live data
+
+**Option 2: Overwolf executeInWindow (Advanced)**
+```javascript
+overwolf.windows.obtainDeclaredWindow("main", (result) => {
+  overwolf.extensions.current.executeInWindow(
+    result.window.id,
+    `<inject.js contents here>`,
+    () => console.log("Injected!")
+  );
+});
+```
+
+### Debug Functions Available After Injection
+
+```javascript
+__getReduxState()  // Get full Redux state
+__getBoardData()   // Get board_pieces
+__getBenchData()   // Get bench_pieces
+__reduxBridge.stop()  // Stop the bridge
+```
+
+### Data Flow with Redux Bridge
+
+```
+Overwolf GEP Events
+     ↓
+MetaTFT Redux Store (board_pieces, bench_pieces)
+     ↓
+inject.js (subscribes to store changes)
+     ↓
+WebSocket ws://127.0.0.1:8765/redux
+     ↓
+handler.py (parses Redux format)
+     ↓
+StateManager (updates GameState)
+     ↓
+WebSocket ws://127.0.0.1:8765/ws
+     ↓
+Overlay (receives live updates)
+```
+
+---
+
+## Comparison of Approaches
+
+| Approach | Real-time | Board Data | Opponent Data | Difficulty |
+|----------|-----------|------------|---------------|------------|
+| Log parsing | ✅ Yes | ❌ Not in logs | ❌ No | Easy |
+| Redux Bridge | ✅ Yes | ✅ Yes | ❌ No | Medium |
+| UUID/DigitalOcean | ❌ Post-game | ✅ Yes | ✅ All 8 boards | Easy |
+| Live Client API | ✅ Yes | ⚠️ Limited | ❌ No | Easy |
+
+### Recommended Strategy
+
+1. **During game:** Use Redux Bridge for live board/bench data
+2. **After game:** Use UUID approach for complete match history with all 8 boards
+3. **Fallback:** Log parsing for events (stage, augments, scouting, health)
