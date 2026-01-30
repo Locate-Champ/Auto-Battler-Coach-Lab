@@ -7,11 +7,20 @@ interface CompsPanelProps {
 }
 
 const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
-  const { data, loading, error, refetch } = useMetaComps({ limit: 15 });
-  const [sortBy, setSortBy] = useState<'top4' | 'winRate' | 'games'>('top4');
+  const { data, loading, error, refetch } = useMetaComps({ limit: 30 });
+  const [sortBy, setSortBy] = useState<'tier' | 'top4' | 'winRate' | 'games'>('tier');
+
+  // Tier order for sorting
+  const tierOrder: Record<string, number> = { S: 0, A: 1, B: 2, C: 3 };
 
   // Sort comps based on selected criteria
   const sortedComps = data?.comps.slice().sort((a, b) => {
+    if (sortBy === 'tier') {
+      // Sort by tier first, then by avg_placement within tier
+      const tierDiff = (tierOrder[a.tier] ?? 3) - (tierOrder[b.tier] ?? 3);
+      if (tierDiff !== 0) return tierDiff;
+      return a.avg_placement - b.avg_placement;
+    }
     if (sortBy === 'top4') return b.top4_rate - a.top4_rate;
     if (sortBy === 'winRate') return b.win_rate - a.win_rate;
     if (sortBy === 'games') return b.games_played - a.games_played;
@@ -46,6 +55,12 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
       {/* Sort controls */}
       {data && (
         <div className="px-3 py-2 flex gap-2 border-b border-[#3a3a4f]">
+          <button
+            className={`px-2 py-1 rounded text-xs ${sortBy === 'tier' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
+            onClick={() => setSortBy('tier')}
+          >
+            Tier
+          </button>
           <button
             className={`px-2 py-1 rounded text-xs ${sortBy === 'top4' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
             onClick={() => setSortBy('top4')}
@@ -112,17 +127,24 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
         ))}
       </div>
 
-      {/* Footer with total games */}
+      {/* Footer with tier counts and total games */}
       {data && (
         <div
           className="px-3 py-2 text-xs text-[#6b7280] text-center border-t border-[#3a3a4f]"
         >
-          Data from {(data.total_games / 1000000).toFixed(1)}M games
-          {data.last_updated && (
-            <span className="ml-2">
-              | Updated: {new Date(data.last_updated).toLocaleDateString()}
-            </span>
-          )}
+          <div className="flex justify-center gap-3 mb-1">
+            <span><span style={{ color: '#ff6b6b' }}>S</span>: {data.tier_counts?.S ?? 0}</span>
+            <span><span style={{ color: '#ffa94d' }}>A</span>: {data.tier_counts?.A ?? 0}</span>
+            <span><span style={{ color: '#69db7c' }}>B</span>: {data.tier_counts?.B ?? 0}</span>
+          </div>
+          <div>
+            {(data.total_games / 1000000).toFixed(1)}M games
+            {data.last_updated && (
+              <span className="ml-2">
+                | {new Date(data.last_updated).toLocaleDateString()}
+              </span>
+            )}
+          </div>
         </div>
       )}
     </div>
