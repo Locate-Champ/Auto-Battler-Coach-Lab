@@ -1,0 +1,1126 @@
+﻿2026-01-29 19:33:54,231 (INFO) ================== new session ==================
+2026-01-29 19:33:54,232 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-29 19:33:54,233 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: es
+2026-01-29 19:33:54,233 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-29 19:33:54,234 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: de
+2026-01-29 19:33:54,234 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-29 19:33:54,235 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-29 19:33:54,235 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-29 19:33:54,236 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-29 19:33:54,237 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-29 19:33:54,237 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-29 19:33:54,238 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-29 19:33:54,238 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: el
+2026-01-29 19:33:54,239 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-29 19:33:54,239 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-29 19:33:54,239 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: it
+2026-01-29 19:33:54,240 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-29 19:33:54,241 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-29 19:33:54,241 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: th
+2026-01-29 19:33:54,242 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-29 19:33:54,242 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-29 19:33:54,243 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-29 19:33:54,243 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-29 19:33:54,244 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Final current locale: en
+2026-01-29 19:33:54,244 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en_us to en_us
+2026-01-29 19:33:54,245 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en-US to en_us
+2026-01-29 19:33:54,245 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en to en_us
+2026-01-29 19:33:54,246 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en-US to en_us
+2026-01-29 19:33:54,246 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en to en_us
+2026-01-29 19:33:54,254 (INFO) </assets/index-B8ApVJ18.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-29 19:33:54,264 (INFO) </assets/index-B8ApVJ18.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-29 19:33:54,265 (INFO) </assets/index-B8ApVJ18.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-29 19:33:54,278 (INFO) </assets/index-B8ApVJ18.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-29 19:33:54,279 (INFO) </assets/index-B8ApVJ18.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-29 19:33:54,279 (INFO) </assets/index-B8ApVJ18.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-29 19:33:54,279 (INFO) </assets/index-B8ApVJ18.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-29 19:33:54,279 (INFO) </assets/index-B8ApVJ18.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-29 19:33:54,285 (INFO) </assets/index-B8ApVJ18.js> (:20808) - window name:  [object Object]
+2026-01-29 19:33:54,285 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 19:33:54,311 (INFO) </assets/index-B8ApVJ18.js> (:20749) - healthcheck: {}
+2026-01-29 19:33:54,314 (INFO) </assets/index-B8ApVJ18.js> (:20763) - Comps Page: Render false 1100
+2026-01-29 19:33:54,315 (INFO) </assets/index-B8ApVJ18.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-29 19:33:54,319 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,387 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 19:33:54,393 (INFO) </assets/index-B8ApVJ18.js> (:20765) - adbox state:  [object Object]
+2026-01-29 19:33:54,413 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters componentDidMount
+2026-01-29 19:33:54,414 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Initializing centralized filters for first time
+2026-01-29 19:33:54,415 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Initializing centralized filters for first time with queue: 1100
+2026-01-29 19:33:54,416 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: Checking localStorage...
+2026-01-29 19:33:54,416 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: savedFilters raw: {"queue":["1100"],"patch":["16.3_"],"days":[3],"rank":["CHALLENGER","DIAMOND","EMERALD","GRANDMASTER","MASTER"],"permit_filter_adjustment":["true"]}
+2026-01-29 19:33:54,417 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: filterAdjustment: null
+2026-01-29 19:33:54,418 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: queue_prop: 1100
+2026-01-29 19:33:54,419 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: parsed savedFilters: [object Object]
+2026-01-29 19:33:54,419 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: otherFilters (excluding patch): [object Object]
+2026-01-29 19:33:54,420 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: Before merge: [object Object]
+2026-01-29 19:33:54,421 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: After merge: [object Object]
+2026-01-29 19:33:54,422 (INFO) </assets/index-B8ApVJ18.js> (:333) - Successfully loaded filters from localStorage (excluding patch)
+2026-01-29 19:33:54,422 (INFO) </assets/index-B8ApVJ18.js> (:333) - Defaulting patch to 'current' for new/expired session
+2026-01-29 19:33:54,423 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: Final filters being dispatched: [object Object]
+2026-01-29 19:33:54,423 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: Dispatching updateCentralizedFilters  from initializeCentralizedFilters with queue:  1100
+2026-01-29 19:33:54,425 (INFO) </assets/index-B8ApVJ18.js> (:333) - initializeCentralizedFilters: Successfully initialized centralized filters: [object Object]
+2026-01-29 19:33:54,425 (INFO) </assets/index-B8ApVJ18.js> (:20668) - scrollRef [object Object]
+2026-01-29 19:33:54,486 (INFO) </assets/index-B8ApVJ18.js> (:20668) - CompTable: Mounted with activeFilters, updating data
+2026-01-29 19:33:54,486 (INFO) </assets/index-B8ApVJ18.js> (:20763) - checking sync queue: from centralized filters: 1100 1100
+2026-01-29 19:33:54,487 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters componentDidMount
+2026-01-29 19:33:54,487 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Centralized filters already initialized, skipping
+2026-01-29 19:33:54,487 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Skipping updateFilterValues - filters already loaded/loading
+2026-01-29 19:33:54,488 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:54,490 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:54,492 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 19:33:54,493 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 19:33:54,494 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:54,494 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:54,495 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:54,495 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:54,496 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Initialized prevRegionHint: undefined
+2026-01-29 19:33:54,497 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidMount [object Object]
+2026-01-29 19:33:54,497 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE, checking conditions...
+2026-01-29 19:33:54,498 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] No valid player data found - players_tagline: undefined roster.player_status: [object Object]
+2026-01-29 19:33:54,498 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Ad script loaded
+2026-01-29 19:33:54,499 (INFO) </assets/index-B8ApVJ18.js> (:20765) - createAd 0
+2026-01-29 19:33:54,499 (INFO) </assets/index-B8ApVJ18.js> (:20765) - OwAd is undefined
+2026-01-29 19:33:54,502 (INFO) </assets/index-B8ApVJ18.js> (:20765) - observing ad space
+2026-01-29 19:33:54,504 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Initializing winrate model for TFTSet16
+2026-01-29 19:33:54,505 (INFO) </assets/index-B8ApVJ18.js> (:27) - Fetching unit items
+2026-01-29 19:33:54,511 (INFO) </assets/index-B8ApVJ18.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-29 19:33:54,511 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,512 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,512 (INFO) </assets/index-B8ApVJ18.js> (:27) - fetch language lookups:  [object Object]
+2026-01-29 19:33:54,513 (INFO) </assets/index-B8ApVJ18.js> (:20765) - ExplorerFilters: Skipping centralized filter update - not on explorer page: /comps
+2026-01-29 19:33:54,514 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-29 19:33:54,541 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters changed, updating filterRefCopy: [object Object]
+2026-01-29 19:33:54,541 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Updated filterRefCopy: [object Object]
+2026-01-29 19:33:54,542 (INFO) </assets/index-B8ApVJ18.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-29 19:33:54,543 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,543 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,544 (INFO) </assets/index-B8ApVJ18.js> (:27) - fetch language lookups:  [object Object]
+2026-01-29 19:33:54,544 (INFO) </assets/index-B8ApVJ18.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-29 19:33:54,544 (INFO) </assets/index-B8ApVJ18.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-29 19:33:54,545 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,545 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,546 (INFO) </assets/index-B8ApVJ18.js> (:27) - fetch language lookups:  [object Object]
+2026-01-29 19:33:54,547 (INFO) </assets/index-B8ApVJ18.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-29 19:33:54,547 (INFO) </assets/index-B8ApVJ18.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-29 19:33:54,548 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,548 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,549 (INFO) </assets/index-B8ApVJ18.js> (:27) - fetch language lookups:  [object Object]
+2026-01-29 19:33:54,549 (INFO) </assets/index-B8ApVJ18.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-29 19:33:54,550 (INFO) </assets/index-B8ApVJ18.js> (:20808) - navigate changed [object Object]
+2026-01-29 19:33:54,550 (INFO) </assets/index-B8ApVJ18.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-29 19:33:54,551 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,551 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,552 (INFO) </assets/index-B8ApVJ18.js> (:27) - fetch language lookups:  [object Object]
+2026-01-29 19:33:54,552 (INFO) </assets/index-B8ApVJ18.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-29 19:33:54,553 (INFO) </assets/index-B8ApVJ18.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-29 19:33:54,553 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,554 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching lookups for setKey: TFTSet16 and language: en_us
+2026-01-29 19:33:54,554 (INFO) </assets/index-B8ApVJ18.js> (:27) - fetch language lookups:  [object Object]
+2026-01-29 19:33:54,555 (INFO) </assets/index-B8ApVJ18.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-29 19:33:54,555 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,589 (INFO) </assets/index-B8ApVJ18.js> (:20765) - adbox state:  [object Object]
+2026-01-29 19:33:54,591 (INFO) </assets/index-B8ApVJ18.js> (:27) - updateFilterValues: Starting filter values fetch
+2026-01-29 19:33:54,601 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:54,602 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:54,603 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 19:33:54,604 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 19:33:54,606 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:54,606 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:54,607 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:54,607 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:54,608 (INFO) </assets/index-B8ApVJ18.js> (:20668) - CompTable: activeFilters prop changed, updating data
+2026-01-29 19:33:54,608 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Previous activeFilters: [object Object]
+2026-01-29 19:33:54,609 (INFO) </assets/index-B8ApVJ18.js> (:20668) - New activeFilters: [object Object]
+2026-01-29 19:33:54,610 (INFO) </assets/index-B8ApVJ18.js> (:20668) - CompTable: update_data from componentDidMount1 true
+2026-01-29 19:33:54,611 (INFO) </assets/index-B8ApVJ18.js> (:20668) - update_data: updating comps data
+2026-01-29 19:33:54,612 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching /comps_data:  https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100
+2026-01-29 19:33:54,618 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching /comps_stats:  https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER,PLATINUM&permit_filter_adjustment=true
+2026-01-29 19:33:54,619 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:54,619 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:54,619 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 19:33:54,621 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 19:33:54,621 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:54,622 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:54,622 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:54,627 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:54,628 (INFO) </assets/index-B8ApVJ18.js> (:20808) - fetch language:  en_us  from LookupService
+2026-01-29 19:33:54,628 (INFO) </assets/index-B8ApVJ18.js> (:27) - fetch language lookups:  [object Object]
+2026-01-29 19:33:54,629 (INFO) </assets/index-B8ApVJ18.js> (:27) - lookup already querying:  https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+2026-01-29 19:33:54,629 (INFO) </assets/index-B8ApVJ18.js> (:20765) - ExplorerFilters: Skipping centralized filter update - not on explorer page: /comps
+2026-01-29 19:33:54,629 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters changed, updating filterRefCopy: [object Object]
+2026-01-29 19:33:54,631 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Updated filterRefCopy: [object Object]
+2026-01-29 19:33:54,631 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,670 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:33:54,671 (INFO) </assets/index-B8ApVJ18.js> (:20668) - CompTable: update_data from ComponentDidUpdate1 false 1100 1100
+2026-01-29 19:33:54,676 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:33:54,677 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,710 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Successfully initialized centralized filters
+2026-01-29 19:33:54,712 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Skipping updateFilterValues - filters already loaded/loading
+2026-01-29 19:33:54,712 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Initialized prevRegionHint: undefined
+2026-01-29 19:33:54,713 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-comps-api/unit_items_processed
+2026-01-29 19:33:54,714 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:54,714 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:54,715 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-stat-api/pro-comps
+2026-01-29 19:33:54,715 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:54,716 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:54,717 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-stat-api/piltover-modules
+2026-01-29 19:33:54,717 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:54,718 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:54,718 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-stat-api/games?days=7
+2026-01-29 19:33:54,719 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:54,720 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:54,721 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-comps-api/comps_data?queue=1100
+2026-01-29 19:33:54,721 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:54,722 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:54,722 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER,PLATINUM&permit_filter_adjustment=true
+2026-01-29 19:33:54,723 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:54,723 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:54,809 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-29 19:33:54,809 (INFO) </assets/index-B8ApVJ18.js> (:20765) - ExplorerFilters: User changed filters via legacy method: [object Object]
+2026-01-29 19:33:54,809 (INFO) </assets/index-B8ApVJ18.js> (:20765) - sendFetchData: Skipping fetch - no dimension filters to warrant data request
+2026-01-29 19:33:54,816 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Filters changed (mount), notifying parent: [object Object]
+2026-01-29 19:33:54,817 (INFO) </assets/index-B8ApVJ18.js> (:20668) - update_data filters
+2026-01-29 19:33:54,817 (INFO) </assets/index-B8ApVJ18.js> (:20668) - CompTable: update_data from updateActiveFilters3 true
+2026-01-29 19:33:54,818 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,836 (INFO) </assets/index-B8ApVJ18.js> (:20668) - already fetching comps data https://api-hc.metatft.com/tft-comps-api/comps_data
+2026-01-29 19:33:54,837 (INFO) </assets/index-B8ApVJ18.js> (:20668) - fetching /comps_stats:  https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-29 19:33:54,838 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,849 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:33:54,850 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,861 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=3&rank=CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER&permit_filter_adjustment=true
+2026-01-29 19:33:54,862 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:54,863 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:54,865 (INFO) </assets/index-B8ApVJ18.js> (:20748) - active plans: {"plans":null,"success":true}
+2026-01-29 19:33:54,866 (INFO) </assets/index-B8ApVJ18.js> (:20748) - user has no active plans
+2026-01-29 19:33:54,866 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 19:33:54,870 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,889 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 19:33:54,892 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:33:54,893 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,904 (INFO) </assets/index-B8ApVJ18.js> (:20765) - adbox state:  [object Object]
+2026-01-29 19:33:54,912 (INFO) </assets/index-B8ApVJ18.js> (:20748) - active plans: {"plans":null,"success":true}
+2026-01-29 19:33:54,913 (INFO) </assets/index-B8ApVJ18.js> (:20748) - user has no active plans
+2026-01-29 19:33:54,914 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 19:33:54,925 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 19:33:54,926 (INFO) </assets/index-B8ApVJ18.js> (:20765) - adbox state:  [object Object]
+2026-01-29 19:33:54,927 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:33:54,928 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,937 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,947 (INFO) </assets/index-B8ApVJ18.js> (:20808) - draggable [object Object]
+2026-01-29 19:33:54,974 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:54,989 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:33:54,989 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:55,029 (INFO) </assets/index-B8ApVJ18.js> (:20668) - already fetching comps data https://api-hc.metatft.com/tft-comps-api/comps_data
+2026-01-29 19:33:55,061 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Model lookups loaded for TFTSet16
+2026-01-29 19:33:55,062 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Loading model for TFTSet16
+2026-01-29 19:33:55,149 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,149 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,150 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,151 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,152 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,152 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,161 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-29 19:33:55,162 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,163 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,166 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Formula type not found:  {382277da}
+2026-01-29 19:33:55,167 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,167 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,176 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,177 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,178 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,178 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,179 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,179 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,180 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-29 19:33:55,180 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,181 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,182 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,182 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,183 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,184 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,184 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-29 19:33:55,185 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,185 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,186 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,186 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,186 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,192 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,195 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,196 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,196 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,197 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,197 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,198 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,198 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,199 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,199 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,200 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,201 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,201 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,202 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,202 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,203 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,204 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,204 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,205 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,205 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,206 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,207 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,207 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,208 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,208 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,209 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,209 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,209 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,210 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,211 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,211 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,212 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,212 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,213 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,214 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,214 (INFO) </assets/index-B8ApVJ18.js> (:27) - Formula not found:  TFT16_Bard_Num3Stars {39cfdb6d} [object Object] 
+2026-01-29 19:33:55,215 (INFO) </assets/index-B8ApVJ18.js> (:27) - couldn't find variable:  1 TFT16_Bard_Num3Stars
+2026-01-29 19:33:55,216 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,216 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,217 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,217 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,218 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,218 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,219 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,219 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,219 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,220 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,221 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-29 19:33:55,221 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Variable not found:  undefined [object Object] [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:33:55,222 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 newValues No values found for part:  [object Object] [object Object]
+2026-01-29 19:33:55,222 (INFO) </assets/index-B8ApVJ18.js> (:27) - 123 Formula type not found:  {8a96ea3c}
+2026-01-29 19:33:55,249 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:55,317 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Clearing suggestions - no dimension filters or predictions disabled
+2026-01-29 19:33:55,318 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:33:55,318 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /comps
+2026-01-29 19:33:55,350 (INFO) </assets/index-B8ApVJ18.js> (:27) - updateFilterValues: Successfully fetched filter values
+2026-01-29 19:33:55,356 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:55,357 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:55,358 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 19:33:55,359 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 19:33:55,360 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:55,361 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:55,362 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:55,363 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:55,363 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:55,364 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:33:55,364 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 19:33:55,365 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 19:33:55,365 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:55,366 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:33:55,366 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:55,367 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:33:55,369 (INFO) </assets/index-B8ApVJ18.js> (:20749) - healthcheck: {}
+2026-01-29 19:33:55,371 (INFO) </assets/index-B8ApVJ18.js> (:452) - loading_screen: null
+2026-01-29 19:33:55,426 (INFO) </assets/index-B8ApVJ18.js> (:20808) - MyTeams: selectedPortal state changed to: 
+2026-01-29 19:33:55,427 (INFO) </assets/index-B8ApVJ18.js> (:20808) - MyTeams: portalSearch state changed to: 
+2026-01-29 19:33:55,684 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:55,701 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:33:55,704 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:55,733 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:55,818 (INFO) </assets/index-B8ApVJ18.js> (:452) - loading_screen: null
+2026-01-29 19:33:55,819 (INFO) </assets/index-B8ApVJ18.js> (:20749) - UpdateControls mounted [object Object] [object Object]
+2026-01-29 19:33:55,819 (INFO) </assets/index-B8ApVJ18.js> (:452) - Member ID: 74176585
+2026-01-29 19:33:55,827 (INFO) </assets/index-B8ApVJ18.js> (:452) - Patreon Check Successful - user has required access
+2026-01-29 19:33:55,828 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 19:33:55,901 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 19:33:55,908 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:33:55,909 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:55,924 (INFO) </assets/index-B8ApVJ18.js> (:20765) - supporter, removing ad
+2026-01-29 19:33:55,925 (INFO) </assets/index-B8ApVJ18.js> (:20765) - adbox state:  [object Object]
+2026-01-29 19:33:55,926 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,006 (INFO) </assets/index-B8ApVJ18.js> (:452) - getting comps options:  [object Object] undefined
+2026-01-29 19:33:56,010 (INFO) </assets/index-B8ApVJ18.js> (:452) - getBuildData
+2026-01-29 19:33:56,011 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:33:56,013 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,061 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,084 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-comps-api/comp_options
+2026-01-29 19:33:56,086 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:56,086 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:56,087 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-comps-api/comp_builds
+2026-01-29 19:33:56,088 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:56,088 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:56,151 (INFO) </assets/index-B8ApVJ18.js> (:20749) - userInfo: [object Object]
+2026-01-29 19:33:56,159 (INFO) </assets/index-B8ApVJ18.js> (:20668) - set key: TFTSet16 TFTSet16
+2026-01-29 19:33:56,168 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,194 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:33:56,197 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,215 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,261 (INFO) </assets/index-B8ApVJ18.js> (:452) - process builds [object Object]
+2026-01-29 19:33:56,262 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:33:56,267 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,429 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,461 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:33:56,465 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,591 (INFO) </assets/index-B8ApVJ18.js> (:452) - Member ID: 74176585
+2026-01-29 19:33:56,592 (INFO) </assets/index-B8ApVJ18.js> (:452) - Patreon Check Successful - user has required access
+2026-01-29 19:33:56,593 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 19:33:56,597 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,844 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 19:33:56,850 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:33:56,853 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:56,889 (INFO) </assets/index-B8ApVJ18.js> (:20765) - supporter, removing ad
+2026-01-29 19:33:56,889 (INFO) </assets/index-B8ApVJ18.js> (:20765) - adbox state:  [object Object]
+2026-01-29 19:33:56,975 (INFO) </assets/index-B8ApVJ18.js> (:20765) - createAd 1
+2026-01-29 19:33:56,976 (INFO) </assets/index-B8ApVJ18.js> (:20765) - supporter, nevermind
+2026-01-29 19:33:57,470 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:33:57,473 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:57,578 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  1
+2026-01-29 19:33:58,188 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Model loaded for TFTSet16
+2026-01-29 19:33:58,228 (INFO) </assets/index-B8ApVJ18.js> (:452) - process builds [object Object]
+2026-01-29 19:33:58,419 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Model details for TFTSet16:  WinRateModelImproved_BoardStrength_TFTSet16_Wed, 28 Jan 2026 09:26:21 GMT
+2026-01-29 19:33:58,421 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  1
+2026-01-29 19:33:59,579 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  2
+2026-01-29 19:33:59,777 (INFO) </assets/index-B8ApVJ18.js> (:27) - updateFilterValues: Starting filter values fetch
+2026-01-29 19:33:59,780 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:33:59,784 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:33:59,829 (INFO) </assets/index-B8ApVJ18.js> (:27) - updateFilterValues: Global initialization in progress, waiting for existing request
+2026-01-29 19:34:00,154 (INFO) </assets/index-B8ApVJ18.js> (:27) - updateFilterValues: Successfully fetched filter values
+2026-01-29 19:34:00,161 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:34:00,163 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:34:00,163 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 19:34:00,166 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 19:34:00,168 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:34:00,169 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:34:00,170 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:34:00,171 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:34:00,171 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:34:00,172 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 19:34:00,173 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 19:34:00,173 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 19:34:00,174 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:34:00,174 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 19:34:00,175 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:34:00,176 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 19:34:00,473 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:34:00,474 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:34:00,556 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  2
+2026-01-29 19:34:01,581 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  3
+2026-01-29 19:34:02,574 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  3
+2026-01-29 19:34:03,459 (INFO) </assets/index-B8ApVJ18.js> (:20749) - not significant move
+2026-01-29 19:34:03,658 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 19:34:03,754 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 19:34:03,757 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:34:03,758 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  4
+2026-01-29 19:34:05,162 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  4
+2026-01-29 19:34:06,161 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  5
+2026-01-29 19:34:08,160 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  5
+2026-01-29 19:34:08,176 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  6
+2026-01-29 19:34:11,165 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  6
+2026-01-29 19:34:11,166 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  7
+2026-01-29 19:34:13,990 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:34:13,991 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:34:14,049 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:34:14,051 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:34:14,069 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:34:14,150 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:34:14,154 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:34:14,228 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:34:14,228 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  7
+2026-01-29 19:34:14,229 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  8
+2026-01-29 19:34:16,656 (INFO) </assets/index-B8ApVJ18.js> (:20763) - Comps Page: Render false 1100
+2026-01-29 19:34:16,657 (INFO) </assets/index-B8ApVJ18.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-29 19:34:16,659 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:34:16,786 (INFO) </assets/index-B8ApVJ18.js> (:20668) - CompTable: lobbyQueueId changed from 0 to 1220
+2026-01-29 19:34:16,791 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:34:17,166 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  8
+2026-01-29 19:34:17,167 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  9
+2026-01-29 19:34:20,167 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  9
+2026-01-29 19:34:20,168 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  10
+2026-01-29 19:34:23,172 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  10
+2026-01-29 19:34:23,173 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  11
+2026-01-29 19:34:26,159 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  11
+2026-01-29 19:34:26,159 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  12
+2026-01-29 19:34:29,168 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  12
+2026-01-29 19:34:29,169 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  13
+2026-01-29 19:34:32,174 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  13
+2026-01-29 19:34:32,175 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  14
+2026-01-29 19:34:35,171 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  14
+2026-01-29 19:34:35,172 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  15
+2026-01-29 19:34:37,099 (INFO) </assets/index-B8ApVJ18.js> (:20763) - Comps Page: Render false 1100
+2026-01-29 19:34:37,101 (INFO) </assets/index-B8ApVJ18.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-29 19:34:37,102 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:34:37,190 (INFO) </assets/index-B8ApVJ18.js> (:20668) - CompTable: lobbyQueueId changed from 1220 to 1100
+2026-01-29 19:34:37,193 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:34:38,172 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  15
+2026-01-29 19:34:38,173 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  16
+2026-01-29 19:34:41,165 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  16
+2026-01-29 19:34:41,166 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  17
+2026-01-29 19:34:44,163 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  17
+2026-01-29 19:34:44,164 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  18
+2026-01-29 19:34:47,172 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  18
+2026-01-29 19:34:47,173 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  19
+2026-01-29 19:34:50,166 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  19
+2026-01-29 19:34:50,167 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  20
+2026-01-29 19:34:53,166 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  20
+2026-01-29 19:34:53,167 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  21
+2026-01-29 19:34:56,171 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  21
+2026-01-29 19:34:56,172 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  22
+2026-01-29 19:34:59,171 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  22
+2026-01-29 19:34:59,171 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  23
+2026-01-29 19:35:02,169 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  23
+2026-01-29 19:35:02,170 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  24
+2026-01-29 19:35:51,139 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 19:35:51,206 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 19:35:51,211 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:35:51,212 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,247 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:35:51,247 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-29 19:35:51,248 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] No actual changes detected in players_tagline or roster.player_status (stable comparison)
+2026-01-29 19:35:51,248 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,290 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:35:51,294 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,353 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:35:51,359 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,406 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:35:51,410 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,465 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,539 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:35:51,542 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,586 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,674 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:35:51,675 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-29 19:35:51,675 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] No actual changes detected in players_tagline or roster.player_status (stable comparison)
+2026-01-29 19:35:51,795 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:35:51,797 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:51,904 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:35:51,905 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:52,296 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:52,315 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:35:52,316 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:52,317 (INFO) </assets/index-B8ApVJ18.js> (:20668) - backing Up State
+2026-01-29 19:35:52,317 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:52,396 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:52,774 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:35:53,129 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 19:35:53,232 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 19:35:53,236 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:35:53,410 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  24
+2026-01-29 19:35:53,411 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  25
+2026-01-29 19:35:55,412 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  25
+2026-01-29 19:35:55,413 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  26
+2026-01-29 19:35:57,425 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  26
+2026-01-29 19:35:57,426 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  27
+2026-01-29 19:35:59,426 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  27
+2026-01-29 19:35:59,427 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  28
+2026-01-29 19:36:01,427 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  28
+2026-01-29 19:36:01,428 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  29
+2026-01-29 19:36:03,430 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  29
+2026-01-29 19:36:03,430 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  30
+2026-01-29 19:36:04,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:04,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-29 19:36:04,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] Updating Roster via players_tagline change (stable comparison): 1mk#17k,Are you happy#3623,I miss 30 ping#7472,Jerry1141#Berry,Karina Super Fan#8148,angel saige#kaisa,hzerotwo#loser,kevinyzy#yzy
+2026-01-29 19:36:04,299 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting Players [object Object]
+2026-01-29 19:36:04,419 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 19:36:04,422 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:04,474 (INFO) </assets/index-B8ApVJ18.js> (:20749) - healthcheck: {}
+2026-01-29 19:36:04,477 (INFO) </assets/index-B8ApVJ18.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/percentiles?region_hint=na1
+2026-01-29 19:36:04,713 (INFO) </assets/index-B8ApVJ18.js> (:20748) - should update:  false
+2026-01-29 19:36:04,714 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: summoner_info available, checking conditions...
+2026-01-29 19:36:04,715 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: fetching_player_lookups = false
+2026-01-29 19:36:04,715 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: refresh_player_lookups = true
+2026-01-29 19:36:04,716 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: player_lookups = [object Object]
+2026-01-29 19:36:04,718 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: Error in player_lookups = false
+2026-01-29 19:36:04,718 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: NOT currently fetching, checking refresh condition...
+2026-01-29 19:36:04,719 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: Condition met - proceeding with player lookup
+2026-01-29 19:36:04,720 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: Set FETCHING_PLAYER_LOOKUPS=true immediately, fetchKey: 1mk#17k,Are you happy#3623,I miss 30 ping#7472,Jerry1141#Berry,Karina Super Fan#8148,angel saige#kaisa,hzerotwo#loser,kevinyzy#yzy
+2026-01-29 19:36:04,720 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] fetch_players: players_tagline = [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:36:04,721 (INFO) </assets/index-B8ApVJ18.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-comps-api/latest_cluster_info?region_hint=na1
+2026-01-29 19:36:05,018 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:05,062 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] execute_player_query: Setting FETCHING_PLAYER_LOOKUPS=true and REFRESH_PLAYER_LOOKUPS=false
+2026-01-29 19:36:05,063 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] execute_player_query: Players list: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:36:05,069 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:05,071 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:05,074 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/kevinyzy/yzy?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-29 19:36:05,075 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Are you happy/3623?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-29 19:36:05,077 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/angel saige/kaisa?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-29 19:36:05,078 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Karina Super Fan/8148?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-29 19:36:05,078 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/I miss 30 ping/7472?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-29 19:36:05,079 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/1mk/17k?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-29 19:36:05,079 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Jerry1141/Berry?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-29 19:36:05,080 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/hzerotwo/loser?source=app_scouting&tft_set=TFTSet16&include_revival_matches=true
+2026-01-29 19:36:05,267 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:05,268 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:05,319 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:05,319 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:05,366 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:05,367 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:05,384 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:05,385 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:05,401 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Got Player angel saige#kaisa
+2026-01-29 19:36:05,423 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:05,504 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Got Player kevinyzy#yzy
+2026-01-29 19:36:05,522 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:05,566 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Got Player 1mk#17k
+2026-01-29 19:36:05,587 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:05,632 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Got Player Are you happy#3623
+2026-01-29 19:36:05,649 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:05,691 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Got Player Jerry1141#Berry
+2026-01-29 19:36:05,712 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:05,757 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Got Player hzerotwo#loser
+2026-01-29 19:36:05,770 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:05,816 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Got Player I miss 30 ping#7472
+2026-01-29 19:36:05,832 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:05,896 (INFO) </assets/index-B8ApVJ18.js> (:20765) - could not remove ad, retrying:  30
+2026-01-29 19:36:05,896 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Got Player Karina Super Fan#8148
+2026-01-29 19:36:05,914 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 19:36:16,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:16,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:17,785 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:36:44,357 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:36:49,250 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:49,250 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:49,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:49,252 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:49,257 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:49,258 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:49,263 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:49,263 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:49,419 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:49,419 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:49,475 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:49,476 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:36:55,268 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:36:55,268 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:37:04,248 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:37:04,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:37:19,030 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:37:22,248 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:37:22,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:37:22,576 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:37:22,578 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:37:22,697 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:37:22,698 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:37:23,247 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:37:23,247 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:37:43,248 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:37:43,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:37:48,883 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:38:04,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:04,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:04,512 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:04,512 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:04,718 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:04,719 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:18,247 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:18,248 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:20,250 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:20,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:20,427 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:38:22,250 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:22,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:25,247 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:25,248 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:28,252 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:28,252 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:47,252 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:47,253 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:50,275 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:50,276 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:55,250 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:55,252 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:55,304 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:55,305 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:55,329 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:55,329 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:38:56,259 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:38:56,261 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:39:01,252 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:39:01,253 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:39:04,205 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:39:29,624 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:39:31,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:39:31,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:39:34,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:39:34,249 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:39:34,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:39:34,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:39:34,256 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:39:34,257 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:39:34,508 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:39:34,509 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:39:40,264 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:39:40,265 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:04,250 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:04,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:04,267 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:04,268 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:10,108 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:40:41,251 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:41,252 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:44,252 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:44,253 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:44,256 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:44,256 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:44,264 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:44,265 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:44,472 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:44,472 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:49,761 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:40:50,345 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:50,346 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:50,398 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:50,398 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:54,269 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:54,271 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:40:55,275 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:40:55,276 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:41:14,265 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:41:14,266 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:41:14,280 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:41:14,280 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:41:28,536 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:41:48,284 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:41:48,285 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:41:55,063 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:42:28,282 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:28,283 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:28,541 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:28,541 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:28,685 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:28,686 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:28,725 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:28,725 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:29,283 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:29,283 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:29,728 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:42:30,281 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:30,282 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:34,556 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:34,556 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:58,283 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:58,284 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:58,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:42:58,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:42:59,581 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:43:31,108 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:43:34,296 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:43:34,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:43:37,302 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:43:37,303 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:43:37,304 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:43:37,305 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:43:37,401 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:43:37,402 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:43:37,521 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:43:37,521 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:43:43,407 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:43:43,408 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:43:51,295 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:43:51,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:44:07,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:44:07,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:44:07,311 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:44:07,313 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:44:14,747 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:44:40,189 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:44:43,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:44:43,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:44:50,337 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:44:50,338 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:44:50,341 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:44:50,343 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:44:50,358 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:44:50,359 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:44:50,566 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:44:50,567 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:44:56,367 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:44:56,368 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:45:10,305 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:45:10,306 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:45:20,691 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:45:43,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:45:43,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:45:43,303 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:45:43,303 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:45:43,327 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:45:43,328 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:45:43,550 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:45:43,552 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:45:53,299 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:45:53,301 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:46:00,211 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:46:13,294 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:46:13,294 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:46:13,306 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:46:13,307 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:46:39,068 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:46:53,296 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:46:53,296 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:46:56,303 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:46:56,303 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:46:56,305 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:46:56,305 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:46:56,346 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:46:56,347 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:46:56,587 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:46:56,588 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:47:02,353 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:47:02,354 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:47:05,622 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:47:08,295 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:47:08,296 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:47:15,294 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:47:15,295 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:47:21,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:47:21,299 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:47:32,294 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:47:32,295 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:47:40,303 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:47:46,301 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:47:46,302 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:47:46,319 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:47:46,320 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:48:10,172 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:48:22,301 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:48:22,301 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:48:30,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:48:30,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:48:30,303 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:48:30,304 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:48:30,342 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:48:30,343 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:48:30,549 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:48:30,550 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:48:36,352 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:48:36,354 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:48:41,696 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:48:52,296 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:48:52,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:49:00,296 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:49:00,297 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:49:00,311 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:49:00,312 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:49:25,323 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:49:40,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:49:40,298 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:49:50,771 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:50:20,314 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:20,315 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:20,316 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:20,317 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:20,325 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:20,325 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:20,531 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:20,532 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:20,574 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:20,574 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:23,307 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:23,308 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:26,384 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:26,385 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:31,295 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:50:40,308 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:40,309 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:50,319 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:50,319 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:50:50,325 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:50:50,325 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:51:10,833 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:51:35,310 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:51:35,311 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:51:38,316 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:51:38,317 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:51:38,317 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:51:38,318 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:51:38,323 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:51:38,324 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:51:38,531 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:51:38,531 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:51:40,309 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:51:40,310 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:51:41,308 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:51:41,309 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:51:49,613 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:52:08,308 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:52:08,309 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:52:08,320 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:52:08,321 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:52:16,169 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:52:49,315 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:52:49,316 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:52:50,907 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:52:52,311 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:52:52,311 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:52:52,655 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:52:52,655 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:52:52,714 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:52:52,715 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:52:58,684 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:52:58,685 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:53:13,311 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:53:13,312 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:53:20,727 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:53:34,317 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:53:34,317 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:53:34,321 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:53:34,322 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:53:34,331 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:53:34,332 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:53:34,539 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:53:34,540 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:53:38,312 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:53:38,313 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:53:52,228 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:54:04,314 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:54:04,316 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:54:04,329 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:54:04,330 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:54:35,842 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:54:40,326 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:54:40,327 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:54:48,328 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:54:48,329 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:54:48,333 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:54:48,333 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:54:48,342 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:54:48,343 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:54:48,580 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:54:48,582 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:54:54,353 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:54:54,353 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:55:01,359 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:55:05,389 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:55:05,390 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:55:08,329 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:55:08,330 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:55:39,324 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:55:39,325 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:55:39,337 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:55:39,337 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:55:41,865 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:56:12,329 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:12,329 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:15,334 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:15,334 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:15,340 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:15,341 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:15,393 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:15,394 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:15,588 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:15,589 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:17,324 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:17,325 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:21,397 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:56:21,429 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:21,430 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:22,324 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:22,324 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:28,327 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:28,328 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:45,325 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:45,326 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:56:45,339 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:56:45,340 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:57:00,185 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:57:23,327 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:57:23,328 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:57:26,738 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:58:01,450 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:58:03,326 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:03,326 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:58:03,331 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:03,332 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:58:03,367 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:03,367 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:58:03,577 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:03,577 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:58:03,609 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:03,609 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:58:07,328 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:07,328 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:58:09,375 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:09,376 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:58:31,315 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:58:33,324 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:33,324 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:58:33,335 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:58:33,336 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:59:02,871 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:59:14,345 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:59:14,346 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:59:17,348 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:59:17,348 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:59:17,349 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:59:17,350 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:59:17,358 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:59:17,358 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:59:17,597 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:59:17,597 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:59:46,518 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 19:59:47,346 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:59:47,347 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 19:59:47,356 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 19:59:47,357 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:00:11,947 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 20:00:24,343 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:00:24,344 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:00:30,349 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:00:30,350 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:00:30,351 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:00:30,353 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:00:30,358 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:00:30,359 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:00:30,563 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:00:30,564 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:00:36,365 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:00:36,366 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:00:52,435 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 20:00:53,343 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:00:53,344 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:01:10,351 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:01:10,352 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:01:10,358 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:01:10,359 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:01:10,368 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:01:10,369 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:01:10,575 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:01:10,576 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:01:26,350 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:01:26,351 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:01:29,349 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:01:29,351 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:01:31,998 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 20:01:40,352 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:01:40,353 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:01:40,365 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:01:40,366 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:10,835 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 20:02:24,357 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:24,358 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:27,360 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:27,360 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:27,366 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:27,367 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:27,374 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:27,375 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:27,611 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:27,611 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:29,361 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:29,362 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:33,381 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:33,382 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:37,381 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 20:02:57,355 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:57,356 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:02:57,365 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:02:57,366 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:12,055 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 20:03:29,378 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:29,378 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:29,384 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:29,385 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:29,392 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:29,392 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:29,400 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:29,402 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:35,373 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:35,374 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:35,381 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:35,382 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:41,375 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:41,375 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:41,977 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 20:03:52,415 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 20:03:52,542 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 20:03:52,547 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 20:03:52,550 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 20:03:52,606 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:52,606 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:54,619 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:54,620 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is FALSE in componentDidUpdate - no action taken
+2026-01-29 20:03:54,625 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] StoreController componentDidUpdate [object Object]
+2026-01-29 20:03:54,626 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] NEW GAME CYCLE DETECTED - resetting deduplication state
+2026-01-29 20:03:54,626 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [PlayerScouting] resetFetchPlayersState: Clearing deduplication state for new game
+2026-01-29 20:03:54,626 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] refresh_player_lookups is TRUE in componentDidUpdate
+2026-01-29 20:03:54,627 (INFO) </assets/index-B8ApVJ18.js> (:20808) - [PlayerScouting] No actual changes detected in players_tagline or roster.player_status (stable comparison)
+2026-01-29 20:03:56,095 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 20:03:56,133 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 20:03:56,135 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 20:03:56,136 (INFO) </assets/index-B8ApVJ18.js> (:20808) - navigate changed [object Object]
+2026-01-29 20:03:56,136 (INFO) </assets/index-B8ApVJ18.js> (:20808) - navigating to /match-history
+2026-01-29 20:03:56,137 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 20:03:56,144 (INFO) </assets/index-B8ApVJ18.js> (:20763) - checking sync queue: from centralized filters: 1100 1100
+2026-01-29 20:03:56,144 (INFO) </assets/index-B8ApVJ18.js> (:20763) - Comps Page: Render false 1100
+2026-01-29 20:03:56,145 (INFO) </assets/index-B8ApVJ18.js> (:20763) - compspagerender [object Object] [object Object]
+2026-01-29 20:03:56,145 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Comps Render
+2026-01-29 20:03:56,193 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 20:03:56,214 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Location changed, applying context overrides for new page
+2026-01-29 20:03:56,215 (INFO) </assets/index-B8ApVJ18.js> (:333) - Previous: /comps Current: /match-history
+2026-01-29 20:03:56,216 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 20:03:56,216 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 20:03:56,217 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 20:03:56,217 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 20:03:56,218 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 20:03:56,218 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 20:03:56,218 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 20:03:56,218 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 20:03:56,219 (INFO) </assets/index-B8ApVJ18.js> (:333) - StatsFilters: Location changed, applying context overrides for new page
+2026-01-29 20:03:56,220 (INFO) </assets/index-B8ApVJ18.js> (:333) - Previous: /comps Current: /match-history
+2026-01-29 20:03:56,220 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 20:03:56,221 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  queue labels:  [object Object]
+2026-01-29 20:03:56,222 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  patch labels:  [object Object]
+2026-01-29 20:03:56,222 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  days labels:  [object Object]
+2026-01-29 20:03:56,223 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 20:03:56,223 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  rank labels:  [object Object]
+2026-01-29 20:03:56,223 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 20:03:56,224 (INFO) </assets/index-B8ApVJ18.js> (:333) - filterType:  server labels:  [object Object]
+2026-01-29 20:03:56,225 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 20:03:56,225 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer useEffect: Skipping URL processing - not on explorer page: /match-history
+2026-01-29 20:03:56,226 (INFO) </assets/index-B8ApVJ18.js> (:20748) - SearchHistory: {"na1_Karina Super Fan#8148":595}
+2026-01-29 20:03:56,242 (INFO) </assets/index-B8ApVJ18.js> (:20748) - location: [object Object]
+2026-01-29 20:03:56,244 (INFO) </assets/index-B8ApVJ18.js> (:20668) - LookupWrapper: setKey state changed to: TFTSet16
+2026-01-29 20:03:56,244 (INFO) </assets/index-B8ApVJ18.js> (:20808) - navigate changed [object Object]
+2026-01-29 20:03:56,258 (INFO) </assets/index-B8ApVJ18.js> (:85) - Added region_hint to URL: https://api-hc.metatft.com/tft-stat-api/percentiles?region_hint=na1
+2026-01-29 20:03:56,314 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 20:03:56,386 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 20:03:56,398 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 20:03:56,964 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 20:03:57,002 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 20:03:57,009 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
+2026-01-29 20:03:57,049 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:03:57,049 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:03:57,385 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:03:57,386 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:03:57,397 (INFO) </assets/index-B8ApVJ18.js> (:20748) - couldn't find queue:  1220  using 1100 instead
+2026-01-29 20:03:57,397 (INFO) </assets/index-B8ApVJ18.js> (:20748) - no percentiles found
+2026-01-29 20:03:57,398 (INFO) </assets/index-B8ApVJ18.js> (:20748) - 0.6249,0.8895,1.0797,1.3029,1.4039,1.4855,1.5531,1.6986,1.7606,1.836,1.9125,1.9692,2.0336,2.0974,2.1808,2.2144,2.2679,2.3467,2.3881,2.4263,2.4743,2.5491,2.5842,2.624,2.67,2.722,2.7596,2.8031,2.8548,2.8995,2.9459,2.9886,3.0269,3.0627,3.0923,3.1455,3.1947,3.2194,3.2403,3.3046,3.3425,3.3764,3.4244,3.4551,3.4851,3.5136,3.5815,3.6111,3.6398,3.6647,3.7086,3.7436,3.7811,3.8319,3.859,3.8942,3.9284,3.9802,4.0185,4.0491,4.0897,4.1242,4.1606,4.1929,4.2601,4.2894,4.3203,4.3861,4.4133,4.4482,4.4852,4.5472,4.5853,4.6332,4.6754,4.7395,4.7758,4.8205,4.9064,4.9427,4.9806,5.0389,5.1306,5.1884,5.2268,5.3239,5.3917,5.4669,5.5399,5.6595,5.7219,5.8069,5.955,6.1088,6.2244,6.4103,6.6309,6.8441,7.6257 0.020209145809772663
+2026-01-29 20:03:57,398 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:03:57,398 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:03:57,416 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:03:57,417 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:03:57,428 (INFO) </assets/index-B8ApVJ18.js> (:20748) - couldn't find queue:  1220  using 1100 instead
+2026-01-29 20:03:57,430 (INFO) </assets/index-B8ApVJ18.js> (:20748) - no percentiles found
+2026-01-29 20:03:57,430 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:03:57,430 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:03:57,632 (INFO) </assets/index-B8ApVJ18.js> (:20748) - couldn't find queue:  1220  using 1100 instead
+2026-01-29 20:03:57,633 (INFO) </assets/index-B8ApVJ18.js> (:20748) - no percentiles found
+2026-01-29 20:03:57,633 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:03:57,634 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:03:57,740 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:03:57,740 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:03:57,943 (INFO) </assets/index-B8ApVJ18.js> (:20748) - queueSelection 1100
+2026-01-29 20:03:57,978 (INFO) </assets/index-B8ApVJ18.js> (:20748) - data changed
+2026-01-29 20:04:04,767 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:04:04,768 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:04:14,066 (INFO) </assets/index-B8ApVJ18.js> (:20765) - incrementing tip
+2026-01-29 20:04:54,513 (INFO) </assets/index-B8ApVJ18.js> (:20749) - dragged to: 1531 35 mainPosition
+2026-01-29 20:04:55,164 (ERROR) </assets/index-B8ApVJ18.js> (:216) - Error: <rect> attribute width: A negative value is not valid. ("-45")
+2026-01-29 20:04:55,164 (ERROR) </assets/index-B8ApVJ18.js> (:216) - Error: <rect> attribute width: A negative value is not valid. ("-45")
+2026-01-29 20:04:55,165 (ERROR) </assets/index-B8ApVJ18.js> (:216) - Error: <rect> attribute width: A negative value is not valid. ("-45")
+2026-01-29 20:04:55,165 (ERROR) </assets/index-B8ApVJ18.js> (:216) - Error: <rect> attribute width: A negative value is not valid. ("-45")
+2026-01-29 20:04:55,166 (ERROR) </assets/index-B8ApVJ18.js> (:216) - Error: <rect> attribute width: A negative value is not valid. ("-45")
+2026-01-29 20:04:55,166 (ERROR) </assets/index-B8ApVJ18.js> (:216) - Error: <rect> attribute width: A negative value is not valid. ("-45")
+2026-01-29 20:04:55,166 (ERROR) </assets/index-B8ApVJ18.js> (:216) - Error: <rect> attribute width: A negative value is not valid. ("-45")
+2026-01-29 20:04:55,167 (ERROR) </assets/index-B8ApVJ18.js> (:216) - Error: <rect> attribute width: A negative value is not valid. ("-45")
+2026-01-29 20:04:55,172 (INFO) </assets/index-B8ApVJ18.js> (:20808) - Desktop Render
+2026-01-29 20:04:55,226 (INFO) </assets/index-B8ApVJ18.js> (:20808) - AppRoutes location [object Object]
+2026-01-29 20:04:55,230 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet8_2 and queue 1100
+2026-01-29 20:04:55,230 (INFO) </assets/index-B8ApVJ18.js> (:20748) - No peak rating found for set TFTSet9 and queue 1100
+2026-01-29 20:04:55,319 (INFO) </assets/index-B8ApVJ18.js> (:20765) - Explorer: Centralized filters unchanged, skipping filterRefCopy update
