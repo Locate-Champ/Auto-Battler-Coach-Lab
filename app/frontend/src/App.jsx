@@ -6,7 +6,8 @@ import HexBoard from './components/HexBoard'
 import ItemSuggestions from './components/ItemSuggestions'
 import ModelSuggestions from './components/ModelSuggestions'
 import PriorityUnits from './components/PriorityUnits'
-import { fetchStats, fetchItems, fetchPriorityUnits } from './api'
+import MetaComps from './components/MetaComps'
+import { fetchStats, fetchItems, fetchPriorityUnits, fetchMetaComps } from './api'
 import './index.css'
 
 // Demo board state
@@ -35,8 +36,10 @@ function App() {
   const [stats, setStats] = useState(null)
   const [items, setItems] = useState({ build: [], avoid: [] })
   const [priorityUnits, setPriorityUnits] = useState([])
+  const [metaComps, setMetaComps] = useState(null)
   const [isLive] = useState(true)
   const [loading, setLoading] = useState(true)
+  const [metaLoading, setMetaLoading] = useState(true)
 
   // Initialize comp counts
   useEffect(() => {
@@ -85,6 +88,22 @@ function App() {
     loadData()
   }, [])
 
+  // Fetch meta comps separately (can fail without breaking the app)
+  useEffect(() => {
+    const loadMetaComps = async () => {
+      try {
+        const metaData = await fetchMetaComps(5)
+        setMetaComps(metaData)
+      } catch (err) {
+        console.error('Failed to load meta comps:', err)
+        // Meta comps are optional, app works without them
+      } finally {
+        setMetaLoading(false)
+      }
+    }
+    loadMetaComps()
+  }, [])
+
   // Calculate traits from units
   const traits = calculateTraits(units)
   const boardCost = units.reduce((sum, u) => sum + u.cost * u.stars, 0)
@@ -119,6 +138,7 @@ function App() {
               counts={compCounts}
               onUpdateCount={updateCompCount}
             />
+            <MetaComps metaComps={metaComps} loading={metaLoading} />
           </div>
 
           {/* Center Column */}
