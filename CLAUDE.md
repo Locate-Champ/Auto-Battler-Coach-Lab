@@ -29,14 +29,6 @@ tft-coach-234/
 │   │   │   ├── App.jsx           # Main React component
 │   │   │   ├── api.js            # API client functions
 │   │   │   └── components/       # React components
-│   │   │       ├── Header.jsx
-│   │   │       ├── HexBoard.jsx
-│   │   │       ├── HexUnit.jsx
-│   │   │       ├── TraitsPanel.jsx
-│   │   │       ├── LobbyTracker.jsx
-│   │   │       ├── ItemSuggestions.jsx
-│   │   │       ├── ModelSuggestions.jsx
-│   │   │       └── PriorityUnits.jsx
 │   │   └── package.json
 │   ├── redux_bridge/             # Live data extraction from MetaTFT
 │   │   ├── inject.js             # Browser injection script
@@ -53,7 +45,7 @@ tft-coach-234/
 ├── overlay/                      # TypeScript overlay (alternative UI)
 │   ├── src/App.tsx
 │   ├── hooks/useGameState.ts     # WebSocket hook with auto-reconnect
-│   ├── utils/transformBoardData.ts # Data transformation utilities
+│   ├── utils/transformBoardData.ts
 │   ├── LiveBoard.tsx
 │   ├── DualBoard.tsx
 │   └── CoachingPanel.tsx
@@ -66,9 +58,19 @@ tft-coach-234/
 │       ├── placement_model.py     # ML placement prediction
 │       └── recommender.py         # Recommendation engine
 │
+├── scripts/                      # Utility scripts
+│   ├── fetch_early_comps.py      # Fetch early game comp data
+│   ├── fetch_meta_data.py        # Fetch current meta data
+│   ├── organize_api_data.py      # API data organization
+│   ├── pull_riot_matches.py      # Riot API match fetching
+│   ├── sync_metatft.py           # MetaTFT data sync
+│   ├── watch_logs.py             # Log file watcher
+│   └── *.bat                     # Windows batch scripts
+│
 ├── data/                         # All data files
 │   ├── personal/                 # Personal match history
 │   │   ├── tft_since_16_2_enhanced.csv  # 163 matches (PRIMARY)
+│   │   ├── tft_matches_since_set16.csv  # Extended match data
 │   │   ├── carry_performance_corrected.csv
 │   │   ├── trait_performance_corrected.csv
 │   │   └── item_performance_corrected.csv
@@ -78,7 +80,10 @@ tft-coach-234/
 │   │   ├── items.jsonl
 │   │   └── augments.jsonl
 │   ├── meta/                     # Current meta data
-│   └── api/                      # API response caches
+│   ├── api/                      # API response caches
+│   │   └── tft_16.3/             # Set 16.3 API data
+│   ├── manifest.json             # Data manifest
+│   └── metadata.json             # Data source metadata
 │
 ├── docs/                         # Documentation
 │   ├── LIVE_DATA_PROGRESS.md     # Live data integration status
@@ -90,10 +95,22 @@ tft-coach-234/
 ├── knowledge-base/               # TFT strategy knowledge
 │   └── sources/web-scrape/       # 55+ comp guides
 │
+├── archive/                      # Archived/reference materials
+│   ├── prototypes/               # Legacy UI prototypes
+│   │   ├── tft-coach.jsx         # Original React prototype
+│   │   ├── tft-coach-preview.html
+│   │   ├── ui_design/            # UI mockups and SVGs
+│   │   └── web/                  # Static HTML dashboard
+│   └── research/                 # Third-party reference code
+│       ├── metatft_early_comps_js/
+│       ├── tft_odds_js/
+│       └── optimize_scripts/
+│
 ├── requirements.txt              # Python dependencies
+├── package.json                  # Root npm workspace config
 ├── DEVELOPMENT_CHECKLIST.md      # Task tracking (52% complete)
 ├── README.md                     # Project overview
-└── CLAUDE_CODE_INSTRUCTIONS.md   # Original AI instructions
+└── CLAUDE.md                     # This file - AI assistant guide
 ```
 
 ---
@@ -301,6 +318,7 @@ See `DEVELOPMENT_CHECKLIST.md` for detailed task tracking.
 | File | Records | Purpose |
 |------|---------|---------|
 | `data/personal/tft_since_16_2_enhanced.csv` | 163 | Match history (PRIMARY) |
+| `data/personal/tft_matches_since_set16.csv` | - | Extended match data |
 | `data/personal/carry_performance_corrected.csv` | 22 | Carry statistics |
 | `data/personal/trait_performance_corrected.csv` | 54 | Trait statistics |
 | `data/personal/item_performance_corrected.csv` | 47 | Item statistics |
@@ -312,6 +330,13 @@ See `DEVELOPMENT_CHECKLIST.md` for detailed task tracking.
 | `data/game_data/traits.jsonl` | 53 | JSONL |
 | `data/game_data/items.jsonl` | 444 | JSONL |
 | `data/game_data/augments.jsonl` | 208 | JSONL |
+
+### API Data (Set 16.3)
+| File | Description |
+|------|-------------|
+| `data/api/tft_16.3/comp_builds.json` | Composition build data |
+| `data/api/tft_16.3/comps_data.json` | Composition metadata |
+| `data/api/tft_16.3/unit_items_processed.json` | Item recommendations per unit |
 
 ---
 
