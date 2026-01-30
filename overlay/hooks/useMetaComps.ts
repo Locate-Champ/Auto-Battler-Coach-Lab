@@ -1,26 +1,51 @@
 /**
- * Hook for fetching meta compositions from tactics.tools via the backend API
+ * Hook for fetching meta compositions from MetaTFT via the backend API
  */
 
 import { useState, useEffect, useCallback } from 'react';
 
-// Types matching the backend /api/meta-comps response
-export interface MetaComp {
-  units: string[];
-  games_played: number;
+// Build info for item recommendations
+export interface CompBuild {
+  unit: string;
+  items: string[];
+  games: number;
   avg_placement: number;
-  top4_count: number;
-  wins: number;
-  spat_items: string[];
-  extra_traits: string[];
+  place_change: number;
+}
+
+// Trait info
+export interface CompTrait {
+  name: string;
+  count: number;
+}
+
+// Types matching the backend /api/meta-comps response (MetaTFT format)
+export interface MetaComp {
+  cluster_id: number | string;
+  tier: 'S' | 'A' | 'B';
+  name: string;
+  units: string[];
+  traits: CompTrait[];
+  avg_placement: number;
+  games_played: number;
   top4_rate: number;
   win_rate: number;
+  difficulty: number;
+  levelling: string;
+  builds: CompBuild[];
 }
 
 export interface MetaCompsResponse {
   patch: string;
+  source: string;
   total_games: number;
-  last_updated: string | null;
+  total_comps: number;
+  tier_counts: {
+    S: number;
+    A: number;
+    B: number;
+  };
+  last_updated?: string | null;
   comps: MetaComp[];
 }
 

@@ -75,12 +75,22 @@ const getStatColor = (value: number, type: 'top4' | 'winRate' | 'avgPlacement'):
   return '#ffffff';
 };
 
-// Get tier label and color based on top4 rate
-const getTierInfo = (top4Rate: number): { label: string; color: string } => {
-  if (top4Rate >= 70) return { label: 'S', color: 'linear-gradient(135deg, #ff6b6b, #c92a2a)' };
-  if (top4Rate >= 60) return { label: 'A', color: 'linear-gradient(135deg, #ffa94d, #e67700)' };
-  if (top4Rate >= 50) return { label: 'B', color: 'linear-gradient(135deg, #69db7c, #2f9e44)' };
-  return { label: 'C', color: 'linear-gradient(135deg, #868e96, #495057)' };
+// Get tier color based on tier letter
+const getTierColor = (tier: string): string => {
+  switch (tier) {
+    case 'S': return 'linear-gradient(135deg, #ff6b6b, #c92a2a)';
+    case 'A': return 'linear-gradient(135deg, #ffa94d, #e67700)';
+    case 'B': return 'linear-gradient(135deg, #69db7c, #2f9e44)';
+    default: return 'linear-gradient(135deg, #868e96, #495057)';
+  }
+};
+
+// Get levelling badge color
+const getLevellingColor = (levelling: string): string => {
+  if (levelling.includes('Fast 9')) return '#9b59b6';
+  if (levelling.includes('Fast 8')) return '#3498db';
+  if (levelling.includes('lvl')) return '#2ecc71';
+  return '#6b7280';
 };
 
 // Get image URL for a champion
@@ -96,8 +106,9 @@ interface MetaCompCardProps {
 }
 
 const MetaCompCard: React.FC<MetaCompCardProps> = ({ comp, rank, isHighlighted = false }) => {
-  const tierInfo = getTierInfo(comp.top4_rate);
+  const tierColor = getTierColor(comp.tier);
   const gamesInK = (comp.games_played / 1000).toFixed(1);
+  const levellingColor = getLevellingColor(comp.levelling);
 
   return (
     <div
@@ -115,30 +126,28 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({ comp, rank, isHighlighted =
         e.currentTarget.style.transform = 'translateX(0)';
       }}
     >
-      {/* Header: Rank + Stats + Tier */}
+      {/* Header: Rank + Tier + Levelling */}
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center gap-2">
+          <span
+            className="px-2 py-0.5 rounded text-xs font-bold"
+            style={{ background: tierColor, color: '#fff' }}
+          >
+            {comp.tier}
+          </span>
           <span className="text-xs font-bold" style={{ color: '#6b7280' }}>
             #{rank}
           </span>
           <span
-            className="text-sm font-bold"
-            style={{ color: getStatColor(comp.top4_rate, 'top4') }}
+            className="px-1.5 py-0.5 rounded text-[10px]"
+            style={{ backgroundColor: levellingColor + '33', color: levellingColor, border: `1px solid ${levellingColor}` }}
           >
-            {comp.top4_rate.toFixed(1)}% Top 4
+            {comp.levelling}
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-xs" style={{ color: '#6b7280' }}>
-            {gamesInK}k games
-          </span>
-          <span
-            className="px-2 py-0.5 rounded text-xs font-bold"
-            style={{ background: tierInfo.color, color: '#fff' }}
-          >
-            {tierInfo.label}
-          </span>
-        </div>
+        <span className="text-xs" style={{ color: '#6b7280' }}>
+          {gamesInK}k games
+        </span>
       </div>
 
       {/* Champions row */}
@@ -171,12 +180,12 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({ comp, rank, isHighlighted =
         })}
       </div>
 
-      {/* Extra traits if present */}
-      {comp.extra_traits.length > 0 && (
+      {/* Top traits */}
+      {comp.traits && comp.traits.length > 0 && (
         <div className="flex gap-1 flex-wrap mb-2">
-          {comp.extra_traits.map((trait) => (
+          {comp.traits.filter(t => t.count >= 2).slice(0, 4).map((trait) => (
             <span
-              key={trait}
+              key={trait.name}
               className="px-1.5 py-0.5 rounded text-[10px]"
               style={{
                 backgroundColor: '#3a3a1f',
@@ -184,7 +193,7 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({ comp, rank, isHighlighted =
                 border: `1px solid ${COLORS.gold}`,
               }}
             >
-              {trait.replace('TFT16_', '')}
+              {trait.name} {trait.count}
             </span>
           ))}
         </div>
