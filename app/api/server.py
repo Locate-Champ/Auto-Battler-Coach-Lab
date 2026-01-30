@@ -172,6 +172,29 @@ async def get_meta_comps(limit: int = 10):
     }
 
 
+@app.get("/api/early-comps")
+async def get_early_comps(limit: int = 20):
+    """Get early game compositions with transition links to late game comps"""
+    data_dir = Path(__file__).parent.parent.parent
+    early_file = data_dir / "data" / "meta" / "early_comps.json"
+
+    if not early_file.exists():
+        raise HTTPException(status_code=404, detail="Early comps data not available. Run fetch_early_comps.py first.")
+
+    with open(early_file, 'r') as f:
+        data = json.load(f)
+
+    # Return early comps with transition data
+    return {
+        'stage': data.get('stage', 'stage-2'),
+        'source': data.get('source', 'metatft'),
+        'total_comps': data.get('total_comps', 0),
+        'total_matchups': data.get('total_matchups', 0),
+        'overall_stats': data.get('overall_stats', {}),
+        'comps': data.get('comps', [])[:limit]
+    }
+
+
 @app.get("/api/augments")
 async def get_augments(tier: Optional[str] = None, rarity: Optional[str] = None):
     """Get augment recommendations"""
