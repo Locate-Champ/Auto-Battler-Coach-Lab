@@ -4,6 +4,30 @@
 
 ---
 
+## Quick Start
+
+**Single command to run the entire project:**
+
+```bash
+# Option 1: Using npm (recommended)
+npm start
+
+# Option 2: Using the shell script
+./start.sh
+
+# Option 3: Manual start
+cd app/frontend && npm run dev:full
+```
+
+This starts all services:
+- **API Server** on port 8000
+- **WebSocket Server** on port 8765
+- **Frontend UI** on port 5173
+
+Open http://localhost:5173 in your browser.
+
+---
+
 ## Project Overview
 
 **TFT Coach** is a personal coaching companion for Teamfight Tactics (TFT) that provides:
@@ -19,17 +43,36 @@
 
 ```
 tft-coach-234/
-├── app/                          # Main Python application
-│   ├── main.py                   # Entry point - TFTCoach class
+├── app/                          # Main application
+│   ├── main.py                   # Entry point - WebSocket + log watcher
 │   ├── config.py                 # Configuration (paths, ports, etc.)
 │   ├── api/
-│   │   └── server.py             # FastAPI REST endpoints (8 endpoints)
-│   ├── frontend/                 # React UI (Vite + Tailwind)
+│   │   └── server.py             # FastAPI REST endpoints
+│   ├── frontend/                 # TypeScript React UI (PRIMARY)
 │   │   ├── src/
-│   │   │   ├── App.jsx           # Main React component
-│   │   │   ├── api.js            # API client functions
-│   │   │   └── components/       # React components
-│   │   └── package.json
+│   │   │   ├── App.tsx           # Main React component
+│   │   │   ├── main.tsx          # React entry point
+│   │   │   └── index.css         # Tailwind styles
+│   │   ├── hooks/                # React hooks
+│   │   │   ├── useGameState.ts   # WebSocket connection with auto-reconnect
+│   │   │   ├── useMetaComps.ts   # Meta comps fetching
+│   │   │   ├── useEarlyComps.ts  # Early game comps
+│   │   │   └── usePoolTracker.ts # Unit pool tracking
+│   │   ├── utils/
+│   │   │   └── transformBoardData.ts  # Champion name mappings
+│   │   ├── images/               # 400+ champion/item images
+│   │   │   ├── champion images/
+│   │   │   └── [item images]/
+│   │   ├── CoachingPanel.tsx     # Stage-specific coaching tips
+│   │   ├── CompsPanel.tsx        # Meta comps display
+│   │   ├── LiveBoard.tsx         # WebSocket-connected board
+│   │   ├── DualBoard.tsx         # Player + opponent boards
+│   │   ├── MetaCompCard.tsx      # Comp tier display
+│   │   ├── ItemsBar.tsx          # Item category tabs
+│   │   ├── [item panels].tsx     # Craftable, artifact, radiant, etc.
+│   │   ├── package.json          # Dependencies (React 18, Vite 7)
+│   │   ├── vite.config.ts        # Vite config with proxy
+│   │   └── tsconfig.json         # TypeScript configuration
 │   ├── redux_bridge/             # Live data extraction from MetaTFT
 │   │   ├── inject.js             # Browser injection script
 │   │   └── handler.py            # WebSocket handler for Redux data
@@ -41,14 +84,6 @@ tft-coach-234/
 │   └── watcher/
 │       ├── log_watcher.py        # File system watcher (watchdog)
 │       └── parser.py             # Log event parser (11+ event types)
-│
-├── overlay/                      # TypeScript overlay (alternative UI)
-│   ├── src/App.tsx
-│   ├── hooks/useGameState.ts     # WebSocket hook with auto-reconnect
-│   ├── utils/transformBoardData.ts
-│   ├── LiveBoard.tsx
-│   ├── DualBoard.tsx
-│   └── CoachingPanel.tsx
 │
 ├── src/                          # ML models and data processing
 │   ├── metatft_parser.py         # MetaTFT log parser
@@ -63,54 +98,27 @@ tft-coach-234/
 │   ├── fetch_meta_data.py        # Fetch current meta data
 │   ├── organize_api_data.py      # API data organization
 │   ├── pull_riot_matches.py      # Riot API match fetching
-│   ├── sync_metatft.py           # MetaTFT data sync
-│   ├── watch_logs.py             # Log file watcher
-│   └── *.bat                     # Windows batch scripts
+│   └── sync_metatft.py           # MetaTFT data sync
 │
 ├── data/                         # All data files
 │   ├── personal/                 # Personal match history
-│   │   ├── tft_since_16_2_enhanced.csv  # 163 matches (PRIMARY)
-│   │   ├── tft_matches_since_set16.csv  # Extended match data
-│   │   ├── carry_performance_corrected.csv
-│   │   ├── trait_performance_corrected.csv
-│   │   └── item_performance_corrected.csv
+│   │   └── tft_since_16_2_enhanced.csv  # 163 matches (PRIMARY)
 │   ├── game_data/                # Set 16 reference data (JSONL)
 │   │   ├── champions.jsonl
 │   │   ├── traits.jsonl
 │   │   ├── items.jsonl
 │   │   └── augments.jsonl
 │   ├── meta/                     # Current meta data
-│   ├── api/                      # API response caches
-│   │   └── tft_16.3/             # Set 16.3 API data
-│   ├── manifest.json             # Data manifest
-│   └── metadata.json             # Data source metadata
+│   └── api/                      # API response caches
 │
 ├── docs/                         # Documentation
-│   ├── LIVE_DATA_PROGRESS.md     # Live data integration status
-│   ├── LIVE_BOARD_DATA_GUIDE.md  # Data format documentation
-│   ├── DATA_SCHEMAS.md           # Data schema definitions
-│   ├── PROTOTYPE_PLAN.md         # Implementation plan
-│   └── TFT_Coach_Figma_Spec.md   # UI design spec
+├── archive/                      # Archived code and old implementations
+│   └── old_frontend/             # Previous React/JS frontend (backup)
 │
-├── knowledge-base/               # TFT strategy knowledge
-│   └── sources/web-scrape/       # 55+ comp guides
-│
-├── archive/                      # Archived/reference materials
-│   ├── prototypes/               # Legacy UI prototypes
-│   │   ├── tft-coach.jsx         # Original React prototype
-│   │   ├── tft-coach-preview.html
-│   │   ├── ui_design/            # UI mockups and SVGs
-│   │   └── web/                  # Static HTML dashboard
-│   └── research/                 # Third-party reference code
-│       ├── metatft_early_comps_js/
-│       ├── tft_odds_js/
-│       └── optimize_scripts/
-│
+├── start.sh                      # Single command launcher (Linux/Mac)
+├── package.json                  # Root npm scripts
 ├── requirements.txt              # Python dependencies
-├── package.json                  # Root npm workspace config
-├── DEVELOPMENT_CHECKLIST.md      # Task tracking (52% complete)
-├── README.md                     # Project overview
-└── CLAUDE.md                     # This file - AI assistant guide
+└── CLAUDE.md                     # This file
 ```
 
 ---
@@ -118,18 +126,17 @@ tft-coach-234/
 ## Technology Stack
 
 ### Backend (Python 3.10+)
-- **FastAPI** - REST API server
-- **WebSockets** - Real-time communication
+- **FastAPI** - REST API server (port 8000)
+- **WebSockets** - Real-time communication (port 8765)
 - **Watchdog** - File system monitoring
 - **Pandas/NumPy** - Data processing
-- **Scikit-learn** - ML models (RandomForest, GradientBoosting)
-- **PyYAML** - Configuration
+- **Scikit-learn** - ML models
 
 ### Frontend (Node.js 18+)
-- **React 19** - UI framework
-- **Vite 7** - Build tool
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **Vite 7** - Build tool with dev proxy
 - **Tailwind CSS 4** - Styling
-- **TypeScript** (overlay only)
 
 ---
 
@@ -147,7 +154,7 @@ tft-coach-234/
 ┌──────────────────────────────────────────┐    │
 │           Log Watcher + Parser            │    │
 │    app/watcher/log_watcher.py            │    │
-│    app/watcher/parser.py (11 event types)│    │
+│    app/watcher/parser.py                 │    │
 └──────────────────┬───────────────────────┘    │
                    │                            │
                    ▼                            │
@@ -164,106 +171,84 @@ tft-coach-234/
 │  :8765/ws     │     │   :8000       │
 └───────┬───────┘     └───────┬───────┘
         │                     │
-        ▼                     ▼
+        └──────────┬──────────┘
+                   ▼
 ┌─────────────────────────────────────────┐
-│              React Frontend              │
-│         app/frontend/src/App.jsx         │
+│        TypeScript React Frontend         │
+│         app/frontend/ (port 5173)        │
+│    Vite proxy forwards /api and /ws     │
 └─────────────────────────────────────────┘
 ```
 
-### Event Types Supported
-- `STAGE_CHANGE` - Game stage transitions
-- `XP_CHANGE` - Experience updates
-- `HEALTH_UPDATE` - Player health changes
-- `AUGMENT_ARMORY` - Augment selection windows
-- `WIN_CHANCE` - Win probability updates
-- `SCOUTING` - Opponent viewing
-- `BOARD_UPDATE` - Board state changes
-- `BENCH_UPDATE` - Bench state changes
-- `ROSTER_UPDATE` - All 8 players info
-- `GAME_START` / `GAME_END`
+### Ports Summary
+| Service | Port | Protocol |
+|---------|------|----------|
+| Frontend UI | 5173 | HTTP |
+| REST API | 8000 | HTTP |
+| WebSocket | 8765 | WS |
 
 ---
 
 ## Development Workflows
 
-### Starting the Backend
+### Start Everything (Recommended)
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Start the main application (WebSocket + log watcher)
-python -m app.main
-
-# Or start just the API server
-python -m app.api.server
-```
-
-### Starting the Frontend
-```bash
-cd app/frontend
-npm install
-npm run dev
+npm start
+# Or: ./start.sh
 # Opens at http://localhost:5173
 ```
 
-### Starting the Overlay (TypeScript)
+### Start Individual Services
 ```bash
-cd overlay
-npm install
-npm run dev
-# Opens at http://localhost:5174
+# Frontend only (no backend)
+cd app/frontend && npm run dev
+
+# Backend API only
+python -m app.api.server
+
+# WebSocket server only
+python -m app.main
 ```
 
-### Running ML Models
-```python
-from src.models import FeatureEngineer, PlacementModel, TFTRecommender
+### Install Dependencies
+```bash
+# Python dependencies
+pip install -r requirements.txt
 
-# Load and prepare data
-model = PlacementModel('.')
-X, y, feature_names = model.prepare_data()
+# Frontend dependencies
+cd app/frontend && npm install
+```
 
-# Train model
-model.train(X, y, model_type='gradient_boosting')
-
-# Get recommendations
-recommender = TFTRecommender('.')
-recs = recommender.recommend_for_board(current_units, stage=3)
+### Build for Production
+```bash
+npm run build
+# Output in app/frontend/dist/
 ```
 
 ---
 
-## Key Conventions
+## Key Files Reference
 
-### Data Parsing
-The `traits_active` and `final_board_units` columns need parsing:
-```python
-# Traits format: "Brawler:1 | Void:3"
-traits = line.split(' | ')
-for t in traits:
-    name, count = t.split(':')
+| File | Purpose |
+|------|---------|
+| `app/main.py` | WebSocket server + log watcher entry point |
+| `app/api/server.py` | FastAPI REST endpoints |
+| `app/frontend/src/App.tsx` | Main React UI component |
+| `app/frontend/hooks/useGameState.ts` | WebSocket connection hook |
+| `app/frontend/hooks/useMetaComps.ts` | Meta comps data fetching |
+| `app/frontend/CoachingPanel.tsx` | Stage-specific coaching tips |
+| `app/frontend/MetaCompCard.tsx` | Meta comp display with tiers |
+| `app/frontend/utils/transformBoardData.ts` | Champion name mappings |
 
-# Units format: "KogMaw_2*(Item1,Item2)"
-# Use regex: (\w+)_(\d)\*\(([^)]*)\)
-```
+---
 
-### Cell ID to Grid Position
-```python
-# Cell IDs: 1-28 (4 rows x 7 cols)
-cell_num = int(cell_id.split("_")[1])  # "cell_8" -> 8
-row = (cell_num - 1) // 7               # 8 -> row 1
-col = (cell_num - 1) % 7                # 8 -> col 0
-```
+## API Endpoints
 
-### Champion Names
-- API names: `TFT16_Ekko`, `TFT16_Lissandra`
-- Display names: Strip `TFT16_` prefix
-- All Set 16 champions are mapped in `overlay/utils/transformBoardData.ts`
-
-### API Endpoints
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/stats` | GET | Personal performance stats |
+| `/api/meta-comps` | GET | MetaTFT meta compositions |
+| `/api/early-comps` | GET | Early game compositions |
 | `/api/comps/{stage}` | GET | Best comps for stage |
 | `/api/augments` | GET | Augment recommendations |
 | `/api/recommend` | POST | Board recommendations |
@@ -274,172 +259,105 @@ col = (cell_num - 1) % 7                # 8 -> col 0
 
 ---
 
-## Current Progress (52% Complete)
+## Frontend Hooks
 
-### Completed
-- Core infrastructure (log watcher, parser, state management)
-- Data & ML models (feature engineering, placement prediction)
-- React frontend (all 8 main components)
-- Live data integration (parser events, state serialization)
-
-### In Progress
-- Connecting WebSocket to UI
-- End-to-end testing with live game
-
-### Not Started
-- Positioning recommendations
-- Item-to-unit optimal assignment
-- Multi-user support
-- Riot API integration
-- Electron overlay
-
-See `DEVELOPMENT_CHECKLIST.md` for detailed task tracking.
-
----
-
-## Important Files to Understand
-
-| File | Purpose |
-|------|---------|
-| `app/main.py` | Application entry point, orchestrates all components |
-| `app/watcher/parser.py` | Log event extraction (11 regex patterns) |
-| `app/state/state_manager.py` | Event processing and state updates |
-| `app/api/server.py` | FastAPI REST endpoints |
-| `app/frontend/src/App.jsx` | Main React UI component |
-| `src/models/recommender.py` | Recommendation engine |
-| `src/models/placement_model.py` | ML placement prediction |
-| `docs/LIVE_DATA_PROGRESS.md` | Live data integration status |
-
----
-
-## Data Files Reference
-
-### Personal Data
-| File | Records | Purpose |
-|------|---------|---------|
-| `data/personal/tft_since_16_2_enhanced.csv` | 163 | Match history (PRIMARY) |
-| `data/personal/tft_matches_since_set16.csv` | - | Extended match data |
-| `data/personal/carry_performance_corrected.csv` | 22 | Carry statistics |
-| `data/personal/trait_performance_corrected.csv` | 54 | Trait statistics |
-| `data/personal/item_performance_corrected.csv` | 47 | Item statistics |
-
-### Game Data (Set 16)
-| File | Records | Format |
-|------|---------|--------|
-| `data/game_data/champions.jsonl` | 101 | JSONL |
-| `data/game_data/traits.jsonl` | 53 | JSONL |
-| `data/game_data/items.jsonl` | 444 | JSONL |
-| `data/game_data/augments.jsonl` | 208 | JSONL |
-
-### API Data (Set 16.3)
-| File | Description |
-|------|-------------|
-| `data/api/tft_16.3/comp_builds.json` | Composition build data |
-| `data/api/tft_16.3/comps_data.json` | Composition metadata |
-| `data/api/tft_16.3/unit_items_processed.json` | Item recommendations per unit |
-
----
-
-## Live Data Extraction Methods
-
-### 1. Log Parsing (Current - Events Only)
-- Watches MetaTFT log files in `%LOCALAPPDATA%\Overwolf\Log\Apps\MetaTFT`
-- Captures: stage, health, augments, scouting events
-- Limitation: Board data appears as `[object Object]` in logs
-
-### 2. Redux Bridge (Recommended - Full Board Data)
-- Injects `app/redux_bridge/inject.js` into MetaTFT window
-- Accesses Redux store at `state.game.board.board_pieces`
-- Provides: Your board, bench, ALL 8 players' boards
-- Requires: DevTools enabled in Overwolf
-
-### 3. Post-Game API (Historical Analysis)
-- Fetches from `metatft-matches-2.ams3.digitaloceanspaces.com/{UUID}.json`
-- Contains: Round-by-round snapshots, all 8 boards, damage breakdown
-- Limitation: Only available after game ends
-
----
-
-## Common Tasks
-
-### Add a New Event Type
-1. Add enum value in `app/watcher/parser.py` → `EventType`
-2. Add regex pattern in `LogParser.PATTERNS`
-3. Add parse handler in `LogParser.parse_line()`
-4. Add handler in `app/state/state_manager.py` → `process_event()`
-5. Update `GameState.to_dict()` if serialization needed
-
-### Add a New API Endpoint
-1. Add Pydantic model if needed in `app/api/server.py`
-2. Add route function with `@app.get()` or `@app.post()`
-3. Add client function in `app/frontend/src/api.js`
-4. Use in React components
-
-### Add a New React Component
-1. Create file in `app/frontend/src/components/`
-2. Import in `App.jsx`
-3. Add to layout grid
-4. Connect to API via `useEffect` if needed
-
----
-
-## Testing Checklist
-
-### Backend
-```bash
-# Start backend
-python -m app.main
-
-# Check WebSocket
-wscat -c ws://127.0.0.1:8765/ws
-
-# Check API
-curl http://127.0.0.1:8000/api/stats
+### useGameState
+WebSocket connection with auto-reconnect for live game data.
+```typescript
+const { state, isConnected, error, reconnect } = useGameState();
+// state contains: board_units, bench_units, stage, player, etc.
 ```
 
-### Frontend
+### useMetaComps
+Fetches meta compositions from the API.
+```typescript
+const { data, loading, error, refetch } = useMetaComps({ limit: 15 });
+// data.comps contains tier, units, traits, stats
+```
+
+### usePoolTracker
+Tracks unit pool state for all 8 players.
+```typescript
+const pool = usePoolTracker(gameState);
+// pool.getRemaining('TFT16_Fiddlesticks') => 7
+// pool.getAvailability('TFT16_Fiddlesticks') => 'high' | 'medium' | 'low'
+```
+
+---
+
+## Key Conventions
+
+### Champion Names
+- API names: `TFT16_Ekko`, `TFT16_Lissandra`
+- Display names: Strip `TFT16_` prefix
+- Mappings in `app/frontend/utils/transformBoardData.ts`
+
+### Data Parsing (CSV)
+```python
+# Traits format: "Brawler:1 | Void:3"
+traits = line.split(' | ')
+for t in traits:
+    name, count = t.split(':')
+
+# Units format: "KogMaw_2*(Item1,Item2)"
+# Use regex: (\w+)_(\d)\*\(([^)]*)\)
+```
+
+### Adding New Components
+1. Create `.tsx` file in `app/frontend/`
+2. Import in `App.tsx`
+3. Add to layout
+4. Use hooks for data fetching
+
+---
+
+## Testing
+
+### Quick Verification
+```bash
+# Start everything
+npm start
+
+# In another terminal, check API
+curl http://127.0.0.1:8000/api/stats
+
+# Check WebSocket (if wscat installed)
+wscat -c ws://127.0.0.1:8765/ws
+```
+
+### Frontend Only
 ```bash
 cd app/frontend && npm run dev
 # Open http://localhost:5173
-# Verify components render with demo data
+# Components work with demo/fallback data
 ```
-
-### Live Data
-1. Start backend: `python -m app.main`
-2. Start overlay: `cd overlay && npm run dev`
-3. Enable Overwolf DevTools
-4. Inject `app/redux_bridge/inject.js` into MetaTFT console
-5. Start TFT game with MetaTFT running
-6. Verify units appear on board
 
 ---
 
 ## Notes for AI Assistants
 
-1. **Playstyle Context:** User excels with late-game AP/utility carries (Fiddlesticks, Ornn, Ryze). Recommendations should favor this playstyle.
+1. **Single UI**: There is only ONE frontend at `app/frontend/`. It uses TypeScript and React 18. The old JavaScript frontend is archived at `archive/old_frontend/`.
 
-2. **Small Dataset:** Only 163 games - prioritize interpretable models over complex ones. Be careful of overfitting.
+2. **Playstyle Context**: User excels with late-game AP/utility carries (Fiddlesticks, Ornn, Ryze). Recommendations should favor this playstyle.
 
-3. **Windows-First:** This is a Windows desktop application. Paths use Windows conventions.
+3. **Small Dataset**: Only 163 games - prioritize interpretable models. Be careful of overfitting.
 
-4. **MetaTFT Dependency:** Live data requires MetaTFT (Overwolf app) to be running.
+4. **Vite Proxy**: The frontend uses Vite's proxy to forward `/api` to port 8000 and `/ws` to port 8765. Don't hardcode backend URLs in frontend code.
 
-5. **Two Frontends:** There's both a React frontend (`app/frontend/`) and a TypeScript overlay (`overlay/`). The React frontend is more complete.
+5. **Images**: 400+ champion/item images are in `app/frontend/images/`. Use these for visual displays.
 
-6. **Data Parsing:** The `traits_active` and `final_board_units` columns contain concatenated strings. See `src/tft_diagnostic.py` for parsing utilities.
+6. **MetaTFT Dependency**: Live data requires MetaTFT (Overwolf app) to be running.
 
-7. **Name Mappings:** 400+ mappings needed between Riot API internal names and display names. Check existing mappings before adding new ones.
+7. **Name Mappings**: Champion name mappings are in `app/frontend/utils/transformBoardData.ts`.
 
 ---
 
 ## Related Documentation
 
-- `README.md` - Project overview and quick start
-- `DEVELOPMENT_CHECKLIST.md` - Detailed task tracking
-- `CLAUDE_CODE_INSTRUCTIONS.md` - Original AI instructions
 - `docs/LIVE_DATA_PROGRESS.md` - Live data integration status
 - `docs/DATA_SCHEMAS.md` - Data schema definitions
 - `docs/PROTOTYPE_PLAN.md` - Implementation plan
+- `DEVELOPMENT_CHECKLIST.md` - Task tracking
 
 ---
 
