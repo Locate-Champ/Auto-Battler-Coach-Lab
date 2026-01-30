@@ -1,0 +1,943 @@
+﻿2026-01-29 19:33:53,092 (INFO) ================== new session ==================
+2026-01-29 19:33:53,093 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Before imports, available locales: en
+2026-01-29 19:33:53,094 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: es
+2026-01-29 19:33:53,094 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: fr
+2026-01-29 19:33:53,095 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: de
+2026-01-29 19:33:53,096 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ja
+2026-01-29 19:33:53,097 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ko
+2026-01-29 19:33:53,098 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: zh-cn
+2026-01-29 19:33:53,098 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: zh-tw
+2026-01-29 19:33:53,099 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: pt-br
+2026-01-29 19:33:53,099 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ru
+2026-01-29 19:33:53,100 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ar
+2026-01-29 19:33:53,101 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: el
+2026-01-29 19:33:53,101 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: cs
+2026-01-29 19:33:53,102 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: hu
+2026-01-29 19:33:53,102 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: it
+2026-01-29 19:33:53,103 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: pl
+2026-01-29 19:33:53,103 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: ro
+2026-01-29 19:33:53,104 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: th
+2026-01-29 19:33:53,105 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: tr
+2026-01-29 19:33:53,105 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Manually registered locale: vi
+2026-01-29 19:33:53,106 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: After manual registration, available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-29 19:33:53,106 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Final available locales: en,es,fr,de,ja,ko,zh-cn,zh-tw,pt-br,ru,ar,el,cs,hu,it,pl,ro,th,tr,vi
+2026-01-29 19:33:53,107 (INFO) </assets/index-B8ApVJ18.js> (:184) - moment-config: Final current locale: en
+2026-01-29 19:33:53,108 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en_us to en_us
+2026-01-29 19:33:53,108 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en-US to en_us
+2026-01-29 19:33:53,109 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en to en_us
+2026-01-29 19:33:53,109 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en-US to en_us
+2026-01-29 19:33:53,109 (INFO) </assets/index-B8ApVJ18.js> (:184) - Language detection: converting en to en_us
+2026-01-29 19:33:53,187 (INFO) </assets/index-B8ApVJ18.js> (:20749) - TFT_queue_IDs:  1090,1091,1092,1100,1130,1160,1170,1180,1210,6000,6110,6120
+2026-01-29 19:33:53,237 (INFO) </assets/index-B8ApVJ18.js> (:20668) - I18nProvider: currentLanguage from Redux: en_us
+2026-01-29 19:33:53,238 (INFO) </assets/index-B8ApVJ18.js> (:20668) - I18nProvider: localStorage language: null
+2026-01-29 19:33:53,280 (INFO) </assets/index-B8ApVJ18.js> (:20668) - I18nProvider: Updated body class to: app-view lang-en_us
+2026-01-29 19:33:53,281 (INFO) </assets/index-B8ApVJ18.js> (:20668) - I18nProvider: Setting moment locale for language: en_us
+2026-01-29 19:33:53,281 (INFO) </assets/index-B8ApVJ18.js> (:184) - setMomentLocale: Received languageCode: en_us
+2026-01-29 19:33:53,282 (INFO) </assets/index-B8ApVJ18.js> (:184) - setMomentLocale: Available keys in momentLocaleMap: en_us,en_gb,en_au,en_ph,en_sg,es_es,es_ar,es_mx,fr_fr,de_de,ja_jp,ko_kr,zh_cn,zh_tw,zh_my,pt_br,ru_ru,ar_ae,cs_cz,el_gr,hu_hu,it_it,pl_pl,ro_ro,th_th,tr_tr,vi_vn,vn_vn
+2026-01-29 19:33:53,282 (INFO) </assets/index-B8ApVJ18.js> (:184) - setMomentLocale: Successfully set locale to: en
+2026-01-29 19:33:53,430 (INFO) </assets/index-B8ApVJ18.js> (:20808) - window name:  [object Object]
+2026-01-29 19:33:53,434 (INFO) </assets/index-B8ApVJ18.js> (:20749) - BUILD_INFO: undefined
+2026-01-29 19:33:53,434 (INFO) </assets/index-B8ApVJ18.js> (:27) - [localStorage-cache] Initialized cache with 3 keys
+2026-01-29 19:33:53,442 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Checking if restore needed for 'main': [object Object]
+2026-01-29 19:33:53,443 (INFO) </assets/index-B8ApVJ18.js> (:27) - Fetching unit items
+2026-01-29 19:33:53,444 (INFO) </assets/index-B8ApVJ18.js> (:27) - updateFilterValues: Starting filter values fetch
+2026-01-29 19:33:53,447 (INFO) </assets/index-B8ApVJ18.js> (:20748) - online check: true
+2026-01-29 19:33:53,447 (INFO) </assets/index-B8ApVJ18.js> (:20748) - current store: [object Object]
+2026-01-29 19:33:53,448 (INFO) </assets/index-B8ApVJ18.js> (:20748) - fetching match history
+2026-01-29 19:33:53,449 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Initializing winrate model for TFTSet16
+2026-01-29 19:33:53,449 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Initiate Plugin
+2026-01-29 19:33:53,450 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-comps-api/unit_items_processed
+2026-01-29 19:33:53,451 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:53,451 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:53,452 (INFO) </assets/index-B8ApVJ18.js> (:85) - No region hint available for API request: https://api-hc.metatft.com/tft-stat-api/games?days=7
+2026-01-29 19:33:53,452 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state data: [object Object]
+2026-01-29 19:33:53,453 (INFO) </assets/index-B8ApVJ18.js> (:85) - Store state launcher: [object Object]
+2026-01-29 19:33:53,475 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Loaded app version: 0.2.654
+2026-01-29 19:33:53,477 (INFO) </assets/index-B8ApVJ18.js> (:20749) - [object Object]
+2026-01-29 19:33:53,481 (INFO) </assets/index-B8ApVJ18.js> (:20749) - League of Legends launcher running
+2026-01-29 19:33:53,481 (INFO) </assets/index-B8ApVJ18.js> (:20748) - UserParams:  {"status":"success","username":"foretisthedude","displayName":"foretisthedude","userId":"OW_2ea3f547-8516-4b07-8048-742113513644","machineId":"da0a78b9-3bed-4c83-a82b-cef161ab8fe4","partnerId":0,"channel":"web_dl_btn","parameters":{"cri-buff":null,"no-cmp":null,"no-gs":null,"no-ftue":null},"installParams":null,"avatar":"https://avatar.overwolf.com/DefaultAvatar1_m.jpg","installerExtension":"delfmdadipjjmpajblkalfkbebcbldbknecigjpc","emailHashes":{"sha1":"cd30d88c66cfacf3182d7444a36f36ca85bfb7f2","sha256":"13ef743dd6e002eb51eb36d3f40eac69f7bac9e7284f8c14873997ca9e4a712d","md5":"2110fa24bd48a9ab5a7d1dca45d74b92","origin":"Default"},"uuid":"237773f1-7522-4e06-a86d-862bcd9ac478","machineIdV2":"72bc5547-6864-4113-989e-395ca0d084c0","success":true}
+2026-01-29 19:33:53,677 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Initiating Plugin Done {"_PluginName_":"metatft-plugin"}
+2026-01-29 19:33:53,678 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Healthcheck:  {}
+2026-01-29 19:33:53,679 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Cleaning Up old images
+2026-01-29 19:33:53,749 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Model lookups loaded for TFTSet16
+2026-01-29 19:33:53,751 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Loading model for TFTSet16
+2026-01-29 19:33:53,753 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] restoreIfNeeded obtain result for 'main': [object Object]
+2026-01-29 19:33:53,754 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Window 'main' not visible, restoring: [object Object]
+2026-01-29 19:33:53,754 (INFO) </assets/index-B8ApVJ18.js> (:27) - running_game_info:  null
+2026-01-29 19:33:53,755 (INFO) </assets/index-B8ApVJ18.js> (:27) - game_running_check false
+2026-01-29 19:33:53,756 (INFO) </assets/index-B8ApVJ18.js> (:20749) - game_running_check_bg false
+2026-01-29 19:33:53,759 (INFO) </assets/index-B8ApVJ18.js> (:20748) - error in getting uuid [object Object]
+2026-01-29 19:33:53,764 (INFO) </assets/index-B8ApVJ18.js> (:20748) - 0 images cleared
+2026-01-29 19:33:53,765 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored hidden window 'main': [object Object]
+2026-01-29 19:33:54,155 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Model loaded for TFTSet16
+2026-01-29 19:33:54,161 (INFO) </assets/index-B8ApVJ18.js> (:27) - updateFilterValues: Successfully fetched filter values
+2026-01-29 19:33:54,197 (INFO) </assets/index-B8ApVJ18.js> (:20668) - Model details for TFTSet16:  WinRateModelImproved_BoardStrength_TFTSet16_Wed, 28 Jan 2026 09:26:21 GMT
+2026-01-29 19:33:54,424 (INFO) </assets/index-B8ApVJ18.js> (:27) - DataReducer: Applying UPDATE_CENTRALIZED_FILTERS - changes detected
+2026-01-29 19:33:54,424 (INFO) </assets/index-B8ApVJ18.js> (:27) -   Previous queue: 1100
+2026-01-29 19:33:54,425 (INFO) </assets/index-B8ApVJ18.js> (:27) -   New queue: 1100
+2026-01-29 19:33:55,377 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Set required features:
+2026-01-29 19:33:55,377 (INFO) </assets/index-B8ApVJ18.js> (:20749) - {"success":true,"status":"success","supportedFeatures":["game_flow","summoner_info","champ_select","lcu_info","lobby_info","end_game","game_info"]}
+2026-01-29 19:33:58,826 (INFO) </assets/index-B8ApVJ18.js> (:20748) - retrieved match history
+2026-01-29 19:33:58,827 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+2026-01-29 19:34:00,389 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Dispatch data: game_info [object Object]
+2026-01-29 19:34:00,391 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Dispatch data: summoner_info [object Object]
+2026-01-29 19:34:00,504 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting player info  NA1 Karina Super Fan#8148
+2026-01-29 19:34:00,505 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Karina Super Fan/8148?source=app_profile&refresh=true&include_revival_matches=true
+2026-01-29 19:34:00,506 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Dispatch data: game_flow [object Object]
+2026-01-29 19:34:00,782 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Existing Player Summary Data:  [object Object]
+2026-01-29 19:34:01,945 (INFO) </assets/index-B8ApVJ18.js> (:20748) - refresh complete
+2026-01-29 19:34:01,953 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting player info  NA1 Karina Super Fan#8148
+2026-01-29 19:34:01,954 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Karina Super Fan/8148?source=app_profile&refresh=false&include_revival_matches=true
+2026-01-29 19:34:02,137 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Existing Player Summary Data:  [object Object]
+2026-01-29 19:35:51,137 (INFO) </assets/index-B8ApVJ18.js> (:20749) - checking if tft:  0
+2026-01-29 19:35:51,138 (INFO) </assets/index-B8ApVJ18.js> (:20749) - TFT starting (launcher)
+2026-01-29 19:35:51,462 (INFO) </assets/index-B8ApVJ18.js> (:20749) - lobby_info:  [object Object]
+2026-01-29 19:35:51,624 (INFO) </assets/index-B8ApVJ18.js> (:20749) - [object Object]
+2026-01-29 19:35:51,625 (INFO) </assets/index-B8ApVJ18.js> (:20749) - League of Legends launcher running
+2026-01-29 19:35:51,625 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Healthcheck:  {}
+2026-01-29 19:35:51,628 (INFO) </assets/index-B8ApVJ18.js> (:20749) - current_info {"success":true,"status":"success","info":null}
+2026-01-29 19:35:51,629 (INFO) </assets/index-B8ApVJ18.js> (:27) - Starting Game
+2026-01-29 19:35:51,629 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: Using global window.reduxStore
+2026-01-29 19:35:51,629 (INFO) </assets/index-B8ApVJ18.js> (:27) - matchups:  false
+2026-01-29 19:35:51,631 (INFO) </assets/index-B8ApVJ18.js> (:27) - matchups:  null
+2026-01-29 19:35:51,631 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting restore operation for 'matchups_map': [object Object]
+2026-01-29 19:35:51,633 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: matchups_map
+2026-01-29 19:35:51,634 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting restore operation for 'win_chance': [object Object]
+2026-01-29 19:35:51,636 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: win_chance
+2026-01-29 19:35:51,637 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: InGameController decision (initial): {"context":"StartGame.initial","mode":"default","originalMode":null,"second_monitor":true,"iconSettingRaw":"true","settingSource":"explicit","shouldShowIcon":true,"reasons":["explicit_setting=true (parsed_as_ON)"],"cachedMonitorCount":3}
+2026-01-29 19:35:51,638 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: InGameController immediate restore check: {"shouldRestoreImmediately":true,"immediateRestoreReasons":["explicit_setting=true"],"shouldShowIcon":true,"isExplicitlyOff":false,"decisionReasons":["explicit_setting=true (parsed_as_ON)"]}
+2026-01-29 19:35:51,638 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: Restoring InGameController immediately: {"reason":"shouldRestoreImmediately && shouldShowIcon"}
+2026-01-29 19:35:51,639 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting restore operation for 'ingamecontroller': [object Object]
+2026-01-29 19:35:51,639 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: ingamecontroller
+2026-01-29 19:35:51,639 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting restore operation for 'augment_recommendations': [object Object]
+2026-01-29 19:35:51,641 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: augment_recommendations
+2026-01-29 19:35:51,641 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting restore operation for 'filter_menu': [object Object]
+2026-01-29 19:35:51,642 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: filter_menu
+2026-01-29 19:35:51,642 (INFO) </assets/index-B8ApVJ18.js> (:27) - [PlayerScouting] StartGame: checking refresh_player_lookups state
+2026-01-29 19:35:51,643 (INFO) </assets/index-B8ApVJ18.js> (:27) - [PlayerScouting] StartGame: refresh_player_lookups = true
+2026-01-29 19:35:51,643 (INFO) </assets/index-B8ApVJ18.js> (:27) - [PlayerScouting] StartGame: fetching_player_lookups = false
+2026-01-29 19:35:51,644 (INFO) </assets/index-B8ApVJ18.js> (:27) - [PlayerScouting] StartGame: NOT setting refresh_player_lookups=true. Condition not met.
+2026-01-29 19:35:51,727 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting restore operation for 'loading': [object Object]
+2026-01-29 19:35:51,728 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: loading
+2026-01-29 19:35:51,729 (INFO) </assets/index-B8ApVJ18.js> (:20748) - registering to GEP - retries:  0
+2026-01-29 19:35:51,731 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Dispatch data: game_info [object Object]
+2026-01-29 19:35:51,732 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Dispatch data: summoner_info [object Object]
+2026-01-29 19:35:51,833 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting player info  NA1 Karina Super Fan#8148
+2026-01-29 19:35:51,833 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Karina Super Fan/8148?source=app_profile&refresh=true&include_revival_matches=true
+2026-01-29 19:35:51,835 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Dispatch data: game_flow [object Object]
+2026-01-29 19:35:51,835 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Dispatch data: champ_select [object Object]
+2026-01-29 19:35:51,837 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Dispatch data: lobby_info [object Object]
+2026-01-29 19:35:51,949 (INFO) </assets/index-B8ApVJ18.js> (:27) - error getting replay game:  [object Object]
+2026-01-29 19:35:51,949 (INFO) </assets/index-B8ApVJ18.js> (:27) - error getting all game data:  [object Object]
+2026-01-29 19:35:51,951 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'matchups_map': [object Object]
+2026-01-29 19:35:51,952 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to restore window 'matchups_map' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_matchups_map)
+2026-01-29 19:35:51,952 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'win_chance': [object Object]
+2026-01-29 19:35:51,953 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to restore window 'win_chance' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_win_chance)
+2026-01-29 19:35:51,953 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'ingamecontroller': [object Object]
+2026-01-29 19:35:51,954 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to restore window 'ingamecontroller' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_ingamecontroller)
+2026-01-29 19:35:51,954 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: getMonitorsList result: [object Object]
+2026-01-29 19:35:51,957 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: second_monitor (post getMonitorsList):  true
+2026-01-29 19:35:51,958 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: Raw localStorage value for MetaTFT_Icon_3: {"value":"true","type":"string","isNull":false,"equalsFalseString":false,"equalsFalseBoolean":false,"strictEquality":false}
+2026-01-29 19:35:51,959 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: InGameController decision (post monitor list): {"context":"StartGame.postMonitorList","mode":"default","originalMode":null,"second_monitor":true,"iconSettingRaw":"true","settingSource":"explicit","shouldShowIcon":true,"reasons":["explicit_setting=true (parsed_as_ON)"],"displayCount":3,"iconSettingChangedDuringStartGame":false,"willRestore":true,"rawIconValue":"true","rawIconType":"string"}
+2026-01-29 19:35:51,959 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] StartGame: Restoring InGameController (post monitor list): {"reason":"postMonitorDecision.shouldShowIcon=true","decision":{"context":"StartGame.postMonitorList","mode":"default","originalMode":null,"second_monitor":true,"iconSettingRaw":"true","settingSource":"explicit","shouldShowIcon":true,"reasons":["explicit_setting=true (parsed_as_ON)"]}}
+2026-01-29 19:35:51,959 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting restore operation for 'ingamecontroller': [object Object]
+2026-01-29 19:35:51,961 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: ingamecontroller
+2026-01-29 19:35:51,962 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Checking if restore needed for 'main': [object Object]
+2026-01-29 19:35:51,962 (INFO) </assets/index-B8ApVJ18.js> (:20748) - error registering features [object Object]
+2026-01-29 19:35:51,963 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'augment_recommendations': [object Object]
+2026-01-29 19:35:51,963 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to restore window 'augment_recommendations' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_augment_recommendations)
+2026-01-29 19:35:51,963 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'filter_menu': [object Object]
+2026-01-29 19:35:51,965 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to restore window 'filter_menu' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_filter_menu)
+2026-01-29 19:35:51,965 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'loading': [object Object]
+2026-01-29 19:35:51,966 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to restore window 'loading' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_loading)
+2026-01-29 19:35:52,449 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'ingamecontroller': [object Object]
+2026-01-29 19:35:52,449 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to restore window 'ingamecontroller' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_ingamecontroller)
+2026-01-29 19:35:52,816 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Existing Player Summary Data:  [object Object]
+2026-01-29 19:35:52,822 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] restoreIfNeeded obtain result for 'main': [object Object]
+2026-01-29 19:35:52,822 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Window 'main' not visible, restoring: [object Object]
+2026-01-29 19:35:52,823 (INFO) </assets/index-B8ApVJ18.js> (:27) - Main Monitor Info:  [object Object] [object Object]
+2026-01-29 19:35:52,824 (INFO) </assets/index-B8ApVJ18.js> (:27) - bringToFrontAndMoveScreen called [object Object]
+2026-01-29 19:35:52,841 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored window 'matchups_map': [object Object]
+2026-01-29 19:35:52,846 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored window 'win_chance': [object Object]
+2026-01-29 19:35:52,847 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored window 'ingamecontroller': [object Object]
+2026-01-29 19:35:52,848 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored window 'augment_recommendations': [object Object]
+2026-01-29 19:35:52,848 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored window 'filter_menu': [object Object]
+2026-01-29 19:35:52,849 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored window 'loading': [object Object]
+2026-01-29 19:35:52,913 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored window 'ingamecontroller': [object Object]
+2026-01-29 19:35:53,127 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully restored hidden window 'main': [object Object]
+2026-01-29 19:35:53,128 (INFO) </assets/index-B8ApVJ18.js> (:27) - brought to front: [object Object]
+2026-01-29 19:35:53,128 (INFO) </assets/index-B8ApVJ18.js> (:20749) - Set required features:
+2026-01-29 19:35:53,129 (INFO) </assets/index-B8ApVJ18.js> (:20749) - {"success":true,"status":"success","supportedFeatures":["game_flow","summoner_info","champ_select","lcu_info","lobby_info","end_game","game_info"]}
+2026-01-29 19:35:53,422 (INFO) </assets/index-B8ApVJ18.js> (:27) - monitors:  [object Object],[object Object],[object Object]
+2026-01-29 19:35:53,423 (INFO) </assets/index-B8ApVJ18.js> (:27) - game monitor name:  \\.\DISPLAY2 \\.\DISPLAY4
+2026-01-29 19:35:54,208 (INFO) </assets/index-B8ApVJ18.js> (:20748) - registering to GEP - retries:  1
+2026-01-29 19:35:54,262 (INFO) </assets/index-B8ApVJ18.js> (:20748) - error registering features [object Object]
+2026-01-29 19:35:56,272 (INFO) </assets/index-B8ApVJ18.js> (:20748) - registering to GEP - retries:  2
+2026-01-29 19:35:56,273 (INFO) </assets/index-B8ApVJ18.js> (:20748) - error registering features [object Object]
+2026-01-29 19:35:58,274 (INFO) </assets/index-B8ApVJ18.js> (:20748) - registering to GEP - retries:  3
+2026-01-29 19:35:58,275 (INFO) </assets/index-B8ApVJ18.js> (:20748) - error registering features [object Object]
+2026-01-29 19:36:00,276 (INFO) </assets/index-B8ApVJ18.js> (:20748) - registering to GEP - retries:  4
+2026-01-29 19:36:00,277 (INFO) </assets/index-B8ApVJ18.js> (:20748) - error registering features [object Object]
+2026-01-29 19:36:02,277 (INFO) </assets/index-B8ApVJ18.js> (:20748) - registering to GEP - retries:  5
+2026-01-29 19:36:02,278 (INFO) </assets/index-B8ApVJ18.js> (:20748) - error registering features [object Object]
+2026-01-29 19:36:04,280 (INFO) </assets/index-B8ApVJ18.js> (:20748) - registering to GEP - retries:  6
+2026-01-29 19:36:04,289 (INFO) </assets/index-B8ApVJ18.js> (:20748) - registered features {"success":true,"status":"success","supportedFeatures":["gep_internal","augments","match_info","me","roster","store","board","bench","carousel"]}
+2026-01-29 19:36:04,290 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] registerToGEP: Using global window.reduxStore
+2026-01-29 19:36:04,290 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] initiatePlugin: Using global window.reduxStore
+2026-01-29 19:36:04,291 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [GEPService] initiatePlugin: Using global window.plugin
+2026-01-29 19:36:04,292 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Initiating Plugin for new LoL process
+2026-01-29 19:36:04,293 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Initiating Plugin for new LoL process on LIVE completed:  "{}"
+2026-01-29 19:36:04,294 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.setGameStarted
+2026-01-29 19:36:04,295 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Plugin initiated successfully
+2026-01-29 19:36:04,295 (INFO) </assets/index-B8ApVJ18.js> (:20748) - current_info [object Object]
+2026-01-29 19:36:04,296 (INFO) </assets/index-B8ApVJ18.js> (:20748) - is TFT
+2026-01-29 19:36:04,296 (INFO) </assets/index-B8ApVJ18.js> (:20748) - dispatching:  [object Object]
+2026-01-29 19:36:04,304 (INFO) </assets/index-B8ApVJ18.js> (:20748) - dispatching:  [object Object]
+2026-01-29 19:36:04,305 (INFO) </assets/index-B8ApVJ18.js> (:20748) - dispatching:  [object Object]
+2026-01-29 19:36:04,312 (INFO) </assets/index-B8ApVJ18.js> (:20748) - dispatching:  [object Object]
+2026-01-29 19:36:04,466 (INFO) </assets/index-B8ApVJ18.js> (:20748) - dispatching:  [object Object]
+2026-01-29 19:36:04,858 (INFO) </assets/index-B8ApVJ18.js> (:20749) - tft_scoreboard - 566.4000000022352ms  - error
+2026-01-29 19:36:04,858 (INFO) </assets/index-B8ApVJ18.js> (:20749) - plugin error: "{\"error\": \"MetaTFTGameEventsHelper Exception: Another command is being processed. (Status: 2)\"}"
+2026-01-29 19:36:04,859 (INFO) </assets/index-B8ApVJ18.js> (:20749) - no err.error present
+2026-01-29 19:36:04,861 (INFO) </assets/index-B8ApVJ18.js> (:20748) - "{\"error\": \"MetaTFTGameEventsHelper Exception: Another command is being processed. (Status: 2)\"}"
+2026-01-29 19:36:04,861 (ERROR) </assets/index-B8ApVJ18.js> (:20748) - {"error": "MetaTFTGameEventsHelper Exception: Another command is being processed. (Status: 2)"}
+2026-01-29 19:36:05,389 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 1-1
+2026-01-29 19:36:05,389 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:36:05,389 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:36:05,812 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:36:09,552 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: undefined -> 
+2026-01-29 19:36:09,553 (INFO) </assets/index-B8ApVJ18.js> (:20748) - First Shop
+2026-01-29 19:36:09,553 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 1-1
+2026-01-29 19:36:09,554 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "1-1"
+2026-01-29 19:36:09,554 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:36:10,403 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:36:10,404 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:36:16,133 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 1-2
+2026-01-29 19:36:16,133 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "1-2"
+2026-01-29 19:36:16,134 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:36:16,253 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 1-1
+2026-01-29 19:36:16,254 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:36:16,260 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 1-1
+2026-01-29 19:36:16,261 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:36:16,261 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:36:16,271 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:36:21,310 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:36:21,311 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:36:48,717 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 1-3
+2026-01-29 19:36:48,718 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "1-3"
+2026-01-29 19:36:48,719 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:36:48,785 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:36:48,843 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":[],"armory_state":"inactive","armory_type":"regular"}
+2026-01-29 19:36:48,847 (INFO) </assets/index-B8ApVJ18.js> (:20748) - TFT15 Powerup Armory Changed: {}
+2026-01-29 19:36:49,191 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP:  -> 0/2
+2026-01-29 19:36:49,260 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 1-1
+2026-01-29 19:36:49,265 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 1-1
+2026-01-29 19:36:49,266 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:36:49,269 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:36:49,368 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:36:50,815 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:36:51,212 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:36:51,668 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:36:52,282 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:36:54,291 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:36:54,292 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:37:04,253 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 1-3
+2026-01-29 19:37:04,253 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:37:04,259 (INFO) </assets/index-B8ApVJ18.js> (:20748) - PVE round, shortening time:  {"round_type":{"stage":"1-3","name":"PVE","type":"Minions_2","native_name":"Intro2"}}
+2026-01-29 19:37:04,501 (INFO) </assets/index-B8ApVJ18.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"4":{"player_board":2,"opponent_board":1,"count":3}}
+2026-01-29 19:37:22,255 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 1-3
+2026-01-29 19:37:22,256 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  1
+2026-01-29 19:37:22,256 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 1-3
+2026-01-29 19:37:22,257 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:37:22,257 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:37:22,282 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:37:22,286 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  2
+2026-01-29 19:37:22,306 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  3
+2026-01-29 19:37:22,327 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  4
+2026-01-29 19:37:22,348 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  5
+2026-01-29 19:37:22,372 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  6
+2026-01-29 19:37:22,393 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  7
+2026-01-29 19:37:22,415 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  8
+2026-01-29 19:37:22,436 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  9
+2026-01-29 19:37:22,478 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  10
+2026-01-29 19:37:22,479 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:37:22,769 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 0/2 -> 0/6
+2026-01-29 19:37:22,770 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 1-4
+2026-01-29 19:37:22,772 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "1-4"
+2026-01-29 19:37:22,772 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:37:27,312 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:37:27,312 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:37:37,641 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:37:43,252 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 1-4
+2026-01-29 19:37:43,252 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:37:43,259 (INFO) </assets/index-B8ApVJ18.js> (:20748) - PVE round, shortening time:  {"round_type":{"stage":"1-4","name":"PVE","type":"Minions_3","native_name":"Intro3"}}
+2026-01-29 19:37:43,367 (INFO) </assets/index-B8ApVJ18.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"4":{"player_board":3,"opponent_board":1,"count":4}}
+2026-01-29 19:37:57,332 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:38:04,255 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 1-4
+2026-01-29 19:38:04,256 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  1
+2026-01-29 19:38:04,256 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 1-4
+2026-01-29 19:38:04,258 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:38:04,259 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:38:04,262 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:38:04,276 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  2
+2026-01-29 19:38:04,297 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  3
+2026-01-29 19:38:04,319 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  4
+2026-01-29 19:38:04,341 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  5
+2026-01-29 19:38:04,362 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  6
+2026-01-29 19:38:04,383 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  7
+2026-01-29 19:38:04,404 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  8
+2026-01-29 19:38:04,425 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  9
+2026-01-29 19:38:04,443 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_ComponentQuestSword","TFT16_Augment_FireAxiom","TFT_Augment_PowerUp"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:38:04,453 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  10
+2026-01-29 19:38:04,826 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 2-1
+2026-01-29 19:38:04,827 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "2-1"
+2026-01-29 19:38:04,827 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:38:09,281 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:38:09,281 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:38:09,694 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_ComponentQuestSword","TFT_Augment_CraftedCrafting","TFT_Augment_PowerUp"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:38:10,819 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_ComponentQuestSword","TFT_Augment_CraftedCrafting","TFT9_Augment_IronAssets"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:38:13,056 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_TableScraps","TFT_Augment_CraftedCrafting","TFT9_Augment_IronAssets"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:38:14,245 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:38:14,531 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 0/6 -> 2/6
+2026-01-29 19:38:14,534 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_TableScraps","TFT_Augment_CraftedCrafting","TFT9_Augment_IronAssets"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-29 19:38:23,521 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:38:26,357 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:38:33,562 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 2/6 -> 0/10
+2026-01-29 19:38:37,427 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: angel saige
+2026-01-29 19:38:38,858 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Are you happy
+2026-01-29 19:38:39,537 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: kevinyzy
+2026-01-29 19:38:40,909 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: hzerotwo
+2026-01-29 19:38:41,243 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: kevinyzy
+2026-01-29 19:38:42,679 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: hzerotwo
+2026-01-29 19:38:43,789 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Jerry1141
+2026-01-29 19:38:44,905 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 1mk
+2026-01-29 19:38:45,789 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: I miss 30 ping
+2026-01-29 19:38:46,157 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 19:38:46,549 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: I miss 30 ping
+2026-01-29 19:38:47,294 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 19:38:50,263 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-30T00:38:50.263Z:  "{\"item_1\":{\"name\":\"TFT_Item_SparringGloves\"}, \"item_2\":{\"name\":\"TFT_Item_BFSword\"}, \"item_3\":{\"name\":\"TFT_Item_NeedlesslyLargeRod\"}, \"item_4\":{\"name\":\"TFT_Item_ChainVest\"}}"
+2026-01-29 19:38:50,264 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-30T00:38:50.264Z: "{\"item_1\":{\"name\":\"TFT_Item_SparringGloves\"}, \"item_2\":{\"name\":\"TFT_Item_BFSword\"}, \"item_3\":{\"name\":\"TFT_Item_NeedlesslyLargeRod\"}, \"item_4\":{\"name\":\"TFT_Item_ChainVest\"}}"
+2026-01-29 19:38:50,264 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T00:38:50.264Z: "{\"item_1\":{\"name\":\"TFT_Item_SparringGloves\"}, \"item_2\":{\"name\":\"TFT_Item_BFSword\"}, \"item_3\":{\"name\":\"TFT_Item_NeedlesslyLargeRod\"}, \"item_4\":{\"name\":\"TFT_Item_ChainVest\"}}"
+2026-01-29 19:38:50,275 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-30T00:38:50.270Z: "{\"item_1\":{\"name\":\"TFT_Item_SparringGloves\"}, \"item_2\":{\"name\":\"TFT_Item_BFSword\"}, \"item_3\":{\"name\":\"TFT_Item_NeedlesslyLargeRod\"}, \"item_4\":{\"name\":\"TFT_Item_ChainVest\"}}"
+2026-01-29 19:38:55,255 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 2-1
+2026-01-29 19:38:55,256 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:38:55,317 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-30T00:38:55.317Z: {"name":"picked_item","data":"TFT_Item_ChainVest"} - clearing item_select
+2026-01-29 19:38:55,317 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T00:38:55.317Z: {}
+2026-01-29 19:38:55,321 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-30T00:38:55.322Z: null
+2026-01-29 19:38:55,321 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T00:38:55.322Z: null
+2026-01-29 19:38:55,326 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-30T00:38:55.326Z: null
+2026-01-29 19:39:01,256 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 2-1
+2026-01-29 19:39:01,257 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:39:33,962 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:39:34,025 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 2-2
+2026-01-29 19:39:34,025 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "2-2"
+2026-01-29 19:39:34,026 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:39:34,253 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 2-1
+2026-01-29 19:39:34,261 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 2-1
+2026-01-29 19:39:34,261 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:39:34,261 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:39:34,326 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:39:34,404 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 0/10 -> 2/10
+2026-01-29 19:39:39,320 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:39:39,321 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:39:46,616 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:39:51,121 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:40:04,255 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 2-2
+2026-01-29 19:40:04,255 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:40:24,597 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:40:43,771 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 2-3
+2026-01-29 19:40:43,772 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "2-3"
+2026-01-29 19:40:43,772 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:40:43,856 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:40:44,121 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 2/10 -> 4/10
+2026-01-29 19:40:44,259 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 2-2
+2026-01-29 19:40:44,268 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 2-2
+2026-01-29 19:40:44,269 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:40:44,270 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:40:44,331 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:40:49,292 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:40:49,293 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:40:50,336 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-30T00:40:50.335Z:  "{\"item_1\":{\"name\":\"TFT16_Item_Piltover_BlastShield\"}, \"item_2\":{\"name\":\"TFT16_Item_Piltover_ElectricalOverload\"}, \"item_3\":{\"name\":\"TFT16_Item_Piltover_EMP\"}}"
+2026-01-29 19:40:50,336 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-30T00:40:50.335Z: "{\"item_1\":{\"name\":\"TFT16_Item_Piltover_BlastShield\"}, \"item_2\":{\"name\":\"TFT16_Item_Piltover_ElectricalOverload\"}, \"item_3\":{\"name\":\"TFT16_Item_Piltover_EMP\"}}"
+2026-01-29 19:40:50,337 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T00:40:50.335Z: "{\"item_1\":{\"name\":\"TFT16_Item_Piltover_BlastShield\"}, \"item_2\":{\"name\":\"TFT16_Item_Piltover_ElectricalOverload\"}, \"item_3\":{\"name\":\"TFT16_Item_Piltover_EMP\"}}"
+2026-01-29 19:40:50,345 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-30T00:40:50.341Z: "{\"item_1\":{\"name\":\"TFT16_Item_Piltover_BlastShield\"}, \"item_2\":{\"name\":\"TFT16_Item_Piltover_ElectricalOverload\"}, \"item_3\":{\"name\":\"TFT16_Item_Piltover_EMP\"}}"
+2026-01-29 19:40:55,263 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-30T00:40:55.263Z: {"name":"picked_item","data":"TFT16_Item_Piltover_BlastShield"} - clearing item_select
+2026-01-29 19:40:55,264 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T00:40:55.263Z: {}
+2026-01-29 19:40:55,269 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-30T00:40:55.268Z: null
+2026-01-29 19:40:55,269 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T00:40:55.268Z: null
+2026-01-29 19:40:55,272 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-30T00:40:55.272Z: null
+2026-01-29 19:41:14,269 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 2-3
+2026-01-29 19:41:14,269 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:41:51,278 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 2-3
+2026-01-29 19:41:51,278 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:41:51,278 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:41:51,287 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:41:51,524 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 2-4
+2026-01-29 19:41:51,526 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "2-4"
+2026-01-29 19:41:51,526 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:41:56,296 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:41:56,297 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:41:56,298 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  Karina Super Fan 96 100
+2026-01-29 19:42:28,284 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 2-3
+2026-01-29 19:42:28,284 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  1
+2026-01-29 19:42:28,285 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 2-3
+2026-01-29 19:42:28,285 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:42:28,286 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:42:28,289 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:42:28,304 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  2
+2026-01-29 19:42:28,326 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  3
+2026-01-29 19:42:28,347 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  4
+2026-01-29 19:42:28,368 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  5
+2026-01-29 19:42:28,390 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  6
+2026-01-29 19:42:28,411 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  7
+2026-01-29 19:42:28,428 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:42:28,434 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  8
+2026-01-29 19:42:28,469 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  9
+2026-01-29 19:42:28,507 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  10
+2026-01-29 19:42:28,536 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 2-5
+2026-01-29 19:42:28,536 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "2-5"
+2026-01-29 19:42:28,537 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:42:28,688 (INFO) </assets/index-B8ApVJ18.js> (:20748) - setting carousel round
+2026-01-29 19:42:28,902 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 4/10 -> 6/10
+2026-01-29 19:42:33,307 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:42:33,308 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:42:33,309 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  Karina Super Fan 92 96
+2026-01-29 19:42:33,542 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:42:33,760 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:42:35,266 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 6/10 -> 0/20
+2026-01-29 19:42:49,643 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: angel saige
+2026-01-29 19:42:50,674 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Are you happy
+2026-01-29 19:42:53,213 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: kevinyzy
+2026-01-29 19:42:53,911 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Are you happy
+2026-01-29 19:42:54,995 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: kevinyzy
+2026-01-29 19:42:56,697 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: hzerotwo
+2026-01-29 19:42:58,094 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Jerry1141
+2026-01-29 19:42:58,286 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 2-5
+2026-01-29 19:42:58,286 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:42:58,819 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 1mk
+2026-01-29 19:43:00,252 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: I miss 30 ping
+2026-01-29 19:43:01,738 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 19:43:37,093 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:43:37,257 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 0/20 -> 2/20
+2026-01-29 19:43:37,259 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 2-6
+2026-01-29 19:43:37,259 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "2-6"
+2026-01-29 19:43:37,261 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:43:37,303 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 2-5
+2026-01-29 19:43:37,304 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  1
+2026-01-29 19:43:37,309 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 2-5
+2026-01-29 19:43:37,311 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:43:37,312 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:43:37,318 (INFO) </assets/index-B8ApVJ18.js> (:17) - No item data, keeping old board data
+2026-01-29 19:43:37,368 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:43:37,397 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: round outcome found, breaking
+2026-01-29 19:43:42,344 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:43:42,345 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:44:07,301 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 2-6
+2026-01-29 19:44:07,302 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:44:49,699 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 2-7
+2026-01-29 19:44:49,699 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "2-7"
+2026-01-29 19:44:49,701 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:44:49,763 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:44:50,038 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 2/20 -> 4/20
+2026-01-29 19:44:50,345 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 2-6
+2026-01-29 19:44:50,364 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 2-6
+2026-01-29 19:44:50,365 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:44:50,365 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:44:50,375 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:44:53,647 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:44:55,377 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:44:55,378 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:45:10,296 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 2-7
+2026-01-29 19:45:10,298 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:45:10,301 (INFO) </assets/index-B8ApVJ18.js> (:20748) - PVE round, shortening time:  {"round_type":{"stage":"2-7","name":"PVE","type":"PVE","native_name":"Krugs"}}
+2026-01-29 19:45:10,463 (INFO) </assets/index-B8ApVJ18.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"4":{"player_board":5,"opponent_board":1,"count":6}}
+2026-01-29 19:45:42,696 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 3-1
+2026-01-29 19:45:42,697 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "3-1"
+2026-01-29 19:45:42,697 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:45:42,738 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:45:43,035 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 4/20 -> 6/20
+2026-01-29 19:45:43,300 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 2-7
+2026-01-29 19:45:43,301 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  1
+2026-01-29 19:45:43,305 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 2-7
+2026-01-29 19:45:43,305 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:45:43,306 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:45:43,315 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:45:43,321 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: round outcome found, breaking
+2026-01-29 19:45:43,442 (INFO) </assets/index-B8ApVJ18.js> (:20748) - retrying, scoreboard not visible
+2026-01-29 19:45:44,178 (INFO) </assets/index-B8ApVJ18.js> (:20748) - retrying, scoreboard not visible
+2026-01-29 19:45:47,135 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: angel saige
+2026-01-29 19:45:48,278 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Are you happy
+2026-01-29 19:45:48,319 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:45:48,320 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:45:49,384 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: kevinyzy
+2026-01-29 19:45:51,573 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: hzerotwo
+2026-01-29 19:45:52,323 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Jerry1141
+2026-01-29 19:45:53,078 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 1mk
+2026-01-29 19:45:54,133 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: I miss 30 ping
+2026-01-29 19:45:54,909 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 19:46:02,518 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 6/20 -> 10/20
+2026-01-29 19:46:13,297 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 3-1
+2026-01-29 19:46:13,298 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:46:56,088 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 3-2
+2026-01-29 19:46:56,089 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "3-2"
+2026-01-29 19:46:56,089 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:46:56,339 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 3-1
+2026-01-29 19:46:56,349 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 3-1
+2026-01-29 19:46:56,349 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:46:56,350 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:46:56,358 (INFO) </assets/index-B8ApVJ18.js> (:17) - No item data, keeping old board data
+2026-01-29 19:46:56,426 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:46:56,575 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_GuardbreakerSpirit","TFT_Augment_HighVoltage","TFT_Augment_Indecision1"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:46:58,797 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_GuardbreakerSpirit","TFT_Augment_GainGold","TFT_Augment_Indecision1"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:46:59,535 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT9_Augment_HealingOrbsII","TFT_Augment_GainGold","TFT_Augment_Indecision1"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:47:00,391 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:47:00,669 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 10/20 -> 12/20
+2026-01-29 19:47:00,673 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT9_Augment_HealingOrbsII","TFT_Augment_GainGold","TFT_Augment_Indecision1"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-29 19:47:01,362 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:47:01,363 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:47:01,961 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:47:03,700 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 12/20 -> 16/20
+2026-01-29 19:47:04,067 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 16/20 -> 0/36
+2026-01-29 19:47:12,722 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 0/36 -> 8/36
+2026-01-29 19:47:30,522 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: angel saige
+2026-01-29 19:47:31,188 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Are you happy
+2026-01-29 19:47:31,864 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: kevinyzy
+2026-01-29 19:47:32,548 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: hzerotwo
+2026-01-29 19:47:32,969 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Jerry1141
+2026-01-29 19:47:33,675 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 1mk
+2026-01-29 19:47:34,008 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: I miss 30 ping
+2026-01-29 19:47:34,341 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 19:47:46,305 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 3-2
+2026-01-29 19:47:46,306 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:48:30,132 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:48:30,334 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 3-2
+2026-01-29 19:48:30,347 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 3-2
+2026-01-29 19:48:30,347 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:48:30,348 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:48:30,353 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 8/36 -> 10/36
+2026-01-29 19:48:30,358 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 3-3
+2026-01-29 19:48:30,358 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "3-3"
+2026-01-29 19:48:30,359 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:48:30,360 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:48:31,906 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:48:32,199 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:48:35,402 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:48:35,403 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:48:38,656 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 10/36 -> 14/36
+2026-01-29 19:48:39,029 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 14/36 -> 18/36
+2026-01-29 19:48:45,522 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Are you happy
+2026-01-29 19:48:47,285 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 19:49:00,299 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 3-3
+2026-01-29 19:49:00,299 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:49:42,841 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 3-4
+2026-01-29 19:49:42,842 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "3-4"
+2026-01-29 19:49:42,843 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:49:43,293 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 3-3
+2026-01-29 19:49:43,294 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:49:43,294 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:49:43,301 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:49:47,666 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: angel saige
+2026-01-29 19:49:48,317 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:49:48,318 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:49:48,319 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  hzerotwo 66 75
+2026-01-29 19:49:51,097 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 19:50:19,599 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 3-5
+2026-01-29 19:50:19,599 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "3-5"
+2026-01-29 19:50:19,601 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:50:19,713 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:50:19,949 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 18/36 -> 20/36
+2026-01-29 19:50:20,319 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 3-3
+2026-01-29 19:50:20,329 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 3-3
+2026-01-29 19:50:20,329 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:50:20,330 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:50:20,339 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:50:20,575 (INFO) </assets/index-B8ApVJ18.js> (:20748) - setting carousel round
+2026-01-29 19:50:25,338 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:50:25,339 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:50:25,339 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  Jerry1141 73 83
+2026-01-29 19:50:28,900 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 20/36 -> 32/36
+2026-01-29 19:50:30,271 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 32/36 -> 0/60
+2026-01-29 19:50:40,140 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:50:46,902 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:50:48,966 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:50:50,312 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 3-4
+2026-01-29 19:50:50,313 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:50:53,153 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:51:38,195 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 3-6
+2026-01-29 19:51:38,196 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "3-6"
+2026-01-29 19:51:38,196 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:51:38,197 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_PromisedProtection","TFT_Augment_GlassCannonII","TFT_Augment_HeavyIsTheCrown"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:51:38,323 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 3-4
+2026-01-29 19:51:38,331 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 3-4
+2026-01-29 19:51:38,331 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:51:38,332 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:51:38,337 (INFO) </assets/index-B8ApVJ18.js> (:17) - No item data, keeping old board data
+2026-01-29 19:51:38,396 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:51:41,026 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_PromisedProtection","TFT_Augment_GlassCannonII","TFT_Augment_EpicRolldown"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:51:42,907 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_PromisedProtection","TFT_Augment_FoodfightTactics","TFT_Augment_EpicRolldown"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:51:43,346 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:51:43,347 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:51:43,347 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  hzerotwo 55 66
+2026-01-29 19:51:43,992 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT9_Augment_JeweledLotus","TFT_Augment_FoodfightTactics","TFT_Augment_EpicRolldown"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:51:45,161 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT9_Augment_JeweledLotus","TFT_Augment_FoodfightTactics","TFT_Augment_EpicRolldown"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-29 19:51:45,519 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 0/60 -> 2/60
+2026-01-29 19:51:46,332 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:52:08,311 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 3-6
+2026-01-29 19:52:08,314 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:52:52,312 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 3-6
+2026-01-29 19:52:52,312 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  1
+2026-01-29 19:52:52,313 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 3-6
+2026-01-29 19:52:52,313 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:52:52,314 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:52:52,318 (INFO) </assets/index-B8ApVJ18.js> (:17) - No item data, keeping old board data
+2026-01-29 19:52:52,373 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:52:52,399 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  2
+2026-01-29 19:52:52,419 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  3
+2026-01-29 19:52:52,433 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 3-7
+2026-01-29 19:52:52,434 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "3-7"
+2026-01-29 19:52:52,434 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:52:52,441 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  4
+2026-01-29 19:52:52,486 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  5
+2026-01-29 19:52:52,508 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  6
+2026-01-29 19:52:52,531 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  7
+2026-01-29 19:52:52,550 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  8
+2026-01-29 19:52:52,572 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  9
+2026-01-29 19:52:52,582 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:52:52,622 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round_end: waiting for round outcome, attempt:  10
+2026-01-29 19:52:52,811 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 2/60 -> 4/60
+2026-01-29 19:52:55,099 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:52:55,758 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:52:57,359 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:52:57,360 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:53:10,877 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:53:11,869 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:53:13,313 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 3-7
+2026-01-29 19:53:13,313 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:53:13,318 (INFO) </assets/index-B8ApVJ18.js> (:20748) - PVE round, shortening time:  {"round_type":{"stage":"3-7","name":"PVE","type":"PVE","native_name":"Wolves"}}
+2026-01-29 19:53:13,480 (INFO) </assets/index-B8ApVJ18.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"4":{"player_board":9,"opponent_board":1,"count":10}}
+2026-01-29 19:53:34,277 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:53:34,323 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 3-7
+2026-01-29 19:53:34,336 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 3-7
+2026-01-29 19:53:34,336 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:53:34,337 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:53:34,346 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:53:34,471 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 4/60 -> 6/60
+2026-01-29 19:53:34,473 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 4-1
+2026-01-29 19:53:34,474 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "4-1"
+2026-01-29 19:53:34,475 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:53:34,531 (INFO) </assets/index-B8ApVJ18.js> (:20748) - retrying, scoreboard not visible
+2026-01-29 19:53:35,654 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:53:38,027 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 6/60 -> 18/60
+2026-01-29 19:53:39,398 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:53:39,399 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:53:39,400 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  hzerotwo 45 55
+2026-01-29 19:54:04,318 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 4-1
+2026-01-29 19:54:04,319 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:54:12,729 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Are you happy
+2026-01-29 19:54:13,059 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: kevinyzy
+2026-01-29 19:54:13,386 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: hzerotwo
+2026-01-29 19:54:13,709 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Jerry1141
+2026-01-29 19:54:14,040 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 1mk
+2026-01-29 19:54:14,767 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: I miss 30 ping
+2026-01-29 19:54:15,105 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 19:54:48,335 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 4-1
+2026-01-29 19:54:48,347 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 4-1
+2026-01-29 19:54:48,347 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:54:48,347 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:54:48,426 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:54:48,486 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 4-2
+2026-01-29 19:54:48,486 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "4-2"
+2026-01-29 19:54:48,487 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:54:48,537 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_ThreeThrees","TFT7_Augment_BestFriends2","TFT_Augment_MaxBuild"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:54:53,359 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:54:53,360 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:54:54,192 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_ThreeThrees","TFT6_Augment_Distancing2","TFT_Augment_MaxBuild"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:55:00,896 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_ThreeThrees","TFT6_Augment_Distancing2","TFT_Augment_HeroicGrabBagPlusPlus"],"armory_state":"active","armory_type":"regular"}
+2026-01-29 19:55:03,792 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:55:04,026 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 18/60 -> 20/60
+2026-01-29 19:55:04,029 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Augment Armory Changed: {"augment_options":["TFT_Augment_ThreeThrees","TFT6_Augment_Distancing2","TFT_Augment_HeroicGrabBagPlusPlus"],"armory_state":"inactive","armory_type":"regular"}
+2026-01-29 19:55:05,317 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:55:39,327 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 4-2
+2026-01-29 19:55:39,328 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:55:47,914 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 20/60 -> 28/60
+2026-01-29 19:55:48,266 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 28/60 -> 36/60
+2026-01-29 19:55:48,664 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 36/60 -> 48/60
+2026-01-29 19:55:49,031 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 48/60 -> 0/76
+2026-01-29 19:55:54,943 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:55:57,958 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:02,699 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:04,265 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:05,823 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:11,559 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:14,766 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:14,956 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 0/76 -> 2/76
+2026-01-29 19:56:14,958 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 4-3
+2026-01-29 19:56:14,958 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "4-3"
+2026-01-29 19:56:14,959 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:56:15,386 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 4-2
+2026-01-29 19:56:15,395 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 4-2
+2026-01-29 19:56:15,396 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:56:15,396 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:56:15,479 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:56:16,823 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:20,418 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:56:20,419 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:56:20,419 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  hzerotwo 33 45
+2026-01-29 19:56:40,098 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:42,114 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:42,917 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:44,064 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:44,977 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:45,328 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 4-3
+2026-01-29 19:56:45,329 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:56:46,823 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:47,375 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:52,366 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:53,859 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:56,088 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:57,487 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:58,997 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:56:59,457 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:57:03,079 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:57:04,884 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:57:07,173 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:57:17,789 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:57:26,239 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 4-4
+2026-01-29 19:57:26,241 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "4-4"
+2026-01-29 19:57:26,241 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:57:26,322 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 4-3
+2026-01-29 19:57:26,323 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:57:26,323 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:57:26,327 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:57:31,381 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:57:31,381 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:58:03,362 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 4-3
+2026-01-29 19:58:03,371 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 4-3
+2026-01-29 19:58:03,371 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:58:03,371 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:58:03,378 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 4-5
+2026-01-29 19:58:03,379 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "4-5"
+2026-01-29 19:58:03,380 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:58:03,382 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:58:03,612 (INFO) </assets/index-B8ApVJ18.js> (:20748) - setting carousel round
+2026-01-29 19:58:03,770 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 2/76 -> 4/76
+2026-01-29 19:58:04,416 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:08,429 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:58:08,429 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:58:08,429 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  Jerry1141 17 27
+2026-01-29 19:58:12,965 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:13,909 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:24,985 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:25,798 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:26,843 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:33,326 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 4-4
+2026-01-29 19:58:33,327 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:58:38,792 (INFO) </assets/index-B8ApVJ18.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"4":{"player_board":10,"opponent_board":1,"count":11}}
+2026-01-29 19:58:38,797 (INFO) </assets/index-B8ApVJ18.js> (:20668) - TFT6_Augment_PortableForge not in augment model lookups
+2026-01-29 19:58:47,224 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:48,367 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:48,681 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:50,119 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:50,502 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:52,127 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:53,229 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:58:54,688 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:01,067 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:02,214 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:03,279 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:04,535 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:08,365 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:17,027 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 4-6
+2026-01-29 19:59:17,028 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "4-6"
+2026-01-29 19:59:17,029 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:59:17,109 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:17,352 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 4-4
+2026-01-29 19:59:17,394 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 4-4
+2026-01-29 19:59:17,394 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:59:17,395 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 19:59:17,445 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 4/76 -> 6/76
+2026-01-29 19:59:17,447 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 19:59:22,405 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 19:59:22,406 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 19:59:23,494 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:24,823 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:26,136 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:26,411 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:28,234 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:29,438 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:39,553 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:40,569 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 19:59:47,348 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 4-6
+2026-01-29 19:59:47,349 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 19:59:52,881 (INFO) </assets/index-B8ApVJ18.js> (:20668) - TFT6_Augment_PortableForge not in augment model lookups
+2026-01-29 20:00:29,518 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 4-7
+2026-01-29 20:00:29,519 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "4-7"
+2026-01-29 20:00:29,519 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:00:29,789 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 20:00:30,235 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 6/76 -> 8/76
+2026-01-29 20:00:30,355 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 4-6
+2026-01-29 20:00:30,360 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 4-6
+2026-01-29 20:00:30,361 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 20:00:30,362 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:00:30,417 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 20:00:35,373 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 20:00:35,374 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 20:00:53,345 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 4-7
+2026-01-29 20:00:53,346 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 20:00:53,351 (INFO) </assets/index-B8ApVJ18.js> (:20748) - PVE round, shortening time:  {"round_type":{"stage":"4-7","name":"PVE","type":"PVE","native_name":"Raptors"}}
+2026-01-29 20:00:53,534 (INFO) </assets/index-B8ApVJ18.js> (:20748) - player and opponent teamIds conflict, trying to work out which is which {"4":{"player_board":5,"opponent_board":6,"count":11}}
+2026-01-29 20:00:58,834 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Jerry1141
+2026-01-29 20:00:59,525 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: Are you happy
+2026-01-29 20:01:00,924 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: hzerotwo
+2026-01-29 20:01:02,324 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: kevinyzy
+2026-01-29 20:01:03,353 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: I miss 30 ping
+2026-01-29 20:01:04,349 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 1mk
+2026-01-29 20:01:05,405 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting: 
+2026-01-29 20:01:10,202 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 5-1
+2026-01-29 20:01:10,203 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "5-1"
+2026-01-29 20:01:10,204 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:01:10,317 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 20:01:10,363 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 4-7
+2026-01-29 20:01:10,371 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 4-7
+2026-01-29 20:01:10,372 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 20:01:10,373 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:01:10,379 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 20:01:10,433 (INFO) </assets/index-B8ApVJ18.js> (:20748) - retrying, scoreboard not visible
+2026-01-29 20:01:10,568 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 8/76 -> 10/76
+2026-01-29 20:01:15,386 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 20:01:15,387 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 20:01:26,343 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] _handleGameInfo received at 2026-01-30T01:01:26.343Z:  "{\"item_1\":{\"name\":\"TFT_Item_GiantsBelt\"}, \"item_2\":{\"name\":\"TFT_Item_NegatronCloak\"}, \"item_3\":{\"name\":\"TFT_Item_ChainVest\"}, \"item_4\":{\"name\":\"TFT_Item_SparringGloves\"}}"
+2026-01-29 20:01:26,344 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-30T01:01:26.343Z: "{\"item_1\":{\"name\":\"TFT_Item_GiantsBelt\"}, \"item_2\":{\"name\":\"TFT_Item_NegatronCloak\"}, \"item_3\":{\"name\":\"TFT_Item_ChainVest\"}, \"item_4\":{\"name\":\"TFT_Item_SparringGloves\"}}"
+2026-01-29 20:01:26,344 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T01:01:26.343Z: "{\"item_1\":{\"name\":\"TFT_Item_GiantsBelt\"}, \"item_2\":{\"name\":\"TFT_Item_NegatronCloak\"}, \"item_3\":{\"name\":\"TFT_Item_ChainVest\"}, \"item_4\":{\"name\":\"TFT_Item_SparringGloves\"}}"
+2026-01-29 20:01:26,350 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-30T01:01:26.347Z: "{\"item_1\":{\"name\":\"TFT_Item_GiantsBelt\"}, \"item_2\":{\"name\":\"TFT_Item_NegatronCloak\"}, \"item_3\":{\"name\":\"TFT_Item_ChainVest\"}, \"item_4\":{\"name\":\"TFT_Item_SparringGloves\"}}"
+2026-01-29 20:01:29,342 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Game event 'picked_item' received at 2026-01-30T01:01:29.341Z: {"name":"picked_item","data":"TFT_Item_GiantsBelt"} - clearing item_select
+2026-01-29 20:01:29,342 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T01:01:29.341Z: {}
+2026-01-29 20:01:29,345 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [ITEM_SELECT DEBUG] Bypassing check_if_send, dispatching ITEM_SELECT at 2026-01-30T01:01:29.345Z: null
+2026-01-29 20:01:29,346 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing ITEM_SELECT at 2026-01-30T01:01:29.345Z: null
+2026-01-29 20:01:29,348 (INFO) </assets/index-B8ApVJ18.js> (:17) - [ITEM_SELECT DEBUG] TFTReducer processing MATCH_INFO with item_select at 2026-01-30T01:01:29.348Z: null
+2026-01-29 20:01:33,331 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 10/76 -> 14/76
+2026-01-29 20:01:33,661 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 14/76 -> 26/76
+2026-01-29 20:01:40,343 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 5-1
+2026-01-29 20:01:40,344 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 20:02:26,922 (INFO) </assets/index-B8ApVJ18.js> (:20748) - [EVT] stage: 5-2
+2026-01-29 20:02:26,923 (INFO) </assets/index-B8ApVJ18.js> (:20748) - New Stage: "5-2"
+2026-01-29 20:02:26,923 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:02:26,976 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 20:02:27,258 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 26/76 -> 28/76
+2026-01-29 20:02:27,368 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round end - stage 5-1
+2026-01-29 20:02:27,407 (INFO) </assets/index-B8ApVJ18.js> (:20748) - round start - stage 5-1
+2026-01-29 20:02:27,408 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 20:02:27,408 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:02:27,415 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 20:02:32,418 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 20:02:32,420 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 20:02:32,420 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  I miss 30 ping 38 52
+2026-01-29 20:02:47,777 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 28/76 -> 32/76
+2026-01-29 20:02:48,112 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 32/76 -> 40/76
+2026-01-29 20:02:48,487 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 40/76 -> 48/76
+2026-01-29 20:02:48,866 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 48/76 -> 64/76
+2026-01-29 20:02:49,212 (INFO) </assets/index-B8ApVJ18.js> (:20748) - XP: 64/76 -> 0/68
+2026-01-29 20:02:50,105 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 20:02:51,563 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 20:02:53,546 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 20:02:55,482 (INFO) </assets/index-B8ApVJ18.js> (:17) - Store update:  [object Object]
+2026-01-29 20:02:57,357 (INFO) </assets/index-B8ApVJ18.js> (:20748) - battle start - stage 5-2
+2026-01-29 20:02:57,358 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 20:03:29,378 (INFO) </assets/index-B8ApVJ18.js> (:20748) - match_end
+2026-01-29 20:03:29,380 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.setGameStopped
+2026-01-29 20:03:29,380 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:03:35,384 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Scouting duration info: [object Object]
+2026-01-29 20:03:35,384 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:03:35,420 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Activity at Round Start:  [object Object]
+2026-01-29 20:03:40,394 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting round start health
+2026-01-29 20:03:40,394 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Round start health:  [object Object]
+2026-01-29 20:03:40,395 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  kevinyzy 17 29
+2026-01-29 20:03:40,395 (INFO) </assets/index-B8ApVJ18.js> (:17) - Correcting health for player:  Karina Super Fan 0 13
+2026-01-29 20:03:52,345 (INFO) </assets/index-B8ApVJ18.js> (:20749) - game_finished, closing in game windows
+2026-01-29 20:03:52,346 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.setGameStopped
+2026-01-29 20:03:52,346 (INFO) </assets/index-B8ApVJ18.js> (:20748) - GameEventManager.resetRoundCounter
+2026-01-29 20:03:52,348 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting EndGame operation: [object Object]
+2026-01-29 20:03:52,349 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Closing 11 windows: [object Object]
+2026-01-29 20:03:52,350 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'ingamecontroller': [object Object]
+2026-01-29 20:03:52,352 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: ingamecontroller
+2026-01-29 20:03:52,352 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'ingamedesktop': [object Object]
+2026-01-29 20:03:52,362 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: ingamedesktop
+2026-01-29 20:03:52,364 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'matchups': [object Object]
+2026-01-29 20:03:52,365 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: matchups
+2026-01-29 20:03:52,365 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'matchups_map': [object Object]
+2026-01-29 20:03:52,366 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: matchups_map
+2026-01-29 20:03:52,367 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'loading': [object Object]
+2026-01-29 20:03:52,367 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: loading
+2026-01-29 20:03:52,368 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'pinned_comp': [object Object]
+2026-01-29 20:03:52,368 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: pinned_comp
+2026-01-29 20:03:52,368 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'win_chance': [object Object]
+2026-01-29 20:03:52,369 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: win_chance
+2026-01-29 20:03:52,370 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'augment_recommendations': [object Object]
+2026-01-29 20:03:52,371 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: augment_recommendations
+2026-01-29 20:03:52,372 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'filter_menu': [object Object]
+2026-01-29 20:03:52,373 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: filter_menu
+2026-01-29 20:03:52,374 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'headliner_countdown': [object Object]
+2026-01-29 20:03:52,374 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: headliner_countdown
+2026-01-29 20:03:52,375 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Starting close operation for 'replay_controls': [object Object]
+2026-01-29 20:03:52,375 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to obtain window: replay_controls
+2026-01-29 20:03:52,664 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'ingamecontroller': [object Object]
+2026-01-29 20:03:52,665 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'ingamecontroller' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_ingamecontroller)
+2026-01-29 20:03:52,665 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'ingamedesktop': [object Object]
+2026-01-29 20:03:52,666 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'ingamedesktop' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_ingamedesktop)
+2026-01-29 20:03:52,666 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'matchups': [object Object]
+2026-01-29 20:03:52,667 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'matchups' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_matchups)
+2026-01-29 20:03:52,667 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'matchups_map': [object Object]
+2026-01-29 20:03:52,668 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'matchups_map' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_matchups_map)
+2026-01-29 20:03:52,668 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'loading': [object Object]
+2026-01-29 20:03:52,668 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'loading' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_loading)
+2026-01-29 20:03:52,670 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'pinned_comp': [object Object]
+2026-01-29 20:03:52,670 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'pinned_comp' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_pinned_comp)
+2026-01-29 20:03:52,671 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'win_chance': [object Object]
+2026-01-29 20:03:52,671 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'win_chance' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_win_chance)
+2026-01-29 20:03:52,672 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'augment_recommendations': [object Object]
+2026-01-29 20:03:52,672 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'augment_recommendations' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_augment_recommendations)
+2026-01-29 20:03:52,674 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'filter_menu': [object Object]
+2026-01-29 20:03:52,675 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'filter_menu' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_filter_menu)
+2026-01-29 20:03:52,675 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'headliner_countdown': [object Object]
+2026-01-29 20:03:52,677 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'headliner_countdown' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_headliner_countdown)
+2026-01-29 20:03:52,678 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully obtained window 'replay_controls': [object Object]
+2026-01-29 20:03:52,679 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Attempting to close window 'replay_controls' (ID: Window_Extension_aheglebeeekjdnkljmpngplhpedgejncjhojnndh_replay_controls)
+2026-01-29 20:03:52,741 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'ingamecontroller': [object Object]
+2026-01-29 20:03:52,782 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'ingamedesktop': [object Object]
+2026-01-29 20:03:52,783 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'matchups': [object Object]
+2026-01-29 20:03:52,784 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'matchups_map': [object Object]
+2026-01-29 20:03:52,784 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'loading': [object Object]
+2026-01-29 20:03:52,785 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'pinned_comp': [object Object]
+2026-01-29 20:03:52,785 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'win_chance': [object Object]
+2026-01-29 20:03:52,786 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'augment_recommendations': [object Object]
+2026-01-29 20:03:52,786 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'filter_menu': [object Object]
+2026-01-29 20:03:52,787 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'headliner_countdown': [object Object]
+2026-01-29 20:03:52,787 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] Successfully closed window 'replay_controls': [object Object]
+2026-01-29 20:03:52,790 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'ingamecontroller': [object Object]
+2026-01-29 20:03:52,790 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'ingamedesktop': [object Object]
+2026-01-29 20:03:52,792 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'matchups': [object Object]
+2026-01-29 20:03:52,792 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'matchups_map': [object Object]
+2026-01-29 20:03:52,793 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'loading': [object Object]
+2026-01-29 20:03:52,793 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'pinned_comp': [object Object]
+2026-01-29 20:03:52,794 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'win_chance': [object Object]
+2026-01-29 20:03:52,794 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'augment_recommendations': [object Object]
+2026-01-29 20:03:52,795 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'filter_menu': [object Object]
+2026-01-29 20:03:52,795 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'headliner_countdown': [object Object]
+2026-01-29 20:03:52,796 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Successfully closed 'replay_controls': [object Object]
+2026-01-29 20:03:52,796 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Using global window.reduxStore
+2026-01-29 20:03:52,824 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame: Monitor list result: [object Object]
+2026-01-29 20:03:52,825 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] EndGame completed: [object Object]
+2026-01-29 20:03:54,663 (INFO) </assets/index-B8ApVJ18.js> (:20748) - dispatching end_game
+2026-01-29 20:03:54,719 (INFO) </assets/index-B8ApVJ18.js> (:20748) - data successfully stored
+2026-01-29 20:03:55,398 (INFO) </assets/index-B8ApVJ18.js> (:20748) - data response:  [object Object]
+2026-01-29 20:03:56,094 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] TriggerReopen called: [object Object]
+2026-01-29 20:03:56,095 (INFO) </assets/index-B8ApVJ18.js> (:20748) - dispatching navigate
+2026-01-29 20:03:56,266 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] TriggerReopen: Obtained main window: [object Object]
+2026-01-29 20:03:56,286 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] TriggerReopen: Window state check: [object Object]
+2026-01-29 20:03:56,286 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] TriggerReopen: Flashing window (minimize then restore): [object Object]
+2026-01-29 20:03:56,313 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] TriggerReopen: Successfully minimized, restoring in 500ms: [object Object]
+2026-01-29 20:03:56,963 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] TriggerReopen: Successfully restored, bringing to front: [object Object]
+2026-01-29 20:03:57,915 (INFO) </assets/index-B8ApVJ18.js> (:27) - [WindowService] TriggerReopen: Bring to front result: [object Object]
+2026-01-29 20:04:04,637 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Getting player info  NA1 Karina Super Fan#8148
+2026-01-29 20:04:04,638 (INFO) </assets/index-B8ApVJ18.js> (:20748) - getting player: url  https://api.metatft.com/public/profile/lookup_by_riotid/NA1/Karina Super Fan/8148?source=app_profile&include_revival_matches=true
+2026-01-29 20:04:04,743 (INFO) </assets/index-B8ApVJ18.js> (:20748) - Existing Player Summary Data:  [object Object]
