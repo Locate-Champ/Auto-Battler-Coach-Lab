@@ -54,33 +54,39 @@
   }
 
   // Extract relevant data from Redux state
+  // NOTE: State is nested under 'game' key: state.game.board, not state.board
   function extractGameData(state) {
     if (!state) return null;
 
+    // The game data is nested under state.game
+    const game = state.game || state;
+
     const data = {
       timestamp: new Date().toISOString(),
-      // Board pieces
-      board: state.board?.board_pieces || {},
+      // Board pieces (your board)
+      board: game.board?.board_pieces || {},
       // Bench pieces
-      bench: state.bench?.bench_pieces || {},
+      bench: game.bench?.bench_pieces || {},
       // Shop pieces
-      shop: state.store?.shop_pieces || {},
+      shop: game.store?.shop_pieces || {},
       // Player info (me)
       me: {
-        gold: state.me?.gold || '',
-        health: state.me?.health || '',
-        xp: state.me?.xp || {},
-        rank: state.me?.rank || '',
-        summoner_name: state.me?.summoner_name || '',
+        gold: game.me?.gold || '',
+        health: game.me?.health || '',
+        xp: game.me?.xp || {},
+        rank: game.me?.rank || '',
+        summoner_name: game.me?.summoner_name || '',
       },
       // Roster (all 8 players)
-      roster: state.roster?.player_status || {},
+      roster: game.roster?.player_status || {},
       // Match info
-      match_info: state.match_info || {},
+      match_info: game.match_info || {},
       // Carousel
-      carousel: state.carousel?.carousel_pieces || {},
+      carousel: game.carousel?.carousel_pieces || {},
       // Game info
-      game_info: state.game_info || {},
+      game_info: game.game_info || {},
+      // ALL 8 players' boards (board_1 through board_8)
+      board_data: game.board?.board_data || {},
     };
 
     return data;
@@ -221,9 +227,12 @@
       const state = this.store.getState();
       if (!state) return;
 
+      // State is nested under 'game' key
+      const game = state.game || state;
+
       // Check if board or bench changed
-      const currentBoard = JSON.stringify(state.board?.board_pieces);
-      const currentBench = JSON.stringify(state.bench?.bench_pieces);
+      const currentBoard = JSON.stringify(game.board?.board_pieces);
+      const currentBench = JSON.stringify(game.bench?.bench_pieces);
       const lastBoard = this.lastState?.board;
       const lastBench = this.lastState?.bench;
 
@@ -259,6 +268,8 @@
         bench_units: transformBenchPieces(gameData.bench),
         me: gameData.me,
         roster: gameData.roster,
+        // All 8 players' boards (for scouting/opponent display)
+        board_data: gameData.board_data,
         raw: {
           board: gameData.board,
           bench: gameData.bench,
@@ -303,20 +314,41 @@
     return store ? store.getState() : null;
   };
 
-  window.__getBoardData = () => {
+  // Get the game-specific state (nested under 'game' key)
+  window.__getGameState = () => {
     const state = window.__getReduxState();
+    return state?.game || state;
+  };
+
+  window.__getBoardData = () => {
+    const state = window.__getGameState();
     return state?.board?.board_pieces || null;
   };
 
   window.__getBenchData = () => {
-    const state = window.__getReduxState();
+    const state = window.__getGameState();
     return state?.bench?.bench_pieces || null;
+  };
+
+  // Get ALL 8 players' boards
+  window.__getAllBoards = () => {
+    const state = window.__getGameState();
+    return state?.board?.board_data || null;
+  };
+
+  // Get player info
+  window.__getPlayerInfo = () => {
+    const state = window.__getGameState();
+    return state?.me || null;
   };
 
   log('Redux Bridge initialized. Utility functions available:');
   log('  __getReduxState() - Get full Redux state');
-  log('  __getBoardData() - Get board pieces');
-  log('  __getBenchData() - Get bench pieces');
+  log('  __getGameState() - Get game state (state.game)');
+  log('  __getBoardData() - Get your board pieces');
+  log('  __getBenchData() - Get your bench pieces');
+  log('  __getAllBoards() - Get ALL 8 players\' boards');
+  log('  __getPlayerInfo() - Get your player info (gold, health, etc)');
   log('  __reduxBridge.stop() - Stop the bridge');
 
 })();

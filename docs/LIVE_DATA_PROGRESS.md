@@ -316,12 +316,27 @@ After analyzing MetaTFT's JavaScript (`index-Beck-RJr.js`), we discovered:
 
 ### MetaTFT's Redux Store Structure
 
+**Top-level state:**
 ```javascript
 {
-  board: { board_pieces: {} },      // Live board state
-  bench: { bench_pieces: {} },      // Live bench state
+  game: { ... },      // All game data (see below)
+  launcher: { ... },  // Launcher state
+  data: { ... },      // Cached data
+  twitch: { ... },    // Twitch integration
+  lookups: { ... }    // Reference data
+}
+```
+
+**Game state (`state.game`):**
+```javascript
+{
+  board: {
+    board_pieces: {},    // Your live board
+    board_data: {}       // ALL 8 players' boards!
+  },
+  bench: { bench_pieces: {} },
   carousel: { carousel_pieces: {} },
-  store: { shop_pieces: {} },       // Shop contents
+  store: { shop_pieces: {} },
   game_info: {},
   gep_internal: {},
   me: {
@@ -331,7 +346,7 @@ After analyzing MetaTFT's JavaScript (`index-Beck-RJr.js`), we discovered:
     rank: "",
     summoner_name: ""
   },
-  roster: { player_status: {} },    // All 8 players
+  roster: { player_status: {} },
   match_info: {},
   item_select: {}
 }
@@ -469,3 +484,97 @@ Overlay (receives live updates)
 1. **During game:** Use Redux Bridge for live board/bench data
 2. **After game:** Use UUID approach for complete match history with all 8 boards
 3. **Fallback:** Log parsing for events (stage, augments, scouting, health)
+
+---
+
+## ✅ CONFIRMED: Redux Bridge Live Data Extraction (2026-01-30)
+
+### Key Discovery: State Path Correction
+
+The Redux state is nested under `game` key:
+- ❌ `state.board.board_pieces` (incorrect)
+- ✅ `state.game.board.board_pieces` (correct)
+
+### Confirmed Data Available in Real-Time
+
+| Data | Path | Example |
+|------|------|---------|
+| Your board | `state.game.board.board_pieces` | 10 units with items, levels |
+| Your bench | `state.game.bench.bench_pieces` | Units waiting on bench |
+| Player info | `state.game.me` | Gold: "5", Health: "22", Level 8 |
+| All 8 players | `state.game.roster.player_status` | Health, level for all |
+| Shop | `state.game.store.shop_pieces` | Current shop offerings |
+| **ALL 8 boards** | `state.game.board.board_data` | board_1 through board_8! |
+
+### Live Data Structure Confirmed
+
+**Board Unit (cell_1):**
+```json
+{
+  "name": "TFT16_Lissandra",
+  "level": "2",
+  "item_1": "TFT_Item_SpearOfShojin",
+  "item_2": "TFT_Item_JeweledGauntlet",
+  "item_3": "TFT_Item_HextechGunblade",
+  "items": [{full item objects with stats}],
+  "unit_data": {full champion data with abilities, traits}
+}
+```
+
+**Player Info (me):**
+```json
+{
+  "gold": "5",
+  "health": "22",
+  "xp": { "current": "46", "max": "52" },
+  "rank": "8",
+  "summoner_name": "Karina Super Fan"
+}
+```
+
+**All 8 Boards (board_data):**
+```json
+{
+  "board_1": { "B1": {...}, "D7": {...} },
+  "board_2": { "A1": {...}, "C3": {...} },
+  ...
+  "board_8": {...}
+}
+```
+
+### Enabling Overwolf DevTools
+
+DevTools are disabled by default. Enable via:
+
+**Registry Method:**
+```
+HKEY_CURRENT_USER\SOFTWARE\Overwolf\CEF
+  enable-features = "enable-dev-tools"
+```
+
+**Command Line:**
+```bash
+overwolf.exe --ow-enable-features=enable-dev-tools
+```
+
+### Updated Debug Functions
+
+After injecting `inject.js`:
+```javascript
+__getReduxState()   // Full Redux state
+__getGameState()    // Game state (state.game)
+__getBoardData()    // Your board pieces
+__getBenchData()    // Your bench pieces
+__getAllBoards()    // ALL 8 players' boards!
+__getPlayerInfo()   // Gold, health, XP, etc.
+__reduxBridge.stop() // Stop the bridge
+```
+
+### Status
+
+- ✅ DevTools access working
+- ✅ Redux store access confirmed
+- ✅ Live board data extraction verified
+- ✅ All 8 players' boards available via `board_data`
+- ✅ inject.js updated with correct state paths
+- ⏳ WebSocket integration testing
