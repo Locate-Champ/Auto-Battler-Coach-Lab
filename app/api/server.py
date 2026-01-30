@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List, Dict, Optional
+import json
 import sys
 from pathlib import Path
 
@@ -140,6 +141,35 @@ async def get_stage_comps(stage: int):
 
     comps = recommender.get_best_early_comps(stage, top_n=5)
     return {'stage': stage, 'comps': comps}
+
+
+@app.get("/api/meta-comps")
+async def get_meta_comps(limit: int = 10):
+    """Get current meta compositions from tactics.tools data"""
+    data_dir = Path(__file__).parent.parent.parent
+    comps_file = data_dir / "data" / "meta" / "comps.json"
+    timestamp_file = data_dir / "data" / "meta" / "last_updated.json"
+
+    if not comps_file.exists():
+        raise HTTPException(status_code=404, detail="Meta data not available. Run fetch_meta_data.py first.")
+
+    with open(comps_file, 'r') as f:
+        data = json.load(f)
+
+    # Get last updated timestamp
+    last_updated = None
+    if timestamp_file.exists():
+        with open(timestamp_file, 'r') as f:
+            timestamp_data = json.load(f)
+            last_updated = timestamp_data.get('last_updated')
+
+    # Return top N comps with metadata
+    return {
+        'patch': data.get('patch', 'unknown'),
+        'total_games': data.get('total_games', 0),
+        'last_updated': last_updated,
+        'comps': data.get('comps', [])[:limit]
+    }
 
 
 @app.get("/api/augments")

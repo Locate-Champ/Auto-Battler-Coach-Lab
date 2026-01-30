@@ -25,6 +25,12 @@ export async function fetchComps(stage) {
   return res.json()
 }
 
+export async function fetchMetaComps(limit = 10) {
+  const res = await fetch(`${API_BASE}/api/meta-comps?limit=${limit}`)
+  if (!res.ok) throw new Error('Failed to fetch meta comps')
+  return res.json()
+}
+
 export async function fetchAugments(tier, rarity) {
   const params = new URLSearchParams()
   if (tier) params.append('tier', tier)
