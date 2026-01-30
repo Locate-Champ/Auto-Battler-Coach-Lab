@@ -63,7 +63,8 @@ interface UseMetaCompsResult {
   refetch: () => Promise<void>;
 }
 
-const DEFAULT_API_URL = 'http://127.0.0.1:8000';
+// Empty string uses Vite proxy in development
+const DEFAULT_API_URL = '';
 
 export function useMetaComps(options: UseMetaCompsOptions = {}): UseMetaCompsResult {
   const {

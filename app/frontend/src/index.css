@@ -1,81 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* TFT Coach Companion Styles */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 body {
-  background: #030712;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   margin: 0;
   min-height: 100vh;
-}
-
-/* Hexagon clip path */
-.hex-clip {
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-}
-
-/* Status dot pulse animation */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.status-pulse {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-/* Cost tier colors */
-.cost-1 { border-color: #6b7280; box-shadow: 0 0 8px rgba(107, 114, 128, 0.5); }
-.cost-2 { border-color: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, 0.5); }
-.cost-3 { border-color: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); }
-.cost-4 { border-color: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.5); }
-.cost-5 { border-color: #eab308; box-shadow: 0 0 8px rgba(234, 179, 8, 0.5); }
-
-/* Tier badge colors */
-.tier-s { background: #eab308; }
-.tier-a { background: #22c55e; }
-.tier-b { background: #3b82f6; }
-.tier-c { background: #6b7280; }
-.tier-d { background: #f97316; }
-.tier-f { background: #ef4444; }
-
-/* Panel cards */
-.panel-card {
-  background: rgba(17, 24, 39, 0.9);
-  border: 1px solid #374151;
-  border-radius: 8px;
-}
-
-/* Empty hex */
-.empty-hex {
-  background: linear-gradient(135deg, #1f2937, #111827);
-  border: 2px solid #374151;
-  opacity: 0.4;
-}
-
-.empty-hex:hover {
-  opacity: 0.6;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #111827;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #374151;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #4b5563;
 }

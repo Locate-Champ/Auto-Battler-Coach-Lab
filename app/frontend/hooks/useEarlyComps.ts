@@ -62,7 +62,8 @@ export interface EarlyCompWithTransition extends EarlyComp {
   transitionProbability: number;
 }
 
-const DEFAULT_API_URL = 'http://127.0.0.1:8000';
+// Empty string uses Vite proxy in development
+const DEFAULT_API_URL = '';
 
 export function useEarlyComps(options: UseEarlyCompsOptions = {}): UseEarlyCompsResult {
   const {
