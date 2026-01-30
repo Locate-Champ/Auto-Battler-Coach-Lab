@@ -78,6 +78,7 @@ class ReduxBridgeHandler:
             "bench_units": self._parse_bench_units(data.get("bench_units", [])),
             "player": self._parse_player_info(data.get("me", {})),
             "roster": data.get("roster", {}),
+            "opponent_boards": self._parse_all_boards(data.get("board_data", {})),
             "raw": data.get("raw", {}),
         }
 
@@ -161,6 +162,50 @@ class ReduxBridgeHandler:
             "summoner_name": me.get("summoner_name", ""),
         }
 
+    def _parse_all_boards(self, board_data: dict) -> dict[str, list[dict]]:
+        """
+        Parse all 8 players' boards from Redux board_data.
+
+        Args:
+            board_data: Dict with keys like "board_0", "board_1", etc.
+                       Each value is a dict of position -> unit data
+
+        Returns:
+            Dict mapping board_id to list of units on that board
+        """
+        if not board_data or not isinstance(board_data, dict):
+            return {}
+
+        parsed = {}
+        for board_key, board_pieces in board_data.items():
+            # board_key is like "board_0", "board_1", etc.
+            if not board_key.startswith("board_"):
+                continue
+
+            if not isinstance(board_pieces, dict):
+                continue
+
+            units = []
+            for pos_key, unit_data in board_pieces.items():
+                if not isinstance(unit_data, dict):
+                    continue
+
+                # Parse unit data
+                unit = {
+                    "character_id": unit_data.get("character_id", ""),
+                    "name": unit_data.get("name", ""),
+                    "stars": unit_data.get("rarity", 1),  # rarity = star level
+                    "items": unit_data.get("items", []),
+                    "position": pos_key,
+                }
+                units.append(unit)
+
+            if units:
+                parsed[board_key] = units
+
+        logger.debug(f"Parsed {len(parsed)} opponent boards with {sum(len(u) for u in parsed.values())} total units")
+        return parsed
+
 
 def integrate_with_state_manager(handler: ReduxBridgeHandler, state_manager: Any):
     """
@@ -211,6 +256,23 @@ def integrate_with_state_manager(handler: ReduxBridgeHandler, state_manager: Any
             state_manager.state.player.name = player["summoner_name"]
         if player.get("health"):
             state_manager.state.player.health = player["health"]
+
+        # Update opponent boards for pool tracking
+        if state.get("opponent_boards"):
+            from app.state.game_state import Unit
+            opponent_boards = {}
+            for board_id, units_data in state["opponent_boards"].items():
+                units = []
+                for unit_data in units_data:
+                    unit = Unit(
+                        character_id=unit_data.get("character_id", ""),
+                        star_level=unit_data.get("stars", 1),
+                        items=unit_data.get("items", []),
+                    )
+                    units.append(unit)
+                opponent_boards[board_id] = units
+            state_manager.state.opponent_boards = opponent_boards
+            logger.debug(f"Updated {len(opponent_boards)} opponent boards")
 
         # Mark state as updated
         state_manager.state.update_timestamp()

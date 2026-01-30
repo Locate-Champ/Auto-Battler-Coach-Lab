@@ -74,6 +74,9 @@ class GameState:
     # Opponents
     opponents: dict[str, PlayerState] = field(default_factory=dict)
 
+    # All opponent boards for pool tracking (board_id -> list of units)
+    opponent_boards: dict[str, list[Unit]] = field(default_factory=dict)
+
     # Scouting
     currently_scouting: Optional[str] = None
 
@@ -128,6 +131,18 @@ class GameState:
                 }
                 for u in self.bench_units
             ],
+            # Opponent boards for pool tracking
+            "opponent_boards": {
+                board_id: [
+                    {
+                        "character_id": u.character_id,
+                        "name": u.name,
+                        "stars": u.star_level,
+                    }
+                    for u in units
+                ]
+                for board_id, units in self.opponent_boards.items()
+            },
         }
 
     @property
@@ -167,5 +182,6 @@ class GameState:
         self.augment_armory_active = False
         self.bench_units = []
         self.opponents = {}
+        self.opponent_boards = {}
         self.currently_scouting = None
         self.win_chance = None
