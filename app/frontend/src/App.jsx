@@ -92,7 +92,7 @@ function App() {
   useEffect(() => {
     const loadMetaComps = async () => {
       try {
-        const metaData = await fetchMetaComps(5)
+        const metaData = await fetchMetaComps(15)
         setMetaComps(metaData)
       } catch (err) {
         console.error('Failed to load meta comps:', err)

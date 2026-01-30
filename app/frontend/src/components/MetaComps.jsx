@@ -47,8 +47,8 @@ function MetaComps({ metaComps, loading }) {
         </span>
       </div>
 
-      <div className="space-y-2">
-        {metaComps.comps.slice(0, 5).map((comp, index) => (
+      <div className="space-y-2 max-h-[500px] overflow-y-auto pr-1">
+        {metaComps.comps.slice(0, 15).map((comp, index) => (
           <div
             key={index}
             className={`p-2 rounded ${
