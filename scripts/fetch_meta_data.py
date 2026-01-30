@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """
-Fetch fresh TFT meta data from tactics.tools.
+Fetch fresh TFT meta data from MetaTFT API.
 This script is run by GitHub Actions on a daily schedule.
 
-Data source: https://tactics.tools/team-compositions
-Extracts the __NEXT_DATA__ JSON block containing current meta compositions.
+Data source: https://api-hc.metatft.com/tft-comps-api/comps_data
+Returns composition clusters with performance stats, item builds, and traits.
 """
 
 import json
-import os
-import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -19,130 +17,189 @@ import requests
 SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data" / "meta"
 
-# Data source
-TACTICS_TOOLS_URL = "https://tactics.tools/team-compositions"
+# MetaTFT API endpoint
+METATFT_API_URL = "https://api-hc.metatft.com/tft-comps-api/comps_data"
+METATFT_API_PARAMS = {
+    "queue": "1100",  # Ranked queue
+    "region_hint": "na1"
+}
 
-# Request headers to avoid being blocked
+# Request headers
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.5",
+    "User-Agent": "TFT-Coach/1.0",
+    "Accept": "application/json",
+}
+
+# Tier thresholds based on average placement
+TIER_THRESHOLDS = {
+    "S": 4.0,   # < 4.0 avg placement
+    "A": 4.3,   # 4.0 - 4.3
+    "B": 4.6,   # 4.3 - 4.6
+    # C: > 4.6 (filtered out)
 }
 
 
-def fetch_tactics_tools_data():
+def calculate_tier(avg_placement: float) -> str:
+    """Calculate tier based on average placement."""
+    if avg_placement < TIER_THRESHOLDS["S"]:
+        return "S"
+    elif avg_placement < TIER_THRESHOLDS["A"]:
+        return "A"
+    elif avg_placement < TIER_THRESHOLDS["B"]:
+        return "B"
+    return "C"
+
+
+def fetch_metatft_data():
     """
-    Fetch composition data from tactics.tools by extracting __NEXT_DATA__ JSON.
+    Fetch composition data from MetaTFT API.
 
     Returns:
-        dict: Parsed composition data or None if fetch fails
+        dict: Raw API response or None if fetch fails
     """
-    print(f"Fetching data from {TACTICS_TOOLS_URL}...")
+    print(f"Fetching data from MetaTFT API...")
+    print(f"URL: {METATFT_API_URL}")
 
     try:
-        response = requests.get(TACTICS_TOOLS_URL, headers=HEADERS, timeout=30)
+        response = requests.get(
+            METATFT_API_URL,
+            params=METATFT_API_PARAMS,
+            headers=HEADERS,
+            timeout=30
+        )
         response.raise_for_status()
     except requests.RequestException as e:
-        print(f"Error fetching tactics.tools: {e}")
-        return None
-
-    # Extract __NEXT_DATA__ JSON from HTML
-    html = response.text
-    pattern = r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>'
-    match = re.search(pattern, html, re.DOTALL)
-
-    if not match:
-        print("Error: Could not find __NEXT_DATA__ in response")
+        print(f"Error fetching MetaTFT API: {e}")
         return None
 
     try:
-        next_data = json.loads(match.group(1))
+        data = response.json()
     except json.JSONDecodeError as e:
-        print(f"Error parsing __NEXT_DATA__ JSON: {e}")
+        print(f"Error parsing JSON response: {e}")
         return None
 
-    print("Successfully extracted __NEXT_DATA__ JSON")
-    return next_data
+    print("Successfully fetched MetaTFT data")
+    return data
 
 
-def extract_comps_data(next_data):
+def extract_comps_data(raw_data):
     """
-    Extract and normalize composition data from __NEXT_DATA__.
+    Extract and normalize composition data from MetaTFT API response.
 
     Args:
-        next_data: Raw __NEXT_DATA__ JSON object
+        raw_data: Raw API response
 
     Returns:
-        dict: Normalized composition data
+        dict: Normalized composition data with tiers
     """
-    if not next_data:
+    if not raw_data:
         return None
 
     try:
-        # Navigate to the page props where comp data lives
-        page_props = next_data.get("props", {}).get("pageProps", {})
+        # Navigate to cluster details
+        results = raw_data.get("results", {})
+        data = results.get("data", {})
+        cluster_details = data.get("cluster_details", {})
+        tft_set = data.get("tft_set", "TFTSet16")
 
-        # Extract aperture (filter settings) for metadata
-        aperture = page_props.get("aperture", {})
-        patch_data = aperture.get("patch", {})
-        # Patch is stored as {"_0": 16021} meaning patch 16.2.1
-        patch_num = patch_data.get("_0", 0) if isinstance(patch_data, dict) else patch_data
-        patch_str = f"{patch_num // 1000}.{(patch_num % 1000) // 10}.{patch_num % 10}" if patch_num else "unknown"
+        # Extract patch from set name (e.g., TFTSet16 -> 16.x)
+        patch = tft_set.replace("TFTSet", "") if tft_set else "unknown"
 
-        # Get initial data containing the groups
-        initial_data = page_props.get("initialData", {})
-
-        # Extract comps from all groups
         comps = []
-        groups = initial_data.get("groups", [])
+        total_games = 0
 
-        for group in groups:
-            full_data = group.get("full", {})
-            raw_comps = full_data.get("comps", [])
+        for cluster_id, cluster_data in cluster_details.items():
+            overall = cluster_data.get("overall", {})
+            games_played = overall.get("count", 0)
+            avg_placement = overall.get("avg", 5.0)
 
-            for comp in raw_comps:
-                normalized = {
-                    "units": comp.get("units", []),
-                    "games_played": comp.get("count", 0),
-                    "avg_placement": round(comp.get("place", 0), 2),
-                    "top4_count": comp.get("top4", 0),
-                    "wins": comp.get("win", 0),
-                    "spat_items": comp.get("spatItems", []),
-                    "extra_traits": comp.get("extraTraits", []),
-                }
+            total_games += games_played
 
-                # Calculate rates
-                if normalized["games_played"] > 0:
-                    normalized["top4_rate"] = round(
-                        normalized["top4_count"] / normalized["games_played"] * 100, 2
-                    )
-                    normalized["win_rate"] = round(
-                        normalized["wins"] / normalized["games_played"] * 100, 2
-                    )
-                else:
-                    normalized["top4_rate"] = 0
-                    normalized["win_rate"] = 0
+            # Calculate tier
+            tier = calculate_tier(avg_placement)
 
-                comps.append(normalized)
+            # Filter out C tier comps
+            if tier == "C":
+                continue
 
-        # Sort by games played (popularity) then top4 rate
-        comps.sort(key=lambda x: (-x["games_played"], -x["top4_rate"]))
+            # Parse units from units_string
+            units_string = cluster_data.get("units_string", "")
+            units = [u.strip() for u in units_string.split(",") if u.strip()]
 
-        # Extract metadata
+            # Parse traits from traits_string
+            traits_string = cluster_data.get("traits_string", "")
+            traits = []
+            for trait in traits_string.split(","):
+                trait = trait.strip()
+                if trait:
+                    # Extract trait name and count (e.g., "TFT16_Piltover_2" -> {"name": "Piltover", "count": 2})
+                    parts = trait.replace("TFT16_", "").rsplit("_", 1)
+                    if len(parts) == 2 and parts[1].isdigit():
+                        traits.append({"name": parts[0], "count": int(parts[1])})
+
+            # Extract builds (top 3)
+            builds = []
+            for build in cluster_data.get("builds", [])[:3]:
+                builds.append({
+                    "unit": build.get("unit", "").replace("TFT16_", ""),
+                    "items": [item.replace("TFT_Item_", "") for item in build.get("buildName", [])],
+                    "games": build.get("count", 0),
+                    "avg_placement": round(build.get("avg", 0), 2),
+                    "place_change": round(build.get("place_change", 0), 3),
+                })
+
+            # Calculate approximate top4 and win rates from placement
+            # Top 4 rate approximation: (8 - avg_placement) / 7 * 100 (rough estimate)
+            top4_rate = round(max(0, min(100, (8 - avg_placement) / 4 * 100)), 2)
+            # Win rate approximation: based on avg placement (very rough)
+            win_rate = round(max(0, min(50, (5 - avg_placement) * 10)), 2)
+
+            comp = {
+                "cluster_id": int(cluster_id) if cluster_id.isdigit() else cluster_id,
+                "tier": tier,
+                "name": cluster_data.get("name_string", "Unknown Comp"),
+                "units": units,
+                "traits": traits,
+                "avg_placement": round(avg_placement, 2),
+                "games_played": games_played,
+                "top4_rate": top4_rate,
+                "win_rate": win_rate,
+                "difficulty": round(cluster_data.get("difficulty", 0), 3),
+                "levelling": cluster_data.get("levelling", "Standard"),
+                "builds": builds,
+            }
+
+            comps.append(comp)
+
+        # Sort by tier (S > A > B) then by avg placement
+        tier_order = {"S": 0, "A": 1, "B": 2}
+        comps.sort(key=lambda x: (tier_order.get(x["tier"], 3), x["avg_placement"]))
+
         result = {
-            "patch": patch_str,
-            "total_games": initial_data.get("count", 0),
-            "avg_placement": round(initial_data.get("place", 0), 2),
+            "patch": patch,
+            "source": "metatft",
+            "total_games": total_games,
             "total_comps": len(comps),
+            "tier_counts": {
+                "S": sum(1 for c in comps if c["tier"] == "S"),
+                "A": sum(1 for c in comps if c["tier"] == "A"),
+                "B": sum(1 for c in comps if c["tier"] == "B"),
+            },
             "comps": comps,
         }
 
-        print(f"Extracted {len(comps)} compositions for patch {result['patch']}")
-        print(f"Total games analyzed: {result['total_games']:,}")
+        print(f"Extracted {len(comps)} compositions (B-S tier only)")
+        print(f"  S-tier: {result['tier_counts']['S']}")
+        print(f"  A-tier: {result['tier_counts']['A']}")
+        print(f"  B-tier: {result['tier_counts']['B']}")
+        print(f"Total games analyzed: {total_games:,}")
+
         return result
 
     except (KeyError, TypeError) as e:
         print(f"Error extracting comp data: {e}")
+        import traceback
+        traceback.print_exc()
         return None
 
 
@@ -167,8 +224,8 @@ def update_timestamp():
     timestamp_file = DATA_DIR / "last_updated.json"
     data = {
         "last_updated": datetime.now(timezone.utc).isoformat(),
-        "source": "tactics.tools",
-        "url": TACTICS_TOOLS_URL,
+        "source": "metatft",
+        "url": METATFT_API_URL,
         "automated": True
     }
 
@@ -181,18 +238,21 @@ def update_timestamp():
 
 def main():
     print("=" * 50)
-    print("TFT Meta Data Fetcher")
+    print("TFT Meta Data Fetcher (MetaTFT API)")
     print("=" * 50)
     print(f"Running at: {datetime.now(timezone.utc).isoformat()}")
     print()
 
-    # Fetch data from tactics.tools
-    next_data = fetch_tactics_tools_data()
+    # Fetch data from MetaTFT API
+    raw_data = fetch_metatft_data()
 
-    if next_data:
+    if raw_data:
         # Extract and save composition data
-        comps_data = extract_comps_data(next_data)
-        save_comps_data(comps_data)
+        comps_data = extract_comps_data(raw_data)
+        if comps_data:
+            save_comps_data(comps_data)
+        else:
+            print("Failed to extract comp data")
     else:
         print("Failed to fetch data - skipping save")
 
