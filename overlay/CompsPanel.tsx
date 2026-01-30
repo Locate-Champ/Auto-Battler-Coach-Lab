@@ -1,172 +1,22 @@
 import React, { useState } from 'react';
-import CompCard, { Comp, ContestedState } from './CompCard';
-
-// Static comp data from mockup
-const STATIC_COMPS: Comp[] = [
-  {
-    id: 'fiddlesticks-carry',
-    name: 'Fiddlesticks Carry',
-    playStyle: 'Fast 9',
-    tier: 'S',
-    cost: 38,
-    difficulty: 'Easy',
-    champions: [
-      { name: 'Anivia', cost: 1, imageFile: 'Anivia.png' },
-      { name: 'Neeko', cost: 2, imageFile: 'Neeko.png' },
-      { name: 'Nautilus', cost: 3, imageFile: 'Nautilus.png' },
-      { name: 'Sejuani', cost: 3, imageFile: 'Sejuani.png' },
-      { name: 'Braum', cost: 4, imageFile: 'Braum.png' },
-      { name: 'Taric', cost: 4, imageFile: 'Taric.png' },
-      { name: 'Fiddlesticks', cost: 5, imageFile: 'Fiddlesticks.png', isCarry: true },
-      { name: 'Ornn', cost: 5, imageFile: 'Ornn.png' },
-      { name: 'Zilean', cost: 5, imageFile: 'Zilean.png' },
-    ],
-    traits: [
-      { name: 'Harbinger', count: 4, isActive: true },
-      { name: 'Invoker', count: 2, isActive: true },
-    ],
-    stats: { top4Rate: 70, winRate: 18, avgPlacement: 3.2, playRate: 12 },
-    coreItems: [
-      { name: 'Morellonomicon', imageFile: 'Morellonomicon.png' },
-      { name: 'Blue Buff', imageFile: 'Blue Buff.png' },
-      { name: 'Jeweled Gauntlet', imageFile: 'Jeweled Gauntlet.png' },
-    ],
-  },
-  {
-    id: 'ryze-arcanist',
-    name: 'Ryze Arcanist',
-    playStyle: 'Fast 8',
-    tier: 'S',
-    cost: 35,
-    difficulty: 'Medium',
-    champions: [
-      { name: 'Lulu', cost: 1, imageFile: 'Lulu.png' },
-      { name: 'Twisted Fate', cost: 2, imageFile: 'Twisted Fate.png' },
-      { name: 'Ahri', cost: 3, imageFile: 'Ahri.png' },
-      { name: 'Zoe', cost: 3, imageFile: 'Zoe.png' },
-      { name: 'Lux', cost: 4, imageFile: 'Lux.png' },
-      { name: 'Seraphine', cost: 4, imageFile: 'Seraphine.png' },
-      { name: 'Taric', cost: 4, imageFile: 'Taric.png' },
-      { name: 'Ryze', cost: 5, imageFile: 'Ryze.png', isCarry: true },
-      { name: 'Zilean', cost: 5, imageFile: 'Zilean.png' },
-    ],
-    traits: [
-      { name: 'Arcanist', count: 6, isActive: true },
-      { name: 'Scholar', count: 2, isActive: true },
-    ],
-    stats: { top4Rate: 68, winRate: 15, avgPlacement: 3.4, playRate: 8 },
-    coreItems: [
-      { name: "Archangel's Staff", imageFile: "Archangel's Staff.png" },
-      { name: "Rabadon's Deathcap", imageFile: "Rabadon's Deathcap.png" },
-      { name: 'Jeweled Gauntlet', imageFile: 'Jeweled Gauntlet.png' },
-    ],
-  },
-  {
-    id: 'ambessa-slayer',
-    name: 'Ambessa Slayer',
-    playStyle: 'Fast 8',
-    tier: 'A',
-    cost: 32,
-    difficulty: 'Medium',
-    champions: [
-      { name: 'Viego', cost: 1, imageFile: 'Viego.png' },
-      { name: 'Ekko', cost: 2, imageFile: 'Ekko.png' },
-      { name: 'Draven', cost: 3, imageFile: 'Draven.png' },
-      { name: 'Leona', cost: 3, imageFile: 'Leona.png' },
-      { name: 'Ambessa', cost: 4, imageFile: 'Ambessa.png', isCarry: true },
-      { name: 'Swain', cost: 4, imageFile: 'Swain.png' },
-      { name: 'Garen', cost: 4, imageFile: 'Garen.png' },
-      { name: 'Kindred', cost: 5, imageFile: 'Kindred.png' },
-      { name: 'Mordekaiser', cost: 5, imageFile: 'Mordekaiser.png' },
-    ],
-    traits: [
-      { name: 'Slayer', count: 4, isActive: true },
-      { name: 'Noxus', count: 4, isActive: true },
-    ],
-    stats: { top4Rate: 58, winRate: 12, avgPlacement: 3.8, playRate: 15 },
-    coreItems: [
-      { name: 'Deathblade', imageFile: 'Deathblade.png' },
-      { name: 'Bloodthirster', imageFile: 'Bloodthirster.png' },
-      { name: 'Quicksilver', imageFile: 'Quicksilver.png' },
-    ],
-  },
-  {
-    id: 'ornn-tank',
-    name: 'Ornn Tank',
-    playStyle: 'Fast 9',
-    tier: 'A',
-    cost: 36,
-    difficulty: 'Easy',
-    champions: [
-      { name: 'Anivia', cost: 1, imageFile: 'Anivia.png' },
-      { name: 'Ashe', cost: 2, imageFile: 'Ashe.png' },
-      { name: 'Sejuani', cost: 3, imageFile: 'Sejuani.png' },
-      { name: 'Braum', cost: 4, imageFile: 'Braum.png' },
-      { name: 'Lissandra', cost: 4, imageFile: 'Lissandra.png' },
-      { name: 'Taric', cost: 4, imageFile: 'Taric.png' },
-      { name: 'Ornn', cost: 5, imageFile: 'Ornn.png', isCarry: true },
-      { name: 'Fiddlesticks', cost: 5, imageFile: 'Fiddlesticks.png' },
-      { name: 'Zilean', cost: 5, imageFile: 'Zilean.png' },
-    ],
-    traits: [
-      { name: 'Freljord', count: 4, isActive: true },
-      { name: 'Invoker', count: 2, isActive: true },
-    ],
-    stats: { top4Rate: 55, winRate: 10, avgPlacement: 4.0, playRate: 6 },
-    coreItems: [
-      { name: "Warmog's Armor", imageFile: "Warmog's Armor.png" },
-      { name: 'Gargoyle Stoneplate', imageFile: 'Gargoyle Stoneplate.png' },
-      { name: "Dragon's Claw", imageFile: "Dragon's Claw.png" },
-    ],
-  },
-  {
-    id: 'tristana-reroll',
-    name: 'Tristana Reroll',
-    playStyle: '2-Cost Reroll',
-    tier: 'B',
-    cost: 22,
-    difficulty: 'Hard',
-    champions: [
-      { name: 'Caitlyn', cost: 1, imageFile: 'Caitlyn.png' },
-      { name: 'Rumble', cost: 1, imageFile: 'Rumble.png' },
-      { name: 'Tristana', cost: 2, imageFile: 'Tristana.png', isCarry: true },
-      { name: 'Teemo', cost: 2, imageFile: 'Teemo.png' },
-      { name: 'Jinx', cost: 3, imageFile: 'Jinx.png' },
-      { name: 'Gangplank', cost: 3, imageFile: 'Gangplank.png' },
-      { name: 'Miss Fortune', cost: 4, imageFile: 'Miss Fortune.png' },
-      { name: 'Braum', cost: 4, imageFile: 'Braum.png' },
-      { name: 'Lucian', cost: 5, imageFile: 'Lucian.png' },
-    ],
-    traits: [
-      { name: 'Gunslinger', count: 4, isActive: true },
-      { name: 'Yordle', count: 3, isActive: true },
-    ],
-    stats: { top4Rate: 42, winRate: 6, avgPlacement: 4.8, playRate: 20 },
-    coreItems: [
-      { name: 'Infinity Edge', imageFile: 'Infinity Edge.png' },
-      { name: 'Last Whisper', imageFile: 'Last Whisper.png' },
-      { name: 'Giant Slayer', imageFile: 'Giant Slayer.png' },
-    ],
-  },
-];
+import MetaCompCard from './MetaCompCard';
+import { useMetaComps } from './hooks/useMetaComps';
 
 interface CompsPanelProps {
   className?: string;
 }
 
 const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
-  const [contestedStates, setContestedStates] = useState<Record<string, ContestedState>>({});
+  const { data, loading, error, refetch } = useMetaComps({ limit: 15 });
+  const [sortBy, setSortBy] = useState<'top4' | 'winRate' | 'games'>('top4');
 
-  const getContestedState = (compId: string): ContestedState => {
-    return contestedStates[compId] || 'neutral';
-  };
-
-  const handleContestedToggle = (compId: string, newState: ContestedState) => {
-    setContestedStates((prev) => ({
-      ...prev,
-      [compId]: newState,
-    }));
-  };
+  // Sort comps based on selected criteria
+  const sortedComps = data?.comps.slice().sort((a, b) => {
+    if (sortBy === 'top4') return b.top4_rate - a.top4_rate;
+    if (sortBy === 'winRate') return b.win_rate - a.win_rate;
+    if (sortBy === 'games') return b.games_played - a.games_played;
+    return 0;
+  });
 
   return (
     <div
@@ -178,28 +28,103 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
     >
       {/* Header */}
       <div
-        className="py-3 px-4 text-center"
+        className="py-3 px-4"
         style={{
           background: 'linear-gradient(180deg, #c9a033 0%, #8b6914 100%)',
         }}
       >
-        <h2 className="text-white text-base font-semibold tracking-wide">Top Comps</h2>
+        <div className="flex justify-between items-center">
+          <h2 className="text-white text-base font-semibold tracking-wide">Meta Comps</h2>
+          {data && (
+            <span className="text-white/80 text-xs">
+              Patch {data.patch}
+            </span>
+          )}
+        </div>
       </div>
 
-      {/* Scrollable list */}
+      {/* Sort controls */}
+      {data && (
+        <div className="px-3 py-2 flex gap-2 border-b border-[#3a3a4f]">
+          <button
+            className={`px-2 py-1 rounded text-xs ${sortBy === 'top4' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
+            onClick={() => setSortBy('top4')}
+          >
+            Top 4%
+          </button>
+          <button
+            className={`px-2 py-1 rounded text-xs ${sortBy === 'winRate' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
+            onClick={() => setSortBy('winRate')}
+          >
+            Win%
+          </button>
+          <button
+            className={`px-2 py-1 rounded text-xs ${sortBy === 'games' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
+            onClick={() => setSortBy('games')}
+          >
+            Games
+          </button>
+        </div>
+      )}
+
+      {/* Content */}
       <div
         className="p-2 flex flex-col gap-2 overflow-y-auto"
-        style={{ maxHeight: '700px' }}
+        style={{ maxHeight: '650px' }}
       >
-        {STATIC_COMPS.map((comp) => (
-          <CompCard
-            key={comp.id}
+        {/* Loading state */}
+        {loading && (
+          <div className="text-xs text-[#6b7280] text-center py-8">
+            Loading meta data...
+          </div>
+        )}
+
+        {/* Error state */}
+        {error && !loading && (
+          <div className="text-center py-4">
+            <div className="text-xs text-[#ff6b6b] mb-2">{error}</div>
+            <button
+              className="px-3 py-1 rounded text-xs bg-[#3a3a4f] text-white hover:bg-[#4a4a5f]"
+              onClick={() => refetch()}
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
+        {/* Empty state */}
+        {!loading && !error && (!data || data.comps.length === 0) && (
+          <div className="text-xs text-[#6b7280] text-center py-8">
+            No meta data available.
+            <br />
+            <span className="text-[10px]">Run fetch_meta_data.py to load data.</span>
+          </div>
+        )}
+
+        {/* Comp cards */}
+        {!loading && !error && sortedComps && sortedComps.map((comp, index) => (
+          <MetaCompCard
+            key={`${comp.units.join('-')}-${index}`}
             comp={comp}
-            contestedState={getContestedState(comp.id)}
-            onContestedToggle={(newState) => handleContestedToggle(comp.id, newState)}
+            rank={index + 1}
+            isHighlighted={index === 0}
           />
         ))}
       </div>
+
+      {/* Footer with total games */}
+      {data && (
+        <div
+          className="px-3 py-2 text-xs text-[#6b7280] text-center border-t border-[#3a3a4f]"
+        >
+          Data from {(data.total_games / 1000000).toFixed(1)}M games
+          {data.last_updated && (
+            <span className="ml-2">
+              | Updated: {new Date(data.last_updated).toLocaleDateString()}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 };
