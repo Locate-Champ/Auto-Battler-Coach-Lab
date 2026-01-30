@@ -34,6 +34,12 @@ export interface OpponentData {
   level: number;
 }
 
+export interface OpponentBoardUnit {
+  character_id: string;
+  name: string;
+  stars: number;
+}
+
 export interface GameState {
   game_id: string | null;
   game_phase: string;
@@ -49,6 +55,7 @@ export interface GameState {
   augment_options: string[];
   augment_armory_active: boolean;
   opponents: Record<string, OpponentData>;
+  opponent_boards: Record<string, OpponentBoardUnit[]>;
   currently_scouting: string | null;
   win_chance: number | null;
   board_units: BoardUnitData[];

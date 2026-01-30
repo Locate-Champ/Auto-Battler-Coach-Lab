@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MetaComp } from './hooks/useMetaComps';
+import { EarlyCompWithTransition } from './hooks/useEarlyComps';
+import EarlyCompDropdown from './EarlyCompDropdown';
 
 // Colors matching the overlay theme
 const COLORS = {
@@ -103,12 +105,26 @@ interface MetaCompCardProps {
   comp: MetaComp;
   rank: number;
   isHighlighted?: boolean;
+  earlyTransitions?: EarlyCompWithTransition[];
 }
 
-const MetaCompCard: React.FC<MetaCompCardProps> = ({ comp, rank, isHighlighted = false }) => {
+const MetaCompCard: React.FC<MetaCompCardProps> = ({
+  comp,
+  rank,
+  isHighlighted = false,
+  earlyTransitions = [],
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const tierColor = getTierColor(comp.tier);
   const gamesInK = (comp.games_played / 1000).toFixed(1);
   const levellingColor = getLevellingColor(comp.levelling);
+  const hasEarlyPaths = earlyTransitions.length > 0;
+
+  const handleClick = () => {
+    if (hasEarlyPaths) {
+      setIsExpanded(!isExpanded);
+    }
+  };
 
   return (
     <div
@@ -116,7 +132,9 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({ comp, rank, isHighlighted =
       style={{
         backgroundColor: COLORS.cardBg,
         border: `1px solid ${isHighlighted ? COLORS.gold : COLORS.cardBorder}`,
+        cursor: hasEarlyPaths ? 'pointer' : 'default',
       }}
+      onClick={handleClick}
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = COLORS.gold;
         e.currentTarget.style.transform = 'translateX(2px)';
@@ -200,7 +218,7 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({ comp, rank, isHighlighted =
       )}
 
       {/* Stats row */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
         <div className="flex flex-col items-center">
           <span
             className="text-sm font-semibold"
@@ -223,7 +241,22 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({ comp, rank, isHighlighted =
             Avg
           </span>
         </div>
+
+        {/* Early paths indicator */}
+        {hasEarlyPaths && (
+          <div className="ml-auto flex items-center gap-1 text-xs" style={{ color: '#6b7280' }}>
+            <span style={{ color: isExpanded ? COLORS.gold : '#6b7280' }}>
+              {isExpanded ? '▼' : '▶'}
+            </span>
+            <span>{earlyTransitions.length} early paths</span>
+          </div>
+        )}
       </div>
+
+      {/* Early game paths dropdown */}
+      {isExpanded && hasEarlyPaths && (
+        <EarlyCompDropdown earlyComps={earlyTransitions} maxComps={3} />
+      )}
     </div>
   );
 };
