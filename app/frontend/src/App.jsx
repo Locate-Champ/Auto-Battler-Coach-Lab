@@ -7,6 +7,7 @@ import ItemSuggestions from './components/ItemSuggestions'
 import ModelSuggestions from './components/ModelSuggestions'
 import PriorityUnits from './components/PriorityUnits'
 import MetaComps from './components/MetaComps'
+import PoolTracker from './components/PoolTracker'
 import { fetchStats, fetchItems, fetchPriorityUnits, fetchMetaComps } from './api'
 import './index.css'
 
@@ -37,6 +38,7 @@ function App() {
   const [items, setItems] = useState({ build: [], avoid: [] })
   const [priorityUnits, setPriorityUnits] = useState([])
   const [metaComps, setMetaComps] = useState(null)
+  const [gameState, setGameState] = useState(null)  // Live game state for pool tracking
   const [isLive] = useState(true)
   const [loading, setLoading] = useState(true)
   const [metaLoading, setMetaLoading] = useState(true)
@@ -159,6 +161,7 @@ function App() {
               counts={compCounts}
             />
             <PriorityUnits units={priorityUnits} boardUnits={units} />
+            <PoolTracker gameState={gameState} />
           </div>
         </div>
       </main>
