@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:full": "concurrently -n \"api,ws,ui\" -c \"yellow,magenta,cyan\" \"cd ../.. && python -m app.api.server\" \"cd ../.. && python -m app.main\" \"vite\"",
+    "dev:full": "concurrently -n \"api,ws,ui\" -c \"yellow,magenta,cyan\" \"cd ../.. && py -m app.api.server\" \"cd ../.. && py -m app.main\" \"vite\"",
+    "dev:full:unix": "concurrently -n \"api,ws,ui\" -c \"yellow,magenta,cyan\" \"cd ../.. && python -m app.api.server\" \"cd ../.. && python -m app.main\" \"vite\"",
     "build": "vite build",
     "preview": "vite preview"
   },
