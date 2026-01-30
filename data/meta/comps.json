@@ -1,0 +1,924 @@
+{
+  "patch": "16.2.1",
+  "total_games": 2392831,
+  "avg_placement": 4.5,
+  "total_comps": 45,
+  "comps": [
+    {
+      "units": [
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine",
+        "TFT16_Azir"
+      ],
+      "games_played": 108277,
+      "avg_placement": 3.55,
+      "top4_count": 76524,
+      "wins": 15570,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 70.67,
+      "win_rate": 14.38
+    },
+    {
+      "units": [
+        "TFT16_Shen",
+        "TFT16_Ahri",
+        "TFT16_Swain",
+        "TFT16_Wukong",
+        "TFT16_Yunara",
+        "TFT16_Kindred",
+        "TFT16_Sett",
+        "TFT16_Shyvana"
+      ],
+      "games_played": 41004,
+      "avg_placement": 3.45,
+      "top4_count": 28399,
+      "wins": 9544,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 69.26,
+      "win_rate": 23.28
+    },
+    {
+      "units": [
+        "TFT16_Shen",
+        "TFT16_Ahri",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Wukong",
+        "TFT16_Yunara",
+        "TFT16_Kindred",
+        "TFT16_Sett"
+      ],
+      "games_played": 37327,
+      "avg_placement": 3.99,
+      "top4_count": 21678,
+      "wins": 6895,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 58.08,
+      "win_rate": 18.47
+    },
+    {
+      "units": [
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine",
+        "TFT16_Taric"
+      ],
+      "games_played": 18174,
+      "avg_placement": 4.56,
+      "top4_count": 8800,
+      "wins": 1615,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 48.42,
+      "win_rate": 8.89
+    },
+    {
+      "units": [
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Malzahar",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine"
+      ],
+      "games_played": 15589,
+      "avg_placement": 4.86,
+      "top4_count": 6583,
+      "wins": 914,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 42.23,
+      "win_rate": 5.86
+    },
+    {
+      "units": [
+        "TFT16_Shen",
+        "TFT16_Ahri",
+        "TFT16_Swain",
+        "TFT16_Wukong",
+        "TFT16_Yunara",
+        "TFT16_Lucian",
+        "TFT16_Sett",
+        "TFT16_Shyvana"
+      ],
+      "games_played": 15338,
+      "avg_placement": 2.82,
+      "top4_count": 12587,
+      "wins": 4563,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 82.06,
+      "win_rate": 29.75
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Sona",
+        "TFT16_Poppy",
+        "TFT16_XinZhao",
+        "TFT16_Vayne",
+        "TFT16_Garen",
+        "TFT16_Lux",
+        "TFT16_Swain"
+      ],
+      "games_played": 15180,
+      "avg_placement": 5.21,
+      "top4_count": 5501,
+      "wins": 1209,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 36.24,
+      "win_rate": 7.96
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Sona",
+        "TFT16_Poppy",
+        "TFT16_XinZhao",
+        "TFT16_Garen",
+        "TFT16_Lux",
+        "TFT16_Swain",
+        "TFT16_Galio"
+      ],
+      "games_played": 14676,
+      "avg_placement": 3.83,
+      "top4_count": 9347,
+      "wins": 2224,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 63.69,
+      "win_rate": 15.15
+    },
+    {
+      "units": [
+        "TFT16_Yorick",
+        "TFT16_Gwen",
+        "TFT16_Loris",
+        "TFT16_Braum",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Fiddlesticks",
+        "TFT16_Thresh"
+      ],
+      "games_played": 12038,
+      "avg_placement": 3.68,
+      "top4_count": 7994,
+      "wins": 1943,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 66.41,
+      "win_rate": 16.14
+    },
+    {
+      "units": [
+        "TFT16_Shen",
+        "TFT16_Ahri",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Wukong",
+        "TFT16_Yunara",
+        "TFT16_Sett",
+        "TFT16_Shyvana"
+      ],
+      "games_played": 11661,
+      "avg_placement": 4.21,
+      "top4_count": 6217,
+      "wins": 1984,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 53.31,
+      "win_rate": 17.01
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Sona",
+        "TFT16_Poppy",
+        "TFT16_XinZhao",
+        "TFT16_Garen",
+        "TFT16_Lux",
+        "TFT16_Swain",
+        "TFT16_Zilean"
+      ],
+      "games_played": 10482,
+      "avg_placement": 3.45,
+      "top4_count": 7523,
+      "wins": 1962,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 71.77,
+      "win_rate": 18.72
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Sona",
+        "TFT16_Poppy",
+        "TFT16_XinZhao",
+        "TFT16_Garen",
+        "TFT16_Lissandra",
+        "TFT16_Lux",
+        "TFT16_Swain"
+      ],
+      "games_played": 7330,
+      "avg_placement": 4.23,
+      "top4_count": 4037,
+      "wins": 927,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 55.08,
+      "win_rate": 12.65
+    },
+    {
+      "units": [
+        "TFT16_Shen",
+        "TFT16_Ahri",
+        "TFT16_Draven",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Wukong",
+        "TFT16_Yunara",
+        "TFT16_Sett"
+      ],
+      "games_played": 7198,
+      "avg_placement": 5.12,
+      "top4_count": 2541,
+      "wins": 605,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 35.3,
+      "win_rate": 8.41
+    },
+    {
+      "units": [
+        "TFT16_ChoGath",
+        "TFT16_RekSai",
+        "TFT16_Sion",
+        "TFT16_Gangplank",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_RiftHerald",
+        "TFT16_Swain"
+      ],
+      "games_played": 7077,
+      "avg_placement": 4.33,
+      "top4_count": 3825,
+      "wins": 761,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 54.05,
+      "win_rate": 10.75
+    },
+    {
+      "units": [
+        "TFT16_Yorick",
+        "TFT16_Gwen",
+        "TFT16_Loris",
+        "TFT16_Braum",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Ornn",
+        "TFT16_Thresh"
+      ],
+      "games_played": 6848,
+      "avg_placement": 4.2,
+      "top4_count": 3815,
+      "wins": 909,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 55.71,
+      "win_rate": 13.27
+    },
+    {
+      "units": [
+        "TFT16_Shen",
+        "TFT16_Ahri",
+        "TFT16_Swain",
+        "TFT16_Wukong",
+        "TFT16_Yunara",
+        "TFT16_Kindred",
+        "TFT16_Lucian",
+        "TFT16_Sett"
+      ],
+      "games_played": 6818,
+      "avg_placement": 3.95,
+      "top4_count": 4018,
+      "wins": 1264,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 58.93,
+      "win_rate": 18.54
+    },
+    {
+      "units": [
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine",
+        "TFT16_Ornn"
+      ],
+      "games_played": 6219,
+      "avg_placement": 5.25,
+      "top4_count": 2143,
+      "wins": 332,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 34.46,
+      "win_rate": 5.34
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Sona",
+        "TFT16_Poppy",
+        "TFT16_XinZhao",
+        "TFT16_Garen",
+        "TFT16_Lux",
+        "TFT16_Taric",
+        "TFT16_Galio"
+      ],
+      "games_played": 6187,
+      "avg_placement": 4.14,
+      "top4_count": 3523,
+      "wins": 856,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 56.94,
+      "win_rate": 13.84
+    },
+    {
+      "units": [
+        "TFT16_Ashe",
+        "TFT16_Kennen",
+        "TFT16_Kobuko",
+        "TFT16_Sejuani",
+        "TFT16_Lissandra",
+        "TFT16_Taric",
+        "TFT16_Wukong",
+        "TFT16_Yunara"
+      ],
+      "games_played": 5816,
+      "avg_placement": 4.44,
+      "top4_count": 2917,
+      "wins": 721,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 50.15,
+      "win_rate": 12.4
+    },
+    {
+      "units": [
+        "TFT16_Viego",
+        "TFT16_Yorick",
+        "TFT16_Gwen",
+        "TFT16_Loris",
+        "TFT16_Braum",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Thresh"
+      ],
+      "games_played": 5196,
+      "avg_placement": 4.13,
+      "top4_count": 2967,
+      "wins": 635,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 57.1,
+      "win_rate": 12.22
+    },
+    {
+      "units": [
+        "TFT16_Briar",
+        "TFT16_ChoGath",
+        "TFT16_Gangplank",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_Swain",
+        "TFT16_Aatrox",
+        "TFT16_Shyvana"
+      ],
+      "games_played": 4856,
+      "avg_placement": 3.72,
+      "top4_count": 3164,
+      "wins": 790,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 65.16,
+      "win_rate": 16.27
+    },
+    {
+      "units": [
+        "TFT16_Illaoi",
+        "TFT16_RekSai",
+        "TFT16_Sion",
+        "TFT16_Gangplank",
+        "TFT16_Nautilus",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_Swain"
+      ],
+      "games_played": 4393,
+      "avg_placement": 4.37,
+      "top4_count": 2320,
+      "wins": 489,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 52.81,
+      "win_rate": 11.13
+    },
+    {
+      "units": [
+        "TFT16_Shen",
+        "TFT16_Ahri",
+        "TFT16_Draven",
+        "TFT16_Swain",
+        "TFT16_Wukong",
+        "TFT16_Yunara",
+        "TFT16_Sett",
+        "TFT16_Shyvana"
+      ],
+      "games_played": 4257,
+      "avg_placement": 4.57,
+      "top4_count": 1998,
+      "wins": 516,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 46.93,
+      "win_rate": 12.12
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Sona",
+        "TFT16_Poppy",
+        "TFT16_XinZhao",
+        "TFT16_Garen",
+        "TFT16_Lux",
+        "TFT16_Galio",
+        "TFT16_Zilean"
+      ],
+      "games_played": 3794,
+      "avg_placement": 3.99,
+      "top4_count": 2284,
+      "wins": 524,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 60.2,
+      "win_rate": 13.81
+    },
+    {
+      "units": [
+        "TFT16_Shen",
+        "TFT16_Ahri",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Wukong",
+        "TFT16_Yunara",
+        "TFT16_Lucian",
+        "TFT16_Sett"
+      ],
+      "games_played": 3773,
+      "avg_placement": 3.2,
+      "top4_count": 2722,
+      "wins": 1074,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 72.14,
+      "win_rate": 28.47
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Sona",
+        "TFT16_Poppy",
+        "TFT16_XinZhao",
+        "TFT16_Vayne",
+        "TFT16_Garen",
+        "TFT16_Lissandra",
+        "TFT16_Lux"
+      ],
+      "games_played": 3644,
+      "avg_placement": 5.09,
+      "top4_count": 1374,
+      "wins": 372,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 37.71,
+      "win_rate": 10.21
+    },
+    {
+      "units": [
+        "TFT16_Yorick",
+        "TFT16_Gwen",
+        "TFT16_Loris",
+        "TFT16_Ambessa",
+        "TFT16_Braum",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Thresh"
+      ],
+      "games_played": 3492,
+      "avg_placement": 4.58,
+      "top4_count": 1632,
+      "wins": 338,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 46.74,
+      "win_rate": 9.68
+    },
+    {
+      "units": [
+        "TFT16_Ekko",
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine"
+      ],
+      "games_played": 3146,
+      "avg_placement": 4.99,
+      "top4_count": 1237,
+      "wins": 178,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 39.32,
+      "win_rate": 5.66
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Sona",
+        "TFT16_Poppy",
+        "TFT16_Garen",
+        "TFT16_Lux",
+        "TFT16_Swain",
+        "TFT16_Galio",
+        "TFT16_Zilean"
+      ],
+      "games_played": 2916,
+      "avg_placement": 3.13,
+      "top4_count": 2277,
+      "wins": 643,
+      "spat_items": [],
+      "extra_traits": [
+        "TFT16_Demacia"
+      ],
+      "top4_rate": 78.09,
+      "win_rate": 22.05
+    },
+    {
+      "units": [
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine",
+        "TFT16_Azir"
+      ],
+      "games_played": 2829,
+      "avg_placement": 3.26,
+      "top4_count": 2165,
+      "wins": 504,
+      "spat_items": [],
+      "extra_traits": [
+        "TFT16_DarkinWeapon"
+      ],
+      "top4_rate": 76.53,
+      "win_rate": 17.82
+    },
+    {
+      "units": [
+        "TFT16_JarvanIV",
+        "TFT16_Poppy",
+        "TFT16_XinZhao",
+        "TFT16_Vayne",
+        "TFT16_Garen",
+        "TFT16_Lux",
+        "TFT16_Swain",
+        "TFT16_Galio"
+      ],
+      "games_played": 2780,
+      "avg_placement": 4.3,
+      "top4_count": 1499,
+      "wins": 287,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 53.92,
+      "win_rate": 10.32
+    },
+    {
+      "units": [
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine",
+        "TFT16_Zilean"
+      ],
+      "games_played": 2509,
+      "avg_placement": 4.0,
+      "top4_count": 1557,
+      "wins": 247,
+      "spat_items": [],
+      "extra_traits": [
+        "TFT16_Invoker"
+      ],
+      "top4_rate": 62.06,
+      "win_rate": 9.84
+    },
+    {
+      "units": [
+        "TFT16_Briar",
+        "TFT16_RekSai",
+        "TFT16_Gangplank",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_Swain",
+        "TFT16_Aatrox",
+        "TFT16_Fiddlesticks"
+      ],
+      "games_played": 2023,
+      "avg_placement": 3.75,
+      "top4_count": 1322,
+      "wins": 295,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 65.35,
+      "win_rate": 14.58
+    },
+    {
+      "units": [
+        "TFT16_Viego",
+        "TFT16_Yorick",
+        "TFT16_Gwen",
+        "TFT16_Loris",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Fiddlesticks",
+        "TFT16_Thresh"
+      ],
+      "games_played": 1818,
+      "avg_placement": 3.64,
+      "top4_count": 1200,
+      "wins": 313,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 66.01,
+      "win_rate": 17.22
+    },
+    {
+      "units": [
+        "TFT16_Viego",
+        "TFT16_Yorick",
+        "TFT16_Gwen",
+        "TFT16_Loris",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Kindred",
+        "TFT16_Thresh"
+      ],
+      "games_played": 1777,
+      "avg_placement": 3.42,
+      "top4_count": 1267,
+      "wins": 339,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 71.3,
+      "win_rate": 19.08
+    },
+    {
+      "units": [
+        "TFT16_ChoGath",
+        "TFT16_RekSai",
+        "TFT16_Sion",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_RiftHerald",
+        "TFT16_Swain",
+        "TFT16_Aatrox"
+      ],
+      "games_played": 1685,
+      "avg_placement": 4.47,
+      "top4_count": 843,
+      "wins": 139,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 50.03,
+      "win_rate": 8.25
+    },
+    {
+      "units": [
+        "TFT16_ChoGath",
+        "TFT16_RekSai",
+        "TFT16_Sion",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_RiftHerald",
+        "TFT16_Swain",
+        "TFT16_Fiddlesticks"
+      ],
+      "games_played": 1507,
+      "avg_placement": 4.33,
+      "top4_count": 810,
+      "wins": 159,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 53.75,
+      "win_rate": 10.55
+    },
+    {
+      "units": [
+        "TFT16_ChoGath",
+        "TFT16_RekSai",
+        "TFT16_Sion",
+        "TFT16_Gangplank",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_RiftHerald",
+        "TFT16_Swain"
+      ],
+      "games_played": 1483,
+      "avg_placement": 3.95,
+      "top4_count": 905,
+      "wins": 231,
+      "spat_items": [],
+      "extra_traits": [
+        "TFT16_Vanquisher"
+      ],
+      "top4_rate": 61.02,
+      "win_rate": 15.58
+    },
+    {
+      "units": [
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine",
+        "TFT16_Azir"
+      ],
+      "games_played": 1481,
+      "avg_placement": 3.08,
+      "top4_count": 1185,
+      "wins": 282,
+      "spat_items": [],
+      "extra_traits": [
+        "TFT16_Warden"
+      ],
+      "top4_rate": 80.01,
+      "win_rate": 19.04
+    },
+    {
+      "units": [
+        "TFT16_Anivia",
+        "TFT16_Orianna",
+        "TFT16_Vi",
+        "TFT16_Loris",
+        "TFT16_Sejuani",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Seraphine"
+      ],
+      "games_played": 1333,
+      "avg_placement": 4.06,
+      "top4_count": 802,
+      "wins": 127,
+      "spat_items": [],
+      "extra_traits": [
+        "TFT16_Freljord"
+      ],
+      "top4_rate": 60.17,
+      "win_rate": 9.53
+    },
+    {
+      "units": [
+        "TFT16_Yorick",
+        "TFT16_Loris",
+        "TFT16_Braum",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Fiddlesticks",
+        "TFT16_Ornn",
+        "TFT16_Thresh"
+      ],
+      "games_played": 1174,
+      "avg_placement": 3.63,
+      "top4_count": 790,
+      "wins": 206,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 67.29,
+      "win_rate": 17.55
+    },
+    {
+      "units": [
+        "TFT16_Briar",
+        "TFT16_ChoGath",
+        "TFT16_Gangplank",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_Swain",
+        "TFT16_Fiddlesticks",
+        "TFT16_Shyvana"
+      ],
+      "games_played": 1150,
+      "avg_placement": 3.64,
+      "top4_count": 781,
+      "wins": 195,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 67.91,
+      "win_rate": 16.96
+    },
+    {
+      "units": [
+        "TFT16_Yorick",
+        "TFT16_Gwen",
+        "TFT16_Loris",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Fiddlesticks",
+        "TFT16_Ornn",
+        "TFT16_Thresh"
+      ],
+      "games_played": 1130,
+      "avg_placement": 4.41,
+      "top4_count": 570,
+      "wins": 133,
+      "spat_items": [],
+      "extra_traits": [],
+      "top4_rate": 50.44,
+      "win_rate": 11.77
+    },
+    {
+      "units": [
+        "TFT16_Briar",
+        "TFT16_ChoGath",
+        "TFT16_Gangplank",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_Swain",
+        "TFT16_Aatrox",
+        "TFT16_Shyvana"
+      ],
+      "games_played": 1115,
+      "avg_placement": 3.18,
+      "top4_count": 867,
+      "wins": 243,
+      "spat_items": [],
+      "extra_traits": [
+        "TFT16_DarkinWeapon"
+      ],
+      "top4_rate": 77.76,
+      "win_rate": 21.79
+    },
+    {
+      "units": [
+        "TFT16_Yorick",
+        "TFT16_Gwen",
+        "TFT16_Loris",
+        "TFT16_Braum",
+        "TFT16_Kalista",
+        "TFT16_Seraphine",
+        "TFT16_Ornn",
+        "TFT16_Thresh"
+      ],
+      "games_played": 1077,
+      "avg_placement": 3.17,
+      "top4_count": 811,
+      "wins": 261,
+      "spat_items": [],
+      "extra_traits": [
+        "TFT16_DarkinWeapon"
+      ],
+      "top4_rate": 75.3,
+      "win_rate": 24.23
+    }
+  ]
+}
