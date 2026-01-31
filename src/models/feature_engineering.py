@@ -11,6 +11,8 @@ from pathlib import Path
 from collections import defaultdict
 from typing import Dict, List, Tuple, Optional
 
+from .role_rules import is_ad_role, is_ap_role
+
 
 class FeatureEngineer:
     """Transforms raw TFT match data into ML-ready features"""
@@ -35,6 +37,8 @@ class FeatureEngineer:
                     api_name = c.get('apiName', '')
                     # Extract clean name for matching
                     name = api_name.replace('TFT16_', '')
+                    if not api_name.startswith('TFT16_'):
+                        continue
                     self.champions[name] = {
                         'name': c.get('name', ''),
                         'cost': c.get('cost', 0),
@@ -106,12 +110,12 @@ class FeatureEngineer:
         return champ.get('cost', 0)
 
     def is_ap_carry(self, role: str) -> bool:
-        """Check if role is AP-based"""
-        return role in ['APCaster', 'APSpecialist', 'APTank']
+        """Check if role is AP-based (Set 16 role rules)"""
+        return is_ap_role(role)
 
     def is_ad_carry(self, role: str) -> bool:
-        """Check if role is AD-based"""
-        return role in ['ADCarry', 'ADCaster', 'ADFighter', 'ADReaper', 'ADSpecialist', 'ADTank']
+        """Check if role is AD-based (Set 16 role rules)"""
+        return is_ad_role(role)
 
     def extract_game_features(self, row: pd.Series) -> Dict:
         """Extract all features from a single game row"""
