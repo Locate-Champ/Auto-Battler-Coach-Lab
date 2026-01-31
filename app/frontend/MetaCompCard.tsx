@@ -119,6 +119,12 @@ const getChampionImage = (championName: string): string => {
   return new URL(`./images/champion images/${displayName}.png`, import.meta.url).href;
 };
 
+// Get image URL for an item (try craftable items first, then other categories)
+const getItemImage = (itemName: string): string => {
+  // Try craftable items folder first (most common)
+  return new URL(`./images/craftable items images/${itemName}.png`, import.meta.url).href;
+};
+
 interface MetaCompCardProps {
   comp: MetaComp;
   rank: number;
@@ -133,12 +139,14 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
   earlyTransitions = [],
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showBuilds, setShowBuilds] = useState(false);
   // Calculate tier from top4_rate instead of trusting API tier
   const tier = calculateTier(comp.top4_rate, comp.tier);
   const tierColor = getTierColor(tier);
   const gamesInK = (comp.games_played / 1000).toFixed(1);
   const levellingColor = getLevellingColor(comp.levelling);
   const hasEarlyPaths = earlyTransitions.length > 0;
+  const hasBuilds = comp.builds && comp.builds.length > 0;
   // Dynamic unit limit based on levelling strategy
   const unitLimit = getUnitLimit(comp.levelling);
 
@@ -146,6 +154,11 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
     if (hasEarlyPaths) {
       setIsExpanded(!isExpanded);
     }
+  };
+
+  const handleBuildsClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click
+    setShowBuilds(!showBuilds);
   };
 
   return (
@@ -264,8 +277,20 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
           </span>
         </div>
 
+        {/* Builds indicator */}
+        {hasBuilds && (
+          <button
+            onClick={handleBuildsClick}
+            className="ml-auto flex items-center gap-1 text-xs hover:opacity-80 transition-opacity"
+            style={{ color: showBuilds ? COLORS.gold : '#6b7280' }}
+          >
+            <span>{showBuilds ? '▼' : '▶'}</span>
+            <span>{comp.builds.length} builds</span>
+          </button>
+        )}
+
         {/* Early paths indicator */}
-        {hasEarlyPaths && (
+        {hasEarlyPaths && !hasBuilds && (
           <div className="ml-auto flex items-center gap-1 text-xs" style={{ color: '#6b7280' }}>
             <span style={{ color: isExpanded ? COLORS.gold : '#6b7280' }}>
               {isExpanded ? '▼' : '▶'}
@@ -274,6 +299,92 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
           </div>
         )}
       </div>
+
+      {/* Item Builds Section */}
+      {showBuilds && hasBuilds && (
+        <div className="mt-3 pt-3 border-t" style={{ borderColor: COLORS.cardBorder }}>
+          <div className="text-[10px] uppercase tracking-wide mb-2" style={{ color: '#888' }}>
+            Item Builds
+          </div>
+          <div className="space-y-2">
+            {comp.builds.slice(0, 3).map((build, buildIndex) => {
+              const unitCost = getChampionCost(build.unit);
+              return (
+                <div
+                  key={`${build.unit}-${buildIndex}`}
+                  className="flex items-center gap-2 p-1.5 rounded"
+                  style={{ backgroundColor: '#2a2a3f' }}
+                >
+                  {/* Champion icon */}
+                  <div
+                    className="rounded overflow-hidden flex-shrink-0"
+                    style={{
+                      width: 24,
+                      height: 24,
+                      border: `2px solid ${COLORS.cost[unitCost] || COLORS.cost[3]}`,
+                      backgroundColor: '#3a3a4f',
+                    }}
+                  >
+                    <img
+                      src={getChampionImage(build.unit)}
+                      alt={formatChampionName(build.unit)}
+                      className="w-full h-full object-cover"
+                      draggable={false}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  </div>
+
+                  {/* Champion name */}
+                  <span className="text-xs font-medium" style={{ color: '#e5e7eb', minWidth: '60px' }}>
+                    {formatChampionName(build.unit)}
+                  </span>
+
+                  {/* Item icons */}
+                  <div className="flex gap-1 flex-1">
+                    {build.items.map((item, itemIndex) => (
+                      <div
+                        key={`${item}-${itemIndex}`}
+                        className="rounded overflow-hidden"
+                        style={{
+                          width: 20,
+                          height: 20,
+                          backgroundColor: '#3a3a4f',
+                          border: '1px solid #4a4a5f',
+                        }}
+                        title={item}
+                      >
+                        <img
+                          src={getItemImage(item)}
+                          alt={item}
+                          className="w-full h-full object-cover"
+                          draggable={false}
+                          onError={(e) => {
+                            // Show item name as fallback
+                            const parent = e.currentTarget.parentElement;
+                            if (parent) {
+                              parent.innerHTML = `<span style="font-size: 6px; color: #888; display: flex; align-items: center; justify-content: center; height: 100%;">${item.slice(0, 2)}</span>`;
+                            }
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Build stats */}
+                  <div className="text-[10px] text-right" style={{ color: '#6b7280' }}>
+                    <span style={{ color: getStatColor(build.avg_placement, 'avgPlacement') }}>
+                      {build.avg_placement.toFixed(2)}
+                    </span>
+                    <span className="ml-1">avg</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Early game paths dropdown */}
       {isExpanded && hasEarlyPaths && (
