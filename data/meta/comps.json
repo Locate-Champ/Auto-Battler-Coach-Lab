@@ -1,7 +1,7 @@
 {
   "patch": "16",
   "source": "metatft",
-  "total_games": 8866047,
+  "total_games": 8956626,
   "total_comps": 25,
   "tier_counts": {
     "S": 0,
@@ -20,7 +20,6 @@
         "TFT16_Lissandra",
         "TFT16_Loris",
         "TFT16_Orianna",
-        "TFT16_Renekton",
         "TFT16_Sejuani",
         "TFT16_Seraphine",
         "TFT16_Vi"
@@ -37,10 +36,6 @@
         {
           "name": "Disruptor",
           "count": 2
-        },
-        {
-          "name": "Freljord",
-          "count": 3
         },
         {
           "name": "Warden",
@@ -64,10 +59,10 @@
         }
       ],
       "avg_placement": 3.91,
-      "games_played": 847338,
+      "games_played": 920512,
       "top4_rate": 100,
-      "win_rate": 10.89,
-      "difficulty": 0.039,
+      "win_rate": 10.93,
+      "difficulty": 0.037,
       "levelling": "Fast 8",
       "builds": [
         {
@@ -77,9 +72,9 @@
             "Leviathan",
             "Leviathan"
           ],
-          "games": 150406,
+          "games": 171478,
           "avg_placement": 3.55,
-          "place_change": -0.359
+          "place_change": -0.358
         },
         {
           "unit": "Braum",
@@ -88,9 +83,9 @@
             "DragonsClaw",
             "Redemption"
           ],
-          "games": 62592,
+          "games": 67290,
           "avg_placement": 3.53,
-          "place_change": -0.378
+          "place_change": -0.38
         },
         {
           "unit": "Lissandra",
@@ -99,9 +94,9 @@
             "SpearOfShojin",
             "StatikkShiv"
           ],
-          "games": 65516,
-          "avg_placement": 3.31,
-          "place_change": -0.601
+          "games": 70289,
+          "avg_placement": 3.3,
+          "place_change": -0.606
         }
       ]
     },
@@ -170,11 +165,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.04,
-      "games_played": 346601,
-      "top4_rate": 99.12,
-      "win_rate": 9.65,
-      "difficulty": -0.084,
+      "avg_placement": 4.05,
+      "games_played": 350436,
+      "top4_rate": 98.69,
+      "win_rate": 9.48,
+      "difficulty": -0.091,
       "levelling": "Fast 8",
       "builds": [
         {
@@ -184,9 +179,9 @@
             "RabadonsDeathcap",
             "SpearOfShojin"
           ],
-          "games": 42778,
-          "avg_placement": 3.7,
-          "place_change": -0.339
+          "games": 42494,
+          "avg_placement": 3.72,
+          "place_change": -0.334
         },
         {
           "unit": "Kennen",
@@ -195,8 +190,8 @@
             "RedBuff",
             "Redemption"
           ],
-          "games": 14251,
-          "avg_placement": 3.51,
+          "games": 14190,
+          "avg_placement": 3.53,
           "place_change": -0.527
         },
         {
@@ -206,9 +201,9 @@
             "PowerGauntlet",
             "UnstableConcoction"
           ],
-          "games": 6483,
-          "avg_placement": 3.27,
-          "place_change": -0.769
+          "games": 6431,
+          "avg_placement": 3.26,
+          "place_change": -0.795
         }
       ]
     },
@@ -269,11 +264,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.1,
-      "games_played": 172366,
-      "top4_rate": 97.4,
-      "win_rate": 8.96,
-      "difficulty": -0.06,
+      "avg_placement": 4.12,
+      "games_played": 170931,
+      "top4_rate": 97.03,
+      "win_rate": 8.81,
+      "difficulty": -0.061,
       "levelling": "Fast 8",
       "builds": [
         {
@@ -283,8 +278,8 @@
             "SteraksGage",
             "TitansResolve"
           ],
-          "games": 77100,
-          "avg_placement": 3.95,
+          "games": 75997,
+          "avg_placement": 3.96,
           "place_change": -0.156
         },
         {
@@ -294,9 +289,9 @@
             "IonicSpark",
             "Morellonomicon"
           ],
-          "games": 7375,
-          "avg_placement": 3.67,
-          "place_change": -0.434
+          "games": 7215,
+          "avg_placement": 3.7,
+          "place_change": -0.421
         },
         {
           "unit": "Ziggs",
@@ -305,9 +300,95 @@
             "JeweledGauntlet",
             "StatikkShiv"
           ],
-          "games": 9317,
-          "avg_placement": 3.36,
-          "place_change": -0.745
+          "games": 8905,
+          "avg_placement": 3.38,
+          "place_change": -0.738
+        }
+      ]
+    },
+    {
+      "cluster_id": 387001,
+      "tier": "A",
+      "name": "TFT16_Piltover, TFT16_Diana",
+      "units": [
+        "TFT16_AurelionSol",
+        "TFT16_Diana",
+        "TFT16_Neeko",
+        "TFT16_Seraphine",
+        "TFT16_Shyvana",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Vi"
+      ],
+      "traits": [
+        {
+          "name": "Star Forger",
+          "count": 1
+        },
+        {
+          "name": "Defender",
+          "count": 1
+        },
+        {
+          "name": "Juggernaut",
+          "count": 1
+        },
+        {
+          "name": "Piltover",
+          "count": 1
+        },
+        {
+          "name": "Dragonborn",
+          "count": 1
+        },
+        {
+          "name": "Arcanist",
+          "count": 1
+        },
+        {
+          "name": "Targon",
+          "count": 1
+        }
+      ],
+      "avg_placement": 4.23,
+      "games_played": 179921,
+      "top4_rate": 94.35,
+      "win_rate": 7.74,
+      "difficulty": -0.064,
+      "levelling": "Standard",
+      "builds": [
+        {
+          "unit": "AurelionSol",
+          "items": [
+            "JeweledGauntlet",
+            "Leviathan",
+            "Leviathan"
+          ],
+          "games": 58177,
+          "avg_placement": 3.96,
+          "place_change": -0.27
+        },
+        {
+          "unit": "Diana",
+          "items": [
+            "Bloodthirster",
+            "GuinsoosRageblade",
+            "TitansResolve"
+          ],
+          "games": 25686,
+          "avg_placement": 3.92,
+          "place_change": -0.302
+        },
+        {
+          "unit": "Taric",
+          "items": [
+            "BrambleVest",
+            "DragonsClaw",
+            "Redemption"
+          ],
+          "games": 9060,
+          "avg_placement": 3.86,
+          "place_change": -0.363
         }
       ]
     },
@@ -372,10 +453,10 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.23,
-      "games_played": 558943,
-      "top4_rate": 94.35,
-      "win_rate": 7.74,
+      "avg_placement": 4.24,
+      "games_played": 572856,
+      "top4_rate": 94.09,
+      "win_rate": 7.64,
       "difficulty": -0.01,
       "levelling": "Standard",
       "builds": [
@@ -386,9 +467,9 @@
             "JeweledGauntlet",
             "Leviathan"
           ],
-          "games": 58020,
-          "avg_placement": 3.99,
-          "place_change": -0.233
+          "games": 59686,
+          "avg_placement": 4.01,
+          "place_change": -0.228
         },
         {
           "unit": "Garen",
@@ -397,9 +478,9 @@
             "DragonsClaw",
             "Redemption"
           ],
-          "games": 48842,
-          "avg_placement": 3.85,
-          "place_change": -0.381
+          "games": 50357,
+          "avg_placement": 3.86,
+          "place_change": -0.379
         },
         {
           "unit": "Sona",
@@ -408,42 +489,29 @@
             "ArchangelsStaff",
             "HextechGunblade"
           ],
-          "games": 52532,
-          "avg_placement": 3.93,
-          "place_change": -0.298
+          "games": 52943,
+          "avg_placement": 3.95,
+          "place_change": -0.289
         }
       ]
     },
     {
-      "cluster_id": 387001,
-      "tier": "C",
-      "name": "TFT16_Piltover, TFT16_Diana",
+      "cluster_id": 387003,
+      "tier": "A",
+      "name": "TFT16_Void, TFT16_Kaisa, TFT16_BelVeth",
       "units": [
-        "TFT16_AurelionSol",
-        "TFT16_Azir",
-        "TFT16_Diana",
-        "TFT16_Neeko",
-        "TFT16_Seraphine",
-        "TFT16_Shyvana",
+        "TFT16_BelVeth",
+        "TFT16_ChoGath",
+        "TFT16_Kaisa",
+        "TFT16_KogMaw",
+        "TFT16_RekSai",
+        "TFT16_RiftHerald",
         "TFT16_Swain",
-        "TFT16_Taric",
-        "TFT16_Vi"
+        "TFT16_Wukong"
       ],
       "traits": [
         {
-          "name": "Star Forger",
-          "count": 1
-        },
-        {
-          "name": "Targon",
-          "count": 3
-        },
-        {
-          "name": "Shurima",
-          "count": 1
-        },
-        {
-          "name": "Emperor",
+          "name": "Bruiser",
           "count": 1
         },
         {
@@ -455,19 +523,11 @@
           "count": 1
         },
         {
-          "name": "Arcanist",
-          "count": 2
+          "name": "Assimilator",
+          "count": 1
         },
         {
-          "name": "Defender",
-          "count": 2
-        },
-        {
-          "name": "Piltover",
-          "count": 2
-        },
-        {
-          "name": "Dragonborn",
+          "name": "Longshot",
           "count": 1
         },
         {
@@ -479,49 +539,49 @@
           "count": 1
         },
         {
-          "name": "Zaun",
-          "count": 1
+          "name": "Void",
+          "count": 3
         }
       ],
-      "avg_placement": 4.25,
-      "games_played": 191022,
-      "top4_rate": 93.8,
-      "win_rate": 7.52,
-      "difficulty": -0.071,
-      "levelling": "Standard",
+      "avg_placement": 4.27,
+      "games_played": 509309,
+      "top4_rate": 93.35,
+      "win_rate": 7.34,
+      "difficulty": -0.024,
+      "levelling": "Fast 8",
       "builds": [
         {
-          "unit": "AurelionSol",
+          "unit": "Kaisa",
           "items": [
-            "JeweledGauntlet",
-            "Leviathan",
-            "Leviathan"
-          ],
-          "games": 61632,
-          "avg_placement": 3.99,
-          "place_change": -0.261
-        },
-        {
-          "unit": "Diana",
-          "items": [
-            "Bloodthirster",
             "GuinsoosRageblade",
-            "TitansResolve"
+            "JeweledGauntlet",
+            "StatikkShiv"
           ],
-          "games": 26159,
-          "avg_placement": 3.92,
-          "place_change": -0.33
+          "games": 50120,
+          "avg_placement": 4.06,
+          "place_change": -0.207
         },
         {
-          "unit": "Taric",
+          "unit": "RiftHerald",
           "items": [
-            "BrambleVest",
             "DragonsClaw",
+            "RedBuff",
             "Redemption"
           ],
-          "games": 9116,
+          "games": 19379,
+          "avg_placement": 3.92,
+          "place_change": -0.35
+        },
+        {
+          "unit": "BelVeth",
+          "items": [
+            "MadredsBloodrazor",
+            "Quicksilver",
+            "RunaansHurricane"
+          ],
+          "games": 4898,
           "avg_placement": 3.88,
-          "place_change": -0.366
+          "place_change": -0.39
         }
       ]
     },
@@ -570,11 +630,11 @@
           "count": 4
         }
       ],
-      "avg_placement": 4.25,
-      "games_played": 271982,
-      "top4_rate": 93.66,
-      "win_rate": 7.46,
-      "difficulty": -0.015,
+      "avg_placement": 4.27,
+      "games_played": 276116,
+      "top4_rate": 93.25,
+      "win_rate": 7.3,
+      "difficulty": -0.018,
       "levelling": "Fast 8",
       "builds": [
         {
@@ -584,9 +644,9 @@
             "PowerGauntlet",
             "SpearOfShojin"
           ],
-          "games": 73639,
-          "avg_placement": 4.17,
-          "place_change": -0.08
+          "games": 74553,
+          "avg_placement": 4.19,
+          "place_change": -0.082
         },
         {
           "unit": "Thresh",
@@ -595,118 +655,107 @@
             "Morellonomicon",
             "StatikkShiv"
           ],
-          "games": 41921,
-          "avg_placement": 3.89,
-          "place_change": -0.361
+          "games": 41573,
+          "avg_placement": 3.9,
+          "place_change": -0.369
         },
         {
           "unit": "Braum",
           "items": [
             "BrambleVest",
             "DragonsClaw",
-            "Redemption"
+            "NightHarvester"
           ],
-          "games": 6367,
-          "avg_placement": 3.67,
-          "place_change": -0.587
+          "games": 3329,
+          "avg_placement": 3.53,
+          "place_change": -0.739
         }
       ]
     },
     {
-      "cluster_id": 387003,
-      "tier": "C",
-      "name": "TFT16_Void, TFT16_Kaisa, TFT16_BelVeth",
+      "cluster_id": 387005,
+      "tier": "A",
+      "name": "TFT16_Augment_XinZhaoCarry, TFT16_Garen",
       "units": [
-        "TFT16_BelVeth",
-        "TFT16_ChoGath",
-        "TFT16_Kaisa",
-        "TFT16_KogMaw",
-        "TFT16_RekSai",
-        "TFT16_RiftHerald",
+        "TFT16_Galio",
+        "TFT16_Garen",
+        "TFT16_JarvanIV",
+        "TFT16_Lux",
+        "TFT16_Poppy",
+        "TFT16_Sona",
         "TFT16_Swain",
-        "TFT16_Wukong"
+        "TFT16_Vayne",
+        "TFT16_Zaahen"
       ],
       "traits": [
         {
-          "name": "Void",
-          "count": 6
+          "name": "Darkin",
+          "count": 1
         },
         {
-          "name": "Slayer",
+          "name": "Defender",
+          "count": 1
+        },
+        {
+          "name": "Demacia",
+          "count": 3
+        },
+        {
+          "name": "Heroic",
           "count": 1
         },
         {
           "name": "Juggernaut",
-          "count": 2
-        },
-        {
-          "name": "Assimilator",
           "count": 1
-        },
-        {
-          "name": "Longshot",
-          "count": 2
         },
         {
           "name": "Arcanist",
-          "count": 2
-        },
-        {
-          "name": "Vanquisher",
           "count": 1
         },
         {
-          "name": "Bruiser",
-          "count": 2
-        },
-        {
-          "name": "Noxus",
-          "count": 1
-        },
-        {
-          "name": "Ionia",
+          "name": "Immortal",
           "count": 1
         }
       ],
-      "avg_placement": 4.26,
-      "games_played": 497530,
-      "top4_rate": 93.54,
-      "win_rate": 7.42,
-      "difficulty": -0.021,
-      "levelling": "Fast 8",
+      "avg_placement": 4.28,
+      "games_played": 95787,
+      "top4_rate": 93.05,
+      "win_rate": 7.22,
+      "difficulty": -0.087,
+      "levelling": "Standard",
       "builds": [
         {
-          "unit": "Kaisa",
+          "unit": "Zaahen",
           "items": [
-            "GuinsoosRageblade",
-            "JeweledGauntlet",
+            "Bloodthirster",
+            "SteraksGage",
+            "TitansResolve"
+          ],
+          "games": 13517,
+          "avg_placement": 3.05,
+          "place_change": -1.227
+        },
+        {
+          "unit": "Garen",
+          "items": [
+            "RedBuff",
+            "Redemption",
+            "SpectralGauntlet"
+          ],
+          "games": 1497,
+          "avg_placement": 3.29,
+          "place_change": -0.984
+        },
+        {
+          "unit": "Lux",
+          "items": [
+            "Morellonomicon",
+            "SpearOfShojin",
             "StatikkShiv"
           ],
-          "games": 48519,
-          "avg_placement": 4.07,
-          "place_change": -0.185
-        },
-        {
-          "unit": "RiftHerald",
-          "items": [
-            "DragonsClaw",
-            "RedBuff",
-            "Redemption"
-          ],
-          "games": 18566,
-          "avg_placement": 3.95,
-          "place_change": -0.31
-        },
-        {
-          "unit": "BelVeth",
-          "items": [
-            "MadredsBloodrazor",
-            "Quicksilver",
-            "RunaansHurricane"
-          ],
-          "games": 3932,
-          "avg_placement": 3.94,
-          "place_change": -0.318
+          "games": 1100,
+          "avg_placement": 3.35,
+          "place_change": -0.924
         }
       ]
     },
@@ -771,11 +820,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.26,
-      "games_played": 1006463,
-      "top4_rate": 93.46,
-      "win_rate": 7.39,
-      "difficulty": 0.007,
+      "avg_placement": 4.28,
+      "games_played": 1012352,
+      "top4_rate": 93.09,
+      "win_rate": 7.24,
+      "difficulty": 0.005,
       "levelling": "Fast 8",
       "builds": [
         {
@@ -785,9 +834,9 @@
             "InfinityEdge",
             "TitansResolve"
           ],
-          "games": 416224,
-          "avg_placement": 4.05,
-          "place_change": -0.207
+          "games": 422427,
+          "avg_placement": 4.07,
+          "place_change": -0.205
         },
         {
           "unit": "Wukong",
@@ -796,9 +845,9 @@
             "Redemption",
             "SpectralGauntlet"
           ],
-          "games": 99455,
-          "avg_placement": 3.63,
-          "place_change": -0.636
+          "games": 100743,
+          "avg_placement": 3.64,
+          "place_change": -0.635
         },
         {
           "unit": "Sett",
@@ -807,9 +856,100 @@
             "PowerGauntlet",
             "UnstableConcoction"
           ],
-          "games": 29887,
+          "games": 29420,
           "avg_placement": 3.48,
-          "place_change": -0.785
+          "place_change": -0.795
+        }
+      ]
+    },
+    {
+      "cluster_id": 387009,
+      "tier": "B",
+      "name": "TFT16_Void, TFT16_Kaisa, TFT16_Juggernaut",
+      "units": [
+        "TFT16_ChoGath",
+        "TFT16_DrMundo",
+        "TFT16_Kaisa",
+        "TFT16_KogMaw",
+        "TFT16_RiftHerald",
+        "TFT16_Shyvana",
+        "TFT16_Singed",
+        "TFT16_Swain",
+        "TFT16_Ziggs"
+      ],
+      "traits": [
+        {
+          "name": "Bruiser",
+          "count": 1
+        },
+        {
+          "name": "Juggernaut",
+          "count": 2
+        },
+        {
+          "name": "Assimilator",
+          "count": 1
+        },
+        {
+          "name": "Longshot",
+          "count": 2
+        },
+        {
+          "name": "Dragonborn",
+          "count": 1
+        },
+        {
+          "name": "Arcanist",
+          "count": 1
+        },
+        {
+          "name": "Void",
+          "count": 2
+        },
+        {
+          "name": "Zaun",
+          "count": 1
+        }
+      ],
+      "avg_placement": 4.33,
+      "games_played": 282908,
+      "top4_rate": 91.65,
+      "win_rate": 6.66,
+      "difficulty": 0.04,
+      "levelling": "Fast 8",
+      "builds": [
+        {
+          "unit": "Kaisa",
+          "items": [
+            "GuinsoosRageblade",
+            "HextechGunblade",
+            "JeweledGauntlet"
+          ],
+          "games": 75871,
+          "avg_placement": 4.21,
+          "place_change": -0.124
+        },
+        {
+          "unit": "RiftHerald",
+          "items": [
+            "BrambleVest",
+            "DragonsClaw",
+            "Redemption"
+          ],
+          "games": 28347,
+          "avg_placement": 4.08,
+          "place_change": -0.256
+        },
+        {
+          "unit": "Ziggs",
+          "items": [
+            "GuinsoosRageblade",
+            "JeweledGauntlet",
+            "StatikkShiv"
+          ],
+          "games": 6141,
+          "avg_placement": 2.97,
+          "place_change": -1.362
         }
       ]
     },
@@ -949,11 +1089,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.31,
-      "games_played": 85518,
-      "top4_rate": 92.25,
-      "win_rate": 6.9,
-      "difficulty": -0.088,
+      "avg_placement": 4.33,
+      "games_played": 86857,
+      "top4_rate": 91.81,
+      "win_rate": 6.72,
+      "difficulty": -0.098,
       "levelling": "lvl 6",
       "builds": [
         {
@@ -963,31 +1103,113 @@
             "PowerGauntlet",
             "SpearOfShojin"
           ],
-          "games": 33222,
-          "avg_placement": 4.09,
-          "place_change": -0.22
+          "games": 33708,
+          "avg_placement": 4.12,
+          "place_change": -0.212
         },
         {
           "unit": "Thresh",
           "items": [
-            "Bloodthirster",
-            "Morellonomicon",
-            "StatikkShiv"
-          ],
-          "games": 5826,
-          "avg_placement": 3.78,
-          "place_change": -0.53
-        },
-        {
-          "unit": "Braum",
-          "items": [
-            "BrambleVest",
             "DragonsClaw",
+            "RedBuff",
             "Redemption"
           ],
-          "games": 3416,
-          "avg_placement": 3.63,
-          "place_change": -0.684
+          "games": 6138,
+          "avg_placement": 3.81,
+          "place_change": -0.514
+        },
+        {
+          "unit": "Bard",
+          "items": [
+            "ArchangelsStaff",
+            "SpearOfShojin",
+            "StatikkShiv"
+          ],
+          "games": 3559,
+          "avg_placement": 3.64,
+          "place_change": -0.683
+        }
+      ]
+    },
+    {
+      "cluster_id": 387008,
+      "tier": "B",
+      "name": "TFT16_Void, TFT16_BelVeth",
+      "units": [
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_ChoGath",
+        "TFT16_Gangplank",
+        "TFT16_RekSai",
+        "TFT16_RiftHerald",
+        "TFT16_Sion",
+        "TFT16_Swain"
+      ],
+      "traits": [
+        {
+          "name": "Bruiser",
+          "count": 1
+        },
+        {
+          "name": "Juggernaut",
+          "count": 1
+        },
+        {
+          "name": "Noxus",
+          "count": 1
+        },
+        {
+          "name": "Slayer",
+          "count": 1
+        },
+        {
+          "name": "Vanquisher",
+          "count": 2
+        },
+        {
+          "name": "Void",
+          "count": 2
+        }
+      ],
+      "avg_placement": 4.35,
+      "games_played": 115793,
+      "top4_rate": 91.23,
+      "win_rate": 6.49,
+      "difficulty": 0.047,
+      "levelling": "Fast 8",
+      "builds": [
+        {
+          "unit": "BelVeth",
+          "items": [
+            "TFT16_Item_VanquisherEmblemItem",
+            "MadredsBloodrazor",
+            "Quicksilver"
+          ],
+          "games": 4009,
+          "avg_placement": 3.8,
+          "place_change": -0.555
+        },
+        {
+          "unit": "Ambessa",
+          "items": [
+            "Quicksilver",
+            "SteraksGage",
+            "UnstableConcoction"
+          ],
+          "games": 8990,
+          "avg_placement": 4.12,
+          "place_change": -0.229
+        },
+        {
+          "unit": "RiftHerald",
+          "items": [
+            "RedBuff",
+            "Redemption",
+            "SpectralGauntlet"
+          ],
+          "games": 4634,
+          "avg_placement": 3.66,
+          "place_change": -0.69
         }
       ]
     },
@@ -1056,11 +1278,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.32,
-      "games_played": 137805,
-      "top4_rate": 91.88,
-      "win_rate": 6.75,
-      "difficulty": -0.036,
+      "avg_placement": 4.35,
+      "games_played": 132360,
+      "top4_rate": 91.32,
+      "win_rate": 6.53,
+      "difficulty": -0.042,
       "levelling": "Fast 9",
       "builds": [
         {
@@ -1070,9 +1292,9 @@
             "MadredsBloodrazor",
             "RunaansHurricane"
           ],
-          "games": 10851,
+          "games": 10071,
           "avg_placement": 3.47,
-          "place_change": -0.854
+          "place_change": -0.88
         },
         {
           "unit": "Skarner",
@@ -1081,9 +1303,9 @@
             "RedBuff",
             "SpectralGauntlet"
           ],
-          "games": 4837,
-          "avg_placement": 3.95,
-          "place_change": -0.375
+          "games": 4535,
+          "avg_placement": 4.0,
+          "place_change": -0.349
         },
         {
           "unit": "Lucian",
@@ -1092,198 +1314,9 @@
             "RapidFireCannon",
             "SpearOfShojin"
           ],
-          "games": 1464,
-          "avg_placement": 3.03,
-          "place_change": -1.297
-        }
-      ]
-    },
-    {
-      "cluster_id": 387009,
-      "tier": "C",
-      "name": "TFT16_Void, TFT16_Kaisa, TFT16_Juggernaut",
-      "units": [
-        "TFT16_ChoGath",
-        "TFT16_DrMundo",
-        "TFT16_Kaisa",
-        "TFT16_KogMaw",
-        "TFT16_RiftHerald",
-        "TFT16_Shyvana",
-        "TFT16_Singed",
-        "TFT16_Swain",
-        "TFT16_Ziggs"
-      ],
-      "traits": [
-        {
-          "name": "Void",
-          "count": 4
-        },
-        {
-          "name": "Juggernaut",
-          "count": 4
-        },
-        {
-          "name": "Zaun",
-          "count": 3
-        },
-        {
-          "name": "Bruiser",
-          "count": 2
-        },
-        {
-          "name": "Assimilator",
-          "count": 1
-        },
-        {
-          "name": "Longshot",
-          "count": 3
-        },
-        {
-          "name": "Arcanist",
-          "count": 2
-        },
-        {
-          "name": "Dragonborn",
-          "count": 1
-        },
-        {
-          "name": "Noxus",
-          "count": 1
-        },
-        {
-          "name": "Yordle",
-          "count": 1
-        }
-      ],
-      "avg_placement": 4.33,
-      "games_played": 278626,
-      "top4_rate": 91.67,
-      "win_rate": 6.67,
-      "difficulty": 0.034,
-      "levelling": "Fast 8",
-      "builds": [
-        {
-          "unit": "Kaisa",
-          "items": [
-            "GuinsoosRageblade",
-            "HextechGunblade",
-            "JeweledGauntlet"
-          ],
-          "games": 75465,
-          "avg_placement": 4.21,
-          "place_change": -0.125
-        },
-        {
-          "unit": "RiftHerald",
-          "items": [
-            "BrambleVest",
-            "DragonsClaw",
-            "Redemption"
-          ],
-          "games": 27834,
-          "avg_placement": 4.08,
-          "place_change": -0.256
-        },
-        {
-          "unit": "Ziggs",
-          "items": [
-            "GuinsoosRageblade",
-            "JeweledGauntlet",
-            "StatikkShiv"
-          ],
-          "games": 6362,
-          "avg_placement": 2.98,
-          "place_change": -1.357
-        }
-      ]
-    },
-    {
-      "cluster_id": 387008,
-      "tier": "C",
-      "name": "TFT16_Void, TFT16_BelVeth",
-      "units": [
-        "TFT16_Ambessa",
-        "TFT16_BelVeth",
-        "TFT16_ChoGath",
-        "TFT16_Gangplank",
-        "TFT16_RekSai",
-        "TFT16_RiftHerald",
-        "TFT16_Sion",
-        "TFT16_Swain"
-      ],
-      "traits": [
-        {
-          "name": "Noxus",
-          "count": 3
-        },
-        {
-          "name": "Vanquisher",
-          "count": 3
-        },
-        {
-          "name": "Void",
-          "count": 4
-        },
-        {
-          "name": "Slayer",
-          "count": 2
-        },
-        {
-          "name": "Juggernaut",
-          "count": 2
-        },
-        {
-          "name": "Bilgewater",
-          "count": 1
-        },
-        {
-          "name": "Bruiser",
-          "count": 2
-        },
-        {
-          "name": "Arcanist",
-          "count": 1
-        }
-      ],
-      "avg_placement": 4.36,
-      "games_played": 105237,
-      "top4_rate": 91.02,
-      "win_rate": 6.41,
-      "difficulty": 0.04,
-      "levelling": "Fast 8",
-      "builds": [
-        {
-          "unit": "BelVeth",
-          "items": [
-            "TFT16_Item_VanquisherEmblemItem",
-            "MadredsBloodrazor",
-            "Quicksilver"
-          ],
-          "games": 3280,
-          "avg_placement": 3.8,
-          "place_change": -0.554
-        },
-        {
-          "unit": "Ambessa",
-          "items": [
-            "Quicksilver",
-            "SteraksGage",
-            "UnstableConcoction"
-          ],
-          "games": 8078,
-          "avg_placement": 4.13,
-          "place_change": -0.229
-        },
-        {
-          "unit": "RiftHerald",
-          "items": [
-            "RedBuff",
-            "Redemption",
-            "SpectralGauntlet"
-          ],
-          "games": 4237,
-          "avg_placement": 3.67,
-          "place_change": -0.687
+          "games": 1294,
+          "avg_placement": 3.05,
+          "place_change": -1.298
         }
       ]
     },
@@ -1348,11 +1381,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.36,
-      "games_played": 175071,
-      "top4_rate": 90.9,
-      "win_rate": 6.36,
-      "difficulty": -0.102,
+      "avg_placement": 4.37,
+      "games_played": 177954,
+      "top4_rate": 90.66,
+      "win_rate": 6.26,
+      "difficulty": -0.107,
       "levelling": "Fast 8",
       "builds": [
         {
@@ -1362,9 +1395,9 @@
             "SpearOfShojin",
             "StatikkShiv"
           ],
-          "games": 2789,
-          "avg_placement": 3.91,
-          "place_change": -0.45
+          "games": 3919,
+          "avg_placement": 3.96,
+          "place_change": -0.416
         },
         {
           "unit": "Swain",
@@ -1373,20 +1406,102 @@
             "Redemption",
             "SpectralGauntlet"
           ],
-          "games": 3762,
-          "avg_placement": 3.91,
-          "place_change": -0.452
+          "games": 3817,
+          "avg_placement": 3.94,
+          "place_change": -0.437
         },
         {
           "unit": "Ambessa",
           "items": [
             "Bloodthirster",
+            "GuardianAngel",
+            "InfinityEdge"
+          ],
+          "games": 1565,
+          "avg_placement": 4.0,
+          "place_change": -0.377
+        }
+      ]
+    },
+    {
+      "cluster_id": 387018,
+      "tier": "B",
+      "name": "TFT16_Augment_XinZhaoCarry",
+      "units": [
+        "TFT16_Kennen",
+        "TFT16_Sett",
+        "TFT16_Shen",
+        "TFT16_Wukong",
+        "TFT16_Yasuo",
+        "TFT16_Yone",
+        "TFT16_Yunara",
+        "TFT16_Zaahen"
+      ],
+      "traits": [
+        {
+          "name": "Bruiser",
+          "count": 1
+        },
+        {
+          "name": "Darkin",
+          "count": 1
+        },
+        {
+          "name": "Ionia",
+          "count": 3
+        },
+        {
+          "name": "Slayer",
+          "count": 1
+        },
+        {
+          "name": "The Boss",
+          "count": 1
+        },
+        {
+          "name": "Immortal",
+          "count": 1
+        }
+      ],
+      "avg_placement": 4.38,
+      "games_played": 37905,
+      "top4_rate": 90.55,
+      "win_rate": 6.22,
+      "difficulty": -0.092,
+      "levelling": "Standard",
+      "builds": [
+        {
+          "unit": "Zaahen",
+          "items": [
+            "Bloodthirster",
             "SteraksGage",
             "TitansResolve"
           ],
-          "games": 8112,
-          "avg_placement": 4.25,
-          "place_change": -0.119
+          "games": 6228,
+          "avg_placement": 3.38,
+          "place_change": -1.003
+        },
+        {
+          "unit": "Wukong",
+          "items": [
+            "RedBuff",
+            "SpectralGauntlet",
+            "WarmogsArmor"
+          ],
+          "games": 321,
+          "avg_placement": 3.12,
+          "place_change": -1.257
+        },
+        {
+          "unit": "Yunara",
+          "items": [
+            "GuinsoosRageblade",
+            "LastWhisper",
+            "MadredsBloodrazor"
+          ],
+          "games": 136,
+          "avg_placement": 3.48,
+          "place_change": -0.9
         }
       ]
     },
@@ -1447,11 +1562,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.37,
-      "games_played": 41761,
-      "top4_rate": 90.68,
-      "win_rate": 6.27,
-      "difficulty": -0.038,
+      "avg_placement": 4.38,
+      "games_played": 39598,
+      "top4_rate": 90.59,
+      "win_rate": 6.23,
+      "difficulty": -0.034,
       "levelling": "Fast 9",
       "builds": [
         {
@@ -1461,9 +1576,9 @@
             "JeweledGauntlet",
             "Leviathan"
           ],
-          "games": 4211,
-          "avg_placement": 3.57,
-          "place_change": -0.802
+          "games": 3897,
+          "avg_placement": 3.56,
+          "place_change": -0.812
         },
         {
           "unit": "Ryze",
@@ -1472,120 +1587,26 @@
             "SpearOfShojin",
             "StatikkShiv"
           ],
-          "games": 2757,
-          "avg_placement": 3.22,
-          "place_change": -1.157
+          "games": 2636,
+          "avg_placement": 3.25,
+          "place_change": -1.126
         },
         {
           "unit": "Taric",
           "items": [
             "BrambleVest",
             "DragonsClaw",
-            "GargoyleStoneplate"
+            "NightHarvester"
           ],
-          "games": 257,
-          "avg_placement": 3.39,
-          "place_change": -0.98
-        }
-      ]
-    },
-    {
-      "cluster_id": 387018,
-      "tier": "C",
-      "name": "TFT16_Augment_XinZhaoCarry",
-      "units": [
-        "TFT16_Kennen",
-        "TFT16_Sett",
-        "TFT16_Shen",
-        "TFT16_Wukong",
-        "TFT16_Yasuo",
-        "TFT16_Yone",
-        "TFT16_Yunara",
-        "TFT16_Zaahen"
-      ],
-      "traits": [
-        {
-          "name": "Ionia",
-          "count": 7
-        },
-        {
-          "name": "Yordle",
-          "count": 1
-        },
-        {
-          "name": "Defender",
-          "count": 1
-        },
-        {
-          "name": "The Boss",
-          "count": 1
-        },
-        {
-          "name": "Bruiser",
-          "count": 2
-        },
-        {
-          "name": "Slayer",
-          "count": 2
-        },
-        {
-          "name": "Quickstriker",
-          "count": 1
-        },
-        {
-          "name": "Darkin",
-          "count": 1
-        },
-        {
-          "name": "Immortal",
-          "count": 1
-        }
-      ],
-      "avg_placement": 4.38,
-      "games_played": 37722,
-      "top4_rate": 90.62,
-      "win_rate": 6.25,
-      "difficulty": -0.086,
-      "levelling": "Standard",
-      "builds": [
-        {
-          "unit": "Zaahen",
-          "items": [
-            "Bloodthirster",
-            "SteraksGage",
-            "TitansResolve"
-          ],
-          "games": 6117,
-          "avg_placement": 3.37,
-          "place_change": -1.003
-        },
-        {
-          "unit": "Wukong",
-          "items": [
-            "DragonsClaw",
-            "RedBuff",
-            "SpectralGauntlet"
-          ],
-          "games": 220,
-          "avg_placement": 2.98,
-          "place_change": -1.394
-        },
-        {
-          "unit": "Yunara",
-          "items": [
-            "GuinsoosRageblade",
-            "LastWhisper",
-            "MadredsBloodrazor"
-          ],
-          "games": 125,
-          "avg_placement": 3.33,
-          "place_change": -1.047
+          "games": 120,
+          "avg_placement": 3.2,
+          "place_change": -1.177
         }
       ]
     },
     {
       "cluster_id": 387021,
-      "tier": "C",
+      "tier": "B",
       "name": "TFT16_Slayer, TFT16_BelVeth",
       "units": [
         "TFT16_Aatrox",
@@ -1599,35 +1620,19 @@
       ],
       "traits": [
         {
-          "name": "Darkin",
-          "count": 1
-        },
-        {
           "name": "World Ender",
           "count": 1
         },
         {
-          "name": "Slayer",
-          "count": 4
-        },
-        {
-          "name": "Noxus",
-          "count": 3
-        },
-        {
-          "name": "Vanquisher",
-          "count": 2
-        },
-        {
-          "name": "Void",
-          "count": 2
+          "name": "Darkin",
+          "count": 1
         },
         {
           "name": "Juggernaut",
-          "count": 4
+          "count": 2
         },
         {
-          "name": "Bilgewater",
+          "name": "Noxus",
           "count": 1
         },
         {
@@ -1635,27 +1640,35 @@
           "count": 1
         },
         {
-          "name": "Arcanist",
+          "name": "Slayer",
+          "count": 2
+        },
+        {
+          "name": "Vanquisher",
+          "count": 1
+        },
+        {
+          "name": "Void",
           "count": 1
         }
       ],
-      "avg_placement": 4.38,
-      "games_played": 151685,
-      "top4_rate": 90.59,
-      "win_rate": 6.24,
-      "difficulty": 0.031,
+      "avg_placement": 4.39,
+      "games_played": 156596,
+      "top4_rate": 90.22,
+      "win_rate": 6.09,
+      "difficulty": 0.026,
       "levelling": "Fast 8",
       "builds": [
         {
           "unit": "BelVeth",
           "items": [
-            "TFT16_Item_VanquisherEmblemItem",
             "MadredsBloodrazor",
-            "Quicksilver"
+            "Quicksilver",
+            "RunaansHurricane"
           ],
-          "games": 3587,
-          "avg_placement": 3.75,
-          "place_change": -0.625
+          "games": 15444,
+          "avg_placement": 4.07,
+          "place_change": -0.324
         },
         {
           "unit": "Ambessa",
@@ -1664,9 +1677,9 @@
             "LastWhisper",
             "UnstableConcoction"
           ],
-          "games": 925,
-          "avg_placement": 3.6,
-          "place_change": -0.773
+          "games": 1141,
+          "avg_placement": 3.61,
+          "place_change": -0.779
         },
         {
           "unit": "Swain",
@@ -1675,9 +1688,9 @@
             "RedBuff",
             "SpectralGauntlet"
           ],
-          "games": 4891,
-          "avg_placement": 3.54,
-          "place_change": -0.836
+          "games": 4949,
+          "avg_placement": 3.58,
+          "place_change": -0.81
         }
       ]
     },
@@ -1750,23 +1763,23 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.39,
-      "games_played": 119363,
-      "top4_rate": 90.26,
-      "win_rate": 6.1,
-      "difficulty": -0.027,
+      "avg_placement": 4.41,
+      "games_played": 112453,
+      "top4_rate": 89.85,
+      "win_rate": 5.94,
+      "difficulty": -0.036,
       "levelling": "Fast 8",
       "builds": [
         {
           "unit": "Taric",
           "items": [
             "BrambleVest",
-            "IonicSpark",
+            "DragonsClaw",
             "Redemption"
           ],
-          "games": 471,
-          "avg_placement": 3.63,
-          "place_change": -0.759
+          "games": 3485,
+          "avg_placement": 4.12,
+          "place_change": -0.291
         },
         {
           "unit": "AurelionSol",
@@ -1775,20 +1788,20 @@
             "Leviathan",
             "Leviathan"
           ],
-          "games": 24688,
-          "avg_placement": 3.96,
-          "place_change": -0.432
+          "games": 21195,
+          "avg_placement": 3.95,
+          "place_change": -0.454
         },
         {
           "unit": "Seraphine",
           "items": [
-            "RapidFireCannon",
+            "Morellonomicon",
             "SpearOfShojin",
             "StatikkShiv"
           ],
-          "games": 370,
-          "avg_placement": 3.15,
-          "place_change": -1.244
+          "games": 1296,
+          "avg_placement": 3.6,
+          "place_change": -0.809
         }
       ]
     },
@@ -1857,23 +1870,23 @@
           "count": 1
         }
       ],
-      "avg_placement": 6.7,
-      "games_played": 132865,
-      "top4_rate": 25.59,
-      "win_rate": 7.16,
-      "difficulty": 0.001,
+      "avg_placement": 4.42,
+      "games_played": 134404,
+      "top4_rate": 89.61,
+      "win_rate": 5.84,
+      "difficulty": -0.009,
       "levelling": "Fast 8",
       "builds": [
         {
           "unit": "Swain",
           "items": [
             "FrozenHeart",
-            "IonicSpark",
-            "Redemption"
+            "Redemption",
+            "WarmogsArmor"
           ],
-          "games": 511,
-          "avg_placement": 3.76,
-          "place_change": -0.654
+          "games": 415,
+          "avg_placement": 3.66,
+          "place_change": -0.753
         },
         {
           "unit": "Seraphine",
@@ -1882,9 +1895,9 @@
             "SpearOfShojin",
             "StatikkShiv"
           ],
-          "games": 1853,
-          "avg_placement": 3.56,
-          "place_change": -0.846
+          "games": 1969,
+          "avg_placement": 3.54,
+          "place_change": -0.876
         },
         {
           "unit": "Mel",
@@ -1893,116 +1906,9 @@
             "Leviathan",
             "Leviathan"
           ],
-          "games": 5044,
-          "avg_placement": 3.63,
-          "place_change": -0.777
-        }
-      ]
-    },
-    {
-      "cluster_id": 387014,
-      "tier": "C",
-      "name": "TFT16_Demacia, TFT16_Garen",
-      "units": [
-        "TFT16_Galio",
-        "TFT16_Garen",
-        "TFT16_JarvanIV",
-        "TFT16_Kaisa",
-        "TFT16_Lux",
-        "TFT16_Poppy",
-        "TFT16_Swain",
-        "TFT16_Vayne",
-        "TFT16_XinZhao"
-      ],
-      "traits": [
-        {
-          "name": "Demacia",
-          "count": 7
-        },
-        {
-          "name": "Heroic",
-          "count": 1
-        },
-        {
-          "name": "Defender",
-          "count": 2
-        },
-        {
-          "name": "Assimilator",
-          "count": 1
-        },
-        {
-          "name": "Void",
-          "count": 1
-        },
-        {
-          "name": "Longshot",
-          "count": 2
-        },
-        {
-          "name": "Arcanist",
-          "count": 2
-        },
-        {
-          "name": "Yordle",
-          "count": 1
-        },
-        {
-          "name": "Juggernaut",
-          "count": 2
-        },
-        {
-          "name": "Noxus",
-          "count": 1
-        },
-        {
-          "name": "Ionia",
-          "count": 1
-        },
-        {
-          "name": "Warden",
-          "count": 1
-        }
-      ],
-      "avg_placement": 4.41,
-      "games_played": 132895,
-      "top4_rate": 89.75,
-      "win_rate": 5.9,
-      "difficulty": -0.002,
-      "levelling": "Fast 8",
-      "builds": [
-        {
-          "unit": "Garen",
-          "items": [
-            "FrozenHeart",
-            "Redemption",
-            "WarmogsArmor"
-          ],
-          "games": 420,
-          "avg_placement": 3.71,
-          "place_change": -0.7
-        },
-        {
-          "unit": "Vayne",
-          "items": [
-            "HextechGunblade",
-            "RunaansHurricane",
-            "RunaansHurricane"
-          ],
-          "games": 1866,
-          "avg_placement": 3.55,
-          "place_change": -0.856
-        },
-        {
-          "unit": "Kaisa",
-          "items": [
-            "GuinsoosRageblade",
-            "HextechGunblade",
-            "JeweledGauntlet"
-          ],
-          "games": 5090,
-          "avg_placement": 3.64,
-          "place_change": -0.77
+          "games": 5805,
+          "avg_placement": 3.65,
+          "place_change": -0.765
         }
       ]
     },
@@ -2062,9 +1968,9 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.41,
-      "games_played": 112067,
-      "top4_rate": 89.63,
+      "avg_placement": 4.42,
+      "games_played": 107001,
+      "top4_rate": 89.61,
       "win_rate": 5.85,
       "difficulty": -0.062,
       "levelling": "lvl 6",
@@ -2076,9 +1982,9 @@
             "GuinsoosRageblade",
             "TitansResolve"
           ],
-          "games": 69356,
+          "games": 65900,
           "avg_placement": 4.28,
-          "place_change": -0.139
+          "place_change": -0.14
         },
         {
           "unit": "Neeko",
@@ -2087,9 +1993,9 @@
             "RedBuff",
             "Redemption"
           ],
-          "games": 8843,
+          "games": 8433,
           "avg_placement": 3.95,
-          "place_change": -0.46
+          "place_change": -0.462
         },
         {
           "unit": "Nidalee",
@@ -2098,9 +2004,9 @@
             "JeweledGauntlet",
             "RabadonsDeathcap"
           ],
-          "games": 2518,
-          "avg_placement": 3.57,
-          "place_change": -0.843
+          "games": 2467,
+          "avg_placement": 3.55,
+          "place_change": -0.867
         }
       ]
     },
@@ -2144,11 +2050,11 @@
           "count": 2
         }
       ],
-      "avg_placement": 4.42,
-      "games_played": 54963,
-      "top4_rate": 89.59,
-      "win_rate": 5.83,
-      "difficulty": -0.031,
+      "avg_placement": 4.43,
+      "games_played": 62413,
+      "top4_rate": 89.27,
+      "win_rate": 5.71,
+      "difficulty": -0.042,
       "levelling": "lvl 7",
       "builds": [
         {
@@ -2158,9 +2064,9 @@
             "Leviathan",
             "Leviathan"
           ],
-          "games": 8286,
-          "avg_placement": 3.86,
-          "place_change": -0.554
+          "games": 9375,
+          "avg_placement": 3.91,
+          "place_change": -0.522
         },
         {
           "unit": "Nautilus",
@@ -2169,9 +2075,9 @@
             "DragonsClaw",
             "Redemption"
           ],
-          "games": 1913,
-          "avg_placement": 3.55,
-          "place_change": -0.871
+          "games": 2317,
+          "avg_placement": 3.6,
+          "place_change": -0.829
         },
         {
           "unit": "Seraphine",
@@ -2180,9 +2086,9 @@
             "SpearOfShojin",
             "StatikkShiv"
           ],
-          "games": 1479,
-          "avg_placement": 3.23,
-          "place_change": -1.183
+          "games": 1617,
+          "avg_placement": 3.26,
+          "place_change": -1.174
         }
       ]
     },
@@ -2231,11 +2137,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.43,
-      "games_played": 220933,
-      "top4_rate": 89.34,
-      "win_rate": 5.73,
-      "difficulty": -0.126,
+      "avg_placement": 4.44,
+      "games_played": 220994,
+      "top4_rate": 88.88,
+      "win_rate": 5.55,
+      "difficulty": -0.134,
       "levelling": "Standard",
       "builds": [
         {
@@ -2245,9 +2151,9 @@
             "DragonsClaw",
             "Redemption"
           ],
-          "games": 6526,
-          "avg_placement": 3.99,
-          "place_change": -0.436
+          "games": 6845,
+          "avg_placement": 4.01,
+          "place_change": -0.432
         },
         {
           "unit": "Vayne",
@@ -2256,9 +2162,9 @@
             "RunaansHurricane",
             "RunaansHurricane"
           ],
-          "games": 16819,
-          "avg_placement": 4.17,
-          "place_change": -0.253
+          "games": 16146,
+          "avg_placement": 4.19,
+          "place_change": -0.251
         },
         {
           "unit": "Kaisa",
@@ -2267,9 +2173,9 @@
             "HextechGunblade",
             "JeweledGauntlet"
           ],
-          "games": 9306,
-          "avg_placement": 3.98,
-          "place_change": -0.443
+          "games": 9560,
+          "avg_placement": 4.0,
+          "place_change": -0.44
         }
       ]
     },
@@ -2317,11 +2223,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.48,
-      "games_played": 154301,
-      "top4_rate": 87.92,
-      "win_rate": 5.17,
-      "difficulty": -0.111,
+      "avg_placement": 4.5,
+      "games_played": 154411,
+      "top4_rate": 87.41,
+      "win_rate": 4.97,
+      "difficulty": -0.112,
       "levelling": "lvl 5",
       "builds": [
         {
@@ -2331,9 +2237,9 @@
             "GuardianAngel",
             "TitansResolve"
           ],
-          "games": 37159,
-          "avg_placement": 3.57,
-          "place_change": -0.911
+          "games": 36994,
+          "avg_placement": 3.6,
+          "place_change": -0.908
         },
         {
           "unit": "Kalista",
@@ -2342,9 +2248,9 @@
             "LastWhisper",
             "SpearOfShojin"
           ],
-          "games": 2685,
-          "avg_placement": 3.74,
-          "place_change": -0.739
+          "games": 2619,
+          "avg_placement": 3.73,
+          "place_change": -0.778
         },
         {
           "unit": "Thresh",
@@ -2353,9 +2259,9 @@
             "Morellonomicon",
             "StatikkShiv"
           ],
-          "games": 12154,
-          "avg_placement": 3.55,
-          "place_change": -0.936
+          "games": 11941,
+          "avg_placement": 3.58,
+          "place_change": -0.92
         }
       ]
     },
@@ -2407,11 +2313,11 @@
           "count": 1
         }
       ],
-      "avg_placement": 4.52,
-      "games_played": 53771,
-      "top4_rate": 87.04,
-      "win_rate": 4.82,
-      "difficulty": -0.056,
+      "avg_placement": 4.54,
+      "games_played": 51136,
+      "top4_rate": 86.51,
+      "win_rate": 4.6,
+      "difficulty": -0.066,
       "levelling": "lvl 6",
       "builds": [
         {
@@ -2421,20 +2327,20 @@
             "GuinsoosRageblade",
             "TitansResolve"
           ],
-          "games": 25197,
-          "avg_placement": 4.18,
-          "place_change": -0.336
+          "games": 23593,
+          "avg_placement": 4.21,
+          "place_change": -0.325
         },
         {
           "unit": "Seraphine",
           "items": [
-            "Morellonomicon",
+            "ArchangelsStaff",
             "SpearOfShojin",
             "StatikkShiv"
           ],
-          "games": 388,
-          "avg_placement": 3.67,
-          "place_change": -0.846
+          "games": 101,
+          "avg_placement": 3.26,
+          "place_change": -1.282
         },
         {
           "unit": "Singed",
@@ -2443,50 +2349,29 @@
             "RedBuff",
             "Redemption"
           ],
-          "games": 347,
-          "avg_placement": 3.84,
-          "place_change": -0.674
+          "games": 320,
+          "avg_placement": 3.87,
+          "place_change": -0.668
         }
       ]
     },
     {
-      "cluster_id": 387016,
-      "tier": "C",
-      "name": "TFT16_Magus, TFT16_Nasus, TFT16_Seraphine",
+      "cluster_id": 387028,
+      "tier": "B",
+      "name": "TFT16_Zaun, TFT16_Jinx",
       "units": [
-        "TFT16_Annie",
-        "TFT16_AnnieTibbers",
-        "TFT16_Azir",
-        "TFT16_Nasus",
-        "TFT16_Neeko",
+        "TFT16_Blitzcrank",
+        "TFT16_DrMundo",
+        "TFT16_Ekko",
+        "TFT16_Jinx",
         "TFT16_Seraphine",
-        "TFT16_Shyvana",
-        "TFT16_Swain",
-        "TFT16_Vi"
+        "TFT16_Singed",
+        "TFT16_Vi",
+        "TFT16_Warwick"
       ],
       "traits": [
         {
-          "name": "Dark Child",
-          "count": 1
-        },
-        {
-          "name": "Arcanist",
-          "count": 3
-        },
-        {
-          "name": "Shurima",
-          "count": 2
-        },
-        {
-          "name": "Emperor",
-          "count": 1
-        },
-        {
-          "name": "Disruptor",
-          "count": 2
-        },
-        {
-          "name": "Ixtal",
+          "name": "Juggernaut",
           "count": 1
         },
         {
@@ -2495,56 +2380,53 @@
         },
         {
           "name": "Piltover",
-          "count": 2
-        },
-        {
-          "name": "Dragonborn",
           "count": 1
         },
         {
-          "name": "Arcanist",
-          "count": 2
+          "name": "Zaun",
+          "count": 3
         }
       ],
-      "avg_placement": 4.55,
-      "games_played": 60906,
-      "top4_rate": 86.13,
-      "win_rate": 4.45,
-      "difficulty": -0.026,
-      "levelling": "Fast 8",
+      "avg_placement": 4.56,
+      "games_played": 178393,
+      "top4_rate": 86.04,
+      "win_rate": 4.42,
+      "difficulty": -0.2,
+      "levelling": "Standard",
       "builds": [
         {
-          "unit": "Nasus",
+          "unit": "Warwick",
           "items": [
-            "DragonsClaw",
-            "RedBuff",
-            "WarmogsArmor"
+            "TFT16_Item_GunslingerEmblemItem",
+            "Bloodthirster",
+            "TitansResolve"
           ],
-          "games": 421,
-          "avg_placement": 3.98,
-          "place_change": -0.579
+          "games": 1804,
+          "avg_placement": 3.62,
+          "place_change": -0.936
         },
         {
-          "unit": "Azir",
+          "unit": "Jinx",
           "items": [
             "ArchangelsStaff",
             "GuinsoosRageblade",
-            "RabadonsDeathcap"
+            "InfinityEdge",
+            "RunaansHurricane"
           ],
-          "games": 135,
-          "avg_placement": 3.74,
-          "place_change": -0.814
+          "games": 21656,
+          "avg_placement": 4.17,
+          "place_change": -0.386
         },
         {
-          "unit": "Seraphine",
+          "unit": "DrMundo",
           "items": [
-            "Morellonomicon",
-            "SpearOfShojin",
-            "StatikkShiv"
+            "BrambleVest",
+            "Redemption",
+            "SpectralGauntlet"
           ],
-          "games": 289,
-          "avg_placement": 3.92,
-          "place_change": -0.638
+          "games": 1691,
+          "avg_placement": 3.95,
+          "place_change": -0.609
         }
       ]
     }
