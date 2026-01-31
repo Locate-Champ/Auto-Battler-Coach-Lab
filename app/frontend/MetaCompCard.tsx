@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MetaComp } from './hooks/useMetaComps';
 import { EarlyCompWithTransition } from './hooks/useEarlyComps';
 import EarlyCompDropdown from './EarlyCompDropdown';
+import { TraitList } from './components/TraitIcon';
 
 // Colors matching the overlay theme
 const COLORS = {
@@ -95,99 +96,14 @@ const getLevellingColor = (levelling: string): string => {
   return '#6b7280';
 };
 
-// Trait breakpoint styles (from traits.jsonl style values)
-// style: 1=bronze, 3=silver, 4=unique, 5=gold, 6=prismatic
-const TRAIT_TIER_COLORS = {
-  bronze: { bg: '#5c4033', border: '#cd7f32', text: '#cd7f32' },
-  silver: { bg: '#3d3d4d', border: '#c0c0c0', text: '#c0c0c0' },
-  gold: { bg: '#3a3a1f', border: '#ffd700', text: '#ffd700' },
-  prismatic: { bg: '#2a1f3a', border: '#e066ff', text: '#e066ff' },
-  unique: { bg: '#1f2a3a', border: '#4dabf7', text: '#4dabf7' },
-};
-
-// Trait breakpoints mapping from game data
-// Format: { traitName: [[minUnits, style], ...] } sorted by minUnits
-const TRAIT_BREAKPOINTS: Record<string, [number, number][]> = {
-  // Standard traits
-  'Freljord': [[3, 1], [5, 3], [7, 5]],
-  'Juggernaut': [[2, 1], [4, 3], [6, 5]],
-  'Quickstriker': [[2, 1], [3, 3], [4, 3], [5, 5]],
-  'Longshot': [[2, 1], [3, 3], [4, 5], [5, 5]],
-  'Vanquisher': [[2, 1], [3, 3], [4, 3], [5, 5]],
-  'Ixtal': [[3, 1], [5, 3], [7, 5]],
-  'Slayer': [[2, 1], [4, 3], [6, 5]],
-  'Arcanist': [[2, 1], [4, 3], [6, 5]],
-  'Gunslinger': [[2, 1], [4, 5]],
-  'Disruptor': [[2, 1], [4, 5]],
-  'Void': [[2, 1], [4, 3], [6, 5], [9, 5]],
-  'Invoker': [[2, 1], [4, 5]],
-  'Demacia': [[3, 1], [5, 3], [7, 5], [11, 6]],
-  'Bilgewater': [[3, 1], [5, 3], [7, 5], [10, 6]],
-  'Piltover': [[2, 1], [4, 3], [6, 5]],
-  'Darkin': [[1, 1], [2, 3], [3, 5]],
-  'Noxus': [[3, 1], [5, 3], [7, 5], [10, 6]],
-  'Yordle': [[2, 1], [4, 3], [6, 3], [8, 5], [10, 6]],
-  'Zaun': [[3, 1], [5, 3], [7, 5]],
-  'Bruiser': [[2, 1], [4, 3], [6, 5]],
-  'Warden': [[2, 1], [3, 3], [4, 3], [5, 5]],
-  'Ionia': [[3, 1], [5, 3], [7, 5], [10, 6]],
-  'Defender': [[2, 1], [4, 3], [6, 5]],
-  'Shadow Isles': [[2, 1], [3, 3], [4, 3], [5, 5]],
-  'Shurima': [[2, 1], [3, 5], [4, 6]],
-  'Targon': [[1, 5]],
-};
-
-// Get trait tier info based on count
-interface TraitTierInfo {
-  tier: 'bronze' | 'silver' | 'gold' | 'prismatic' | 'unique' | 'inactive';
-  currentBreakpoint: number;
-  nextBreakpoint: number | null;
-}
-
-const getTraitTierInfo = (traitName: string, count: number): TraitTierInfo => {
-  const breakpoints = TRAIT_BREAKPOINTS[traitName];
-
-  if (!breakpoints || breakpoints.length === 0) {
-    // Unknown trait - assume it's active if count >= 2
-    return {
-      tier: count >= 2 ? 'bronze' : 'inactive',
-      currentBreakpoint: count,
-      nextBreakpoint: null,
-    };
-  }
-
-  let activeTier: TraitTierInfo['tier'] = 'inactive';
-  let currentBreakpoint = 0;
-  let nextBreakpoint: number | null = null;
-
-  for (let i = 0; i < breakpoints.length; i++) {
-    const [minUnits, style] = breakpoints[i];
-
-    if (count >= minUnits) {
-      currentBreakpoint = minUnits;
-      // Map style number to tier name
-      switch (style) {
-        case 1: activeTier = 'bronze'; break;
-        case 3: activeTier = 'silver'; break;
-        case 4: activeTier = 'unique'; break;
-        case 5: activeTier = 'gold'; break;
-        case 6: activeTier = 'prismatic'; break;
-      }
-      // Check for next breakpoint
-      if (i + 1 < breakpoints.length) {
-        nextBreakpoint = breakpoints[i + 1][0];
-      } else {
-        nextBreakpoint = null;
-      }
-    }
-  }
-
-  // If no breakpoint was reached, find the first one
-  if (activeTier === 'inactive' && breakpoints.length > 0) {
-    nextBreakpoint = breakpoints[0][0];
-  }
-
-  return { tier: activeTier, currentBreakpoint, nextBreakpoint };
+// Helper to format comp name for display
+const formatCompName = (name: string): string => {
+  // Remove TFT16_ prefix and clean up
+  return name
+    .replace(/TFT16_/g, '')
+    .replace(/, /g, ' ')
+    .replace(/,/g, ' ')
+    .trim();
 };
 
 // Calculate tier based on top4_rate (override API tier if needed)
@@ -275,7 +191,7 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
       }}
     >
       {/* Header: Rank + Tier + Levelling */}
-      <div className="flex justify-between items-center mb-2">
+      <div className="flex justify-between items-center mb-1">
         <div className="flex items-center gap-2">
           <span
             className="px-2 py-0.5 rounded text-xs font-bold"
@@ -297,6 +213,13 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
           {gamesInK}k games
         </span>
       </div>
+
+      {/* Comp Name */}
+      {comp.name && (
+        <div className="text-sm font-medium mb-2" style={{ color: '#e5e7eb' }}>
+          {formatCompName(comp.name)}
+        </div>
+      )}
 
       {/* Champions row */}
       <div className="flex gap-1 flex-wrap mb-2">
@@ -328,38 +251,10 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
         })}
       </div>
 
-      {/* Top traits with breakpoint styling */}
+      {/* Active traits with icons */}
       {comp.traits && comp.traits.length > 0 && (
-        <div className="flex gap-1 flex-wrap mb-2">
-          {comp.traits.filter(t => t.count >= 1).slice(0, 5).map((trait) => {
-            const tierInfo = getTraitTierInfo(trait.name, trait.count);
-            const tierColors = tierInfo.tier !== 'inactive'
-              ? TRAIT_TIER_COLORS[tierInfo.tier]
-              : { bg: '#2a2a3f', border: '#4a4a5f', text: '#6b7280' };
-
-            return (
-              <span
-                key={trait.name}
-                className="px-1.5 py-0.5 rounded text-[10px] flex items-center gap-1"
-                style={{
-                  backgroundColor: tierColors.bg,
-                  color: tierColors.text,
-                  border: `1px solid ${tierColors.border}`,
-                }}
-                title={tierInfo.nextBreakpoint
-                  ? `Next: ${tierInfo.nextBreakpoint} units`
-                  : 'Max tier reached'}
-              >
-                <span>{trait.name}</span>
-                <span className="font-bold">{trait.count}</span>
-                {tierInfo.nextBreakpoint && (
-                  <span style={{ color: '#6b7280', fontSize: '8px' }}>
-                    /{tierInfo.nextBreakpoint}
-                  </span>
-                )}
-              </span>
-            );
-          })}
+        <div className="mb-2">
+          <TraitList traits={comp.traits} size="sm" />
         </div>
       )}
 
