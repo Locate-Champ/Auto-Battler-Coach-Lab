@@ -1,4 +1,5 @@
 import React from 'react';
+import { TraitList } from './components/TraitIcon';
 
 // Types
 type ChampionCost = 1 | 2 | 3 | 4 | 5;
@@ -156,19 +157,6 @@ const ChampionIcon: React.FC<{ champion: CompChampion; size?: number }> = ({ cha
   </div>
 );
 
-const TraitBadge: React.FC<{ trait: CompTrait }> = ({ trait }) => (
-  <span
-    className="flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px]"
-    style={{
-      backgroundColor: trait.isActive ? COLORS.traitActiveBg : COLORS.metaBadgeBg,
-      color: trait.isActive ? COLORS.traitActiveText : '#aaa',
-      border: trait.isActive ? `1px solid ${COLORS.traitActiveText}` : 'none',
-    }}
-  >
-    <span className="font-semibold">{trait.count}</span>
-    {trait.name}
-  </span>
-);
 
 const StatDisplay: React.FC<{ value: number; label: string; type: 'top4' | 'winRate' | 'avgPlacement' | 'playRate' }> = ({ value, label, type }) => (
   <div className="flex flex-col items-center">
@@ -283,10 +271,15 @@ const CompCard: React.FC<CompCardProps> = ({ comp, contestedState, onContestedTo
       </div>
 
       {/* Traits row */}
-      <div className="flex gap-1.5 flex-wrap mb-2">
-        {comp.traits.map((trait) => (
-          <TraitBadge key={trait.name} trait={trait} />
-        ))}
+      <div className="mb-2">
+        <TraitList
+          traits={comp.traits.map((trait) => ({
+            name: trait.name,
+            count: trait.count,
+          }))}
+          size="sm"
+          showInactive
+        />
       </div>
 
       {/* Stats row */}
