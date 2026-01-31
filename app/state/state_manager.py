@@ -13,6 +13,7 @@ class StateManager:
     def __init__(self):
         self.state = GameState()
         self.state_callbacks: list[Callable[[GameState], None]] = []
+        self._previous_phase = self.state.game_phase
 
     def on_state_change(self, callback: Callable[[GameState], None]):
         """Register a callback for state changes."""
@@ -39,6 +40,7 @@ class StateManager:
         self.state.reset()
         self.state.game_phase = GamePhase.LOADING
         self.state.game_start_time = event.timestamp
+        self._previous_phase = self.state.game_phase
         print(f"[STATE] Game started at {event.timestamp}")
 
     def _handle_stage_change(self, event: GameEvent):
@@ -49,6 +51,7 @@ class StateManager:
 
         # Determine game phase based on stage
         stage_num, round_num = self._parse_stage(new_stage)
+        previous_phase = self.state.game_phase
 
         if stage_num == 0:
             self.state.game_phase = GamePhase.LOADING
@@ -61,6 +64,13 @@ class StateManager:
         else:
             self.state.game_phase = GamePhase.PVP
 
+        if self.state.game_phase == GamePhase.CAROUSEL and previous_phase != GamePhase.CAROUSEL:
+            self._record_evaluation_checkpoint(event.timestamp, "carousel")
+
+        if previous_phase == GamePhase.PVE and self.state.game_phase == GamePhase.PVP:
+            self._record_evaluation_checkpoint(event.timestamp, "pve_complete")
+
+        self._previous_phase = self.state.game_phase
         print(f"[STATE] Stage: {old_stage} -> {new_stage} (Phase: {self.state.game_phase.value})")
 
     def _handle_xp_change(self, event: GameEvent):
@@ -102,11 +112,26 @@ class StateManager:
             self.state.augment_armory_active = True
             self.state.augment_options = options
             self.state.game_phase = GamePhase.AUGMENT
+            self._previous_phase = self.state.game_phase
             print(f"[STATE] Augment armory opened: {options}")
         elif state == "inactive":
+            if self.state.augment_armory_active:
+                self._record_evaluation_checkpoint(event.timestamp, "augment_complete")
             self.state.augment_armory_active = False
             self.state.augment_options = []
+            if self.state.game_phase == GamePhase.AUGMENT:
+                self.state.game_phase = GamePhase.PVP
+            self._previous_phase = self.state.game_phase
             print("[STATE] Augment armory closed")
+
+    def _record_evaluation_checkpoint(self, timestamp: datetime, reason: str):
+        """Record a checkpoint for evaluation timing."""
+        self.state.evaluation_checkpoints.append({
+            "timestamp": timestamp.isoformat(),
+            "stage": self.state.stage,
+            "phase": self.state.game_phase.value,
+            "reason": reason,
+        })
 
     def _handle_item_select(self, event: GameEvent):
         """Handle item selection event."""
