@@ -16,6 +16,7 @@ import requests
 # Base paths
 SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data" / "meta"
+GAME_DATA_DIR = SCRIPT_DIR.parent / "data" / "game_data"
 
 # MetaTFT API endpoint
 METATFT_API_URL = "https://api-hc.metatft.com/tft-comps-api/comps_data"
@@ -30,13 +31,38 @@ HEADERS = {
     "Accept": "application/json",
 }
 
+# Number of top comps to fetch
+TOP_COMPS_LIMIT = 25
+
 # Tier thresholds based on average placement
 TIER_THRESHOLDS = {
     "S": 4.0,   # < 4.0 avg placement
     "A": 4.3,   # 4.0 - 4.3
     "B": 4.6,   # 4.3 - 4.6
-    # C: > 4.6 (filtered out)
+    # C: > 4.6
 }
+
+# Trait ID mapping (API name -> display name)
+TRAIT_ID_MAP = {}
+
+
+def load_trait_id_map():
+    """Load trait ID mapping from JSON file."""
+    global TRAIT_ID_MAP
+    map_file = GAME_DATA_DIR / "trait_id_map.json"
+    if map_file.exists():
+        with open(map_file, 'r') as f:
+            TRAIT_ID_MAP = json.load(f)
+        print(f"Loaded {len(TRAIT_ID_MAP)} trait mappings")
+    else:
+        print(f"Warning: {map_file} not found, using raw trait names")
+
+
+def normalize_trait_name(api_name: str) -> str:
+    """Convert API trait name to display name."""
+    if api_name in TRAIT_ID_MAP:
+        return TRAIT_ID_MAP[api_name].get('displayName', api_name)
+    return api_name
 
 
 def calculate_tier(avg_placement: float) -> str:
@@ -115,12 +141,8 @@ def extract_comps_data(raw_data):
 
             total_games += games_played
 
-            # Calculate tier
+            # Calculate tier based on avg placement
             tier = calculate_tier(avg_placement)
-
-            # Filter out C tier comps
-            if tier == "C":
-                continue
 
             # Parse units from units_string
             units_string = cluster_data.get("units_string", "")
@@ -135,7 +157,11 @@ def extract_comps_data(raw_data):
                     # Extract trait name and count (e.g., "TFT16_Piltover_2" -> {"name": "Piltover", "count": 2})
                     parts = trait.replace("TFT16_", "").rsplit("_", 1)
                     if len(parts) == 2 and parts[1].isdigit():
-                        traits.append({"name": parts[0], "count": int(parts[1])})
+                        api_name = parts[0]
+                        count = int(parts[1])
+                        # Normalize trait name to display name
+                        display_name = normalize_trait_name(api_name)
+                        traits.append({"name": display_name, "count": count})
 
             # Extract builds (top 3)
             builds = []
@@ -171,9 +197,12 @@ def extract_comps_data(raw_data):
 
             comps.append(comp)
 
-        # Sort by tier (S > A > B) then by avg placement
-        tier_order = {"S": 0, "A": 1, "B": 2}
-        comps.sort(key=lambda x: (tier_order.get(x["tier"], 3), x["avg_placement"]))
+        # Sort by tier (S > A > B > C) then by avg placement
+        tier_order = {"S": 0, "A": 1, "B": 2, "C": 3}
+        comps.sort(key=lambda x: (tier_order.get(x["tier"], 4), x["avg_placement"]))
+
+        # Limit to top N comps
+        comps = comps[:TOP_COMPS_LIMIT]
 
         result = {
             "patch": patch,
@@ -184,14 +213,16 @@ def extract_comps_data(raw_data):
                 "S": sum(1 for c in comps if c["tier"] == "S"),
                 "A": sum(1 for c in comps if c["tier"] == "A"),
                 "B": sum(1 for c in comps if c["tier"] == "B"),
+                "C": sum(1 for c in comps if c["tier"] == "C"),
             },
             "comps": comps,
         }
 
-        print(f"Extracted {len(comps)} compositions (B-S tier only)")
+        print(f"Extracted top {len(comps)} compositions")
         print(f"  S-tier: {result['tier_counts']['S']}")
         print(f"  A-tier: {result['tier_counts']['A']}")
         print(f"  B-tier: {result['tier_counts']['B']}")
+        print(f"  C-tier: {result['tier_counts']['C']}")
         print(f"Total games analyzed: {total_games:,}")
 
         return result
@@ -242,6 +273,9 @@ def main():
     print("=" * 50)
     print(f"Running at: {datetime.now(timezone.utc).isoformat()}")
     print()
+
+    # Load trait ID mapping for name normalization
+    load_trait_id_map()
 
     # Fetch data from MetaTFT API
     raw_data = fetch_metatft_data()
