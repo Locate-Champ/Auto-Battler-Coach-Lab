@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import MetaCompCard from './MetaCompCard';
 import { useMetaComps } from './hooks/useMetaComps';
 import { useEarlyComps } from './hooks/useEarlyComps';
+import { useAugments } from './hooks/useAugments';
 
 interface CompsPanelProps {
   className?: string;
@@ -10,6 +11,8 @@ interface CompsPanelProps {
 const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
   const { data, loading, error, refetch } = useMetaComps({ limit: 25 });
   const { getTransitionsTo, loading: earlyLoading } = useEarlyComps();
+  const { data: augmentData, loading: augmentLoading, error: augmentError, refetch: refetchAugments } = useAugments();
+  const [showEarlyPaths, setShowEarlyPaths] = useState(true);
   const sortBy: 'tier' = 'tier';
 
   // Tier order for sorting
@@ -28,6 +31,46 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
     if (sortBy === 'games') return b.games_played - a.games_played;
     return 0;
   });
+
+  const traitFrequency = useMemo(() => {
+    const frequency = new Map<string, number>();
+    if (!data?.comps) return frequency;
+    data.comps.forEach((comp) => {
+      comp.traits?.forEach((trait) => {
+        frequency.set(trait.name, (frequency.get(trait.name) ?? 0) + 1);
+      });
+    });
+    return frequency;
+  }, [data]);
+
+  const augmentPool = useMemo(() => augmentData?.augments ?? [], [augmentData]);
+
+  const getAugmentRecommendations = (traits: string[]) => {
+    if (!augmentPool.length) return [];
+
+    const totalComps = data?.comps.length ?? 0;
+
+    return augmentPool
+      .map((augment) => {
+        const matchingTypes = augment.types.filter((type) => traits.includes(type));
+        const matchCount = matchingTypes.length;
+        const contestedCount = matchingTypes.reduce((sum, type) => sum + (traitFrequency.get(type) ?? 0), 0);
+        const contestedShare = totalComps > 0 ? contestedCount / totalComps : 0;
+        const fitScore = augment.score + matchCount * 0.6;
+        const enemyBenefit =
+          contestedShare >= 0.35 ? 'High' : contestedShare >= 0.2 ? 'Medium' : 'Low';
+
+        return {
+          ...augment,
+          matchCount,
+          matchingTypes,
+          fitScore,
+          enemyBenefit,
+        };
+      })
+      .sort((a, b) => b.fitScore - a.fitScore)
+      .slice(0, 3);
+  };
 
   return (
     <div
@@ -51,6 +94,25 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
               Patch {data.patch}
             </span>
           )}
+        </div>
+        <div className="mt-2 flex items-center gap-2 text-[10px] text-white/80">
+          <button
+            className="px-2 py-1 rounded border border-white/20 hover:border-white/40"
+            onClick={() => setShowEarlyPaths((prev) => !prev)}
+          >
+            {showEarlyPaths ? 'Hide Early Paths' : 'Show Early Paths'}
+          </button>
+          {augmentError ? (
+            <button
+              className="px-2 py-1 rounded border border-white/20 hover:border-white/40"
+              onClick={() => refetchAugments()}
+            >
+              Retry Augments
+            </button>
+          ) : (
+            <span>{augmentLoading ? 'Loading augments...' : 'Augments loaded'}</span>
+          )}
+          {earlyLoading && <span>Early comps loading...</span>}
         </div>
       </div>
 
@@ -105,6 +167,8 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
             rank={index + 1}
             isHighlighted={index === 0}
             earlyTransitions={getTransitionsTo(comp.cluster_id)}
+            augmentRecommendations={getAugmentRecommendations(comp.traits?.map((trait) => trait.name) ?? [])}
+            defaultExpanded={showEarlyPaths}
           />
         ))}
       </div>

@@ -179,6 +179,44 @@ class TFTRecommender:
         augments.sort(key=lambda x: x['score'], reverse=True)
         return augments[:top_n]
 
+    def get_augment_fit(self, traits: List[str],
+                        trait_frequency: Optional[Dict[str, int]] = None,
+                        total_comps: int = 0,
+                        top_n: int = 3) -> List[Dict]:
+        """Rank augments by trait fit and estimated enemy benefit."""
+        if trait_frequency is None:
+            trait_frequency = {}
+
+        augment_pool = self.get_augment_recommendations(top_n=len(self.augment_tiers))
+        if not augment_pool:
+            return []
+
+        normalized_traits = set(traits)
+        total_comps = max(total_comps, 0)
+
+        ranked = []
+        for augment in augment_pool:
+            matching_types = [t for t in augment['types'] if t in normalized_traits]
+            match_count = len(matching_types)
+            contested_count = sum(trait_frequency.get(t, 0) for t in matching_types)
+            contested_share = contested_count / total_comps if total_comps else 0
+            fit_score = augment['score'] + match_count * 0.6
+            enemy_benefit = 'Low'
+            if contested_share >= 0.35:
+                enemy_benefit = 'High'
+            elif contested_share >= 0.2:
+                enemy_benefit = 'Medium'
+
+            ranked.append({
+                **augment,
+                'matching_types': matching_types,
+                'fit_score': fit_score,
+                'enemy_benefit': enemy_benefit,
+            })
+
+        ranked.sort(key=lambda x: x['fit_score'], reverse=True)
+        return ranked[:top_n]
+
     def analyze_board(self, units: List[Dict]) -> Dict:
         """
         Analyze current board state
