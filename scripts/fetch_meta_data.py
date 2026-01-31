@@ -24,7 +24,9 @@ METATFT_COMPS_URL = "https://api-hc.metatft.com/tft-comps-api/comps_data"
 METATFT_STATS_URL = "https://api-hc.metatft.com/tft-comps-api/comps_stats"
 METATFT_COMPS_PARAMS = {
     "queue": "1100",  # Ranked queue
-    "region_hint": "na1"
+    "region_hint": "na1",
+    "rank": "EMERALD",  # Emerald+ stats
+    "days": "3",  # Last 3 days of data
 }
 METATFT_STATS_PARAMS = {
     "queue": "1100",  # Ranked queue
