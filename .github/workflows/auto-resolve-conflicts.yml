@@ -1,0 +1,51 @@
+name: Auto-resolve merge conflicts
+
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: Base branch to merge into the head branch
+        required: true
+        default: main
+      head:
+        description: Head branch to receive the merge
+        required: true
+      strategy:
+        description: Merge strategy for conflicts (ours or theirs)
+        required: true
+        default: theirs
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout head branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.head }}
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch base branch
+        run: git fetch origin ${{ inputs.base }}
+
+      - name: Merge base into head
+        run: |
+          git merge --no-ff --no-edit -X ${{ inputs.strategy }} origin/${{ inputs.base }}
+
+      - name: Create conflict-resolved PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: auto-resolve/${{ inputs.head }}
+          title: "Auto-resolve conflicts for ${{ inputs.head }}"
+          body: |
+            Automated conflict resolution by merging `${{ inputs.base }}` into `${{ inputs.head }}`
+            using the `-X ${{ inputs.strategy }}` strategy.
