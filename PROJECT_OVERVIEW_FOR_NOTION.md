@@ -9,93 +9,86 @@
 ```
 tft-coach-234/
 ├── app/                          # Main Python application
-│   ├── main.py                   # Entry point - TFTCoach class
+│   ├── main.py                   # Entry point - WebSocket + log watcher
 │   ├── config.py                 # Configuration (paths, ports, etc.)
-│   ├── run_app.py                # Alternative runner
 │   ├── api/
 │   │   └── server.py             # FastAPI REST API + endpoints
-│   ├── frontend/                 # React + Vite + TailwindCSS UI
+│   ├── frontend/                 # TypeScript React + Vite + TailwindCSS (PRIMARY)
 │   │   ├── package.json
+│   │   ├── vite.config.ts        # Vite config with proxy
+│   │   ├── tsconfig.json         # TypeScript configuration
 │   │   ├── src/
-│   │   │   ├── App.jsx           # Main React component
-│   │   │   ├── api.js            # API client
-│   │   │   └── components/       # UI components
-│   │   │       ├── Header.jsx
-│   │   │       ├── HexBoard.jsx      # Hex grid board display
-│   │   │       ├── HexUnit.jsx
-│   │   │       ├── TraitsPanel.jsx
-│   │   │       ├── LobbyTracker.jsx
-│   │   │       ├── ItemSuggestions.jsx
-│   │   │       ├── ModelSuggestions.jsx
-│   │   │       └── PriorityUnits.jsx
-│   │   └── tailwind.config.js
+│   │   │   ├── App.tsx           # Main React component
+│   │   │   ├── main.tsx          # React entry point
+│   │   │   └── index.css         # Tailwind styles
+│   │   ├── hooks/                # React hooks
+│   │   │   ├── useGameState.ts   # WebSocket connection
+│   │   │   ├── useMetaComps.ts   # Meta comps fetching
+│   │   │   ├── useEarlyComps.ts  # Early game comps
+│   │   │   └── usePoolTracker.ts # Unit pool tracking
+│   │   ├── utils/
+│   │   │   └── transformBoardData.ts  # Champion name mappings
+│   │   ├── images/               # 400+ champion/item images
+│   │   ├── CoachingPanel.tsx     # Stage-specific tips
+│   │   ├── CompsPanel.tsx        # Meta comps display
+│   │   ├── LiveBoard.tsx         # WebSocket-connected board
+│   │   ├── DualBoard.tsx         # Player + opponent boards
+│   │   ├── MetaCompCard.tsx      # Comp tier display
+│   │   └── ItemsBar.tsx          # Item category tabs
+│   ├── redux_bridge/             # Live data extraction from MetaTFT
+│   │   ├── inject.js             # Browser injection script
+│   │   └── handler.py            # WebSocket handler
 │   ├── server/
-│   │   └── websocket.py          # WebSocket server for real-time updates
+│   │   └── websocket.py          # WebSocket server for live updates
 │   ├── state/
-│   │   ├── game_state.py         # GameState dataclass model
-│   │   └── state_manager.py      # State update logic
+│   │   ├── game_state.py         # GameState data model
+│   │   └── state_manager.py      # Event processing
 │   └── watcher/
 │       ├── log_watcher.py        # File system watcher (watchdog)
-│       └── parser.py             # MetaTFT log parser with regex
+│       └── parser.py             # Log event parser (11+ event types)
 │
-├── src/                          # ML models and utilities
-│   └── models/                   # Placement prediction, recommender
+├── src/                          # ML models and data processing
+│   ├── metatft_parser.py         # MetaTFT log parser
+│   ├── tft_diagnostic.py         # Data validation utilities
+│   └── models/
+│       ├── feature_engineering.py # Feature extraction
+│       ├── placement_model.py     # ML placement prediction
+│       └── recommender.py         # Recommendation engine
 │
-├── scripts/
-│   ├── fetch_meta_data.py        # GitHub Actions data fetcher (placeholder)
-│   ├── organize_api_data.py      # API data processor
-│   └── kb/
-│       └── build_manifest.py     # Knowledge base builder
+├── scripts/                      # Utility scripts
+│   ├── fetch_early_comps.py      # Fetch early game comp data
+│   ├── fetch_meta_data.py        # Fetch current meta data
+│   ├── organize_api_data.py      # API data organization
+│   └── sync_metatft.py           # MetaTFT data sync
 │
-├── data/                         # Organized data directory
-│   ├── meta/                     # Meta statistics
-│   │   ├── compositions.json     # Comp cluster data
-│   │   ├── comp_stats.json       # Placement statistics
-│   │   ├── comp_builds.json      # Build variations
-│   │   ├── comp_options.json     # Augment/item options
-│   │   ├── unit_items.json       # Best items per unit
-│   │   └── percentiles.json      # Ranking data
-│   ├── personal/                 # Personal game data
-│   ├── api/
-│   │   ├── raw/                  # Original API JSONs
-│   │   └── processed/            # Parsed game data
-│   └── game_data/
-│
-├── TFT 16.3 API Data/            # Source data files
-│   ├── tft project files/        # CSV match data + JSONL game data
-│   └── API Data/                 # Raw Meta TFT API JSONs
+├── data/                         # All data files
+│   ├── personal/                 # Personal match history
+│   │   └── tft_since_16_2_enhanced.csv  # 163 matches
+│   ├── game_data/                # Set 16 reference data (JSONL)
+│   │   ├── champions.jsonl
+│   │   ├── traits.jsonl
+│   │   ├── items.jsonl
+│   │   └── augments.jsonl
+│   ├── meta/                     # Current meta data
+│   └── api/                      # API response caches
 │
 ├── docs/                         # Documentation
-│   ├── DATA_SCHEMAS.md           # Data format reference
-│   ├── PROTOTYPE_PLAN.md         # Architecture + roadmap
-│   ├── TFT_Coach_Figma_Spec.md   # UI design system
-│   └── TFT_Coach_Component_Outline.js
+├── archive/                      # Archived code
+│   └── old_frontend/             # Previous JavaScript frontend
 │
-├── metatft_logs/                 # Sample MetaTFT log files
-├── overlay/                      # HTML overlay files
-├── knowledge-base/               # KB manifests and sources
-├── outputs/                      # Generated outputs
-│
-├── sync_metatft.py               # Auto-sync MetaTFT logs
-├── watch_logs.py                 # Log watcher utility
-├── tft-coach.jsx                 # Standalone React component
-├── tft-coach-preview.html        # Interactive preview
-│
+├── start.sh                      # Single command launcher
+├── package.json                  # Root npm scripts
 ├── requirements.txt              # Python dependencies
-├── manifest.json                 # File manifest
-├── metadata.json                 # Dataset metadata
-├── .mcp.json                     # Figma MCP config
-└── README.md                     # Project handoff docs
+└── CLAUDE.md                     # Main AI assistant guide
 ```
 
 ---
 
-## 2. README.md (Full Contents)
+## 2. Project Objective
 
-### Project Objective
 Build a TFT coaching companion that provides ML-powered placement predictions and actionable recommendations based on:
 1. Historical match performance data (163 games analyzed)
-2. Live board state integration via Riot API
+2. Live board state integration via MetaTFT/Overwolf logs
 3. Current meta data from community sources
 
 **Primary Goal:** Predict placement outcomes and recommend optimal strategies aligned with the user's late-game AP/utility playstyle (70-100% top 4 rate with 5-cost carries like Fiddlesticks, Ornn, Ryze).
@@ -116,7 +109,7 @@ Build a TFT coaching companion that provides ML-powered placement predictions an
 
 ---
 
-## 3. Configuration Files
+## 3. Configuration
 
 ### app/config.py
 ```python
@@ -136,72 +129,14 @@ class Config:
 
     # Data directory
     data_dir: Path = Path(__file__).parent.parent / "data"
-
-    @property
-    def personal_notes_path(self) -> Path:
-        return self.data_dir / "personal_notes.yaml"
-
-    @property
-    def rules_path(self) -> Path:
-        return self.data_dir / "rules.yaml"
-
-    @property
-    def history_db_path(self) -> Path:
-        return self.data_dir / "history.db"
 ```
 
-### metadata.json
-```json
-{
-  "source": "CommunityDragon cdragon/tft/en_us.json",
-  "source_url": "https://raw.communitydragon.org/latest/cdragon/tft/en_us.json",
-  "set_number": 16,
-  "set_name": "Set16",
-  "counts": {
-    "champions_all": 116,
-    "champions_shop": 101,
-    "traits": 53,
-    "items": 444,
-    "augments": 208
-  }
-}
-```
-
-### manifest.json
-```json
-{
-  "created_at_utc": "2026-01-21T20:13:54.605169Z",
-  "files": [
-    "README.txt", "ability_variables.jsonl", "augments.jsonl",
-    "champion_traits.jsonl", "champions.jsonl", "item_components.jsonl",
-    "items.jsonl", "metadata.json", "set16_all_records.jsonl",
-    "set16_augments.jsonl", "set16_champions_all.jsonl",
-    "set16_champions_shop.jsonl", "set16_items.jsonl",
-    "set16_traits.jsonl", "trait_effects.jsonl", "traits.jsonl"
-  ],
-  "row_counts_from_csv": {
-    "ability_variables": 609,
-    "augments": 208,
-    "champion_traits": 207,
-    "champions": 101,
-    "items": 444,
-    "trait_effects": 113,
-    "traits": 53
-  }
-}
-```
-
-### .mcp.json (Figma Integration)
-```json
-{
-  "mcpServers": {
-    "figma": {
-      "type": "http",
-      "url": "https://mcp.figma.com/mcp"
-    }
-  }
-}
-```
+### Ports Summary
+| Service | Port | Protocol |
+|---------|------|----------|
+| Frontend UI | 5173 | HTTP |
+| REST API | 8000 | HTTP |
+| WebSocket | 8765 | WS |
 
 ---
 
@@ -211,11 +146,6 @@ class Config:
 **Headers:**
 ```
 match_id,game_datetime,game_length_sec,queue_id,game_version,placement,level,gold_left,last_round,time_eliminated,total_damage_to_players,players_eliminated,aug1,aug2,aug3,traits_active,final_board_units
-```
-
-**Sample Row:**
-```
-NA1_5470047531,1768959662960,2105.72,1100,Linux Version 16.1...,5,8,39,28,1708.66,71,0,,,,Brawler:1 | Void:3,"KogMaw_2*() | BelVeth_2*(TheDarkinBow,TitansResolve,RunaansHurricane) | ..."
 ```
 
 **Key Fields:**
@@ -232,70 +162,15 @@ NA1_5470047531,1768959662960,2105.72,1100,Linux Version 16.1...,5,8,39,28,1708.6
 carry,cost,games,top4_rate,win_rate,avg_placement
 Fiddlesticks,5,4,100.0,25.0,1.75
 Ornn,5,7,100.0,28.57,2.14
-Sett,5,3,100.0,0.0,2.67
 ```
 
-### Augment Tierlist (metatft_augment_tierlist_16_3.csv)
-```
-name,tier,types,rarity
-3 Threes,S,Econ,Gold
-Band of Thieves II+,S,Items,Prismatic
-Comeback Story,S,"Combat, Scaling",Prismatic
-```
-
-### Trait Performance (trait_performance_corrected.csv) - 54 traits
-```python
-{
-    "trait": "Sorcerer",
-    "games": 45,
-    "top4_rate": 0.622,
-    "win_rate": 0.133,
-    "avg_placement": 4.12
-}
-```
-
-### Item Performance (item_performance_corrected.csv) - 47 items
-```python
-{
-    "item": "JeweledGauntlet",
-    "games": 28,
-    "top4_rate": 0.678,
-    "avg_placement": 3.89
-}
-```
-
-### Champion Data (champions.jsonl) - 101 champions
-```python
-{
-    "apiName": "TFT16_Tristana",
-    "name": "Tristana",
-    "cost": 2,
-    "role": "ADCaster",
-    "traits_pipe": "Yordle|Gunslinger",
-    "ability_name": "Buster Shot",
-    "stat_armor": 20.0,
-    "stat_attackSpeed": 0.75,
-    "stat_damage": 55.0,
-    "stat_hp": 550.0,
-    "stat_mana": 50.0,
-    "stat_range": 4.0
-}
-```
-
-### Composition Data (compositions.json)
-```json
-{
-  "cluster_id": 387,
-  "tft_set": "TFTSet16",
-  "compositions": {
-    "387000": {
-      "Cluster": 387000,
-      "centroid": [0.0001, 0.0008, ...],
-      // Unit vectors for comp identification
-    }
-  }
-}
-```
+### Game Data Files (JSONL)
+| File | Records | Purpose |
+|------|---------|---------|
+| champions.jsonl | 101 | Champion base stats & abilities |
+| augments.jsonl | 208 | Augment definitions |
+| traits.jsonl | 53 | Trait breakpoints |
+| items.jsonl | 444 | All items |
 
 ---
 
@@ -307,7 +182,6 @@ Comeback Story,S,"Combat, Scaling",Prismatic
   - `LogWatcher` - MetaTFT log monitoring
   - `WebSocketServer` - real-time client updates
 - CLI args: `--no-server`, `--port`
-- Handles graceful shutdown on Ctrl+C
 
 ### Log Parser: app/watcher/parser.py
 Event types detected:
@@ -336,58 +210,48 @@ class GameState:
 ### API Server: app/api/server.py
 FastAPI endpoints:
 - `GET /api/stats` - personal carry/trait stats
+- `GET /api/meta-comps` - MetaTFT meta compositions
+- `GET /api/early-comps` - early game compositions
 - `GET /api/comps/{stage}` - best comps for stage
 - `GET /api/augments` - augment recommendations
 - `POST /api/recommend` - board analysis + suggestions
 - `GET /api/priority-units` - units to look for
 - `GET /api/items` - build/avoid item suggestions
 
-### Data Sync: sync_metatft.py
-- Auto-discovers Overwolf/MetaTFT log directory
-- Parses augment armory events
-- Exports to CSV for analysis
-- Watch mode: `--watch` flag for continuous sync
-
 ---
 
-## 6. Frontend (React + Vite)
+## 6. Frontend (React + TypeScript + Vite)
 
 ### package.json Dependencies
 ```json
 {
   "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react": "^18.x",
+    "react-dom": "^18.x"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.18",
-    "@vitejs/plugin-react": "^5.1.1",
-    "tailwindcss": "^4.1.18",
-    "vite": "^7.2.4"
+    "@vitejs/plugin-react": "^5.x",
+    "tailwindcss": "^4.x",
+    "typescript": "^5.x",
+    "vite": "^7.x"
   }
 }
 ```
 
-### Main Components (App.jsx)
+### Main Components (App.tsx)
 1. **Header** - Live/offline status
 2. **TraitsPanel** - Active traits display
 3. **LobbyTracker** - Comp contestation counter
 4. **HexBoard** - Hex grid board visualization
-5. **ItemSuggestions** - Build/avoid items
-6. **ModelSuggestions** - ML-based recommendations
-7. **PriorityUnits** - Units to prioritize
+5. **ItemsBar** - Item category tabs
+6. **CoachingPanel** - Stage-specific tips
+7. **MetaCompCard** - Meta comp with tiers
 
-### Comp Archetypes Tracked
-```javascript
-const COMP_ARCHETYPES = [
-  { id: 'harvester', name: 'Harvester/Fiddle', color: '#22c55e' },
-  { id: 'soulbound', name: 'Soulbound', color: '#a855f7' },
-  { id: 'blacksmith', name: 'Blacksmith', color: '#3b82f6' },
-  { id: 'bruiser', name: 'Bruiser/Sett', color: '#f97316' },
-  { id: 'void', name: 'Void', color: '#8b5cf6' },
-  { id: 'honeymancy', name: 'Honeymancy', color: '#eab308' },
-]
-```
+### React Hooks
+- `useGameState` - WebSocket connection with auto-reconnect
+- `useMetaComps` - Meta compositions fetching
+- `useEarlyComps` - Early game comps
+- `usePoolTracker` - Unit pool state tracking
 
 ---
 
@@ -420,64 +284,65 @@ python-dateutil>=2.8.2
 ## 8. Architecture Diagram
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                         TFT Game                                │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    MetaTFT (Overwolf)                           │
-│              Captures game events via GEP API                   │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ Writes logs
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              MetaTFT Log Files (.log)                           │
-│   %LOCALAPPDATA%\Overwolf\Log\Apps\MetaTFT\                     │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ File watching (watchdog)
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                 Log Watcher Service (Python)                    │
-│  • Monitors log file changes                                    │
-│  • Parses events into structured GameEvent                      │
-│  • Updates StateManager                                         │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ GameState updates
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   Coach Engine (Python)                         │
-│  • PlacementModel - ML predictions                              │
-│  • TFTRecommender - strategy suggestions                        │
-│  • Personal stats from CSV data                                 │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ FastAPI + WebSocket
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   Overlay UI (React + Vite)                     │
-│  • HexBoard - board visualization                               │
-│  • TraitsPanel - active traits                                  │
-│  • ModelSuggestions - ML recommendations                        │
-│  • LobbyTracker - contestation tracking                         │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                    DATA SOURCES                              │
+├─────────────────────────────────────────────────────────────┤
+│  MetaTFT Logs          Redux Store           Post-Game API  │
+│  (Overwolf)            (inject.js)           (DigitalOcean) │
+└──────┬───────────────────┬─────────────────────┬────────────┘
+       │                   │                     │
+       ▼                   ▼                     │
+┌──────────────────────────────────────────┐    │
+│           Log Watcher + Parser            │    │
+│    app/watcher/log_watcher.py            │    │
+│    app/watcher/parser.py                 │    │
+└──────────────────┬───────────────────────┘    │
+                   │                            │
+                   ▼                            │
+┌──────────────────────────────────────────┐    │
+│           State Manager                   │    │
+│    app/state/state_manager.py            │    │
+│    app/state/game_state.py               │◄───┘
+└──────────────────┬───────────────────────┘
+                   │
+        ┌──────────┴──────────┐
+        ▼                     ▼
+┌───────────────┐     ┌───────────────┐
+│  WebSocket    │     │   REST API    │
+│  :8765/ws     │     │   :8000       │
+└───────┬───────┘     └───────┬───────┘
+        │                     │
+        └──────────┬──────────┘
+                   ▼
+┌─────────────────────────────────────────┐
+│      TypeScript React Frontend           │
+│       app/frontend/ (port 5173)          │
+│   Vite proxy forwards /api and /ws      │
+└─────────────────────────────────────────┘
 ```
 
 ---
 
-## 9. Key Data Files Reference
+## 9. Quick Start Commands
 
-| Category | File | Records | Purpose |
-|----------|------|---------|---------|
-| Personal | tft_since_16_2_enhanced.csv | 163 | Match history with full data |
-| Personal | carry_performance_corrected.csv | 22 | Carry unit stats |
-| Personal | trait_performance_corrected.csv | 54 | Trait synergy stats |
-| Personal | item_performance_corrected.csv | 47 | Item build stats |
-| Game Data | champions.jsonl | 101 | Champion base stats |
-| Game Data | augments.jsonl | 208 | Augment definitions |
-| Game Data | traits.jsonl | 53 | Trait breakpoints |
-| Game Data | items.jsonl | 444 | All items |
-| Meta | metatft_augment_tierlist_16_3.csv | - | Community tier rankings |
-| Meta | compositions.json | - | Comp cluster data |
+```bash
+# Single command to run everything
+npm start
+# Or: ./start.sh
+
+# Frontend only
+cd app/frontend && npm run dev
+
+# Backend only
+python -m app.main
+
+# API server only
+python -m app.api.server
+
+# Install dependencies
+pip install -r requirements.txt
+cd app/frontend && npm install
+```
 
 ---
 
@@ -501,70 +366,43 @@ def parse_units(unit_str):
     return [(name, int(stars), items.split(',') if items else [])
             for name, stars, items in re.findall(pattern, unit_str)]
 # "KogMaw_2*()" -> [("KogMaw", 2, [])]
-# "BelVeth_2*(TheDarkinBow,TitansResolve)" -> [("BelVeth", 2, ["TheDarkinBow", "TitansResolve"])]
 ```
 
 ---
 
-## 11. GitHub Actions Workflows
+## 11. Key Data Files Reference
 
-Located in `.github/workflows/`:
-- `deploy.yml` - Deployment automation
-- `fetch-meta-data.yml` - Daily meta data refresh
-- `lint.yml` - Code linting
-- `test-coverage.yml` - Test coverage reports
-- `auto-merge.yml` - PR auto-merge
-- `secret-scan.yml` - Security scanning
-
----
-
-## 12. Quick Start Commands
-
-```bash
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Run the coach (with WebSocket server)
-python -m app.main
-
-# Run without server (CLI only)
-python -m app.main --no-server
-
-# Run API server separately
-python -m app.api.server
-
-# Sync MetaTFT logs
-python sync_metatft.py
-
-# Watch mode (continuous sync)
-python sync_metatft.py --watch
-
-# Frontend development
-cd app/frontend
-npm install
-npm run dev
-```
+| Category | File | Records | Purpose |
+|----------|------|---------|---------|
+| Personal | tft_since_16_2_enhanced.csv | 163 | Match history with full data |
+| Personal | carry_performance_corrected.csv | 22 | Carry unit stats |
+| Personal | trait_performance_corrected.csv | 54 | Trait synergy stats |
+| Personal | item_performance_corrected.csv | 47 | Item build stats |
+| Game Data | champions.jsonl | 101 | Champion base stats |
+| Game Data | augments.jsonl | 208 | Augment definitions |
+| Game Data | traits.jsonl | 53 | Trait breakpoints |
+| Game Data | items.jsonl | 444 | All items |
 
 ---
 
-## 13. Model Building Objectives
+## 12. Model Building Objectives
 
-### Phase 1: Placement Prediction
+### Phase 1: Placement Prediction (COMPLETE)
 - **Target:** `placement` (1-8)
 - **Features:** Trait counts, unit composition, game state, items, augments
 - **Approach:** Random Forest / XGBoost for interpretability
 - **Note:** Small dataset (163 games) - avoid overfitting
 
-### Phase 2: Recommendation Engine
+### Phase 2: Recommendation Engine (COMPLETE)
 1. Optimal pivots when underperforming
 2. Item prioritization based on board
 3. Augment selection with personal performance
 
-### Phase 3: Live Integration
-- Riot API for real-time board state
+### Phase 3: Live Integration (IN PROGRESS)
+- MetaTFT/Overwolf for real-time board state
 - Contestation tracking
 - Real-time placement projections
 
 ---
 
-*Generated: 2026-01-28 | TFT Set 16.3*
+*Generated: 2026-01-31 | TFT Set 16.3*
