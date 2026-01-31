@@ -95,6 +95,24 @@ const getLevellingColor = (levelling: string): string => {
   return '#6b7280';
 };
 
+// Calculate tier based on top4_rate (override API tier if needed)
+const calculateTier = (top4Rate: number, apiTier: string): string => {
+  // Recalculate tier based on actual performance
+  if (top4Rate >= 65) return 'S';
+  if (top4Rate >= 55) return 'A';
+  if (top4Rate >= 45) return 'B';
+  return apiTier || 'B';
+};
+
+// Get unit limit based on levelling strategy
+const getUnitLimit = (levelling: string): number => {
+  // Fast 8 comps typically show 8 units, Fast 9/Standard show 9
+  if (levelling?.includes('Fast 8') && !levelling?.includes('Fast 9')) {
+    return 8;
+  }
+  return 9;
+};
+
 // Get image URL for a champion
 const getChampionImage = (championName: string): string => {
   const displayName = formatChampionName(championName);
@@ -115,10 +133,14 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
   earlyTransitions = [],
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const tierColor = getTierColor(comp.tier);
+  // Calculate tier from top4_rate instead of trusting API tier
+  const tier = calculateTier(comp.top4_rate, comp.tier);
+  const tierColor = getTierColor(tier);
   const gamesInK = (comp.games_played / 1000).toFixed(1);
   const levellingColor = getLevellingColor(comp.levelling);
   const hasEarlyPaths = earlyTransitions.length > 0;
+  // Dynamic unit limit based on levelling strategy
+  const unitLimit = getUnitLimit(comp.levelling);
 
   const handleClick = () => {
     if (hasEarlyPaths) {
@@ -151,7 +173,7 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
             className="px-2 py-0.5 rounded text-xs font-bold"
             style={{ background: tierColor, color: '#fff' }}
           >
-            {comp.tier}
+            {tier}
           </span>
           <span className="text-xs font-bold" style={{ color: '#6b7280' }}>
             #{rank}
@@ -170,7 +192,7 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
 
       {/* Champions row */}
       <div className="flex gap-1 flex-wrap mb-2">
-        {comp.units.slice(0, 8).map((unit, index) => {
+        {comp.units.slice(0, unitLimit).map((unit, index) => {
           const cost = getChampionCost(unit);
           return (
             <div
