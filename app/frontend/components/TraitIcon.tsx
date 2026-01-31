@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { getTraitIcon, getTraitTierInfo, getTierColors, isTraitActive, type TraitTier } from '../utils/traitUtils';
 
 interface TraitIconProps {
@@ -23,6 +23,7 @@ export const TraitIcon: React.FC<TraitIconProps> = ({
   showInactive = false,
 }) => {
   const isActive = isTraitActive(name, count);
+  const [iconError, setIconError] = useState(false);
 
   // Don't render inactive traits unless explicitly requested
   if (!isActive && !showInactive) {
@@ -47,6 +48,10 @@ export const TraitIcon: React.FC<TraitIconProps> = ({
     ? `${name} (${count}/${tierInfo.nextBreakpoint})`
     : `${name} (${count}) - Max`;
 
+  useEffect(() => {
+    setIconError(false);
+  }, [iconUrl]);
+
   return (
     <div
       className={`relative ${sizeClass.container} rounded flex items-center justify-center`}
@@ -57,12 +62,13 @@ export const TraitIcon: React.FC<TraitIconProps> = ({
       }}
       title={tooltipText}
     >
-      {iconUrl ? (
+      {iconUrl && !iconError ? (
         <img
           src={iconUrl}
           alt={name}
           className={`${sizeClass.icon} object-contain`}
           style={{ filter: tierInfo.tier === 'inactive' ? 'none' : 'brightness(0)' }}
+          onError={() => setIconError(true)}
         />
       ) : (
         // Fallback: show first letter of trait name
