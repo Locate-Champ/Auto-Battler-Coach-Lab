@@ -82,6 +82,7 @@ class GameState:
 
     # Predictions
     win_chance: Optional[int] = None
+    evaluation_checkpoints: list[dict] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         """Convert to dictionary for JSON serialization."""
@@ -109,6 +110,7 @@ class GameState:
             },
             "currently_scouting": self.currently_scouting,
             "win_chance": self.win_chance,
+            "evaluation_checkpoints": self.evaluation_checkpoints,
             # Board units with positions
             "board_units": [
                 {
@@ -185,3 +187,4 @@ class GameState:
         self.opponent_boards = {}
         self.currently_scouting = None
         self.win_chance = None
+        self.evaluation_checkpoints = []
