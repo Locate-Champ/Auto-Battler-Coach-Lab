@@ -10,12 +10,16 @@ import SupportItems from '../support items'
 import SetItems from '../set items'
 import CompsPanel from '../CompsPanel'
 import CoachingPanel from '../CoachingPanel'
+import PoolTracker from '../PoolTracker'
+import { useGameState } from '../hooks/useGameState'
 
 type ItemTab = 'Craftable' | 'Artifact' | 'Emblem' | 'Radiant' | 'Support' | 'Set'
 
 function App() {
   const [activeTab, setActiveTab] = useState<ItemTab>('Craftable')
   const [useLiveData, setUseLiveData] = useState(false)
+  // Get live game state for pool tracking
+  const { state: gameState } = useGameState({ enabled: useLiveData })
 
   return (
     <div className="min-h-screen bg-gray-900 flex justify-center p-8">
@@ -71,8 +75,11 @@ function App() {
           </div>
         </div>
 
-        {/* Right: Comps Panel */}
-        <CompsPanel />
+        {/* Right: Comps Panel + Pool Tracker */}
+        <div className="flex flex-col gap-4">
+          <CompsPanel />
+          <PoolTracker gameState={gameState} />
+        </div>
       </div>
     </div>
   )
