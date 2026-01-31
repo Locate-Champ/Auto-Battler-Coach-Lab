@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MetaCompCard from './MetaCompCard';
 import { useMetaComps } from './hooks/useMetaComps';
 import { useEarlyComps } from './hooks/useEarlyComps';
@@ -8,9 +8,9 @@ interface CompsPanelProps {
 }
 
 const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
-  const { data, loading, error, refetch } = useMetaComps({ limit: 30 });
+  const { data, loading, error, refetch } = useMetaComps({ limit: 25 });
   const { getTransitionsTo, loading: earlyLoading } = useEarlyComps();
-  const [sortBy, setSortBy] = useState<'tier' | 'top4' | 'winRate' | 'games'>('tier');
+  const sortBy: 'tier' = 'tier';
 
   // Tier order for sorting
   const tierOrder: Record<string, number> = { S: 0, A: 1, B: 2, C: 3 };
@@ -57,30 +57,9 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
       {/* Sort controls */}
       {data && (
         <div className="px-3 py-2 flex gap-2 border-b border-[#3a3a4f]">
-          <button
-            className={`px-2 py-1 rounded text-xs ${sortBy === 'tier' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
-            onClick={() => setSortBy('tier')}
-          >
+          <span className="px-2 py-1 rounded text-xs bg-[#3a3a4f] text-white">
             Tier
-          </button>
-          <button
-            className={`px-2 py-1 rounded text-xs ${sortBy === 'top4' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
-            onClick={() => setSortBy('top4')}
-          >
-            Top 4%
-          </button>
-          <button
-            className={`px-2 py-1 rounded text-xs ${sortBy === 'winRate' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
-            onClick={() => setSortBy('winRate')}
-          >
-            Win%
-          </button>
-          <button
-            className={`px-2 py-1 rounded text-xs ${sortBy === 'games' ? 'bg-[#3a3a4f] text-white' : 'text-[#888]'}`}
-            onClick={() => setSortBy('games')}
-          >
-            Games
-          </button>
+          </span>
         </div>
       )}
 

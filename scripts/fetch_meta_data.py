@@ -8,6 +8,7 @@ Returns composition clusters with performance stats, item builds, and traits.
 """
 
 import json
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -18,10 +19,19 @@ SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data" / "meta"
 GAME_DATA_DIR = SCRIPT_DIR.parent / "data" / "game_data"
 
-# MetaTFT API endpoint
-METATFT_API_URL = "https://api-hc.metatft.com/tft-comps-api/comps_data"
-METATFT_API_PARAMS = {
+# MetaTFT API endpoints
+METATFT_COMPS_URL = "https://api-hc.metatft.com/tft-comps-api/comps_data"
+METATFT_STATS_URL = "https://api-hc.metatft.com/tft-comps-api/comps_stats"
+METATFT_COMPS_PARAMS = {
     "queue": "1100",  # Ranked queue
+    "region_hint": "na1"
+}
+METATFT_STATS_PARAMS = {
+    "queue": "1100",  # Ranked queue
+    "patch": "current",
+    "days": "3",
+    "rank": "CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER",
+    "permit_filter_adjustment": "true",
     "region_hint": "na1"
 }
 
@@ -44,6 +54,8 @@ TIER_THRESHOLDS = {
 
 # Trait ID mapping (API name -> display name)
 TRAIT_ID_MAP = {}
+# Champion to trait mapping (champion apiName -> list of trait apiNames)
+CHAMPION_TRAITS_MAP = {}
 
 
 def load_trait_id_map():
@@ -58,11 +70,54 @@ def load_trait_id_map():
         print(f"Warning: {map_file} not found, using raw trait names")
 
 
+def load_champion_traits_map():
+    """Load champion -> traits mapping from JSONL file."""
+    global CHAMPION_TRAITS_MAP
+    traits_file = GAME_DATA_DIR / "champion_traits.jsonl"
+    if not traits_file.exists():
+        print(f"Warning: {traits_file} not found, falling back to traits_string")
+        return
+
+    champion_traits: dict[str, list[str]] = {}
+    with open(traits_file, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            record = json.loads(line)
+            champion_api = record.get("champion_apiName")
+            trait_api = record.get("trait_apiName")
+            if not champion_api or not trait_api:
+                continue
+            champion_traits.setdefault(champion_api, []).append(trait_api)
+
+    CHAMPION_TRAITS_MAP = champion_traits
+    print(f"Loaded traits for {len(CHAMPION_TRAITS_MAP)} champions")
+
+
 def normalize_trait_name(api_name: str) -> str:
     """Convert API trait name to display name."""
     if api_name in TRAIT_ID_MAP:
         return TRAIT_ID_MAP[api_name].get('displayName', api_name)
     return api_name
+
+
+def build_traits_from_units(units: list[str]) -> list[dict[str, int]]:
+    """Build trait counts from unit list using champion trait map."""
+    if not CHAMPION_TRAITS_MAP:
+        return []
+
+    trait_counts: Counter[str] = Counter()
+    for unit in units:
+        traits = CHAMPION_TRAITS_MAP.get(unit, [])
+        for trait_api in traits:
+            display_name = normalize_trait_name(trait_api)
+            trait_counts[display_name] += 1
+
+    return [
+        {"name": trait_name, "count": count}
+        for trait_name, count in trait_counts.items()
+    ]
 
 
 def calculate_tier(avg_placement: float) -> str:
@@ -115,13 +170,13 @@ def fetch_metatft_data():
     Returns:
         dict: Raw API response or None if fetch fails
     """
-    print(f"Fetching data from MetaTFT API...")
-    print(f"URL: {METATFT_API_URL}")
+    print(f"Fetching comps data from MetaTFT API...")
+    print(f"URL: {METATFT_COMPS_URL}")
 
     try:
         response = requests.get(
-            METATFT_API_URL,
-            params=METATFT_API_PARAMS,
+            METATFT_COMPS_URL,
+            params=METATFT_COMPS_PARAMS,
             headers=HEADERS,
             timeout=30
         )
@@ -140,7 +195,72 @@ def fetch_metatft_data():
     return data
 
 
-def extract_comps_data(raw_data):
+def fetch_metatft_stats():
+    """Fetch composition stats from MetaTFT API with rank filter."""
+    print(f"Fetching stats data from MetaTFT API...")
+    print(f"URL: {METATFT_STATS_URL}")
+
+    try:
+        response = requests.get(
+            METATFT_STATS_URL,
+            params=METATFT_STATS_PARAMS,
+            headers=HEADERS,
+            timeout=30
+        )
+        response.raise_for_status()
+    except requests.RequestException as e:
+        print(f"Error fetching MetaTFT stats API: {e}")
+        return None
+
+    try:
+        data = response.json()
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON response: {e}")
+        return None
+
+    print("Successfully fetched MetaTFT stats")
+    return data
+
+
+def build_stats_by_cluster(stats_data):
+    """Build stats lookup keyed by cluster ID."""
+    if not stats_data:
+        return {}, 0, None
+
+    results = stats_data.get("results", [])
+    total_games = 0
+    stats_by_cluster = {}
+
+    for entry in results:
+        cluster_id = str(entry.get("cluster", "")).strip()
+        if not cluster_id or cluster_id in {"-1"}:
+            continue
+
+        places = entry.get("places", []) or []
+        count = entry.get("count", 0)
+        total_place_count = sum(places) if places else 0
+
+        if total_place_count > 0:
+            avg_placement = sum((idx + 1) * place_count for idx, place_count in enumerate(places)) / total_place_count
+            top4_rate = (sum(places[:4]) / total_place_count) * 100
+            win_rate = (places[0] / total_place_count) * 100
+        else:
+            avg_placement = 5.0
+            top4_rate = 0.0
+            win_rate = 0.0
+
+        stats_by_cluster[cluster_id] = {
+            "avg_placement": avg_placement,
+            "games_played": count,
+            "top4_rate": top4_rate,
+            "win_rate": win_rate,
+        }
+        total_games += count
+
+    return stats_by_cluster, total_games, stats_data.get("tft_set")
+
+
+def extract_comps_data(raw_data, stats_by_cluster=None, stats_total_games=0, stats_tft_set=None):
     """
     Extract and normalize composition data from MetaTFT API response.
 
@@ -158,42 +278,40 @@ def extract_comps_data(raw_data):
         results = raw_data.get("results", {})
         data = results.get("data", {})
         cluster_details = data.get("cluster_details", {})
-        tft_set = data.get("tft_set", "TFTSet16")
+        tft_set = stats_tft_set or data.get("tft_set", "TFTSet16")
 
         # Extract patch from set name (e.g., TFTSet16 -> 16.x)
         patch = tft_set.replace("TFTSet", "") if tft_set else "unknown"
 
         comps = []
-        total_games = 0
+        total_games = stats_total_games
 
         for cluster_id, cluster_data in cluster_details.items():
             stats = build_stats_by_cluster(cluster_data)
             games_played = stats["total_games"]
             avg_placement = stats["avg_placement"]
 
-            total_games += games_played
-
-            # Calculate tier based on avg placement
-            tier = calculate_tier(avg_placement)
-
             # Parse units from units_string
             units_string = cluster_data.get("units_string", "")
             units = [u.strip() for u in units_string.split(",") if u.strip()]
 
-            # Parse traits from traits_string
-            traits_string = cluster_data.get("traits_string", "")
-            traits = []
-            for trait in traits_string.split(","):
-                trait = trait.strip()
-                if trait:
-                    # Extract trait name and count (e.g., "TFT16_Piltover_2" -> {"name": "Piltover", "count": 2})
-                    parts = trait.replace("TFT16_", "").rsplit("_", 1)
-                    if len(parts) == 2 and parts[1].isdigit():
-                        api_name = parts[0]
-                        count = int(parts[1])
-                        # Normalize trait name to display name
-                        display_name = normalize_trait_name(api_name)
-                        traits.append({"name": display_name, "count": count})
+            # Build traits from units using champion trait map
+            traits = build_traits_from_units(units)
+
+            # Fallback: parse traits_string if champion trait map is missing
+            if not traits:
+                traits_string = cluster_data.get("traits_string", "")
+                for trait in traits_string.split(","):
+                    trait = trait.strip()
+                    if trait:
+                        # Extract trait name and count (e.g., "TFT16_Piltover_2" -> {"name": "Piltover", "count": 2})
+                        parts = trait.replace("TFT16_", "").rsplit("_", 1)
+                        if len(parts) == 2 and parts[1].isdigit():
+                            api_name = parts[0]
+                            count = int(parts[1])
+                            # Normalize trait name to display name
+                            display_name = normalize_trait_name(api_name)
+                            traits.append({"name": display_name, "count": count})
 
             # Extract builds (top 3)
             builds = []
@@ -217,8 +335,8 @@ def extract_comps_data(raw_data):
                 "traits": traits,
                 "avg_placement": round(avg_placement, 2),
                 "games_played": games_played,
-                "top4_rate": top4_rate,
-                "win_rate": win_rate,
+                "top4_rate": round(top4_rate, 2),
+                "win_rate": round(win_rate, 2),
                 "difficulty": round(cluster_data.get("difficulty", 0), 3),
                 "levelling": cluster_data.get("levelling", "Standard"),
                 "builds": builds,
@@ -285,7 +403,7 @@ def update_timestamp():
     data = {
         "last_updated": datetime.now(timezone.utc).isoformat(),
         "source": "metatft",
-        "url": METATFT_API_URL,
+        "url": METATFT_STATS_URL,
         "automated": True
     }
 
@@ -305,13 +423,21 @@ def main():
 
     # Load trait ID mapping for name normalization
     load_trait_id_map()
+    load_champion_traits_map()
 
     # Fetch data from MetaTFT API
+    stats_data = fetch_metatft_stats()
+    stats_by_cluster, stats_total_games, stats_tft_set = build_stats_by_cluster(stats_data)
     raw_data = fetch_metatft_data()
 
     if raw_data:
         # Extract and save composition data
-        comps_data = extract_comps_data(raw_data)
+        comps_data = extract_comps_data(
+            raw_data,
+            stats_by_cluster=stats_by_cluster,
+            stats_total_games=stats_total_games,
+            stats_tft_set=stats_tft_set,
+        )
         if comps_data:
             save_comps_data(comps_data)
         else:
