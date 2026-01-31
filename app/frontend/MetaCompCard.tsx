@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MetaComp } from './hooks/useMetaComps';
 import { EarlyCompWithTransition } from './hooks/useEarlyComps';
+import { AugmentRecommendation } from './hooks/useAugments';
 import EarlyCompDropdown from './EarlyCompDropdown';
 import { TraitList } from './components/TraitIcon';
 
@@ -154,6 +155,13 @@ interface MetaCompCardProps {
   rank: number;
   isHighlighted?: boolean;
   earlyTransitions?: EarlyCompWithTransition[];
+  augmentRecommendations?: Array<AugmentRecommendation & {
+    matchCount: number;
+    matchingTypes: string[];
+    fitScore: number;
+    enemyBenefit: 'High' | 'Medium' | 'Low';
+  }>;
+  defaultExpanded?: boolean;
 }
 
 const MetaCompCard: React.FC<MetaCompCardProps> = ({
@@ -161,8 +169,10 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
   rank,
   isHighlighted = false,
   earlyTransitions = [],
+  augmentRecommendations = [],
+  defaultExpanded = false,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [showBuilds, setShowBuilds] = useState(false);
   const tier = comp.tier;
   const tierColor = getTierColor(tier);
@@ -170,8 +180,13 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
   const levellingColor = getLevellingColor(comp.levelling);
   const hasEarlyPaths = earlyTransitions.length > 0;
   const hasBuilds = comp.builds && comp.builds.length > 0;
+  const hasAugments = augmentRecommendations.length > 0;
   // Dynamic unit limit based on levelling strategy
   const unitLimit = getUnitLimit(comp.levelling);
+
+  useEffect(() => {
+    setIsExpanded(defaultExpanded);
+  }, [defaultExpanded]);
 
   const handleClick = () => {
     if (hasEarlyPaths) {
@@ -317,6 +332,46 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
           </div>
         )}
       </div>
+
+      {/* Augment recommendations */}
+      {hasAugments && (
+        <div className="mt-3 pt-3 border-t" style={{ borderColor: COLORS.cardBorder }}>
+          <div className="text-[10px] uppercase tracking-wide mb-2" style={{ color: '#888' }}>
+            Augment Fit
+          </div>
+          <div className="space-y-1.5">
+            {augmentRecommendations.map((augment) => (
+              <div
+                key={augment.name}
+                className="flex items-center justify-between gap-2 rounded px-2 py-1"
+                style={{ backgroundColor: '#2a2a3f' }}
+              >
+                <div className="flex flex-col">
+                  <span className="text-xs font-medium" style={{ color: '#e5e7eb' }}>
+                    {augment.name}
+                  </span>
+                  <span className="text-[10px]" style={{ color: '#888' }}>
+                    {augment.matchingTypes.length > 0
+                      ? `Matches: ${augment.matchingTypes.join(', ')}`
+                      : 'General power'}
+                  </span>
+                </div>
+                <div className="text-right">
+                  <span
+                    className="text-[10px] uppercase tracking-wide"
+                    style={{ color: augment.enemyBenefit === 'High' ? COLORS.statBad : augment.enemyBenefit === 'Medium' ? COLORS.statMid : COLORS.statGood }}
+                  >
+                    Enemy {augment.enemyBenefit}
+                  </span>
+                  <div className="text-[10px]" style={{ color: '#888' }}>
+                    Tier {augment.tier}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Item Builds Section */}
       {showBuilds && hasBuilds && (
