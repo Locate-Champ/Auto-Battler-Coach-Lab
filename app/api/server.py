@@ -75,6 +75,13 @@ class CompCount(BaseModel):
     count: int
 
 
+class AugmentFitRequest(BaseModel):
+    traits: List[str]
+    trait_frequency: Dict[str, int] = {}
+    total_comps: int = 0
+    top_n: int = 3
+
+
 # ============== API Endpoints ==============
 
 @app.get("/")
@@ -210,6 +217,22 @@ async def get_augments(tier: Optional[str] = None, rarity: Optional[str] = None)
         augments = [a for a in augments if a['tier'] == tier.upper()]
 
     return {'augments': augments}
+
+
+@app.post("/api/augment-fit")
+async def get_augment_fit(request: AugmentFitRequest):
+    """Get augment fit rankings for a trait set."""
+    if not recommender:
+        raise HTTPException(status_code=503, detail="Models not loaded")
+
+    ranked = recommender.get_augment_fit(
+        traits=request.traits,
+        trait_frequency=request.trait_frequency,
+        total_comps=request.total_comps,
+        top_n=request.top_n,
+    )
+
+    return {"augments": ranked}
 
 
 @app.post("/api/recommend")
