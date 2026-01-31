@@ -1,6 +1,6 @@
 # TFT Coach Development Checklist
 
-> Last updated: 2026-01-29 | Based on 115 commits reviewed
+> Last updated: 2026-01-31
 
 ---
 
@@ -8,14 +8,14 @@
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 1.1 | Python project structure | ✅ Done | app/, src/, data/, overlay/ |
+| 1.1 | Python project structure | ✅ Done | app/, src/, data/, archive/ |
 | 1.2 | Log file watcher (watchdog) | ✅ Done | app/watcher/log_watcher.py |
 | 1.3 | Event parser for key events | ✅ Done | 11+ regex patterns in parser.py |
 | 1.4 | Game state data model | ✅ Done | app/state/game_state.py |
 | 1.5 | State reconstruction from events | ✅ Done | app/state/state_manager.py |
 | 1.6 | WebSocket server | ✅ Done | app/server/websocket.py |
 | 1.7 | Fix WebSocket live updates | ✅ Done | Thread-safe broadcasting |
-| 1.8 | FastAPI REST endpoints | ✅ Done | 8 endpoints in api/server.py |
+| 1.8 | FastAPI REST endpoints | ✅ Done | 8+ endpoints in api/server.py |
 
 ---
 
@@ -37,11 +37,11 @@
 
 ---
 
-## Phase 3: React Frontend (MOSTLY COMPLETE)
+## Phase 3: React Frontend (COMPLETE)
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 3.1 | React + Vite + Tailwind setup | ✅ Done | app/frontend/ |
+| 3.1 | React + Vite + Tailwind setup | ✅ Done | app/frontend/ (TypeScript) |
 | 3.2 | Header component | ✅ Done | Live status, game count |
 | 3.3 | HexBoard component | ✅ Done | 7x4 hex grid |
 | 3.4 | HexUnit component | ✅ Done | Portrait, items, stars |
@@ -51,23 +51,26 @@
 | 3.8 | ModelSuggestions component | ✅ Done | Top 4 recommended comps |
 | 3.9 | PriorityUnits component | ✅ Done | Units to look for |
 | 3.10 | Figma design integration | ✅ Done | TFTFlows styling |
-| 3.11 | Connect to live WebSocket data | ⚠️ Partial | Components ready, needs wiring |
+| 3.11 | Connect to live WebSocket data | ✅ Done | useGameState hook with auto-reconnect |
+| 3.12 | Meta comps panel | ✅ Done | MetaCompCard with tiers |
+| 3.13 | Coaching panel | ✅ Done | Stage-specific coaching tips |
+| 3.14 | Item category tabs | ✅ Done | Craftable, artifact, radiant panels |
 
 ---
 
-## Phase 4: Live Game Integration (PARTIAL)
+## Phase 4: Live Game Integration (MOSTLY COMPLETE)
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 4.1 | Parse board state from logs | ⚠️ Partial | Scouting events captured, not processed |
-| 4.2 | Health tracking live display | ⚠️ Partial | Parser works, UI not connected |
-| 4.3 | Opponent board tracking display | ❌ Todo | Parser ready, no UI component |
-| 4.4 | Real-time board sync | ❌ Todo | Demo data only, need live feed |
-| 4.5 | Item component recognition | ❌ Todo | For item crafting suggestions |
+| 4.1 | Parse board state from logs | ✅ Done | Redux bridge extracts live data |
+| 4.2 | Health tracking live display | ✅ Done | Parser + UI connected |
+| 4.3 | Opponent board tracking display | ⚠️ Partial | DualBoard component exists |
+| 4.4 | Real-time board sync | ✅ Done | WebSocket updates working |
+| 4.5 | Item component recognition | ⚠️ Partial | Basic item display, crafting suggestions todo |
 
 ---
 
-## Phase 5: Advanced Features (NOT STARTED)
+## Phase 5: Advanced Features (PARTIAL)
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
@@ -75,7 +78,7 @@
 | 5.2 | Who to itemize (unit prioritization) | ⚠️ Partial | PriorityUnits exists, needs item mapping |
 | 5.3 | Item-to-unit optimal assignment | ❌ Todo | Which items go on which carry |
 | 5.4 | Pivot recommendations | ❌ Todo | When to switch comps |
-| 5.5 | Stage-specific advice | ⚠️ Partial | Early game comps exist |
+| 5.5 | Stage-specific advice | ✅ Done | CoachingPanel with stage tips |
 | 5.6 | Econ tracking & suggestions | ❌ Todo | Gold/XP optimization |
 
 ---
@@ -108,16 +111,16 @@
 ## Quick Reference: What's Next?
 
 ### High Priority (Immediate Value)
-1. **Connect live WebSocket to UI** - Components ready, just need wiring
-2. **Add opponent board display** - Parser captures scouting, build UI
-3. **Add health tracking to UI** - Data exists, display it
+1. **Add opponent board display** - DualBoard exists, needs wiring
+2. **Positioning recommendations** - New feature
+3. **Item-to-unit assignments** - "Put Blue Buff on Ryze"
 4. **Import more match data** - 163 games is small sample
 
 ### Medium Priority (Better Experience)
-5. **Positioning recommendations** - New feature
-6. **Item-to-unit assignments** - "Put Blue Buff on Ryze"
-7. **Auto-import MetaTFT data** - Stay current with meta
-8. **Improve prediction accuracy** - More data + tuning
+5. **Auto-import MetaTFT data** - Stay current with meta
+6. **Improve prediction accuracy** - More data + tuning
+7. **Pivot recommendations** - When to switch comps
+8. **Econ tracking** - Gold/XP optimization
 
 ### Lower Priority (Future)
 9. **Multi-user support** - Optimize for friends
@@ -133,14 +136,14 @@
 |----------|------|---------|------|-------|
 | Core Infrastructure | 8 | 0 | 0 | 8 |
 | Data & ML Models | 9 | 1 | 1 | 11 |
-| React Frontend | 10 | 1 | 0 | 11 |
-| Live Game Integration | 0 | 2 | 3 | 5 |
-| Advanced Features | 0 | 2 | 4 | 6 |
+| React Frontend | 14 | 0 | 0 | 14 |
+| Live Game Integration | 3 | 2 | 0 | 5 |
+| Advanced Features | 1 | 2 | 3 | 6 |
 | Automation & Scaling | 0 | 0 | 5 | 5 |
 | Polish & Publishing | 0 | 1 | 5 | 6 |
-| **TOTAL** | **27** | **7** | **18** | **52** |
+| **TOTAL** | **35** | **6** | **14** | **55** |
 
-**Overall Progress: ~52% complete (27 done + 7 partial of 52 tasks)**
+**Overall Progress: ~64% complete (35 done + 6 partial of 55 tasks)**
 
 ---
 
@@ -151,7 +154,9 @@
 - `app/watcher/parser.py` - Log parsing (11+ event types)
 - `app/state/game_state.py` - Game state model
 - `app/api/server.py` - REST API endpoints
-- `app/frontend/src/App.jsx` - Main React app
+- `app/frontend/src/App.tsx` - Main React app (TypeScript)
+- `app/frontend/hooks/useGameState.ts` - WebSocket hook
+- `app/frontend/hooks/useMetaComps.ts` - Meta comps hook
 - `src/models/placement_model.py` - ML prediction
 - `src/models/recommender.py` - Recommendations
 
@@ -160,4 +165,4 @@
 - `data/personal/carry_performance_corrected.csv` - Carry stats
 - `data/personal/trait_performance_corrected.csv` - Trait stats
 - `data/personal/item_performance_corrected.csv` - Item stats
-- `data/api/processed/*.json` - Game reference data
+- `data/game_data/*.jsonl` - Set 16 reference data
