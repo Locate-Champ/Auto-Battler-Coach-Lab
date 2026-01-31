@@ -120,10 +120,27 @@ const getUnitLimit = (levelling: string): number => {
   return 9;
 };
 
+const CHAMPION_IMAGE_MAP: Record<string, string> = {
+  AnnieTibbers: 'Annie.png',
+  AurelionSol: 'Aurelion Sol.png',
+  BelVeth: "Bel'Veth.png",
+  ChoGath: "Cho'Gath.png",
+  DrMundo: 'Dr. Mundo.png',
+  JarvanIV: 'Jarvan IV.png',
+  Kaisa: "Kai'Sa.png",
+  Kobuko: 'Kobuko & Yuumi.png',
+  KogMaw: "Kog'Maw.png",
+  Lucian: 'Lucian & Senna.png',
+  RekSai: "Rek'Sai.png",
+  RiftHerald: 'Rift Herald.png',
+  XinZhao: 'Xin Zhao.png',
+};
+
 // Get image URL for a champion
 const getChampionImage = (championName: string): string => {
   const displayName = formatChampionName(championName);
-  return new URL(`./images/champion images/${displayName}.png`, import.meta.url).href;
+  const fileName = CHAMPION_IMAGE_MAP[displayName] ?? `${displayName}.png`;
+  return new URL(`./images/champion images/${fileName}`, import.meta.url).href;
 };
 
 // Get image URL for an item (try craftable items first, then other categories)
