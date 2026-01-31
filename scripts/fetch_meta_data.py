@@ -76,6 +76,38 @@ def calculate_tier(avg_placement: float) -> str:
     return "C"
 
 
+def build_stats_by_cluster(cluster_data: dict) -> dict:
+    """Build placement stats for a cluster using placement buckets when available."""
+    overall = cluster_data.get("overall", {})
+    places = overall.get("places") or cluster_data.get("places") or []
+
+    if places:
+        places = places[:8]
+        total_games = sum(places)
+        if total_games:
+            weighted_sum = sum((idx + 1) * count for idx, count in enumerate(places))
+            avg_placement = weighted_sum / total_games
+            top4_rate = (sum(places[:4]) / total_games) * 100
+            win_rate = (places[0] / total_games) * 100
+            return {
+                "total_games": total_games,
+                "avg_placement": avg_placement,
+                "top4_rate": top4_rate,
+                "win_rate": win_rate,
+            }
+
+    avg_placement = overall.get("avg", 5.0)
+    total_games = overall.get("count", 0)
+    top4_rate = max(0, min(100, (8 - avg_placement) / 4 * 100))
+    win_rate = max(0, min(50, (5 - avg_placement) * 10))
+    return {
+        "total_games": total_games,
+        "avg_placement": avg_placement,
+        "top4_rate": top4_rate,
+        "win_rate": win_rate,
+    }
+
+
 def fetch_metatft_data():
     """
     Fetch composition data from MetaTFT API.
@@ -135,9 +167,9 @@ def extract_comps_data(raw_data):
         total_games = 0
 
         for cluster_id, cluster_data in cluster_details.items():
-            overall = cluster_data.get("overall", {})
-            games_played = overall.get("count", 0)
-            avg_placement = overall.get("avg", 5.0)
+            stats = build_stats_by_cluster(cluster_data)
+            games_played = stats["total_games"]
+            avg_placement = stats["avg_placement"]
 
             total_games += games_played
 
@@ -174,11 +206,8 @@ def extract_comps_data(raw_data):
                     "place_change": round(build.get("place_change", 0), 3),
                 })
 
-            # Calculate approximate top4 and win rates from placement
-            # Top 4 rate approximation: (8 - avg_placement) / 7 * 100 (rough estimate)
-            top4_rate = round(max(0, min(100, (8 - avg_placement) / 4 * 100)), 2)
-            # Win rate approximation: based on avg placement (very rough)
-            win_rate = round(max(0, min(50, (5 - avg_placement) * 10)), 2)
+            top4_rate = round(stats["top4_rate"], 2)
+            win_rate = round(stats["win_rate"], 2)
 
             comp = {
                 "cluster_id": int(cluster_id) if cluster_id.isdigit() else cluster_id,
