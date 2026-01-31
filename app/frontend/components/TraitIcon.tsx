@@ -33,6 +33,14 @@ export const TraitIcon: React.FC<TraitIconProps> = ({
   const colors = getTierColors(tierInfo.tier);
   const iconUrl = getTraitIcon(name);
   const sizeClass = SIZE_CLASSES[size];
+  const backgroundMap: Record<TraitTier, string> = {
+    bronze: new URL('../images/trait background images/trait_bronze_bg.avif', import.meta.url).href,
+    silver: new URL('../images/trait background images/trait_silver_bg.avif', import.meta.url).href,
+    gold: new URL('../images/trait background images/trait_gold_bg.avif', import.meta.url).href,
+    prismatic: new URL('../images/trait background images/trait_chromatic_bg.avif', import.meta.url).href,
+    unique: new URL('../images/trait background images/trait_unique_bg.avif', import.meta.url).href,
+    inactive: new URL('../images/trait background images/trait_blank_bg.avif', import.meta.url).href,
+  };
 
   // Build tooltip text
   const tooltipText = tierInfo.nextBreakpoint
@@ -43,8 +51,9 @@ export const TraitIcon: React.FC<TraitIconProps> = ({
     <div
       className={`relative ${sizeClass.container} rounded flex items-center justify-center`}
       style={{
-        backgroundColor: colors.bg,
-        border: `2px solid ${colors.border}`,
+        backgroundImage: `url(${backgroundMap[tierInfo.tier]})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
       title={tooltipText}
     >
@@ -53,7 +62,7 @@ export const TraitIcon: React.FC<TraitIconProps> = ({
           src={iconUrl}
           alt={name}
           className={`${sizeClass.icon} object-contain`}
-          style={{ filter: tierInfo.tier === 'inactive' ? 'grayscale(100%) opacity(50%)' : 'none' }}
+          style={{ filter: tierInfo.tier === 'inactive' ? 'none' : 'brightness(0)' }}
         />
       ) : (
         // Fallback: show first letter of trait name
