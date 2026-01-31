@@ -3,6 +3,7 @@
 import asyncio
 import json
 import threading
+from datetime import datetime
 from typing import Set, Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
@@ -114,6 +115,24 @@ class WebSocketServer:
                     print(f"[WS] Received: {data}")
             except WebSocketDisconnect:
                 self.manager.disconnect(websocket)
+
+        @self.app.websocket("/network-log")
+        async def network_log_endpoint(websocket: WebSocket):
+            """WebSocket endpoint for DevTools network command logs."""
+            await websocket.accept()
+            log_dir = Path(__file__).parent.parent.parent / "outputs" / "network_logs"
+            log_dir.mkdir(parents=True, exist_ok=True)
+            timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+            log_path = log_dir / f"metatft_devtools_network_{timestamp}.jsonl"
+            print(f"[WS] Network log connected. Writing to {log_path}")
+
+            try:
+                while True:
+                    data = await websocket.receive_text()
+                    with log_path.open("a", encoding="utf-8") as log_file:
+                        log_file.write(data.strip() + "\n")
+            except WebSocketDisconnect:
+                print("[WS] Network log disconnected")
 
     async def broadcast_state(self, state: GameState):
         """Broadcast state update to all clients."""
