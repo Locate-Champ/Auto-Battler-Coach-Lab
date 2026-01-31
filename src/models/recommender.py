@@ -14,6 +14,8 @@ from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 from collections import defaultdict
 
+from .positioning_rules import get_baseline_rules, get_singed_positioning_status
+from .role_rules import is_carry_role, is_frontline_role
 
 class TFTRecommender:
     """Recommendation engine for TFT board building"""
@@ -126,6 +128,9 @@ class TFTRecommender:
         with open(champ_path, 'r') as f:
             for line in f:
                 c = json.loads(line)
+                api_name = c.get('apiName', '')
+                if not api_name.startswith('TFT16_'):
+                    continue
                 name = c.get('name', '')
                 self.champions[name] = {
                     'cost': c.get('cost', 0),
@@ -238,7 +243,9 @@ class TFTRecommender:
             'has_cc': False,
             'item_count': 0,
             'gaps': [],
-            'suggestions': []
+            'suggestions': [],
+            'positioning_baseline': get_baseline_rules(),
+            'singed_positioning': get_singed_positioning_status(),
         }
 
         if not units:
@@ -270,9 +277,9 @@ class TFTRecommender:
             # Track roles
             if role:
                 analysis['roles'][role] += 1
-                if 'Tank' in role or 'Fighter' in role:
+                if is_frontline_role(role):
                     analysis['has_frontline'] = True
-                if 'Carry' in role or 'Caster' in role:
+                if is_carry_role(role):
                     analysis['has_carry'] = True
 
             # Track traits
@@ -404,6 +411,20 @@ class TFTRecommender:
             trait_str = ", ".join(f"{t}:{c}" for t, c in
                                  sorted(analysis['traits'].items(), key=lambda x: -x[1])[:5])
             lines.append(f"Active traits: {trait_str}")
+
+        # Positioning baseline
+        if analysis.get('positioning_baseline'):
+            lines.append("\nPOSITIONING BASELINE (Set 16):")
+            for rule in analysis['positioning_baseline'][:6]:
+                lines.append(f"  - {rule}")
+
+        singed_status = analysis.get('singed_positioning', {})
+        if singed_status:
+            lines.append("\nSINGED POSITIONING STATUS:")
+            lines.append(f"  - {singed_status.get('status', 'unknown')}")
+            reason = singed_status.get('reason')
+            if reason:
+                lines.append(f"    {reason}")
 
         # Gaps
         if analysis['gaps']:
