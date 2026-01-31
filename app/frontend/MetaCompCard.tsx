@@ -28,24 +28,28 @@ const CHAMPION_COSTS: Record<string, number> = {
   TFT16_Anivia: 1, TFT16_Ashe: 1, TFT16_Briar: 1, TFT16_Caitlyn: 1, TFT16_Elise: 1,
   TFT16_Illaoi: 1, TFT16_JarvanIV: 1, TFT16_Lulu: 1, TFT16_Nocturne: 1, TFT16_Poppy: 1,
   TFT16_RekSai: 1, TFT16_Rumble: 1, TFT16_Soraka: 1, TFT16_TwistedFate: 1, TFT16_Viego: 1,
-  TFT16_Zoe: 1,
+  TFT16_Zoe: 1, TFT16_Blitzcrank: 1, TFT16_KogMaw: 1,
   // 2-cost
   TFT16_Ekko: 2, TFT16_Kennen: 2, TFT16_Leona: 2, TFT16_Neeko: 2, TFT16_Orianna: 2,
   TFT16_Senna: 2, TFT16_Shen: 2, TFT16_Sona: 2, TFT16_Teemo: 2, TFT16_Tristana: 2,
-  TFT16_Vi: 2, TFT16_XinZhao: 2, TFT16_Yorick: 2,
+  TFT16_Vi: 2, TFT16_XinZhao: 2, TFT16_Yorick: 2, TFT16_Aphelios: 2, TFT16_Bard: 2,
+  TFT16_Yasuo: 2,
   // 3-cost
   TFT16_Ahri: 3, TFT16_ChoGath: 3, TFT16_Draven: 3, TFT16_Gangplank: 3, TFT16_Gwen: 3,
   TFT16_Jinx: 3, TFT16_Kobuko: 3, TFT16_Loris: 3, TFT16_Malzahar: 3, TFT16_Mordekaiser: 3,
   TFT16_Nautilus: 3, TFT16_Sejuani: 3, TFT16_Sion: 3, TFT16_Swain: 3, TFT16_Vayne: 3,
-  TFT16_Wukong: 3,
+  TFT16_Wukong: 3, TFT16_Darius: 3, TFT16_DrMundo: 3,
   // 4-cost
   TFT16_Ambessa: 4, TFT16_Braum: 4, TFT16_Galio: 4, TFT16_Garen: 4, TFT16_Kalista: 4,
   TFT16_Lissandra: 4, TFT16_Lux: 4, TFT16_MissFortune: 4, TFT16_RiftHerald: 4,
   TFT16_Seraphine: 4, TFT16_Taric: 4, TFT16_Yunara: 4, TFT16_BelVeth: 4,
+  TFT16_Diana: 4, TFT16_Fizz: 4, TFT16_Kaisa: 4, TFT16_Nasus: 4, TFT16_Nidalee: 4,
+  TFT16_Renekton: 4, TFT16_Singed: 4, TFT16_Skarner: 4, TFT16_Veigar: 4,
+  TFT16_Warwick: 4, TFT16_Yone: 4,
   // 5-cost
   TFT16_Aatrox: 5, TFT16_Azir: 5, TFT16_Fiddlesticks: 5, TFT16_Kindred: 5, TFT16_Lucian: 5,
   TFT16_Ornn: 5, TFT16_Ryze: 5, TFT16_Sett: 5, TFT16_Shyvana: 5, TFT16_Thresh: 5,
-  TFT16_Zilean: 5,
+  TFT16_Zilean: 5, TFT16_AurelionSol: 5, TFT16_Mel: 5, TFT16_Zaahen: 5, TFT16_Ziggs: 5,
 };
 
 // Format champion name (remove TFT16_ prefix)
@@ -84,6 +88,7 @@ const getTierColor = (tier: string): string => {
     case 'S': return 'linear-gradient(135deg, #ff6b6b, #c92a2a)';
     case 'A': return 'linear-gradient(135deg, #ffa94d, #e67700)';
     case 'B': return 'linear-gradient(135deg, #69db7c, #2f9e44)';
+    case 'C': return 'linear-gradient(135deg, #74c0fc, #4dabf7)';
     default: return 'linear-gradient(135deg, #868e96, #495057)';
   }
 };
@@ -106,15 +111,6 @@ const formatCompName = (name: string): string => {
     .trim();
 };
 
-// Calculate tier based on top4_rate (override API tier if needed)
-const calculateTier = (top4Rate: number, apiTier: string): string => {
-  // Recalculate tier based on actual performance
-  if (top4Rate >= 65) return 'S';
-  if (top4Rate >= 55) return 'A';
-  if (top4Rate >= 45) return 'B';
-  return apiTier || 'B';
-};
-
 // Get unit limit based on levelling strategy
 const getUnitLimit = (levelling: string): number => {
   // Fast 8 comps typically show 8 units, Fast 9/Standard show 9
@@ -124,10 +120,27 @@ const getUnitLimit = (levelling: string): number => {
   return 9;
 };
 
+const CHAMPION_IMAGE_MAP: Record<string, string> = {
+  AnnieTibbers: 'Annie.png',
+  AurelionSol: 'Aurelion Sol.png',
+  BelVeth: "Bel'Veth.png",
+  ChoGath: "Cho'Gath.png",
+  DrMundo: 'Dr. Mundo.png',
+  JarvanIV: 'Jarvan IV.png',
+  Kaisa: "Kai'Sa.png",
+  Kobuko: 'Kobuko & Yuumi.png',
+  KogMaw: "Kog'Maw.png",
+  Lucian: 'Lucian & Senna.png',
+  RekSai: "Rek'Sai.png",
+  RiftHerald: 'Rift Herald.png',
+  XinZhao: 'Xin Zhao.png',
+};
+
 // Get image URL for a champion
 const getChampionImage = (championName: string): string => {
   const displayName = formatChampionName(championName);
-  return new URL(`./images/champion images/${displayName}.png`, import.meta.url).href;
+  const fileName = CHAMPION_IMAGE_MAP[displayName] ?? `${displayName}.png`;
+  return new URL(`./images/champion images/${fileName}`, import.meta.url).href;
 };
 
 // Get image URL for an item (try craftable items first, then other categories)
@@ -151,8 +164,7 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showBuilds, setShowBuilds] = useState(false);
-  // Calculate tier from top4_rate instead of trusting API tier
-  const tier = calculateTier(comp.top4_rate, comp.tier);
+  const tier = comp.tier;
   const tierColor = getTierColor(tier);
   const gamesInK = (comp.games_played / 1000).toFixed(1);
   const levellingColor = getLevellingColor(comp.levelling);
@@ -254,7 +266,7 @@ const MetaCompCard: React.FC<MetaCompCardProps> = ({
       {/* Active traits with icons */}
       {comp.traits && comp.traits.length > 0 && (
         <div className="mb-2">
-          <TraitList traits={comp.traits} size="sm" />
+          <TraitList traits={comp.traits} size="sm" showInactive />
         </div>
       )}
 

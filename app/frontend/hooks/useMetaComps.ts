@@ -22,7 +22,7 @@ export interface CompTrait {
 // Types matching the backend /api/meta-comps response (MetaTFT format)
 export interface MetaComp {
   cluster_id: number | string;
-  tier: 'S' | 'A' | 'B';
+  tier: 'S' | 'A' | 'B' | 'C';
   name: string;
   units: string[];
   traits: CompTrait[];
@@ -44,6 +44,7 @@ export interface MetaCompsResponse {
     S: number;
     A: number;
     B: number;
+    C: number;
   };
   last_updated?: string | null;
   comps: MetaComp[];
@@ -69,7 +70,7 @@ const DEFAULT_API_URL = '';
 export function useMetaComps(options: UseMetaCompsOptions = {}): UseMetaCompsResult {
   const {
     apiUrl = DEFAULT_API_URL,
-    limit = 15,
+    limit = 25,
     enabled = true,
     refetchInterval = null,
   } = options;
