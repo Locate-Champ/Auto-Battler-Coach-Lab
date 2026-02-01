@@ -1,0 +1,116 @@
+1) Pull what you can from Riot’s shipped files (bin + WAD extraction)
+
+This is the highest leverage path because it scales. The values you want often live in League’s internal data formats (BIN) inside WAD archives. Community tooling exists to extract and decode them.
+
+The workflow is usually:
+
+Extract WAD contents from the local League install (or use CommunityDragon’s RAW mirrors when they include what you need).
+
+Convert .bin → readable JSON using a bin converter.
+
+Harvest timing-related fields into your own timing_constants.json (or similar), keyed by your apiName like TFT16_Tristana.
+
+Tools worth using (because they’re built for League/TFT file formats): Obsidian (WAD explorer) and ritobin (BIN decoder) are both in the common League tooling ecosystem.
+
+CommunityDragon helps as a “free mirror” for lots of structured assets and bin JSON, and it supports directory listings which is huge for scripting.
+
+What you’ll realistically get from this bucket:
+
+Animation clip definitions (what clips exist, sometimes metadata about them).
+
+Sometimes attack timing fields, cast timing fields, missile/projectile speeds, spell data values, etc. (You still need to confirm exactly where TFT stores each thing for Set 16 units, but the pipeline is the same idea.)
+
+Concrete example of what’s already visible on CommunityDragon for TFT Set 16 units: per-unit animation bins exist under paths like the tft16_twistedfate animation directory.
+Those bins reference animation clips like Spell1, Attack1, etc.
+
+Important reality check: those animation bin JSONs do not automatically give you “damage happens at 0.433s” type timing. They mostly tell you what clips exist and some metadata. So you’ll still need either deeper asset parsing or empirical measurement for “event moment” timing.
+
+2) Treat “animations” as two separate problems
+
+People lump “animations” together, but for a simulator you care about:
+
+Total lockout time (how long the unit is committed, can’t act).
+
+Effect application time (when damage, stun, heal, missile spawn, etc actually happens).
+
+Total lockout is often data-driven (cast time, recovery time, attack windup). Effect application is the tricky one. It might be:
+
+keyed to a named event in the animation timeline,
+
+hardcoded in script,
+
+or effectively “when the projectile hits,” which depends on travel logic.
+
+If you can extract the underlying animation timeline files from the client (not just the clip list), you can sometimes find event markers. If not, measuring becomes the cleanest path.
+
+3) For engine logic and “when exactly does it happen”, measure it and calibrate
+
+This is the part people try to avoid and then eventually accept as physics.
+
+You build a calibration harness:
+
+Set up a controlled fight (two units, no traits/items if possible, fixed hex distance).
+
+Record at high FPS (120+ if you can, 240 is chef’s kiss).
+
+Define a few observable “anchors”:
+
+Cast start (mana hits full, cast animation begins)
+
+Missile spawn (projectile appears)
+
+Damage frame (HP bar changes, damage number pops, shield changes)
+
+Compute deltas, store them as constants per unit/ability (and sometimes per distance).
+
+Do this for a small sample first, like 10–15 key units, then generalize patterns.
+
+This is also where your research docs about timing error propagation actually become practical: you’re not trying to “know the engine,” you’re fitting unknown constants so your simulator reproduces observed outcomes.
+
+4) The practical strategy I recommend for your simulator
+
+Don’t try to “fully reverse engineer TFT.” That path ends in madness and Mountain Dew.
+
+Instead:
+
+Build a timing constants layer in your project:
+
+attack_windup
+
+attack_recovery
+
+spell_windup
+
+spell_effect_delay (or per-effect delays if needed)
+
+projectile_speed (when applicable)
+
+server_tick_quantization (if your sim models ticks)
+
+Populate it with three sources, in this order:
+
+extracted bin values (best, scalable),
+
+measured values (high confidence, but slower),
+
+fallback heuristics (lowest confidence, clearly labeled).
+
+That lets you ship a sim that’s “correct enough to iterate,” then tighten accuracy over time.
+
+5) What I would do next, specifically with your Set 16.3 dataset
+
+You already have the canonical unit IDs (apiName like TFT16_Tristana). Use that as the key across everything.
+
+Next steps:
+
+Pick 8–12 “timing-critical” champions to calibrate first (projectiles, multi-hit spells, channel-like behaviors).
+
+Build an extractor that, given TFT16_X, pulls any matching bin/animation metadata from CommunityDragon paths when available, and falls back to local WAD extraction for the rest.
+
+Start a “timing notebook” (even just JSON) where each constant is tagged with source = extracted | measured | inferred and a confidence score.
+
+If you want the simulator to feel legit fast, that combo (extract what exists, measure what doesn’t) is the sweet spot.
+
+One more note that matters: CommunityDragon’s docs explicitly call out that directory listing and lots of TFT/arena JSON is provided as a convenience, and that RAW mirrors are scraped from the game client and LCU. That’s exactly why it’s useful for building automated extractors.
+
+If you keep this disciplined, you’ll end up with a simulator that’s deterministic where it should be, and honestly calibrated where it can’t be. That’s how you make it usable, not just impressive.

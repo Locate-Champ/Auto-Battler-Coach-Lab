@@ -1,5 +1,23 @@
-"""Combat engine modules."""
+"""Lightweight combat engine primitives."""
 
-from .game_data_loader import load_game_data
+from .combat_loop import (
+    CombatResult,
+    CombatRNG,
+    Position,
+    StateType,
+    Stats,
+    UnitState,
+    World,
+    run_combat,
+)
 
-__all__ = ["load_game_data"]
+__all__ = [
+    "CombatResult",
+    "CombatRNG",
+    "Position",
+    "StateType",
+    "Stats",
+    "UnitState",
+    "World",
+    "run_combat",
+]
