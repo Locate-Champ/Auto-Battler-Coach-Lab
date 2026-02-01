@@ -54,7 +54,10 @@ def apply_attack_cooldown(champion, halved=True):
         halver = 1
     champion.idle = False
     champion.clear_que_idle()
-    champion.add_que('clear_idle', (1 / champion.AS * 1000) / halver)
+    interval_ms, _, _ = champion.attack_cycle_ms()
+    cooldown_ms = interval_ms / halver
+    champion.recovery_timer = max(champion.recovery_timer, champion_functions.MILLIS() + cooldown_ms)
+    champion.add_que('clear_idle', cooldown_ms)
 
 
 # Aatrox pulls some of the farthest enemies toward himself, then slams the ground in front of himself,
