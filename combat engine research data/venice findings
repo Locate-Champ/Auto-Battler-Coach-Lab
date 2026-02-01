@@ -1,0 +1,356 @@
+**Architecture: Entity-Component-System (ECS)**
+
+Don't build this with classical OOP inheritance (Unit extends Champion extends Mage). You'll drown in diamond inheritance when Augments modify behavior. Use **ECS**: Entities are IDs, Components are raw data (Position, Stats, Buffs), Systems are functions that process entities with specific component signatures.
+
+**Phase 1: Data Ingestion Pipeline**
+
+1.  **Scrape Constants**: Write a parser for CommunityDragon's `tftchampion.json` and `tftitem.json`. You need:
+    *   Base stats per star level (HP, AD, AS, Armor, MR, Range)
+    *   Ability scripts (damage coefficients, targeting modes, mana costs)
+    *   Item effect mappings (which stat they modify, on-hit triggers)
+
+2.  **Normalize Coordinate System**: TFT uses **axial coordinates** (q, r) for hex grids. Convert everything to **cube coordinates** (x, y, z where x+y+z=0) for distance math. 
+    *   Distance formula: `(abs(x1-x2) + abs(y1-y2) + abs(z1-z2)) / 2`
+    *   Adjacency: Distance == 1
+
+**Phase 2: Core Simulation Kernel**
+
+Build these systems in this exact order:
+
+**A. Grid/Occupancy System**
+```python
+class GridSystem:
+    def __init__(self):
+        self.occupancy = {}  # (x,y,z) -> EntityID
+        
+    def is_walkable(self, pos):
+        # Check bounds (TFT board is roughly 6x7 hexes)
+        # Check collision (units can't stack, unless it's a bug)
+        return pos in bounds and pos not in self.occupancy
+```
+
+**B. Deterministic RNG**
+TFT combat is deterministic per round with a seeded RNG. Implement:
+```python
+class CombatRNG:
+    def __init__(self, seed):
+        self.state = seed  # Use PCG or Xorshift, not Python's random (non-deterministic across versions)
+    
+    def random(self):
+        # Return float 0-1
+        # This seed must be shared across all systems for the round
+```
+
+**C. Unit State Machine (The Heart)**
+Each unit has a `StateMachine` component cycling through:
+*   `IDLE` -> `ACQUIRING_TARGET` -> `MOVING` -> `ATTACK_WINDUP` -> `ATTACK_RESOLVE` -> `CASTING` -> back to `IDLE`
+
+Implement as integer enums with frame counters. At 30Hz simulation tick:
+```python
+def update(entity, dt):
+    state = world.get_component(entity, State)
+    if state.current == ATTACK_WINDUP:
+        state.timer -= dt
+        if state.timer <= 0:
+            transition_to(entity, ATTACK_RESOLVE)
+```
+
+**Phase 3: Combat Math Implementation**
+
+**Damage Pipeline** (process in this order):
+1.  Calculate raw damage (AD or AP scaling)
+2.  Apply crit roll (check CritChance component)
+3.  Apply damage modifiers (additive then multiplicative buckets)
+4.  Apply resistances: `damage * (100 / (100 + resist))` [Inferred]
+5.  Apply shields (subtract from shield first, overflow to HP)
+6.  Trigger on-damage events (mana gain for defender)
+
+**Mana System**:
+*   On-attack: Flat +10 mana to attacker
+*   On-damaged: `floor(damage / 5)` mana to defender [Inferred], cap at 50/instance
+*   Mana lock: 1.0s after cast start, no mana gain [Inferred]
+
+**Phase 4: Targeting Logic**
+
+Implement `TargetingSystem`:
+```python
+def find_target(attacker, board):
+    # 1. Filter alive enemies
+    candidates = [e for e in enemies if is_alive(e)]
+    
+    # 2. Calculate distances (hex distance, not Euclidean)
+    distances = [(e, hex_distance(attacker.pos, e.pos)) for e in candidates]
+    
+    # 3. Sort by distance, then by row (front to back), then by col
+    distances.sort(key=lambda x: (x[1], x[0].row, x[0].col))
+    
+    return distances[0][0] if distances else None
+```
+
+**Retrigger Conditions** (check every tick or on event):
+*   Target died
+*   Target became untargetable (Stealth, Stasis)
+*   Taunt applied (force retarget to taunt source)
+*   Target moved out of range (for melee)
+
+**Phase 5: Ability Resolution**
+
+Abilities are data-driven scripts. Create a DSL or use Python lambdas:
+```python
+abilities = {
+    "Ahri_Orb": {
+        "mana_cost": 50,
+        "targeting": "CURRENT_TARGET",  # or "RANDOM_ENEMY", "AOE_AROUND_SELF"
+        "projectile_speed": 20.0,  # hexes per second
+        "damage": lambda stats: 250 + stats.ap * 1.5,
+        "on_hit_effect": None
+    }
+}
+```
+
+For projectiles, spawn a separate Entity with `Projectile` component (position, velocity, target_entity, on_hit_callback). Update position each tick: `pos += velocity * dt`. Check collision distance.
+
+**Phase 6: Item & Augment Hooks**
+
+Use an **Event Bus** pattern:
+```python
+class EventBus:
+    def emit(self, event_type, payload):
+        # event_type: "ON_HIT", "ON_CAST", "ON_DAMAGE_TAKEN", "ON_DEATH"
+        for handler in self.subscribers[event_type]:
+            handler(payload)
+
+# Item example: Hand of Justice
+def hand_of_justice_on_hit(event):
+    if random() < 0.5:
+        event.damage *= 1.5  # Crit damage mod
+    else:
+        event.attacker.heal(event.damage * 0.15)
+```
+
+Items subscribe to events when equipped. This avoids hardcoding item logic in the combat systems.
+
+**Phase 7: Validation Strategy**
+
+You cannot verify against live Overwolf data (it doesn't exist). Instead:
+
+1.  **Frame Counting**: Record 60fps gameplay. Count frames from "combat start" to "first damage number appears". Compare to your simulation's predicted time.
+2.  **Damage Logs**: Use Riot API post-game damage charts. Simulate the exact same board (items, stars, positioning) 1000 times with different RNG seeds. Your average damage per unit should match the API totals within 5%.
+3.  **Edge Case Testing**: 
+    *   Zephyr interactions (does the lifted unit reset aggro?)
+    *   Assassin jump timing (frame-perfect when they become targetable)
+    *   RFC range interactions (can they shoot over 1-hex gaps?)
+
+**Technical Stack Recommendation**
+
+*   **Language**: Rust or C++ for the simulation kernel (you need deterministic float behavior across platforms). Python for the ML wrapper and data pipeline.
+*   **Serialization**: Cap'n Proto or FlatBuffers for state snapshots (fast zero-copy serialization for training data).
+*   **Parallelization**: Run 10k fights per second using Rayon (Rust) or OpenMP. You need massive synthetic data generation.
+
+**Immediate Next Steps**
+
+1.  **This week**: Write the CommunityDragon scraper. Get Set 16 champion stats into a SQLite DB.
+2.  **Week 2**: Implement hex grid and basic movement (A* pathfinding). Verify unit reaches opposite corner in correct time (frame-count in practice tool).
+3.  **Week 3**: Add auto-attack loop. Verify DPS matches theoretical `AD * AS` against 0 armor dummy.
+4.  **Week 4**: Add one complex ability (e.g., Ahri orb) with projectile physics.
+
+**Critical Gotcha**: TFT uses **floating-point deterministic** simulation on server, but client may desync slightly. Your model must be deterministic given a seed, or you'll get training data leakage.
+
+Start with the grid and a single champion auto-attacking a dummy. If you can't get the timing of that first attack to match frame-perfect video analysis, your entire prediction stack will drift.
+
+You won’t find these constants in CommunityDragon, the Riot API, or Overwolf. Riot treats animation curves, state transition timings, and movement speeds as proprietary server-side constants. To get them, you **must** reverse-engineer them from the client binary or measure them empirically via frame analysis.
+
+Here is the extraction methodology for each variable:
+
+## 1. State Transition Timings (Frame Counting)
+
+**Setup:**
+- Record at **60 FPS** (constant) using OBS in the Practice Tool (TFT mode).
+- Use a single 1-star champion with 0 items vs. a Target Dummy (infinite HP).
+- Isolate variables: No augments, no traits, no AS modifiers.
+
+**Measurement Protocol:**
+
+| State | How to Measure | What to Log |
+|-------|---------------|-------------|
+| **ACQUIRING_TARGET** | Frame when unit spawns → Frame when unit rotates to face enemy | This is usually **0-2 frames** (instant on spawn) |
+| **MOVING** | Frame when rotation completes → Frame when unit stops moving (feet planted) | Hex distance / time = walk speed |
+| **ATTACK_WINDUP** | Frame when feet plant → Frame when damage number appears (or projectile spawns) | This is the **WindupTime** |
+| **ATTACK_RESOLVE** | Frame of damage number → Frame when unit can move again (animation cancel window) | This is the **Recovery/Backswing** |
+| **CASTING** | Frame when mana bar hits threshold → Frame when ability damage applies (or projectile spawns) | **Cast Point** |
+
+**Critical Detail:** Attack Speed modifies the **total cycle time** (Windup + Recovery), but the **Windup ratio** is usually constant per champion (e.g., 30% of the animation is windup, 70% is recovery). To find the ratio:
+- Test at base AS (record windup frames).
+- Test with 2x AS (Rageblade) - total cycle halves, but windup % stays constant.
+
+**Inferred Baseline (Label as [Speculative]):**
+- **Walk Speed:** ~2.0 hexes/second (0.5s per hex) for melee; ranged may differ.
+- **Windup Time:** ~0.15s - 0.30s (9-18 frames at 60fps) depending on champion.
+- **Cast Point:** Usually 0.125s - 0.25s after mana threshold reached.
+
+## 2. Ability Direction / Targeting Vectors
+
+Abilities use different targeting primitives. You must classify each ability into a **Targeting Mode**:
+
+**A. Unit-Targeted (Homing)**
+- Direction vector = `normalize(target.position - caster.position)` at cast start.
+- If target moves, projectile curves (homing) or continues to last known position (linear interpolation).
+- **Test:** Cast on a unit, then Zephyr the target mid-cast. If projectile disappears = homing. If it flies to empty hex = predictive/ground-targeted.
+
+**B. Vector Skillshots (Line/AoE)**
+- Direction = `normalize(target.position - caster.position)` locked at cast start.
+- Width/Length from `tftchampion.json` (e.g., Lux laser: 4 hexes length, 1 hex width).
+- **Test:** Position dummy directly behind intended target. If it gets hit = piercing line. If not = single-target.
+
+**C. Ground-Targeted (AoE)**
+- Target = `calculate_best_aoe_hex(caster, enemies, radius, algorithm)`.
+- Algorithm is usually "largest cluster" or "highest damage potential."
+- **Test:** Place 3 dummies in a triangle. Cast ability 10 times. If it always hits the cluster of 2, it's cluster-targeting. If it hits random positions, it's true random.
+
+**D. Self-Centered (Radial)**
+- Direction = N/A (360 degree).
+- Radius from data files.
+
+**Memory Scanning for Direction:**
+If you want the exact vector math:
+1. Attach Cheat Engine to `League of Legends.exe`.
+2. Search for float values representing champion X/Y coordinates (these are usually 4-byte floats, updating every frame).
+3. When ability casts, log the caster's (x,y) and the ability's target (x,y) at the exact tick.
+4. The delta gives you the raw direction vector.
+
+## 3. Walk Speed Extraction
+
+**Method A: Frame Analysis (Most Reliable)**
+- Place champion at (0,0), enemy at (6,0) (back row).
+- Start timer on first movement frame.
+- Stop timer on first attack windup frame.
+- `WalkSpeed = Distance / Time`.
+- **Note:** Units accelerate instantly (no ramp-up in TFT), so distance/time is linear.
+
+**Method B: Binary Analysis (Advanced)**
+- Dump `League of Legends.exe` using x64dbg or IDA Pro.
+- Search for strings like `"WalkSpeed"`, `"baseMovementSpeed"`, or `"TFTUnit"`.
+- Look for float constants near champion stat initialization code.
+- **Warning:** These offsets change every patch (obfuscation).
+
+**Method C: Network Packet Inspection**
+- Use Wireshark with `sslkeylogfile` to decrypt TLS (requires client launch with `--ssl-key-log-file`).
+- Look for `GameServer` packets containing `UpdateUnitState` protobufs.
+- Movement is sent as **velocity vectors** (vx, vy) and **position**. `Speed = sqrt(vx² + vy²)`.
+
+## 4. Data Structure for Your Engine
+
+Once measured, hardcode these as constants in your simulation:
+
+```python
+@dataclass
+class ChampionAnimationProfile:
+    windup_ratio: float  # 0.3 = 30% of attack cycle is windup
+    cast_point: float    # seconds from cast start to effect
+    walk_speed: float    # hexes per second
+    turn_rate: float     # radians per second (usually instant in TFT, but check)
+
+# Example entry (measure these yourself):
+PROFILES = {
+    "TFT_Ahri": ChampionAnimationProfile(
+        windup_ratio=0.25,  # Inferred from frame count
+        cast_point=0.15,
+        walk_speed=2.0,
+        turn_rate=float('inf')  # Instant facing
+    )
+}
+```
+
+## 5. Validation Checklist
+
+Before trusting your measurements:
+- [ ] **Variance Check:** Run the same fight 10 times. If windup frames vary, you're measuring wrong (should be deterministic).
+- [ ] **AS Scaling Check:** Double attack speed. Windup time should halve. If it doesn't, you're measuring total animation instead of windup.
+- [ ] **Range Check:** RFC (Rapid Firecannon) adds +1 range. If walk speed changes with RFC, you're measuring approach time, not raw speed.
+
+**Red Flags:**
+- If you measure a windup of exactly 0.0s, you're detecting the damage frame, not the start of the animation.
+- If walk speed differs between melee and ranged units, verify in data files—some units have different base speeds.
+
+**Bottom Line:** You are building a deterministic discrete event simulation. These timings are your **invariant constants**. If you guess them, your model will drift from reality. Frame-count 5-10 key champions (one melee, one ranged, one caster) to establish your baseline constants, then assume homogeneity within archetypes unless proven otherwise.
+
+### **Project Brief: Reverse-Engineering Teamfight Tactics (TFT) Combat Mechanics for Predictive Modeling**
+
+---
+
+### **1. Introduction & Project Goals**
+
+The primary objective of this project is to develop an ultra-detailed predictive model for Teamfight Tactics (TFT). The user, acting as the lead developer, seeks to move beyond conventional statistical analysis of post-game match data. The goal is to create a model that incorporates nuanced, often overlooked, in-game mechanics such as unit positioning, itemization, and real-time combat interactions to achieve superior predictive accuracy.
+
+A key challenge identified is the lack of publicly available, low-level combat data from official sources like Riot's API or third-party applications such as Overwolf's MetaTFT. This document outlines the investigative process, methodologies explored, and the final recommended path forward for acquiring the necessary data to build a high-fidelity combat simulation engine.
+
+---
+
+### **2. Initial Investigation: Assessing Public Data Sources**
+
+The inquiry began by probing the capabilities of the Overwolf Game Events Provider (GEP) for League of Legends and TFT.
+
+**Key Findings:**
+*   **Overwolf GEP Limitations:** The official Overwolf documentation and the functionality of apps like MetaTFT confirm that the GEP only exposes high-level, client-side metadata. This includes player information (gold, health, level), lobby composition, and general match state (round number, PVP/PVE encounters).
+*   **Absence of Combat Telemetry:** The GEP does **not** provide real-time, granular combat data. Critical variables such as unit Health Points (HP), mana, positioning coordinates, damage events, or state machine transitions (e.g., `ATTACK_WINDUP`, `CASTING`) are not available through this channel.
+*   **Conclusion:** Relying on JavaScript injection or DOM inspection within the Overwolf framework is a non-viable strategy for obtaining the required data. The client simply does not expose this information to such tools.
+
+---
+
+### **3. Strategic Pivot: A Hybrid Simulation-ML Architecture**
+
+Given the data limitations, the strategy shifted from direct data extraction to a hybrid approach:
+
+1.  **Rule Engine Duplication:** Reconstruct the TFT combat logic in a headless, server-authoritative simulation environment.
+2.  **Synthetic Data Generation:** Use this engine to generate millions of labeled combat outcomes by varying unit positions, items, and augment combinations. This addresses the data sparsity of rare positioning scenarios in real-world matches.
+3.  **Advanced ML Models:** Feed the synthetic data into sophisticated models like Graph Neural Networks (GNNs) to learn spatial relationships and sequential models (LSTMs/Transformers) to understand temporal decision-making (e.g., itemization timing).
+
+This pivot necessitated a deep dive into the fundamental mechanics of the TFT combat engine.
+
+---
+
+### **4. Deep Dive: Core Combat Mechanics & Required Data**
+
+To build the rule engine, a precise understanding of the following mechanics was deemed essential. The investigation revealed that these constants are not documented in public data repositories (CommunityDragon, Riot API) and must be reverse-engineered.
+
+**4.1. State Machine & Timing**
+*   **Problem:** The duration of each state in the unit's combat lifecycle (`IDLE -> ACQUIRING_TARGET -> MOVING -> ATTACK_WINDUP -> ATTACK_RESOLVE -> CASTING`) is unknown.
+*   **Importance:** These timings are fundamental to calculating damage-per-second (DPS), mana generation, and the outcome of trades. Incorrect timings invalidate the entire simulation.
+
+**4.2. Movement & Pathfinding**
+*   **Problem:** The precise walk speed (hexes per second) for units is unknown.
+*   **Importance:** This dictates time-to-engage for melee units and the effectiveness of kiting and positioning strategies.
+
+**4.3. Ability Targeting & Direction**
+*   **Problem:** The vector logic for spell casting (e.g., homing vs. line skillshot vs. ground-targeted AoE) is not explicitly defined.
+*   **Importance:** This is critical for predicting ability accuracy, damage output, and interaction with unit positioning.
+
+---
+
+### **5. Methodology Exploration for Data Acquisition**
+
+**5.3. Method 3: High-Fidelity Visual Analysis (Recommended Path)**
+*   **Description:** A non-intrusive, external observation method. It involves:
+    1.  Recording gameplay at a high, constant frame rate (e.g., 60 FPS) using OBS Studio.
+    2.  Using a computer vision library (OpenCV) in Python to analyze the video file frame-by-frame.
+    3.  Detecting visual cues (projectile spawn, damage numbers, model movement) to measure timings and distances with frame-perfect accuracy.
+*   **Pros:** **Zero risk of account ban.** The method is entirely external and indistinguishable from a content creator's workflow. It provides a reliable, repeatable way to measure the required constants.
+*   **Cons:** Labor-intensive and requires meticulous setup. It measures the *rendered outcome* rather than the raw server value, but with a controlled test environment (Practice Tool), the two are functionally identical for timing purposes.
+
+---
+
+### **6. Final Findings and Recommended Implementation Plan**
+
+**Conclusion:** The most professional, sustainable, and safe method to acquire the necessary combat data is **High-Fidelity Visual Analysis**.
+
+**Recommended Action Plan:**
+
+1.  **Calibration:** Validate the recording and analysis pipeline using a visual metronome to ensure frame-based timing is ground-truth accurate.
+2.  **Systematic Measurement:** In the Practice Tool, conduct controlled experiments to measure:
+    *   **Attack Timings:** Isolate a champion (e.g., Vayne) and measure `ATTACK_WINDUP` and `AttackCooldown` by detecting projectile spawn and damage number frames.
+    *   **Movement Speed:** Measure the time it takes for a melee champion (e.g., Garen) to traverse a known number of hexes.
+    *   **Targeting Logic:** Test retargeting latency by killing a unit's current target mid-fight and measuring the time to switch. Test taunt priority by introducing a taunting champion mid-combat.
+3.  **Data Integration:** Populate the rule engine's configuration files with the empirically derived constants (e.g., `Vayne.windup_ratio = 0.25`, `Garen.walk_speed = 2.0`).
+4.  **Engine Development:** Proceed with building the Entity-Component-System (ECS) based combat simulator, now armed with accurate, validated constants.
+
+This approach ensures the project's integrity by avoiding any terms of service violations while still providing the high-fidelity data required to build a best-in-class TFT predictive model.
