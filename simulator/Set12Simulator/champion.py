@@ -2,6 +2,7 @@ import Simulator.config as config
 import Simulator.origin_class as origin_class
 import Simulator.origin_class_stats as origin_class_stats
 import Simulator.champion_functions as champion_functions
+import Simulator.stats as stats
 import time
 import random
 import itertools
@@ -137,6 +138,8 @@ class champion:
         self.kayn_form = kayn_form
 
         self.target_dummy = target_dummy
+        self.windup_ratio = stats.WINDUP_RATIO.get(name, stats.DEFAULT_WINDUP_RATIO)
+        self.recovery_timer = 0
 
         if chosen:
             self.health = round(HEALTH[name] * config.STARMULTIPLIER ** (stars - 1), 1)
@@ -497,6 +500,14 @@ class champion:
 
     def millis(self):
         return MILLIS()
+
+    def attack_cycle_ms(self):
+        if self.AS <= 0:
+            return 0, 0, 0
+        interval_ms = 1000 / self.AS
+        windup_ms = interval_ms * self.windup_ratio
+        recovery_ms = interval_ms - windup_ms
+        return interval_ms, windup_ms, recovery_ms
 
     def print(self, msg):
         if self.team:
