@@ -3,6 +3,8 @@ import gymnasium as gym
 
 from gymnasium.envs.registration import EnvSpec
 from Simulator import pool
+from Simulator import config as simulator_config
+from Simulator.combat_measurements import load_combat_measurements
 from Simulator.game_round import log_to_file_start
 from Simulator.single_player_game_round import Game_Round
 from Simulator.observation.token.basic_observation import ObservationToken
@@ -38,6 +40,9 @@ class TFT_Single_Player_Simulator(gym.Env):
         self.multi_step = config.MULTI_STEP_POSITION
         self.action_count = 0
         self.max_actions_per_round = tft_config.max_actions_per_round
+
+        self.combat_measurements = load_combat_measurements()
+        simulator_config.COMBAT_MEASUREMENTS = self.combat_measurements
 
         super().__init__()
 

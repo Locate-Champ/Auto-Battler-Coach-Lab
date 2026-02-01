@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "description": "Per-champion combat timing measurements used by the combat engine.",
+  "fields": {
+    "champion_id": {
+      "type": "string",
+      "description": "Canonical champion identifier used by the simulator."
+    },
+    "patch": {
+      "type": "string",
+      "description": "Patch version (e.g., 14.1)."
+    },
+    "measurement_method": {
+      "type": "string",
+      "description": "How the timing was measured: frame_count or inference."
+    },
+    "windup_ratio": {
+      "type": "number",
+      "description": "Ratio of attack cycle spent in windup (0-1)."
+    },
+    "cast_point": {
+      "type": "number",
+      "description": "Seconds from cast start to effect resolution."
+    },
+    "walk_speed": {
+      "type": "number",
+      "description": "Hexes per second."
+    },
+    "turn_rate": {
+      "type": "number|null",
+      "description": "Radians per second; null if instant facing."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional context about the measurement."
+    }
+  },
+  "measurements": [
+    {
+      "champion_id": "vayne",
+      "patch": "14.1",
+      "measurement_method": "frame_count",
+      "windup_ratio": 0.28,
+      "cast_point": 0.0,
+      "walk_speed": 2.0,
+      "turn_rate": null,
+      "notes": "Example placeholder entry."
+    }
+  ]
+}
