@@ -66,6 +66,17 @@ def reset_stat(champion, stat):
         return eval(stat)[champion.name]
 
 
+def resolve_attack(champion, data):
+    _resolve_attack(
+        champion,
+        data.get('target'),
+        data.get('bonus_dmg', 0),
+        data.get('item_attack', False),
+        data.get('trait_attack', ''),
+        data.get('set_ad')
+    )
+
+
 def attack(champion, target, bonus_dmg=0, item_attack=False, trait_attack='', set_ad=None):
     attackable_enemies = list(filter(lambda x: (x.champion and x.health > 0), champion.enemy_team()))
     if not target and len(attackable_enemies) > 0:
@@ -73,6 +84,41 @@ def attack(champion, target, bonus_dmg=0, item_attack=False, trait_attack='', se
         target = champion.target
         # allow forced attacks (xinzhao spin etc.)
     if (champion.idle or bonus_dmg or item_attack or trait_attack) and target:
+        apply_cooldown = (not item_attack and not trait_attack) or champion.name == 'ashe'
+        if apply_cooldown and champion.idle:
+            interval_ms, windup_ms, _ = champion.attack_cycle_ms()
+            if interval_ms <= 0:
+                return
+            now = MILLIS()
+            if now < champion.recovery_timer:
+                return
+            champion.recovery_timer = now + interval_ms
+            champion.idle = False
+            champion.clear_que_idle()
+            champion.add_que(
+                'execute_function',
+                windup_ms,
+                [resolve_attack, {
+                    'target': target,
+                    'bonus_dmg': bonus_dmg,
+                    'item_attack': item_attack,
+                    'trait_attack': trait_attack,
+                    'set_ad': set_ad
+                }]
+            )
+            champion.add_que('clear_idle', interval_ms)
+            if champion.name == 'aphelios_turret' and champion.overlord:
+                champion.overlord.add_que('clear_idle', interval_ms, None, None, None, {'underlord': champion})
+            return
+        _resolve_attack(champion, target, bonus_dmg, item_attack, trait_attack, set_ad)
+
+
+def _resolve_attack(champion, target, bonus_dmg=0, item_attack=False, trait_attack='', set_ad=None):
+    attackable_enemies = list(filter(lambda x: (x.champion and x.health > 0), champion.enemy_team()))
+    if (not target or target.health <= 0) and len(attackable_enemies) > 0:
+        field.find_target(champion)
+        target = champion.target
+    if target:
 
         # enforcing the max AS rule. remembered that one too late
         # the best way for not creating a shitload of bugs
@@ -260,18 +306,9 @@ def attack(champion, target, bonus_dmg=0, item_attack=False, trait_attack='', se
                         champion.health = champion.max_health
                     champion.print(' heals ' + '{:<5}--> {:<8}'.format(ceil(health_old), ceil(champion.health)))
 
-                # applying attack speed pause
-                champion.idle = False
-                if champion.name == 'aphelios_turret':
-                    champion.overlord.add_que('clear_idle', 1 / champion.overlord.AS * 1000, None, None, None,
-                                              {'underlord': champion})
-
         else:
             origin_class.cultist_helper(champion, damage, target)
         if (not item_attack and not trait_attack) or champion.name == 'ashe':
-            champion.idle = False
-            champion.clear_que_idle()
-            champion.add_que('clear_idle', 1 / champion.AS * 1000)
             origin_class.shade_helper(champion)
 
 
