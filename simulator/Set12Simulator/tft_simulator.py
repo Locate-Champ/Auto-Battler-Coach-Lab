@@ -7,6 +7,8 @@ from pettingzoo.utils.conversions import parallel_wrapper_fn
 
 from Simulator import pool
 from Simulator.game_round import Game_Round
+from Simulator import config as simulator_config
+from Simulator.combat_measurements import load_combat_measurements
 
 from Simulator.player_manager import PlayerManager
 from Simulator.step_function import Step_Function
@@ -63,6 +65,9 @@ class TFT_Simulator(AECEnv):
 
         self.render_mode = config.render_mode
         self.render_path = config.render_path
+
+        self.combat_measurements = load_combat_measurements()
+        simulator_config.COMBAT_MEASUREMENTS = self.combat_measurements
 
         # --- Config Variables ---
         self.num_players = config.num_players
@@ -329,5 +334,4 @@ class TFT_Simulator(AECEnv):
 
         if self._agent_selector.is_first():
             self._deads_step_first()
-
 
