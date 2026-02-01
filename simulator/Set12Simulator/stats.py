@@ -149,6 +149,9 @@ AS = {
     'riftherald': 1.00
 }
 
+DEFAULT_WINDUP_RATIO = 0.3
+WINDUP_RATIO = {}
+
 HEALTH = {
     'aatrox': 800,
     'ahri': 600,
