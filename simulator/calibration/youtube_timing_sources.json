@@ -1,0 +1,146 @@
+{
+  "_instructions": {
+    "how_to_use": [
+      "1. Find a good YouTube video for the champion (links below are suggestions)",
+      "2. Run: python youtube_measure.py <url> --champion <name>",
+      "3. Or search: python youtube_measure.py --search <champion>",
+      "4. Mark attack starts (1) and damage frames (2) in the viewer",
+      "5. Press ENTER to compute, S to save"
+    ],
+    "good_video_criteria": [
+      "Clear view of champion attacking",
+      "1080p or higher resolution preferred",
+      "Isolated fights (1v1 or few units) are easier to measure",
+      "3-star showcases often have clean attack sequences"
+    ],
+    "search_queries": [
+      "TFT Set 16 [champion] 3 star",
+      "TFT [champion] carry gameplay Set 16",
+      "TFT Set 16 [champion] spotlight"
+    ]
+  },
+
+  "priority_1_critical": {
+    "Ziggs": {
+      "search_query": "TFT Set 16 Ziggs 3 star",
+      "suggested_videos": [],
+      "notes": "Look for clear spell cast timing too"
+    },
+    "KaiSa": {
+      "search_query": "TFT Set 16 Kai'Sa 3 star",
+      "suggested_videos": [
+        "https://youtube.com/watch?v=MWJKfE1oXdM"
+      ],
+      "notes": "Multi-missile ability - measure both autos and spell"
+    },
+    "Kindred": {
+      "search_query": "TFT Set 16 Kindred carry",
+      "suggested_videos": [],
+      "notes": "Watch for Wolf attack timing"
+    },
+    "Azir": {
+      "search_query": "TFT Set 16 Azir soldiers",
+      "suggested_videos": [],
+      "notes": "Measure BOTH Azir autos AND soldier autos separately"
+    },
+    "Xerath": {
+      "search_query": "TFT Set 16 Xerath 3 star",
+      "suggested_videos": [],
+      "notes": "Long range caster"
+    },
+    "LucianSenna": {
+      "search_query": "TFT Set 16 Lucian Senna carry",
+      "suggested_videos": [],
+      "notes": "Multi-shot spell - count shots and timing"
+    }
+  },
+
+  "priority_2_high": {
+    "Kalista": {
+      "search_query": "TFT Set 16 Kalista 3 star",
+      "suggested_videos": [],
+      "notes": "Spear stacking mechanic"
+    },
+    "Veigar": {
+      "search_query": "TFT Set 16 Veigar carry",
+      "suggested_videos": [],
+      "notes": "Execute spell timing"
+    },
+    "Lux": {
+      "search_query": "TFT Set 16 Lux 3 star",
+      "suggested_videos": [],
+      "notes": ""
+    },
+    "Lissandra": {
+      "search_query": "TFT Set 16 Lissandra",
+      "suggested_videos": [],
+      "notes": ""
+    },
+    "Ahri": {
+      "search_query": "TFT Set 16 Ahri 3 star",
+      "suggested_videos": [],
+      "notes": "Multi-orb spell"
+    },
+    "Zoe": {
+      "search_query": "TFT Set 16 Zoe carry",
+      "suggested_videos": [],
+      "notes": ""
+    }
+  },
+
+  "priority_3_medium": {
+    "Teemo": {
+      "search_query": "TFT Set 16 Teemo",
+      "suggested_videos": [],
+      "notes": "Has wiki missile speed (1500)"
+    },
+    "Aphelios": {
+      "search_query": "TFT Set 16 Aphelios carry",
+      "suggested_videos": [],
+      "notes": "Has wiki missile speed (1700), also measure turret"
+    },
+    "Jhin": {
+      "search_query": "TFT Set 16 Jhin 3 star",
+      "suggested_videos": [],
+      "notes": "Has wiki missile speed (2600), fixed attack pattern"
+    },
+    "TwistedFate": {
+      "search_query": "TFT Set 16 Twisted Fate",
+      "suggested_videos": [],
+      "notes": ""
+    },
+    "Malzahar": {
+      "search_query": "TFT Set 16 Malzahar voidlings",
+      "suggested_videos": [],
+      "notes": "Also measure voidling attack timing"
+    }
+  },
+
+  "special_cases": {
+    "Annie": {
+      "search_query": "TFT Set 16 Annie Tibbers 3 star",
+      "suggested_videos": [],
+      "notes": "IMPORTANT: Measure Annie AND Tibbers separately"
+    },
+    "Mel": {
+      "search_query": "TFT Set 16 Mel carry",
+      "suggested_videos": [],
+      "notes": "Unique ability"
+    },
+    "Ryze": {
+      "search_query": "TFT Set 16 Ryze portal",
+      "suggested_videos": [],
+      "notes": "Portal timing"
+    }
+  },
+
+  "example_workflow": {
+    "step1": "python youtube_measure.py --search \"Kai'Sa\"",
+    "step2": "Select video from results (enter number)",
+    "step3": "Video downloads and opens in viewer",
+    "step4": "Navigate to attack sequence, press 1 at attack start",
+    "step5": "Press 2 when damage number appears",
+    "step6": "Repeat 5+ times, press ENTER to see average",
+    "step7": "Press S to save results"
+  }
+}
