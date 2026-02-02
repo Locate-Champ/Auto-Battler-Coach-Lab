@@ -2609,14 +2609,24 @@ class ChampionAbilities:
         return bench_galio
 
     # =========================================================================
-    # T-HEX - Pilot System
+    # T-HEX - HexMech Pilot System
     # =========================================================================
+
+    # HexMech pilot bonus stats by role and star level
+    # Tank: Omnivamp, Fighter: AD%, Marksman: Damage Amp, Caster: Mana Regen, Assassin: Crit Chance
+    HEXMECH_PILOT_BONUSES = {
+        'Tank': {'stat': 'omnivamp', 'values': {1: 0.15, 2: 0.25, 3: 0.40}},
+        'Fighter': {'stat': 'ad_percent', 'values': {1: 0.15, 2: 0.25, 3: 0.40}},
+        'Marksman': {'stat': 'damage_amp', 'values': {1: 0.10, 2: 0.18, 3: 0.30}},
+        'Caster': {'stat': 'mana_regen', 'values': {1: 2, 2: 4, 3: 5}},
+        'Assassin': {'stat': 'crit_chance', 'values': {1: 0.30, 2: 0.60, 3: 1.00}},
+    }
 
     def _cast_thex(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                    ability_vars: Dict) -> bool:
         """T-Hex - Hextech Arsenal: Gatling gun + shield.
 
-        HexMech trait: T-Hex's power scales with its pilot.
+        HexMech trait: Pilot jumps in at combat start, grants 80% HP + role bonus.
         """
         from .combat_engine import DamageType
 
@@ -2630,52 +2640,133 @@ class ChampionAbilities:
         shield = base_shield + (unit.stats.max_hp * pct_hp_shield) + unit.stats.ap * 0.5
         self.engine.apply_shield(unit, shield, "thex_shield")
 
-        # Get pilot bonus
-        pilot_bonus = getattr(unit, '_pilot_bonus', 1.0)
-
         # Fire bullets at random enemies
         targets = [e for e in enemies if e.is_alive and e.is_targetable]
         for i in range(num_bullets):
             if not targets:
                 break
             target = random.choice(targets)
-            damage = (ad_damage + unit.stats.ad + ap_damage + unit.stats.ap) * pilot_bonus
+            damage = ad_damage + unit.stats.ad + ap_damage + unit.stats.ap
             self._deal_damage(unit, target, damage, DamageType.PHYSICAL, f"thex_bullet_{i+1}")
 
         unit.stats.mana = 0
         self.engine.log_event('ability_cast', unit=unit.name, ability="Hextech Arsenal",
-                             bullets=num_bullets, shield=shield, pilot_bonus=pilot_bonus)
+                             bullets=num_bullets, shield=shield)
         return True
 
-    def assign_thex_pilot(self, thex: 'Unit', pilot: 'Unit'):
-        """Assign a pilot to T-Hex to scale its power.
+    def _get_pilot_role_category(self, role: str) -> str:
+        """Determine HexMech bonus category from pilot's role."""
+        role_lower = role.lower()
+        if 'tank' in role_lower:
+            return 'Tank'
+        elif 'fighter' in role_lower:
+            return 'Fighter'
+        elif 'carry' in role_lower or 'marksman' in role_lower:
+            return 'Marksman'
+        elif 'caster' in role_lower or 'mage' in role_lower or 'invoker' in role_lower:
+            return 'Caster'
+        elif 'assassin' in role_lower:
+            return 'Assassin'
+        # Default to Fighter for unknown roles
+        return 'Fighter'
 
-        Pilot bonuses by cost: 1=1.0x, 2=1.15x, 3=1.30x, 4=1.50x, 5=1.75x
-        Trait bonuses: Gunslinger +20% AS, Piltover +15% shield, Sorcerer +30 AP
+    def assign_thex_pilot(self, thex: 'Unit', pilot: 'Unit'):
+        """Assign a pilot to T-Hex (HexMech trait).
+
+        Combat Start: Pilot jumps into T-Hex, granting:
+        - 80% of pilot's Health
+        - Bonus stats based on pilot's role and star level:
+          - Tank: +15/25/40% Omnivamp
+          - Fighter: +15/25/40% Attack Damage
+          - Marksman: +10/18/30% Damage Amp
+          - Caster: +2/4/5 Mana Regen
+          - Assassin: +30/60/100% Crit Chance
+
+        On T-Hex death: Pilot ejects, knockback + 1.5s stun to nearby enemies.
         """
         pilot_data = self.engine.champions.get(pilot.api_name, {})
-        cost = pilot_data.get('cost', 1)
-
-        cost_mult = {1: 1.0, 2: 1.15, 3: 1.30, 4: 1.50, 5: 1.75}
-        thex._pilot_bonus = cost_mult.get(cost, 1.0)
-        thex._pilot = pilot
-
-        pilot_traits = pilot.traits if hasattr(pilot, 'traits') else []
-
-        if 'Gunslinger' in pilot_traits:
-            thex.stats.attack_speed += 0.20
-        if 'Piltover' in pilot_traits:
-            thex._piltover_shield_bonus = 0.15
-        if 'Sorcerer' in pilot_traits or 'Invoker' in pilot_traits:
-            thex.stats.ap += 30
-
+        role = pilot_data.get('role', 'Fighter')
         pilot_star = pilot.star_level if hasattr(pilot, 'star_level') else 1
-        hp_bonus = thex.stats.max_hp * (pilot_star - 1) * 0.25
+
+        # Store pilot reference
+        thex._pilot = pilot
+        thex._pilot_role = role
+
+        # Grant 80% of pilot's HP
+        pilot_hp = pilot.stats.max_hp if hasattr(pilot, 'stats') else 500
+        hp_bonus = pilot_hp * 0.80
         thex.stats.max_hp += hp_bonus
         thex.stats.hp += hp_bonus
 
-        self.engine.log_event('thex_pilot_assigned', thex=thex.name, pilot=pilot.name,
-                             cost=cost, bonus=thex._pilot_bonus)
+        # Determine role category and apply bonus
+        role_category = self._get_pilot_role_category(role)
+        bonus_info = self.HEXMECH_PILOT_BONUSES.get(role_category, self.HEXMECH_PILOT_BONUSES['Fighter'])
+        stat_type = bonus_info['stat']
+        bonus_value = bonus_info['values'].get(pilot_star, bonus_info['values'][1])
+
+        # Apply the stat bonus
+        if stat_type == 'omnivamp':
+            thex.stats.omnivamp += bonus_value
+        elif stat_type == 'ad_percent':
+            ad_bonus = thex.base_stats.ad * bonus_value
+            thex.stats.ad += ad_bonus
+        elif stat_type == 'damage_amp':
+            thex.stats.damage_amp += bonus_value
+        elif stat_type == 'mana_regen':
+            # Mana regen per second - store for tick processing
+            if not hasattr(thex, '_mana_regen_bonus'):
+                thex._mana_regen_bonus = 0
+            thex._mana_regen_bonus += bonus_value
+        elif stat_type == 'crit_chance':
+            thex.stats.crit_chance += bonus_value
+
+        # Track the bonus for logging
+        thex._hexmech_bonus = {'stat': stat_type, 'value': bonus_value, 'role': role_category}
+
+        self.engine.log_event('hexmech_pilot', thex=thex.name, pilot=pilot.name,
+                             role=role_category, star=pilot_star,
+                             hp_bonus=hp_bonus, stat_bonus=f"{stat_type}: {bonus_value}")
+
+    def trigger_thex_death(self, thex: 'Unit', enemies: List['Unit']):
+        """Handle T-Hex death - pilot ejects, knockback + stun nearby enemies.
+
+        On death: Pilot ejects while T-Hex knocks back and Stuns
+        nearby enemies for 1.5 seconds.
+        """
+        from .combat_engine import HexGrid
+
+        # Knockback and stun nearby enemies
+        nearby = [e for e in enemies if e.is_alive and e.is_targetable and
+                  HexGrid.hex_distance(thex.position, e.position) <= 2]
+
+        for enemy in nearby:
+            # Stun for 1.5 seconds
+            self._apply_stun(enemy, 1.5, "thex_death_stun")
+
+            # Knockback - push 1 hex away from T-Hex
+            dx = enemy.position[0] - thex.position[0]
+            dy = enemy.position[1] - thex.position[1]
+
+            # Normalize and push
+            if dx != 0 or dy != 0:
+                new_row = enemy.position[0] + (1 if dx > 0 else -1 if dx < 0 else 0)
+                new_col = enemy.position[1] + (1 if dy > 0 else -1 if dy < 0 else 0)
+
+                # Clamp to board bounds
+                new_row = max(0, min(HexGrid.ROWS - 1, new_row))
+                new_col = max(0, min(HexGrid.COLS - 1, new_col))
+
+                new_pos = (new_row, new_col)
+                if new_pos not in self.engine.get_occupied_hexes():
+                    enemy.position = new_pos
+
+        # Eject pilot (if exists) - pilot survives but T-Hex is destroyed
+        pilot = getattr(thex, '_pilot', None)
+        if pilot:
+            self.engine.log_event('hexmech_eject', pilot=pilot.name,
+                                 enemies_stunned=len(nearby))
+
+        return pilot
 
     # =========================================================================
     # BARON NASHOR - Riftscourge
