@@ -533,4 +533,28 @@ The `ChampionAbilities` class contains:
 
 ---
 
-*Last Updated: 2026-02-01*
+---
+
+## Implemented Traits (2026-02-02)
+
+10 stat-buffing traits have been implemented in TraitManager. These auto-apply at combat start.
+
+| Trait | Effect |
+|-------|--------|
+| Arcanist | Team +18/25/40 AP, Arcanists +25/40/60 bonus |
+| Defender | Team +12 armor/MR, Defenders +30/55/80 bonus |
+| Bruiser | Team +150 HP, Bruisers +25/45/65% HP |
+| Slayer | +22/33/44% AD, +10/16/20% omnivamp |
+| Juggernaut | +18/20/26% durability |
+| Invoker | Team +1 mana regen, Invokers +25/40% mana |
+| Vanquisher | +15-30% crit chance/damage, abilities can crit |
+| Longshot | +18-32% damage amp + per-hex bonus |
+| Quickstriker | Team +15% AS, scaling AS based on target HP |
+| Gunslinger | +20/35% AD, 4th attack bonus damage |
+| Warden | Shield triggers at 75%/25% HP |
+
+**Note:** Trait names use display names (e.g., "Arcanist") not backend API names (e.g., "TFT16_Sorcerer").
+
+---
+
+*Last Updated: 2026-02-02*
