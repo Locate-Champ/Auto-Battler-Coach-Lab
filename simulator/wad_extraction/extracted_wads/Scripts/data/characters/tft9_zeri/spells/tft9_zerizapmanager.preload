@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_zerispell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Zeri.TFT9_ZeriZapManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_zericustomlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_zerizap"}}, 
+}

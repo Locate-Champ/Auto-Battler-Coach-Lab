@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_jarvanspellshield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_jarvanarmorshred"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

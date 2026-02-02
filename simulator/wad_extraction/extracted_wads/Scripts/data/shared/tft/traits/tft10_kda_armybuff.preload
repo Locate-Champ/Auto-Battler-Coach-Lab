@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_KDA_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_KDA_CombatBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_kda_combatbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set10"}}, 
+}

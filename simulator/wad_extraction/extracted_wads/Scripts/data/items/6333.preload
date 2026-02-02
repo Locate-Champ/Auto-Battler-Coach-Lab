@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="item6333deathsdanceheal"}}, 
+{Function=BBPreloadSpell, Params={Name="6333damagemarker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="6333bleed"}}, 
+{Function=BBPreloadSpell, Params={Name="6333bleedcounter"}}, 
+}

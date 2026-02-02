@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kennenerecentlyhit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kennenestun"}}, 
+}

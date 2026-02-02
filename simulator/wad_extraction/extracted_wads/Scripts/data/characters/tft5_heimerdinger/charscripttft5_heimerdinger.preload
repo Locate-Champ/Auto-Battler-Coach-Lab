@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT5_Heimerdinger.TFT5_HeimerFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_heimerturretsummonedmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_heimerturretbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_heimerturretstorage"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_heimerturretmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT5_Heimerdinger.TFT5_HeimerTurretStorage"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_heimerturretdummy"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tft7_elisespider"}}, 
+{Function=BBPreloadModule, Params={Name="TFT7_Elise.TFT7_EliseR"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_eliserbite"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_eliserdashing"}}, 
+}

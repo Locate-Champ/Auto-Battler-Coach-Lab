@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.FeatsGlobalNoxusBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="feats_noxianbootupgradebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="feats_cassiospecialcasebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="feats_noxianbootpurchasebuff"}}, 
+}

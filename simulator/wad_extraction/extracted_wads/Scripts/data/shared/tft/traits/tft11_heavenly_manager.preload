@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Heavenly_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Heavenly_UnitBuff"}}, 
+}

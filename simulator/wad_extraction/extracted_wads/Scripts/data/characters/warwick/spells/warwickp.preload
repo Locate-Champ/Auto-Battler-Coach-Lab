@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="warwickpdrain"}}, 
+{Function=BBPreloadSpell, Params={Name="hungeringstrike"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickr"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickq"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickqoutofrangeindicator"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickqholdaudio"}}, 
+{Function=BBPreloadSpell, Params={Name="warwicke"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickw"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickwincombattester"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickwpinvisibleminion"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickwquadrupedsoundbuff"}}, 
+}

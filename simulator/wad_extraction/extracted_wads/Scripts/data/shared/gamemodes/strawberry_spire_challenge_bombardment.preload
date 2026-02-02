@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_challenge_bombardment_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire_Challenge_Bombardment"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_challenge_bombardment_stayinsidebuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
+}

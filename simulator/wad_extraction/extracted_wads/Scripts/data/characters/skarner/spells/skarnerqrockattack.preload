@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Skarner.SkarnerFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_targetdieswithinxseconds"}}, 
+}

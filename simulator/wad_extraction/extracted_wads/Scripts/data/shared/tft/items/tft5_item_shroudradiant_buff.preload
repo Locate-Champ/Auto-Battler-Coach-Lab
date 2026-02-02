@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ShroudRadiant_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_medium"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_shroud_mis"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Shroud_Buff"}}, 
+}

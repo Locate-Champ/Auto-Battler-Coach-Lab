@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisaeevolveavailable"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisar"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisaqminionmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisaqevolveavailable"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisaqmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisaqlaunchmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisaqparticle"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_KaisaFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisapassivemarkerr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaisawevolveavailable"}}, 
+}

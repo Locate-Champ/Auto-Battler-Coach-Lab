@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.MissionsInLUA_Generic"}}, 
+{Function=BBPreloadSpell, Params={Name="missionsinlua_2025_s3_a1"}}, 
+{Function=BBPreloadSpell, Params={Name="missionsinlua_2025_s3_a2"}}, 
+{Function=BBPreloadSpell, Params={Name="missionswardtakedowntracker"}}, 
+{Function=BBPreloadSpell, Params={Name="missionsinlua_inmonstercombat"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_Buddy_Pantheon_LeapTarget_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_Buddy_Pantheon_PlayerBuff"}}, 
+}

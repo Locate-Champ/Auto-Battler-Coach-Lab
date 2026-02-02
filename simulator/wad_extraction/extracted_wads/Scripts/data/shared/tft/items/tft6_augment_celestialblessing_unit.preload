@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT6_Augment_CelestialBlessing_Unit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_GrievousWounds"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_UnitStatus_HealingReduction"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_augment_celestialblessing_vfx_buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+}

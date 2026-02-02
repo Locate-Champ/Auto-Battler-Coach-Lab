@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_lightemup"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_sleepdart"}}, 
+{Function=BBPreloadSpell, Params={Name="urgotw"}}, 
+{Function=BBPreloadSpell, Params={Name="ezrealr"}}, 
+}

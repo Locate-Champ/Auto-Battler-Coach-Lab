@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_pickup_vacuum_active"}}, 
+}

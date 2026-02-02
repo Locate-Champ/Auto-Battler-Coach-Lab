@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="yorickr"}}, 
+{Function=BBPreloadSpell, Params={Name="yorickpassive"}}, 
+{Function=BBPreloadCharacter, Params={Name="yorickghoulmelee"}}, 
+{Function=BBPreloadSpell, Params={Name="yorickpassiveghoulmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="yorickpassiveghoulspawnanim"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="yorickpassivegrave"}}, 
+}

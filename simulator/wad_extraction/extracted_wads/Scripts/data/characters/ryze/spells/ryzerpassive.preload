@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ryzer"}}, 
+{Function=BBPreloadSpell, Params={Name="ryzerchannel"}}, 
+}

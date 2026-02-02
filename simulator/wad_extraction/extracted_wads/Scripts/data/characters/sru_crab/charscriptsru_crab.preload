@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="sru_crab"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_crabattach"}}, 
+{Function=BBPreloadSpell, Params={Name="npcinitializer"}}, 
+{Function=BBPreloadCharacter, Params={Name="sru_crabward"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_dragonchemtech_mutated_ms_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="itemblackout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SharedWardBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="planthawkshotbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SocialSRChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_voidtransformmarker"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.JungleCampSpawn"}}, 
+}

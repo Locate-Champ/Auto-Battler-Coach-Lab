@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_maokair"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_maokairmovespeed"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_maokairroot"}}, 
+}

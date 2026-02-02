@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT16_Aphelios.CharFunctionTFT16_Aphelios"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_apheliosspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_apheliosspellinfernumattack_small"}}, 
+}

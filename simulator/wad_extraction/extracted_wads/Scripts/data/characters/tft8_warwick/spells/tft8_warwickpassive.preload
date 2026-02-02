@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_warwickspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_Warwick.TFT8_WarwickPassive"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_Warwick.TFT8_WarwickCombatBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_warwickdash"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitMovement"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="jaxfishingpassivegoldfishbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="jaxfishingpassivebluefishbuff"}}, 
+}

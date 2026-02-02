@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_apheliosinfernumqmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_aphelioscalibrumattackmis"}}, 
+}

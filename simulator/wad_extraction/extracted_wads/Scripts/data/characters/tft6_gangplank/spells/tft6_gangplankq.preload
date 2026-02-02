@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTPAIRS_Reinforcements"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_coinbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_collectablevacuum"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuffSharpshooter"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+}

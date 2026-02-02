@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Augment_Warden_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_encounters_futuresightbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_warden_empowermarker"}}, 
+}

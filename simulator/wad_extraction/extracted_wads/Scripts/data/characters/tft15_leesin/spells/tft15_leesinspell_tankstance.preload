@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_tankstance_3starringout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_juggernautspellmark"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

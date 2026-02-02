@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript_EnemyArmy"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_EnemyArmoryManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_5YR_TraitManager_PlayerBuff"}}, 
+}

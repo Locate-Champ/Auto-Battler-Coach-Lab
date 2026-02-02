@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT4_Kayle.TFT4_KayleSpell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Gear"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_kaylepenragemis"}}, 
+}

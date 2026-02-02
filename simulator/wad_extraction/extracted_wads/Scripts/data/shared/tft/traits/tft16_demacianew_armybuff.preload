@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_DemaciaNew_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Galio.TFT16_GalioArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_prismatic_demacia_shield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_DemaciaForever_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_DemaciaNew_UnitBuff"}}, 
+}

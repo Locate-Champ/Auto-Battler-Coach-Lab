@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Malzaharpassiveshieldcooldownindicator"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Malzaharpassiveshieldwindup"}}, 
+}

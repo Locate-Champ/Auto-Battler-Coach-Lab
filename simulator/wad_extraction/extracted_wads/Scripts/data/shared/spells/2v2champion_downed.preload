@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_nestingdoll"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberendernofow"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Chauffeur"}}, 
+{Function=BBPreloadSpell, Params={Name="447121_spiritworld"}}, 
+{Function=BBPreloadSpell, Params={Name="447121_materialworld"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2champion_upped"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Champion_DownedManager"}}, 
+}

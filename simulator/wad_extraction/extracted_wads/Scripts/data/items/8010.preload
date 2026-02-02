@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="8010debuff"}}, 
+{Function=BBPreloadSpell, Params={Name="8010visualdebuff"}}, 
+}

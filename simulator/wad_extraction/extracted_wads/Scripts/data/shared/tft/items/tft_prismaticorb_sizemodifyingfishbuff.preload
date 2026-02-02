@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_prismaticorb_sizemodifyingfishbuff_sizebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PrismaticOrb_SizeModifyingFishBuff_SizeBuff"}}, 
+}

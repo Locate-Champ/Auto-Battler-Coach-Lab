@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_singedspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Singed.TFT16_SingedPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_TeamupAugment_SingedTeemo_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_singedpassive_poisonmarker"}}, 
+}

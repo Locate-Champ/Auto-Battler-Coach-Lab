@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_tryndamerespell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Tryndamere.TFT16_TryndamerePassiveBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Ashe.TFT16_AshePassiveBuff"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_PlayerBuff_RadiantNPC"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+}

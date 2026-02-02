@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="gangplankr"}}, 
+{Function=BBPreloadSpell, Params={Name="gangplankrslowupgrade"}}, 
+}

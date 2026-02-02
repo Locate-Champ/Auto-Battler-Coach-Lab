@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_TwoTanky_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_twotanky_healbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+}

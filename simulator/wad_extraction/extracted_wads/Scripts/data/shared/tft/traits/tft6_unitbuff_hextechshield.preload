@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuff_HextechShield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+}

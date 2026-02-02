@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Experiment_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set13"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_experiment_selectedunitbuff"}}, 
+}

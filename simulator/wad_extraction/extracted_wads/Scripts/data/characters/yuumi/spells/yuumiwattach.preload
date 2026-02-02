@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="yuumip"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumipcompanionshipbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Yuumi.YuumiWSpellPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumipaudiobestfriend"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumipvisualtrackerally"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumiwally"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumiwendwrapper"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumi_lowhealtheternaltracker"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumippitytimer"}}, 
+{Function=BBPreloadModule, Params={Name="Yuumi.YuumiWAlly"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumiw"}}, 
+{Function=BBPreloadSpell, Params={Name="yuumiwend"}}, 
+}

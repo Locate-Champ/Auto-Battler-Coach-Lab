@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_vulnerability"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_soulsiphon"}}, 
+}

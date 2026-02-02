@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_camillespellunstoppable"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_camillespellduel"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_varusrrootend"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_varusr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_varusrsecondary"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_varusrimmune"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_varusrtooltip"}}, 
+}

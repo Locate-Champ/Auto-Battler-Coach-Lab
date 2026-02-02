@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_zap_hocuspocus_combatbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_UniversalBuffManager_ArmyBuff"}}, 
+}

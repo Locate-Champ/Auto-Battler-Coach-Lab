@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_galiospell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+}

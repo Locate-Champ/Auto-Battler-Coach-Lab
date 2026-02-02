@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_TraitEffect_CruelPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_cruelrevivebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_cruelvictimbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_cruelteemosharkbuff"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadParticle, Params={Name="strawberry_riven_skin16_idle_wings_ult.troy", SkinID="-1"}}, 
+}

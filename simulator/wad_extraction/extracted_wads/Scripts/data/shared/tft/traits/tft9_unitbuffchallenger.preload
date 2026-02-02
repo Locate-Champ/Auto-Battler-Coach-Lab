@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_UnitBuffChallenger"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_challengerasburst"}}, 
+}

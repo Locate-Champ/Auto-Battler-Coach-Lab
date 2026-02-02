@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT8_5_Augment_GnarCarry_Army"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set8"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_5_augment_gnarcarry_statbuff"}}, 
+}

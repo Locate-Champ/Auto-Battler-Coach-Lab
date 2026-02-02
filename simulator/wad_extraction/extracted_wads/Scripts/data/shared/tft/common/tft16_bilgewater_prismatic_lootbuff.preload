@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_collectablevacuum"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_CollectableVacuumManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Bilgewater_ArmyBuff_Permanent"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
+}

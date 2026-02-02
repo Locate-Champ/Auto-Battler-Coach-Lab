@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="taliyahrmis"}}, 
+{Function=BBPreloadModule, Params={Name="Taliyah.FunctionsTaliyah"}}, 
+{Function=BBPreloadSpell, Params={Name="taliyahrblowupsoundmis"}}, 
+{Function=BBPreloadSpell, Params={Name="taliyahrpresurf"}}, 
+}

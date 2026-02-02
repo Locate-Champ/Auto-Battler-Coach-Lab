@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Faerie_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Item_Faerie_QueensCrownRadiant"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Item_Faerie_Armor"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Item_Faerie_ArmorRadiant"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+}

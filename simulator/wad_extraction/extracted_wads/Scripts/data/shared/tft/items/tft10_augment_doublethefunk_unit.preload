@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_augment_doublethefunk_playerbuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT10_Funk_DiscoUnitBuff_Combat"}}, 
+}

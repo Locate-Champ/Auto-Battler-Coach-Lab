@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Seraphine.SeraphineFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="seraphinepassive"}}, 
+{Function=BBPreloadSpell, Params={Name="eternalstracker_seraphinerlongrange"}}, 
+{Function=BBPreloadSpell, Params={Name="seraphinerpostcast"}}, 
+}

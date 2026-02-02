@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="atakhan_combatfacinglock"}}, 
+{Function=BBPreloadSpell, Params={Name="atakhan_combatspell_peacefulvfx"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_atakhan_shred"}}, 
+{Function=BBPreloadSpell, Params={Name="atakhan_combatspell_genericmis"}}, 
+}

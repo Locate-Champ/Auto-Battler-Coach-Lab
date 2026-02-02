@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_zoespellmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

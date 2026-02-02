@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="khazixhuntdefeatr"}}, 
+{Function=BBPreloadSpell, Params={Name="khazixhuntvictoryk"}}, 
+{Function=BBPreloadParticle, Params={Name="victory_glb.troy", SkinID="-1"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Rell.RellP"}}, 
+{Function=BBPreloadSpell, Params={Name="rellq_stun"}}, 
+{Function=BBPreloadModule, Params={Name="Rell.RellE_EmpowerSelf"}}, 
+{Function=BBPreloadSpell, Params={Name="rellq_microdash"}}, 
+{Function=BBPreloadSpell, Params={Name="rellz_animoverridebuff"}}, 
+}

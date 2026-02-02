@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="sru_crab"}}, 
+{Function=BBPreloadSpell, Params={Name="2025_aprilfools_shaco_crab"}}, 
+{Function=BBPreloadSpell, Params={Name="2025_aprilfools_shacofriendlybox_buffcounter"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_partydragon_speedbuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Brush"}}, 
+}

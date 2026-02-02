@@ -1,0 +1,14 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_DJ_Armory_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Sona.TFT10_SonaModeController"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sona_damagemis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sonaspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sonaspell2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sonaattackspeedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sonaspell3"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sona_mode3_unitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sonashield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sonaspellboost"}}, 
+}

@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="sylasrpassivemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="ekkor"}}, 
+{Function=BBPreloadSpell, Params={Name="ekkorheal"}}, 
+{Function=BBPreloadSpell, Params={Name="ahripassivetakedownmark"}}, 
+{Function=BBPreloadSpell, Params={Name="kalistapaltarallyroot"}}, 
+{Function=BBPreloadSpell, Params={Name="kalistapbondingrootally"}}, 
+{Function=BBPreloadSpell, Params={Name="kalistapinvocation"}}, 
+{Function=BBPreloadSpell, Params={Name="sylasr"}}, 
+{Function=BBPreloadSpell, Params={Name="sylaspassive"}}, 
+}

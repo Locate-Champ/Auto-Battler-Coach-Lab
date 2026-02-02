@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_garenspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Garen.TFT14_GarenFunctionModule"}}, 
+}

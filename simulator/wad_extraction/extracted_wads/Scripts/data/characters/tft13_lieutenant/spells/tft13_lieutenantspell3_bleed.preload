@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Lieutenant.TFT13_LieutenantSpell3_Bleed"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+}

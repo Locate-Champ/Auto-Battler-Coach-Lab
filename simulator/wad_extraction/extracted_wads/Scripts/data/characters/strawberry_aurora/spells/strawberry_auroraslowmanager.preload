@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_auroraslowbatchbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_aurorar"}}, 
+}

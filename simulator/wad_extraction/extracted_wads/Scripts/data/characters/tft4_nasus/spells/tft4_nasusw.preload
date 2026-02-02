@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft4_nasuswmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_large"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_msslow_medium"}}, 
+{Function=BBPreloadModule, Params={Name="TFT4_Nasus.TFT4_NasusW"}}, 
+}

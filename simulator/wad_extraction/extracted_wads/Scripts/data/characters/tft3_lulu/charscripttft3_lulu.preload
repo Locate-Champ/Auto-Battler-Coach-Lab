@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft3_luluwselfroot"}}, 
+{Function=BBPreloadSpell, Params={Name="tft3_luluwpolymorph"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+}

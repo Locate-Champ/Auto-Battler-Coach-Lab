@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_shock"}}, 
+{Function=BBPreloadSpell, Params={Name="haste"}}, 
+}

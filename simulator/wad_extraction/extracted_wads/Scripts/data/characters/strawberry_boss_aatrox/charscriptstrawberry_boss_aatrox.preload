@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_ccimmune"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_mapboss_rampingdamage"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_mapd_wallminimapiconholder"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_z_arrivalcinematic"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_hasreviveavailable"}}, 
+}

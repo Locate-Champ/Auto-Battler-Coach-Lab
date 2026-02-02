@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_MechPilot_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_mechpilot_unitbuff_subunit"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_mechpilot_breadcrumb_useitem"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_ItemBenchFull"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_breadcrumbs_itembenchfull"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_mechpilot_unitbuff_pilot"}}, 
+}

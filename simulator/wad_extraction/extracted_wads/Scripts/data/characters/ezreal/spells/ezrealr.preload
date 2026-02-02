@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="eternals_skillshottracker"}}, 
+{Function=BBPreloadSpell, Params={Name="cantattack"}}, 
+}

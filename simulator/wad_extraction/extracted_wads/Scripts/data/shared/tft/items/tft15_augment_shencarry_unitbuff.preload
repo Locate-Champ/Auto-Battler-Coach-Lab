@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_shenspellhero"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_marksman"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_shenspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_tank"}}, 
+}

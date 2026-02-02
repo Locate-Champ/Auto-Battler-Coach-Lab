@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT5_Kindred.TFT5_KindredWolf"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kindredwolfbuff"}}, 
+}

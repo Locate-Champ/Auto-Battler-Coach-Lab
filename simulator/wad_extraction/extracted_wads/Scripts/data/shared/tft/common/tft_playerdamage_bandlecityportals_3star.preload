@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerdamage_bandlecityportals_minions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerdamage_bandlecityportals_arc_tier3_1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerdamage_bandlecityportals_arc_tier3_2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerdamage_bandlecityportals_arc_tier3_3"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerdamage_bandlecityportals_arc_tier3_4"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerdamage_bandlecityportals_arc_tier3_5"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerdamage_bandlecityportals_arc_tier3_6"}}, 
+}

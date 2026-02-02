@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_tristanawtrailsound"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanaecharge"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanae"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanawslow"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanawcastbuffer"}}, 
+}

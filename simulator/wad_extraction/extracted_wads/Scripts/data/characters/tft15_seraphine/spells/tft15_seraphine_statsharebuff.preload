@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT15_Seraphine.TFT15_Seraphine_PassiveBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_seraphine_spell_helpmis"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Zyra.TFT15_ZyraSpellBuff"}}, 
+}

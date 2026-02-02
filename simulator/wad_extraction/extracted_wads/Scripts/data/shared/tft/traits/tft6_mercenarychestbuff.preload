@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT6_PlayerTraitBuffMercenaryTrackerNew"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT6_MercenaryChestBuff"}}, 
+}

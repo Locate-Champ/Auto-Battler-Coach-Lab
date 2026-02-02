@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft4_nautilusrmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_nautilusrdamagereductionshield"}}, 
+}

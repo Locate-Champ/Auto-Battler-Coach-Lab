@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_skarnerrockmis_short"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_skarnerrockmis_long"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_skarnerrockmis_medium"}}, 
+}

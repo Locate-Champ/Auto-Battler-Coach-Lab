@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="highlanderspellpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="jaxrpassive"}}, 
+}

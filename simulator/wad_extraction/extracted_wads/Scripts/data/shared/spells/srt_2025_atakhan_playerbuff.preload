@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="srt_2025_atakhan_spiritrosebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2025_atakhan_rosebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_2025_Split1_SeasonalMechanic"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2025_atakhan_roseboundreward"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRT_2025_Atakhan_PlayerBuff"}}, 
+}

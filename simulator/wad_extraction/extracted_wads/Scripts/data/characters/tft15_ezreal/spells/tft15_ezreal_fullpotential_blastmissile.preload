@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_ezrealspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_BattleAcademia_UnitBuff"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Brandr"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Brand.Ruby_BrandPassive"}}, 
+}

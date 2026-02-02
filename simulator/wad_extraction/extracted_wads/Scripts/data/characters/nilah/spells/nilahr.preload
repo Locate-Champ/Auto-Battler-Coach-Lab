@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="nilahpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="nilahq"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_nilahrmultipullstracker"}}, 
+{Function=BBPreloadSpell, Params={Name="nilahrpull"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadSpell, Params={Name="nilahpshield"}}, 
+{Function=BBPreloadSpell, Params={Name="olafragnarok"}}, 
+}

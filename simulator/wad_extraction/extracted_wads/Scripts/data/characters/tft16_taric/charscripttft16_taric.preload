@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_nocritanim_aamanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_taricallypassive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_taricspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_taricpassive"}}, 
+}

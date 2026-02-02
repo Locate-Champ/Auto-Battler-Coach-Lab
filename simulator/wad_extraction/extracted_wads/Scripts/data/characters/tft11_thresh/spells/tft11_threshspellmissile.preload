@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_threshspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_threshspellshield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_threshspellresistanceshare"}}, 
+}

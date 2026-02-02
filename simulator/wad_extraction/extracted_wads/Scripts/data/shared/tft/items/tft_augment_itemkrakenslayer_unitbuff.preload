@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_missfortunespell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ItemKrakenSlayer_UnitBuff"}}, 
+}

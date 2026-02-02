@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_unithasinkshadowitem"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_item_pigshield"}}, 
+}

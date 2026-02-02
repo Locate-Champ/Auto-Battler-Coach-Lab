@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Namiw"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Namipassive"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Namipassivedebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Namiwmissileenemy"}}, 
+}

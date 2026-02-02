@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT11_Kayle.CharScriptTFT11_Kayle"}}, 
+{Function=BBPreloadModule, Params={Name="TFTEvent5YR_Kayle.CharScriptTFTEvent5YR_Kayle"}}, 
+}

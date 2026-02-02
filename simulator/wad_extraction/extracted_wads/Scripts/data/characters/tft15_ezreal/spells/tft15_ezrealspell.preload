@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_BattleAcademia_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ezreal_fullpotential_stackingbonuses"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ezreal_fullpotential_blink"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ezreal_blastmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ezreal_fullpotential_asbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+}

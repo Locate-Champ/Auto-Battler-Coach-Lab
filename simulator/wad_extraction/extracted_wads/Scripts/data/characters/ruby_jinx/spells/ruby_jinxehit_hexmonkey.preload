@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="ruby_jinx_monkey"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxe"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxemonkeymine"}}, 
+}

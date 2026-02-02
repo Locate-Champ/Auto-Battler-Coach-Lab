@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT12_Camille.TFT12_CamillePassive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_camillepassivehookshotleftmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_camillepassivehookshotrightmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_camillepassivehookshotmis"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_Pantheon.TFT8_PantheonSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_pantheonshield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

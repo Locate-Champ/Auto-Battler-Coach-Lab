@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_kobukospellknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_kobukospellreturn"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_kobukospellspaceyeet_nostunmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_kobukospellspaceyeet"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_kobukothreestargrow"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

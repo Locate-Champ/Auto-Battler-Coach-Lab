@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_unitbuffredeemeddamagetracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_UnitBuffRedeemedDamageTracker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_unitbuffredeemedemboldened"}}, 
+}

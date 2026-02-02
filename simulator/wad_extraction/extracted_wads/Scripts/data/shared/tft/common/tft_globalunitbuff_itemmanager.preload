@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_ItemManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ComponentExpert_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff_dodgehandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DodgeHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_easteregg_purplebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_ItemBenchFull"}}, 
+}

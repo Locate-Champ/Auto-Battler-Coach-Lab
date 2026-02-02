@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_udyraamanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_udyrspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_spiritwalker_transformedvfx"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_udyr3starspellbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

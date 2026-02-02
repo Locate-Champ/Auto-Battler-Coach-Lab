@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_small"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_xxsmall"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_UniversalBuffManager_ArmyBuff"}}, 
+}

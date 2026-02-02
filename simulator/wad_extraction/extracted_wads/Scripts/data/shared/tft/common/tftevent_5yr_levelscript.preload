@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tftevent_5yr_traitmanager_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Loot"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+}

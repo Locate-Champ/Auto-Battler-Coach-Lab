@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_mordekaiserropenvfx"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_mordekaiserrinsidewisp"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_mordekaiserr_target"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_mordekaiserr_statsteal"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_mordekaiserr_statstealenemy"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_mordekaiserr_insidespiritrealm"}}, 
+{Function=BBPreloadModule, Params={Name="Yuumi.YuumiWSpellPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_mordekaisersoulmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+}

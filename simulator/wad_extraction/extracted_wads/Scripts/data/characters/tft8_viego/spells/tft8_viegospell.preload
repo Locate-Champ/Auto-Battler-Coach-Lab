@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_UnitBuffHeart_Ally"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_Viego.TFT8_ViegoSpellRecast"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_ViegoCarry_Unit"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_Viego.TFT8_ViegoSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_viegospellrecast"}}, 
+}

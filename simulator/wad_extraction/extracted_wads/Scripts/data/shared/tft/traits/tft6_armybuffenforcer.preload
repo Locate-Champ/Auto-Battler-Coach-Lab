@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_unitbuffenforcer"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_enforcerdetainment"}}, 
+}

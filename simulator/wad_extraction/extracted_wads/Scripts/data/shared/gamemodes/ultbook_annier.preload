@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_annierstatstonetracker"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_anniercontroller"}}, 
+{Function=BBPreloadCharacter, Params={Name="ultbookannietibbers"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_annierburnaura"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_AnnieFunctionModule"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Cherry_GoHKledBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="goh_interference_ground"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotrrecastmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotrrecastmissilelongdistance"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotrescapedvo"}}, 
+}

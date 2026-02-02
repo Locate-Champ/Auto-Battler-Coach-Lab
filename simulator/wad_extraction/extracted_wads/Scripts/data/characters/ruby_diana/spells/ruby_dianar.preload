@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_dianarvacuum"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_dianarhittracker"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_diana_solarflare_slow"}}, 
+{Function=BBPreloadSpell, Params={Name="leonasolarflare"}}, 
+}

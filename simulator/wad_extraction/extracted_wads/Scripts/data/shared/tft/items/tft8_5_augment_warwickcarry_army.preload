@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set8"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_5_augment_warwickcarry_unit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_5_Augment_WarwickCarry_Ally"}}, 
+}

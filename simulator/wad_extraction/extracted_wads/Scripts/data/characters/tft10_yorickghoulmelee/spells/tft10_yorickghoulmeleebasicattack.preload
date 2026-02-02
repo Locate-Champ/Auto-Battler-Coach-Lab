@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Yorick.YorickEMark"}}, 
+{Function=BBPreloadSpell, Params={Name="yorickpassiveaiactivated"}}, 
+}

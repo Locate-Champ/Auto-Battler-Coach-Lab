@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_UnitBuffMarksman"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_GunnerSpiritOfTheDuelist_Unit"}}, 
+}

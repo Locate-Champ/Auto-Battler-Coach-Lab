@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_boss_aurelionsolattackextra"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+}

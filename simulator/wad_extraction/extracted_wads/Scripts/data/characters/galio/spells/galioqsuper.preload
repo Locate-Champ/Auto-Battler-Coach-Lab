@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="galioq"}}, 
+{Function=BBPreloadModule, Params={Name="Global.CastInstance"}}, 
+{Function=BBPreloadModule, Params={Name="Galio.GalioPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="galioqsuperdot"}}, 
+}

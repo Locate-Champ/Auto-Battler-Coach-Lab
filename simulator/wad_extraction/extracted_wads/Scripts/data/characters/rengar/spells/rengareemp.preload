@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="rengareempmis"}}, 
+{Function=BBPreloadModule, Params={Name="Rengar.CharScriptRengar"}}, 
+{Function=BBPreloadSpell, Params={Name="rengarespellbuffer"}}, 
+}

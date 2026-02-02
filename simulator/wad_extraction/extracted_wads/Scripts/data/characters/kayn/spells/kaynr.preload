@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kaynrstatstonetracker"}}, 
+{Function=BBPreloadSpell, Params={Name="kaynrtravelingtohost"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+}

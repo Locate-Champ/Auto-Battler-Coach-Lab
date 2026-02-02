@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_state_attack"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_hasbeenknockedawayfrombigslice"}}, 
+}

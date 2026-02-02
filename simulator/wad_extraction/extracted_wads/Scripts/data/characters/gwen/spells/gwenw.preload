@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenw_gweninsidew"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenwuntargetabilitymanager"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenwrecast"}}, 
+{Function=BBPreloadModule, Params={Name="Gwen.GwenW"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenwzonemovebuff"}}, 
+}

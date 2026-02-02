@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_viegospellattack1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_viegospellattack3"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_viegospellattack4"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Viego.TFT15_ViegoSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_viegospelldash"}}, 
+}

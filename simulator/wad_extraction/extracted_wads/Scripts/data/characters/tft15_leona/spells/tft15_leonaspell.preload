@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leona_battlebonus_resistbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_BattleAcademia_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leona_spell_sunburstmis"}}, 
+}

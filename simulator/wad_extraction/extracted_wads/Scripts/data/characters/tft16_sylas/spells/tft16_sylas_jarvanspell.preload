@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT16_Sylas.TFT16_SylasSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sylasspell"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft16_reksai"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sylas_jarvanminionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sylas_jarvanspellsuppression"}}, 
+}

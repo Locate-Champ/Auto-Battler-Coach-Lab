@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="crepe_Ruby_Jinxvscaitlyn_Ruby_Jinxwin"}}, 
+{Function=BBPreloadModule, Params={Name="Caitlyn.Crepe_Ruby_JinxVsCaitlyn_CaitlynStart"}}, 
+}

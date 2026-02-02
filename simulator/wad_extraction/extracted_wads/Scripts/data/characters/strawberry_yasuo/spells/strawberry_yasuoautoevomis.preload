@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_yasuoauto"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_yasuoq1wrapper"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_yasuotornadozone"}}, 
+}

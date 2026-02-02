@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_DemaciaNew_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_DemaciaNew_ArmyBuff"}}, 
+}

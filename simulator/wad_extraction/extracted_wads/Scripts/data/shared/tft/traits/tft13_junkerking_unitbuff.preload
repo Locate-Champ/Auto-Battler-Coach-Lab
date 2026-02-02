@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_JunkerKing_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_JunkerKing_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_rumblespell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_junkerking_tankbuster"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_junkerking_pertriciterod"}}, 
+}

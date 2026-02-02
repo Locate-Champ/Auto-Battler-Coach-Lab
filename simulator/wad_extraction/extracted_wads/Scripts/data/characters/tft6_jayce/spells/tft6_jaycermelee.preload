@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_jaycermeleeshield"}}, 
+{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ufslash"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_jaycerlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_large"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_large"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_medium"}}, 
+}

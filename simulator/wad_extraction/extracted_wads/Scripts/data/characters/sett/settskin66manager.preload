@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="settskin66cumulativespentgrit"}}, 
+{Function=BBPreloadSpell, Params={Name="settskin66lastthresholdused"}}, 
+{Function=BBPreloadSpell, Params={Name="settskin66showmom"}}, 
+}

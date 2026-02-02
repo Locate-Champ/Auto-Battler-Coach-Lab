@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT10_Bard.TFT10_BardFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_bardspellmis1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_bardspellmis3"}}, 
+}

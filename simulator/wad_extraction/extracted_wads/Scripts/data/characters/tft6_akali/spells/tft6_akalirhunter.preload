@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT6_Akali.TFT6_AkaliRHunter"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_akalir2"}}, 
+}

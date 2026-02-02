@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_FortunePropBuff2"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_coinbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_collectablevacuum"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_fortunecoin"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_teemormissile"}}, 
+{Function=BBPreloadModule, Params={Name="TFT5_Teemo.TFT5_TeemoR"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_large"}}, 
+}

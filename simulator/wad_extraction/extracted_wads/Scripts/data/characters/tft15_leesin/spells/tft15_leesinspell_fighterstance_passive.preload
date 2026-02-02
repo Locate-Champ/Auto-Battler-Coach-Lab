@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_fighterstance"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft15_leesin"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_fighterstance_miniondeath"}}, 
+}

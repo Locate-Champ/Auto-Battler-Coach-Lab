@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_leona3starmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_leonaspelllockon"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+}

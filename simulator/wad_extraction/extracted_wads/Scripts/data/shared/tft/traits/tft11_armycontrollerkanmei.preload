@@ -1,0 +1,17 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_playerbuffkanmei"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_PlayerBuffKanmei"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_UnitBuffKanmei"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_ArmyControllerKanmei"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_ahrispell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_yasuospell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_kindredspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_threshspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_apheliosspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_syndraspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_settspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_fated_hpbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_kanmei_breadcrumb_pairunits"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_unitbuffkanmei_available"}}, 
+}

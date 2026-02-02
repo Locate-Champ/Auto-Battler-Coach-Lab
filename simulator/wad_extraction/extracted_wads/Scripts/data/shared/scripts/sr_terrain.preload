@@ -1,0 +1,17 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="sru_plant_health"}}, 
+{Function=BBPreloadCharacter, Params={Name="sru_plant_vision"}}, 
+{Function=BBPreloadCharacter, Params={Name="sru_plant_satchel"}}, 
+{Function=BBPreloadSpell, Params={Name="elementalplantmanager_honeyfruit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ElementalPlantManager_Honeyfruit"}}, 
+{Function=BBPreloadSpell, Params={Name="elementalplantmanager_scryer"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ElementalPlantManager_Scryer"}}, 
+{Function=BBPreloadSpell, Params={Name="elementalplantmanager_blastcone"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ElementalPlantManager_Blastcone"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_Terrain"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_cloudzonemonitor"}}, 
+{Function=BBPreloadCharacter, Params={Name="hexgate"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadCharacter, Params={Name="hexgate_exit"}}, 
+{Function=BBPreloadSpell, Params={Name="hexgate_warpcd"}}, 
+}

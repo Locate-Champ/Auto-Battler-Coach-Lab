@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="s13_minionspeedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="brawl_minion"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SocialSRChampionBuff"}}, 
+}

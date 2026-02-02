@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_primespell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_ArmyBuff_ApplyToHeroUnit"}}, 
+}

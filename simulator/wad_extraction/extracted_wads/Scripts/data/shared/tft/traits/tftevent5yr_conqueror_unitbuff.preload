@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Conqueror_PlayerBuff_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Conqueror_UnitBuff"}}, 
+}

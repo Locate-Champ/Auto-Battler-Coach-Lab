@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="khazixhatred"}}, 
+{Function=BBPreloadSpell, Params={Name="khazixhatredrengar"}}, 
+{Function=BBPreloadSpell, Params={Name="khazixdisguisebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_killsnearult"}}, 
+{Function=BBPreloadSpell, Params={Name="khazixq"}}, 
+}

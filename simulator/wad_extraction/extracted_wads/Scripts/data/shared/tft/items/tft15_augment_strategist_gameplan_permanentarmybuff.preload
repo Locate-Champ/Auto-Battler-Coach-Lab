@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_Strategist_GamePlan_PermanentArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_Strategist_GamePlan_UnitBuff"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_ornnrcheck"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ornnrwave2"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ornnr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ornnrknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="namir"}}, 
+}

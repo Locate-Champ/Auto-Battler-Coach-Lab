@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tft15_rammus"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_rammusspell_spikemis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_rammus_bigthreat"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Rammus.TFT15_Rammus_PassiveBuff"}}, 
+}

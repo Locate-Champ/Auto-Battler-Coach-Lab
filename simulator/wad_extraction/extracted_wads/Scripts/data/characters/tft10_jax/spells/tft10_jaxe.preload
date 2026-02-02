@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_jaxe_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_EDM_Manager"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kledpassive"}}, 
+{Function=BBPreloadModule, Params={Name="Kled.KledHealthManager"}}, 
+{Function=BBPreloadModule, Params={Name="Kled.KledFunctions"}}, 
+}

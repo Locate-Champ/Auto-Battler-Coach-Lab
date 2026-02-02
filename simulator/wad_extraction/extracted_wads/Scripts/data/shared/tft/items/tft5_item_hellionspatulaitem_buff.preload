@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_item_hellionspatulaitem_scale"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_hellionunitbuff"}}, 
+}

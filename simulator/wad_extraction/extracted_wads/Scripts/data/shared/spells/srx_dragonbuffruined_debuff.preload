@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SRX_DragonBuffRuined_Debuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.DragonBuffRuined_Manager"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="howlingabyssaura"}}, 
+{Function=BBPreloadSpell, Params={Name="porofollowermanager"}}, 
+{Function=BBPreloadSpell, Params={Name="aramshopdisablenoparticle"}}, 
+{Function=BBPreloadParticle, Params={Name="ha_pororay.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="aramturretfortification"}}, 
+}

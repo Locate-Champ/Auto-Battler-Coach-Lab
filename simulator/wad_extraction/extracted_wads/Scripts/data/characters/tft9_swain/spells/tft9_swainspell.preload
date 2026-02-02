@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_Swain.TFT9_SwainSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

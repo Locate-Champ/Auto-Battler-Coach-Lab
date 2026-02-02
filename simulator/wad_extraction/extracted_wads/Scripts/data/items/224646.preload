@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="4646ready"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="4646cooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="4646damagebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="4646damagetracker"}}, 
+}

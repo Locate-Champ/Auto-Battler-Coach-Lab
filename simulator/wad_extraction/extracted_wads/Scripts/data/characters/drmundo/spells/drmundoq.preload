@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="DrMundo.DrMundoFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="drmundoqhits_eternaltracker"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+}

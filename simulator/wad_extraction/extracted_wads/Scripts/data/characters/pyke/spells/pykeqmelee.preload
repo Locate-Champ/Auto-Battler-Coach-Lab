@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="pykeq"}}, 
+{Function=BBPreloadSpell, Params={Name="pykeqmeleehit"}}, 
+}

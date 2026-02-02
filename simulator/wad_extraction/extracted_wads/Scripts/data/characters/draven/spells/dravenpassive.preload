@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="dravenpassivestacks"}}, 
+{Function=BBPreloadSpell, Params={Name="dravenpassivegoldearned"}}, 
+{Function=BBPreloadSpell, Params={Name="dravenpassivehighestbounty"}}, 
+{Function=BBPreloadModule, Params={Name="Draven.CharFunctionDraven"}}, 
+}

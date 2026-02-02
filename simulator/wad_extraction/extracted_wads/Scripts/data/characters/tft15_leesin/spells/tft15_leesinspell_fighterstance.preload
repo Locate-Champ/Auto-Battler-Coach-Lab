@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT15_LeeSin.TFT15_LeeSinSpell_FighterStance"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft15_leesin"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_fighterstance_miniondeath"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+}

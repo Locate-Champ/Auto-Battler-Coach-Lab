@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_samiraspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_samirapmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_samirapmissileoffhand"}}, 
+}

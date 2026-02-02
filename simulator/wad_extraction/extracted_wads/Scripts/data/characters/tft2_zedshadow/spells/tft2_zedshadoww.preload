@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_isephemeral"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT2_UnitBuffAssassin"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT2_UnitBuffElectric"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_UnitBuffSummoner"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalsummonbuff"}}, 
+}

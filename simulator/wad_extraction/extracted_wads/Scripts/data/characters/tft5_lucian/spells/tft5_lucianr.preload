@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="lucianr"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_trait_cannoneercannonshotskillshot"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_trait_cannoneercannonshotskillshot2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_lucianrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_lucianrmissileoffhand"}}, 
+{Function=BBPreloadModule, Params={Name="TFT5_Lucian.TFT5_LucianFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_luciane"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_luciane"}}, 
+}

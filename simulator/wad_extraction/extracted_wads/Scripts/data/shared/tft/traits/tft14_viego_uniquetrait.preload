@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_viego_uniquetrait_manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Viego_UniqueTrait_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Viego_UniqueTrait_TakedownStorage"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_feymagic"}}, 
+{Function=BBPreloadSpell, Params={Name="globalpolymorphhasbegun"}}, 
+{Function=BBPreloadSpell, Params={Name="luluw"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadCharacter, Params={Name="lulupolymorphcritter"}}, 
+}

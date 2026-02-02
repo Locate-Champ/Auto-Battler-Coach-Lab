@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_luxr"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_luxrkilled"}}, 
+}

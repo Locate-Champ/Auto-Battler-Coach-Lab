@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_loot_unstablecomponent_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_loot_lotsoforbs_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_loot_nestingdolls_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_loot_implantsize_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_loot_implantspeed_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_loot_salvager_playerbuff"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="cherry_shopkeeper"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_monumenttohubris_statue"}}, 
+}

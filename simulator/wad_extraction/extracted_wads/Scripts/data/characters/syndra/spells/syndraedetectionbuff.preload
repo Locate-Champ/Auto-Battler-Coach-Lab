@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="syndrae"}}, 
+{Function=BBPreloadSpell, Params={Name="syndraespheremissile"}}, 
+{Function=BBPreloadSpell, Params={Name="syndraemissile"}}, 
+{Function=BBPreloadSpell, Params={Name="syndraedebuff"}}, 
+}

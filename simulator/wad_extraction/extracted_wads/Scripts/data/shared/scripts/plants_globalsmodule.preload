@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="plantspawndata"}}, 
+{Function=BBPreloadSpell, Params={Name="plantspawntuning"}}, 
+{Function=BBPreloadSpell, Params={Name="planthawkshot"}}, 
+{Function=BBPreloadSpell, Params={Name="plantsatchelareacheck"}}, 
+{Function=BBPreloadSpell, Params={Name="planthealthtracer"}}, 
+{Function=BBPreloadSpell, Params={Name="planthealthpack"}}, 
+}

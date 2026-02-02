@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_bladewaltz_buff"}}, 
+{Function=BBPreloadSpell, Params={Name="summonercherryhold"}}, 
+}

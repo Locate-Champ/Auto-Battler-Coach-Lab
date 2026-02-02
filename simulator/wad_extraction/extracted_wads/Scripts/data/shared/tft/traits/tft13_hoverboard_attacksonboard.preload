@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Hoverboard_AttacksOnBoard"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_hoverboard_missile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_zerispell"}}, 
+}

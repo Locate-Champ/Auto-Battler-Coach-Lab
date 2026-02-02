@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_formswapper_passivebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycepassive_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycepassive_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitcastrangefix"}}, 
+}

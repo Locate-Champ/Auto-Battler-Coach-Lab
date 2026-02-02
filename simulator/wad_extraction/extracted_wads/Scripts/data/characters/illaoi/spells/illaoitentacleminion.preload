@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadParticle, Params={Name="empty.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="illaoitentacleactive"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_minionmancer"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_minionmancer_minionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="illaoitentacleattack"}}, 
+{Function=BBPreloadSpell, Params={Name="illaoie"}}, 
+{Function=BBPreloadSpell, Params={Name="illaoipassive"}}, 
+{Function=BBPreloadSpell, Params={Name="illaoitentacledormant"}}, 
+}

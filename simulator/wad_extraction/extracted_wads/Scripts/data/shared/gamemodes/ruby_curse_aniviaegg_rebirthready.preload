@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_curse_aniviaegg"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_curse_aniviaegg_rebirth"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft4_aatroxspellshieldmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_aatroxqchainmissilemarker"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

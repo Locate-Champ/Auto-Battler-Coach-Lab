@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_anniespell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_anniespell_tibbersbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_supercharge_amp"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

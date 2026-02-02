@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="levelscriptclonelistener"}}, 
+{Function=BBPreloadSpell, Params={Name="levelscriptdragonpreloadbuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="campcleanupmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="elderdragonbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_dragonsoulmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_dragonsoulpreviewmanager"}}, 
+}

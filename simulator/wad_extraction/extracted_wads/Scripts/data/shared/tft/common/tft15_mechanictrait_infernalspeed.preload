@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_infernalspeed_armybuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_infernalspeed_permanentas"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_InfernalSpeed_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_infernalspeed_cinderdrop"}}, 
+}

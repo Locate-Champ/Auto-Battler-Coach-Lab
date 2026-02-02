@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_Curse"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cursehandpickedbuff"}}, 
+}

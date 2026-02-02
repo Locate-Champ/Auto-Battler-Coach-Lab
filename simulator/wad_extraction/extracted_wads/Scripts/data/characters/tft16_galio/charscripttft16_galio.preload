@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_galioarmybuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Galio.TFT16_GalioArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_galioplayerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Ionia_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Yordle_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_galio_threestar_ringout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_galiopassive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_Info"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+}

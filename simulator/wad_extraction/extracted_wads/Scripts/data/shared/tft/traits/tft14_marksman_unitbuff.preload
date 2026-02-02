@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Marksman_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_marksman_enhanced_unitbuff"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_syndraw"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_syndraw_knockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft2_malphiter"}}, 
+}

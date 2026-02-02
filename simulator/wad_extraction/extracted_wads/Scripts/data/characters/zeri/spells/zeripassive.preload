@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="zeripshieldmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="zeripassiveshield"}}, 
+{Function=BBPreloadSpell, Params={Name="zeripassiveshieldvisual"}}, 
+{Function=BBPreloadSpell, Params={Name="zeripassivehaste"}}, 
+}

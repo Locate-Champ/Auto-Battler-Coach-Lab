@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="lilliapdotsleephelper"}}, 
+{Function=BBPreloadSpell, Params={Name="lilliap"}}, 
+}

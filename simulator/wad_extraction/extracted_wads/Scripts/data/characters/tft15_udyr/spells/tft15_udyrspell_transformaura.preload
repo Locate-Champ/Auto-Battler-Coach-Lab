@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspell_transform"}}, 
+}

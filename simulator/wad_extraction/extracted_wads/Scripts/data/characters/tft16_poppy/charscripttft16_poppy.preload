@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_yordle_override_upgradeceremony"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

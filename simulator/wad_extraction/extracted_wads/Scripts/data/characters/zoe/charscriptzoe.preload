@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="zoepassive"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerdot"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerhaste"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerbarrier"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerexhaust"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerboost"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerheal"}}, 
+{Function=BBPreloadSpell, Params={Name="s5_summonersmiteplayerganker"}}, 
+}

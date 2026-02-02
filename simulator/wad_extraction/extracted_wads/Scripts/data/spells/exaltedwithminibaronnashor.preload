@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="riftheraldmercenary"}}, 
+{Function=BBPreloadCharacter, Params={Name="sru_riftherald_mercenary"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ExaltedWithMiniBaronNashor"}}, 
+{Function=BBPreloadSpell, Params={Name="3513_active_forced"}}, 
+}

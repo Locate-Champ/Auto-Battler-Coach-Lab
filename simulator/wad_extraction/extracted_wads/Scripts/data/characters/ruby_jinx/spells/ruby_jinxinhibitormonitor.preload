@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_jinxpassivekillattackspeed"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxpassivekill"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxpassivekillmovementspeed"}}, 
+}

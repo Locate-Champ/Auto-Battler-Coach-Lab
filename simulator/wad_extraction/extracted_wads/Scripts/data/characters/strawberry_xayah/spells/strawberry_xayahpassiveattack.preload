@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahFunctionModule"}}, 
+}

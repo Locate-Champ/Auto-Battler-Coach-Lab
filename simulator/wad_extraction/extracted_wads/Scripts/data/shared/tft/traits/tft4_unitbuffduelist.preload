@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT4_UnitBuffDuelist"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_traiteffect_duelistattackspeed"}}, 
+}

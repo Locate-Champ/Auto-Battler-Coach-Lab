@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="summonercherryhold"}}, 
+{Function=BBPreloadSpell, Params={Name="zhonyasringshield"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_wellberightback_heal"}}, 
+}

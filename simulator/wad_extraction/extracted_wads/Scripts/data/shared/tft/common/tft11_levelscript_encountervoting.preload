@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft_itemunknown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_votingportal_portalbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_VotingPortal_PortalBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_LevelScript_EncounterVoting"}}, 
+}

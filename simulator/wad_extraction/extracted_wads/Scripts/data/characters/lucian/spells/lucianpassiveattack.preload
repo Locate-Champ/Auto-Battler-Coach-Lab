@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="lucianpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="lucianpassiveshot"}}, 
+{Function=BBPreloadSpell, Params={Name="lucianpassiveshotdummy"}}, 
+}

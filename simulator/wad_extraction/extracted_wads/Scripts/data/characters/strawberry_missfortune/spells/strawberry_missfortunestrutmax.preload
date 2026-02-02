@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadParticle, Params={Name="Strawberry_MissFortune_base_w_max_avatar.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_MissFortuneviciousstrikes"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_MissFortunestrutstacks"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_distancetraveledtracker"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_MissFortunestrutdebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_MissFortunestruttrail"}}, 
+}

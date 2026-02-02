@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_ixtal_fire_damage"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_traitvfx_ixtal_fire_damage"}}, 
+}

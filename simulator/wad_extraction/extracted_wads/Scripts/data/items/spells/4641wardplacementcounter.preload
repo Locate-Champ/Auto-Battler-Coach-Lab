@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="4641canpurchasecontrolwardline"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.4641WardPlacementCounter"}}, 
+}

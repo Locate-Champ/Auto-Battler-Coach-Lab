@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ItemGargoyleStoneplate_UnitBuffSizeIncrease"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ItemGargoyleStoneplate_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_itemgargoylestoneplate_unitbuffsizeincrease"}}, 
+}

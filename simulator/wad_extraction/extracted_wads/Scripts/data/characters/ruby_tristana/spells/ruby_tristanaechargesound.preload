@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_tristanae"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanaedamagecheck"}}, 
+}

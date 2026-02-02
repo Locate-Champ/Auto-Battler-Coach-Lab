@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="riftheraldmercenary"}}, 
+{Function=BBPreloadCharacter, Params={Name="durian_scuttletraincompartment"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_scuttletrain_compartmentmover"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRU_ScuttleTrain_CompartmentMover"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRU_ScuttleTrain_Engine"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_ScuttleTrain"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_scuttletrain_compartment"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRU_ScuttleTrain_Compartment"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_scuttletrain_compartmentcart"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRU_ScuttleTrain_CompartmentCart"}}, 
+}

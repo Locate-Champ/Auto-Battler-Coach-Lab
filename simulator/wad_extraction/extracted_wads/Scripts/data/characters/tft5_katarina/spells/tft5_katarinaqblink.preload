@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_katarinaqblinktrailmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_katarinaqblinkwinddown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_katarinaq"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_katarinaqspinmissile"}}, 
+}

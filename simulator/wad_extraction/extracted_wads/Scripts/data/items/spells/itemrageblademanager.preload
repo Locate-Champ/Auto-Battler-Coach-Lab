@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.ItemRagebladeManager"}}, 
+{Function=BBPreloadSpell, Params={Name="rageblade"}}, 
+{Function=BBPreloadSpell, Params={Name="itemragebladedoublehit"}}, 
+}

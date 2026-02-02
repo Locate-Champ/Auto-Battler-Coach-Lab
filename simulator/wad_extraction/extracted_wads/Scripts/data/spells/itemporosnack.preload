@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="porosnaxmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="howlingabyssporoaction"}}, 
+{Function=BBPreloadSpell, Params={Name="howlingabyssporocompanionemote"}}, 
+{Function=BBPreloadSpell, Params={Name="itemporosnackgrow"}}, 
+{Function=BBPreloadSpell, Params={Name="bloom_porohat"}}, 
+{Function=BBPreloadSpell, Params={Name="2141active"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_FeedThemUp"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_PoroLaunch"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_jinxvsekko_jinxwin"}}, 
+}

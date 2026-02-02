@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_armybufflasercorps"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_UnitBuffInterPolaris"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_interpolaris_dronepass"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_unitbuffinterpolaris_dronemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_unitbuffinterpolarisdrone"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_unitbuffinterpolaris_canpilot"}}, 
+}

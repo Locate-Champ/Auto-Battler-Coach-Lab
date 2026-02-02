@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_EDM_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_TheDrop_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_edm_sampledunitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_augment_disco_edm_ballbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_edm_transformunitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unit_untargetable"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_edm_lockmana"}}, 
+}

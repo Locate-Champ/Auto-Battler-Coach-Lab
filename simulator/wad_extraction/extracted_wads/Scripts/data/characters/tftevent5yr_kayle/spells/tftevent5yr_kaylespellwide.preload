@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_kaylespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_kaylespellwidedouble"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

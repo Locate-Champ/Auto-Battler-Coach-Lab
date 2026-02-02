@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_atakhanspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Atakhan.TFT16_AtakhanSpell_Passive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Noxus_StackingPower_UnitBuff"}}, 
+}

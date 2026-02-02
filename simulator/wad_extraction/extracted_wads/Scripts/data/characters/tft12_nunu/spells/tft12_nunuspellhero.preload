@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_nunuspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

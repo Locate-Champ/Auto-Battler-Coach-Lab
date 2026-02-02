@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_neekospellshield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_xsmall"}}, 
+}

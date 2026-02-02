@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_TankEngine"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_tankengine_clone_buff"}}, 
+}

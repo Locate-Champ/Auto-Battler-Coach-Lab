@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_trainerdragonq"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_small"}}, 
+}

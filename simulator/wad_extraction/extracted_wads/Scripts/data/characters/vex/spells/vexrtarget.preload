@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="vexr2"}}, 
+{Function=BBPreloadSpell, Params={Name="vexr2timer"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_eldritchvolibearspell_entrance"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_eldritchvolibearspell_passive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

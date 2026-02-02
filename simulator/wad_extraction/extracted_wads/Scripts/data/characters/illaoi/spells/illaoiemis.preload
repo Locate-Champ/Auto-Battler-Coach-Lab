@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="illaoie"}}, 
+{Function=BBPreloadSpell, Params={Name="illaoiespirit"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2combatdummy_controller"}}, 
+}

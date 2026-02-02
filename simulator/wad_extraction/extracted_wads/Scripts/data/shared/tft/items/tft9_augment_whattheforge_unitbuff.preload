@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_WhatTheForge_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_WhatTheForge"}}, 
+}

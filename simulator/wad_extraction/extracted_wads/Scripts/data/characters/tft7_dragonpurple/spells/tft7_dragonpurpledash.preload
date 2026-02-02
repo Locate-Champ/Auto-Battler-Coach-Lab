@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_dragonpurplebuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT7_DragonPurple.TFT7_DragonPurpleDash"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_dragonpurpleability"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_dragonpurplespellhitmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_dragonpurpleknockup"}}, 
+}

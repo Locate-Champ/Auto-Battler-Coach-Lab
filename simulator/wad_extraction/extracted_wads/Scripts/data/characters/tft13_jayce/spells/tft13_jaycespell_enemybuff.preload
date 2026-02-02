@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Jayce.TFT13_JayceSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell_meleedamagemarker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Jayce.TFT13_JayceSpell_EnemyBuff"}}, 
+}

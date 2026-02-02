@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_impassable_aftershock"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_impassable_glacialaugment"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Impassable"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_impassable_aftershockdelay"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_impassable_aftershockresistsbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_impassable_glacialaugmentslow"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_impassable_glacialaugment_mis"}}, 
+}

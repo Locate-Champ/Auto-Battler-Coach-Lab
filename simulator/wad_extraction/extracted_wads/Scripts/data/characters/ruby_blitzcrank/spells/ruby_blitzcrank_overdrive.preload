@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_blitzcrank_overdrive_laser_eyes"}}, 
+{Function=BBPreloadSpell, Params={Name="stun"}}, 
+}

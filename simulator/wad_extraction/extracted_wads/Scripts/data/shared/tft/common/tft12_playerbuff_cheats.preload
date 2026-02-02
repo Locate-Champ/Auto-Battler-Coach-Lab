@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Bee_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_ShopManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SetManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_FortuneFavorsTheBold_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Pastry_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_ArmyBuffEldritch_PermManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Pyro_ArmyBuff_KillTracker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Smolder.TFT12_Smolder_MoveAttackLogic"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Portal_ArmyBuff_PortalManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_zaps_universalbuffmanager_armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_UniversalBuffManager_ArmyBuff"}}, 
+}

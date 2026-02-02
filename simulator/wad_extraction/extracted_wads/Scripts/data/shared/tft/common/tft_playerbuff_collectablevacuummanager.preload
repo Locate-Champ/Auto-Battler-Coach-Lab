@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_CollectableVacuum"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_CollectableVacuumManager"}}, 
+}

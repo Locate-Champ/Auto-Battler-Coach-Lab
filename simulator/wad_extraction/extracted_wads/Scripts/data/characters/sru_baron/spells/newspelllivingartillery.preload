@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadSpell, Params={Name="syndraw"}}, 
+{Function=BBPreloadSpell, Params={Name="kogmawlivingartillery"}}, 
+}

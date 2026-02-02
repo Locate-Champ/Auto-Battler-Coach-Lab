@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="promotemebuff"}}, 
+{Function=BBPreloadParticle, Params={Name="sru_minionspawn_red_01.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="aramminionduskalert"}}, 
+{Function=BBPreloadParticle, Params={Name="feelnopain_eff.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="kiwi_siegeminionaura"}}, 
+{Function=BBPreloadSpell, Params={Name="turretshield"}}, 
+}

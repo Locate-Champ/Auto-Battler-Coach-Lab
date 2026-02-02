@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12b"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Syndra.TFT12_SyndraSpellFunctionModule"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadSpell, Params={Name="zedr"}}, 
+}

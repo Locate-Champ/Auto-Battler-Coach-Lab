@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Shimmerscale_HighStakes_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT7_ShimmerscaleManager"}}, 
+}

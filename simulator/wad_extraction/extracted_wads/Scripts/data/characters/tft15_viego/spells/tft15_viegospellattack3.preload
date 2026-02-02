@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_viegospellknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_viegospell"}}, 
+}

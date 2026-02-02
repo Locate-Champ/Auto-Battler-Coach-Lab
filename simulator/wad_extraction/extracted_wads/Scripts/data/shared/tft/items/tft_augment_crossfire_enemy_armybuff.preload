@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_Crossfire_Enemy_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_crossfire_enemy_unitbuff"}}, 
+}

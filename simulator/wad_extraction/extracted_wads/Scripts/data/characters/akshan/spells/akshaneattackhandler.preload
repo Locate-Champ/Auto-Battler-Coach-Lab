@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="akshane"}}, 
+{Function=BBPreloadModule, Params={Name="Akshan.AkshanEAttackHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="akshaneattack"}}, 
+}

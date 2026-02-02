@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Ruby_Diana.Ruby_DianaFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Diana.Ruby_DianaMoonlight"}}, 
+}

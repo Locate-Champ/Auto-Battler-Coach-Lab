@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_item_ionicsparkradiant_debuffmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_radianthpregen_buff"}}, 
+}

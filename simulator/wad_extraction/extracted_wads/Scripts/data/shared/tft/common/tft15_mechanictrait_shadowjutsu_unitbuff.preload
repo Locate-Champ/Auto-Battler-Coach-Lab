@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_shadowjutsu_clonebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_shadowjutsu_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_ShadowJutsu_PlayerBuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_ShadowJutsu_UnitBuff"}}, 
+}

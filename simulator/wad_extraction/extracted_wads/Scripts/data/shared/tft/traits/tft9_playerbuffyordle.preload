@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_PlayerBuffYordle"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Units"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_unitbuffyordlestar"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+}

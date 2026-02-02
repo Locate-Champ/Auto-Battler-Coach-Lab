@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotr"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotranyunderthreshold"}}, 
+}

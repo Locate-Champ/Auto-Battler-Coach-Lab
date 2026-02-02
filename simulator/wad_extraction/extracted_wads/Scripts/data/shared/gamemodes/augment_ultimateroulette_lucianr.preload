@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="lucianr"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_lucianrdisable"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_lucianrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_lucianrmissileoffhand"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_UltimateRoulette"}}, 
+--{Function=BBPreloadModule, Params={Name="Lucian.LucianPassive"}}, 
+}

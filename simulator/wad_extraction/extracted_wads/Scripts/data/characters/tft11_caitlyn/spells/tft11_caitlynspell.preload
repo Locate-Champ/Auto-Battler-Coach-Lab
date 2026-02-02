@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft3_caitlynr"}}, 
+{Function=BBPreloadModule, Params={Name="TFT11_Caitlyn.TFT11_CaitlynR_RecastManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_caitlynr_recastmanager"}}, 
+}

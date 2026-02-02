@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_tahmkenchspelllockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_tahmkenchspell_enemy"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_TahmKench.TFT16_TahmKenchSpell_FunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_TahmKench.TFT16_TahmKenchSpell_Enemy"}}, 
+}

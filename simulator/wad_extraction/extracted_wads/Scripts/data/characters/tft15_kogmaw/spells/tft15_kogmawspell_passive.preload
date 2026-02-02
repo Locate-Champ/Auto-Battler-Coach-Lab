@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_kogmawspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_ArmyBuff_Tracker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_KogMaw.TFT15_KogMawSpell_Passive"}}, 
+}

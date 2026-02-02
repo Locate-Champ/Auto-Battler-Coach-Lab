@@ -1,0 +1,17 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_ArmyBuffEldritch_PermManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_unitbuffeldritch"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_unitbuffeldritch_daisyentrance"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_EldritchMalphite.TFT12_EldritchMalphiteSpell_Entrance"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_EldritchVolibear.TFT12_EldritchVolibearSpell_Entrance"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_EldritchBigVolibear.TFT12_EldritchBigVolibearSpell_Entrance"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_zap_ancientritual_summon_unitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuff_summonstarscaling"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_unitbuffeldritch_summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_traiteffect_eldritchsummonsize"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_UnitBuffEldritch_Summon"}}, 
+}

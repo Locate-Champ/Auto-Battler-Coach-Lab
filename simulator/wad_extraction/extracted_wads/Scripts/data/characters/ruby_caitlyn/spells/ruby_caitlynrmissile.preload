@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_caitlynrhashitme"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_caitlynr"}}, 
+{Function=BBPreloadSpell, Params={Name="jinxblocksound"}}, 
+{Function=BBPreloadSpell, Params={Name="viblocksound"}}, 
+}

@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Bilgewater_ArmyBuff_Permanent"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_CollectableVacuum"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_bilgewater_prismatic_lootbuff"}}, 
+}

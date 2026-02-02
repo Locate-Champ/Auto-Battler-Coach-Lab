@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="syndrapassive"}}, 
+{Function=BBPreloadModule, Params={Name="Syndra.SyndraPassiveStacks"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrapassivequpgrade1"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrarbounce5"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrapassivewupgrade"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrapassiveeupgrade"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrapassiverupgrade"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrarvisual"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrapassivecapstonebuff"}}, 
+}

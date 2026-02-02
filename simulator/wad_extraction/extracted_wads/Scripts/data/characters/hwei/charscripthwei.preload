@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Hwei.CharFunctionsHwei"}}, 
+{Function=BBPreloadSpell, Params={Name="hweibasicattack"}}, 
+{Function=BBPreloadSpell, Params={Name="hweibasicattack2"}}, 
+}

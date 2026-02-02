@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT16_Sion.TFT16_SionSpell_Damage"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sionspell"}}, 
+}

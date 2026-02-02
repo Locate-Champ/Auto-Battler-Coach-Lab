@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_vispell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_vispell_punchnslam"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_vispell_knockup"}}, 
+}

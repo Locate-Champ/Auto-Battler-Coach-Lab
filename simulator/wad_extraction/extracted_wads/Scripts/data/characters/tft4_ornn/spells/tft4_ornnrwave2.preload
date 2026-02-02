@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ornnr"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_ornnrstun"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_ornnr"}}, 
+}

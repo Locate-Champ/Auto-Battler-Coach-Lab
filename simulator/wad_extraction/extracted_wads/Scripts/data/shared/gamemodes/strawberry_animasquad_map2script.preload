@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_cannonloadingbay"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_fuelcell"}}, 
+}

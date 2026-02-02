@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_weapon_poisontrail"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Weapon_PoisonTrail"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Weapon_PoisonTrail_PoisonManager"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+}

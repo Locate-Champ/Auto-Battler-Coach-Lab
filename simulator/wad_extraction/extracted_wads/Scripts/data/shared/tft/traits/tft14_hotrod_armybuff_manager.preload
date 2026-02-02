@@ -1,0 +1,16 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_HotRod_ArmyBuff_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_HotRod_SummonUnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_NitroForge_ScrapPickupBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_hotrod_roundstartscrapmis"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_Nitro_SpareParts_ArmyBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_NitroForge_SummonUnitBuff_SizeManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_hotrod_summonunitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_hotrod_summonlaserbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_HotRod_UnitBuff"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_auroraspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Aurora.TFT14_AuroraSpellBeamThreeStar"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Aurora.TFT14_Aurora_BenchBuffThreeStar"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT14_Aurora.TFT14_AuroraSpellBeam"}}, 
+}

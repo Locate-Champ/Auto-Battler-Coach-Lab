@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="eternals_bardrtakedownstracker"}}, 
+{Function=BBPreloadSpell, Params={Name="turretglowparticle"}}, 
+}

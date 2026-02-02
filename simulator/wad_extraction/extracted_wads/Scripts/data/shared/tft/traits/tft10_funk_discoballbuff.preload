@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Funk_DiscoBallBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft10_discoball"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_funk_discoballbuff_combat"}}, 
+}

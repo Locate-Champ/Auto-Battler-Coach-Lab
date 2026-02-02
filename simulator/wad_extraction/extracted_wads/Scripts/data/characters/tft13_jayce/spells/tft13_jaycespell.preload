@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell_minionbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Jayce.TFT13_JaycePassive_SummonBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell_meleedamagemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell_enemybuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Jayce.TFT13_JaycePassive_Manager"}}, 
+}

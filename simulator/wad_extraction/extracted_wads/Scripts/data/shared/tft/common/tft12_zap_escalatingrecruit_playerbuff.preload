@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_zaps_escalationmanager_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_EscalationManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_inmotion"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
+}

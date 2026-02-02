@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTProbabilityFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuffoverflowedunit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_augment_mageconference_entranceceremony"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+}

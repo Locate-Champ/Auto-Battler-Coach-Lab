@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SRT_2024_Horde_Summoner"}}, 
+{Function=BBPreloadCharacter, Params={Name="sru_horde_mini"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_minicontroller_summon"}}, 
+}

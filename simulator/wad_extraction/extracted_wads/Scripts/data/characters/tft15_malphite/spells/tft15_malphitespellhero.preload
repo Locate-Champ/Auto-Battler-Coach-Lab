@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Malphite.TFT15_MalphiteSpellHero"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_malphitespellhero_rangeincrease"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_malphitespellhero_knockup"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_fighterstance_armorshred"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_fighterstance_armorshred_vfx"}}, 
+}

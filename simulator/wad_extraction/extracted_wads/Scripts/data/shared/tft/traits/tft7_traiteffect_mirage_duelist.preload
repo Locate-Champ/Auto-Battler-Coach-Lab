@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT7_TraitEffect_Mirage_Duelist"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_mirage_duelistattackspeed"}}, 
+}

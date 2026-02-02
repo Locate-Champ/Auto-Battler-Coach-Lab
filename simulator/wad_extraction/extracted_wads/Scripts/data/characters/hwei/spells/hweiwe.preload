@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="hweiwefoxfiremis"}}, 
+{Function=BBPreloadSpell, Params={Name="hweiwebuffcounter"}}, 
+{Function=BBPreloadModule, Params={Name="Hwei.HweiPassive"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT8_ArmyBuffHacker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_combatstartmovementmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_unitbuffassassininnate"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_augment_zacsupport_ally"}}, 
+}

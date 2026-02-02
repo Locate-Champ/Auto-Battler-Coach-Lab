@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Nunu.NunuFunctionModule"}}, 
+{Function=BBPreloadCharacter, Params={Name="nunusnowball"}}, 
+{Function=BBPreloadSpell, Params={Name="nunuq"}}, 
+{Function=BBPreloadSpell, Params={Name="nunuw"}}, 
+{Function=BBPreloadSpell, Params={Name="nunue"}}, 
+{Function=BBPreloadSpell, Params={Name="nunur"}}, 
+}

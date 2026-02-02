@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_DragonFist_PlayerBuff_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_LeeSin.TFT15_LeeSin_StanceManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_UltraStance_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_fighterstance_passive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_reaperstance_killtracker"}}, 
+}

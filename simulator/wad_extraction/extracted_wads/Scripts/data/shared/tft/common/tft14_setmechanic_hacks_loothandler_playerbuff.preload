@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SetManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_loot_starterkit_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_loot_nestingdolls_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_Loot_NestingDolls_PlayerBuff"}}, 
+}

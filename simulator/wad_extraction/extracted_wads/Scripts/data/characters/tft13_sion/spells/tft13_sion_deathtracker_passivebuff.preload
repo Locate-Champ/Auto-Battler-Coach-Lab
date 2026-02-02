@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT13_Sion.TFT13_Sion_DeathTracker_PassiveBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_sion_deathtracker_unleashedbuff"}}, 
+}

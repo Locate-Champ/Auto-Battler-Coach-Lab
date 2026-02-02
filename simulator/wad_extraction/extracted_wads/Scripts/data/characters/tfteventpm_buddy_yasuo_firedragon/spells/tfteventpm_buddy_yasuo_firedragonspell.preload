@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadModule, Params={Name="TFTEventPM_Buddy_Yasuo_FireDragon.TFTEventPM_Buddy_Yasuo_FireDragonSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_firedragonspell_unitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
+}

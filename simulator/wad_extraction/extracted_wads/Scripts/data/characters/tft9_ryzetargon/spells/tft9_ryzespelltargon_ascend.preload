@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespelltargon_invuln"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft9_galio"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespelltargon_selfdestruct"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespelltargon_descend"}}, 
+}

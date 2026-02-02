@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="namiq"}}, 
+{Function=BBPreloadSpell, Params={Name="namiqdebuff"}}, 
+}

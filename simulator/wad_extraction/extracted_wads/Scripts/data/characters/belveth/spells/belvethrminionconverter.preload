@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="belvethcorpsenorender"}}, 
+{Function=BBPreloadModule, Params={Name="Belveth.BelvethRMinionConverter"}}, 
+{Function=BBPreloadSpell, Params={Name="belvethrminion"}}, 
+}

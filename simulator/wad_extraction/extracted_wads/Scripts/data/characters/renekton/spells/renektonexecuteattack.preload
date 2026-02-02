@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="renektonsuperexecute"}}, 
+{Function=BBPreloadSpell, Params={Name="renektonexecute"}}, 
+}

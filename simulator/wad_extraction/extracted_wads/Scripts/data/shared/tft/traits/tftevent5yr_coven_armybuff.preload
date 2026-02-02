@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Coven_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_coven_unitbuff_covenleader"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_coven_unitbuff_covenmember"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT5_ArmyBuffCoven"}}, 
+}

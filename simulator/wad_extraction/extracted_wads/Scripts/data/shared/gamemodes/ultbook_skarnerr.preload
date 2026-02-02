@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_skarnerrimpale"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_skarnerrtailgrabcenter"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_skarnerrtailgrabright"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_skarnerrtailgrableft"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_skarnerrspeedboost"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_skarnerrwindup"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_skarnerrfacinglock"}}, 
+}

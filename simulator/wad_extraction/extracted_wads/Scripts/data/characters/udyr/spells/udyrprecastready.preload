@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="udyrqrecastready"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrwrecastready"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrerecastready"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrrrecastready"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrpassive"}}, 
+}

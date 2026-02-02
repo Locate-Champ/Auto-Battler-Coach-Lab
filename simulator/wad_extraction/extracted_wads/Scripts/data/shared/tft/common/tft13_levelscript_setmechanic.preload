@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_LevelScript_SetMechanic"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_playerbuff_setmechanic"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_setmechanic_shopmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+}

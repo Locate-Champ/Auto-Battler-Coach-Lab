@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_artifact_suspicioustrenchcoat_clonebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_ArmyBuff_ApplyToHeroUnit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_shadowjutsu_clonebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_immunity"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_cloakedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_zacspellhero"}}, 
+}

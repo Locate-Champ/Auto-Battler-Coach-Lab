@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="luxr"}}, 
+{Function=BBPreloadSpell, Params={Name="luxrpartfix"}}, 
+{Function=BBPreloadSpell, Params={Name="luxrpartfix2"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_luxrbeam"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_luxrball"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_luxrmis"}}, 
+}

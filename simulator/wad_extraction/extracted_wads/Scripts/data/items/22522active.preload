@@ -1,0 +1,20 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="annier"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorr"}}, 
+{Function=BBPreloadSpell, Params={Name="ivernr"}}, 
+{Function=BBPreloadSpell, Params={Name="hallucinatefull"}}, 
+{Function=BBPreloadSpell, Params={Name="swainr"}}, 
+{Function=BBPreloadSpell, Params={Name="xerathlocusofpower2"}}, 
+{Function=BBPreloadSpell, Params={Name="jhinr"}}, 
+{Function=BBPreloadSpell, Params={Name="riftwalk"}}, 
+{Function=BBPreloadSpell, Params={Name="kogmawlivingartillery"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenw"}}, 
+{Function=BBPreloadSpell, Params={Name="camillee"}}, 
+{Function=BBPreloadSpell, Params={Name="destiny"}}, 
+{Function=BBPreloadSpell, Params={Name="sylase"}}, 
+{Function=BBPreloadSpell, Params={Name="auroraq"}}, 
+}
+--6
+--SpellEvents
+}

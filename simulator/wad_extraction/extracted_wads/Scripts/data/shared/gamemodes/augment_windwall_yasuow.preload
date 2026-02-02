@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_windwall_yasuowmovingwallenemy"}}, 
+{Function=BBPreloadSpell, Params={Name="yasuowblockmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_windwall_yasuowfailsafe"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_windwall_yasuowchildmis"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_windwall_yasuow_visualmis"}}, 
+{Function=BBPreloadSpell, Params={Name="syndraewindwallcheck"}}, 
+}

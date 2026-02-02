@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Aurora_MapSpiritsAnchor_Script"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorareternaltracker"}}, 
+{Function=BBPreloadSpell, Params={Name="auroraqeternaltracker"}}, 
+}

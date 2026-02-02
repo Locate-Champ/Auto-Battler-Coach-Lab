@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="champselect_bravery"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2BuyItemManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2BuyPhaseBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_AnvilManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Manager"}}, 
+}

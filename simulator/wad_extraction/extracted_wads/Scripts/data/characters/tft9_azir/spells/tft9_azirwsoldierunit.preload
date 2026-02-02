@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_azirspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Azir.TFT9_AzirSpell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_azirspellsoldierscalemanager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Azir.TFT9_AzirSpellRecentlySummoned"}}, 
+}

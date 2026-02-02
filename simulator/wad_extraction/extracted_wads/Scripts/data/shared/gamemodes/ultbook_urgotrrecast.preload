@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_urgotrrecastmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_urgotrrecastmissilelongdistance"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_urgotr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_urgotrescapedvo"}}, 
+}

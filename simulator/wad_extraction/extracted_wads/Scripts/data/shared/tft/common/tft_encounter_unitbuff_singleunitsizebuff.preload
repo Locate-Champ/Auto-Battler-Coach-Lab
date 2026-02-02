@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_encounter_whiskersizebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Encounters"}}, 
+}

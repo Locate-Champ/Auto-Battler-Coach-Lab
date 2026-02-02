@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Coven_UnitBuff_CovenLeader"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT5_TraitEffect_CovenLeader"}}, 
+}

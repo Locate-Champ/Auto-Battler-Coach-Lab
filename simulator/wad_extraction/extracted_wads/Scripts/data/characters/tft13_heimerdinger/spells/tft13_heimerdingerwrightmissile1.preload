@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT13_Heimerdinger.TFT13_HeimerdingerFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_heimerdingerspell"}}, 
+}

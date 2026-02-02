@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_RenataGlasc.TFT13_RenataGlascSpellFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_renataglascspellmissile"}}, 
+}

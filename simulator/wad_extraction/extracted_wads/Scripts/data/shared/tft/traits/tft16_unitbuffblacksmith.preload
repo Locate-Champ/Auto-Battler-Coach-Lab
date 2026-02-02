@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_UnitBuffBlacksmith"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_PlayerBuffBlacksmithManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_blacksmithanimationmarker"}}, 
+}

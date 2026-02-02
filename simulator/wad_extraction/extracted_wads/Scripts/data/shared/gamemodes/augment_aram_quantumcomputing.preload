@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_quantumcomputing_camillew"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_quantumcomputing_cooldownbuffbar"}}, 
+}

@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_urgotrspellpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_urgotrreel"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_urgotrslow"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_urgotrrecast"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_urgotwlockon"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_urgotrtargetunderthreshold"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_urgotwrhalter"}}, 
+}

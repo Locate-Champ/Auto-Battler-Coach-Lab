@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_yorickspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_yorickspell_marker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_yorickspell_debuff"}}, 
+}

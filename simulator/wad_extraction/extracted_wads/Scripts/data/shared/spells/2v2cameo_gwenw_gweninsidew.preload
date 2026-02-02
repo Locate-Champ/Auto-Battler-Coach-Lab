@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_GwenW_GwenInsideW"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_gwenw"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_gwenwvisualbuff"}}, 
+}

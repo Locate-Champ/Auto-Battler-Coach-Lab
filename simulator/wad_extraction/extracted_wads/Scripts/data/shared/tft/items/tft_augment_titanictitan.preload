@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_augment_titanictitan_sizebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SharedDraft"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_titanictitan_speedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_shareddraftactive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Sound"}}, 
+}

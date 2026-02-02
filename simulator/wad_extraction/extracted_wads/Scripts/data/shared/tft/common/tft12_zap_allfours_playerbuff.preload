@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_shopbuff_allonetier"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+}

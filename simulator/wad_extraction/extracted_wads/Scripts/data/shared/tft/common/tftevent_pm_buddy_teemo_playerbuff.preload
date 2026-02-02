@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_BuddyNPCManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_Buddy_Teemo_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_teemo_combatmanager_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_teemo_mushroommissile"}}, 
+}

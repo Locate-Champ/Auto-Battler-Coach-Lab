@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_zap_genericsizebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_dodgebuff"}}, 
+}

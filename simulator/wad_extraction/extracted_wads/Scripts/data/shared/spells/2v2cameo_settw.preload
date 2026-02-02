@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Sett"}}, 
+{Function=BBPreloadSpell, Params={Name="settw"}}, 
+}

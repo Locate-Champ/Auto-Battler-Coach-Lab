@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_riftwalkerzacmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_RiftwalkerZacManager"}}, 
+}

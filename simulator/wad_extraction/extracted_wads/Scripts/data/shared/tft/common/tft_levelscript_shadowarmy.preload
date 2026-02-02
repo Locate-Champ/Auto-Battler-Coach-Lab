@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_shadowarmy_armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_ShadowArmy"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ShadowArmy_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuff_shadowdummy"}}, 
+}

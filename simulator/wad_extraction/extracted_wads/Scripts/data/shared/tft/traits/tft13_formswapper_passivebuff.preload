@@ -1,0 +1,18 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_FormSwapper_PassiveBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Artifact_Fishbones"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_FormSwapper_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_gangplankspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_gangplankspell_ranged"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_elisespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_elisespell_ranged"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell_ranged"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_swainspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_swainspell_ranged"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft13_elise"}}, 
+{Function=BBPreloadCharacter, Params={Name="tftdebug_dummyinvincible"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft13_swain"}}, 
+}

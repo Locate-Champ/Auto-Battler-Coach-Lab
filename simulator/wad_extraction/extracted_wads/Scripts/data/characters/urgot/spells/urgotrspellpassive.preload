@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="urgotr"}}, 
+{Function=BBPreloadSpell, Params={Name="urgotranyunderthreshold"}}, 
+}

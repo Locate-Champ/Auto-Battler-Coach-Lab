@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_augment_earlyeducation_marker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_EarlyEducation_UnitBuff"}}, 
+}

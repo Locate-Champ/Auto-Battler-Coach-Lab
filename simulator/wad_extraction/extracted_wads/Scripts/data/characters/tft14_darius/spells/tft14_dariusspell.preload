@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Mob_Boss_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_small"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

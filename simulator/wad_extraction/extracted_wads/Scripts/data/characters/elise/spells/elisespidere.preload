@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="elisespideredescent"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+{Function=BBPreloadSpell, Params={Name="elisespidereinitial"}}, 
+{Function=BBPreloadSpell, Params={Name="eliseunlockanimation"}}, 
+{Function=BBPreloadSpell, Params={Name="elisespidereenhancement"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="elisespideredescenttrigger"}}, 
+{Function=BBPreloadSpell, Params={Name="elisespidereindicator"}}, 
+}

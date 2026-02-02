@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_elisespellhero"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_elisespell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_ArmyBuff_ApplyToHeroUnit"}}, 
+}

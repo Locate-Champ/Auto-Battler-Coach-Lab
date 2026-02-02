@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="perks_arcanecomet_mis_idle"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_arcanecometrecharge"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_arcanecomet_mis_arc"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_arcanecomet_mis"}}, 
+{Function=BBPreloadModule, Params={Name="Global.AdaptiveDamageModule"}}, 
+}

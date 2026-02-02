@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchRTargetActualCC"}}, 
+{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchR"}}, 
+{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchW"}}, 
+{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tahmkenchwknockup"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ahrispell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ahrispell_ivebeenboomed"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
+}

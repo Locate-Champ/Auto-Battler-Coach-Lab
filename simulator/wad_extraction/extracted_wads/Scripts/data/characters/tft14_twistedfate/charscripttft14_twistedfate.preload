@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_twistedfatecardmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_TwistedFate.TFT14_TwistedFateCardManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_twistedfate_apbuff"}}, 
+}

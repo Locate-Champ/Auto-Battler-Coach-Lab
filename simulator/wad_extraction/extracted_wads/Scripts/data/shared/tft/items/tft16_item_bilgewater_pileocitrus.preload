@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_item_bilgewater_pileocitrus_manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Bilgewater_PlayerBuff"}}, 
+}

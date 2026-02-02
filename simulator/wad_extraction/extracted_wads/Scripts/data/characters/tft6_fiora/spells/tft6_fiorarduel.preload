@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT6_Fiora.TFT6_FioraRDuel"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_fiorarbonusad"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_fiorar"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_fiorarwinnerfield"}}, 
+}

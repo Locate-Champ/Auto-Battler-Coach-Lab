@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="monsterexpirationtimer"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+}

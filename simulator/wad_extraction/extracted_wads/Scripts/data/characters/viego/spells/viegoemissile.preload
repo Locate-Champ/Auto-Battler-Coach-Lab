@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="viegoewallfollowmiscounterclockwise"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoewallfollowmis"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoe"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoemist"}}, 
+{Function=BBPreloadSpell, Params={Name="viegopassiveincombat"}}, 
+{Function=BBPreloadSpell, Params={Name="viegopassivemisttracker"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoetimer"}}, 
+}

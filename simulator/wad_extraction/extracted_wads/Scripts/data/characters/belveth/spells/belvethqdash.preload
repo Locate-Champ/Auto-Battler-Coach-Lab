@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Belveth.BelvethPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="belvethq"}}, 
+{Function=BBPreloadSpell, Params={Name="belvethspellbuffer"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+{Function=BBPreloadSpell, Params={Name="belvethqlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Belveth.BelvethRPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.PlayerTerrian"}}, 
+}

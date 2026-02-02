@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_gnarsmall_returnmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_gnarsmall_returnmisdead"}}, 
+}

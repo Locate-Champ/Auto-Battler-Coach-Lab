@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="eternals_damagemitigatedtracker"}}, 
+{Function=BBPreloadSpell, Params={Name="leonasolarbarrier"}}, 
+}

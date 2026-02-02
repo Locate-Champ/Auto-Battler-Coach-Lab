@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_twistedfatespell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_TwistedFate.TFT15_TwistedFateAttackManager"}}, 
+}

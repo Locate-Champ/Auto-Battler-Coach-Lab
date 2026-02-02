@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="os_ruby_boss_fnveigar_cc_eyes"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigarrecall"}}, 
+}

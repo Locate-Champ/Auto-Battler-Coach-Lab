@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_biggestsnowballever"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_biggestsnowballever_knockup"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_snowballupgrade_aoe"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fetch_bounce"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_SnowballRoulette"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_biggestsnowballever_minionslow"}}, 
+}

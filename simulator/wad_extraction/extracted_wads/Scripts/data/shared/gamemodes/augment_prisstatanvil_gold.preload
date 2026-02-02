@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_prisstatanvil_goldtracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_PrisStatAnvil_Gold"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2StatAnvil_Master"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_ccimmune"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_timer"}}, 
+}

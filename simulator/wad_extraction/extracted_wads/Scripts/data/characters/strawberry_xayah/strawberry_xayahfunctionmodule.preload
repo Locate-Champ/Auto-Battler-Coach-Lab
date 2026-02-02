@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahemissile"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahERootManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahe"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahauto"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahpassivefeather"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahfeathertracker"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahr"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahw"}}, 
+}

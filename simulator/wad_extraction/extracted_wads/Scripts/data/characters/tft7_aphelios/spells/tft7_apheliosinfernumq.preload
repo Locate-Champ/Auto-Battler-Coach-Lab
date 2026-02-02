@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_apheliosinfernumsplitmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_apheliosstun"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT7_Aphelios.TFT7_ApheliosInfernumQ"}}, 
+}

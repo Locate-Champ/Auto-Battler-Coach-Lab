@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Winter_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_unitbuffwinter_enemyfreezemarker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12a"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_Quinn.TFT9_QuinnSpellMark"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_quinnspell"}}, 
+}

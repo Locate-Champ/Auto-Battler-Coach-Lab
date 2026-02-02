@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_azirlasermis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft11_azirsoldier"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_azir3starsoldierlaserbuff"}}, 
+}

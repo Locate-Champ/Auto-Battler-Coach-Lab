@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_unitspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFTEventPM_Buddy_Yasuo_Unit.TFTEventPM_Buddy_Yasuo_UnitStackTracker_UnitBuff"}}, 
+}

@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_kaynq"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_TwoSides_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_TwoSides_PlayerBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Gear"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+}

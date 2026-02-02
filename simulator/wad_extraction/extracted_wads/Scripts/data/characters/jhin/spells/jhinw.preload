@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Yasuo.YasuoWMovingWallEnemy"}}, 
+{Function=BBPreloadModule, Params={Name="Mel.MelWEnemyTracker"}}, 
+{Function=BBPreloadModule, Params={Name="Samira.SamiraWEnemyTracker"}}, 
+{Function=BBPreloadModule, Params={Name="Braum.BraumEEnemyTracker"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="jhinwwindwallfix"}}, 
+{Function=BBPreloadSpell, Params={Name="luxr"}}, 
+{Function=BBPreloadModule, Params={Name="Mel.MelWReflect"}}, 
+{Function=BBPreloadSpell, Params={Name="jhinpassivehaste"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellPings"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Commander_PlayerBuff_CommanderManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_portals_unitbuff_entourageheadliner"}}, 
+}

@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT11_Annie.TFT11_AnnieSummonManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_anniestatsharebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+}

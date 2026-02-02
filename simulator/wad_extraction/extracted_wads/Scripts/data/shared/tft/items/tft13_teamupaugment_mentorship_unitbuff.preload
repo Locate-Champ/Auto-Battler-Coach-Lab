@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_TeamupAugment_Mentorship_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_TeamupAugment_Mentorship_ArmyBuff"}}, 
+}

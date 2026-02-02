@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_udyr3starspellbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_spiritwalker_transformationbuff"}}, 
+}

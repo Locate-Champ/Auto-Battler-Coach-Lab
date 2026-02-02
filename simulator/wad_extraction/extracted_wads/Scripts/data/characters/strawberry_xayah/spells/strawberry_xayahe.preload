@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahemissilesfx"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayah_minivacuum_active"}}, 
+--{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahPassive"}}, 
+}

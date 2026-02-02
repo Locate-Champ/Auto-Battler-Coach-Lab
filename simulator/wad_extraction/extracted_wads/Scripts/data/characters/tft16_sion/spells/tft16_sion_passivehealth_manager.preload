@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Sion.TFT16_Sion_PassiveHealth_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sionspell"}}, 
+}

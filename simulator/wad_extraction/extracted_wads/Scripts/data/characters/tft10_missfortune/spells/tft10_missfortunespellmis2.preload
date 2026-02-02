@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_missfortunespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_missfortunespell_killwatcher_unit"}}, 
+}

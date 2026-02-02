@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_kobukospell_transform_lesserknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kobukospell_transform"}}, 
+}

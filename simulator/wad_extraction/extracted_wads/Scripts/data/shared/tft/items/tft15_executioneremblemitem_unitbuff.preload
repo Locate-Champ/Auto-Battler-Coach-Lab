@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_executioneremblemitem_enemybuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_executioneremblemitem_bleedvfx"}}, 
+}

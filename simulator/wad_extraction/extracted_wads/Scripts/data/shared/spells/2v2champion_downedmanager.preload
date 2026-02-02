@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Cherry_PhaseManager"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2champion_downed"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_nestingdoll_revive1"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_nestingdoll_revive2"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_NestingDoll"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2gohchampion_downed"}}, 
+}

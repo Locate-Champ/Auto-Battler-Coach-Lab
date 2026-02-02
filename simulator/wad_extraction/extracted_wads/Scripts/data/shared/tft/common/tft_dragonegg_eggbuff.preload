@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_goldenegg"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_DataOverrides"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_DragonEgg_EggBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT6_DragonEgg_EggBuff"}}, 
+}

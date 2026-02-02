@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Storyweaver_ArmyBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Storyweaver_PlayerBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Mascot_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_storyweaver7_supportlockoutbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_storyweaver7_supportascendedshieldbuff"}}, 
+}

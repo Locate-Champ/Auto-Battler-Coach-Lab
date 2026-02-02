@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_HotRod_ArmyBuff_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_hotrod_roundstartscrapmis"}}, 
+}

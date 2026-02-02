@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_settspell_"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_settbounce"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

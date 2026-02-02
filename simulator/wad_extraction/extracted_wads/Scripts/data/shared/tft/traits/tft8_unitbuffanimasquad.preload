@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_armybuffanimasquad"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_ArmyBuffAnimaSquad"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_UnitBuffAnimaSquad"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

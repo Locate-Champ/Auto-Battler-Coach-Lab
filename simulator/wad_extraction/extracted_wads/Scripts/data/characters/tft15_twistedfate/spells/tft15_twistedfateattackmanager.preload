@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellCrit_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_twistedfatemarkmanager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_TwistedFate.TFT15_TwistedFateMarkManager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_TwistedFate.TFT15_TwistedFateAttackManager"}}, 
+}

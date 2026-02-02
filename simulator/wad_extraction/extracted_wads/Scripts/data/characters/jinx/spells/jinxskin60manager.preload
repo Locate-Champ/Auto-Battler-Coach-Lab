@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="jinxskin60spawninceremony"}}, 
+{Function=BBPreloadModule, Params={Name="Jinx.JinxSkin60Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="jinxskin60slotmachine"}}, 
+}

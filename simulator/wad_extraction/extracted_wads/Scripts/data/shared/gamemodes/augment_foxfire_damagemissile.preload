@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_foxfire_spell"}}, 
+{Function=BBPreloadSpell, Params={Name="ahriw"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_foxfire_recentlyhit"}}, 
+}

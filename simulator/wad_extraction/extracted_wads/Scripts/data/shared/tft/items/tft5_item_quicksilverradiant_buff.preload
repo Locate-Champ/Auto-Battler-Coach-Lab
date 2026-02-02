@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_item_quicksilverradiant_spellshieldbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_quicksilverradiant_asbuff"}}, 
+}

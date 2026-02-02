@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_frombeginningtoend"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_frombeginningtoend_firststrike_mis1"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_frombeginningtoend_firststrike_mis2"}}, 
+}

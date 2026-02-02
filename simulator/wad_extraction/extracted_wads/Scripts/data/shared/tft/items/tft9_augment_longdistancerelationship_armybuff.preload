@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_LongDistanceRelationship_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_LongDistanceRelationship_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_augment_longdistancerelationship_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+}

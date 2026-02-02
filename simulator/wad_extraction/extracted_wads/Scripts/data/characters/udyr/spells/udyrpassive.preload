@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="udyrpattackready"}}, 
+{Function=BBPreloadModule, Params={Name="Udyr.UdyrPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrpassivewillempowerwindow"}}, 
+{Function=BBPreloadModule, Params={Name="Udyr.UdyrPRecastReady"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrpassiveswapmidattackbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrprecastready"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrq"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrqbouncemis"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrqbouncemis2"}}, 
+}

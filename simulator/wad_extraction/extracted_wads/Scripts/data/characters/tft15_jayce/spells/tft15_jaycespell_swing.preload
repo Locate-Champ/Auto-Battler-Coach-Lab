@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_jaycespell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Jayce.TFT15_JayceSpell_Swing"}}, 
+}

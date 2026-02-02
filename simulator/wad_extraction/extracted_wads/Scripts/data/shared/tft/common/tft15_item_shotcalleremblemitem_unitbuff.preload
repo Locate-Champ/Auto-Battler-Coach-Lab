@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Item_ShotcallerEmblemItem_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_item_shotcalleremblemitem_allybuff"}}, 
+}

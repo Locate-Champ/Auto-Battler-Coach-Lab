@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_kennenspellhero"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_marksman"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_augment_kennencarry_passivebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kennenspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_tank"}}, 
+}

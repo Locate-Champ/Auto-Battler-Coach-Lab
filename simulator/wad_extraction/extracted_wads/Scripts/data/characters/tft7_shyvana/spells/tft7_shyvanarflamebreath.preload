@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_shyvanar"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_ragewingbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_shyvanardamage"}}, 
+}

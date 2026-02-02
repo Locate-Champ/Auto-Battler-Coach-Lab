@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SetManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_Augment_TraitTracker"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
+}

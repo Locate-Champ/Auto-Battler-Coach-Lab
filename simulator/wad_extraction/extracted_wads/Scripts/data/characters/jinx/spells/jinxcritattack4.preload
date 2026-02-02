@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadParticle, Params={Name="jinx_q_minigun_cas_crit_long2.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="jinx_q_minigun_cas_crit_long.troy", SkinID="-1"}}, 
+{Function=BBPreloadModule, Params={Name="Jinx.JinxQIconManager"}}, 
+}

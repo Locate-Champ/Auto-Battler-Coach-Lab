@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_anniespell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_anniespell_dotbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Annie.TFT16_Annie_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Annie.TFT16_AnnieSpell_3Star"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Annie.TFT16_AnnieSpell_3Star_TibbersBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_annieq_missile3star"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Item_ShimmerscaleHeartOfGold_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT7_ShimmerscaleManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_Error"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_item_shimmerscaleheartofgold_damageamp"}}, 
+}

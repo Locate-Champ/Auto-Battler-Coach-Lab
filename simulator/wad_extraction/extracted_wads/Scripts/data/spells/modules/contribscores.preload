@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+{Function=BBPreloadSpell, Params={Name="contribscoreccdata"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ContribScores"}}, 
+{Function=BBPreloadSpell, Params={Name="contribscorewarddata"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_summonaery"}}, 
+{Function=BBPreloadSpell, Params={Name="sowthewind"}}, 
+}

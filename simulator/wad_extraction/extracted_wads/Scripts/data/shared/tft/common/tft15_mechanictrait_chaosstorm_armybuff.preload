@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_chaosstorm_stormbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_ChaosStorm_StormBuff"}}, 
+}

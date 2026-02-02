@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_shenw"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_shenwbuff"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Hwei.HweiPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="hweieeternalmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="hweieepull"}}, 
+}

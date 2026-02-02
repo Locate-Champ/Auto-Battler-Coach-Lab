@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_unitstacktracker_unitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_unitspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+}

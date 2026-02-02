@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="haste"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_olafrspeed"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+}

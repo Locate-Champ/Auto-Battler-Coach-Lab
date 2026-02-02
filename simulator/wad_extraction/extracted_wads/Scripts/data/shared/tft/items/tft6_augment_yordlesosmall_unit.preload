@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_dodgebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_augment_yordlesosmall_scale"}}, 
+}

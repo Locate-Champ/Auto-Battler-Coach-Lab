@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_gravese"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_trait_cannoneercannonshotdot"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_large"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_trait_cannoneercannonshot"}}, 
+}

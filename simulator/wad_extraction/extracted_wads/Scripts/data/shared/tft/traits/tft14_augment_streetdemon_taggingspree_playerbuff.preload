@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_StreetDemon_ArmyBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_StreetDemon_TaggingSpree_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemUnchangeable_PlayerBuff"}}, 
+}

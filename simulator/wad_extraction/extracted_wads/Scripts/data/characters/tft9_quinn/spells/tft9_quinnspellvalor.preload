@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_quinnspellmark"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_quinnspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_quinnspellshoot"}}, 
+}

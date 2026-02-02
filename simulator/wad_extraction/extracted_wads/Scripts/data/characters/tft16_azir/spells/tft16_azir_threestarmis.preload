@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_azirspell"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft13_blue_monkey"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft16_azirsoldier"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_azir_threestar_soldierbuff"}}, 
+}

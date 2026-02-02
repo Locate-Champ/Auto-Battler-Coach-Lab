@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_ArmyBuffDemacia"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Units"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_unitbuffdemaciaelite"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_unitbuffdemaciaelitefake"}}, 
+}

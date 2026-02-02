@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Viego.ViegoSkin43Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Viego.ViegoPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="viegopassive"}}, 
+{Function=BBPreloadSpell, Params={Name="viegopassivetransform"}}, 
+}

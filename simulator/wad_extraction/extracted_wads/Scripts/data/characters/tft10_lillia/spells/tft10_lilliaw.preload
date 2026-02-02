@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="jinxq"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_lillia_healally"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+}

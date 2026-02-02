@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_zacspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Zac.TFT14_ZacThreeStarSplit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Artifact_SuspiciousTrenchCoat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_zac_copybuff"}}, 
+}

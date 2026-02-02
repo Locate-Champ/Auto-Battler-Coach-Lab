@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_AurelionSolCarry_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_aurelionsolspellmis"}}, 
+}

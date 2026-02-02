@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ornnehitmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ornneknockup"}}, 
+{Function=BBPreloadModule, Params={Name="Trundle.TrundleCircle"}}, 
+{Function=BBPreloadSpell, Params={Name="ornnqpillar"}}, 
+{Function=BBPreloadSpell, Params={Name="globalwallmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ornnsummonerspelllockout"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+}

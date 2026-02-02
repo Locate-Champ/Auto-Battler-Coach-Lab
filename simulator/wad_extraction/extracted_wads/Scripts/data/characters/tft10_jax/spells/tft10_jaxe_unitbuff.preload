@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_jaxe"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_EDM_Manager"}}, 
+}

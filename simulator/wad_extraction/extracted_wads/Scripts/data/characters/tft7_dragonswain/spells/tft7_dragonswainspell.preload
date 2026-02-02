@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_dragonswainspellrecenttarmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

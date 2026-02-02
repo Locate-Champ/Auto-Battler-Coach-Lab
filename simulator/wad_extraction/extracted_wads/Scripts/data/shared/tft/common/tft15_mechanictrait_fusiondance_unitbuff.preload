@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_fusiondance_persistanttargettracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_FusionDance_PersistantTargetTracker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_fusiondance_combatbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_FusionDance_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_fusiondance_targetindicator"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_BossAffix_Committed_LocalPlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_committed_unitbuff"}}, 
+}

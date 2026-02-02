@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft4_traiteffect_dragonsoultracker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_unitbuffdragonsoul"}}, 
+}

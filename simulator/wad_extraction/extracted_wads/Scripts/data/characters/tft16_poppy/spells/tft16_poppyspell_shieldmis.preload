@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_poppyspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_poppyspell_shieldbuff"}}, 
+}

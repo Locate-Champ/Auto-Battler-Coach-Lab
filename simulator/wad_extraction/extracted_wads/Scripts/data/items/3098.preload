@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kagestribute"}}, 
+{Function=BBPreloadSpell, Params={Name="itemghostwardcharge"}}, 
+{Function=BBPreloadSpell, Params={Name="dummywardtracker"}}, 
+}

@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_Item_GwenTrickstersGlass_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_Item_GwenTrickstersGlass_CloneBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_OrnnTrickstersGlass_CloneBuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_OrnnTrickstersGlass_PlayerBuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitFunctions"}}, 
+}

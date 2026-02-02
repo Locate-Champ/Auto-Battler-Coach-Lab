@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="galiowpassivedefense"}}, 
+{Function=BBPreloadSpell, Params={Name="galiow"}}, 
+{Function=BBPreloadSpell, Params={Name="galiowpassivecd"}}, 
+}

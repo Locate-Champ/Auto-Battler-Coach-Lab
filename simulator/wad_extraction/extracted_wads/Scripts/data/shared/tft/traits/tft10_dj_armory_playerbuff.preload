@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_DJ_Armory_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Sona.TFT10_SonaModeController"}}, 
+}

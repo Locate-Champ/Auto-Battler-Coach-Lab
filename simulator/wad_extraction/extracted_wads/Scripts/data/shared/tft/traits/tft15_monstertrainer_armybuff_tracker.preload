@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_ArmyBuff_Tracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_TrainerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_MinionTrainerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_monstertrainer_trainerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_monstertrainer_specialarmory"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_ShopManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft15_lulu"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_monstertrainer_miniontrainerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_monstertrainer_monsterbuff"}}, 
+}

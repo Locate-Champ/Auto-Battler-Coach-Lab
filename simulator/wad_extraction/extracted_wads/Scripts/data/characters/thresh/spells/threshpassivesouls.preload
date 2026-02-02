@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_spawnminis"}}, 
+{Function=BBPreloadModule, Params={Name="Thresh.ThreshFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_stackosaurusrex"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_StackosaurusRex"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_stackosaurusrex"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_StackosaurusRex"}}, 
+}

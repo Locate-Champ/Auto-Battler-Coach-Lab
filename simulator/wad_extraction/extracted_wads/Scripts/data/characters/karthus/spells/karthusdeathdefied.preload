@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_karthusdeathtakedowns"}}, 
+{Function=BBPreloadSpell, Params={Name="karthuslaywastea1"}}, 
+{Function=BBPreloadSpell, Params={Name="karthusdeathdefiedbuff"}}, 
+}

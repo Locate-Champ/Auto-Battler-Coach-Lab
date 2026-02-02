@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_fallenaegis"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+}

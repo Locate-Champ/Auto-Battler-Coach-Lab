@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_TheLavenderSea_RegionPortals_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_countasnotraits"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
+}

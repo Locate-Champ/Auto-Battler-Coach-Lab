@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_IntoTheUnknown"}}, 
+}

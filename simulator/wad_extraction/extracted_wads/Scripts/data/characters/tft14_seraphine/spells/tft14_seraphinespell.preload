@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_seraphinespell_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_KSante.TFT9_KSanteSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ksantespellunstoppablebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ksantespellknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ksantespellringout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ksantespellwinddown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ksantespellknockback"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ksantespellstun"}}, 
+}

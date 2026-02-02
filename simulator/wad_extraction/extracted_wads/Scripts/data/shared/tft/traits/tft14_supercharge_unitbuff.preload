@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_supercharge_amp"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Supercharge_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_Amp_Vertical"}}, 
+}

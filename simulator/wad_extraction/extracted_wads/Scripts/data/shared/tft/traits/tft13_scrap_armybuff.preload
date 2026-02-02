@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Scrap_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_scrap_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Scrap_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Scrap_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_scrap_shieldunitbuff"}}, 
+}

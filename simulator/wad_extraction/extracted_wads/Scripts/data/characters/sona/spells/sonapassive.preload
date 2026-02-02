@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Sona.SonaPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="sonapmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="sonapmissile2"}}, 
+{Function=BBPreloadSpell, Params={Name="sonapmissile3"}}, 
+{Function=BBPreloadSpell, Params={Name="sonaq"}}, 
+{Function=BBPreloadSpell, Params={Name="sonaqpassiveattack"}}, 
+{Function=BBPreloadSpell, Params={Name="sonawpassiveattack"}}, 
+{Function=BBPreloadSpell, Params={Name="sonaepassiveattack"}}, 
+{Function=BBPreloadSpell, Params={Name="sonapassiveattack"}}, 
+}

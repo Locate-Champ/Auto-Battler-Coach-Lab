@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="renataanimationcontroller"}}, 
+{Function=BBPreloadSpell, Params={Name="renatapassivebasicattack"}}, 
+}

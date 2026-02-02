@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT5_Gwen.TFT5_GwenQ"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_gwenqdebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_gwenqbuff"}}, 
+}

@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Lovers_DoubleFieldingFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_ThiefsGloves_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Item_ThiefsGlovesSupport_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ThiefsGlovesRadiant_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_PrototypeForge_Buff"}}, 
+}

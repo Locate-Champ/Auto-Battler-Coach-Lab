@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_shadowitempenaltymanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_large"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_large"}}, 
+}

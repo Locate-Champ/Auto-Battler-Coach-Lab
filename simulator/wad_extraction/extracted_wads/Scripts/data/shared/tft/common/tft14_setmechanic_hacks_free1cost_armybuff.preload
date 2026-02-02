@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_Free1Cost_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_free1cost_marker_armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+}

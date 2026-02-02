@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="nautilusgrandlinestart"}}, 
+{Function=BBPreloadSpell, Params={Name="nautilusgrandlinetarget"}}, 
+{Function=BBPreloadSpell, Params={Name="nautiluspiercinggaze"}}, 
+{Function=BBPreloadSpell, Params={Name="nautilusanchordrag"}}, 
+}

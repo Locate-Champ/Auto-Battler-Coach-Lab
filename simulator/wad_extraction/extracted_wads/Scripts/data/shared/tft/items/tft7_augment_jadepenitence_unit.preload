@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_augment_jadepenitence_cd"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_JadePenitence_CD"}}, 
+}

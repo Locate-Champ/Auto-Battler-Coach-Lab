@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_CenteroftheUniverse_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_centeroftheuniverse_mis"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+}

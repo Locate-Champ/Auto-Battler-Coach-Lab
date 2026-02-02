@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="bloom_spiritrealm_manager"}}, 
+{Function=BBPreloadCharacter, Params={Name="crane"}}, 
+{Function=BBPreloadSpell, Params={Name="bloom_animalareatrigger"}}, 
+{Function=BBPreloadCharacter, Params={Name="ha_hexgate"}}, 
+{Function=BBPreloadSpell, Params={Name="bloom_hexgate_areatrigger"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="hexgate_warpcd"}}, 
+}

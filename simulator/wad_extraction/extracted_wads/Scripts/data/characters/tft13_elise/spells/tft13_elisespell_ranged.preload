@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft13_elisespiderling"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_elisespell_ranged_spiderlingcontroller"}}, 
+}

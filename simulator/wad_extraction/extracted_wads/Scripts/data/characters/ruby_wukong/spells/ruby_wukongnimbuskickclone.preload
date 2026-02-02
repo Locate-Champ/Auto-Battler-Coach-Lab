@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_wukongnimbus"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_wukong_extra_decoy"}}, 
+}

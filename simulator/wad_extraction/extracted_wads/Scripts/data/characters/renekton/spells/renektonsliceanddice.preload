@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="renektonsliceanddicetimer"}}, 
+{Function=BBPreloadSpell, Params={Name="renektonpredator"}}, 
+{Function=BBPreloadModule, Params={Name="Renekton.RenektonFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="renektonunlockanimationattack"}}, 
+}

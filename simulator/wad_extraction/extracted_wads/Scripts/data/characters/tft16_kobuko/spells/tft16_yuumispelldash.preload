@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT16_Kobuko.TFT16_YuumiAttached"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kobukospell_yuumiheal"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kobukospell_yuumiattackspeed"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Kobuko.TFT16_KobukoSpell_YuumiManager"}}, 
+}

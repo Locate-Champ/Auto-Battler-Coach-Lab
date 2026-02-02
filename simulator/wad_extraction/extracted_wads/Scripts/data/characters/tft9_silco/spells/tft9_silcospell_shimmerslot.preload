@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_silcospell_shimmerenemy"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Silco.TFT9_SilcoSpell_ShimmerEnemy"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_silcospell_shimmerally"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Silco.TFT9_SilcoSpell_ShimmerAlly"}}, 
+}

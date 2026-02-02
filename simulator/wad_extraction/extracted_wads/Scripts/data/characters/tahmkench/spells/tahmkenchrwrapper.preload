@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchRWrapper"}}, 
+{Function=BBPreloadSpell, Params={Name="tahmkenchpassive"}}, 
+{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchPDebuffCounter"}}, 
+{Function=BBPreloadSpell, Params={Name="tahmkenchr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchW"}}, 
+{Function=BBPreloadSpell, Params={Name="tahmkenchr2targetspit"}}, 
+}

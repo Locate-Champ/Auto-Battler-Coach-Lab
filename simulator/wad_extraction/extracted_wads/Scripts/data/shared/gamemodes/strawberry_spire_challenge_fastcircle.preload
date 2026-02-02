@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_challenge_fastcircle_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_challenge_fastcircle_stayinsidebuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zap_TreasureParty_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_UniversalBuffManager_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+}

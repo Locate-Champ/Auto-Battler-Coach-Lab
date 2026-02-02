@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffocean"}}, 
+{Function=BBPreloadParticle, Params={Name="sru_waterdragon_buff.troy", SkinID="-1"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRX_DragonSoulBuffOcean_HoT"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2025_atakhan_bloodyreward"}}, 
+}

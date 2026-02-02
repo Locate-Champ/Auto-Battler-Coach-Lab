@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="eternals_wrafterearrival"}}, 
+{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
+{Function=BBPreloadParticle, Params={Name="lissandra_e_teleport.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="lissandraebuffer"}}, 
+}

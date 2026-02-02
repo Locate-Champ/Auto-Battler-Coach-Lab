@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Visionary_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTTURBO_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_augment_visionary_voidlingbuff"}}, 
+}

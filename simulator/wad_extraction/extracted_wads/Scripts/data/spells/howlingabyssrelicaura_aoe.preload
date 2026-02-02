@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="howlingabyssrelicaura_aoecheck"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadModule, Params={Name="Global.HowlingAbyssRelicAura_AOE"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ChallengesChampionTrackerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.HowlingAbyssRelicAura_IncomingHealingUX"}}, 
+--{Function=BBPreloadModule, Params={Name="Singed.Crepe_SingedVsHeimerdinger_SingedStart"}}, 
+--{Function=BBPreloadModule, Params={Name="Heimerdinger.Crepe_SingedVsHeimerdinger_HeimerdingerStart"}}, 
+}

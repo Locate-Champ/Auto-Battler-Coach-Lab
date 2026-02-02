@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="globaltruesight"}}, 
+{Function=BBPreloadSpell, Params={Name="morganar"}}, 
+{Function=BBPreloadSpell, Params={Name="morganarstun"}}, 
+{Function=BBPreloadModule, Params={Name="Morgana.Morgana_Skin80_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="morganarbreaksound"}}, 
+}

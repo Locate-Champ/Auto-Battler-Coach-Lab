@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Yasuo.TFT16_YasuoDash"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Yasuo.TFT16_Yasuo_YoneListener"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_yasuospell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_TeamupAugment_SpinToWin_AoEBuff"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT16_Veigar.TFT16_VeigarSpell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Veigar.TFT16_VeigarFunctionModule"}}, 
+}

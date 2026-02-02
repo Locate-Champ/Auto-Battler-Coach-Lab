@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT12_Wukong.TFT12_WukongSpell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_TraitEffectMageRefresh"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_wukongspellhero_lockout"}}, 
+}

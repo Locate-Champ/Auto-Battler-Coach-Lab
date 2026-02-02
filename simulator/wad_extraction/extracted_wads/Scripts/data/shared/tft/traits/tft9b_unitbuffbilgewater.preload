@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_armybuffbilgewater"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9b_unitbuffbilgewater_marked"}}, 
+}

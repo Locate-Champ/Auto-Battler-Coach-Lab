@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahwmissile1"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahwmissile2"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_xayahpassivebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+}

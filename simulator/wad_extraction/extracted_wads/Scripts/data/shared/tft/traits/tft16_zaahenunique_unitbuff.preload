@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_ZaahenUnique_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_zaahenunique_markerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_zaahenunique_revivecleanse"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_zaahenunique_revivebuff"}}, 
+}

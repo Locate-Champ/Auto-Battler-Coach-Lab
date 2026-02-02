@@ -1,0 +1,16 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set9"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTProbabilityFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_playerbuff_tooltipreconnect"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_playerbuff_jaxsnax"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_augmentmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_playerbuff_playbookarmory"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_playerbuff_cheats"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Loot"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Armory"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_globalunitbuffchempunk_combinemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_playerbuff_grantunit"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+}

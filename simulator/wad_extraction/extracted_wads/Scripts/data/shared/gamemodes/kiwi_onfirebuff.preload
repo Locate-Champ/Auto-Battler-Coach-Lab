@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="cherry_onfire_immolatedamagemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_infernalconduit"}}, 
+}

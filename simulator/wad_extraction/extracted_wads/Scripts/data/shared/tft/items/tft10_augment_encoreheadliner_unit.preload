@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_CrowdDive_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_EncoreHeadliner_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_augment_encoreheadliner_selfheal"}}, 
+}

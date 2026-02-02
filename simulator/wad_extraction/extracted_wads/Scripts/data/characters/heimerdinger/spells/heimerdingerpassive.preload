@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="crepe_singedvsheimerdinger_heimerdingerstart"}}, 
+{Function=BBPreloadSpell, Params={Name="heimerdingerpassivespeed"}}, 
+}

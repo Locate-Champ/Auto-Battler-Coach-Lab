@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_andmyaxe"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_andmyaxe_expirationtimer2"}}, 
+{Function=BBPreloadSpell, Params={Name="olafaxethrowcast"}}, 
+}

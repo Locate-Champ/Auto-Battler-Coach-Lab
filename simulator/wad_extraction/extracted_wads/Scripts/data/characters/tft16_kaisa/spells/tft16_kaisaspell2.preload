@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaspell_ad"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaqleftmissile1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaqrightmissile1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaqleftmissile2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaqrightmissile2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaqleftmissile3"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaqrightmissile3"}}, 
+}

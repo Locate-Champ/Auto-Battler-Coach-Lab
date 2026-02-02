@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Ruby_Boss_FNVeigar.Ruby_Boss_FNVeigarPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigardarkmatter"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_stackosaurusrex"}}, 
+}

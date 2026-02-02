@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_HeftyRolls_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_HeftyRolls_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_heftyrolls_sizemanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_HeftyRolls_SizeManager"}}, 
+}

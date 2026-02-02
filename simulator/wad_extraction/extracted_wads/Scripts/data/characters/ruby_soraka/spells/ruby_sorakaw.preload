@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Sorakaq"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Sorakaqregen"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Sorakawparticlemissile"}}, 
+}

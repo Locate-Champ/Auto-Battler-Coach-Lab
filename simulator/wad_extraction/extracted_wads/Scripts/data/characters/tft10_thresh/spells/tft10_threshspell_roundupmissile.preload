@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_threshspell_effectpayload"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+}

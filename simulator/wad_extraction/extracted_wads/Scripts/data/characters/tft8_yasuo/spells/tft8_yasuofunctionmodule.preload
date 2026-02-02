@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_Yasuo.TFT8_YasuoFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_yasuospellmoveblock"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_yasuoaugmentspellmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_yasuospellmis"}}, 
+}

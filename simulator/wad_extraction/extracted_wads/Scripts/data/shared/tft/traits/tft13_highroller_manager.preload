@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Highroller_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_TeamupAugment_UnlikelyDuo_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set13a"}}, 
+}

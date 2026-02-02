@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Jinxqicon"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Jinxqramp"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Jinxqrampcontroller2"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Jinxqrampcontroller"}}, 
+}

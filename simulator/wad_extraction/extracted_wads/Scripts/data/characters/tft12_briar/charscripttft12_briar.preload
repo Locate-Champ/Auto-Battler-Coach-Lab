@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_unitbuff_bound"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_UnitBuff_Bound"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_briarspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_briarspellbite"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+}

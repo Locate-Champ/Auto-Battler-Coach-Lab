@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_galiospell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_galioempoweredattack"}}, 
+}

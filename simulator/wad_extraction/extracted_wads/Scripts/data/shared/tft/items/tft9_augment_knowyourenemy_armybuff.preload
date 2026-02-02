@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_KnowYourEnemy_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_augment_knowyourenemy_ally"}}, 
+}

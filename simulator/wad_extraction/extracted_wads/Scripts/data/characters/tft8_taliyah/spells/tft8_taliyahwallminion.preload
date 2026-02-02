@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_taliyahspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_taliyahexplosioncd"}}, 
+}

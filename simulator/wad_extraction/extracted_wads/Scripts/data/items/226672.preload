@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="6672buff"}}, 
+{Function=BBPreloadSpell, Params={Name="6672debufframp"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.6672DebuffRamp"}}, 
+}

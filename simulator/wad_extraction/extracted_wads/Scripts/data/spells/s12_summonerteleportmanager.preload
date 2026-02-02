@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="s12_summonerteleportupgrade"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerteleport"}}, 
+}

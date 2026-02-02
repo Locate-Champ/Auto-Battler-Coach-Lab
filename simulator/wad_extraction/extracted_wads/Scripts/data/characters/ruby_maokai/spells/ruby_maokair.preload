@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Maokai.Ruby_MaokaiPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_maokairmis"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_maokairmisextra"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_maokairsoundmis"}}, 
+}

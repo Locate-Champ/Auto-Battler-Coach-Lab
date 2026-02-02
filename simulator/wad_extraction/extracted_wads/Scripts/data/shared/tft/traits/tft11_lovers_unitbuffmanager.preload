@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Lovers_UnitBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_OrnnTrickstersGlass_CloneBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_lovers_xayahform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_lovers_rakanform"}}, 
+}

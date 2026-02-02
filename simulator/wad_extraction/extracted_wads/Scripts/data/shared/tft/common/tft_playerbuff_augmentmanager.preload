@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_armycontrollerbuff_augmentmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT6_AugmentRequirementFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT6_ArmyControllerBuff_AugmentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_PortalDraft"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Augments"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitnorender"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SetManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Traits"}}, 
+}

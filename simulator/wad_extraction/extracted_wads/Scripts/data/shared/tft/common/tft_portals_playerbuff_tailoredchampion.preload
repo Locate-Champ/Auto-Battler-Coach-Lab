@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_PlayerBuff_TailoredChampion"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_portals_tailoredchampion_portalbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
+}

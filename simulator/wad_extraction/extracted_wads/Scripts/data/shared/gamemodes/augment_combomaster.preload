@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_combomaster_phaserushandelectrocute"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_combomaster_electrocutevisual"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_zoe_tft9_gangplankspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_zoe_tft9_gangplankspell_citruspower"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+}

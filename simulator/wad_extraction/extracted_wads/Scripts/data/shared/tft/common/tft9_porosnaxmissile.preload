@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_regionportals_unitbuff_cafeteriahealth"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_RegionPortals_UnitBuff_CafeteriaHealth"}}, 
+}

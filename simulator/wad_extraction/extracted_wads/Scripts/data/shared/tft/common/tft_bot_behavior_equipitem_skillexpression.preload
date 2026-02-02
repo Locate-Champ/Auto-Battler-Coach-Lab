@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Bot_Behavior_EquipItem_SkillExpression"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Bot_LogUtils"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Bot_Base"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

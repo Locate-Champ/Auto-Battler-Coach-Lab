@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_kennenrparticleholder"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kennenr_mosdiminish"}}, 
+--{Function=BBPreloadModule, Params={Name="Kennen.KennenRStatStoneTracker"}}, 
+}

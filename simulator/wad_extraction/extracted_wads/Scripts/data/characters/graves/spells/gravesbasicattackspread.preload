@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="gravespassive"}}, 
+{Function=BBPreloadSpell, Params={Name="structuredamagereduction"}}, 
+{Function=BBPreloadSpell, Params={Name="gravesbasicattack"}}, 
+{Function=BBPreloadSpell, Params={Name="gravesbasicattackknockback"}}, 
+}

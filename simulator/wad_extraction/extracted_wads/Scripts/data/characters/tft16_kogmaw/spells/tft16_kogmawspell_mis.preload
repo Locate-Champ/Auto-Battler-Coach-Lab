@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kogmawspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kogmawspell_debuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_KogMaw.TFT16_KogMawSpell_Debuff"}}, 
+}

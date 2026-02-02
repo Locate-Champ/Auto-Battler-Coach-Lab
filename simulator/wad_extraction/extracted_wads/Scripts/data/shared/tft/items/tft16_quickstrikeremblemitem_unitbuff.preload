@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_QuickstrikerEmblemItem_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_quickstrikeremblemitem_dash"}}, 
+}

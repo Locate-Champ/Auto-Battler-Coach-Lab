@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Arcanist_ChaosMagic_ArmyBuff"}}, 
+}

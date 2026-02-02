@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_akalir"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_akalircombatroll"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_akalirlockout"}}, 
+}

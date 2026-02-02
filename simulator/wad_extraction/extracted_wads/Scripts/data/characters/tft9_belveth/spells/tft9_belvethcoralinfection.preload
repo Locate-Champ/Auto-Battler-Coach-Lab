@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tft9_voidtotem"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_belvethcoralhexblocker"}}, 
+}

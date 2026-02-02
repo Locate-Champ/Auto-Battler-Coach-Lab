@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_malzaharecharm"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_malzaharecharmtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Malzahar.Ruby_MalzaharE"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_malzaharerecent"}}, 
+}

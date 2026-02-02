@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_swarmreksai_arrivalphaseceremony"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_swarmreksaispell"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

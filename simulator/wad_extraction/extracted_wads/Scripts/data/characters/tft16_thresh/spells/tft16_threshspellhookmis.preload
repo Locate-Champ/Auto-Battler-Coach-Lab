@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT16_Thresh.TFT16_ThreshSpellHookManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

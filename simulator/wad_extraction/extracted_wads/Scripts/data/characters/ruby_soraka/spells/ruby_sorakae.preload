@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadParticle, Params={Name="ruby_soraka_base_e_cas.troy", SkinID="-1"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_soraka_additional_silence_zone_buff"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_sorakaepacify"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_sorakaesnare"}}, 
+}

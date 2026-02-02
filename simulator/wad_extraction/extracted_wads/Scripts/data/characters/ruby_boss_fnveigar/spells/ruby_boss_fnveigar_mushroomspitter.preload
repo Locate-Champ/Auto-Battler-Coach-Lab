@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigar_fastbalefulstrike"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigar_fastbalefulstrikemis"}}, 
+}

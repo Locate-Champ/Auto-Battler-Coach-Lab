@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_lissandraspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTPAIRS_Reinforcements"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft_itemunknown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_collectablevacuum"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_inmotion"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_coinbuff"}}, 
+}

@@ -1,0 +1,18 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Country_SummonManager_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_country_unitbuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft10_countryhecarim"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_country_summon_sizebuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_CountryHecarim.TFT10_CountryHecarim_CombatBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Country_Summon_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_country_hecarim_allybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_Country_BountyHunters_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_augment_country_bountyhunters_summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuff_summonstarscaling"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_country_summon_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+}

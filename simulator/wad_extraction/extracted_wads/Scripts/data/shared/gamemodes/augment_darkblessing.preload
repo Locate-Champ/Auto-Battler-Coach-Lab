@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_DarkBlessing"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_curseself"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_PhaseManager"}}, 
+}

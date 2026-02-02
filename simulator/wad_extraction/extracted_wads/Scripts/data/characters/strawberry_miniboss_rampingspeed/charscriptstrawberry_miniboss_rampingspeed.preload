@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss_spawninvulnerability"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss_rampingspeed_targeted"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss_rampingspeed_accelerating"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss_rampingspeed_knockaway"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss_rampingspeed_stunned"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss_rampingspeed_recentlyhit"}}, 
+}

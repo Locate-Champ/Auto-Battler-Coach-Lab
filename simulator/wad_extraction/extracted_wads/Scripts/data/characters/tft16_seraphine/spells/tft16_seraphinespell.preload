@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Seraphine.TFT16_SeraphineSpell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Seraphine.TFT16_SeraphinePassive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_seraphinespell_empoweredmissile"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+}

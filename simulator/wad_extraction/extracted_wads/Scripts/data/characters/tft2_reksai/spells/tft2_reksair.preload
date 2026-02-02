@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft2_reksairmove"}}, 
+{Function=BBPreloadSpell, Params={Name="tft2_reksair2"}}, 
+{Function=BBPreloadSpell, Params={Name="reksair"}}, 
+{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
+}

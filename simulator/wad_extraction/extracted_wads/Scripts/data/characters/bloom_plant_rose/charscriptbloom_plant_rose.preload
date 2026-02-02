@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberendernofow"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Flora"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ARAM_Bloom_LevelScript"}}, 
+{Function=BBPreloadSpell, Params={Name="plantwithervisibility"}}, 
+}

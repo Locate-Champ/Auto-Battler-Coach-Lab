@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="hweihasbasespellbook"}}, 
+{Function=BBPreloadSpell, Params={Name="hweiquestgoldenratiotracker"}}, 
+{Function=BBPreloadModule, Params={Name="Hwei.HweiPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="hweisignature"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+}

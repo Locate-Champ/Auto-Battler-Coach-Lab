@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_impassable"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_impassable_aftershockactivate"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_impassable_cooldown"}}, 
+}

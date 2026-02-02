@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT15_Senna.TFT15_SennaSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

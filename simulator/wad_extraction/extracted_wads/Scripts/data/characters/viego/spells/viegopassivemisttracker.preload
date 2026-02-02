@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="viegopassiveincombat"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoe"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoehaste"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoemist"}}, 
+}

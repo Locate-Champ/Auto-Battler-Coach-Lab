@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="briarrinterrupt"}}, 
+{Function=BBPreloadSpell, Params={Name="briarrvictim"}}, 
+{Function=BBPreloadSpell, Params={Name="briarrself"}}, 
+{Function=BBPreloadModule, Params={Name="Briar.BriarFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellPings"}}, 
+}

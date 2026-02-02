@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_sylasr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_sylasrcasttimecheck"}}, 
+}

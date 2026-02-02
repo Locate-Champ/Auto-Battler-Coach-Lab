@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Bee_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_trait_bee_transfer_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_augment_honeymancy_shield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Bee_UnitBuff"}}, 
+}

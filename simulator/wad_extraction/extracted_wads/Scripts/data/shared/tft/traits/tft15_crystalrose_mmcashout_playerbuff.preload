@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_CrystalRose_MMCashout_Playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Sentai_ArmyBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_SetMechanic_PlayerBuff"}}, 
+}

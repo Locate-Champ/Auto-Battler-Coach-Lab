@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_akalispellattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_akalispell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_akalispell_mis0"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_akalispell_mis1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_akalispell_mis4"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_akalispell_mis2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_akalispell_mis5"}}, 
+}

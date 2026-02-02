@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SetManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT4_PlayerBuff_HeadlinerManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_AkaliManager_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_headliner_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Sound"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_headliner_armybuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
+}

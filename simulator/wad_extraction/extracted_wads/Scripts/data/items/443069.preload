@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="443069_burn"}}, 
+{Function=BBPreloadSpell, Params={Name="443069_slow"}}, 
+{Function=BBPreloadModule, Params={Name="Global.443069_Slow"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
+}

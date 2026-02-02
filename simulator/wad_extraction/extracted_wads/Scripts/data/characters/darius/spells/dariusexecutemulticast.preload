@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="dariusexecute"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Item_BossKnuckles"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_boss_unitbuff_retreatready"}}, 
+}

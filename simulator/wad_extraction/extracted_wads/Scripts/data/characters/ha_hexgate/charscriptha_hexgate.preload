@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="aramhexgate_clickhelper"}}, 
+{Function=BBPreloadSpell, Params={Name="aramhexgate_animstate"}}, 
+{Function=BBPreloadSpell, Params={Name="aramhexgate_shared_ghosting"}}, 
+}

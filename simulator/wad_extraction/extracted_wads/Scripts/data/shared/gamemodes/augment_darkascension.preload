@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="zaahenpassiveresourcetimer"}}, 
+{Function=BBPreloadSpell, Params={Name="zaahenpassivebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="zaahenpassivereviveready"}}, 
+{Function=BBPreloadSpell, Params={Name="zaahenpassive"}}, 
+}

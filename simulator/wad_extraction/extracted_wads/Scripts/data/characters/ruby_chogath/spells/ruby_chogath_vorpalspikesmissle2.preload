@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Chogatheshared"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Chogath.Ruby_ChogathEShared"}}, 
+}

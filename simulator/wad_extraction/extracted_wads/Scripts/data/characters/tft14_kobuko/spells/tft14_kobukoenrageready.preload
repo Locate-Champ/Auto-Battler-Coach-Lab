@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_kobukospell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_kobukoenrageshieldbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_kobukoenragebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

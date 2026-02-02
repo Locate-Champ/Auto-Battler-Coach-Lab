@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="sru_camprespawnmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_infernalrift_crystalmapmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_infernalrift_crystalvisiontracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRX_InfernalTerrainManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_InfernalRift_CrystalMapMarker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_InfernalRift_CrystalVisionTracker"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_infernalrift_meepflyin"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_infernalrift_firemeepspeedboost"}}, 
+}

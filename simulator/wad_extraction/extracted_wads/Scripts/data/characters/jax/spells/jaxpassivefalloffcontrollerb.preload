@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="jaxpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="JaxPassiveAS"}}, 
+{Function=BBPreloadSpell, Params={Name="jaxpassivefalloffcontrollera"}}, 
+}

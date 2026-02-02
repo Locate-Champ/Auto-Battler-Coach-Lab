@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_xayahspellmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_xayahmarkerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_xayahreturnmissile"}}, 
+}

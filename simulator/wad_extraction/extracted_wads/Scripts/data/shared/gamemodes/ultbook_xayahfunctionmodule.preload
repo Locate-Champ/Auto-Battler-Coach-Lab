@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_xayahemissile"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_XayahGetSpellData"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_xayahesharedrootcount"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_xayahemissilesfx"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_XayahFunctionModule"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_xayahpassivefeather"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_xayahrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_xayahfeathertracker"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_xayahr"}}, 
+}

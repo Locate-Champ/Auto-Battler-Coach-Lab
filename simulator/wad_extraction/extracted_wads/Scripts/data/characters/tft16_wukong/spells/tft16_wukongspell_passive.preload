@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_wukongspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Items"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_wukongspell_passive_clonebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_immunity"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_highvoltage_unitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_thornplatedarmor_unitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_itemspiritvisage_unitbuff"}}, 
+}

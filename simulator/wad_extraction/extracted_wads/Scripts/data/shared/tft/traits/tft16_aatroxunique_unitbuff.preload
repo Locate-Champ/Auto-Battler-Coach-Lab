@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_aatroxunique_revivecleanse"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aatroxunique_revivebuff"}}, 
+}

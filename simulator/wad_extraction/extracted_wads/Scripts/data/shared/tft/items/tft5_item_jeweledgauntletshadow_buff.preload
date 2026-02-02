@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_spellcrit_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_jeweledgauntletshadow_manager"}}, 
+}

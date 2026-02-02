@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_weapon_mine_wrapper"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_mine_evolve_missile"}}, 
+}

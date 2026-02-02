@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_brutalclaws_bleedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_brutalclaws_bleedvfx"}}, 
+}

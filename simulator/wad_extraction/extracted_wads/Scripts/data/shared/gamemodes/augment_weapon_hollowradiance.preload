@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_hollowradiance_batch"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Weapon_HollowRadiance"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
+}

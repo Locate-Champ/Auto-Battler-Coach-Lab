@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Gwen.GwenP"}}, 
+{Function=BBPreloadModule, Params={Name="Gwen.GwenZ_GeneralFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenz_recallfxbuff"}}, 
+}

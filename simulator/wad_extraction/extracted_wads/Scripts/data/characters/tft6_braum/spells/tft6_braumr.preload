@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_braumrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_braumrmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_braumrstun"}}, 
+{Function=BBPreloadSpell, Params={Name="braumrwrapper"}}, 
+}

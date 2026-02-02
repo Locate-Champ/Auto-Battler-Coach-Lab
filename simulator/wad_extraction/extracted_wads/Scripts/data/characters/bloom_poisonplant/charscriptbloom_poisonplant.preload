@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="bloom_blessing_plantcleanup"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.ARAM_Bloom_LevelScript"}}, 
+}

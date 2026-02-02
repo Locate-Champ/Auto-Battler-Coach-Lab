@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2CombatInstanceBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Naafiri"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tfttutorial_jinxpassivekill"}}, 
+{Function=BBPreloadSpell, Params={Name="tfttutorial_jinxq"}}, 
+}

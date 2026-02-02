@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_samiraspell_unstoppable"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Samira.TFT15_SamiraSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_samira_sstylespin"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Samira.TFT15_Samira_StyleManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_samiraspell_q_bullet"}}, 
+}

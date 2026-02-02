@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_augment_dryad_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT11_Dryad_ArmyBuff"}}, 
+}

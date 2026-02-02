@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="brandq"}}, 
+{Function=BBPreloadSpell, Params={Name="arcadebrandstun"}}, 
+{Function=BBPreloadModule, Params={Name="Brand.BrandPassive"}}, 
+}

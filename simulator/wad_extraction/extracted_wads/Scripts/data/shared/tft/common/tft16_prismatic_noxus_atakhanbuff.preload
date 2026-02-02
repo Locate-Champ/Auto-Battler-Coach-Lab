@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+--{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+}

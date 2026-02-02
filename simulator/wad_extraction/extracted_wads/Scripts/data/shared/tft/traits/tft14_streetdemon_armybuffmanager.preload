@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_StreetDemon_ArmyBuffManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_traitvfxstreetdemon_prismatic"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_StreetDemon_Freestyling_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set14"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_augment_streetdemon_taggingspree_buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_streetdemon_empoweredcombatbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_streetdemon_combatbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+}

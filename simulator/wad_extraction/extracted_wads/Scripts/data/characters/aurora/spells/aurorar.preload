@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="aurorarcasting"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorarrecast"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorarmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorarmove"}}, 
+{Function=BBPreloadSpell, Params={Name="auroraw"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorapassive"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorawinvis"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorapspiritmode"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_ksantespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ksantespellcollisionknockup"}}, 
+}

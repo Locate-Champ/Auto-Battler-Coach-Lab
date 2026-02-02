@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_FreljordShrine_HexTracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_FreljordShrineManager"}}, 
+}

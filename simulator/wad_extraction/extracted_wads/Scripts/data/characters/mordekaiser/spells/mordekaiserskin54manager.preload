@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Mordekaiser.MordekaiserSkin54Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="mordekaiserpassivedamage"}}, 
+}

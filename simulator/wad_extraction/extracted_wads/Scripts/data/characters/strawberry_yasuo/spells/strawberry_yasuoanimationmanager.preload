@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Strawberry_Yasuoruncyclemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_Yasuonotincombat"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_Yasuoisemoting"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_Yasuoisdancing"}}, 
+{Function=BBPreloadModule, Params={Name="Yone.YoneIsDancing"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Yasuo.Strawberry_YasuoIsDancing"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_Yasuoisincombat"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="2v2cameochamphidden"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameochampbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_CameoManager"}}, 
+}

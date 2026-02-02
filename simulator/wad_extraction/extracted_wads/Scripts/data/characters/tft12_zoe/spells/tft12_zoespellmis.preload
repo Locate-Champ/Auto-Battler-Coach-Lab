@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_zoespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_zoespell_debuff"}}, 
+}

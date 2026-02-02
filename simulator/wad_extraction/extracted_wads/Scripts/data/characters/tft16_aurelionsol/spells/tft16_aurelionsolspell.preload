@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_AurelionSol.TFT16_AurelionSol_FunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aurelionsolspell_mis"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

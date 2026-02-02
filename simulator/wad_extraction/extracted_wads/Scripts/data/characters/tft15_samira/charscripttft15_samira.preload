@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_samira_stylemanager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Samira.TFT15_Samira_StyleManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

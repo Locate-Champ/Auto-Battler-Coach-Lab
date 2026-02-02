@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="twitchhideinshadowsimproved"}}, 
+{Function=BBPreloadSpell, Params={Name="twitchdeadlyvenommarker"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+}

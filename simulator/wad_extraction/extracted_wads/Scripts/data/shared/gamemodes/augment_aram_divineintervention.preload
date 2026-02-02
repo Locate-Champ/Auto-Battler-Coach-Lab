@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_divineintervention_delay"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_DivineIntervention"}}, 
+}

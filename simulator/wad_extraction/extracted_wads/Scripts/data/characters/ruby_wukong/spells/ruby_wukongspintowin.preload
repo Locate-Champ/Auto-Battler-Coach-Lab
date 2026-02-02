@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_wukongspintowin_minionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_wukongspintowinleave"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_wukongdummyspell"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_wukongspinrecast"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_wukongspinmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_wukongspinknockup"}}, 
+}

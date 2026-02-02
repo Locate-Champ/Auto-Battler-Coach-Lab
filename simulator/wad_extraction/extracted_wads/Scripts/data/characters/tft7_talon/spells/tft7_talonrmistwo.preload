@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT7_Talon.TFT7_TalonR"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_talonr"}}, 
+}

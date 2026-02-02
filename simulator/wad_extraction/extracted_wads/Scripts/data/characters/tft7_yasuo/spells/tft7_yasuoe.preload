@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_yasuoeshield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_quicksilver_spellshieldbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_yasuoekillceremony"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_yasuoespinempowered"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_yasuoespin"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_yasuoeempoweredready"}}, 
+}

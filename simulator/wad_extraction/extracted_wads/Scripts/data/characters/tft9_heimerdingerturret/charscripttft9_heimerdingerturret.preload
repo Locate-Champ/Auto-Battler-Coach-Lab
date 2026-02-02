@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_PlayerTraitBuffTechnogenius_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_heimerdinger_turretstatbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_heimerdingerturret4starmanager"}}, 
+}

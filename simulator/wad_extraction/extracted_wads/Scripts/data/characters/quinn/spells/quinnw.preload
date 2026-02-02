@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="contribscorevisiondata"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ContribScores"}}, 
+{Function=BBPreloadSpell, Params={Name="quinnwvision"}}, 
+}

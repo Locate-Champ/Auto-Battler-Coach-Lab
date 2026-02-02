@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sru_riftherald_controlbattlesled"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_riftherald_controlbattlesled_reposition"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRU_RiftHerald_HealthbarIcon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.3513"}}, 
+{Function=BBPreloadSpell, Params={Name="minibaronincombat"}}, 
+{Function=BBPreloadParticle, Params={Name="sru_riftherald_bloodspurt.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="heraldspinattack"}}, 
+{Function=BBPreloadSpell, Params={Name="heraldinhibitorlistener"}}, 
+{Function=BBPreloadSpell, Params={Name="baronnashorlines"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2025_atakhan_bloodyreward"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="naafirip"}}, 
+{Function=BBPreloadSpell, Params={Name="naafiripackmatestealth"}}, 
+{Function=BBPreloadModule, Params={Name="Naafiri.NaafiriPackmateManager"}}, 
+{Function=BBPreloadSpell, Params={Name="naafirir"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+}

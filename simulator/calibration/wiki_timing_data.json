@@ -1,0 +1,128 @@
+{
+  "_metadata": {
+    "source": "https://wiki.leagueoflegends.com",
+    "note": "Data from LoL Wiki - TFT may use modified values but base mechanics similar",
+    "scraped_date": "2026-02-01"
+  },
+
+  "TFT16_Caitlyn": {
+    "champion_name": "Caitlyn",
+    "base_attack_speed": 0.681,
+    "attack_speed_ratio": 0.625,
+    "windup_percent": 17.708,
+    "missile_speed": 2500,
+    "windup_seconds_at_base": 0.26
+  },
+
+  "TFT16_Tristana": {
+    "champion_name": "Tristana",
+    "base_attack_speed": 0.656,
+    "attack_speed_ratio": 0.694,
+    "windup_percent": 14.801,
+    "missile_speed": 2250,
+    "windup_seconds_at_base": 0.226
+  },
+
+  "TFT16_Ashe": {
+    "champion_name": "Ashe",
+    "base_attack_speed": 0.658,
+    "attack_speed_ratio": null,
+    "windup_percent": 21.93,
+    "missile_speed": 2500,
+    "windup_seconds_at_base": 0.333
+  },
+
+  "TFT16_Jinx": {
+    "champion_name": "Jinx",
+    "base_attack_speed": 0.625,
+    "attack_speed_ratio": null,
+    "windup_percent": 16.875,
+    "missile_speed": null,
+    "notes": "No missile speed for autos - uses minigun/rocket switch mechanic"
+  },
+
+  "TFT16_KogMaw": {
+    "champion_name": "Kog'Maw",
+    "base_attack_speed": 0.665,
+    "attack_speed_ratio": null,
+    "windup_percent": 16.622,
+    "missile_speed": 1800,
+    "windup_seconds_at_base": 0.25
+  },
+
+  "TFT16_Vayne": {
+    "champion_name": "Vayne",
+    "base_attack_speed": 0.658,
+    "attack_speed_ratio": null,
+    "windup_percent": 17.544,
+    "missile_speed": 2000,
+    "windup_seconds_at_base": 0.267
+  },
+
+  "TFT16_Draven": {
+    "champion_name": "Draven",
+    "base_attack_speed": 0.679,
+    "attack_speed_ratio": null,
+    "windup_percent": 15.614,
+    "missile_speed": 1600,
+    "windup_seconds_at_base": 0.23
+  },
+
+  "TFT16_Jhin": {
+    "champion_name": "Jhin",
+    "base_attack_speed": 0.625,
+    "attack_speed_ratio": 0,
+    "windup_percent": 15.625,
+    "missile_speed": 2600,
+    "crit_missile_speed": 3000,
+    "notes": "AS cannot increase except by leveling"
+  },
+
+  "TFT16_KaiSa": {
+    "champion_name": "Kai'Sa",
+    "base_attack_speed": 0.644,
+    "attack_speed_ratio": 1.8,
+    "windup_percent": 16.108,
+    "missile_speed": 2000,
+    "windup_seconds_at_base": 0.25
+  },
+
+  "TFT16_MissFortune": {
+    "champion_name": "Miss Fortune",
+    "base_attack_speed": 0.656,
+    "attack_speed_ratio": null,
+    "windup_percent": 14.801,
+    "missile_speed": 2000,
+    "windup_seconds_at_base": 0.226
+  },
+
+  "TFT16_Aphelios": {
+    "champion_name": "Aphelios",
+    "base_attack_speed": 0.665,
+    "attack_speed_ratio": 0.658,
+    "windup_percent": 15.333,
+    "missile_speed": 1700,
+    "notes": "TFT uses Infernum (flame thrower) - missile speed 1700",
+    "weapon_missile_speeds": {
+      "calibrum": 3000,
+      "gravitum": 1500,
+      "infernum": 1700
+    }
+  },
+
+  "TFT16_Teemo": {
+    "champion_name": "Teemo",
+    "base_attack_speed": 0.69,
+    "windup_percent": 17.5,
+    "missile_speed": 1500,
+    "notes": "Estimated - need to verify"
+  },
+
+  "TFT16_Ziggs": {
+    "champion_name": "Ziggs",
+    "base_attack_speed": 0.656,
+    "windup_percent": 17.2,
+    "missile_speed": 1500,
+    "notes": "Estimated - need to verify"
+  }
+}

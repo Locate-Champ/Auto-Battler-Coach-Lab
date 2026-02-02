@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_akalispellmark"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_akalispelldash"}}, 
+}

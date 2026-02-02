@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sennapassivestacks"}}, 
+{Function=BBPreloadModule, Params={Name="Senna.SennaFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="sennapassivehaste"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_spawnminis"}}, 
+{Function=BBPreloadSpell, Params={Name="sennabasicattacksouls"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aimforthehead"}}, 
+}

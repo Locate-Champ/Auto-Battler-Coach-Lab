@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_Contagion_Debuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_augment_contagion_debuff"}}, 
+}

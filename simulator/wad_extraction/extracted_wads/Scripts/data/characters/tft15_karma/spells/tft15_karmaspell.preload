@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_karmaspellmis"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Karma.TFT15_KarmaSpellDiscManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

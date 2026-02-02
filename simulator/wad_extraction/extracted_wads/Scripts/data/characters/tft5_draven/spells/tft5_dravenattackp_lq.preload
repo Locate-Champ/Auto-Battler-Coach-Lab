@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_dravenspinningreturntracker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_dravenspinning"}}, 
+}

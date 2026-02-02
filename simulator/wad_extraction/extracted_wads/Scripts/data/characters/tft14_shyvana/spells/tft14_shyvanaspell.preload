@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_shyvanaspellvfx"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Shyvana.TFT14_ShyvanaSpell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_shyvanaspell_sizemanager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Shyvana.TFT14_ShyvanaSpell_SizeManager"}}, 
+}

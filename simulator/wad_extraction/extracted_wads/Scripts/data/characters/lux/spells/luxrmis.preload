@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="luxr"}}, 
+{Function=BBPreloadSpell, Params={Name="luxilluminationpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="luxultimateskinelementmissile"}}, 
+{Function=BBPreloadModule, Params={Name="Lux.LuxIlluminationPassiveShared"}}, 
+{Function=BBPreloadSpell, Params={Name="luxrkilled"}}, 
+{Function=BBPreloadModule, Params={Name="Lux.LuxIlluminationPassive"}}, 
+}

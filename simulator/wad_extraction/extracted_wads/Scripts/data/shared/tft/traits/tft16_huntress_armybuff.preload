@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Huntress_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_huntress_neekounitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Huntress_UnitBuff"}}, 
+}

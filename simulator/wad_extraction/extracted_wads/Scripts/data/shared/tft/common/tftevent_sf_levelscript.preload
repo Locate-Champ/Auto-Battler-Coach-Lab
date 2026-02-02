@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent_sf_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent_sf_playerbuff_cheats"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent_sf_soulpower_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_SF_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+}

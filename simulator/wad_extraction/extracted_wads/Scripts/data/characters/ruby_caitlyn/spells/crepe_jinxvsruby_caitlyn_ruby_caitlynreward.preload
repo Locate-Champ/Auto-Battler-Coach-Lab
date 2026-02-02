@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="ruby_caitlyntrap"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_caitlynw"}}, 
+}

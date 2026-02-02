@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Briar.BriarFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="briaredr"}}, 
+{Function=BBPreloadSpell, Params={Name="briaremisstrong"}}, 
+{Function=BBPreloadSpell, Params={Name="briaremis"}}, 
+}

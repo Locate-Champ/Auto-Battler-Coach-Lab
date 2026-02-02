@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ExpManager"}}, 
+}

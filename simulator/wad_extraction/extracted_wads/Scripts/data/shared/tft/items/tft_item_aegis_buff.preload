@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Aegis_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_aegis_combatbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_shroud_mis"}}, 
+}

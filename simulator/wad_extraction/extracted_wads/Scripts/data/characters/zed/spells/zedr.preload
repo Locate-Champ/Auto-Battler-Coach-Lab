@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Zed.CharFunctionsZed"}}, 
+{Function=BBPreloadSpell, Params={Name="zedrtargetmark"}}, 
+{Function=BBPreloadSpell, Params={Name="zedroncastuntargetablebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="zedr2"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+}

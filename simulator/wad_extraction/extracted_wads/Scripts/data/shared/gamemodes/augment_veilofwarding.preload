@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_VeilOfWarding"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_veilofwarding_cooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="bansheesveil"}}, 
+}

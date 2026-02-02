@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_rakanqmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_rakanspell_shield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_TraitEffectMageRefresh"}}, 
+}

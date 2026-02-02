@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="udyre"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrestuncheck"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrbasicattack"}}, 
+}

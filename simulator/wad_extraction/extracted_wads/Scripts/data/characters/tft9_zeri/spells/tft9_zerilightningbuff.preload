@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_Zeri.TFT9_ZeriLightningBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_zerispell"}}, 
+}

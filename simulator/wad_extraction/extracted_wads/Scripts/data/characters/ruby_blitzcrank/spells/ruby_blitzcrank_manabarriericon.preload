@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_blitzcrank_manabarrier"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_blitzcrank_manabarriercooldown"}}, 
+}

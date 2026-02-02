@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_desperado_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Desperado_ArmyBuff"}}, 
+}

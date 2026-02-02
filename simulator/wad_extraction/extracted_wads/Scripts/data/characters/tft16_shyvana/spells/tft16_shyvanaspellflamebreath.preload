@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_shyvanaspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_teamupaugment_jarvanshyvana_jarvanjumpbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_shyvanaspelldamage"}}, 
+}

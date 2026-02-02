@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="urf_feeneypult_flyingvfx"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_KingMe"}}, 
+{Function=BBPreloadSpell, Params={Name="urf_feeneypultknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="feeneypulttraveling_healthrelicgracetime"}}, 
+{Function=BBPreloadSpell, Params={Name="urf_feeneypultlanding_shield"}}, 
+}

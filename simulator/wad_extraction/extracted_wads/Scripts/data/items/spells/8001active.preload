@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="8001drstackbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="8001debuffaura"}}, 
+{Function=BBPreloadSpell, Params={Name="8001enemydebuff"}}, 
+}

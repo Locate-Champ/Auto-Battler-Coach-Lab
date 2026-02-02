@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Avatar_AvatarBuffManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_avatar_avatarstatbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_avatar_avatarshield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Avatar_AvatarShield"}}, 
+}

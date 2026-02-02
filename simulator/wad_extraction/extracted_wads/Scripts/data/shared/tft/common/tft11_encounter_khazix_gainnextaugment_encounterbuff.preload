@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Armory"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_basicarmory"}}, 
+}

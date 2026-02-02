@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_trueshotprodigy"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_TrueshotProdigy"}}, 
+{Function=BBPreloadSpell, Params={Name="ezrealr"}}, 
+}

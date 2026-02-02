@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_rebel_unitbuff_manager_damageamp"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_rebel_unitbuff_manager_shield"}}, 
+}

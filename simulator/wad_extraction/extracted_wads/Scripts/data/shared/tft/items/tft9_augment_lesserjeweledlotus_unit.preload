@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_LesserJeweledLotus_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_spellcrit_manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+}

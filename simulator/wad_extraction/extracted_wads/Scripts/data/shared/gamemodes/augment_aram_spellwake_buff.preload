@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_spellwake"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_Spellwake_PerWaveCooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_spellwake_perwavecooldown"}}, 
+}

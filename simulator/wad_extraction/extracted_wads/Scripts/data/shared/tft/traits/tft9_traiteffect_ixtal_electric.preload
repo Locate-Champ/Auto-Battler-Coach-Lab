@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_ixtal_electric_stun"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_ixtal_electric_stunmarker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
+}

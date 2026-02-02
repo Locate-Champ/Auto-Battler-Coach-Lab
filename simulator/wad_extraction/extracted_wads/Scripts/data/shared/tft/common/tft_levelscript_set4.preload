@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_playerbuff_headlinermanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_consumable_itemremoverstacking_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_augmentmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Loot"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Armory"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_playerbuff_grantuniqueunits"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_grantunit"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Items"}}, 
+}

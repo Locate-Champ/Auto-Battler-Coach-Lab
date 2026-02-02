@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_kaynr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaynrjumpout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_KaynR"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kaynrexitceremony"}}, 
+}

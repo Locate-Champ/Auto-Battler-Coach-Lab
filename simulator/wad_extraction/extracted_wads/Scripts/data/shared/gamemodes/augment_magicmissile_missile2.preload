@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_energetic"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_magicmissile"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_MagicMissile"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Energetic"}}, 
+}

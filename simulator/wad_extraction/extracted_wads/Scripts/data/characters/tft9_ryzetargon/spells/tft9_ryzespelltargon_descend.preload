@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespelltargon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespelltargon_meteormis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespelltargon_knockup"}}, 
+}

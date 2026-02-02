@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="kledpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="kledriderq"}}, 
+{Function=BBPreloadCharacter, Params={Name="kledmount"}}, 
+{Function=BBPreloadSpell, Params={Name="kledmountaicontroller"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_centeroftheuniverse_buff"}}, 
+--{Function=BBPreloadModule, Params={Name="Kled.KledFunctions"}}, 
+}

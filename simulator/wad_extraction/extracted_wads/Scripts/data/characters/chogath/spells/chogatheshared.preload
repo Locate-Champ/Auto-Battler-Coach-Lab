@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="vorpalspikes"}}, 
+{Function=BBPreloadSpell, Params={Name="vorpalspikesdebuff"}}, 
+}

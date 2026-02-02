@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="yorickpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="srhomeguard"}}, 
+{Function=BBPreloadModule, Params={Name="Yorick.YorickPassive"}}, 
+}

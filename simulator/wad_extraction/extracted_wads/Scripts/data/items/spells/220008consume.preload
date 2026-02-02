@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="220000active"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_AnvilManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Manager"}}, 
+}

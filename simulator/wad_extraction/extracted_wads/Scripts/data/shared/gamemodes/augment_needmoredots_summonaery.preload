@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_aery_ally"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_aery_tar"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_summonaerymodelexists"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_aery_hide"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots"}}, 
+}

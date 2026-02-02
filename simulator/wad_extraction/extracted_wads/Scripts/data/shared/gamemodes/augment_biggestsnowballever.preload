@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_snowballaugment_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="haste"}}, 
+}

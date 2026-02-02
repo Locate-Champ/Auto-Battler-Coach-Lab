@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set9"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_regionportals_noxkraya_unitbuff_gainitem"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_RegionPortals_PlayerBuff_Noxkraya"}}, 
+}

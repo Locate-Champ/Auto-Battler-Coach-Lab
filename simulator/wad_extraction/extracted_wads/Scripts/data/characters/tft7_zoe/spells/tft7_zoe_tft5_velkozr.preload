@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_zoe_tft5_velkozrminionkiller"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_zoe_tft5_velkozrdamagestack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_zoe_tft5_velkozrhitparticle"}}, 
+}

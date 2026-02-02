@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT15_Kayle.TFT15_Kayle_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Kayle.TFT15_Kayle_AscensionManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kayleascend2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kayleascend1"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_FinalAscent_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_FinalAscent_UnitBuff"}}, 
+}

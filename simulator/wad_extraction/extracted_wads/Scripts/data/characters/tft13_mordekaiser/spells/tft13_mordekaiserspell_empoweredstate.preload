@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_mordekaiserspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_mordekaiserempoweredattack"}}, 
+}

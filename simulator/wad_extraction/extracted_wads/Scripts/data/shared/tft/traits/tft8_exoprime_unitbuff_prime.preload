@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_ExoPrime_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_ExoPrime_UnitBuff_Prime"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_exoprime_unitbuff_primetransformation"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_exoprime_unitbuff_bonusadap"}}, 
+}

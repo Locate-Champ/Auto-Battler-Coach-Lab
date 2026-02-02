@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT7_UnitBuffCavalier"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_cavalierbonusdefenses"}}, 
+}

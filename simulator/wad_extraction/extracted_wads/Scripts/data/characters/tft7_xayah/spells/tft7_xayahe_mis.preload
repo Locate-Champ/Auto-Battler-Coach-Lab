@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_xayahw"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_xayahe_featheraccumulator"}}, 
+{Function=BBPreloadModule, Params={Name="TFT7_Xayah.TFT7_XayahE_FeatherAccumulator"}}, 
+}

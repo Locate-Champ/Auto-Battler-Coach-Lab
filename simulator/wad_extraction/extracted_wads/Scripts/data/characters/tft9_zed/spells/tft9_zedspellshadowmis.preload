@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="zedshadow"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft9_zedshadow"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_zedspellshadow"}}, 
+}

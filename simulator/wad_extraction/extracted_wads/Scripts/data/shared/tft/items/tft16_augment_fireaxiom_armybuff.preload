@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_augment_axiom_hexmanagerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Axiom_HexManagerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_FireAxiom_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_augment_fireaxiom_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+}

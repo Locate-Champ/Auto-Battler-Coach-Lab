@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="maokaipassive"}}, 
+{Function=BBPreloadSpell, Params={Name="eternalstracker_maokaiconsecutivepassive"}}, 
+}

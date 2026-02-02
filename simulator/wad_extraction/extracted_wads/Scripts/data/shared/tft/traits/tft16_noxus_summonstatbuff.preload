@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Noxus_ArmyBuff_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Noxus_SummonStatBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Noxus_BringerOfRuin_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_atakhanspell_prismaticceremonymarker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_noxus_prismatic_lockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_noxus_prismatic_movedebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_fear"}}, 
+}

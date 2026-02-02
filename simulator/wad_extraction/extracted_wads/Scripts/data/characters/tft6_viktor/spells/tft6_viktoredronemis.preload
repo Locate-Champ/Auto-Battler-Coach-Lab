@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft_itemunknown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_viktoredrone"}}, 
+}

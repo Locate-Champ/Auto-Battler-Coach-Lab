@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_repulsor_knockback"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+}

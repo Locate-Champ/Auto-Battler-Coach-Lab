@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Crime_FactoryUnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Crime_PlayerManagerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_ArmoryConsumable"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+}

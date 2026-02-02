@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_dazzler_unitbuff_doteffect"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_dazzler_unitbuff_damagedecrease"}}, 
+}

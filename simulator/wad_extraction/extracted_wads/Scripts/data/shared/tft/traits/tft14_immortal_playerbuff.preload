@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_immortal_goldmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_immortal_badluckprotectionmanager"}}, 
+}

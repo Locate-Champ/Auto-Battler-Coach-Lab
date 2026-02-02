@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Luxr"}}, 
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Luxdeathparticletimer"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Lux.Ruby_LuxIlluminationPassive"}}, 
+}

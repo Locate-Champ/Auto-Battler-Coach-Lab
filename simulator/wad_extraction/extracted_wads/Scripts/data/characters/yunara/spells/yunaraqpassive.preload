@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="yunaraq"}}, 
+{Function=BBPreloadModule, Params={Name="Yunara.YunaraQPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="yunaraqresourcetimer"}}, 
+}

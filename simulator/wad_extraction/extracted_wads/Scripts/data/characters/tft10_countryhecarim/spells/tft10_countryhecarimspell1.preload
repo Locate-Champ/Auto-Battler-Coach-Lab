@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT10_CountryHecarim.TFT10_CountryHecarim_CombatBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_riventricleave"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_rivenwindslashmissilecenter"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_riventricleaveunlock"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_rivenebufferpending"}}, 
+--{Function=BBPreloadModule, Params={Name="Strawberry_Riven.Strawberry_RivenFunctionModule"}}, 
+}

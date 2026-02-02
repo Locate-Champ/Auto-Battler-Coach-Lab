@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT7_Aphelios.TFT7_ApheliosWManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_apheliosstunmarker"}}, 
+}

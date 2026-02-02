@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_singedspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_singedspell_allybuff"}}, 
+}

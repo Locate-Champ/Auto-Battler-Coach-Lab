@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Martialist_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_martialist_meleeattackspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_martialist_attackspell"}}, 
+}

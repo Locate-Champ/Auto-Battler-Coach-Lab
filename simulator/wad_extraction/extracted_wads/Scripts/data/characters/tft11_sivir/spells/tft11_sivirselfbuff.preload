@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_sivirspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_sivirempoweredbasicattack"}}, 
+}

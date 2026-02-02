@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Warwick.Crepe_WarwickVsVi_WWReward"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_warwickvsvi_stackmanager"}}, 
+}

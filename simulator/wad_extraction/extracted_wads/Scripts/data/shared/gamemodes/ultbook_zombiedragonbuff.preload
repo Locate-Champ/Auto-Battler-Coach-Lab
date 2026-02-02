@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_zombiedragondebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_ZombieDragonDebuff"}}, 
+}

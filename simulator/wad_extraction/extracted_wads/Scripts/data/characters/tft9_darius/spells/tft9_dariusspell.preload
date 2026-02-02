@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_dariusrunstoppable"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+}

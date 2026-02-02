@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_brockspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Brock.TFT16_BrockSpellRockfall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_brockspellrockfallrock"}}, 
+}

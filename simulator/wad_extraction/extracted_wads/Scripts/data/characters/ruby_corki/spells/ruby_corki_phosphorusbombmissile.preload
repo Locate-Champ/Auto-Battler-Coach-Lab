@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_corki_phosphorusbomb"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_corki_phosphorusbombblind"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_CalculatedRisk"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Augment_TransmuteGold"}}, 
+}

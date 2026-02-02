@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SRX_PartyDragon_TriggerMarker"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_partydragon_speedbuff"}}, 
+}

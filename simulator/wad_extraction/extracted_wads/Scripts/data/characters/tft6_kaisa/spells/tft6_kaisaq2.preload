@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_kaisaq"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_kaisaqleftmissile1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_kaisaqrightmissile1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_kaisaqleftmissile2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_kaisaqrightmissile2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_kaisaqleftmissile3"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_kaisaqrightmissile3"}}, 
+}

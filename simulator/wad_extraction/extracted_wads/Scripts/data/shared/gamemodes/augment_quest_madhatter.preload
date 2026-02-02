@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2141Active"}}, 
+{Function=BBPreloadSpell, Params={Name="2141active"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Quest_MadHatter"}}, 
+}

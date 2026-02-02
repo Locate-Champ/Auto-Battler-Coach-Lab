@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_tahmkenchw"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_tahmkenchw_enemymovecollision"}}, 
+}

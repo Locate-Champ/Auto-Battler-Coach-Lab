@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_amumuvfxmanagerskin08"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_amumu_tantrum"}}, 
+}

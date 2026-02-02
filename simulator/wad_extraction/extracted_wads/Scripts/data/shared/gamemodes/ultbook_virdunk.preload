@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_vir"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_virdunktargetself"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_virmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_virdunktarget"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_virdunkstun"}}, 
+}

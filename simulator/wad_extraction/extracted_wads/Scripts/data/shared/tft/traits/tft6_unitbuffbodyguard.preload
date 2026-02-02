@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_bodyguardshield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_taunt"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuffBodyguard"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_bodyguardallybuff"}}, 
+}

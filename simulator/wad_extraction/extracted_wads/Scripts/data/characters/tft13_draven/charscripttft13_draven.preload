@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_dravenspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Draven.TFT13_DravenSpell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

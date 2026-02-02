@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.UltBook_AzirFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_azirrkillmissileonmoveend"}}, 
+}

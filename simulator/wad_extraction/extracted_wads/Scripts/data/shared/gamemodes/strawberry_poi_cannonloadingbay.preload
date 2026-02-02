@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_cannonarmed"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_cannon_playerinloadingbay"}}, 
+}

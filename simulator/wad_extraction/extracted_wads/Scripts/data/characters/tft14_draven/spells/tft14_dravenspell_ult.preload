@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_dravenspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_dravenspell_ult_return"}}, 
+}

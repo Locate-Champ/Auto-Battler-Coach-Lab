@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sru_dragon_hextech_attack"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_dragon_hextech_attack2_slow"}}, 
+}

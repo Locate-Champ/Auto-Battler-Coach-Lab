@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_PlayerBuff_Cheats"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_smolderattackbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Smolder.TFT12_SmolderAttackBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Smolder.TFT12_Smolder_MoveAttackLogic"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+}

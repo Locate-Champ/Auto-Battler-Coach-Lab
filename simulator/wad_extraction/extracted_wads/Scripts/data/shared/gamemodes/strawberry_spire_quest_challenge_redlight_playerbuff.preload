@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_quest_challenge_redlight_notarrivedyet"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_quest_challenge_redlight_state_greenlight"}}, 
+}

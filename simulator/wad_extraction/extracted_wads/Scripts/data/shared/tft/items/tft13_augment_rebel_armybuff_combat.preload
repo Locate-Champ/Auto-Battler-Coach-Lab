@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Rebel_ArmyBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Rebel_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_augment_rebel_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_augment_rebel_unitdash"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_augment_rebel_clonebuff"}}, 
+}

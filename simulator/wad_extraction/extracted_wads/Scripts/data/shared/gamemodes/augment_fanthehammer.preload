@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_FanTheHammer"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fanthehammer_cooldownne"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fanthehammer_cooldownnw"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fanthehammer_cooldownse"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fanthehammer_cooldownsw"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fanthehammer_missile"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="4014_slow"}}, 
+{Function=BBPreloadModule, Params={Name="Global.4014_Slow"}}, 
+}

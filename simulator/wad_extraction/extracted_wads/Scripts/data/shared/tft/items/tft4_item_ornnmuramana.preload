@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_checkitemmutuallyexclusive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT4_Item_OrnnMuramana"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_item_ornnmuramanamanarestore"}}, 
+}

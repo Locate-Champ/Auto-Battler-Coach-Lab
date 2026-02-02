@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="katarinapassive"}}, 
+{Function=BBPreloadSpell, Params={Name="katarinaq"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="katarinadaggerexpirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="katarinadaggerpickuppbaoe"}}, 
+{Function=BBPreloadSpell, Params={Name="eternalstracking_katarinaconsecutivepassivehits"}}, 
+}

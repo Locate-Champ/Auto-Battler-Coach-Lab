@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="swipe"}}, 
+{Function=BBPreloadSpell, Params={Name="pounce"}}, 
+{Function=BBPreloadSpell, Params={Name="takedown"}}, 
+{Function=BBPreloadSpell, Params={Name="javelintoss"}}, 
+{Function=BBPreloadSpell, Params={Name="bushwhack"}}, 
+{Function=BBPreloadSpell, Params={Name="primalsurge"}}, 
+}

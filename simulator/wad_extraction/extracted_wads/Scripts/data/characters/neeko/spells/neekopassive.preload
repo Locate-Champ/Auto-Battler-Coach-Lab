@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="neekopassiveactive"}}, 
+{Function=BBPreloadSpell, Params={Name="neekoproximitydetector"}}, 
+{Function=BBPreloadModule, Params={Name="Neeko.NeekoPassive"}}, 
+}

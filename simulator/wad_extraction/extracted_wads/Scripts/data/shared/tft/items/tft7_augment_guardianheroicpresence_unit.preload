@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_augment_guardianheroicpresencetracker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_augment_guardianheroicpresence_taunt"}}, 
+}

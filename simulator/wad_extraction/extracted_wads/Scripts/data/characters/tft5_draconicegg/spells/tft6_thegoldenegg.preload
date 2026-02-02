@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_draconicegg"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_DataOverrides"}}, 
+{Function=BBPreloadModule, Params={Name="TFT5_DraconicEgg.TFT6_TheGoldenEgg"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFTProbabilityFunctionModule"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT5_DraconicEgg.TFT5_DraconicEgg"}}, 
+}

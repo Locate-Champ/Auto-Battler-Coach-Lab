@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_lorisspell_shield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Loris.TFT16_LorisSpell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_taunt"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_lorisspell_damage"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+}

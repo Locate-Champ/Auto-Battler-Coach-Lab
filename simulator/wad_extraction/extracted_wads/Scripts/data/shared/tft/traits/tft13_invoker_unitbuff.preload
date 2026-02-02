@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Invoker_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_invoker_managrant"}}, 
+}

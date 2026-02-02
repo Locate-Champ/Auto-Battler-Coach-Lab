@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SRX_DragonSoulBuffRuined"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_zombiedragonsoul_cooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_zombiedragonsouleffect"}}, 
+}

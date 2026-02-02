@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="2v2rerollbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2ChampionBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2BuyPhaseBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_AnvilManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_CalculatedRisk"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_PhaseManager"}}, 
+{Function=BBPreloadSpell, Params={Name="cherry_eventgohswainravenbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_FireSale"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2BuyItemManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_BravestoftheBrave"}}, 
+}

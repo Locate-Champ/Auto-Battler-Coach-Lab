@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="dianaskin75rhitcounttracker"}}, 
+{Function=BBPreloadSpell, Params={Name="dianaskin75formtracker"}}, 
+{Function=BBPreloadSpell, Params={Name="dianaskin75pointstracker"}}, 
+{Function=BBPreloadSpell, Params={Name="dianaskin75hudtoggle"}}, 
+{Function=BBPreloadModule, Params={Name="Diana.DianaSkin75Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="dianaskin75hudactive"}}, 
+{Function=BBPreloadCharacter, Params={Name="diana"}}, 
+{Function=BBPreloadSpell, Params={Name="dianaskin75killeventtracker"}}, 
+}

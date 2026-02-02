@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_mutant_darkstarmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_mutant_darkstarbuff"}}, 
+}

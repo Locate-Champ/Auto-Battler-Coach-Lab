@@ -1,0 +1,18 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="itemglory"}}, 
+{Function=BBPreloadSpell, Params={Name="hasbeenrevived"}}, 
+{Function=BBPreloadModule, Params={Name="Global.3074"}}, 
+{Function=BBPreloadSpell, Params={Name="viegopassivenottransformed"}}, 
+{Function=BBPreloadSpell, Params={Name="kledhealthmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="zyraw"}}, 
+{Function=BBPreloadSpell, Params={Name="khazixqlong"}}, 
+{Function=BBPreloadSpell, Params={Name="khazixwlong"}}, 
+{Function=BBPreloadSpell, Params={Name="khazixelong"}}, 
+{Function=BBPreloadSpell, Params={Name="rebirthmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="viegospecialcaseaniviarevive"}}, 
+{Function=BBPreloadSpell, Params={Name="zacpassivechunkdrop"}}, 
+{Function=BBPreloadSpell, Params={Name="viegospecialcasezacrevive"}}, 
+{Function=BBPreloadSpell, Params={Name="viegopassivetransformclonevfx"}}, 
+{Function=BBPreloadSpell, Params={Name="viegor"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Viego_PostPossessWillDie"}}, 
+}

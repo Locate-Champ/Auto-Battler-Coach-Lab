@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_vexr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_vexrresettimer"}}, 
+}

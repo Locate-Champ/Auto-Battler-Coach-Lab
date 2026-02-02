@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_PlayerBuff_Bound_PermanentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_UnitBuff_Bound"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_BenchManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_ItemBenchFull"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_bound_healthmis"}}, 
+}

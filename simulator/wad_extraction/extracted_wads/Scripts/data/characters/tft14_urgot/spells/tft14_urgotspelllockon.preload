@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT14_Urgot.TFT14_UrgotSpellLockOn"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Urgot.TFT14_UrgotSpell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Urgot.TFT14_UrgotSpellExecuteManager"}}, 
+}

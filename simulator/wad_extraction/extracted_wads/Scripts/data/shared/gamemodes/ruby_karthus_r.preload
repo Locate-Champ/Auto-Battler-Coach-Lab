@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_karthus_rtarget"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_karthus_rcastsound"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_karthus_rpacify"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_karthus_rdamagesound"}}, 
+}

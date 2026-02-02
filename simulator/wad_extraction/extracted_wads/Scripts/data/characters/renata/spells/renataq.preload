@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="morganaq"}}, 
+{Function=BBPreloadSpell, Params={Name="renataqrecast"}}, 
+{Function=BBPreloadSpell, Params={Name="renataqselfroot"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Nilah.Eternals_NilahRMultiPullsTracker"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_nilahrtakedowntracker"}}, 
+}

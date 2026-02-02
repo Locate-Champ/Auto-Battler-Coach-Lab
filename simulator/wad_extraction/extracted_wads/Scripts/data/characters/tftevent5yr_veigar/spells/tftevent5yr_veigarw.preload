@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_veigarwcooldown"}}, 
+{Function=BBPreloadModule, Params={Name="TFTEvent5YR_Veigar.TFTEvent5YR_VeigarFunctionModule"}}, 
+}

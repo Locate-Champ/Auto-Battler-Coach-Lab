@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_LocketOfTheIronSolariShadow_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_locketoftheironsolarishadow_allies"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_ManaPerAttackHandler"}}, 
+}

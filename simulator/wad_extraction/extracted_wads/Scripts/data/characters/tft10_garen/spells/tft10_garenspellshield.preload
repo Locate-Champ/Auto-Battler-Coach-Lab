@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_garenspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Garen.TFT10_GarenSpell_HealthTracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_garenspellattack"}}, 
+}

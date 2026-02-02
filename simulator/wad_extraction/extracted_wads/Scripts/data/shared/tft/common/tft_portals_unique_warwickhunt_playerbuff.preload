@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_augment_dravenspoilsofwarmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_encounter_genericarmybuff_applytounits"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_jaxspellattack"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_TraitEffectMageRefresh"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_jaxspellattack2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_jaxspellattack3"}}, 
+}

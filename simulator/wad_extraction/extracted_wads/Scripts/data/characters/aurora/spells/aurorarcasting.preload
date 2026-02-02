@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorar"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorapspiritmode"}}, 
+}

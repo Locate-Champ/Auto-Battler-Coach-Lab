@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_ShimmerscaleMogulsMail_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_shimmerscalemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_thegoldendragon_unitbuffactivated"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_ShimmerscaleManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_mogulsmail_goldbuff"}}, 
+}

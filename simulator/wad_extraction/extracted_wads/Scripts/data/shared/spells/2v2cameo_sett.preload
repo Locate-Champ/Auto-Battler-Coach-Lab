@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Cherry_CameoManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2CombatInstanceBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_StageScript"}}, 
+{Function=BBPreloadCharacter, Params={Name="cherry_sett_minion"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_settminionbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_SettMinionBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Sett"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_settw"}}, 
+}

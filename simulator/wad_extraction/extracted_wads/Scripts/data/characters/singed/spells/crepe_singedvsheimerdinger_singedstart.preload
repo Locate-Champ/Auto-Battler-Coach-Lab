@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Heimerdinger.Crepe_SingedVsHeimerdinger_HeimerdingerStart"}}, 
+{Function=BBPreloadModule, Params={Name="Singed.Crepe_SingedVsHeimerdinger_SingedStart"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_singedvsheimerdinger_singedwin"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_singedvsheimerdinger_heimerdingerlose"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_singedvsheimerdinger_trackerbuff"}}, 
+}

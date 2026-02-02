@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2VotePhaseBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2VotePhaseInstanceBuff"}}, 
+}

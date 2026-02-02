@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="megaadhesive"}}, 
+{Function=BBPreloadSpell, Params={Name="megaadhesiveapplicator"}}, 
+}

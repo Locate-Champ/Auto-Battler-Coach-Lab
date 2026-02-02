@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_UnitBuff_KillCounter"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_portals_unitbuff_killcountereasteregg"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+}

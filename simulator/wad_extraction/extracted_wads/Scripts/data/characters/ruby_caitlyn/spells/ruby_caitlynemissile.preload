@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_caitlyne"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_caitlynpassiverangemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_caitlynpassiverangecheck"}}, 
+}

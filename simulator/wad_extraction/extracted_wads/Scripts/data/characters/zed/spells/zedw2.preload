@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Zed.CharFunctionsZed"}}, 
+{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+{Function=BBPreloadSpell, Params={Name="zedw"}}, 
+}

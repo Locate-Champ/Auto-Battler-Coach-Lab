@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="challengesturrettrackerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TurretPackage"}}, 
+{Function=BBPreloadSpell, Params={Name="nexusturretregen"}}, 
+{Function=BBPreloadSpell, Params={Name="turretdamagemarker"}}, 
+{Function=BBPreloadParticle, Params={Name="ha_pororay.troy", SkinID="-1"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRU_RiftHerald_BattleSledCD"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRU_RiftHerald_HealthbarIcon"}}, 
+{Function=BBPreloadSpell, Params={Name="palisaderushdownresists"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_2026_S1_RoleBound_Top_Quest"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_2026_S1_RoleBound_Mid_Quest"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_2026_S1_RoleBound_Bot_Quest"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_reksai_burrowed_accelerating"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_reksai_burrowed_invisible_selflock"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_reksai_justunburrowed"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_reksai_fallingdebris"}}, 
+}

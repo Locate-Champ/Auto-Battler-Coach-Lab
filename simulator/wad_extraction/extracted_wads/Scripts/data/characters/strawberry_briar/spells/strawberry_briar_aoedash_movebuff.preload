@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briarr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briarw"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briarwfrenzybuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briarwattackspell"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briaredr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="briarr"}}, 
+}

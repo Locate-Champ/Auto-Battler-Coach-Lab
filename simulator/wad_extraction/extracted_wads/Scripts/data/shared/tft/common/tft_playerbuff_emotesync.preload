@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_emotesync_active"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_EmoteSync_Active"}}, 
+}

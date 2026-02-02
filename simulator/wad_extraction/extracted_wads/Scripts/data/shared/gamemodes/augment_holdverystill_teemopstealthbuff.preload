@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_holdverystill"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_holdverystill_teemopattackspeedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_holdverystill_teemoponhitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_holdverystill_teemopstealthcooldown"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_taunt"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT8_Mascot_InnateBuff"}}, 
+}

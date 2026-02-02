@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_BigFriend_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_augment_bigfriend_damagereduction"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+}

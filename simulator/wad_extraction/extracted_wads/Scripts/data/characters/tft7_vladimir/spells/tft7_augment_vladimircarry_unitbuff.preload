@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_vladimirqhero"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_nasusr"}}, 
+}

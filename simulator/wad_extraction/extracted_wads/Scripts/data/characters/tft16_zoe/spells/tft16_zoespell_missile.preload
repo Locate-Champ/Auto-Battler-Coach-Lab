@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_zoespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_small"}}, 
+}

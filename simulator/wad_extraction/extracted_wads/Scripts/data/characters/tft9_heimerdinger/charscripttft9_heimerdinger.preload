@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_heimerdinger_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Heimerdinger.TFT9_HeimerdingerFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Heimerdinger.TFT9_Heimerdinger_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_unitbuffyordlestar"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_heimerdinger_4stardance"}}, 
+}

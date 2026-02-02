@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Hwei.HweiEW"}}, 
+{Function=BBPreloadModule, Params={Name="Hwei.HweiPassive"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="hweiewtriggermissile"}}, 
+}

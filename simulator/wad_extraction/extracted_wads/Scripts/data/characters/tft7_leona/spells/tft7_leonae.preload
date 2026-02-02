@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="TFT7_Leonaereflect"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_taunt"}}, 
+}

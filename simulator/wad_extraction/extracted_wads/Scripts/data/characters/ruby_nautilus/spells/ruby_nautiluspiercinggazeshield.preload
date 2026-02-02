@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_nautiluspiercinggazeshieldhit"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_nautiluspiercinggaze"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_nautiluswdot"}}, 
+}

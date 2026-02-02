@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_bloodbrother_dariushemo"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_bloodbrother_dariushemointernal"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_bloodbrother_dariushemovisual"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_bloodbrother_dariushemomax"}}, 
+}

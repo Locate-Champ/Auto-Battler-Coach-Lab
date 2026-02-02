@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_briare"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briareknockback"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briaremis"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briarp"}}, 
+}

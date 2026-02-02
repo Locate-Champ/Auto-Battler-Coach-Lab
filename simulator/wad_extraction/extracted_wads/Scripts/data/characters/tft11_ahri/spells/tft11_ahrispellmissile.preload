@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_ahrispell"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+}

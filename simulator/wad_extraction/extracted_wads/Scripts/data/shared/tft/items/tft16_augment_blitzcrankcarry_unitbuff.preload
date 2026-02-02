@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_blitzcrankspell_carry"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_fighter"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_augment_blitzcrankcarry_passivebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_blitzcrankspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_tank"}}, 
+}

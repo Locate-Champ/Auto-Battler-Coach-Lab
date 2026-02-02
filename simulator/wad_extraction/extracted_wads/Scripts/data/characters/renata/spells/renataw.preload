@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Renata.RenataW"}}, 
+{Function=BBPreloadSpell, Params={Name="renatawbuff"}}, 
+}

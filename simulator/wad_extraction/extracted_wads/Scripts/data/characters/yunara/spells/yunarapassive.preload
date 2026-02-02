@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Yunara.YunaraPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="yunaraw2"}}, 
+{Function=BBPreloadSpell, Params={Name="yunarae2"}}, 
+{Function=BBPreloadSpell, Params={Name="haste"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_dashing"}}, 
+{Function=BBPreloadSpell, Params={Name="yunaraw"}}, 
+{Function=BBPreloadSpell, Params={Name="yunarae"}}, 
+}

@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="challengeschampionnexustracker"}}, 
+{Function=BBPreloadSpell, Params={Name="challengeschampiondodgedskillshot"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ChallengesChampionTrackerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="challengeschampionwarddefender"}}, 
+{Function=BBPreloadSpell, Params={Name="challengesdamagetrackerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="challengeschampionporotracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ItemBlackoutMarker"}}, 
+{Function=BBPreloadSpell, Params={Name="globalisinchampioncombat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.GlobalIsInChampionCombat"}}, 
+{Function=BBPreloadSpell, Params={Name="challengeshealshielddamagetrackerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="challengeschampionsneakyrecalling"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ChallengesChampionSneakyRecalling"}}, 
+{Function=BBPreloadSpell, Params={Name="challengeschampionrecentlyhealedbyhealthpack"}}, 
+}

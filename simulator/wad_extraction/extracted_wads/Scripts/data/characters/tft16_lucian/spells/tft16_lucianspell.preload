@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="lucianr"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Lucian.TFT16_LucianSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_lucianrmissile2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_lucianrmissileoffhand2"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Lucian.TFT16_LucianFunctionModuleNew"}}, 
+}

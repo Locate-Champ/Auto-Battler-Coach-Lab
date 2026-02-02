@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_zac_split_mis"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT8_Zac.TFT8_ZacSplit"}}, 
+}

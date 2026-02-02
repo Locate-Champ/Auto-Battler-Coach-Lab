@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_encounter_restorenormalaugmentrerollsafteraugmentpick"}}, 
+}

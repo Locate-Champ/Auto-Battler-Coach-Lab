@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_WarringFactions_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_ShadowIsles_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Bilgewater_PlayerBuff"}}, 
+}

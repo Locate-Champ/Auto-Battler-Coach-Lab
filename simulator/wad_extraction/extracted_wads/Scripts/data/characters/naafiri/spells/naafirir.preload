@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="naafirirmovespeed"}}, 
+{Function=BBPreloadSpell, Params={Name="naafirip"}}, 
+{Function=BBPreloadModule, Params={Name="Naafiri.NaafiriR"}}, 
+{Function=BBPreloadSpell, Params={Name="naafiripackmatemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="naafiriepackmates"}}, 
+{Function=BBPreloadSpell, Params={Name="naafiriruntargetable"}}, 
+{Function=BBPreloadSpell, Params={Name="naafiripackmate"}}, 
+{Function=BBPreloadSpell, Params={Name="naafirirpackmateeffects"}}, 
+{Function=BBPreloadSpell, Params={Name="2141active"}}, 
+{Function=BBPreloadModule, Params={Name="Naafiri.NaafiriPackmateManager"}}, 
+{Function=BBPreloadSpell, Params={Name="eternalstracker_naafirirtakedowns"}}, 
+}

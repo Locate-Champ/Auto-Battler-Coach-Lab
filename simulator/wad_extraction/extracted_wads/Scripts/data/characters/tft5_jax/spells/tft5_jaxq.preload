@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_jaxqattackspeed"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_jaxqattackready"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_jaxqleap"}}, 
+}

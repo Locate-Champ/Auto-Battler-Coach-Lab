@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="leblancw"}}, 
+{Function=BBPreloadSpell, Params={Name="leblancr"}}, 
+{Function=BBPreloadSpell, Params={Name="leblancwstatstonetracker"}}, 
+{Function=BBPreloadSpell, Params={Name="leblancrwmove"}}, 
+{Function=BBPreloadSpell, Params={Name="leblancrwwallfix"}}, 
+{Function=BBPreloadSpell, Params={Name="leblancrwreturn"}}, 
+{Function=BBPreloadSpell, Params={Name="leblancwreturnsfx"}}, 
+{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+}

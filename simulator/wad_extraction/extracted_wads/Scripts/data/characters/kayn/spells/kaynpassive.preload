@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Kayn.FunctionsKayn"}}, 
+{Function=BBPreloadSpell, Params={Name="kayntransforming"}}, 
+{Function=BBPreloadSpell, Params={Name="kaynw"}}, 
+{Function=BBPreloadSpell, Params={Name="kaynslayready"}}, 
+{Function=BBPreloadSpell, Params={Name="kaynassready"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TimeFormatting"}}, 
+{Function=BBPreloadSpell, Params={Name="kaynassw"}}, 
+{Function=BBPreloadSpell, Params={Name="kaynr"}}, 
+{Function=BBPreloadSpell, Params={Name="kaynpassiveass"}}, 
+{Function=BBPreloadSpell, Params={Name="kaynpassiveslay"}}, 
+}

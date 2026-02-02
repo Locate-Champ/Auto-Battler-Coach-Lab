@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_zoe_spellthiefmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_zoefunctionmodule"}}, 
+{Function=BBPreloadModule, Params={Name="TFT7_Zoe.TFT7_ZoeFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

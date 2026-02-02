@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_hellionunitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Augment_Hellion_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_ArmyBuffHellion"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_hellionunitdash"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_hellionclonebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_monstrositybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_TraitEffect_MonstrosityBuff"}}, 
+}

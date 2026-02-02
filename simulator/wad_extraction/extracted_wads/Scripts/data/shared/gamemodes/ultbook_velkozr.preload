@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_velkozrhitcounter"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_velkozrdamagestack"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_velkozrdamageticker"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_velkozrhitparticle"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_VelkozPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_velkozrdeconstructiontimer"}}, 
+}

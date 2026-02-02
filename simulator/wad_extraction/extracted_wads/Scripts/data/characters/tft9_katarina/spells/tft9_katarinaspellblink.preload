@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_Katarina.TFT9_KatarinaSpellBlink"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Katarina.TFT9_KatarinaSpellHexBlocker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_katarinaspellspin"}}, 
+}

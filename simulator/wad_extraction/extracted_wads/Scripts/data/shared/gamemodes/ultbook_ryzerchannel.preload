@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_ryzer"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ryzerallyindicators"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ryzerwillbeteleported"}}, 
+}

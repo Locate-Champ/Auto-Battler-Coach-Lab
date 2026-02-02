@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Lillia.Eternal_MultipleSleepCounter"}}, 
+{Function=BBPreloadSpell, Params={Name="lilliarsleepdamagewindow"}}, 
+{Function=BBPreloadSpell, Params={Name="lilliarsleepdealdamage"}}, 
+}

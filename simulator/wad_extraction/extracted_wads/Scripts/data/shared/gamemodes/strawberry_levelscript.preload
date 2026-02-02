@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_event_lootchonklin"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_LevelScript"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_destructible"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_evil"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_good"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_quest_announce"}}, 
+}

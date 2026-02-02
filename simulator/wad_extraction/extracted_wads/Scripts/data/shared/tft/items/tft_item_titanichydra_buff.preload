@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_zzrotportal_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_ZzrotPortal_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_titanichydrazombiebuff_buff"}}, 
+}

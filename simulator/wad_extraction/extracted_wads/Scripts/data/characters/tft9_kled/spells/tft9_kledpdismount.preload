@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_immunity"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_kledpattackspeed"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Kled.TFT9_KledPAttackSpeed"}}, 
+}

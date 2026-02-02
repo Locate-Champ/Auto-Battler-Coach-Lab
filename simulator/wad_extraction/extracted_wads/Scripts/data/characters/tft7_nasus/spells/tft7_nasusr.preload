@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT7_Nasus.TFT7_NasusR"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="nasusr"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+}

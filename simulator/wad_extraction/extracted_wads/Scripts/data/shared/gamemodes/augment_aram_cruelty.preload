@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_cruelty_moveblock"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_Cruelty_MoveBlock"}}, 
+}

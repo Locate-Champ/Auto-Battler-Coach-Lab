@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_neekorindicatormis"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_neekordummyspell"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_neekor2"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="zileanqdetonateaudio"}}, 
+{Function=BBPreloadSpell, Params={Name="zileanq"}}, 
+{Function=BBPreloadSpell, Params={Name="zileanqenemyhitaudio"}}, 
+{Function=BBPreloadSpell, Params={Name="zileanstunanim"}}, 
+}

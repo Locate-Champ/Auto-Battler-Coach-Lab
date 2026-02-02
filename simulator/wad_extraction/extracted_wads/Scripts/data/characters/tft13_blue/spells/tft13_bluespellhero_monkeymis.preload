@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft13_blue_monkey"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_bluespellhero"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_bluespell_monkeybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_TeamupAugment_Menaces_UnitBuff"}}, 
+}

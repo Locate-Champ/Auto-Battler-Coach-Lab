@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="2v2statanvil_master"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Kiwi_StatAnvil_Master"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ARAM_Augment_Manager"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Explorer_KillQuest"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Explorer_PlayerBuff_Manager"}}, 
+}

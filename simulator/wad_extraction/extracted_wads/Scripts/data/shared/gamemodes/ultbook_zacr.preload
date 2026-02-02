@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.UltBook_ZacRDeathCheck"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_zacrknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_zacrlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_zacrslow"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_zacrdeathcheck"}}, 
+}

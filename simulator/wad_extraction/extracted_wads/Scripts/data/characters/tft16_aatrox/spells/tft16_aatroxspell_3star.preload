@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aatrox_3starskinscalemanager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Aatrox.TFT16_AatroxSpell_3Star"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aatrox_3starspelldebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aatroxspell"}}, 
+}

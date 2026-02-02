@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Shen.ShenFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="Shen.ShenPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Vector"}}, 
+{Function=BBPreloadModule, Params={Name="Zed.ZedPassive"}}, 
+}

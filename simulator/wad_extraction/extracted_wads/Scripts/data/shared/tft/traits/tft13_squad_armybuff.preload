@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_squad_combatarmybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Squad_EnemyUnitBuff"}}, 
+}

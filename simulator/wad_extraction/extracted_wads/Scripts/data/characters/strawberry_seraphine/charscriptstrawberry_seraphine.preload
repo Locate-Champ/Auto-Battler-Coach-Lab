@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_seraphineslowmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_seraphineultccmanager"}}, 
+}

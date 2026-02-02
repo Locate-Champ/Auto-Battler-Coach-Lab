@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_dragonearthspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_dragonearthmissile"}}, 
+}

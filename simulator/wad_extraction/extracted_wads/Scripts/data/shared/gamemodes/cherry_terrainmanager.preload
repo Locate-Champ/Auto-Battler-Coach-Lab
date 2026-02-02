@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Cherry_TerrainManager"}}, 
+{Function=BBPreloadModule, Params={Name="Cherry_Destructible_Column.Cherry_Destructible_PillarBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_StageScript"}}, 
+{Function=BBPreloadCharacter, Params={Name="cherry_destructible_column"}}, 
+}

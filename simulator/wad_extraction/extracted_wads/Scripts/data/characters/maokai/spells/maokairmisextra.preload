@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="maokairmis"}}, 
+{Function=BBPreloadSpell, Params={Name="maokair"}}, 
+{Function=BBPreloadSpell, Params={Name="maokairroot"}}, 
+{Function=BBPreloadSpell, Params={Name="maokairmovespeed"}}, 
+{Function=BBPreloadSpell, Params={Name="eternalstracker_maokaichampiondisables"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_boss_morganamarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_boss_morganapool"}}, 
+}

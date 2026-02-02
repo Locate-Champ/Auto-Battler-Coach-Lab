@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft11_kayn"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_kaynsummon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_kaynspell"}}, 
+}

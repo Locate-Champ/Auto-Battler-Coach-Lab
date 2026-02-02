@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Formswapper_Armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Formswapper_Unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_FormSwapper_PassiveBuff"}}, 
+}

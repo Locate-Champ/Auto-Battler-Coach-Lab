@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell_ranged"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_jaycespell_ranged_minionbuff"}}, 
+}

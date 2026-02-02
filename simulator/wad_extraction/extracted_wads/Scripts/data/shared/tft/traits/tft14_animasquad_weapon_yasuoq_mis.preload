@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_AnimaSquad_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_animasquad_weapon_yasuoq_stunbuff"}}, 
+}

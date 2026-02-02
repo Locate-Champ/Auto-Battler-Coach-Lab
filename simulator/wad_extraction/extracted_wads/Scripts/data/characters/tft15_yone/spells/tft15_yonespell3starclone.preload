@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_yonespell3startracker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Yone.TFT15_YoneSpell3StarFreeze"}}, 
+}

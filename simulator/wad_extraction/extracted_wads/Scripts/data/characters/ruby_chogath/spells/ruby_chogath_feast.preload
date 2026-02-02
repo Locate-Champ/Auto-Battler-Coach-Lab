@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_chogath_feastvisualmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_stackosaurusrex"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_StackosaurusRex"}}, 
+}

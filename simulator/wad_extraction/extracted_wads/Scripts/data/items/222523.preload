@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionrangeextensionvfxmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="2523_damagemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="2523_buff"}}, 
+}

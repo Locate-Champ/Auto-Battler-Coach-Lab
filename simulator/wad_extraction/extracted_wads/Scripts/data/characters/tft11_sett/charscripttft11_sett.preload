@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_settpassivesquatmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_settaamanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_settrselflock"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_settlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="TFT11_Sett.TFT11_SettPassiveSquatManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_sett3ceremony"}}, 
+}

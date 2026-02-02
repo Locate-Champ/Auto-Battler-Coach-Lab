@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_galiorascent"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_galiorhealthbarhider"}}, 
+}

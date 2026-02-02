@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="settw"}}, 
+{Function=BBPreloadModule, Params={Name="Sett.SettWPassiveBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="settwmaxgrit"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_onepunch"}}, 
+}

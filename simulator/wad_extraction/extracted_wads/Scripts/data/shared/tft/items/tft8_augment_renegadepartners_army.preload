@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_RenegadePartners_Army"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_RenegadePartners_Unit"}}, 
+}

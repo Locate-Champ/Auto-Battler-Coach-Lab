@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT6_Yuumi.TFT6_YuumiAttachManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT6_Yuumi.TFT6_YuumiR"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_yuumirmissile"}}, 
+}

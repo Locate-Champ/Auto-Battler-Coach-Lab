@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT15_Volibear.TFT15_VolibearSpell_Passive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_volibearspell"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT4_Augment_Sharpshooter_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT4_UnitBuffSharpshooter"}}, 
+}

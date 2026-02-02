@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="teemopassive"}}, 
+{Function=BBPreloadSpell, Params={Name="teemopattackspeedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_takedownsafteractiontracker"}}, 
+{Function=BBPreloadSpell, Params={Name="teemopstealthcooldown"}}, 
+}

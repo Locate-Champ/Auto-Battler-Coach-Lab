@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_pyro_armybuff_killtracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12b"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Pyro_ArmyBuff_KillTracker"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="relle"}}, 
+{Function=BBPreloadSpell, Params={Name="relle_empowerself"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_artifact_blightingjewel_debuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_artifact_blightingjewel_icd"}}, 
+}

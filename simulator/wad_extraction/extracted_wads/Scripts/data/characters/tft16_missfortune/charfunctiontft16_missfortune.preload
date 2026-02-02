@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_missfortunebouncemis"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_MissFortune.CharFunctionTFT16_MissFortune"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_missfortunespell"}}, 
+}

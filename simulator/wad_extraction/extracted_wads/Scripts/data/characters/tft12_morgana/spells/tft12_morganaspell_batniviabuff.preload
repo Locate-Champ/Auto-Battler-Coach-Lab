@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_morganaspell_batniviapoof"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_morganaspell_batniviavictimtracker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Morgana.TFT12_MorganaSpell_AbductedBenchUnitManager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Morgana.TFT12_MorganaSpell_BatniviaBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12b"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_pve_morganaabductionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_morganaspell_abductedbenchunitmanager"}}, 
+}

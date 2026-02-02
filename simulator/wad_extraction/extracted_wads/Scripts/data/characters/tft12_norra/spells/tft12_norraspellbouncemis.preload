@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT12_Norra.TFT12_Norra_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Norra.TFT12_NorraSpellFunctionModule"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft_itemunknown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_norraaoebuff"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_Carousel_CatTrigger"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent_playerbuff_set8cattriggerreconnect"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PlayerBuff_Set8CatTriggerReconnect"}}, 
+}

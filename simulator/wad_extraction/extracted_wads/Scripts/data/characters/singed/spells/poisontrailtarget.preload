@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="poisontrail"}}, 
+{Function=BBPreloadSpell, Params={Name="insanitypotion"}}, 
+{Function=BBPreloadModule, Params={Name="Global.GrievousWound"}}, 
+{Function=BBPreloadSpell, Params={Name="grievouswound"}}, 
+}

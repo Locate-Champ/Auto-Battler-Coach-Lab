@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_alistarspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_alistar_traiteffectknockup"}}, 
+}

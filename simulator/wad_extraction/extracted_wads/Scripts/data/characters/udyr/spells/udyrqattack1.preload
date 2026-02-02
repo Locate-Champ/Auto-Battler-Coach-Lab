@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Udyr.UdyrQActivation"}}, 
+{Function=BBPreloadSpell, Params={Name="udyrbasicattack"}}, 
+}

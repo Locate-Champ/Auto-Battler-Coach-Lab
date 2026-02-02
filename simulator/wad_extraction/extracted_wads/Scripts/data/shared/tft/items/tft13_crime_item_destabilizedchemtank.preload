@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_crime_item_destabilizedchemtank_shieldbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Crime_Item_DestabilizedChemtank_ShieldBuff"}}, 
+}

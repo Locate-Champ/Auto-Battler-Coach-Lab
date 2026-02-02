@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_malphitespellhero"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_malphitespell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Malphite.TFT15_MalphiteSpell_Passive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+}

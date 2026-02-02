@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kledpassive"}}, 
+{Function=BBPreloadModule, Params={Name="Kled.KledUnmountedResistBuff"}}, 
+}

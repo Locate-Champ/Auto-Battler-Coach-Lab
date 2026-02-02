@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="jackinthebox"}}, 
+{Function=BBPreloadSpell, Params={Name="championtraplimiter"}}, 
+{Function=BBPreloadSpell, Params={Name="shacoclonedanceoverride"}}, 
+{Function=BBPreloadSpell, Params={Name="twoshivpoison"}}, 
+{Function=BBPreloadParticle, Params={Name="super_teleporthome.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="teleporthome.troy", SkinID="-1"}}, 
+}

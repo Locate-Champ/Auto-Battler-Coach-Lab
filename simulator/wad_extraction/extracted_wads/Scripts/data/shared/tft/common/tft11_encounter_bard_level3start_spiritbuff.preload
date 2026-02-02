@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Encounter_Bard_Level3Start_SpiritBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Sound"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_grantstartingunit"}}, 
+}

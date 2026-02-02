@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_taliyahspell"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_taliyahwallminion"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT8_Taliyah.TFT8_TaliyahWallManager"}}, 
+}

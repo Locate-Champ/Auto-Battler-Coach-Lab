@@ -1,0 +1,16 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_disablemanaonattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspellshield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspellfacingmanager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_THex.TFT16_THexSpell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspelllmis1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspellrmis1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspelllmis2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspellrmis2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspelllmis3"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspellrmis3"}}, 
+}

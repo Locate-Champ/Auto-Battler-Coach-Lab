@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_urgotwtwinshotmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_urgotwattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_twinshotshot"}}, 
+}

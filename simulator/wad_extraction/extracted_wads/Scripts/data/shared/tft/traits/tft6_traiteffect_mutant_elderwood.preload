@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT6_TraitEffect_Mutant_Elderwood"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_mutant_elderwoodboon"}}, 
+}

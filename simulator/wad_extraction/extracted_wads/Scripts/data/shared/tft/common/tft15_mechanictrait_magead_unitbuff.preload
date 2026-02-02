@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_magead_admultiplier"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_mage_lockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_mage_castrefresh"}}, 
+}

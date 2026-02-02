@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_augment_grant6cost_warwick_enemybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Grant6Cost_Warwick"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+}

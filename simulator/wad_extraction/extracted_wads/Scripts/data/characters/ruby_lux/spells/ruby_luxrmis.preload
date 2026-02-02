@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_luxr"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_luxilluminationpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_luxultimateskinelementmissile"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Lux.Ruby_LuxIlluminationPassiveShared"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_luxrkilled"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Lux.Ruby_LuxIlluminationPassive"}}, 
+}

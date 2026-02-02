@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadParticle, Params={Name="sru_waterdragon_ba_impact.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="waterdragonslow"}}, 
+}

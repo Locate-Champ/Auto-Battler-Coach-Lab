@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Porcelain_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_porcelain_unitbuffoncast"}}, 
+}

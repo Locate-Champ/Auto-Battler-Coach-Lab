@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorspell_3star_summon"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Viktor.TFT13_ViktorSpell_3Star"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorspellsuppression"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorspell_3star_suppression"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorthreestarmissile"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Viktor.TFT13_ViktorSpell_3Star_Suppression"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorthreestarmissile2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorspell_3star_minionbuff"}}, 
+}

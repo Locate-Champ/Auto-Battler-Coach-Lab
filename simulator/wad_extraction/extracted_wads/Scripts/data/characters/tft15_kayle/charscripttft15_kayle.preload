@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kaylespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kayle_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kayle_attackmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kayle_ascensionmanager"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

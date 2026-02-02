@@ -1,0 +1,17 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Cabal_ArmyBuff_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Cabal_SionHealthBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Cabal_EnshackledBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_cabal_enshackledbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_cabal_sionhealthbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuff_cannotbezephyred"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_sionspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_cabal_sionexecutionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_sionspell_charge"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_sionspell_roar"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_sionspell_unleashed"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_sion_deathtracker_passivebuff"}}, 
+}

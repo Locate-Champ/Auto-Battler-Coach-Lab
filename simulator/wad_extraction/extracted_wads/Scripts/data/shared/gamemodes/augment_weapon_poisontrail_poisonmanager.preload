@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_weapon_poisontrail_batch"}}, 
+--{Function=BBPreloadModule, Params={Name="Strawberry_Briar.Strawberry_Briar_BleedBatchBuff"}}, 
+}

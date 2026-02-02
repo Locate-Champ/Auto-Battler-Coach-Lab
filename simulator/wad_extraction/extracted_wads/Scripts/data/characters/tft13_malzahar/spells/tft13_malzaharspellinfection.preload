@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_malzaharspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Malzahar.TFT13_MalzaharSpellInfection"}}, 
+}

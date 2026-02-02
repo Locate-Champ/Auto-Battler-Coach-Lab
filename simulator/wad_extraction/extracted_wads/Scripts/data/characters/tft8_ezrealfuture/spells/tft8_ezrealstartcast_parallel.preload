@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_ezrealfuturespellbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_ezrealstartcast"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+{Function=BBPreloadSpell, Params={Name="maokaiwroot"}}, 
+{Function=BBPreloadSpell, Params={Name="eternalstracker_maokaichampiondisables"}}, 
+{Function=BBPreloadModule, Params={Name="Maokai.MaokaiPassive"}}, 
+}

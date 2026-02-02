@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_augment_luxsupport_unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_augment_luxsupport_unit_shield"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set8"}}, 
+}

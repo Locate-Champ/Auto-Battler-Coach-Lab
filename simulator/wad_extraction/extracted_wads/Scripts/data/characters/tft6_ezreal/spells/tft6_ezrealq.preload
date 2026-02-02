@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_ezrealasboost"}}, 
+{Function=BBPreloadModule, Params={Name="TFT6_Ezreal.TFT6_EzrealASBoost"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_alistarspellstun"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_alistarspellroar"}}, 
+}

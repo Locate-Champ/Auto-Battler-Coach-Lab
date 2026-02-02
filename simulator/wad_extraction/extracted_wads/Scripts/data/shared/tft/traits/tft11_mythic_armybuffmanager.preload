@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Mythic_ArmyBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Units"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_mythic_unitbuff"}}, 
+}

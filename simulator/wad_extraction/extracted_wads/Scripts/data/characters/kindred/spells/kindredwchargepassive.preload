@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kindredpassivemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="kindredwchargepassivebuff"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_heimerturretmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_heimerturretbasescale"}}, 
+}

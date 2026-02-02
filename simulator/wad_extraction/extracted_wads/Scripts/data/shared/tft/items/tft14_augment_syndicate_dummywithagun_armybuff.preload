@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_Syndicate_DummyWithAGun_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_augment_syndicate_dummywithagun_unitbuff"}}, 
+}

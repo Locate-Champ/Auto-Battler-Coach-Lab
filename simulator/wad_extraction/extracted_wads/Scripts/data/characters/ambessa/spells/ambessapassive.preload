@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ambessapassivedash"}}, 
+{Function=BBPreloadSpell, Params={Name="ambessae"}}, 
+{Function=BBPreloadModule, Params={Name="Ambessa.CharFunctionsAmbessa"}}, 
+{Function=BBPreloadSpell, Params={Name="ambessaeslow"}}, 
+{Function=BBPreloadSpell, Params={Name="ambessaw"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Ambessa.AmbessaPassiveDash"}}, 
+{Function=BBPreloadSpell, Params={Name="ambessapassive"}}, 
+{Function=BBPreloadModule, Params={Name="Ambessa.CharFunctionsAmbessa"}}, 
+{Function=BBPreloadModule, Params={Name="Ambessa.AmbessaPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+}

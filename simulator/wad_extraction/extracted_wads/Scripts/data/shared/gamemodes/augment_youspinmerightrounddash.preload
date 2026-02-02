@@ -1,0 +1,14 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightround"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightround3"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightround2tempminionmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="luxr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_YouSpinMeRightRoundDash"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightroundorbitalclockwise"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightroundorbitalcounterclockwise"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightroundattackhandler"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightroundcollisiondetector"}}, 
+--{Function=BBPreloadModule, Params={Name="Akshan.AkshanFunctionModule"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_combatstartmovementmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_singedspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_singedpassive"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_dariusspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Darius.TFT13_DariusSpell_BleedDebuff"}}, 
+}

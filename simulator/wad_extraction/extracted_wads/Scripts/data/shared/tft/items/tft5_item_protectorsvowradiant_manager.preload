@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_protectorsvowradiant_shield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_protectorsvow_shield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ProtectorsVowRadiant_Manager"}}, 
+}

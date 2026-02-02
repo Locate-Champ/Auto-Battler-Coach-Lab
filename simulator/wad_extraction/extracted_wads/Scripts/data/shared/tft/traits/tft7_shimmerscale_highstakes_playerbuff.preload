@@ -1,0 +1,16 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_boardsidepropmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_BoardSidePropManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Shimmerscale_HighStakes_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Loot"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_inmotion"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT7_ShimmerscaleManager"}}, 
+}

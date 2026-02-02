@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_cannonfodder_traveling"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_cannonfodder_exit"}}, 
+}

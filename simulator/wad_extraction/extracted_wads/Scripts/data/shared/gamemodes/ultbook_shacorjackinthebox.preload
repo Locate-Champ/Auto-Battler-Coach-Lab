@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.UltBook_ShacoFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_shacortinybox"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_shacowplacementmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="stealth"}}, 
+{Function=BBPreloadSpell, Params={Name="jackinthebox"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+}

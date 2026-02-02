@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_nidaleer"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_nidaleertakedown"}}, 
+}

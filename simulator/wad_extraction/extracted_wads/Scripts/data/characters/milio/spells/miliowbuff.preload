@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="miliow"}}, 
+{Function=BBPreloadSpell, Params={Name="_globalchampionrangeextensionvfxmanager"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_pastry_ascended_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Pastry_Ascended_UnitBuff"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Maokaie"}}, 
+{Function=BBPreloadSpell, Params={Name="championtraplimiter"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Maokaigravediggerresurrection"}}, 
+}

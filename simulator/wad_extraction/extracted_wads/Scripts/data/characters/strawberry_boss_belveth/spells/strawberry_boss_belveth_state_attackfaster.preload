@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_state_spikes"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_attack_selflock"}}, 
+}
