@@ -1,0 +1,92 @@
+{
+  "_metadata": {
+    "description": "Champions requiring manual timing measurement for accurate simulation",
+    "measurement_method": "Record fight at 120+ FPS, measure frame when damage number appears",
+    "priority_criteria": "Ranged champions with projectiles, multi-hit spells, channels"
+  },
+
+  "tier_1_critical": {
+    "description": "Highest priority - 6-range ADCs with projectile travel time",
+    "champions": [
+      {"name": "Caitlyn", "api_name": "TFT16_Caitlyn", "range": 6, "reason": "Long range ADC, projectile travel matters"},
+      {"name": "Kog'Maw", "api_name": "TFT16_KogMaw", "range": 6, "reason": "Long range ADC"},
+      {"name": "Teemo", "api_name": "TFT16_Teemo", "range": 6, "reason": "Long range, DOT timing"},
+      {"name": "Vayne", "api_name": "TFT16_Vayne", "range": 6, "reason": "Long range ADC"},
+      {"name": "Kai'Sa", "api_name": "TFT16_KaiSa", "range": 6, "reason": "Long range ADC"},
+      {"name": "Ziggs", "api_name": "TFT16_Ziggs", "range": 6, "reason": "Long range, AoE projectile"}
+    ]
+  },
+
+  "tier_2_high": {
+    "description": "High priority - 4-range champions and multi-hit spells",
+    "champions": [
+      {"name": "Tristana", "api_name": "TFT16_Tristana", "range": 4, "reason": "ADC with knockback spell", "partial_data": "spell_frame: 7"},
+      {"name": "Draven", "api_name": "TFT16_Draven", "range": 4, "reason": "ADC, axe mechanics", "partial_data": "crit_frame: 2"},
+      {"name": "Miss Fortune", "api_name": "TFT16_MissFortune", "range": 4, "reason": "Multi-wave spell (2-6 waves)", "partial_data": "spell_frames: 8, 15, 21"},
+      {"name": "Aphelios", "api_name": "TFT16_Aphelios", "range": 4, "reason": "ADC with turret summon"},
+      {"name": "Ashe", "api_name": "TFT16_Ashe", "range": 4, "reason": "ADC with CC"},
+      {"name": "Jhin", "api_name": "TFT16_Jhin", "range": 4, "reason": "ADC, fixed attack pattern"},
+      {"name": "Kalista", "api_name": "TFT16_Kalista", "range": 4, "reason": "ADC, spear mechanics"},
+      {"name": "Lucian & Senna", "api_name": "TFT16_LucianSenna", "range": 4, "reason": "Multi-shot spell (12-42 shots)"},
+      {"name": "Ahri", "api_name": "TFT16_Ahri", "range": 4, "reason": "Multi-bolt spell (3 bolts)"},
+      {"name": "Kennen", "api_name": "TFT16_Kennen", "range": 3, "reason": "Multi-bolt spell (6 bolts)"},
+      {"name": "Milio", "api_name": "TFT16_Milio", "range": 4, "reason": "Bouncing spell (3 bounces)"}
+    ]
+  },
+
+  "tier_3_medium": {
+    "description": "Medium priority - casters and support champions",
+    "champions": [
+      {"name": "Lulu", "api_name": "TFT16_Lulu", "range": 4, "reason": "CC duration timing"},
+      {"name": "Twisted Fate", "api_name": "TFT16_TwistedFate", "range": 4, "reason": "Card mechanics"},
+      {"name": "Zoe", "api_name": "TFT16_Zoe", "range": 4, "reason": "Spell timing"},
+      {"name": "Sona", "api_name": "TFT16_Sona", "range": 4, "reason": "Support, heal timing"},
+      {"name": "Lux", "api_name": "TFT16_Lux", "range": 4, "reason": "CC timing"},
+      {"name": "Anivia", "api_name": "TFT16_Anivia", "range": 4, "reason": "Spell timing"},
+      {"name": "Lissandra", "api_name": "TFT16_Lissandra", "range": 4, "reason": "CC timing"},
+      {"name": "Malzahar", "api_name": "TFT16_Malzahar", "range": 4, "reason": "Summon timing"},
+      {"name": "Annie", "api_name": "TFT16_Annie", "range": 4, "reason": "Tibbers summon timing"},
+      {"name": "Kindred", "api_name": "TFT16_Kindred", "range": 4, "reason": "Spell timing"},
+      {"name": "Azir", "api_name": "TFT16_Azir", "range": 4, "reason": "Soldier summon/attack timing"},
+      {"name": "Veigar", "api_name": "TFT16_Veigar", "range": 4, "reason": "Execute timing"}
+    ]
+  },
+
+  "already_extracted": {
+    "description": "Champions with timing data extracted from WAD",
+    "champions": [
+      {"name": "Aatrox", "api_name": "TFT16_Aatrox", "attack_windup": 0.267, "spell_cast": 0.733},
+      {"name": "Jinx", "api_name": "TFT16_Jinx", "attack_windup": 0.367},
+      {"name": "Graves", "api_name": "TFT16_Graves", "attack_windup": 0.550},
+      {"name": "Warwick", "api_name": "TFT16_Warwick", "attack_windup": 0.367},
+      {"name": "Taric", "api_name": "TFT16_Taric", "attack_windup": 0.200},
+      {"name": "Seraphine", "api_name": "TFT16_Seraphine", "attack_windup": 0.233},
+      {"name": "Ekko", "api_name": "TFT16_Ekko", "attack_windup": 0.067},
+      {"name": "Thresh", "api_name": "TFT16_Thresh", "attack_windup": 0.333},
+      {"name": "Sylas", "api_name": "TFT16_Sylas", "attack_windup": 0.167},
+      {"name": "Galio", "api_name": "TFT16_Galio", "attack_windup": 0.083},
+      {"name": "Shyvana", "api_name": "TFT16_Shyvana", "attack_windup": 0.083},
+      {"name": "Fiddlesticks", "api_name": "TFT16_Fiddlesticks", "attack_windup": 2.967, "note": "Channel ability"}
+    ]
+  },
+
+  "measurement_notes": {
+    "setup": [
+      "Use Practice Tool or controlled 1v1 fights",
+      "Remove items to simplify timing",
+      "Record at 120+ FPS (240 ideal)",
+      "Use frame-by-frame playback"
+    ],
+    "anchors": [
+      "Attack start: Unit begins attack animation",
+      "Projectile spawn: Projectile becomes visible",
+      "Damage frame: HP bar changes / damage number appears",
+      "Attack end: Unit returns to idle or starts next attack"
+    ],
+    "formula": {
+      "attack_windup_seconds": "(projectile_spawn_frame - attack_start_frame) / recording_fps",
+      "attack_recovery_seconds": "(attack_end_frame - projectile_spawn_frame) / recording_fps",
+      "total_attack_time": "1 / attack_speed (from stats)"
+    }
+  }
+}
