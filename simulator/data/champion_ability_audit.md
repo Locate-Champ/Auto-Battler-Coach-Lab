@@ -1,0 +1,536 @@
+# TFT Set 16 Champion Ability Audit
+
+## Implementation Status Legend
+- ✅ **Implemented** - Ability mechanics are in champion_abilities.py
+- ⚠️ **Stats Only** - Has data in combat_data.json but no special logic
+- ❌ **Not Implemented** - Missing special mechanics that need coding
+
+---
+
+## Core Combat Mechanics Implemented
+
+1. **Target Retargeting** ✅ - Units find new target when current dies/becomes untargetable
+2. **Untargetable State** ✅ - Fizz, Edge of Night, Zhonya's Paradox
+3. **Form Swapping** ✅ - Kai'Sa AD/AP, Jinx minigun→rockets
+4. **Tank Targeting** ✅ - Frontline units draw aggro
+5. **Enhanced Attacks** ✅ - Fizz post-ability buffed attacks
+6. **Champion Abilities Module** ✅ - 40+ champions in champion_abilities.py
+
+---
+
+## Champion Audit
+
+### Caitlyn (TFT16_Caitlyn) ✅ IMPLEMENTED
+**Ability:** Ace in the Hole - Excess damage on kill
+- ADDamage: 475/715/1105
+- APDamage: 40/60/100
+- **Implemented:** Excess damage overflow to next target (champion_abilities.py)
+
+### Aphelios (TFT16_Aphelios) ✅ IMPLEMENTED
+**Ability:** Incendiary Onslaught
+- NumTargets: 3 (Infernum hits 3 enemies)
+- AttackSpeed: 2.0 during ability
+- SeverumADDamage: 70/105/175
+- Omnivamp: 10%
+- **Implemented:** 3-target Infernum spread with omnivamp healing
+
+### Bard (TFT16_Bard) ✅ IMPLEMENTED
+**Ability:** Traveler's Call
+- Damage: 120/170/240
+- NumMissilesBase: 6
+- PercentDamageOnCurrentTarget: 75%
+- EnemyHexSearchRadius: 3
+- **Implemented:** Meep-based targeting with primary/secondary damage distribution
+
+### Yasuo (TFT16_Yasuo) ✅ IMPLEMENTED
+**Ability:** Sweeping Blade
+- ADDamage: 85/125/190
+- YasuoADPercent: 100% AD scaling
+- AttributeBrothersDamageToYasuo: 1.0 (Yone synergy)
+- **Implemented:** Dash mechanic, Yone combo synergy with damage bonus
+
+### Malzahar (TFT16_Malzahar) ✅ IMPLEMENTED
+**Ability:** Void Swarm
+- NumMinions: 2
+- NumAttacks: 8
+- Damage: 29/43/68 per voidling attack
+- MinionDuration: 90 seconds
+- **Implemented:** Simulated voidling attacks (untargetable damage over time)
+
+### LeBlanc (TFT16_Leblanc) ✅ IMPLEMENTED
+**Ability:** Distortions
+- NumTargets: 3
+- Damage: 300/450/700
+- SecondaryDamage: 180/270/450
+- NearbyEnemyHexRadius: 3
+- StunDuration: 1.0s
+- **Implemented:** Multi-target dash + stun mechanics
+
+### Gangplank (TFT16_Gangplank) ✅ IMPLEMENTED
+**Ability:** Powder Kegs
+- ADDamage: 190/285/450
+- NumofBarrels: 3
+- FalloffDamage: 25%
+- ArmorReduction: 10 (20 on crit)
+- **Implemented:** Barrel chain with damage falloff and armor shred
+
+### Milio (TFT16_Milio) ✅ IMPLEMENTED
+**Ability:** Ultra Mega Fire Kick!!!
+- NumBounces: 3
+- MagicDamage: 190/285/445
+- MagicDamageAOE: 160/240/375
+- BounceSearchRange: 2 hexes
+- **Implemented:** Bouncing projectile with AOE splash
+
+### Loris (TFT16_Loris) ✅ IMPLEMENTED
+**Ability:** Piltover Tussle
+- Shield: 700/800/1000
+- Damage: 150/225/360
+- KnockupDuration: 1.25s
+- ShieldDuration: 4.0s
+- **Implemented:** Dash, taunt, knockup, shield application
+
+### Darius (TFT16_Darius) ✅ IMPLEMENTED
+**Ability:** Decimate
+- ADDamage: 90/135/210
+- APHealing: 180/220/280
+- PhysicalDamagePerSecond: 15/25/40 (bleed)
+- ExecutePercentPerHemorrhage: 8% per stack
+- BleedDuration: 4.0s
+- **Implemented:** Bleed stacking, execute based on stacks, healing
+
+### Draven (TFT16_Draven) ✅ IMPLEMENTED
+**Ability:** Spinning Axes
+- GoldAmount: 1/3/5 gold per takedown
+- ADDamage: 120/170/290
+- TotalTakedown: 11
+- **Implemented:** Axe cycling, gold on takedowns
+
+### Vayne (TFT16_Vayne) ✅ IMPLEMENTED
+**Ability:** Tumble
+- ADDamage: 100/150/230
+- APDamage: 6/10/15
+- HexDashRange: 3 hexes
+- **Implemented:** Dash away from enemies, Silver Bolts 3-hit true damage
+
+### Renekton (TFT16_Renekton) ✅ IMPLEMENTED
+**Ability:** Slice and Dice
+- DashADDamage: 80/120/360
+- SlashADDamage: 50/75/550
+- DashRange: 2 hexes
+- **Implemented:** Dash through enemies, AOE slash on landing
+
+### Veigar (TFT16_Veigar) ✅ IMPLEMENTED
+**Ability:** Dark Storm
+- IncreasedAPRatio: 0.5 (50% bonus AP scaling)
+- NumMeteors: 12/12/24
+- Damage: 62/93/199 per meteor
+- APPerKill: +1 permanent AP
+- PercentOnPrimaryTarget: 70%/70%/50%
+- **Implemented:** Innate AP scaling, permanent AP stacking on kills
+
+### Seraphine (TFT16_Seraphine) ✅ IMPLEMENTED
+**Ability:** Grand Encore
+- DamagePerCrystal: 35/55/300
+- CastBreakpoint: 12 casts for big cast
+- BigCastDamage: 270/405/2200
+- BigCastHeal: 40/80/400
+- CrystalsPerCast: 3
+- BigCastDamageFalloff: 30%
+- **Implemented:** Cast tracking, 12-cast super ability, line damage with falloff
+
+### Lissandra (TFT16_Lissandra) ✅ IMPLEMENTED
+**Ability:** Frozen Tomb
+- TargetDamage: 275/415/2800
+- SecondaryDamage: 415/625/2800 (excess overflow)
+- NumOverkillEnemies: 2
+- StunDuration: 1.0s
+- DamageAmpChilledTargets: 12%
+- **Implemented:** Stun, excess damage overflow to nearby enemies
+
+### Swain (TFT16_Swain) ✅ IMPLEMENTED
+**Ability:** Nevermove
+- PercentMaximumHealthHealing: 1.5%
+- PassiveDamage: 20/30/90 per tick
+- StunDuration: 1.5s (AoE)
+- **Implemented:** AoE stun, passive damage, drain healing
+
+### Yone (TFT16_Yone) ✅ IMPLEMENTED
+**Ability:** Kin of the Stained Blade
+- BasicAttackADDamage: 80/120/800
+- BasicAttackAPDamage: 140/210/1400
+- StrikeADDamage: 160/240/1080
+- KnockupDuration: 1.5s
+- YasuoADPercent: 2.5x with Yasuo
+- DashHexRange: 2.5/2.5/5.0 (3-star doubles)
+- **Implemented:** Yasuo combo synergy, dual AD/AP scaling, knockup
+
+### Lux (TFT16_Lux) ✅ IMPLEMENTED
+**Ability:** Final Spark
+- PrimaryDamage: 330/500/1600 (main laser)
+- SecondaryDamage: 90/135/900
+- QDamage: 30/45/100
+- NumQTargets: 2
+- StunDuration: 1.0s
+- BeamWidth: ~200 game units
+- **Implemented:** Line laser toward target (not board-wide), beam width ~200, Q stun on 2 nearest
+
+### Kai'Sa (TFT16_Kaisa) ✅ PARTIALLY IMPLEMENTED
+**Ability:** Icathian Rain
+- NumMissiles: 15/15/25
+- APDamage: 6/9/20 per missile
+- ADDamage: 39/63/150 per missile
+- NumTargets: 4
+- PercentMissilesOnCurrentTarget: 60%
+- **Implemented:**
+  - AD/AP form swap based on higher stat
+  - Multi-target missile spread
+- **Missing:**
+  - AD form dash (costs 60 mana, starts with 20)
+  - AP form mana mechanics (costs 30, starts 20, no mana gain for 5s)
+
+### Rift Herald ⚠️ STATS ONLY
+- BonusDurability: 0.25→0.8 at 3-star
+- PercentHealthDamage: 6%→12%
+- BonusHealth: 350-2000
+- **Missing:** Durability passive, armor scaling
+
+### Taric (TFT16_Taric) ⚠️ STATS ONLY
+- PassiveDR: 0.9 (90% damage reduction passive!)
+- InvunerabilityHealthThreshold: 35%
+- InvunerabilityDuration: 2s
+- PassiveHeal: 300-2500
+- MRForAllies: 10-100 aura
+- **Missing:**
+  - Passive DR application
+  - Invulnerability trigger at 35% HP
+  - Ally MR aura
+
+### Skarner (TFT16_Skarner) ⚠️ STATS ONLY
+- ArmorForAllies: 10-100 aura
+- ImpaleDuration: 2s→8s at 3-star
+- DamagePercentArmor: 1.2x→25x (armor scaling!)
+- ImpaleMaxTargets: 3→4
+- **Missing:**
+  - Armor aura for allies
+  - Impale grab mechanic
+  - Armor-scaling damage
+
+### Leona (TFT16_Leona) ⚠️ STATS ONLY
+- FlatDR: 15-60 damage reduction
+- PassiveTimer: 4s
+- FlatDRCooldownPerAttacker: 1s per attacker
+- **Missing:**
+  - Passive damage reduction
+  - Diana synergy (MoonlightDamageReduction: 10%)
+
+### Wukong (TFT16_Wukong) ✅ IMPLEMENTED
+- SummonMaxHealthPercent: 40% clone HP
+- SummonFlatHealth: 150-2000 flat HP
+- Resists: 100-400 armor/MR on clone
+- Duration: 4s
+- **Implemented:** Simulated clone damage output
+
+### Warwick (TFT16_Warwick) ⚠️ STATS ONLY
+- AttackSpeed: 0.8→4.0 at 3-star
+- Omnivamp: 15%
+- AllyAttackSpeed: 0.2→0.5 buff
+- AllyBuffDuration: 3s
+- **Missing:**
+  - Single cast only mechanic
+  - Jinx/Vi/Warwick takedown synergy
+  - Ally AS buff application
+
+### Singed (TFT16_Singed) ⚠️ STATS ONLY
+- PoisonCloudDuration: 4s
+- DamagePerSecond: 8→160
+- ArmorMR: 20 reduction aura
+- HealPerSecond: 15→500
+- MovementSpeedMultiplier: 1.4x slow
+- **Missing:**
+  - Walk through enemy units
+  - Aggro drawing from backline
+  - Poison trail placement
+
+### Ambessa (TFT16_Ambessa) ✅ IMPLEMENTED
+- SlamDamageMultiplier: 3.15x
+- ADDamage: 45-320
+- **Implemented:** Dash mechanic, kill reset (mana refund)
+
+### Nidalee (TFT16_Nidalee) ⚠️ STATS ONLY
+- TargetDamage: 320-2000
+- SecondaryDamage: 100-600
+- TankDamageMult: 0.6x (40% less vs tanks)
+- FighterDamageMult: 0.3x (70% less vs fighters)
+- DamageReductionPerCast: 0.7 (30% less per cast)
+- **Missing:**
+  - Huntress passive (extra damage to certain targets)
+  - Cougar form transformation
+  - Reduced damage vs tanks/fighters application
+
+### Miss Fortune (TFT16_MissFortune) ⚠️ STATS ONLY
+- AutoRicochetMultiplier: 0.5→1.0 at 3-star
+- BaseNumWaves: 2→6
+- NumCaststoGainExtraWave: 3
+- **Missing:**
+  - Auto-attack ricochet passive
+  - Wave accumulation tracking
+
+### Diana (TFT16_Diana) ⚠️ STATS ONLY
+- MoonlightDamageReduction: 10%
+- Shield: 100→300
+- HexLimit: 4 hex radius
+- TargetDamage: 125→600
+- DianaAP: 3→5 bonus AP with Leona
+- **Missing:**
+  - Leona synergy passive
+  - Shield + dash mechanic
+  - Pull enemies together
+
+### Ziggs (TFT16_Ziggs) ⚠️ STATS ONLY
+- BABounceNumber: 1 bounce per cast
+- BombAOERange: 4 hex
+- MinAOEDamage: 70→3000
+- MaxAOEDamage: 550→7000
+- **Missing:**
+  - Auto-attack bounce passive
+  - Bomb placement and detonation
+
+### Xerath (TFT16_Xerath) ⚠️ STATS ONLY
+- NumberOfBlasts: 10→99
+- Damage: 390→2500 per blast
+- SpellRangeInEnemies: 4→10
+- XerathCharmExtraBlasts: +3 with charm
+- **Missing:**
+  - Trait store items at first shop
+  - Random but equal damage distribution
+  - Charm item interaction
+
+### Shyvana (TFT16_Shyvana) ⚠️ STATS ONLY
+- TransformHP: 600→9999
+- TransformDurability: 20%→90%
+- DivebombADDamage: 100→3000
+- FireDamagePerSecond: 185→12345 AD, 20→1234 AP
+- SpellDuration: 3s
+- **Missing:**
+  - Dragon form transformation (2 abilities)
+  - Dragon form passive persists until combat end
+  - Durability buff in dragon form
+
+### Fiddlesticks (TFT16_Fiddlesticks) ⚠️ STATS ONLY
+- FearDuration: 1.25→99s at 3-star
+- ManaLossPerSecond: 22 mana/sec
+- NearestBonusDamage: 33% to 2 nearest
+- DamagePerSecond: 100→6666
+- AOERadius: 2 hex
+- **Missing:**
+  - Fear/stun application
+  - Mana drain on enemies
+  - Damage amp to 2 closest
+  - Trait passive (enemy mana drain)
+
+### Kindred (TFT16_Kindred) ⚠️ STATS ONLY
+- ShieldAmount: 350→10000
+- Duration: 2.5→99s at 3-star
+- NumExtraArrows: 1→10
+- HealPercentage: 8%
+- ADDamage: 25→999
+- **Missing:**
+  - Zone shield placement
+  - Double attack speed in zone
+  - Secondary arrow to nearby enemy
+  - Heal on attack
+
+### Lucian & Senna (TFT16_LucianSenna) ⚠️ STATS ONLY
+- Duration: 3s channeled
+- ADDamage: 75→800 per shot
+- NumShots: 12→42
+- FlatArmorReduction: 3→15
+- **Missing:**
+  - Lucian→Senna transition mechanic
+  - Channeled ability interruption
+  - Armor shred stacking
+
+### Aatrox (TFT16_Aatrox) ✅ IMPLEMENTED
+- ADDamage: 95→2400 (first hit)
+- SecondCastPercentDamage: 1.2x (second hit)
+- ThirdCastPercentDamage: 1.6x (third hit)
+- ThirdCastExecute: 15% execute
+- SunderDuration: 4s
+- SecondCastStunDuration: 1s
+- **Implemented:**
+  - 3-hit combo system
+  - Execute on 3rd hit at 15% HP threshold
+  - Stun on 2nd cast
+  - World Ender untargetable + AD from omnivamp
+
+### Zilean (TFT16_Zilean) ⚠️ STATS ONLY
+- MagicDamage: 75→1000
+- ExplosionDamage: 150→4000
+- MaxDurationBeforeKill: 12→16→1s
+- ManaOnKill: 15
+- **Missing:**
+  - Distance-based targeting
+  - Time bomb stacking on same target
+  - Bomb explosion chaining
+
+### Galio (TFT16_Galio) ⚠️ STATS ONLY
+- PassiveMRRatio: 1.0→90.0 (MR scaling!)
+- Shield mechanics
+- **Missing:**
+  - Bench until first Demacia rally
+  - MR passive damage/shield scaling
+  - AP/Armor scaling on ability
+
+### Thresh (TFT16_Thresh) ⚠️ STATS ONLY
+- Soul drain mechanics
+- Box duration
+- HealthDrainPerSoul scaling
+- **Missing:**
+  - Soul collection on deaths
+  - The Box placement and grab
+  - Hook mechanic when Box is active
+
+### Mel (TFT16_Mel) ⚠️ STATS ONLY
+- ManaDrainPerSecond variable
+- Orb mechanics
+- **Missing:**
+  - Mana drain passive (prints radiant items)
+  - Radiant item generation threshold
+
+### Tahm Kench (TFT16_TahmKench) ⚠️ STATS ONLY
+- BellyDuration: 2.5s
+- DamageReduction: 30%
+- **Missing:**
+  - Glutton passive (feed units for stats)
+  - Stat gain table from wiki
+
+### Sett (TFT16_Sett) ⚠️ STATS ONLY
+- Three-dash distances: 320→600 hex
+- **Missing:**
+  - Walking animation enter/exit
+  - Complex trait passive
+  - Slam damage scaling
+
+### Annie (TFT16_Annie) ⚠️ STATS ONLY
+- Damage: 1500→8000 AOE
+- SingleTargetDamage for Tibbers
+- Duration: 45s
+- **Missing:**
+  - Tibbers summon passive
+  - Board-wide enemy damage on first cast
+
+### T-Hex (TFT16_THex) ⚠️ STATS ONLY
+- 4 missiles
+- Missile-to-laser conversion
+- Shield generation
+- **Missing:**
+  - Pilot trait (strength based on pilot)
+  - Missile system during cast
+  - Pilot-dependent scaling
+
+### Baron Nashor (TFT16_BaronNashor) ⚠️ STATS ONLY
+- 10 acid shots per cast
+- 3s refresh (0.25s at 3-star)
+- **Missing:**
+  - Riftscourge trait for Void
+  - Void rift passive (based on ability passive)
+  - Tentacle/acid mechanics
+
+### Zaahen (TFT16_Zaahen) ✅ IMPLEMENTED
+**Note:** EXISTS in combat_data.json as TFT16_Zaahen with Immortal trait
+- AOEDamageMultiplier: 0.4
+- CastsToUlt: 22
+- BigAOEDamageMultiplier: 2.0
+- **Implemented:**
+  - Divine Challenge 22-cast instant kill
+  - Immortal trait resurrection (60% HP)
+  - AOE damage to other enemies
+
+### Ryze (TFT16_Ryze) ⚠️ STATS ONLY
+- Damage: 300→1500 base
+- 25+ trait interactions documented:
+  - Targon: 10% heal
+  - Yordle: 12% DR
+  - Bilgewater: 25% explosion
+  - Void: 30% resist ignore
+  - Shadow Isles: 5% + souls
+  - Piltover: 40% overcharge
+  - Demacia: 12% execute
+  - Freljord: chill + 6% true damage
+  - Zaun: poison/ticks
+  - Shurima: coin/component drops
+  - Noxus/Ionia: DR
+- **Missing:** Trait-dependent ability selection
+
+### Sylas (TFT16_Sylas) ⚠️ STATS ONLY
+- Chainbreaker trait
+- Rotates 3 abilities (Jarvan stun, Garen execute, Lux shield)
+- **Missing:**
+  - Trifold ability rotation
+  - Cannot cast same ability twice in a row
+
+### Brock (TFT16_Brock) ⚠️ STATS ONLY
+- PassivePercentAoE: 50%
+- NumRocks for board effect
+- **Missing:**
+  - Board-wide passive effect
+  - Rock/seismic mechanics
+
+### Aurelion Sol (TFT16_AurelionSol) ✅ IMPLEMENTED
+- Star Forger trait
+- 8 stardust thresholds: 25→1543
+- Damage scales through tiers
+- BonusStardustPerOneStar: 20%
+- BonusStardustPerTwoStar: 33%
+- BonusStardustPerThreeStar: 100%
+- **Implemented:** Stardust accumulation, ability upgrades at thresholds
+
+---
+
+## Shadow Isles Soul Scaling
+All Shadow Isles units have soul-based mechanics:
+- **Thresh:** HealthDrainPerSoul
+- **Gwen:** SnipPerSoulBreakpoint
+- **Kalista:** SoulsPerSpearBreakpoint
+- **Viego:** BaseAttackSpeed from souls
+- Soul multipliers: 1.0x → 1.3x → 1.6x → 1.9x
+- Stat bonuses: 18-33% AD/AP
+
+**Status:** ⚠️ Soul collection system NOT IMPLEMENTED
+
+---
+
+## Implementation Summary
+
+### ✅ Fully Implemented (40+ Champions)
+- **Excess Damage:** Caitlyn, Lissandra
+- **Summons:** Malzahar, Wukong, Annie/Tibbers
+- **Dashes:** Yasuo, Vayne, Renekton, Ambessa, LeBlanc, Fizz, Diana, Loris
+- **Line Abilities:** Lux, Seraphine, Yunara
+- **Executes:** Aatrox, Darius, Zaahen (Divine Challenge)
+- **Stacking:** Veigar (AP), Draven (gold), Seraphine (crystals), Aurelion Sol (stardust)
+- **Synergies:** Yasuo+Yone, Diana+Leona
+- **Special:** Zaahen (Immortal resurrection), Kindred (zone shield), Warwick (single cast)
+
+### ⚠️ Still Pending
+1. **Lucian → Senna** transition
+2. **Shadow Isles** soul collection system
+3. **Ryze** trait-dependent ability selection
+4. **Sylas** trifold ability rotation
+5. **Tahm Kench** glutton feeding
+6. **Galio** bench mechanic
+7. **T-Hex** pilot system
+8. **Baron Nashor** riftscourge
+
+### Implementation Location
+All champion ability handlers are in: `simulator/core/champion_abilities.py`
+
+The `ChampionAbilities` class contains:
+- `cast()` - Main dispatcher that routes to champion-specific handlers
+- `_cast_<champion>()` - Individual ability implementations
+- `check_immortal_resurrection()` - Immortal trait for Zaahen
+
+---
+
+*Last Updated: 2026-02-01*
