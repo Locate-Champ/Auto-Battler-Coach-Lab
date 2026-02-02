@@ -91,15 +91,30 @@ Update `src/models/feature_engineering.py` to:
    - `game_duration_category` - Fast (<25min), Medium, Long (>35min)
 3. **Include augment features** when available
 
-### Phase 3: Model Retraining
+### Phase 3: Playstyle Analysis (Primary Use Case)
+
+**Important:** Historical patch data (16.1, 16.2) should be used for **playstyle profiling only**, not meta recommendations. Balance changes between patches make comp-specific win rates unreliable across patches.
+
+Use all 864 games to identify:
+1. **Carry type performance** - AP vs AD carry win rates (user-specific)
+2. **Trait affinity** - Which trait combinations the user executes well
+3. **Cost curve preferences** - Fast 8 vs slow roll vs hyper roll tendencies
+4. **Positioning patterns** - Frontline/backline ratios, item distribution
+
+Do NOT use historical data for:
+- "This comp is strong" (meta-dependent)
+- "Build this item" (balance changes)
+- Specific unit recommendations (buffs/nerfs shift tier lists)
+
+### Phase 4: Model Training
 With 5x more data:
 
-1. **Retrain placement prediction model** - More robust with 864 samples
-2. **Recalculate playstyle statistics** - Update carry type analysis
-3. **Analyze patch differences** - Compare 16.1 vs 16.2 vs 16.3 performance
-4. **Cross-validation** - Now feasible with larger dataset
+1. **Playstyle classifier** - Identify user's preferred archetypes
+2. **Carry performance model** - Predict success based on carry type + user history
+3. **Cross-validation** - Now feasible with larger dataset
+4. **Current patch validation** - Verify playstyle patterns hold in 16.3 (99 games)
 
-### Phase 4: API Integration
+### Phase 5: API Integration
 Update `app/api/server.py` to:
 
 1. **Serve updated statistics** - Use new combined dataset
