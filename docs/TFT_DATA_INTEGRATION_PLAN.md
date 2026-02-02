@@ -27,6 +27,18 @@ New data file `tft_matches_since_set16.csv` contains **864 matches** from Set 16
 | traits_active | string | `TFT16_Juggernaut:1 \| TFT16_Noxus:2` |
 | final_board_units | string | `Sion_2*(BrambleVest,DragonsClaw) \| ...` |
 
+### Riot Backend Version Mapping
+
+**Important:** Riot's backend version IDs are offset from the public patch numbers:
+
+| Backend Version | Actual Patch | Games | Release Date |
+|-----------------|--------------|-------|--------------|
+| 15.24 | **16.1** | 600 | 12/3/2025 |
+| 16.1 | **16.2** | 165 | 1/8/2026 |
+| 16.2 | **16.3** | 99 | 1/22/2026 (current) |
+
+The preprocessing script must translate backend versions to actual patch numbers.
+
 ### Key Differences from Current Data
 
 | Aspect | Current File | New File |
@@ -34,7 +46,7 @@ New data file `tft_matches_since_set16.csv` contains **864 matches** from Set 16
 | Matches | 163 | 864 |
 | Trait format | `Brawler:1` | `TFT16_Brawler:1` |
 | Augment columns | `aug1, aug2, aug3` | `1-Aug, 2-Aug, 3-Aug` |
-| Set coverage | Set 16.2 only | Set 16.1 + 16.2 |
+| Patch coverage | 16.2 only | 16.1, 16.2, 16.3 |
 
 ---
 
@@ -58,6 +70,15 @@ def normalize_traits(traits_str):
 def standardize_columns(df):
     rename_map = {'1-Aug': 'aug1', '2-Aug': 'aug2', '3-Aug': 'aug3'}
     return df.rename(columns=rename_map)
+
+def map_backend_to_patch(backend_version):
+    # Riot backend versions are offset from public patch numbers
+    VERSION_MAP = {
+        '15.24': '16.1',
+        '16.1': '16.2',
+        '16.2': '16.3',
+    }
+    return VERSION_MAP.get(backend_version, backend_version)
 ```
 
 ### Phase 2: Feature Engineering Updates
@@ -75,7 +96,7 @@ With 5x more data:
 
 1. **Retrain placement prediction model** - More robust with 864 samples
 2. **Recalculate playstyle statistics** - Update carry type analysis
-3. **Analyze patch differences** - Compare 16.1 vs 16.2 performance
+3. **Analyze patch differences** - Compare 16.1 vs 16.2 vs 16.3 performance
 4. **Cross-validation** - Now feasible with larger dataset
 
 ### Phase 4: API Integration
