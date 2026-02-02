@@ -305,6 +305,7 @@ class TraitManager:
     - Blacksmith (Ornn): Craft artifact items over 4 rounds
     - Bilgewater: Serpent currency for store purchases
     - Piltover: T-Hex modules at 2/4/6 trait count
+    - Shadow Isles: Soul collection from enemy deaths
     """
 
     # Bilgewater serpent rewards by trait count
@@ -316,6 +317,22 @@ class TraitManager:
     }
     BILGEWATER_SERPENTS_PER_TAKEDOWN = 2
 
+    # Shadow Isles soul multipliers by trait count
+    SHADOW_ISLES_SOUL_MULTIPLIER = {
+        2: 1.0,
+        3: 1.3,
+        4: 1.6,
+        5: 1.9,
+    }
+
+    # Shadow Isles AD/AP bonus by trait count
+    SHADOW_ISLES_STAT_BONUS = {
+        2: 0.18,  # 18% AD/AP
+        3: 0.20,  # 20% AD/AP
+        4: 0.25,  # 25% AD/AP
+        5: 0.33,  # 33% AD/AP
+    }
+
     def __init__(self):
         self.blacksmith_progress: Dict[str, int] = {}  # unit_id -> rounds_crafted
         self.blacksmith_items: Dict[str, List[str]] = {}  # unit_id -> list of crafted artifacts
@@ -324,6 +341,11 @@ class TraitManager:
         self.piltover_modules: List[str] = []
         self.round_number: int = 0
         self.bilgewater_count: int = 0  # Current Bilgewater trait count
+
+        # Shadow Isles soul tracking
+        self.shadow_isles_souls: int = 0
+        self.shadow_isles_count: int = 0  # Current Shadow Isles trait count
+        self.shadow_isles_units: List['Unit'] = []  # Units with the trait
 
     def start_round(self, units: List['Unit']):
         """Process start of round for trait mechanics."""
@@ -511,6 +533,95 @@ class TraitManager:
             available_modules.extend(tier3_modules)
 
         return available_modules
+
+    # =========================================================================
+    # SHADOW ISLES SOUL COLLECTION
+    # =========================================================================
+
+    def set_shadow_isles_count(self, count: int, units: List['Unit'] = None):
+        """Set the current Shadow Isles trait count and track affected units.
+
+        Args:
+            count: Number of Shadow Isles champions active
+            units: List of Shadow Isles units to track
+        """
+        self.shadow_isles_count = count
+        if units:
+            self.shadow_isles_units = units
+
+    def award_soul(self, victim_cost: int = 1, victim_star: int = 1) -> int:
+        """Award souls when an enemy dies.
+
+        Soul value is based on victim's cost and star level.
+        Higher cost/star units are worth more souls.
+
+        Args:
+            victim_cost: Champion cost (1-5)
+            victim_star: Star level (1-3)
+
+        Returns:
+            Number of souls awarded
+        """
+        if self.shadow_isles_count < 2:
+            return 0
+
+        # Base souls by cost
+        cost_souls = {1: 1, 2: 2, 3: 3, 4: 5, 5: 8}
+        base_souls = cost_souls.get(victim_cost, 1)
+
+        # Star level multiplier
+        star_mult = {1: 1.0, 2: 1.5, 3: 2.0}
+        souls = int(base_souls * star_mult.get(victim_star, 1.0))
+
+        # Apply trait count multiplier
+        soul_mult = 1.0
+        for tier in sorted(self.SHADOW_ISLES_SOUL_MULTIPLIER.keys(), reverse=True):
+            if self.shadow_isles_count >= tier:
+                soul_mult = self.SHADOW_ISLES_SOUL_MULTIPLIER[tier]
+                break
+
+        souls = int(souls * soul_mult)
+        self.shadow_isles_souls += souls
+
+        return souls
+
+    def get_shadow_isles_stat_bonus(self) -> float:
+        """Get the AD/AP bonus percentage for Shadow Isles units.
+
+        Returns:
+            Stat bonus as a decimal (0.18 = 18%)
+        """
+        if self.shadow_isles_count < 2:
+            return 0.0
+
+        for tier in sorted(self.SHADOW_ISLES_STAT_BONUS.keys(), reverse=True):
+            if self.shadow_isles_count >= tier:
+                return self.SHADOW_ISLES_STAT_BONUS[tier]
+
+        return 0.0
+
+    def apply_shadow_isles_stats(self, units: List['Unit']):
+        """Apply Shadow Isles stat bonuses to units with the trait.
+
+        Called at combat start to give AD/AP bonus based on trait count.
+        """
+        if self.shadow_isles_count < 2:
+            return
+
+        bonus = self.get_shadow_isles_stat_bonus()
+
+        for unit in units:
+            if 'Shadow Isles' in unit.traits:
+                # Apply AD/AP bonus (percentage of base stats)
+                ad_bonus = unit.base_stats.ad * bonus
+                ap_bonus = unit.stats.ap * bonus if unit.stats.ap > 0 else 10 * bonus
+
+                unit.stats.ad += ad_bonus
+                unit.stats.ap += ap_bonus
+
+    def reset_shadow_isles(self):
+        """Reset Shadow Isles state for new combat."""
+        self.shadow_isles_souls = 0
 
 
 # =============================================================================
@@ -1011,6 +1122,20 @@ class CombatEngine:
                         self.log_event('bilgewater_takedown', killer=attacker.name,
                                       victim=defender.name, serpents=serpents,
                                       total=self.trait_manager.bilgewater_serpents)
+
+                # Award Shadow Isles souls for takedown
+                if self.trait_manager.shadow_isles_count >= 2 and attacker.team != defender.team:
+                    # Get victim's cost (from champion data)
+                    victim_data = self.champions.get(defender.api_name, {})
+                    victim_cost = victim_data.get('cost', 1)
+                    victim_star = defender.star_level
+
+                    souls = self.trait_manager.award_soul(victim_cost, victim_star)
+                    if souls > 0:
+                        self.log_event('shadow_isles_soul', killer=attacker.name,
+                                      victim=defender.name, souls=souls,
+                                      total=self.trait_manager.shadow_isles_souls,
+                                      victim_cost=victim_cost, victim_star=victim_star)
 
         self.log_event('damage', source=source, attacker=attacker.name,
                       defender=defender.name, damage=round(actual_damage, 1),
@@ -1602,6 +1727,16 @@ class CombatEngine:
             self.log_event('piltover_modules', count=piltover_count,
                           available=len(available_modules))
 
+        # Shadow Isles soul collection setup
+        shadow_isles_count = trait_counts.get('Shadow Isles', 0)
+        if shadow_isles_count >= 2:
+            shadow_isles_units = [u for u in team if 'Shadow Isles' in u.traits]
+            self.trait_manager.set_shadow_isles_count(shadow_isles_count, shadow_isles_units)
+            self.trait_manager.apply_shadow_isles_stats(team)
+            self.log_event('shadow_isles_setup', count=shadow_isles_count,
+                          units=[u.name for u in shadow_isles_units],
+                          stat_bonus=self.trait_manager.get_shadow_isles_stat_bonus())
+
     def run_combat(self, team0: List[Unit], team1: List[Unit],
                   max_time: float = 60.0, verbose: bool = False) -> Dict:
         """Run a full combat simulation."""
@@ -1610,6 +1745,9 @@ class CombatEngine:
         self.combat_log = []
         self.units = team0 + team1
         self.projectiles = []
+
+        # Reset Shadow Isles souls for new combat
+        self.trait_manager.reset_shadow_isles()
 
         # Process round start for traits (both teams)
         self.process_round_start(team0)
