@@ -1455,16 +1455,15 @@ class ChampionAbilities:
 
     def _cast_thresh(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                      ability_vars: Dict) -> bool:
-        """Thresh - The Box: Hook enemies, drain health from souls."""
+        """Thresh - The Box: Hook enemies, drain health based on team's Shadow Isles souls."""
         from .combat_engine import DamageType
 
-        # Track souls from enemy deaths (Shadow Isles mechanic)
-        if not hasattr(unit, '_thresh_souls'):
-            unit._thresh_souls = 0
+        # Get soul count from centralized TraitManager
+        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
 
-        # Get damage based on souls
+        # Get damage variables
         health_drain_per_soul = self._get_var(ability_vars, 'HealthDrainPerSoul', unit.star_level, 5)
-        box_damage = self._get_var(ability_vars, 'BoxDamage', unit.star_level, 100)
+        box_damage = self._get_var(ability_vars, 'APPassiveDamage', unit.star_level, 50)
 
         # Hook nearest enemy
         target = unit.target or self._find_nearest_enemy(unit, enemies)
@@ -1479,13 +1478,15 @@ class ChampionAbilities:
             self._deal_damage(unit, target, box_damage + unit.stats.ap,
                              DamageType.MAGIC, "thresh_box")
 
-            # Drain based on souls
-            if unit._thresh_souls > 0:
-                drain_damage = health_drain_per_soul * unit._thresh_souls
+            # Drain based on team's Shadow Isles souls
+            if soul_count > 0:
+                drain_damage = health_drain_per_soul * soul_count
                 self._deal_damage(unit, target, drain_damage, DamageType.MAGIC, "thresh_soul_drain")
                 self.engine.heal_unit(unit, drain_damage * 0.5, "thresh_soul_heal")
 
         unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="The Box",
+                             souls=soul_count, drain=health_drain_per_soul * soul_count if soul_count > 0 else 0)
         return True
 
     def _cast_warwick(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
@@ -1730,3 +1731,573 @@ class ChampionAbilities:
         self.engine.log_event('immortal_resurrect', unit=unit.name,
                              hp=unit.stats.hp)
         return True
+
+    # =========================================================================
+    # LUCIAN & SENNA - Soulbound Transition
+    # =========================================================================
+
+    def _cast_lucian(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                     ability_vars: Dict) -> bool:
+        """Lucian - The Culling: Channel then swap to Senna.
+
+        Soulbound mechanic: Lucian and Senna swap when either casts.
+        While Lucian is out: Team gets 7% damage amp
+        While Senna is out: Team gets 7% damage reduction
+        """
+        from .combat_engine import DamageType
+
+        # Get ability variables
+        duration = self._get_var(ability_vars, 'Duration', unit.star_level, 3.0)
+        ap_damage = self._get_var(ability_vars, 'APDamage', unit.star_level, 12)
+        ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 120)
+        num_shots = int(self._get_var(ability_vars, 'NumShots', unit.star_level, 12))
+        armor_reduction = self._get_var(ability_vars, 'FlatArmorReduction', unit.star_level, 3)
+
+        # Fire shots at current target
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Apply armor reduction
+        target.stats.armor = max(0, target.stats.armor - armor_reduction)
+
+        # Deal damage with all shots
+        damage_per_shot = ad_damage + unit.stats.ad + ap_damage + unit.stats.ap
+        for i in range(num_shots):
+            if not target.is_alive:
+                target = self._find_nearest_enemy(unit, enemies)
+                if not target:
+                    break
+            self._deal_damage(unit, target, damage_per_shot,
+                             DamageType.PHYSICAL, f"lucian_shot_{i+1}")
+
+        # Swap to Senna after casting
+        self._soulbound_swap(unit, allies, to_senna=True)
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="The Culling",
+                             shots=num_shots)
+        return True
+
+    def _cast_senna(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Senna - Dawning Shadow: Long-range beam then swap to Lucian.
+
+        Note: Senna shares data with Lucian in combat_data.json.
+        Using estimated values based on typical Senna mechanics.
+        """
+        from .combat_engine import DamageType
+
+        # Senna's ability: Line damage + heal allies
+        # Using similar scaling to Lucian
+        ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 120)
+        ap_damage = self._get_var(ability_vars, 'APDamage', unit.star_level, 12)
+
+        # Fire beam across the board (hits all enemies in line)
+        unit_row = unit.position[0]
+        targets_hit = []
+
+        for enemy in enemies:
+            if not enemy.is_alive or not enemy.is_targetable:
+                continue
+            # Hit enemies in same row or adjacent
+            if abs(enemy.position[0] - unit_row) <= 1:
+                damage = ad_damage + unit.stats.ad + ap_damage + unit.stats.ap
+                self._deal_damage(unit, enemy, damage, DamageType.PHYSICAL, "senna_beam")
+                targets_hit.append(enemy.name)
+
+        # Heal allies in beam path
+        heal_amount = (ap_damage + unit.stats.ap) * 0.5
+        for ally in allies:
+            if ally.is_alive and abs(ally.position[0] - unit_row) <= 1:
+                self.engine.heal_unit(ally, heal_amount, "senna_heal")
+
+        # Swap back to Lucian after casting
+        self._soulbound_swap(unit, allies, to_senna=False)
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Dawning Shadow",
+                             targets=targets_hit)
+        return True
+
+    def _soulbound_swap(self, unit: 'Unit', allies: List['Unit'], to_senna: bool):
+        """Handle Soulbound swap between Lucian and Senna.
+
+        - When swapping to Senna: Remove damage amp, add damage reduction
+        - When swapping to Lucian: Remove damage reduction, add damage amp
+        """
+        damage_amp = 0.07  # 7% from Soulbound trait
+        damage_reduction = 0.07
+
+        # Track which form is active
+        if not hasattr(unit, '_soulbound_is_senna'):
+            unit._soulbound_is_senna = False
+
+        if to_senna and not unit._soulbound_is_senna:
+            # Swap to Senna
+            unit._soulbound_is_senna = True
+            unit.name = "Senna"
+            unit.api_name = "TFT16_Senna"
+
+            # Update team buffs: Remove damage amp, add damage reduction
+            for ally in allies:
+                if ally.is_alive:
+                    ally.stats.damage_amp = max(0, ally.stats.damage_amp - damage_amp)
+                    ally.stats.damage_reduction += damage_reduction
+
+            self.engine.log_event('soulbound_swap', from_unit="Lucian", to_unit="Senna",
+                                 team_buff="7% Damage Reduction")
+
+        elif not to_senna and unit._soulbound_is_senna:
+            # Swap to Lucian
+            unit._soulbound_is_senna = False
+            unit.name = "Lucian & Senna"
+            unit.api_name = "TFT16_Lucian"
+
+            # Update team buffs: Remove damage reduction, add damage amp
+            for ally in allies:
+                if ally.is_alive:
+                    ally.stats.damage_reduction = max(0, ally.stats.damage_reduction - damage_reduction)
+                    ally.stats.damage_amp += damage_amp
+
+            self.engine.log_event('soulbound_swap', from_unit="Senna", to_unit="Lucian",
+                                 team_buff="7% Damage Amp")
+
+    # =========================================================================
+    # RYZE - Trait-Dependent Ability
+    # =========================================================================
+
+    def _cast_ryze(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                   ability_vars: Dict) -> bool:
+        """Ryze - Runic Overload: Ability effect changes based on active team traits.
+
+        25+ trait interactions with different effects.
+        """
+        from .combat_engine import DamageType
+
+        # Base damage
+        base_damage = self._get_var(ability_vars, 'Damage', unit.star_level, 425)
+        split_damage_pct = self._get_var(ability_vars, 'SplitPercentDamage', unit.star_level, 0.33)
+
+        # Get active traits on team
+        team_traits = self._get_team_traits(unit, allies)
+
+        # Find primary target
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Base damage to primary target
+        damage = base_damage + unit.stats.ap
+        actual, _ = self._deal_damage(unit, target, damage, DamageType.MAGIC, "ryze_overload")
+
+        # Secondary damage to nearby enemies
+        nearby = self._get_enemies_in_radius(target.position, 2, enemies)
+        for enemy in nearby:
+            if enemy != target:
+                secondary_damage = damage * split_damage_pct
+                self._deal_damage(unit, enemy, secondary_damage, DamageType.MAGIC, "ryze_split")
+
+        # Apply trait-specific effects
+        effect_applied = self._apply_ryze_trait_effect(unit, target, enemies, allies, ability_vars, team_traits)
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Runic Overload",
+                             active_traits=list(team_traits.keys()), effect=effect_applied)
+        return True
+
+    def _get_team_traits(self, unit: 'Unit', allies: List['Unit']) -> Dict[str, int]:
+        """Get all active traits and their counts on the team."""
+        trait_counts = {}
+        all_units = [unit] + [a for a in allies if a.is_alive]
+
+        for u in all_units:
+            for trait in u.traits:
+                trait_counts[trait] = trait_counts.get(trait, 0) + 1
+
+        return trait_counts
+
+    def _apply_ryze_trait_effect(self, unit: 'Unit', target: 'Unit',
+                                  enemies: List['Unit'], allies: List['Unit'],
+                                  ability_vars: Dict, team_traits: Dict[str, int]) -> str:
+        """Apply Ryze's trait-dependent effect based on active traits.
+
+        Returns the name of the effect applied.
+        """
+        from .combat_engine import DamageType
+
+        # Priority order for trait effects (higher priority first)
+        # Each trait gives a unique bonus effect
+
+        # TARGON - 10% heal
+        if team_traits.get('Targon', 0) >= 2:
+            heal_pct = self._get_var(ability_vars, 'TargonHealPercent', unit.star_level, 0.10)
+            heal_amount = unit.stats.max_hp * heal_pct
+            self.engine.heal_unit(unit, heal_amount, "ryze_targon")
+            return "Targon: 10% HP heal"
+
+        # YORDLE - 12% damage reduction for 4s
+        if team_traits.get('Yordle', 0) >= 3:
+            dr_pct = self._get_var(ability_vars, 'YordleDamageReductionPercent', unit.star_level, 0.12)
+            unit.stats.damage_reduction += dr_pct
+            # Note: Duration tracking would need buff system
+            return f"Yordle: {dr_pct*100:.0f}% DR"
+
+        # BILGEWATER - 25% explosion damage
+        if team_traits.get('Bilgewater', 0) >= 3:
+            explosion_pct = self._get_var(ability_vars, 'BilgewaterExplosionPercent', unit.star_level, 0.25)
+            base_damage = self._get_var(ability_vars, 'Damage', unit.star_level, 425)
+            explosion_damage = (base_damage + unit.stats.ap) * explosion_pct
+            nearby = self._get_enemies_in_radius(target.position, 2, enemies)
+            for enemy in nearby:
+                self._deal_damage(unit, enemy, explosion_damage, DamageType.MAGIC, "ryze_bilgewater")
+            return f"Bilgewater: {explosion_pct*100:.0f}% explosion"
+
+        # VOID - 30% resist ignore
+        if team_traits.get('Void', 0) >= 2:
+            resist_ignore = self._get_var(ability_vars, 'VoidResistIgnore', unit.star_level, 0.30)
+            # Apply as MR shred
+            mr_shred = target.stats.magic_resist * resist_ignore
+            target.stats.magic_resist = max(0, target.stats.magic_resist - mr_shred)
+            return f"Void: {resist_ignore*100:.0f}% resist ignore"
+
+        # SHADOW ISLES - 5% + soul scaling
+        if team_traits.get('Shadow Isles', 0) >= 2:
+            base_pct = self._get_var(ability_vars, 'ShadowIslesBasePercentage', unit.star_level, 0.05)
+            souls_per_bonus = self._get_var(ability_vars, 'ShadowIslesSoulsNeededForOnePercentBonusDamage', unit.star_level, 8)
+            # Get soul count from trait manager
+            soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+            bonus_pct = soul_count / souls_per_bonus / 100  # Convert to percentage
+            total_pct = base_pct + bonus_pct
+            bonus_damage = (self._get_var(ability_vars, 'Damage', unit.star_level, 425) + unit.stats.ap) * total_pct
+            self._deal_damage(unit, target, bonus_damage, DamageType.MAGIC, "ryze_shadow_isles")
+            return f"Shadow Isles: {total_pct*100:.1f}% bonus ({soul_count} souls)"
+
+        # PILTOVER - 40% overcharge
+        if team_traits.get('Piltover', 0) >= 2:
+            overcharge_pct = self._get_var(ability_vars, 'PiltoverOverchargePercentBonus', unit.star_level, 0.40)
+            overcharge_damage = (self._get_var(ability_vars, 'Damage', unit.star_level, 425) + unit.stats.ap) * overcharge_pct
+            self._deal_damage(unit, target, overcharge_damage, DamageType.MAGIC, "ryze_piltover")
+            return f"Piltover: {overcharge_pct*100:.0f}% overcharge"
+
+        # DEMACIA - 12% execute threshold
+        if team_traits.get('Demacia', 0) >= 2:
+            execute_threshold = self._get_var(ability_vars, 'DemaciaExecuteThreshold', unit.star_level, 0.12)
+            if target.is_alive and target.stats.hp / target.stats.max_hp <= execute_threshold:
+                self.engine.apply_damage(unit, target, target.stats.hp + 1,
+                                        DamageType.TRUE, "ryze_demacia_execute")
+                return f"Demacia: Execute at {execute_threshold*100:.0f}%"
+            return f"Demacia: {execute_threshold*100:.0f}% execute threshold (not triggered)"
+
+        # FRELJORD - chill + 6% max HP true damage
+        if team_traits.get('Freljord', 0) >= 2:
+            chill_duration = self._get_var(ability_vars, 'FreljordChillDuration', unit.star_level, 4.0)
+            true_damage_pct = self._get_var(ability_vars, 'FreljordTrueDamagePercentHealth', unit.star_level, 0.06)
+            # Apply chill (slow attack speed)
+            target.stats.attack_speed *= 0.7  # 30% AS slow
+            # True damage
+            true_damage = target.stats.max_hp * true_damage_pct
+            self.engine.apply_damage(unit, target, true_damage, DamageType.TRUE, "ryze_freljord")
+            return f"Freljord: Chill + {true_damage_pct*100:.0f}% max HP true damage"
+
+        # ZAUN - poison ticks
+        if team_traits.get('Zaun', 0) >= 2:
+            poison_damage = self._get_var(ability_vars, 'ZaunDamage', unit.star_level, 30)
+            base_ticks = int(self._get_var(ability_vars, 'ZaunBaseTicks', unit.star_level, 3))
+            poison_duration = self._get_var(ability_vars, 'ZaunPoisonDuration', unit.star_level, 4.0)
+            total_poison = poison_damage * base_ticks
+            self._deal_damage(unit, target, total_poison + unit.stats.ap, DamageType.MAGIC, "ryze_zaun_poison")
+            return f"Zaun: {base_ticks} poison ticks"
+
+        # SHURIMA - knockup + gold/component chance
+        if team_traits.get('Shurima', 0) >= 2:
+            knockup_duration = self._get_var(ability_vars, 'ShurimaKnockUpDuration', unit.star_level, 0.5)
+            self._apply_stun(target, knockup_duration, "ryze_shurima_knockup")
+            # Gold chance (tracked for post-combat)
+            coin_chance = self._get_var(ability_vars, 'ShurimaCoinChance', unit.star_level, 0.12)
+            if not hasattr(unit, '_ryze_shurima_gold_chances'):
+                unit._ryze_shurima_gold_chances = 0
+            unit._ryze_shurima_gold_chances += 1
+            return f"Shurima: {knockup_duration}s knockup + {coin_chance*100:.0f}% gold chance"
+
+        # NOXUS - damage reduction
+        if team_traits.get('Noxus', 0) >= 3:
+            dr_pct = self._get_var(ability_vars, 'NoxusPercentDamageReduction', unit.star_level, 0.60)
+            # Apply to nearby allies (brief DR)
+            nearby_allies = [a for a in allies if a.is_alive and
+                           self._hex_distance(unit.position, a.position) <= 2]
+            for ally in nearby_allies:
+                ally.stats.damage_reduction += dr_pct * 0.25  # Scaled down for balance
+            return f"Noxus: {dr_pct*25:.0f}% DR to nearby allies"
+
+        # IONIA - reduced damage taken
+        if team_traits.get('Ionia', 0) >= 3:
+            dr_pct = self._get_var(ability_vars, 'IoniaDamageReduction', unit.star_level, 0.50)
+            unit.stats.damage_reduction += dr_pct * 0.5  # 25% for 1 cast
+            return f"Ionia: {dr_pct*50:.0f}% damage reduction"
+
+        # No matching trait - default effect
+        return "No trait bonus"
+
+    # =========================================================================
+    # SYLAS - Trifold Ability Rotation
+    # =========================================================================
+
+    def _cast_sylas(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Sylas - Stolen Might: Rotates between 3 stolen abilities.
+
+        1. Jarvan - AoE stun
+        2. Garen - Single target execute
+        3. Lux - Team shield + line damage
+
+        Cannot cast the same ability twice in a row.
+        """
+        from .combat_engine import DamageType
+
+        # Track which ability was last used (0=none, 1=jarvan, 2=garen, 3=lux)
+        if not hasattr(unit, '_sylas_last_ability'):
+            unit._sylas_last_ability = 0
+
+        # Determine which ability to use based on situation
+        # Priority: Execute (Garen) if target is low, Stun (Jarvan) if multiple enemies, Shield (Lux) if low HP
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Get all ability variables
+        jarvan_damage = self._get_var(ability_vars, 'JarvanDamage', unit.star_level, 180)
+        jarvan_stun = self._get_var(ability_vars, 'JarvanStunDuration', unit.star_level, 1.75)
+        jarvan_radius = int(self._get_var(ability_vars, 'JarvanSearchRadius', unit.star_level, 2))
+
+        garen_damage = self._get_var(ability_vars, 'GarenDamage', unit.star_level, 1000)
+        garen_execute = self._get_var(ability_vars, 'GarenExecute', unit.star_level, 0.15)
+
+        lux_shield = self._get_var(ability_vars, 'LuxShield', unit.star_level, 450)
+        lux_damage = self._get_var(ability_vars, 'LuxDamage', unit.star_level, 475)
+        shield_duration = self._get_var(ability_vars, 'ShieldDuration', unit.star_level, 1.25)
+
+        # Determine best ability (cannot repeat last)
+        hp_percent = unit.stats.hp / unit.stats.max_hp
+        target_hp_percent = target.stats.hp / target.stats.max_hp
+        nearby_enemies = self._get_enemies_in_radius(unit.position, jarvan_radius, enemies)
+
+        # Score each ability
+        scores = {
+            1: 0,  # Jarvan - better with more enemies
+            2: 0,  # Garen - better against low HP targets
+            3: 0,  # Lux - better when Sylas is low HP
+        }
+
+        # Jarvan score: more enemies nearby = better
+        if unit._sylas_last_ability != 1:
+            scores[1] = len(nearby_enemies) * 2 + (1 if len(nearby_enemies) >= 3 else 0)
+
+        # Garen score: target is low HP = better (execute potential)
+        if unit._sylas_last_ability != 2:
+            if target_hp_percent <= garen_execute:
+                scores[2] = 10  # Guaranteed execute
+            else:
+                scores[2] = (1 - target_hp_percent) * 5  # Lower HP = higher score
+
+        # Lux score: Sylas is low HP = better (needs shield)
+        if unit._sylas_last_ability != 3:
+            scores[3] = (1 - hp_percent) * 5 + 1  # Lower HP = higher score
+
+        # Pick highest scoring ability
+        best_ability = max(scores.keys(), key=lambda k: scores[k])
+
+        # Execute the chosen ability
+        if best_ability == 1:
+            # JARVAN - AoE stun
+            for enemy in nearby_enemies:
+                self._apply_stun(enemy, jarvan_stun, "sylas_jarvan_stun")
+                self._deal_damage(unit, enemy, jarvan_damage + unit.stats.ap,
+                                 DamageType.MAGIC, "sylas_jarvan")
+            unit._sylas_last_ability = 1
+            ability_name = "Jarvan (AoE Stun)"
+            self.engine.log_event('sylas_ability', unit=unit.name, ability="Jarvan",
+                                 targets=[e.name for e in nearby_enemies], stun=jarvan_stun)
+
+        elif best_ability == 2:
+            # GAREN - Execute
+            if target_hp_percent <= garen_execute:
+                # Execute!
+                self.engine.apply_damage(unit, target, target.stats.hp + 1,
+                                        DamageType.TRUE, "sylas_garen_execute")
+                self.engine.log_event('execute', unit=unit.name, target=target.name,
+                                     threshold=garen_execute, ability="Garen")
+            else:
+                # Normal damage
+                self._deal_damage(unit, target, garen_damage + unit.stats.ap,
+                                 DamageType.MAGIC, "sylas_garen")
+            unit._sylas_last_ability = 2
+            ability_name = "Garen (Execute)"
+
+        else:
+            # LUX - Shield + line damage
+            # Shield self and nearby allies
+            self.engine.apply_shield(unit, lux_shield + unit.stats.ap * 0.5, "sylas_lux_shield")
+            nearby_allies = [a for a in allies if a.is_alive and
+                           self._hex_distance(unit.position, a.position) <= 2]
+            for ally in nearby_allies:
+                self.engine.apply_shield(ally, lux_shield * 0.5, "sylas_lux_shield")
+
+            # Line damage toward target
+            unit_row = unit.position[0]
+            for enemy in enemies:
+                if enemy.is_alive and enemy.is_targetable:
+                    if abs(enemy.position[0] - unit_row) <= 1:
+                        self._deal_damage(unit, enemy, lux_damage + unit.stats.ap,
+                                         DamageType.MAGIC, "sylas_lux_beam")
+            unit._sylas_last_ability = 3
+            ability_name = "Lux (Shield + Beam)"
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability=f"Stolen Might: {ability_name}",
+                             last_ability=unit._sylas_last_ability)
+        return True
+
+    # =========================================================================
+    # SHADOW ISLES SOUL COLLECTION - Champion Updates
+    # =========================================================================
+
+    def _cast_gwen(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                   ability_vars: Dict) -> bool:
+        """Gwen - Snip Snip!: Cone damage with extra snips from souls."""
+        from .combat_engine import DamageType
+
+        base_snips = int(self._get_var(ability_vars, 'SnipCount', unit.star_level, 5))
+        snip_per_soul = self._get_var(ability_vars, 'SnipPerSoulBreakpoint', unit.star_level, 1)
+        soul_breakpoint = self._get_var(ability_vars, 'SoulBreakpoint', unit.star_level, 80)
+        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 68)
+        secondary_damage = self._get_var(ability_vars, 'SecondaryDamage', unit.star_level, 30)
+
+        # Get soul count for bonus snips
+        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        bonus_snips = int(soul_count / soul_breakpoint * snip_per_soul)
+        total_snips = base_snips + bonus_snips
+
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Snip snip in a cone
+        # Primary target gets all snips
+        for i in range(total_snips):
+            if not target.is_alive:
+                target = self._find_nearest_enemy(unit, enemies)
+                if not target:
+                    break
+            self._deal_damage(unit, target, damage + unit.stats.ap,
+                             DamageType.MAGIC, f"gwen_snip_{i+1}")
+
+        # Secondary targets in cone get fewer snips
+        nearby = self._get_enemies_in_radius(target.position, 2, enemies)
+        for enemy in nearby:
+            if enemy != target and enemy.is_alive:
+                snips_on_secondary = max(1, total_snips // 3)
+                for _ in range(snips_on_secondary):
+                    self._deal_damage(unit, enemy, secondary_damage + unit.stats.ap * 0.3,
+                                     DamageType.MAGIC, "gwen_secondary_snip")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Snip Snip!",
+                             snips=total_snips, souls=soul_count)
+        return True
+
+    def _cast_kalista(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                      ability_vars: Dict) -> bool:
+        """Kalista - Endless Rend: Multi-target spears with soul scaling."""
+        from .combat_engine import DamageType
+
+        ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 48)
+        ap_damage = self._get_var(ability_vars, 'APDamage', unit.star_level, 5)
+        num_enemies = int(self._get_var(ability_vars, 'NumberOfEnemies', unit.star_level, 4))
+        base_spears = int(self._get_var(ability_vars, 'BaseSpears', unit.star_level, 20))
+        souls_per_spear = self._get_var(ability_vars, 'SoulsPerSpearBreakpoint', unit.star_level, 25)
+        spears_per_breakpoint = int(self._get_var(ability_vars, 'SpearsPerBreakpoint', unit.star_level, 1))
+        armor_reduction = self._get_var(ability_vars, 'ArmorReduction', unit.star_level, 1)
+        pct_on_primary = self._get_var(ability_vars, 'PercentMissilesOnPrimaryTarget', unit.star_level, 0.5)
+
+        # Get soul count for bonus spears
+        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        bonus_spears = int(soul_count / souls_per_spear) * spears_per_breakpoint
+        total_spears = base_spears + bonus_spears
+
+        # Get targets
+        targets = sorted([e for e in enemies if e.is_alive and e.is_targetable],
+                        key=lambda e: self._hex_distance(unit.position, e.position))[:num_enemies]
+
+        if not targets:
+            return False
+
+        primary_target = targets[0]
+        primary_spears = int(total_spears * pct_on_primary)
+        secondary_spears = total_spears - primary_spears
+
+        # Apply armor reduction
+        for target in targets:
+            target.stats.armor = max(0, target.stats.armor - armor_reduction)
+
+        # Primary target spears
+        for i in range(primary_spears):
+            if not primary_target.is_alive:
+                break
+            self._deal_damage(unit, primary_target, ad_damage + unit.stats.ad + ap_damage,
+                             DamageType.PHYSICAL, "kalista_spear")
+
+        # Secondary targets
+        if len(targets) > 1:
+            spears_each = secondary_spears // (len(targets) - 1)
+            for target in targets[1:]:
+                for _ in range(spears_each):
+                    if not target.is_alive:
+                        break
+                    self._deal_damage(unit, target, ad_damage + unit.stats.ad,
+                                     DamageType.PHYSICAL, "kalista_spear_secondary")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Endless Rend",
+                             spears=total_spears, souls=soul_count)
+        return True
+
+    def _cast_viego(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Viego - Blade of the Ruined King: Stacking damage with soul AS scaling."""
+        from .combat_engine import DamageType
+
+        ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 85)
+        stacking_damage = self._get_var(ability_vars, 'StackingDamage', unit.star_level, 27)
+        souls_for_as = self._get_var(ability_vars, 'SoulsForAttackSpeed', unit.star_level, 6)
+        as_per_breakpoint = self._get_var(ability_vars, 'AttackSpeedPerSoulBreakpoint', unit.star_level, 1)
+        base_as = self._get_var(ability_vars, 'BaseAttackSpeed', unit.star_level, 10) / 100  # Convert to decimal
+
+        # Get soul count for bonus attack speed
+        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        bonus_as = (soul_count / souls_for_as) * as_per_breakpoint / 100  # Percentage
+
+        # Track stacks on unit
+        if not hasattr(unit, '_viego_stacks'):
+            unit._viego_stacks = 0
+        unit._viego_stacks += 1
+
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Deal damage with stacking bonus
+        total_damage = ad_damage + unit.stats.ad + (stacking_damage * unit._viego_stacks)
+        self._deal_damage(unit, target, total_damage, DamageType.PHYSICAL, "viego_blade")
+
+        # Apply attack speed from souls (permanent for combat)
+        if not hasattr(unit, '_viego_soul_as_applied'):
+            unit._viego_soul_as_applied = True
+            unit.stats.attack_speed += base_as + bonus_as
+            self.engine.log_event('viego_soul_as', unit=unit.name, bonus_as=bonus_as, souls=soul_count)
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Blade of the Ruined King",
+                             stacks=unit._viego_stacks, souls=soul_count)
+        return True
+
