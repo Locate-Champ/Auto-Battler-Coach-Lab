@@ -84,6 +84,13 @@ BASE_COMPLETED = {
     "ThiefsGloves": {"crit_chance": 0.20, "hp": 150},
     "StrikersFlail": {"attack_speed": 0.10, "crit_chance": 0.20, "hp": 150},
     "TacticiansCrown": {},
+
+    # Set 16 new items
+    "Leviathan": {"ap": 60, "hp": 150},  # Rod + Belt: Deal 4% max HP magic damage on ability
+    "NightHarvester": {"ap": 20, "hp": 200, "magic_resist": 20},  # Cloak + Belt: Damage on takedown
+    "UnstableConcoction": {"hp": 300, "attack_speed": 0.20},  # Belt + Glove: Execute threshold
+    "MadredsBloodrazor": {"ad": 0.15, "attack_speed": 0.30},  # Bow + Glove: %HP on-hit
+    "SpectralGauntlet": {"ap": 25, "armor": 25, "magic_resist": 25},  # Tear + Vest: Shield allies
 }
 
 # =============================================================================
@@ -297,4 +304,57 @@ ITEM_ALIASES = {
     "Redemption": "SpiritVisage",
     "GuardianAngel": "EdgeOfNight",
     "FrozenHeart": "ProtectorsVow",
+
+    # MetaTFT-style TFT_Item_ aliases (map to internal names)
+    "TFT_Item_Deathblade": "Deathblade",
+    "TFT_Item_InfinityEdge": "InfinityEdge",
+    "TFT_Item_GiantSlayer": "GiantSlayer",
+    "TFT_Item_LastWhisper": "LastWhisper",
+    "TFT_Item_Bloodthirster": "Bloodthirster",
+    "TFT_Item_SteraksGage": "SteraksGage",
+    "TFT_Item_EdgeOfNight": "EdgeOfNight",
+    "TFT_Item_RedBuff": "RedBuff",
+    "TFT_Item_GuinsoosRageblade": "GuinsoosRageblade",
+    "TFT_Item_TitansResolve": "TitansResolve",
+    "TFT_Item_NashorsTooth": "NashorsTooth",
+    "TFT_Item_RabadonsDeathcap": "RabadonsDeathcap",
+    "TFT_Item_JeweledGauntlet": "JeweledGauntlet",
+    "TFT_Item_HextechGunblade": "HextechGunblade",
+    "TFT_Item_SpearOfShojin": "SpearOfShojin",
+    "TFT_Item_BlueBuff": "BlueBuff",
+    "TFT_Item_Morellonomicon": "Morellonomicon",
+    "TFT_Item_ArchangelsStaff": "ArchangelsStaff",
+    "TFT_Item_IonicSpark": "IonicSpark",
+    "TFT_Item_WarmogsArmor": "WarmogsArmor",
+    "TFT_Item_GargoyleStoneplate": "GargoyleStoneplate",
+    "TFT_Item_SunfireCape": "SunfireCape",
+    "TFT_Item_DragonsClaw": "DragonsClaw",
+    "TFT_Item_BrambleVest": "BrambleVest",
+    "TFT_Item_Quicksilver": "Quicksilver",
+    "TFT_Item_Crownguard": "Crownguard",
+    "TFT_Item_HandOfJustice": "HandOfJustice",
+    "TFT_Item_AdaptiveHelm": "AdaptiveHelm",
+    "TFT_Item_ThiefsGloves": "ThiefsGloves",
+    "TFT_Item_Leviathan": "Leviathan",  # Need to add this item
+    "TFT_Item_StatikkShiv": "Artifact_StatikkShiv",
+    "TFT_Item_MadredsBloodrazor": "MadredsBloodrazor",  # Need to add
+    "TFT_Item_UnstableConcoction": "UnstableConcoction",  # Need to add
+    "TFT_Item_NightHarvester": "NightHarvester",  # Need to add
+    "TFT_Item_SpectralGauntlet": "SpectralGauntlet",  # Need to add
+
+    # Components with TFT_Item_ prefix
+    "TFT_Item_BFSword": "BFSword",
+    "TFT_Item_RecurveBow": "RecurveBow",
+    "TFT_Item_NeedlesslyLargeRod": "NeedlesslyLargeRod",
+    "TFT_Item_TearOfTheGoddess": "TearOfTheGoddess",
+    "TFT_Item_ChainVest": "ChainVest",
+    "TFT_Item_NegatronCloak": "NegatronCloak",
+    "TFT_Item_GiantsBelt": "GiantsBelt",
+    "TFT_Item_SparringGloves": "SparringGloves",
+    "TFT_Item_Spatula": "Spatula",
+
+    # Artifacts with TFT_Item_Artifact_ prefix
+    "TFT_Item_Artifact_LichBane": "Artifact_LichBane",
+    "TFT_Item_Artifact_StatikkShiv": "Artifact_StatikkShiv",
+    "TFT_Item_Artifact_RapidFirecannon": "Artifact_RapidFirecannon",
 }

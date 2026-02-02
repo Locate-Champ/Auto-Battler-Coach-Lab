@@ -1493,7 +1493,7 @@ class ItemDatabase:
 
     @staticmethod
     def create_item(name: str) -> Optional[Item]:
-        """Create an item instance from name."""
+        """Create an item instance from name with effects."""
         # Check alias first
         resolved_name = ItemDatabase.ALIASES.get(name, name)
 
@@ -1502,7 +1502,31 @@ class ItemDatabase:
             return None
 
         stats = ItemDatabase.ITEMS[resolved_name].copy()
-        return Item(name=resolved_name, stats=stats)
+
+        # Get item effects
+        try:
+            from .item_effects import (
+                get_item_on_hit, get_item_on_ability,
+                get_item_on_damage_dealt, get_item_on_damage_taken
+            )
+            on_hit = get_item_on_hit(resolved_name)
+            on_ability = get_item_on_ability(resolved_name)
+            on_damage_dealt = get_item_on_damage_dealt(resolved_name)
+            on_damage_taken = get_item_on_damage_taken(resolved_name)
+        except ImportError:
+            on_hit = None
+            on_ability = None
+            on_damage_dealt = None
+            on_damage_taken = None
+
+        return Item(
+            name=resolved_name,
+            stats=stats,
+            on_hit=on_hit,
+            on_ability_cast=on_ability,
+            on_damage_dealt=on_damage_dealt,
+            on_damage_taken=on_damage_taken
+        )
 
 
 # =============================================================================
@@ -1929,6 +1953,17 @@ class CombatEngine:
         if defender.is_alive:
             self.check_hp_threshold_effects(defender)
 
+        # Trigger item on-damage-dealt effects for attacker
+        for item in attacker.items:
+            if item.on_damage_dealt:
+                item.on_damage_dealt(self, attacker, defender, actual_damage, damage_type)
+
+        # Trigger item on-damage-taken effects for defender
+        if defender.is_alive:
+            for item in defender.items:
+                if item.on_damage_taken:
+                    item.on_damage_taken(self, defender, attacker, actual_damage, damage_type)
+
         return actual_damage
 
     def heal_unit(self, unit: Unit, amount: float, source: str = "heal"):
@@ -2208,6 +2243,12 @@ class CombatEngine:
 
             # Reset mana
             unit.stats.mana = 0
+
+            # Trigger item on-ability effects
+            for item in unit.items:
+                if item.on_ability_cast:
+                    item.on_ability_cast(self, unit)
+
             self.log_event('ability_cast', unit=unit.name, ability=ability.name,
                           targets=[t.name for t in enemies_in_range[:1]])
             return  # Fizz ability fully handled
@@ -2330,6 +2371,11 @@ class CombatEngine:
 
         # Reset mana
         unit.stats.mana = 0
+
+        # Trigger item on-ability effects
+        for item in unit.items:
+            if item.on_ability_cast:
+                item.on_ability_cast(self, unit)
 
         self.log_event('ability_cast', unit=unit.name, ability=ability.name,
                       targets=[t.name for t in targets])
@@ -2537,7 +2583,8 @@ class CombatEngine:
     def run_combat(self, team0: List[Unit], team1: List[Unit],
                   max_time: float = 60.0, verbose: bool = False,
                   team0_augments: List[str] = None,
-                  team1_augments: List[str] = None) -> Dict:
+                  team1_augments: List[str] = None,
+                  seed: int = None) -> Dict:
         """Run a full combat simulation.
 
         Args:
@@ -2547,7 +2594,12 @@ class CombatEngine:
             verbose: Include detailed combat log in results
             team0_augments: List of augment names/apiNames for team 0
             team1_augments: List of augment names/apiNames for team 1
+            seed: Random seed for deterministic simulation. If None, uses current RNG state.
         """
+        # Set random seed for determinism if provided
+        if seed is not None:
+            random.seed(seed)
+
         # Reset state
         self.time = 0.0
         self.combat_log = []
@@ -2611,6 +2663,10 @@ class CombatEngine:
             'team1_survivors': len(team1_survivors),
             'team0_total_damage': round(sum(u.total_damage_dealt for u in team0), 1),
             'team1_total_damage': round(sum(u.total_damage_dealt for u in team1), 1),
+            'total_damage_dealt': {
+                'team0': round(sum(u.total_damage_dealt for u in team0), 1),
+                'team1': round(sum(u.total_damage_dealt for u in team1), 1),
+            },
             'team0_abilities_cast': sum(u.abilities_cast for u in team0),
             'team1_abilities_cast': sum(u.abilities_cast for u in team1),
             'combat_log': self.combat_log if verbose else [],
@@ -2622,7 +2678,8 @@ class CombatEngine:
                     star1: int = 1, star2: int = 1,
                     items1: List[str] = None, items2: List[str] = None,
                     augments1: List[str] = None, augments2: List[str] = None,
-                    num_simulations: int = 100) -> Dict:
+                    num_simulations: int = 100,
+                    seed: int = None) -> Dict:
         """Simulate multiple 1v1 combats between two champions.
 
         Args:
@@ -2635,13 +2692,16 @@ class CombatEngine:
             augments1: List of augment names for team 1
             augments2: List of augment names for team 2
             num_simulations: Number of simulations to run
+            seed: Base random seed for deterministic simulations. Each sim uses seed+i.
         """
         wins = {champ1: 0, champ2: 0}
         total_damage = {champ1: 0.0, champ2: 0.0}
         abilities_cast = {champ1: 0, champ2: 0}
         combat_times = []
 
-        for _ in range(num_simulations):
+        for i in range(num_simulations):
+            # Set seed for this specific simulation if base seed provided
+            sim_seed = (seed + i) if seed is not None else None
             # Place units facing each other
             unit1 = self.create_unit(champ1, star1, (0, 3), 0, items1)
             unit2 = self.create_unit(champ2, star2, (3, 3), 1, items2)
@@ -2651,7 +2711,8 @@ class CombatEngine:
 
             result = self.run_combat([unit1], [unit2],
                                      team0_augments=augments1,
-                                     team1_augments=augments2)
+                                     team1_augments=augments2,
+                                     seed=sim_seed)
 
             if result['winner'] == 0:
                 wins[champ1] += 1
