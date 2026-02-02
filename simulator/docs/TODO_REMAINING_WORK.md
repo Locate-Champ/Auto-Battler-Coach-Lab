@@ -4,7 +4,50 @@ This document outlines what still needs to be implemented in the combat simulato
 
 ---
 
+## Progress Summary
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| Combat Engine Core | ✅ Complete | `combat_engine.py` - damage, targeting, stats |
+| Champion Data | ✅ Complete | `combat_data.json` - all Set 16 champions |
+| Champion Abilities | ✅ Complete | 40+ champions with special mechanics |
+| Augment System | ✅ Complete | 284 augments, 131 combat-relevant |
+| Item Effects | ✅ Complete | Items affect combat stats + on-hit/ability effects |
+| Item Optimizer | ✅ Complete | `item_optimizer.py` - best items, builds, distribution |
+| Trait Bonuses | ✅ Complete | 10 stat-buffing traits in TraitManager |
+| Complex Mechanics | ⚠️ Partial | 4 high-priority, 4 medium-priority remaining |
+
+**Overall: ~80% of combat mechanics implemented**
+
+---
+
 ## Recently Completed
+
+### Champion Abilities Module (2026-02-01)
+**Status:** ✅ IMPLEMENTED
+
+Created `champion_abilities.py` with 40+ champion-specific ability handlers.
+
+**Implemented Champions:**
+- **Excess Damage:** Caitlyn, Lissandra
+- **Dashes:** Yasuo, Yone, Vayne, Renekton, Ambessa, LeBlanc, Diana, Loris, Fizz
+- **Executes:** Aatrox (15% HP combo), Darius (bleed stacks), Zaahen (22-cast Divine Challenge)
+- **Summons:** Annie (Tibbers), Malzahar (voidlings), Wukong (clone)
+- **Stacking:** Veigar (permanent AP), Draven (gold), Seraphine (crystals), Aurelion Sol (stardust)
+- **Synergies:** Yasuo+Yone, Diana+Leona
+- **Line Abilities:** Lux (line laser w/ 200 width), Seraphine (big cast), Yunara (piercing)
+- **Zone Effects:** Kindred (2-hex radius shield zone), Fiddlesticks (fear + mana drain)
+- **Special:** Zaahen (Immortal resurrection), Warwick (single cast), Taric (invuln threshold)
+
+**Core Mechanics Added:**
+- Target retargeting when current target dies
+- Untargetable state (Fizz, Edge of Night, Zhonya's)
+- Immortal trait (Zaahen resurrection at 60% HP)
+- Form swapping (Kai'Sa, Jinx)
+
+**Session log:** `SESSION_LOG_2026-02-01.md`
+
+---
 
 ### Augment System (2026-02-02)
 **Status:** ✅ IMPLEMENTED
@@ -45,6 +88,37 @@ result = engine.run_combat(
 - `U.R.F` - +15% Attack Speed for Spatula holders
 
 **Test file:** `UnitTests/test_augments.py`
+
+---
+
+### Trait System Implementation (2026-02-02)
+**Status:** ✅ IMPLEMENTED
+
+Added 10 stat-buffing traits to TraitManager that auto-apply at combat start.
+
+**Fixed trait naming:** Converted from backend API names (e.g., `TFT16_Sorcerer`) to display names (e.g., `Arcanist`).
+
+| Trait | Effect |
+|-------|--------|
+| Arcanist | Team +18/25/40 AP, Arcanists +25/40/60 bonus |
+| Defender | Team +12 armor/MR, Defenders +30/55/80 bonus |
+| Bruiser | Team +150 HP, Bruisers +25/45/65% HP |
+| Slayer | +22/33/44% AD, +10/16/20% omnivamp |
+| Juggernaut | +18/20/26% durability |
+| Invoker | Team +1 mana regen, Invokers +25/40% mana |
+| Vanquisher | +15-30% crit chance/damage, abilities can crit |
+| Longshot | +18-32% damage amp + per-hex bonus |
+| Quickstriker | Team +15% AS, scaling AS based on target HP |
+| Gunslinger | +20/35% AD, 4th attack bonus damage |
+| Warden | Shield triggers at 75%/25% HP |
+
+**Commits:**
+- `6dc40889` - Implement AugmentManager for combat simulation augments
+- `e62d7bd2` - Fix trait names to use display names instead of backend API names
+- `335940bc` - Fix augments_set16.json to use display trait names
+- `575f0e7c` - Implement 10 stat-buffing traits in TraitManager
+
+**Branch:** `claude/review-session-progress-EAYdf`
 
 ---
 
@@ -229,6 +303,188 @@ python combat_engine.py
 ```
 
 This runs several test scenarios including 1v1s, team fights, and item impact tests.
+
+---
+
+---
+
+## Quick Stats
+
+- **Champions with abilities:** 40+ of ~55 total
+- **Traits implemented:** 10 stat-buffing traits
+- **Augments functional:** 131 combat-relevant
+- **Item effects:** 20+ items with on-hit/ability/damage effects
+- **Core mechanics:** All basic combat working
+- **Remaining complex mechanics:** 8 (4 high priority, 4 medium priority)
+
+---
+
+## Phase 1: Validation (Before ML Training)
+
+Before using the simulator as a "factory" for training data, it must be validated as a "scientific instrument."
+
+### Completed (2026-02-02)
+- [x] **Benchmark script** - `simulator/benchmark.py` measures throughput
+- [x] **Determinism tests** - Verify same seed produces identical outcomes
+- [x] **Seed parameter** - Added `seed` param to `run_combat()` and `simulate_1v1()`
+
+### Completed (2026-02-02)
+- [x] **Run benchmark** - Determinism verified ✅
+- [x] **Fix any determinism failures** - All tests passing
+
+### Still Needed
+- [ ] **Integer tick mode** (optional) - Convert float time to integer ticks for precision
+
+### How to Run Validation
+```bash
+cd simulator
+python benchmark.py
+```
+
+Expected output:
+- 1v1 throughput: X sims/sec
+- Team combat throughput: X sims/sec
+- Determinism: ✅ PASS or ❌ FAIL
+
+---
+
+## Phase 2: Positioning Optimization (Completed 2026-02-02)
+
+**Goal:** Given a comp (units with items), find optimal board positions.
+
+### Completed
+- [x] **PositioningOptimizer class** - `core/positioning_optimizer.py`
+- [x] **Position enumeration strategies** - exhaustive, sampled, strategic
+- [x] **Evaluation function** - Win rate vs diverse opponent configurations
+- [x] **CLI interface** - `position_search.py`
+- [x] **Role-aware positioning** - Auto-classifies tanks/carries based on traits and stats
+- [x] **Level/cost validation** - Validates unit costs vs player level
+- [x] **Real meta comp testing** - Tested with MetaTFT comps (Piltover/Seraphine, Diana/Targon)
+- [x] **Unconventional strategies** - Solo tank, spread, corner stack, diagonal, bait
+
+### Features
+- **3 generation strategies:**
+  - `exhaustive` - All permutations (small teams only)
+  - `sampled` - Random sampling
+  - `strategic` - Mixed strategies (see below)
+- **6 positioning strategies (mixed in 'strategic' mode):**
+  - **Standard (40%)** - Tanks front (rows 0-1), carries back (rows 2-3)
+  - **Solo Tank (15%)** - 1 itemized tank in front, everyone else in back 2 rows
+  - **Spread (15%)** - No units adjacent (anti-AOE, zone defense style)
+  - **Corner Stack (10%)** - All units clumped in one corner (anti-assassin)
+  - **Diagonal (10%)** - Units on diagonal lines (controls pathing)
+  - **Bait (10%)** - Weak unit in front corner, carry in opposite back corner
+- **Unit role classification:**
+  - Frontline: Defender, Bruiser, Warden, Juggernaut traits; melee range; high HP
+  - Backline: Arcanist, Invoker, Gunslinger, Longshot traits; ranged
+- **Deterministic seeding** - Reproducible results with `--seed`
+- **JSON output** - Save results for further analysis
+
+### Test Results (Mirror Match)
+- **Baseline** (random positioning): 60% win rate
+- **Optimized** positioning: 100% win rate
+- **Conclusion:** Positioning alone can determine win/loss in equal matchups
+
+### Usage
+```bash
+# Real meta comp (8 units)
+python position_search.py --preset piltover_seraphine
+
+# Custom comp
+python position_search.py --comp '[{"champion":"TFT16_Draven","star":2},{"champion":"TFT16_Leona","star":2}]'
+
+# Thorough search with saved output
+python position_search.py --preset diana_targon --configs 500 --sims 20 --seed 42 -o results.json
+
+# Test with meta comps
+python test_meta_comps.py
+
+# See all options
+python position_search.py --help
+python position_search.py --presets
+python position_search.py --champions
+python position_search.py --strategies  # Explain positioning strategies
+```
+
+### Performance
+- ~300 configs × 40 sims each ≈ 3 minutes
+- ~1000 configs × 40 sims each ≈ 10 minutes
+
+---
+
+## Phase 3: Item Optimization (Completed 2026-02-02)
+
+**Goal:** Recommend optimal items for champions and distribute items across a comp.
+
+### Completed
+- [x] **MetaTFT item data fetcher** - `fetch_metatft_items.py`
+- [x] **Item statistics storage** - `data/metatft_items.json` (100 champions)
+- [x] **ItemOptimizer class** - `core/item_optimizer.py`
+- [x] **Item CLI interface** - `item_search.py`
+- [x] **Item effects in combat** - `core/item_effects.py`
+- [x] **Combat engine integration** - Items now affect combat outcomes
+
+### Features
+- **Get best items for a unit:**
+  ```bash
+  python item_search.py best Seraphine
+  python item_search.py best Shyvana --count 10 --special
+  ```
+- **Get optimal 3-item build:**
+  ```bash
+  python item_search.py build Seraphine
+  ```
+- **Recommend crafts from components:**
+  ```bash
+  python item_search.py craft bf rod tear vest
+  python item_search.py craft bf rod tear --comp Seraphine,Braum
+  ```
+- **Slam vs hold analysis:**
+  ```bash
+  python item_search.py slam bf rod tear --stage 3-2 --hp 65
+  ```
+- **Distribute items across a comp:**
+  ```bash
+  python item_search.py distribute --comp Seraphine,Braum,Lissandra --items Leviathan,DragonsClaw
+  ```
+
+### Item Effects Implemented
+| Effect Type | Items |
+|-------------|-------|
+| On-Hit | Giant Slayer, Last Whisper (30% armor shred), Titan's Resolve (+2 AD/armor per stack), Guinsoo's (+6% AS per stack), Statikk Shiv (chain lightning), Nashor's Tooth, Kraken's Fury, Madred's Bloodrazor (3% max HP), Wit's End |
+| On-Ability | Spear of Shojin (+5 mana), Blue Buff (+20 mana), Archangel's Staff (+25 AP), Crownguard (30% HP shield), Leviathan |
+| On-Damage-Dealt | Hextech Gunblade (25% heal), Morellonomicon (10% burn) |
+| On-Damage-Taken | Bramble Vest (reflect), Gargoyle Stoneplate (15 armor/MR per enemy), Sterak's Gage (25% HP shield at 50% HP), Edge of Night (untargetable at 50% HP) |
+
+### Test Results
+- **Mirror match (items vs no items):** 100% win rate for itemized team
+- Items properly scale combat outcomes
+
+---
+
+## Phase 4: Full Game RL (Future)
+
+**Goal:** Train agents for economy, leveling, shop decisions, augment selection.
+
+### Options
+1. **Update `Simulator/`** - Existing MuZero game env, needs Set 16 update
+2. **Build new wrapper** - Around combat engine with fresh architecture
+
+### Required Components
+- Game state (gold, XP, health, round, stage)
+- Shop/roll mechanics
+- Level-up decisions
+- Augment selection (rounds 1-3-2, 2-3-2, etc.)
+- Player matchmaking
+- Carousel
+
+---
+
+### MetaTFT Position Data Integration (2026-02-02)
+Fixed row orientation for MetaTFT position data:
+- MetaTFT cells 1-7 (visual top) → Game row 3 (back)
+- MetaTFT cells 22-28 (visual bottom) → Game row 0 (front)
+- Positioning optimizer now uses 20% MetaTFT-guided positions in mixed strategy
 
 ---
 
