@@ -680,23 +680,34 @@ class AugmentManager:
     }
 
     # Traits that can be checked for conditional augments
+    # Maps lowercase search terms to actual trait display names (as used in combat_data.json)
     TRAIT_KEYWORDS = {
-        'yordle': 'TFT16_Yordle',
-        'slayer': 'TFT16_Slayer',
-        'ionia': 'TFT16_Ionia',
-        'noxus': 'TFT16_Noxus',
-        'demacia': 'TFT16_Demacia',
-        'bilgewater': 'TFT16_Bilgewater',
-        'void': 'TFT16_Void',
-        'shadow isles': 'TFT16_ShadowIsles',
-        'piltover': 'TFT16_Piltover',
-        'arcanist': 'TFT16_Sorcerer',
-        'sorcerer': 'TFT16_Sorcerer',
-        'automata': 'TFT16_Automata',
-        'freljord': 'TFT16_Freljord',
-        'targon': 'TFT16_Targon',
-        'shurima': 'TFT16_Shurima',
-        'zaun': 'TFT16_Zaun',
+        'yordle': 'Yordle',
+        'slayer': 'Slayer',
+        'ionia': 'Ionia',
+        'noxus': 'Noxus',
+        'demacia': 'Demacia',
+        'bilgewater': 'Bilgewater',
+        'void': 'Void',
+        'shadow isles': 'Shadow Isles',
+        'piltover': 'Piltover',
+        'arcanist': 'Arcanist',
+        'sorcerer': 'Arcanist',  # Backend uses Sorcerer, frontend uses Arcanist
+        'automata': 'Automata',
+        'freljord': 'Freljord',
+        'targon': 'Targon',
+        'shurima': 'Shurima',
+        'zaun': 'Zaun',
+        'bruiser': 'Bruiser',
+        'defender': 'Defender',
+        'invoker': 'Invoker',
+        'juggernaut': 'Juggernaut',
+        'longshot': 'Longshot',
+        'quickstriker': 'Quickstriker',
+        'vanquisher': 'Vanquisher',
+        'warden': 'Warden',
+        'gunslinger': 'Gunslinger',
+        'ixtal': 'Ixtal',
     }
 
     def __init__(self):
