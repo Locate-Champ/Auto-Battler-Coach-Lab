@@ -2301,3 +2301,377 @@ class ChampionAbilities:
                              stacks=unit._viego_stacks, souls=soul_count)
         return True
 
+    # =========================================================================
+    # TAHM KENCH - Glutton Feeding System
+    # =========================================================================
+
+    def _cast_tahmkench(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                        ability_vars: Dict) -> bool:
+        """Tahm Kench - Devour: Swallow enemy, deal damage over time.
+
+        Glutton trait: Tahm Kench can eat units from bench to gain permanent stats.
+        - 1-cost: +20 HP, +1 AD
+        - 2-cost: +40 HP, +2 AD
+        - 3-cost: +80 HP, +4 AD
+        - 4-cost: +120 HP, +6 AD
+        - 5-cost: +200 HP, +10 AD
+        Star level multiplies these values by 1.25x.
+        """
+        from .combat_engine import DamageType, UnitState
+
+        # Get ability variables
+        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 1800)
+        stun_duration = self._get_var(ability_vars, 'StunDuration', unit.star_level, 0.5)
+        belly_duration = self._get_var(ability_vars, 'BellyDuration', unit.star_level, 2.5)
+        damage_reduction = self._get_var(ability_vars, 'DamageReduction', unit.star_level, 0.30)
+
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Check if target can be devoured (not too large/tanky for non-3-star)
+        can_devour = unit.star_level >= 3 or target.stats.hp <= damage
+
+        if can_devour:
+            # Swallow the target (make them untargetable)
+            target.is_targetable = False
+            target.untargetable_duration = belly_duration
+            target.state = UnitState.UNTARGETABLE
+
+            # Tahm Kench gains damage reduction while digesting
+            unit.stats.damage_reduction += damage_reduction
+            if not hasattr(unit, '_tahm_digesting'):
+                unit._tahm_digesting = True
+
+            # Deal damage over the belly duration (simplified to instant)
+            self._deal_damage(unit, target, damage + unit.stats.ap,
+                             DamageType.MAGIC, "tahm_devour")
+
+            self.engine.log_event('tahm_devour', unit=unit.name, target=target.name,
+                                 duration=belly_duration, damage=damage)
+
+            # If target dies while devoured, gain Glutton stats
+            if not target.is_alive:
+                self._apply_glutton_stats(unit, target)
+        else:
+            # Can't fully devour - just damage and stun
+            self._deal_damage(unit, target, damage * 0.5 + unit.stats.ap,
+                             DamageType.MAGIC, "tahm_lick")
+            self._apply_stun(target, stun_duration, "tahm_stun")
+
+        unit.stats.mana = 0
+        return True
+
+    def _apply_glutton_stats(self, tahm: 'Unit', eaten_unit: 'Unit'):
+        """Apply permanent stats from eating a unit (Glutton trait)."""
+        eaten_data = self.engine.champions.get(eaten_unit.api_name, {})
+        cost = eaten_data.get('cost', 1)
+        star = eaten_unit.star_level
+
+        cost_stats = {
+            1: {'hp': 20, 'ad': 1},
+            2: {'hp': 40, 'ad': 2},
+            3: {'hp': 80, 'ad': 4},
+            4: {'hp': 120, 'ad': 6},
+            5: {'hp': 200, 'ad': 10},
+        }
+
+        base = cost_stats.get(cost, cost_stats[1])
+        star_mult = 1.0 + (star - 1) * 0.25
+
+        hp_gain = base['hp'] * star_mult
+        ad_gain = base['ad'] * star_mult
+
+        if not hasattr(tahm, '_glutton_stats'):
+            tahm._glutton_stats = {'hp': 0, 'ad': 0, 'units_eaten': 0}
+
+        tahm._glutton_stats['hp'] += hp_gain
+        tahm._glutton_stats['ad'] += ad_gain
+        tahm._glutton_stats['units_eaten'] += 1
+
+        tahm.stats.max_hp += hp_gain
+        tahm.stats.hp += hp_gain
+        tahm.stats.ad += ad_gain
+
+        self.engine.log_event('glutton_stats', unit=tahm.name, eaten=eaten_unit.name,
+                             cost=cost, star=star, hp_gained=hp_gain, ad_gained=ad_gain)
+
+    def apply_glutton_feeding(self, tahm: 'Unit', fed_units: List[Dict]):
+        """Pre-combat: Apply stats from units fed to Tahm Kench."""
+        for fed in fed_units:
+            cost = fed.get('cost', 1)
+            star = fed.get('star', 1)
+
+            cost_stats = {
+                1: {'hp': 20, 'ad': 1},
+                2: {'hp': 40, 'ad': 2},
+                3: {'hp': 80, 'ad': 4},
+                4: {'hp': 120, 'ad': 6},
+                5: {'hp': 200, 'ad': 10},
+            }
+
+            base = cost_stats.get(cost, cost_stats[1])
+            star_mult = 1.0 + (star - 1) * 0.25
+
+            hp_gain = base['hp'] * star_mult
+            ad_gain = base['ad'] * star_mult
+
+            if not hasattr(tahm, '_glutton_stats'):
+                tahm._glutton_stats = {'hp': 0, 'ad': 0, 'units_eaten': 0}
+
+            tahm._glutton_stats['hp'] += hp_gain
+            tahm._glutton_stats['ad'] += ad_gain
+            tahm._glutton_stats['units_eaten'] += 1
+
+            tahm.stats.max_hp += hp_gain
+            tahm.stats.hp += hp_gain
+            tahm.stats.ad += ad_gain
+
+    # =========================================================================
+    # GALIO - Bench Mechanic & Demacia Rally
+    # =========================================================================
+
+    def _cast_galio(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Galio - Inspirational Might: Shield allies and deal MR-scaled damage.
+
+        Heroic trait: Galio starts on bench, joins fight on first Demacia rally.
+        """
+        from .combat_engine import DamageType
+
+        num_attacks = int(self._get_var(ability_vars, 'NumAttacks', unit.star_level, 3))
+        passive_mr_ratio = self._get_var(ability_vars, 'PassiveMRRatio', unit.star_level, 5.7)
+        shield_amount = self._get_var(ability_vars, 'Shield', unit.star_level, 600)
+        active_mr_damage = self._get_var(ability_vars, 'ActiveMRDamage', unit.star_level, 5.25)
+        active_ar_damage = self._get_var(ability_vars, 'ActiveARDamage', unit.star_level, 5.25)
+
+        # Shield all allies
+        for ally in allies:
+            if ally.is_alive:
+                self.engine.apply_shield(ally, shield_amount + unit.stats.ap * 0.3,
+                                        "galio_shield")
+
+        # Deal damage based on Galio's MR and Armor
+        mr_damage = unit.stats.magic_resist * active_mr_damage
+        ar_damage = unit.stats.armor * active_ar_damage
+        total_damage = mr_damage + ar_damage + unit.stats.ap
+
+        # Slam damage to nearby enemies
+        nearby = self._get_enemies_in_radius(unit.position, 2, enemies)
+        for enemy in nearby:
+            self._deal_damage(unit, enemy, total_damage, DamageType.MAGIC, "galio_slam")
+
+        # Enhanced attacks
+        unit.enhanced_attacks_remaining = num_attacks
+        unit.enhanced_attack_on_hit_dmg = unit.stats.magic_resist * passive_mr_ratio
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Inspirational Might",
+                             shield=shield_amount, damage=total_damage)
+        return True
+
+    def trigger_demacia_rally(self, team: List['Unit'], bench_galio: 'Unit' = None):
+        """Trigger Demacia rally - Galio joins from bench."""
+        if not bench_galio:
+            return None
+
+        enemies = [u for u in self.engine.units if u.team != bench_galio.team and u.is_alive]
+        if not enemies:
+            return None
+
+        # Find best slam position
+        from .combat_engine import HexGrid
+        best_pos = None
+        best_count = 0
+
+        for row in range(HexGrid.ROWS):
+            for col in range(HexGrid.COLS):
+                pos = (row, col)
+                if pos in self.engine.get_occupied_hexes():
+                    continue
+
+                count = sum(1 for e in enemies if HexGrid.hex_distance(pos, e.position) <= 2)
+                if count > best_count:
+                    best_count = count
+                    best_pos = pos
+
+        if best_pos:
+            from .combat_engine import UnitState, DamageType
+            bench_galio.position = best_pos
+            bench_galio.is_alive = True
+            bench_galio.state = UnitState.IDLE
+
+            self.engine.units.append(bench_galio)
+
+            # Entry slam damage
+            entry_damage = bench_galio.stats.magic_resist * 3 + bench_galio.stats.ap
+            nearby = [e for e in enemies if HexGrid.hex_distance(best_pos, e.position) <= 2]
+            for enemy in nearby:
+                self._deal_damage(bench_galio, enemy, entry_damage,
+                                 DamageType.MAGIC, "galio_entry_slam")
+                self._apply_stun(enemy, 1.5, "galio_entry_stun")
+
+            self.engine.log_event('galio_rally', unit=bench_galio.name,
+                                 position=best_pos, enemies_hit=len(nearby))
+
+        return bench_galio
+
+    # =========================================================================
+    # T-HEX - Pilot System
+    # =========================================================================
+
+    def _cast_thex(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                   ability_vars: Dict) -> bool:
+        """T-Hex - Hextech Arsenal: Gatling gun + shield.
+
+        HexMech trait: T-Hex's power scales with its pilot.
+        """
+        from .combat_engine import DamageType
+
+        num_bullets = int(self._get_var(ability_vars, 'NumBullets', unit.star_level, 4))
+        base_shield = self._get_var(ability_vars, 'BaseShield', unit.star_level, 400)
+        pct_hp_shield = self._get_var(ability_vars, 'PercentHealthShield', unit.star_level, 0.10)
+        ap_damage = self._get_var(ability_vars, 'APDamage', unit.star_level, 15)
+        ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 100)
+
+        # Apply shield
+        shield = base_shield + (unit.stats.max_hp * pct_hp_shield) + unit.stats.ap * 0.5
+        self.engine.apply_shield(unit, shield, "thex_shield")
+
+        # Get pilot bonus
+        pilot_bonus = getattr(unit, '_pilot_bonus', 1.0)
+
+        # Fire bullets at random enemies
+        targets = [e for e in enemies if e.is_alive and e.is_targetable]
+        for i in range(num_bullets):
+            if not targets:
+                break
+            target = random.choice(targets)
+            damage = (ad_damage + unit.stats.ad + ap_damage + unit.stats.ap) * pilot_bonus
+            self._deal_damage(unit, target, damage, DamageType.PHYSICAL, f"thex_bullet_{i+1}")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Hextech Arsenal",
+                             bullets=num_bullets, shield=shield, pilot_bonus=pilot_bonus)
+        return True
+
+    def assign_thex_pilot(self, thex: 'Unit', pilot: 'Unit'):
+        """Assign a pilot to T-Hex to scale its power.
+
+        Pilot bonuses by cost: 1=1.0x, 2=1.15x, 3=1.30x, 4=1.50x, 5=1.75x
+        Trait bonuses: Gunslinger +20% AS, Piltover +15% shield, Sorcerer +30 AP
+        """
+        pilot_data = self.engine.champions.get(pilot.api_name, {})
+        cost = pilot_data.get('cost', 1)
+
+        cost_mult = {1: 1.0, 2: 1.15, 3: 1.30, 4: 1.50, 5: 1.75}
+        thex._pilot_bonus = cost_mult.get(cost, 1.0)
+        thex._pilot = pilot
+
+        pilot_traits = pilot.traits if hasattr(pilot, 'traits') else []
+
+        if 'Gunslinger' in pilot_traits:
+            thex.stats.attack_speed += 0.20
+        if 'Piltover' in pilot_traits:
+            thex._piltover_shield_bonus = 0.15
+        if 'Sorcerer' in pilot_traits or 'Invoker' in pilot_traits:
+            thex.stats.ap += 30
+
+        pilot_star = pilot.star_level if hasattr(pilot, 'star_level') else 1
+        hp_bonus = thex.stats.max_hp * (pilot_star - 1) * 0.25
+        thex.stats.max_hp += hp_bonus
+        thex.stats.hp += hp_bonus
+
+        self.engine.log_event('thex_pilot_assigned', thex=thex.name, pilot=pilot.name,
+                             cost=cost, bonus=thex._pilot_bonus)
+
+    # =========================================================================
+    # BARON NASHOR - Riftscourge
+    # =========================================================================
+
+    def _cast_baronnashor(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                          ability_vars: Dict) -> bool:
+        """Baron Nashor - Wrath of the Void: Acid shots + Void Rift.
+
+        Riftscourge: +2 Void trait, 30% damage amp after 8s.
+        """
+        from .combat_engine import DamageType
+
+        ap_damage = self._get_var(ability_vars, 'APDamage', unit.star_level, 45)
+        ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 375)
+        acid_pct = self._get_var(ability_vars, 'AcidPercentDamage', unit.star_level, 0.45)
+        num_acid = int(self._get_var(ability_vars, 'NumAcidToShoot', unit.star_level, 10))
+        knockup_duration = self._get_var(ability_vars, 'KnockupDuration', unit.star_level, 1.5)
+
+        # Track Void Rift timer
+        if not hasattr(unit, '_void_rift_active'):
+            unit._void_rift_active = False
+            unit._void_rift_timer = 8.0
+
+        # Check if Void Rift should activate
+        if not unit._void_rift_active and self.engine.time >= unit._void_rift_timer:
+            self._activate_void_rift(unit, allies)
+
+        # Primary slam
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if target:
+            main_damage = ad_damage + unit.stats.ad + ap_damage + unit.stats.ap
+            self._deal_damage(unit, target, main_damage, DamageType.PHYSICAL, "baron_slam")
+            self._apply_stun(target, knockup_duration, "baron_knockup")
+
+        # Acid shots
+        targets = [e for e in enemies if e.is_alive and e.is_targetable]
+        for i in range(num_acid):
+            if not targets:
+                break
+            acid_target = random.choice(targets)
+            acid_damage = acid_target.stats.max_hp * acid_pct
+            self._deal_damage(unit, acid_target, acid_damage + unit.stats.ap * 0.2,
+                             DamageType.MAGIC, f"baron_acid_{i+1}")
+
+        # Void Rift tick
+        if unit._void_rift_active:
+            self._void_rift_tick(unit, enemies)
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Wrath of the Void",
+                             acid_shots=num_acid, rift_active=unit._void_rift_active)
+        return True
+
+    def _activate_void_rift(self, baron: 'Unit', allies: List['Unit']):
+        """Activate Void Rift - 30% damage amp for Void units."""
+        baron._void_rift_active = True
+        void_amp = 0.30
+
+        for ally in allies:
+            if 'Void' in ally.traits:
+                ally.stats.damage_amp += void_amp
+                ally._void_rift_amp = True
+
+        if 'Void' in baron.traits:
+            baron.stats.damage_amp += void_amp
+
+        self.engine.log_event('void_rift_active', baron=baron.name, damage_amp=void_amp)
+
+    def _void_rift_tick(self, baron: 'Unit', enemies: List['Unit']):
+        """Apply Void Rift plasma bolt damage (5% max HP)."""
+        from .combat_engine import DamageType
+
+        for enemy in enemies:
+            if enemy.is_alive and enemy.is_targetable:
+                plasma_damage = enemy.stats.max_hp * 0.05
+                self.engine.apply_damage(baron, enemy, plasma_damage,
+                                        DamageType.MAGIC, "void_rift_plasma")
+
+    def setup_baron_riftscourge(self, baron: 'Unit', team: List['Unit']):
+        """Set up Baron's Riftscourge trait at combat start."""
+        baron._void_rift_active = False
+        baron._void_rift_timer = self.engine.time + 8.0
+
+        if not hasattr(self.engine.trait_manager, 'riftscourge_void_bonus'):
+            self.engine.trait_manager.riftscourge_void_bonus = 0
+        self.engine.trait_manager.riftscourge_void_bonus = 2
+
+        self.engine.log_event('riftscourge_setup', baron=baron.name,
+                             void_bonus=2, rift_timer=8.0)
+
