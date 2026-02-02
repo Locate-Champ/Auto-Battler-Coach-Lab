@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_timeskip_empoweredattack"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_PowerGauntlet_ShieldBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Ekko.TFT15_EkkoRDeathPrevention"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_attempt37_debuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Attempt37_Debuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Ekko.TFT15_EkkoRBlinkAttack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ekkospell"}}, 
+}

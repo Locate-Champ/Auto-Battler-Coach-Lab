@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="ezrealq"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_scatterarrowsmis3"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_scatterarrowsmis4"}}, 
+}

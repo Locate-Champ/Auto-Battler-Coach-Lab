@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_radianthpregen_buff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_Item_GargoyleStoneplate_Aura"}}, 
+}

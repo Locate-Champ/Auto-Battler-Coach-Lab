@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_slowcooker_bleed"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_slowburn_slow"}}, 
+}

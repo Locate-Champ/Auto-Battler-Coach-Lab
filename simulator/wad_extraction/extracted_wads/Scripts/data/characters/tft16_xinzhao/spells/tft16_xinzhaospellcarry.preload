@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_disablemanaonattack"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_XinZhao.TFT16_XinZhaoSpellCarry"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_xinzhaospellcarry_stab"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Sound"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT10_PlayerBuff_MusicController"}}, 
+}

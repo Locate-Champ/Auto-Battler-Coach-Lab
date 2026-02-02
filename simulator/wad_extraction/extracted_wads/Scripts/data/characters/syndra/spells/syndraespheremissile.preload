@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="syndraqspell"}}, 
+{Function=BBPreloadSpell, Params={Name="syndraedetectionbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Syndra.CharFunctionSyndra"}}, 
+{Function=BBPreloadModule, Params={Name="Global.CustomTables"}}, 
+}

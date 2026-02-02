@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tft7_illaoiminion"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_illaoirtentaclebuff"}}, 
+}

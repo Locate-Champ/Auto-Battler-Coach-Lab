@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.UltBook_XayahGetSpellData"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_XayahFunctionModule"}}, 
+}

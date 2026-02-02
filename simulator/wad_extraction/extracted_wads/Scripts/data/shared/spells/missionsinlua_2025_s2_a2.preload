@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.MissionsInLUA_2025_S2_A2"}}, 
+{Function=BBPreloadSpell, Params={Name="missions_damagedealtwithinxsecondstracker"}}, 
+{Function=BBPreloadSpell, Params={Name="missions_cooldowntracker"}}, 
+}

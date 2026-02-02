@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_dianaspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_dianaspell_snowfall_shield"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Diana.TFT12_DianaSpell_Snowfall_Shield"}}, 
+}

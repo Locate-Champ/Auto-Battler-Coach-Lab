@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_velkoz_trackhit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_velkozspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+}

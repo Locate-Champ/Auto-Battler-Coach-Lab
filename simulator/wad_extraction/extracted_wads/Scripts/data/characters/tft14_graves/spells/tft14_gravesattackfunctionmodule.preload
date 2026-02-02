@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_gravesspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_gravesempoweredshotgunmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_gravesshotgunmis"}}, 
+}

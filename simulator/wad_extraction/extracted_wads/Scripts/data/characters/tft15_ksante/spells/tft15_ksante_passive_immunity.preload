@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT15_KSante.TFT15_KSante_Passive_Immunity"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_KSante.TFT15_Ksante_Passive_AllOut"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ksantespell_istransformingmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ksante_passive_allout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ksantespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ksantespell_passive_knockup"}}, 
+}

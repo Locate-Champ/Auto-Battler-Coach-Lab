@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.UltBook_AzirFunctionModule"}}, 
+{Function=BBPreloadCharacter, Params={Name="azirultsoldier"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_azirrspawnsound"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_azirrsandsoldier"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_azirrsoldierismoving"}}, 
+}

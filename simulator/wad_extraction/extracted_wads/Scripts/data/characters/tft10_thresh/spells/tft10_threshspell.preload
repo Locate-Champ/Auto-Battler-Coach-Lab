@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_threshspell_missile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

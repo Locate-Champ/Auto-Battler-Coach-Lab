@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_UnitBuffDuelist"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Augment_Duelist_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_challenger_duelistasbuff"}}, 
+}

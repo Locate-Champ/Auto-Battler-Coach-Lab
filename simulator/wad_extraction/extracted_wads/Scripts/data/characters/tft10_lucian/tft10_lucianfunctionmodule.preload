@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_lucianr"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_lucianrarmorreduction"}}, 
+{Function=BBPreloadSpell, Params={Name="ezrealr"}}, 
+}

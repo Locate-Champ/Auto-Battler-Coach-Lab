@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_SidekickAugmentManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_TeamupAugment_SpinToWin_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

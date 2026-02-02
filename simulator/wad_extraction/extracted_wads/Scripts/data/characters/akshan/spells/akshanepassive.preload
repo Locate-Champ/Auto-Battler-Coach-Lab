@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Akshan.AkshanEPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanepassiverecentlydamaged"}}, 
+{Function=BBPreloadSpell, Params={Name="akshaneresetqueued"}}, 
+}

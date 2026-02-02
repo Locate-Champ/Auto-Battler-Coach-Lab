@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellixtalknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellixtalbarkskin"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

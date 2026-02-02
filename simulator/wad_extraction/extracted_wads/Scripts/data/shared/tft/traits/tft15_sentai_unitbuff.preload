@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Sentai_ArmyBuffManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_hextechgunblade_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_sentairanger_unitbuff_healvisual_cooldown"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT10_CountryHecarim.TFT10_CountryHecarim_AuraBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_countryhecarimrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_countryhecarim_auradebuff"}}, 
+}

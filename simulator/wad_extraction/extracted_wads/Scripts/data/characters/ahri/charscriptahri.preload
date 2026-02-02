@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="ahriidleorbvfxbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="ahripassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ahripassivetakedownmark"}}, 
+{Function=BBPreloadSpell, Params={Name="ahrilastattacked"}}, 
+{Function=BBPreloadSpell, Params={Name="ahrieternalsrflashcharmtracker"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_EnemyModifier_InfectiousAnomaly_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_EnemyModifier_InfectiousAnomaly_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_enemymodifier_anomaly_vfxbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_enemymodifier_infectiousanomaly_mis"}}, 
+}

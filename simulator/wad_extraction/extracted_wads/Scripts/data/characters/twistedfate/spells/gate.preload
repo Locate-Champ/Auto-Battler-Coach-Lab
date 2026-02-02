@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="twistedfategatetarget"}}, 
+{Function=BBPreloadSpell, Params={Name="globalcannotclickobjects"}}, 
+{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="twistedfaterstatstonetracker"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_twistedfatertakedownslong"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+}

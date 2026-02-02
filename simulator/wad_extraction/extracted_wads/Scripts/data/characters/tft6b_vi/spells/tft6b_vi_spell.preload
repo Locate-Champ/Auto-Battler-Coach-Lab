@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT6b_Vi.TFT6b_Vi_Spell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6b_vi_shield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft3_kassadine"}}, 
+}

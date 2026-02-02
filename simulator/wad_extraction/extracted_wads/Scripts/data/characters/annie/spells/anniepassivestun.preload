@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="eternals_multiplechampionshittracker"}}, 
+{Function=BBPreloadModule, Params={Name="Annie.AnnieFunctionModule"}}, 
+}

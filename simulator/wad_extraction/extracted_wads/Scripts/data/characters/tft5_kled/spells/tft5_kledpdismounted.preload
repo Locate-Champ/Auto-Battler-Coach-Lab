@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_kledpattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kledpmounted"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kledpmount"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kledpmountedshield"}}, 
+}

@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="baronspiketarget"}}, 
+{Function=BBPreloadSpell, Params={Name="baronactioninhibitor"}}, 
+{Function=BBPreloadSpell, Params={Name="baronbacksidestun"}}, 
+{Function=BBPreloadSpell, Params={Name="baronbacksidedetect"}}, 
+{Function=BBPreloadParticle, Params={Name="sru_baron_avalanche_cast.troy", SkinID="-1"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="barondeathbreathtarget"}}, 
+{Function=BBPreloadSpell, Params={Name="barontail"}}, 
+}

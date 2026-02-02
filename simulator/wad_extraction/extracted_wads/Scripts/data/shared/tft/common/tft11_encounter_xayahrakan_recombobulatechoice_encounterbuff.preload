@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_encounters_encounterchoicearmory"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT11_XayahRakanDummy.TFT11_XayahRakanDummy_RakanHandler"}}, 
+}

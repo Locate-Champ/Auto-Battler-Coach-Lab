@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_syndrarmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_syndrarmissilenonvisual"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_syndravfxcleanup"}}, 
+}

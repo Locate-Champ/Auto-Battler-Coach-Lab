@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_briarrinterrupt"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorchaosstorm"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_briarrvictim"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_briarrself"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_BriarFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellPings"}}, 
+}

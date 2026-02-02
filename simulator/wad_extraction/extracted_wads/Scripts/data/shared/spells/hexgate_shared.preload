@@ -1,0 +1,14 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Yuumi.YuumiWAlly"}}, 
+{Function=BBPreloadSpell, Params={Name="hexgate_shared_petclonehide"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Hexgate_Shared_PetCloneHide"}}, 
+{Function=BBPreloadSpell, Params={Name="hexgate_shared_reposition"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Hexgate_AnimState"}}, 
+{Function=BBPreloadSpell, Params={Name="hexgate_shared_ghosting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Hexgate_Shared"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Hexgate_WarpCD"}}, 
+{Function=BBPreloadSpell, Params={Name="hexgate_warplockout"}}, 
+{Function=BBPreloadSpell, Params={Name="hexgate_shared_crosspit_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="hexgate_shared_oneway_mis"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_teemo_dotbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_teemospell"}}, 
+}

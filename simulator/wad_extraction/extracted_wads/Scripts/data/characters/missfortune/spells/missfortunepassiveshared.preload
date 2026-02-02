@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="MissFortune.MissFortunePassiveShared"}}, 
+{Function=BBPreloadSpell, Params={Name="missfortunepassive"}}, 
+{Function=BBPreloadSpell, Params={Name="missfortuneviciousstrikes"}}, 
+{Function=BBPreloadSpell, Params={Name="missfortunepassivestack"}}, 
+}

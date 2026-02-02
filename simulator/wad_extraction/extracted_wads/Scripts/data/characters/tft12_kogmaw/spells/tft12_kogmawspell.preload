@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_kogmawspell_asbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_kogmawspell_mis"}}, 
+}

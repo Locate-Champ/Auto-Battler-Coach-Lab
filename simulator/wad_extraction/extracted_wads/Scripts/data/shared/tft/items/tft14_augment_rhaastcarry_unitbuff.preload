@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_rhaastspellhero"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Rhaast.TFT14_RhaastGearVFX"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_rhaastspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_ArmyBuff_ApplyToHeroUnit"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_stackosaurusrex"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_StackosaurusRex"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_stackosaurusrex"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_StackosaurusRex"}}, 
+{Function=BBPreloadSpell, Params={Name="sennapassive"}}, 
+}

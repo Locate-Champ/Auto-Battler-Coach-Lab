@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="eternalstracker_subsequentpassivehits"}}, 
+{Function=BBPreloadModule, Params={Name="Pantheon.PantheonPassiveReady"}}, 
+}

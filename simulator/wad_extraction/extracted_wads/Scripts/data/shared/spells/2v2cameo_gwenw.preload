@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_gwenwuntargetabilitymanager"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_gwenwrecast"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_GwenW"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_gwenwzonemovebuff"}}, 
+}

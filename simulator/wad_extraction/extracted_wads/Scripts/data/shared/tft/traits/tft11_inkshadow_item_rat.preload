@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_unithasinkshadowitem"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Inkshadow_Item_Rat"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_ratmis"}}, 
+}

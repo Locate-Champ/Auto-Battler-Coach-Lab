@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_swain_rangedmis_secondarytarget"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Swain.TFT13_SwainSpell_Ranged"}}, 
+}

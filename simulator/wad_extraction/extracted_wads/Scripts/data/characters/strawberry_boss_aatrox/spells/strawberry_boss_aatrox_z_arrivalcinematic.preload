@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_z_arrivalcinematic_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_champion_transitioninvulnerability"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_mapboss"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_state_attack"}}, 
+}

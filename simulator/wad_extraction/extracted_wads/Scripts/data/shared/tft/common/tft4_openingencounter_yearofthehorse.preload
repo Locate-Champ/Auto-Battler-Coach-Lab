@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTProbabilityFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_openingencounter_yearofthehorse_playerbuff"}}, 
+}

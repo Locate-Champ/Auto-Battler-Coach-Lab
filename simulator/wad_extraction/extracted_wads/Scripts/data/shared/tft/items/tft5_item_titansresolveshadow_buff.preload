@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_item_titansresolveshadowmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_TitansResolveShadowManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_TitansResolveShadow_Buff"}}, 
+}

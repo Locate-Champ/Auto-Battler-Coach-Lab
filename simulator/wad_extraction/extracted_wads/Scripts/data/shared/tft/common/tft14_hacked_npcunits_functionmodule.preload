@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Hacked_NPCUnits_FunctionModule"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft14_npc_azirsoldier"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT4_Azir.TFT4_AzirSoldierManager"}}, 
+}

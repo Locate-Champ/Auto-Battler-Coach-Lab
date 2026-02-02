@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_viegospell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Viego.TFT16_ViegoSpell_StackingDamage"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_viegospell_ruinedking"}}, 
+}

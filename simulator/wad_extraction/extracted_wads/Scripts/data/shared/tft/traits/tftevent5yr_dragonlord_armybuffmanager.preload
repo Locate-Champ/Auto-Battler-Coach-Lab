@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Dragonlord_ArmyBuffManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_dragonlord_unitbuff_allyas"}}, 
+}

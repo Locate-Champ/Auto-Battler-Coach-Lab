@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="drmundorheal"}}, 
+{Function=BBPreloadModule, Params={Name="DrMundo.DrMundoFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="DrMundo.DrMundoE"}}, 
+{Function=BBPreloadModule, Params={Name="DrMundo.DrMundoP"}}, 
+}

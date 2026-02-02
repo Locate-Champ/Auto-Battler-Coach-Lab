@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="belvethe"}}, 
+{Function=BBPreloadSpell, Params={Name="belvethpassive"}}, 
+}

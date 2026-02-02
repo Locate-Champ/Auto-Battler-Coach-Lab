@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_jinxtakedowntracker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_jinxrhexdisabler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuffSister"}}, 
+}

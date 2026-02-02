@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_regionportals_unitbuff_icewall"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_RegionPortals_UnitBuff_IceWall"}}, 
+}

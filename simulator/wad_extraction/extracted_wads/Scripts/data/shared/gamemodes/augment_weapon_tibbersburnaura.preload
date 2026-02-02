@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_special_zookeeper"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_tibbers"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_tibbers_evolvebuff"}}, 
+}

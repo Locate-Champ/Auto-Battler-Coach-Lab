@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="spikeball_mis1"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_scatterarrowsmis"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
+}

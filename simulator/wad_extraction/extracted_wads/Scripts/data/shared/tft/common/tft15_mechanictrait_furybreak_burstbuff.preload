@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_FuryBreak_BurstBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_furybreak_burstactive"}}, 
+}

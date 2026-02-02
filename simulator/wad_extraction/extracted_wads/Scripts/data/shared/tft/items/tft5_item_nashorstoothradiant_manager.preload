@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_NashorsToothRadiant_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_nashorstoothradiant_combatbuff"}}, 
+}

@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="skarneretrackminion"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerecancel"}}, 
+{Function=BBPreloadModule, Params={Name="Skarner.SkarnerE"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerestun"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnereinsidewall"}}, 
+{Function=BBPreloadSpell, Params={Name="skarneregrabbed"}}, 
+--{Function=BBPreloadModule, Params={Name="Skarner.SkarnerFunctionModule"}}, 
+}

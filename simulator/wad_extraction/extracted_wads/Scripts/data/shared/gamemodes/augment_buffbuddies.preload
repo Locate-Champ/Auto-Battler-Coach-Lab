@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_buffbuddies_bluebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_buffbuddies_redbuff"}}, 
+}

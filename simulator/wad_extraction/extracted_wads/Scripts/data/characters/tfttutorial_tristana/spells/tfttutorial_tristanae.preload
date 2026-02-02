@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tfttutorial_tristanaechargesound"}}, 
+{Function=BBPreloadSpell, Params={Name="tfttutorial_tristanaecharge"}}, 
+}

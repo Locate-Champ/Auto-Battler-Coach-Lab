@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set14"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Trait_Reputation_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_trait_reputation_specializationqueuebuff"}}, 
+}

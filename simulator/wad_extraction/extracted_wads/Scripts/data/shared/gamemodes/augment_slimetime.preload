@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_slimetime_spawnchunk"}}, 
+{Function=BBPreloadSpell, Params={Name="zacw"}}, 
+}

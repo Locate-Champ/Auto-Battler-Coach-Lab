@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_visistershield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_taunt"}}, 
+}

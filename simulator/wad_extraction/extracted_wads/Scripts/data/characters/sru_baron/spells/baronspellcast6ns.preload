@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="SRU_Baron.BaronSpellCast6NS"}}, 
+{Function=BBPreloadSpell, Params={Name="barondonotmelee"}}, 
+{Function=BBPreloadSpell, Params={Name="baronspiketarget"}}, 
+}

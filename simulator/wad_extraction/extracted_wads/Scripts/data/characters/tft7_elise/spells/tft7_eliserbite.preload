@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_eliser"}}, 
+{Function=BBPreloadModule, Params={Name="TFT7_Elise.TFT7_EliseR"}}, 
+}

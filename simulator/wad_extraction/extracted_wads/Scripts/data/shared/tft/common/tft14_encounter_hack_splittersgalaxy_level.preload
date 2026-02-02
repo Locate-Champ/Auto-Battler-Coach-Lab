@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Encounter_Hack_SplittersGalaxy_Level"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_encounter_hack_splittersgalaxy_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Encounter_Hack_SplittersGalaxy_PlayerBuff"}}, 
+}

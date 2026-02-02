@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+{Function=BBPreloadModule, Params={Name="Malzahar.MalzaharPassiveShield"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="mordekaiserropenvfx"}}, 
+{Function=BBPreloadSpell, Params={Name="mordekaiserr_target"}}, 
+{Function=BBPreloadSpell, Params={Name="mordekaiserr_statsteal"}}, 
+{Function=BBPreloadSpell, Params={Name="mordekaiserr_statstealenemy"}}, 
+{Function=BBPreloadSpell, Params={Name="mordekaiserr_insidespiritrealm"}}, 
+{Function=BBPreloadParticle, Params={Name="global_watched.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="mordekaisersoulmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+}

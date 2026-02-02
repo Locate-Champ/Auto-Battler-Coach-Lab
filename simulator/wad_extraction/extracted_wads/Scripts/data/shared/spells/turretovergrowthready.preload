@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TurretOvergrowthManager"}}, 
+{Function=BBPreloadCharacter, Params={Name="turretovergrowth"}}, 
+{Function=BBPreloadSpell, Params={Name="turretovergrowthmeleebuffer"}}, 
+{Function=BBPreloadSpell, Params={Name="turretovergrowthcooldown"}}, 
+}

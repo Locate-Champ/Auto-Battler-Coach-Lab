@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_ireliaspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT11_Irelia.TFT11_Irelia_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_small"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+}

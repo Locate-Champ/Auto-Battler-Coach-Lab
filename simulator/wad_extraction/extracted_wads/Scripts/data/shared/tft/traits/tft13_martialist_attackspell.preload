@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_augment_towerdefense_spell_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_ambessaspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Artillerist_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Artillerist_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_corkispellarmorshred"}}, 
+}

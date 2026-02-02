@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffcloud"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffcloud_movementspeedcooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2025_atakhan_bloodyreward"}}, 
+}

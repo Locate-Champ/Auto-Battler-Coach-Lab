@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="brawl_spawnlock"}}, 
+{Function=BBPreloadSpell, Params={Name="missionsinlua_generic"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Brawl_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Brawl_Telemetry"}}, 
+{Function=BBPreloadSpell, Params={Name="brawl_onfirebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="brawl_champion_inwater"}}, 
+{Function=BBPreloadSpell, Params={Name="brawl_champion_inground"}}, 
+{Function=BBPreloadSpell, Params={Name="brawl_basesitterbuff"}}, 
+}

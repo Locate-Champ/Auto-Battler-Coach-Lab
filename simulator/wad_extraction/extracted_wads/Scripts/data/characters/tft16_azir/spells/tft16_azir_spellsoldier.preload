@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_azir_spellknockback"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_azir_spellrecentlyhit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_azir_spellknockup"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Azir.TFT16_Azir_SoldierManager"}}, 
+}

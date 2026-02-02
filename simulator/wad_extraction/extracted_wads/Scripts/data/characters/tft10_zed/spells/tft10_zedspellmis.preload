@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_zedspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_EDM_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_zedshadowbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_disallowitemdrops"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_zedmovement"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_zedspell_targetmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_zedspell_deathcheck"}}, 
+}

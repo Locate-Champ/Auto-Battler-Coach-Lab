@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="3118grounddamage"}}, 
+{Function=BBPreloadSpell, Params={Name="3118visualdebuff"}}, 
+}

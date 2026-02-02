@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_singedspellhero"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_singedspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_singedcarry_manabuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_ArmyBuff_ApplyToHeroUnit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_augment_singedcarry_movebuff"}}, 
+}

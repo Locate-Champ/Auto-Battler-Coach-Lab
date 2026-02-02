@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_ServeBeyondDeath"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_servebeyonddeath_wbuff"}}, 
+}

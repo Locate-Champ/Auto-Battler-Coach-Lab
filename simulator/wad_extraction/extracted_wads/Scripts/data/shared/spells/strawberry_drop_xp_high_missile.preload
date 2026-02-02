@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SirhaianSurvival_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_UpgradeSelectionManager"}}, 
+}

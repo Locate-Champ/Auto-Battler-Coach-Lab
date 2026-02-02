@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Milio.MilioQShared"}}, 
+{Function=BBPreloadSpell, Params={Name="milioqhit"}}, 
+{Function=BBPreloadSpell, Params={Name="milioqhitminion"}}, 
+{Function=BBPreloadModule, Params={Name="Milio.MilioPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="milioqshared"}}, 
+}

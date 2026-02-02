@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Strawberry_Illaoi.Strawberry_IllaoiTentacleManager"}}, 
+--{Function=BBPreloadModule, Params={Name="Strawberry_Illaoi.Strawberry_IllaoiPassive"}}, 
+}

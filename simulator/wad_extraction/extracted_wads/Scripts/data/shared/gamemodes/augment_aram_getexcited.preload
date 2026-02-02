@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_GetExcited"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_getexcited_buff"}}, 
+}

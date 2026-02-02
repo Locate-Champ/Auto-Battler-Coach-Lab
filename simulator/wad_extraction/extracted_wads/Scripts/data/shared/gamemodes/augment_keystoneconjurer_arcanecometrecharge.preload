@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_keystoneconjurer_arcanecomet"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_keystoneconjurer"}}, 
+}

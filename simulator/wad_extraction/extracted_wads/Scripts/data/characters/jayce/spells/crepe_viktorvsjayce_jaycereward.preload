@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Jayce.Crepe_ViktorVsJayce_JayceReward"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_jaycestaticfield"}}, 
+{Function=BBPreloadSpell, Params={Name="jaycestaticfield"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_TransmutePrismatic"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ARAM_Augment_Manager"}}, 
+}

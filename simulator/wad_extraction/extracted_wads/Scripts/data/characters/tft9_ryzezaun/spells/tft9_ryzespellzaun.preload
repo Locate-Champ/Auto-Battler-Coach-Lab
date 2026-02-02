@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_RyzeZaun.TFT9_RyzeSpellZaun"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellzaun_portalmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellzaunbullets"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellzaunbulletsextra"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellzaunaxe"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellzaunbolt"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellzaunrocket"}}, 
+}

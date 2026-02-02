@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_challengerassistmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_challengerasburst"}}, 
+}

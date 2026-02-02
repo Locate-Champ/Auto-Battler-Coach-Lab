@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_aphelioscrescendumminigenerator"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_aphelioscrescendumtracker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+}

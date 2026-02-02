@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotpassive"}}, 
+{Function=BBPreloadModule, Params={Name="Shen.ShenWBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotw"}}, 
+}

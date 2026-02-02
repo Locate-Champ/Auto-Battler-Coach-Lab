@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_GoldSplitArmory_Level"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_GoldSplitArmory_PlayerBuff"}}, 
+}

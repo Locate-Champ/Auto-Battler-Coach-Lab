@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_ezrealstartcast_parallel"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_ezrealstartcast"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_EzrealFuture_LocationManager_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_EzrealFuture.TFT8_EzrealFutureSpellBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_ezrealfutureq"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+}

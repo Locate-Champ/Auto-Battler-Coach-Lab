@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_socialite_armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Socialite_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+}

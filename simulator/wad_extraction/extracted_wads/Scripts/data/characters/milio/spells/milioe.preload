@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Milio.EternalsTracker_MilioEBlocks"}}, 
+{Function=BBPreloadSpell, Params={Name="eternalstracker_milioeblocks"}}, 
+{Function=BBPreloadModule, Params={Name="Milio.MilioPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="milioeanimtracker"}}, 
+}

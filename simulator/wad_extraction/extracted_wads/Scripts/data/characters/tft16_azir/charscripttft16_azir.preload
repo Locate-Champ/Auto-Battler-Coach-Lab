@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_azir_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_nocritanim_aamanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_azirspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Azir.TFT16_Azir_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Azir.CharScriptTFT16_Azir"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Azir.TFT16_Azir_FunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_azir_threestareffect"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_azir_wsoldier"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_azir_soldiermanager"}}, 
+}

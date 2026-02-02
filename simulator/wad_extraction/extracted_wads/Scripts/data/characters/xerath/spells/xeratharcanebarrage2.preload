@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="xerathwslow"}}, 
+{Function=BBPreloadSpell, Params={Name="xerath_eternalewhits"}}, 
+}

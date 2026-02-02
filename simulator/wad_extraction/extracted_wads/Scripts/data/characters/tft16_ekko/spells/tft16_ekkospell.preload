@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Ekko.TFT16_EkkoAAManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_ekkospell_w_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_ekkospell_w_zone"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_TeamupAugment_EkkoZilean_UnitBuff"}}, 
+}

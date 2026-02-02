@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="gwenw"}}, 
+{Function=BBPreloadModule, Params={Name="Gwen.GwenW"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Void_PredatorInstinctsMod"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_void_predatorinstinctsmod_stealthbuff"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_edgelord_unitbuff_mark"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_edgelord_unitbuff_slash"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_edgelord_unitbuff_enhanced"}}, 
+}

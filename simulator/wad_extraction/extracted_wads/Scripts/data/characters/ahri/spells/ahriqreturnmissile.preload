@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ahriqreturndamage"}}, 
+{Function=BBPreloadSpell, Params={Name="ahriq"}}, 
+{Function=BBPreloadSpell, Params={Name="ahriidleorbvfxbuff"}}, 
+}

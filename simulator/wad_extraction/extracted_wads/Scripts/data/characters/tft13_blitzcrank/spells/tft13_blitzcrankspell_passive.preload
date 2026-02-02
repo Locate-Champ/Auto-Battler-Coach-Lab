@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_blitzcrankspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Blitzcrank.TFT13_BlitzcrankSpell_Passive"}}, 
+}

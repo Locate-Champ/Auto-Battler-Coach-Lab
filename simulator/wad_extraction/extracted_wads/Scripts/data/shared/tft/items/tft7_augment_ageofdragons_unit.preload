@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_AgeOfDragons_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_augment_ageofdragons_cooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_augment_ageofdragons_mis"}}, 
+}

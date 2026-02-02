@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_jinxpassivemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_jinxpassivekillattackspeed"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_jinxpassivekill"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_jinxpassivekillmovementspeed"}}, 
+}

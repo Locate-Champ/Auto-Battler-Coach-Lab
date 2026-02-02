@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft15_zyrathornplant"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_zyraspellplantmanager"}}, 
+}

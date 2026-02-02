@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_freezer_recharging"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_freezer_timer"}}, 
+}

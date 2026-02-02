@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="itemduskalert"}}, 
+{Function=BBPreloadSpell, Params={Name="3179_unseenbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="3179_attackready"}}, 
+}

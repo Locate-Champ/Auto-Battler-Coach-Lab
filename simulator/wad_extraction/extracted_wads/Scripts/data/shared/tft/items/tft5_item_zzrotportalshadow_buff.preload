@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_taunt"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_zzrotportalshadowzombiebuff_buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_zzrotportalshadow_explosion"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_immunity"}}, 
+}

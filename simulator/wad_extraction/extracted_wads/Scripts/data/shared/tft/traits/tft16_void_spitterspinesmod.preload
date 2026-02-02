@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Void_SpitterSpinesMod"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_traiteffect_voidspitterspines"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="rengarpassive"}}, 
+{Function=BBPreloadParticle, Params={Name="global_haste.troy", SkinID="-1"}}, 
+}

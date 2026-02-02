@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="puppycontrollerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="puppyfoodbuff"}}, 
+}

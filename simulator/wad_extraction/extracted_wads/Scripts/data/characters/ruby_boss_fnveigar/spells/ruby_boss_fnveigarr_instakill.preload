@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigarr"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigarpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Boss_FNVeigar.Ruby_Boss_FNVeigarPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Boss_FNVeigar.Ruby_Boss_FNVeigar_Passive_R_Stacks"}}, 
+}

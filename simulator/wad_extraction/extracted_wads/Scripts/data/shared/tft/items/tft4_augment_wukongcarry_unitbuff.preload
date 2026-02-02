@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_wukongq"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_ArmyBuff_ApplyToHeroUnit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT4_Augment_WukongCarry_UnitBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft4_wukong"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_augment_wukongcarry_scalesize_unitbuff"}}, 
+}

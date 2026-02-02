@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_xinzhaospellcarry"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_PlayerBuff_UnlockableChamps"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_xinzhaospell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_XinZhao.TFT16_XinZhao_VFXManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_augment_xinzhaocarry_zaahenminionbuff"}}, 
+}

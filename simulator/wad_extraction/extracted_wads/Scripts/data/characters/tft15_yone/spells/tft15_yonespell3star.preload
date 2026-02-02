@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft15_yone"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_yonespell3starclone"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_yonespell3starfreeze"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_yonespell3starhidehealthbar"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Yone.TFT15_YoneSpell3StarFreeze"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Yone.TFT15_YoneSpell3StarClone"}}, 
+}

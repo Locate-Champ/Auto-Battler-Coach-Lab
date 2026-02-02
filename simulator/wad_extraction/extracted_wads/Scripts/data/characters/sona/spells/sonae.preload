@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sonaambientesound"}}, 
+{Function=BBPreloadSpell, Params={Name="sonaeselfhaste"}}, 
+{Function=BBPreloadSpell, Params={Name="sonaehaste"}}, 
+}

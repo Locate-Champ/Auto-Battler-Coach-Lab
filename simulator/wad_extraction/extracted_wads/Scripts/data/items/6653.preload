@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="6653burn"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6653Burn"}}, 
+{Function=BBPreloadSpell, Params={Name="6653stackcounter"}}, 
+}

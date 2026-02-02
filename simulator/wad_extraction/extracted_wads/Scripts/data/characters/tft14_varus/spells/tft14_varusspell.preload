@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_varus_missile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

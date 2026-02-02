@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Commander_PlayerBuff_CommanderManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Superfan_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Superfan_ItemBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_superfan_traitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_superfan_traitarmybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Item"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_superfan_itembuff"}}, 
+}

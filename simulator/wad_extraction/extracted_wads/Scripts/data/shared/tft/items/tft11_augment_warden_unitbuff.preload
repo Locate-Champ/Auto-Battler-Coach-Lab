@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_augment_warden_armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Augment_Warden_ArmyBuff"}}, 
+}

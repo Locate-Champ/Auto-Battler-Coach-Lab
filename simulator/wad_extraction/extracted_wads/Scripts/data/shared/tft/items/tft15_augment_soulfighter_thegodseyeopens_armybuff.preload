@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_SoulFighter_TheGodsEyeOpens_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_augment_soulfighter_thegodseyeopens_unitbuff"}}, 
+}

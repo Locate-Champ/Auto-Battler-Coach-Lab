@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_Ahri.TFT9_AhriSpell_DrainBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Ahri.TFT9_AhriSpell_EssenceManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ahrispell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ahrispell_essencestolenthiscast"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ahrispell_enemyessencestolen"}}, 
+}

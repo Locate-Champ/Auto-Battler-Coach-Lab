@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="leesinstatstoneqsafterrtracker"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_movedtowardsalliestracker"}}, 
+{Function=BBPreloadSpell, Params={Name="leesinrknockupmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="leesinrknockupdebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="leesinrroot"}}, 
+}

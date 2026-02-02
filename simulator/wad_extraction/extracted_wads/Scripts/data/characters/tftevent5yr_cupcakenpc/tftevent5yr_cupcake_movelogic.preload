@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFTEvent5YR_CupcakeNPC.TFTEvent5YR_Cupcake_MoveLogic"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_cloakedbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+}

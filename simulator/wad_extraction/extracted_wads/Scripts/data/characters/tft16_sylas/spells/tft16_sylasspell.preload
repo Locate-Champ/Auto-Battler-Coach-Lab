@@ -1,0 +1,14 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Sylas.TFT16_SylasSpell"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft16_garen"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sylas_garenspell"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft16_jarvaniv"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Sylas.TFT16_SylasFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sylas_jarvanspell"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft16_lux"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sylas_luxr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sylas_luxr_threestar"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+}

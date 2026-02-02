@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.223504BuffApplicator"}}, 
+{Function=BBPreloadSpell, Params={Name="223504buff"}}, 
+}

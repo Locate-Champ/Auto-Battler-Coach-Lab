@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellshadowislesrevivemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellshadowislesallyspawnin"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

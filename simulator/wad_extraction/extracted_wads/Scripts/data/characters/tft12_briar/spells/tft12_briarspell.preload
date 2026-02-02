@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_briarspell_frenzy"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_fear"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_briarspell3starmovement"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_briarspell3starfear"}}, 
+}

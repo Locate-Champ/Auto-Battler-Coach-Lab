@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Mel.MelPassiveOverwhelm"}}, 
+{Function=BBPreloadModule, Params={Name="Mel.MelPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="melpassiveultkillmark"}}, 
+{Function=BBPreloadSpell, Params={Name="melr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ItemKnightsVowLiege"}}, 
+{Function=BBPreloadModule, Params={Name="Nilah.NilahWBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Nilah.NilahWAllyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Sona.SonaWPassiveDebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Kled.KledFunctions"}}, 
+}

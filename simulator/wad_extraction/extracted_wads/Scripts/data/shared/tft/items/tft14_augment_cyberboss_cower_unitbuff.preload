@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_augment_cyberboss_cower_debuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_Cyberboss_Cower_Debuff"}}, 
+}

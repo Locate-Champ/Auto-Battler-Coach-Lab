@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Incantor_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_incantor_unitbuff_apboost"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12b"}}, 
+}

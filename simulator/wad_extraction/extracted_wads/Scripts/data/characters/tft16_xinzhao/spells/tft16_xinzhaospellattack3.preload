@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_xinzhaospell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_XinZhao.TFT16_XinZhao_AAManager"}}, 
+}

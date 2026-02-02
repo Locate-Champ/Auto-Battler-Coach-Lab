@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_ahriorbmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_ahriqcounter"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_ahrifoxfiremissile"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_augment_exile_yasuobuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT4_Augment_Exile_PlayerBuff"}}, 
+}

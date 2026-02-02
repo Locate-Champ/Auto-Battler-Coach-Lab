@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_zoespell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Zoe.TFT13_ZoeSpell"}}, 
+}

@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="teemortrapowner"}}, 
+{Function=BBPreloadModule, Params={Name="Teemo.TeemoRTrapOwner"}}, 
+{Function=BBPreloadSpell, Params={Name="teemor"}}, 
+{Function=BBPreloadSpell, Params={Name="stealth"}}, 
+{Function=BBPreloadSpell, Params={Name="teemordot"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadModule, Params={Name="Teemo.TeemoRTrap"}}, 
+{Function=BBPreloadCharacter, Params={Name="teemomushroom"}}, 
+{Function=BBPreloadSpell, Params={Name="traplimiter"}}, 
+}

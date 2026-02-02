@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_xinzhaor"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_xinzhaorlasttargetattacked"}}, 
+}

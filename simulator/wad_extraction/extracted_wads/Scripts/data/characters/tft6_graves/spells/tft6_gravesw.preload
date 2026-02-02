@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_graveswzonemanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuffSharpshooter"}}, 
+}

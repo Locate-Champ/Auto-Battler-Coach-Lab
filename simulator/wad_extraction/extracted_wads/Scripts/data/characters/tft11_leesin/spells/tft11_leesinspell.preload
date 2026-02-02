@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_leesinshield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft11_leesin"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_leesinminiondeath"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_small"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_leesin_knockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_leesin_spirit2"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_traitvfxsoulfighter"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_soulfighter_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_SoulFighter_UnitBuff"}}, 
+}

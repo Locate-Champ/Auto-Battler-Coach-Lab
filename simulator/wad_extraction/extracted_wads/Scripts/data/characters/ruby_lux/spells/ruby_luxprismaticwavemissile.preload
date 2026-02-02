@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Luxprismaticwaveshield"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Luxwhitmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Luxwreturnhitmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Luxprismaticwavereturndead"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Luxprismaticwavereturn"}}, 
+}

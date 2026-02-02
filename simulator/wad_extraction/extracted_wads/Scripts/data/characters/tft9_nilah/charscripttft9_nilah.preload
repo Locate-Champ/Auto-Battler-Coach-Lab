@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_nilahspell_attackspeed"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Nilah.TFT9_NilahSpell_AttackSpeed"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_nilahspellattackempowered"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_nilahspellattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_nilahspellattack2"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

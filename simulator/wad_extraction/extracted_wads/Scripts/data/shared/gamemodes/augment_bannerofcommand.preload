@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="summonercherryhold"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_bannerofcommand_allybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellAttribution"}}, 
+}

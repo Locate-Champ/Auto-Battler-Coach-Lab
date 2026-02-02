@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_settspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_sett_markerbuff"}}, 
+}

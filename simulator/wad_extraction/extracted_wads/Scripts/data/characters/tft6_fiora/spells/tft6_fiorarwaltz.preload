@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT6_Fiora.TFT6_FioraRWaltz"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_fiorarblinkattack"}}, 
+}

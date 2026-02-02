@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="AurelionSol.AurelionSolRPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="aurelionsolrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="aurelionsole"}}, 
+}

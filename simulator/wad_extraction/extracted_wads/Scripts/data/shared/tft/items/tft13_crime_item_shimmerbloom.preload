@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_crime_item_shimmerbloom_apbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_crime_item_shimmerbloom_prismaticcooldown"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Crime_Item_ShimmerBloom"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_crime_item_shimmerbloom_shield"}}, 
+}

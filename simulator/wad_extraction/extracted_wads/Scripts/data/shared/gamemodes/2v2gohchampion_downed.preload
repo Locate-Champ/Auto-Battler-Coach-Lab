@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="sru_horde_mini"}}, 
+{Function=BBPreloadSpell, Params={Name="goheliseminionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2champion_upped"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Chauffeur"}}, 
+}

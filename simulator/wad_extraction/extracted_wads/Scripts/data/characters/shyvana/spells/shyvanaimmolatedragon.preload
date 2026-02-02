@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="shyvanaimmolationaura"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_distancetraveledtracker"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="drmundowrecast"}}, 
+{Function=BBPreloadSpell, Params={Name="swipe"}}, 
+{Function=BBPreloadSpell, Params={Name="drmundowbeamvfx"}}, 
+}

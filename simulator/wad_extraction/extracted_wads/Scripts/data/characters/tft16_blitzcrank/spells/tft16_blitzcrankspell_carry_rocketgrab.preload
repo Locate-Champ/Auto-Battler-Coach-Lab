@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_blitzcrankspell_carry_rocketgrab_pull"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_blitzcrankspell_carry_attackbuff"}}, 
+}

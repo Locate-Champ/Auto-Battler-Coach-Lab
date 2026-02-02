@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="zacrebirthstacks"}}, 
+{Function=BBPreloadSpell, Params={Name="zacrebirthsetkiller"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2ringoffire_onfire"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_avariceincarnate_playermanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_AvariceIncarnate"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_StrategistTacticalSuperiority_Army"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_augment_strategisttacticalsuperiority_unit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_StrategistTacticalSuperiority_Unit"}}, 
+}

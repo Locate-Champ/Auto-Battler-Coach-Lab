@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_regionportals_playerbuff_placidiumlibrary"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_regionportals_playerbuff_godwillowsgrove"}}, 
+}

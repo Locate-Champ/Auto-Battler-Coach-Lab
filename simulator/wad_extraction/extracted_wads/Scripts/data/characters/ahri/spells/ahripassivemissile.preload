@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ahripassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ahrir"}}, 
+{Function=BBPreloadModule, Params={Name="Ahri.AhriR"}}, 
+}

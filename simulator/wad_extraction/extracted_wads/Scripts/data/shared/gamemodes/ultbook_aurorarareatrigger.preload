@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_aurorar"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_aurorarmove"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_aurorawinvis"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_aurorapspiritmode"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+}

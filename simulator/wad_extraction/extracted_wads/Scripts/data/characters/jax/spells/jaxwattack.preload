@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="jaxbasicattack"}}, 
+{Function=BBPreloadModule, Params={Name="Jax.JaxW"}}, 
+}

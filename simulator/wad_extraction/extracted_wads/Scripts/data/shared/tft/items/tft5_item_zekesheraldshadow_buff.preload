@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ZekesHeraldShadow_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_zekesheraldshadow_allydebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_zekesheraldshadow_selfbuff"}}, 
+}

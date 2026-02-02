@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_naafirispell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Naafiri.TFT14_Naafiri_DogHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_naafiri_giga_dogmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_naafiri_dogmissile"}}, 
+}

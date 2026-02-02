@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadParticle, Params={Name="sru_riftherald_constant_buff.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_rolebound_mid_enhancedrecall"}}, 
+}

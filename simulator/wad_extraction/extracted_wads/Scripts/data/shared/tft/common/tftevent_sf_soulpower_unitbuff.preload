@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_SF_PlayerBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft_chaosminionmelee"}}, 
+}

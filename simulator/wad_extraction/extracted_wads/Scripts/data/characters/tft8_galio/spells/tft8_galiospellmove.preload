@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_galiospell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_galiospellknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_galiospellshield"}}, 
+}

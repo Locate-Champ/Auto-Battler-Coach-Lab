@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_ziggsr"}}, 
+{Function=BBPreloadModule, Params={Name="TFT6_Ziggs.TFT6_ZiggsRFunctionModule"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_cannibalize_bonusbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Cannibalize"}}, 
+}

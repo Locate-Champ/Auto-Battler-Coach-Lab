@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ZephyrShadow_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_zephyrshadow_cc_buff"}}, 
+}

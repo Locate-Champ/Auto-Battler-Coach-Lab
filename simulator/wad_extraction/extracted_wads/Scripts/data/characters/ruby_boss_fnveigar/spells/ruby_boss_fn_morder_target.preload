@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fn_morderwispmis"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Boss_FNVeigar.Ruby_Boss_FN_MordeR_InsideSpiritRealm"}}, 
+}

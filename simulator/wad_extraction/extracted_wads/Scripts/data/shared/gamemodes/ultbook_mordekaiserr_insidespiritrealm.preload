@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_mordekaiserrkillnolifesteal"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_MordekaiserR_StatSteal"}}, 
+}

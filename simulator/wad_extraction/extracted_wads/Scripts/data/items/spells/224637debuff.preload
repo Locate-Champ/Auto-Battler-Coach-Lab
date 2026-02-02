@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.224637Debuff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_recipe_spiritoftheelderlizard"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_infernalconduit"}}, 
+}

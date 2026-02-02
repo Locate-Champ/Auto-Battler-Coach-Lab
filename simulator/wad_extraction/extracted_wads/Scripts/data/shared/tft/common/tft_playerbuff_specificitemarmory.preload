@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_SpecificItemArmory"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_disallowitemdrops"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SetManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Sound"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_TragicalBlades_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_DeadlierCaps_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_WarmogsBuckle_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_masterworkupgrade_postcombatdelayedgrant"}}, 
+}

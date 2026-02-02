@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_dropybara_active"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_dropybara_active_grounddamage"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+}

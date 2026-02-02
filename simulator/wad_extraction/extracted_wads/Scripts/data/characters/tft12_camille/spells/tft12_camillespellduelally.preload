@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_camillespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_camillespellattackactive"}}, 
+}

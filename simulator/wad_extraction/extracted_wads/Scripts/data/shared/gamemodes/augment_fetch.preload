@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_snowballaugment_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fetch_allymark"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fetch_selfbuff"}}, 
+}

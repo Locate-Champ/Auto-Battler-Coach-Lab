@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_jinxe"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxefireburnmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxefireburn"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxeminemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxeminesnare"}}, 
+}

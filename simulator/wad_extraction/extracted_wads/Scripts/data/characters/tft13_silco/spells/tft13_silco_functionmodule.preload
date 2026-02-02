@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_silco_spell"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft13_silco_monstrosity"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_silco_monstrosity_buff"}}, 
+}

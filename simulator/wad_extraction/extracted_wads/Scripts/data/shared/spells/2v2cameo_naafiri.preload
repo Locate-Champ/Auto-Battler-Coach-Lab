@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Cherry_CameoManager"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_naafiriw"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2CombatInstanceBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Naafiri"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_NaafiriRunCircle"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameochamphidden"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2RingOfFireBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_naafiriruncircle"}}, 
+{Function=BBPreloadSpell, Params={Name="naafiripackmate"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_naafiripackmate"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_naafiricd"}}, 
+}

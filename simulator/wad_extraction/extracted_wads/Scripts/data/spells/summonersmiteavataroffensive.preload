@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Smite"}}, 
+{Function=BBPreloadSpell, Params={Name="summonersmite"}}, 
+{Function=BBPreloadSpell, Params={Name="itemsmiteslow"}}, 
+{Function=BBPreloadSpell, Params={Name="summonersmiteavatarutility"}}, 
+{Function=BBPreloadSpell, Params={Name="smitten"}}, 
+{Function=BBPreloadModule, Params={Name="Global.PuppyControllerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellPings"}}, 
+}

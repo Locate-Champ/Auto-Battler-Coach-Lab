@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_ryzespell_transform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspell_passive_transform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspell_transform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kobukospell_transform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_yasuospell_transform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ryzespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_kobukospell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_yasuospell"}}, 
+}

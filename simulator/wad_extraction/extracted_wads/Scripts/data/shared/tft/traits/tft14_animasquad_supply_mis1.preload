@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Item"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_combatonlyitem_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_GuinsoosRageblade_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_TitansResolveManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_AnimaSquad_CombatWeapon_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_GuinsoosRagebladeRadiant_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_TitansResolveRadiantManager"}}, 
+}

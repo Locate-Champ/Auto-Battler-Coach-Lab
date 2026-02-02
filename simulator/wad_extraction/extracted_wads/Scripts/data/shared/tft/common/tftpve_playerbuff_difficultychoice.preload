@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_zaps_shopmanager_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_zaps_manager_armybuff"}}, 
+}

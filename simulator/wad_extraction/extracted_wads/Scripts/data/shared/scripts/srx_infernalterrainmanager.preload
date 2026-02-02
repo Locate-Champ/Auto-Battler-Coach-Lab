@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SRX_InfernalTerrainManager"}}, 
+{Function=BBPreloadCharacter, Params={Name="sr_infernalrift_crystalmeep"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_magmadomebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRX_MagmaDomeBuff"}}, 
+}

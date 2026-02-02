@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kogmawlivingartillery"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_kogmawasboost"}}, 
+{Function=BBPreloadModule, Params={Name="TFT11_KogMaw.TFT11_KogmawASBoost"}}, 
+}

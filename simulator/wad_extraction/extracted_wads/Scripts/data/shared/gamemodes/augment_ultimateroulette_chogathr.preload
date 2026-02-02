@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_stackosaurusrex"}}, 
+{Function=BBPreloadSpell, Params={Name="feastvisualmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_StackosaurusRex"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_UltimateRoulette"}}, 
+}

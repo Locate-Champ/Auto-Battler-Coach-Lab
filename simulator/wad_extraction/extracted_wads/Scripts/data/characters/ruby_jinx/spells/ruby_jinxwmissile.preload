@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_jinxw"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxwsight"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_jinxr"}}, 
+}

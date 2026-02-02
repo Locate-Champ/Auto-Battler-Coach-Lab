@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Lovers_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_lovers_unitbuffmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_xayahbenchdummyspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_xayahbenchdummyspell_left"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_lovers_taginspellbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+}

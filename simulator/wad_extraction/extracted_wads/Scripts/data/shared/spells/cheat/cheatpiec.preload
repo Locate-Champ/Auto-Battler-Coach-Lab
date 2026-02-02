@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="srhomeguardspeed"}}, 
+{Function=BBPreloadSpell, Params={Name="zhonyashourglass"}}, 
+{Function=BBPreloadSpell, Params={Name="waterdragonslow"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerhaste"}}, 
+{Function=BBPreloadSpell, Params={Name="guardianangel"}}, 
+}

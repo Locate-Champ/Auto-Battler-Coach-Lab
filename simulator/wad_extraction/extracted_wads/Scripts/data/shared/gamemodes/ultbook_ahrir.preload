@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_ahrirkick"}}, 
+{Function=BBPreloadSpell, Params={Name="perks_presenceofmindtracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_AhriR"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ahrirtakedownmark"}}, 
+}

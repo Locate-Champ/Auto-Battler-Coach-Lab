@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_avatarhaste_enabler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Loot"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_avatarhastemanager"}}, 
+{Function=BBPreloadParticle, Params={Name="goldaquisition_glb.troy", SkinID="-1"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_MoneyHungry_SizeScale"}}, 
+}

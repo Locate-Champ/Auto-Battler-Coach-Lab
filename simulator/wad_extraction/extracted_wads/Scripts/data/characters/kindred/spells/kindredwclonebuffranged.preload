@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="kindredwkillclone"}}, 
+{Function=BBPreloadSpell, Params={Name="kindredwolfbuddyvisual"}}, 
+{Function=BBPreloadSpell, Params={Name="kindredw"}}, 
+{Function=BBPreloadSpell, Params={Name="kindredq"}}, 
+}

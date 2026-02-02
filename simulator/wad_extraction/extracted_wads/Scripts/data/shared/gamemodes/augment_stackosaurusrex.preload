@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kindredlegendpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="kindredmonsterbountylockout"}}, 
+{Function=BBPreloadModule, Params={Name="Nasus.NasusQStacks"}}, 
+{Function=BBPreloadSpell, Params={Name="shyvanapassivenb"}}, 
+{Function=BBPreloadModule, Params={Name="Shyvana.ShyvanaPassiveCounter"}}, 
+{Function=BBPreloadModule, Params={Name="Thresh.ThreshPassiveSouls"}}, 
+{Function=BBPreloadModule, Params={Name="Smolder.SmolderQPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_StackosaurusRex"}}, 
+{Function=BBPreloadModule, Params={Name="AurelionSol.AurelionSolPassive"}}, 
+}

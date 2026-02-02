@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tft12_morganabatnivia"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_morganaspell_batniviabuff"}}, 
+}

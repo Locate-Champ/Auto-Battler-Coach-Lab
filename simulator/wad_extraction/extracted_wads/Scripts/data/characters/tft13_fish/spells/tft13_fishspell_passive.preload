@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_fishspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_fishhealmissile"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="samirar"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_SamiraPassiveCombo"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_samirapassivecombo"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_samirapmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_samirapmissileoffhand"}}, 
+}

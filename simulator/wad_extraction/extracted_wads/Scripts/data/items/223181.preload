@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="3181skipperstacks"}}, 
+{Function=BBPreloadSpell, Params={Name="3181skipperparticles"}}, 
+{Function=BBPreloadSpell, Params={Name="item223181isolatedbuff"}}, 
+}

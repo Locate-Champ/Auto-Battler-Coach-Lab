@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_briar_rundown_accelerating"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_briar_rundown_targeted"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_briar_basestate"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_boss_briar_rundown_selflock"}}, 
+}

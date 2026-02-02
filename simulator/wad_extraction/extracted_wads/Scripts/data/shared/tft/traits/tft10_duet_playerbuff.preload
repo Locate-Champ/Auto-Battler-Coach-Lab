@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Duet_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Duet_Partner_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_duet_partner_unitbuff"}}, 
+}

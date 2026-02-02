@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_illaoilockfacedirection"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_illaoitentacleminion"}}, 
+}

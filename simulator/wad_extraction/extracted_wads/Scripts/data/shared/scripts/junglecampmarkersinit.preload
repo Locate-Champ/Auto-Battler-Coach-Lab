@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="sru_camprespawnmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="camprespawncountdownhidden"}}, 
+{Function=BBPreloadModule, Params={Name="Global.JungleCampMarkersInit"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="dragonsigilmanager"}}, 
+}

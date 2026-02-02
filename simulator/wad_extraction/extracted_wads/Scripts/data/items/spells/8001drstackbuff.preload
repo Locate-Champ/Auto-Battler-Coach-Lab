@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="8001vengeance"}}, 
+{Function=BBPreloadSpell, Params={Name="8001pointer"}}, 
+{Function=BBPreloadModule, Params={Name="Global.8001DRStackBuff"}}, 
+}

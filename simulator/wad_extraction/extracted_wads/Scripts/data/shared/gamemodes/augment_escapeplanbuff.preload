@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_escapeplan"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_escapeplan_cooldown"}}, 
+}

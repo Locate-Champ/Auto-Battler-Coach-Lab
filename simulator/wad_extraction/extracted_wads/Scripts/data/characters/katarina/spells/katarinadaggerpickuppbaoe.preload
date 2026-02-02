@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="katarinadaggerpickupanimationlock"}}, 
+{Function=BBPreloadSpell, Params={Name="katarinapassive"}}, 
+{Function=BBPreloadModule, Params={Name="Pantheon.PantheonEShieldBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Katarina.KatarinaQShared"}}, 
+}

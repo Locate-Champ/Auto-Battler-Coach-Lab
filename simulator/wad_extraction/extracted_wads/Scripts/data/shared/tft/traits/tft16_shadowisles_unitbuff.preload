@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_ShadowIsles_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_shadowisles_soulcount"}}, 
+}

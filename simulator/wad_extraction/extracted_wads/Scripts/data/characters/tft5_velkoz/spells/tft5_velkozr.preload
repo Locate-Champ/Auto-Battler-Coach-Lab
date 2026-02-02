@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_velkozrminionkiller"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_velkozrdamagestack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_velkozrhitparticle"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+}

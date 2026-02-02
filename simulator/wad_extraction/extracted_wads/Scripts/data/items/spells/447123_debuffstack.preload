@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="447123_berserk"}}, 
+{Function=BBPreloadSpell, Params={Name="447123_cooldown"}}, 
+}

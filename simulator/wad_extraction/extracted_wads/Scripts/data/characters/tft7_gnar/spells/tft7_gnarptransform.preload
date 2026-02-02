@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT7_Gnar.TFT7_GnarPTransform"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_gnarp"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_gnarpknockup"}}, 
+}

@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.MoonstoneChainHeal"}}, 
+{Function=BBPreloadSpell, Params={Name="6617healchainmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="6617chargehealmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="6617shieldchainbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="6617shieldchainmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="6617chargeshieldbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="6617chargeshieldmissile"}}, 
+}

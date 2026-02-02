@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_tristanabasicattack"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Tristana.Ruby_TristanaE"}}, 
+}

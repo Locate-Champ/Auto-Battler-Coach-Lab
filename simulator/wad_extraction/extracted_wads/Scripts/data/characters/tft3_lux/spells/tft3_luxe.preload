@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="tft3_luxeorb"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+}

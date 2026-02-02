@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_gragasspellhero"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Gragas.TFT14_GragasSpellHeroAttackManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_gragasspellheroempoweredattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_gragasspellheropassiveattack"}}, 
+}

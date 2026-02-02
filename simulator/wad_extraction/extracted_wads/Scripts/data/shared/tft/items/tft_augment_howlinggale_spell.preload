@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_HowlingGale_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_HowlingGale_KnockupMarkerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_howlinggale_knockupmarkerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_howlinggale_knockupbuff"}}, 
+}

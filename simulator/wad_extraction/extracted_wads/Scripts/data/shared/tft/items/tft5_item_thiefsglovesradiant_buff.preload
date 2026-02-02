@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_thiefsglovespersistencemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_disallowitemdrops"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ThiefsGlovesRadiant_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_thiefsgloves_ceremony"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ThiefsGlovesPersistenceManager"}}, 
+}

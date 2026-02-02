@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_luxwshield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_luxprismaticwavereturndead"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_luxprismaticwavereturn"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT5_Lux.TFT5_LuxWShield"}}, 
+}

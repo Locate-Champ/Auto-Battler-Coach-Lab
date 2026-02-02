@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="skarnerq"}}, 
+{Function=BBPreloadModule, Params={Name="Skarner.SkarnerPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+}

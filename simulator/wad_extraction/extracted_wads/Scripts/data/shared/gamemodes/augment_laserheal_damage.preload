@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_laserheal_laserbeam"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_laserheal"}}, 
+}

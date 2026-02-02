@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SR_ScuttleTrain"}}, 
+{Function=BBPreloadCharacter, Params={Name="durian_scuttletrainengine"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_scuttletrain_engine"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_scuttletrain_enginetakeover"}}, 
+}

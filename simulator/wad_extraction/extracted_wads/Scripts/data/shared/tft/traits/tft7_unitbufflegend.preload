@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT7_UnitBuffLegend"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_legendpersistentbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT7_TraitEffect_LegendPersistentBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_legendcombatbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_legendtargetindicator"}}, 
+}

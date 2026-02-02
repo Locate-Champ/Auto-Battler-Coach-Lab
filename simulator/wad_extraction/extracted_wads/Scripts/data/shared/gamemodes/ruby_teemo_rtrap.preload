@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_teemo_rtrapowner"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Ruby_Teemo_RTrapOwner"}}, 
+{Function=BBPreloadSpell, Params={Name="teemor"}}, 
+{Function=BBPreloadSpell, Params={Name="stealth"}}, 
+{Function=BBPreloadSpell, Params={Name="teemordot"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Ruby_Teemo_RTrap"}}, 
+{Function=BBPreloadCharacter, Params={Name="teemomushroom"}}, 
+{Function=BBPreloadSpell, Params={Name="traplimiter"}}, 
+}

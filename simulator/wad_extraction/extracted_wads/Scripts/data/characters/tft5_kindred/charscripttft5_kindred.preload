@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_kindredwolf"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kindredwolf_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT5_Kindred.TFT5_KindredWolfStatsBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kindredr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT5_Kindred.TFT5_KindredFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kindredwolfstatsbuff"}}, 
+}

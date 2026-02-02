@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_NonCombatNPCs"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_regionportals_playerbuffarmorytracker_finn"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_regionportals_unitbuffarmorytracker_finn"}}, 
+}

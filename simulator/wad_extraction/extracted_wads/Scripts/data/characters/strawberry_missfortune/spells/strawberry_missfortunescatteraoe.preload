@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Strawberry_MissFortunescattershot"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_MissFortune.Strawberry_MissFortuneScatterAoE"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_MissFortunescattershotslow"}}, 
+}

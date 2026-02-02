@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_minionfrenzy_leaderbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_frenzy_champmarker"}}, 
+}

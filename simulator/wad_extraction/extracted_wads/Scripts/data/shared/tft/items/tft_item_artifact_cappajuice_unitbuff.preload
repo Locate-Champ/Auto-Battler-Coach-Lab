@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_artifact_cappajuice_armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Artifact_CappaJuice_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Artifact_CappaJuice_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+}

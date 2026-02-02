@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_shacospell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Shaco.TFT14_Shaco_TakedownManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+}

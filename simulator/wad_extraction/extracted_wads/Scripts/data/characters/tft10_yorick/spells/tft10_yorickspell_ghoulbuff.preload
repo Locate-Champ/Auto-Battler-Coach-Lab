@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_yorickspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Yorick.TFT10_YorickSpell_GhoulBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_small"}}, 
+}

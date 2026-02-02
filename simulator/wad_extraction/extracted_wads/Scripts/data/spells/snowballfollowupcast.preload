@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="summonersnowball"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SnowballMissile"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_SnowballRoulette"}}, 
+}

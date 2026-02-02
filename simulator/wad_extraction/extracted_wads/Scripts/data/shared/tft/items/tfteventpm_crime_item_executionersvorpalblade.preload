@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_crime_item_executionersvorpalblade_enhancebuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT13_Crime_Item_ExecutionersVorpalblade_EnhanceBuff"}}, 
+}

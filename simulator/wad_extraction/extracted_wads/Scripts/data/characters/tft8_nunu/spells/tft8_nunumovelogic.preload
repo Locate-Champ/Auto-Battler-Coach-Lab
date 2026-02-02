@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT8_Nunu.TFT8_NunuMoveLogic"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_nunudancestopmove"}}, 
+}

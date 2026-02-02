@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_okboomerang"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_okboomerang_missile_in"}}, 
+}

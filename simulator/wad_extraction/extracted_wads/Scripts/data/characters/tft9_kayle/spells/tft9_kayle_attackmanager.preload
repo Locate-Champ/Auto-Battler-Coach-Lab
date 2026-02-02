@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_kaylespell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Kayle.TFT9_Kayle_AttackManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_kaylewavemis"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_champion_dead_autospectate"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_revive_relic_invulnerability"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_special_savior"}}, 
+}

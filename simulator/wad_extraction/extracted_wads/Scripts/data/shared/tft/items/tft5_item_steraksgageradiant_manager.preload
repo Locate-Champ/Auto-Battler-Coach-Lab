@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_steraksgageradiant_shield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_SteraksGageRadiant_Manager"}}, 
+}

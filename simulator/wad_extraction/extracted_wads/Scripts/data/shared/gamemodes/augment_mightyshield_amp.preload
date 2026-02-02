@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_mightyshield"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_mightyshield_cooldown"}}, 
+}

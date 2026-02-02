@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_quest_challenge_cardboard_box"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_quest_challenge_cardboard_doesnthavebox"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire"}}, 
+}

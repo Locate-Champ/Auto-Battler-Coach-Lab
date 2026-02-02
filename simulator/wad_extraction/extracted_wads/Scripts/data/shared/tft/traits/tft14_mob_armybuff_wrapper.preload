@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_mob_armybuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_mob_playerbuff"}}, 
+}

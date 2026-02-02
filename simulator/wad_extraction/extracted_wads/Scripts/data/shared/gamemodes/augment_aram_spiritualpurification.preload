@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_SpiritualPurification"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+}

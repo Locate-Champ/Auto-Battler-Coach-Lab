@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="luludisguisebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="lulufaerieoverridetemp"}}, 
+{Function=BBPreloadSpell, Params={Name="luluq"}}, 
+}

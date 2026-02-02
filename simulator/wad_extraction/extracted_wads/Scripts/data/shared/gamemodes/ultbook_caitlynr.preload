@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_caitlyncannotattack"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_caitlynrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ifhasbuffcheck"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_caitlynrchanneling"}}, 
+}

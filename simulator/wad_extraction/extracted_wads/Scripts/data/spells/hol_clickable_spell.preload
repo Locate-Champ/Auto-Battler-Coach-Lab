@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+--{Function=BBPreloadModule, Params={Name="Global.Hexgate_Shared"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Hexgate_AnimState"}}, 
+}

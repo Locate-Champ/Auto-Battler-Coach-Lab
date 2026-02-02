@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="quinnrreturntoquinn"}}, 
+{Function=BBPreloadSpell, Params={Name="quinnr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Chauffeur"}}, 
+{Function=BBPreloadSpell, Params={Name="tahmkenchrwrapper"}}, 
+{Function=BBPreloadSpell, Params={Name="tahmkenchrtargetally"}}, 
+{Function=BBPreloadSpell, Params={Name="tahmkenchr2"}}, 
+{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchRTargetAlly"}}, 
+}

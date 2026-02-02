@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_numbtopain_bleed"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_numbtopain_counter"}}, 
+}

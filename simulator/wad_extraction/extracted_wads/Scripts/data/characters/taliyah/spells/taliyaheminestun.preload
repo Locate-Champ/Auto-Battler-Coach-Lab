@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="taliyahe"}}, 
+{Function=BBPreloadModule, Params={Name="Taliyah.TaliyahEMineStun"}}, 
+{Function=BBPreloadParticle, Params={Name="loc_stun.troy", SkinID="-1"}}, 
+}

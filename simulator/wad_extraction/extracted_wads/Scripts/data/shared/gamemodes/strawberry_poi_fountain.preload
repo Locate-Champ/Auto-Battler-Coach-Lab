@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_fountain_available"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_fountaintimer"}}, 
+}

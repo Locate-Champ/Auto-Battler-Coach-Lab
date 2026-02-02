@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="haste"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_Chauffeur"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Chauffeur"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_chauffeur_reattachtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_chauffeur_allybuff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_chauffeur_selfbuff"}}, 
+}

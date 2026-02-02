@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_gangplankspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_gangplankspell_igniteswordvisuals"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Gangplank.TFT9_GangplankSpell_PassiveAttackManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+}

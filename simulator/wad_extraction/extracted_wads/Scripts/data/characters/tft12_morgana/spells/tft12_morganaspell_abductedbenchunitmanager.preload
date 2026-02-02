@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_morganaspell_batniviapoof"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_morganaspell_makeunitinvisible"}}, 
+}

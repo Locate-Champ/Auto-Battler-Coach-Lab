@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_yasuospellknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_yasuoswordglow"}}, 
+{Function=BBPreloadSpell, Params={Name="yasuor"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_yasuospellhold"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_sorakae"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_xeratharcanopulsechargeup"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_sorakaepacify"}}, 
+}

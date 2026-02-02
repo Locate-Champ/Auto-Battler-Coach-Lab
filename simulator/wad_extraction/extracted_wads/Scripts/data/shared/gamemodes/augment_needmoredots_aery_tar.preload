@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots"}}, 
+{Function=BBPreloadModule, Params={Name="Global.AdaptiveDamageModule"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_8214ally"}}, 
+{Function=BBPreloadSpell, Params={Name="sowthewind"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_8214enemy"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_needmoredots_summonaery"}}, 
+}

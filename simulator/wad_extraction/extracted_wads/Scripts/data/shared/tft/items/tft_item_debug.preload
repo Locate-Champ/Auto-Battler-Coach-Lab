@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_debugitem_critchance_unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_debugitem_firsthit_unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_taunt"}}, 
+}

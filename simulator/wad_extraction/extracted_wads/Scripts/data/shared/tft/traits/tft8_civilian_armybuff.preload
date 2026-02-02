@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Civilian_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_civilian_unitbuff_allyboost"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="3302_do_second_attack_buff"}}, 
+{Function=BBPreloadSpell, Params={Name="3302_buff"}}, 
+{Function=BBPreloadSpell, Params={Name="3302darkbuff"}}, 
+}

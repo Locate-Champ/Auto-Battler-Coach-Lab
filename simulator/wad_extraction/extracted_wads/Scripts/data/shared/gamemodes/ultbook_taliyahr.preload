@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="globalcannotclickobjects"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadModule, Params={Name="Global.FunctionsUltBook_Taliyah"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_taliyahrsurfoptin"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_taliyahrdistantsound"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_taliyahrmis"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_taliyahrblowupsoundmis"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_taliyahrpresurf"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_taliyahrknockedoffwallsound"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_briarw"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Briar.Strawberry_BriarWFrenzyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briarq"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briarwfrenzystatebuff"}}, 
+}

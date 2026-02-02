@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_formswapper_passivebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_gangplankspell_ranged_passive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

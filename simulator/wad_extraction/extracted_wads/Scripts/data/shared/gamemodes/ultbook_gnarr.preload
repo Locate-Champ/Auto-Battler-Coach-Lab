@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_gnarrknockback"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_gnarrknockbackcc"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_gnarrspellshieldcheck"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_gnarbigiscasting"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_gnarrselfhold"}}, 
+}

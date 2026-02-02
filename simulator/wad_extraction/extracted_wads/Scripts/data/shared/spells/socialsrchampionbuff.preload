@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="swiftplaybalancetooltipbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_minionfrenzy_championbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="socialsr_bountymanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SocialSRChampionBuff"}}, 
+}

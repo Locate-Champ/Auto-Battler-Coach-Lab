@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Skarner.SkarnerPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerrimpale"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerrtailgrabcenter"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerrtailgrabright"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerrtailgrableft"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerrspeedboost"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerrwindup"}}, 
+{Function=BBPreloadSpell, Params={Name="skarnerrfacinglock"}}, 
+}

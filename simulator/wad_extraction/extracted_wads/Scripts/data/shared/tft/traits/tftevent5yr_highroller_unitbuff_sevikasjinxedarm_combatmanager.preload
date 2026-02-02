@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_highroller_armybuff_rollcounter"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_HighRoller_ArmyBuff_RollCounter"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_HighRoller_UnitBuff_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_highroller_unitbuff_rolling"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_highroller_unitbuff_spell1"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_highroller_unitbuff_spell2"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_highroller_unitbuff_spell3"}}, 
+}

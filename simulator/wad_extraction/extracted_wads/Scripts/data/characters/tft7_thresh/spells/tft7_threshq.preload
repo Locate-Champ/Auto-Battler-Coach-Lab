@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_threshqselfroot"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_threshqenemypull"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

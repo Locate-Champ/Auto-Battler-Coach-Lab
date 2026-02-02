@@ -1,0 +1,17 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTPAIRS_Reinforcements"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadSpell, Params={Name="tftpairs_unitbuff_reinforcementdummyinvis"}}, 
+{Function=BBPreloadSpell, Params={Name="tftpairs_unitbuff_reinforcementstasis"}}, 
+{Function=BBPreloadSpell, Params={Name="tftpairs_playertounitarrivalmissile_reinforcements"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tftpairs_arrivalceremonyleaveboardreinforcements"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Scouting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_portaljumpin"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Camera"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_portaljumpout"}}, 
+}

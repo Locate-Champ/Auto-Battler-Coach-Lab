@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_urgotspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_urgotwtarget"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_urgotwattack"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_spellwake"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Spellwake_PerWaveCooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_earthwake"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_spellwake_perwavecooldown"}}, 
+}

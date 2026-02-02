@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_hextechgunblade_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_honorbound_visualcooldown_unitbuff"}}, 
+}

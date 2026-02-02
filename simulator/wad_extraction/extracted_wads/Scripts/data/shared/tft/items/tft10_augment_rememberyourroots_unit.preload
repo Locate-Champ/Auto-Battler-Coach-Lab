@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_augment_rememberyourroots_manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_RememberYourRoots_Unit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_RememberYourRoots_Manager"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_GolemPower_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_golempower_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
+}

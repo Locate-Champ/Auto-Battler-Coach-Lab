@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kaisar"}}, 
+{Function=BBPreloadModule, Params={Name="Kaisa.KaisaSkin40Manager"}}, 
+}

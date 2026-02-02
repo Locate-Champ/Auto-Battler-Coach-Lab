@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="teemortrap"}}, 
+{Function=BBPreloadSpell, Params={Name="perks_presenceofmindammospellcd"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Preserver_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_traiteffect_preserverbuff"}}, 
+}

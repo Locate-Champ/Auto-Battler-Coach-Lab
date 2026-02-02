@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_gnarbigqmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_gnartransform"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT6_Gnar.TFT6_GnarFunctionModule"}}, 
+}

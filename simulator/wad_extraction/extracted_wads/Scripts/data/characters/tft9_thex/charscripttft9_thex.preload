@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_PlayerBuffPiltoverDoombotManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_thexspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuff_summonstarscaling"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_piltover_doombotbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_piltover_doombotbuff_sizescale"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_piltover_doombotbuff_upgrade1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_piltover_doombotbuff_upgrade2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_piltover_doombotbuff_upgrade3"}}, 
+}

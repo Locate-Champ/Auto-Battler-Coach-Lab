@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_spellcrit_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_cutter_enhanced_unitbuff"}}, 
+}

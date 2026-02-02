@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tft7_swaindemonform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_swainrfireballattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

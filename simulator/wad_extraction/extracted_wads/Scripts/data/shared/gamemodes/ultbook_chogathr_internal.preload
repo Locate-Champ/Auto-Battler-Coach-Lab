@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_chogathruitracker"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_chogathrmarker"}}, 
+}

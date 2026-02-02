@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Vanquisher_PerfectParry_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_augment_vanquisher_perfectparry_cooldownmarker"}}, 
+}

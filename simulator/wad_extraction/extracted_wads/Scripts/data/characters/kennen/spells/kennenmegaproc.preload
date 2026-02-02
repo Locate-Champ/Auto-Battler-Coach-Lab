@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="kennenpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="kennenmarkofstorm"}}, 
+{Function=BBPreloadSpell, Params={Name="kennenbringthelight"}}, 
+}

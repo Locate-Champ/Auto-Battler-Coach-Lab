@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_PlayerBuff_LootSubscription"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_LevelScript_LootSubscription"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+}

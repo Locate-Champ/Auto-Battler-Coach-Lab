@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Storyweaver_ArmyBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Storyweaver_PlayerBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="TFTEvent5YR_Kayle.CharScriptTFTEvent5YR_Kayle"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_storyweaver_scalemanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Storyweaver_HeroUnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_storyweaver_herounitbuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT11_Storyweaver_PlayerBuffManager"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_gravescannonball"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_gravespmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_gravese"}}, 
+}

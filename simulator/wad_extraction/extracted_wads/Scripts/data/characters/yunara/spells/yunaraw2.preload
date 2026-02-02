@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="yunarar"}}, 
+{Function=BBPreloadSpell, Params={Name="yunaraw2slow"}}, 
+{Function=BBPreloadSpell, Params={Name="yunaraw"}}, 
+{Function=BBPreloadModule, Params={Name="Yunara.YunaraWPassive"}}, 
+}

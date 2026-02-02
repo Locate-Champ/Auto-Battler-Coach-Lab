@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_hivemind_counter"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2ChampionBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_HiveMind"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_hivemind_bee_mis"}}, 
+}

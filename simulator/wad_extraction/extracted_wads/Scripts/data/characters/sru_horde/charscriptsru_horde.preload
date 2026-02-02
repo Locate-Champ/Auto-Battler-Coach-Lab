@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="monsterminiondamageamp"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_spawnminis"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_shield"}}, 
+{Function=BBPreloadModule, Params={Name="Global.JungleCampSpawn"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_horde_leashresetannouncetracker"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_dot"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SR_2023_InGameComs_Manager"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Caitlynpassive"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Caitlyn.Ruby_CaitlynPassive"}}, 
+}

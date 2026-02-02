@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_Urgot.TFT9_UrgotSpellPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_urgotspellpassivelockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_urgotspell"}}, 
+{Function=BBPreloadSpell, Params={Name="urgotpassive"}}, 
+}

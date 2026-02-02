@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="charmbuffbaricon"}}, 
+{Function=BBPreloadModule, Params={Name="Seraphine.EternalsTracker_SeraphineRLongrange"}}, 
+}

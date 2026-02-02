@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_yorickspell_debuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_yorickspell_healthbuff"}}, 
+}

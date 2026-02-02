@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_NineLives_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_NineLives_UnitBuff"}}, 
+}

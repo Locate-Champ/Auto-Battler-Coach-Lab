@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ezrealr"}}, 
+{Function=BBPreloadSpell, Params={Name="dariushemomarker"}}, 
+{Function=BBPreloadSpell, Params={Name="dariushemo"}}, 
+{Function=BBPreloadSpell, Params={Name="dariushemointernal"}}, 
+{Function=BBPreloadSpell, Params={Name="dariushemovisual"}}, 
+{Function=BBPreloadSpell, Params={Name="dariushemomax"}}, 
+{Function=BBPreloadSpell, Params={Name="ashepassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ashepassiveslow"}}, 
+}

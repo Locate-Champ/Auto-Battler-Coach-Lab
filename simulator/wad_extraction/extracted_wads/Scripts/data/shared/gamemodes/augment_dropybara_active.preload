@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_activesummoner_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="itemredemption"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_dropybara_active_ground"}}, 
+}

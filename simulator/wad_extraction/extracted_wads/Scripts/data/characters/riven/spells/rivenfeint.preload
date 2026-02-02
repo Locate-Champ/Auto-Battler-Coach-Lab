@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="eternals_distancetraveledtracker"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
+{Function=BBPreloadModule, Params={Name="Global.PlayerTerrian"}}, 
+{Function=BBPreloadSpell, Params={Name="riventricleaveghost"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_chogath_feast_internal"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_chogath_rupture"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_chogath_rupturelaunch"}}, 
+}

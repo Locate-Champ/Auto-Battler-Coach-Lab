@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_quantumcomputing"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_quantumcomputing_camillew"}}, 
+{Function=BBPreloadSpell, Params={Name="camillew"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_quantumcomputing_camillewconeslashslow"}}, 
+}

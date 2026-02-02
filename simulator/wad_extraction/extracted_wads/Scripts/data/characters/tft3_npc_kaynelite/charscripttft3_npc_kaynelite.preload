@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_NPCs"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Gear"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_PortalDraft"}}, 
+{Function=BBPreloadSpell, Params={Name="tft3_portals_bonanza_npc_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_sound"}}, 
+}

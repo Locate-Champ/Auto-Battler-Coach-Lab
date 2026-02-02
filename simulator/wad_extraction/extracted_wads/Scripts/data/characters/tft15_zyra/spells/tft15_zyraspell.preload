@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_zyraspellvineplantmis"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Rosemother_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_zyraspellbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Zyra.TFT15_ZyraFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

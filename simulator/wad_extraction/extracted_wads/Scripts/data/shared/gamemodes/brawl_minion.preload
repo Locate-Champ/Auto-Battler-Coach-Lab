@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Brawl_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Brawl_Telemetry"}}, 
+{Function=BBPreloadSpell, Params={Name="brawl_minion_isrushing"}}, 
+{Function=BBPreloadModule, Params={Name="Global.MissionsInLUA_2025_S2_A1"}}, 
+{Function=BBPreloadSpell, Params={Name="brawl_minion_isjumping"}}, 
+}

@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT13_Chainsaw.TFT13_ChainsawSpellHERODash"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_chainsawspellhero"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_chainsawspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_chainsawspellherodash_marker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_chainsawspellhero_dashknockup"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_dontchase"}}, 
+{Function=BBPreloadSpell, Params={Name="poisontrail"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2ComboBreaker"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2combobreaker_unstoppable"}}, 
+}

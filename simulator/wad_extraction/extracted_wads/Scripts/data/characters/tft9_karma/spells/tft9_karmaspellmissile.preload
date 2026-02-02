@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_karmaspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_karmamarker"}}, 
+}

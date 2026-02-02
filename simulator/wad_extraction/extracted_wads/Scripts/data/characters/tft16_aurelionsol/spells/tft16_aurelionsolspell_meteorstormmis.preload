@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_aurelionsolspell"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT16_AurelionSol.TFT16_AurelionSol_Passive"}}, 
+}

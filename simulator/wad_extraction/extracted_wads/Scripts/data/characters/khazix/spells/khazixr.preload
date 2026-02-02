@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="khazixrstealth"}}, 
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+}

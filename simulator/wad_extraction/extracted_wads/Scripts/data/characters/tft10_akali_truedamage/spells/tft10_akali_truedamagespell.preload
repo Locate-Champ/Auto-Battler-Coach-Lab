@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT10_BlingManager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Akali_TrueDamage.TFT10_Akali_TrueDamageSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_akali_truedamagespellmis"}}, 
+}

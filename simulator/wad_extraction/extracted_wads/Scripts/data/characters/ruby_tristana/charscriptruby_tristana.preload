@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="globalruncyclemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanavodamagetrackerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanabasicattacksound"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanavorinmidair"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanavorcloserange"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanavor"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanavowpassoverterrain"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_tristanavowcloseescapeimmediate"}}, 
+}

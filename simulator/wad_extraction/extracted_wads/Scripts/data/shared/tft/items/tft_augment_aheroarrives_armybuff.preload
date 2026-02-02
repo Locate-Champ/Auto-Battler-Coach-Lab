@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_AHeroArrives_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_aheroarrives_benchbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_aheroarrives_entrancebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_aheroarrives_clonebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalsummonbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
+}

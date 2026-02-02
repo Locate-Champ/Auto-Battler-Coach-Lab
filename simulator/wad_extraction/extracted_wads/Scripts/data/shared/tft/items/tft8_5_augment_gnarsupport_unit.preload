@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT8_5_GnarSupport_EnemyDebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_5_gnarsupport_enemydebuff"}}, 
+}

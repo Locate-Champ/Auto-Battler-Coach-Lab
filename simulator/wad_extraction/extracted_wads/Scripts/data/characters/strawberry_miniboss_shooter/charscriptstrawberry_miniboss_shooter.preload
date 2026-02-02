@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss_shooter_lockedfacing"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_miniboss_shooter_shooting"}}, 
+}

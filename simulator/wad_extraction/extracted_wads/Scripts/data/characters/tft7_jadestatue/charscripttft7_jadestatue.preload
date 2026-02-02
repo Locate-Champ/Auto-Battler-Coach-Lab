@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_jadestatueinactiveaura"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuff_boarddummy"}}, 
+}

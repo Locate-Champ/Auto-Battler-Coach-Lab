@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_miliospellstun"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Milio.TFT9_MilioSpellFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_miliospell"}}, 
+}

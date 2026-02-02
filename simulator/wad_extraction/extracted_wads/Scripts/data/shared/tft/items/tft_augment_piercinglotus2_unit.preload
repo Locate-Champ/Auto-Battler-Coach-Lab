@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_small"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_small"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_spellcrit_manager"}}, 
+}

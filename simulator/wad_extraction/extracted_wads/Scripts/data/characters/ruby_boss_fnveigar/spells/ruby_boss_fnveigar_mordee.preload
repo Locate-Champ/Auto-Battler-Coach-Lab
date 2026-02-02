@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigar_mordeemissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigar_penetratingbalefulstrike"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigar_penetratingbalefulstrikemis"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigarbalefulstrike"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigarbalefulstrikemis"}}, 
+}

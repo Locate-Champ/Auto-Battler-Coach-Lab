@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Squad_CombatArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_squad_shieldunitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_squad_enemyunitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Squad_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Squad_ShieldUnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Enforcer_ArmyMarkerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set13a"}}, 
+}

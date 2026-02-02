@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT16_Kaisa.TFT16_KaisaSpell_Passive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaspell_ad"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_kaisaspell_ap"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+}

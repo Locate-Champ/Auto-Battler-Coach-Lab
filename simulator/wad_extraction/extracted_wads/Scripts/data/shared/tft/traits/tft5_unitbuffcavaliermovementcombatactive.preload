@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_UnitBuffCavalier"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_UnitBuffCavalierMovementCombatActive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_unitbuffcavalierroot"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_unitbuffcavaliermovementdash"}}, 
+}

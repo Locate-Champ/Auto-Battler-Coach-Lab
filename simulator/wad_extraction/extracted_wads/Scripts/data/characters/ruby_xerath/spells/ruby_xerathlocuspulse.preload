@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_xerathlocusofpower2"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_xerath_rmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_xerathrrampup"}}, 
+}

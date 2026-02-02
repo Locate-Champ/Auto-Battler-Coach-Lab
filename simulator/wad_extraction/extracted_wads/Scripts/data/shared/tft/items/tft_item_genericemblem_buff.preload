@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_GenericEmblem_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_LeeSin.TFT15_LeeSin_StanceManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Ekko_Isekai_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_SetMechanic_DynamicTraitMarker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_ZaahenUnique_UnitBuff"}}, 
+}

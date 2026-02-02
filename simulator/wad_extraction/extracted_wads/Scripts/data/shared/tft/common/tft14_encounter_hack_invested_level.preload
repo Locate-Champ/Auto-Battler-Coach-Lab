@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Encounter_Hack_Invested_Level"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_encounter_hack_invested_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Encounter_Hack_Invested_PlayerBuff"}}, 
+}

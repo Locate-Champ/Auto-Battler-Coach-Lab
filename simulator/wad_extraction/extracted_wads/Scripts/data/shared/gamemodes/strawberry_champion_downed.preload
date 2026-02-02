@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_Chauffeur"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_champion_upped"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_Champion_DownedManager"}}, 
+}

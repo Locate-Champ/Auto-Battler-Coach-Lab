@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_item_ionicsparkradiantenemy_buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_ionicsparkradiantenemy_shredmanager"}}, 
+}

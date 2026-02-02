@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Weapon_TwinShadows_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_special_zookeeper"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_rebuild_drop_gold_missile"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_pickup_heal"}}, 
+}

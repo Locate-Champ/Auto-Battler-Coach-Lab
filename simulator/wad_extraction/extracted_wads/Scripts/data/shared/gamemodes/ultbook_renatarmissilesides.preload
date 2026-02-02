@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_renatar"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_renatardebuff"}}, 
+}

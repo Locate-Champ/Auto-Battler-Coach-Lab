@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_namiwhealmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_namiwspellcastdummy"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_namiwmissilebegindummy"}}, 
+}

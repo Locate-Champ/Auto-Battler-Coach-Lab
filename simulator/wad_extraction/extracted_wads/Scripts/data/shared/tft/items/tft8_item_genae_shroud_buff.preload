@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Item_GenAE_Shroud_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_item_genae_shroud_slow_buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_small"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_shroud_mis"}}, 
+}

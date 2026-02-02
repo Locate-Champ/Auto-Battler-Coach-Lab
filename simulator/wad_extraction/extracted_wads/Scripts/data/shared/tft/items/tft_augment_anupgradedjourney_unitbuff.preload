@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_augment_anupgradedjourney_playerbuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_AnUpgradedJourney_PlayerBuff"}}, 
+}

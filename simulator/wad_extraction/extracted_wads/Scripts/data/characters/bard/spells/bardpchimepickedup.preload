@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="bardptooltip_d_ns"}}, 
+{Function=BBPreloadSpell, Params={Name="bardpchimepickupspeedstacks"}}, 
+{Function=BBPreloadSpell, Params={Name="bardpchimepickupspeedboost"}}, 
+{Function=BBPreloadModule, Params={Name="Bard.BardPChimes"}}, 
+}

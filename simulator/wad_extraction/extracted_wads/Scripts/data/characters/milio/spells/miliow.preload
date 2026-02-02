@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="miliowbuddystats"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="miliowretarget"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="miliowaudioarea"}}, 
+{Function=BBPreloadModule, Params={Name="Milio.MilioPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="miliowbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="miliowinsidezone"}}, 
+{Function=BBPreloadCharacter, Params={Name="miliominion"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_reward_airsupport_active"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire_Reward_AirSupport"}}, 
+}

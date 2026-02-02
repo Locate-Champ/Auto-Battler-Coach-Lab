@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="superrecall"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_teleportscrollmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="recall"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_nunuspellhero"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Augment_NunuCarry_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_nunuspell"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_rakanspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_rakanmismarker"}}, 
+}

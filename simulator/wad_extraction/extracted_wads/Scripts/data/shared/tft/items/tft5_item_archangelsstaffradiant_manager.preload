@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ArchangelsStaffRadiant_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ArchangelsStaffRadiant_Manager"}}, 
+}

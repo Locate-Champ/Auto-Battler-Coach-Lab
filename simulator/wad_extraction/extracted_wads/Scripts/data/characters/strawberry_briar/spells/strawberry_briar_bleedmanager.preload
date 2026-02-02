@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_briar_bleedbatchbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_briarq"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Briar.Strawberry_Briar_BleedBatchBuff"}}, 
+}

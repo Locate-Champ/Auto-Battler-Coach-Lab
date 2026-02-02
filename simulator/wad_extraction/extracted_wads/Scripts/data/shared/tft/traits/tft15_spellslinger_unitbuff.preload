@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Classy_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_traiteffect_spellslingermarker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Spellslinger_DamageTracker_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_traiteffect_spellslingershock"}}, 
+}

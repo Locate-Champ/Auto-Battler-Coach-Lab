@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_luxrdeathfix"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_luxrpartfix"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_luxrpartfix2"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_luxrbeam"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_luxrball"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_luxrmis"}}, 
+}

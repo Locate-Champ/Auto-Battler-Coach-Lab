@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuffProtector"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_protectorshield"}}, 
+}

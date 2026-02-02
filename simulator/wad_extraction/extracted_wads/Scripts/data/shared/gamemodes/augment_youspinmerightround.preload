@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightround2"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightroundmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_activesummoner_manager"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="luxr"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_youspinmerightroundjumpback"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_rengarstack"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Rengar.TFT14_RengarSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_rengarjump"}}, 
+}

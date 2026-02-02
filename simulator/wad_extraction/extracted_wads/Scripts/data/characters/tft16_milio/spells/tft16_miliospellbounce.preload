@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_miliospell_marker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Milio.TFT16_MilioSpellFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_miliospell_aoe"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

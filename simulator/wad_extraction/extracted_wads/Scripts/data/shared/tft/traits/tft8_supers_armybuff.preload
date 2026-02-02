@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Supers_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_supers_bonusdamage"}}, 
+}

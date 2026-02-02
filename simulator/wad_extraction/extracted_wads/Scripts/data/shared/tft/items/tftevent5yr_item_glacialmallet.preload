@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Item_GlacialMallet"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_glacial_unitbuff_stun"}}, 
+}

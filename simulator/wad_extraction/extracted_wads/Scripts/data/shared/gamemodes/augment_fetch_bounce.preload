@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="zoeorbs"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_fetch_bone"}}, 
+}

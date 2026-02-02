@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT14_Ziggs.TFT14_Ziggs_FunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_ziggsmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

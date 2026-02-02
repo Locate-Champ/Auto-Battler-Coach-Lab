@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_augment_dangeroustogoalone_hastempitem"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_augment_dangeroustogoalone_shieldbuff"}}, 
+}

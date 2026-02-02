@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_EzrealFuture.TFT8_EzrealFuture_LocationManager_BoardBuff"}}, 
+}

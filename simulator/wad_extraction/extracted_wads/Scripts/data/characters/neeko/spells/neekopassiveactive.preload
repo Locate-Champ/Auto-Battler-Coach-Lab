@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Neeko.NeekoPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="neekopassivedisguise"}}, 
+}

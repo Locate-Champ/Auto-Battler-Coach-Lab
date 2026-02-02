@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ziggsrboom"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ziggsrtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ziggsrboommedium"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ziggsrboomlong"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_ziggsrboomextralong"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+}

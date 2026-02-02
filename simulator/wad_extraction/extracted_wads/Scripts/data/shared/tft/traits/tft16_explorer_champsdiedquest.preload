@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Explorer_ChampsDiedQuest"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Explorer_PlayerBuff_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_explorer_champsdiedquest_unitbuff"}}, 
+}

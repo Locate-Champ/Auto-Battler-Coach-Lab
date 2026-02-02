@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_pantheonspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Pantheon.TFT10_PantheonStrike"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_pantheonmis"}}, 
+}

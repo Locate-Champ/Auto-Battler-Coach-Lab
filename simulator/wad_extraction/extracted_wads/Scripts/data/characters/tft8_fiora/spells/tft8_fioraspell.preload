@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_fiorahealbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

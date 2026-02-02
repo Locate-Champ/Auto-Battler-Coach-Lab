@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Singed.Crepe_SingedVsHeimerdinger_SingedReward"}}, 
+{Function=BBPreloadSpell, Params={Name="2141active"}}, 
+}

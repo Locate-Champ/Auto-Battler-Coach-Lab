@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_kennenspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_BlingManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_kennenspellstun"}}, 
+}

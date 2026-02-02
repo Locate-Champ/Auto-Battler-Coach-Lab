@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="gwenwvisualbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenwmonstertargetingdebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenw"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenwmissilecatcher"}}, 
+{Function=BBPreloadModule, Params={Name="Gwen.GwenW"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenw_enemyinsidew"}}, 
+{Function=BBPreloadModule, Params={Name="Gwen.GwenW_EnemyInsideW"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenwaudiobuff"}}, 
+}

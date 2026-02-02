@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_DeathbladeShadow_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_deathblade_mis"}}, 
+}

@@ -1,0 +1,14 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_monstrositydeathmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_MonstrosityDeathManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_ArmyBuffAbomination"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_abominationdummyitem"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_TraitEffect_MonstrosityChannel"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_monstrositybuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_monstrositychannel"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+}

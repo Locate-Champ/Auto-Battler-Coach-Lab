@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_namiq"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_namiqdebuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_namiqmissilesmall"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+}

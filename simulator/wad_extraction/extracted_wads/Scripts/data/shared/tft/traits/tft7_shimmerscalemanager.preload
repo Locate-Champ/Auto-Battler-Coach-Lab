@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT7_ShimmerscaleManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_shimmerscale_highstakes_armory_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Shimmerscale_HighStakes_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_shimmerscale_highstakes_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Shimmerscale_ItemOrbBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_shimmerscale_itemorbbuff"}}, 
+}

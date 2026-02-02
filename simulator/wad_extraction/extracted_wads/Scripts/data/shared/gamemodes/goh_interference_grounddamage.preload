@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="goh_interference"}}, 
+{Function=BBPreloadSpell, Params={Name="glacialstorm"}}, 
+}

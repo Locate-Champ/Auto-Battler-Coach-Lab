@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_BossAffix_Void_LocalPlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_void_voidegg_unitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuff_cannotbezephyred"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_void_voidling_unitbuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+}

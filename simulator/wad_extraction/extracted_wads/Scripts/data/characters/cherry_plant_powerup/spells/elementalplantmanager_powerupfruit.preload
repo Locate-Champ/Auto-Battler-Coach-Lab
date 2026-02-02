@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2CombatInstanceBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberendernofow"}}, 
+{Function=BBPreloadCharacter, Params={Name="cherry_plant_powerup"}}, 
+{Function=BBPreloadModule, Params={Name="Cherry_Plant_Powerup.ElementalPlantManager_Powerupfruit"}}, 
+{Function=BBPreloadSpell, Params={Name="plantwithervisibility"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="healthpacksupply"}}, 
+}

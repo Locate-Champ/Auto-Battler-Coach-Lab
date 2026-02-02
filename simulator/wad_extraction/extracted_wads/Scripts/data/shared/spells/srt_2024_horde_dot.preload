@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SRT_2024_Horde_DoT"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_summoner"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_dot_buff_proxy"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRT_2024_Horde_DoT_Buff_Proxy"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_dot_buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRT_2024_Horde_DoT_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2025_atakhan_bloodyreward"}}, 
+}

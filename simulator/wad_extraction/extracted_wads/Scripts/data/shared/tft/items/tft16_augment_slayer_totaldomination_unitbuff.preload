@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Slayer_TotalDomination_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Slayer_TotalDomination_PlayerBuff"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_DragonmancerInTraining_Unit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_augment_dragonmancerintraining_buff"}}, 
+}

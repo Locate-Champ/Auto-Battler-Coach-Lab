@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="223004conversion"}}, 
+{Function=BBPreloadParticle, Params={Name="itemmuramanatoggle.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="muramana"}}, 
+{Function=BBPreloadParticle, Params={Name="itemmuramana.troy", SkinID="-1"}}, 
+}

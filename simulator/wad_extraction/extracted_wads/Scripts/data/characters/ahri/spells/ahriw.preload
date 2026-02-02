@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ahriwspeedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="ahriwmissile"}}, 
+}

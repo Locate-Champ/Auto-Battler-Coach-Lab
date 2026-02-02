@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_nidaleecougarspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_nidaleespellbouncemarker"}}, 
+}

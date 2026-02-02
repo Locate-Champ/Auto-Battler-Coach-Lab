@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_activesummoner_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerbarrier"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerhaste"}}, 
+}

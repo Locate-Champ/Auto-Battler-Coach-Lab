@@ -1,0 +1,16 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="sru_baron"}}, 
+{Function=BBPreloadSpell, Params={Name="howlingabysshomestart"}}, 
+{Function=BBPreloadSpell, Params={Name="emoteplayonspawnemote"}}, 
+{Function=BBPreloadParticle, Params={Name="sog_bw_ceremony_barrier.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="sog_bw_ceremony_barrier_red.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="sog_ha_ceremony_barrier_red.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="missionsinlua_crepe_1422"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_piltover_snowball"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_zaun_snowball"}}, 
+{Function=BBPreloadSpell, Params={Name="aram_cheatshield"}}, 
+{Function=BBPreloadSpell, Params={Name="championbalancebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="aram_cheat_autocalculation"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_inbrushbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="snowballimmunity"}}, 
+}

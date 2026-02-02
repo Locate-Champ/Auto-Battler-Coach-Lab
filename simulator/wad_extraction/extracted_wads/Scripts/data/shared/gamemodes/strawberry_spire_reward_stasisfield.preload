@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_spire_reward_stasisfield_stunbatchbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire"}}, 
+}

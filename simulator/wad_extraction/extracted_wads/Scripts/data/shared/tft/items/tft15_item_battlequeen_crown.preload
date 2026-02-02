@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_battlequeen_queenbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_BattleQueen_PlayerBuff"}}, 
+}

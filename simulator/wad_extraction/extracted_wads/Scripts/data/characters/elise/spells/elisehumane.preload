@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="elisehumanemissile"}}, 
+{Function=BBPreloadSpell, Params={Name="elisespiderlingsready"}}, 
+{Function=BBPreloadSpell, Params={Name="elisespiderlingsheal"}}, 
+{Function=BBPreloadSpell, Params={Name="elisermidshift"}}, 
+{Function=BBPreloadSpell, Params={Name="globaltruesight"}}, 
+}

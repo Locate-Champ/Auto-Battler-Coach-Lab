@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_vexrlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_vexr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_vexrresettimer"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_vexrtakedowntracker"}}, 
+}

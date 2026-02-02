@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Lieutenant.TFT13_Lieutenant_FunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Lieutenant.TFT13_LieutenantSpell4"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell4_coinarcmissile"}}, 
+}

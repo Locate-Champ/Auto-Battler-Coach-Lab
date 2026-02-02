@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Rumble.TFT16_RumbleSpell_Carry"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_rumblespell_carry_mis"}}, 
+}

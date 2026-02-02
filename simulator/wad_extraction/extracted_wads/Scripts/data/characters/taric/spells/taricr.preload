@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="taricr_eternaltakedownstracker"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_taricrtakedownslong"}}, 
+{Function=BBPreloadSpell, Params={Name="taricrtarget"}}, 
+}

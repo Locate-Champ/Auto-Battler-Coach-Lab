@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellnoxus"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellnoxus_itembuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellnoxus_damageamp"}}, 
+}

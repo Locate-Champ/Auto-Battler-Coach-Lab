@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_ShadowIsles_RuinedKing_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_viegospell_ruinedking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_viegospell"}}, 
+}

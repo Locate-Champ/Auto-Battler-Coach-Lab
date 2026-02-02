@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="syndrasphere"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_syndraqspell"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_syndrarecentlyrfired"}}, 
+}

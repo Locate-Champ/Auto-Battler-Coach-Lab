@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_pentakill_armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Pentakill_ArmyBuff"}}, 
+}

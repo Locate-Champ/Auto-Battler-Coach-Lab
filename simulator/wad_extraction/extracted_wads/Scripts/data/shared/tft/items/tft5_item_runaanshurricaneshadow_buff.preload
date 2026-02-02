@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_shadowitempenaltymanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_RunaansHurricaneShadow_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_itemhurricaneattackshadow"}}, 
+}

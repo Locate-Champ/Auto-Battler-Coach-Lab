@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuff_Debutant"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuffDebonair"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_unitbuffdebonair_leonavip"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_unitbuffdebonair_dravenvip"}}, 
+}

@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadModule, Params={Name="Global.UltBook_MaokaiPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_maokairmis"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_maokairmisextra"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_maokairsoundmis"}}, 
+}

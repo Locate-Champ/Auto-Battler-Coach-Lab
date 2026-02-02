@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_virknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_vir"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_virknockdown"}}, 
+--{Function=BBPreloadModule, Params={Name="Vi.Vi_EternalsPunchCounter"}}, 
+}

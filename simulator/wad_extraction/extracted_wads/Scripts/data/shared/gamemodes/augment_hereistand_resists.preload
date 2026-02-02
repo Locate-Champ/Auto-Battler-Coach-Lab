@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_hereistand"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_hereistand_recast"}}, 
+}

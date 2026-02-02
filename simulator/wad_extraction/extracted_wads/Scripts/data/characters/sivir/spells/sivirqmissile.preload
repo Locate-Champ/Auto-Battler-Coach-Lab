@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sivirstatstoneqdoublehittracker"}}, 
+{Function=BBPreloadModule, Params={Name="Sivir.SivirFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="sivirqmissilereturndead"}}, 
+{Function=BBPreloadSpell, Params={Name="sivirqmissilereturn"}}, 
+}

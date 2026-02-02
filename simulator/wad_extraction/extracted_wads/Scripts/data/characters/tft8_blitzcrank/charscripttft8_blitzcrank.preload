@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_blitzcrankspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_BlitzcrankCarry_Unit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

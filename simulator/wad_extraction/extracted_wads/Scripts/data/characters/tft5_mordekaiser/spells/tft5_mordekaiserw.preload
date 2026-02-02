@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_mordekaiserwshield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_mordekaiserwempowered"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_mordekaiserwgrowth"}}, 
+}

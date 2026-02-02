@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Corki_CarpetBombmega"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Corkibombmark"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Corki_CarpetBomb"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Corkibombmoveaway"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Corki_DangerZoneloadedtarget"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Corki_DangerZoneloaded"}}, 
+}

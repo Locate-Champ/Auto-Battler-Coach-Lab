@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_zedspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_EDM_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Zed.TFT10_ZedSpell_TargetMarker"}}, 
+}

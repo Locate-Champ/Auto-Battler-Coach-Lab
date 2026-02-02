@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_neekospell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_Neeko.TFT8_NeekoFunctionModule"}}, 
+}

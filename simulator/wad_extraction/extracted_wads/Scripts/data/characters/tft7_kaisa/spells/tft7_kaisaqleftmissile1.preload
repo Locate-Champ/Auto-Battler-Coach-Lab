@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_kaisaqmanager"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT7_Kaisa.TFT7_KaisaQManager"}}, 
+}

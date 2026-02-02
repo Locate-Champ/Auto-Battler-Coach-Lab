@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadParticle, Params={Name="globalhit_physical.troy", SkinID="-1"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Slow"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.PlayerTerrian"}}, 
+}

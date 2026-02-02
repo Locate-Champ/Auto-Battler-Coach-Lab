@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ItemGargoyleStoneplate_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ItemGargoyleStoneplate_UnitBuff"}}, 
+}

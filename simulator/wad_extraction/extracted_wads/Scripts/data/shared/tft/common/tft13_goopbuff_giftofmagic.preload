@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_giftofmagic_apmodifier"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_giftofmagic_lockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_giftofmagic_refresh"}}, 
+}

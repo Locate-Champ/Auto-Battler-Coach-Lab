@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="baronspellcast1"}}, 
+{Function=BBPreloadSpell, Params={Name="baronspellcastdetect"}}, 
+{Function=BBPreloadSpell, Params={Name="baronspellcast3"}}, 
+{Function=BBPreloadSpell, Params={Name="baronspellcast4"}}, 
+{Function=BBPreloadSpell, Params={Name="baronspellcast7ns"}}, 
+{Function=BBPreloadSpell, Params={Name="baronspellcast6ns"}}, 
+{Function=BBPreloadSpell, Params={Name="baronspellcast5ns"}}, 
+{Function=BBPreloadSpell, Params={Name="baronspellcast0"}}, 
+}

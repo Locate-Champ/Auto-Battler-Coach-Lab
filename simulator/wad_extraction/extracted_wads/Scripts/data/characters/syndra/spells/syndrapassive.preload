@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="syndrapassivestacks"}}, 
+{Function=BBPreloadModule, Params={Name="Syndra.SyndraPassiveStacks"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrapassivemissile"}}, 
+{Function=BBPreloadModule, Params={Name="Syndra.SyndraPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrapassivemarkcooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrapassivemarker"}}, 
+}

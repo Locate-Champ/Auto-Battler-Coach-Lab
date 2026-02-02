@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_ambessachainattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_ambessacritchainattack"}}, 
+}

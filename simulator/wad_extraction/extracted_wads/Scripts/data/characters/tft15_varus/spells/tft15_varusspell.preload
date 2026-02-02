@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_DoomBarrage_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Varus.TFT15_VarusSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_varusspellattack"}}, 
+}

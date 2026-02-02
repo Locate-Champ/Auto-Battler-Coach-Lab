@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_highroller_manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_nocritanim_aamanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_lieutenant_3star_logic"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitcastrangefix"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_Highroller_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_highroller_rolling_unitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+}

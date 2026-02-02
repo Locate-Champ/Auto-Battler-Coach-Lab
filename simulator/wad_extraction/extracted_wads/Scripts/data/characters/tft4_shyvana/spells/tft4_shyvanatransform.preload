@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft4_shyvanatransformcast"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_shyvanaburndamage"}}, 
+}

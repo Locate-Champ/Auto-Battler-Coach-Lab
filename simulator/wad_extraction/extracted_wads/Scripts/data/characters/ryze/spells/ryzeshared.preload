@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ryzee"}}, 
+{Function=BBPreloadSpell, Params={Name="ryzeemissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ryzeqmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ryzeq"}}, 
+{Function=BBPreloadSpell, Params={Name="ryzeqwrapper"}}, 
+{Function=BBPreloadSpell, Params={Name="ryzer"}}, 
+}

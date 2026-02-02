@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft13_viktor"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorspellsuppression"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_viktorspellslam"}}, 
+}

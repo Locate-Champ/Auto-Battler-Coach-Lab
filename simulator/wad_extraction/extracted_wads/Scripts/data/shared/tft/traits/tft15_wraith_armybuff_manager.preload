@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set15"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Wraith_ArmyBuff_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_wraith_hexbouncebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_wraith_hextetheredbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_wraith_temporaryminionbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_wraith_clonemovementbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_wraith_clonebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Wraith_CloneBuff"}}, 
+}

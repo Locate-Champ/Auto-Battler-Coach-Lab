@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_EternalFlame_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_eternalflame_allybuff"}}, 
+}

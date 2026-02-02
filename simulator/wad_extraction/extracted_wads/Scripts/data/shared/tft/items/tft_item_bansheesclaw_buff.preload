@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_bansheesclaw_shieldbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_bansheesclaw_manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_BansheesClaw_Buff"}}, 
+}

@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_twistedfatespell_3star5costbasicattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft15_twistedfate"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_twistedfatespell_3star5cost_hologramopacity"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_twistedfatespell_3star5costattachbenchedunit"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_twistedfatespell_3star5cost_hologrambuff"}}, 
+}

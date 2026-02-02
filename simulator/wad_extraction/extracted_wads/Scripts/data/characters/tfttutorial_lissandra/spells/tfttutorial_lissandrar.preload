@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tfttutorial_lissandrarself"}}, 
+{Function=BBPreloadSpell, Params={Name="tfttutorial_lissandrarenemy"}}, 
+{Function=BBPreloadSpell, Params={Name="tfttutorial_lissandrardamage"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_crime_item_virulentvirus_prismaticbonus_zombiebuff_decaying"}}, 
+}

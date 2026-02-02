@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_item_handofjusticeradiant_noble"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_item_handofjusticeradiant_imperial"}}, 
+}

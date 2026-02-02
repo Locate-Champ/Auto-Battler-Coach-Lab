@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_mascot_armybuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_mascot_unitbuff_readytoretreat"}}, 
+}

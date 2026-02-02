@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="crepe_jinxvsekko_ekkoteam_dancedetection"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_jinxvsekko_ekkoteam_isdancing"}}, 
+{Function=BBPreloadModule, Params={Name="Ekko.Crepe_JinxVsEkko_EkkoTeam_isDancing"}}, 
+}

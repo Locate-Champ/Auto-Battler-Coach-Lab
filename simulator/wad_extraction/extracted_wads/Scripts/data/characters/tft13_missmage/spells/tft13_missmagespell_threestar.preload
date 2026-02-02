@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_MissMage.TFT13_MissMageSpell_Passive"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_MissMage.TFT13_MissMageSpell_ThreeStar"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_missmagespell_enemyplayerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_MissMageTrait_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_missmagespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_missmageleftqmissile1"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_missmagerightqmissile1"}}, 
+}

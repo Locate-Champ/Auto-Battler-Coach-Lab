@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_towerdefense_spell_mis"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_TowerDefense_UnitBuff"}}, 
+}

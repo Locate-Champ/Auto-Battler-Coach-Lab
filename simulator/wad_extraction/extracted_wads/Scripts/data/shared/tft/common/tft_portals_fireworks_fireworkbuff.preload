@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_Fireworks_FireworkBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_PlayerBuff_Fireworks"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_LevelScript_Fireworks"}}, 
+}

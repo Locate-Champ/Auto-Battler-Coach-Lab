@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2ChampionBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_PhenomenalEvil"}}, 
+}

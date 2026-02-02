@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_illaoispellbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Illaoi.TFT13_IllaoiSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_illaoispelldrain"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Illaoi.TFT13_IllaoiSpellDrain"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_illaoispelldebuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Illaoi.TFT13_IllaoiSpellDebuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Illaoi.TFT13_IllaoiSpellBuff"}}, 
+}

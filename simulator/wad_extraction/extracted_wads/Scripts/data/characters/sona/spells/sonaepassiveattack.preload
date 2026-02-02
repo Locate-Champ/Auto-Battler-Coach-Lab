@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sonapassive"}}, 
+{Function=BBPreloadSpell, Params={Name="sonae"}}, 
+{Function=BBPreloadSpell, Params={Name="sonaepassivedebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Sona.SonaPassive"}}, 
+}

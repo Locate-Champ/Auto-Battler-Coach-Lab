@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="itemmomentumunique"}}, 
+{Function=BBPreloadSpell, Params={Name="3002trail"}}, 
+}

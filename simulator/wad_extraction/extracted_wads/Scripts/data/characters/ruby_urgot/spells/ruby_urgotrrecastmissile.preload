@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotr"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotrrecastchannel"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotrfacing"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotrsuppress"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Urgotrescapedvo"}}, 
+}

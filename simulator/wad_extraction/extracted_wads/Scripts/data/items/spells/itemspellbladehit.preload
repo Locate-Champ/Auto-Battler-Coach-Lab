@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="3877hudcountdown"}}, 
+{Function=BBPreloadSpell, Params={Name="sheendelay"}}, 
+{Function=BBPreloadSpell, Params={Name="3877maimdebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="item6662field"}}, 
+{Function=BBPreloadSpell, Params={Name="6632_healmis"}}, 
+{Function=BBPreloadSpell, Params={Name="6662crippledebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="camilleq"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ItemSpellbladeHit"}}, 
+{Function=BBPreloadSpell, Params={Name="rapidreload"}}, 
+{Function=BBPreloadSpell, Params={Name="lichbane"}}, 
+}

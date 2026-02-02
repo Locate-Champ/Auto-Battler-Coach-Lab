@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_twitchr"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_twitchsprayandprayhit"}}, 
+}

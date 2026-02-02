@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.ChallengesChampionTrackerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
+{Function=BBPreloadParticle, Params={Name="crucible_cas.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="grounded"}}, 
+{Function=BBPreloadParticle, Params={Name="summoner_boost.troy", SkinID="-1"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellAttribution"}}, 
+}

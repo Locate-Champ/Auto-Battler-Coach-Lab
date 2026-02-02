@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Viktor.ViktorRKillTracker"}}, 
+{Function=BBPreloadModule, Params={Name="Viktor.ViktorRAOE"}}, 
+}

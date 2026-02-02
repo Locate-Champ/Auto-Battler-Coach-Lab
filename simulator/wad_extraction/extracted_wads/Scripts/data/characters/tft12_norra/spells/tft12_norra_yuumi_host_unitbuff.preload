@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_norra_yuumi_attached_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Norra.TFT12_Norra_ArmyBuff"}}, 
+}

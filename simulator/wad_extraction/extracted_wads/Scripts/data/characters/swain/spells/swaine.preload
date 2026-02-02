@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Swain.SwainFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="swainereturnmissile"}}, 
+}

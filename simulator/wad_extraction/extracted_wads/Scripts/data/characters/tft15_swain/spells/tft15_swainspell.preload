@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT15_Swain.TFT15_SwainSpell"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft15_swain_demonform"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+}

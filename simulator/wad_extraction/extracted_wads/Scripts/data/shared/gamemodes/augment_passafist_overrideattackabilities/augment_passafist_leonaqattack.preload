@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="leonashieldofdaybreak"}}, 
+{Function=BBPreloadModule, Params={Name="Leona.LeonaSunlightPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="leonacceternaltracker"}}, 
+{Function=BBPreloadModule, Params={Name="Leona.LeonaCCEternalTracker"}}, 
+}

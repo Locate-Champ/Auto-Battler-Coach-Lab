@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tfttutorial_elisespider"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalsummonbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tfttutorial_elisespiderling"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuffdemon"}}, 
+}

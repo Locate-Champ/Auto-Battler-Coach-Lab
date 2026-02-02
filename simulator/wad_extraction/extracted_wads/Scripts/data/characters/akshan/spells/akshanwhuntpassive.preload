@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="akshanwhuntpassivelistener"}}, 
+{Function=BBPreloadModule, Params={Name="Akshan.AkshanWHuntPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanw"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanwhuntrecentlydamaged"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellPings"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanwsoul"}}, 
+}

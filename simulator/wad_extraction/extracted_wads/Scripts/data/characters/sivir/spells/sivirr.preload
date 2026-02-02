@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sivirraurabuff"}}, 
+{Function=BBPreloadSpell, Params={Name="sivirrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="sivirrdamagedmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="sivirrauraweakerbuff"}}, 
+}

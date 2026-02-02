@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="swainr"}}, 
+{Function=BBPreloadModule, Params={Name="Swain.SwainRNovaSlow"}}, 
+{Function=BBPreloadParticle, Params={Name="global_slow.troy", SkinID="-1"}}, 
+}

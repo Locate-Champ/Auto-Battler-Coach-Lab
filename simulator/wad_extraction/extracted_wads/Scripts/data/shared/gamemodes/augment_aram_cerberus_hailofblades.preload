@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_cerberus"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_cerberus_hailofbladesready"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_aram_cerberus_hailofbladesbuff"}}, 
+}

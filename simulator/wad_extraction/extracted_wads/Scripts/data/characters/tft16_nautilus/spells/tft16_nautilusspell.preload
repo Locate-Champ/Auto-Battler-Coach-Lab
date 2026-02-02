@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT16_Nautilus.TFT16_NautilusSpell_Damage"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Item_HeavyweightEmblemItem_SizeBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_item_heavyweightemblemitem_sizebuff"}}, 
+}

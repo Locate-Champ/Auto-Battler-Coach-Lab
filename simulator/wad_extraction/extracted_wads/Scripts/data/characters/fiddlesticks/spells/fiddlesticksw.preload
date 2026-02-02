@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="FiddleSticks.FiddleSticksW"}}, 
+{Function=BBPreloadSpell, Params={Name="fiddlestickswdrain"}}, 
+{Function=BBPreloadSpell, Params={Name="fiddlestickswlockout"}}, 
+}

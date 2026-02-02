@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT10_Blitzcrank.TFT10_Blitzcrank_ZapEnemy"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_blitzcrank_passive_zap"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_blitzcrankspell"}}, 
+}

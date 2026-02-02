@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="AurelionSol.AurelionSolRPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="aurelionsole"}}, 
+{Function=BBPreloadSpell, Params={Name="aurelionsolr2knockupmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="aurelionsolr2shockwavemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="aurelionsolr"}}, 
+{Function=BBPreloadSpell, Params={Name="aurelionsolr2knockupdebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="eternalstracker_aurelionsolrtakedowns"}}, 
+{Function=BBPreloadSpell, Params={Name="aurelionsolr2shockwave"}}, 
+}

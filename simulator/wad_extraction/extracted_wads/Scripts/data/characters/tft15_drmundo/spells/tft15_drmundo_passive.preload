@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_drmundospell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_DrMundo.TFT15_DrMundo_Passive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_drmundo_passiveattack"}}, 
+}

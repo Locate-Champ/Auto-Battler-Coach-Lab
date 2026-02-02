@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="tft2_luxcrystalrbeam"}}, 
+{Function=BBPreloadSpell, Params={Name="tft2_luxcrystalrball"}}, 
+{Function=BBPreloadSpell, Params={Name="tft2_luxcrystalrmis"}}, 
+}

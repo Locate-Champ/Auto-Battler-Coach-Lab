@@ -1,0 +1,14 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Commander_PlayerBuff_CommanderManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Country_SummonManager_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_AkaliManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_PortalDraft"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_yasuospell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_Punk_ShopManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set10"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_KDA_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_PBJ_Manager_PlayerBuff"}}, 
+}

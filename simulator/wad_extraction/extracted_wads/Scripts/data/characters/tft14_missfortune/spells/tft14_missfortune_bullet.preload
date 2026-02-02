@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_missfortune_targetwavetrackerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_MissFortune.TFT14_MissFortune_TargetWaveTrackerBuff"}}, 
+}

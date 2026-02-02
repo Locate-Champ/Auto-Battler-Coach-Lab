@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_item_artifact_mirroredpersona_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Artifact_MirroredPersona_UnitBuff"}}, 
+}

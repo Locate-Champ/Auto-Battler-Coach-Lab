@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_VerticallyInclined_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_verticallyinclined_damagebuff"}}, 
+}

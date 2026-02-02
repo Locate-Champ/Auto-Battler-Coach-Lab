@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="brandpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="brandablazedetonatemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="brandablazelockouttimer"}}, 
+}

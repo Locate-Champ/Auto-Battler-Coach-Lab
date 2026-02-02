@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="XinZhao.XinZhaoP"}}, 
+{Function=BBPreloadModule, Params={Name="XinZhao.XinZhaoEBattleCry"}}, 
+{Function=BBPreloadSpell, Params={Name="xinzhaopassivecritattack"}}, 
+}

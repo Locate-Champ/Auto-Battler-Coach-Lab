@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_gravesspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_TwistedFate.TFT16_TwistedFateSpell_GravesPassive"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Graves.TFT16_GravesFunctionModule"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="syndraorbs"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrartimer"}}, 
+{Function=BBPreloadSpell, Params={Name="syndrar"}}, 
+}

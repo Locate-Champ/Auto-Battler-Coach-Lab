@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="TFT11_Nautilus.TFT11_NautilusSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_nautilusspellmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_nautilusspellknockup"}}, 
+}

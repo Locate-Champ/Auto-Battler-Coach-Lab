@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_lissandraspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_AatroxUnique_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_ZaahenUnique_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_lissandraspell_shardmis"}}, 
+}

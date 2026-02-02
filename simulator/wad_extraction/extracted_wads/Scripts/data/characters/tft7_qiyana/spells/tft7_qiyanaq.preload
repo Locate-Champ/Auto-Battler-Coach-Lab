@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT7_Qiyana.TFT7_QiyanaQ"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_qiyanaqmis"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT7_Qiyana.TFT7_QiyanaFunctionModule"}}, 
+}

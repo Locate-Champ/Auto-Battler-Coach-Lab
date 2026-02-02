@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="viktorw"}}, 
+{Function=BBPreloadModule, Params={Name="Viktor.ViktorRAOE"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorr"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorrcancelchannels"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorrdamagedenemytag"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorwaugdebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="eternals_viktorkillinult"}}, 
+}

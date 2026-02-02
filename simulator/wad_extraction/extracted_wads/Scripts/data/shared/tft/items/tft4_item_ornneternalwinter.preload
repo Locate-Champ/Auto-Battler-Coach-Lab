@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_checkitemmutuallyexclusive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_xsmall"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_item_ornneternalwinter_buildup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_item_ornneternalwinter_buildup_cooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_item_ornneternalwinter_freeze"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_item_ornneternalwinter_cooldown"}}, 
+}

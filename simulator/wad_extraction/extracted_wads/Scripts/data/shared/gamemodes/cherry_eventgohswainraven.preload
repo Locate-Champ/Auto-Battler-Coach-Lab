@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Cherry_EventGoHSwainRaven"}}, 
+{Function=BBPreloadSpell, Params={Name="cherry_eventgohswainravenbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_EventSpawner"}}, 
+}

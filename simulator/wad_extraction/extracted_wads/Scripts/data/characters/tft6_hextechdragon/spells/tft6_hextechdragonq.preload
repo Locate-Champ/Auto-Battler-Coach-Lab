@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_hextechdragoncastlock"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_fear"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_hextechdragonqenergized"}}, 
+}

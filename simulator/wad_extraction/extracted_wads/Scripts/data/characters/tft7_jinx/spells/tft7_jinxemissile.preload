@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_jinxe"}}, 
+{Function=BBPreloadSpell, Params={Name="neekoq"}}, 
+{Function=BBPreloadModule, Params={Name="TFT7_Jinx.TFT7_JinxE"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft7_jinxmine"}}, 
+}

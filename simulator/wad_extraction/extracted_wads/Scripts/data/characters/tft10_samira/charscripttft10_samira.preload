@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_samiraspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_samirabasicattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_samiracritattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

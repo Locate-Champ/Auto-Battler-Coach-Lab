@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ambessaq"}}, 
+{Function=BBPreloadModule, Params={Name="Ambessa.CharFunctionsAmbessa"}}, 
+{Function=BBPreloadSpell, Params={Name="ambessapassivebufferingmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Ambessa.AmbessaPassiveBufferingManager"}}, 
+{Function=BBPreloadSpell, Params={Name="ambessapassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ambessapassivebufferingforgivenessmanager"}}, 
+}

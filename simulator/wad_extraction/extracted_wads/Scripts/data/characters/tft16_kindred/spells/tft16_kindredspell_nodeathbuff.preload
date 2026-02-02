@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Kindred.TFT16_KindredSpell_NoDeathBuff"}}, 
+}

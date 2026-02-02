@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffparty_statsupdate"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffparty_movementspeed"}}, 
+}

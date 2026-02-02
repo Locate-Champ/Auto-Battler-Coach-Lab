@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_demolishready"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_demolishmark"}}, 
+}

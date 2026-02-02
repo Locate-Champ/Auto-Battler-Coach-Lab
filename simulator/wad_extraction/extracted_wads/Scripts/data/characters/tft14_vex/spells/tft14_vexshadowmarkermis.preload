@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_vextargetmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_vexspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT14_Vex.TFT14_VexOverhealManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_vexoverhealmanager"}}, 
+}

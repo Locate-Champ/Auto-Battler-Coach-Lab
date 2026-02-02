@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="avatarbuffoffensiveburn"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+{Function=BBPreloadSpell, Params={Name="syndraw"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Slow"}}, 
+{Function=BBPreloadSpell, Params={Name="avatarbuffoffensiveready"}}, 
+{Function=BBPreloadModule, Params={Name="Global.AvatarBuffOffensive"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_kaisaspell2"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_kaisaspelllockout"}}, 
+}

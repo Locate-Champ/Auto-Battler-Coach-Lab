@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Cyberboss_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Cyberboss_Boss_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_cyberboss_boss_unitbuff"}}, 
+}

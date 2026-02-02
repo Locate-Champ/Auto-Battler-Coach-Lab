@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="itemcrystalflaskcharge"}}, 
+{Function=BBPreloadSpell, Params={Name="lowhppotionreminder"}}, 
+{Function=BBPreloadModule, Params={Name="Global.LowHPPotionReminder"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ItemCrystalFlask"}}, 
+}

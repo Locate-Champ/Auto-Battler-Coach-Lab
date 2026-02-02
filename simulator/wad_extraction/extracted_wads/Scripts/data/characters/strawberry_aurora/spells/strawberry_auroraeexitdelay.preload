@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Strawberry_Aurora.Strawberry_AuroraQAttackFunctionManager"}}, 
+{Function=BBPreloadModule, Params={Name="Strawberry_Aurora.Strawberry_AuroraSpiritDebuffManager"}}, 
+}

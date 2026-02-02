@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="KSante.KSanteRKnockbackWall"}}, 
+{Function=BBPreloadModule, Params={Name="KSante.KSanteR"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="pantheone"}}, 
+{Function=BBPreloadSpell, Params={Name="pantheonewatcherbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Pantheon.PantheonEShieldBuff"}}, 
+}

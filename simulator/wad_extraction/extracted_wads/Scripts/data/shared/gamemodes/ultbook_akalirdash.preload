@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_akalir"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_akalirdashlength"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_akaliselfroot"}}, 
+}

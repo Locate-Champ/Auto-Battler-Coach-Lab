@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
+{Function=BBPreloadSpell, Params={Name="velkozrhitcounter"}}, 
+{Function=BBPreloadSpell, Params={Name="velkozrdamagestack"}}, 
+{Function=BBPreloadSpell, Params={Name="velkozrdamageticker"}}, 
+{Function=BBPreloadSpell, Params={Name="velkozrhitparticle"}}, 
+{Function=BBPreloadModule, Params={Name="Velkoz.VelkozPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="velkozrdeconstructiontimer"}}, 
+}

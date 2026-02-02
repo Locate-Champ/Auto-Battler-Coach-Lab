@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigarbalefulstrike"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigarpassive"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Boss_FNVeigar.Ruby_Boss_FNVeigarPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="srt_2024_horde_spawnminis"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigar_fastbalefulstrike"}}, 
+}

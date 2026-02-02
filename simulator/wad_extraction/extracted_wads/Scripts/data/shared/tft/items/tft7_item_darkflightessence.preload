@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_item_darkflightessencestatbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_darkflightessenceaestheticmis"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_kledpdismounted"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kledpdismount"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_kledpskaarlcontroller"}}, 
+}

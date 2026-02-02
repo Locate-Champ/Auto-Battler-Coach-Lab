@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft12_karmaspell_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_karmaspell_mis_arc"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

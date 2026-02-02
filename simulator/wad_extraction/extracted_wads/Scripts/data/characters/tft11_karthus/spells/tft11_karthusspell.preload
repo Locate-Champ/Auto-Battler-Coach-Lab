@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT11_Karthus.TFT11_KarthusSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_karthusspelltarget"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Esper_UnitBuff"}}, 
+}

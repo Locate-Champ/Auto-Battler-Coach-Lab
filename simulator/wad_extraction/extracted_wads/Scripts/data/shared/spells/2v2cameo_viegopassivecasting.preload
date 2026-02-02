@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="viego"}}, 
+{Function=BBPreloadCharacter, Params={Name="viegosoul"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_viegonorender"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_viegopassivesoul"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Viego"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_LevelScript"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2CombatRoundChampionBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_CameoManager"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_viegopassivetransform"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_viego_postpossesswilldie"}}, 
+}

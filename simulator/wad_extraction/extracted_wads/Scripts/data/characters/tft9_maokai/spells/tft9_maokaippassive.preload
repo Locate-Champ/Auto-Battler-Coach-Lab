@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_maokaispell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_maokaip_enemycastaura"}}, 
+}

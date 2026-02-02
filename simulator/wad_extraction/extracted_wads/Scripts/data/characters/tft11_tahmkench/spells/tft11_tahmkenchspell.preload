@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_BloodthirsterRadiant_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Bloodthirster_Manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_EdgeOfNightRadiant_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_EdgeOfNight_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_tahmkench_checkkillbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_tahmkenchshield"}}, 
+}

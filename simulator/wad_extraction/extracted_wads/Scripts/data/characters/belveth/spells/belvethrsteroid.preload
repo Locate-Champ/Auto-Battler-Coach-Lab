@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="belvethr"}}, 
+{Function=BBPreloadSpell, Params={Name="belvethcombat"}}, 
+{Function=BBPreloadSpell, Params={Name="belvethrminionconverter"}}, 
+}

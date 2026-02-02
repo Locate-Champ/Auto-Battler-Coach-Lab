@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ExpManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_fountain_iconholder"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_poi_fountain"}}, 
+}

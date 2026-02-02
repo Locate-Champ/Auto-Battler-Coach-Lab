@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_jhinspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Jhin.TFT10_JhinGunManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_jhingunmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_jhinbenchgunbuff"}}, 
+}

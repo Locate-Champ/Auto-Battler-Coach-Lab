@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aurelionsolspell_blackhole_enemy"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aurelionsolspell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aurelionsolspell_meteorstormmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aurelionsolspell_shockwavemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_aurelionsolspell_knockup"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT16_AurelionSol.TFT16_AurelionSol_Passive"}}, 
+}

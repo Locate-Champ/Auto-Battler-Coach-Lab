@@ -1,0 +1,18 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript_EnemyArmy"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Board"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent_PM_Boss_Selection_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_BenchManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_BuddyNPCManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_EnemyArmoryManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_CollectableVacuumManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_arrivalceremonyleaveboard"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_portaljumpin"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Camera"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_portaljumpout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArenaEvents"}}, 
+}

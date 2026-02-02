@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_Marksmage"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_AugmentedPower"}}, 
+}

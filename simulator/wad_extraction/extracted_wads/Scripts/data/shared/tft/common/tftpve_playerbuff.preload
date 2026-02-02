@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tftpve_playerbuff_roundrewards"}}, 
+{Function=BBPreloadSpell, Params={Name="tftpve_playerbuff_score"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_zaps_shopmanager_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_zaps_manager_armybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_TimerlessModeCheatBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTPVE_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_Info"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitbuff_forceanimation"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+}

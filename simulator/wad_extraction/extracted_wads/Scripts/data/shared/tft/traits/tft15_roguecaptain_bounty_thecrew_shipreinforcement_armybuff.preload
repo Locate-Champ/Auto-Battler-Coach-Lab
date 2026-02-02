@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_RogueCaptain_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_TheCrew_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_roguecaptain_bounty_thecrew_shipreinforcement_dashbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_roguecaptain_bounty_thecrew_shipreinforcement_clonebuff"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_galiopassivecritboost"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_galior"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_galiorhexdisabler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+}

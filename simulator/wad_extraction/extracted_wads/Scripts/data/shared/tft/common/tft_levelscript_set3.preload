@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft3_playerbuff_cheats"}}, 
+{Function=BBPreloadSpell, Params={Name="tft3_playerbuff_mercenarymanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft3_playerbuff_spacepiratemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_augmentmanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Loot"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Armory"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_grantunit"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set3"}}, 
+}

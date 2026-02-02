@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_pyro_armybuff_killtracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Pyro_ArmyBuff_KillTracker"}}, 
+}

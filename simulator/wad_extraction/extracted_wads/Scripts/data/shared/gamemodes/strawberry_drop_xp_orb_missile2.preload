@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_Special_XPFanatic"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_ExpManager"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+}

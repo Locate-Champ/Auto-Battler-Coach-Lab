@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_kennenspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_yasuospell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_sennaspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_akali_truedamagespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_ekkospell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_truedamage_emblembuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_BlingManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+}

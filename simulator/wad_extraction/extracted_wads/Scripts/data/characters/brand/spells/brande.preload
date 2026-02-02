@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Brand.BrandPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="brandemissile"}}, 
+}

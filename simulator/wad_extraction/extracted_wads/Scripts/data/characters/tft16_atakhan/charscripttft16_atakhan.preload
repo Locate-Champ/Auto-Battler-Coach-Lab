@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_atakhanspell_passive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_atakhanspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+}

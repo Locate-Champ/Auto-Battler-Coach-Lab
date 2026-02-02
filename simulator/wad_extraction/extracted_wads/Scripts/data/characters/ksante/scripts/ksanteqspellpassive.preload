@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="KSante.KSanteQSpellPassive"}}, 
+{Function=BBPreloadModule, Params={Name="KSante.KSanteP"}}, 
+{Function=BBPreloadSpell, Params={Name="slow"}}, 
+}

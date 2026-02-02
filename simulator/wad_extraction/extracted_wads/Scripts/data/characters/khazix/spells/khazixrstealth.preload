@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="khazixr"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.GlobalInvisibility"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_augment_woodaxiom_permanenthealth_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_WoodAxiom_PermanentHealth_UnitBuff"}}, 
+}

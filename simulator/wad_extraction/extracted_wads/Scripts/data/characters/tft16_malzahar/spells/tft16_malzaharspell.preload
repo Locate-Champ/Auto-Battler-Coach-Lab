@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft16_malzaharvoidling"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_malzaharvoidlingbuff"}}, 
+}

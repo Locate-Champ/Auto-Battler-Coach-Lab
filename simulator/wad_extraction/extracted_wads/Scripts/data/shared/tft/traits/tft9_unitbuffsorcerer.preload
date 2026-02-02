@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_sorcerermarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_sorcerershock"}}, 
+}

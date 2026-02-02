@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_BoardSidePropManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_CrystalRoseCashout_HellionArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+}

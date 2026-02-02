@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_xayahspellarmorshred"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_xayahspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Xayah.TFT9_XayahFunctionModule"}}, 
+}

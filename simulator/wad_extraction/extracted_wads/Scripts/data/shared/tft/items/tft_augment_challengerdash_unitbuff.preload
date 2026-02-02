@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ChallengerDash_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_challengerdash_asburst"}}, 
+}

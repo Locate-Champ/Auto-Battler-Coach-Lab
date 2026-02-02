@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="Augment_ARAM_Impassable"}}, 
+{Function=BBPreloadSpell, Params={Name="Augment_ARAM_Impassable_aftershock"}}, 
+{Function=BBPreloadSpell, Params={Name="Augment_ARAM_Impassable_glacialaugment"}}, 
+}

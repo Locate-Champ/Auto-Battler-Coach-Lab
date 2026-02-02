@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="caitlynpassive"}}, 
+{Function=BBPreloadModule, Params={Name="Caitlyn.CaitlynPassive"}}, 
+}

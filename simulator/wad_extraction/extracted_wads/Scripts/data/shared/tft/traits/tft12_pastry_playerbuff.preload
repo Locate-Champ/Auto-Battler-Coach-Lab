@@ -1,0 +1,17 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Pastry_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_boardsidepropmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_trait_pastry_sugar_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_pastry_breadcrumbbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Pastry_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12a"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_inmotion"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_pastry_ascended_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_pastry_ascendedprop_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_BoardSidePropManager"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zap_ShieldWall_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_UniversalBuffManager_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_zap_shieldwall_unitbuff"}}, 
+}

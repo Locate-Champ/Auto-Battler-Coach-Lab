@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_nasusspellvfxmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_nasusspelldebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_nasusspellavatar"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_nasusskinscalemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_nasusspellattackmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_nasusspelllockout"}}, 
+}

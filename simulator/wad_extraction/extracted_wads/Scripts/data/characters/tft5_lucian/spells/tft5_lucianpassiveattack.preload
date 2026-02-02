@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_luciane"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_lucianpassiveshot"}}, 
+}

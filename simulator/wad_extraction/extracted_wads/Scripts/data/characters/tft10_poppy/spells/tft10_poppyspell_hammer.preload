@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_poppyspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_poppyspell_marker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT10_Poppy.TFT10_PoppySpell"}}, 
+}

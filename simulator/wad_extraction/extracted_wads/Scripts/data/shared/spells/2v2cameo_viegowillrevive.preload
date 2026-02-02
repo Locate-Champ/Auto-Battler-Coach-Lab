@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2CombatRoundChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_viegopassivecasting"}}, 
+}

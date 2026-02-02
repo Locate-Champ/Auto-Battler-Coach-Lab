@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="hweiwqmovespeed"}}, 
+{Function=BBPreloadSpell, Params={Name="hweiwqareamarker"}}, 
+{Function=BBPreloadModule, Params={Name="Hwei.HweiPassive"}}, 
+{Function=BBPreloadModule, Params={Name="Hwei.HweiWQ"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="hweiwqsoundmanager"}}, 
+}

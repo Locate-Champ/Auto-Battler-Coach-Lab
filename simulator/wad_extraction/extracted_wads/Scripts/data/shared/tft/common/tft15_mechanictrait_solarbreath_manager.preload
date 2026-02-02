@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_innerfire_icd"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_redbuff_missile"}}, 
+}

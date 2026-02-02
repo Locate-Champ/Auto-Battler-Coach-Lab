@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="challengesheraldtracker"}}, 
+{Function=BBPreloadSpell, Params={Name="riftheraldmercenary"}}, 
+{Function=BBPreloadSpell, Params={Name="sru_riftherald_healthbaricon"}}, 
+}

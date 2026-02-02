@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Mel.MelPassiveOverwhelm"}}, 
+{Function=BBPreloadModule, Params={Name="Mel.MelPassiveBonusAttack"}}, 
+{Function=BBPreloadSpell, Params={Name="melbasicattackenhanced"}}, 
+{Function=BBPreloadSpell, Params={Name="melpassivebonusmissileright"}}, 
+{Function=BBPreloadSpell, Params={Name="melpassivebonusmissileleft"}}, 
+{Function=BBPreloadSpell, Params={Name="melpassive"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="cherry_destructible_pillarbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="minionnooneshotbuff"}}, 
+}

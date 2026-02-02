@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_frombeginningtoend_firststrikeavailable"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_frombeginningtoend_darkharvest"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_frombeginningtoend_firststrike"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_frombeginningtoend_firststrikecd"}}, 
+}

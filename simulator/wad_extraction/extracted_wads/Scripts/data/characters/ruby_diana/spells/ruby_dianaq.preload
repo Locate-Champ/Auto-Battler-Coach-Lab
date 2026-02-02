@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_dianaqinnermissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_dianaqoutermissile"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_diana_q2_hit"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_diana_sunlight"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_dianaqhit"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_dianamoonlight"}}, 
+{Function=BBPreloadModule, Params={Name="Ruby_Diana.Ruby_DianaTeleportResetCheck"}}, 
+}

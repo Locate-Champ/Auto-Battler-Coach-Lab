@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Zeri.ZeriFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="zerirstacks"}}, 
+{Function=BBPreloadModule, Params={Name="Zeri.ZeriBackpackVFXManager"}}, 
+{Function=BBPreloadModule, Params={Name="Zeri.ZeriR"}}, 
+{Function=BBPreloadModule, Params={Name="Global.CastInstance"}}, 
+{Function=BBPreloadSpell, Params={Name="zerirchain"}}, 
+{Function=BBPreloadSpell, Params={Name="volibearr"}}, 
+}

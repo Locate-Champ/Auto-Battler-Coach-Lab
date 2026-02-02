@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_nocritanim_aamanager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Hacked_NPCUnits_FunctionModule"}}, 
+}

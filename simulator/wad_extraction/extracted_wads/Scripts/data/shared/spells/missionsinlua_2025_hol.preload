@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.MissionsInLUA_2025_HoL"}}, 
+{Function=BBPreloadSpell, Params={Name="lucianq"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_yordle_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Yordle_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Yordle_UnitBuff"}}, 
+}

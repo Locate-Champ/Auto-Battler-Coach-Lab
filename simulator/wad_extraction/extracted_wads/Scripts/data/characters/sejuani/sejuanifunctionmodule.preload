@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="sejuanie"}}, 
+{Function=BBPreloadSpell, Params={Name="sejuaniemarkermax"}}, 
+{Function=BBPreloadSpell, Params={Name="sejuanieringvisual"}}, 
+{Function=BBPreloadSpell, Params={Name="sejuaniemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="sejuaniw"}}, 
+}

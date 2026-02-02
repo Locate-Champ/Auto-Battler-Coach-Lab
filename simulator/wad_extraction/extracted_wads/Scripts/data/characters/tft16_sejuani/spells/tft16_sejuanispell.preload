@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_sejuanishield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sejuanispell_strike"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_sejuanispell_rfcdash"}}, 
+}

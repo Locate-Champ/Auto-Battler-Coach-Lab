@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="yoner"}}, 
+{Function=BBPreloadSpell, Params={Name="yone_qreternallockout"}}, 
+{Function=BBPreloadSpell, Params={Name="yonerknockup"}}, 
+}

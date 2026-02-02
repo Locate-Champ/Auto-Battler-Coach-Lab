@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft4b_dianawshield"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4b_dianawmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="dianaorbs"}}, 
+}

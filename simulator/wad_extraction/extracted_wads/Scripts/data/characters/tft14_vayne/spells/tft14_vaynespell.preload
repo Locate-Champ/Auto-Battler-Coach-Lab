@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_vayneempoweredattack"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_vaynefinalhit"}}, 
+}

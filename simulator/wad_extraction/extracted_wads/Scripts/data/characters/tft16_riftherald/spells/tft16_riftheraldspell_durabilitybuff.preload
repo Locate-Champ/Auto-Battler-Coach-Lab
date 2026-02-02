@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_riftheraldspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_RiftHerald.TFT16_RiftHeraldSpell_DurabilityBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

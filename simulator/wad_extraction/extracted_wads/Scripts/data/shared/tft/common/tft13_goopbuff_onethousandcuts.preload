@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_OneThousandCuts_TargetBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_onethousandcuts_targetbuff"}}, 
+}

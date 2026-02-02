@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Traits"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SetManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT6_AugmentRequirementFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Augments"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Streaks"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTTURBO_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Armory"}}, 
+}

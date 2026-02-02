@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_yunaraspellattackmissile"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Yunara.TFT16_YunaraSpell"}}, 
+}

@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_kennenrrwmark"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kennenrshurikennocast"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kennenr_markofstorm"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_kennenrholder"}}, 
+}

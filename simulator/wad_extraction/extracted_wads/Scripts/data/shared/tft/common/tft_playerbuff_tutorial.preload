@@ -1,0 +1,12 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SetManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_tutorial_playerbuff_preventtutorialprimarysell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_tutorial_playerbuff_preventitemplacement"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_tutorial_playerbuff_guarantee5costchamp"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_tutorial_playerbuff_endbotcombat"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Tutorial"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Tutorial"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
+}

@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Viego.ViegoSkin43Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoskin43spawnstartsr"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoskin43nemesis"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoskin43ctrl5toggle"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoskin43combattracking"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoskin43sword0"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoskin43bpbstate"}}, 
+{Function=BBPreloadSpell, Params={Name="viegoskin43upgradesword"}}, 
+}

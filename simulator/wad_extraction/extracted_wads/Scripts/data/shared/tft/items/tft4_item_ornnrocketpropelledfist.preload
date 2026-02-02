@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_checkitemmutuallyexclusive"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_item_ornnrocketpropelledfist_marker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft4_item_ornnrocketpropelledfist_rocketgrab"}}, 
+}

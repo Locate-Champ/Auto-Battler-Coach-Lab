@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_BossAffix_Hellion_ArmyBuff_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_hellion_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_hellion_unitdash"}}, 
+{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_hellion_clonebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalsummonbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
+}

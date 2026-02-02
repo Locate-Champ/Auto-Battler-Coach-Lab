@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_namir"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_namir_namipassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_namirwaveslow"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_namirwavestun"}}, 
+{Function=BBPreloadSpell, Params={Name="ultbook_namirvision"}}, 
+}

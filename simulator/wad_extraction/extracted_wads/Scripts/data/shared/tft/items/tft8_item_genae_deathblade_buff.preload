@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT8_Item_GenAE_Deathblade_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_aditem_checkforad"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_unitbuff_genae_deathblade_jump"}}, 
+}

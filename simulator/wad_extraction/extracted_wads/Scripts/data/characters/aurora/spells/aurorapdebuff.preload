@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="aurorapassive"}}, 
+{Function=BBPreloadCharacter, Params={Name="auroraspirits"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorapassiveminionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorapassiveminionfollow"}}, 
+{Function=BBPreloadSpell, Params={Name="aurorapspiritstacks"}}, 
+}

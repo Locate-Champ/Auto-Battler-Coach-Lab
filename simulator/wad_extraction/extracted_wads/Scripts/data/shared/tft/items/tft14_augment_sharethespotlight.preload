@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_ShareTheSpotlight"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_augment_sharethespotlight_unitbuff"}}, 
+}

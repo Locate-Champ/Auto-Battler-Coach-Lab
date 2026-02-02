@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Ruby_Nautilus.Ruby_NautilusPiercingGazeShield"}}, 
+{Function=BBPreloadSpell, Params={Name="Ruby_Nautilusbackswing"}}, 
+}

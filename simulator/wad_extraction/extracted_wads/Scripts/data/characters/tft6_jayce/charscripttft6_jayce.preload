@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_jaycermelee"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_jaycerranged"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_jaycemeleeform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_jaycerangedform"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

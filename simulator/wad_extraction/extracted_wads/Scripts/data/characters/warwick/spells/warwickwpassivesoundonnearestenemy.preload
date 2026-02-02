@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="warwickwpaudiofadeout"}}, 
+{Function=BBPreloadSpell, Params={Name="warwickw"}}, 
+}

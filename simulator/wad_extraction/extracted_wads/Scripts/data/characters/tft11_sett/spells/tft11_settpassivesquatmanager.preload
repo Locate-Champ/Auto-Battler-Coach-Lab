@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_settspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT11_Sett.TFT11_SettPassiveSquatManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_settsquatanim"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_settunitsquatted"}}, 
+}

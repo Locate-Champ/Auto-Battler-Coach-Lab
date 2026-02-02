@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="teemow"}}, 
+{Function=BBPreloadSpell, Params={Name="teemowpassivebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="teemowpassivecooldown"}}, 
+}

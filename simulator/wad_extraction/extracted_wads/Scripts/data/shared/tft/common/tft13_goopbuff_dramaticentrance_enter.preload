@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_DramaticEntrance"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_dramaticentrance_enemybuff"}}, 
+}

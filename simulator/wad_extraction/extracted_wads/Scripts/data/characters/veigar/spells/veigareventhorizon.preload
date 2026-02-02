@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
+{Function=BBPreloadSpell, Params={Name="veigareventhorizoninside"}}, 
+{Function=BBPreloadSpell, Params={Name="veigareventhorizonoutside"}}, 
+{Function=BBPreloadSpell, Params={Name="veigareventhorizonprevent"}}, 
+{Function=BBPreloadSpell, Params={Name="veigarpassive"}}, 
+{Function=BBPreloadModule, Params={Name="Veigar.VeigarPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="veigareventhorizonstun"}}, 
+{Function=BBPreloadSpell, Params={Name="veigar_eternaldamageinsideetracker"}}, 
+}

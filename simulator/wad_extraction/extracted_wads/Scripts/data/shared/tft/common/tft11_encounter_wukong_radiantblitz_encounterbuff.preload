@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Encounters_EncounterDurationTracker_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT11_Encounter_Wukong_RadiantBlitz_ArmyBuffItems"}}, 
+}

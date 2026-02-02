@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_tahmkenchwlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_tahmkenchw_enemy"}}, 
+{Function=BBPreloadModule, Params={Name="TFT6_TahmKench.TFT6_TahmKenchW_FunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
+{Function=BBPreloadModule, Params={Name="TFT6_TahmKench.TFT6_TahmKenchW_Enemy"}}, 
+}

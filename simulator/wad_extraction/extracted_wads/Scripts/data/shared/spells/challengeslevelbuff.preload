@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.ChallengesLevelBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ChallengesChampionTrackerBuff"}}, 
+}

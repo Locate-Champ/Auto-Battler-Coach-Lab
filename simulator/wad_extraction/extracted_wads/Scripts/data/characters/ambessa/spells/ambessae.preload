@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Ambessa.AmbessaPassiveBufferingManager"}}, 
+{Function=BBPreloadModule, Params={Name="Ambessa.AmbessaPassive"}}, 
+}

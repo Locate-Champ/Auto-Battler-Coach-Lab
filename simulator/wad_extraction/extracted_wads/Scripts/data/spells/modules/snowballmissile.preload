@@ -1,0 +1,17 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_biggestsnowballever_missile"}}, 
+{Function=BBPreloadSpell, Params={Name="porosnowballmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_summonersroulette"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_snowballfight"}}, 
+{Function=BBPreloadParticle, Params={Name="poro_throw_explosion.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="bw_poro_throw_explosion.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="crepe_chainlightning_impact.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="crepe_shimmer_hit_tar.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="poro_throw_followup_arrive_sound.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="bw_poro_poroexplosion.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="bw_summoner_snowball_arrive_sound.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="summoner_snowball_arrive_sound.troy", SkinID="-1"}}, 
+{Function=BBPreloadSpell, Params={Name="globalpolymorphhasbegun"}}, 
+{Function=BBPreloadParticle, Params={Name="bw_shipspawn.troy", SkinID="-1"}}, 
+{Function=BBPreloadParticle, Params={Name="bw_iceblast_mis.troy", SkinID="-1"}}, 
+}

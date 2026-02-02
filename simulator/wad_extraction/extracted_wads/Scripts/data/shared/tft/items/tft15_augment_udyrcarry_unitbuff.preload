@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspellhero"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Udyr.TFT15_UdyrSpell_Passive_Transform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspellhero_transform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_nontanktracker"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspell_transform"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_tank"}}, 
+}

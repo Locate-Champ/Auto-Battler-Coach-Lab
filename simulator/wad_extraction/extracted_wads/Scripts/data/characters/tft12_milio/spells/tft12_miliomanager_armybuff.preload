@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Item"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Milio.TFT12_MilioManager_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_miliomanager_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Milio.TFT12_MilioManager_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12b"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_milio_ally_unitbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Milio.TFT12_Milio_Ally_UnitBuff"}}, 
+}

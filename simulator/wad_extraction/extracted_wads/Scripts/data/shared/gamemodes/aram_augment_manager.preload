@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="aram_hextech_augbuffbar"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ARAM_HEXTECH_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ARAM_Augment_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2rerollbuff"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.Cherry_PhaseManager"}}, 
+}

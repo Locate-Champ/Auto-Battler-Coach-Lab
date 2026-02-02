@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_gangplankrwaveimpactsound"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_gangplankrslow"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_gangplankr"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+}

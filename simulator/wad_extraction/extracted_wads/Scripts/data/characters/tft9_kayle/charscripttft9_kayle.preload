@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_kaylespell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_kayle_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_kayle_attackmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_kayle_ascensionmanager"}}, 
+}

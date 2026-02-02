@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_sylasspell_damagepredictorbuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Sylas.TFT16_SylasSpell_DamagePredictorBuff"}}, 
+}

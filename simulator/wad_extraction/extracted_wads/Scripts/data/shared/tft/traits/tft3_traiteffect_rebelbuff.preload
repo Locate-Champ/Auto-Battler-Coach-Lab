@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft3_traiteffect_rebeldamageamp"}}, 
+{Function=BBPreloadSpell, Params={Name="tft3_traiteffect_rebelshield"}}, 
+}

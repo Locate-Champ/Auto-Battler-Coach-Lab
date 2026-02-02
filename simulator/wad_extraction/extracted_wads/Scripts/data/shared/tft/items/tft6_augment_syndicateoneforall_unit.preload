@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_augment_syndicateoneforall_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_augment_syndicateoneforall_buff"}}, 
+}

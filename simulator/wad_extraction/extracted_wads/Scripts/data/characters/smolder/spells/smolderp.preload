@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="smolderqupgradetracker"}}, 
+{Function=BBPreloadSpell, Params={Name="smolderqpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="smoldervsaurelionsolsmolderwin"}}, 
+{Function=BBPreloadSpell, Params={Name="smoldervsaurelionsolaurelionsolloss"}}, 
+{Function=BBPreloadSpell, Params={Name="smoldervsaurelionsolsmolderstart"}}, 
+}

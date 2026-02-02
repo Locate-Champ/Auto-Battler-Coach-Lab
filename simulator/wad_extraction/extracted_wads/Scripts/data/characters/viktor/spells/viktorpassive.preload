@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="viktorpassivecount"}}, 
+{Function=BBPreloadModule, Params={Name="Viktor.ViktorPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorqaug"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorqeaug"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorqwaug"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorqweaug"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorwaug"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorweaug"}}, 
+{Function=BBPreloadSpell, Params={Name="viktoreaug"}}, 
+{Function=BBPreloadSpell, Params={Name="viktorqweraug"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_viktorvsjayce_viktorstart"}}, 
+}

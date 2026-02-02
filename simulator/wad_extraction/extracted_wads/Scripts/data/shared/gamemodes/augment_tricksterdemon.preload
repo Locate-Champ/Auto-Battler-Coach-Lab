@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_tricksterdemon_bombbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_TricksterDemon"}}, 
+}

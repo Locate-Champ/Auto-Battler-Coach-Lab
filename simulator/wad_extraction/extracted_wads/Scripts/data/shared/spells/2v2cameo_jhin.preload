@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Cherry_CameoManager"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_jhinr"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2CombatInstanceBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameochamphidden"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_jhinrshot"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Jhin"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2cameo_jhinmark"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Gunslinger_UnitBuff"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Brock.TFT16_BrockFunctionModule"}}, 
+}

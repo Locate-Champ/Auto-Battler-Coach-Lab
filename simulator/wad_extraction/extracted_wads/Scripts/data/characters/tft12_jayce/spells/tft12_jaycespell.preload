@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="TFT12_Jayce.TFT12_JayceFormManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft12_jaycespell_resistbuff"}}, 
+}

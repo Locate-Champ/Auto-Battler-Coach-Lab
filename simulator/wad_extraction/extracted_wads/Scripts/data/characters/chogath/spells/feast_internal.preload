@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Chogath.Feast_internal"}}, 
+{Function=BBPreloadSpell, Params={Name="feast"}}, 
+{Function=BBPreloadSpell, Params={Name="feastuitracker"}}, 
+{Function=BBPreloadSpell, Params={Name="feastmarker"}}, 
+}

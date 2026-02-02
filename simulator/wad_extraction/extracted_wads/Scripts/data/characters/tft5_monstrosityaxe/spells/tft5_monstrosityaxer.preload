@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_monstrosityrknockup"}}, 
+{Function=BBPreloadModule, Params={Name="TFT5_MonstrosityAxe.TFT5_MonstrosityAxeR"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_monstrosityr"}}, 
+}

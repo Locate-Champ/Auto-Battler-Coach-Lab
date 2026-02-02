@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_augment_revelpartytime_assistmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_augment_revelpartytime_attackspeed_buff"}}, 
+}

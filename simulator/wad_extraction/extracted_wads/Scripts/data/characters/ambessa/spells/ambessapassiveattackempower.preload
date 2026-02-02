@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ambessapassive"}}, 
+{Function=BBPreloadModule, Params={Name="Ambessa.CharFunctionsAmbessa"}}, 
+{Function=BBPreloadSpell, Params={Name="_globalchampionrangeextensionvfxmanager"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_trait_worldender_mis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_darkinblade"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_TraitEffect_DarkinBlade"}}, 
+}

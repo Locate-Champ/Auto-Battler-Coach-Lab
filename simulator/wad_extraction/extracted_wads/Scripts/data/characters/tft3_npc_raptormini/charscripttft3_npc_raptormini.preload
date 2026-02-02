@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft3_npcrazorbeak"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_PortalDraft"}}, 
+{Function=BBPreloadSpell, Params={Name="tft3_portals_bonanza_npc_unitbuff"}}, 
+}

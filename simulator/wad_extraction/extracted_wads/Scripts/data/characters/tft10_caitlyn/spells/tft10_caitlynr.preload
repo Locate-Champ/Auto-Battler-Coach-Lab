@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_caitlynaimmarkerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_caitlynr_mis"}}, 
+}

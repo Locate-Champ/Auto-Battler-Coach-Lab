@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="443069_vfx"}}, 
+{Function=BBPreloadModule, Params={Name="Global.443069_VFX"}}, 
+}

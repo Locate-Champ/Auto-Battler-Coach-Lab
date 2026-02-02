@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Smolder.SmolderQPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="smolderq2blowbackmissilea"}}, 
+{Function=BBPreloadSpell, Params={Name="smolderq2blowbackmissileb"}}, 
+{Function=BBPreloadSpell, Params={Name="smolderq2blowbackmissilec"}}, 
+{Function=BBPreloadSpell, Params={Name="smolderqpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="smolderqtarget"}}, 
+{Function=BBPreloadSpell, Params={Name="smolderaalock"}}, 
+}

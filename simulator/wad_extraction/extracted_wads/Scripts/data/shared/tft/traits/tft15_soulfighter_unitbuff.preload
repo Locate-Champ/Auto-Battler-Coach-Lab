@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_SoulFighter_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_soulfighter_prismatic"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_soulfighter_blessing"}}, 
+}

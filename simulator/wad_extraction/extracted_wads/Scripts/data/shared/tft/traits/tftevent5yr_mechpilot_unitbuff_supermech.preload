@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_mechpilot_unitbuff_supermech_scale"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_GuardianAngel_Buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_MechPilot_UnitBuff_SuperMech"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Traits"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_immunity"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_cloakedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_mechpilot_unitbuff_ejectvfx"}}, 
+{Function=BBPreloadSpell, Params={Name="tftevent5yr_hellion_unitbuff"}}, 
+}

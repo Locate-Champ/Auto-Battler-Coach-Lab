@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Gwen.GwenEAttackBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="gwenbasicattack"}}, 
+{Function=BBPreloadSpell, Params={Name="gwene"}}, 
+{Function=BBPreloadModule, Params={Name="Gwen.GwenZ_GeneralFunctions"}}, 
+}

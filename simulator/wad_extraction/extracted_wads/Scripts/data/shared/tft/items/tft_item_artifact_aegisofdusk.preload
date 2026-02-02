@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Artifact_AegisOfDusk"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_artifact_aegisofdusk_debuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Artifact_AegisOfDusk_Debuff"}}, 
+}

@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Yordle_ArmyBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_prismatic_bandlecity_mushroombomb"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_prismatic_bandlecity_unitdash"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_prismatic_bandlecity_hugifymissile"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Yordle_UnitBuff"}}, 
+}

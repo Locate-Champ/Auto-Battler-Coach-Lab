@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_dravenattackp_lq"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_dravenattackp_rq"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_dravenattackp_rc"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_dravenspinningonehand"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_dravenspinningreturn"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_dravenspinningleft"}}, 
+}

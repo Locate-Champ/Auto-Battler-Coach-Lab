@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_frombeginningtoend"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_frombeginningtoend_darkharvestcooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_frombeginningtoend_darkharvesthassoulmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_frombeginningtoend_ksdarkharvestpickupmis"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="slipstreammovespeedbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="slipstreamcooldown"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_singedvsheimerdinger_singedstart"}}, 
+}

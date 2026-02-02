@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft6_seraphinerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_seraphinerpostcast"}}, 
+}

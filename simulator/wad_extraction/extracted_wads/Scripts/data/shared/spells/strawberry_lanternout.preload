@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="strawberry_thresh_lantern"}}, 
+{Function=BBPreloadSpell, Params={Name="threshw"}}, 
+{Function=BBPreloadSpell, Params={Name="threshwlanternreturn"}}, 
+--{Function=BBPreloadModule, Params={Name="Thresh.ThreshFunctionModule"}}, 
+}

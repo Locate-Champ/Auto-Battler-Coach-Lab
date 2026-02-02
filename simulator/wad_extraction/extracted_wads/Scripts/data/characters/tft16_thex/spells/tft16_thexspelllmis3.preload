@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT16_THex.TFT16_THexFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspell"}}, 
+}

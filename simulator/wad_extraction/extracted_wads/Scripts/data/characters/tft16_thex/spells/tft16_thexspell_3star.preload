@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_THex.TFT16_THexSpell_3Star"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_thexspell_3star_minionbuff"}}, 
+}

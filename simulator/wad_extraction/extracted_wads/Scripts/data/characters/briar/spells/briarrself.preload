@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="briarr"}}, 
+{Function=BBPreloadSpell, Params={Name="briarrdash"}}, 
+{Function=BBPreloadSpell, Params={Name="briarw"}}, 
+{Function=BBPreloadSpell, Params={Name="jinxq"}}, 
+{Function=BBPreloadSpell, Params={Name="briarrfrenzystatebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
+{Function=BBPreloadSpell, Params={Name="briarrccimmune"}}, 
+}

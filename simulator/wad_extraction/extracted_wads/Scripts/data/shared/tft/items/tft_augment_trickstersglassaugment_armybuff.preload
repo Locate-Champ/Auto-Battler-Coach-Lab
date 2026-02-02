@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_OrnnTrickstersGlass_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_augment_trickstersglassaugment_unitbuff"}}, 
+}

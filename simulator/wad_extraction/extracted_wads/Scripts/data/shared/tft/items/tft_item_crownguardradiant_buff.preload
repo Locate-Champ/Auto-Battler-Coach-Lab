@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_crownguardradiant_combatbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Item_CrownguardRadiant_Buff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_item_crownguardradiantshield_buff"}}, 
+}

@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_illaoispell_defenses"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_illaoispell_smash"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT10_NagaBeats_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft10_illaoispell_tentaclesmash"}}, 
+}

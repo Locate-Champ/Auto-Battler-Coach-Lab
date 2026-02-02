@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Item_DuelistEmblemItem_TargetBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_item_duelistemblemitem_targetbuff"}}, 
+}

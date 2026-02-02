@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_missfortunebulletsound"}}, 
+{Function=BBPreloadModule, Params={Name="Global.CastInstance"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_missfortunebullets"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT8_UnitBuffGunMage"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_missfortunegunmagebullets"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_missfortunebulletempty"}}, 
+}

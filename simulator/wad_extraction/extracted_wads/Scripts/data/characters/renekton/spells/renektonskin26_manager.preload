@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Renekton.RenektonSkin26_Manager"}}, 
+{Function=BBPreloadSpell, Params={Name="renektonskin26_helmetactive"}}, 
+}

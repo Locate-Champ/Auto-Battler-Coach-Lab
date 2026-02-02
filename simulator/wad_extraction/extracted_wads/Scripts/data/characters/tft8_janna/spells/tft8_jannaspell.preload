@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT8_Janna.TFT8_JannaSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_jannaspell_missilemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_jannaspell_knockup"}}, 
+}

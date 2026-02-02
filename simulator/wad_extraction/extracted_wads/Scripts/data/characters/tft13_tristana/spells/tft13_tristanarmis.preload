@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT13_PlayerBuff_Cheats"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_tristanaspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Tristana.TFT13_TristanaSpell_Passive"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+}

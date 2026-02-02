@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_azirspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT11_Azir.TFT11_Azir_SoldierFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
+}

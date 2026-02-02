@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_augment_battleacademia_hero101_playerbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_BattleAcademia_Hero101_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+}

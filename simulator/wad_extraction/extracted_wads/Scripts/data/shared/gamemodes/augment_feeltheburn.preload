@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="summonercherryhold"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerexhaustslow"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerexhaust"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerexhaustdebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellAttribution"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_feeltheburn_ignite"}}, 
+{Function=BBPreloadModule, Params={Name="Global.GrievousWound"}}, 
+{Function=BBPreloadSpell, Params={Name="grievouswound"}}, 
+}

@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_zyraspell_missile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_zyraspell_allybuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_zyraspell_missile_small"}}, 
+}

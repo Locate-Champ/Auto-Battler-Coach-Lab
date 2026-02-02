@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_aram_flashy2spell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_Flashy"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_flash2spell"}}, 
+{Function=BBPreloadSpell, Params={Name="summonerhaste"}}, 
+{Function=BBPreloadSpell, Params={Name="summonersnowball"}}, 
+}

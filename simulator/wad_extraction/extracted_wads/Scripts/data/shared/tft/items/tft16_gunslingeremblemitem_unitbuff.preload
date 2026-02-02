@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_gunslingeremblemitem_enemybuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_GunslingerEmblemItem_EnemyBuff"}}, 
+}

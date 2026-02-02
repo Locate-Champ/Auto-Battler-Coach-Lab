@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_xerath_echoing_arcanopulse"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_xeratharcanopulsechargeup"}}, 
+}

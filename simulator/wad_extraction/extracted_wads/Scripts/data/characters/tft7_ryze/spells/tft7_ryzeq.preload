@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft7_ryzeqmissile"}}, 
+{Function=BBPreloadModule, Params={Name="TFT7_Ryze.TFT7_RyzeQVisualStateManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

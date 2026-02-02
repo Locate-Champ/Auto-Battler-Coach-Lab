@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Lieutenant.TFT13_Lieutenant_FunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell2_bonus_knockoutbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell2_knockback"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell2_dash"}}, 
+}

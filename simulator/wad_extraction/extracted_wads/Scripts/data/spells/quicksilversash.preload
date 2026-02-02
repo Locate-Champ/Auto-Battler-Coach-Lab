@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="itemmercurial"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ChallengesChampionTrackerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="grounded"}}, 
+}

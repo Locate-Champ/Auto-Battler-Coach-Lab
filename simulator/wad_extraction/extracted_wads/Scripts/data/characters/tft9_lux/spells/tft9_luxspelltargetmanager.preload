@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT9_Lux.TFT9_LuxSpellTargetManager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT9_Lux.TFT9_LuxSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_luxspell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_luxspellshred"}}, 
+}

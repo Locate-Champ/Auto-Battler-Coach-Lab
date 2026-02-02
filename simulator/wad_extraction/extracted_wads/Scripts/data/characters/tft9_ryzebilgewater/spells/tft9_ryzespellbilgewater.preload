@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellbilgewater_chestmis"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellbilgewater_chestmis_boot"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_ryzespellbilgewater_chestmismini"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

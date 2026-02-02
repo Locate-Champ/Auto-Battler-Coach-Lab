@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tfttutorial_gangplankbarrel"}}, 
+{Function=BBPreloadSpell, Params={Name="tfttutorial_gangplankbarrelremover"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_chill"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_frostchanneler_cooldown"}}, 
+}

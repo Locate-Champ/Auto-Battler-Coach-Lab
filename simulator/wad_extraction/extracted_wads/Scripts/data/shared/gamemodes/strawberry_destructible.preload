@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Strawberry_LevelScript"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_pickup_heal"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_pickup_vacuum"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_pickup_calamity"}}, 
+}

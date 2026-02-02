@@ -1,0 +1,13 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_unstoppable"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft15_leesin"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_reaperstance_minionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_reaperstance_suppression"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_LeeSin.TFT15_LeeSinSpell_ReaperStance_KillTracker"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_LeeSin.TFT15_LeeSinSpell_ReaperStance"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_reaperstance_knockupdamage"}}, 
+}

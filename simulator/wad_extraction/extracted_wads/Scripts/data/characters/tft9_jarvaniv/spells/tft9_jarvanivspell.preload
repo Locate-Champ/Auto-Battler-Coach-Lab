@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft9_reksai"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_jarvanivminionbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft9_jarvanivspellsuppression"}}, 
+}

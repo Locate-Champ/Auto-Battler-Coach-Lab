@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="akshane"}}, 
+{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
+{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
+{Function=BBPreloadSpell, Params={Name="luxr"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanejumpback"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanq"}}, 
+{Function=BBPreloadModule, Params={Name="Akshan.AkshanPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanqhaste"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanr"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanrtargetvision"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanrmissile"}}, 
+{Function=BBPreloadModule, Params={Name="Akshan.AkshanFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanpassive"}}, 
+}

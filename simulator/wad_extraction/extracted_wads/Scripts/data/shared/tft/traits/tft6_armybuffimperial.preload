@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT6_ArmyBuffImperial"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_unitbuffimperial"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_imperialtyrant"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_PreviousCombatDamageTracker"}}, 
+{Function=BBPreloadSpell, Params={Name="tft6_traiteffect_tyrantmarker"}}, 
+}

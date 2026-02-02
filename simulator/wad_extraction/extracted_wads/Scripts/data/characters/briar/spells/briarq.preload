@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Briar.BriarFunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="destealth"}}, 
+{Function=BBPreloadSpell, Params={Name="sennaq"}}, 
+{Function=BBPreloadSpell, Params={Name="briarqshred"}}, 
+{Function=BBPreloadSpell, Params={Name="briarqdummycast"}}, 
+--{Function=BBPreloadModule, Params={Name="Briar.BriarP"}}, 
+}

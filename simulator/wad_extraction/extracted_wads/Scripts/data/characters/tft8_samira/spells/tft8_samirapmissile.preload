@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft8_samiraspell"}}, 
+{Function=BBPreloadModule, Params={Name="TFT8_Samira.TFT8_SamiraBounceBuff"}}, 
+}

@@ -1,0 +1,15 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="2v2buyphasereminder"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Cherry_LevelScript"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="cherry_buyphasedancebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2BuyPhaseBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="2v2champactionlock"}}, 
+{Function=BBPreloadModule, Params={Name="Global.2v2CombatDummy_Controller"}}, 
+--{Function=BBPreloadModule, Params={Name="Pantheon.PantheonPassive"}}, 
+--{Function=BBPreloadModule, Params={Name="Rengar.RengarFerocityFunction"}}, 
+--{Function=BBPreloadModule, Params={Name="Seraphine.SeraphinePassiveEcho"}}, 
+--{Function=BBPreloadModule, Params={Name="Sona.SonaPassive"}}, 
+--{Function=BBPreloadModule, Params={Name="XinZhao.XinZhaoP"}}, 
+}

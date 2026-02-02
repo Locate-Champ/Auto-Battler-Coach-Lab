@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_ryzespell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_IceBender_UnitBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_small"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Ryze.TFT15_RyzeSpell_TargetManager"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Ryze.TFT15_RyzeSpell_Transform"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Ryze.TFT15_RyzeSpell"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_ryzespell_transform"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
+}

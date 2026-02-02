@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft5_pykee"}}, 
+{Function=BBPreloadSpell, Params={Name="tft5_pykeemissile"}}, 
+}

@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Kled.KledFunctions"}}, 
+{Function=BBPreloadSpell, Params={Name="kledhealthmanager"}}, 
+{Function=BBPreloadSpell, Params={Name="kledpassistbuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SpellPings"}}, 
+{Function=BBPreloadSpell, Params={Name="root"}}, 
+{Function=BBPreloadCharacter, Params={Name="kledrider"}}, 
+{Function=BBPreloadCharacter, Params={Name="kled"}}, 
+}

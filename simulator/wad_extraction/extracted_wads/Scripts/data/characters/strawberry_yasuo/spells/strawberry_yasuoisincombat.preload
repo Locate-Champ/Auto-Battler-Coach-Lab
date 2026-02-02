@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Strawberry_Yasuo.Strawberry_YasuoRunCycleManager"}}, 
+{Function=BBPreloadSpell, Params={Name="Strawberry_Yasuonotincombat"}}, 
+}

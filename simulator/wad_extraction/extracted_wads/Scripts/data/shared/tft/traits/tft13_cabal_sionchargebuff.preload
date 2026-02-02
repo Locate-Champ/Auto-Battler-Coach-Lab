@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
+{Function=BBPreloadModule, Params={Name="TFT13_Sion.TFT13_Sion_FunctionModule"}}, 
+{Function=BBPreloadSpell, Params={Name="tft13_cabal_sionknockup"}}, 
+}

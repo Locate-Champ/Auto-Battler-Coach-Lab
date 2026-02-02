@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ezrealpassive"}}, 
+{Function=BBPreloadSpell, Params={Name="ezrealstatstoneptracking"}}, 
+}

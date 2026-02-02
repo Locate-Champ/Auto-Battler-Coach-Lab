@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.2v2ChampionBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_curseself"}}, 
+}

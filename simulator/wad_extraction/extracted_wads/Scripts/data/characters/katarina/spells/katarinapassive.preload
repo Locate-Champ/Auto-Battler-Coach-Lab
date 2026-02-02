@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="katarinaqshared"}}, 
+{Function=BBPreloadSpell, Params={Name="katarinapassivemarker"}}, 
+}

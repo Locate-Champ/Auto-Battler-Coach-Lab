@@ -1,0 +1,11 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="resistantskindragon"}}, 
+{Function=BBPreloadSpell, Params={Name="monsterminiondamageamp"}}, 
+{Function=BBPreloadSpell, Params={Name="s5_dragonvengeance"}}, 
+{Function=BBPreloadSpell, Params={Name="dragonslain"}}, 
+{Function=BBPreloadSpell, Params={Name="dragonbuffhextech"}}, 
+{Function=BBPreloadSpell, Params={Name="srx_dragonbuffhextech"}}, 
+{Function=BBPreloadSpell, Params={Name="dragontakeoff"}}, 
+{Function=BBPreloadSpell, Params={Name="dragondamage"}}, 
+{Function=BBPreloadModule, Params={Name="Global.ResistantSkinDragon"}}, 
+}

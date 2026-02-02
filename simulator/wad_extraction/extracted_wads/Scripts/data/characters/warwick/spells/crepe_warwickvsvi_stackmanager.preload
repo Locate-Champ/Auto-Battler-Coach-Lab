@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="viw"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_warwickvsvi_shred"}}, 
+{Function=BBPreloadSpell, Params={Name="crepe_warwickvsvi_stackcooldown"}}, 
+}

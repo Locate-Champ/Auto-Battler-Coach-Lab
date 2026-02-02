@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ruby_blitzcrank_powerfistattack"}}, 
+{Function=BBPreloadSpell, Params={Name="ruby_blitzcrank_powerfistslow"}}, 
+}

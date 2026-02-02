@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft14_kobukospellonhitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_kobukoenrageready"}}, 
+}

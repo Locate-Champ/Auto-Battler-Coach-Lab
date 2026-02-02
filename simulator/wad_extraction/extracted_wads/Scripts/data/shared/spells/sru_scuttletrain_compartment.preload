@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.SRU_ScuttleTrain_Compartment"}}, 
+{Function=BBPreloadModule, Params={Name="Global.SRU_ScuttleTrain_CompartmentCart"}}, 
+}

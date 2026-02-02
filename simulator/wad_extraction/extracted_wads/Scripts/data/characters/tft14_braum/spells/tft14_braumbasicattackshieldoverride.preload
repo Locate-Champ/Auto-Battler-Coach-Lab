@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="TFT14_Braum.TFT14_BraumBoss"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_braumspell"}}, 
+}

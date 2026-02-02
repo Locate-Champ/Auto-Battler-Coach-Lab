@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="augment_raidboss_clone_buff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Augment_RaidBoss"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_raidboss_imprisoned"}}, 
+}

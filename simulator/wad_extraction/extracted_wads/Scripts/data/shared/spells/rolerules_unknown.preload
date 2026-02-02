@@ -1,0 +1,10 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="supportitempurchasebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="rolerules_jungle"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_rolebound_jungle_quest"}}, 
+{Function=BBPreloadModule, Params={Name="Global.RoleRules_Unknown"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_rolebound_support_quest"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_rolebound_top_quest"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_rolebound_mid_quest"}}, 
+{Function=BBPreloadSpell, Params={Name="sr_2026_s1_rolebound_bot_quest"}}, 
+}

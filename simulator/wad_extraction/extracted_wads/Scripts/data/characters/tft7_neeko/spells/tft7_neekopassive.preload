@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
+{Function=BBPreloadSpell, Params={Name="tft7_neekor"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
+--{Function=BBPreloadModule, Params={Name="TFT7_Neeko.TFT7_NeekoPassive"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_UltimateAwakening"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_ultimateawakening_basicabilitybuff"}}, 
+}

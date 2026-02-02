@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_WWW_PhilipComp_LeeSinBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_SetMechanic_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_crystalrosecashout_tripleleesin_unitbuff"}}, 
+}

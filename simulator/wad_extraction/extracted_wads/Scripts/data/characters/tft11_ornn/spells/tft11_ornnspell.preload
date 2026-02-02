@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft11_ornnspell_playerbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_ornnshield"}}, 
+{Function=BBPreloadModule, Params={Name="TFT11_Ornn.TFT11_OrnnSpell"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft11_ornn_dummyitem"}}, 
+}

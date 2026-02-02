@@ -1,0 +1,7 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_spellcrit_manager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Sentai_ArmyBuffManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Sentai_Prismatic_MechBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_galio_spell4"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT15_Sentai_GalioCeremonyBuff"}}, 
+}

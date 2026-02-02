@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft15_udyrspellhero"}}, 
+{Function=BBPreloadModule, Params={Name="TFT15_Udyr.TFT15_UdyrSpellHero_Transform"}}, 
+}

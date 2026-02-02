@@ -1,0 +1,6 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="TFT16_Blitzcrank.TFT16_BlitzcrankSpell_Carry"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_blitzcrankspell_carry_rocketgrab"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_BlitzcrankCarry_PassiveBuff"}}, 
+}

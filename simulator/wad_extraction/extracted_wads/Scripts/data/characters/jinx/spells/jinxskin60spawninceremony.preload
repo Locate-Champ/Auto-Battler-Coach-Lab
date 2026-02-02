@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Jinx.JinxSkin60SpawnInCeremony"}}, 
+{Function=BBPreloadSpell, Params={Name="s4spawnlock"}}, 
+}

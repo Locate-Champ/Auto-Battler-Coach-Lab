@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="strawberry_leonasolarbarrierslowbatchbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="strawberry_leonasolarbarrier"}}, 
+}

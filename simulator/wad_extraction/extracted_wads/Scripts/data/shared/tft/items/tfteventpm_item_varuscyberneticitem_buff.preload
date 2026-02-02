@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tfteventpm_item_varuscyberneticitem_manager"}}, 
+--{Function=BBPreloadModule, Params={Name="Global.TFT14_Cybernetic_PlayerBuff_Manager"}}, 
+}

@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT15_StarGuardian_ArmyBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_starguardian_syndraapbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_traiteffect_starguardianstarmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_starguardian_unitbuff_healingbuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_starguardian_unitbuff_manabuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft15_starguardian_unitbuff_attackspeed"}}, 
+}

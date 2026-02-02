@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT9_FreljordManager"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_medium"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_medium"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_FreljordGlacialBreeze_Army"}}, 
+}

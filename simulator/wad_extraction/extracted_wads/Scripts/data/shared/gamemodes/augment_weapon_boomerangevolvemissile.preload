@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.Augment_Weapon_Boomerang"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_boomerangevolvereturnmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="augment_weapon_boomerangevolveminimissile"}}, 
+}

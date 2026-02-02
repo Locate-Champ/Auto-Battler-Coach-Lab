@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Akshan.AkshanPassive"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanpassivemovementspeed"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanpassiveminionmarker"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanpassiveminionmarkerexecute"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanpassiveattack"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanpassivedebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="akshanpassiveshield"}}, 
+}

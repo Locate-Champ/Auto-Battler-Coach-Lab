@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_missions_set16a"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_missions_set16age"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_playerbuff_missions_set4_lny26"}}, 
+{Function=BBPreloadSpell, Params={Name="missionsinlua_2026_s1_a1"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArenaEvents"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Streaks"}}, 
+}

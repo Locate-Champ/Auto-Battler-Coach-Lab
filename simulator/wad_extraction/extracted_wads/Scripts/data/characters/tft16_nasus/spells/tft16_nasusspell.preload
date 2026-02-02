@@ -1,0 +1,8 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft16_nasusspellvfxmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_nasusspelldebuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_nasusskinscalemanager"}}, 
+{Function=BBPreloadSpell, Params={Name="tft16_nasusspellavatar"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
+}

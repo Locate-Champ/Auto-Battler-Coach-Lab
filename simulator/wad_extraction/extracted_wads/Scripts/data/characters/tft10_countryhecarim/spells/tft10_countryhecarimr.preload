@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="tft10_countryhecarimrmissile"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+}

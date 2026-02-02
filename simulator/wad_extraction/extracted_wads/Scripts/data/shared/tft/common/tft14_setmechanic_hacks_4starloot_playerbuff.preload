@@ -1,0 +1,5 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_4StarLoot_PlayerBuff"}}, 
+{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_4starloot_unitbuff"}}, 
+}

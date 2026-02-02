@@ -1,0 +1,9 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadCharacter, Params={Name="tft8_rammuspb"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
+{Function=BBPreloadCharacter, Params={Name="tft8_rammus"}}, 
+{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
+{Function=BBPreloadSpell, Params={Name="tft8_rammusspellknockup"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_stun"}}, 
+{Function=BBPreloadSpell, Params={Name="tft_unitstatus_adreduction_medium"}}, 
+}

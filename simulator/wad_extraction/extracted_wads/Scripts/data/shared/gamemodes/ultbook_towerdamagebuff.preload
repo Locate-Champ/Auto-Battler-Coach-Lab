@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="ultbook_towerdamagedebuff"}}, 
+{Function=BBPreloadModule, Params={Name="Global.Ultbook_TowerDamageDebuff"}}, 
+}

@@ -1,0 +1,4 @@
+PreLoadBuildingBlocks = {
+{Function=BBPreloadSpell, Params={Name="zileanqattachaudio"}}, 
+{Function=BBPreloadModule, Params={Name="Zilean.ZileanQShared"}}, 
+}
