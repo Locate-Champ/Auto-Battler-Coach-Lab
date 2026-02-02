@@ -2,8 +2,8 @@
   {
     "apiName": "TFT16_Augment_RumbleCarry",
     "associatedTraits": [
-      "TFT16_Yordle",
-      "TFT16_Defender"
+      "Yordle",
+      "Defender"
     ],
     "composition": [],
     "desc": "Gain a Rumble. Your strongest Rumble gains +@MaxRange@ Range and constantly fires missiles at enemies, increased with Attack Speed.",
@@ -35,7 +35,7 @@
   {
     "apiName": "TFT16_Augment_Arcanist_ChaosMagic",
     "associatedTraits": [
-      "TFT16_Sorcerer"
+      "Arcanist"
     ],
     "composition": [],
     "desc": "Arcanists gain @ManaRegen@ Mana Regen. After every @ManaToSpend@ Mana they spend, a magical effect hits the board. Gain a Lulu and a Kog'Maw.",
@@ -80,7 +80,7 @@
   {
     "apiName": "TFT16_Augment_BandleBounty",
     "associatedTraits": [
-      "TFT16_Yordle"
+      "Yordle"
     ],
     "composition": [],
     "desc": "For every Yordle you've unlocked or unlock, gain @Gold@ gold. The Bandle Paths reveal a secret Yordle 10. Gain a Rumble and Lulu.",
@@ -112,7 +112,7 @@
   {
     "apiName": "TFT16_Augment_SlayerCrown",
     "associatedTraits": [
-      "TFT16_Slayer"
+      "Slayer"
     ],
     "composition": [],
     "desc": "Get a Slayer Emblem, a Yasuo, and a Quicksilver.",
@@ -139,7 +139,7 @@
   {
     "apiName": "TFT16_Augment_IoniaCrown",
     "associatedTraits": [
-      "TFT16_Ionia"
+      "Ionia"
     ],
     "composition": [],
     "desc": "Get an Ionia Emblem, a Yasuo, and a Deathblade.",
@@ -173,7 +173,7 @@
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Missing-T2.tex",
     "id": null,
     "incompatibleTraits": [
-      "TFT16_DarkinWeapon"
+      "Darkin"
     ],
     "name": "The Darkin Scythe",
     "tags": [
@@ -189,7 +189,7 @@
   {
     "apiName": "TFT16_Augment_BilgewaterCrown",
     "associatedTraits": [
-      "TFT16_Bilgewater"
+      "Bilgewater"
     ],
     "composition": [],
     "desc": "Get a Bilgewater Emblem, a Twisted Fate, and a Guinsoo's Rageblade.",
@@ -216,7 +216,7 @@
   {
     "apiName": "TFT16_Augment_Targon_ClimbtheMountain",
     "associatedTraits": [
-      "TFT16_Targon"
+      "Targon"
     ],
     "composition": [],
     "desc": "Your Targonians gain @MaxHealth@ max Health and @ADAP@% Attack Damage and Ability Power for every Targonian fielded. Gain an Aphelios.",
@@ -259,7 +259,7 @@
   {
     "apiName": "TFT16_Augment_DefenderCirclet",
     "associatedTraits": [
-      "TFT16_Defender"
+      "Defender"
     ],
     "composition": [],
     "desc": "Get a Defender Emblem, a Garen, and a Chain Vest.",
@@ -304,7 +304,7 @@
   {
     "apiName": "TFT16_Augment_ZaunCirclet",
     "associatedTraits": [
-      "TFT16_Zaun"
+      "Zaun"
     ],
     "composition": [],
     "desc": "Get a Zaun Emblem, a Recurve Bow, and...a 2-Star Vi!?",
@@ -381,7 +381,7 @@
   {
     "apiName": "TFT16_Augment_Slayer_TotalDominationPlus",
     "associatedTraits": [
-      "TFT16_Slayer"
+      "Slayer"
     ],
     "composition": [],
     "desc": "Slayers gain @BaseDA*100@% Damage Amp, plus @DAPerBreakpoint*100@% for every @SurvivingSlayerBreakpoint@ surviving Slayers at the end of combat. Gain a Briar and a Qiyana.<br><br><rules>Current Damage Amp: @TFTUnitProperty.trait:TFT16_Augment_Slayer_TotalDomination_CurrentDA@%</rules>",
@@ -456,7 +456,7 @@
   {
     "apiName": "TFT16_Augment_VoidCirclet",
     "associatedTraits": [
-      "TFT16_Void"
+      "Void"
     ],
     "composition": [],
     "desc": "Get a Void Emblem, a Bel'veth, and a Recurve Bow.",
@@ -481,7 +481,7 @@
   {
     "apiName": "TFT16_Augment_Yordle_WildGrowth",
     "associatedTraits": [
-      "TFT16_Yordle"
+      "Yordle"
     ],
     "composition": [],
     "desc": "3-star Yordles become massive, moving slower but gaining @Health*100@% Health and @ADAP@% Attack Damage and Ability Power. Gain a Rumble and Lulu.",
@@ -546,7 +546,7 @@
   {
     "apiName": "TFT16_Augment_NoxianInvasion",
     "associatedTraits": [
-      "TFT16_Noxus"
+      "Noxus"
     ],
     "composition": [],
     "desc": "Your team gains @DamageAmp*100@% Damage Amp, increased to @EnhancedDamageAmp*100@% if the Noxus trait is active.",
@@ -589,7 +589,7 @@
   {
     "apiName": "TFT16_Augment_IxtalCrest",
     "associatedTraits": [
-      "TFT16_Explorer"
+      "Ixtal"
     ],
     "composition": [],
     "desc": "Get an Ixtal Emblem.",
@@ -712,9 +712,9 @@
   {
     "apiName": "TFT16_Augment_PoppyCarry",
     "associatedTraits": [
-      "TFT16_Demacia",
-      "TFT16_Yordle",
-      "TFT16_Juggernaut"
+      "Demacia",
+      "Yordle",
+      "Juggernaut"
     ],
     "composition": [],
     "desc": "Gain an Illaoi. Your strongest Illaoi becomes a Fighter. Her Ability is replaced with an airborne slam that's recast when she kills her target.",
@@ -779,7 +779,7 @@
   {
     "apiName": "TFT16_Augment_WalkTheTruePath",
     "associatedTraits": [
-      "TFT16_Ionia"
+      "Ionia"
     ],
     "composition": [],
     "desc": "Gain a Lesser Champion Duplicator, a Shen, a Jhin, and @Gold@ gold. Ionia 10 gains a Prismatic upgrade.",
@@ -812,7 +812,7 @@
   {
     "apiName": "TFT16_Augment_DemaciaCirclet",
     "associatedTraits": [
-      "TFT16_Demacia"
+      "Demacia"
     ],
     "composition": [],
     "desc": "Get a Demacia Emblem, a Garen, and a Needlessly Large Rod.",
@@ -837,7 +837,7 @@
   {
     "apiName": "TFT16_Augment_WardenCrown",
     "associatedTraits": [
-      "TFT16_Warden"
+      "Warden"
     ],
     "composition": [],
     "desc": "Get a Warden Emblem, a Xin Zhao, and an Adaptive Helm.",
@@ -864,7 +864,7 @@
   {
     "apiName": "TFT16_Augment_DefenderCrown",
     "associatedTraits": [
-      "TFT16_Defender"
+      "Defender"
     ],
     "composition": [],
     "desc": "Get a Defender Emblem, a Neeko, and a Steadfast Heart.",
@@ -891,7 +891,7 @@
   {
     "apiName": "TFT16_Augment_Noxus_BringerOfRuin",
     "associatedTraits": [
-      "TFT16_Noxus"
+      "Noxus"
     ],
     "composition": [],
     "desc": "Every takedown Atakhan scores permanently grants him @AP@% Ability Power and @MaxHealth@ max Health. Gain a Briar and a Sion. <br>(Current Takedowns: @TFTUnitProperty.trait:TFT16_Augment_Noxus_BringerOfRuin_Takedowns@)",
@@ -932,7 +932,7 @@
   {
     "apiName": "TFT16_Augment_BrawlerCirclet",
     "associatedTraits": [
-      "TFT16_Brawler"
+      "Bruiser"
     ],
     "composition": [],
     "desc": "Get a Bruiser Emblem and a Wukong.",
@@ -957,7 +957,7 @@
   {
     "apiName": "TFT16_Augment_VoidCrest",
     "associatedTraits": [
-      "TFT16_Void"
+      "Void"
     ],
     "composition": [],
     "desc": "Get a Void Emblem.",
@@ -983,7 +983,7 @@
   {
     "apiName": "TFT16_Augment_ZaunCrown",
     "associatedTraits": [
-      "TFT16_Zaun"
+      "Zaun"
     ],
     "composition": [],
     "desc": "Get a Zaun Emblem, a Giant Slayer, and an Ekko.",
@@ -1010,8 +1010,8 @@
   {
     "apiName": "TFT16_Augment_ChoGathCarry",
     "associatedTraits": [
-      "TFT16_Void",
-      "TFT16_Juggernaut"
+      "Void",
+      "Juggernaut"
     ],
     "composition": [],
     "desc": "Gain a Cho'Gath. Your strongest Cho'Gath gains +1 Attack Range and his attacks launch spikes that deal magic damage based on his max Health.",
@@ -1046,7 +1046,7 @@
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Missing-T2.tex",
     "id": null,
     "incompatibleTraits": [
-      "TFT16_DarkinWeapon"
+      "Darkin"
     ],
     "name": "The Darkin Aegis",
     "tags": [
@@ -1069,7 +1069,7 @@
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Missing-T2.tex",
     "id": null,
     "incompatibleTraits": [
-      "TFT16_DarkinWeapon"
+      "Darkin"
     ],
     "name": "The Darkin Staff",
     "tags": [
@@ -1147,7 +1147,7 @@
   {
     "apiName": "TFT16_Augment_WardenCirclet",
     "associatedTraits": [
-      "TFT16_Warden"
+      "Warden"
     ],
     "composition": [],
     "desc": "Get a Warden Emblem, a Braum, and a Giant's Belt.",
@@ -1172,8 +1172,8 @@
   {
     "apiName": "TFT16_Augment_ShadowIsles_RuinedKing",
     "associatedTraits": [
-      "TFT16_ShadowIsles",
-      "TFT16_Rapidfire"
+      "Shadow Isles",
+      "Quickstriker"
     ],
     "composition": [],
     "desc": "Gain a 2-star Viego. Your strongest Viego shares @PassiveSharePercent*100@% of his Passive with other Shadow Isles allies. After collecting @SoulReq@ souls, his Ability upgrades.",
@@ -1236,7 +1236,7 @@
   {
     "apiName": "TFT16_Augment_GunslingerCrown",
     "associatedTraits": [
-      "TFT16_Gunslinger"
+      "Gunslinger"
     ],
     "composition": [],
     "desc": "Get a Gunslinger Emblem, a Tristana, and an Infinity Edge.",
@@ -1263,7 +1263,7 @@
   {
     "apiName": "TFT16_Augment_PiltoverCrest",
     "associatedTraits": [
-      "TFT16_Piltover"
+      "Piltover"
     ],
     "composition": [],
     "desc": "Get a Piltover Emblem.",
@@ -1289,7 +1289,7 @@
   {
     "apiName": "TFT16_Augment_YordleCrown",
     "associatedTraits": [
-      "TFT16_Yordle"
+      "Yordle"
     ],
     "composition": [],
     "desc": "Get a Yordle Emblem, a Teemo, and a Rabadon's Deathcap.",
@@ -1316,7 +1316,7 @@
   {
     "apiName": "TFT16_Augment_DisruptorCirclet",
     "associatedTraits": [
-      "TFT16_Magus"
+      "Disruptor"
     ],
     "composition": [],
     "desc": "Get a Disruptor Emblem, a Seraphine, and a Tear of the Goddess.",
@@ -1341,14 +1341,14 @@
   {
     "apiName": "TFT16_TeamupAugment_SpinToWin",
     "associatedTraits": [
-      "TFT16_Noxus",
-      "TFT16_Demacia",
-      "TFT16_Ionia",
-      "TFT16_Void",
-      "TFT16_Defender",
-      "TFT16_Brawler",
-      "TFT16_Vanquisher",
-      "TFT16_Slayer"
+      "Noxus",
+      "Demacia",
+      "Ionia",
+      "Void",
+      "Defender",
+      "Bruiser",
+      "Vanquisher",
+      "Slayer"
     ],
     "composition": [],
     "desc": "Gain a Yasuo and Rek'Sai. Each time your spinning champions spend @ManaToSpend@ total Mana they permanently gain @Health@ Health and @DamageAmp*100@% Damage Amp. Fielding more increases their spin area by 1-hex.",
@@ -1403,7 +1403,7 @@
   {
     "apiName": "TFT16_Augment_LongshotCrest",
     "associatedTraits": [
-      "TFT16_Juggernaut"
+      "Juggernaut"
     ],
     "composition": [],
     "desc": "Get a Longshot Emblem.",
@@ -1429,7 +1429,7 @@
   {
     "apiName": "TFT16_Augment_FreljordCrest",
     "associatedTraits": [
-      "TFT16_Freljord"
+      "Freljord"
     ],
     "composition": [],
     "desc": "Get a Freljord Emblem.",
@@ -1512,7 +1512,7 @@
   {
     "apiName": "TFT16_Augment_PiltoverCirclet",
     "associatedTraits": [
-      "TFT16_Piltover"
+      "Piltover"
     ],
     "composition": [],
     "desc": "Get a Piltover Emblem, a Seraphine, and a Tear of the Goddess.",
@@ -1537,7 +1537,7 @@
   {
     "apiName": "TFT16_Augment_BrawlerCrest",
     "associatedTraits": [
-      "TFT16_Brawler"
+      "Bruiser"
     ],
     "composition": [],
     "desc": "Get a Bruiser Emblem.",
@@ -1563,7 +1563,7 @@
   {
     "apiName": "TFT16_Augment_FreljordCirclet",
     "associatedTraits": [
-      "TFT16_Freljord"
+      "Freljord"
     ],
     "composition": [],
     "desc": "Get a Freljord Emblem, a Lissandra, and a Needlessly Large Rod.",
@@ -1610,7 +1610,7 @@
   {
     "apiName": "TFT16_Augment_QuickstrikerCrest",
     "associatedTraits": [
-      "TFT16_Rapidfire"
+      "Quickstriker"
     ],
     "composition": [],
     "desc": "Get a Quickstriker Emblem.",
@@ -1636,7 +1636,7 @@
   {
     "apiName": "TFT16_Augment_Longshot_KeepAway",
     "associatedTraits": [
-      "TFT16_Longshot"
+      "Longshot"
     ],
     "composition": [],
     "desc": "Longshots gain @AttackSpeed*100@% Attack Speed. If they cast while their target is within @HexDistanceFromTarget@ hexes, the target is knocked back @KnockbackDistanceInHexes@ hexes (cooldown: @CooldownDuration@s). Gain a Caitlyn and a Kog'Maw. ",
@@ -1698,9 +1698,9 @@
   {
     "apiName": "TFT16_Augment_XinZhaoCarry",
     "associatedTraits": [
-      "TFT16_Ionia",
-      "TFT16_Demacia",
-      "TFT16_Warden"
+      "Ionia",
+      "Demacia",
+      "Warden"
     ],
     "composition": [],
     "desc": "Gain @NumberOfCopies@ Xin Zhao. Your strongest Xin Zhao constantly strikes nearby enemies and executes enemies. After @RoundsBeforeTransformation@ player combats as a 3-star, unlock Zaahen. He replaces Xin Zhao and takes his items.",
@@ -1762,7 +1762,7 @@
   {
     "apiName": "TFT16_Augment_JuggernautCrown",
     "associatedTraits": [
-      "TFT16_Juggernaut"
+      "Juggernaut"
     ],
     "composition": [],
     "desc": "Get a Juggernaut Emblem, a Cho'gath, and a Protector's Vow.",
@@ -1789,7 +1789,7 @@
   {
     "apiName": "TFT16_Augment_VanquisherCrown",
     "associatedTraits": [
-      "TFT16_Vanquisher"
+      "Vanquisher"
     ],
     "composition": [],
     "desc": "Get a Vanquisher Emblem, a Gangplank, and a Hand of Justice.",
@@ -1816,7 +1816,7 @@
   {
     "apiName": "TFT16_Augment_DisruptorCrown",
     "associatedTraits": [
-      "TFT16_Magus"
+      "Disruptor"
     ],
     "composition": [],
     "desc": "Get a Disruptor Emblem, a Malzahar, and a Blue Buff.",
@@ -1850,7 +1850,7 @@
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Missing-T2.tex",
     "id": null,
     "incompatibleTraits": [
-      "TFT16_DarkinWeapon"
+      "Darkin"
     ],
     "name": "The Darkin Bow",
     "tags": [
@@ -1866,7 +1866,7 @@
   {
     "apiName": "TFT16_Augment_ArcanistCrest",
     "associatedTraits": [
-      "TFT16_Sorcerer"
+      "Arcanist"
     ],
     "composition": [],
     "desc": "Get an Arcanist Emblem.",
@@ -1915,7 +1915,7 @@
   {
     "apiName": "TFT16_Augment_Ixtal_Expeditionist",
     "associatedTraits": [
-      "TFT16_Explorer"
+      "Ixtal"
     ],
     "composition": [],
     "desc": "Gain a Qiyana, a Neeko, and a Milio. Increase your current and max player Health by @PlayerHealth@.",
@@ -1971,7 +1971,7 @@
   {
     "apiName": "TFT16_Augment_BilgewaterCrest",
     "associatedTraits": [
-      "TFT16_Bilgewater"
+      "Bilgewater"
     ],
     "composition": [],
     "desc": "Get a Bilgewater Emblem.",
@@ -1997,7 +1997,7 @@
   {
     "apiName": "TFT16_Augment_SlayerCrest",
     "associatedTraits": [
-      "TFT16_Slayer"
+      "Slayer"
     ],
     "composition": [],
     "desc": "Get a Slayer Emblem.",
@@ -2023,7 +2023,7 @@
   {
     "apiName": "TFT16_Augment_DefenseOfIonia",
     "associatedTraits": [
-      "TFT16_Ionia"
+      "Ionia"
     ],
     "composition": [],
     "desc": "Your team gains @Durability*100@% Durability, increased to @EnhancedDurability*100@% if the Ionia trait is active.",
@@ -2089,7 +2089,7 @@
   {
     "apiName": "TFT16_Augment_IoniaCrest",
     "associatedTraits": [
-      "TFT16_Ionia"
+      "Ionia"
     ],
     "composition": [],
     "desc": "Get an Ionia Emblem.",
@@ -2115,7 +2115,7 @@
   {
     "apiName": "TFT16_Augment_DefenderCrest",
     "associatedTraits": [
-      "TFT16_Defender"
+      "Defender"
     ],
     "composition": [],
     "desc": "Get a Defender Emblem.",
@@ -2141,7 +2141,7 @@
   {
     "apiName": "TFT16_Augment_YordleCirclet",
     "associatedTraits": [
-      "TFT16_Yordle"
+      "Yordle"
     ],
     "composition": [],
     "desc": "Get a Yordle Emblem, a Needlessly Large Rod, and...a Rabadon's Deathcap!?",
@@ -2215,9 +2215,9 @@
   {
     "apiName": "TFT16_TeamupAugment_JarvanShyvana",
     "associatedTraits": [
-      "TFT16_Demacia",
-      "TFT16_Juggernaut",
-      "TFT16_Defender"
+      "Demacia",
+      "Juggernaut",
+      "Defender"
     ],
     "composition": [],
     "desc": "Gain a Shyvana and a 2-star Jarvan IV. When Jarvan casts, Shyvana gains Shield. When Shyvana casts, Jarvan jumps in and deals damage based on his Armor and Magic Resist. After every player combat, gain a Jarvan IV.<br><br>",
@@ -2297,7 +2297,7 @@
   {
     "apiName": "TFT16_Augment_Void_EvolveAndOvercome",
     "associatedTraits": [
-      "TFT16_Void"
+      "Void"
     ],
     "composition": [],
     "desc": "For every @NumTakedownsReq@ enemies that Mutated Void allies takedown, gain @XP@ XP. Gain a Cho'Gath and a 2-star Kog'Maw. @TFTUnitProperty.item:TFT_Augment_EvolveAndOvercome_Tooltip@<br><br><rules>Void provides unique Mutations.</rules><br>",
@@ -2340,7 +2340,7 @@
   {
     "apiName": "TFT16_Augment_DemaciaForever",
     "associatedTraits": [
-      "TFT16_Demacia"
+      "Demacia"
     ],
     "composition": [],
     "desc": "Demacians gain @Health@ permanent Health every time they rally. They also gain @Stats@% permanent Attack Damage and Ability Power every @RallyCount@ rallies. Gain a Jarvan IV, a Sona, and a Xin Zhao.",
@@ -2388,7 +2388,7 @@
   {
     "apiName": "TFT16_Augment_DemaciaCrown",
     "associatedTraits": [
-      "TFT16_Demacia"
+      "Demacia"
     ],
     "composition": [],
     "desc": "Get a Demacia Emblem, a Crownguard, and a Jarvan IV.",
@@ -2439,7 +2439,7 @@
   {
     "apiName": "TFT16_Augment_Slayer_TotalDomination",
     "associatedTraits": [
-      "TFT16_Slayer"
+      "Slayer"
     ],
     "composition": [],
     "desc": "Slayers gain @BaseDA*100@% Damage Amp, plus @DAPerBreakpoint*100@% for every @SurvivingSlayerBreakpoint@ surviving Slayers at the end of combat. Gain a Briar and a Qiyana.<br><br><rules>Current Damage Amp: @TFTUnitProperty.trait:TFT16_Augment_Slayer_TotalDomination_CurrentDA@%</rules>",
@@ -2493,7 +2493,7 @@
   {
     "apiName": "TFT16_Augment_LongshotCirclet",
     "associatedTraits": [
-      "TFT16_Longshot"
+      "Longshot"
     ],
     "composition": [],
     "desc": "Get a Longshot Emblem, a Recurve Bow, and a Vayne.",
@@ -2518,8 +2518,8 @@
   {
     "apiName": "TFT16_Augment_BlitzcrankCarry",
     "associatedTraits": [
-      "TFT16_Zaun",
-      "TFT16_Juggernaut"
+      "Zaun",
+      "Juggernaut"
     ],
     "composition": [],
     "desc": "Gain a Blitzcrank. Your strongest one becomes an Attack Fighter. His Ability no longer shields but instead fires a hook towards the furthest enemy and gains powerful punches for a set amount of attacks.",
@@ -2599,7 +2599,7 @@
   {
     "apiName": "TFT16_Augment_VanquisherCirclet",
     "associatedTraits": [
-      "TFT16_Vanquisher"
+      "Vanquisher"
     ],
     "composition": [],
     "desc": "Get a Vanquisher Emblem, an Ambessa, and a B.F. Sword.",
@@ -2646,7 +2646,7 @@
   {
     "apiName": "TFT16_Augment_IxtalCrown",
     "associatedTraits": [
-      "TFT16_Explorer"
+      "Ixtal"
     ],
     "composition": [],
     "desc": "Get an Ixtal Emblem, a Neeko, and a Gargoyle Stoneplate.",
@@ -2673,7 +2673,7 @@
   {
     "apiName": "TFT16_Augment_BandleBountyPlus",
     "associatedTraits": [
-      "TFT16_Yordle"
+      "Yordle"
     ],
     "composition": [],
     "desc": "For every Yordle you've unlocked or unlock, gain @Gold@ gold. The Bandle Paths reveal a secret Yordle 10! Gain a Tristana and Teemo.",
@@ -2864,7 +2864,7 @@
   {
     "apiName": "TFT16_Augment_HeroOfThePlacidium",
     "associatedTraits": [
-      "TFT16_Ionia"
+      "Ionia"
     ],
     "composition": [],
     "desc": "Strike enemies with telekinetic blades during combat, dealing damage and 30% Shredding and Sundering. Blade damage increases based on your total star level of Ionian champions.",
@@ -2900,7 +2900,7 @@
   {
     "apiName": "TFT16_Augment_IxtalCirclet",
     "associatedTraits": [
-      "TFT16_Explorer"
+      "Ixtal"
     ],
     "composition": [],
     "desc": "Get an Ixtal Emblem, a Giant's Belt, and...a Lesser Duplicator!?",
@@ -2925,7 +2925,7 @@
   {
     "apiName": "TFT16_Augment_ZaunCrest",
     "associatedTraits": [
-      "TFT16_Zaun"
+      "Zaun"
     ],
     "composition": [],
     "desc": "Get a Zaun Emblem.",
@@ -2951,7 +2951,7 @@
   {
     "apiName": "TFT16_Augment_InvokerCrest",
     "associatedTraits": [
-      "TFT16_Invoker"
+      "Invoker"
     ],
     "composition": [],
     "desc": "Get an Invoker Emblem,",
@@ -2977,7 +2977,7 @@
   {
     "apiName": "TFT16_Augment_JuggernautCirclet",
     "associatedTraits": [
-      "TFT16_Gunslinger"
+      "Gunslinger"
     ],
     "composition": [],
     "desc": "Get a Juggernaut Emblem, a Negatron Cloak, and a Swain.",
@@ -3002,7 +3002,7 @@
   {
     "apiName": "TFT16_Augment_FreljordCrown",
     "associatedTraits": [
-      "TFT16_Freljord"
+      "Freljord"
     ],
     "composition": [],
     "desc": "Get a Freljord Emblem, a Hextech Gunblade, and an Anivia.",
@@ -3029,7 +3029,7 @@
   {
     "apiName": "TFT16_Augment_VanquisherCrest",
     "associatedTraits": [
-      "TFT16_Vanquisher"
+      "Vanquisher"
     ],
     "composition": [],
     "desc": "Get a Vanquisher Emblem.",
@@ -3077,8 +3077,8 @@
   {
     "apiName": "TFT16_Augment_ShenCarry",
     "associatedTraits": [
-      "TFT16_Ionia",
-      "TFT16_Brawler"
+      "Ionia",
+      "Bruiser"
     ],
     "composition": [],
     "desc": "Gain a Shen. Your strongest Shen becomes an Attack Fighter. His Ability is replaced with a dash that strikes low Health enemies. The number of dashes increases with each cast.",
@@ -3105,7 +3105,7 @@
   {
     "apiName": "TFT16_Augment_ArcanistCrown",
     "associatedTraits": [
-      "TFT16_Sorcerer"
+      "Arcanist"
     ],
     "composition": [],
     "desc": "Get an Arcanist Emblem, an Ahri, and a Jeweled Gauntlet.",
@@ -3132,7 +3132,7 @@
   {
     "apiName": "TFT16_Augment_SlayerCirclet",
     "associatedTraits": [
-      "TFT16_Slayer"
+      "Slayer"
     ],
     "composition": [],
     "desc": "Get a Slayer Emblem, a Bel'veth, and a Sparring Glove.",
@@ -3181,7 +3181,7 @@
   {
     "apiName": "TFT16_Augment_IoniaCirclet",
     "associatedTraits": [
-      "TFT16_Ionia"
+      "Ionia"
     ],
     "composition": [],
     "desc": "Get an Ionia Emblem, a Yunara, and a B.F. Sword.",
@@ -3206,7 +3206,7 @@
   {
     "apiName": "TFT16_Augment_NoxusCrown",
     "associatedTraits": [
-      "TFT16_Noxus"
+      "Noxus"
     ],
     "composition": [],
     "desc": "Get an Noxus Emblem, a Sion, and a Protector's Vow.",
@@ -3233,7 +3233,7 @@
   {
     "apiName": "TFT16_Augment_WalkTheTruePathPlus",
     "associatedTraits": [
-      "TFT16_Ionia"
+      "Ionia"
     ],
     "composition": [],
     "desc": "Gain @LesserDuplicatorAmount@ Lesser Champion Duplicators, a Jhin, a Shen, and an Infinity Edge. Ionia 10 gains a Prismatic upgrade.",
@@ -3287,7 +3287,7 @@
   {
     "apiName": "TFT16_Augment_Zaun_SilcosRevenge",
     "associatedTraits": [
-      "TFT16_Zaun"
+      "Zaun"
     ],
     "composition": [],
     "desc": "Zaunites explode into Shimmer on death, dealing @PercentMaxHealthDamage*100@% of their max Health to @EnemiesToDamage@ nearby enemies as magic damage. Gain a Blitzcrank, an Ekko, and a Vi.",
@@ -3408,7 +3408,7 @@
   {
     "apiName": "TFT16_Augment_DisruptorCrest",
     "associatedTraits": [
-      "TFT16_Magus"
+      "Disruptor"
     ],
     "composition": [],
     "desc": "Get a DIsruptor Emblem.",
@@ -3434,7 +3434,7 @@
   {
     "apiName": "TFT16_Augment_LongshotCrown",
     "associatedTraits": [
-      "TFT16_Longshot"
+      "Longshot"
     ],
     "composition": [],
     "desc": "Get a Longshot Emblem, a Teemo, and a Guinsoo's Rageblade.",
@@ -3461,7 +3461,7 @@
   {
     "apiName": "TFT16_Augment_VoidCrown",
     "associatedTraits": [
-      "TFT16_Void"
+      "Void"
     ],
     "composition": [],
     "desc": "Get a Void Emblem, a Rek'Sai, and a Striker's Flail",
@@ -3512,7 +3512,7 @@
   {
     "apiName": "TFT16_Augment_Piltover_HexgateTravel",
     "associatedTraits": [
-      "TFT16_Piltover"
+      "Piltover"
     ],
     "composition": [],
     "desc": "When the Piltover invention triggers for the first time each combat, gain a random number of Piltover champions that cost between 1 and @MaxGold@ gold. Gain a Caitlyn and a Vi.",
@@ -3566,8 +3566,8 @@
   {
     "apiName": "TFT16_Augment_IllaoiCarry",
     "associatedTraits": [
-      "TFT16_Bilgewater",
-      "TFT16_Brawler"
+      "Bilgewater",
+      "Bruiser"
     ],
     "composition": [],
     "desc": "Gain an Illaoi. Your strongest Illaoi becomes a Fighter. Her Ability is replaced with an airborne slam that's recast when she kills her target.",
@@ -3612,9 +3612,9 @@
   {
     "apiName": "TFT16_TeamupAugment_LucianVayne",
     "associatedTraits": [
-      "TFT16_Demacia",
-      "TFT16_Longshot",
-      "TFT16_Gunslinger"
+      "Demacia",
+      "Longshot",
+      "Gunslinger"
     ],
     "composition": [],
     "desc": "Gain a Lucian & Senna and a 2-star Vayne. Vayne fires additional bolts at enemies afflicted with Black Mist and on takedown, grants Attack Speed to Lucian & Senna.<br><br>",
@@ -3694,7 +3694,7 @@
   {
     "apiName": "TFT16_Augment_PiltoverCrown",
     "associatedTraits": [
-      "TFT16_Piltover"
+      "Piltover"
     ],
     "composition": [],
     "desc": "Get a Piltover Crown, a Loris, and a Gargoyle Stoneplate.",
@@ -3721,7 +3721,7 @@
   {
     "apiName": "TFT16_Augment_DemaciaCrest",
     "associatedTraits": [
-      "TFT16_Demacia"
+      "Demacia"
     ],
     "composition": [],
     "desc": "Get a Demacia Emblem.",
@@ -3747,7 +3747,7 @@
   {
     "apiName": "TFT16_Augment_JuggernautCrest",
     "associatedTraits": [
-      "TFT16_Juggernaut"
+      "Juggernaut"
     ],
     "composition": [],
     "desc": "Get a Juggernaut Emblem.",
@@ -3773,7 +3773,7 @@
   {
     "apiName": "TFT16_Augment_YordleCrest",
     "associatedTraits": [
-      "TFT16_Yordle"
+      "Yordle"
     ],
     "composition": [],
     "desc": "Get a Yordle Emblem.",
@@ -3799,7 +3799,7 @@
   {
     "apiName": "TFT16_Augment_BrawlerCrown",
     "associatedTraits": [
-      "TFT16_Brawler"
+      "Bruiser"
     ],
     "composition": [],
     "desc": "Get a Bruiser Emblem, a Sion, and a Spirit Visage.",
@@ -3825,7 +3825,7 @@
   {
     "apiName": "TFT16_Augment_NoxusCrest",
     "associatedTraits": [
-      "TFT16_Noxus"
+      "Noxus"
     ],
     "composition": [],
     "desc": "Get an Noxus Emblem.",
@@ -3851,7 +3851,7 @@
   {
     "apiName": "TFT16_Augment_QuickstrikerCrown",
     "associatedTraits": [
-      "TFT16_Rapidfire"
+      "Quickstriker"
     ],
     "composition": [],
     "desc": "Get a Quickstriker Emblem, an Ashe, and a Kraken's Fury.",
@@ -3878,10 +3878,10 @@
   {
     "apiName": "TFT16_TeamupAugment_AmbessaKindred",
     "associatedTraits": [
-      "TFT16_Vanquisher",
-      "TFT16_Rapidfire",
-      "TFT16_Noxus",
-      "TFT16_KindredUnique"
+      "Vanquisher",
+      "Quickstriker",
+      "Noxus",
+      "Eternal"
     ],
     "composition": [],
     "desc": "Gain an Ambessa and a Kindred. When Kindred casts, Ambessa always gains their protection against death and gains Attack Damage while protected. When Ambessa casts, Wolf strikes all enemies hit, dealing reduced damage.",
@@ -3901,7 +3901,7 @@
   {
     "apiName": "TFT16_Augment_InvokerCirclet",
     "associatedTraits": [
-      "TFT16_Invoker"
+      "Invoker"
     ],
     "composition": [],
     "desc": "Get an InvokerEmblem, a Lissandra, and a Needlessly Large Rod.",
@@ -3926,7 +3926,7 @@
   {
     "apiName": "TFT16_Augment_GunslingerCrest",
     "associatedTraits": [
-      "TFT16_Gunslinger"
+      "Gunslinger"
     ],
     "composition": [],
     "desc": "Get a Gunslinger Emblem.",
@@ -3952,7 +3952,7 @@
   {
     "apiName": "TFT16_Augment_GunslingerCirclet",
     "associatedTraits": [
-      "TFT16_Gunslinger"
+      "Gunslinger"
     ],
     "composition": [],
     "desc": "Get a Gunslinger Emblem, a Miss Fortune, and a Recurve Bow.",
@@ -3999,7 +3999,7 @@
   {
     "apiName": "TFT16_Augment_Vanquisher_PerfectParry",
     "associatedTraits": [
-      "TFT16_Vanquisher"
+      "Vanquisher"
     ],
     "composition": [],
     "desc": "Vanquishers have a chance to Parry equal to their Critical Strike Chance. When Parrying, they reduce their damage taken by @ParryDR*100@%. Gain a Rek'Sai.",
@@ -4120,7 +4120,7 @@
   {
     "apiName": "TFT16_Augment_Weightlifting",
     "associatedTraits": [
-      "TFT16_Brawler"
+      "Bruiser"
     ],
     "composition": [],
     "desc": "At the start of each round, if the combined Health of all your unique Bruisers is high enough, gain a reward and increase the threshold (up to four times). Gain an Shen and a Sion.<br><br>@TFTUnitProperty.item:TFT16_Augment_Weightlifting_RewardName@@TFTUnitProperty.item:TFT16_Augment_Weightlifting_CurrentHealth@ / @TFTUnitProperty.item:TFT16_Augment_Weightlifting_MaxHealth@ ",
@@ -4151,7 +4151,7 @@
   {
     "apiName": "TFT16_TeamupAugment_EkkoZilean",
     "associatedTraits": [
-      "TFT16_Zaun"
+      "Zaun"
     ],
     "composition": [],
     "desc": "Gain 2 Ekkos. Gain @XP@XP every combat Ekko participates in. Gain an Ekko every time you level up. At 3-Star, gain a Zilean.<br><br>Ekko's empowered attacks echo to all enemies being damaged by Zilean's spell, dealing @DamageShare*100@% of the original damage.",
@@ -4266,7 +4266,7 @@
   {
     "apiName": "TFT16_Augment_InvokerCrown",
     "associatedTraits": [
-      "TFT16_Invoker"
+      "Invoker"
     ],
     "composition": [],
     "desc": "Get an Invoker Emblem, a Milio, and an Archangel's Staff.",
@@ -4293,7 +4293,7 @@
   {
     "apiName": "TFT16_Augment_NoxusCirclet",
     "associatedTraits": [
-      "TFT16_Noxus"
+      "Noxus"
     ],
     "composition": [],
     "desc": "Get an Noxus Emblem, an Ambessa, and a Sparring Glove.",
@@ -4318,7 +4318,7 @@
   {
     "apiName": "TFT16_Augment_ArcanistCirclet",
     "associatedTraits": [
-      "TFT16_Sorcerer"
+      "Arcanist"
     ],
     "composition": [],
     "desc": "Get an Arcanist Emblem, a Tear of the Goddess, and a Lux.",
@@ -4343,7 +4343,7 @@
   {
     "apiName": "TFT16_Augment_WardenCrest",
     "associatedTraits": [
-      "TFT16_Warden"
+      "Warden"
     ],
     "composition": [],
     "desc": "Get a Warden Emblem.",
@@ -4369,7 +4369,7 @@
   {
     "apiName": "TFT16_Augment_QuickstrikerCirclet",
     "associatedTraits": [
-      "TFT16_Rapidfire"
+      "Quickstriker"
     ],
     "composition": [],
     "desc": "Get a Quickstriker Emblem, a Yunara, and a B.F. Sword.",
@@ -4394,7 +4394,7 @@
   {
     "apiName": "TFT16_Augment_BilgewaterCirclet",
     "associatedTraits": [
-      "TFT16_Bilgewater"
+      "Bilgewater"
     ],
     "composition": [],
     "desc": "Get a Bilgewater Emblem, a Miss Fortune, and a Recurve Bow.",
@@ -7989,8 +7989,8 @@
   {
     "apiName": "TFT16_Augment_BilgewaterVsShadowIsles",
     "associatedTraits": [
-      "TFT16_Bilgewater",
-      "TFT16_ShadowIsles"
+      "Bilgewater",
+      "Shadow Isles"
     ],
     "composition": [],
     "desc": "@TFTUnitProperty.item:TFT16_Augment_BilgewaterVsShadowIsles_DescriptionTRA@",
@@ -13751,8 +13751,8 @@
   {
     "apiName": "TFT16_Augment_DemaciaVsNoxus",
     "associatedTraits": [
-      "TFT16_Demacia",
-      "TFT16_Noxus"
+      "Demacia",
+      "Noxus"
     ],
     "composition": [],
     "desc": "@TFTUnitProperty.item:TFT16_Augment_DemaciaVsNoxus_DescriptionTRA@",
