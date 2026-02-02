@@ -1,0 +1,3173 @@
+{
+  "TFT16_Tristana": {
+    "display_name": "Tristana",
+    "cost": 2,
+    "traits": [
+      "Yordle",
+      "Gunslinger"
+    ],
+    "stats": {
+      "hp": 550.0,
+      "damage": 55.0,
+      "armor": 20.0,
+      "magic_resist": 20.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 50.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Lulu": {
+    "display_name": "Lulu",
+    "cost": 1,
+    "traits": [
+      "Yordle",
+      "Arcanist"
+    ],
+    "stats": {
+      "hp": 500.0,
+      "damage": 25.0,
+      "armor": 15.0,
+      "magic_resist": 15.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 70.0,
+      "initial_mana": 20.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Teemo": {
+    "display_name": "Teemo",
+    "cost": 2,
+    "traits": [
+      "Yordle",
+      "Longshot"
+    ],
+    "stats": {
+      "hp": 550.0,
+      "damage": 35.0,
+      "armor": 20.0,
+      "magic_resist": 20.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 6.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Rumble": {
+    "display_name": "Rumble",
+    "cost": 1,
+    "traits": [
+      "Yordle",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 700.0,
+      "damage": 45.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 110.0,
+      "initial_mana": 40.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Nautilus": {
+    "display_name": "Nautilus",
+    "cost": 3,
+    "traits": [
+      "Bilgewater",
+      "Juggernaut",
+      "Warden"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 50.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 120.0,
+      "initial_mana": 60.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_TwistedFate": {
+    "display_name": "Twisted Fate",
+    "cost": 2,
+    "traits": [
+      "Bilgewater",
+      "Quickstriker"
+    ],
+    "stats": {
+      "hp": 550.0,
+      "damage": null,
+      "armor": 20.0,
+      "magic_resist": 20.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 3.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Gangplank": {
+    "display_name": "Gangplank",
+    "cost": 3,
+    "traits": [
+      "Bilgewater",
+      "Slayer",
+      "Vanquisher"
+    ],
+    "stats": {
+      "hp": 850.0,
+      "damage": 45.0,
+      "armor": 55.0,
+      "magic_resist": 55.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 50.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 6.0,
+      "spell_cast_seconds": 0.2,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Illaoi": {
+    "display_name": "Illaoi",
+    "cost": 1,
+    "traits": [
+      "Bilgewater",
+      "Bruiser"
+    ],
+    "stats": {
+      "hp": 700.0,
+      "damage": 50.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 100,
+      "initial_mana": 40.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 12.0,
+      "spell_cast_seconds": 0.4,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_MissFortune": {
+    "display_name": "Miss Fortune",
+    "cost": 4,
+    "traits": [
+      "Bilgewater",
+      "Gunslinger"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 55.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 24.0,
+      "spell_cast_seconds": 0.8,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Sion": {
+    "display_name": "Sion",
+    "cost": 2,
+    "traits": [
+      "Noxus",
+      "Bruiser"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 50.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.550000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 70.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 9.0,
+      "spell_cast_seconds": 0.3,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Briar": {
+    "display_name": "Briar",
+    "cost": 1,
+    "traits": [
+      "Noxus",
+      "Slayer",
+      "Juggernaut"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 42.0,
+      "armor": 35.0,
+      "magic_resist": 35.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 40.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Draven": {
+    "display_name": "Draven",
+    "cost": 3,
+    "traits": [
+      "Noxus",
+      "Quickstriker"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 53.0,
+      "armor": 25.0,
+      "magic_resist": 25.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 100,
+      "initial_mana": 60.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Ambessa": {
+    "display_name": "Ambessa",
+    "cost": 4,
+    "traits": [
+      "Noxus",
+      "Vanquisher"
+    ],
+    "stats": {
+      "hp": 1100.0,
+      "damage": 50.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 20.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 6.0,
+      "spell_cast_seconds": 0.2,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Zoe": {
+    "display_name": "Zoe",
+    "cost": 3,
+    "traits": [
+      "Targon"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 35.0,
+      "armor": 25.0,
+      "magic_resist": 25.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 60.0,
+      "initial_mana": 30.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Leona": {
+    "display_name": "Leona",
+    "cost": 3,
+    "traits": [
+      "Targon"
+    ],
+    "stats": {
+      "hp": 1000.0,
+      "damage": 50.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 120.0,
+      "initial_mana": 70.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Aphelios": {
+    "display_name": "Aphelios",
+    "cost": 2,
+    "traits": [
+      "Targon"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 20.0,
+      "armor": 20.0,
+      "magic_resist": 20.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 40.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Taric": {
+    "display_name": "Taric",
+    "cost": 4,
+    "traits": [
+      "Targon"
+    ],
+    "stats": {
+      "hp": 1300.0,
+      "damage": 70.0,
+      "armor": 70.0,
+      "magic_resist": 70.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 80.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 6.0,
+      "attack_windup_seconds": 0.2,
+      "attack1_frame": 6.0,
+      "attack2_frame": 6.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_JarvanIV": {
+    "display_name": "Jarvan IV",
+    "cost": 1,
+    "traits": [
+      "Demacia",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 700.0,
+      "damage": 55.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 100,
+      "initial_mana": 30.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Sona": {
+    "display_name": "Sona",
+    "cost": 1,
+    "traits": [
+      "Demacia",
+      "Invoker"
+    ],
+    "stats": {
+      "hp": 500.0,
+      "damage": 20.0,
+      "armor": 15.0,
+      "magic_resist": 15.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Garen": {
+    "display_name": "Garen",
+    "cost": 4,
+    "traits": [
+      "Demacia",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 65.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 130.0,
+      "initial_mana": 50.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Lux": {
+    "display_name": "Lux",
+    "cost": 4,
+    "traits": [
+      "Demacia",
+      "Arcanist"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 30.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 50.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Anivia": {
+    "display_name": "Anivia",
+    "cost": 1,
+    "traits": [
+      "Freljord",
+      "Invoker"
+    ],
+    "stats": {
+      "hp": 500.0,
+      "damage": 30.0,
+      "armor": 20.0,
+      "magic_resist": 20.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 40.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Ashe": {
+    "display_name": "Ashe",
+    "cost": 2,
+    "traits": [
+      "Freljord",
+      "Quickstriker"
+    ],
+    "stats": {
+      "hp": 550.0,
+      "damage": 53.0,
+      "armor": 20.0,
+      "magic_resist": 20.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 80.0,
+      "initial_mana": 20.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Braum": {
+    "display_name": "Braum",
+    "cost": 4,
+    "traits": [
+      "Freljord",
+      "Warden"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 50.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 105.0,
+      "initial_mana": 60.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Lissandra": {
+    "display_name": "Lissandra",
+    "cost": 4,
+    "traits": [
+      "Freljord",
+      "Invoker"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 30.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 70.0,
+      "initial_mana": 20.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Milio": {
+    "display_name": "Milio",
+    "cost": 3,
+    "traits": [
+      "Ixtal",
+      "Invoker"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 30.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 60.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 10.0,
+      "spell_cast_seconds": 0.3333333333333333,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Neeko": {
+    "display_name": "Neeko",
+    "cost": 2,
+    "traits": [
+      "Ixtal",
+      "Arcanist",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 850.0,
+      "damage": 50.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 65.0,
+      "initial_mana": 15.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Jinx": {
+    "display_name": "Jinx",
+    "cost": 3,
+    "traits": [
+      "Zaun",
+      "Gunslinger"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 50.0,
+      "armor": 25.0,
+      "magic_resist": 25.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 18.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 11.0,
+      "attack_windup_seconds": 0.36666666666666664,
+      "attack1_frame": 11.0,
+      "attack2_frame": 11.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Caitlyn": {
+    "display_name": "Caitlyn",
+    "cost": 1,
+    "traits": [
+      "Piltover",
+      "Longshot"
+    ],
+    "stats": {
+      "hp": 500.0,
+      "damage": 45.0,
+      "armor": 15.0,
+      "magic_resist": 15.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 6.0,
+      "mana": 80.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Vi": {
+    "display_name": "Vi",
+    "cost": 2,
+    "traits": [
+      "Piltover",
+      "Zaun",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 700.0,
+      "damage": 60.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.8500000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Seraphine": {
+    "display_name": "Seraphine",
+    "cost": 4,
+    "traits": [
+      "Piltover",
+      "Disruptor"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 30.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 20.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 7.0,
+      "attack_windup_seconds": 0.23333333333333334,
+      "attack1_frame": 7.0,
+      "attack2_frame": 7.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Yasuo": {
+    "display_name": "Yasuo",
+    "cost": 2,
+    "traits": [
+      "Ionia",
+      "Slayer"
+    ],
+    "stats": {
+      "hp": 750.0,
+      "damage": 45.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Ahri": {
+    "display_name": "Ahri",
+    "cost": 3,
+    "traits": [
+      "Ionia",
+      "Arcanist"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 30.0,
+      "armor": 25.0,
+      "magic_resist": 25.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 80.0,
+      "spell_cast_seconds": 2.6666666666666665,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Wukong": {
+    "display_name": "Wukong",
+    "cost": 4,
+    "traits": [
+      "Ionia",
+      "Bruiser"
+    ],
+    "stats": {
+      "hp": 1050.0,
+      "damage": 60.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 60.0,
+      "initial_mana": 30.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Shen": {
+    "display_name": "Shen",
+    "cost": 1,
+    "traits": [
+      "Ionia",
+      "Bruiser"
+    ],
+    "stats": {
+      "hp": 700.0,
+      "damage": 65.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 90.0,
+      "initial_mana": 30.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Malzahar": {
+    "display_name": "Malzahar",
+    "cost": 3,
+    "traits": [
+      "Void",
+      "Disruptor"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 30.0,
+      "armor": 25.0,
+      "magic_resist": 25.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 35.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_RekSai": {
+    "display_name": "Rek'Sai",
+    "cost": 2,
+    "traits": [
+      "Void",
+      "Vanquisher"
+    ],
+    "stats": {
+      "hp": 750.0,
+      "damage": 50.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.8500000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_ChoGath": {
+    "display_name": "Cho'Gath",
+    "cost": 2,
+    "traits": [
+      "Void",
+      "Juggernaut"
+    ],
+    "stats": {
+      "hp": 850.0,
+      "damage": 50.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 100,
+      "initial_mana": 40.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_KogMaw": {
+    "display_name": "Kog'Maw",
+    "cost": 1,
+    "traits": [
+      "Void",
+      "Arcanist",
+      "Longshot"
+    ],
+    "stats": {
+      "hp": 500.0,
+      "damage": 20.0,
+      "armor": 15.0,
+      "magic_resist": 15.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 6.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Annie": {
+    "display_name": "Annie",
+    "cost": 5,
+    "traits": [
+      "Dark Child",
+      "Arcanist"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 30.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 160.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 10.0,
+      "spell_cast_seconds": 0.3333333333333333,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Ornn": {
+    "display_name": "Ornn",
+    "cost": 5,
+    "traits": [
+      "Blacksmith",
+      "Warden"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 70.0,
+      "armor": 55.0,
+      "magic_resist": 55.0,
+      "attack_speed": 0.550000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 150.0,
+      "initial_mana": 50.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 9.0,
+      "spell_cast_seconds": 0.3,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Kindred": {
+    "display_name": "Kindred",
+    "cost": 5,
+    "traits": [
+      "Eternal",
+      "Quickstriker"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 73.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 200.0,
+      "initial_mana": 80.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Azir": {
+    "display_name": "Azir",
+    "cost": 5,
+    "traits": [
+      "Shurima",
+      "Emperor",
+      "Disruptor"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 35.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 40.0,
+      "initial_mana": 20.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Zilean": {
+    "display_name": "Zilean",
+    "cost": 5,
+    "traits": [
+      "Chronokeeper",
+      "Invoker"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 40.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 35.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Fiddlesticks": {
+    "display_name": "Fiddlesticks",
+    "cost": 5,
+    "traits": [
+      "Harvester",
+      "Vanquisher"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 50.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 2.0,
+      "mana": 70.0,
+      "initial_mana": 30.0
+    },
+    "timing": {
+      "attack_windup_frames": 89.0,
+      "attack_windup_seconds": 2.966666666666667,
+      "attack1_frame": 89.0,
+      "attack2_frame": null,
+      "spell_cast_frame": 8.0,
+      "spell_cast_seconds": 0.26666666666666666,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Shyvana": {
+    "display_name": "Shyvana",
+    "cost": 5,
+    "traits": [
+      "Dragonborn",
+      "Juggernaut"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 80.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.949999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 2.5,
+      "attack_windup_seconds": 0.08333333333333333,
+      "attack1_frame": 3.0,
+      "attack2_frame": 2.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Galio": {
+    "display_name": "Galio",
+    "cost": 5,
+    "traits": [
+      "Demacia",
+      "Heroic"
+    ],
+    "stats": {
+      "hp": 1100.0,
+      "damage": 50.0,
+      "armor": 65.0,
+      "magic_resist": 65.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 140.0,
+      "initial_mana": 90.0
+    },
+    "timing": {
+      "attack_windup_frames": 2.5,
+      "attack_windup_seconds": 0.08333333333333333,
+      "attack1_frame": 3.0,
+      "attack2_frame": 2.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_TahmKench": {
+    "display_name": "Tahm Kench",
+    "cost": 5,
+    "traits": [
+      "Bilgewater",
+      "Glutton",
+      "Bruiser"
+    ],
+    "stats": {
+      "hp": 1100.0,
+      "damage": 70.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.550000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 90.0,
+      "initial_mana": 10.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 7.5,
+      "spell_cast_seconds": 0.25,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Sejuani": {
+    "display_name": "Sejuani",
+    "cost": 3,
+    "traits": [
+      "Freljord",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 60.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 80.0,
+      "initial_mana": 40.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Sett": {
+    "display_name": "Sett",
+    "cost": 5,
+    "traits": [
+      "Ionia",
+      "The Boss"
+    ],
+    "stats": {
+      "hp": 1000.0,
+      "damage": 60.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 90.0,
+      "initial_mana": 10.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Brock": {
+    "display_name": "Brock",
+    "cost": 5,
+    "traits": [
+      "Ixtal"
+    ],
+    "stats": {
+      "hp": 1800.0,
+      "damage": 270.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.5,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 100,
+      "initial_mana": 40.0
+    },
+    "timing": {
+      "attack_windup_frames": 16.0,
+      "attack_windup_seconds": 0.5333333333333333,
+      "attack1_frame": 16.0,
+      "attack2_frame": 16.0,
+      "spell_cast_frame": 26.0,
+      "spell_cast_seconds": 0.8666666666666667,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_THex": {
+    "display_name": "T-Hex",
+    "cost": 5,
+    "traits": [
+      "HexMech",
+      "Piltover",
+      "Gunslinger"
+    ],
+    "stats": {
+      "hp": 1400.0,
+      "damage": 85.0,
+      "armor": 80.0,
+      "magic_resist": 80.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 2.0,
+      "mana": 100,
+      "initial_mana": 30.0
+    },
+    "timing": {
+      "attack_windup_frames": 10.0,
+      "attack_windup_seconds": 0.3333333333333333,
+      "attack1_frame": 10.0,
+      "attack2_frame": 10.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_BelVeth": {
+    "display_name": "Bel'Veth",
+    "cost": 4,
+    "traits": [
+      "Void",
+      "Slayer"
+    ],
+    "stats": {
+      "hp": 1000.0,
+      "damage": 65.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.8500000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 2.0,
+      "mana": 100,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Singed": {
+    "display_name": "Singed",
+    "cost": 4,
+    "traits": [
+      "Zaun",
+      "Juggernaut"
+    ],
+    "stats": {
+      "hp": 1100.0,
+      "damage": 15.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 80.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_AurelionSol": {
+    "display_name": "Aurelion Sol",
+    "cost": 5,
+    "traits": [
+      "Star Forger",
+      "Targon"
+    ],
+    "stats": {
+      "hp": 1100.0,
+      "damage": 50.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 75.0,
+      "initial_mana": 25.0
+    },
+    "timing": {
+      "attack_windup_frames": 1.0,
+      "attack_windup_seconds": 0.03333333333333333,
+      "attack1_frame": 1.0,
+      "attack2_frame": 1.0,
+      "spell_cast_frame": 3.0,
+      "spell_cast_seconds": 0.1,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Veigar": {
+    "display_name": "Veigar",
+    "cost": 4,
+    "traits": [
+      "Yordle",
+      "Arcanist"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 33.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 60.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 1.0,
+      "spell_cast_seconds": 0.03333333333333333,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_BaronNashor": {
+    "display_name": "Baron Nashor",
+    "cost": 5,
+    "traits": [
+      "Void",
+      "Riftscourge"
+    ],
+    "stats": {
+      "hp": 3000.0,
+      "damage": 120.0,
+      "armor": 85.0,
+      "magic_resist": 85.0,
+      "attack_speed": 0.5,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 2.0,
+      "mana": 50.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 37.0,
+      "attack_windup_seconds": 1.2333333333333334,
+      "attack1_frame": 37.0,
+      "attack2_frame": 37.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Darius": {
+    "display_name": "Darius",
+    "cost": 3,
+    "traits": [
+      "Noxus",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 50.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 65.0,
+      "initial_mana": 20.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Yone": {
+    "display_name": "Yone",
+    "cost": 4,
+    "traits": [
+      "Ionia",
+      "Slayer"
+    ],
+    "stats": {
+      "hp": 1100.0,
+      "damage": 20.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 100,
+      "initial_mana": 30.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 233.0,
+      "spell_cast_seconds": 7.766666666666667,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Warwick": {
+    "display_name": "Warwick",
+    "cost": 4,
+    "traits": [
+      "Zaun",
+      "Quickstriker"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 60.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 90.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 11.0,
+      "attack_windup_seconds": 0.36666666666666664,
+      "attack1_frame": 14.0,
+      "attack2_frame": 8.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Fizz": {
+    "display_name": "Fizz",
+    "cost": 4,
+    "traits": [
+      "Bilgewater",
+      "Yordle"
+    ],
+    "stats": {
+      "hp": 1000.0,
+      "damage": 30.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 20.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Poppy": {
+    "display_name": "Poppy ",
+    "cost": 2,
+    "traits": [
+      "Demacia",
+      "Yordle",
+      "Juggernaut"
+    ],
+    "stats": {
+      "hp": 850.0,
+      "damage": 50.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 80.0,
+      "initial_mana": 40.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 13.0,
+      "spell_cast_seconds": 0.43333333333333335,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Kennen": {
+    "display_name": "Kennen ",
+    "cost": 3,
+    "traits": [
+      "Ionia",
+      "Yordle",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 50.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 125.0,
+      "initial_mana": 70.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Ziggs": {
+    "display_name": "Ziggs ",
+    "cost": 5,
+    "traits": [
+      "Zaun",
+      "Yordle",
+      "Longshot"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": null,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 6.0,
+      "mana": 140.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Aatrox": {
+    "display_name": "Aatrox ",
+    "cost": 5,
+    "traits": [
+      "Darkin",
+      "World Ender",
+      "Slayer"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 65.0,
+      "armor": 55.0,
+      "magic_resist": 55.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 8.0,
+      "attack_windup_seconds": 0.26666666666666666,
+      "attack1_frame": 10.0,
+      "attack2_frame": 6.0,
+      "spell_cast_frame": 22.0,
+      "spell_cast_seconds": 0.7333333333333333,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Volibear": {
+    "display_name": "Volibear ",
+    "cost": 5,
+    "traits": [
+      "Freljord",
+      "Bruiser"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 55.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 20.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Jhin": {
+    "display_name": "Jhin",
+    "cost": 1,
+    "traits": [
+      "Ionia",
+      "Gunslinger"
+    ],
+    "stats": {
+      "hp": 444.0,
+      "damage": 44.0,
+      "armor": 24.0,
+      "magic_resist": 24.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 70.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_PiltoverInvention": {
+    "display_name": "Piltover Invention",
+    "cost": 1,
+    "traits": [],
+    "stats": {
+      "hp": 1.0,
+      "damage": 65.0,
+      "armor": 65.0,
+      "magic_resist": 65.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 33.0,
+      "mana": 0.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_MalzaharVoidling": {
+    "display_name": "MalzaharVoidling",
+    "cost": 11,
+    "traits": [],
+    "stats": {
+      "hp": null,
+      "damage": null,
+      "armor": null,
+      "magic_resist": 20.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 100,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 12.0,
+      "attack_windup_seconds": 0.4,
+      "attack1_frame": 12.0,
+      "attack2_frame": 12.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_AzirSoldier": {
+    "display_name": "Sand Soldier",
+    "cost": 11,
+    "traits": [],
+    "stats": {
+      "hp": 750.0,
+      "damage": 0.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 100,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 23.0,
+      "attack_windup_seconds": 0.7666666666666667,
+      "attack1_frame": 23.0,
+      "attack2_frame": 23.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Sylas": {
+    "display_name": "Sylas ",
+    "cost": 5,
+    "traits": [
+      "Chainbreaker",
+      "Arcanist",
+      "Defender"
+    ],
+    "stats": {
+      "hp": 1600.0,
+      "damage": 65.0,
+      "armor": 80.0,
+      "magic_resist": 80.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 5.0,
+      "attack_windup_seconds": 0.16666666666666666,
+      "attack1_frame": 5.0,
+      "attack2_frame": 5.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Ryze": {
+    "display_name": "Ryze ",
+    "cost": 5,
+    "traits": [
+      "Rune Mage"
+    ],
+    "stats": {
+      "hp": 1000.0,
+      "damage": 35.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 45.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Nidalee": {
+    "display_name": "Nidalee ",
+    "cost": 4,
+    "traits": [
+      "Ixtal",
+      "Huntress"
+    ],
+    "stats": {
+      "hp": 1100.0,
+      "damage": 45.0,
+      "armor": 70.0,
+      "magic_resist": 70.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 40.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Tryndamere": {
+    "display_name": "Tryndamere ",
+    "cost": 2,
+    "traits": [
+      "Freljord",
+      "Slayer"
+    ],
+    "stats": {
+      "hp": 750.0,
+      "damage": 60.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 50.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_RiftHerald": {
+    "display_name": "Rift Herald ",
+    "cost": 4,
+    "traits": [
+      "Void",
+      "Bruiser"
+    ],
+    "stats": {
+      "hp": 1100.0,
+      "damage": 60.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 125.0,
+      "initial_mana": 60.0
+    },
+    "timing": {
+      "attack_windup_frames": 8.0,
+      "attack_windup_seconds": 0.26666666666666666,
+      "attack1_frame": 8.0,
+      "attack2_frame": 8.0,
+      "spell_cast_frame": 31.0,
+      "spell_cast_seconds": 1.0333333333333334,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Mel": {
+    "display_name": "Mel ",
+    "cost": 5,
+    "traits": [
+      "Noxus",
+      "Disruptor"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 50.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 200.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 15.0,
+      "spell_cast_seconds": 0.5,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Graves": {
+    "display_name": "Graves ",
+    "cost": 2,
+    "traits": [
+      "Bilgewater",
+      "Gunslinger"
+    ],
+    "stats": {
+      "hp": 700.0,
+      "damage": 50.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 2.0,
+      "mana": 50.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 16.5,
+      "attack_windup_seconds": 0.55,
+      "attack1_frame": 15.0,
+      "attack2_frame": 18.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Skarner": {
+    "display_name": "Skarner ",
+    "cost": 4,
+    "traits": [
+      "Ixtal"
+    ],
+    "stats": {
+      "hp": 1400.0,
+      "damage": 65.0,
+      "armor": 70.0,
+      "magic_resist": 70.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 120.0,
+      "initial_mana": 60.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": -1.0,
+      "spell_cast_seconds": -0.03333333333333333,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Diana": {
+    "display_name": "Diana ",
+    "cost": 4,
+    "traits": [
+      "Targon"
+    ],
+    "stats": {
+      "hp": 1300.0,
+      "damage": 35.0,
+      "armor": 70.0,
+      "magic_resist": 70.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Kaisa": {
+    "display_name": "Kai'Sa ",
+    "cost": 4,
+    "traits": [
+      "Assimilator",
+      "Void",
+      "Longshot"
+    ],
+    "stats": {
+      "hp": 850.0,
+      "damage": 50.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.5,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 6.0,
+      "mana": 10.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Renekton": {
+    "display_name": "Renekton ",
+    "cost": 4,
+    "traits": [
+      "Shurima"
+    ],
+    "stats": {
+      "hp": 1400.0,
+      "damage": 75.0,
+      "armor": 70.0,
+      "magic_resist": 70.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 12.0,
+      "spell_cast_seconds": 0.4,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Nasus": {
+    "display_name": "Nasus ",
+    "cost": 4,
+    "traits": [
+      "Shurima"
+    ],
+    "stats": {
+      "hp": 1500.0,
+      "damage": 60.0,
+      "armor": 70.0,
+      "magic_resist": 70.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 70.0,
+      "initial_mana": 10.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 2.0,
+      "spell_cast_seconds": 0.06666666666666667,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Xerath": {
+    "display_name": "Xerath ",
+    "cost": 5,
+    "traits": [
+      "Shurima",
+      "Ascendant"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 40.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 135.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Thresh": {
+    "display_name": "Thresh ",
+    "cost": 5,
+    "traits": [
+      "Shadow Isles",
+      "Warden"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 60.0,
+      "armor": 75.0,
+      "magic_resist": 75.0,
+      "attack_speed": 0.8500000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 40.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 10.0,
+      "attack_windup_seconds": 0.3333333333333333,
+      "attack1_frame": 10.0,
+      "attack2_frame": 10.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Gwen": {
+    "display_name": "Gwen ",
+    "cost": 3,
+    "traits": [
+      "Shadow Isles",
+      "Disruptor"
+    ],
+    "stats": {
+      "hp": 850.0,
+      "damage": 40.0,
+      "armor": 55.0,
+      "magic_resist": 55.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 2.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 2.0,
+      "spell_cast_seconds": 0.06666666666666667,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Kalista": {
+    "display_name": "Kalista ",
+    "cost": 4,
+    "traits": [
+      "Shadow Isles",
+      "Vanquisher"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 50.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.8500000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 65.0,
+      "initial_mana": 20.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Leblanc": {
+    "display_name": "LeBlanc ",
+    "cost": 3,
+    "traits": [
+      "Noxus",
+      "Invoker"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 35.0,
+      "armor": 25.0,
+      "magic_resist": 25.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 60.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Viego": {
+    "display_name": "Viego",
+    "cost": 1,
+    "traits": [
+      "Shadow Isles",
+      "Quickstriker"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 40.0,
+      "armor": 35.0,
+      "magic_resist": 35.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Ekko": {
+    "display_name": "Ekko",
+    "cost": 2,
+    "traits": [
+      "Zaun",
+      "Disruptor"
+    ],
+    "stats": {
+      "hp": 750.0,
+      "damage": 35.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.8500000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 40.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": 2.0,
+      "attack_windup_seconds": 0.06666666666666667,
+      "attack1_frame": 2.0,
+      "attack2_frame": 2.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Bard": {
+    "display_name": "Bard ",
+    "cost": 2,
+    "traits": [
+      "Caretaker"
+    ],
+    "stats": {
+      "hp": 750.0,
+      "damage": 30.0,
+      "armor": 20.0,
+      "magic_resist": 20.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 55.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 1.0,
+      "spell_cast_seconds": 0.03333333333333333,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Vayne": {
+    "display_name": "Vayne",
+    "cost": 3,
+    "traits": [
+      "Demacia",
+      "Longshot"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 70.0,
+      "armor": 25.0,
+      "magic_resist": 25.0,
+      "attack_speed": 0.8999999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 6.0,
+      "mana": 40.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Atakhan": {
+    "display_name": "Atakhan",
+    "cost": 11,
+    "traits": [],
+    "stats": {
+      "hp": 320.0,
+      "damage": 50.0,
+      "armor": 0.0,
+      "magic_resist": null,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 85.0,
+      "initial_mana": 40.0
+    },
+    "timing": {
+      "attack_windup_frames": 5.0,
+      "attack_windup_seconds": 0.16666666666666666,
+      "attack1_frame": 5.0,
+      "attack2_frame": 5.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Yunara": {
+    "display_name": "Yunara",
+    "cost": 4,
+    "traits": [
+      "Ionia",
+      "Quickstriker"
+    ],
+    "stats": {
+      "hp": 800.0,
+      "damage": 60.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 50.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Swain": {
+    "display_name": "Swain",
+    "cost": 4,
+    "traits": [
+      "Noxus",
+      "Arcanist",
+      "Juggernaut"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 40.0,
+      "armor": 60.0,
+      "magic_resist": 60.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 145.0,
+      "initial_mana": 50.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 30.0,
+      "spell_cast_seconds": 1.0,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_XinZhao": {
+    "display_name": "Xin Zhao",
+    "cost": 2,
+    "traits": [
+      "Demacia",
+      "Ionia",
+      "Warden"
+    ],
+    "stats": {
+      "hp": 850.0,
+      "damage": 50.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 70.0,
+      "initial_mana": 15.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Yorick": {
+    "display_name": "Yorick ",
+    "cost": 2,
+    "traits": [
+      "Shadow Isles",
+      "Warden"
+    ],
+    "stats": {
+      "hp": 850.0,
+      "damage": 60.0,
+      "armor": 45.0,
+      "magic_resist": 45.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 75.0,
+      "initial_mana": 15.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Orianna": {
+    "display_name": "Orianna ",
+    "cost": 2,
+    "traits": [
+      "Piltover",
+      "Invoker"
+    ],
+    "stats": {
+      "hp": 550.0,
+      "damage": 30.0,
+      "armor": 20.0,
+      "magic_resist": 20.0,
+      "attack_speed": 0.699999988079071,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 50.0,
+      "initial_mana": 20.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Qiyana": {
+    "display_name": "Qiyana",
+    "cost": 1,
+    "traits": [
+      "Ixtal",
+      "Slayer"
+    ],
+    "stats": {
+      "hp": 650.0,
+      "damage": 42.0,
+      "armor": 35.0,
+      "magic_resist": 35.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 30.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": 3.0,
+      "spell_cast_seconds": 0.1,
+      "source": "extracted",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Loris": {
+    "display_name": "Loris",
+    "cost": 3,
+    "traits": [
+      "Piltover",
+      "Warden"
+    ],
+    "stats": {
+      "hp": 950.0,
+      "damage": 60.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 140.0,
+      "initial_mana": 70.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Blitzcrank": {
+    "display_name": "Blitzcrank",
+    "cost": 1,
+    "traits": [
+      "Zaun",
+      "Juggernaut"
+    ],
+    "stats": {
+      "hp": 700.0,
+      "damage": 50.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.550000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 105.0,
+      "initial_mana": 60.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_FreljordProp": {
+    "display_name": "Frozen Tower",
+    "cost": 11,
+    "traits": [],
+    "stats": {
+      "hp": 400.0,
+      "damage": 0.0,
+      "armor": 30.0,
+      "magic_resist": 30.0,
+      "attack_speed": 0.20000000298023224,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 0.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_DrMundo": {
+    "display_name": "Dr. Mundo",
+    "cost": 3,
+    "traits": [
+      "Zaun",
+      "Bruiser"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 50.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.6000000238418579,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 60.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Zaahen": {
+    "display_name": "Zaahen",
+    "cost": 5,
+    "traits": [
+      "Darkin",
+      "Immortal"
+    ],
+    "stats": {
+      "hp": 1200.0,
+      "damage": 60.0,
+      "armor": 80.0,
+      "magic_resist": 80.0,
+      "attack_speed": 1.100000023841858,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 2.0,
+      "mana": 40.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_AnnieTibbers": {
+    "display_name": "Tibbers",
+    "cost": 11,
+    "traits": [
+      "Arcanist"
+    ],
+    "stats": {
+      "hp": 1500.0,
+      "damage": 90.0,
+      "armor": 80.0,
+      "magic_resist": 80.0,
+      "attack_speed": 0.75,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 100,
+      "initial_mana": 40.0
+    },
+    "timing": {
+      "attack_windup_frames": 10.5,
+      "attack_windup_seconds": 0.35,
+      "attack1_frame": 12.0,
+      "attack2_frame": 9.0,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "extracted",
+      "confidence": "high"
+    }
+  },
+  "TFT16_Lucian": {
+    "display_name": "Lucian & Senna",
+    "cost": 5,
+    "traits": [
+      "Soulbound",
+      "Gunslinger"
+    ],
+    "stats": {
+      "hp": 900.0,
+      "damage": 65.0,
+      "armor": 40.0,
+      "magic_resist": 40.0,
+      "attack_speed": 0.800000011920929,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 4.0,
+      "mana": 70.0,
+      "initial_mana": 0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  },
+  "TFT16_Kobuko": {
+    "display_name": "Kobuko & Yuumi",
+    "cost": 3,
+    "traits": [
+      "Yordle",
+      "Bruiser",
+      "Invoker"
+    ],
+    "stats": {
+      "hp": 950.0,
+      "damage": 20.0,
+      "armor": 50.0,
+      "magic_resist": 50.0,
+      "attack_speed": 0.6499999761581421,
+      "crit_chance": 0.25,
+      "crit_multiplier": 1.399999976158142,
+      "range": 1.0,
+      "mana": 90.0,
+      "initial_mana": 30.0
+    },
+    "timing": {
+      "attack_windup_frames": null,
+      "attack_windup_seconds": null,
+      "attack1_frame": null,
+      "attack2_frame": null,
+      "spell_cast_frame": null,
+      "spell_cast_seconds": null,
+      "source": "inferred",
+      "confidence": "low"
+    }
+  }
+}
