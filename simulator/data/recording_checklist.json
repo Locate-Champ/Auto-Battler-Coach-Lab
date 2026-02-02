@@ -1,0 +1,103 @@
+{
+  "_instructions": {
+    "setup": [
+      "1. Set TFT graphics to Low/Very Low",
+      "2. Enable Overwolf recording at 120 FPS",
+      "3. Resolution: 1080p minimum"
+    ],
+    "recording_method": [
+      "1. In PvE rounds (1-1 to 2-1), isolate one champion",
+      "2. Position champion to attack from max range",
+      "3. Record 5+ auto attacks per champion",
+      "4. Note the stage/round for reference"
+    ],
+    "measurement": [
+      "Use quick_measure.py to step through video",
+      "Mark attack START (animation begins)",
+      "Mark DAMAGE (HP bar drops or damage number)",
+      "Tool auto-calculates windup time"
+    ]
+  },
+
+  "priority_1_critical": {
+    "description": "5-cost carries and 6-range ADCs - highest impact",
+    "champions": [
+      {"name": "Ziggs", "api": "TFT16_Ziggs", "cost": 5, "range": 6, "has_missile": true, "missile": 1500},
+      {"name": "Kai'Sa", "api": "TFT16_KaiSa", "cost": 4, "range": 6, "has_missile": false},
+      {"name": "Kindred", "api": "TFT16_Kindred", "cost": 5, "range": 4, "has_missile": false},
+      {"name": "Azir", "api": "TFT16_Azir", "cost": 5, "range": 4, "has_missile": false, "note": "Also measure soldier attacks"},
+      {"name": "Xerath", "api": "TFT16_Xerath", "cost": 5, "range": 4, "has_missile": false},
+      {"name": "Lucian & Senna", "api": "TFT16_LucianSenna", "cost": 5, "range": 4, "has_missile": false, "note": "Multi-shot spell"}
+    ]
+  },
+
+  "priority_2_high": {
+    "description": "4-cost carries and key damage dealers",
+    "champions": [
+      {"name": "Kalista", "api": "TFT16_Kalista", "cost": 4, "range": 4, "has_missile": false, "note": "Spear stacking mechanic"},
+      {"name": "Veigar", "api": "TFT16_Veigar", "cost": 4, "range": 4, "has_missile": false},
+      {"name": "Lux", "api": "TFT16_Lux", "cost": 4, "range": 4, "has_missile": false},
+      {"name": "Lissandra", "api": "TFT16_Lissandra", "cost": 4, "range": 4, "has_missile": false},
+      {"name": "Ahri", "api": "TFT16_Ahri", "cost": 3, "range": 4, "has_missile": false, "note": "Multi-bolt spell"},
+      {"name": "Zoe", "api": "TFT16_Zoe", "cost": 3, "range": 4, "has_missile": false}
+    ]
+  },
+
+  "priority_3_medium": {
+    "description": "2-3 cost champions and supports",
+    "champions": [
+      {"name": "Teemo", "api": "TFT16_Teemo", "cost": 2, "range": 6, "has_missile": true, "missile": 1500},
+      {"name": "Aphelios", "api": "TFT16_Aphelios", "cost": 2, "range": 4, "has_missile": true, "missile": 1700},
+      {"name": "Jhin", "api": "TFT16_Jhin", "cost": 1, "range": 4, "has_missile": true, "missile": 2600},
+      {"name": "Twisted Fate", "api": "TFT16_TwistedFate", "cost": 2, "range": 4, "has_missile": false},
+      {"name": "Malzahar", "api": "TFT16_Malzahar", "cost": 3, "range": 4, "has_missile": false, "note": "Also measure voidling attacks"},
+      {"name": "Milio", "api": "TFT16_Milio", "cost": 3, "range": 4, "has_missile": false},
+      {"name": "LeBlanc", "api": "TFT16_LeBlanc", "cost": 3, "range": 4, "has_missile": false}
+    ]
+  },
+
+  "priority_4_low": {
+    "description": "1-cost and niche champions",
+    "champions": [
+      {"name": "Lulu", "api": "TFT16_Lulu", "cost": 1, "range": 4, "has_missile": false},
+      {"name": "Sona", "api": "TFT16_Sona", "cost": 1, "range": 4, "has_missile": false},
+      {"name": "Anivia", "api": "TFT16_Anivia", "cost": 1, "range": 4, "has_missile": false},
+      {"name": "Orianna", "api": "TFT16_Orianna", "cost": 2, "range": 4, "has_missile": false},
+      {"name": "Bard", "api": "TFT16_Bard", "cost": 2, "range": 4, "has_missile": false}
+    ]
+  },
+
+  "special_cases": {
+    "description": "Champions with unique mechanics needing special attention",
+    "champions": [
+      {"name": "Annie", "api": "TFT16_Annie", "cost": 5, "range": 4, "note": "Measure both Annie autos AND Tibbers attacks separately"},
+      {"name": "Mel", "api": "TFT16_Mel", "cost": 5, "range": 4, "note": "Unique ability timing"},
+      {"name": "Ryze", "api": "TFT16_Ryze", "cost": 5, "range": 4, "note": "Portal/teleport timing"},
+      {"name": "Zilean", "api": "TFT16_Zilean", "cost": 5, "range": 4, "note": "Revive timing"},
+      {"name": "Zaahen", "api": "TFT16_Zaahen", "cost": 5, "range": 2, "note": "Unique carry"},
+      {"name": "Yunara", "api": "TFT16_Yunara", "cost": 4, "range": 4, "note": "Check if same as LoL"},
+      {"name": "Bel'Veth", "api": "TFT16_BelVeth", "cost": 4, "range": 2, "note": "Transform mechanic"},
+      {"name": "Gwen", "api": "TFT16_Gwen", "cost": 3, "range": 2, "note": "Snip snip timing"},
+      {"name": "Piltover Invention", "api": "TFT16_PiltoverInvention", "cost": 1, "range": 33, "note": "Special turret - low priority"}
+    ]
+  },
+
+  "already_have_data": {
+    "description": "Champions with timing data - no recording needed unless verifying",
+    "champions": [
+      {"name": "Caitlyn", "windup_seconds": 0.260, "missile_speed": 2500, "source": "wiki"},
+      {"name": "Kog'Maw", "windup_seconds": 0.250, "missile_speed": 1800, "source": "wiki"},
+      {"name": "Vayne", "windup_seconds": 0.267, "missile_speed": 2000, "source": "wiki"},
+      {"name": "Tristana", "windup_seconds": 0.226, "missile_speed": 2250, "source": "wiki"},
+      {"name": "Miss Fortune", "windup_seconds": 0.226, "missile_speed": 2000, "source": "wiki"},
+      {"name": "Draven", "windup_seconds": 0.230, "missile_speed": 1600, "source": "wiki"},
+      {"name": "Ashe", "windup_seconds": 0.333, "missile_speed": 2500, "source": "wiki"},
+      {"name": "Jinx", "windup_seconds": 0.367, "missile_speed": null, "source": "extracted"},
+      {"name": "Seraphine", "windup_seconds": 0.233, "missile_speed": null, "source": "extracted"},
+      {"name": "Aurelion Sol", "windup_seconds": 0.033, "missile_speed": null, "source": "extracted"},
+      {"name": "Graves", "windup_seconds": 0.550, "missile_speed": null, "source": "extracted"},
+      {"name": "T-Hex", "windup_seconds": 0.333, "missile_speed": null, "source": "extracted"},
+      {"name": "Fiddlesticks", "windup_seconds": 2.967, "missile_speed": null, "source": "extracted", "note": "Channel ability"}
+    ]
+  }
+}
