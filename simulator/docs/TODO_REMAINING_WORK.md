@@ -4,6 +4,50 @@ This document outlines what still needs to be implemented in the combat simulato
 
 ---
 
+## Recently Completed
+
+### Augment System (2026-02-02)
+**Status:** ✅ IMPLEMENTED
+
+The combat simulator now supports augments with the `AugmentManager` class.
+
+**Features:**
+- 284 augments loaded from Set 16 data
+- 131 combat-relevant augments categorized and functional
+- Team-wide stat buffs (45 augments)
+- Hex-based effects (8 augments)
+- Event-triggered augments (13 augments)
+- Item-conditional augments (15 augments)
+
+**Usage:**
+```python
+engine = CombatEngine()
+
+# 1v1 with augments
+result = engine.simulate_1v1(
+    'TFT16_Draven', 'TFT16_Leona',
+    star1=2, star2=2,
+    augments1=["Darkwill's Invasion"],  # +10% damage amp
+    num_simulations=100
+)
+
+# Team combat with augments
+result = engine.run_combat(
+    team0, team1,
+    team0_augments=["Darkwill's Invasion", "Defense of the Placidium"],
+    team1_augments=["Chaos Magic"]
+)
+```
+
+**Key augments tested:**
+- `Darkwill's Invasion` - +10% Damage Amp (15% with Noxus active)
+- `Defense of the Placidium` - +8% Durability (12% with Ionia active)
+- `U.R.F` - +15% Attack Speed for Spatula holders
+
+**Test file:** `UnitTests/test_augments.py`
+
+---
+
 ## High Priority - Complex Mechanics
 
 ### 1. Lucian → Senna Transition
@@ -188,4 +232,4 @@ This runs several test scenarios including 1v1s, team fights, and item impact te
 
 ---
 
-*Last updated: 2026-02-01*
+*Last updated: 2026-02-02*
