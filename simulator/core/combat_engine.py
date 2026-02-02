@@ -625,6 +625,423 @@ class TraitManager:
 
 
 # =============================================================================
+# AUGMENT MANAGER - Handle Augment Effects
+# =============================================================================
+
+# Try to load augment data
+try:
+    _AUGMENT_DATA_PATH = Path(__file__).parent.parent.parent / "data" / "api" / "processed" / "augments_set16.json"
+    if _AUGMENT_DATA_PATH.exists():
+        with open(_AUGMENT_DATA_PATH, 'r', encoding='utf-8') as f:
+            _RAW_AUGMENTS = json.load(f)
+        _AUGMENTS_DATA = {a['apiName']: a for a in _RAW_AUGMENTS if not a.get('disabled')}
+        _AUGMENTS_LOADED = True
+    else:
+        _AUGMENTS_DATA = {}
+        _AUGMENTS_LOADED = False
+except Exception:
+    _AUGMENTS_DATA = {}
+    _AUGMENTS_LOADED = False
+
+
+class AugmentManager:
+    """Manages augment effects for combat simulation.
+
+    Augment Categories:
+    1. TEAM_STAT - Apply flat/percentage stat bonuses to all units
+    2. TRAIT_CONDITIONAL - Apply bonuses if specific trait is active
+    3. CHAMPION_SPECIFIC - Modify specific champion's abilities
+    4. HEX_EFFECT - Create special hexes with aura effects
+    5. ON_EVENT - Trigger effects on takedown, cast, etc.
+    6. ITEM_CONDITIONAL - Apply bonuses if holding certain items
+    """
+
+    # Stat key mappings from augment effect keys to CombatStats attributes
+    STAT_MAPPINGS = {
+        'Health': 'max_hp',
+        'HP': 'max_hp',
+        'AD': 'ad',
+        'AttackDamage': 'ad',
+        'AP': 'ap',
+        'AbilityPower': 'ap',
+        'Armor': 'armor',
+        'MR': 'magic_resist',
+        'MagicResist': 'magic_resist',
+        'AttackSpeed': 'attack_speed',
+        'AS': 'attack_speed',
+        'CritChance': 'crit_chance',
+        'CritDamage': 'crit_multiplier',
+        'Omnivamp': 'omnivamp',
+        'DamageAmp': 'damage_amp',
+        'Durability': 'damage_reduction',
+        'ManaRegen': 'mana_regen',  # Special handling
+        'Mana': 'mana',
+        'Range': 'range',
+    }
+
+    # Traits that can be checked for conditional augments
+    TRAIT_KEYWORDS = {
+        'yordle': 'TFT16_Yordle',
+        'slayer': 'TFT16_Slayer',
+        'ionia': 'TFT16_Ionia',
+        'noxus': 'TFT16_Noxus',
+        'demacia': 'TFT16_Demacia',
+        'bilgewater': 'TFT16_Bilgewater',
+        'void': 'TFT16_Void',
+        'shadow isles': 'TFT16_ShadowIsles',
+        'piltover': 'TFT16_Piltover',
+        'arcanist': 'TFT16_Sorcerer',
+        'sorcerer': 'TFT16_Sorcerer',
+        'automata': 'TFT16_Automata',
+        'freljord': 'TFT16_Freljord',
+        'targon': 'TFT16_Targon',
+        'shurima': 'TFT16_Shurima',
+        'zaun': 'TFT16_Zaun',
+    }
+
+    def __init__(self):
+        """Initialize augment manager."""
+        self.active_augments: List[str] = []  # List of active augment apiNames
+        self.augment_data = _AUGMENTS_DATA if _AUGMENTS_LOADED else {}
+        self.hex_effects: Dict[Tuple[int, int], Dict] = {}  # position -> effect info
+        self.event_listeners: Dict[str, List[Dict]] = {
+            'on_takedown': [],
+            'on_cast': [],
+            'on_damage_dealt': [],
+            'on_round_start': [],
+        }
+        # Track permanent stat gains from on-event augments
+        self.permanent_bonuses: Dict[str, Dict[str, float]] = {}  # unit_id -> stat_bonuses
+
+    def reset(self):
+        """Reset augment state for new combat."""
+        self.hex_effects.clear()
+        self.event_listeners = {
+            'on_takedown': [],
+            'on_cast': [],
+            'on_damage_dealt': [],
+            'on_round_start': [],
+        }
+        self.permanent_bonuses.clear()
+
+    def set_augments(self, augment_names: List[str]):
+        """Set the active augments for combat.
+
+        Args:
+            augment_names: List of augment apiNames (e.g., 'TFT16_Augment_DarkwillsInvasion')
+        """
+        self.active_augments = []
+        for name in augment_names:
+            # Try exact match first
+            if name in self.augment_data:
+                self.active_augments.append(name)
+            else:
+                # Try to find by display name
+                for api_name, data in self.augment_data.items():
+                    if data.get('name', '').lower() == name.lower():
+                        self.active_augments.append(api_name)
+                        break
+                    elif data.get('en_name', '').lower() == name.lower():
+                        self.active_augments.append(api_name)
+                        break
+
+    def get_augment_info(self, api_name: str) -> Optional[Dict]:
+        """Get augment data by apiName."""
+        return self.augment_data.get(api_name)
+
+    def apply_augments(self, team: List['Unit'], trait_counts: Dict[str, int]):
+        """Apply all active augments to a team at combat start.
+
+        Args:
+            team: List of units on this team
+            trait_counts: Dict of trait name -> count for this team
+        """
+        for augment_name in self.active_augments:
+            augment = self.get_augment_info(augment_name)
+            if not augment:
+                continue
+
+            effects = augment.get('effects', {})
+            desc = augment.get('desc', '').lower()
+
+            # Determine augment type and apply appropriately
+            if self._is_team_stat_augment(augment):
+                self._apply_team_stat_augment(team, augment, trait_counts)
+            elif self._is_hex_augment(augment):
+                self._setup_hex_augment(team, augment)
+            elif self._is_event_augment(augment):
+                self._register_event_augment(team, augment)
+            elif self._is_item_conditional_augment(augment):
+                self._apply_item_conditional_augment(team, augment)
+
+    def _is_team_stat_augment(self, augment: Dict) -> bool:
+        """Check if augment is a simple team-wide stat buff."""
+        effects = augment.get('effects', {})
+        desc = augment.get('desc', '').lower()
+
+        # Has stat effects and applies to team
+        stat_keys = ['Health', 'HP', 'AD', 'AP', 'Armor', 'MR', 'AttackSpeed',
+                     'DamageAmp', 'Durability', 'Omnivamp', 'CritChance']
+
+        has_stat_effects = any(k in effects or k.lower() in [s.lower() for s in effects.keys()]
+                               for k in stat_keys)
+
+        applies_to_team = ('your team' in desc or 'all allies' in desc or
+                           'your units' in desc or not 'your strongest' in desc)
+
+        return has_stat_effects and applies_to_team
+
+    def _is_hex_augment(self, augment: Dict) -> bool:
+        """Check if augment creates special hexes."""
+        desc = augment.get('desc', '').lower()
+        return 'hex' in desc and ('gain a' in desc or 'axiom' in augment.get('name', '').lower())
+
+    def _is_event_augment(self, augment: Dict) -> bool:
+        """Check if augment triggers on events."""
+        desc = augment.get('desc', '').lower()
+        return 'takedown' in desc or 'when' in desc and ('cast' in desc or 'kill' in desc)
+
+    def _is_item_conditional_augment(self, augment: Dict) -> bool:
+        """Check if augment requires holding specific items."""
+        desc = augment.get('desc', '').lower()
+        return 'holding' in desc or 'equipped' in desc or 'spatula' in desc
+
+    def _apply_team_stat_augment(self, team: List['Unit'], augment: Dict,
+                                  trait_counts: Dict[str, int]):
+        """Apply team-wide stat buffs from an augment."""
+        effects = augment.get('effects', {})
+        desc = augment.get('desc', '').lower()
+
+        # Check for trait-conditional bonuses
+        enhanced_active = False
+        conditional_trait = None
+        for keyword, trait_name in self.TRAIT_KEYWORDS.items():
+            if keyword in desc and ('if' in desc or 'increased' in desc):
+                # Check if this trait is active
+                for trait_key in trait_counts:
+                    if keyword in trait_key.lower() or trait_name.lower() in trait_key.lower():
+                        if trait_counts[trait_key] >= 1:
+                            enhanced_active = True
+                            conditional_trait = trait_name
+                            break
+                break
+
+        # Get the appropriate effect values
+        for effect_key, value in effects.items():
+            if effect_key.startswith('{'):
+                continue  # Skip hashed/unknown keys
+
+            # Check for enhanced version
+            stat_key = effect_key
+            stat_value = value
+
+            if enhanced_active and 'Enhanced' in effect_key:
+                stat_key = effect_key.replace('Enhanced', '')
+                stat_value = value
+            elif 'Enhanced' in effect_key:
+                continue  # Skip enhanced value if trait not active
+
+            # Map to CombatStats attribute
+            combat_stat = self.STAT_MAPPINGS.get(stat_key)
+            if not combat_stat:
+                continue
+
+            # Apply to all units
+            for unit in team:
+                self._apply_stat_bonus(unit, combat_stat, stat_value)
+
+    def _apply_stat_bonus(self, unit: 'Unit', stat_name: str, value: float):
+        """Apply a stat bonus to a unit.
+
+        Args:
+            unit: The unit to modify
+            stat_name: CombatStats attribute name
+            value: The bonus value (may be flat or percentage based on stat)
+        """
+        if not hasattr(unit.stats, stat_name):
+            return
+
+        current = getattr(unit.stats, stat_name)
+
+        # Determine if flat or percentage based on typical TFT conventions
+        if stat_name in ['max_hp', 'armor', 'magic_resist', 'ap']:
+            # These are typically flat values or percentages < 1 mean %
+            if abs(value) < 1:
+                # Percentage of current
+                new_value = current * (1 + value)
+            else:
+                # Flat addition
+                new_value = current + value
+        elif stat_name in ['attack_speed', 'crit_chance', 'damage_amp',
+                           'damage_reduction', 'omnivamp']:
+            # These are percentage-based (0.15 = 15%)
+            new_value = current + value
+        elif stat_name == 'ad':
+            # AD is often percentage based in TFT
+            if abs(value) < 1:
+                new_value = current * (1 + value)
+            else:
+                new_value = current + value
+        elif stat_name == 'range':
+            new_value = current + int(value)
+        else:
+            new_value = current + value
+
+        setattr(unit.stats, stat_name, new_value)
+
+        # Also update max_hp in hp if it increased
+        if stat_name == 'max_hp' and new_value > current:
+            unit.stats.hp += (new_value - current)
+
+    def _setup_hex_augment(self, team: List['Unit'], augment: Dict):
+        """Setup hex-based augment effects (Axioms, etc.)."""
+        effects = augment.get('effects', {})
+        name = augment.get('name', '')
+
+        hex_radius = effects.get('HexRadius', 2)
+
+        # Extract effect parameters
+        hex_effect = {
+            'name': name,
+            'radius': hex_radius,
+            'effects': {},
+        }
+
+        # Map effects
+        if 'Resistances' in effects:
+            hex_effect['effects']['armor'] = effects['Resistances']
+            hex_effect['effects']['magic_resist'] = effects['Resistances']
+        if 'AttackSpeed' in effects:
+            hex_effect['effects']['attack_speed'] = effects['AttackSpeed']
+        if 'ManaRegen' in effects:
+            hex_effect['effects']['mana_regen'] = effects['ManaRegen']
+        if 'StunDuration' in effects:
+            hex_effect['stun_on_threshold'] = True
+            hex_effect['stun_duration'] = effects['StunDuration']
+            hex_effect['health_threshold'] = effects.get('HealthThreshold', 0.5)
+        if 'ShredPercent' in effects:
+            hex_effect['shred'] = effects['ShredPercent']
+            hex_effect['shred_duration'] = effects.get('Duration', 5)
+        if 'SunderPercent' in effects:
+            hex_effect['sunder'] = effects['SunderPercent']
+            hex_effect['sunder_duration'] = effects.get('Duration', 5)
+
+        # For now, place hex at center of team's formation
+        if team:
+            avg_row = sum(u.position[0] for u in team) / len(team)
+            avg_col = sum(u.position[1] for u in team) / len(team)
+            hex_pos = (int(avg_row), int(avg_col))
+            self.hex_effects[hex_pos] = hex_effect
+
+    def _register_event_augment(self, team: List['Unit'], augment: Dict):
+        """Register event-triggered augments."""
+        desc = augment.get('desc', '').lower()
+        effects = augment.get('effects', {})
+        name = augment.get('name', '')
+
+        event_data = {
+            'name': name,
+            'effects': effects,
+            'augment': augment,
+        }
+
+        if 'takedown' in desc:
+            self.event_listeners['on_takedown'].append(event_data)
+        if 'cast' in desc and 'when' in desc:
+            self.event_listeners['on_cast'].append(event_data)
+
+    def _apply_item_conditional_augment(self, team: List['Unit'], augment: Dict):
+        """Apply augments that check for specific items."""
+        effects = augment.get('effects', {})
+        desc = augment.get('desc', '').lower()
+
+        # Check for Spatula/Frying Pan items (U.R.F. augment)
+        spatula_items = ['Spatula', 'FryingPan']
+        for unit in team:
+            has_qualifying_item = any(
+                any(s.lower() in item.name.lower() for s in spatula_items)
+                for item in unit.items
+            )
+
+            if has_qualifying_item:
+                # Apply stat bonuses
+                if 'AttackSpeed' in effects:
+                    self._apply_stat_bonus(unit, 'attack_speed', effects['AttackSpeed'])
+                if 'ManaRegen' in effects:
+                    # Store mana regen for per-tick application
+                    unit_id = f"{unit.api_name}_{id(unit)}"
+                    if unit_id not in self.permanent_bonuses:
+                        self.permanent_bonuses[unit_id] = {}
+                    self.permanent_bonuses[unit_id]['mana_regen'] = effects['ManaRegen']
+
+    def apply_hex_effects(self, unit: 'Unit') -> Dict[str, float]:
+        """Get hex effects that apply to a unit based on their position.
+
+        Args:
+            unit: The unit to check
+
+        Returns:
+            Dict of stat bonuses from active hex effects
+        """
+        bonuses = {}
+        for hex_pos, hex_effect in self.hex_effects.items():
+            radius = hex_effect.get('radius', 2)
+            if HexGrid.hex_distance(unit.position, hex_pos) <= radius:
+                for stat, value in hex_effect.get('effects', {}).items():
+                    bonuses[stat] = bonuses.get(stat, 0) + value
+        return bonuses
+
+    def on_takedown(self, killer: 'Unit', victim: 'Unit'):
+        """Process takedown events for augments.
+
+        Args:
+            killer: The unit that got the kill
+            victim: The unit that died
+        """
+        for listener in self.event_listeners['on_takedown']:
+            effects = listener.get('effects', {})
+
+            # Bringer of Ruin style - permanent stat gains
+            if 'AP' in effects:
+                killer.stats.ap += effects['AP']
+            if 'MaxHealth' in effects:
+                killer.stats.max_hp += effects['MaxHealth']
+                killer.stats.hp += effects['MaxHealth']
+            if 'AD' in effects:
+                killer.stats.ad += effects['AD']
+
+    def on_ability_cast(self, caster: 'Unit'):
+        """Process ability cast events for augments."""
+        for listener in self.event_listeners['on_cast']:
+            effects = listener.get('effects', {})
+            # Apply per-cast bonuses if any
+
+    def get_all_augment_names(self) -> List[str]:
+        """Get list of all available augment names."""
+        return [data.get('name', api_name) for api_name, data in self.augment_data.items()]
+
+    def get_combat_augments(self) -> List[Dict]:
+        """Get list of augments that affect combat (not economy/shop augments)."""
+        combat_augments = []
+        combat_keywords = ['damage', 'attack', 'health', 'armor', 'resist', 'shield',
+                          'heal', 'ability', 'mana', 'cast', 'attack speed', 'omnivamp',
+                          'crit', 'durability']
+
+        for api_name, data in self.augment_data.items():
+            desc = data.get('desc', '').lower()
+            if any(kw in desc for kw in combat_keywords):
+                combat_augments.append({
+                    'apiName': api_name,
+                    'name': data.get('name', ''),
+                    'desc': data.get('desc', ''),
+                    'effects': data.get('effects', {}),
+                    'associatedTraits': data.get('associatedTraits', []),
+                })
+
+        return combat_augments
+
+
+# =============================================================================
 # ITEM DEFINITIONS - Set 16 Complete Item Database
 # =============================================================================
 
@@ -867,6 +1284,9 @@ class CombatEngine:
 
         # Trait manager for Blacksmith, Bilgewater, Piltover
         self.trait_manager = TraitManager()
+
+        # Augment manager for augment effects
+        self.augment_manager = AugmentManager()
 
         # Champion ability handlers
         if _ABILITIES_LOADED and ChampionAbilities:
@@ -1674,6 +2094,21 @@ class CombatEngine:
             allies = team0 if unit.team == 0 else team1
             self.process_unit_tick(unit, enemies, allies)
 
+    def _count_traits(self, team: List[Unit]) -> Dict[str, int]:
+        """Count trait occurrences for a team.
+
+        Args:
+            team: List of units
+
+        Returns:
+            Dict mapping trait name to count
+        """
+        trait_counts = {}
+        for unit in team:
+            for trait in unit.traits:
+                trait_counts[trait] = trait_counts.get(trait, 0) + 1
+        return trait_counts
+
     def process_round_start(self, team: List[Unit]):
         """Process start of round for trait mechanics.
 
@@ -1738,8 +2173,19 @@ class CombatEngine:
                           stat_bonus=self.trait_manager.get_shadow_isles_stat_bonus())
 
     def run_combat(self, team0: List[Unit], team1: List[Unit],
-                  max_time: float = 60.0, verbose: bool = False) -> Dict:
-        """Run a full combat simulation."""
+                  max_time: float = 60.0, verbose: bool = False,
+                  team0_augments: List[str] = None,
+                  team1_augments: List[str] = None) -> Dict:
+        """Run a full combat simulation.
+
+        Args:
+            team0: List of units for team 0
+            team1: List of units for team 1
+            max_time: Maximum combat duration in seconds
+            verbose: Include detailed combat log in results
+            team0_augments: List of augment names/apiNames for team 0
+            team1_augments: List of augment names/apiNames for team 1
+        """
         # Reset state
         self.time = 0.0
         self.combat_log = []
@@ -1749,9 +2195,25 @@ class CombatEngine:
         # Reset Shadow Isles souls for new combat
         self.trait_manager.reset_shadow_isles()
 
+        # Reset augment manager for new combat
+        self.augment_manager.reset()
+
         # Process round start for traits (both teams)
         self.process_round_start(team0)
         self.process_round_start(team1)
+
+        # Apply augments if provided
+        if team0_augments:
+            team0_traits = self._count_traits(team0)
+            self.augment_manager.set_augments(team0_augments)
+            self.augment_manager.apply_augments(team0, team0_traits)
+            self.log_event('augments_applied', team=0, augments=team0_augments)
+
+        if team1_augments:
+            team1_traits = self._count_traits(team1)
+            self.augment_manager.set_augments(team1_augments)
+            self.augment_manager.apply_augments(team1, team1_traits)
+            self.log_event('augments_applied', team=1, augments=team1_augments)
 
         # Combat loop
         while self.time < max_time:
@@ -1793,8 +2255,21 @@ class CombatEngine:
     def simulate_1v1(self, champ1: str, champ2: str,
                     star1: int = 1, star2: int = 1,
                     items1: List[str] = None, items2: List[str] = None,
+                    augments1: List[str] = None, augments2: List[str] = None,
                     num_simulations: int = 100) -> Dict:
-        """Simulate multiple 1v1 combats between two champions."""
+        """Simulate multiple 1v1 combats between two champions.
+
+        Args:
+            champ1: API name of first champion
+            champ2: API name of second champion
+            star1: Star level for champ1 (1-3)
+            star2: Star level for champ2 (1-3)
+            items1: List of item names for champ1
+            items2: List of item names for champ2
+            augments1: List of augment names for team 1
+            augments2: List of augment names for team 2
+            num_simulations: Number of simulations to run
+        """
         wins = {champ1: 0, champ2: 0}
         total_damage = {champ1: 0.0, champ2: 0.0}
         abilities_cast = {champ1: 0, champ2: 0}
@@ -1808,7 +2283,9 @@ class CombatEngine:
             if not unit1 or not unit2:
                 return {'error': 'Invalid champion names'}
 
-            result = self.run_combat([unit1], [unit2])
+            result = self.run_combat([unit1], [unit2],
+                                     team0_augments=augments1,
+                                     team1_augments=augments2)
 
             if result['winner'] == 0:
                 wins[champ1] += 1
