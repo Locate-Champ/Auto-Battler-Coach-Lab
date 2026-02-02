@@ -2858,3 +2858,417 @@ class ChampionAbilities:
         self.engine.log_event('riftscourge_setup', baron=baron.name,
                              void_bonus=2, rift_timer=8.0)
 
+    # =========================================================================
+    # RIFT HERALD - Durability Passive
+    # =========================================================================
+
+    def _cast_riftherald(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                         ability_vars: Dict) -> bool:
+        """Rift Herald - Warp Armor: Gain durability based on nearby enemies."""
+        from .combat_engine import DamageType
+
+        ap_damage = self._get_var(ability_vars, 'APDamage', unit.star_level, 150)
+        bonus_durability = self._get_var(ability_vars, 'BonusDurability', unit.star_level, 0.25)
+        durability_per_enemy = self._get_var(ability_vars, 'DurabilityPerEnemy', unit.star_level, 0.01)
+        bonus_health = self._get_var(ability_vars, 'BonusHealth', unit.star_level, 350)
+
+        # Count nearby enemies for durability scaling
+        nearby_enemies = self._get_enemies_in_radius(unit.position, 3, enemies)
+        enemy_count = len(nearby_enemies)
+
+        # Apply durability (damage reduction)
+        total_dr = bonus_durability + (durability_per_enemy * enemy_count)
+        unit.stats.damage_reduction += total_dr
+
+        # Grant bonus health
+        unit.stats.max_hp += bonus_health
+        unit.stats.hp += bonus_health
+
+        # Deal damage to nearby enemies
+        for enemy in nearby_enemies:
+            self._deal_damage(unit, enemy, ap_damage + unit.stats.ap,
+                             DamageType.MAGIC, "riftherald_warp")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Warp Armor",
+                             durability=total_dr, enemies_nearby=enemy_count)
+        return True
+
+    # =========================================================================
+    # LEONA - Flat Damage Reduction Passive
+    # =========================================================================
+
+    def _cast_leona(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Leona - Solar Flare: Stun enemies and gain flat damage reduction."""
+        from .combat_engine import DamageType
+
+        flat_dr = self._get_var(ability_vars, 'FlatDR', unit.star_level, 30)
+        num_enemies = int(self._get_var(ability_vars, 'NumEnemies', unit.star_level, 3))
+        stun_duration = self._get_var(ability_vars, 'StunDuration', unit.star_level, 1.0)
+        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 120)
+
+        # Apply flat damage reduction as a passive (stacks)
+        if not hasattr(unit, '_leona_flat_dr'):
+            unit._leona_flat_dr = 0
+        unit._leona_flat_dr += flat_dr
+
+        # Stun and damage nearest enemies
+        targets = sorted([e for e in enemies if e.is_alive and e.is_targetable],
+                        key=lambda e: self._hex_distance(unit.position, e.position))[:num_enemies]
+
+        for target in targets:
+            self._deal_damage(unit, target, damage + unit.stats.ap,
+                             DamageType.MAGIC, "leona_solar_flare")
+            self._apply_stun(target, stun_duration, "leona_stun")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Solar Flare",
+                             flat_dr=unit._leona_flat_dr, targets=[t.name for t in targets])
+        return True
+
+    def apply_leona_flat_dr(self, unit: 'Unit', incoming_damage: float) -> float:
+        """Apply Leona's flat damage reduction to incoming damage."""
+        flat_dr = getattr(unit, '_leona_flat_dr', 0)
+        if flat_dr > 0:
+            return max(0, incoming_damage - flat_dr)
+        return incoming_damage
+
+    # =========================================================================
+    # TARIC - 90% DR Passive + Invulnerability
+    # =========================================================================
+
+    def _cast_taric(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Taric - Starlight's Touch: Grant MR to allies, has 90% DR passive.
+
+        Passive: Takes 90% reduced damage.
+        At 35% HP: Becomes invulnerable for 2 seconds.
+        """
+        from .combat_engine import DamageType
+
+        mr_for_allies = self._get_var(ability_vars, 'MRForAllies', unit.star_level, 20)
+        passive_dr = self._get_var(ability_vars, 'PassiveDR', unit.star_level, 0.90)
+        invuln_threshold = self._get_var(ability_vars, 'InvunerabilityHealthThreshold', unit.star_level, 0.35)
+        invuln_duration = self._get_var(ability_vars, 'InvunerabilityDuration', unit.star_level, 2.0)
+
+        # Grant MR to all allies
+        for ally in allies:
+            if ally.is_alive:
+                ally.stats.magic_resist += mr_for_allies
+
+        # Apply passive DR (if not already applied)
+        if not hasattr(unit, '_taric_dr_applied'):
+            unit._taric_dr_applied = True
+            unit.stats.damage_reduction = passive_dr
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Starlight's Touch",
+                             mr_granted=mr_for_allies, passive_dr=passive_dr)
+        return True
+
+    def check_taric_invulnerability(self, unit: 'Unit') -> bool:
+        """Check if Taric should become invulnerable at 35% HP."""
+        if unit.api_name != 'TFT16_Taric':
+            return False
+
+        if hasattr(unit, '_taric_invuln_used'):
+            return False
+
+        hp_percent = unit.stats.hp / unit.stats.max_hp
+        if hp_percent <= 0.35:
+            unit._taric_invuln_used = True
+            unit.is_targetable = False
+            unit.untargetable_duration = 2.0
+            from .combat_engine import UnitState
+            unit.state = UnitState.UNTARGETABLE
+
+            self.engine.log_event('taric_invuln', unit=unit.name, hp_percent=hp_percent)
+            return True
+        return False
+
+    # =========================================================================
+    # SKARNER - Armor Aura + Impale
+    # =========================================================================
+
+    def _cast_skarner(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                      ability_vars: Dict) -> bool:
+        """Skarner - Impale: Grant armor aura, grab and stun target."""
+        from .combat_engine import DamageType
+
+        armor_for_allies = self._get_var(ability_vars, 'ArmorForAllies', unit.star_level, 20)
+        shield_amount = self._get_var(ability_vars, 'ShieldAmount', unit.star_level, 950)
+        shield_duration = self._get_var(ability_vars, 'ShieldDuration', unit.star_level, 4.0)
+        impale_duration = self._get_var(ability_vars, 'ImpaleDuration', unit.star_level, 1.75)
+
+        # Grant armor aura to all allies
+        for ally in allies:
+            if ally.is_alive:
+                ally.stats.armor += armor_for_allies
+
+        # Shield self
+        self.engine.apply_shield(unit, shield_amount + unit.stats.ap * 0.3, "skarner_shield")
+
+        # Impale nearest enemy - grab and drag them
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if target:
+            # Stun during impale
+            self._apply_stun(target, impale_duration, "skarner_impale")
+
+            # Drag target to adjacent hex (pull towards Skarner)
+            from .combat_engine import HexGrid
+            neighbors = HexGrid.get_neighbors(unit.position)
+            valid_spots = [n for n in neighbors if n not in self.engine.get_occupied_hexes()]
+            if valid_spots:
+                target.position = valid_spots[0]
+                self.engine.log_event('skarner_grab', unit=unit.name, target=target.name,
+                                     new_position=target.position)
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Impale",
+                             armor_granted=armor_for_allies, shield=shield_amount)
+        return True
+
+    # =========================================================================
+    # XERATH - Ascendant Trait (Store Items)
+    # =========================================================================
+
+    def _cast_xerath(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                     ability_vars: Dict) -> bool:
+        """Xerath - Eye of the Ascendant: Multiple blasts at random enemies.
+
+        Ascendant trait: After combat, Charm appears in shop (handled externally).
+        """
+        from .combat_engine import DamageType
+
+        num_blasts = int(self._get_var(ability_vars, 'NumberOfBlasts', unit.star_level, 10))
+        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 650)
+        spell_range = int(self._get_var(ability_vars, 'SpellRangeInEnemies', unit.star_level, 4))
+
+        # Get targets in range
+        targets = [e for e in enemies if e.is_alive and e.is_targetable]
+
+        # Fire blasts at random targets
+        for i in range(num_blasts):
+            if not targets:
+                break
+            target = random.choice(targets)
+            self._deal_damage(unit, target, damage + unit.stats.ap,
+                             DamageType.MAGIC, f"xerath_blast_{i+1}")
+            # Remove dead targets
+            targets = [t for t in targets if t.is_alive]
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Eye of the Ascendant",
+                             blasts=num_blasts)
+        return True
+
+    # =========================================================================
+    # ZILEAN - Time Bomb Chaining
+    # =========================================================================
+
+    def _cast_zilean(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                     ability_vars: Dict) -> bool:
+        """Zilean - Visions of the End: Place time bombs that chain and explode.
+
+        Double bomb: If 2 bombs on same target, instant explosion with bonus damage.
+        """
+        from .combat_engine import DamageType
+
+        magic_damage = self._get_var(ability_vars, 'MagicDamage', unit.star_level, 115)
+        explosion_damage = self._get_var(ability_vars, 'ExplosionDamage', unit.star_level, 225)
+        mana_on_kill = self._get_var(ability_vars, 'ManaOnKill', unit.star_level, 15)
+
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Track bombs on target
+        if not hasattr(target, '_zilean_bombs'):
+            target._zilean_bombs = 0
+
+        target._zilean_bombs += 1
+
+        # Apply initial damage
+        self._deal_damage(unit, target, magic_damage + unit.stats.ap,
+                         DamageType.MAGIC, "zilean_bomb")
+
+        # Double bomb check - if 2+ bombs, instant massive explosion
+        if target._zilean_bombs >= 2:
+            # Double bomb explosion - deals to target and nearby
+            self._deal_damage(unit, target, explosion_damage + unit.stats.ap,
+                             DamageType.MAGIC, "zilean_double_bomb")
+
+            # Splash to nearby
+            nearby = self._get_enemies_in_radius(target.position, 1, enemies)
+            for enemy in nearby:
+                if enemy != target:
+                    self._deal_damage(unit, enemy, explosion_damage * 0.5 + unit.stats.ap,
+                                     DamageType.MAGIC, "zilean_bomb_splash")
+
+            target._zilean_bombs = 0  # Reset bombs
+            self.engine.log_event('zilean_double_bomb', unit=unit.name, target=target.name)
+
+        # Mana refund on kill
+        if not target.is_alive:
+            unit.stats.mana += mana_on_kill
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Visions of the End",
+                             bombs_on_target=target._zilean_bombs if target.is_alive else 0)
+        return True
+
+    # =========================================================================
+    # MEL - Mana Drain + Radiant Eclipse
+    # =========================================================================
+
+    def _cast_mel(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                  ability_vars: Dict) -> bool:
+        """Mel - Radiant Eclipse: Orbs that damage + mana drain passive.
+
+        Passive: Drains 1 mana/sec from nearby enemies.
+        Trait: Can generate radiant items (handled externally).
+        """
+        from .combat_engine import DamageType
+
+        num_orbs = int(self._get_var(ability_vars, 'NumOfOrbs', unit.star_level, 2))
+        passive_damage = self._get_var(ability_vars, 'PassiveDamage', unit.star_level, 60)
+        target_damage = self._get_var(ability_vars, 'TargetDamage', unit.star_level, 1500)
+        explosion_damage = self._get_var(ability_vars, 'ExplosionDamage', unit.star_level, 600)
+
+        # Primary target
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Fire orbs at target
+        for i in range(num_orbs):
+            if not target.is_alive:
+                target = self._find_nearest_enemy(unit, enemies)
+                if not target:
+                    break
+            self._deal_damage(unit, target, target_damage / num_orbs + unit.stats.ap,
+                             DamageType.MAGIC, f"mel_orb_{i+1}")
+
+        # Final explosion
+        nearby = self._get_enemies_in_radius(target.position if target else unit.position, 2, enemies)
+        for enemy in nearby:
+            self._deal_damage(unit, enemy, explosion_damage + unit.stats.ap,
+                             DamageType.MAGIC, "mel_explosion")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Radiant Eclipse",
+                             orbs=num_orbs)
+        return True
+
+    def mel_mana_drain_tick(self, unit: 'Unit', enemies: List['Unit']):
+        """Mel's passive: Drain 1 mana/sec from nearby enemies."""
+        if unit.api_name != 'TFT16_Mel' or not unit.is_alive:
+            return
+
+        nearby = self._get_enemies_in_radius(unit.position, 2, enemies)
+        for enemy in nearby:
+            if enemy.is_alive:
+                enemy.stats.mana = max(0, enemy.stats.mana - 1)
+
+    # =========================================================================
+    # SETT - The Show Stopper (Multi-dash)
+    # =========================================================================
+
+    def _cast_sett(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                   ability_vars: Dict) -> bool:
+        """Sett - The Show Stopper: Dash to target, slam for %HP damage."""
+        from .combat_engine import DamageType
+
+        aoe_radius = int(self._get_var(ability_vars, 'AoERadius', unit.star_level, 3))
+        flat_damage = self._get_var(ability_vars, 'FlatAPDamage', unit.star_level, 350)
+        pct_max_hp = self._get_var(ability_vars, 'PercentOfTargetMaxHealth', unit.star_level, 0.09)
+        aoe_damage_pct = self._get_var(ability_vars, 'PercentAoEDamage', unit.star_level, 0.5)
+
+        # Find farthest enemy for slam
+        target = self._find_farthest_enemy(unit, enemies, 99)
+        if not target:
+            target = self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Dash to target position
+        self._dash_to_position(unit, target.position)
+
+        # Calculate slam damage: flat + %maxHP
+        slam_damage = flat_damage + unit.stats.ap + (target.stats.max_hp * pct_max_hp)
+
+        # Primary target takes full damage
+        self._deal_damage(unit, target, slam_damage, DamageType.MAGIC, "sett_slam_primary")
+
+        # AoE damage to nearby enemies (50% of primary damage)
+        nearby = self._get_enemies_in_radius(target.position, aoe_radius, enemies)
+        for enemy in nearby:
+            if enemy != target:
+                aoe_damage = slam_damage * aoe_damage_pct
+                self._deal_damage(unit, enemy, aoe_damage, DamageType.MAGIC, "sett_slam_aoe")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="The Show Stopper",
+                             primary_target=target.name, aoe_radius=aoe_radius)
+        return True
+
+    # =========================================================================
+    # BROCK - Board-wide Seismic Passive
+    # =========================================================================
+
+    def _cast_brock(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Brock - Seismic Slam: Board-wide slam with falloff.
+
+        Passive: Attacks deal 50% damage to nearby enemies.
+        Active: Slam all enemies, damage/stun reduced by distance.
+        """
+        from .combat_engine import DamageType, HexGrid
+
+        passive_aoe = self._get_var(ability_vars, 'PassivePercentAoE', unit.star_level, 0.5)
+        slam_base = self._get_var(ability_vars, 'SlamDamageBase', unit.star_level, 200)
+        slam_hp_pct = self._get_var(ability_vars, 'SlamDamageHealth', unit.star_level, 0.02)
+        stun_duration = self._get_var(ability_vars, 'StunDuration', unit.star_level, 1.75)
+        reduction_per_hex = self._get_var(ability_vars, 'EffectReductionPerHex', unit.star_level, 0.15)
+        reduction_minimum = self._get_var(ability_vars, 'EffectReductionMinimum', unit.star_level, 0.40)
+
+        # Board-wide slam with distance falloff
+        for enemy in enemies:
+            if not enemy.is_alive or not enemy.is_targetable:
+                continue
+
+            distance = HexGrid.hex_distance(unit.position, enemy.position)
+
+            # Calculate falloff: 15% reduction per hex, minimum 40% effectiveness
+            effectiveness = max(reduction_minimum, 1.0 - (distance * reduction_per_hex))
+
+            # Damage: base + 2% enemy max HP
+            base_damage = slam_base + unit.stats.ad + (enemy.stats.max_hp * slam_hp_pct)
+            final_damage = base_damage * effectiveness
+
+            self._deal_damage(unit, enemy, final_damage, DamageType.PHYSICAL, "brock_slam")
+
+            # Stun with falloff
+            effective_stun = stun_duration * effectiveness
+            if effective_stun > 0.5:  # Only stun if meaningful
+                self._apply_stun(enemy, effective_stun, "brock_stun")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Seismic Slam",
+                             enemies_hit=len([e for e in enemies if e.is_alive]))
+        return True
+
+    def brock_passive_aoe(self, unit: 'Unit', target: 'Unit', damage: float, enemies: List['Unit']):
+        """Brock's passive: Attacks deal 50% damage to nearby enemies."""
+        if unit.api_name != 'TFT16_Brock':
+            return
+
+        from .combat_engine import DamageType
+
+        nearby = self._get_enemies_in_radius(target.position, 1, enemies)
+        for enemy in nearby:
+            if enemy != target and enemy.is_alive:
+                splash = damage * 0.5
+                self.engine.apply_damage(unit, enemy, splash, DamageType.PHYSICAL, "brock_passive_splash")
+
