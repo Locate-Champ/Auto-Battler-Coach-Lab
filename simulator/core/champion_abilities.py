@@ -2305,17 +2305,58 @@ class ChampionAbilities:
     # TAHM KENCH - Glutton Feeding System
     # =========================================================================
 
+    # Glutton stat tables from game data
+    # Stat type depends on champion ROLE:
+    # - Health: Attack Tank, Magic Tank
+    # - Attack Speed (%): Attack Assassin, Attack Caster, Attack Fighter, Attack Marksman, Attack Specialist
+    # - Ability Power (%): Hybrid Fighter, Magic Assassin, Magic Caster, Magic Fighter, Magic Marksman, Magic Specialist
+
+    GLUTTON_HP_TABLE = {
+        # cost: {star: value}
+        1: {1: 55, 2: 125, 3: 330},
+        2: {1: 85, 2: 190, 3: 530},
+        3: {1: 115, 2: 295, 3: 815},
+        4: {1: 140, 2: 325, 3: 9810},
+        5: {1: 170, 2: 505, 3: 70915},
+        7: {1: 200, 2: 600, 3: 99999},
+    }
+
+    GLUTTON_AS_TABLE = {
+        # cost: {star: % value}
+        1: {1: 16, 2: 36, 3: 80},
+        2: {1: 22, 2: 52, 3: 115},
+        3: {1: 28, 2: 63, 3: 216},
+        4: {1: 34, 2: 75, 3: 4444},
+        5: {1: 40, 2: 102, 3: 55555},
+        7: {1: 50, 2: 127, 3: 69444},
+    }
+
+    GLUTTON_AP_TABLE = {
+        # cost: {star: % value}
+        1: {1: 10, 2: 24, 3: 62},
+        2: {1: 12, 2: 32, 3: 92},
+        3: {1: 14, 2: 40, 3: 144},
+        4: {1: 16, 2: 58, 3: 4444},
+        5: {1: 18, 2: 84, 3: 55555},
+        7: {1: 23, 2: 105, 3: 69444},
+    }
+
+    # Roles that grant each stat type
+    GLUTTON_HP_ROLES = ['ADTank', 'APTank', 'Attack Tank', 'Magic Tank']
+    GLUTTON_AS_ROLES = ['ADAssassin', 'ADCaster', 'ADFighter', 'ADCarry', 'ADSpecialist',
+                        'Attack Assassin', 'Attack Caster', 'Attack Fighter', 'Attack Marksman', 'Attack Specialist']
+    GLUTTON_AP_ROLES = ['HFighter', 'APAssassin', 'APCaster', 'APFighter', 'APCarry', 'APSpecialist',
+                        'Hybrid Fighter', 'Magic Assassin', 'Magic Caster', 'Magic Fighter', 'Magic Marksman', 'Magic Specialist']
+
     def _cast_tahmkench(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                         ability_vars: Dict) -> bool:
         """Tahm Kench - Devour: Swallow enemy, deal damage over time.
 
-        Glutton trait: Tahm Kench can eat units from bench to gain permanent stats.
-        - 1-cost: +20 HP, +1 AD
-        - 2-cost: +40 HP, +2 AD
-        - 3-cost: +80 HP, +4 AD
-        - 4-cost: +120 HP, +6 AD
-        - 5-cost: +200 HP, +10 AD
-        Star level multiplies these values by 1.25x.
+        Glutton trait: Feed champions to Tahm Kench for permanent stats.
+        Stat gained depends on fed unit's ROLE:
+        - Tank roles -> Health
+        - AD roles -> Attack Speed %
+        - AP roles -> Ability Power %
         """
         from .combat_engine import DamageType, UnitState
 
@@ -2362,70 +2403,121 @@ class ChampionAbilities:
         unit.stats.mana = 0
         return True
 
+    def _get_glutton_stat_type(self, role: str) -> str:
+        """Determine which stat Tahm Kench gains from eating a unit based on role."""
+        if any(r in role for r in ['Tank']):
+            return 'hp'
+        elif any(r in role for r in ['AD', 'Attack', 'Marksman']):
+            return 'as'
+        elif any(r in role for r in ['AP', 'Magic', 'Hybrid', 'Caster']):
+            return 'ap'
+        # Default to HP for unknown roles
+        return 'hp'
+
     def _apply_glutton_stats(self, tahm: 'Unit', eaten_unit: 'Unit'):
         """Apply permanent stats from eating a unit (Glutton trait)."""
         eaten_data = self.engine.champions.get(eaten_unit.api_name, {})
         cost = eaten_data.get('cost', 1)
         star = eaten_unit.star_level
+        role = eaten_data.get('role', '')
 
-        cost_stats = {
-            1: {'hp': 20, 'ad': 1},
-            2: {'hp': 40, 'ad': 2},
-            3: {'hp': 80, 'ad': 4},
-            4: {'hp': 120, 'ad': 6},
-            5: {'hp': 200, 'ad': 10},
-        }
+        # Determine stat type from role
+        stat_type = self._get_glutton_stat_type(role)
 
-        base = cost_stats.get(cost, cost_stats[1])
-        star_mult = 1.0 + (star - 1) * 0.25
+        # Get value from appropriate table
+        if stat_type == 'hp':
+            table = self.GLUTTON_HP_TABLE
+            value = table.get(cost, table[1]).get(star, table[1][1])
+            stat_name = 'hp'
+        elif stat_type == 'as':
+            table = self.GLUTTON_AS_TABLE
+            value = table.get(cost, table[1]).get(star, table[1][1])
+            stat_name = 'attack_speed'
+            value = value / 100  # Convert percentage to decimal
+        else:  # ap
+            table = self.GLUTTON_AP_TABLE
+            value = table.get(cost, table[1]).get(star, table[1][1])
+            stat_name = 'ap'
 
-        hp_gain = base['hp'] * star_mult
-        ad_gain = base['ad'] * star_mult
-
+        # Track stats gained
         if not hasattr(tahm, '_glutton_stats'):
-            tahm._glutton_stats = {'hp': 0, 'ad': 0, 'units_eaten': 0}
+            tahm._glutton_stats = {'hp': 0, 'attack_speed': 0, 'ap': 0, 'units_eaten': 0}
 
-        tahm._glutton_stats['hp'] += hp_gain
-        tahm._glutton_stats['ad'] += ad_gain
+        tahm._glutton_stats[stat_name] += value
         tahm._glutton_stats['units_eaten'] += 1
 
-        tahm.stats.max_hp += hp_gain
-        tahm.stats.hp += hp_gain
-        tahm.stats.ad += ad_gain
+        # Apply stats
+        if stat_name == 'hp':
+            tahm.stats.max_hp += value
+            tahm.stats.hp += value
+        elif stat_name == 'attack_speed':
+            # Cap at 5.0 total AS, convert excess to AP
+            current_as = tahm.stats.attack_speed
+            if current_as + value > 5.0:
+                as_to_add = max(0, 5.0 - current_as)
+                excess_as = value - as_to_add
+                tahm.stats.attack_speed += as_to_add
+                # Convert excess AS to AP (1% AS = 1 AP)
+                tahm.stats.ap += excess_as * 100
+                tahm._glutton_stats['ap'] += excess_as * 100
+            else:
+                tahm.stats.attack_speed += value
+        else:  # ap
+            tahm.stats.ap += value
 
         self.engine.log_event('glutton_stats', unit=tahm.name, eaten=eaten_unit.name,
-                             cost=cost, star=star, hp_gained=hp_gain, ad_gained=ad_gain)
+                             cost=cost, star=star, role=role, stat_type=stat_type,
+                             value=value if stat_name != 'attack_speed' else value * 100)
 
     def apply_glutton_feeding(self, tahm: 'Unit', fed_units: List[Dict]):
-        """Pre-combat: Apply stats from units fed to Tahm Kench."""
+        """Pre-combat: Apply stats from units fed to Tahm Kench.
+
+        Args:
+            tahm: Tahm Kench unit
+            fed_units: List of dicts with 'cost', 'star', and 'role' keys
+        """
         for fed in fed_units:
             cost = fed.get('cost', 1)
             star = fed.get('star', 1)
+            role = fed.get('role', '')
 
-            cost_stats = {
-                1: {'hp': 20, 'ad': 1},
-                2: {'hp': 40, 'ad': 2},
-                3: {'hp': 80, 'ad': 4},
-                4: {'hp': 120, 'ad': 6},
-                5: {'hp': 200, 'ad': 10},
-            }
+            stat_type = self._get_glutton_stat_type(role)
 
-            base = cost_stats.get(cost, cost_stats[1])
-            star_mult = 1.0 + (star - 1) * 0.25
-
-            hp_gain = base['hp'] * star_mult
-            ad_gain = base['ad'] * star_mult
+            if stat_type == 'hp':
+                table = self.GLUTTON_HP_TABLE
+                value = table.get(cost, table[1]).get(star, table[1][1])
+                stat_name = 'hp'
+            elif stat_type == 'as':
+                table = self.GLUTTON_AS_TABLE
+                value = table.get(cost, table[1]).get(star, table[1][1])
+                stat_name = 'attack_speed'
+                value = value / 100
+            else:
+                table = self.GLUTTON_AP_TABLE
+                value = table.get(cost, table[1]).get(star, table[1][1])
+                stat_name = 'ap'
 
             if not hasattr(tahm, '_glutton_stats'):
-                tahm._glutton_stats = {'hp': 0, 'ad': 0, 'units_eaten': 0}
+                tahm._glutton_stats = {'hp': 0, 'attack_speed': 0, 'ap': 0, 'units_eaten': 0}
 
-            tahm._glutton_stats['hp'] += hp_gain
-            tahm._glutton_stats['ad'] += ad_gain
+            tahm._glutton_stats[stat_name] += value
             tahm._glutton_stats['units_eaten'] += 1
 
-            tahm.stats.max_hp += hp_gain
-            tahm.stats.hp += hp_gain
-            tahm.stats.ad += ad_gain
+            if stat_name == 'hp':
+                tahm.stats.max_hp += value
+                tahm.stats.hp += value
+            elif stat_name == 'attack_speed':
+                current_as = tahm.stats.attack_speed
+                if current_as + value > 5.0:
+                    as_to_add = max(0, 5.0 - current_as)
+                    excess_as = value - as_to_add
+                    tahm.stats.attack_speed += as_to_add
+                    tahm.stats.ap += excess_as * 100
+                    tahm._glutton_stats['ap'] += excess_as * 100
+                else:
+                    tahm.stats.attack_speed += value
+            else:
+                tahm.stats.ap += value
 
     # =========================================================================
     # GALIO - Bench Mechanic & Demacia Rally
