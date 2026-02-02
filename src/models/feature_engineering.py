@@ -273,7 +273,7 @@ class FeatureEngineer:
     def load_and_transform(self, csv_path: str = None) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame]:
         """Load CSV and transform to ML-ready features"""
         if csv_path is None:
-            csv_path = self.data_dir / 'data' / 'personal' / 'tft_since_16_2_enhanced.csv'
+            csv_path = self.data_dir / 'data' / 'personal' / 'tft_all_matches.csv'
 
         df = pd.read_csv(csv_path)
         return self.get_ml_features(df)
