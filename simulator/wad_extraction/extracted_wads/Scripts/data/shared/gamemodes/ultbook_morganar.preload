@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_morganarslow"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_morganardebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_morganarhaste"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_morganarvfxmis"}}, 
-}

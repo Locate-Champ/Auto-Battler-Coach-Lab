@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT9_Heimerdinger.TFT9_Heimerdinger_TurretStatBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_heimerdingerturretspell"}}, 
-}

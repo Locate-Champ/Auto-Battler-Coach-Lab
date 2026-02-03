@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="missfortunescattershot"}}, 
-{Function=BBPreloadModule, Params={Name="MissFortune.MissFortuneScatterAoE"}}, 
-{Function=BBPreloadSpell, Params={Name="missfortunescattershotslow"}}, 
-}

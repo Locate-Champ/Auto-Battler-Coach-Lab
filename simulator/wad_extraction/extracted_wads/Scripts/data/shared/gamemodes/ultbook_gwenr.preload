@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.UltBook_GwenZ_GeneralFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_gwenrmis"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_gwenrmis_visualonly"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_gwenrrecast"}}, 
-{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
-}

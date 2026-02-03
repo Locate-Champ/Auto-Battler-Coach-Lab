@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_braumspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_nocritanim_aamanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_braumbossattackbig"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Mob_Boss_UnitBuff"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_aphelioscrescendumattackreturn"}}, 
-{Function=BBPreloadModule, Params={Name="TFT9_Aphelios.TFT9_ApheliosCrescendumOrbitManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_apheliosspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_aphelioscrescendumminiattack"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_gragasspellheroheal"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Gragas.TFT14_GragasSpellHeroAttackManager"}}, 
-}

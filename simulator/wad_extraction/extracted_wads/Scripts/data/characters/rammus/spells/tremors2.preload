@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rammusrccimmunity"}}, 
-{Function=BBPreloadSpell, Params={Name="rammusrdash"}}, 
-{Function=BBPreloadSpell, Params={Name="powerballdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="powerball"}}, 
-{Function=BBPreloadSpell, Params={Name="rammusrknockup"}}, 
-{Function=BBPreloadSpell, Params={Name="tremorsslow"}}, 
-{Function=BBPreloadSpell, Params={Name="tremorsslowvisual"}}, 
-}

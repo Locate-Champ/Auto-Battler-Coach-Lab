@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Pursuit_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_BulletHell_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_lucianrmissile"}}, 
-}

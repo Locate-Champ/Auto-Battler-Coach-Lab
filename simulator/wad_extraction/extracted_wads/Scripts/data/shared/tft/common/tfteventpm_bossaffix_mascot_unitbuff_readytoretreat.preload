@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_mascot_armybuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_BossAffix_Mascot_ArmyBuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Mascot_ArmyBuff"}}, 
-}

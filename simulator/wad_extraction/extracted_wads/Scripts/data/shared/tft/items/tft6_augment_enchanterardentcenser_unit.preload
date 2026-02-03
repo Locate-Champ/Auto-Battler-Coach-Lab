@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT6_Augment_EnchanterArdentCenser_Unit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_augment_enchanterardentcenser_as"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_augment_enchanterardentcenser_cd"}}, 
-}

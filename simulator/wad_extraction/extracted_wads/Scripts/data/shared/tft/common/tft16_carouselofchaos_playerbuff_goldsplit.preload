@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_CarouselOfChaos_LevelScript_VotingRounds"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_CarouselOfChaos_PlayerBuff_GoldSplit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_CarouselOfChaos_LevelScript_GoldSplit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_Error"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
-}

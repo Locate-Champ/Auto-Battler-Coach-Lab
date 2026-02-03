@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT7_TempestManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_unitbufftempest"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_augment_tempesteyeofthestorm_enhancedbuff"}}, 
-}

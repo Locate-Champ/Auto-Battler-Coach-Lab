@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_AurelionSol.TFT16_AurelionSol_Passive"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_ShadowIsles_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Chronokeeper_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set16"}}, 
---{Function=BBPreloadModule, Params={Name="TFT16_Sion.TFT16_Sion_PassiveHealth_Manager"}}, 
-}

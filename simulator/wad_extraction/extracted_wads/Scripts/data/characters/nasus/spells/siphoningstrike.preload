@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="nasusq"}}, 
-{Function=BBPreloadSpell, Params={Name="srt_2024_horde_spawnminis"}}, 
-{Function=BBPreloadModule, Params={Name="Nasus.NasusQStacks"}}, 
---{Function=BBPreloadModule, Params={Name="Global.Augment_StackosaurusRex"}}, 
-}

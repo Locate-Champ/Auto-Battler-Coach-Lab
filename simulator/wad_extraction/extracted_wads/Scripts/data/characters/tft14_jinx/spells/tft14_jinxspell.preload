@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_jinxspellrocketcounter"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_jinxrocketattack"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Playerbuff_Missions_Set14a"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

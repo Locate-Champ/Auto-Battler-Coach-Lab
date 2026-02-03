@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ChemtechOverdrive_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_augment_chemtechoverdrive_unitbuff"}}, 
-}

@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_playerbuff_basicarmory"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Armory"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerbuff_treasure_armory"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Loot"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTProbabilityFunctionModule"}}, 
-}

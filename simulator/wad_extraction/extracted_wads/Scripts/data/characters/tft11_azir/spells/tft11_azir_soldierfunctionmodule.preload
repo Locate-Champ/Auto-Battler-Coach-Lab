@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_azirspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_azir_soldierbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

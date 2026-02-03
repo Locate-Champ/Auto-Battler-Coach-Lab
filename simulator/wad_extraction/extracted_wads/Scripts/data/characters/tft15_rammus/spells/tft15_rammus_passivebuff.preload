@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_rammusspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_ArmyBuff_Tracker"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_Rammus.TFT15_Rammus_PassiveBuff"}}, 
-}

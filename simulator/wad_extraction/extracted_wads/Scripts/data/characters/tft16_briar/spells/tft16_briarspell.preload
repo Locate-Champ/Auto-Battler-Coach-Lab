@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_briarspell_empoweredstate"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Gear"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Briar.TFT16_BriarSpell_EmpoweredState"}}, 
-}

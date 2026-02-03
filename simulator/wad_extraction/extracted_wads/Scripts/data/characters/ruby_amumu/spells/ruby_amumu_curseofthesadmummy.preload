@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="stun"}}, 
-{Function=BBPreloadModule, Params={Name="Ruby_Amumu.Ruby_AmumuP"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_amumu_curseofthesadmummycasteffects"}}, 
-}

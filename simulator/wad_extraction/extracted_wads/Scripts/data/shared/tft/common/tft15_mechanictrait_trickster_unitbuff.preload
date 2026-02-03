@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_item_edgeofnight_stealth"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Trickster_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_trickster_dummybuff"}}, 
-}

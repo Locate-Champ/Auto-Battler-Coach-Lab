@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Leona.TFT16_LeonaSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Diana.TFT16_DianaSpell_Passive"}}, 
-}

@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Udyr.UdyrPassive"}}, 
-{Function=BBPreloadModule, Params={Name="Udyr.UdyrPRecastReady"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrq2activation"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrbasicattack"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrqactivation"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrqattack1"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrqattack2"}}, 
-}

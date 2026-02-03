@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_teemomushroomscalebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_teemospell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT9_Teemo.TFT9_TeemoQMushroomController"}}, 
-}

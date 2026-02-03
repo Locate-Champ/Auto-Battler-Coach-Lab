@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft11_kogmawspell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT11_KogMaw.TFT11_KogMawPassive"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-}

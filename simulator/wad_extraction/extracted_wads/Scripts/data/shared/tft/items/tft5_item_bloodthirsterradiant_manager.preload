@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft5_item_bloodthirsterradiant_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_augment_genericshield_buff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_BloodthirsterRadiant_Manager"}}, 
-}

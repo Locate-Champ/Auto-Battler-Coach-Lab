@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_renektonspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_renektonspellempowered_burnvfx"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Renekton.TFT14_RenektonEmpowered"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
-}

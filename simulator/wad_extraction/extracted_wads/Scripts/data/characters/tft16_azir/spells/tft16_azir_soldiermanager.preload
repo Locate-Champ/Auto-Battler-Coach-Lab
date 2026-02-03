@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_Azir.TFT16_Azir_WSoldier"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_azirspell"}}, 
---{Function=BBPreloadModule, Params={Name="TFT4_Azir.TFT4_AzirWSoldier"}}, 
-}

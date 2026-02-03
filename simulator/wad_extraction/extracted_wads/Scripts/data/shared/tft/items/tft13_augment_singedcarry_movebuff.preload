@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_SingedCarry_MoveBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_singedspellhero"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_augment_singedcarry_poison"}}, 
-{Function=BBPreloadSpell, Params={Name="poisontrail"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_SingedCarry_Poison"}}, 
-}

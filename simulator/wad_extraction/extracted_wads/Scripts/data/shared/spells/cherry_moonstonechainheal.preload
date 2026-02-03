@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="6617healchainmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="226617shieldchainmissile"}}, 
-{Function=BBPreloadModule, Params={Name="Global.226617ShieldChainMissile"}}, 
-}

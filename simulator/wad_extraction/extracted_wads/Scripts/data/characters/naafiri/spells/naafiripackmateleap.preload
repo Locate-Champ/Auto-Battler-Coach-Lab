@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="naafirip"}}, 
-{Function=BBPreloadSpell, Params={Name="naafiripackmatetaunt"}}, 
-{Function=BBPreloadModule, Params={Name="Naafiri.NaafiriPackmate"}}, 
-{Function=BBPreloadSpell, Params={Name="naafiripackmateflipattackoverride"}}, 
-}

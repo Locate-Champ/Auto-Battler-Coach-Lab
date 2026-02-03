@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_maxcap_armyhatdepot"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_MaxCap_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_MaxCap_ArmyHatDepot"}}, 
-}

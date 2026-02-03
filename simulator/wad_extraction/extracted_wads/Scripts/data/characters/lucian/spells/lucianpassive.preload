@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="lucianpassiveareatrigger"}}, 
-{Function=BBPreloadSpell, Params={Name="lucianpassiveshared"}}, 
-{Function=BBPreloadModule, Params={Name="Lucian.LucianPassiveShared"}}, 
-{Function=BBPreloadModule, Params={Name="Lucian.LucianPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="lucianpassivedamagebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="lucianpassivebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="lucianr"}}, 
-}

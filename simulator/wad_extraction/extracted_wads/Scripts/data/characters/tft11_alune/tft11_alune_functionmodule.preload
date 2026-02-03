@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft11_alunespell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_alunespellallybuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_small"}}, 
-{Function=BBPreloadModule, Params={Name="TFT11_Alune.TFT11_Alune_FunctionModule"}}, 
-}

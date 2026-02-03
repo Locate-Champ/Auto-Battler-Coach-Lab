@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_playerbuff_conqueror"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_UnitBuffConqueror"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_PlayerBuff_Conqueror"}}, 
-}

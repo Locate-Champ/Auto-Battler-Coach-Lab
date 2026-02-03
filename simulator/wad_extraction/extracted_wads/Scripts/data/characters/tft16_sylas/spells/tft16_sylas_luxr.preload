@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_sylasspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_sylasspell_lux_shield"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Sylas.TFT16_SylasFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_sylas_luxrbeam"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Sylas.TFT16_SylasSpell"}}, 
-}

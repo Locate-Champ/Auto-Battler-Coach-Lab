@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ornnr"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_xsmall"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ornnspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ornnrmissileareatriggerbuff"}}, 
-}

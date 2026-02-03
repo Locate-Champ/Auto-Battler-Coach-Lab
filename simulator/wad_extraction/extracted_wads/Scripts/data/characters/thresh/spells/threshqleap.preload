@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="eternals_threshqecombostracker"}}, 
-{Function=BBPreloadSpell, Params={Name="threshqleapattack"}}, 
-{Function=BBPreloadSpell, Params={Name="threshq"}}, 
-{Function=BBPreloadModule, Params={Name="Thresh.ThreshFunctionModule"}}, 
-}

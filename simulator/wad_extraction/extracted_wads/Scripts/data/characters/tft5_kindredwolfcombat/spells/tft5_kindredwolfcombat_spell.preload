@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_kindredwolfcombat_return"}}, 
-{Function=BBPreloadModule, Params={Name="TFT5_KindredWolfCombat.TFT5_KindredWolfCombat_Spell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

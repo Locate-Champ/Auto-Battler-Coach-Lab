@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_karthusrtarget"}}, 
-{Function=BBPreloadSpell, Params={Name="karthusfallenone"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_karthusrcastsound"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_karthusrpacify"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_karthusrdamagesound"}}, 
-}

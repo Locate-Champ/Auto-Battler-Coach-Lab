@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadParticle, Params={Name="temp_itemblackout.troy", SkinID="-1"}}, 
-{Function=BBPreloadParticle, Params={Name="temp_itemblackoutpersist.troy", SkinID="-1"}}, 
-{Function=BBPreloadModule, Params={Name="Global.GlobalCamouflage"}}, 
-}

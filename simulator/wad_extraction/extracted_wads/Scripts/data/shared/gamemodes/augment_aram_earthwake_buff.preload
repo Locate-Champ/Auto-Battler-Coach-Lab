@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_aram_earthwake"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_Earthwake_PerWaveCooldown"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_aram_earthwake_perwavecooldown"}}, 
-}

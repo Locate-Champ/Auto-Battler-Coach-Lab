@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.SR_2026_S1_RoleBound_Top_Quest"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SR_2026_S1_RoleBound_Mid_Quest"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SR_2026_S1_RoleBound_Bot_Quest"}}, 
-{Function=BBPreloadSpell, Params={Name="s11support_quest_completion_buff"}}, 
-}

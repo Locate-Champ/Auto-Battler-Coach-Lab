@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="akshanrreveal"}}, 
-{Function=BBPreloadModule, Params={Name="Akshan.AkshanFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="akshanr"}}, 
-{Function=BBPreloadModule, Params={Name="Akshan.AkshanPassive"}}, 
-}

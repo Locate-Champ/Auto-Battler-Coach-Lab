@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_ryzespellfreljordfrozen"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_ryzespellfreljordpermafrost"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_ryzespellfreljordantifreeze"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

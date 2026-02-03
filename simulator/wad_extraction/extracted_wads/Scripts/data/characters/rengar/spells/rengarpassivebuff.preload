@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rengarpassive"}}, 
-{Function=BBPreloadSpell, Params={Name="rengardashferocitytracker"}}, 
-{Function=BBPreloadSpell, Params={Name="rengarpassivebuffdash"}}, 
-{Function=BBPreloadSpell, Params={Name="rengarrbonusdamage"}}, 
-}

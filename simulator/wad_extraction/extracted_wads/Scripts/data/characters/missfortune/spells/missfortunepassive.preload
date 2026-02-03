@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="missfortunepassiveshared"}}, 
-{Function=BBPreloadSpell, Params={Name="missfortunepassiveattackcrit"}}, 
-{Function=BBPreloadSpell, Params={Name="missfortunepassiveattack2"}}, 
-{Function=BBPreloadSpell, Params={Name="missfortunepassiveattack"}}, 
---{Function=BBPreloadModule, Params={Name="MissFortune.MissFortunePassive"}}, 
-}

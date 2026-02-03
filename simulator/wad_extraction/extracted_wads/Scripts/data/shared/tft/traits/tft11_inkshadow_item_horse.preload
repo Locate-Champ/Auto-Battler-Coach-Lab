@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_unithasinkshadowitem"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_item_horsemark"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT11_Inkshadow_Item_Horse"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_item_horsedash"}}, 
-}

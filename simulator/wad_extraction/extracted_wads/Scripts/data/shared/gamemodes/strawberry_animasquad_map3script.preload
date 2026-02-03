@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_mapc_wallholder"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_mapc_arenacenterholder"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_mapc_arenanavgridblockholder"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_poi_freezer"}}, 
-}

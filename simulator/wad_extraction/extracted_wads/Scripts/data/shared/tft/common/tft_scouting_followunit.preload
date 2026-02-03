@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_playerbuff_sound"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_portaljumpout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_portalinvisandwait"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-}

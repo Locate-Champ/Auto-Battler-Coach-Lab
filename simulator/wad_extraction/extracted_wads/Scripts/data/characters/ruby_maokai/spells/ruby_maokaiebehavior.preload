@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ruby_maokaie"}}, 
-{Function=BBPreloadModule, Params={Name="Ruby_Maokai.Ruby_MaokaiEBehavior"}}, 
-{Function=BBPreloadSpell, Params={Name="slow"}}, 
-{Function=BBPreloadModule, Params={Name="Ruby_Maokai.Ruby_MaokaiPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_maokaiemissilebrushtiny"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_maokaiemissilebrushtiny2"}}, 
-}

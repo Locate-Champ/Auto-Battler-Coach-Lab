@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="viegoq"}}, 
-{Function=BBPreloadSpell, Params={Name="viegoqmark"}}, 
-{Function=BBPreloadModule, Params={Name="Viego.ViegoQPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="viegoqdoubleattack"}}, 
-{Function=BBPreloadSpell, Params={Name="viegoqpassivedrain"}}, 
-}

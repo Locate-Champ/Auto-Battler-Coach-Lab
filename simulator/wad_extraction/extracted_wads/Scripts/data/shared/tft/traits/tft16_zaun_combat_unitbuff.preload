@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Zaun_Combat_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_zaun_revivecleanse"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_zaun_shimmer_unitbuff"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_TraitEffectMageRefresh"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_jinxspellattack"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_jinxspellattack2"}}, 
-}

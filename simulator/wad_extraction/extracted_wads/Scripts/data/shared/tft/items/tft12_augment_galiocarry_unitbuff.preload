@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_galiospellhero"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_galiospell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_ArmyBuff_ApplyToHeroUnit"}}, 
-}

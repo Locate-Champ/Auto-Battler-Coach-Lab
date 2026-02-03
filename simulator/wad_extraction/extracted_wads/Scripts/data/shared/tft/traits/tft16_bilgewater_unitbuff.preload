@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Bilgewater_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_bilgewater_unitbuff_takedownmarker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Bilgewater_ArmyBuff_Permanent"}}, 
-}

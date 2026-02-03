@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="4017check"}}, 
-{Function=BBPreloadSpell, Params={Name="4017timer"}}, 
-{Function=BBPreloadSpell, Params={Name="4017_burn"}}, 
-{Function=BBPreloadModule, Params={Name="Global.4017_Burn"}}, 
-{Function=BBPreloadModule, Params={Name="Global.447118"}}, 
---{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-}

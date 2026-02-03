@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_protectorsvow_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_protectorsvow_combatbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_ProtectorsVow_Manager"}}, 
-}

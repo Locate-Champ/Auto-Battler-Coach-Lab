@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="vexrtakedowntracker"}}, 
-{Function=BBPreloadSpell, Params={Name="vexrtarget"}}, 
-{Function=BBPreloadSpell, Params={Name="vexrresettimer"}}, 
-}

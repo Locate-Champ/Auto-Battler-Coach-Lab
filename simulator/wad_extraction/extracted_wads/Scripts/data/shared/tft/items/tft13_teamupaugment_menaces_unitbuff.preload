@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_TeamupAugment_Menaces_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_family_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_silco_spell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_TeamupAugment_Menaces_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Silco.TFT13_Silco_FunctionModule"}}, 
-}

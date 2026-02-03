@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft2_annietibbersactive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_globalsummonbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft2_annietibbers"}}, 
-{Function=BBPreloadSpell, Params={Name="tft2_summonedunitmanager"}}, 
-}

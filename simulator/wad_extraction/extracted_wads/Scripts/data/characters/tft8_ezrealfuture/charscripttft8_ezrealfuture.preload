@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft8_ezrealstartcast_parallel"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_ezrealstartcast"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

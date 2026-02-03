@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="pantheonqmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="pantheonqtap"}}, 
-{Function=BBPreloadModule, Params={Name="Pantheon.PantheonPassive"}}, 
-}

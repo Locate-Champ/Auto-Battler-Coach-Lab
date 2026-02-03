@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set8"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_corrupted_unitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_augment_leblancsupport_clone"}}, 
-}

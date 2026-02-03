@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="olafaxe"}}, 
-{Function=BBPreloadSpell, Params={Name="olafaxethrowcast"}}, 
-{Function=BBPreloadSpell, Params={Name="olafaxeexpirationtimer"}}, 
-{Function=BBPreloadSpell, Params={Name="olafslow"}}, 
-{Function=BBPreloadSpell, Params={Name="olafignorecollision"}}, 
-{Function=BBPreloadSpell, Params={Name="olafaxethrowdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="olafqshred"}}, 
-}

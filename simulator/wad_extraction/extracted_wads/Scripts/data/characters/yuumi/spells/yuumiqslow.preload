@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="yuumiq"}}, 
-{Function=BBPreloadSpell, Params={Name="slow"}}, 
-{Function=BBPreloadSpell, Params={Name="syndraw"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Slow"}}, 
-}

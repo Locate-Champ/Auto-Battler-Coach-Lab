@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rengarhatreddefeat"}}, 
-{Function=BBPreloadParticle, Params={Name="victory_glb.troy", SkinID="-1"}}, 
-{Function=BBPreloadSpell, Params={Name="rengartrophymant"}}, 
-{Function=BBPreloadSpell, Params={Name="rengarpassivebonetoothbuffkhazix"}}, 
-}

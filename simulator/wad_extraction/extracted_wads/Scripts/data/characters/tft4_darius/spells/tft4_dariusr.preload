@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft4_dariusrunstoppable"}}, 
-{Function=BBPreloadParticle, Params={Name="dariusexecutecastsound.troy", SkinID="-1"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT4_UnitBuffMage"}}, 
-}

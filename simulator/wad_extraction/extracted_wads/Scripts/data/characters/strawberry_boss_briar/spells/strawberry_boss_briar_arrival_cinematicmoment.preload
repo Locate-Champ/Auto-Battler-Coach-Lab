@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_mapboss"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_briar_arrival_selflock"}}, 
-}

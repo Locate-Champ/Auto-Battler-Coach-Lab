@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT4_Samira.TFT4_SamiraDaredevilBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_samirarunstoppable"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_samirar"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_samiradashr"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_samiradash"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT7_Zoe.TFT7_Zoe_TFT5_IvernR"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_zoe_tft5_ivernminionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_zoe_tft5_ivernminionspawn"}}, 
-}

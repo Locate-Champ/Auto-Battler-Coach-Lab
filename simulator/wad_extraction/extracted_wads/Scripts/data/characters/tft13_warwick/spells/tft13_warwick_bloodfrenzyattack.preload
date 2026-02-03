@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT13_Warwick.TFT13_Warwick_BloodfrenzyAttack"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Warwick.TFT13_Warwick_Bloodfrenzy"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_warwickspell"}}, 
-}

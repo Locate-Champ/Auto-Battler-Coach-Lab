@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="KSante.KSanteESpellPassive"}}, 
-{Function=BBPreloadModule, Params={Name="KSante.KSanteEAllyDash"}}, 
---{Function=BBPreloadModule, Params={Name="KSante.KSanteQSpellPassive"}}, 
-}

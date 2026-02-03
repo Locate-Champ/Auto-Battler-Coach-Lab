@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="belvethr"}}, 
-{Function=BBPreloadModule, Params={Name="Belveth.BelvethRMinion"}}, 
-{Function=BBPreloadModule, Params={Name="Belveth.BelvethRListener"}}, 
-{Function=BBPreloadParticle, Params={Name="exalted_buf.troy", SkinID="-1"}}, 
-{Function=BBPreloadParticle, Params={Name="exalted_buf_order.troy", SkinID="-1"}}, 
-}

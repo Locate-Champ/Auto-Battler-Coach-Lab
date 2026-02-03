@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Augment_Frost_Army"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Augment_Frost_StatueBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_augment_frost_statuebuff"}}, 
-}

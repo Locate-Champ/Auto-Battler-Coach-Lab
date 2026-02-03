@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="zerie"}}, 
-{Function=BBPreloadSpell, Params={Name="zeriq"}}, 
-{Function=BBPreloadModule, Params={Name="Zeri.ZeriFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="zerir"}}, 
-{Function=BBPreloadSpell, Params={Name="zerirstacks"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="snowballfollowupcast"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_snowballfight"}}, 
-{Function=BBPreloadSpell, Params={Name="summonersnowball"}}, 
-}

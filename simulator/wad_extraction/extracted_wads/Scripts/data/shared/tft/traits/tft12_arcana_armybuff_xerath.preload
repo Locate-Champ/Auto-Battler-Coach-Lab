@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_arcana_unitbuff_xerath"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_ShopManager_PlayerBuff"}}, 
-}

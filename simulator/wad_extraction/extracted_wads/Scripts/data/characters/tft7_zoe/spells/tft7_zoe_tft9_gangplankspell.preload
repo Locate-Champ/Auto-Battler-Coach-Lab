@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadModule, Params={Name="TFT7_Zoe.TFT7_ZoeFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_zoe_tft9_gangplankspell_boat"}}, 
---{Function=BBPreloadModule, Params={Name="TFT9_Gangplank.TFT9_GangplankFunctionModule"}}, 
-}

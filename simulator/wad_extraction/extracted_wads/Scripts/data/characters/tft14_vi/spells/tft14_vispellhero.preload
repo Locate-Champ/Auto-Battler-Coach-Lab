@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_vispellhero_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_vispellhero_refundmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_vispellhero_root"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_vispellhero_knockback"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_vispellhero_stun"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_vispellhero_slam"}}, 
-}

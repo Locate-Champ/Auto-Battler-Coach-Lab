@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Warden_UnitBuff_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_warden_unitbuff_shield"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="summonercherryaugflashyflash"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_Flashy"}}, 
-{Function=BBPreloadSpell, Params={Name="summonercherryflash"}}, 
-}

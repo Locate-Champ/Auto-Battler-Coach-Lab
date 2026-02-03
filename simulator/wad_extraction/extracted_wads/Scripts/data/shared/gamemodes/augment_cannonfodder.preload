@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Augment_CannonFodder"}}, 
-{Function=BBPreloadCharacter, Params={Name="cherry_feeneypult"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_cannonfodder_cannonbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_cannonfodder_targeting"}}, 
-}

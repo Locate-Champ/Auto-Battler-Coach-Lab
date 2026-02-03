@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_unitspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_Buddy_Yasuo_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_ArmyBuffEldritch_PermManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_UnitBuffEldritch_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_eldritchvolibearspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_eldritchvolibearspell_entrance_knockup"}}, 
-}

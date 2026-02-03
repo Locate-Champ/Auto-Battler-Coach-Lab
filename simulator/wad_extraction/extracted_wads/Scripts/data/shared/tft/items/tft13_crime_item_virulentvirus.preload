@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_crime_item_virulentvirus_dot"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Crime_Item_VirulentVirus"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_crime_item_virulentvirus_prismaticbonus_zombiebuff"}}, 
-}

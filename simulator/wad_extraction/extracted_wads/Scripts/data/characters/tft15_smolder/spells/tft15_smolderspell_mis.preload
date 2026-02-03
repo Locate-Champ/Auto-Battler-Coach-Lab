@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_smolderspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_smolderspell_embermis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_ArmyBuff_Tracker"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_deeproots_outmis"}}, 
-}

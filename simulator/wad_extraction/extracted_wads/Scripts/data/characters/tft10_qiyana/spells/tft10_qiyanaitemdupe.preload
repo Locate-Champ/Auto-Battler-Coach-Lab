@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_Qiyana.TFT10_QiyanaItemManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_qiyanaitemdupecleaupwatcher"}}, 
-}

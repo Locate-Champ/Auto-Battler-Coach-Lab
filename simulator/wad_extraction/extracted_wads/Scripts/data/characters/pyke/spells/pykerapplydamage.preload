@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Pyke.PykeGetSpellData"}}, 
-{Function=BBPreloadModule, Params={Name="Pantheon.PantheonEShieldBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Gwen.GwenW"}}, 
-{Function=BBPreloadSpell, Params={Name="pyker"}}, 
---{Function=BBPreloadModule, Params={Name="Pyke.PykeFunctionModule"}}, 
-}

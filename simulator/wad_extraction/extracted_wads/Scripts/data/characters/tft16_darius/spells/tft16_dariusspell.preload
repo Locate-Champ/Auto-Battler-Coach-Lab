@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_TeamupAugment_SpinToWin_AoEBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_dariusspell_hemorrhagebuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Darius.TFT16_DariusSpell_HemorrhageBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

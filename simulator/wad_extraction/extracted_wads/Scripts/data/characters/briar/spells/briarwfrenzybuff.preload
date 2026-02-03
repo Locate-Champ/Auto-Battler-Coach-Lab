@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="briarw"}}, 
-{Function=BBPreloadModule, Params={Name="Briar.BriarWFrenzyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="jinxq"}}, 
-{Function=BBPreloadSpell, Params={Name="briarwfrenzystatebuff"}}, 
-}

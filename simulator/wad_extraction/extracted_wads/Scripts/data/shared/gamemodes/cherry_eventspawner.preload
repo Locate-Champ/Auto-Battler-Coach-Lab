@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Cherry_PhaseManager"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_eventgohswainraven"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_eventgohswainravenbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Cherry_EventGoHSwainRaven"}}, 
-}

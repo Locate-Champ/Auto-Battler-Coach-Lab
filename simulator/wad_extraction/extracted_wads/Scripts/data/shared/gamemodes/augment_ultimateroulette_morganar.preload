@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_morganarslow"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_morganardebuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_UltimateRoulette"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_morganarhaste"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_ultimateroulette_morganarvfxmis"}}, 
-}

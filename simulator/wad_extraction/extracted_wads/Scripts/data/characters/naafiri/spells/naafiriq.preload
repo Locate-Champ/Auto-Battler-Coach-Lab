@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Naafiri.NaafiriQShared"}}, 
-{Function=BBPreloadSpell, Params={Name="naafiripackmateleap"}}, 
-{Function=BBPreloadSpell, Params={Name="naafiriqrecast"}}, 
-}

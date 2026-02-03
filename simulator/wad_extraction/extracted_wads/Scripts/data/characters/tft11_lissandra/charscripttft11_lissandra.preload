@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft11_lissandraspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_lissandra3starcookingbuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT11_Lissandra.TFT11_Lissandra3StarCookingBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_lissandraspellmarker"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Ahri.AhriSkin86Manager"}}, 
-{Function=BBPreloadModule, Params={Name="Ahri.AhriSkin85Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="ahriskin86helpwatcher"}}, 
-}

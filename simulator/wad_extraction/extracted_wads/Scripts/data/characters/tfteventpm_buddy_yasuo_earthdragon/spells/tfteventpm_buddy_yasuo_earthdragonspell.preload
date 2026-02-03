@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFTEventPM_Buddy_Yasuo_EarthDragon.TFTEventPM_Buddy_Yasuo_EarthDragonSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_earthdragonspell_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_earthdragonspell_hangtime"}}, 
-{Function=BBPreloadSpell, Params={Name="yasuor"}}, 
---{Function=BBPreloadModule, Params={Name="TFT7_DragonEarth.TFT7_DragonEarthSpell"}}, 
-}

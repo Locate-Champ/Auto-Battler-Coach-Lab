@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Mecha_Item_OperatingSystem"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_azirspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_sionspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_aatroxspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_urgotspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_malphitespell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_aurelionsolspell"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_poppyspell_knockup"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_poppyspell"}}, 
-}

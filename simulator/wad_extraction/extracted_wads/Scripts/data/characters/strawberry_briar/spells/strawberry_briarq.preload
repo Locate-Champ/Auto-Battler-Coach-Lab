@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_briarlockdirection"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Briar.Strawberry_Briar_BleedManager"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_briarwattackspell"}}, 
-}

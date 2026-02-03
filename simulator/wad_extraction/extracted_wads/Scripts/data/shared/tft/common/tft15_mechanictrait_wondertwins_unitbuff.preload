@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_wondertwins_playerbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_WonderTwins_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_WonderTwins_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
-}

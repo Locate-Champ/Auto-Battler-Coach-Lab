@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcuberendernofow"}}, 
-{Function=BBPreloadSpell, Params={Name="sru_plant_demon_buff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Flora"}}, 
-{Function=BBPreloadSpell, Params={Name="plantwithervisibility"}}, 
-}

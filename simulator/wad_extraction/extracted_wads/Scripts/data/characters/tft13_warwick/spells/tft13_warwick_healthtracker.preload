@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_warwick_markedbuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Warwick.TFT13_Warwick_PassiveManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_warwick_fakechampion"}}, 
-}

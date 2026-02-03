@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_FreljordShrineManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_freljordshrinebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_freljordshrine_hextracker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Freljord_Tower_ShroudBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Freljord_AllyBuff"}}, 
-}

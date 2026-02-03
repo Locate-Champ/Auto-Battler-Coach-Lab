@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set11"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT11_Umbral_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_umbral_combatbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_umbral_shieldbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_twistedfatespell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_TwistedFate.TFT16_TwistedFateSpellBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_twistedfatebasicattackempowered"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_twistedfatebasicattack2empowered"}}, 
-}

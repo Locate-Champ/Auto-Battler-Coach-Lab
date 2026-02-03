@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_rakanspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_rakanspell_potentialhealthbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_Rakan.TFT15_RakanSpell_PotentialDash"}}, 
---{Function=BBPreloadModule, Params={Name="TFT15_Rakan.TFT15_RakanSpell_PotentialHealthBuff"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_smolderspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_ArmyBuff_Tracker"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_Smolder.TFT15_Smolder_PassiveBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
-}

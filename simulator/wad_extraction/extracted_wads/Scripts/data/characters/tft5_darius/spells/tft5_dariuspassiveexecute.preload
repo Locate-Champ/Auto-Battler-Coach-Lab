@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft5_dariusq"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_dariusdebuffvfx"}}, 
-{Function=BBPreloadModule, Params={Name="TFT5_Darius.TFT5_DariusPassiveExecute"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_dariusunstoppable"}}, 
-}

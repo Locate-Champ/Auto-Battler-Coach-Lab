@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft4_swainr"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_large"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_small"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_swainqdummymissile"}}, 
-}

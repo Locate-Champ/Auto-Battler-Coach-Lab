@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT7_TraitEffect_Dragonmancer_Buff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_DragonmancerInTraining_Unit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-}

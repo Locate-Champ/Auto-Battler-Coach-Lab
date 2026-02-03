@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_talonrmisone"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_talonrhaste"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_talonrstealth"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_talonrtoggle"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_talonranimbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="perks_presenceofmindtracker"}}, 
-}

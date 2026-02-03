@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="jhinr"}}, 
-{Function=BBPreloadSpell, Params={Name="jhinrsight"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="jhinrslow"}}, 
-{Function=BBPreloadSpell, Params={Name="jhinquestgoldenratiowin"}}, 
-{Function=BBPreloadSpell, Params={Name="jhinquestgoldenratioloss"}}, 
-}

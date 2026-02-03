@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="tft15_leesin"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_jarvanivminionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_jarvanivspellsuppression"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_jarvanivspell"}}, 
-}

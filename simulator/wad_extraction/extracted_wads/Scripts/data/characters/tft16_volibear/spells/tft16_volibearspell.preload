@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_volibearspellmarker"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Volibear.TFT16_VolibearCombatManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

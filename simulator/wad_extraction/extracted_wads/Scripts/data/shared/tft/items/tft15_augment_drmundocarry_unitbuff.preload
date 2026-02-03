@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_drmundospellhero"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_drmundoherobasicattack"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_drmundospell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_drmundoherobasicattack2"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Luchador_UnitBuff"}}, 
-}

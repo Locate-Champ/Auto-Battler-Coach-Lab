@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.UltBook_ZombieDragonSoul"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_zombiedragonsouleffect"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_zombiedragonsoul_cooldown"}}, 
-}

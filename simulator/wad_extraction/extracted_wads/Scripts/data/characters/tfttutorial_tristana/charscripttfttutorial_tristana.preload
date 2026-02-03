@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tfttutorial_tristanaechargesound"}}, 
-{Function=BBPreloadSpell, Params={Name="tfttutorial_tristanae"}}, 
-{Function=BBPreloadSpell, Params={Name="tfttutorial_tristanaecharge"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

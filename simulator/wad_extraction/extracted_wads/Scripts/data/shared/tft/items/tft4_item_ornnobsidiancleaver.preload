@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_checkitemmutuallyexclusive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_obsidiancleaver_teambuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_medium"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_medium"}}, 
-}

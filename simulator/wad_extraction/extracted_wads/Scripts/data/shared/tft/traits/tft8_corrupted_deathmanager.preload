@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft8_fiddlesticksspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_trait_corrupted_mis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Corrupted_UnitBuff"}}, 
-}

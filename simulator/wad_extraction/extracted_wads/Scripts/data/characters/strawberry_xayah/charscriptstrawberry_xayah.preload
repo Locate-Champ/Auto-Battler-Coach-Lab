@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tandemrecallmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_xayaherootmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_xayahevolveslowmanager"}}, 
---{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahFunctionModule"}}, 
-}

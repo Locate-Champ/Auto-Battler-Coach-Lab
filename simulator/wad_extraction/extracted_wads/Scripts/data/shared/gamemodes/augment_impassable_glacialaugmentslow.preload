@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_impassable"}}, 
-{Function=BBPreloadParticle, Params={Name="global_freeze.troy", SkinID="-1"}}, 
-}

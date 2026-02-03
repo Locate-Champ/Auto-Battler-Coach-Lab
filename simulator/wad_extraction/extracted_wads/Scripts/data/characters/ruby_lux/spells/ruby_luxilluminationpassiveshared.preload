@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Ruby_Lux.Ruby_LuxIlluminationPassiveShared"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_luxilluminationpassive"}}, 
-}

@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT15_Udyr.TFT15_UdyrSpell_Passive_Transform"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_udyrspell_transformaura"}}, 
-}

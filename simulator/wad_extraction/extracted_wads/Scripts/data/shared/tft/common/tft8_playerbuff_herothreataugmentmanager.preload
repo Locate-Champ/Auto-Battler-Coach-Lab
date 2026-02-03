@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT8_PlayerBuff_HeroThreatAugmentManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set8"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Traits"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_threshspellauraempowered"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_threshspellhookmanager"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Thresh.TFT16_ThreshSpellHookManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="kogmawicathiansurprisesound"}}, 
-{Function=BBPreloadSpell, Params={Name="unlockanimation"}}, 
-{Function=BBPreloadSpell, Params={Name="kogmawicathiansurpriseready"}}, 
-{Function=BBPreloadCharacter, Params={Name="kogmawdead"}}, 
-}

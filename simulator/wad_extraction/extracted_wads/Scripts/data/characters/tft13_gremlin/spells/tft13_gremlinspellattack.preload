@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_gremlinspell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Gremlin.TFT13_GremlinSpell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="sru_train"}}, 
-{Function=BBPreloadSpell, Params={Name="sru_train_nexus_deathtrigger"}}, 
-{Function=BBPreloadSpell, Params={Name="sru_train_nexus_animchange"}}, 
-{Function=BBPreloadSpell, Params={Name="sr_wintermap_championbuff"}}, 
-}

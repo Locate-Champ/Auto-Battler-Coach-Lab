@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_physical_unitbuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
-}

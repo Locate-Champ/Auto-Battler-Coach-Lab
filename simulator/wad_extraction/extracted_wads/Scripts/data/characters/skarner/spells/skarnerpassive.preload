@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Skarner.SkarnerPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="skarnerdance"}}, 
-{Function=BBPreloadModule, Params={Name="Skarner.SkarnerDance"}}, 
-{Function=BBPreloadSpell, Params={Name="skarnerpassiveattack"}}, 
-{Function=BBPreloadSpell, Params={Name="skarnerpassivedot"}}, 
-{Function=BBPreloadModule, Params={Name="Skarner.SkarnerPassiveDot"}}, 
-}

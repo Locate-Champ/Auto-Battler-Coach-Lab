@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tftevent_pm_playerbuff_roundrewards"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent_pm_buddynpcmanager_playerbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuff_forceanimation"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFTPVE_PlayerBuff"}}, 
-}

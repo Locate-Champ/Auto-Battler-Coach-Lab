@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_mirrorimage"}}, 
-{Function=BBPreloadSpell, Params={Name="globalstealthscreentint"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ClonePet"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_mirrorimage_leblancmistealth"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_mirrorimage_leblancmifull"}}, 
-}

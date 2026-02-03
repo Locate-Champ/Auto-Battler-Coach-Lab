@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_chogath_vorpalspikes"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_chogath_vorpalspikesdebuff"}}, 
-{Function=BBPreloadCharacter, Params={Name="yuumi"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_chogatheattack"}}, 
-{Function=BBPreloadSpell, Params={Name="recentlyflashed"}}, 
-}

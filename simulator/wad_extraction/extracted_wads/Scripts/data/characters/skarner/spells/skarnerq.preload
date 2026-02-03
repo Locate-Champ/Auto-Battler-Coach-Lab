@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="skarnerqfirstclawempower"}}, 
-{Function=BBPreloadSpell, Params={Name="skarnerqsecondclawempower"}}, 
-{Function=BBPreloadSpell, Params={Name="skarnerqrockthrow"}}, 
-{Function=BBPreloadSpell, Params={Name="skarnerqclawattack"}}, 
-{Function=BBPreloadSpell, Params={Name="skarnerqrockattack"}}, 
-{Function=BBPreloadModule, Params={Name="Skarner.SkarnerFunctionModule"}}, 
-}

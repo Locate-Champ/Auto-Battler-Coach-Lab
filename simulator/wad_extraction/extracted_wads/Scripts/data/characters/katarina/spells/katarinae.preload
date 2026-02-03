@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="katarinacastbuffer"}}, 
-{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
-{Function=BBPreloadSpell, Params={Name="katarinaewrapper"}}, 
-{Function=BBPreloadSpell, Params={Name="katarinaetrail"}}, 
-{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Pantheon.PantheonEShieldBuff"}}, 
-}

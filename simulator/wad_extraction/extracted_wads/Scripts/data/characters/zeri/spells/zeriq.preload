@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Zeri.ZeriQPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="zeriqmisempoweredpierceparent"}}, 
-{Function=BBPreloadSpell, Params={Name="zeriqmisempoweredparent"}}, 
-{Function=BBPreloadSpell, Params={Name="zeriqmispierceparent"}}, 
-{Function=BBPreloadSpell, Params={Name="zeriqmisparent"}}, 
-}

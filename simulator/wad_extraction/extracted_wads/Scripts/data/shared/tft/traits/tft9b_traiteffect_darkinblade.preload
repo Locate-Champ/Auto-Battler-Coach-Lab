@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9b_traiteffect_darkinbladetimer"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_darkinimmunity"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9b_trait_worldender_mis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9b_TraitEffect_DarkinBlade"}}, 
-}

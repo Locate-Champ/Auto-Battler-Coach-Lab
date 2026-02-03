@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="tft16_luciansenna"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_lucianrcopy"}}, 
-{Function=BBPreloadSpell, Params={Name="lucianr"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_lucianrmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_lucianrmissileoffhand"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_LucianSenna.TFT16_LucianFunctionModule"}}, 
-}

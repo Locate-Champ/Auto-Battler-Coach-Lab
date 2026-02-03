@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT9_Orianna.TFT9_OriannaSpellShield"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_oriannaspellshield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_oriannaspellbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_oriannanoball"}}, 
-}

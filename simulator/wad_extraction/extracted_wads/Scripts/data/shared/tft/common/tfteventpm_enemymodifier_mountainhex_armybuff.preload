@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_EnemyModifier_MountainHex_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tfteventpm_enemymodifier_mountainhex_unitbuff_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="tfteventpm_enemymodifier_mountainhex_unitbuff_permhealth_controller"}}, 
-}

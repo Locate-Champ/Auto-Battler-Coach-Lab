@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.ARAM_Augment_Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="2141active"}}, 
---{Function=BBPreloadModule, Params={Name="Global.Cherry_AnvilManager"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_udyrspellhero_transform"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_udyrspellhero"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_udyrshurikenbouncemis2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_udyrshurikenbouncemis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_udyrspell_passive_transform"}}, 
-}

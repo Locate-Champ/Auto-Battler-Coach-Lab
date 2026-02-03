@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft4_xayahrfacing"}}, 
-{Function=BBPreloadModule, Params={Name="TFT4_Xayah.TFT4_XayahR"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_xayahr_mis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_xayahr_mis_return"}}, 
-{Function=BBPreloadParticle, Params={Name="global_ss_cleanse.troy", SkinID="-1"}}, 
-{Function=BBPreloadParticle, Params={Name="global_ss_cleanse_avatar.troy", SkinID="-1"}}, 
-}

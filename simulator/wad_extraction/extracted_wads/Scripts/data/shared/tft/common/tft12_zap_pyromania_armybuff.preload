@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_pyro_unitbuff_cinderdrop"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Pyro_UnitBuff_AttackSpeed"}}, 
-}

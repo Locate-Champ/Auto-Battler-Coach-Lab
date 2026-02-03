@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_undyingguardcast"}}, 
-{Function=BBPreloadSpell, Params={Name="zaahenpassive"}}, 
-{Function=BBPreloadSpell, Params={Name="zaahenpassiveresourcetimer"}}, 
-{Function=BBPreloadSpell, Params={Name="zaahenpassiverevivecooldown"}}, 
-}

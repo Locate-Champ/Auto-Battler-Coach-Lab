@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_primespell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Prime.TFT13_PrimeSpell_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_primespell_collisionmanagerhero"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_primespell_knockbackhero"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_primespell_stunhero"}}, 
-}

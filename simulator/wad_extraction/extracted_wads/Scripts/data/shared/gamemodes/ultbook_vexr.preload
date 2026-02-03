@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_vexrtakedowntracker"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_vexrtarget"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_vexrresettimer"}}, 
-}

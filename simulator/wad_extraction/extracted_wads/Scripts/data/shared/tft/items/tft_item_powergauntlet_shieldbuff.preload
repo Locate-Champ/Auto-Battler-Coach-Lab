@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_spellshieldspellimmunity"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_PowerGauntlet_ShieldBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_trapclaw_stun"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_trapclawstun_mis"}}, 
-}

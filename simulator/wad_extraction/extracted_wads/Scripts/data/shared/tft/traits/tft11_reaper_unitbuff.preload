@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_spellcrit_manager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_reaper_enemybleed"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_reaper_enemybleedvfx"}}, 
-}

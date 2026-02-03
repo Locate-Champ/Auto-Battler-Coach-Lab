@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="shyvanapassivecounter"}}, 
-{Function=BBPreloadModule, Params={Name="Shyvana.ShyvanaPassiveCounter"}}, 
-{Function=BBPreloadModule, Params={Name="Shyvana.ShyvanaPassiveHA"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_aram_stackosaurusrex"}}, 
-}

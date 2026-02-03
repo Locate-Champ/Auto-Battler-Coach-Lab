@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft5_item_frozenheartshadow_allydebuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_FrozenHeartShadow_Buff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_item_frozenheartshadowaura_buff"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="ufslash"}}, 
-{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_alistarwq_knockback"}}, 
-{Function=BBPreloadSpell, Params={Name="tft2_malphiter"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_alistarwq_knockup"}}, 
-}

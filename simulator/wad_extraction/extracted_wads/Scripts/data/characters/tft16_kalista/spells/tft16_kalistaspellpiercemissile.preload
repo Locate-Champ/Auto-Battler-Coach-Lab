@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_kalistavfxhold"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_kalistavfxexpunge"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_kalistaspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_kalistaspellarmorshred"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Kalista.TFT16_KalistaSpellArmorShred"}}, 
-}

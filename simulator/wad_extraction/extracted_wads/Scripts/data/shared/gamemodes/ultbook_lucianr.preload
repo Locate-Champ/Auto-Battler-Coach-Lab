@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="lucianr"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_lucianrdisable"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_lucianrmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_lucianrmissileoffhand"}}, 
---{Function=BBPreloadModule, Params={Name="Lucian.LucianPassive"}}, 
-}

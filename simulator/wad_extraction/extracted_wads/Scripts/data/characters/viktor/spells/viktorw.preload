@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="viktorwdelay"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="viktorwdebuffslow"}}, 
-{Function=BBPreloadSpell, Params={Name="viktorwdebuff"}}, 
-}

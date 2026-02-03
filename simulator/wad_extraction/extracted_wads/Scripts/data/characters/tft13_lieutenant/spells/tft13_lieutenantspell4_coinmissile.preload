@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell4_coinarcmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell4"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_lieutenantspell4_coinbuff"}}, 
-}

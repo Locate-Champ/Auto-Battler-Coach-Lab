@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_luxspellmis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_luxspellshield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_luxspellmis2"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-}

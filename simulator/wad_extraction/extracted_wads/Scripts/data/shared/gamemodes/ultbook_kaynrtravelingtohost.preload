@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_kaynrvfxminion"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_kaynrwraithform"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_kaynrhost"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_braum_porotoss"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_braum_targetbufftoensurethrow"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_Braum.TFT15_Braum_TargetBuffToEnsureThrow"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_braumspell_ringout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_braumspell_throw"}}, 
-}

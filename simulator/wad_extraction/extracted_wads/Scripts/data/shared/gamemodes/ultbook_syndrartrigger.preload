@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_syndrarspell"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
-{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
-{Function=BBPreloadModule, Params={Name="Global.UltBook_CharFunctionSyndraR"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_syndraqspell"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_syndrarwillfire"}}, 
-}

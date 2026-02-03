@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="globaltruesight"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_morganar"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_morganarstun"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_morganarbreaksound"}}, 
-}

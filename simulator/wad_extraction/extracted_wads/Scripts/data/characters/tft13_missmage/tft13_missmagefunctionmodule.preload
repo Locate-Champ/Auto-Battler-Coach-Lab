@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_missmagespellringout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_missmagespell"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
---{Function=BBPreloadModule, Params={Name="TFT13_MissMage.TFT13_MissMageFunctionModule"}}, 
-}

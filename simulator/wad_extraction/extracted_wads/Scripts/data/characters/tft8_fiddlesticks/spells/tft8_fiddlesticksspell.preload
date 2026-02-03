@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_fear"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_fiddlesticksspell_untargetable"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_fiddlesticksalive"}}, 
-}

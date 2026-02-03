@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SharedDraft"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_augment_efficientshopper_shareddraftunittaken"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuff_carousel"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
-}

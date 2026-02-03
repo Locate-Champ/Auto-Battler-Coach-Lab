@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Luchador_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_luchador_lockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_luchador_unitbuff_knockup"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_Luchador_GrandSlam_UnitBuff"}}, 
-}

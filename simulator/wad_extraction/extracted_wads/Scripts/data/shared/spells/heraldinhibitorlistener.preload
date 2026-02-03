@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.SRU_RiftHerald_BattleSledCD"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SRU_RiftHerald_HealthbarIcon"}}, 
-{Function=BBPreloadSpell, Params={Name="sru_riftheralddanceon"}}, 
-}

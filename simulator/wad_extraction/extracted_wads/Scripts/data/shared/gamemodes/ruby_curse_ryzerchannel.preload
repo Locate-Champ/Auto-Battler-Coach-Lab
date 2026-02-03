@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_curse_ryzeminimapborderhack"}}, 
-{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_curse_ryzerallyindicators"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_curse_ryzer"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_curse_ryzerwillbeteleported"}}, 
-}

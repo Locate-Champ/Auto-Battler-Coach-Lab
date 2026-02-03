@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="minionnooneshotbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2Champion_DownedManager"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2GoHChampion_Downed"}}, 
-}

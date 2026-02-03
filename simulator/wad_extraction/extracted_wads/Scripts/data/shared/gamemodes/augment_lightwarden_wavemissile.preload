@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_lightwarden_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_lightwarden_hitmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_lightwarden_returnhitmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_lightwarden_wavemissilereturndead"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_lightwarden_wavemissilereturn"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="cherry_447122_blackhole"}}, 
-{Function=BBPreloadSpell, Params={Name="447122slow"}}, 
-{Function=BBPreloadSpell, Params={Name="447112distancemarker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.447122Active"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-}

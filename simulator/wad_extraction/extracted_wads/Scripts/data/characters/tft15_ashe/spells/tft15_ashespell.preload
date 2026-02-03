@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_BulletHell_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_Ashe.TFT15_AsheSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_asheportalmis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_ashe_spellattack"}}, 
-}

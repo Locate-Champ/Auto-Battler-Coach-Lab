@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_DataOverrides"}}, 
-{Function=BBPreloadModule, Params={Name="TFT_ArmoryKeyComponent.TFT_ArmoryKeyComponent"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_DragAndDrop"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerbuff_basicarmory"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_ArmoryConsumable"}}, 
-}

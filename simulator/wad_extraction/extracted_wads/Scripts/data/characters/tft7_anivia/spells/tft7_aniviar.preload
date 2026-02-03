@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft7_aniviardummymarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_small"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-}

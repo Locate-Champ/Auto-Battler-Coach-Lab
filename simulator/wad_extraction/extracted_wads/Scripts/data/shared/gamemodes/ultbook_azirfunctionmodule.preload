@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.CustomTables"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_azirrpoppedspellshield"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_azirrdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_azirrbump"}}, 
-}

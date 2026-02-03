@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="apheliospswapwarning"}}, 
-{Function=BBPreloadModule, Params={Name="Aphelios.ApheliosFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="apheliosoffhandmanager"}}, 
-}

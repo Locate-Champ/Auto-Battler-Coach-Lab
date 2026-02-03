@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_ornnspell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Ornn.TFT16_OrnnRMissileAreaTriggerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ornnrrecentlytargeted"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ornnrwave2"}}, 
-}

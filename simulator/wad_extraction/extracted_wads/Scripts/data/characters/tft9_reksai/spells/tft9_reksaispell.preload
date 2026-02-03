@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT9_Taric.TFT9_TaricSpellBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_reksai_bitemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_reksai_healmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_reksaispelldash"}}, 
-}

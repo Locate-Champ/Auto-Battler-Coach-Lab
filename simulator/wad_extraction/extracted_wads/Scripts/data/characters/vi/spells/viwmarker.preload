@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="viw"}}, 
-{Function=BBPreloadModule, Params={Name="Vi.ViWMarker"}}, 
-{Function=BBPreloadSpell, Params={Name="viwproc"}}, 
-{Function=BBPreloadSpell, Params={Name="viwvisual"}}, 
-}

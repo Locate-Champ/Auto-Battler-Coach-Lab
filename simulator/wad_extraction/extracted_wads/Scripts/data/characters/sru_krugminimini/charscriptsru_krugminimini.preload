@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="npcinitializer"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SocialSRChampionBuff"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_Wraith_DeepeningShadows_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_wraith_damagemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_traiteffect_wraith_missile"}}, 
-}

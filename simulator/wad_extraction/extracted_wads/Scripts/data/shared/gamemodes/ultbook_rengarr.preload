@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rengarpassive"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_rengarrshred"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_rengarrsecondarytarget"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_rengarrvision"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_rengarrprimarytarget"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_rengarpassivebuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.GlobalCamouflage"}}, 
-}

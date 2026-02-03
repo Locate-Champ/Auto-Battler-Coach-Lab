@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft12_neekocrab"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_neekospell_enemy_mis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_neekospell_enemymiscooldown"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_neekospell_ally_mis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_neekospell_allyhealcooldown"}}, 
-}

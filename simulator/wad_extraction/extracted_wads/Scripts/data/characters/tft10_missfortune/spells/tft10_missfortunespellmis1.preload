@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT10_MissFortune.TFT10_MissFortuneSpell_MissileTrackerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_missfortunespell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_missfortunespell_killwatcher_unit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_missfortunespellmis2"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_shyvanar"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_shyvanarknockup"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_shyvanarflamebreath"}}, 
-}

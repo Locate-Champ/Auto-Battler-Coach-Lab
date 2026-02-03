@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Kayn.KaynPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="srhomeguardspeed"}}, 
-{Function=BBPreloadSpell, Params={Name="kaynpmessagekaynhastransformed"}}, 
-}

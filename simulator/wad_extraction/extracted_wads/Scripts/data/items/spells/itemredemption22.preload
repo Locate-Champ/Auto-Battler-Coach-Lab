@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.ItemRedemption22"}}, 
-{Function=BBPreloadSpell, Params={Name="itemangelofmercydebuffally"}}, 
-{Function=BBPreloadSpell, Params={Name="itemredemption"}}, 
-{Function=BBPreloadSpell, Params={Name="itemangelofmercydebuffenemy"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="itemredemptionincominghealingux22"}}, 
-}

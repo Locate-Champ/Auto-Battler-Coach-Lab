@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="LeeSinrkick"}}, 
-{Function=BBPreloadSpell, Params={Name="eternals_movedtowardsalliestracker"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_leesinrmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_leesinrdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_leesinrroot"}}, 
-}

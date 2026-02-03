@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_5YR_TraitManager_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent_5yr_playerbuff_traithexpreview"}}, 
-}

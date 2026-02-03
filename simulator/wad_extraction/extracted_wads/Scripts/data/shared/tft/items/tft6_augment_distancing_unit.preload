@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT6_Augment_Distancing_Unit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_augment_distancing_shield"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
-}

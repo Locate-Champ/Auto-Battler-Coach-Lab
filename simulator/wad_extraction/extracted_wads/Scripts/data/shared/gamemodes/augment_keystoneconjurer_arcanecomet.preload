@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_keystoneconjurer"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_keystoneconjurer_arcanecometrecharge"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_keystoneconjurer_arcanecomet_mis_arc"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_keystoneconjurer_arcanecomet_mis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.AdaptiveDamageModule"}}, 
-}

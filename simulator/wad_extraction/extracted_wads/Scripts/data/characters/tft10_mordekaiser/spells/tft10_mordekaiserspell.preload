@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT10_Mordekaiser.TFT10_MordekaiserSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_mordekaiserspellfinale"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_mordekaiserspellmark"}}, 
-}

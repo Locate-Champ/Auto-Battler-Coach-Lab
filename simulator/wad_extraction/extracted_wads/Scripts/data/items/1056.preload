@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rancher_buff2"}}, 
-{Function=BBPreloadSpell, Params={Name="1056manaregen"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-}

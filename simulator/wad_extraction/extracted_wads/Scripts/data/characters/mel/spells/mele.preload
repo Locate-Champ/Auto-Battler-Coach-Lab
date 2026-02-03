@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="meledot"}}, 
-{Function=BBPreloadSpell, Params={Name="meleroot"}}, 
-{Function=BBPreloadSpell, Params={Name="melecasting"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-}

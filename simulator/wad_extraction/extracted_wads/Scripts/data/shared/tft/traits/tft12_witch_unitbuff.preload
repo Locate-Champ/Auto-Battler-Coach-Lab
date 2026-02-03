@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Augment_Witch_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_witch_unitbuffappliedcurse"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_witch_unitbuff_vfx"}}, 
-}

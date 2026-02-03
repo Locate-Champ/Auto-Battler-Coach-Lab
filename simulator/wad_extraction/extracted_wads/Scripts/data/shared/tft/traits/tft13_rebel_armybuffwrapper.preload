@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_rebel_armybuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_rebel_playerbuffcheats"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Rebel_ArmyBuff"}}, 
-}

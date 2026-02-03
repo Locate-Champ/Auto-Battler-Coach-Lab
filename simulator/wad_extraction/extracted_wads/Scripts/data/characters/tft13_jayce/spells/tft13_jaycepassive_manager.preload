@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT13_Jayce.TFT13_JaycePassive_Manager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_jaycespell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_jaycespell_ranged"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_jaycepassive_summonbuff_revive"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Jayce.TFT13_JaycePassive_SummonBuff"}}, 
-}

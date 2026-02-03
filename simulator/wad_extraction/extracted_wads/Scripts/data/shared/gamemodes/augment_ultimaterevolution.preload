@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Augment_UltimateRevolution"}}, 
-{Function=BBPreloadSpell, Params={Name="annier"}}, 
-{Function=BBPreloadSpell, Params={Name="ivernr"}}, 
-{Function=BBPreloadSpell, Params={Name="yorickr"}}, 
-{Function=BBPreloadModule, Params={Name="Udyr.UdyrPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrpassive"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_shimmerscalemanager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_ShimmerscaleDeterminedInvestor_Buff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_ShimmerscaleManager"}}, 
-}

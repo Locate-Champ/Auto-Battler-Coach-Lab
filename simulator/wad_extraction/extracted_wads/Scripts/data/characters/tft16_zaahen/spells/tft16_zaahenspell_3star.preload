@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_zaahenspell_3star_lockout"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Zaahen.TFT16_ZaahenSpell_3Star"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_zaahenspell_3star_minionbuff"}}, 
-}

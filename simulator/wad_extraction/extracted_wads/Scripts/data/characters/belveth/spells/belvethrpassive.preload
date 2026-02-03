@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Belveth.BelvethRPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="belvethr"}}, 
-{Function=BBPreloadSpell, Params={Name="belvethrpassivestacks"}}, 
-{Function=BBPreloadSpell, Params={Name="belvethrpassivestacksvfx"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_Yorick.TFT10_YorickFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_yorickspell_ghoulbuff_big"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_yorickspell_scalemanager"}}, 
-}

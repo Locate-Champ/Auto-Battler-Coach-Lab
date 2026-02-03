@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="TFT12_TahmKench.TFT12_TahmKenchSpell_Marker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_tahmkenchspellknockup"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_tahmkenchspell_marker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_tahmkenchspellmis"}}, 
-}

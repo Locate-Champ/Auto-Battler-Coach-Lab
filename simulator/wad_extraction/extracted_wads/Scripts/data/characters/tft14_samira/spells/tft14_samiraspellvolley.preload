@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_samiraspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Samira.TFT14_SamiraSpellVolley"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_samiraspell_volleybullet"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_samiraspelldashout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

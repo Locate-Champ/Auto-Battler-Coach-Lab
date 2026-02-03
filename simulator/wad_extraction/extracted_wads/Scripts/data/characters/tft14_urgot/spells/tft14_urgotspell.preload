@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_urgotspellattack"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Urgot.TFT14_UrgotSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_urgotspellexecutemanager"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Urgot.TFT14_UrgotSpellExecuteManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_urgotspellmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_urgotspellattack2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_urgotspelllockon"}}, 
-}

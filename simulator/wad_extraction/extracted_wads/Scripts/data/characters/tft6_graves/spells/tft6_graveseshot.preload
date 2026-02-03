@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft6_gravesconeattackspread"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_gravese"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_gravesegritstack"}}, 
-}

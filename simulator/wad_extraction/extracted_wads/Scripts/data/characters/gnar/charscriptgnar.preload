@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="gnarr"}}, 
-{Function=BBPreloadSpell, Params={Name="gnarbigattacktower"}}, 
-{Function=BBPreloadSpell, Params={Name="gnarbigiscasting"}}, 
-{Function=BBPreloadSpell, Params={Name="gnartransform"}}, 
-}

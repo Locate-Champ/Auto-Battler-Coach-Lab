@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="auroraqeternalmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="auroraqdebufftracker"}}, 
-{Function=BBPreloadSpell, Params={Name="auroraqrecast"}}, 
-}

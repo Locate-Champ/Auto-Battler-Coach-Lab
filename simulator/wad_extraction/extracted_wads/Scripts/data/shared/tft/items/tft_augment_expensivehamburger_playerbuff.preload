@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ExpensiveHamburger_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_ExpensiveHamburger_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_BenchManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_ItemBenchFull"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_augment_expensivehamburger_goldmis"}}, 
-}

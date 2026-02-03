@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_cithriachildspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_PlayerBuff_UnlockableChamps"}}, 
-}

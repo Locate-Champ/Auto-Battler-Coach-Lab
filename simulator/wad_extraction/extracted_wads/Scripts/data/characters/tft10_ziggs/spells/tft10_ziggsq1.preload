@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft10_ziggsq"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_medium"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-}

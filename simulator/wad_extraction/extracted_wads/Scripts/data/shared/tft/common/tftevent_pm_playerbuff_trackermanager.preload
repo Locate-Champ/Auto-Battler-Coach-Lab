@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tftevent_pm_enemybotplayerbuff_trackerupdater"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_PlayerBuff_TrackerManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent_PM_EnemyBotPlayerBuff_TrackerUpdater"}}, 
-}

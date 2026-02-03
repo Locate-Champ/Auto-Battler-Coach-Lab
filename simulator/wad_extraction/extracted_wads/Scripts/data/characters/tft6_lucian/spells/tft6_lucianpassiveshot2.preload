@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft6_luciane"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuffSharpshooter"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

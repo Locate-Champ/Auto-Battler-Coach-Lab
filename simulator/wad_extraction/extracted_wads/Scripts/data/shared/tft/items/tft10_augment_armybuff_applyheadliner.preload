@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT6_ArmyControllerBuff_AugmentManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_ArmyBuff_ApplyHeadliner"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_unitbuff_hero"}}, 
-}

@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT13_6Cost_GlobalUnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
-}

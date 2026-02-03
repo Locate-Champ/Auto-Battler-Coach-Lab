@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_urgotspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Experiment_UrgotBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_experiment_urgotbuff_tempbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_experiment_urgotbuff_shieldbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_experiment_urgotbuff_dash"}}, 
-}

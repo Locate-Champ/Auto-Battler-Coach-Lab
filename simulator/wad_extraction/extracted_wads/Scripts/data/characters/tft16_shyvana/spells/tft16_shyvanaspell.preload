@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="tft16_shyvanadragon"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_ShyvanaUnique_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_shyvanaspelldash"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_teamupaugment_jarvanshyvana_jarvanjumpbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

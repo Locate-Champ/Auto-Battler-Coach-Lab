@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_BulletHell_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_kaisaspell_manager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_viktorspellvfx"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Viktor.TFT13_ViktorSpellVFX"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_viktorspellknockup"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT12_Ahri.TFT12_AhriSpellFoxfireManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_ahrispellfoxfiredamagemis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_ahrispell"}}, 
-}

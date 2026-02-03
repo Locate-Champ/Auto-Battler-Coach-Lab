@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="luxr"}}, 
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="luxdeathparticletimer"}}, 
-{Function=BBPreloadModule, Params={Name="Lux.LuxIlluminationPassive"}}, 
-}

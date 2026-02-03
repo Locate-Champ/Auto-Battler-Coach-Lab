@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_medium"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_medium"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_boss_morganaspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

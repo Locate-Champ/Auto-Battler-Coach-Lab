@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitbuffoverflowedunit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_titanform_sizebuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Board"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Cherry_Destructible_Column.Cherry_Destructible_PillarBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Cherry_PhaseManager"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_destructible_pillarknockaway"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberendernofow"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_destructible_pillarcollisionknockup"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Hellion_ArmyBuff_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_hellion_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_hellion_unitdash"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_hellion_clonebuff"}}, 
-}

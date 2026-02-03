@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft8_unitbuffmageapmultiplier"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_traiteffectmagelockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_traiteffectmagerefresh"}}, 
-}

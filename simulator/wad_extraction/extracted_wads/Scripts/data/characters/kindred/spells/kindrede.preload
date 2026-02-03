@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="kindredewrapper"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="kindredeslow"}}, 
-{Function=BBPreloadSpell, Params={Name="kindredecharge"}}, 
-{Function=BBPreloadSpell, Params={Name="kindredeteamlockout"}}, 
-}

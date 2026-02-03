@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rakane"}}, 
-{Function=BBPreloadSpell, Params={Name="rakanpassive"}}, 
-{Function=BBPreloadSpell, Params={Name="rakanq"}}, 
-{Function=BBPreloadSpell, Params={Name="rakanr"}}, 
-{Function=BBPreloadSpell, Params={Name="rakanwcast"}}, 
-{Function=BBPreloadSpell, Params={Name="rakanw"}}, 
-}

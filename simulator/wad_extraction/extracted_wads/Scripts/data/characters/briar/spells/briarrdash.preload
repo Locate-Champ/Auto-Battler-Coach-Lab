@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="briarr"}}, 
-{Function=BBPreloadSpell, Params={Name="slow"}}, 
-{Function=BBPreloadModule, Params={Name="Briar.BriarP"}}, 
-{Function=BBPreloadSpell, Params={Name="galior"}}, 
-}

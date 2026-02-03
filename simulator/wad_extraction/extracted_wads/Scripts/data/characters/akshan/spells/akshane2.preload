@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
-{Function=BBPreloadSpell, Params={Name="luxr"}}, 
-{Function=BBPreloadSpell, Params={Name="akshane"}}, 
-{Function=BBPreloadSpell, Params={Name="akshane2dash"}}, 
-{Function=BBPreloadModule, Params={Name="Akshan.AkshanFunctionModule"}}, 
-}

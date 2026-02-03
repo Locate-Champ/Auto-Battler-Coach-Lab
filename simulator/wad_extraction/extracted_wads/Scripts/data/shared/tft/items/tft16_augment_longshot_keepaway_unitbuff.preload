@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Longshot_KeepAway_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_augment_longshot_keepaway_knockback"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_augment_longshot_keepaway_enemycooldownmarker"}}, 
-}

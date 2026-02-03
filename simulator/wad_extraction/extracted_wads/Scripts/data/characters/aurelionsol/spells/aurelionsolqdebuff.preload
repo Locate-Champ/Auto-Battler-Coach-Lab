@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="aurelionsolqtimerdebuff"}}, 
-{Function=BBPreloadModule, Params={Name="AurelionSol.AurelionSolQTimerDebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="aurelionsolq"}}, 
-{Function=BBPreloadModule, Params={Name="AurelionSol.AurelionSolQ"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_midnightexpress_threshw"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_midnightexpress_threshidlelanternvfxfull"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SpellAttribution"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_missmagespell_passive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_missmagetrait_unitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_nocritanim_aamanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_6cost_globalunitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_MissMageTrait_PlayerBuff"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="samiraekilltracker"}}, 
-{Function=BBPreloadSpell, Params={Name="samiratauntmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="eternals_samiradashes"}}, 
-}

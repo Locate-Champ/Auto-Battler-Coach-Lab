@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_mordekaiserempoweredattack"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT9_Mordekaiser.TFT9_MordekaiserSpellScaleManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_mordekaiserempoweredattack2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_mordekaiserempoweredattack3"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_mordekaiserspellscalemanager"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="galioqmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="galioqmissiler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.CastInstance"}}, 
-}

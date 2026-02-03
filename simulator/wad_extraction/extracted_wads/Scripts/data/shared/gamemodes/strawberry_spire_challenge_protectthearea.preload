@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_spire_challenge_protectthearea_enemiesintimer"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_spire_challenge_protectthearea_stayinsidebuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
-}

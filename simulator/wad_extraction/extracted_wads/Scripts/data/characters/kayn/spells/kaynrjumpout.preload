@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="kaynr"}}, 
-{Function=BBPreloadParticle, Params={Name="global_heal.troy", SkinID="-1"}}, 
-{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
-}

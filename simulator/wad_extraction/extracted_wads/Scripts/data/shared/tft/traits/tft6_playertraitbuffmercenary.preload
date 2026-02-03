@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft6_playertraitbuffmercenarytrackernew"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT6_PlayerTraitBuffMercenaryTrackerNew"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-}

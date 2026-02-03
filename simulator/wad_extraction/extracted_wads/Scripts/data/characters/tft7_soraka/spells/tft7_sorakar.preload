@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="TFT7_Soraka.TFT7_SorakaR"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_sorakarheal"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_sorakardummy"}}, 
-}

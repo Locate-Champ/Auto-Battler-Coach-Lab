@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Board"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuffoverflowedunit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_augment_thegoldendragon_sizebuff"}}, 
-}

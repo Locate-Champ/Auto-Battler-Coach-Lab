@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="akshanrtargetvision"}}, 
-{Function=BBPreloadSpell, Params={Name="akshanrcancel"}}, 
-{Function=BBPreloadModule, Params={Name="Akshan.AkshanR"}}, 
-{Function=BBPreloadSpell, Params={Name="akshanrfiring"}}, 
-{Function=BBPreloadModule, Params={Name="Akshan.AkshanFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="akshanwhuntrecentlydamaged"}}, 
-{Function=BBPreloadSpell, Params={Name="akshanpassive"}}, 
-}

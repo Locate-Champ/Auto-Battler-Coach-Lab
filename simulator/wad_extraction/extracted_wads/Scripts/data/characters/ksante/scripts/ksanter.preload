@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Camille.CamilleRRange"}}, 
-{Function=BBPreloadModule, Params={Name="KSante.KSanteP"}}, 
-{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
-{Function=BBPreloadModule, Params={Name="Mordekaiser.MordekaiserR_InsideSpiritRealm"}}, 
-}

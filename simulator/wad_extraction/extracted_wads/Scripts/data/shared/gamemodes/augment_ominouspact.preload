@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_ominouspact_lowhealthbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_ominouspact_threshold3"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_ominouspact_threshold2"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_ominouspact_threshold1"}}, 
-}

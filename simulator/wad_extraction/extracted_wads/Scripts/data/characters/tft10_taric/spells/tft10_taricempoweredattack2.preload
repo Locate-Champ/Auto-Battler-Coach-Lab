@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft10_taricspell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_Taric.TFT10_TaricSpellAttackManager"}}, 
-}

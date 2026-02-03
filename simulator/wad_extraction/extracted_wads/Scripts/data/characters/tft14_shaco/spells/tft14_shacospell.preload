@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT14_Shaco.TFT14_ShacoSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_shacospellinvis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Mob_Boss_UnitBuff"}}, 
-}

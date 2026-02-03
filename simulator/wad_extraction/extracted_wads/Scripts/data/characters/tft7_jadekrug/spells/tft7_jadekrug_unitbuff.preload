@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT7_JadeStatueManager"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_augment_jadepenitence_cd"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_JadePenitence_CD"}}, 
-}

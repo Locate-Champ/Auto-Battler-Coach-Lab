@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffhextech"}}, 
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffhextech_cd"}}, 
-{Function=BBPreloadSpell, Params={Name="srt_2025_atakhan_bloodyreward"}}, 
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffhextech_slow"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SRX_DragonSoulBuffHextech_Slow"}}, 
-}

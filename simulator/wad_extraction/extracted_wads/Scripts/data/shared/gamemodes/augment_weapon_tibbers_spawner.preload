@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_weapon_tibbers"}}, 
-{Function=BBPreloadCharacter, Params={Name="strawberry_tibbers"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_tibbersburnaura"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_tibbersownerbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_tibbers_evolvebuff"}}, 
-}

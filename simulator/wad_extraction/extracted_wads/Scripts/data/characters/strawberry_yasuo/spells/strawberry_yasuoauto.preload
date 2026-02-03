@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
-{Function=BBPreloadParticle, Params={Name="strawberry_yasuo_q_windswirl.troy", SkinID="-1"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Yasuo.Strawberry_YasuoEvolveManager"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_yasuoautoevomis"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_yasuoautomis"}}, 
-}

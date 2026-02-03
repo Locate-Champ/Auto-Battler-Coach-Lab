@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="heimertblue"}}, 
-{Function=BBPreloadSpell, Params={Name="heimerdingerturretbehavior"}}, 
-{Function=BBPreloadSpell, Params={Name="heimerdingerq"}}, 
-{Function=BBPreloadSpell, Params={Name="heimerdingersuperturret"}}, 
-{Function=BBPreloadSpell, Params={Name="heimerdingerrcd"}}, 
-}

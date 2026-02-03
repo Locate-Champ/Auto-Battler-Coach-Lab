@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ruby_tristanabasicattack"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_tristanae"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_tristanaechargesound"}}, 
-{Function=BBPreloadSpell, Params={Name="tristanae"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_tristanaecharge"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_crime_item_fleshripper_stealthbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_crime_item_fleshripper_prismaticrevivebuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

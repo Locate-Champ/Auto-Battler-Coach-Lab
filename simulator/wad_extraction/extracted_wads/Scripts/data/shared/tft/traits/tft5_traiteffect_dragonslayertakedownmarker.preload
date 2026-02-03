@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT5_Trundle.TFT5_TrundleRDebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_dragonslayerbuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT5_UnitBuffDragonslayer"}}, 
-}

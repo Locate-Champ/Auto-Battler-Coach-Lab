@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT10_Illaoi.TFT10_IllaoiSpell_Smash"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_Illaoi.TFT10_IllaoiSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_illaoispell"}}, 
-}

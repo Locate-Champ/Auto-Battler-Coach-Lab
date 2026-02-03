@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ruby_brandq"}}, 
-{Function=BBPreloadSpell, Params={Name="arcaderuby_brandstun"}}, 
-{Function=BBPreloadModule, Params={Name="Ruby_Brand.Ruby_BrandPassive"}}, 
-}

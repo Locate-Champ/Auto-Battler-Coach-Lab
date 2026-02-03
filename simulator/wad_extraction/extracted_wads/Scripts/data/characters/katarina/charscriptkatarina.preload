@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="katarinashunpocounter"}}, 
-{Function=BBPreloadSpell, Params={Name="katarinaewrapper"}}, 
-{Function=BBPreloadSpell, Params={Name="katarinaedagger"}}, 
-{Function=BBPreloadSpell, Params={Name="katarinae"}}, 
-}

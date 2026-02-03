@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_5YR_PlayerBuff_BirthdayPenguNPCManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent_5yr_unitbuff_birthdaypengunpcvictorysize"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_CT_PlayerBuff_NPCManager"}}, 
-}

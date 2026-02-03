@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautilusgrandlinestart"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautilusgrandlinetarget"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautiluspiercinggaze"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautilusanchordrag"}}, 
-}

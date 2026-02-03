@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Vi.Crepe_WarwickVsVi_ViStart"}}, 
-{Function=BBPreloadModule, Params={Name="Warwick.Crepe_WarwickVsVi_WWStart"}}, 
-{Function=BBPreloadSpell, Params={Name="crepe_warwickvsvi_wwwin"}}, 
-{Function=BBPreloadSpell, Params={Name="crepe_warwickvsvi_wwdescription"}}, 
-{Function=BBPreloadSpell, Params={Name="crepe_warwickvsvi_wwlose"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="447118sparkready"}}, 
-{Function=BBPreloadSpell, Params={Name="447118sparkdamage"}}, 
-{Function=BBPreloadModule, Params={Name="Global.447118"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="447118objectmissile"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.ContribScores"}}, 
-{Function=BBPreloadSpell, Params={Name="itemblackout"}}, 
-{Function=BBPreloadSpell, Params={Name="trinketsweeperpersistvfx"}}, 
-}

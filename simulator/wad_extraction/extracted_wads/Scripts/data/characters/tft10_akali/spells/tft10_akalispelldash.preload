@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT10_Akali.TFT10_AkaliSpellMark"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_Akali.TFT10_AkaliSpellDash"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_akalispellafterimagemis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_akalispell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_akalispellcombatroll"}}, 
-}

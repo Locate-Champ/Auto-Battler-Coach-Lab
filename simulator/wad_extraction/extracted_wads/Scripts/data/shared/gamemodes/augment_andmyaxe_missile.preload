@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_andmyaxe"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_andmyaxe_hittracker"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_andmyaxe_slowed"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_andmyaxe_debuff"}}, 
-{Function=BBPreloadCharacter, Params={Name="olafaxe"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_andmyaxe_expirationtimer"}}, 
-{Function=BBPreloadSpell, Params={Name="olafaxethrowcast"}}, 
-}

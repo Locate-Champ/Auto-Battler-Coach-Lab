@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_jayceq"}}, 
-{Function=BBPreloadModule, Params={Name="TFT7_Jayce.TFT7_JayceQ"}}, 
-}

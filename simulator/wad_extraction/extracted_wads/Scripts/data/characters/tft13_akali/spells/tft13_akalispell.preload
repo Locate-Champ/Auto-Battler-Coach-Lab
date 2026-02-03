@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Akali.TFT13_AkaliSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_akalispell_facingtargetbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_akalispell_mis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

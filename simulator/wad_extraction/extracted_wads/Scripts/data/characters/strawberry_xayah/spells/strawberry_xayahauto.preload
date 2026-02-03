@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
-{Function=BBPreloadParticle, Params={Name="strawberry_xayah_base_w_cas_sfx_only.troy ", SkinID="-1"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_xayahlockdirection"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Xayah.Strawberry_XayahPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_xayahautomis"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_xayahautomisevolve"}}, 
-}

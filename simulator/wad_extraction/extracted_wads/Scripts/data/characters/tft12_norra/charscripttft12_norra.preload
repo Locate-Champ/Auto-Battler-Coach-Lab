@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_nocritanim_aamanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_norra_armybuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_norraspell3starportalchaos"}}, 
-{Function=BBPreloadModule, Params={Name="TFT12_Norra.TFT12_Norra_ArmyBuff"}}, 
-}

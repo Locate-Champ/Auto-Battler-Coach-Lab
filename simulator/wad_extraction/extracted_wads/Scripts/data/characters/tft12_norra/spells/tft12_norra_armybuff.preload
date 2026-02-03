@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT12_Norra.TFT12_Norra_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_norra_yuumi_host_unitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_norra_yuumi_attached_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT12_Norra.TFT12_Norra_Yuumi_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_norra_yuumi_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_disallowitemdrops"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_ThiefsGlovesShadow_Buff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_thiefsgloves_ceremony"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_Item_ThiefsGloves_Buff"}}, 
-}

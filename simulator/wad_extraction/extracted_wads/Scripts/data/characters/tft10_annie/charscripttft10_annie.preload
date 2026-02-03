@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_Annie.TFT10_AnnieQ"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_annieq"}}, 
-}

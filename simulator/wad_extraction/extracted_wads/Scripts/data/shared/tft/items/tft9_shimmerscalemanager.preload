@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_ShimmerscaleManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_BenchManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_shimmerscale_itemorbbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Shimmerscale_ItemOrbBuff"}}, 
-}

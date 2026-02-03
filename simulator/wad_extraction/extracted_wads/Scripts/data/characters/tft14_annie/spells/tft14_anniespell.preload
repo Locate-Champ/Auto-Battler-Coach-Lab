@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_anniemain_mis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_anniesecondary_mis1"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_anniesecondary_mis2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_anniesecondary_mis3"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_anniesecondary_mis4"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

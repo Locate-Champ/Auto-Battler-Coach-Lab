@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Malzahar.TFT13_Malzahar_FunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_malzaharspellmis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_malzaharspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_small"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_malzaharspellinfection"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Malzahar.TFT13_MalzaharSpellInfection"}}, 
-}

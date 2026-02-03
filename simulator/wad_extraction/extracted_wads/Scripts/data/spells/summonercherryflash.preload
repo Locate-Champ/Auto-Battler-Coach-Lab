@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadParticle, Params={Name="global_ss_flash.troy", SkinID="-1"}}, 
-{Function=BBPreloadParticle, Params={Name="global_ss_flash_02.troy", SkinID="-1"}}, 
-{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="summonercherryflashroundcooldownbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_Flashbang"}}, 
-}

@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_fizzr"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_fizzrbomb"}}, 
-{Function=BBPreloadSpell, Params={Name="fizzshark"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_fizzshark"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_fizzrslow"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_fizzrmoveback"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_fizzrhop"}}, 
-}

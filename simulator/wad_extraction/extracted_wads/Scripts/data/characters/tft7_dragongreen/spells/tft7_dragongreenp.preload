@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragongreenattack1"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragongreenattack2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragongreenattack3"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

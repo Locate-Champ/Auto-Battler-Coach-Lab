@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_zedspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_zedmark_unitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_zedunstoppable"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_zeduntargetable"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft14_zedshadow"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_zed_clonebuff"}}, 
-}

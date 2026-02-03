@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_snowballupgrade_aoe"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_SnowballRoulette"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_fetch_bounce"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-}

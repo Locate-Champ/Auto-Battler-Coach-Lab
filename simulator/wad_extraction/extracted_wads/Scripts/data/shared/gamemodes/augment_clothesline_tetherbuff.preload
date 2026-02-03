@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_clothesline"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_Clothesline_TetherBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_clothesline_sfx"}}, 
-}

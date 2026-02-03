@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="orianaglobalcooldown"}}, 
-{Function=BBPreloadSpell, Params={Name="moveawaycollision"}}, 
-{Function=BBPreloadSpell, Params={Name="orianastun"}}, 
-}

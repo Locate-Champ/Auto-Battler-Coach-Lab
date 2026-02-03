@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Aphelios.ApheliosFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="aphelioslockfacing"}}, 
-{Function=BBPreloadSpell, Params={Name="apheliosseverumlineattack"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemStatikShank"}}, 
-{Function=BBPreloadSpell, Params={Name="haste"}}, 
-}

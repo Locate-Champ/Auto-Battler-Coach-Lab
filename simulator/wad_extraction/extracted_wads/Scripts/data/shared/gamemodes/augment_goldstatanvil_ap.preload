@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="2v2statanvil_master"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2StatAnvil_Master"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_Manager"}}, 
-}

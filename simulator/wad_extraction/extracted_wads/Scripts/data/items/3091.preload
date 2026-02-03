@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="witsend"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-}

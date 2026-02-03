@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Piltover_ArmyBuff_Permanent"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-}

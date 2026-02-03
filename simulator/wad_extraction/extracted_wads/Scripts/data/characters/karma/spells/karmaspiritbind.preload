@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="karmamantra"}}, 
-{Function=BBPreloadSpell, Params={Name="globaltruesight"}}, 
-{Function=BBPreloadSpell, Params={Name="karmawbeammantra"}}, 
-{Function=BBPreloadSpell, Params={Name="karmawbeam"}}, 
-{Function=BBPreloadSpell, Params={Name="karmaspiritbindroot"}}, 
-}

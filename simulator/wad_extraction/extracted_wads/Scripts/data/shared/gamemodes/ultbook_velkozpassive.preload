@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_velkozresearchapply"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_velkozresearchproc"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_velkozresearchstack"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_velkozr"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_velkozrdeconstructiontimer"}}, 
-{Function=BBPreloadSpell, Params={Name="velkozr"}}, 
-}

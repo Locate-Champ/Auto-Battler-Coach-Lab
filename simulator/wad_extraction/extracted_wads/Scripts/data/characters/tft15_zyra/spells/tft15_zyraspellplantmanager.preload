@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_zyraspell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_Zyra.TFT15_ZyraSpellPlantManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_zyrathornplantmis"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="taliyahqisfiring"}}, 
-{Function=BBPreloadModule, Params={Name="Taliyah.FunctionsTaliyah"}}, 
-{Function=BBPreloadModule, Params={Name="Taliyah.TaliyahQWorkedGroundManager"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadModule, Params={Name="Global.CastInstance"}}, 
-}

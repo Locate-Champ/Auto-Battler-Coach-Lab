@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Immortal_GoldManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Immortal_PropManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_immortal_propmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_immortal_prop_buff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ScriptDataFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Immortal_UnitBuff"}}, 
-}

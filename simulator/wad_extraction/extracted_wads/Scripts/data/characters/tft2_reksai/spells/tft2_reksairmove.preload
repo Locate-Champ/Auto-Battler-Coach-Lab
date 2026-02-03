@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft2_reksairmovelockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT2_SpellUtilityFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="reksair"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT12_Hecarim.TFT12_HecarimSpellChargeManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_hecarimspellcharge"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_hecarimspellempowered"}}, 
-}

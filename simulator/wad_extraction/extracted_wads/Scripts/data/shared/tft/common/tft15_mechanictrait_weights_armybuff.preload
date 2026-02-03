@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Weights_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Weights_UnitBuff"}}, 
-}

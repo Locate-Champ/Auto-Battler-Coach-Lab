@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="pykeq"}}, 
-{Function=BBPreloadSpell, Params={Name="hitbyconfirmedpull"}}, 
-{Function=BBPreloadSpell, Params={Name="pykeqmelee"}}, 
-{Function=BBPreloadSpell, Params={Name="pykeqselfroot"}}, 
-}

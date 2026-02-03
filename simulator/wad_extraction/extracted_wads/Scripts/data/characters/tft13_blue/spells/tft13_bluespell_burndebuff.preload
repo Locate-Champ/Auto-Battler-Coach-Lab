@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_bluespell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_burning_xsmall"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Blue.TFT13_BlueSpell_BurnDebuff"}}, 
-}

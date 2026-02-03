@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="Ruby_Dianacombatbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Dianapassivemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Dianaarcready"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Dianapbonusas"}}, 
-{Function=BBPreloadSpell, Params={Name="eternals_moveblockusetracker"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Dianaenemybehind"}}, 
-}

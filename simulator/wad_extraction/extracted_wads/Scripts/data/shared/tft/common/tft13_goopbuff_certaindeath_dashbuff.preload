@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_fear"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_CertainDeath"}}, 
-}

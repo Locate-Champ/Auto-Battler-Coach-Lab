@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Cherry_LevelScript"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2ChampionBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Cherry_StageScript"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2votecooldownbuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.2v2VotePhaseBuff"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT13_Viktor.TFT13_ViktorSpell_3Star_Suppression"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Viktor.TFT13_ViktorSpell_3Star"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_viktorthreestarmissile2"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_xeratharcanopulsechargeup"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_xerathqsoundbuff"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_xerathexpirationtimer"}}, 
-}

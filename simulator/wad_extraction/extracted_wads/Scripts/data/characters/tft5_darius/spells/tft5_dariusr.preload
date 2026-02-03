@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft5_dariusrlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_dariusunstoppable"}}, 
-{Function=BBPreloadModule, Params={Name="TFT5_Darius.TFT5_DariusR"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_medium"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_dariusrhealingbuff"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft5_darius"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_dariusrwolfver"}}, 
-}

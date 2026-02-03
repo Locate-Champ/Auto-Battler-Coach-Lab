@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Ziggs.TFT16_ZiggsSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ziggsspellmissile_short"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ziggsspellmissile_long"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ziggsspellmissile_medium"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

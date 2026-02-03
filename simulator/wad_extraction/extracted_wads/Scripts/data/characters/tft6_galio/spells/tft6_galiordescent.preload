@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT6_Galio.TFT6_GalioRDescent"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_galior"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_galiorknockup"}}, 
-}

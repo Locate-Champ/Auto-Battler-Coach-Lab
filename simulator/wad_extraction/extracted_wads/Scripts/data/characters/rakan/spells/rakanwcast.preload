@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Rakan.RakanGetSpellData"}}, 
-{Function=BBPreloadSpell, Params={Name="rakanw"}}, 
-{Function=BBPreloadSpell, Params={Name="rakanwcharm"}}, 
-{Function=BBPreloadModule, Params={Name="Rakan.RakanFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="eternals_rakanwecombotracker"}}, 
-{Function=BBPreloadModule, Params={Name="Rakan.Eternals_RakanWEComboTracker"}}, 
-}

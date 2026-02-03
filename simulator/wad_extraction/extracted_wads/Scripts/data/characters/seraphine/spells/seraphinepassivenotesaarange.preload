@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="seraphinepassive"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ParticleTools"}}, 
-{Function=BBPreloadModule, Params={Name="Seraphine.SeraphineFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="seraphinepassiveattack"}}, 
-}

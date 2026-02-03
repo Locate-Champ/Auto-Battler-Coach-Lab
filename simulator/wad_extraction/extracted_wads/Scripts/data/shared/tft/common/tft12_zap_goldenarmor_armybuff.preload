@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Zap_GoldenArmor_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Zap_GoldenArmor_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_zap_goldenarmor_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_UniversalBuffManager_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-}

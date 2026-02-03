@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_leblancspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft13_leblanc"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_leblancspellminionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_leblancchainmissile"}}, 
-}

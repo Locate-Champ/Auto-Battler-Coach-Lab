@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_CosmicRhythm"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_cosmicrhythm_timer"}}, 
-}

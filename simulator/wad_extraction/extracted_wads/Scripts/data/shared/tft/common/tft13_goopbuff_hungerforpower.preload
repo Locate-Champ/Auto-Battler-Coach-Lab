@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_HungerForPower"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_hungerforpower_persistentbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_HungerForPower_PersistentBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_hungerforpower_combatbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_hungerforpower_targetindicator"}}, 
-}

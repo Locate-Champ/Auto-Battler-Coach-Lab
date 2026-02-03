@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft3_cassiopeiaq"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

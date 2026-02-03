@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_SoleFighter_ArmyBuff_Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_solefighter_unitbuff_soulfighterincrease"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_SoleFighter_UnitBuff_SoulFighterIncrease"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="azirspellqueueerange"}}, 
-{Function=BBPreloadSpell, Params={Name="azire"}}, 
-{Function=BBPreloadModule, Params={Name="Azir.AzirFunctionModule"}}, 
-}

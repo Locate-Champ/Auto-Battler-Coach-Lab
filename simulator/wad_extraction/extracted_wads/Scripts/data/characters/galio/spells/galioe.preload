@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="galioemove"}}, 
-{Function=BBPreloadSpell, Params={Name="galioewallcheck"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="galioeprepanim"}}, 
-}

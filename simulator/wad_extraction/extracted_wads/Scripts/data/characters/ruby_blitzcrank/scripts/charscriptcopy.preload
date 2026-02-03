@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="Ruby_Blitzcrank_Ruby_Blitzcrank_ManaBarrierIcon"}}, 
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Blitzcrank_StaticField"}}, 
-}

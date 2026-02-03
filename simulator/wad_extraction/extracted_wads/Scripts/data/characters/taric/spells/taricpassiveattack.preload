@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Taric.TaricPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="taricpassive"}}, 
-{Function=BBPreloadSpell, Params={Name="taricpassiveattackparticle"}}, 
-}

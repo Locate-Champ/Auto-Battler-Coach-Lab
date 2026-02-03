@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="kindredpassivemanager"}}, 
-{Function=BBPreloadSpell, Params={Name="kindredw"}}, 
-{Function=BBPreloadSpell, Params={Name="kindreduiincombatbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="kindreddisguisebuff"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT14_Draven.TFT14_DravenFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_dravenspell_ult"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

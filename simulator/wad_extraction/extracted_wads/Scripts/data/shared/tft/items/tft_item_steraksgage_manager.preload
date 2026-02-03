@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_item_steraksgage_shield"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_SteraksGage_Manager"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_Error"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_ItemRemover"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_crime_consumable_trackerbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Crime_Consumable_TrackerBuff"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_leesin_stancemanager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_DragonFist_PlayerBuff_Manager"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_LeeSin.TFT15_LeeSin_StanceManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_leesinspell_tankstance_3star"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

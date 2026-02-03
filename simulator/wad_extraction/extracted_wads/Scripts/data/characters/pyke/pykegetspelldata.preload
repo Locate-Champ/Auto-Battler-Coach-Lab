@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="pykee"}}, 
-{Function=BBPreloadSpell, Params={Name="pykepassive"}}, 
-{Function=BBPreloadSpell, Params={Name="pyker"}}, 
-{Function=BBPreloadSpell, Params={Name="pykew"}}, 
-{Function=BBPreloadSpell, Params={Name="pykephealon"}}, 
-{Function=BBPreloadSpell, Params={Name="pykephealoff"}}, 
-}

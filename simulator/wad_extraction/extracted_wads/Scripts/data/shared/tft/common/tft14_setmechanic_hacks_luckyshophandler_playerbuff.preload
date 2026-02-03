@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Hacks_LuckyShop_Level"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_LuckyShopHandler_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set14"}}, 
-}

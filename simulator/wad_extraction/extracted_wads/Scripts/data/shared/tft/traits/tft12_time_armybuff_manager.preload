@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Time_ArmyBuff_Manager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12b"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_UnitBuff_Time"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Zap_Quickening_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_unitbuff_time_stun"}}, 
-}

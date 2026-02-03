@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Pyro_ArmyBuff_KillTracker"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_pyro_infernalcinderbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Pyro_UnitBuff_AttackSpeed"}}, 
-}

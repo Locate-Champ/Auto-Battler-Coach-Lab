@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Traits"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_PlayerBuff_Bound_PermanentManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set12a"}}, 
-}

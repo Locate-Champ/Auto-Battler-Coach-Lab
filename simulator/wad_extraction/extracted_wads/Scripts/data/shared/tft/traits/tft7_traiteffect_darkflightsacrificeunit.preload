@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_DarkflightSoulSiphon_Unit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT7_TraitEffect_DarkflightSacrificeUnit"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_storyweaver7_supportlockoutbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_darkflighthealthbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_darkflightdummyitem"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

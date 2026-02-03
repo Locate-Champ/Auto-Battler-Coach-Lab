@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="bardpchimespawnlogicsr"}}, 
-{Function=BBPreloadSpell, Params={Name="bardpchimespawnlogicfallbackrandom"}}, 
-{Function=BBPreloadSpell, Params={Name="bardptooltip_d_ns"}}, 
-{Function=BBPreloadSpell, Params={Name="bardpdisplayrequiredchimes"}}, 
-{Function=BBPreloadSpell, Params={Name="bardpreconnectorderlistener"}}, 
-{Function=BBPreloadModule, Params={Name="Bard.BardPChimes"}}, 
-}

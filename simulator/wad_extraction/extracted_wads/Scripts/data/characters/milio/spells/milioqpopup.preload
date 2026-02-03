@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="milioq"}}, 
-{Function=BBPreloadSpell, Params={Name="milioqslow"}}, 
-{Function=BBPreloadModule, Params={Name="Milio.MilioPassive"}}, 
-}

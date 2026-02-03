@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Briar.BriarP"}}, 
-{Function=BBPreloadSpell, Params={Name="briarpbleed"}}, 
-{Function=BBPreloadModule, Params={Name="Briar.BriarPBleed"}}, 
-}

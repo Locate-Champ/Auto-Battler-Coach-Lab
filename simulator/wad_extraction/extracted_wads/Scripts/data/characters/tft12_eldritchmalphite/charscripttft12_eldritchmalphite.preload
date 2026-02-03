@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_eldritchmalphitespell_entrance"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_eldritchmalphitespell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_miliomanager_unitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_miliomanager_armybuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_milio_expanditem_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Item"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

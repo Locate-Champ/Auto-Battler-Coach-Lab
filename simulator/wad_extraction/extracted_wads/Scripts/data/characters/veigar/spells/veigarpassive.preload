@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Veigar.VeigarPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="veigardarkmatter"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_stackosaurusrex"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_aram_stackosaurusrex"}}, 
-}

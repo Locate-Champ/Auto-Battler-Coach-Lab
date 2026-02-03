@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_zyraspell_missile_small"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_zyraspell_knockup"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_zyraspell"}}, 
-}

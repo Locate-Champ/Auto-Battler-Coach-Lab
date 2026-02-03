@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_ekkorheal"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_ekkorminion"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_ekkorinvuln"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_ekkorstatstonetracker"}}, 
-}

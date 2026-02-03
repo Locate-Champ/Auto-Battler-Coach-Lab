@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_gangplankr"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_gangplankrzone"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_gangplankrinitialimpact"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_gangplankrzonespeed"}}, 
-}

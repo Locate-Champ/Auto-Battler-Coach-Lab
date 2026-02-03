@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_HeadlinerWoodlandCharm_Unit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT6_Augment_WoodlandCharm_Unit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_augment_woodlandcharm_clonebuff"}}, 
-}

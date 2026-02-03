@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.outerTurretBonus"}}, 
-{Function=BBPreloadParticle, Params={Name="sruap_turret_fortification_base_damagereduction.troy", SkinID="-1"}}, 
-{Function=BBPreloadSpell, Params={Name="srt_laneswapminionbonus"}}, 
-{Function=BBPreloadSpell, Params={Name="srt_laneswapminionredirect"}}, 
-{Function=BBPreloadSpell, Params={Name="turretdamagemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="srt_laneswapminionpenalty"}}, 
-}
