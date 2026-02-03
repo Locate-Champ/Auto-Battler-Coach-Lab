@@ -1,6 +1,6 @@
 # TFT Coach Development Checklist
 
-> Last updated: 2026-01-31
+> Last updated: 2026-02-02
 
 ---
 
@@ -108,6 +108,27 @@
 
 ---
 
+## Phase 8: Combat Simulator (IN PROGRESS)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 8.1 | Combat engine core | ✅ Done | simulator/core/combat_engine.py |
+| 8.2 | Champion data extraction | ✅ Done | combat_data.json with all Set 16 data |
+| 8.3 | Champion abilities module | ✅ Done | 40+ champions in champion_abilities.py |
+| 8.4 | Augment system | ✅ Done | 284 augments, 131 combat-relevant |
+| 8.5 | Item effects | ✅ Done | Items impact combat stats |
+| 8.6 | Trait bonuses | ✅ Done | 10 stat-buffing traits auto-apply at combat start |
+| 8.7 | 1v1 simulation | ✅ Done | simulate_1v1() with statistics |
+| 8.8 | Team combat | ✅ Done | run_combat() for full team fights |
+| 8.9 | Lucian→Senna transition | ❌ Todo | Complex champion transformation |
+| 8.10 | Shadow Isles soul system | ❌ Todo | Thresh/Gwen/Kalista/Viego scaling |
+| 8.11 | Ryze trait-dependent ability | ❌ Todo | 25+ trait interactions |
+| 8.12 | Sylas trifold rotation | ❌ Todo | 3 stolen abilities, no repeat |
+| 8.13 | Remaining champion mechanics | ⚠️ Partial | Tahm Kench, Galio, T-Hex, Baron |
+| 8.14 | Trait name standardization | ✅ Done | Backend→display names (e.g., TFT16_Sorcerer→Arcanist) |
+
+---
+
 ## Quick Reference: What's Next?
 
 ### High Priority (Immediate Value)
@@ -141,9 +162,10 @@
 | Advanced Features | 1 | 2 | 3 | 6 |
 | Automation & Scaling | 0 | 0 | 5 | 5 |
 | Polish & Publishing | 0 | 1 | 5 | 6 |
-| **TOTAL** | **35** | **6** | **14** | **55** |
+| Combat Simulator | 9 | 1 | 4 | 14 |
+| **TOTAL** | **44** | **7** | **18** | **69** |
 
-**Overall Progress: ~64% complete (35 done + 6 partial of 55 tasks)**
+**Overall Progress: ~64% complete (44 done + 7 partial of 69 tasks)**
 
 ---
 
