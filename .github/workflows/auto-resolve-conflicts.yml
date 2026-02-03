@@ -42,7 +42,7 @@ jobs:
           git merge --no-ff --no-edit -X ${{ inputs.strategy }} origin/${{ inputs.base }}
 
       - name: Create conflict-resolved PR
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: auto-resolve/${{ inputs.head }}
           title: "Auto-resolve conflicts for ${{ inputs.head }}"
