@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="gangplankqwrapper"}}, 
-{Function=BBPreloadModule, Params={Name="Gangplank.GangplankQProceed"}}, 
-{Function=BBPreloadSpell, Params={Name="gangplankqvograves"}}, 
-{Function=BBPreloadSpell, Params={Name="gangplankqvokill"}}, 
-}

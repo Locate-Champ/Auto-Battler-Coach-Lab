@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="gweneempoweredattack"}}, 
-{Function=BBPreloadModule, Params={Name="Gwen.GwenRRecast"}}, 
-{Function=BBPreloadSpell, Params={Name="gwenbasicattack_rresetcannotcancel"}}, 
-{Function=BBPreloadSpell, Params={Name="gwene"}}, 
-{Function=BBPreloadModule, Params={Name="Gwen.GwenZ_GeneralFunctions"}}, 
-}

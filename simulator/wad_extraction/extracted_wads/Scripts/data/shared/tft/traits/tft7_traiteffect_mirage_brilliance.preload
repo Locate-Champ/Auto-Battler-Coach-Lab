@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_traiteffect_mirage_brilliancepiratechestbuff"}}, 
-}

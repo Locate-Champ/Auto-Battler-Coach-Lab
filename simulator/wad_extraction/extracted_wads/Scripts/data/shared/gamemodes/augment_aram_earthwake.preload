@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_Earthwake"}}, 
-{Function=BBPreloadCharacter, Params={Name="aniviaiceblock"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_aram_earthwake_buff"}}, 
-{Function=BBPreloadSpell, Params={Name="crystallize"}}, 
-}

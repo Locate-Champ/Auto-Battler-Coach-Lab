@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT11_Irelia.TFT11_Irelia_Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unit_nomanafromincdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_ireliaspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_irelia_ba_splinemis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_irelia_spell_splinemis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_irelia_allydanceparty"}}, 
-}

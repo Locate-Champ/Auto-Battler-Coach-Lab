@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_renektonspellempowered"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

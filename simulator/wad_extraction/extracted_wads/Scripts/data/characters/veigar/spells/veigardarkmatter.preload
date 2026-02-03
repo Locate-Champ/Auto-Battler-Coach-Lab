@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="veigardarkmattercastlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="veigarpassive"}}, 
-{Function=BBPreloadModule, Params={Name="Veigar.VeigarPassive"}}, 
-}

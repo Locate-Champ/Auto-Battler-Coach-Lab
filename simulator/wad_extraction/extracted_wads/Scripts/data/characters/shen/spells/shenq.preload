@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="shenqmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="shenqtransmitter"}}, 
-{Function=BBPreloadModule, Params={Name="Shen.ShenFunctions"}}, 
-}

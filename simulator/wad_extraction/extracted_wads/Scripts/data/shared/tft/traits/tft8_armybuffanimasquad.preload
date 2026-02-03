@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_UnitBuffAnimaSquad"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

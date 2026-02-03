@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_PackTactics_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_PackTactics_PackBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft15_naafiri"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_packtactics_packbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-}

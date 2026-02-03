@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_zoespell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

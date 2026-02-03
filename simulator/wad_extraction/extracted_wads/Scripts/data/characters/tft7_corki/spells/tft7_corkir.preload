@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="TFT7_Corki.TFT7_CorkiR"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_corkirmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_corkirbigone"}}, 
-}

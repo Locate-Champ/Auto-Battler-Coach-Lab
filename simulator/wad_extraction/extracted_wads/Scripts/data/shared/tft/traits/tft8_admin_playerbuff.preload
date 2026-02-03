@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Admin_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Admin_UnitBuff"}}, 
-}

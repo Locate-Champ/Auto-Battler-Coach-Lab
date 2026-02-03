@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_lulupolymorphspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_luluw"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-}

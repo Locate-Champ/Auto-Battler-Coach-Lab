@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Kindred.TryndamereVsKindredKindredStart"}}, 
-{Function=BBPreloadModule, Params={Name="Tryndamere.TryndamereVsKindredTryndamereStart"}}, 
-{Function=BBPreloadSpell, Params={Name="tryndamerevskindredkindredwin"}}, 
-{Function=BBPreloadSpell, Params={Name="tryndamerevskindredtryndamereloss"}}, 
-{Function=BBPreloadSpell, Params={Name="tryndamerevskindredkindredrecentlyulted"}}, 
-{Function=BBPreloadSpell, Params={Name="tryndamerevskindredkindreddescription"}}, 
-}

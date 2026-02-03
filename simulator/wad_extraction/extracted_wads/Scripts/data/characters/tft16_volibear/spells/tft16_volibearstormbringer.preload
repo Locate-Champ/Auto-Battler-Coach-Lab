@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_Volibear.TFT16_VolibearStormbringer"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_volibearspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_volibearstormbringerlightningmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_volibearstormbringerleap"}}, 
-}

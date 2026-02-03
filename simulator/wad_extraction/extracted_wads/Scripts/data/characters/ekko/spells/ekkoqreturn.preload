@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Ekko.EkkoFunctions"}}, 
-{Function=BBPreloadModule, Params={Name="Global.CastInstance"}}, 
-{Function=BBPreloadSpell, Params={Name="ekkoq"}}, 
-{Function=BBPreloadSpell, Params={Name="ekkoqcatchvo"}}, 
-}

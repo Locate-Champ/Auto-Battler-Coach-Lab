@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Edgelord_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Bastion_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Heavyweight_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Prodigy_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Sniper_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Spellslinger_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Strategist_UnitBuff"}}, 
-}

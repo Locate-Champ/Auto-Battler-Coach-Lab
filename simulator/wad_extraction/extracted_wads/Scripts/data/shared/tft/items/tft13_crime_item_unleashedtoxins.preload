@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_crime_item_unleashedtoxins_mis2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_crime_item_unleashedtoxins_mis1"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_item_crime_unleashedtoxins_mis"}}, 
-}

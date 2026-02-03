@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_6cost_globalunitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_warwick_passivemanager"}}, 
-}

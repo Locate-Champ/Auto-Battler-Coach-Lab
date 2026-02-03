@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT14_Rengar.TFT14_RengarSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_rengarspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_rengarflurry"}}, 
-}

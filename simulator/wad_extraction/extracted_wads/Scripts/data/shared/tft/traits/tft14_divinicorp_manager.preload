@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Divinicorp_Manager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Divinicorp_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_Divinicorp_Splash_ArmyBuff"}}, 
-}

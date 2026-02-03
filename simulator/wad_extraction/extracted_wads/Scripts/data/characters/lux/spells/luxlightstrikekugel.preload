@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="luxeslow"}}, 
-{Function=BBPreloadModule, Params={Name="Lux.LuxIlluminationPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="luxultimateskinelementmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="luxlightstriketoggle"}}, 
-}

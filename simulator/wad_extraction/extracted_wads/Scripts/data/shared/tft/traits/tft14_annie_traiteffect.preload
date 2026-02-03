@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Annie.TFT14_AnnieSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_anniespell"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft7_nomsyspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_nomsyspellbounce"}}, 
-}

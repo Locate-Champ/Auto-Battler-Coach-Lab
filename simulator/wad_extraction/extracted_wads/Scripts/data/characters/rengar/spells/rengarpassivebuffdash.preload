@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rengarrbonusdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="eternal_rengarjumpstochampions"}}, 
-{Function=BBPreloadSpell, Params={Name="rengarpassivebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="rengarqattack"}}, 
-{Function=BBPreloadSpell, Params={Name="rengarpassiveattack"}}, 
-}

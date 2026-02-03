@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_mecha_item_nanofabricator_armybuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Mecha_Item_NanoFabricator"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Mecha_Item_NanoFabricator_ArmyBuff"}}, 
-}

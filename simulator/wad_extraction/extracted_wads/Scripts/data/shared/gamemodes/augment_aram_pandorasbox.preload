@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_PandorasBox"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ARAM_Augment_Manager"}}, 
---{Function=BBPreloadModule, Params={Name="Global.Augment_Manager"}}, 
-}

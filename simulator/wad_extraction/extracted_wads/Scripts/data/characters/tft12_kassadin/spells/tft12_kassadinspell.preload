@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT12_Kassadin.TFT12_KassadinSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_kassadinspell_shield"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_TraitEffectMageRefresh"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="sru_horde_mini"}}, 
-{Function=BBPreloadSpell, Params={Name="elisespiderling"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_eventmonsterbuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.Cherry_EventSpawner"}}, 
-}

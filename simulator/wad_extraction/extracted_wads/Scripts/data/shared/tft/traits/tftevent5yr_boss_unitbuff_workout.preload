@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_boss_unitbuff_return"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_UnitStatus_HealingReduction"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_boss_unitbuff_attackspeed"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_boss_unitbuff_pumpedup"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Boss_UnitBuff_Workout"}}, 
-}

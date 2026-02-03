@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_briarspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Gear"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft8_hackerhorsemanager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_ArmyBuffHacker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_hackerhorserider"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_hackerhorsecharge"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-}

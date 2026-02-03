@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Guardian_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_vanguard_unitbuff_shield"}}, 
-}

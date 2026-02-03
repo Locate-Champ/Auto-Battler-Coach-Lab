@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_BossAffix_DangerHex_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_dangerhex_combatburnunitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEVENT_PM_LevelScript"}}, 
-{Function=BBPreloadSpell, Params={Name="tfteventpm_bossaffix_dangerhex_bossbuff"}}, 
-}

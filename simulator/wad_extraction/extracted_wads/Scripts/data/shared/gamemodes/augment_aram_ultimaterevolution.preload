@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_UltimateRevolution"}}, 
-{Function=BBPreloadSpell, Params={Name="annier"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_aram_ultimaterevolution_cooldown"}}, 
-{Function=BBPreloadSpell, Params={Name="ivernr"}}, 
-{Function=BBPreloadSpell, Params={Name="yorickr"}}, 
-{Function=BBPreloadModule, Params={Name="Udyr.UdyrPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrpassive"}}, 
-}

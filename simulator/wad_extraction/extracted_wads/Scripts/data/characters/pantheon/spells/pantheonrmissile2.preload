@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="pantheonrmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="pantheonrjump"}}, 
-{Function=BBPreloadModule, Params={Name="Pantheon.PantheonRHelper"}}, 
-}

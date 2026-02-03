@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_aram_feymagic_luluwtwo"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_aram_feymagic_cooldown"}}, 
-{Function=BBPreloadSpell, Params={Name="luluw"}}, 
-{Function=BBPreloadModule, Params={Name="Karma.KarmaSpiritBind"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_feymagic_luluwtwo"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_feymagic_cooldown"}}, 
-}

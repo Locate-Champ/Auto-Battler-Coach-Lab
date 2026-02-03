@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_regionportals_unitbuff_cafeteriapauseanim"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_augment_cookingpot_visualbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_CookingPot_UnitBuff"}}, 
-}

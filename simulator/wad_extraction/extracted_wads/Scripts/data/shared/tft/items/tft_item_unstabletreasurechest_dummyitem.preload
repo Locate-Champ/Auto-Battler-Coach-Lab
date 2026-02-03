@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_item_unstabletreasurechest_playerbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_UnstableTreasureChest_PlayerBuff"}}, 
-}

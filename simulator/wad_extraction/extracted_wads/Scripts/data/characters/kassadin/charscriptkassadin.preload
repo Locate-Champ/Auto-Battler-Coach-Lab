@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="voidstone"}}, 
-{Function=BBPreloadSpell, Params={Name="nulllance"}}, 
-{Function=BBPreloadSpell, Params={Name="netherblade"}}, 
-{Function=BBPreloadSpell, Params={Name="riftwalk"}}, 
-}

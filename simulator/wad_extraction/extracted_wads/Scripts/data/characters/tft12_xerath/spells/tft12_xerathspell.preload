@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_xerathspell_cooldown"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_xerathspell_r_mis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-}

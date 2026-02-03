@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft4_yoner"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-{Function=BBPreloadModule, Params={Name="TFT4_Yone.TFT4_YoneRExecutionerMode"}}, 
-}

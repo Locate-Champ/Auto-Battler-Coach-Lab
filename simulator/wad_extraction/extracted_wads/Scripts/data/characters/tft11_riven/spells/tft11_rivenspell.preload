@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_rivenspellq3"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_rivenspellq1"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_Skarner.TFT16_SkarnerPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_skarnerspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_skarnerspell_armorbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

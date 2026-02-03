@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_cabal_sionexecutionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_sion_deathtracker_passivebuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

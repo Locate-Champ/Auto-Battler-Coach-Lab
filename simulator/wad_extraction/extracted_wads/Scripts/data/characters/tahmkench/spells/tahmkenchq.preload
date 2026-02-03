@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tahmkenchpassive"}}, 
-{Function=BBPreloadSpell, Params={Name="tahmkenchqslow"}}, 
-{Function=BBPreloadSpell, Params={Name="tahmkenchqstun"}}, 
-{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchPassive"}}, 
-{Function=BBPreloadModule, Params={Name="TahmKench.TahmKenchQSkinSizePassive"}}, 
-}

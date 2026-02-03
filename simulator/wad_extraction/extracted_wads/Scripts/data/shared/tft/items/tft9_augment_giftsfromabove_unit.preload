@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_GiftsFromAbove_Unit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-}

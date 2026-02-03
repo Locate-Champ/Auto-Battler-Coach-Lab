@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_jarvanivspell_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_jarvanivspellstun"}}, 
-}

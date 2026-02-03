@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_BattleAcademia_ClassPresident_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_SetMechanic_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_SetMechanic_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Board"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_LeeSin.TFT15_LeeSin_StanceManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT10_Edgelord_UnitBuff_Slash"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_asreduction_medium"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_medium"}}, 
-}

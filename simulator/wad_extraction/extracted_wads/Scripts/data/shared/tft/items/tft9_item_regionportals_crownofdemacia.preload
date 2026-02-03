@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_TraitEffect_DarkinBlade"}}, 
-{Function=BBPreloadModule, Params={Name="TFT9_Sion.TFT9_SionPassive_Immunity"}}, 
-}

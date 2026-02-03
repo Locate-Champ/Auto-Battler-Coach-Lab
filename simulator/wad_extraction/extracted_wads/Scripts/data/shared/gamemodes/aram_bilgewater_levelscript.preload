@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="urf_feeneypult"}}, 
-{Function=BBPreloadSpell, Params={Name="nexusblitz_feeneypult"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ARAM_BilgeWater_LevelScript"}}, 
-{Function=BBPreloadCharacter, Params={Name="cherry_plant_powerup"}}, 
-{Function=BBPreloadSpell, Params={Name="elementalplantmanager_powerupfruit"}}, 
-{Function=BBPreloadModule, Params={Name="Cherry_Plant_Powerup.ElementalPlantManager_Powerupfruit"}}, 
-}

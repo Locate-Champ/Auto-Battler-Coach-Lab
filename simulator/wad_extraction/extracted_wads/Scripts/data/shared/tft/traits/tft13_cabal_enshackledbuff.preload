@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Cabal_EnshackledBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_cabal_enshackledlockoutbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Cabal_ArmyBuff_Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_cabal_sion_statbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_sionspell_shieldbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_cabal_sionchargebuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT13_Cabal_UnitBuff"}}, 
-}

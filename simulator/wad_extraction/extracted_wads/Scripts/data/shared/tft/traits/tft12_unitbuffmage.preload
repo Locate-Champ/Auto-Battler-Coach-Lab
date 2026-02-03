@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_unitbuffmageapmultiplier"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_traiteffectmagelockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_traiteffectmagerefresh"}}, 
-}

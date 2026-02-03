@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Akshan.AkshanW"}}, 
-{Function=BBPreloadSpell, Params={Name="eternals_akshanwtakedowntracker"}}, 
-{Function=BBPreloadSpell, Params={Name="akshanwhunttrackingvfx"}}, 
-{Function=BBPreloadSpell, Params={Name="akshanwhuntfacing"}}, 
-{Function=BBPreloadModule, Params={Name="Akshan.AkshanFunctionModule"}}, 
---{Function=BBPreloadModule, Params={Name="Global.GlobalCamouflage"}}, 
-}

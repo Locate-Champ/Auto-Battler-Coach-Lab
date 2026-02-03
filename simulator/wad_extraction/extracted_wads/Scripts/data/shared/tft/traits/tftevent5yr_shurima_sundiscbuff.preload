@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Shurima_SunDiscBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_shurima_unitbuff_ascension"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Units"}}, 
-}

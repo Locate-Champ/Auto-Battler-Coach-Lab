@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_annie_playerbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_nocritanim_aamanager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Annie.TFT16_AnnieFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Annie.TFT16_Annie_PlayerBuff"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_rapidfire_attackcounttracker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Rapidfire_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Rapidfire_AttackCountTracker"}}, 
-}

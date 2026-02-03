@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_Galio.TFT16_GalioDescent"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_galioknockup"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuff_star3"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_galio_threestar_debuff"}}, 
-}

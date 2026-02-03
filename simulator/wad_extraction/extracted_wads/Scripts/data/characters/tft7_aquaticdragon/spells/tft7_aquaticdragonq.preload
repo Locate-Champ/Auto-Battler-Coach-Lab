@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT7_AquaticDragon.TFT7_AquaticDragonQ"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_aquaticdragonqwavemissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_aquaticdragonqenemymark"}}, 
-{Function=BBPreloadModule, Params={Name="TFT7_AquaticDragon.TFT7_AquaticDragonQEnemyMark"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_aquaticdragonqmissile"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

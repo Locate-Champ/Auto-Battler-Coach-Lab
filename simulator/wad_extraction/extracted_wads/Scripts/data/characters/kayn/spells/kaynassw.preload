@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="kaynw"}}, 
-{Function=BBPreloadSpell, Params={Name="kaynwslow"}}, 
-{Function=BBPreloadCharacter, Params={Name="kayn"}}, 
-{Function=BBPreloadSpell, Params={Name="kaynasswclonebuff"}}, 
-}

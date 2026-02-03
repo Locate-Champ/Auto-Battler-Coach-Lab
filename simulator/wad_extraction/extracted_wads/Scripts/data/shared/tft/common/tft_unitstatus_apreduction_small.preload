@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_apreduction"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_UnitStatus_APReduction"}}, 
-}

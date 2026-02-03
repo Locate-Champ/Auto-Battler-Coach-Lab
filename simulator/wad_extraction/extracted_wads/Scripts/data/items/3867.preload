@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="s10_support_minion_penalty"}}, 
-{Function=BBPreloadSpell, Params={Name="itemghostwardcharge"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SR_2026_S1_RoleBound_Support_Quest"}}, 
-}

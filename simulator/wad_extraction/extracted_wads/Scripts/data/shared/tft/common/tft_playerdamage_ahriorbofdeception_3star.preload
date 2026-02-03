@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_ahriorbofdeception_minions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_ahriorbofdeception_3star_foxfire"}}, 
-}

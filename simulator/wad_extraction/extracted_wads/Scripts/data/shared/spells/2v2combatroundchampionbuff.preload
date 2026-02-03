@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Cherry_LevelScript"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2champion_downedmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2champactionlock"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2CombatInstanceBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2CombatRoundChampionBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Chogath.Feast_internal"}}, 
-}

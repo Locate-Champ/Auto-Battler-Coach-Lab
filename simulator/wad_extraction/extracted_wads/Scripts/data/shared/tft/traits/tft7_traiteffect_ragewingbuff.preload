@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_RagewingTantrum_Unit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_SeraphsEmbrace_Manager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_BlueBuffRadiant_Manager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT4_Item_OrnnMuramana"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT6_Augment_BlueBattery_Unit"}}, 
-}

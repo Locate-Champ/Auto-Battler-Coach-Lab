@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Goop_InfectiousAnomaly_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_InfectiousAnomaly"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_PlayerBuff_SetMechanic"}}, 
-}

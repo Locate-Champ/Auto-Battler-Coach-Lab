@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_teemonoxioustrap_minions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_teemonoxioustrap_firstshroom"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_teemonoxioustrap_secondaryshroom"}}, 
-}

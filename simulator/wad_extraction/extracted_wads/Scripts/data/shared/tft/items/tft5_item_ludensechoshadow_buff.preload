@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft5_item_ludensechoshadow_mis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_Item_LudensEcho_Buff"}}, 
-}

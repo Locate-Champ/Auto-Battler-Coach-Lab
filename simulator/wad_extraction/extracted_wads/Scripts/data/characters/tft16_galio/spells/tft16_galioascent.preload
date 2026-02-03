@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_Galio.TFT16_GalioArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_DemaciaNew_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_galiodescent"}}, 
-}

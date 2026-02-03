@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_ZzrotPortal_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_TitanicHydraZombieBuff_Buff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_titanichydrazombiebuff_buff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-}

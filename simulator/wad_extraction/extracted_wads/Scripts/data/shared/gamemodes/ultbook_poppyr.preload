@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="globalruncycleoverride"}}, 
-{Function=BBPreloadModule, Params={Name="Global.CastInstance"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_poppyrspellinstant"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_poppyrspell"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_poppyranimationstop"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_poppyrswingvo"}}, 
-}

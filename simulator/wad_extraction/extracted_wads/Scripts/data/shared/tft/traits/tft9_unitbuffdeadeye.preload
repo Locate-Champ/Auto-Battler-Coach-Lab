@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_unitbuffdeadeye_damagebuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_UnitBuffDeadeye"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
-}

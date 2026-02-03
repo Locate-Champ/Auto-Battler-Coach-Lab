@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_quicksilver_spellshieldbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_aoshinspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

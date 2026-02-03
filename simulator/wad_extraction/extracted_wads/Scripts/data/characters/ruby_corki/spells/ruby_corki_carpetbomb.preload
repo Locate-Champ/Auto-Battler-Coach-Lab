@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="Ruby_Corki_ValkyrieSound"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Corki_DangerZone"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Corki_PhosphorusBomb"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Corki_MissileBarrage"}}, 
-}

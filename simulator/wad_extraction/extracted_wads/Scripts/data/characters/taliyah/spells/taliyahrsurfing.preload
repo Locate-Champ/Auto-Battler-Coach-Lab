@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Taliyah.FunctionsTaliyah"}}, 
-{Function=BBPreloadSpell, Params={Name="taliyahdatahookrdeathaftersurf"}}, 
-{Function=BBPreloadSpell, Params={Name="taliyahdatahookrkillssurf"}}, 
-{Function=BBPreloadSpell, Params={Name="taliyahreternalcasttime"}}, 
-{Function=BBPreloadSpell, Params={Name="taliyahr"}}, 
-}

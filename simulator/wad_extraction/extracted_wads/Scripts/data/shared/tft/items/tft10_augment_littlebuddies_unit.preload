@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft10_augment_littlebuddies_army"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_LittleBuddies_Unit"}}, 
-}

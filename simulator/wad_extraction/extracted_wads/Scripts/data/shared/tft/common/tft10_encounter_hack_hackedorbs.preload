@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set10"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_setmechanic_hacks_loot_health_playerbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_setmechanic_hacks_loot_unstablecomponent_playerbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_setmechanic_hacks_loot_goldenegg_playerbuff"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_setmechanic_hacks_goldsplitarmory_playerbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Encounter_Hack_GoldSplit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_GoldSplitArmory_PlayerBuff"}}, 
-}

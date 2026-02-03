@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.NEXUSBLITZ_Event_LootVeigar"}}, 
-{Function=BBPreloadCharacter, Params={Name="nexusblitz_lootgoblin"}}, 
-{Function=BBPreloadModule, Params={Name="Global.NEXUSBLITZ_EventManager"}}, 
-}

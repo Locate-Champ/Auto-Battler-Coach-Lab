@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Braum.BraumEEnemyTracker"}}, 
-{Function=BBPreloadSpell, Params={Name="azirrpushedbraum"}}, 
-{Function=BBPreloadSpell, Params={Name="zileanq"}}, 
-{Function=BBPreloadSpell, Params={Name="zileanqenemybomb"}}, 
-{Function=BBPreloadSpell, Params={Name="braumespecialvobuff"}}, 
-}

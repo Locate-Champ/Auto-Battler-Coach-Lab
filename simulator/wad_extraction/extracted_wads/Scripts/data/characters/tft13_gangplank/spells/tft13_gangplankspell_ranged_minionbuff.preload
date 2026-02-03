@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT13_Gangplank.TFT13_GangplankSpell_Ranged_MinionBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_gangplankspell_ranged_marker"}}, 
-}

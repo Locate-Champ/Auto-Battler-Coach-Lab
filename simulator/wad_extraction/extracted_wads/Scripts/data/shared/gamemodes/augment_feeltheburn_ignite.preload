@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_feeltheburn"}}, 
-{Function=BBPreloadModule, Params={Name="Global.GrievousWound"}}, 
-{Function=BBPreloadSpell, Params={Name="grievouswound"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_InfernalConduit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SpellAttribution"}}, 
-{Function=BBPreloadModule, Params={Name="Global.447118"}}, 
-}

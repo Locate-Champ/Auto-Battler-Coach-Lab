@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_seraphineauto"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Seraphine.Strawberry_SeraphineSlowManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_seraphinee"}}, 
-}

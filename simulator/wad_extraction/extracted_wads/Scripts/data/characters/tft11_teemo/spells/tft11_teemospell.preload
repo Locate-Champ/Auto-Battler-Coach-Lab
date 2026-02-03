@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft11_teemo_lorgebuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT11_Sharpshooter_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT11_Teemo.TFT11_TeemoSpell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT11_Augment_Trickshot_UnitBuff"}}, 
-}

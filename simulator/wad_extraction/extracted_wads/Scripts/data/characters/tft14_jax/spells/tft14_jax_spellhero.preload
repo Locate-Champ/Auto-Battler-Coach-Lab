@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_jax_spellhero_shield"}}, 
-}

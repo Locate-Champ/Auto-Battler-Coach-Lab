@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="hweiqeburstdamagemarker"}}, 
-{Function=BBPreloadModule, Params={Name="Hwei.HweiQELava"}}, 
-{Function=BBPreloadSpell, Params={Name="hweiqe"}}, 
-{Function=BBPreloadSpell, Params={Name="hweiqelavadps"}}, 
-{Function=BBPreloadSpell, Params={Name="hweiqeslow"}}, 
-}

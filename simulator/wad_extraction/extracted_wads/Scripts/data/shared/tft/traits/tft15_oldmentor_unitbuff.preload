@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_oldmentor_armybuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_Mentor_TeachersCouncil_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_oldmentor_kobukobuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_oldmentor_udyrbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_oldmentor_yasuobuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_oldmentor_ryzebuff"}}, 
-}

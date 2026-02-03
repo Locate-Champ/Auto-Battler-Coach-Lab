@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_StatikkShiv_Buff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_BlackMarketShockTreatment"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_statikkshiv_lightninghit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT10_Augment_ShockTreatment"}}, 
-}

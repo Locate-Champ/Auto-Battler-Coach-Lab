@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamagemis2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_flamebats_arc"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_flamebats_arc2"}}, 
-}

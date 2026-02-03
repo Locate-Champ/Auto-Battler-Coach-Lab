@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft7_dragonbluespell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragonbluedebuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragonbluebarrageattack2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragonbluebarrageattack"}}, 
-}

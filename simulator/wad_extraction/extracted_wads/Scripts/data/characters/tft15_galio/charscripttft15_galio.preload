@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_galiopassivebuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_Galio.TFT15_GalioPassiveBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_galio_spell3"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_galio_spell1"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_galio_shield"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="urgotpassive"}}, 
-{Function=BBPreloadModule, Params={Name="Shen.ShenWBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="urgotw"}}, 
-}

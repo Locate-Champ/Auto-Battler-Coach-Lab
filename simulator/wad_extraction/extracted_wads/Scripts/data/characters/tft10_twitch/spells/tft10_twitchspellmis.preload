@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft10_twitchspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_Twitch.TFT10_TwitchSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_twitchspellsecondarymis"}}, 
-}

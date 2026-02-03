@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Kled.KledHealthManager"}}, 
-{Function=BBPreloadSpell, Params={Name="kledremounteternalsbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="kledpassive"}}, 
-{Function=BBPreloadSpell, Params={Name="kledremountdash"}}, 
---{Function=BBPreloadModule, Params={Name="Kled.KledFunctions"}}, 
-}

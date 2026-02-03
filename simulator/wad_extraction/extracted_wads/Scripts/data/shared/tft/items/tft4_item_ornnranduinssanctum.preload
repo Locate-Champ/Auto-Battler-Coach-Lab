@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_checkitemmutuallyexclusive"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT4_Item_OrnnRanduinsSanctum"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_item_ornnranduinssanctum_boon"}}, 
-}

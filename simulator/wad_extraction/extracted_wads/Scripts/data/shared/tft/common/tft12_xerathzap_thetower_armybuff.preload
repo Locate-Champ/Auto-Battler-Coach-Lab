@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_XerathZap_TheTower_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_xerathzap_thetower_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
-}

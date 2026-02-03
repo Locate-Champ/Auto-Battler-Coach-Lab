@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_crime_playermanagerbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_crime_pve_deathtracker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Crime_PlayerManagerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_threshspell_effectpayload"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_threshspell_roundupminion_buff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_threshspell_roundupmissile"}}, 
-}

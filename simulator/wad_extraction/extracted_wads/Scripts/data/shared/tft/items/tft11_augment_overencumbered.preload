@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_inmotion"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_rumblespell_carry"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_RumbleCarry_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_rumblespell"}}, 
-}

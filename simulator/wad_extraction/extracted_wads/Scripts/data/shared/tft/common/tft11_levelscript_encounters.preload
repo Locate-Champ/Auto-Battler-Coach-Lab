@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_playerbuff_grantstartingunit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_SharedDraft"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Camera"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

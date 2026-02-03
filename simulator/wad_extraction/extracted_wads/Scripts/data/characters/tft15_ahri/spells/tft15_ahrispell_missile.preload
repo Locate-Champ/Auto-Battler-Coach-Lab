@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_ahrispell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_ahrispell_overkill_missile"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

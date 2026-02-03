@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.443064"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="443064_ttas"}}, 
-{Function=BBPreloadSpell, Params={Name="443064_ttcrit"}}, 
-{Function=BBPreloadSpell, Params={Name="443064_ttcritdmg"}}, 
-{Function=BBPreloadSpell, Params={Name="443064_tthpregen"}}, 
-{Function=BBPreloadSpell, Params={Name="443064_ttmregen"}}, 
-}

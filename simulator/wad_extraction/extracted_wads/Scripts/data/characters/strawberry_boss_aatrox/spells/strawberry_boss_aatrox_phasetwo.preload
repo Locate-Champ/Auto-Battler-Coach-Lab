@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_drbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Boss_Aatrox.Strawberry_Boss_Aatrox_PhaseTwo"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_state_phase2_summonfromsea"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_castingminitidalwaves"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_state_phase2_summonfromsea_final"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_mapd_mfship_smallfirepool"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_aatrox_lightningstrike_slow"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_leonaspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Diana.TFT16_DianaSpell_Passive"}}, 
-}

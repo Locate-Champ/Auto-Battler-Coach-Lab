@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rengarq"}}, 
-{Function=BBPreloadSpell, Params={Name="rengarqempasbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Rengar.CharScriptRengar"}}, 
-{Function=BBPreloadSpell, Params={Name="rengarqattack"}}, 
-}

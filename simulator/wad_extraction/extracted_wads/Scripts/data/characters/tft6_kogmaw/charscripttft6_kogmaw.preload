@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft6_sniperrangebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_kogmaww"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

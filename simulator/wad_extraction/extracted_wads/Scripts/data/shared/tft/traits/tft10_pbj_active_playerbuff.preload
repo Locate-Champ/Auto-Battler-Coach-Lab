@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT10_PBJ_Manager_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT10_PBJ_Active_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-}

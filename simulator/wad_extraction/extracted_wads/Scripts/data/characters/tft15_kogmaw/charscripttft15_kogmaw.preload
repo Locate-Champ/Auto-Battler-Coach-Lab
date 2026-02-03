@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_monstertrainer_trainerbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_kogmawspell_passive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_kogmaw_empoweredattack"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

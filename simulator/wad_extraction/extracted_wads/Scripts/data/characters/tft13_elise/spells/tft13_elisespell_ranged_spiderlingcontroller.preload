@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_elisespell_ranged"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Elise.TFT13_EliseSpell_Ranged_SpiderlingController"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Elise.TFT13_EliseSpell_Ranged_TargetMarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_elisespell_ranged_targetmarker"}}, 
-}

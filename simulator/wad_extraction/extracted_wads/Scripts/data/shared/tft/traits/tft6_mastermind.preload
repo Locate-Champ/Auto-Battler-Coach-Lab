@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT6_Mastermind"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_mastermind_marker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

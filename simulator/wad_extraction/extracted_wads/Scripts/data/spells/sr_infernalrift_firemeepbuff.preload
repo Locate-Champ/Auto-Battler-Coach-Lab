@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="sr_infernalrift_scales_low"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SR_InfernalRift_FireMeepBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="sr_infernalrift_meepflyout"}}, 
-{Function=BBPreloadSpell, Params={Name="sr_infernalrift_scales_med"}}, 
-{Function=BBPreloadSpell, Params={Name="sr_infernalrift_scales_high"}}, 
-}

@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Automata_CombatBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_automata_damagespell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Automata_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set13a"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft13_automatacrystal"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_automata_crystal_unitbuff"}}, 
-}

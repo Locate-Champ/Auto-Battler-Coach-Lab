@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="sweeperexcludemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="summonersmite"}}, 
-{Function=BBPreloadSpell, Params={Name="monkeykingdecoy"}}, 
-{Function=BBPreloadSpell, Params={Name="dogslashattack"}}, 
-{Function=BBPreloadSpell, Params={Name="dogslashattacksmall"}}, 
-}

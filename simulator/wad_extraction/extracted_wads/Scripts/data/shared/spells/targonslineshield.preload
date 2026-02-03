@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="outofcombatdebuffmanager"}}, 
-{Function=BBPreloadParticle, Params={Name="targonsshieldinprogress.troy", SkinID="-1"}}, 
-{Function=BBPreloadParticle, Params={Name="targonsshieldfull.troy", SkinID="-1"}}, 
-}

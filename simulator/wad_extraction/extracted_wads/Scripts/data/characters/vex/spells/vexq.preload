@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Vex.VexP"}}, 
-{Function=BBPreloadSpell, Params={Name="vexpgloomattackmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="vexp"}}, 
-{Function=BBPreloadSpell, Params={Name="vexpfear"}}, 
-}

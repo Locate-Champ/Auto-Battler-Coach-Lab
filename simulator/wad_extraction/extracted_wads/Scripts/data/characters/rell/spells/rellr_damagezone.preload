@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="rellr"}}, 
-{Function=BBPreloadSpell, Params={Name="rellr_damage"}}, 
-{Function=BBPreloadModule, Params={Name="Rell.RellP"}}, 
-{Function=BBPreloadSpell, Params={Name="rellr_passiveapplied"}}, 
-}

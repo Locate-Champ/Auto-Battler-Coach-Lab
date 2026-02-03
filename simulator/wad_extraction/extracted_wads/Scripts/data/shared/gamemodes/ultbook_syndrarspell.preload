@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_syndrar"}}, 
-{Function=BBPreloadParticle, Params={Name="ultbook_syndra_rhit2.troy", SkinID="-1"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_syndrarbounce5"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_syndrarbounce"}}, 
-{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
-}

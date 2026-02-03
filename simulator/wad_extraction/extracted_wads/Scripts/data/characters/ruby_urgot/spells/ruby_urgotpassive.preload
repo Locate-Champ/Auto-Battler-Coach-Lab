@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="Ruby_Urgotpassiveenemywarning"}}, 
-{Function=BBPreloadModule, Params={Name="Ruby_Urgot.Ruby_UrgotPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Urgotpassive_eternaltracker"}}, 
-}

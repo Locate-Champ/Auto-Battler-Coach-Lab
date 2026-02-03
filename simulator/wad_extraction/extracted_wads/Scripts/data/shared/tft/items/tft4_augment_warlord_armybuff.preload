@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_playerbuff_previouscombatdamagetracker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT4_Augment_Warlord_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_augment_warlord_tyrant_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_PreviousCombatDamageTracker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft4_augment_warlord_tyrantmarker_unitbuff"}}, 
-}

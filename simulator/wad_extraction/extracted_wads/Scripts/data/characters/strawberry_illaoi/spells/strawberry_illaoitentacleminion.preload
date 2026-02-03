@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_illaoipassive"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
-{Function=BBPreloadParticle, Params={Name="empty.troy", SkinID="-1"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_illaoitentacleactive"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Illaoi.Strawberry_IllaoiTentacleManager"}}, 
-}

@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_zap_lifeinsurance_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Zaps_UniversalBuffManager_ArmyBuff"}}, 
-}

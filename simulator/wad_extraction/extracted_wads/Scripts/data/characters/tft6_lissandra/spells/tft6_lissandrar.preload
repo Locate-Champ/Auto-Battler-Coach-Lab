@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft6_lissandrarself"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_lissandraraoe"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_lissandrarenemy"}}, 
-}

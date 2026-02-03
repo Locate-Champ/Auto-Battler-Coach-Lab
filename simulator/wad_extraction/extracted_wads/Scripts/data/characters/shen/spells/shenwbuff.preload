@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="evadebuffmarker"}}, 
-{Function=BBPreloadModule, Params={Name="Shen.ShenWBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Shen.ShenFunctions"}}, 
-}

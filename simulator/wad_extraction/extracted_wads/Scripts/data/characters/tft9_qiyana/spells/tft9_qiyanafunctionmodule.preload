@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT9_Qiyana.TFT9_QiyanaFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_qiyanaqmoveblock"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_qiyanaqmis"}}, 
-}

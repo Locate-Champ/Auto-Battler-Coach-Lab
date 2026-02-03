@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_Taric.TFT16_TaricAllyPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_taricspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_taricspell_mrbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_atakhanspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_atakhan_passivespinattack"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Atakhan.TFT16_AtakhanSpell_Passive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_atakhanspell_passivedash"}}, 
-}

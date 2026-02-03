@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="zileanq"}}, 
-{Function=BBPreloadModule, Params={Name="Zilean.ZileanQShared"}}, 
-{Function=BBPreloadSpell, Params={Name="zileanqallybomb"}}, 
-{Function=BBPreloadSpell, Params={Name="zileanqenemybomb"}}, 
-}

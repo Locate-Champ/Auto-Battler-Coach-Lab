@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Augment_SupremeCells_NewContenders_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_SupremeCells_UnitBuff_Overlord"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_SupremeSurge_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

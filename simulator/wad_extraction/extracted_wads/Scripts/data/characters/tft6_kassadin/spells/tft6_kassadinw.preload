@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft6_kassadinwshield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_large"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_medium"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_small"}}, 
-}

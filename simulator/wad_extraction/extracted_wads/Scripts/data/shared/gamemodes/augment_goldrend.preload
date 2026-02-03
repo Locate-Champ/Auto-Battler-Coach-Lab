@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_goldrendmarkactive"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_goldrendtimerbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_goldrendmsbuff"}}, 
-}

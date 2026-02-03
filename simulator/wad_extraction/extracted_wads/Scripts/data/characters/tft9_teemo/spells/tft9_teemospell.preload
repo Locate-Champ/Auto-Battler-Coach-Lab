@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
-{Function=BBPreloadModule, Params={Name="TFT9_Teemo.TFT9_TeemoSpell"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft9_teemomushroom"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_teemoqmushroomcontroller"}}, 
-}

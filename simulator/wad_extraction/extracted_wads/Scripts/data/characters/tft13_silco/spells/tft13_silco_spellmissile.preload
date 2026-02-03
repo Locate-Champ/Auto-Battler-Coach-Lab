@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="neekoq"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_silco_spell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Silco.TFT13_Silco_FunctionModule"}}, 
-}

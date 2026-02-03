@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_ArmoryManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_encounters_encounterchoicearmory"}}, 
-}

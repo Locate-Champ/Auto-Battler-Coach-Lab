@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_trainmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_train_evolve_particle"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_train_evolve_missile2"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_special_zookeeper"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_starstrike"}}, 
-{Function=BBPreloadSpell, Params={Name="ezrealq"}}, 
-}

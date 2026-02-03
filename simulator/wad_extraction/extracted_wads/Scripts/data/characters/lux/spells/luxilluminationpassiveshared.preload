@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Lux.LuxIlluminationPassiveShared"}}, 
-{Function=BBPreloadSpell, Params={Name="luxilluminationpassive"}}, 
-}

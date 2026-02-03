@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_Ryze.TFT16_RyzeRegionManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ryzespellpiltoverovercharge"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_ryzespellmis"}}, 
-}

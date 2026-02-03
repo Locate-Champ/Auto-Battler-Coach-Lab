@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Underground_PlayerBuff_Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_underground_playerbuff_partner"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Underground_PlayerBuff_Active"}}, 
-}

@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_rerolltimerresetbuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.UltBook_PlayerBuff"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Admin_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_admin_unitbuff_attackspeed"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-}

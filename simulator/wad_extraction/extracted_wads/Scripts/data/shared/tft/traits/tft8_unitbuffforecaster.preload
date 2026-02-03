@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT8_UnitBuffForecaster"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set8"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_unitbuff_forecaster_sunny"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_unitbuff_forecaster_rainy"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_unitbuff_forecaster_windy"}}, 
-}

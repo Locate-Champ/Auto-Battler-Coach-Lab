@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_CombatCaster_Unit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_augment_combatcaster_unitdr"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_undyingguard"}}, 
-{Function=BBPreloadSpell, Params={Name="undyingguardrangedimmunity"}}, 
-{Function=BBPreloadSpell, Params={Name="undyingguardbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="xinzhaor"}}, 
-{Function=BBPreloadSpell, Params={Name="undyingguardknockback"}}, 
-}

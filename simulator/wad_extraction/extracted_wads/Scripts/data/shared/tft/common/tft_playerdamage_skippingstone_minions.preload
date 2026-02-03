@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_skippingstone_1star"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_skippingstone_1star_child"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_skippingstone_1star_target"}}, 
-}

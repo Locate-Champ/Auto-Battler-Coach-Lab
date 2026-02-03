@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Seraphine.SeraphinePassiveNotes"}}, 
-{Function=BBPreloadSpell, Params={Name="seraphinepassivenotesallyinrange"}}, 
-{Function=BBPreloadSpell, Params={Name="seraphinepassivenotesmissiletoally"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_HungryFriend_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_unknown"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Unknown"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_inmotion"}}, 
-}

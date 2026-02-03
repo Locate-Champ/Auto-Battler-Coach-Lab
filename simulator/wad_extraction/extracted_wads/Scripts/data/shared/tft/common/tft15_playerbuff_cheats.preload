@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MonsterTrainer_ArmyBuff_Tracker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Weights_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_www_philipcomp_leesinbuff"}}, 
-}

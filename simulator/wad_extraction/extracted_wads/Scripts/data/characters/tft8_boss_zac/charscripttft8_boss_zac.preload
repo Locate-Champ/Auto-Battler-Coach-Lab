@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft8_boss_zacspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_boss_zac_split_mis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_boss_zac_splitcd"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

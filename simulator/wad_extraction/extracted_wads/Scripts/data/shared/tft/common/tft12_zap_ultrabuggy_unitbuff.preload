@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Zap_UltraBuggy_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_titanichydrazombiebuff_buff"}}, 
-}

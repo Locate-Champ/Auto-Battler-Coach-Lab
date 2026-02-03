@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT9_Kayle.TFT9_Kayle_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_kayleascend1"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_kayleascend2"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_quest_steelyourheart"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="3084targetcooldownbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="3084proctracker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.3084ProcTracker"}}, 
-}

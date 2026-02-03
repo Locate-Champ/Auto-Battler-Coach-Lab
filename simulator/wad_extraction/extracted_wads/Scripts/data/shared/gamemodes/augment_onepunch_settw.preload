@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="settw"}}, 
-{Function=BBPreloadSpell, Params={Name="settwmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="settwshield"}}, 
-{Function=BBPreloadSpell, Params={Name="settnoattack"}}, 
-}

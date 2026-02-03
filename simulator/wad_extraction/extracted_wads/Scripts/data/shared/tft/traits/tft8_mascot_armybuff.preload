@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Mascot_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_mascot_retreatbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_mascot_armybuff_mascothealactive"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Mascot_ArmyBuff_MascotHealActive"}}, 
-}

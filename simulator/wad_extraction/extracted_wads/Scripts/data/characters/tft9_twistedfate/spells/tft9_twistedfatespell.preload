@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_twistedfatespell_delaydamage"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-}

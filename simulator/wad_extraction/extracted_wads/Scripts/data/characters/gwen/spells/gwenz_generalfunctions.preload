@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Gwen.GwenZ_GeneralFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="gwenq"}}, 
-{Function=BBPreloadModule, Params={Name="Gwen.GwenRRecast"}}, 
-{Function=BBPreloadSpell, Params={Name="gwenqtarstackcounter"}}, 
-{Function=BBPreloadModule, Params={Name="Gwen.GwenP"}}, 
-{Function=BBPreloadSpell, Params={Name="gwenp"}}, 
-}

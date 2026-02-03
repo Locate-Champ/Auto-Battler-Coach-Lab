@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_CarouselOfChaos_TimeUndilator"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_carouselofchaos_timeundilator_killbuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFTEventPM_Item_HextechSniper"}}, 
-}

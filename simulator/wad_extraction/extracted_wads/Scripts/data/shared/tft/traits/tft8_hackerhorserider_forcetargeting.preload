@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_donotsettarget"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_HackerHorseRider_ForceTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitMovement"}}, 
-}

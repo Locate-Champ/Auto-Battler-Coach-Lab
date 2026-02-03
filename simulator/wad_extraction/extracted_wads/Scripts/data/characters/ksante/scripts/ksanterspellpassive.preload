@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
---{Function=BBPreloadModule, Params={Name="KSante.KSanteRConversionArmor"}}, 
---{Function=BBPreloadModule, Params={Name="KSante.KSanteRConversionHealth"}}, 
---{Function=BBPreloadModule, Params={Name="KSante.KSanteRConversionMagicResist"}}, 
-}

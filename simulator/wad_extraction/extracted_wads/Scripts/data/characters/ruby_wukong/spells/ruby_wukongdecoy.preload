@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ruby_wukongpassivestack"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongnimbusas"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongdoubleattack"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongspintowin"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongspinrecast"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongdecoyclone"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongdecoystealth"}}, 
-}

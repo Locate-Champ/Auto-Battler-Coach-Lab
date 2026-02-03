@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="jaxrpassiveattack"}}, 
-{Function=BBPreloadSpell, Params={Name="jaxwattack"}}, 
-{Function=BBPreloadSpell, Params={Name="jaxbasicattacktower2"}}, 
-{Function=BBPreloadSpell, Params={Name="jaxbasicattacktower"}}, 
-{Function=BBPreloadSpell, Params={Name="jaxcritattack"}}, 
-{Function=BBPreloadSpell, Params={Name="jaxbasicattack2"}}, 
-{Function=BBPreloadSpell, Params={Name="jaxbasicattack"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_jinxrburninghex"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_jinxrinvuln"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_jinxrascent"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_jinxrhealthbarhider"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="sett"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Sett"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2cameo_settw_cooldown"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_SettMinionBuff"}}, 
-}

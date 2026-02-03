@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT7_DragonGuild.TFT7_DragonGuildDash"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragonguildknockback"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragonguildspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragonguilddash2"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

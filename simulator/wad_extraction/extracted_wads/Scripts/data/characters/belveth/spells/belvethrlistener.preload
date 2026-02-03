@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Belveth.BelvethRListener"}}, 
-{Function=BBPreloadCharacter, Params={Name="belvethspore"}}, 
-{Function=BBPreloadSpell, Params={Name="belvethr"}}, 
-{Function=BBPreloadSpell, Params={Name="belvethrcorpse"}}, 
-{Function=BBPreloadSpell, Params={Name="belvethcorpsenorender"}}, 
-}

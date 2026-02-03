@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT9_PlayerBuff_Breadcrumbs_Zaun"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Consumable_Chempunk_GenericMod"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_PlayerBuffChempunkManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-}

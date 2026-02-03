@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_OrnnTrickstersGlass_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Item_OrnnTrickstersGlass_CloneBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_item_ornntrickstersglass_clonebuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitFunctions"}}, 
-}

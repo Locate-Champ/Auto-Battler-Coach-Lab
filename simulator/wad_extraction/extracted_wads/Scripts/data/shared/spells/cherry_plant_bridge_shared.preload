@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcuberendernofow"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Cherry_Plant_Bridge_Shared"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_koipond_movement"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_plant_bridge_timer"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_plant_bridge_bloomcontrol"}}, 
-}

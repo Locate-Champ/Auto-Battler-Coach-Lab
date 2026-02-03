@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_SubscriptionService"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_shopbuff_allunique"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
-}

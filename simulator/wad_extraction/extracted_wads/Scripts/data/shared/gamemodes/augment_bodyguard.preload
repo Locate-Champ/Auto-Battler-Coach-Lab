@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Augment_Bodyguard"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_bodyguard_shieldbuff"}}, 
-}

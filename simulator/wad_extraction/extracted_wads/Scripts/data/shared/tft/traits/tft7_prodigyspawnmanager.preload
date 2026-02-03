@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT7_ProdigySpawnManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT7_UnitBuffProdigySummon_StarScaling"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_unitbuffprodigysummon_starscaling"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
-}

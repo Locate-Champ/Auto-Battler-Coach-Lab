@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft8_armybuffrenegade"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_ArmyBuffRenegade"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_UnitBuffRenegade"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
-}

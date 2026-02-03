@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Gwen.GwenZ_GeneralFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="gwenrmis"}}, 
-{Function=BBPreloadSpell, Params={Name="gwenrmis_visualonly"}}, 
-{Function=BBPreloadModule, Params={Name="Gwen.GwenE"}}, 
-{Function=BBPreloadSpell, Params={Name="gwenrrecast"}}, 
-{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
-}

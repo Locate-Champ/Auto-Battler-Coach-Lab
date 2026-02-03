@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="qiyanar"}}, 
-{Function=BBPreloadSpell, Params={Name="qiyanarknockback"}}, 
-{Function=BBPreloadSpell, Params={Name="qiyanarwallhitmis"}}, 
-{Function=BBPreloadModule, Params={Name="Qiyana.QiyanaR"}}, 
-{Function=BBPreloadSpell, Params={Name="qiyanarstun"}}, 
-}

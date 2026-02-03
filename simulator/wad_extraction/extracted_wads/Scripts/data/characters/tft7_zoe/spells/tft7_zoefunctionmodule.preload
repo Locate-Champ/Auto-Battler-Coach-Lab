@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT7_Zoe.TFT7_ZoeFunctionModule"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_zoe_w_thieving"}}, 
-}

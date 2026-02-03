@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_ccimmune"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_spire_quest"}}, 
---{Function=BBPreloadModule, Params={Name="Global.Strawberry_BarkManager"}}, 
-}

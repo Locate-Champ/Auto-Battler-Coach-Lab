@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft8_zedspell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT8_Zed.TFT8_ZedSpellSpin"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_zedspelldash"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="yonepassive"}}, 
-{Function=BBPreloadModule, Params={Name="Yone.YoneE"}}, 
-}

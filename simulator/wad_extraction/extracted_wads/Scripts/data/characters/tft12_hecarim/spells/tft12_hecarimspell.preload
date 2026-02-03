@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_hecarimspellcleaveattack"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_hecarimspellcleavecrit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_hecarimspellcleaveattack2"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_TraitEffectMageRefresh"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

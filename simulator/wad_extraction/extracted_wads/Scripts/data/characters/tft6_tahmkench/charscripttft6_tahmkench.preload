@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_tahmkenchfunctionmodule"}}, 
-{Function=BBPreloadModule, Params={Name="TFT6_TahmKench.TFT6_TahmKenchFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_playertraitbuffglutton"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

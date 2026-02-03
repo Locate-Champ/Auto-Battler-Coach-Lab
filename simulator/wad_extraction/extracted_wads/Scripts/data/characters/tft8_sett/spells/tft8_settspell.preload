@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_SettCarry_Unit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_augment_settcarryknockback"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_augment_settcarryexecution"}}, 
-}

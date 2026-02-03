@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ornnpfieldshopdisabled"}}, 
-{Function=BBPreloadSpell, Params={Name="ornnpgrantitem"}}, 
-{Function=BBPreloadSpell, Params={Name="ornnpallyitemhasbeengiven"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
-}

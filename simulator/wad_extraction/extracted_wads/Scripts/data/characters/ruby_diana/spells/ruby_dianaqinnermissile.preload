@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Ruby_Diana.Ruby_DianaQ"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_dianaqtracker"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_diana_q_stun_buff"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_belvethspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_belvethattackmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_belvethempressmanager"}}, 
-}

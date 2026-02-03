@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="zeriqbasicattackempowered"}}, 
-{Function=BBPreloadSpell, Params={Name="zeriqbasicattack"}}, 
-{Function=BBPreloadModule, Params={Name="Zeri.ZeriBackpackVFXManager"}}, 
-}

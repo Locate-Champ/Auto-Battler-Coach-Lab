@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_katarinaspellinitialadjacencymarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_katarinaspellhexblocker"}}, 
-{Function=BBPreloadModule, Params={Name="TFT9_Katarina.TFT9_KatarinaSpellHexBlocker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_katarinaspellarcmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_katarinaspellbouncemissile"}}, 
-}

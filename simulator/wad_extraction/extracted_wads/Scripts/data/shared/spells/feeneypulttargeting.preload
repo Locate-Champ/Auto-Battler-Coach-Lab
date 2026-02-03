@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="urf_feeneypulttraveling"}}, 
-{Function=BBPreloadModule, Params={Name="Global.MissionsInLUA_2025_S2_A2"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ARAM_BilgeWater_LevelScript"}}, 
-{Function=BBPreloadSpell, Params={Name="exitfeeneypult"}}, 
-}

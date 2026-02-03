@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Cherry_CameoManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2CombatInstanceBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Cherry_StageScript"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2cameo_sylasr"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2cameo_sylasrbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Sylas"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2cameochamphidden"}}, 
-}

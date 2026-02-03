@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_settspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_settbounce"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

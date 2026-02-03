@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Arcana_ArmyBuff_TahmKench"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_arcana_unitbuff_tahmkench"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Arcana_UnitBuff_TahmKench"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_twistedfatedetonate"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_TwistedFate.TFT15_TwistedFateFunctionModule"}}, 
-}

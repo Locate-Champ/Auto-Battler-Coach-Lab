@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Pantheon.PantheonRHelper"}}, 
-{Function=BBPreloadSpell, Params={Name="pantheonq"}}, 
-{Function=BBPreloadSpell, Params={Name="pantheonr"}}, 
-{Function=BBPreloadSpell, Params={Name="pantheonrslow"}}, 
-}

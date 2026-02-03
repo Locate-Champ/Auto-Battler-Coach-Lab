@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="drmundoe"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="drmundoemissile"}}, 
-{Function=BBPreloadSpell, Params={Name="drmundoedeathhider"}}, 
-}

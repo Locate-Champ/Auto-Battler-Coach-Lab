@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_immunity"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_cloakedbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_sentai_prismatic_ejectbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Sentai_Prismatic_MechBuff"}}, 
-}

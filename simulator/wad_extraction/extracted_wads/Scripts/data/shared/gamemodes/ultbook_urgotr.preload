@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_urgotrreel"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_urgotrslow"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_urgotrrecast"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_urgotrtargetunderthreshold"}}, 
-}

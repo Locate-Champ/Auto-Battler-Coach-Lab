@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft8_exoprime_playerbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_ExoPrime_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_exoprime_unitbuff_bonusadap"}}, 
-}

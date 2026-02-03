@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="6656freezemissile"}}, 
-{Function=BBPreloadSpell, Params={Name="6656missile"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-}

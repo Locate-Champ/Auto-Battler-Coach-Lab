@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadModule, Params={Name="MonkeyKing.MonkeyKingFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="monkeykingspintowin"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_settspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_settspellsuppression"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_settspellseconddash"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_settspellfaileddash"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_settspellseconddashiffail"}}, 
-}

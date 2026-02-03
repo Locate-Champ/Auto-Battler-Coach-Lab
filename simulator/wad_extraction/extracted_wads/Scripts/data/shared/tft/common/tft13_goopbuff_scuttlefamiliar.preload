@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_scuttlefamiliar_unitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_immunity"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_scuttlefamiliar_dance"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-}

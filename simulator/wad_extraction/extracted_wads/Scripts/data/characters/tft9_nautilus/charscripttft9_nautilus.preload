@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_nautilusspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_nautiluspassivevfx"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitcastrangefix"}}, 
-}

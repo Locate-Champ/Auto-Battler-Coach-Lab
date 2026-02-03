@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft6_gnarr"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft6_gnarbig"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-}

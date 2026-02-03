@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Ekko_Isekai_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_ekko_isekai_starlevel_unitbuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_Isekai_PlayerBuff"}}, 
-}

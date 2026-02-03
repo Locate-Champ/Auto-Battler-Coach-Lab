@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_TeamupAugment_SpinToWin_AoEBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_garenspell_resistreduction"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-}

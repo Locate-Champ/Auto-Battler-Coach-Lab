@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_shaco_takedownmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_shacospell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

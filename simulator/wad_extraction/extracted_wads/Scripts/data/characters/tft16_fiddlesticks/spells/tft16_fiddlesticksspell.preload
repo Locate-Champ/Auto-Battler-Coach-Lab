@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Fiddlesticks.TFT16_FiddlesticksSpell_3Star_Debuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_fear"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Fiddlesticks.TFT16_FiddlesticksSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_fiddlesticks_tether"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_fiddlesticksspell_3star_debuff"}}, 
-}

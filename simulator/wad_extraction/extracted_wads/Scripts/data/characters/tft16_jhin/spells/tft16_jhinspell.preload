@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_jhinrshotmis"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Jhin.TFT16_Jhin_NoCritAnim_AAManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_jhinrshotmis4"}}, 
-}

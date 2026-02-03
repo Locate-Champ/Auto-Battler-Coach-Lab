@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_PlayerBuff_DragonLootSubscription"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Portals_LevelScript_DragonLootSubscription"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-}

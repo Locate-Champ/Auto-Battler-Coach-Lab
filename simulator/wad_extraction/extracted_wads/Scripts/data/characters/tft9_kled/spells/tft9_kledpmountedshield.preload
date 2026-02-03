@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_kledpdismounted"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_kledpdismount"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft9_kledmount"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_kledpskaarlcontroller"}}, 
-}

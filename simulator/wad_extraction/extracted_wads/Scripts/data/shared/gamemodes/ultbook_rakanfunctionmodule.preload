@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.UltBook_RakanGetSpellData"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_rakanecastxaya"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_rakanecast"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="viegormoveaway"}}, 
-{Function=BBPreloadSpell, Params={Name="camiller"}}, 
-{Function=BBPreloadSpell, Params={Name="viegorcast"}}, 
-{Function=BBPreloadSpell, Params={Name="tryndameree"}}, 
-{Function=BBPreloadModule, Params={Name="Viego.ViegoQPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
-}

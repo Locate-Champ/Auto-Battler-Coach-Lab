@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_nautilusgrandlinetracker"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_nautilusgrandlinetarget"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_nautilusgrandlinehit"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_nautilusminorknockup"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_nautilusknockup"}}, 
-{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
-}

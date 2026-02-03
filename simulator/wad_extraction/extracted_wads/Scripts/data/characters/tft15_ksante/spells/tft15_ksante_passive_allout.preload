@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_fighter"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_ksantespell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_KSante.TFT15_Ksante_Passive_AllOut"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_AllOut_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_rolesrevamped_unitbuff_tank"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-}

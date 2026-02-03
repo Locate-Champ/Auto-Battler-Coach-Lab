@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_xayahspellmis"}}, 
-{Function=BBPreloadModule, Params={Name="TFT9_Xayah.TFT9_XayahFunctionModule"}}, 
-}

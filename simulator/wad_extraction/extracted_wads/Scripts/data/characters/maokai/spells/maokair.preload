@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadModule, Params={Name="Maokai.MaokaiPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="maokairmis"}}, 
-{Function=BBPreloadSpell, Params={Name="maokairmisextra"}}, 
-{Function=BBPreloadSpell, Params={Name="maokairsoundmis"}}, 
-}

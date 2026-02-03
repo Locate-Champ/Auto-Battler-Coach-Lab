@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_jax_spellhero"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Jax.TFT14_JaxSpell_HeroPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

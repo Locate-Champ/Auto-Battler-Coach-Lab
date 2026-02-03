@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_TwistedFate.TFT10_TwistedFateSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_twistedfatecardattackarc"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_twistedfatecardattackarc2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_twistedfatecardattackarc3"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_twistedfatecardattackarc4"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

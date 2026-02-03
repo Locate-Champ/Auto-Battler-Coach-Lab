@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.SnowballMissile"}}, 
-{Function=BBPreloadSpell, Params={Name="snowballfollowupself"}}, 
-}

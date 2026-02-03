@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_augment_cabal_armymanager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Cabal_ArmyManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_Augment_Cabal"}}, 
-}

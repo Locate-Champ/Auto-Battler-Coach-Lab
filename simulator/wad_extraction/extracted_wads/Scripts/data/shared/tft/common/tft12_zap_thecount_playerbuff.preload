@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_shopbuff_customtiersperslot"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
-}

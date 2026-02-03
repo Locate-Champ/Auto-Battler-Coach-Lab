@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_kaylespell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT15_Kayle.TFT15_Kayle_AttackManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_FinalAscent_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_kaylewavemis"}}, 
-}

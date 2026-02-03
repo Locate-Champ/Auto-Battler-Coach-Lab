@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="3876cooldowndisplay"}}, 
-{Function=BBPreloadSpell, Params={Name="3876healthsizeupdisplay"}}, 
-{Function=BBPreloadSpell, Params={Name="lulur"}}, 
-{Function=BBPreloadSpell, Params={Name="3876msbufffalloff"}}, 
-}

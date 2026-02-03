@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_baronnashorspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_baronnashorspell_tentacle_enemybuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-}

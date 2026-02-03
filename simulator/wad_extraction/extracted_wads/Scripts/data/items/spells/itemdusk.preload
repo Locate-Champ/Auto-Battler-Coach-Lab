@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="itemdusknightfall"}}, 
-{Function=BBPreloadSpell, Params={Name="itemduskreadyindicator"}}, 
-{Function=BBPreloadParticle, Params={Name="item_dusk_nightfallrefund.troy", SkinID="-1"}}, 
-}

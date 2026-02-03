@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft11_kaisaspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_kaisahittrackerdebuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT11_Sharpshooter_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT11_Kaisa.TFT11_KaisaSpell"}}, 
-}

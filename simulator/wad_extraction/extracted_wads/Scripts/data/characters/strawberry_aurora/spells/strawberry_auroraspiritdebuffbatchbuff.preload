@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_auroraauto"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_auroraq"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
-}

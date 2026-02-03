@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_calculatedrisk"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2rerollbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Cherry_PhaseManager"}}, 
-}

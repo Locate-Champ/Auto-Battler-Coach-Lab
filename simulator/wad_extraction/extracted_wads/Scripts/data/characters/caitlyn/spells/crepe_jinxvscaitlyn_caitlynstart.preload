@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Jinx.Crepe_JinxVsCaitlyn_JinxStart"}}, 
-{Function=BBPreloadModule, Params={Name="Caitlyn.Crepe_JinxVsCaitlyn_CaitlynStart"}}, 
-{Function=BBPreloadSpell, Params={Name="crepe_jinxvscaitlyn_caitlyntracker"}}, 
-{Function=BBPreloadSpell, Params={Name="crepe_jinxvscaitlyn_caitlyndescription"}}, 
-{Function=BBPreloadSpell, Params={Name="crepe_jinxvscaitlyn_caitlynlose"}}, 
-}

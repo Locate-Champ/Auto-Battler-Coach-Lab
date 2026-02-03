@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Kayle.KayleVsAatroxKayleStart"}}, 
-{Function=BBPreloadModule, Params={Name="Aatrox.KayleVsAatroxAatroxStart"}}, 
-{Function=BBPreloadSpell, Params={Name="kaylevsaatroxkaylewin"}}, 
-{Function=BBPreloadSpell, Params={Name="kaylevsaatroxaatroxloss"}}, 
-{Function=BBPreloadModule, Params={Name="Morgana.KayleVsAatroxMorganaStart"}}, 
-{Function=BBPreloadSpell, Params={Name="kaylevsaatroxkayledescription"}}, 
-}

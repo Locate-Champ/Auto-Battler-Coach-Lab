@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="AurelionSol.AurelionSolPassive"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender"}}, 
-{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
-{Function=BBPreloadSpell, Params={Name="aurelionsoledebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="luxlightstrikekugel"}}, 
-{Function=BBPreloadSpell, Params={Name="aurelionsoletoggle"}}, 
-}

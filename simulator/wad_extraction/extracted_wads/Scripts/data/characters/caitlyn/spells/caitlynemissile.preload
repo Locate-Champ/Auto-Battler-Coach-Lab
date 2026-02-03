@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="caitlyne"}}, 
-{Function=BBPreloadSpell, Params={Name="slow"}}, 
-{Function=BBPreloadSpell, Params={Name="eternals_caitlyneheadshottracker"}}, 
-{Function=BBPreloadSpell, Params={Name="caitlynpassiverangemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="caitlynpassiverangecheck"}}, 
-}

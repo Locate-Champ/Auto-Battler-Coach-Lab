@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="srx_dragonbuffruined_debuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SRX_DragonBuffRuined_Debuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SRX_DragonBuffRuined"}}, 
-}

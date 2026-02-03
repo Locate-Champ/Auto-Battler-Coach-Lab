@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="viktordisguisebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="viktorr"}}, 
-{Function=BBPreloadSpell, Params={Name="viktorrkilltracker"}}, 
-{Function=BBPreloadModule, Params={Name="Viktor.ViktorRAOE"}}, 
-{Function=BBPreloadSpell, Params={Name="viktorrguide"}}, 
-}

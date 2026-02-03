@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_Error"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_TearRainArmory_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set14"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT14_SetMechanic_Hacks_AnvilShop_PlayerBuff"}}, 
-}

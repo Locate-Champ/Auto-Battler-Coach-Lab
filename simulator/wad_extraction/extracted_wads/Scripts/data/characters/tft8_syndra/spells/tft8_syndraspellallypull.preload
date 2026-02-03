@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadModule, Params={Name="TFT8_Syndra.TFT8_SyndraSpellBenchBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT8_Syndra.TFT8_SyndraSpellAllyEncasedOrb"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_syndraspellallytoss"}}, 
-}

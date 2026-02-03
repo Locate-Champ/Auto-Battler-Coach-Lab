@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Kaisa.KaisaSkin71Manager"}}, 
-{Function=BBPreloadModule, Params={Name="Kaisa.KaisaSkin70Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="kaisaskin71goldglow"}}, 
-{Function=BBPreloadSpell, Params={Name="kaisaskin71helpwatcher"}}, 
-}

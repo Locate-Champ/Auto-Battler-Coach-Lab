@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Mecha_Item_NanoFabricator_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Shop"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_Mecha_Item_NanoFabricator"}}, 
-}

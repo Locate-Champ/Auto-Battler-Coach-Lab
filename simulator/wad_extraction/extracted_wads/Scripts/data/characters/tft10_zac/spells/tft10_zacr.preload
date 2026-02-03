@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="TFT10_Zac.TFT10_ZacR"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_zacr_targetmarker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT10_EDM_Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_zacr_stun"}}, 
-}

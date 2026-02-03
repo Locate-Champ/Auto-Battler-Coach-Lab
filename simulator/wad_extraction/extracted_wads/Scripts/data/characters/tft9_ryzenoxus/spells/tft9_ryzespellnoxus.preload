@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_ryzespellnoxus_axemis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_ryzespellnoxus_itemmis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_StatsPerTier_Player"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Shop"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9_Augment_StatsPerTier_Unit"}}, 
-}

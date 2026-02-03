@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_augment_syndicate_dummywithagun_spell_mis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_Syndicate_DummyWithAGun_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_RangeHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Mob_Boss_UnitBuff"}}, 
-}

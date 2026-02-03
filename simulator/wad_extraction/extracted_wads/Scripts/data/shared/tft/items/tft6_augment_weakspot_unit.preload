@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT6_Augment_Weakspot_Unit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_AugmentManager"}}, 
-}

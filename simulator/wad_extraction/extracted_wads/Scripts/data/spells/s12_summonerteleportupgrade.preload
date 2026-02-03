@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="summonerteleport"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcuberender10vision"}}, 
-{Function=BBPreloadSpell, Params={Name="teleport_target"}}, 
-{Function=BBPreloadSpell, Params={Name="destealth"}}, 
-}

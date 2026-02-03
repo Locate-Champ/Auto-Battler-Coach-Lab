@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Artifact_ShadowPuppet_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_artifact_shadowpuppet_clonebuff"}}, 
-}

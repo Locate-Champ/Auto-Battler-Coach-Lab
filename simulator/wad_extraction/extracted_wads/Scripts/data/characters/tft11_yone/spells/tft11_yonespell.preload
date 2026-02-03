@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_yonecollisionmanager"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft11_yone"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_yonespirit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_yonemovement"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_yonebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_yoneshield"}}, 
-}

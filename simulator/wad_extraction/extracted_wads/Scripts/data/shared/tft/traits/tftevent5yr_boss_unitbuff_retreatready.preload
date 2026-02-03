@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_boss_unitbuff_retreat"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_boss_unitbuff_outofcombat"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_boss_unitbuff_skinchange"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_augment_animasquad_powerup_meepbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_AnimaSquad_PowerUp_MeepBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_augment_animasquad_powerup_xp_mis"}}, 
-}

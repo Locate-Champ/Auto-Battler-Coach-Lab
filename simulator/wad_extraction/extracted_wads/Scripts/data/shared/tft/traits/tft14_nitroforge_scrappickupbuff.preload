@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_avatarhaste_enabler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_avatarhastemanager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Loot"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_HotRod_ArmyBuff_Manager"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_shenspellselfshield"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_shenspellmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
-}

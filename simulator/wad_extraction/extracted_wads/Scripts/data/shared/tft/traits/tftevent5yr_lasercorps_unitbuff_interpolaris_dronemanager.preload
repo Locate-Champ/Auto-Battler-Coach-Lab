@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_LaserCorps_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_LaserCorps_UnitBuff_InterPolaris_DroneManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_LaserCorps_UnitBuff_InterPolarisDrone"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_lasercorps_droneattack"}}, 
-}

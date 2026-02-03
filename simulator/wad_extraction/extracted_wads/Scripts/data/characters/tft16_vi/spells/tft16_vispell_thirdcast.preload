@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_vispell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_vispell_knockupbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_vispell_shield"}}, 
-}

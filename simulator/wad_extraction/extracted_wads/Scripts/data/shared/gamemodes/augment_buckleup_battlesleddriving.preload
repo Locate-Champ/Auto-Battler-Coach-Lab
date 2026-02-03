@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.NEXUSBLITZ_Manager"}}, 
-{Function=BBPreloadCharacter, Params={Name="testcube"}}, 
-{Function=BBPreloadSpell, Params={Name="itemfrozenfistfield"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_buckleup_battlesledexplosionknockup"}}, 
-{Function=BBPreloadModule, Params={Name="Global.PlayerTerrian"}}, 
---{Function=BBPreloadModule, Params={Name="Global.NEXUSBLITZ_EndGameCeremony"}}, 
-}

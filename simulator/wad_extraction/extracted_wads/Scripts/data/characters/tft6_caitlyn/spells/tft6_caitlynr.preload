@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft3_caitlynr"}}, 
-{Function=BBPreloadModule, Params={Name="TFT6_Caitlyn.TFT6_CaitlynR_RecastManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_caitlynr_recastmanager"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT6_UnitBuffSharpshooter"}}, 
-}

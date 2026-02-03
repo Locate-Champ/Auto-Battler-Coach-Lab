@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_clowncollege_deceive"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_clowncollege_backstab"}}, 
-{Function=BBPreloadSpell, Params={Name="summonercherryhold"}}, 
-{Function=BBPreloadCharacter, Params={Name="shacobox"}}, 
-{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
-}

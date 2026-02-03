@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="azirewrapper"}}, 
-{Function=BBPreloadSpell, Params={Name="eternals_skillshotsdodged"}}, 
-{Function=BBPreloadSpell, Params={Name="azireshield"}}, 
-{Function=BBPreloadSpell, Params={Name="aziredamage"}}, 
-{Function=BBPreloadModule, Params={Name="Azir.AzirFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="azireventtakemewithyou"}}, 
-{Function=BBPreloadSpell, Params={Name="azirq"}}, 
-}

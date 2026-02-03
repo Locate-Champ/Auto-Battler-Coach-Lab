@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_ChampionBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_boomerangmissile"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_weapon_boomerangevolvemissile"}}, 
-}

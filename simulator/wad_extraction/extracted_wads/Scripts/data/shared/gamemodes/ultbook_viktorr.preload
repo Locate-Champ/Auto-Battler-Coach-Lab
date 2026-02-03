@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_viktorrcancelchannels"}}, 
-{Function=BBPreloadCharacter, Params={Name="viktorsingularity"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_viktorraoe"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_viktorexpirationtimer"}}, 
-}

@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT7_GuildManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_unitbuffguild"}}, 
-}

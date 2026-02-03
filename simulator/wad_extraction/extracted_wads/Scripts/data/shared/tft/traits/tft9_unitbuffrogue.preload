@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_roguebleed"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_roguehitmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_traiteffect_roguebleedvfx"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_unitbuffrogue_stealth"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_unitbuffrogue_movebuffer"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_unitbuffrogue_lockout"}}, 
-}

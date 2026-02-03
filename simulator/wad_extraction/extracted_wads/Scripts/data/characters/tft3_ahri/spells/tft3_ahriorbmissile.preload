@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft3_ahriq"}}, 
-{Function=BBPreloadSpell, Params={Name="tft3_ahriorbdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="tft3_ahriorbdamagesilence"}}, 
-{Function=BBPreloadSpell, Params={Name="tft3_ahriorbreturndead"}}, 
-{Function=BBPreloadSpell, Params={Name="tft3_ahriorbreturn"}}, 
-}

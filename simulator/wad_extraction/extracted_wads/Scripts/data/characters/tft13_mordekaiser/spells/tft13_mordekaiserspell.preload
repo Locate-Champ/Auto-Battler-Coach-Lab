@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft13_mordekaiser3starspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_mordekaiserspell_empoweredstate"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_mordekaiserknockforward"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Mordekaiser.TFT13_MordekaiserSpell_EmpoweredState"}}, 
-}

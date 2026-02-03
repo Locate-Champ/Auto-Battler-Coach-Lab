@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.CastInstance"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_poppyrknockup"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_poppyrknockupminion"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_poppyr"}}, 
-}

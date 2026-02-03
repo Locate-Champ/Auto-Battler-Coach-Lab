@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="gangplankqwrapper"}}, 
-{Function=BBPreloadSpell, Params={Name="gangplankqvograves"}}, 
-{Function=BBPreloadModule, Params={Name="Gangplank.GangplankQProceed"}}, 
-{Function=BBPreloadSpell, Params={Name="srt_2024_horde_spawnminis"}}, 
-}

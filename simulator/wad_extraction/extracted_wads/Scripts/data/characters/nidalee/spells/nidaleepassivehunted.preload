@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="nidaleewpouncering"}}, 
-{Function=BBPreloadSpell, Params={Name="nidaleepassivehunting"}}, 
-{Function=BBPreloadSpell, Params={Name="nidaleewtethermanager"}}, 
-{Function=BBPreloadModule, Params={Name="Nidalee.NidaleePassiveHunted"}}, 
-}

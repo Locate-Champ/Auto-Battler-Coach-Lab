@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft7_jayceformmanager"}}, 
-{Function=BBPreloadModule, Params={Name="TFT7_Jayce.TFT7_JayceFormManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="TFT7_Jayce.TFT7_JayceQ"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
-}

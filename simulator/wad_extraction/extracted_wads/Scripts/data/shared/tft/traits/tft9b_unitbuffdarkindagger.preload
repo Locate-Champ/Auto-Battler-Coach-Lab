@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_naafirispell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT9b_UnitBuffDarkinDagger"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9b_unitbuffdarkinpackmate_mis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9b_trait_darkin_dagger_mis"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
-}

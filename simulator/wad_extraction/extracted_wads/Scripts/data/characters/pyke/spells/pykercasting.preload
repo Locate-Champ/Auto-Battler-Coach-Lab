@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Pyke.PykeGetSpellData"}}, 
-{Function=BBPreloadSpell, Params={Name="pykerrecast"}}, 
-{Function=BBPreloadSpell, Params={Name="perks_presenceofmindtracker"}}, 
-}

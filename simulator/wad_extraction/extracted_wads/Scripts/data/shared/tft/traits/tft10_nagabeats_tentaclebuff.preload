@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT10_NagaBeats_Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_illaoispell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_illaoispell_tentaclesmash"}}, 
-}

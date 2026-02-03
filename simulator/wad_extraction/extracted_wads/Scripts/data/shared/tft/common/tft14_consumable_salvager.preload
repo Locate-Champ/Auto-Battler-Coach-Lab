@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Consumable_Salvager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_Error"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Breadcrumbs_ItemBenchFull"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
-}

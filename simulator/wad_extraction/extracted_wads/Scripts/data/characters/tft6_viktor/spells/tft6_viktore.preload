@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_viktoredronemis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_viktorelockout"}}, 
-}

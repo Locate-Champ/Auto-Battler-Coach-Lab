@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="6610check"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="6610timer"}}, 
-{Function=BBPreloadSpell, Params={Name="6610overheal"}}, 
-}

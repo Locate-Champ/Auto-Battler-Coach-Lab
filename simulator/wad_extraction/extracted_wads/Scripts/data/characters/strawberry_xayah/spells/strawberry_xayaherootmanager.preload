@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_xayaherootbatchbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_xayahe"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_DebugStatManager"}}, 
-}

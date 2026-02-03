@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="zacrebirthready"}}, 
-{Function=BBPreloadSpell, Params={Name="zacrebirthcooldown"}}, 
-{Function=BBPreloadSpell, Params={Name="zacpassivechunkdrop"}}, 
-{Function=BBPreloadSpell, Params={Name="zacrebirthstart"}}, 
-}

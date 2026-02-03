@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
-{Function=BBPreloadSpell, Params={Name="minionnooneshotbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigardarkmatter"}}, 
-{Function=BBPreloadSpell, Params={Name="mordekaiserr_statsteal"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigarr_instakill"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_boss_fnveigar_damage_tracker"}}, 
-}

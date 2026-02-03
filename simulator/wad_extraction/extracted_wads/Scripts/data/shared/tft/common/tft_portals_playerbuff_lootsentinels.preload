@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadModule, Params={Name="TFT_BlueGolem.TFT_BlueGolemBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_thiefsgloves_ceremony"}}, 
-}

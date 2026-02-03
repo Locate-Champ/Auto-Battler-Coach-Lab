@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_DentingBlows_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_dentingblows_vishield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_armorshred_small"}}, 
-}

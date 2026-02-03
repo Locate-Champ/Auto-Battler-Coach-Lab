@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_augment_wraith_shadowhomunculous_minionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_immunity"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_Kahunahuna_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_varusspell"}}, 
-}

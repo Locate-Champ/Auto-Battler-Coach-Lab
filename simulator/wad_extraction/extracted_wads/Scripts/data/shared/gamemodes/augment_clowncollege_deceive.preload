@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_clowncollege_deceivecritbonus"}}, 
-{Function=BBPreloadModule, Params={Name="Global._GlobalChampionBuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.GlobalInvisibility"}}, 
-}

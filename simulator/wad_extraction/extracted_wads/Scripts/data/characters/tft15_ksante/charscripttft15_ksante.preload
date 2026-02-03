@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_ksantespell_fighter"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_ksante_passive_immunity"}}, 
-}

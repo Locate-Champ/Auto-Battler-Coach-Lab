@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT12_UnitBuffWeaponmaster"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_traiteffect_weaponmasterattack"}}, 
-{Function=BBPreloadModule, Params={Name="TFT12_Smolder.TFT12_SmolderAttackBuff"}}, 
-}

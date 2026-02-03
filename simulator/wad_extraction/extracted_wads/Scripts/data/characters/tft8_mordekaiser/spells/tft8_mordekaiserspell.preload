@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_mordekaiserrealmenemy"}}, 
-{Function=BBPreloadModule, Params={Name="TFT8_Mordekaiser.TFT8_MordekaiserSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

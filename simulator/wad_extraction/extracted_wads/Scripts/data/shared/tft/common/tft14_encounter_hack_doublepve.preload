@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Encounter_Hack_DoublePVE"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_hacks_unitvfx_unitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Loot"}}, 
-}

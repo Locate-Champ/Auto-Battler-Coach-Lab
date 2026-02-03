@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="turretshield"}}, 
-{Function=BBPreloadSpell, Params={Name="structuredamagereduction"}}, 
-{Function=BBPreloadSpell, Params={Name="superminionbuff_red"}}, 
-{Function=BBPreloadSpell, Params={Name="s13_minionspeedbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SocialSRChampionBuff"}}, 
-{Function=BBPreloadParticle, Params={Name="feelnopain_eff.troy", SkinID="-1"}}, 
-}

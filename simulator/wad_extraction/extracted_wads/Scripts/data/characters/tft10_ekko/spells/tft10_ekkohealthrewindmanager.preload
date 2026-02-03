@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT10_Ekko.TFT10_EkkoHealthRewindManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_ekkospell"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT10_BlingManager"}}, 
-}

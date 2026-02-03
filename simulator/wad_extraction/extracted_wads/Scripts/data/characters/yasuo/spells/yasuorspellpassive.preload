@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="yasuoravailabletest"}}, 
-{Function=BBPreloadSpell, Params={Name="yasuor"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SpellPings"}}, 
-{Function=BBPreloadSpell, Params={Name="yasuorcantcastsound"}}, 
-}

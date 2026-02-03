@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT14_Zeri.TFT14_Zeri_CloneManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_zerispelldash"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft14_zeri"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_zeri_clonemanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_zeri_copybuff"}}, 
-}

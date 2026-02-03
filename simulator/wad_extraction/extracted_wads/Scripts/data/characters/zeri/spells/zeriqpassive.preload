@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="zeriqbasicattack"}}, 
-{Function=BBPreloadSpell, Params={Name="zeriqpassiveready"}}, 
-{Function=BBPreloadSpell, Params={Name="zeriq"}}, 
-{Function=BBPreloadSpell, Params={Name="zerir"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_slowandsteady"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_aram_slowandsteady"}}, 
-{Function=BBPreloadModule, Params={Name="Zeri.ZeriQPassive"}}, 
-}

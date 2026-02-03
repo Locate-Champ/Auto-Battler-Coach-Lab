@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFTEventPM_Buddy_Yasuo_Sohm.TFTEventPM_Buddy_Yasuo_SohmQ"}}, 
-{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_sohmq_unitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tfteventpm_buddy_yasuo_sohmqmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_medium"}}, 
-}

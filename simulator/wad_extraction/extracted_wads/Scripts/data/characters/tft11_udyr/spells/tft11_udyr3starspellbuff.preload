@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_udyrspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="TFT11_Udyr.TFT11_Udyr3StarSpellBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_udyrshurikenbouncemis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_udyrshurikenbouncemis2"}}, 
-}

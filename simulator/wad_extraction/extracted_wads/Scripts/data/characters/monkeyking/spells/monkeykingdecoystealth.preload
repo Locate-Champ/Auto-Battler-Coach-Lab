@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="monkeykingdecoy"}}, 
-{Function=BBPreloadModule, Params={Name="Global.PlayerTerrian"}}, 
---{Function=BBPreloadModule, Params={Name="Global.GlobalInvisibility"}}, 
-}

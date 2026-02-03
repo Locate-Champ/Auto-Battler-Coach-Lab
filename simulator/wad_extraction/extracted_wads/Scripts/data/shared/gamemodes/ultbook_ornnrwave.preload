@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_ornnvulnerabledebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="slow"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_ornnr"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_ornnrmissileareatriggerbuff"}}, 
-}

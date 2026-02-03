@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFTEventPM_Buddy_Soraka_Golem.TFTEventPM_Buddy_Soraka_GolemBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuff_star0"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuff_star1"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuff_star2"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuff_star3"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitbuff_star4"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="aurorapassive"}}, 
-{Function=BBPreloadSpell, Params={Name="aurorapdebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="auroraincombatbuff"}}, 
-}

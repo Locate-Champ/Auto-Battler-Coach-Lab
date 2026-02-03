@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="slime_cartnearby"}}, 
-{Function=BBPreloadSpell, Params={Name="slime_cartneartower"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadModule, Params={Name="Global.NEXUSBLITZ_EventManager"}}, 
-}

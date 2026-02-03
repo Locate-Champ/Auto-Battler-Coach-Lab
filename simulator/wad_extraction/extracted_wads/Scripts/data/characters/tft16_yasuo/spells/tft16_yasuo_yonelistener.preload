@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT16_Yasuo.TFT16_YasuoDash"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_yasuo_followuplockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_yasuospell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-}

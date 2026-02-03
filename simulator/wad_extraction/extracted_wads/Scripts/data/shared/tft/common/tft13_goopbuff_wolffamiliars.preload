@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_WolfFamiliars"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT13_GoopBuff_WolfFamiliars_WolfBuff"}}, 
-{Function=BBPreloadCharacter, Params={Name="tft_murkwolfmini"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_wolffamiliars_wolfbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-}

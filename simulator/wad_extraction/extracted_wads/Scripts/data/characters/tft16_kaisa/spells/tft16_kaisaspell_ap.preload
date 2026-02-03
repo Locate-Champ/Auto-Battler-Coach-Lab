@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_kaisaspellap_attackspeedmanager"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Kaisa.TFT16_KaisaSpellAP_AttackSpeedManager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_kaisaspellap_aamanager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GenericFunctions"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft9_kalistaemarker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_kalistaspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
-{Function=BBPreloadSpell, Params={Name="tft9_kalistaexecutemanager"}}, 
-{Function=BBPreloadModule, Params={Name="TFT9_Kalista.TFT9_KalistaExecuteManager"}}, 
-}

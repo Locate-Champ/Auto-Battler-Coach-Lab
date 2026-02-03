@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_PortalDraft"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Encounters"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_hacks_unitvfx_unitbuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Set10"}}, 
-}

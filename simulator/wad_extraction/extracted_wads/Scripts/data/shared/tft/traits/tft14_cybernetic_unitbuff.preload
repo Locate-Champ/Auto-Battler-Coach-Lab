@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Cybernetic_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxHealthHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Cybernetic_PlayerBuff_Manager"}}, 
-}

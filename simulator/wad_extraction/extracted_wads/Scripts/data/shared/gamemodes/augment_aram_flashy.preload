@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_aram_flashyspell"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_aram_flashy2spell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_ARAM_Flashy"}}, 
-{Function=BBPreloadSpell, Params={Name="summonerflash"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT8_ArmyBuffPulsefire_CombatPhase"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_pulsefiresummonchoice"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_pulsefireclonebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_globalunitmovement"}}, 
-}

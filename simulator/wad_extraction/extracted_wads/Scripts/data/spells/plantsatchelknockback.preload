@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadParticle, Params={Name="sru_plant_satchel_trail.troy", SkinID="-1"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Vision"}}, 
-{Function=BBPreloadSpell, Params={Name="globalruncycleoverride"}}, 
-}

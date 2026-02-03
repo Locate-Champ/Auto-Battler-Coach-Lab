@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_nasusspellvfxmissile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_nasusspelldebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_nasusskinscalemanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_nasusspellskinoverride"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

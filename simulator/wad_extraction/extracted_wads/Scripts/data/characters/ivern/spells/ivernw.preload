@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="iverntotem"}}, 
-{Function=BBPreloadSpell, Params={Name="ivernwbrushlogic"}}, 
-{Function=BBPreloadParticle, Params={Name="global_watched.troy", SkinID="-1"}}, 
-{Function=BBPreloadSpell, Params={Name="ivernwpassive"}}, 
-{Function=BBPreloadModule, Params={Name="Ivern.IvernWPassive"}}, 
-}

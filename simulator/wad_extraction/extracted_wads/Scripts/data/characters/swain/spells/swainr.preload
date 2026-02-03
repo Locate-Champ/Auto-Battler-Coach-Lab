@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="swainrsoulflare"}}, 
-{Function=BBPreloadSpell, Params={Name="swainrhealcounter"}}, 
-{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
-{Function=BBPreloadCharacter, Params={Name="swaindemonform"}}, 
-{Function=BBPreloadSpell, Params={Name="swainrsoulprogression"}}, 
-{Function=BBPreloadSpell, Params={Name="swainrsoulburn"}}, 
-}

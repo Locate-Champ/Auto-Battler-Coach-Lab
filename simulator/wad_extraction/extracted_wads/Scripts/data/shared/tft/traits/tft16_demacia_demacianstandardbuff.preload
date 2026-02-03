@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Demacia_DemacianStandardBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Demacia_PlayerManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

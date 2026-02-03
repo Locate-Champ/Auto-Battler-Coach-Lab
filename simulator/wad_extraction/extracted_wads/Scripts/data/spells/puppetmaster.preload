@@ -1,4 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="puppetmastermovecheck"}}, 
-{Function=BBPreloadParticle, Params={Name="puppeteer_beam.troy", SkinID="-1"}}, 
-}

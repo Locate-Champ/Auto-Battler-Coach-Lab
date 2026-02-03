@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_goopbuff_deeproots_outmis"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Warwick.TFT13_Warwick_Bloodfrenzy"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Warwick.TFT13_Warwick_DevourLeap"}}, 
-{Function=BBPreloadModule, Params={Name="TFT13_Warwick.TFT13_Warwick_PassiveManager"}}, 
-}

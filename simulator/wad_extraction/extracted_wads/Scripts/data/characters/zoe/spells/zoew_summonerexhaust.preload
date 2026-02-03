@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="summonerexhaustslow"}}, 
-{Function=BBPreloadSpell, Params={Name="summonerexhaust"}}, 
-{Function=BBPreloadSpell, Params={Name="summonerexhaustdebuff"}}, 
-}

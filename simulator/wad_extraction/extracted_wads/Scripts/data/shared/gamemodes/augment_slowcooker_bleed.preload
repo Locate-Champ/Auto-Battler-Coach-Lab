@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_infernalconduit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_SlowCooker_Bleed"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_quest_pyromaniac"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_InfernalConduit"}}, 
-}

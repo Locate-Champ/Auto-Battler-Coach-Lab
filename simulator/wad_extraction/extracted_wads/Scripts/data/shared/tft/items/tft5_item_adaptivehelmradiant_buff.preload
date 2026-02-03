@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT5_Item_AdaptiveHelmRadiant_Buff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_adaptivehelm_radiantfrontlinemanabuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_adaptivehelm_radiantmanabuff"}}, 
-}

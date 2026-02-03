@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_Shroud_Buff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_small"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_shroud_mis"}}, 
-}

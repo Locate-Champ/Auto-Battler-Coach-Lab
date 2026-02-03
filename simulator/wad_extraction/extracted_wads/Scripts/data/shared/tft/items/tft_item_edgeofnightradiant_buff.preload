@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_edgeofnight_stealth"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Item_EdgeOfNightRadiant_Buff"}}, 
-}

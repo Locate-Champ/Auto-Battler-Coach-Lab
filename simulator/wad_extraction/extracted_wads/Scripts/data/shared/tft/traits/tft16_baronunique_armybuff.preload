@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_BaronUnique_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_baronunique_lightningdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_baronunique_lightningmarker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Void_UnitBuffStats"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_BaronNashor.TFT16_BaronNashorSpell_Passive"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_System_Board"}}, 
-}

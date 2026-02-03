@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_galiospell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Galio.TFT14_GalioFollowupSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_galiospellmisl"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_galiospellmisr"}}, 
-}

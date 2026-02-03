@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_gravesbamissile"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_Graves.TFT16_GravesFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="tft16_gravesspell"}}, 
-}

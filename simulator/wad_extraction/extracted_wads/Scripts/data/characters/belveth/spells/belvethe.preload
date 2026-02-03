@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Belveth.BelvethPassive"}}, 
-{Function=BBPreloadModule, Params={Name="Belveth.BelvethEOnHitManager"}}, 
-{Function=BBPreloadSpell, Params={Name="vladimirsanguinepool"}}, 
-{Function=BBPreloadModule, Params={Name="Belveth.BelvethE"}}, 
-{Function=BBPreloadSpell, Params={Name="belvethpassive"}}, 
-{Function=BBPreloadModule, Params={Name="Belveth.BelvethRPassive"}}, 
-}

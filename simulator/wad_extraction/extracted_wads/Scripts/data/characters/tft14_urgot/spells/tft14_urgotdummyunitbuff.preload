@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT14_Urgot.TFT14_UrgotDummyUnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Urgot.TFT14_UrgotSpellExecuteManager"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Zac.TFT14_Zac_Passive"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_urgotdummygrindupunitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-}

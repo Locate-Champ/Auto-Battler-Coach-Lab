@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="cardmastershared"}}, 
-{Function=BBPreloadSpell, Params={Name="cardmasterstackholder"}}, 
-{Function=BBPreloadSpell, Params={Name="cardmasterstackparticle"}}, 
-}

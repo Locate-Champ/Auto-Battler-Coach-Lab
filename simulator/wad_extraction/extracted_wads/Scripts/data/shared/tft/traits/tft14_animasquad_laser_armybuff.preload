@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT14_AnimaSquad_Laser_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_AnimaSquad_CombatWeapon_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_AnimaSquad_ArmyBuff"}}, 
-}

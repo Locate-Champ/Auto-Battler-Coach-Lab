@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft3_syndrar"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_castspellsuccess"}}, 
-}

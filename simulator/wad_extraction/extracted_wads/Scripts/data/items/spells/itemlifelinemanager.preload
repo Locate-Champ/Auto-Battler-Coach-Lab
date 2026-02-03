@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="primaltalonenrage"}}, 
-{Function=BBPreloadSpell, Params={Name="mawenrage"}}, 
-}

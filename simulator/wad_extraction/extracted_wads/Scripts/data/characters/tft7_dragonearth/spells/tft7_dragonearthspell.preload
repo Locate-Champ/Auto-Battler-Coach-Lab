@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="TFT7_DragonEarth.TFT7_DragonEarthSpell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_dragonearthspellresists"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_ccimmune"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

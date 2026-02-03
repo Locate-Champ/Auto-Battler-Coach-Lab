@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_manareave_small"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_talonqleap"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT4_UnitBuffMage"}}, 
-}

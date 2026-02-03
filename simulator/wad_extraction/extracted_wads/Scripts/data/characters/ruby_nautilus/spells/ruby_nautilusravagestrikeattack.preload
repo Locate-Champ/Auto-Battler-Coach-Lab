@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautilusstatstonepcombo"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautiluspassive"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautiluspassivecheck"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautiluspiercinggaze"}}, 
-{Function=BBPreloadSpell, Params={Name="Ruby_Nautiluspassiveroot"}}, 
-{Function=BBPreloadModule, Params={Name="Ruby_Nautilus.Ruby_NautilusPiercingGazeShield"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_oathsworn_kalistarallystunmarker"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_oathsworn_kalistarallystun"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_oathsworn_kalistarallyknockbackally"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_oathsworn_kalistarmis"}}, 
-{Function=BBPreloadSpell, Params={Name="unstoppableforcemarker"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Zed.ZedPassive"}}, 
-{Function=BBPreloadSpell, Params={Name="zed_qepcombotracker"}}, 
-{Function=BBPreloadSpell, Params={Name="zedpassivecd"}}, 
-{Function=BBPreloadModule, Params={Name="Shen.ShenPassive"}}, 
-}

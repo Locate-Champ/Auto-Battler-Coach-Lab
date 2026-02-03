@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_goldenegg"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_DataOverrides"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Augment_MagicRoll_EggBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_ItemFunctionModule"}}, 
-}

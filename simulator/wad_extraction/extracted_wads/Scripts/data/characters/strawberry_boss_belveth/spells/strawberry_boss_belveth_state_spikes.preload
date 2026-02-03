@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_state_coral"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_state_dashing"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Boss_Belveth.Strawberry_Boss_Belveth_Functions"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Boss_Belveth.Strawberry_Boss_Belveth_State_Spikes"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_state_spikes_justspiked"}}, 
-}

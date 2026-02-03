@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Strawberry_Briar.Strawberry_BriarFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="Strawberry_Briaredr"}}, 
-{Function=BBPreloadSpell, Params={Name="Strawberry_Briaremisstrong"}}, 
-{Function=BBPreloadSpell, Params={Name="Strawberry_Briaremis"}}, 
-}

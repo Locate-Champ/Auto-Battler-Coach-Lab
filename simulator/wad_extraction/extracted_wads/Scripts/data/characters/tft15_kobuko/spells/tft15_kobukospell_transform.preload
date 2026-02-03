@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_kobukospell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_kobukoshield"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_kobukospell_transform_marker"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_kobukospell_transform_knockupdamage"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_kobukospell_mis"}}, 
-}

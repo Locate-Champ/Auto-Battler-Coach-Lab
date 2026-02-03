@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="smolderrdontmove"}}, 
-{Function=BBPreloadSpell, Params={Name="morganaw"}}, 
-{Function=BBPreloadSpell, Params={Name="smolderrmommissile"}}, 
-{Function=BBPreloadSpell, Params={Name="smolderrmommissilesweetspot"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SpellPings"}}, 
-}

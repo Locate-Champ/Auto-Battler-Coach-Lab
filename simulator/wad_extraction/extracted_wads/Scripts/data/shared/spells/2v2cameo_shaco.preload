@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Cherry_CameoManager"}}, 
-{Function=BBPreloadSpell, Params={Name="2v2cameo_shacojackinthebox"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2CombatInstanceBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2CombatRoundChampionBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2Cameo_Shaco"}}, 
-}

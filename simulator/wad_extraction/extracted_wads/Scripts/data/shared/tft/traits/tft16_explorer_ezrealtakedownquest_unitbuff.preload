@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Explorer_EzrealTakedownQuest"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Explorer_PlayerBuff_Manager"}}, 
-}

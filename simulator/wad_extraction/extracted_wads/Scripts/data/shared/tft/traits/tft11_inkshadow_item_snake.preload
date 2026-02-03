@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_unithasinkshadowitem"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_item_snakemark"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_inkshadow_item_snakemark_vfx"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_healingreduction_medium"}}, 
-}

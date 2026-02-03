@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft7_leesinrcollisionmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitstatus_mrshred_small"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_leesinrknockback"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_leesinrstun"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-}

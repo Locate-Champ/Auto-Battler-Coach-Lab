@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_missfortunespellmis1"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_missfortunespell_missiletrackerbuff"}}, 
-}

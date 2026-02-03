@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_shock"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_Shock"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_lightningrod_cooldown"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft6_zeriw"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_zeribatracker"}}, 
-{Function=BBPreloadModule, Params={Name="TFT6_Zeri.TFT6_ZeriBATracker"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-}

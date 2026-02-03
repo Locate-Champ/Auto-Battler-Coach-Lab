@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="healthpacksupply"}}, 
-{Function=BBPreloadSpell, Params={Name="tahmkenchrwrapper"}}, 
-{Function=BBPreloadModule, Params={Name="Sylas.SylasR"}}, 
-{Function=BBPreloadSpell, Params={Name="sylasr"}}, 
-{Function=BBPreloadModule, Params={Name="Kled.KledFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="cherry_powerup_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_fruitsofyourlabor"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft14_renektonempoweredattack"}}, 
-{Function=BBPreloadModule, Params={Name="TFT14_Renekton.TFT14_RenektonEmpowered"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_renektondash"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_renektonempoweredattacktriple"}}, 
-}

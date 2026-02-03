@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_Nitro_SpareParts_ArmyBuffManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_Augment_Nitro_SpareParts_SummonUnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT14_HotRod_ArmyBuff_Manager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft14_augment_nitro_spareparts_summonunitbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Matchmaking"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_Summon"}}, 
-}

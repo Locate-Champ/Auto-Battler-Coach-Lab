@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFTEvent5YR_Mountain_ArmyBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_mountain_unitbuff_shield"}}, 
-{Function=BBPreloadSpell, Params={Name="tftevent5yr_mountain_unitbuff_permhealth_controller"}}, 
-}

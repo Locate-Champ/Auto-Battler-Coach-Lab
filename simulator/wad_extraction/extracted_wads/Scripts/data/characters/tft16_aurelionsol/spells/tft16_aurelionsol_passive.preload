@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft16_aurelionsolspell"}}, 
-{Function=BBPreloadModule, Params={Name="TFT16_AurelionSol.TFT16_AurelionSol_Passive"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_AurelionSolUnique_ArmyBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions_Set16a"}}, 
-}

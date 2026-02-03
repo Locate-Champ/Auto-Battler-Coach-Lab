@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadSpell, Params={Name="tft7_augment_bloodlust_marker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_Bloodlust_UnitBuff"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-{Function=BBPreloadSpell, Params={Name="lifelinebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="3053shield"}}, 
-{Function=BBPreloadSpell, Params={Name="lifelinecooldown"}}, 
-}

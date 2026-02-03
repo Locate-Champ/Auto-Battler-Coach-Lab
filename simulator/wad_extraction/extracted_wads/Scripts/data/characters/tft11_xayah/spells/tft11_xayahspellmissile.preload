@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft11_xayahspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT11_Sharpshooter_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT11_Augment_Trickshot_UnitBuff"}}, 
-}

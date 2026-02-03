@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ultbook_yonerhit"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_yonerstun"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_yonerknockback"}}, 
-{Function=BBPreloadSpell, Params={Name="ultbook_yonespellbuffer"}}, 
-}

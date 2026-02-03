@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.UltbookSmitePassive"}}, 
-{Function=BBPreloadSpell, Params={Name="ivernpmonsterexit"}}, 
-{Function=BBPreloadSpell, Params={Name="ivernp"}}, 
-}

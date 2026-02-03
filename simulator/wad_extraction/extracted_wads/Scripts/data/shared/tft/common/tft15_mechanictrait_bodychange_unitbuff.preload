@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft15_mechanictrait_bodychange_unitbuff_shield"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT15_MechanicTrait_BodyChange_UnitBuff"}}, 
---{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Units"}}, 
-}

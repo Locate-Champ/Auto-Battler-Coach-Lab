@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="udyrr"}}, 
-{Function=BBPreloadModule, Params={Name="Udyr.UdyrR2_LastAATracker"}}, 
-{Function=BBPreloadModule, Params={Name="Udyr.UdyrR2Activation"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrrdebuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
-{Function=BBPreloadSpell, Params={Name="udyrr2targetmark"}}, 
-}

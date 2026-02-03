@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="malzaharw"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Status"}}, 
-{Function=BBPreloadSpell, Params={Name="malzaharvoidlingdanceoverride"}}, 
-{Function=BBPreloadSpell, Params={Name="malzahardeathparticle"}}, 
-}

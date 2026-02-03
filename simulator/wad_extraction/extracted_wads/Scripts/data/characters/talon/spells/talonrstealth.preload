@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="talonr"}}, 
-{Function=BBPreloadSpell, Params={Name="talonrmistwo"}}, 
-{Function=BBPreloadModule, Params={Name="Global.6696"}}, 
---{Function=BBPreloadModule, Params={Name="Global.GlobalInvisibility"}}, 
-}

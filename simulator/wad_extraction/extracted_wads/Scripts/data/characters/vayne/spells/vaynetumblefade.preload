@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadParticle, Params={Name="vayne_skin11_invisibility_enter_ally.troy", SkinID="-1"}}, 
-{Function=BBPreloadParticle, Params={Name="vayne_skin11_invisibility_enter_enemy.troy", SkinID="-1"}}, 
---{Function=BBPreloadModule, Params={Name="Global.GlobalInvisibility"}}, 
-}

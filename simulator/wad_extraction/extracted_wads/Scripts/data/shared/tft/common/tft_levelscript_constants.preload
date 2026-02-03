@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_globalunitbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_globalsummonbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_globalitembuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_FeatureToggles"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_globalshieldtext"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Constants"}}, 
-}

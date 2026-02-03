@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft7_traitrevelmissile"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_StagesRoundsPhases"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT7_Augment_RevelPartyFavors_Player"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Missions"}}, 
-}

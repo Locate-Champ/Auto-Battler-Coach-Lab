@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT13_SetMechanic_GoopBuff_FinalSpark"}}, 
-{Function=BBPreloadSpell, Params={Name="tft13_setmechanic_goopbuff_finalspark_shieldbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff"}}, 
-}

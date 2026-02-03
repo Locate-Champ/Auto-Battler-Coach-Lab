@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.Smite"}}, 
-{Function=BBPreloadModule, Params={Name="Leblanc.LeblancFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="jarvanivmartialcadencecheck"}}, 
-{Function=BBPreloadSpell, Params={Name="jarvanivmartialcadence"}}, 
-{Function=BBPreloadSpell, Params={Name="missfortunepassivestack"}}, 
-}

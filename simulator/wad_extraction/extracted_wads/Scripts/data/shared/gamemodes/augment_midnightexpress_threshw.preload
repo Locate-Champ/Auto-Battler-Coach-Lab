@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadCharacter, Params={Name="testcuberenderwcollision"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_midnightexpress_threshwlanternout"}}, 
-{Function=BBPreloadSpell, Params={Name="expirationtimer"}}, 
-{Function=BBPreloadParticle, Params={Name="thresh_lantern_cas_ground.troy", SkinID="-1"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_midnightexpress_threshwtetherparticle"}}, 
---{Function=BBPreloadModule, Params={Name="Thresh.ThreshFunctionModule"}}, 
-}

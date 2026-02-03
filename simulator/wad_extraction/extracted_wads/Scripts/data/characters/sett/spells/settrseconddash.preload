@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="settr"}}, 
-{Function=BBPreloadSpell, Params={Name="settslow"}}, 
-{Function=BBPreloadSpell, Params={Name="settrthirddash"}}, 
-{Function=BBPreloadSpell, Params={Name="settrendstun"}}, 
-}

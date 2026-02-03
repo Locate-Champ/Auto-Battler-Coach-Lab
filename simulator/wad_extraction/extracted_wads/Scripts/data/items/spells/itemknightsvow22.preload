@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.ItemKnightsVowLiege22"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemKnightsVowKnight22"}}, 
-{Function=BBPreloadSpell, Params={Name="itemknightsvowknight22"}}, 
-{Function=BBPreloadSpell, Params={Name="itemknightsvowliege22"}}, 
-{Function=BBPreloadModule, Params={Name="Global.SpellAttribution"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ItemFunctions"}}, 
-}

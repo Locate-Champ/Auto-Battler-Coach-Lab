@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_raidboss"}}, 
-{Function=BBPreloadModule, Params={Name="Global.2v2CombatRoundChampionBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_raidboss_empowered"}}, 
-}

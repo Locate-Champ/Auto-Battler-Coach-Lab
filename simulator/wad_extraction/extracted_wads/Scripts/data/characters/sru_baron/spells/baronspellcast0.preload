@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="baronspikehit"}}, 
-{Function=BBPreloadSpell, Params={Name="barondebuff"}}, 
-{Function=BBPreloadSpell, Params={Name="baronbacksidestun"}}, 
-{Function=BBPreloadSpell, Params={Name="baronbacksidedetect"}}, 
-}

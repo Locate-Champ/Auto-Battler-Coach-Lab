@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="feats_shoptooltipcontroller"}}, 
-{Function=BBPreloadSpell, Params={Name="featsglobalnoxusbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.FeatsGlobalNoxusBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Feats_ControlBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.MissionsInLUA_2025_S2_A1"}}, 
-}

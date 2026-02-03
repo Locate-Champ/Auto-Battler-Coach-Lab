@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_nunuspellball"}}, 
-{Function=BBPreloadSpell, Params={Name="tft8_nunuspellballmanager"}}, 
-{Function=BBPreloadModule, Params={Name="TFT8_Nunu.TFT8_NunuSpellBallManager"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_Combat"}}, 
-}

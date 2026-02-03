@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_lovers_rakantagin_ricochetmanager"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_rakanbenchdummyspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_xayahbenchdummyspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft11_xayahbenchdummyspell_left"}}, 
-}

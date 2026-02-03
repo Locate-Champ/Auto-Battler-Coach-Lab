@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="ruby_wukongdoubleattack"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongpassive"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongpassivestack"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongpassivestackfalloffcontroller"}}, 
-{Function=BBPreloadSpell, Params={Name="ruby_wukongpassivestackfalloffcontrolleralt"}}, 
-}

@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="_globalchampionbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Aatrox.AatroxFunctionModule"}}, 
-{Function=BBPreloadSpell, Params={Name="aatroxincombat"}}, 
-{Function=BBPreloadSpell, Params={Name="aatroxrecallfacing"}}, 
-{Function=BBPreloadSpell, Params={Name="aatroxbannerwings"}}, 
-}

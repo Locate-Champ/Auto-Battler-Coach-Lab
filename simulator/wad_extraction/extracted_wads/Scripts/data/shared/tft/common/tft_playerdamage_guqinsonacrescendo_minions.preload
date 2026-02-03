@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Combat"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_asheenchantedcrystalarrow_minions"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_playerdamage_asheenchantedcrystalarrow_1star"}}, 
-}

@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_skirmisherbuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT5_UnitBuffSkirmisher"}}, 
-{Function=BBPreloadSpell, Params={Name="tft5_traiteffect_skirmishershield"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_summon_marker"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_PlayerBuff_Items"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_UnitRecords"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Augment_SyndraCarry_Unit"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_DamageAmpHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT8_Admin_UnitBuff"}}, 
-}

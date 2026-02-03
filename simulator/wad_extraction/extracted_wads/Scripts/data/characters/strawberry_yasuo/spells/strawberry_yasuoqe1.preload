@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_yasuoq1wrapper"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_yasuopassive"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_yasuoisincombat"}}, 
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_yasuoq1"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_yasuoq2wrapper"}}, 
-{Function=BBPreloadModule, Params={Name="Strawberry_Yasuo.Strawberry_YasuoIsInCombat"}}, 
-}

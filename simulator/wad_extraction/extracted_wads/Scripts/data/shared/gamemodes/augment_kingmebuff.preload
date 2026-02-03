@@ -1,7 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_kingme_celebrationspotlight"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_kingme"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Augment_KingMeBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_kingme_emotespotlight"}}, 
-{Function=BBPreloadModule, Params={Name="Global.ARAM_Augment_Manager"}}, 
-}

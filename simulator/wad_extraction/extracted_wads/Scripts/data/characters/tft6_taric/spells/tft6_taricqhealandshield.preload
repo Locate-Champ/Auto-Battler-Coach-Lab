@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_UnitStatus_HealingReduction"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_taricq"}}, 
-{Function=BBPreloadSpell, Params={Name="tft6_taricqshield"}}, 
-}

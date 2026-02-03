@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Arcanist_ChaosMagic_UnitBuff"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_GlobalUnitBuff_MaxManaCostHandler"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT16_Augment_Arcanist_ChaosMagic_ArmyBuff"}}, 
-}

@@ -1,8 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffmountain_preview"}}, 
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffcloud_preview"}}, 
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffocean_preview"}}, 
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffinfernal_preview"}}, 
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffhextech_preview"}}, 
-{Function=BBPreloadSpell, Params={Name="srx_dragonsoulbuffchemtech_preview"}}, 
-}

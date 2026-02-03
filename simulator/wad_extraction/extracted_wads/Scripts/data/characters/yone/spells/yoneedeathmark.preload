@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="root"}}, 
-{Function=BBPreloadModule, Params={Name="Yone.YoneEDeathmark"}}, 
-{Function=BBPreloadSpell, Params={Name="yonee"}}, 
-}

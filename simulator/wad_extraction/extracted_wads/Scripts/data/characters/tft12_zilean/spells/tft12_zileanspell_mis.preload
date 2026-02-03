@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft12_zileanspell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft12_zileanspellbomb"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_LevelScript_Players"}}, 
-}

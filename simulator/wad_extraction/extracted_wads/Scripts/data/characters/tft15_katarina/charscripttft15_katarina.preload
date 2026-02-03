@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT15_BattleAcademia_UnitBuff"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_katarinaspell"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-}

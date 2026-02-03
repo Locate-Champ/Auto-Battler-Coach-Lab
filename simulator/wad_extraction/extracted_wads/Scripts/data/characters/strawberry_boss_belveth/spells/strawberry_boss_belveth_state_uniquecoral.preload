@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_state_uniquecoral_coralbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_state_dashing"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_megabuff"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_boss_belveth_attack_selflock"}}, 
-}

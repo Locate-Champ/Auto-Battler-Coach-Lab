@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_annieq_marker_unit"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_annieq_missile"}}, 
-{Function=BBPreloadSpell, Params={Name="tft10_annieq_missile_2"}}, 
-}

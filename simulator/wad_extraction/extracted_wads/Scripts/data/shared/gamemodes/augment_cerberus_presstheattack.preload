@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="augment_thricetwice"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_thricetwice_presstheattackselfbuff"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_thricetwice_presstheattacklockout"}}, 
-{Function=BBPreloadSpell, Params={Name="augment_thricetwice_presstheattackstack"}}, 
-}

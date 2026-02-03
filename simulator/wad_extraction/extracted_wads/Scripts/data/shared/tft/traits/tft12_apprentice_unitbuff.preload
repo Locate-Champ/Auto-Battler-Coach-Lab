@@ -1,5 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_item_hextechgunblade_mis"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_item_hextechgunblade_vfx_cooldown"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT12_Apprentice_UnitBuff"}}, 
-}

@@ -1,6 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="strawberry_ccimmune"}}, 
-{Function=BBPreloadSpell, Params={Name="strawberry_spire_timer"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_LevelScript"}}, 
-{Function=BBPreloadModule, Params={Name="Global.Strawberry_Spire_Evil"}}, 
-}

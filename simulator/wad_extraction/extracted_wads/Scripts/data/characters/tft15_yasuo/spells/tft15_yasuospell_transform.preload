@@ -1,9 +1,0 @@
-PreLoadBuildingBlocks = {
-{Function=BBPreloadSpell, Params={Name="tft_castspelllockmana"}}, 
-{Function=BBPreloadSpell, Params={Name="tft_unitlockout"}}, 
-{Function=BBPreloadModule, Params={Name="Global.TFT_SpellTargeting"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_yasuospell"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_yasuoslice"}}, 
-{Function=BBPreloadSpell, Params={Name="tft15_yasuospell_transform_hangtime"}}, 
-{Function=BBPreloadSpell, Params={Name="yasuor"}}, 
-}
