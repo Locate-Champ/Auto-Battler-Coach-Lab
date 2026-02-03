@@ -370,9 +370,9 @@
   - World Ender untargetable + AD from omnivamp
 
 ### Zilean (TFT16_Zilean) ✅ IMPLEMENTED
-- MagicDamage: 75→1000
-- ExplosionDamage: 150→4000
-- MaxDurationBeforeKill: 12→16→1s
+- MagicDamage: 75/115/1000 (1/2/3-star)
+- ExplosionDamage: 150/225/4000
+- MaxDurationBeforeKill: 18/16/1s (bomb timer before auto-kill)
 - ManaOnKill: 15
 - **Implemented:**
   - Visions of the End: Place time bombs on enemies
@@ -395,9 +395,10 @@
 - Box duration
 - HealthDrainPerSoul scaling
 - **Implemented:**
+  - Hook: Pulls nearest enemy to adjacent hex
+  - The Box: Deals magic damage on hook
+  - Soul drain: Bonus damage + heal based on team's Shadow Isles souls
   - Soul collection integrated via TraitManager.shadow_isles_souls
-  - Thresh ability scales with collected souls
-  - Shadow Isles trait provides stat bonuses based on soul count
 
 ### Mel (TFT16_Mel) ✅ IMPLEMENTED
 - ManaDrainPerSecond variable
