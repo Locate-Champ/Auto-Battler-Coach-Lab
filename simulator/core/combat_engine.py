@@ -1127,7 +1127,10 @@ class AugmentManager:
             desc = augment.get('desc', '').lower()
 
             # Determine augment type and apply appropriately
-            if self._is_team_stat_augment(augment):
+            # Check hero augments first (champion-specific)
+            if self._is_hero_augment(augment_name):
+                self._apply_hero_augment(team, augment_name, augment)
+            elif self._is_team_stat_augment(augment):
                 self._apply_team_stat_augment(team, augment, trait_counts)
             elif self._is_hex_augment(augment):
                 self._setup_hex_augment(team, augment)
@@ -1167,6 +1170,113 @@ class AugmentManager:
         """Check if augment requires holding specific items."""
         desc = augment.get('desc', '').lower()
         return 'holding' in desc or 'equipped' in desc or 'spatula' in desc
+
+    # =========================================================================
+    # HERO AUGMENTS - Champion-specific augments that modify abilities
+    # =========================================================================
+
+    # Hero augment definitions: apiName -> champion api_name and effects
+    HERO_AUGMENTS = {
+        'TFT16_Augment_XinZhaoCarry': {
+            'champion': 'TFT16_XinZhao',
+            'name': 'Trials of Twilight',
+            'effects': {
+                'constant_strikes': True,      # Constantly strikes nearby enemies
+                'execute_threshold': 0.15,     # Execute enemies below 15% HP
+                'transform_to_zaahen': True,   # Transform to Zaahen after 5 rounds as 3-star
+                'rounds_to_transform': 5,
+            }
+        },
+        'TFT16_Augment_ShadowIsles_RuinedKing': {
+            'champion': 'TFT16_Viego',
+            'name': 'The Ruined King',
+            'effects': {
+                'passive_share_percent': 0.30,  # Share 30% of passive with SI allies
+                'soul_req_upgrade': 100,        # Ability upgrades after 100 souls
+                'upgraded_ability': True,       # Track if ability has been upgraded
+            }
+        },
+        'TFT16_Augment_RumbleCarry': {
+            'champion': 'TFT16_Rumble',
+            'name': 'Artillery Barrage',
+            'effects': {
+                'bonus_range': 7,               # +7 Range
+                'constant_missiles': True,      # Constantly fires missiles
+                'missile_as_scaling': True,     # Missile rate scales with AS
+            }
+        },
+        'TFT16_Augment_IllaoiCarry': {
+            'champion': 'TFT16_Illaoi',
+            'name': 'Leap of Faith',
+            'effects': {
+                'becomes_fighter': True,        # Role changes to Fighter
+                'slam_ability': True,           # Ability replaced with airborne slam
+                'recast_on_kill': True,         # Recast when kills target
+            }
+        },
+    }
+
+    def _is_hero_augment(self, augment_name: str) -> bool:
+        """Check if augment is a hero augment (champion-specific ability modifier)."""
+        return augment_name in self.HERO_AUGMENTS
+
+    def _apply_hero_augment(self, team: List['Unit'], augment_name: str, augment: Dict):
+        """Apply a hero augment to the appropriate champion on the team.
+
+        Hero augments modify a specific champion's abilities and behavior.
+        """
+        hero_data = self.HERO_AUGMENTS.get(augment_name)
+        if not hero_data:
+            return
+
+        champion_api = hero_data['champion']
+        effects = hero_data['effects']
+
+        # Find the strongest matching champion on the team
+        matching_units = [u for u in team if u.api_name == champion_api and u.is_alive]
+        if not matching_units:
+            return
+
+        # Get strongest by star level, then items, then stats
+        target_unit = max(matching_units, key=lambda u: (
+            u.star_level,
+            len(u.items),
+            u.stats.ad + u.stats.ap
+        ))
+
+        # Apply hero augment flag and effects
+        target_unit._hero_augment = augment_name
+        target_unit._hero_augment_effects = effects.copy()
+
+        # Apply immediate stat changes
+        if augment_name == 'TFT16_Augment_RumbleCarry':
+            # Artillery Barrage: +7 Range
+            target_unit.stats.range += effects.get('bonus_range', 7)
+
+        elif augment_name == 'TFT16_Augment_IllaoiCarry':
+            # Leap of Faith: Change role to Fighter (affects traits)
+            if effects.get('becomes_fighter'):
+                target_unit._original_role = getattr(target_unit, 'role', 'Bruiser')
+                target_unit.role = 'Fighter'
+
+        elif augment_name == 'TFT16_Augment_ShadowIsles_RuinedKing':
+            # The Ruined King: Share passive with SI allies
+            share_pct = effects.get('passive_share_percent', 0.30)
+            for ally in team:
+                if ally != target_unit and ally.is_alive and 'Shadow Isles' in ally.traits:
+                    # Viego's passive gives stacking AD - share 30%
+                    ally._viego_passive_share = share_pct
+
+    def get_hero_augment_for_unit(self, unit: 'Unit') -> Optional[Dict]:
+        """Get hero augment data for a unit if they have one active."""
+        augment_name = getattr(unit, '_hero_augment', None)
+        if augment_name:
+            return {
+                'name': augment_name,
+                'effects': getattr(unit, '_hero_augment_effects', {}),
+                'data': self.HERO_AUGMENTS.get(augment_name, {})
+            }
+        return None
 
     def _apply_team_stat_augment(self, team: List['Unit'], augment: Dict,
                                   trait_counts: Dict[str, int]):
