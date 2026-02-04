@@ -133,8 +133,8 @@ def calculate_tier(avg_placement: float) -> str:
     return "C"
 
 
-def build_stats_by_cluster(cluster_data: dict) -> dict:
-    """Build placement stats for a cluster using placement buckets when available."""
+def calculate_cluster_stats(cluster_data: dict) -> dict:
+    """Calculate placement stats for a single cluster using placement buckets when available."""
     overall = cluster_data.get("overall", {})
     places = overall.get("places") or cluster_data.get("places") or []
 
@@ -289,9 +289,10 @@ def extract_comps_data(raw_data, stats_by_cluster=None, stats_total_games=0, sta
         total_games = stats_total_games
 
         for cluster_id, cluster_data in cluster_details.items():
-            stats = build_stats_by_cluster(cluster_data)
+            stats = calculate_cluster_stats(cluster_data)
             games_played = stats["total_games"]
             avg_placement = stats["avg_placement"]
+            tier = calculate_tier(avg_placement)
 
             # Parse units from units_string
             units_string = cluster_data.get("units_string", "")
