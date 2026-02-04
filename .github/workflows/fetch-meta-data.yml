@@ -1,14 +1,26 @@
-# Scheduled workflow to fetch fresh TFT meta data
-# Runs daily at 6 AM UTC to update composition stats
+# Scheduled workflow to fetch fresh TFT data from MetaTFT API
+# Runs daily at 6 AM EST to update all game data
+# Syncs: /data/meta/, /data/game_data/, /simulator/data/
 
-name: Fetch TFT Meta Data
+name: Fetch TFT Data
 
 on:
   schedule:
-    # Run daily at 6 AM UTC
-    - cron: '0 6 * * *'
+    # Run daily at 6 AM EST (11 AM UTC)
+    - cron: '0 11 * * *'
   # Allow manual trigger
   workflow_dispatch:
+    inputs:
+      sync_target:
+        description: 'What to sync'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - meta
+          - game
+          - simulator
 
 permissions:
   contents: write
@@ -30,18 +42,25 @@ jobs:
         run: |
           pip install requests
 
-      - name: Fetch Meta TFT data
+      - name: Sync TFT data
         run: |
-          python scripts/fetch_meta_data.py
+          if [ "${{ github.event.inputs.sync_target }}" = "meta" ]; then
+            python scripts/sync_all_data.py --meta
+          elif [ "${{ github.event.inputs.sync_target }}" = "game" ]; then
+            python scripts/sync_all_data.py --game
+          elif [ "${{ github.event.inputs.sync_target }}" = "simulator" ]; then
+            python scripts/sync_all_data.py --sim
+          else
+            python scripts/sync_all_data.py
+          fi
         env:
-          # Add API keys as secrets if needed
           META_TFT_API_KEY: ${{ secrets.META_TFT_API_KEY }}
         continue-on-error: true
 
       - name: Check for changes
         id: changes
         run: |
-          if [[ -n $(git status --porcelain data/) ]]; then
+          if [[ -n $(git status --porcelain data/ simulator/data/) ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
@@ -52,6 +71,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/
-          git commit -m "chore: Update TFT meta data [automated]"
+          git add data/ simulator/data/
+          git commit -m "chore: Sync TFT data [automated]"
           git push

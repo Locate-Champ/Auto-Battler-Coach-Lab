@@ -1,18 +1,17 @@
 {
-  "source": "CommunityDragon cdragon/tft/en_us.json",
-  "source_url": "https://raw.communitydragon.org/latest/cdragon/tft/en_us.json",
-  "retrieved_utc": "2026-01-21T20:01:44.882038+00:00",
+  "source": "MetaTFT API",
+  "source_urls": [
+    "https://api-hc.metatft.com/tft-stat-api/units",
+    "https://api-hc.metatft.com/tft-stat-api/items",
+    "https://api-hc.metatft.com/tft-stat-api/traits",
+    "https://data.metatft.com/lookups/trait_mapping.json"
+  ],
+  "retrieved_utc": "2026-02-04T01:55:58.404315+00:00",
   "set_number": 16,
   "set_name": "Set16",
-  "counts": {
-    "champions_all": 116,
-    "champions_shop": 101,
-    "traits": 53,
-    "items": 444,
-    "augments": 208
-  },
   "notes": [
-    "Star-level arrays: variable.value[1]=1★, [2]=2★, [3]=3★, [4]=4★ when present; index 0 is usually unused.",
-    "Augments and items share the same object type in this dataset; set augments are resolved from setData[16].augments list."
+    "Data fetched from MetaTFT public API",
+    "Placements array: [1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th]",
+    "Stats calculated from high-elo ranked games"
   ]
 }
