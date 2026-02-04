@@ -111,9 +111,19 @@ tft-coach-234/
 │   ├── meta/                     # Current meta data
 │   └── api/                      # API response caches
 │
-├── docs/                         # Documentation
+├── docs/                         # All documentation (organized)
+│   ├── INDEX.md                  # Documentation navigation hub
+│   ├── architecture/             # Data schemas, file structure
+│   ├── integration/              # Live data, MetaTFT integration
+│   ├── design/                   # UI workflow, Figma specs
+│   ├── simulator/                # Combat engine documentation
+│   ├── research/                 # Research and analysis
+│   └── external/                 # Notion integration
+│
 ├── archive/                      # Archived code and old implementations
-│   └── old_frontend/             # Previous React/JS frontend (backup)
+│   ├── old_frontend/             # Previous React/JS frontend
+│   ├── session-logs/             # Archived session logs
+│   └── outputs/                  # Archived output reports
 │
 ├── start.sh                      # Single command launcher (Linux/Mac)
 ├── package.json                  # Root npm scripts
@@ -352,13 +362,51 @@ cd app/frontend && npm run dev
 
 ---
 
-## Related Documentation
+## Development Status
 
-- `docs/LIVE_DATA_PROGRESS.md` - Live data integration status
-- `docs/DATA_SCHEMAS.md` - Data schema definitions
-- `docs/PROTOTYPE_PLAN.md` - Implementation plan
-- `DEVELOPMENT_CHECKLIST.md` - Task tracking
+**Overall Progress: ~64% complete (44 done + 7 partial of 69 tasks)**
+
+| Phase | Done | Partial | Todo |
+|-------|------|---------|------|
+| Core Infrastructure | 8 | 0 | 0 |
+| Data & ML Models | 9 | 1 | 1 |
+| React Frontend | 14 | 0 | 0 |
+| Live Game Integration | 3 | 2 | 0 |
+| Advanced Features | 1 | 2 | 3 |
+| Combat Simulator | 9 | 1 | 4 |
+| Automation & Publishing | 0 | 1 | 11 |
+
+### High Priority (Next Steps)
+1. Add opponent board display (DualBoard wiring)
+2. Positioning recommendations
+3. Item-to-unit assignments
+4. Import more match data (163 games is small)
+
+### Complete Features
+- ML placement prediction model
+- Stage-aware recommendation engine
+- WebSocket real-time updates
+- React UI with hex board, traits, items
+- Meta comps integration
+- Live board state from MetaTFT
+- Combat simulator core (40+ champions)
 
 ---
 
-*Last updated: 2026-01-30*
+## Documentation Index
+
+All documentation is organized in `/docs/`:
+
+| Category | Location | Contents |
+|----------|----------|----------|
+| **Index** | [docs/INDEX.md](docs/INDEX.md) | Navigation hub |
+| **Architecture** | [docs/architecture/](docs/architecture/) | Data schemas, file structure, prototype plan |
+| **Integration** | [docs/integration/](docs/integration/) | Live data, MetaTFT, board state |
+| **Design** | [docs/design/](docs/design/) | UI workflow, Figma specs |
+| **Simulator** | [docs/simulator/](docs/simulator/) | Combat engine, champion abilities |
+| **Research** | [docs/research/](docs/research/) | Combat timing, simulator planning |
+| **External** | [docs/external/](docs/external/) | Notion integration |
+
+---
+
+*Last updated: 2026-02-03*
