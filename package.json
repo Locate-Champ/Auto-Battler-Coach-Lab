@@ -6,7 +6,12 @@
     "start": "cd app/frontend && npm run dev:full",
     "dev": "cd app/frontend && npm run dev:full",
     "dev:ui": "cd app/frontend && npm run dev",
-    "build": "cd app/frontend && npm run build"
+    "build": "cd app/frontend && npm run build",
+    "sync": "python scripts/sync_all_data.py",
+    "sync:meta": "python scripts/sync_all_data.py --meta",
+    "sync:game": "python scripts/sync_all_data.py --game",
+    "sync:sim": "python scripts/sync_all_data.py --sim",
+    "sync:dry": "python scripts/sync_all_data.py --dry-run"
   },
   "description": "TFT Coach - Personal coaching companion for Teamfight Tactics"
 }
