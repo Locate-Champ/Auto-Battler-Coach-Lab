@@ -1,214 +1,84 @@
 {
-  "AatroxUnique": {
-    "displayName": "World Ender",
-    "icon": null
-  },
-  "AurelionSolUnique": {
-    "displayName": "Star Forger",
-    "icon": "trait_icon_16_starforger.tft_set16.png"
-  },
-  "BaronUnique": {
-    "displayName": "Riftscourge",
-    "icon": "trait_icon_16_riftscourge.png"
-  },
-  "Bilgewater": {
-    "displayName": "Bilgewater",
-    "icon": null
-  },
-  "Blacksmith": {
-    "displayName": "Blacksmith",
-    "icon": "trait_icon_16_blacksmith.tft_set16.png"
-  },
-  "Brawler": {
-    "displayName": "Bruiser",
-    "icon": "trait_icon_16_bruiser.tft_set16.png"
-  },
-  "Caretaker": {
-    "displayName": "Caretaker",
-    "icon": "trait_icon_16_caretaker.tft_set16.png"
-  },
-  "Chronokeeper": {
-    "displayName": "Chronokeeper",
-    "icon": "trait_icon_16_chronokeeper.tft_set16.png"
-  },
-  "DarkChild": {
-    "displayName": "Dark Child",
-    "icon": "trait_icon_16_darkchild.tft_set16.png"
-  },
-  "DarkinWeapon": {
-    "displayName": "Darkin",
-    "icon": "trait_icon_16_darkin.tft_set16.png"
-  },
-  "Defender": {
-    "displayName": "Defender",
-    "icon": "trait_icon_16_defender.png"
-  },
-  "Demacia": {
-    "displayName": "Demacia",
-    "icon": "trait_icon_16_demacia.tft_set16.png"
-  },
-  "Emperor": {
-    "displayName": "Emperor",
-    "icon": "trait_icon_16_emperor.tft_set16.png"
-  },
-  "Explorer": {
-    "displayName": "Ixtal",
-    "icon": "trait_icon_16_ixtal.tft_set16.png"
-  },
-  "Freljord": {
-    "displayName": "Freljord",
-    "icon": "trait_icon_16_freljord.tft_set16.png"
-  },
-  "Glutton": {
-    "displayName": "Glutton",
-    "icon": "trait_icon_16_glutton.tft_set16.png"
-  },
-  "Gunslinger": {
-    "displayName": "Gunslinger",
-    "icon": "trait_icon_16_gunslinger.tft_set16.png"
-  },
-  "Harvester": {
-    "displayName": "Harvester",
-    "icon": "trait_icon_16_harvester.tft_set16.png"
-  },
-  "Heroic": {
-    "displayName": "Heroic",
-    "icon": "trait_icon_16_heroic.tft_set16.png"
-  },
-  "HexMech": {
-    "displayName": "HexMech",
-    "icon": "trait_icon_16_hexmech.tft_set16.png"
-  },
-  "Huntress": {
-    "displayName": "Huntress",
-    "icon": "trait_icon_16_huntress.tft_set16.png"
-  },
-  "Invoker": {
-    "displayName": "Invoker",
-    "icon": "trait_icon_16_invoker.png"
-  },
-  "Ionia": {
-    "displayName": "Ionia",
-    "icon": "trait_icon_16_ionia.tft_set16.png"
-  },
-  "Juggernaut": {
-    "displayName": "Juggernaut",
-    "icon": "trait_icon_16_juggernaut.png"
-  },
-  "KaisaUnique": {
-    "displayName": "Assimilator",
-    "icon": "trait_icon_16_assimilator.tft_set16.png"
-  },
-  "KindredUnique": {
-    "displayName": "Eternal",
-    "icon": "trait_icon_16_eternal.png"
-  },
-  "Longshot": {
-    "displayName": "Longshot",
-    "icon": "trait_icon_16_longshot.tft_set16.png"
-  },
-  "Magus": {
-    "displayName": "Disruptor",
-    "icon": "trait_icon_16_disruptor.png"
-  },
-  "Noxus": {
-    "displayName": "Noxus",
-    "icon": "trait_icon_16_noxus.tft_set16.png"
-  },
-  "Piltover": {
-    "displayName": "Piltover",
-    "icon": "trait_icon_16_piltover.tft_set16.png"
-  },
-  "Rapidfire": {
-    "displayName": "Quickstriker",
-    "icon": "trait_icon_16_quickstriker.png"
-  },
-  "RuneMage": {
-    "displayName": "Rune Mage",
-    "icon": "trait_icon_16_runemage.tft_set16.png"
-  },
-  "ShadowIsles": {
-    "displayName": "Shadow Isles",
-    "icon": "trait_icon_16_shadowisles.tft_set16.png"
-  },
-  "Shurima": {
-    "displayName": "Shurima",
-    "icon": "trait_icon_16_shurima.tft_set16.png"
-  },
-  "ShyvanaUnique": {
-    "displayName": "Dragonborn",
-    "icon": "trait_icon_16_dragonborn.tft_set16.png"
-  },
-  "Slayer": {
-    "displayName": "Slayer",
-    "icon": "trait_icon_16_slayer.png"
-  },
-  "Sorcerer": {
-    "displayName": "Arcanist",
-    "icon": "trait_icon_16_arcanist.png"
-  },
-  "Soulbound": {
-    "displayName": "Soulbound",
-    "icon": "trait_icon_16_soulbound.tft_set16.png"
-  },
-  "SylasTrait": {
-    "displayName": "Chainbreaker",
-    "icon": "trait_icon_16_chainbreaker.tft_set16.png"
-  },
-  "Targon": {
-    "displayName": "Targon",
-    "icon": "trait_icon_16_targon.tft_set16.png"
-  },
-  "Teamup_AmbessaKindred": {
-    "displayName": "Chosen Wolves",
-    "icon": "teamup_trait_chosenwolves.tft_set16.png"
-  },
-  "Teamup_EkkoZilean": {
-    "displayName": "Timewinders",
-    "icon": "teamup_trait_timewinders.tft_set16.png"
-  },
-  "Teamup_JarvanShyvana": {
-    "displayName": "Dragonguards",
-    "icon": "teamup_trait_uncompromisingwill.tft_set16.png"
-  },
-  "Teamup_LucianVayne": {
-    "displayName": "Sentinels of Light",
-    "icon": "teamup_trait_sentinelsoflight.tft_set16.png"
-  },
-  "Teamup_SingedTeemo": {
-    "displayName": "Poison Pals",
-    "icon": "teamup_trait_poisonpals.tft_set16.png"
-  },
-  "TheBoss": {
-    "displayName": "The Boss",
-    "icon": null
-  },
-  "Vanquisher": {
-    "displayName": "Vanquisher",
-    "icon": "trait_icon_16_vanquisher.png"
-  },
-  "Void": {
-    "displayName": "Void",
-    "icon": "trait_icon_16_void.tft_set16.png"
-  },
-  "Warden": {
-    "displayName": "Warden",
-    "icon": "trait_icon_16_warden.tft_set16.png"
-  },
-  "XerathUnique": {
-    "displayName": "Ascendant",
-    "icon": null
-  },
-  "Yordle": {
-    "displayName": "Yordle",
-    "icon": "trait_icon_16_yordle.tft_set16.png"
-  },
-  "ZaahenTrait": {
-    "displayName": "Immortal",
-    "icon": "trait_icon_16_immortal.tft_set16.png"
-  },
-  "Zaun": {
-    "displayName": "Zaun",
-    "icon": "trait_icon_16_zaun.tft_set16.png"
-  }
+  "poison-pals": "TFT16_Teamup_SingedTeemo",
+  "ascendant": "TFT16_XerathUnique",
+  "freljord": "TFT16_Freljord",
+  "juggernaut": "TFT16_Juggernaut",
+  "quickstriker": "TFT16_Rapidfire",
+  "longshot": "TFT16_Longshot",
+  "vanquisher": "TFT16_Vanquisher",
+  "caretaker": "TFT16_Caretaker",
+  "ixtal": "TFT16_Explorer",
+  "slayer": "TFT16_Slayer",
+  "arcanist": "TFT16_Sorcerer",
+  "emperor": "TFT16_Emperor",
+  "star-forger": "TFT16_AurelionSolUnique",
+  "dragonborn": "TFT16_ShyvanaUnique",
+  "gunslinger": "TFT16_Gunslinger",
+  "hexmech": "TFT16_HexMech",
+  "chosen-wolves": "TFT16_Teamup_AmbessaKindred",
+  "chainbreaker": "TFT16_SylasTrait",
+  "soulbound": "TFT16_Soulbound",
+  "piltover": "TFT16_Piltover",
+  "timewinders": "TFT16_Teamup_EkkoZilean",
+  "darkin": "TFT16_DarkinWeapon",
+  "eternal": "TFT16_KindredUnique",
+  "dark-child": "TFT16_DarkChild",
+  "world-ender": "TFT16_AatroxUnique",
+  "assimilator": "TFT16_KaisaUnique",
+  "dragonguards": "TFT16_Teamup_JarvanShyvana",
+  "disruptor": "TFT16_Magus",
+  "void": "TFT16_Void",
+  "rune-mage": "TFT16_RuneMage",
+  "the-boss": "TFT16_TheBoss",
+  "glutton": "TFT16_Glutton",
+  "invoker": "TFT16_Invoker",
+  "demacia": "TFT16_Demacia",
+  "bilgewater": "TFT16_Bilgewater",
+  "riftscourge": "TFT16_BaronUnique",
+  "targon": "TFT16_Targon",
+  "shurima": "TFT16_Shurima",
+  "blacksmith": "TFT16_Blacksmith",
+  "shadow-isles": "TFT16_ShadowIsles",
+  "harvester": "TFT16_Harvester",
+  "immortal": "TFT16_ZaahenTrait",
+  "heroic": "TFT16_Heroic",
+  "noxus": "TFT16_Noxus",
+  "yordle": "TFT16_Yordle",
+  "zaun": "TFT16_Zaun",
+  "bruiser": "TFT16_Brawler",
+  "chronokeeper": "TFT16_Chronokeeper",
+  "warden": "TFT16_Warden",
+  "ionia": "TFT16_Ionia",
+  "defender": "TFT16_Defender",
+  "sentinels-of-light": "TFT16_Teamup_LucianVayne",
+  "huntress": "TFT16_Huntress",
+  "brawler": "TFT4_Brawler",
+  "ninja": "TFT4_Ninja",
+  "duelist": "TFT4_Duelist",
+  "syphoner": "TFT4_Syphoner",
+  "mage": "TFT4_Mage",
+  "dragonsoul": "TFT4_Dragonsoul",
+  "sharpshooter": "TFT4_Sharpshooter",
+  "fabled": "TFT4_Fabled",
+  "hunter": "TFT4_Hunter",
+  "mystic": "TFT4_Mystic",
+  "fortune": "TFT4_Fortune",
+  "elderwood": "TFT4_Elderwood",
+  "moonlight": "TFT4_Moonlight",
+  "exile": "TFT4_Exile",
+  "shade": "TFT4_Shade",
+  "daredevil": "TFT4_Daredevil",
+  "enlightened": "TFT4_Enlightened",
+  "adept": "TFT4_Adept",
+  "executioner": "TFT4_Executioner",
+  "tormented": "TFT4_Tormented",
+  "divine": "TFT4_Divine",
+  "cultist": "TFT4_Cultist",
+  "assassin": "TFT4_Assassin",
+  "dazzler": "TFT4_Dazzler",
+  "warlord": "TFT4_Warlord",
+  "dusk": "TFT4_Dusk",
+  "keeper": "TFT4_Keeper",
+  "spirit": "TFT4_Spirit",
+  "vanguard": "TFT4_Vanguard"
 }
