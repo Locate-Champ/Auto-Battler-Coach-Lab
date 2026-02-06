@@ -75,7 +75,9 @@
       }
     ],
     "texture": "ChaosMagic_II",
-    "type": "regular"
+    "type": "regular",
+    "disabled": true,
+    "disabled_reason": "Removed/disabled per patch notes (16.2-16.4)"
   },
   {
     "apiName": "TFT16_Augment_BandleBounty",
@@ -3539,7 +3541,9 @@
       }
     ],
     "texture": "HexgateTravel_II",
-    "type": "regular"
+    "type": "regular",
+    "disabled": true,
+    "disabled_reason": "Removed/disabled per patch notes (16.2-16.4)"
   },
   {
     "apiName": "TFT16_Augment_ArtifactExpert_SnipersFocus",
@@ -5726,7 +5730,9 @@
       }
     ],
     "texture": "GrowthMindset_III",
-    "type": "regular"
+    "type": "regular",
+    "disabled": true,
+    "disabled_reason": "Removed/disabled per patch notes (16.2-16.4)"
   },
   {
     "apiName": "TFT_Augment_PrismaticDestinyPlus",

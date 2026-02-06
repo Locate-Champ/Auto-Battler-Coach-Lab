@@ -66,11 +66,11 @@ BASE_COMPLETED = {
     "VoidStaff": {"ap": 35, "attack_speed": 0.15, "mana_regen": 1},  # MR shred on hit
 
     # Tank Items
-    "WarmogsArmor": {"hp": 500},
+    "WarmogsArmor": {"hp": 500, "bonus_hp_pct": 0.15},  # +15% max HP
     "GargoyleStoneplate": {"armor": 25, "magic_resist": 25, "hp": 100},
     "SunfireCape": {"armor": 20, "hp": 150},  # AOE burn
-    "DragonsClaw": {"magic_resist": 75},
-    "BrambleVest": {"armor": 65},  # Reflect damage
+    "DragonsClaw": {"magic_resist": 75, "bonus_hp_pct": 0.09},  # +9% max HP
+    "BrambleVest": {"armor": 65, "bonus_hp_pct": 0.09},  # +9% max HP, reflect damage
     "SpiritVisage": {"hp": 300, "mana_regen": 2},  # Missing HP heal
     "SteadfastHeart": {"armor": 20, "crit_chance": 0.20, "hp": 250},
     "ProtectorsVow": {"armor": 25, "magic_resist": 25, "mana_regen": 1},  # Shield
@@ -87,12 +87,14 @@ BASE_COMPLETED = {
     "TacticiansCape": {},    # +1 max team size (Spatula + Frying Pan)
     "TacticiansShield": {},  # +1 max team size (Frying Pan + Frying Pan)
 
-    # Set 16 new items
-    "Leviathan": {"ap": 60, "hp": 150},  # Rod + Belt: Deal 4% max HP magic damage on ability
-    "NightHarvester": {"ap": 20, "hp": 200, "magic_resist": 20},  # Cloak + Belt: Damage on takedown
-    "UnstableConcoction": {"hp": 300, "attack_speed": 0.20},  # Belt + Glove: Execute threshold
-    "MadredsBloodrazor": {"ad": 0.15, "attack_speed": 0.30},  # Bow + Glove: %HP on-hit
-    "SpectralGauntlet": {"ap": 25, "armor": 25, "magic_resist": 25},  # Tear + Vest: Shield allies
+    # TODO: UNVERIFIED - These items may not exist in Set 16 final.
+    # Their recipe slots were occupied by existing items (Morellonomicon, Evenshroud, etc.)
+    # Kept for backward compatibility with test/fetch code that references them.
+    "Leviathan": {"ap": 60, "hp": 150},  # TODO: UNVERIFIED - recipe slot is Morellonomicon (Rod+Belt)
+    "NightHarvester": {"ap": 20, "hp": 200, "magic_resist": 20},  # TODO: UNVERIFIED - recipe slot is Evenshroud (Cloak+Belt)
+    "UnstableConcoction": {"hp": 300, "attack_speed": 0.20},  # TODO: UNVERIFIED - recipe slot is Striker's Flail (Belt+Glove)
+    "MadredsBloodrazor": {"ad": 0.15, "attack_speed": 0.30},  # TODO: UNVERIFIED - recipe slot is Last Whisper (Bow+Glove)
+    "SpectralGauntlet": {"ap": 25, "armor": 25, "magic_resist": 25},  # TODO: UNVERIFIED - may not exist
 }
 
 # =============================================================================
@@ -194,28 +196,28 @@ EMBLEM_ITEMS = {
 # Verified: 22 emblems matching items.jsonl. NO Shadow Isles, Targon,
 # Harvester, Disruptor, or Shurima emblems exist in the game.
 EMBLEM_TO_TRAIT = {
-    "BilgewaterEmblem": "Bilgewater",
-    "BruiserEmblem": "Bruiser",
-    "DefenderEmblem": "Defender",
-    "DemaciaEmblem": "Demacia",
-    "FreljordEmblem": "Freljord",
-    "GunslingerEmblem": "Gunslinger",
-    "InvokerEmblem": "Invoker",
-    "IoniaEmblem": "Ionia",
-    "IxtalEmblem": "Ixtal",
-    "JuggernautEmblem": "Juggernaut",
-    "LongshotEmblem": "Longshot",
-    "MagusEmblem": "Magus",
-    "NoxusEmblem": "Noxus",
-    "PiltoverEmblem": "Piltover",
-    "QuickstrikerEmblem": "Quickstriker",
-    "SlayerEmblem": "Slayer",
-    "SorcererEmblem": "Arcanist",  # Sorcerer emblem grants Arcanist trait
-    "VanquisherEmblem": "Vanquisher",
-    "VoidEmblem": "Void",
-    "WardenEmblem": "Warden",
-    "YordleEmblem": "Yordle",
-    "ZaunEmblem": "Zaun",
+    "BilgewaterEmblem": "bilgewater",
+    "BruiserEmblem": "bruiser",
+    "DefenderEmblem": "defender",
+    "DemaciaEmblem": "demacia",
+    "FreljordEmblem": "freljord",
+    "GunslingerEmblem": "gunslinger",
+    "InvokerEmblem": "invoker",
+    "IoniaEmblem": "ionia",
+    "IxtalEmblem": "ixtal",
+    "JuggernautEmblem": "juggernaut",
+    "LongshotEmblem": "longshot",
+    "MagusEmblem": "disruptor",  # TFT16_Magus API name = Disruptor trait
+    "NoxusEmblem": "noxus",
+    "PiltoverEmblem": "piltover",
+    "QuickstrikerEmblem": "quickstriker",
+    "SlayerEmblem": "slayer",
+    "SorcererEmblem": "arcanist",  # Sorcerer emblem grants Arcanist trait
+    "VanquisherEmblem": "vanquisher",
+    "VoidEmblem": "void",
+    "WardenEmblem": "warden",
+    "YordleEmblem": "yordle",
+    "ZaunEmblem": "zaun",
 }
 
 # =============================================================================
@@ -230,16 +232,16 @@ EMBLEM_TO_TRAIT = {
 PILTOVER_MODULES = {
     # Tier 1-2 modules
     "AccelerationGate": {"effect": "Piltover units restore 35% max mana over 2s after cast"},
-    "ArmorNullifier": {"effect": "Piltover deal 25% more damage, 35% vs tanks"},
-    "BlastShield": {"effect": "All allies gain 20% max HP shield"},
-    "ContinuumCogs": {"effect": "All allies gain 2 mana regen and 12 AP"},
+    "ArmorNullifier": {"effect": "Piltover deal 25% more damage, 45% vs tanks"},  # 16.3: tank amp 35%→45%
+    "BlastShield": {"effect": "All allies gain 18% max HP shield"},  # 16.4: 20%→18%
+    "ContinuumCogs": {"effect": "All allies gain 2 mana regen and 15 AP"},  # 16.3: 12→15 AP
     "EMP": {"effect": "Increase enemy mana costs by 15"},
-    "GigantificationRay": {"effect": "Piltover gain 23% max HP and grow larger"},
-    "KineticBarrier": {"effect": "Piltover gain 60 Armor and 20 MR (or opposite)"},
+    "GigantificationRay": {"effect": "Piltover gain 28% max HP and grow larger"},  # 16.4: 23%→28%
+    "KineticBarrier": {"effect": "Piltover gain 65 Armor and 30 MR (or opposite)"},  # 16.4: 60/20→65/30
     "MagnetronCoil": {"effect": "Piltover gain 18% damage amp + 1% per cast"},
     "MomentumDrive": {"effect": "Cleanse CC, team gains 50% tenacity"},
-    "OverclockedCapacitors": {"effect": "Team gains 22% attack speed"},
-    "TunedOscillator": {"effect": "Increase healing/shielding by 25%"},
+    "OverclockedCapacitors": {"effect": "Team gains 25% attack speed"},  # 16.4: 22%→25%
+    "TunedOscillator": {"effect": "Increase healing/shielding by 28%"},  # 16.4: 25%→28%
 
     # Tier 2-3 modules
     "ElectricalOverload": {"effect": "Deal 100 + 10% max HP true damage to all enemies"},
@@ -311,9 +313,9 @@ BLACKSMITH_CONFIG = {
     "rounds_to_craft": 4,
     "artifact_multiplier": 3.0,  # Artifacts 3x more common
     "hp_per_item": {
-        1: 250,  # 1-star Ornn
-        2: 450,  # 2-star Ornn
-        3: 2000,  # 3-star Ornn
+        1: 35,   # Patch 16.4: 250→35
+        2: 35,   # Patch 16.4: 450→35
+        3: 35,   # Patch 16.4: unified to 35 for all star levels
     },
 }
 
@@ -368,12 +370,16 @@ ITEM_ALIASES = {
     "TFT_Item_HandOfJustice": "HandOfJustice",
     "TFT_Item_AdaptiveHelm": "AdaptiveHelm",
     "TFT_Item_ThiefsGloves": "ThiefsGloves",
-    "TFT_Item_Leviathan": "Leviathan",  # Need to add this item
+    "TFT_Item_SteadfastHeart": "SteadfastHeart",
+    "TFT_Item_Evenshroud": "Evenshroud",
+    "TFT_Item_StrikersFlail": "StrikersFlail",
     "TFT_Item_StatikkShiv": "Artifact_StatikkShiv",
-    "TFT_Item_MadredsBloodrazor": "MadredsBloodrazor",  # Need to add
-    "TFT_Item_UnstableConcoction": "UnstableConcoction",  # Need to add
-    "TFT_Item_NightHarvester": "NightHarvester",  # Need to add
-    "TFT_Item_SpectralGauntlet": "SpectralGauntlet",  # Need to add
+    # Legacy aliases for removed/renamed Set 16 items
+    "TFT_Item_Leviathan": "Morellonomicon",  # Leviathan slot replaced by Morellonomicon
+    "TFT_Item_MadredsBloodrazor": "LastWhisper",  # Slot replaced by Last Whisper
+    "TFT_Item_UnstableConcoction": "StrikersFlail",  # Slot replaced by Striker's Flail
+    "TFT_Item_NightHarvester": "Evenshroud",  # Slot replaced by Evenshroud
+    "TFT_Item_SpectralGauntlet": "SpectralGauntlet",  # TODO: UNVERIFIED - may not exist in Set 16
 
     # Components with TFT_Item_ prefix
     "TFT_Item_BFSword": "BFSword",

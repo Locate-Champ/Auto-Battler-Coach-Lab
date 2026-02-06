@@ -1,21 +1,20 @@
 # TFT Set 16 Pool Stats
 # Updated from Set 4 to Set 16 champion roster
 
-# Cumulative level roll odds - the code should never get past the 1
-# so the 10s are irrelevant. Only there to catch possible bugs
+# Cumulative level roll odds (Set 16, patch 16.4)
+# Index = level - 1.  Values > 1 (sentinel 10) mean "impossible for higher costs."
+# Source: Riot patch notes 16.1 + 16.4, verified against tftodds.com
 level_percentage = [
-    [1, 10, 10, 10, 10],
-    [1, 10, 10, 10, 10],
-    [1, 10, 10, 10, 10],
-    [.75, 1, 10, 10, 10],
-    [.55, .85, 1, 10, 10],
-    [.45, .775, .975, 1, 10],
-    [.25, .65, .95, 1, 10],
-    [.20, .50, .85, .99, 1],
-    [.15, .35, .7, .95, 1],
-    [.1, .25, .55, .85, 1],
-    [.05, .15, .35, .75, 1],
-    [.01, .03, .15, .65, 1],
+    [1, 10, 10, 10, 10],           # Level 1:  100/0/0/0/0
+    [1, 10, 10, 10, 10],           # Level 2:  100/0/0/0/0
+    [.75, 1, 10, 10, 10],          # Level 3:  75/25/0/0/0
+    [.55, .85, 1, 10, 10],         # Level 4:  55/30/15/0/0
+    [.45, .78, .98, 1, 10],        # Level 5:  45/33/20/2/0
+    [.30, .70, .95, 1, 10],        # Level 6:  30/40/25/5/0
+    [.16, .46, .89, .99, 1],       # Level 7:  16/30/43/10/1  (16.4: 3-cost 40→43%)
+    [.15, .35, .67, .97, 1],       # Level 8:  15/20/32/30/3
+    [.10, .27, .52, .85, 1],       # Level 9:  10/17/25/33/15
+    [.05, .15, .35, .75, 1],       # Level 10: 5/10/20/40/25
 ]
 
 # 29 copies each
@@ -107,6 +106,7 @@ COST_4 = {
     'wukong': 12,
     'yone': 12,
     'yunara': 12,
+    'riftherald': 12,  # Unlockable 4-cost (Void/Bruiser) - Source: metatft.com, tftactics.gg
 }
 
 # 10 copies each
