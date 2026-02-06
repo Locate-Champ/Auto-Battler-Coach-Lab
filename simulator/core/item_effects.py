@@ -97,7 +97,8 @@ def statikk_shiv_on_hit(engine: 'CombatEngine', attacker: 'Unit', target: 'Unit'
         enemies = [u for u in engine.units if u.team != attacker.team and u.is_alive]
 
         # Sort by distance and take closest 4
-        enemies.sort(key=lambda e: engine.hex_distance(attacker.position, e.position))
+        from .combat_engine import HexGrid
+        enemies.sort(key=lambda e: HexGrid.hex_distance(attacker.position, e.position))
 
         for enemy in enemies[:4]:
             damage, _ = engine.calculate_damage(attacker, enemy, base_damage,
