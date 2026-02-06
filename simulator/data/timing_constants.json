@@ -31,7 +31,7 @@
       "missile_speed": 2250
     },
     "ability": {
-      "name": "Buster Shot",
+      "name": "Buster Shot\t\t\t\t\t\t",
       "variables": {
         "ADDamage": [
           0.0,
@@ -4332,6 +4332,15 @@
           0.0,
           0.0
         ],
+        "FireDamagetADDamagePerSecond": [
+          0.0,
+          185.0,
+          275.0,
+          12345.0,
+          12345.0,
+          0.0,
+          0.0
+        ],
         "FireDamageAPPerSecond": [
           0.0,
           20.0,
@@ -4349,15 +4358,6 @@
           3.0,
           3.0,
           3.0
-        ],
-        "FireDamageADDamagePerSecond": [
-          0.0,
-          185.0,
-          275.0,
-          12345.0,
-          12345.0,
-          0.0,
-          0.0
         ]
       }
     },
@@ -6257,7 +6257,7 @@
   },
   "TFT16_Poppy": {
     "api_name": "TFT16_Poppy",
-    "display_name": "Poppy",
+    "display_name": "Poppy ",
     "cost": 2,
     "traits": [
       "Demacia",
@@ -6366,7 +6366,7 @@
   },
   "TFT16_Kennen": {
     "api_name": "TFT16_Kennen",
-    "display_name": "Kennen",
+    "display_name": "Kennen ",
     "cost": 3,
     "traits": [
       "Ionia",
@@ -6501,7 +6501,7 @@
   },
   "TFT16_Ziggs": {
     "api_name": "TFT16_Ziggs",
-    "display_name": "Ziggs",
+    "display_name": "Ziggs ",
     "cost": 5,
     "traits": [
       "Zaun",
@@ -6607,7 +6607,7 @@
   },
   "TFT16_Aatrox": {
     "api_name": "TFT16_Aatrox",
-    "display_name": "Aatrox",
+    "display_name": "Aatrox ",
     "cost": 5,
     "traits": [
       "Darkin",
@@ -6731,7 +6731,7 @@
   },
   "TFT16_Volibear": {
     "api_name": "TFT16_Volibear",
-    "display_name": "Volibear",
+    "display_name": "Volibear ",
     "cost": 5,
     "traits": [
       "Freljord",
@@ -7104,7 +7104,7 @@
   },
   "TFT16_Sylas": {
     "api_name": "TFT16_Sylas",
-    "display_name": "Sylas",
+    "display_name": "Sylas ",
     "cost": 5,
     "traits": [
       "Chainbreaker",
@@ -7243,7 +7243,7 @@
   },
   "TFT16_Ryze": {
     "api_name": "TFT16_Ryze",
-    "display_name": "Ryze",
+    "display_name": "Ryze ",
     "cost": 5,
     "traits": [
       "Rune Mage"
@@ -7528,7 +7528,7 @@
   },
   "TFT16_Nidalee": {
     "api_name": "TFT16_Nidalee",
-    "display_name": "Nidalee",
+    "display_name": "Nidalee ",
     "cost": 4,
     "traits": [
       "Ixtal",
@@ -7619,7 +7619,7 @@
   },
   "TFT16_Tryndamere": {
     "api_name": "TFT16_Tryndamere",
-    "display_name": "Tryndamere",
+    "display_name": "Tryndamere ",
     "cost": 2,
     "traits": [
       "Freljord",
@@ -7716,7 +7716,7 @@
   },
   "TFT16_RiftHerald": {
     "api_name": "TFT16_RiftHerald",
-    "display_name": "Rift Herald",
+    "display_name": "Rift Herald ",
     "cost": 4,
     "traits": [
       "Void",
@@ -7825,7 +7825,7 @@
   },
   "TFT16_Mel": {
     "api_name": "TFT16_Mel",
-    "display_name": "Mel",
+    "display_name": "Mel ",
     "cost": 5,
     "traits": [
       "Noxus",
@@ -7933,7 +7933,7 @@
   },
   "TFT16_Graves": {
     "api_name": "TFT16_Graves",
-    "display_name": "Graves",
+    "display_name": "Graves ",
     "cost": 2,
     "traits": [
       "Bilgewater",
@@ -8025,7 +8025,7 @@
   },
   "TFT16_Skarner": {
     "api_name": "TFT16_Skarner",
-    "display_name": "Skarner",
+    "display_name": "Skarner ",
     "cost": 4,
     "traits": [
       "Ixtal"
@@ -8126,7 +8126,7 @@
   },
   "TFT16_Diana": {
     "api_name": "TFT16_Diana",
-    "display_name": "Diana",
+    "display_name": "Diana ",
     "cost": 4,
     "traits": [
       "Targon"
@@ -8224,7 +8224,7 @@
   },
   "TFT16_Kaisa": {
     "api_name": "TFT16_Kaisa",
-    "display_name": "Kai'Sa",
+    "display_name": "Kai'Sa ",
     "cost": 4,
     "traits": [
       "Assimilator",
@@ -8313,7 +8313,7 @@
   },
   "TFT16_Renekton": {
     "api_name": "TFT16_Renekton",
-    "display_name": "Renekton",
+    "display_name": "Renekton ",
     "cost": 4,
     "traits": [
       "Shurima"
@@ -8439,7 +8439,7 @@
   },
   "TFT16_Nasus": {
     "api_name": "TFT16_Nasus",
-    "display_name": "Nasus",
+    "display_name": "Nasus ",
     "cost": 4,
     "traits": [
       "Shurima"
@@ -8528,7 +8528,7 @@
   },
   "TFT16_Xerath": {
     "api_name": "TFT16_Xerath",
-    "display_name": "Xerath",
+    "display_name": "Xerath ",
     "cost": 5,
     "traits": [
       "Shurima",
@@ -8611,7 +8611,7 @@
   },
   "TFT16_Thresh": {
     "api_name": "TFT16_Thresh",
-    "display_name": "Thresh",
+    "display_name": "Thresh ",
     "cost": 5,
     "traits": [
       "Shadow Isles",
@@ -8722,7 +8722,7 @@
   },
   "TFT16_Gwen": {
     "api_name": "TFT16_Gwen",
-    "display_name": "Gwen",
+    "display_name": "Gwen ",
     "cost": 3,
     "traits": [
       "Shadow Isles",
@@ -8832,7 +8832,7 @@
   },
   "TFT16_Kalista": {
     "api_name": "TFT16_Kalista",
-    "display_name": "Kalista",
+    "display_name": "Kalista ",
     "cost": 4,
     "traits": [
       "Shadow Isles",
@@ -8957,7 +8957,7 @@
   },
   "TFT16_Leblanc": {
     "api_name": "TFT16_Leblanc",
-    "display_name": "LeBlanc",
+    "display_name": "LeBlanc ",
     "cost": 3,
     "traits": [
       "Noxus",
@@ -9240,7 +9240,7 @@
   },
   "TFT16_Bard": {
     "api_name": "TFT16_Bard",
-    "display_name": "Bard",
+    "display_name": "Bard ",
     "cost": 2,
     "traits": [
       "Caretaker"
@@ -9843,7 +9843,7 @@
   },
   "TFT16_Yorick": {
     "api_name": "TFT16_Yorick",
-    "display_name": "Yorick",
+    "display_name": "Yorick ",
     "cost": 2,
     "traits": [
       "Shadow Isles",
@@ -9958,7 +9958,7 @@
   },
   "TFT16_Orianna": {
     "api_name": "TFT16_Orianna",
-    "display_name": "Orianna",
+    "display_name": "Orianna ",
     "cost": 2,
     "traits": [
       "Piltover",

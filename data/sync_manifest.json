@@ -1,9 +1,13 @@
 {
-  "last_sync": "2026-02-04T18:55:33.155105+00:00",
+  "last_sync": "2026-02-06T11:42:12.327129+00:00",
   "script": "scripts/sync_all_data.py",
   "results": {
     "successes": [
-      "fetch_game_data.py"
+      "fetch_meta_data.py",
+      "fetch_game_data.py",
+      "fetch_champion_stats.py",
+      "fetch_metatft_items.py",
+      "fetch_metatft_positions.py"
     ],
     "failures": [],
     "skipped": []
@@ -17,7 +21,7 @@
         "last_updated.json"
       ]
     },
-    "game_data": {
+    "game_data_placements": {
       "folder": "data/game_data/",
       "source": "MetaTFT API",
       "files": [
@@ -25,7 +29,18 @@
         "items.jsonl",
         "traits.jsonl",
         "augments.jsonl"
-      ]
+      ],
+      "note": "Placement statistics (win rates, top 4 rates)"
+    },
+    "champion_stats": {
+      "folder": "simulator/data/",
+      "source": "CommunityDragon",
+      "files": [
+        "combat_data.json",
+        "timing_constants.json",
+        "traits.json"
+      ],
+      "note": "Full champion stats (HP, AD, abilities, spell variables)"
     },
     "simulator_items": {
       "folder": "simulator/data/",
