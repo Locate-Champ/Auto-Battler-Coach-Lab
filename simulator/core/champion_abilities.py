@@ -177,8 +177,9 @@ class ChampionAbilities:
                              DamageType.PHYSICAL, f"aatrox_hit{combo_hit}")
 
         # World Ender: Brief untargetable + AD from omnivamp
+        # Patch 16.4: conversion 100% → 150%
         if combo_hit == 1 and unit.stats.omnivamp > 0:
-            bonus_ad = unit.stats.omnivamp * 100  # Convert to AD bonus
+            bonus_ad = unit.stats.omnivamp * 150  # Convert to AD bonus (150% per 16.4)
             unit.stats.ad += bonus_ad
             unit.is_targetable = False
             unit.untargetable_duration = 0.5
@@ -258,8 +259,9 @@ class ChampionAbilities:
                                            DamageType.PHYSICAL, "ambessa_slam")
 
         # Kill reset - if target died, reset mana for another cast
+        # Patch 16.4: reset 100% → 80%
         if not target.is_alive:
-            unit.stats.mana = unit.stats.max_mana * 0.5  # Partial refund
+            unit.stats.mana = unit.stats.max_mana * 0.80  # 80% refund (16.4)
             self.engine.log_event('ambessa_reset', unit=unit.name)
         else:
             unit.stats.mana = 0
@@ -378,9 +380,10 @@ class ChampionAbilities:
 
         ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 90)
         heal_amount = self._get_var(ability_vars, 'APHealing', unit.star_level, 180)
-        bleed_dps = self._get_var(ability_vars, 'PhysicalDamagePerSecond', unit.star_level, 15)
+        # Patch 16.4: bleed DPS 15/25/40→12/18/30, duration 4s→5s
+        bleed_dps = self._get_var(ability_vars, 'PhysicalDamagePerSecond', unit.star_level, 12)
         execute_per_stack = self._get_var(ability_vars, 'ExecutePercentPerHemorrhage', unit.star_level, 0.08)
-        bleed_duration = self._get_var(ability_vars, 'BleedDuration', unit.star_level, 4.0)
+        bleed_duration = self._get_var(ability_vars, 'BleedDuration', unit.star_level, 5.0)
 
         target = unit.target or self._find_nearest_enemy(unit, enemies)
         if not target:
@@ -510,7 +513,7 @@ class ChampionAbilities:
         """Lissandra - Frozen Tomb: Stun with excess damage to nearby enemies."""
         from .combat_engine import DamageType, HexGrid
 
-        target_damage = self._get_var(ability_vars, 'TargetDamage', unit.star_level, 275)
+        target_damage = self._get_var(ability_vars, 'TargetDamage', unit.star_level, 315)  # 16.4: 275→315
         secondary_damage = self._get_var(ability_vars, 'SecondaryDamage', unit.star_level, 415)
         stun_duration = self._get_var(ability_vars, 'StunDuration', unit.star_level, 1.0)
         num_overkill = int(self._get_var(ability_vars, 'NumOverkillEnemies', unit.star_level, 2))
@@ -1216,7 +1219,7 @@ class ChampionAbilities:
         """Bard - Traveler's Call: Meeps attack multiple enemies."""
         from .combat_engine import DamageType, HexGrid
 
-        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 120)
+        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 130)  # 16.4: 120→130
         num_missiles = int(self._get_var(ability_vars, 'NumMissilesBase', unit.star_level, 6))
         pct_on_current = self._get_var(ability_vars, 'PercentDamageOnCurrentTarget', unit.star_level, 0.75)
         search_radius = int(self._get_var(ability_vars, 'EnemyHexSearchRadius', unit.star_level, 3))
@@ -2375,8 +2378,9 @@ class ChampionAbilities:
         base_snips = int(self._get_var(ability_vars, 'SnipCount', unit.star_level, 5))
         snip_per_soul = self._get_var(ability_vars, 'SnipPerSoulBreakpoint', unit.star_level, 1)
         soul_breakpoint = self._get_var(ability_vars, 'SoulBreakpoint', unit.star_level, 80)
-        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 68)
-        secondary_damage = self._get_var(ability_vars, 'SecondaryDamage', unit.star_level, 30)
+        # Patch 16.4: primary 45/68/105→50/75/120, secondary 20/30/50→25/35/60
+        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 50)
+        secondary_damage = self._get_var(ability_vars, 'SecondaryMagicDamage', unit.star_level, 25)
 
         # Get soul count for bonus snips
         soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
