@@ -24,9 +24,17 @@ class ChampionPool:
                 self.pool[name] = count
 
         # Build cost → list of names for fast lookup during rolling
+        # 7-cost champions share the same shop odds as 5-cost,
+        # so they are included in the cost-5 roll pool.
         self._names_by_cost: Dict[int, List[str]] = {}
         for cost, champs in CHAMPIONS_BY_COST.items():
-            self._names_by_cost[cost] = list(champs.keys())
+            if cost == 7:
+                # 7-costs roll with 5-costs (same odds, different gold price)
+                if 5 not in self._names_by_cost:
+                    self._names_by_cost[5] = []
+                self._names_by_cost[5].extend(champs.keys())
+            else:
+                self._names_by_cost[cost] = list(champs.keys())
 
     def roll_shop(self, level: int) -> List[Optional[str]]:
         """Generate a shop of 5 champions based on player level.
