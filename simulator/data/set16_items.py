@@ -83,9 +83,9 @@ BASE_COMPLETED = {
     "AdaptiveHelm": {"magic_resist": 20, "mana_regen": 3},
     "ThiefsGloves": {"crit_chance": 0.20, "hp": 150},
     "StrikersFlail": {"attack_speed": 0.10, "crit_chance": 0.20, "hp": 150},
-    "TacticiansCrown": {},   # +1 max team size
-    "TacticiansCape": {"armor": 20, "magic_resist": 20},  # +1 max team size
-    "TacticiansShield": {"hp": 250},  # +1 max team size
+    "TacticiansCrown": {},   # +1 max team size (Spatula + Spatula)
+    "TacticiansCape": {},    # +1 max team size (Spatula + Frying Pan)
+    "TacticiansShield": {},  # +1 max team size (Frying Pan + Frying Pan)
 
     # Set 16 new items
     "Leviathan": {"ap": 60, "hp": 150},  # Rod + Belt: Deal 4% max HP magic damage on ability
@@ -164,9 +164,10 @@ RADIANT_ITEMS = {
 # EMBLEM ITEMS (trait spatulas)
 # =============================================================================
 
+# 22 emblems verified against data/game_data/items.jsonl
 EMBLEM_ITEMS = {
     "BilgewaterEmblem": {"hp": 150},
-    "BruiserEmblem": {"hp": 150},
+    "BruiserEmblem": {"hp": 150},       # JSONL: BrawlerEmblemItem
     "DefenderEmblem": {"hp": 150},
     "DemaciaEmblem": {"hp": 150},
     "FreljordEmblem": {"hp": 150},
@@ -176,18 +177,22 @@ EMBLEM_ITEMS = {
     "IxtalEmblem": {"hp": 150},
     "JuggernautEmblem": {"hp": 150},
     "LongshotEmblem": {"hp": 150},
+    "MagusEmblem": {"hp": 150},          # JSONL: MagusEmblemItem
     "NoxusEmblem": {"hp": 150},
     "PiltoverEmblem": {"hp": 150},
-    "QuickstrikerEmblem": {"hp": 150},
-    "ShurimaEmblem": {"hp": 150},
+    "QuickstrikerEmblem": {"hp": 150},   # JSONL: RapidfireEmblemItem
+    "SlayerEmblem": {"hp": 150},
     "SorcererEmblem": {"hp": 150},
+    "VanquisherEmblem": {"hp": 150},
     "VoidEmblem": {"hp": 150},
     "WardenEmblem": {"hp": 150},
     "YordleEmblem": {"hp": 150},
     "ZaunEmblem": {"hp": 150},
 }
 
-# Emblem name → trait name it grants (for trait counting in combat)
+# Emblem name → display trait name it grants (for trait counting in combat)
+# Verified: 22 emblems matching items.jsonl. NO Shadow Isles, Targon,
+# Harvester, Disruptor, or Shurima emblems exist in the game.
 EMBLEM_TO_TRAIT = {
     "BilgewaterEmblem": "Bilgewater",
     "BruiserEmblem": "Bruiser",
@@ -200,22 +205,17 @@ EMBLEM_TO_TRAIT = {
     "IxtalEmblem": "Ixtal",
     "JuggernautEmblem": "Juggernaut",
     "LongshotEmblem": "Longshot",
+    "MagusEmblem": "Magus",
     "NoxusEmblem": "Noxus",
     "PiltoverEmblem": "Piltover",
     "QuickstrikerEmblem": "Quickstriker",
-    "ShurimaEmblem": "Shurima",
+    "SlayerEmblem": "Slayer",
     "SorcererEmblem": "Arcanist",  # Sorcerer emblem grants Arcanist trait
+    "VanquisherEmblem": "Vanquisher",
     "VoidEmblem": "Void",
     "WardenEmblem": "Warden",
     "YordleEmblem": "Yordle",
     "ZaunEmblem": "Zaun",
-    # Also support Slayer emblem from augments
-    "SlayerEmblem": "Slayer",
-    "VanquisherEmblem": "Vanquisher",
-    "HarvesterEmblem": "Harvester",
-    "TargonEmblem": "Targon",
-    "ShadowIslesEmblem": "Shadow Isles",
-    "DisruptorEmblem": "Disruptor",
 }
 
 # =============================================================================
