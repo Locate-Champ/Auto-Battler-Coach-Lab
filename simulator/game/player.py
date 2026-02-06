@@ -9,11 +9,13 @@ from .types import ChampionInstance
 from .constants import (
     STARTING_HP, STARTING_GOLD, STARTING_LEVEL, MAX_LEVEL,
     BENCH_SIZE, BOARD_ROWS, BOARD_COLS, MAX_ITEMS_PER_UNIT,
+    ITEM_BENCH_SIZE, ITEM_COMPONENTS_LIST,
     BASE_INCOME, MAX_INTEREST, PASSIVE_XP_PER_ROUND,
     REFRESH_COST, XP_COST, XP_PER_BUY,
     LEVEL_XP_REQUIRED, STARTING_ROUND_GOLD,
     SELL_VALUES, NAME_TO_API, NAME_TO_COST,
     CHAMPION_TRAITS, get_streak_gold,
+    is_component, combine_items,
 )
 
 if TYPE_CHECKING:
@@ -42,6 +44,12 @@ class Player:
         # Current shop: list of champion names (or None for empty slots)
         self.shop: List[Optional[str]] = [None] * 5
 
+        # Placeable structures (set during planning phase)
+        # Freljord Tower: position on board where ice tower is placed
+        self.tower_position: Optional[Tuple[int, int]] = None
+        # Azir Soldiers: up to 2 positions where soldiers are placed
+        self.soldier_positions: List[Tuple[int, int]] = []
+
         # Streaks
         self.win_streak = 0
         self.loss_streak = 0
@@ -56,8 +64,24 @@ class Player:
 
     @property
     def max_units(self) -> int:
-        """Maximum units allowed on board (equals level)."""
-        return self.level
+        """Maximum units allowed on board (level + Tactician items)."""
+        bonus = 0
+        # Tactician's Crown/Cape/Shield each grant +1 team size
+        tactician_items = {'TacticiansCrown', 'TacticiansCape', 'TacticiansShield'}
+        for item in self.item_bench:
+            if item in tactician_items:
+                bonus += 1
+        # Also check items equipped on board/bench units
+        for row_col, champ in self.board.items():
+            for item in champ.items:
+                if item in tactician_items:
+                    bonus += 1
+        for champ in self.bench:
+            if champ:
+                for item in champ.items:
+                    if item in tactician_items:
+                        bonus += 1
+        return self.level + bonus
 
     @property
     def board_count(self) -> int:
@@ -185,6 +209,87 @@ class Player:
         pool.return_champion(champ.name, copies)
         # Return items to item bench
         self.item_bench.extend(champ.items)
+
+    # ── Item Management ──────────────────────────────────────────────────
+
+    def add_item_to_bench(self, item_name: str) -> bool:
+        """Add an item component to the item bench. Returns True if successful."""
+        if len(self.item_bench) >= ITEM_BENCH_SIZE:
+            return False
+        self.item_bench.append(item_name)
+        return True
+
+    def equip_item(self, item_bench_idx: int, target_pos: Tuple[int, int]) -> bool:
+        """Equip an item from item bench onto a board champion.
+
+        If the champion already has a component and we're equipping another component,
+        they auto-combine into a completed item. If the champion already has 3 items
+        (completed), the equip fails.
+
+        Args:
+            item_bench_idx: Index into self.item_bench.
+            target_pos: (row, col) of the target board champion.
+
+        Returns:
+            True if the item was successfully equipped.
+        """
+        if item_bench_idx < 0 or item_bench_idx >= len(self.item_bench):
+            return False
+        item = self.item_bench[item_bench_idx]
+
+        champ = self.board.get(target_pos)
+        if champ is None:
+            return False
+
+        if len(champ.items) >= MAX_ITEMS_PER_UNIT:
+            return False
+
+        # Try to combine with an existing component on the champion
+        if is_component(item):
+            for i, existing in enumerate(champ.items):
+                if is_component(existing):
+                    combined = combine_items(existing, item)
+                    if combined is not None:
+                        # Replace the component with the completed item
+                        champ.items[i] = combined
+                        self.item_bench.pop(item_bench_idx)
+                        return True
+
+        # No combination possible — just add the item directly
+        champ.items.append(item)
+        self.item_bench.pop(item_bench_idx)
+        return True
+
+    def equip_item_bench(self, item_bench_idx: int, bench_idx: int) -> bool:
+        """Equip an item from item bench onto a bench champion.
+
+        Same combining logic as equip_item but for bench units.
+        """
+        if item_bench_idx < 0 or item_bench_idx >= len(self.item_bench):
+            return False
+        item = self.item_bench[item_bench_idx]
+
+        champ = self.bench[bench_idx] if 0 <= bench_idx < BENCH_SIZE else None
+        if champ is None:
+            return False
+
+        if len(champ.items) >= MAX_ITEMS_PER_UNIT:
+            return False
+
+        # Try to combine with an existing component on the champion
+        if is_component(item):
+            for i, existing in enumerate(champ.items):
+                if is_component(existing):
+                    combined = combine_items(existing, item)
+                    if combined is not None:
+                        champ.items[i] = combined
+                        self.item_bench.pop(item_bench_idx)
+                        return True
+
+        # No combination — just add
+        champ.items.append(item)
+        self.item_bench.pop(item_bench_idx)
+        return True
 
     # ── Board Management ──────────────────────────────────────────────────
 
@@ -338,10 +443,54 @@ class Player:
                 trait_counts[trait] = trait_counts.get(trait, 0) + 1
         return trait_counts
 
+    # ── Placeable Structures ─────────────────────────────────────────────
+
+    def place_tower(self, row: int, col: int) -> bool:
+        """Place the Freljord tower at a board position.
+
+        The tower is a separate structure (not a unit) that provides
+        area buffs. Requires Freljord 3+ to be active.
+        """
+        if not (0 <= row < BOARD_ROWS and 0 <= col < BOARD_COLS):
+            return False
+        # Tower can be placed on any hex (even occupied - it's a structure)
+        self.tower_position = (row, col)
+        return True
+
+    def place_soldier(self, row: int, col: int) -> bool:
+        """Place an Azir soldier at a board position.
+
+        Requires Azir on the board. Max 2 soldiers.
+        Soldiers can be placed on any empty hex on your side.
+        """
+        if not (0 <= row < BOARD_ROWS and 0 <= col < BOARD_COLS):
+            return False
+        if len(self.soldier_positions) >= 2:
+            return False
+        # Don't place on top of another soldier
+        if (row, col) in self.soldier_positions:
+            return False
+        self.soldier_positions.append((row, col))
+        return True
+
+    def has_azir_on_board(self) -> bool:
+        """Check if Azir is on the board."""
+        for champ in self.board.values():
+            if champ.name == 'azir':
+                return True
+        return False
+
+    def has_freljord_active(self) -> bool:
+        """Check if Freljord 3+ is active (needed for tower)."""
+        traits = self.get_active_traits()
+        return traits.get('freljord', 0) >= 3
+
     # ── Combat Bridge ─────────────────────────────────────────────────────
 
     def build_combat_team(self, engine: 'CombatEngine') -> list:
         """Convert board state into combat Unit objects.
+
+        Also spawns Freljord tower and Azir soldiers at their placed positions.
 
         Args:
             engine: The CombatEngine instance to create units with.
@@ -360,6 +509,33 @@ class Player:
             )
             if unit is not None:
                 units.append(unit)
+
+        # Spawn Azir soldiers at player-placed positions
+        if self.has_azir_on_board() and self.soldier_positions:
+            # Get Azir's star level for soldier scaling
+            azir_star = 1
+            for champ in self.board.values():
+                if champ.name == 'azir':
+                    azir_star = champ.star_level
+                    break
+            for pos in self.soldier_positions:
+                soldier = engine.create_unit(
+                    'TFT16_AzirSoldier', azir_star, pos, 0
+                )
+                if soldier:
+                    soldier._is_summon = True
+                    soldier._summoner = 'Azir'
+                    units.append(soldier)
+
+        # Spawn Freljord tower at player-placed position
+        if self.tower_position and self.has_freljord_active():
+            tower = engine.create_unit(
+                'TFT16_FreljordProp', 1, self.tower_position, 0
+            )
+            if tower:
+                tower._is_tower = True
+                units.append(tower)
+
         return units
 
     # ── HP / Elimination ──────────────────────────────────────────────────
