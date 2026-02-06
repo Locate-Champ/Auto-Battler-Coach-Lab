@@ -87,6 +87,7 @@ origin_class = {
     'wukong': ['ionia', 'bruiser'],
     'yone': ['ionia', 'slayer'],
     'yunara': ['ionia', 'quickstriker'],
+    'riftherald': ['void', 'bruiser'],  # Unlockable 4-cost (was in special section)
 
     # 5-cost
     'aatrox': ['darkin', 'world_ender', 'slayer'],
@@ -120,7 +121,6 @@ origin_class = {
     'freljordprop': [],
     'malzaharvoidling': [],
     'piltoverinvention': [],
-    'riftherald': ['void', 'bruiser'],
     'atakhan': [],
 }
 

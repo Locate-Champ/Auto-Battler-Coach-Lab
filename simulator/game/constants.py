@@ -30,7 +30,7 @@ MAX_ITEMS_PER_UNIT = 3
 STARTING_HP = 100
 STARTING_GOLD = 0
 STARTING_LEVEL = 1
-MAX_LEVEL = 9
+MAX_LEVEL = 10
 
 # ── Economy ───────────────────────────────────────────────────────────────────
 BASE_INCOME = 5
@@ -42,7 +42,8 @@ PASSIVE_XP_PER_ROUND = 2
 
 # XP required to reach each level (index = level)
 # Level 1→2: 2 XP, 2→3: 2 XP, 3→4: 6 XP, etc.
-LEVEL_XP_REQUIRED = [0, 2, 2, 6, 10, 20, 36, 56, 80, 100]
+# Source: Riot patch notes 16.1 + 16.4 (7→8: 60, 8→9: 68, 9→10: 68)
+LEVEL_XP_REQUIRED = [0, 2, 2, 6, 10, 20, 36, 60, 68, 68]
 
 # Early round gold (rounds 0-4, before standard income kicks in)
 STARTING_ROUND_GOLD = [0, 2, 2, 3, 4]
@@ -120,6 +121,7 @@ for cost, champs in CHAMPIONS_BY_COST.items():
             'baronnashor': 'BaronNashor',
             'tahmkench': 'TahmKench',
             'thex': 'THex',
+            'riftherald': 'RiftHerald',
         }
         if name in _API_MAP:
             api_suffix = _API_MAP[name]
@@ -154,33 +156,33 @@ ITEM_RECIPES = {
     ('BF_Sword', 'Negatron_Cloak'): 'TFT_Item_Bloodthirster',
     ('BF_Sword', 'Giants_Belt'): 'TFT_Item_SteraksGage',
     ('BF_Sword', 'Sparring_Gloves'): 'TFT_Item_InfinityEdge',
-    ('Recurve_Bow', 'Recurve_Bow'): 'TFT_Item_LastWhisper',
+    ('Recurve_Bow', 'Recurve_Bow'): 'TFT_Item_RedBuff',            # Red Buff (was LastWhisper)
     ('Recurve_Bow', 'Needlessly_Large_Rod'): 'TFT_Item_GuinsoosRageblade',
-    ('Recurve_Bow', 'Tear_of_the_Goddess'): 'TFT_Item_StatikkShiv',
+    ('Recurve_Bow', 'Tear_of_the_Goddess'): 'TFT_Item_StatikkShiv',  # Void Staff (legacy API name)
     ('Recurve_Bow', 'Chain_Vest'): 'TFT_Item_TitansResolve',
-    ('Recurve_Bow', 'Negatron_Cloak'): 'TFT_Item_RunaansHurricane',
-    ('Recurve_Bow', 'Giants_Belt'): 'TFT_Item_RedBuff',
-    ('Recurve_Bow', 'Sparring_Gloves'): 'TFT_Item_MadredsBloodrazor',
+    ('Recurve_Bow', 'Negatron_Cloak'): 'TFT_Item_RunaansHurricane',  # Kraken's Fury
+    ('Recurve_Bow', 'Giants_Belt'): 'TFT_Item_NashorsTooth',       # Nashor's Tooth (was RedBuff)
+    ('Recurve_Bow', 'Sparring_Gloves'): 'TFT_Item_LastWhisper',    # Last Whisper (was MadredsBloodrazor)
     ('Needlessly_Large_Rod', 'Needlessly_Large_Rod'): 'TFT_Item_RabadonsDeathcap',
     ('Needlessly_Large_Rod', 'Tear_of_the_Goddess'): 'TFT_Item_ArchangelsStaff',
     ('Needlessly_Large_Rod', 'Chain_Vest'): 'TFT_Item_IonicSpark',
-    ('Needlessly_Large_Rod', 'Negatron_Cloak'): 'TFT_Item_Morellonomicon',
-    ('Needlessly_Large_Rod', 'Giants_Belt'): 'TFT_Item_Leviathan',
+    ('Needlessly_Large_Rod', 'Negatron_Cloak'): 'TFT_Item_Crownguard',       # Crownguard (was Morellonomicon)
+    ('Needlessly_Large_Rod', 'Giants_Belt'): 'TFT_Item_Morellonomicon',      # Morellonomicon (was Leviathan)
     ('Needlessly_Large_Rod', 'Sparring_Gloves'): 'TFT_Item_JeweledGauntlet',
     ('Tear_of_the_Goddess', 'Tear_of_the_Goddess'): 'TFT_Item_BlueBuff',
     ('Tear_of_the_Goddess', 'Chain_Vest'): 'TFT_Item_FrozenHeart',
-    ('Tear_of_the_Goddess', 'Negatron_Cloak'): 'TFT_Item_Crownguard',
+    ('Tear_of_the_Goddess', 'Negatron_Cloak'): 'TFT_Item_AdaptiveHelm',  # Adaptive Helm (was Crownguard)
     ('Tear_of_the_Goddess', 'Giants_Belt'): 'TFT_Item_Redemption',
     ('Tear_of_the_Goddess', 'Sparring_Gloves'): 'TFT_Item_HandOfJustice',
     ('Chain_Vest', 'Chain_Vest'): 'TFT_Item_BrambleVest',
     ('Chain_Vest', 'Negatron_Cloak'): 'TFT_Item_GargoyleStoneplate',
     ('Chain_Vest', 'Giants_Belt'): 'TFT_Item_SunfireCape',
-    ('Chain_Vest', 'Sparring_Gloves'): 'TFT_Item_Quicksilver',
+    ('Chain_Vest', 'Sparring_Gloves'): 'TFT_Item_SteadfastHeart',  # Steadfast Heart (was Quicksilver)
     ('Negatron_Cloak', 'Negatron_Cloak'): 'TFT_Item_DragonsClaw',
-    ('Negatron_Cloak', 'Giants_Belt'): 'TFT_Item_NightHarvester',
-    ('Negatron_Cloak', 'Sparring_Gloves'): 'TFT_Item_AdaptiveHelm',
+    ('Negatron_Cloak', 'Giants_Belt'): 'TFT_Item_Evenshroud',       # Evenshroud (was NightHarvester)
+    ('Negatron_Cloak', 'Sparring_Gloves'): 'TFT_Item_Quicksilver',  # Quicksilver (was AdaptiveHelm)
     ('Giants_Belt', 'Giants_Belt'): 'TFT_Item_WarmogsArmor',
-    ('Giants_Belt', 'Sparring_Gloves'): 'TFT_Item_UnstableConcoction',
+    ('Giants_Belt', 'Sparring_Gloves'): 'TFT_Item_StrikersFlail',   # Striker's Flail (was UnstableConcoction)
     ('Sparring_Gloves', 'Sparring_Gloves'): 'TFT_Item_ThiefsGloves',
 }
 
@@ -206,9 +208,11 @@ PVE_ITEM_DROPS = {
 }
 
 # ── Augment selection ────────────────────────────────────────────────────────
-# Rounds where augment selection occurs (game round number → augment tier)
+# Rounds where augment selection occurs (game round number → stage tag)
+# Any tier (silver/gold/prismatic) can appear at any stage; tier is rolled
+# using _TIER_ODDS_BY_STAGE in game.py.
 # Round 4 = Stage 2-1, Round 11 = Stage 3-2, Round 18 = Stage 4-2
-AUGMENT_ROUNDS = {4: 'silver', 11: 'gold', 18: 'prismatic'}
+AUGMENT_ROUNDS = {4: '2-1', 11: '3-2', 18: '4-2'}
 
 # ── Carousel ─────────────────────────────────────────────────────────────────
 # Carousel rounds: round 3 (first carousel), then every 7 rounds (10, 17, 24, ...)
