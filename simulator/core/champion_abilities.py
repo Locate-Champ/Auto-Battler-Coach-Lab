@@ -187,6 +187,56 @@ class ChampionAbilities:
         unit.stats.mana = 0
         return True
 
+    def _cast_atakhan(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                      ability_vars: Dict) -> bool:
+        """Atakhan - Punish the Unworthy: Cleave + scaling Noxus effects.
+
+        Atakhan is summoned by the Noxus trait. His abilities scale with
+        Noxus breakpoints and star level:
+          1-star: 30% omnivamp, cleave every 2 attacks (150% AP)
+          2-star: + 3% damage amp to Noxians, cleave (225% AP)
+          3-star: + DOT ability (750 AP over 2.5s in 3 hex radius)
+          4-star: 100% omnivamp, cleave (500% AP), DOT over 30s,
+                  after 10s BRING RUIN (handled in combat_engine)
+        """
+        from .combat_engine import DamageType
+
+        noxus_count = getattr(unit, '_atakhan_noxus_count', 3)
+        star = unit.star_level
+
+        # Cleave damage (AP-scaled magic damage to enemies within 1 hex)
+        cleave_dmg_map = {1: 150, 2: 225, 3: 340, 4: 500}
+        cleave_damage = cleave_dmg_map.get(star, 150)
+
+        # Scale by AP
+        total_cleave = cleave_damage * (1 + unit.stats.ap / 100)
+
+        # Hit enemies within 1 hex
+        nearby_enemies = self._get_enemies_in_radius(unit.position, 1, enemies)
+        for enemy in nearby_enemies:
+            self._deal_damage(unit, enemy, total_cleave, DamageType.MAGIC, "atakhan_cleave")
+
+        # At 5+ Noxus: grant stacking damage amp to Noxians
+        if noxus_count >= 5:
+            for ally in allies:
+                if 'Noxus' in ally.traits and ally.is_alive:
+                    ally.stats.damage_amp += 0.03  # 3% stacking damage amp
+
+        # At 7+ Noxus: soul drain DOT (3-star+ ability)
+        if noxus_count >= 7 and star >= 3:
+            dot_damage = 750 * (1 + unit.stats.ap / 100)
+            dot_duration = 30.0 if star >= 4 else 2.5
+            # Split DOT damage between enemies in 3 hex radius
+            dot_targets = self._get_enemies_in_radius(unit.position, 3, enemies)
+            if dot_targets:
+                per_target = dot_damage / len(dot_targets)
+                for target in dot_targets:
+                    self._deal_damage(unit, target, per_target,
+                                     DamageType.MAGIC, "atakhan_soul_drain")
+
+        unit.stats.mana = 0
+        return True
+
     def _cast_ambessa(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                       ability_vars: Dict) -> bool:
         """Ambessa - Lacerate: Dash + damage with kill reset."""
