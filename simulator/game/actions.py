@@ -11,7 +11,8 @@ from typing import List, TYPE_CHECKING
 from .types import Action, ActionType
 from .constants import (
     BENCH_SIZE, BOARD_ROWS, BOARD_COLS, SHOP_SIZE,
-    REFRESH_COST, XP_COST, MAX_LEVEL, NAME_TO_COST,
+    REFRESH_COST, XP_COST, MAX_LEVEL, MAX_ITEMS_PER_UNIT,
+    NAME_TO_COST,
 )
 from .shop import buy_from_shop, sell_unit, refresh_shop
 
@@ -77,6 +78,18 @@ def get_legal_actions(player: 'Player', pool: 'ChampionPool') -> List[Action]:
     if player.gold >= REFRESH_COST:
         actions.append(Action.refresh())
 
+    # Equip items from item bench onto board or bench champions
+    for item_idx in range(len(player.item_bench)):
+        # Equip onto board champions
+        for (row, col), champ in player.board.items():
+            if len(champ.items) < MAX_ITEMS_PER_UNIT:
+                actions.append(Action.equip_item(item_idx, (row, col)))
+        # Equip onto bench champions
+        for bench_idx in range(BENCH_SIZE):
+            champ = player.bench[bench_idx]
+            if champ is not None and len(champ.items) < MAX_ITEMS_PER_UNIT:
+                actions.append(Action.equip_item(item_idx, (-1, bench_idx)))
+
     return actions
 
 
@@ -116,7 +129,16 @@ def execute_action(action: Action, player: 'Player',
         return refresh_shop(player, pool)
 
     elif action.action_type == ActionType.EQUIP_ITEM:
-        # MVP: not yet implemented
+        item_idx, target = action.args
+        if target[0] == -1:
+            # Bench target: (-1, bench_idx)
+            return player.equip_item_bench(item_idx, target[1])
+        else:
+            # Board target: (row, col)
+            return player.equip_item(item_idx, target)
+
+    elif action.action_type == ActionType.CHOOSE_AUGMENT:
+        # Handled directly by game loop, not via execute_action
         return False
 
     return False
@@ -137,13 +159,15 @@ def random_agent_actions(player: 'Player', pool: 'ChampionPool',
         if not meaningful:
             break
 
-        # Weight towards buys and levels
+        # Weight towards buys, levels, and item equips
         weights = []
         for a in meaningful:
             if a.action_type == ActionType.BUY:
                 weights.append(10)
             elif a.action_type == ActionType.LEVEL:
                 weights.append(5)
+            elif a.action_type == ActionType.EQUIP_ITEM:
+                weights.append(8)
             elif a.action_type == ActionType.REFRESH:
                 weights.append(3)
             elif a.action_type == ActionType.SELL:

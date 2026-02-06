@@ -16,7 +16,10 @@ from .player import Player
 from .champion_pool import ChampionPool
 from .shop import generate_shop, _return_shop_to_pool
 from .actions import random_agent_actions, execute_action
-from .constants import get_round_damage, STARTING_ROUND_GOLD, BOARD_ROWS
+from .constants import (
+    get_round_damage, STARTING_ROUND_GOLD, BOARD_ROWS,
+    ITEM_COMPONENTS_LIST, PVE_ITEM_DROPS, AUGMENT_ROUNDS,
+)
 
 # Import combat engine
 _project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -24,6 +27,25 @@ if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
 from simulator.core.combat_engine import CombatEngine
+
+# Load augment data for augment selection
+import json
+from pathlib import Path
+
+_AUGMENT_PATH = Path(__file__).parent.parent.parent / "data" / "api" / "processed" / "augments_set16.json"
+_AUGMENTS_BY_ROUND: Dict[str, List[str]] = {'2-1': [], '3-2': [], '4-2': []}
+try:
+    if _AUGMENT_PATH.exists():
+        with open(_AUGMENT_PATH, 'r', encoding='utf-8') as _f:
+            _raw = json.load(_f)
+        for _aug in _raw:
+            if _aug.get('disabled'):
+                continue
+            for _tag in _aug.get('tags', []):
+                if _tag in _AUGMENTS_BY_ROUND:
+                    _AUGMENTS_BY_ROUND[_tag].append(_aug['apiName'])
+except Exception:
+    pass
 
 
 class TFTGame:
@@ -59,6 +81,9 @@ class TFTGame:
         self.players = [Player(i) for i in range(num_players)]
         self.round_num = 0
         self.placements: List[Tuple[int, int]] = []  # (player_id, placement)
+
+        # Player augments: player_id -> list of chosen augment apiNames
+        self.player_augments: Dict[int, List[str]] = {i: [] for i in range(num_players)}
 
         # Matchmaking weights: tracks recent opponents to avoid repeats
         # weights[i][j] = weight for player i fighting player j
@@ -105,12 +130,20 @@ class TFTGame:
     # ── PvE Rounds (Simplified) ───────────────────────────────────────────
 
     def _pve_round(self):
-        """Simplified PvE round: grant income, let players shop."""
+        """Simplified PvE round: grant income, drop items, let players shop."""
         if self.verbose:
             print(f"\n--- Round {self.round_num} (PvE) ---")
 
         for player in self.alive_players:
             player.add_income(self.round_num)
+
+            # Drop item components
+            drop_range = PVE_ITEM_DROPS.get(self.round_num, (0, 0))
+            num_drops = random.randint(drop_range[0], drop_range[1])
+            for _ in range(num_drops):
+                component = random.choice(ITEM_COMPONENTS_LIST)
+                player.add_item_to_bench(component)
+
             # Generate shop
             _return_shop_to_pool(player, self.pool)
             player.shop = generate_shop(self.pool, player.level)
@@ -121,9 +154,13 @@ class TFTGame:
     # ── PvP Rounds ────────────────────────────────────────────────────────
 
     def _pvp_round(self):
-        """Full PvP round: income → planning → combat → damage."""
+        """Full PvP round: income → augments → planning → combat → damage."""
         if self.verbose:
             print(f"\n--- Round {self.round_num} (PvP) ---")
+
+        # 0. Augment selection (at rounds 4, 11, 18)
+        if self.round_num in AUGMENT_ROUNDS:
+            self._augment_selection_phase()
 
         # 1. Income phase
         for player in self.alive_players:
@@ -170,6 +207,40 @@ class TFTGame:
                 print(f"  P{p.player_id}: {status}, gold={p.gold}, "
                       f"lvl={p.level}, board={p.board_count}")
 
+    # ── Augment Selection ──────────────────────────────────────────────────
+
+    # Map from game round number to augment tag in data
+    _ROUND_TO_TAG = {4: '2-1', 11: '3-2', 18: '4-2'}
+
+    def _augment_selection_phase(self):
+        """Offer each player 3 augments to choose from."""
+        tag = self._ROUND_TO_TAG.get(self.round_num)
+        if not tag:
+            return
+        available = _AUGMENTS_BY_ROUND.get(tag, [])
+        if not available:
+            return
+
+        for player in self.alive_players:
+            # Pick 3 unique augments the player doesn't already have
+            pool = [a for a in available
+                    if a not in self.player_augments[player.player_id]]
+            if len(pool) < 3:
+                pool = available[:]  # Fallback: allow repeats if pool is tiny
+            choices = random.sample(pool, min(3, len(pool)))
+
+            if not choices:
+                continue
+
+            # Random agent picks randomly; a real agent_fn would use
+            # a separate augment callback. For now, random choice.
+            chosen = random.choice(choices)
+            self.player_augments[player.player_id].append(chosen)
+
+            if self.verbose:
+                print(f"  P{player.player_id} chose augment: {chosen} "
+                      f"(from {len(choices)} options)")
+
     # ── Combat Resolution ─────────────────────────────────────────────────
 
     def _resolve_combat(self, p1: Player, p2: Player) -> RoundResult:
@@ -206,7 +277,14 @@ class TFTGame:
             row, col = unit.position
             unit.position = (BOARD_ROWS - 1 - row, col)
 
-        result = self.engine.run_combat(team0, team1)
+        # Pass player augments to combat engine
+        p1_augments = self.player_augments.get(p1.player_id, [])
+        p2_augments = self.player_augments.get(p2.player_id, [])
+        result = self.engine.run_combat(
+            team0, team1,
+            team0_augments=p1_augments if p1_augments else None,
+            team1_augments=p2_augments if p2_augments else None,
+        )
 
         if result['winner'] == 0:
             damage = get_round_damage(self.round_num, result['team0_survivors'])
@@ -338,6 +416,8 @@ class TFTGame:
                     for ch in player.bench
                 ],
                 'shop': player.shop,
+                'item_bench': player.item_bench[:],
+                'augments': self.player_augments.get(player.player_id, []),
                 'traits': player.get_active_traits(),
             },
             'opponents': [

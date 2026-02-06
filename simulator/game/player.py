@@ -9,11 +9,13 @@ from .types import ChampionInstance
 from .constants import (
     STARTING_HP, STARTING_GOLD, STARTING_LEVEL, MAX_LEVEL,
     BENCH_SIZE, BOARD_ROWS, BOARD_COLS, MAX_ITEMS_PER_UNIT,
+    ITEM_BENCH_SIZE, ITEM_COMPONENTS_LIST,
     BASE_INCOME, MAX_INTEREST, PASSIVE_XP_PER_ROUND,
     REFRESH_COST, XP_COST, XP_PER_BUY,
     LEVEL_XP_REQUIRED, STARTING_ROUND_GOLD,
     SELL_VALUES, NAME_TO_API, NAME_TO_COST,
     CHAMPION_TRAITS, get_streak_gold,
+    is_component, combine_items,
 )
 
 if TYPE_CHECKING:
@@ -185,6 +187,87 @@ class Player:
         pool.return_champion(champ.name, copies)
         # Return items to item bench
         self.item_bench.extend(champ.items)
+
+    # ── Item Management ──────────────────────────────────────────────────
+
+    def add_item_to_bench(self, item_name: str) -> bool:
+        """Add an item component to the item bench. Returns True if successful."""
+        if len(self.item_bench) >= ITEM_BENCH_SIZE:
+            return False
+        self.item_bench.append(item_name)
+        return True
+
+    def equip_item(self, item_bench_idx: int, target_pos: Tuple[int, int]) -> bool:
+        """Equip an item from item bench onto a board champion.
+
+        If the champion already has a component and we're equipping another component,
+        they auto-combine into a completed item. If the champion already has 3 items
+        (completed), the equip fails.
+
+        Args:
+            item_bench_idx: Index into self.item_bench.
+            target_pos: (row, col) of the target board champion.
+
+        Returns:
+            True if the item was successfully equipped.
+        """
+        if item_bench_idx < 0 or item_bench_idx >= len(self.item_bench):
+            return False
+        item = self.item_bench[item_bench_idx]
+
+        champ = self.board.get(target_pos)
+        if champ is None:
+            return False
+
+        if len(champ.items) >= MAX_ITEMS_PER_UNIT:
+            return False
+
+        # Try to combine with an existing component on the champion
+        if is_component(item):
+            for i, existing in enumerate(champ.items):
+                if is_component(existing):
+                    combined = combine_items(existing, item)
+                    if combined is not None:
+                        # Replace the component with the completed item
+                        champ.items[i] = combined
+                        self.item_bench.pop(item_bench_idx)
+                        return True
+
+        # No combination possible — just add the item directly
+        champ.items.append(item)
+        self.item_bench.pop(item_bench_idx)
+        return True
+
+    def equip_item_bench(self, item_bench_idx: int, bench_idx: int) -> bool:
+        """Equip an item from item bench onto a bench champion.
+
+        Same combining logic as equip_item but for bench units.
+        """
+        if item_bench_idx < 0 or item_bench_idx >= len(self.item_bench):
+            return False
+        item = self.item_bench[item_bench_idx]
+
+        champ = self.bench[bench_idx] if 0 <= bench_idx < BENCH_SIZE else None
+        if champ is None:
+            return False
+
+        if len(champ.items) >= MAX_ITEMS_PER_UNIT:
+            return False
+
+        # Try to combine with an existing component on the champion
+        if is_component(item):
+            for i, existing in enumerate(champ.items):
+                if is_component(existing):
+                    combined = combine_items(existing, item)
+                    if combined is not None:
+                        champ.items[i] = combined
+                        self.item_bench.pop(item_bench_idx)
+                        return True
+
+        # No combination — just add
+        champ.items.append(item)
+        self.item_bench.pop(item_bench_idx)
+        return True
 
     # ── Board Management ──────────────────────────────────────────────────
 
