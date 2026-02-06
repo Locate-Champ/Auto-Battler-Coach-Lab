@@ -311,9 +311,9 @@ BLACKSMITH_CONFIG = {
     "rounds_to_craft": 4,
     "artifact_multiplier": 3.0,  # Artifacts 3x more common
     "hp_per_item": {
-        1: 250,  # 1-star Ornn
-        2: 450,  # 2-star Ornn
-        3: 2000,  # 3-star Ornn
+        1: 35,   # Patch 16.4: 250→35
+        2: 35,   # Patch 16.4: 450→35
+        3: 35,   # Patch 16.4: unified to 35 for all star levels
     },
 }
 
