@@ -37,8 +37,8 @@
           0.0,
           250.0,
           375.0,
-          565.0,
-          755.0,
+          600.0,
+          825.0,
           0.0,
           0.0
         ],
@@ -80,6 +80,13 @@
         ]
       }
     },
+    "wiki_data": {
+      "source": "https://wiki.leagueoflegends.com",
+      "base_attack_speed": 0.656,
+      "attack_speed_ratio": 0.694,
+      "windup_percent": 14.801,
+      "missile_speed": 2250
+    },
     "_raw_animation": {
       "attack_frames": {
         "Spell_Attack": 7.0
@@ -88,13 +95,6 @@
       "tick_durations": {
         "Idle1": 0.10000000149011612
       }
-    },
-    "wiki_data": {
-      "source": "https://wiki.leagueoflegends.com",
-      "base_attack_speed": 0.656,
-      "attack_speed_ratio": 0.694,
-      "windup_percent": 14.801,
-      "missile_speed": 2250
     }
   },
   "TFT16_Lulu": {
@@ -159,14 +159,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612,
-        "Spell1": 0.032258063554763794
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -176,6 +168,14 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612,
+        "Spell1": 0.032258063554763794
+      }
     }
   },
   "TFT16_Teemo": {
@@ -241,19 +241,19 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "source": "https://wiki.leagueoflegends.com",
       "base_attack_speed": 0.69,
       "attack_speed_ratio": null,
       "windup_percent": 17.5,
       "missile_speed": 1500
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Rumble": {
@@ -315,8 +315,7 @@
           5.400000095367432,
           0.0,
           0.0
-        ],
-        "APDamage": null
+        ]
       }
     },
     "_raw_animation": {
@@ -426,7 +425,7 @@
     ],
     "stats": {
       "hp": 550.0,
-      "damage": null,
+      "damage": 50,
       "armor": 20.0,
       "magic_resist": 20.0,
       "attack_speed": 0.75,
@@ -523,13 +522,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -539,6 +531,13 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Gangplank": {
@@ -786,8 +785,8 @@
         ],
         "ADDamage": [
           0.0,
-          145.0,
-          220.0,
+          230.0,
+          345.0,
           3000.0,
           10000.0,
           0.0,
@@ -795,9 +794,9 @@
         ],
         "PercentDamageOfSecondaryWaves": [
           0.6499999761581421,
-          0.6499999761581421,
-          0.6499999761581421,
-          1.0,
+          0.4000000059604645,
+          0.4000000059604645,
+          0.800000011920929,
           0.10000000149011612,
           0.6499999761581421,
           0.6499999761581421
@@ -822,6 +821,13 @@
         ]
       }
     },
+    "wiki_data": {
+      "source": "https://wiki.leagueoflegends.com",
+      "base_attack_speed": 0.656,
+      "attack_speed_ratio": null,
+      "windup_percent": 14.801,
+      "missile_speed": 2000
+    },
     "_raw_animation": {
       "attack_frames": {},
       "spell_frames": {
@@ -830,13 +836,6 @@
       "tick_durations": {
         "Idle1": 0.10000000149011612
       }
-    },
-    "wiki_data": {
-      "source": "https://wiki.leagueoflegends.com",
-      "base_attack_speed": 0.656,
-      "attack_speed_ratio": null,
-      "windup_percent": 14.801,
-      "missile_speed": 2000
     }
   },
   "TFT16_Sion": {
@@ -1021,7 +1020,7 @@
     ],
     "stats": {
       "hp": 650.0,
-      "damage": 53.0,
+      "damage": 58.0,
       "armor": 25.0,
       "magic_resist": 25.0,
       "attack_speed": 0.75,
@@ -1080,9 +1079,15 @@
           11.0,
           11.0,
           11.0
-        ],
-        "AttackDamage": null
+        ]
       }
+    },
+    "wiki_data": {
+      "source": "https://wiki.leagueoflegends.com",
+      "base_attack_speed": 0.679,
+      "attack_speed_ratio": null,
+      "windup_percent": 15.614,
+      "missile_speed": 1600
     },
     "_raw_animation": {
       "attack_frames": {},
@@ -1092,13 +1097,6 @@
         "{0538433d}": 0.10000000149011612,
         "Idle1_BothArms": 0.10000000149011612
       }
-    },
-    "wiki_data": {
-      "source": "https://wiki.leagueoflegends.com",
-      "base_attack_speed": 0.679,
-      "attack_speed_ratio": null,
-      "windup_percent": 15.614,
-      "missile_speed": 1600
     }
   },
   "TFT16_Ambessa": {
@@ -1161,15 +1159,23 @@
           3.1500000953674316,
           3.1500000953674316
         ],
-        "MaxDamagePercentBasedOnMissingHealth": null,
         "DamageFalloff": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929
+        ],
+        "TankDamageMult": [
+          0.4000000059604645,
+          0.4000000059604645,
+          0.4000000059604645,
           1.0,
           1.0,
-          1.0,
-          1.0,
-          1.0,
-          1.0,
-          1.0
+          0.4000000059604645,
+          0.4000000059604645
         ]
       }
     },
@@ -1254,13 +1260,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -1270,6 +1269,13 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Leona": {
@@ -1475,19 +1481,19 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "source": "https://wiki.leagueoflegends.com",
       "base_attack_speed": 0.665,
       "attack_speed_ratio": 0.658,
       "windup_percent": 15.333,
       "missile_speed": 1700
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Taric": {
@@ -1759,10 +1765,10 @@
         ],
         "HealAmount": [
           0.0,
+          30.0,
           40.0,
-          50.0,
-          80.0,
-          110.0,
+          65.0,
+          100.0,
           0.0,
           0.0
         ],
@@ -1777,13 +1783,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -1793,6 +1792,13 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Garen": {
@@ -1982,14 +1988,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612,
-        "{6cb2f24e}": 0.06666667014360428
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -1999,6 +1997,14 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612,
+        "{6cb2f24e}": 0.06666667014360428
+      }
     }
   },
   "TFT16_Anivia": {
@@ -2054,13 +2060,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.0833333358168602
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -2070,6 +2069,13 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.0833333358168602
+      }
     }
   },
   "TFT16_Ashe": {
@@ -2171,19 +2177,19 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "source": "https://wiki.leagueoflegends.com",
       "base_attack_speed": 0.658,
       "attack_speed_ratio": null,
       "windup_percent": 21.93,
       "missile_speed": 2500
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Braum": {
@@ -2364,8 +2370,8 @@
         ],
         "TargetDamage": [
           0.0,
-          275.0,
-          415.0,
+          315.0,
+          475.0,
           2800.0,
           3000.0,
           200.0,
@@ -2400,13 +2406,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -2416,6 +2415,13 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Milio": {
@@ -2624,10 +2630,10 @@
       "variables": {
         "ADDamage": [
           0.8500000238418579,
-          65.0,
-          100.0,
-          155.0,
-          210.0,
+          50.0,
+          75.0,
+          125.0,
+          175.0,
           0.8500000238418579,
           0.8500000238418579
         ],
@@ -2660,6 +2666,13 @@
         ]
       }
     },
+    "wiki_data": {
+      "source": "https://wiki.leagueoflegends.com",
+      "base_attack_speed": 0.625,
+      "attack_speed_ratio": null,
+      "windup_percent": 16.875,
+      "missile_speed": null
+    },
     "_raw_animation": {
       "attack_frames": {
         "Attack1_Out": 11.0,
@@ -2670,13 +2683,6 @@
         "Spell_In": 0.02500000037252903,
         "Idle1": 0.125
       }
-    },
-    "wiki_data": {
-      "source": "https://wiki.leagueoflegends.com",
-      "base_attack_speed": 0.625,
-      "attack_speed_ratio": null,
-      "windup_percent": 16.875,
-      "missile_speed": null
     }
   },
   "TFT16_Caitlyn": {
@@ -2733,6 +2739,13 @@
         ]
       }
     },
+    "wiki_data": {
+      "source": "https://wiki.leagueoflegends.com",
+      "base_attack_speed": 0.681,
+      "attack_speed_ratio": 0.625,
+      "windup_percent": 17.708,
+      "missile_speed": 2500
+    },
     "_raw_animation": {
       "attack_frames": {},
       "spell_frames": {},
@@ -2740,13 +2753,6 @@
         "Idle1": 0.10000000149011612,
         "Dance_Loop": 0.06666667014360428
       }
-    },
-    "wiki_data": {
-      "source": "https://wiki.leagueoflegends.com",
-      "base_attack_speed": 0.681,
-      "attack_speed_ratio": 0.625,
-      "windup_percent": 17.708,
-      "missile_speed": 2500
     }
   },
   "TFT16_Vi": {
@@ -2907,7 +2913,6 @@
           2.0,
           2.0
         ],
-        "BaseDamage": null,
         "DamagePerCrystal": [
           0.0,
           35.0,
@@ -3046,6 +3051,16 @@
         ]
       }
     },
+    "wiki_data": {
+      "base_attack_speed": null,
+      "attack_speed_ratio": null,
+      "windup_percent": null,
+      "windup_modifier": null,
+      "missile_speed": null,
+      "attack_range": null,
+      "windup_seconds_at_base": null,
+      "source": ""
+    },
     "_raw_animation": {
       "attack_frames": {},
       "spell_frames": {},
@@ -3058,16 +3073,6 @@
         "{4481e5f5}": 0.03333299979567528,
         "{4381e462}": 0.03333299979567528
       }
-    },
-    "wiki_data": {
-      "base_attack_speed": null,
-      "attack_speed_ratio": null,
-      "windup_percent": null,
-      "windup_modifier": null,
-      "missile_speed": null,
-      "attack_range": null,
-      "windup_seconds_at_base": null,
-      "source": ""
     }
   },
   "TFT16_Ahri": {
@@ -3168,16 +3173,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {
-        "Spell": 80.0
-      },
-      "tick_durations": {
-        "Idle1": 0.06666667014360428,
-        "Spell": 0.02500000037252903
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -3187,6 +3182,16 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {
+        "Spell": 80.0
+      },
+      "tick_durations": {
+        "Idle1": 0.06666667014360428,
+        "Spell": 0.02500000037252903
+      }
     }
   },
   "TFT16_Wukong": {
@@ -3421,14 +3426,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612,
-        "{c9056acc}": 0.01666666753590107
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -3438,6 +3435,14 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612,
+        "{c9056acc}": 0.01666666753590107
+      }
     }
   },
   "TFT16_RekSai": {
@@ -3681,19 +3686,19 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "source": "https://wiki.leagueoflegends.com",
       "base_attack_speed": 0.665,
       "attack_speed_ratio": null,
       "windup_percent": 16.622,
       "missile_speed": 1800
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Annie": {
@@ -3767,15 +3772,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {
-        "Spell2": 10.0
-      },
-      "tick_durations": {
-        "{ba9fda17}": 0.20000000298023224
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -3785,6 +3781,15 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {
+        "Spell2": 10.0
+      },
+      "tick_durations": {
+        "{ba9fda17}": 0.20000000298023224
+      }
     }
   },
   "TFT16_Ornn": {
@@ -3838,15 +3843,14 @@
           0.0,
           0.0
         ],
-        "StunDuration": null,
         "SlowDuration": [
-          3.0,
-          3.0,
-          3.0,
-          3.0,
-          3.0,
-          3.0,
-          3.0
+          5.0,
+          5.0,
+          5.0,
+          5.0,
+          5.0,
+          5.0,
+          5.0
         ]
       }
     },
@@ -3950,15 +3954,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {
-        "SpellAttack": 2.0
-      },
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle_Loop": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -3968,6 +3963,15 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {
+        "SpellAttack": 2.0
+      },
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle_Loop": 0.10000000149011612
+      }
     }
   },
   "TFT16_Azir": {
@@ -4051,13 +4055,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -4067,6 +4064,13 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Zilean": {
@@ -4170,13 +4174,13 @@
     },
     "timing": {
       "attack_windup_frames": 89.0,
-      "attack_windup_seconds": 2.966666666666667,
+      "attack_windup_seconds": 0.333,
       "attack1_frame": 89.0,
       "attack2_frame": null,
       "spell_cast_frame": 8.0,
       "spell_cast_seconds": 0.26666666666666666,
-      "source": "extracted",
-      "confidence": "high"
+      "source": "combat_data_fallback",
+      "confidence": "low"
     },
     "ability": {
       "name": "Crowstorm",
@@ -4246,6 +4250,16 @@
         ]
       }
     },
+    "wiki_data": {
+      "base_attack_speed": null,
+      "attack_speed_ratio": null,
+      "windup_percent": null,
+      "windup_modifier": null,
+      "missile_speed": null,
+      "attack_range": null,
+      "windup_seconds_at_base": null,
+      "source": ""
+    },
     "_raw_animation": {
       "attack_frames": {
         "Attack1_B": 89.0
@@ -4256,16 +4270,6 @@
       "tick_durations": {
         "Idle1": 0.20000000298023224
       }
-    },
-    "wiki_data": {
-      "base_attack_speed": null,
-      "attack_speed_ratio": null,
-      "windup_percent": null,
-      "windup_modifier": null,
-      "missile_speed": null,
-      "attack_range": null,
-      "windup_seconds_at_base": null,
-      "source": ""
     }
   },
   "TFT16_Shyvana": {
@@ -4328,15 +4332,6 @@
           0.0,
           0.0
         ],
-        "FireDamagetADDamagePerSecond": [
-          0.0,
-          185.0,
-          275.0,
-          12345.0,
-          12345.0,
-          0.0,
-          0.0
-        ],
         "FireDamageAPPerSecond": [
           0.0,
           20.0,
@@ -4354,6 +4349,15 @@
           3.0,
           3.0,
           3.0
+        ],
+        "FireDamageADDamagePerSecond": [
+          0.0,
+          185.0,
+          275.0,
+          12345.0,
+          12345.0,
+          0.0,
+          0.0
         ]
       }
     },
@@ -4606,7 +4610,6 @@
     "ability": {
       "name": "Winter's Wrath",
       "variables": {
-        "ResistMult": null,
         "Shield": [
           0.0,
           525.0,
@@ -4788,6 +4791,16 @@
         ]
       }
     },
+    "wiki_data": {
+      "base_attack_speed": null,
+      "attack_speed_ratio": null,
+      "windup_percent": null,
+      "windup_modifier": null,
+      "missile_speed": null,
+      "attack_range": null,
+      "windup_seconds_at_base": null,
+      "source": ""
+    },
     "_raw_animation": {
       "attack_frames": {},
       "spell_frames": {},
@@ -4801,16 +4814,6 @@
         "Attack2_Out": 0.01666666753590107,
         "Attack2_Start": 0.20000000298023224
       }
-    },
-    "wiki_data": {
-      "base_attack_speed": null,
-      "attack_speed_ratio": null,
-      "windup_percent": null,
-      "windup_modifier": null,
-      "missile_speed": null,
-      "attack_range": null,
-      "windup_seconds_at_base": null,
-      "source": ""
     }
   },
   "TFT16_Brock": {
@@ -5023,30 +5026,30 @@
         ],
         "ADDamage": [
           0.0,
-          145.0,
-          250.0,
+          160.0,
+          265.0,
           2000.0,
           9000.0,
           0.0,
           0.0
         ],
         "LaserFalloffPerTarget": [
-          0.25,
-          0.25,
-          0.25,
-          0.25,
-          0.25,
-          0.25,
-          0.25
+          0.3499999940395355,
+          0.3499999940395355,
+          0.3499999940395355,
+          0.3499999940395355,
+          0.3499999940395355,
+          0.3499999940395355,
+          0.3499999940395355
         ],
         "LaserFalloffCap": [
-          0.75,
-          0.75,
-          0.75,
-          0.75,
-          0.75,
-          0.75,
-          0.75
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929
         ],
         "MissilesPerSecond": [
           4.0,
@@ -5076,13 +5079,13 @@
           0.25
         ],
         "MissileDamageMult": [
-          0.25,
-          0.25,
-          0.25,
-          0.25,
-          0.25,
-          0.25,
-          0.25
+          0.20000000298023224,
+          0.20000000298023224,
+          0.20000000298023224,
+          0.20000000298023224,
+          0.20000000298023224,
+          0.20000000298023224,
+          0.20000000298023224
         ],
         "RocketNumClosestEnemies": [
           4.0,
@@ -5352,18 +5355,18 @@
       "crit_chance": 0.25,
       "crit_multiplier": 1.399999976158142,
       "range": 4.0,
-      "mana": 75.0,
-      "initial_mana": 25.0
+      "mana": 85.0,
+      "initial_mana": 0
     },
     "timing": {
       "attack_windup_frames": 1.0,
-      "attack_windup_seconds": 0.03333333333333333,
+      "attack_windup_seconds": 0.375,
       "attack1_frame": 1.0,
       "attack2_frame": 1.0,
       "spell_cast_frame": 3.0,
       "spell_cast_seconds": 0.1,
-      "source": "extracted",
-      "confidence": "high"
+      "source": "combat_data_fallback",
+      "confidence": "low"
     },
     "ability": {
       "name": "The Skies Descend",
@@ -5513,31 +5516,31 @@
           300.0
         ],
         "StardustThreshold6": [
-          475.0,
-          475.0,
-          475.0,
-          475.0,
-          475.0,
-          475.0,
-          475.0
+          550.0,
+          550.0,
+          550.0,
+          550.0,
+          550.0,
+          550.0,
+          550.0
         ],
         "StardustThreshold7": [
-          750.0,
-          750.0,
-          750.0,
-          750.0,
-          750.0,
-          750.0,
-          750.0
+          800.0,
+          800.0,
+          800.0,
+          800.0,
+          800.0,
+          800.0,
+          800.0
         ],
         "StardustThreshold8": [
-          1543.0,
-          1543.0,
-          1543.0,
-          1543.0,
-          1543.0,
-          1543.0,
-          1543.0
+          1444.0,
+          1444.0,
+          1444.0,
+          1444.0,
+          1444.0,
+          1444.0,
+          1444.0
         ],
         "StardustPerDamage": [
           250.0,
@@ -5652,15 +5655,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {
-        "Spell2": 1.0
-      },
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -5670,6 +5664,15 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {
+        "Spell2": 1.0
+      },
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_BaronNashor": {
@@ -5694,13 +5697,13 @@
     },
     "timing": {
       "attack_windup_frames": 37.0,
-      "attack_windup_seconds": 1.2333333333333334,
+      "attack_windup_seconds": 0.6,
       "attack1_frame": 37.0,
       "attack2_frame": 37.0,
       "spell_cast_frame": null,
       "spell_cast_seconds": null,
-      "source": "extracted",
-      "confidence": "high"
+      "source": "combat_data_fallback",
+      "confidence": "low"
     },
     "ability": {
       "name": "Wrath of the Void",
@@ -5846,10 +5849,10 @@
         ],
         "PhysicalDamagePerSecond": [
           0.0,
-          15.0,
-          25.0,
-          40.0,
-          55.0,
+          12.0,
+          18.0,
+          30.0,
+          42.0,
           0.0,
           0.0
         ],
@@ -5871,15 +5874,14 @@
           0.05000000074505806,
           0.05000000074505806
         ],
-        "GoldPerExecute": null,
         "BleedDuration": [
-          4.0,
-          4.0,
-          4.0,
-          4.0,
-          4.0,
-          4.0,
-          4.0
+          5.0,
+          5.0,
+          5.0,
+          5.0,
+          5.0,
+          5.0,
+          5.0
         ]
       }
     },
@@ -6027,6 +6029,16 @@
         ]
       }
     },
+    "wiki_data": {
+      "base_attack_speed": null,
+      "attack_speed_ratio": null,
+      "windup_percent": null,
+      "windup_modifier": null,
+      "missile_speed": null,
+      "attack_range": null,
+      "windup_seconds_at_base": null,
+      "source": ""
+    },
     "_raw_animation": {
       "attack_frames": {},
       "spell_frames": {
@@ -6044,16 +6056,6 @@
         "{c9516a56}": 0.03333299979567528,
         "Spell3_Dash": 0.03333299979567528
       }
-    },
-    "wiki_data": {
-      "base_attack_speed": null,
-      "attack_speed_ratio": null,
-      "windup_percent": null,
-      "windup_modifier": null,
-      "missile_speed": null,
-      "attack_range": null,
-      "windup_seconds_at_base": null,
-      "source": ""
     }
   },
   "TFT16_Warwick": {
@@ -6136,6 +6138,16 @@
         ]
       }
     },
+    "wiki_data": {
+      "base_attack_speed": null,
+      "attack_speed_ratio": null,
+      "windup_percent": null,
+      "windup_modifier": null,
+      "missile_speed": null,
+      "attack_range": null,
+      "windup_seconds_at_base": null,
+      "source": ""
+    },
     "_raw_animation": {
       "attack_frames": {
         "Attack1": 14.0,
@@ -6150,16 +6162,6 @@
         "{201d833b}": 0.01666666753590107,
         "Spell_Cast": 0.01666666753590107
       }
-    },
-    "wiki_data": {
-      "base_attack_speed": null,
-      "attack_speed_ratio": null,
-      "windup_percent": null,
-      "windup_modifier": null,
-      "missile_speed": null,
-      "attack_range": null,
-      "windup_seconds_at_base": null,
-      "source": ""
     }
   },
   "TFT16_Fizz": {
@@ -6179,7 +6181,7 @@
       "crit_chance": 0.25,
       "crit_multiplier": 1.399999976158142,
       "range": 1.0,
-      "mana": 20.0,
+      "mana": 10.0,
       "initial_mana": 0
     },
     "timing": {
@@ -6255,7 +6257,7 @@
   },
   "TFT16_Poppy": {
     "api_name": "TFT16_Poppy",
-    "display_name": "Poppy ",
+    "display_name": "Poppy",
     "cost": 2,
     "traits": [
       "Demacia",
@@ -6364,7 +6366,7 @@
   },
   "TFT16_Kennen": {
     "api_name": "TFT16_Kennen",
-    "display_name": "Kennen ",
+    "display_name": "Kennen",
     "cost": 3,
     "traits": [
       "Ionia",
@@ -6479,13 +6481,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -6495,11 +6490,18 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Ziggs": {
     "api_name": "TFT16_Ziggs",
-    "display_name": "Ziggs ",
+    "display_name": "Ziggs",
     "cost": 5,
     "traits": [
       "Zaun",
@@ -6508,7 +6510,7 @@
     ],
     "stats": {
       "hp": 900.0,
-      "damage": null,
+      "damage": 50,
       "armor": 30.0,
       "magic_resist": 30.0,
       "attack_speed": 0.8999999761581421,
@@ -6588,24 +6590,24 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.25
-      }
-    },
     "wiki_data": {
       "source": "https://wiki.leagueoflegends.com",
       "base_attack_speed": 0.656,
       "attack_speed_ratio": null,
       "windup_percent": 17.2,
       "missile_speed": 1500
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.25
+      }
     }
   },
   "TFT16_Aatrox": {
     "api_name": "TFT16_Aatrox",
-    "display_name": "Aatrox ",
+    "display_name": "Aatrox",
     "cost": 5,
     "traits": [
       "Darkin",
@@ -6613,7 +6615,7 @@
       "Slayer"
     ],
     "stats": {
-      "hp": 900.0,
+      "hp": 1000.0,
       "damage": 65.0,
       "armor": 55.0,
       "magic_resist": 55.0,
@@ -6621,7 +6623,7 @@
       "crit_chance": 0.25,
       "crit_multiplier": 1.399999976158142,
       "range": 1.0,
-      "mana": 30.0,
+      "mana": 20.0,
       "initial_mana": 0
     },
     "timing": {
@@ -6649,7 +6651,7 @@
         "ADDamage": [
           0.0,
           95.0,
-          200.0,
+          185.0,
           2400.0,
           2400.0,
           0.0,
@@ -6702,6 +6704,16 @@
         ]
       }
     },
+    "wiki_data": {
+      "base_attack_speed": null,
+      "attack_speed_ratio": null,
+      "windup_percent": null,
+      "windup_modifier": null,
+      "missile_speed": null,
+      "attack_range": null,
+      "windup_seconds_at_base": null,
+      "source": ""
+    },
     "_raw_animation": {
       "attack_frames": {
         "Attack1": 10.0,
@@ -6715,21 +6727,11 @@
       "tick_durations": {
         "Idle1": 0.10000000149011612
       }
-    },
-    "wiki_data": {
-      "base_attack_speed": null,
-      "attack_speed_ratio": null,
-      "windup_percent": null,
-      "windup_modifier": null,
-      "missile_speed": null,
-      "attack_range": null,
-      "windup_seconds_at_base": null,
-      "source": ""
     }
   },
   "TFT16_Volibear": {
     "api_name": "TFT16_Volibear",
-    "display_name": "Volibear ",
+    "display_name": "Volibear",
     "cost": 5,
     "traits": [
       "Freljord",
@@ -6896,10 +6898,10 @@
       "variables": {
         "ADDamage": [
           4.440000057220459,
-          135.0,
-          200.0,
-          300.0,
-          400.0,
+          145.0,
+          215.0,
+          325.0,
+          435.0,
           844.0,
           4.440000057220459
         ],
@@ -6912,7 +6914,6 @@
           0.0,
           0.0
         ],
-        "MaxPercentIncreaseBasedOnMissingHealth": null,
         "FourthShotDamageMult": [
           1.440000057220459,
           1.440000057220459,
@@ -6933,19 +6934,19 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "source": "https://wiki.leagueoflegends.com",
       "base_attack_speed": 0.625,
       "attack_speed_ratio": 0,
       "windup_percent": 15.625,
       "missile_speed": 2600
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_PiltoverInvention": {
@@ -6994,9 +6995,9 @@
     "cost": 11,
     "traits": [],
     "stats": {
-      "hp": null,
-      "damage": null,
-      "armor": null,
+      "hp": 500,
+      "damage": 50,
+      "armor": 20,
       "magic_resist": 20.0,
       "attack_speed": 0.800000011920929,
       "crit_chance": 0.25,
@@ -7103,7 +7104,7 @@
   },
   "TFT16_Sylas": {
     "api_name": "TFT16_Sylas",
-    "display_name": "Sylas ",
+    "display_name": "Sylas",
     "cost": 5,
     "traits": [
       "Chainbreaker",
@@ -7137,8 +7138,8 @@
       "variables": {
         "JarvanDamage": [
           0.0,
-          100.0,
-          180.0,
+          120.0,
+          200.0,
           1000.0,
           160.0,
           200.0,
@@ -7164,8 +7165,8 @@
         ],
         "GarenDamage": [
           0.0,
-          670.0,
-          1000.0,
+          700.0,
+          1050.0,
           99999.0,
           0.0,
           0.0,
@@ -7218,6 +7219,16 @@
         ]
       }
     },
+    "wiki_data": {
+      "base_attack_speed": null,
+      "attack_speed_ratio": null,
+      "windup_percent": null,
+      "windup_modifier": null,
+      "missile_speed": null,
+      "attack_range": null,
+      "windup_seconds_at_base": null,
+      "source": ""
+    },
     "_raw_animation": {
       "attack_frames": {
         "Attack1_Start": 5.0,
@@ -7228,21 +7239,11 @@
         "Idle1": 0.10000000149011612,
         "Attack1_End": 0.0555555559694767
       }
-    },
-    "wiki_data": {
-      "base_attack_speed": null,
-      "attack_speed_ratio": null,
-      "windup_percent": null,
-      "windup_modifier": null,
-      "missile_speed": null,
-      "attack_range": null,
-      "windup_seconds_at_base": null,
-      "source": ""
     }
   },
   "TFT16_Ryze": {
     "api_name": "TFT16_Ryze",
-    "display_name": "Ryze ",
+    "display_name": "Ryze",
     "cost": 5,
     "traits": [
       "Rune Mage"
@@ -7527,7 +7528,7 @@
   },
   "TFT16_Nidalee": {
     "api_name": "TFT16_Nidalee",
-    "display_name": "Nidalee ",
+    "display_name": "Nidalee",
     "cost": 4,
     "traits": [
       "Ixtal",
@@ -7618,7 +7619,7 @@
   },
   "TFT16_Tryndamere": {
     "api_name": "TFT16_Tryndamere",
-    "display_name": "Tryndamere ",
+    "display_name": "Tryndamere",
     "cost": 2,
     "traits": [
       "Freljord",
@@ -7715,7 +7716,7 @@
   },
   "TFT16_RiftHerald": {
     "api_name": "TFT16_RiftHerald",
-    "display_name": "Rift Herald ",
+    "display_name": "Rift Herald",
     "cost": 4,
     "traits": [
       "Void",
@@ -7775,8 +7776,8 @@
         ],
         "BonusHealth": [
           0.0,
-          350.0,
-          450.0,
+          300.0,
+          425.0,
           2000.0,
           1800.0,
           0.0,
@@ -7824,7 +7825,7 @@
   },
   "TFT16_Mel": {
     "api_name": "TFT16_Mel",
-    "display_name": "Mel ",
+    "display_name": "Mel",
     "cost": 5,
     "traits": [
       "Noxus",
@@ -7840,7 +7841,7 @@
       "crit_multiplier": 1.399999976158142,
       "range": 4.0,
       "mana": 200.0,
-      "initial_mana": 0
+      "initial_mana": 30.0
     },
     "timing": {
       "attack_windup_frames": null,
@@ -7866,9 +7867,9 @@
         ],
         "PassiveDamage": [
           0.0,
-          40.0,
-          60.0,
-          90.0,
+          65.0,
+          100.0,
+          150.0,
           1000.0,
           0.0,
           0.0
@@ -7932,7 +7933,7 @@
   },
   "TFT16_Graves": {
     "api_name": "TFT16_Graves",
-    "display_name": "Graves ",
+    "display_name": "Graves",
     "cost": 2,
     "traits": [
       "Bilgewater",
@@ -8024,7 +8025,7 @@
   },
   "TFT16_Skarner": {
     "api_name": "TFT16_Skarner",
-    "display_name": "Skarner ",
+    "display_name": "Skarner",
     "cost": 4,
     "traits": [
       "Ixtal"
@@ -8125,7 +8126,7 @@
   },
   "TFT16_Diana": {
     "api_name": "TFT16_Diana",
-    "display_name": "Diana ",
+    "display_name": "Diana",
     "cost": 4,
     "traits": [
       "Targon"
@@ -8223,7 +8224,7 @@
   },
   "TFT16_Kaisa": {
     "api_name": "TFT16_Kaisa",
-    "display_name": "Kai'Sa ",
+    "display_name": "Kai'Sa",
     "cost": 4,
     "traits": [
       "Assimilator",
@@ -8312,7 +8313,7 @@
   },
   "TFT16_Renekton": {
     "api_name": "TFT16_Renekton",
-    "display_name": "Renekton ",
+    "display_name": "Renekton",
     "cost": 4,
     "traits": [
       "Shurima"
@@ -8438,7 +8439,7 @@
   },
   "TFT16_Nasus": {
     "api_name": "TFT16_Nasus",
-    "display_name": "Nasus ",
+    "display_name": "Nasus",
     "cost": 4,
     "traits": [
       "Shurima"
@@ -8527,7 +8528,7 @@
   },
   "TFT16_Xerath": {
     "api_name": "TFT16_Xerath",
-    "display_name": "Xerath ",
+    "display_name": "Xerath",
     "cost": 5,
     "traits": [
       "Shurima",
@@ -8610,7 +8611,7 @@
   },
   "TFT16_Thresh": {
     "api_name": "TFT16_Thresh",
-    "display_name": "Thresh ",
+    "display_name": "Thresh",
     "cost": 5,
     "traits": [
       "Shadow Isles",
@@ -8721,7 +8722,7 @@
   },
   "TFT16_Gwen": {
     "api_name": "TFT16_Gwen",
-    "display_name": "Gwen ",
+    "display_name": "Gwen",
     "cost": 3,
     "traits": [
       "Shadow Isles",
@@ -8781,19 +8782,19 @@
         ],
         "Damage": [
           0.0,
-          45.0,
-          68.0,
-          105.0,
-          142.0,
+          50.0,
+          75.0,
+          120.0,
+          165.0,
           200.0,
           240.0
         ],
         "SecondaryMagicDamage": [
           0.0,
-          20.0,
-          30.0,
-          50.0,
-          70.0,
+          25.0,
+          35.0,
+          60.0,
+          85.0,
           0.0,
           0.0
         ],
@@ -8831,7 +8832,7 @@
   },
   "TFT16_Kalista": {
     "api_name": "TFT16_Kalista",
-    "display_name": "Kalista ",
+    "display_name": "Kalista",
     "cost": 4,
     "traits": [
       "Shadow Isles",
@@ -8936,13 +8937,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.1666666716337204
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -8952,11 +8946,18 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.1666666716337204
+      }
     }
   },
   "TFT16_Leblanc": {
     "api_name": "TFT16_Leblanc",
-    "display_name": "LeBlanc ",
+    "display_name": "LeBlanc",
     "cost": 3,
     "traits": [
       "Noxus",
@@ -9213,6 +9214,16 @@
         ]
       }
     },
+    "wiki_data": {
+      "base_attack_speed": null,
+      "attack_speed_ratio": null,
+      "windup_percent": null,
+      "windup_modifier": null,
+      "missile_speed": null,
+      "attack_range": null,
+      "windup_seconds_at_base": null,
+      "source": ""
+    },
     "_raw_animation": {
       "attack_frames": {
         "Spell_Attack1": 2.0,
@@ -9225,21 +9236,11 @@
         "Spell_Attack1": 0.10000000149011612,
         "{e60522a7}": 0.5
       }
-    },
-    "wiki_data": {
-      "base_attack_speed": null,
-      "attack_speed_ratio": null,
-      "windup_percent": null,
-      "windup_modifier": null,
-      "missile_speed": null,
-      "attack_range": null,
-      "windup_seconds_at_base": null,
-      "source": ""
     }
   },
   "TFT16_Bard": {
     "api_name": "TFT16_Bard",
-    "display_name": "Bard ",
+    "display_name": "Bard",
     "cost": 2,
     "traits": [
       "Caretaker"
@@ -9271,10 +9272,10 @@
       "variables": {
         "Damage": [
           0.0,
-          120.0,
-          170.0,
-          240.0,
-          320.0,
+          130.0,
+          185.0,
+          255.0,
+          325.0,
           200.0,
           240.0
         ],
@@ -9381,19 +9382,19 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.20000000298023224
-      }
-    },
     "wiki_data": {
       "source": "https://wiki.leagueoflegends.com",
       "base_attack_speed": 0.658,
       "attack_speed_ratio": null,
       "windup_percent": 17.544,
       "missile_speed": 2000
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.20000000298023224
+      }
     }
   },
   "TFT16_Atakhan": {
@@ -9405,7 +9406,7 @@
       "hp": 320.0,
       "damage": 50.0,
       "armor": 0.0,
-      "magic_resist": null,
+      "magic_resist": 20,
       "attack_speed": 0.75,
       "crit_chance": 0.25,
       "crit_multiplier": 1.399999976158142,
@@ -9603,8 +9604,8 @@
         ],
         "AttackSpeed": [
           0.0,
-          0.75,
-          0.75,
+          0.6499999761581421,
+          0.6499999761581421,
           3.0,
           2.0,
           0.0,
@@ -9812,10 +9813,10 @@
         ],
         "Heal": [
           0.0,
-          95.0,
-          135.0,
-          170.0,
-          205.0,
+          105.0,
+          145.0,
+          200.0,
+          280.0,
           0.0,
           0.0
         ],
@@ -9842,7 +9843,7 @@
   },
   "TFT16_Yorick": {
     "api_name": "TFT16_Yorick",
-    "display_name": "Yorick ",
+    "display_name": "Yorick",
     "cost": 2,
     "traits": [
       "Shadow Isles",
@@ -9957,7 +9958,7 @@
   },
   "TFT16_Orianna": {
     "api_name": "TFT16_Orianna",
-    "display_name": "Orianna ",
+    "display_name": "Orianna",
     "cost": 2,
     "traits": [
       "Piltover",
@@ -10017,10 +10018,10 @@
         ],
         "Shield": [
           100.0,
-          80.0,
-          120.0,
+          60.0,
+          90.0,
+          130.0,
           200.0,
-          280.0,
           100.0,
           100.0
         ],
@@ -10035,13 +10036,6 @@
         ]
       }
     },
-    "_raw_animation": {
-      "attack_frames": {},
-      "spell_frames": {},
-      "tick_durations": {
-        "Idle1": 0.10000000149011612
-      }
-    },
     "wiki_data": {
       "base_attack_speed": null,
       "attack_speed_ratio": null,
@@ -10051,6 +10045,13 @@
       "attack_range": null,
       "windup_seconds_at_base": null,
       "source": ""
+    },
+    "_raw_animation": {
+      "attack_frames": {},
+      "spell_frames": {},
+      "tick_durations": {
+        "Idle1": 0.10000000149011612
+      }
     }
   },
   "TFT16_Qiyana": {

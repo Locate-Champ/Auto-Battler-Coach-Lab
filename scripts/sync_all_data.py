@@ -231,32 +231,60 @@ def sync_game_data(result: SyncResult, dry_run: bool = False):
     """
     Sync game reference data (champions, items, traits, augments).
 
-    Runs: scripts/fetch_game_data.py
-    Updates: data/game_data/*.jsonl
+    Runs: scripts/fetch_game_data.py (placement stats)
+    Runs: scripts/fetch_champion_stats.py (full stats + abilities)
+    Updates: data/game_data/*.jsonl, simulator/data/
     """
     print("\n" + "=" * 60)
     print("SYNCING GAME DATA (champions, items, traits)")
     print("=" * 60)
 
+    # 1. Fetch placement stats (win rates, top 4 rates)
     script = SCRIPT_DIR / "fetch_game_data.py"
 
     if not script.exists():
         result.add_failure("fetch_game_data.py", "Script not found")
+    elif dry_run:
+        result.add_skip("fetch_game_data.py", "Dry run mode")
+        print(f"  [DRY RUN] Would run: {script}")
+    else:
+        print(f"Running {script.name}...")
+        success, output = run_script(script)
+
+        if success:
+            result.add_success("fetch_game_data.py", "Updated data/game_data/ (placement stats)")
+            print(output)
+        else:
+            result.add_failure("fetch_game_data.py", output[:200])
+            print(f"  ERROR: {output}")
+
+    # 2. Fetch full champion stats and abilities from CommunityDragon
+    print("\n" + "-" * 60)
+    print("Syncing champion stats and abilities (CommunityDragon)...")
+    print("-" * 60)
+
+    stats_script = SCRIPT_DIR / "fetch_champion_stats.py"
+
+    if not stats_script.exists():
+        result.add_failure("fetch_champion_stats.py", "Script not found")
         return
 
     if dry_run:
-        result.add_skip("fetch_game_data.py", "Dry run mode")
-        print(f"  [DRY RUN] Would run: {script}")
+        result.add_skip("fetch_champion_stats.py", "Dry run mode")
+        print(f"  [DRY RUN] Would run: {stats_script}")
         return
 
-    print(f"Running {script.name}...")
-    success, output = run_script(script)
+    print(f"Running {stats_script.name}...")
+    success, output = run_script(stats_script)
 
     if success:
-        result.add_success("fetch_game_data.py", "Updated data/game_data/")
-        print(output)
+        result.add_success("fetch_champion_stats.py", "Updated simulator/data/ (stats + abilities)")
+        # Print last few lines of output
+        lines = output.strip().split('\n')
+        for line in lines[-15:]:
+            print(f"  {line}")
     else:
-        result.add_failure("fetch_game_data.py", output[:200])
+        result.add_failure("fetch_champion_stats.py", output[:200])
         print(f"  ERROR: {output}")
 
 
@@ -280,10 +308,17 @@ def update_sync_manifest(result: SyncResult):
                 "source": "MetaTFT API",
                 "files": ["comps.json", "last_updated.json"]
             },
-            "game_data": {
+            "game_data_placements": {
                 "folder": "data/game_data/",
                 "source": "MetaTFT API",
-                "files": ["champions.jsonl", "items.jsonl", "traits.jsonl", "augments.jsonl"]
+                "files": ["champions.jsonl", "items.jsonl", "traits.jsonl", "augments.jsonl"],
+                "note": "Placement statistics (win rates, top 4 rates)"
+            },
+            "champion_stats": {
+                "folder": "simulator/data/",
+                "source": "CommunityDragon",
+                "files": ["combat_data.json", "timing_constants.json", "traits.json"],
+                "note": "Full champion stats (HP, AD, abilities, spell variables)"
             },
             "simulator_items": {
                 "folder": "simulator/data/",
