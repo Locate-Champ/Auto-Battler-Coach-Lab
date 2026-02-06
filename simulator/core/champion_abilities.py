@@ -39,10 +39,21 @@ class ChampionAbilities:
     # =========================================================================
 
     def _get_var(self, ability_vars: Dict, key: str, star_level: int, default: float = 0) -> float:
-        """Get ability variable for star level."""
-        var_data = ability_vars.get(key, {})
+        """Get ability variable for star level.
+
+        Handles both list format [0, 1star, 2star, 3star, ...] and
+        dict format {'1star': val, '2star': val, ...}.
+        """
+        var_data = ability_vars.get(key)
+        if var_data is None:
+            return default
+        if isinstance(var_data, list):
+            if star_level < len(var_data):
+                return var_data[star_level] if var_data[star_level] else default
+            return default
         if isinstance(var_data, dict):
             return var_data.get(f'{star_level}star', default) or default
+        # Scalar value
         return var_data if var_data else default
 
     def _find_farthest_enemy(self, unit: 'Unit', enemies: List['Unit'],
@@ -352,6 +363,64 @@ class ChampionAbilities:
         unit.stats.mana = 0
         return True
 
+    def _cast_diana(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Diana - Lunar Rush: Dash to target, deal damage, shield self. Leona synergy."""
+        from .combat_engine import DamageType, HexGrid
+
+        shield_amount = self._get_var(ability_vars, 'Shield', unit.star_level, 100)
+        shield_duration = self._get_var(ability_vars, 'ShieldDuration', unit.star_level, 2.0)
+        hex_limit = int(self._get_var(ability_vars, 'HexLimit', unit.star_level, 4))
+        target_damage = self._get_var(ability_vars, 'TargetDamage', unit.star_level, 125)
+        secondary_damage = self._get_var(ability_vars, 'SecondaryDamage', unit.star_level, 140)
+        moonlight_dr = self._get_var(ability_vars, 'MoonlightDamageReduction', unit.star_level, 0.1)
+
+        # Check for Leona synergy - if Leona is on team, Diana gets bonus damage reduction
+        has_leona = any(a.api_name == 'TFT16_Leona' and a.is_alive for a in allies)
+        if has_leona and not getattr(unit, '_diana_leona_dr_applied', False):
+            unit._diana_leona_dr_applied = True
+            unit.stats.damage_reduction += moonlight_dr
+            self.engine.log_event('diana_leona_synergy', unit=unit.name, dr_bonus=moonlight_dr)
+
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Check range limit
+        distance = HexGrid.hex_distance(unit.position, target.position)
+        if distance > hex_limit:
+            # Find nearest enemy within range
+            valid = [e for e in enemies if e.is_alive and e.is_targetable and
+                    HexGrid.hex_distance(unit.position, e.position) <= hex_limit]
+            if not valid:
+                return False
+            target = min(valid, key=lambda e: HexGrid.hex_distance(unit.position, e.position))
+
+        # Dash to target
+        self._dash_to_position(unit, target.position)
+
+        # Apply shield
+        unit.stats.shield += shield_amount + unit.stats.ap
+        if not hasattr(unit, '_diana_shield_timer'):
+            unit._diana_shield_timer = 0
+        unit._diana_shield_timer = shield_duration
+        self.engine.log_event('shield', unit=unit.name, amount=shield_amount + unit.stats.ap)
+
+        # Deal damage to primary target
+        self._deal_damage(unit, target, target_damage + unit.stats.ap, DamageType.MAGIC, "diana_lunar_rush")
+
+        # Deal secondary damage to enemies around target (pull effect)
+        nearby = self._get_enemies_in_radius(target.position, 2, enemies)
+        for enemy in nearby:
+            if enemy != target and enemy.is_alive:
+                self._deal_damage(unit, enemy, secondary_damage + unit.stats.ap * 0.5,
+                                 DamageType.MAGIC, "diana_moonfall")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Lunar Rush",
+                             has_leona=has_leona, nearby_hit=len(nearby) - 1)
+        return True
+
     def _cast_draven(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                      ability_vars: Dict) -> bool:
         """Draven - Spinning Axes: Axe cycling with gold on takedown."""
@@ -424,6 +493,53 @@ class ChampionAbilities:
         unit.stats.mana = 0
         self.engine.log_event('ability_cast', unit=unit.name, ability="Frozen Tomb",
                              excess_used=excess > 0)
+        return True
+
+    def _cast_leona(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Leona - Solar Flare: AOE stun + damage, passive flat DR. Diana synergy."""
+        from .combat_engine import DamageType, UnitState
+
+        flat_dr = self._get_var(ability_vars, 'FlatDR', unit.star_level, 15)
+        num_enemies = int(self._get_var(ability_vars, 'NumEnemies', unit.star_level, 3))
+        stun_duration = self._get_var(ability_vars, 'StunDuration', unit.star_level, 1.0)
+        damage = self._get_var(ability_vars, 'Damage', unit.star_level, 80)
+        ignite_duration = self._get_var(ability_vars, 'IgniteDuration', unit.star_level, 4.0)
+        passive_timer = self._get_var(ability_vars, 'PassiveTimer', unit.star_level, 4.0)
+        diana_ap = self._get_var(ability_vars, 'DianaAP', unit.star_level, 3)
+
+        # Apply passive flat DR on first cast
+        if not getattr(unit, '_leona_dr_applied', False):
+            unit._leona_dr_applied = True
+            unit._leona_flat_dr = flat_dr
+            self.engine.log_event('leona_passive', unit=unit.name, flat_dr=flat_dr)
+
+        # Check for Diana synergy - if Diana is on team, grant her bonus AP
+        diana = next((a for a in allies if a.api_name == 'TFT16_Diana' and a.is_alive), None)
+        if diana and not getattr(unit, '_leona_diana_ap_applied', False):
+            unit._leona_diana_ap_applied = True
+            diana.stats.ap += diana_ap
+            self.engine.log_event('leona_diana_synergy', unit=unit.name, diana=diana.name, ap_bonus=diana_ap)
+
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Solar Flare: AOE damage + stun centered on target
+        targets_hit = self._get_enemies_in_radius(target.position, 2, enemies)[:num_enemies]
+
+        for enemy in targets_hit:
+            # Deal damage
+            self._deal_damage(unit, enemy, damage + unit.stats.ap, DamageType.MAGIC, "leona_solar_flare")
+            # Apply stun
+            self._apply_stun(enemy, stun_duration, "leona_stun")
+            # Apply ignite (burn damage)
+            ignite_dps = damage * 0.25  # 25% of damage as burn
+            self.engine._apply_burn(unit, enemy, "leona_ignite", ignite_dps, ignite_duration)
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Solar Flare",
+                             targets=len(targets_hit), has_diana=diana is not None)
         return True
 
     def _cast_lux(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
@@ -964,40 +1080,85 @@ class ChampionAbilities:
 
     def _cast_annie(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                     ability_vars: Dict) -> bool:
-        """Annie - Tibbers Rampage: Summon Tibbers + board-wide damage on first cast."""
+        """Annie - Enraged Inferno: Board-wide AOE magic damage.
+
+        First cast: Deals massive AOE damage to all enemies.
+        Subsequent casts: Reduced mana cost (140 -> 20), deals single target damage.
+
+        Note: Tibbers is a SEPARATE unit (TFT16_AnnieTibbers) that the player fields
+        independently via the Dark Child trait. He has his own attacks and ability.
+        """
         from .combat_engine import DamageType
 
         aoe_damage = self._get_var(ability_vars, 'Damage', unit.star_level, 1500)
-        tibbers_damage = self._get_var(ability_vars, 'SingleTargetDamage', unit.star_level, 250)
-        duration = self._get_var(ability_vars, 'Duration', unit.star_level, 45)
+        single_target_damage = self._get_var(ability_vars, 'SingleTargetDamage', unit.star_level, 240)
+        mana_reduction = self._get_var(ability_vars, 'ManaCostReduction', unit.star_level, 140)
 
-        # Track if this is first cast
-        if not hasattr(unit, '_annie_tibbers_active'):
-            unit._annie_tibbers_active = False
+        # Track if this is first cast (for mana cost reduction)
+        if not hasattr(unit, '_annie_first_cast_done'):
+            unit._annie_first_cast_done = False
 
-        if not unit._annie_tibbers_active:
-            # First cast: Board-wide damage
-            unit._annie_tibbers_active = True
+        if not unit._annie_first_cast_done:
+            # First cast: Board-wide AOE damage
+            unit._annie_first_cast_done = True
+            total_damage = 0
             for enemy in enemies:
                 if enemy.is_alive and enemy.is_targetable:
-                    self._deal_damage(unit, enemy, aoe_damage + unit.stats.ap,
-                                     DamageType.MAGIC, "annie_tibbers_aoe")
-            self.engine.log_event('tibbers_summon', unit=unit.name, first_cast=True)
+                    damage = aoe_damage + unit.stats.ap
+                    self._deal_damage(unit, enemy, damage, DamageType.MAGIC, "annie_enraged_inferno")
+                    total_damage += damage
+
+            # Apply mana cost reduction for future casts
+            unit.stats.mana_cost = max(20, unit.stats.mana_cost - mana_reduction)
+            self.engine.log_event('ability_cast', unit=unit.name, ability="Enraged Inferno",
+                                 damage=total_damage, first_cast=True,
+                                 new_mana_cost=unit.stats.mana_cost)
         else:
-            # Subsequent casts: Tibbers attacks
+            # Subsequent casts: Single target damage (Annie continues attacking)
             target = unit.target or self._find_nearest_enemy(unit, enemies)
             if target:
-                # Tibbers attacks target multiple times (simulated)
-                attacks = int(duration / 2)  # Attack every 2 seconds
-                for _ in range(min(attacks, 5)):  # Cap at 5 attacks
-                    if not target.is_alive:
-                        target = self._find_nearest_enemy(unit, enemies)
-                        if not target:
-                            break
-                    self._deal_damage(unit, target, tibbers_damage + unit.stats.ap * 0.3,
-                                     DamageType.MAGIC, "tibbers_attack")
+                damage = single_target_damage + unit.stats.ap
+                self._deal_damage(unit, target, damage, DamageType.MAGIC, "annie_inferno_blast")
+                self.engine.log_event('ability_cast', unit=unit.name, ability="Enraged Inferno",
+                                     damage=damage, target=target.name)
 
         unit.stats.mana = 0
+        return True
+
+    def _cast_annietibbers(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                           ability_vars: Dict) -> bool:
+        """Tibbers - Rage of Embers: Self-buff with shield, attack speed, and healing.
+
+        Tibbers AUTOMATICALLY APPEARS on bench when you buy Annie (Dark Child trait).
+        Cannot sell separately - selling Annie removes Tibbers.
+        Can equip items and field independently. Has own mana pool and attacks.
+        """
+        shield_amount = self._get_var(ability_vars, 'Shield', unit.star_level, 1000)
+        attack_speed_buff = self._get_var(ability_vars, 'AttackSpeed', unit.star_level, 2.0)
+        heal_percent = self._get_var(ability_vars, 'HealPercentHealth', unit.star_level, 0.025)
+        duration = self._get_var(ability_vars, 'Duration', unit.star_level, 4.0)
+
+        # Apply shield
+        self.engine.apply_shield(unit, shield_amount + unit.stats.ap * 0.5, "tibbers_rage_shield")
+
+        # Apply attack speed buff
+        if not hasattr(unit, '_tibbers_as_buff_active'):
+            unit._tibbers_as_buff_active = False
+
+        if not unit._tibbers_as_buff_active:
+            unit._tibbers_as_buff_active = True
+            unit._tibbers_original_as = unit.stats.attack_speed
+            unit.stats.attack_speed += attack_speed_buff
+            self.engine.log_event('tibbers_rage_buff', unit=unit.name,
+                                 as_buff=attack_speed_buff, duration=duration)
+
+        # Heal based on max HP
+        heal_amount = unit.stats.max_hp * heal_percent
+        self.engine.heal_unit(unit, heal_amount, "tibbers_rage_heal")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Rage of Embers",
+                             shield=shield_amount, heal=heal_amount, as_buff=attack_speed_buff)
         return True
 
     def _cast_bard(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
@@ -1302,12 +1463,15 @@ class ChampionAbilities:
 
     def _cast_missfortune(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                           ability_vars: Dict) -> bool:
-        """Miss Fortune - Bullet Time: Multi-wave AOE + ricochet autos."""
+        """Miss Fortune - Heartbreaker: Multi-wave AOE + ricochet autos passive."""
         from .combat_engine import DamageType
 
-        ricochet_mult = self._get_var(ability_vars, 'AutoRicochetMultiplier', unit.star_level, 0.5)
+        ricochet_mult = self._get_var(ability_vars, 'AutoRicochetMutliplier', unit.star_level, 0.5)
         base_waves = int(self._get_var(ability_vars, 'BaseNumWaves', unit.star_level, 2))
         casts_per_wave = int(self._get_var(ability_vars, 'NumCaststoGainExtraWave', unit.star_level, 3))
+        ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 145)
+        ap_damage = self._get_var(ability_vars, 'APDamage', unit.star_level, 15)
+        secondary_pct = self._get_var(ability_vars, 'PercentDamageOfSecondaryWaves', unit.star_level, 0.5)
 
         # Track casts for extra waves
         if not hasattr(unit, '_mf_casts'):
@@ -1317,26 +1481,38 @@ class ChampionAbilities:
         extra_waves = unit._mf_casts // casts_per_wave
         total_waves = base_waves + extra_waves
 
-        # Fire waves across the board
-        unit_col = unit.position[1]
-        targets_hit = []
+        # Enable ricochet passive
+        if not getattr(unit, '_mf_ricochet_enabled', False):
+            unit._mf_ricochet_enabled = True
+            unit._mf_ricochet_mult = ricochet_mult
+            self.engine.log_event('mf_ricochet_passive', unit=unit.name, mult=ricochet_mult)
+
+        # Fire waves in a cone
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Get direction to target for cone
+        targets_hit = set()
+        total_damage = ad_damage + unit.stats.ad + ap_damage + unit.stats.ap
 
         for wave in range(total_waves):
+            wave_damage = total_damage if wave == 0 else total_damage * secondary_pct
+            # First wave hits primary target hard, subsequent waves spread
             for enemy in enemies:
                 if not enemy.is_alive or not enemy.is_targetable:
                     continue
 
-                # Hit enemies in cone (simplified as row-based)
-                if abs(enemy.position[1] - unit_col) <= 2:
-                    wave_damage = (unit.stats.ad * 0.5) * (1 - 0.1 * wave)  # Falloff per wave
+                # Simplified cone: enemies in front of MF toward target direction
+                dist_to_target = self._hex_distance(unit.position, enemy.position)
+                if dist_to_target <= 4:  # Range limit
                     self._deal_damage(unit, enemy, wave_damage,
                                      DamageType.PHYSICAL, f"mf_wave_{wave+1}")
-                    if enemy.name not in targets_hit:
-                        targets_hit.append(enemy.name)
+                    targets_hit.add(enemy.name)
 
         unit.stats.mana = 0
-        self.engine.log_event('ability_cast', unit=unit.name, ability="Bullet Time",
-                             waves=total_waves)
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Heartbreaker",
+                             waves=total_waves, targets=len(targets_hit), casts=unit._mf_casts)
         return True
 
     def _cast_nidalee(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
@@ -1421,37 +1597,8 @@ class ChampionAbilities:
         unit.stats.mana = 0
         return True
 
-    def _cast_taric(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
-                    ability_vars: Dict) -> bool:
-        """Taric - Cosmic Radiance: Ally MR aura + invulnerability."""
-        from .combat_engine import DamageType
-
-        passive_dr = self._get_var(ability_vars, 'PassiveDR', unit.star_level, 0.9)
-        invuln_threshold = self._get_var(ability_vars, 'InvunerabilityHealthThreshold', unit.star_level, 0.35)
-        invuln_duration = self._get_var(ability_vars, 'InvunerabilityDuration', unit.star_level, 2)
-        passive_heal = self._get_var(ability_vars, 'PassiveHeal', unit.star_level, 300)
-        mr_for_allies = self._get_var(ability_vars, 'MRForAllies', unit.star_level, 10)
-
-        # Apply MR aura to allies
-        for ally in allies:
-            if ally.is_alive:
-                ally.stats.magic_resist += mr_for_allies
-
-        # Apply passive DR to self
-        unit.stats.damage_reduction = max(unit.stats.damage_reduction, passive_dr)
-
-        # Check for invulnerability threshold
-        hp_percent = unit.stats.hp / unit.stats.max_hp
-        if hp_percent <= invuln_threshold:
-            if not hasattr(unit, '_taric_invuln_used'):
-                unit._taric_invuln_used = True
-                unit.is_targetable = False
-                unit.untargetable_duration = invuln_duration
-                self.engine.heal_unit(unit, passive_heal, "taric_invuln_heal")
-                self.engine.log_event('taric_invuln', unit=unit.name)
-
-        unit.stats.mana = 0
-        return True
+    # Note: Taric's main implementation is in the TARIC section below (line ~3200)
+    # with check_taric_invulnerability() for HP threshold checking
 
     def _cast_thresh(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                      ability_vars: Dict) -> bool:
@@ -1491,7 +1638,7 @@ class ChampionAbilities:
 
     def _cast_warwick(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                       ability_vars: Dict) -> bool:
-        """Warwick - Infinite Duress: Single cast, ally AS buff."""
+        """Warwick - Eternal Hunger: Single cast, self buff + ally AS buff."""
         from .combat_engine import DamageType
 
         # Track if already cast (single cast only)
@@ -1500,22 +1647,30 @@ class ChampionAbilities:
 
         unit._warwick_cast = True
 
-        attack_speed = self._get_var(ability_vars, 'AttackSpeed', unit.star_level, 0.8)
+        attack_speed = self._get_var(ability_vars, 'AttackSpeed', unit.star_level, 1.0)
+        ad_damage = self._get_var(ability_vars, 'ADDamage', unit.star_level, 45)
         omnivamp = self._get_var(ability_vars, 'Omnivamp', unit.star_level, 0.15)
         ally_as = self._get_var(ability_vars, 'AllyAttackSpeed', unit.star_level, 0.2)
         ally_duration = self._get_var(ability_vars, 'AllyBuffDuration', unit.star_level, 3)
 
-        # Buff self
+        # Buff self - permanent for combat
         unit.stats.attack_speed += attack_speed
         unit.stats.omnivamp += omnivamp
+        unit.stats.ad += ad_damage  # Bonus AD on attacks
+
+        # Track ally buff for duration
+        unit._warwick_ally_buff_duration = ally_duration
+        unit._warwick_buffed_allies = []
 
         # Buff allies
         for ally in allies:
             if ally.is_alive and ally != unit:
                 ally.stats.attack_speed += ally_as
+                unit._warwick_buffed_allies.append((ally, ally_as))
 
-        self.engine.log_event('warwick_infinite_duress', unit=unit.name,
-                             ally_as_buff=ally_as)
+        self.engine.log_event('warwick_eternal_hunger', unit=unit.name,
+                             self_as=attack_speed, self_ad=ad_damage, self_omnivamp=omnivamp,
+                             ally_as_buff=ally_as, ally_count=len(unit._warwick_buffed_allies))
 
         unit.stats.mana = 0
         return True
@@ -2193,6 +2348,9 @@ class ChampionAbilities:
                              DamageType.MAGIC, f"gwen_snip_{i+1}")
 
         # Secondary targets in cone get fewer snips
+        if not target:
+            unit.stats.mana = 0
+            return True
         nearby = self._get_enemies_in_radius(target.position, 2, enemies)
         for enemy in nearby:
             if enemy != target and enemy.is_alive:
@@ -2299,6 +2457,96 @@ class ChampionAbilities:
         unit.stats.mana = 0
         self.engine.log_event('ability_cast', unit=unit.name, ability="Blade of the Ruined King",
                              stacks=unit._viego_stacks, souls=soul_count)
+        return True
+
+    def _cast_yorick(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                     ability_vars: Dict) -> bool:
+        """Yorick - Mourning Mist: Mark enemy + deal % HP damage with soul-scaling heal."""
+        from .combat_engine import DamageType
+
+        # Get ability variables
+        flat_damage = self._get_var(ability_vars, 'FlatDamage', unit.star_level, 80)
+        pct_hp_damage = self._get_var(ability_vars, 'PercentHealthDamage', unit.star_level, 0.05)
+        ap_heal = self._get_var(ability_vars, 'APHeal', unit.star_level, 325)
+        heal_per_soul_breakpoint = self._get_var(ability_vars, 'HealPerSoulBreakpoint', unit.star_level, 7)
+        soul_breakpoint = self._get_var(ability_vars, 'SoulBreakpoint', unit.star_level, 10)
+        debuff_duration = self._get_var(ability_vars, 'DebuffDuration', unit.star_level, 4.0)
+
+        # Get soul count for bonus healing
+        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        bonus_heal = int(soul_count / soul_breakpoint) * heal_per_soul_breakpoint
+
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Deal damage: flat + % max HP
+        max_hp_damage = target.stats.max_hp * pct_hp_damage
+        total_damage = flat_damage + max_hp_damage + unit.stats.ap
+        self._deal_damage(unit, target, total_damage, DamageType.MAGIC, "yorick_mourning_mist")
+
+        # Mark the target (debuff - increases damage taken from Yorick's ghouls/allies)
+        if not hasattr(target, '_yorick_mark'):
+            target._yorick_mark = 0
+        target._yorick_mark = debuff_duration
+        self.engine.log_event('debuff', unit=unit.name, target=target.name,
+                             debuff="mourning_mist_mark", duration=debuff_duration)
+
+        # Heal Yorick based on AP + soul scaling
+        total_heal = ap_heal + bonus_heal
+        self.engine.heal_unit(unit, total_heal, "yorick_heal")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Mourning Mist",
+                             damage=total_damage, heal=total_heal, souls=soul_count)
+        return True
+
+    def _cast_ziggs(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
+                    ability_vars: Dict) -> bool:
+        """Ziggs - Mega Inferno Bomb: Large AOE with distance-based damage falloff."""
+        from .combat_engine import DamageType, HexGrid
+
+        # Auto attack bounce passive
+        bounce_count = int(self._get_var(ability_vars, 'BABounceNumber', unit.star_level, 1))
+        ba_ad_pct = self._get_var(ability_vars, 'BAPercentAD', unit.star_level, 1.0)
+        ba_ap_pct = self._get_var(ability_vars, 'BAPercentAP', unit.star_level, 40) / 100
+
+        # Bomb variables
+        aoe_range = int(self._get_var(ability_vars, 'BombAOERange', unit.star_level, 4))
+        min_damage = self._get_var(ability_vars, 'MinAOEDamage', unit.star_level, 70)
+        max_damage = self._get_var(ability_vars, 'MaxAOEDamage', unit.star_level, 550)
+
+        # Enable auto attack bounce passive on first cast
+        if not getattr(unit, '_ziggs_bounce_enabled', False):
+            unit._ziggs_bounce_enabled = True
+            unit._ziggs_bounce_count = bounce_count
+            unit._ziggs_ba_damage = unit.stats.ad * ba_ad_pct + unit.stats.ap * ba_ap_pct
+            self.engine.log_event('ziggs_bounce_passive', unit=unit.name, bounces=bounce_count)
+
+        target = unit.target or self._find_nearest_enemy(unit, enemies)
+        if not target:
+            return False
+
+        # Throw bomb at target position
+        bomb_center = target.position
+        enemies_in_range = self._get_enemies_in_radius(bomb_center, aoe_range, enemies)
+
+        for enemy in enemies_in_range:
+            # Calculate distance-based damage (closer = more damage)
+            distance = HexGrid.hex_distance(bomb_center, enemy.position)
+            if distance == 0:
+                damage = max_damage
+            else:
+                # Linear interpolation from max (center) to min (edge)
+                damage_ratio = 1 - (distance / aoe_range)
+                damage = min_damage + (max_damage - min_damage) * damage_ratio
+
+            total_damage = damage + unit.stats.ap
+            self._deal_damage(unit, enemy, total_damage, DamageType.MAGIC, "ziggs_bomb")
+
+        unit.stats.mana = 0
+        self.engine.log_event('ability_cast', unit=unit.name, ability="Mega Inferno Bomb",
+                             center=bomb_center, enemies_hit=len(enemies_in_range))
         return True
 
     # =========================================================================
@@ -2935,57 +3183,88 @@ class ChampionAbilities:
         return incoming_damage
 
     # =========================================================================
-    # TARIC - 90% DR Passive + Invulnerability
+    # TARIC - Passive MR Aura + Heal at 35% HP
     # =========================================================================
 
     def _cast_taric(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
                     ability_vars: Dict) -> bool:
-        """Taric - Starlight's Touch: Grant MR to allies, has 90% DR passive.
+        """Taric - Starlight's Touch: Shield self + 2 lowest health allies, empowered attacks.
 
-        Passive: Takes 90% reduced damage.
-        At 35% HP: Becomes invulnerable for 2 seconds.
+        Passive (always active at combat start): All allies gain 10/20/100 MR.
+        Passive (once per combat): At 35% HP, restore 300/700/2500 health over 2s.
+        Active: Shield self (600/700/2500) + 2 lowest health allies (125/150/1000).
+        Empowered: Next 2/2/10 attacks deal 200/300/3000 bonus magic damage.
         """
-        from .combat_engine import DamageType
+        # Get ability variables
+        taric_shield = self._get_var(ability_vars, 'TaricShield', unit.star_level, 600)
+        ally_shield = self._get_var(ability_vars, 'AllyShield', unit.star_level, 125)
+        num_empowered_attacks = int(self._get_var(ability_vars, 'NumEmpoweredAttacks', unit.star_level, 2))
+        bonus_damage = self._get_var(ability_vars, 'BonusDamage', unit.star_level, 200)
 
-        mr_for_allies = self._get_var(ability_vars, 'MRForAllies', unit.star_level, 20)
-        passive_dr = self._get_var(ability_vars, 'PassiveDR', unit.star_level, 0.90)
-        invuln_threshold = self._get_var(ability_vars, 'InvunerabilityHealthThreshold', unit.star_level, 0.35)
-        invuln_duration = self._get_var(ability_vars, 'InvunerabilityDuration', unit.star_level, 2.0)
+        # Shield self
+        self.engine.apply_shield(unit, taric_shield + unit.stats.ap * 0.5, "taric_starlight_shield")
 
-        # Grant MR to all allies
-        for ally in allies:
-            if ally.is_alive:
-                ally.stats.magic_resist += mr_for_allies
+        # Shield 2 LOWEST HEALTH allies (not nearest!)
+        living_allies = [a for a in allies if a.is_alive and a != unit]
+        if living_allies:
+            # Sort by HP (lowest first)
+            living_allies.sort(key=lambda a: a.stats.hp)
+            for ally in living_allies[:2]:
+                self.engine.apply_shield(ally, ally_shield + unit.stats.ap * 0.3, "taric_ally_shield")
 
-        # Apply passive DR (if not already applied)
-        if not hasattr(unit, '_taric_dr_applied'):
-            unit._taric_dr_applied = True
-            unit.stats.damage_reduction = passive_dr
+        # Grant empowered attacks (deal bonus MAGIC damage)
+        unit._taric_empowered_attacks = num_empowered_attacks
+        unit._taric_bonus_damage = bonus_damage
 
         unit.stats.mana = 0
         self.engine.log_event('ability_cast', unit=unit.name, ability="Starlight's Touch",
-                             mr_granted=mr_for_allies, passive_dr=passive_dr)
+                             self_shield=taric_shield, ally_shield=ally_shield,
+                             empowered_attacks=num_empowered_attacks)
         return True
 
-    def check_taric_invulnerability(self, unit: 'Unit') -> bool:
-        """Check if Taric should become invulnerable at 35% HP."""
+    def apply_taric_passive_mr(self, taric: 'Unit', allies: List['Unit'], ability_vars: Dict):
+        """Apply Taric's passive MR aura at combat start."""
+        mr_for_allies = self._get_var(ability_vars, 'MRForAllies', taric.star_level, 10)
+        for ally in allies:
+            if ally.is_alive:
+                ally.stats.magic_resist += mr_for_allies
+        self.engine.log_event('taric_passive_mr', unit=taric.name, mr_granted=mr_for_allies)
+
+    def check_taric_empowered_attack(self, unit: 'Unit') -> float:
+        """Check if Taric has empowered attacks remaining and return bonus MAGIC damage."""
+        if unit.api_name != 'TFT16_Taric':
+            return 0
+
+        if hasattr(unit, '_taric_empowered_attacks') and unit._taric_empowered_attacks > 0:
+            unit._taric_empowered_attacks -= 1
+            return getattr(unit, '_taric_bonus_damage', 200)
+        return 0
+
+    def check_taric_low_hp_heal(self, unit: 'Unit', ability_vars: Dict) -> bool:
+        """Check if Taric should heal at 35% HP (once per combat, heals over 2 seconds)."""
         if unit.api_name != 'TFT16_Taric':
             return False
 
-        if hasattr(unit, '_taric_invuln_used'):
+        if hasattr(unit, '_taric_heal_used'):
             return False
 
         hp_percent = unit.stats.hp / unit.stats.max_hp
         if hp_percent <= 0.35:
-            unit._taric_invuln_used = True
-            unit.is_targetable = False
-            unit.untargetable_duration = 2.0
-            from .combat_engine import UnitState
-            unit.state = UnitState.UNTARGETABLE
-
-            self.engine.log_event('taric_invuln', unit=unit.name, hp_percent=hp_percent)
+            unit._taric_heal_used = True
+            passive_heal = self._get_var(ability_vars, 'PassiveHeal', unit.star_level, 300)
+            # Heal over 2 seconds (simplified: instant heal for simulator)
+            self.engine.heal_unit(unit, passive_heal, "taric_35_percent_heal")
+            self.engine.log_event('taric_low_hp_heal', unit=unit.name,
+                                 hp_percent=hp_percent, heal=passive_heal)
             return True
         return False
+
+    # Legacy function name for backwards compatibility
+    def check_taric_invulnerability(self, unit: 'Unit') -> bool:
+        """DEPRECATED: Taric doesn't have invulnerability - he has a heal at 35% HP."""
+        # Delegate to the correct function
+        ability_vars = {}  # Would need to pass actual vars
+        return self.check_taric_low_hp_heal(unit, ability_vars) if unit.api_name == 'TFT16_Taric' else False
 
     # =========================================================================
     # SKARNER - Armor Aura + Impale
