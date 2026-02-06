@@ -30,6 +30,24 @@ except ImportError:
     ChampionAbilities = None
 
 
+def _star_val(var_data, star_level: int, default=0):
+    """Extract star-level value from ability variable data.
+
+    Handles both list format [0, 1star, 2star, 3star, ...] and
+    dict format {'1star': val, '2star': val, ...}.
+    """
+    if var_data is None:
+        return default
+    if isinstance(var_data, list):
+        if star_level < len(var_data):
+            return var_data[star_level] if var_data[star_level] else default
+        return default
+    if isinstance(var_data, dict):
+        return var_data.get(f'{star_level}star', default) or default
+    # Scalar
+    return var_data if var_data else default
+
+
 # =============================================================================
 # ENUMS
 # =============================================================================
@@ -169,6 +187,9 @@ class Unit:
     is_targetable: bool = True
     untargetable_duration: float = 0.0
     untargetable_return_pos: Optional[Tuple[int, int]] = None  # For abilities that teleport back
+
+    # Basic attack immunity (Huntress trait - Nidalee protected by Neeko)
+    is_basic_attack_immune: bool = False
 
     # Enhanced attack tracking (Fizz gets buffed attacks after ability)
     enhanced_attacks_remaining: int = 0
@@ -624,6 +645,70 @@ class TraitManager:
         self.shadow_isles_souls = 0
 
     # =========================================================================
+    # HUNTRESS TRAIT (Neeko + Nidalee synergy)
+    # =========================================================================
+
+    # Huntress - While Neeko is alive, Nidalee can't be targeted by basic attacks + gains Durability
+    HUNTRESS_DURABILITY = 0.5  # 50% damage reduction
+
+    def apply_huntress_synergy(self, units: List['Unit']) -> bool:
+        """Apply Huntress synergy if both Neeko and Nidalee are on the team.
+
+        While Neeko is alive, Nidalee:
+        - Cannot be targeted by basic attacks (is_basic_attack_immune)
+        - Gains 50% Durability (damage reduction)
+
+        Args:
+            units: List of units on the team
+
+        Returns:
+            True if synergy was applied, False otherwise
+        """
+        # Find strongest Neeko and Nidalee
+        neekos = [u for u in units if u.api_name == 'TFT16_Neeko' and u.is_alive]
+        nidalees = [u for u in units if u.api_name == 'TFT16_Nidalee' and u.is_alive]
+
+        if not neekos or not nidalees:
+            return False
+
+        # Sort by star level (descending) to find "strongest"
+        strongest_neeko = max(neekos, key=lambda u: (u.star_level, u.stats.hp))
+        strongest_nidalee = max(nidalees, key=lambda u: (u.star_level, u.stats.hp))
+
+        # Mark Nidalee as protected by Neeko
+        if not hasattr(strongest_nidalee, '_huntress_active'):
+            strongest_nidalee._huntress_active = True
+            strongest_nidalee._huntress_neeko_id = id(strongest_neeko)
+            strongest_nidalee.is_basic_attack_immune = True
+            strongest_nidalee.stats.damage_reduction += self.HUNTRESS_DURABILITY
+
+        return True
+
+    def check_huntress_on_death(self, dead_unit: 'Unit', units: List['Unit']):
+        """Check if Huntress synergy should be removed when a unit dies.
+
+        If Neeko dies, Nidalee loses her Huntress buffs.
+
+        Args:
+            dead_unit: The unit that just died
+            units: List of all units
+        """
+        if dead_unit.api_name != 'TFT16_Neeko':
+            return
+
+        # Find the Nidalee linked to this Neeko
+        for unit in units:
+            if (unit.api_name == 'TFT16_Nidalee' and
+                hasattr(unit, '_huntress_active') and
+                hasattr(unit, '_huntress_neeko_id') and
+                unit._huntress_neeko_id == id(dead_unit)):
+
+                # Remove Huntress buffs
+                unit._huntress_active = False
+                unit.is_basic_attack_immune = False
+                unit.stats.damage_reduction = max(0, unit.stats.damage_reduction - self.HUNTRESS_DURABILITY)
+
+    # =========================================================================
     # STAT-BUFFING TRAITS
     # =========================================================================
 
@@ -706,6 +791,155 @@ class TraitManager:
         5: {'PercentHealthShield': 0.33, 'FirstThreshold': 0.75, 'SecondThreshold': 0.25},
     }
 
+    # =====================================================================
+    # REGION TRAITS
+    # =====================================================================
+
+    # Demacia - Armor/MR for Demacia units
+    DEMACIA_EFFECTS = {
+        3: {'ArmorMR': 12},
+        5: {'ArmorMR': 35},
+        7: {'ArmorMR': 35},
+        11: {'ArmorMR': 150},
+    }
+
+    # Freljord - HP% + Damage Amp for Freljord units
+    FRELJORD_EFFECTS = {
+        3: {'HealthPercent': 0.08, 'DA': 0.10},
+        5: {'HealthPercent': 0.12, 'DA': 0.16},
+        7: {'HealthPercent': 0.16, 'DA': 0.22},
+    }
+
+    # Void - AS for Void units
+    VOID_EFFECTS = {
+        2: {'BonusAS': 0.08},
+        4: {'BonusAS': 0.18},
+        6: {'BonusAS': 0.33},
+        9: {'BonusAS': 0.40},
+    }
+
+    # Shurima - HP% + heal/sec + ArmorMR at higher tiers
+    SHURIMA_EFFECTS = {
+        2: {'BonusHealth': 0.20, 'HealthRestorePerSecond': 20, 'ASPerSecond': 0.02, 'ArmorMR': 0},
+        3: {'BonusHealth': 0.20, 'HealthRestorePerSecond': 20, 'ASPerSecond': 0.02, 'ArmorMR': 50},
+        4: {'BonusHealth': 0.20, 'HealthRestorePerSecond': 20, 'ASPerSecond': 0.02, 'ArmorMR': 50},
+    }
+
+    # Yordle - flat HP + AS for Yordle units
+    YORDLE_EFFECTS = {
+        2: {'AS': 0.05, 'BonusHealth': 40},
+        4: {'AS': 0.05, 'BonusHealth': 40},
+        6: {'AS': 0.05, 'BonusHealth': 40},
+        8: {'AS': 0.05, 'BonusHealth': 40},
+        10: {'AS': 0.05, 'BonusHealth': 40},
+    }
+
+    # Ixtal - HP for pairs + healing
+    IXTAL_EFFECTS = {
+        5: {'BonusHealthPairs': 250, 'Heal': 2.0},
+        7: {'BonusHealthPairs': 250, 'Heal': 2.0},
+    }
+
+    # Zaun - Shimmer Fuse: delayed AS + durability burst (combat-time mechanic)
+    ZAUN_EFFECTS = {
+        3: {'ShimmerAS': 0.90, 'ShimmerDurability': 0.15, 'ShimmerDuration': 4.0, 'InitialDelay': 4.0, 'HealThreshold': 0.60},
+        5: {'ShimmerAS': 0.90, 'ShimmerDurability': 0.15, 'ShimmerDuration': 4.0, 'InitialDelay': 4.0, 'HealThreshold': 0.60, 'MaxHealthHeal': 0.30},
+        7: {'ShimmerAS': 0.90, 'ShimmerDurability': 0.15, 'ShimmerDuration': 4.0, 'InitialDelay': 4.0, 'HealThreshold': 0.60, 'MaxHealthHeal': 0.30},
+    }
+
+    # Noxus - gain stats when losing HP (combat-time mechanic)
+    NOXUS_EFFECTS = {
+        3: {'HPLostTrigger': 0.15},
+        5: {'HPLostTrigger': 0.15},
+        7: {'HPLostTrigger': 0.15},
+        10: {'HPLostTrigger': 0.15},
+    }
+
+    # Ionia - multiple sub-effects (simplified: use Determination path stats)
+    IONIA_EFFECTS = {
+        3: {'FlatDamage': 20, 'Resists': 15, 'ADAP': 10, 'HealthPercent': 0.25},
+        5: {'FlatDamage': 40, 'Resists': 25, 'ADAP': 15, 'HealthPercent': 0.30},
+        7: {'FlatDamage': 60, 'Resists': 40, 'ADAP': 20, 'HealthPercent': 0.35},
+        10: {'FlatDamage': 100, 'Resists': 75, 'ADAP': 100, 'HealthPercent': 0.75},
+    }
+
+    # =====================================================================
+    # CLASS TRAITS (missing)
+    # =====================================================================
+
+    # Disruptor - Damage amp + DR for Disruptor units
+    DISRUPTOR_EFFECTS = {
+        2: {'DamageAmp': 0.18, 'DamageReduction': 0.10},
+        4: {'DamageAmp': 0.40, 'DamageReduction': 0.10},
+    }
+
+    # =====================================================================
+    # UNIQUE / SPECIAL TRAITS
+    # =====================================================================
+
+    # Darkin - Omnivamp for Darkin units
+    DARKIN_EFFECTS = {
+        1: {'Vamp': 0.15},
+        2: {'Vamp': 0.15},
+        3: {'Vamp': 0.15},
+    }
+
+    # World Ender (Aatrox) - Durability + mana reduction
+    WORLD_ENDER_EFFECTS = {
+        1: {'Durability': 0.20, 'ManaReduction': 10},
+    }
+
+    # Harvester (Fiddlesticks) - Enemy resist reduction + mana on kill
+    HARVESTER_EFFECTS = {
+        1: {'EnemyArmorMRReduction': 10, 'ManaPerEnemyDeath': 10},
+    }
+
+    # Dragonborn (Shyvana) - Ability damage reduction
+    DRAGONBORN_EFFECTS = {
+        1: {'AbilityDamageReduction': 0.08},
+    }
+
+    # Soulbound (Lucian) - Damage amp for Lucian, DR for Senna
+    SOULBOUND_EFFECTS = {
+        1: {'LucianDA': 0.07, 'SennaDR': 0.07},
+    }
+
+    # Eternal (Kindred) - Percent damage multiplier
+    ETERNAL_EFFECTS = {
+        1: {'PercentDamageMult': 3.25},
+    }
+
+    # The Boss (Sett) - Transform below HP threshold
+    THE_BOSS_EFFECTS = {
+        1: {'AttackSpeedPercent': 0.60, 'HealPercent': 0.15, 'MaxHealthThreshold': 0.45},
+    }
+
+    # Chosen Wolves (Ambessa + Kindred pair)
+    CHOSEN_WOLVES_EFFECTS = {
+        2: {'AmbessaBonusAD': 0.40, 'WolfDamage': 0.30},
+    }
+
+    # Dragonguards (Jarvan + Shyvana pair)
+    DRAGONGUARDS_EFFECTS = {
+        2: {'JarvanShieldShare': 1.0},
+    }
+
+    # Sentinels of Light (Lucian + Vayne pair)
+    SENTINELS_EFFECTS = {
+        2: {'LucianSennaAS': 0.50, 'NumBonusBolts': 2, 'BoltEffectiveness': 0.25},
+    }
+
+    # Poison Pals (Singed + Teemo pair)
+    POISON_PALS_EFFECTS = {
+        2: {'SingedAPGain': 2, 'TeemoDamageReq': 100},
+    }
+
+    # Timewinders (Ekko + Zilean)
+    TIMEWINDERS_EFFECTS = {
+        1: {'DamageShare': 0.10},
+        2: {'DamageShare': 0.10},
+    }
+
     def get_trait_tier(self, trait_count: int, effects_dict: Dict) -> Optional[Dict]:
         """Get the appropriate effect tier for a trait count.
 
@@ -725,45 +959,58 @@ class TraitManager:
                 return effects_dict[tier]
         return None
 
-    def apply_stat_traits(self, team: List['Unit'], trait_counts: Dict[str, int]):
+    def apply_stat_traits(self, team: List['Unit'], trait_counts: Dict[str, int],
+                         enemy_team: List['Unit'] = None):
         """Apply all stat-buffing traits to a team at combat start.
 
         Args:
             team: List of units on this team
             trait_counts: Dict of trait name -> count for this team
+            enemy_team: Enemy team (needed for Harvester resist reduction)
         """
-        # Arcanist - Team AP + bonus for Arcanists
+        # --- CLASS TRAITS ---
         self._apply_arcanist(team, trait_counts.get('Arcanist', 0))
-
-        # Defender - Team armor/MR + bonus for Defenders
         self._apply_defender(team, trait_counts.get('Defender', 0))
-
-        # Bruiser - Team HP + bonus for Bruisers
         self._apply_bruiser(team, trait_counts.get('Bruiser', 0))
-
-        # Slayer - AD + Omnivamp for Slayers
         self._apply_slayer(team, trait_counts.get('Slayer', 0))
-
-        # Juggernaut - Durability for Juggernauts
         self._apply_juggernaut(team, trait_counts.get('Juggernaut', 0))
-
-        # Invoker - Team mana + bonus for Invokers
         self._apply_invoker(team, trait_counts.get('Invoker', 0))
-
-        # Vanquisher - Crit for Vanquishers
         self._apply_vanquisher(team, trait_counts.get('Vanquisher', 0))
-
-        # Longshot - Damage amp for Longshots
         self._apply_longshot(team, trait_counts.get('Longshot', 0))
-
-        # Quickstriker - Team AS + bonus for Quickstrikers
         self._apply_quickstriker(team, trait_counts.get('Quickstriker', 0))
-
-        # Gunslinger - AD for Gunslingers
         self._apply_gunslinger(team, trait_counts.get('Gunslinger', 0))
-
-        # Warden - Setup shield tracking for Wardens
         self._apply_warden(team, trait_counts.get('Warden', 0))
+        self._apply_disruptor(team, trait_counts.get('Disruptor', 0))
+
+        # --- REGION TRAITS ---
+        self._apply_demacia(team, trait_counts.get('Demacia', 0))
+        self._apply_freljord(team, trait_counts.get('Freljord', 0))
+        self._apply_void(team, trait_counts.get('Void', 0))
+        self._apply_shurima(team, trait_counts.get('Shurima', 0))
+        self._apply_yordle(team, trait_counts.get('Yordle', 0))
+        self._apply_ixtal(team, trait_counts.get('Ixtal', 0))
+        self._apply_zaun(team, trait_counts.get('Zaun', 0))
+        self._apply_noxus(team, trait_counts.get('Noxus', 0))
+        self._apply_ionia(team, trait_counts.get('Ionia', 0))
+
+        # --- UNIQUE TRAITS ---
+        self._apply_darkin(team, trait_counts.get('Darkin', 0))
+        self._apply_world_ender(team, trait_counts.get('World Ender', 0))
+        self._apply_dragonborn(team, trait_counts.get('Dragonborn', 0))
+        self._apply_soulbound(team, trait_counts.get('Soulbound', 0))
+        self._apply_eternal(team, trait_counts.get('Eternal', 0))
+        self._apply_the_boss(team, trait_counts.get('The Boss', 0))
+
+        # Harvester needs enemy team reference
+        if enemy_team is not None:
+            self._apply_harvester(team, [team, enemy_team],
+                                  trait_counts.get('Harvester', 0))
+        else:
+            self._apply_harvester(team, [team],
+                                  trait_counts.get('Harvester', 0))
+
+        # --- PAIR SYNERGIES ---
+        self._apply_pair_synergies(team, trait_counts)
 
     def _apply_arcanist(self, team: List['Unit'], count: int):
         """Apply Arcanist trait: Team AP + bonus for Arcanists."""
@@ -973,6 +1220,329 @@ class TraitManager:
                 unit._warden_second_threshold = second_threshold
                 unit._warden_first_triggered = False
                 unit._warden_second_triggered = False
+
+    # =====================================================================
+    # REGION TRAIT METHODS
+    # =====================================================================
+
+    def _apply_demacia(self, team: List['Unit'], count: int):
+        """Apply Demacia trait: Armor/MR for Demacia units."""
+        effects = self.get_trait_tier(count, self.DEMACIA_EFFECTS)
+        if not effects:
+            return
+
+        armor_mr = effects['ArmorMR']
+
+        for unit in team:
+            if 'Demacia' in unit.traits:
+                unit.stats.armor += armor_mr
+                unit.stats.magic_resist += armor_mr
+
+    def _apply_freljord(self, team: List['Unit'], count: int):
+        """Apply Freljord trait: HP% + damage amp for Freljord units."""
+        effects = self.get_trait_tier(count, self.FRELJORD_EFFECTS)
+        if not effects:
+            return
+
+        hp_percent = effects['HealthPercent']
+        damage_amp = effects['DA']
+
+        for unit in team:
+            if 'Freljord' in unit.traits:
+                bonus_hp = unit.base_stats.max_hp * hp_percent
+                unit.stats.max_hp += bonus_hp
+                unit.stats.hp += bonus_hp
+                unit.stats.damage_amp += damage_amp
+
+    def _apply_void(self, team: List['Unit'], count: int):
+        """Apply Void trait: Attack speed for Void units."""
+        effects = self.get_trait_tier(count, self.VOID_EFFECTS)
+        if not effects:
+            return
+
+        bonus_as = effects['BonusAS']
+
+        for unit in team:
+            if 'Void' in unit.traits:
+                unit.stats.attack_speed += bonus_as
+
+    def _apply_shurima(self, team: List['Unit'], count: int):
+        """Apply Shurima trait: HP% + heal/sec + armor/MR at higher tiers."""
+        effects = self.get_trait_tier(count, self.SHURIMA_EFFECTS)
+        if not effects:
+            return
+
+        hp_percent = effects['BonusHealth']
+        heal_per_sec = effects['HealthRestorePerSecond']
+        armor_mr = effects.get('ArmorMR', 0)
+
+        for unit in team:
+            if 'Shurima' in unit.traits:
+                bonus_hp = unit.base_stats.max_hp * hp_percent
+                unit.stats.max_hp += bonus_hp
+                unit.stats.hp += bonus_hp
+                # Store heal per second for combat-time application
+                unit._shurima_heal_per_sec = heal_per_sec
+                if armor_mr:
+                    unit.stats.armor += armor_mr
+                    unit.stats.magic_resist += armor_mr
+
+    def _apply_yordle(self, team: List['Unit'], count: int):
+        """Apply Yordle trait: AS + flat HP for Yordle units."""
+        effects = self.get_trait_tier(count, self.YORDLE_EFFECTS)
+        if not effects:
+            return
+
+        bonus_as = effects['AS']
+        bonus_hp = effects['BonusHealth']
+
+        for unit in team:
+            if 'Yordle' in unit.traits:
+                unit.stats.attack_speed += bonus_as
+                unit.stats.max_hp += bonus_hp
+                unit.stats.hp += bonus_hp
+
+    def _apply_ixtal(self, team: List['Unit'], count: int):
+        """Apply Ixtal trait: Flat HP per pair of Ixtal units + healing."""
+        effects = self.get_trait_tier(count, self.IXTAL_EFFECTS)
+        if not effects:
+            return
+
+        hp_per_pair = effects['BonusHealthPairs']
+        heal = effects['Heal']
+        num_pairs = count // 2
+
+        for unit in team:
+            if 'Ixtal' in unit.traits:
+                bonus_hp = hp_per_pair * num_pairs
+                unit.stats.max_hp += bonus_hp
+                unit.stats.hp += bonus_hp
+                # Store heal rate for combat-time
+                unit._ixtal_heal_per_sec = heal
+
+    def _apply_zaun(self, team: List['Unit'], count: int):
+        """Apply Zaun trait: Setup Shimmer Fuse data for combat-time activation.
+
+        Zaun units gain a delayed AS + durability burst during combat.
+        """
+        effects = self.get_trait_tier(count, self.ZAUN_EFFECTS)
+        if not effects:
+            return
+
+        for unit in team:
+            if 'Zaun' in unit.traits:
+                unit._zaun_shimmer_as = effects['ShimmerAS']
+                unit._zaun_shimmer_durability = effects['ShimmerDurability']
+                unit._zaun_shimmer_duration = effects['ShimmerDuration']
+                unit._zaun_initial_delay = effects['InitialDelay']
+                unit._zaun_shimmer_active = False
+                unit._zaun_shimmer_triggered = False
+
+    def _apply_noxus(self, team: List['Unit'], count: int):
+        """Apply Noxus trait: Setup HP-loss trigger for combat-time activation.
+
+        Noxus units gain stats when they lose 15% of max HP.
+        """
+        effects = self.get_trait_tier(count, self.NOXUS_EFFECTS)
+        if not effects:
+            return
+
+        for unit in team:
+            if 'Noxus' in unit.traits:
+                unit._noxus_hp_trigger = effects['HPLostTrigger']
+                unit._noxus_triggered = False
+                unit._noxus_tier = count
+
+    def _apply_ionia(self, team: List['Unit'], count: int):
+        """Apply Ionia trait: Simplified stat buffs for Ionia units.
+
+        In the real game, each Ionia unit picks a random 'path' (Spirit,
+        Determination, Enlightenment, etc.). Simplified to average stat buffs.
+        """
+        effects = self.get_trait_tier(count, self.IONIA_EFFECTS)
+        if not effects:
+            return
+
+        resists = effects['Resists']
+        adap = effects['ADAP']
+        hp_percent = effects['HealthPercent']
+
+        for unit in team:
+            if 'Ionia' in unit.traits:
+                unit.stats.armor += resists
+                unit.stats.magic_resist += resists
+                unit.stats.ad += adap
+                unit.stats.ap += adap
+                bonus_hp = unit.base_stats.max_hp * hp_percent
+                unit.stats.max_hp += bonus_hp
+                unit.stats.hp += bonus_hp
+
+    # =====================================================================
+    # MISSING CLASS TRAIT METHODS
+    # =====================================================================
+
+    def _apply_disruptor(self, team: List['Unit'], count: int):
+        """Apply Disruptor trait: Damage amp + DR for Disruptor units."""
+        effects = self.get_trait_tier(count, self.DISRUPTOR_EFFECTS)
+        if not effects:
+            return
+
+        damage_amp = effects['DamageAmp']
+        damage_reduction = effects['DamageReduction']
+
+        for unit in team:
+            if 'Disruptor' in unit.traits:
+                unit.stats.damage_amp += damage_amp
+                unit.stats.damage_reduction += damage_reduction
+
+    # =====================================================================
+    # UNIQUE / SPECIAL TRAIT METHODS
+    # =====================================================================
+
+    def _apply_darkin(self, team: List['Unit'], count: int):
+        """Apply Darkin trait: Omnivamp for Darkin units."""
+        effects = self.get_trait_tier(count, self.DARKIN_EFFECTS)
+        if not effects:
+            return
+
+        vamp = effects['Vamp']
+
+        for unit in team:
+            if 'Darkin' in unit.traits:
+                unit.stats.omnivamp += vamp
+
+    def _apply_world_ender(self, team: List['Unit'], count: int):
+        """Apply World Ender trait: Durability + mana reduction for Aatrox."""
+        effects = self.get_trait_tier(count, self.WORLD_ENDER_EFFECTS)
+        if not effects:
+            return
+
+        durability = effects['Durability']
+        mana_reduction = effects['ManaReduction']
+
+        for unit in team:
+            if 'World Ender' in unit.traits:
+                unit.stats.damage_reduction += durability
+                unit.stats.mana = max(0, unit.stats.mana - mana_reduction)
+
+    def _apply_harvester(self, team: List['Unit'], all_teams: List[List['Unit']], count: int):
+        """Apply Harvester trait: Reduce enemy resists + mana on kill.
+
+        Args:
+            team: Friendly team
+            all_teams: All teams (to apply resist reduction to enemies)
+            count: Number of Harvester units
+        """
+        effects = self.get_trait_tier(count, self.HARVESTER_EFFECTS)
+        if not effects:
+            return
+
+        resist_reduction = effects['EnemyArmorMRReduction']
+        mana_per_kill = effects['ManaPerEnemyDeath']
+
+        # Apply resist reduction to enemy team
+        for other_team in all_teams:
+            if other_team is not team:
+                for enemy in other_team:
+                    enemy.stats.armor = max(0, enemy.stats.armor - resist_reduction)
+                    enemy.stats.magic_resist = max(0, enemy.stats.magic_resist - resist_reduction)
+
+        # Store mana-on-kill for combat-time
+        for unit in team:
+            if 'Harvester' in unit.traits:
+                unit._harvester_mana_per_kill = mana_per_kill
+
+    def _apply_dragonborn(self, team: List['Unit'], count: int):
+        """Apply Dragonborn trait: Ability damage reduction for Shyvana."""
+        effects = self.get_trait_tier(count, self.DRAGONBORN_EFFECTS)
+        if not effects:
+            return
+
+        ability_dr = effects['AbilityDamageReduction']
+
+        for unit in team:
+            if 'Dragonborn' in unit.traits:
+                unit._dragonborn_ability_dr = ability_dr
+
+    def _apply_soulbound(self, team: List['Unit'], count: int):
+        """Apply Soulbound trait: Damage amp for Lucian."""
+        effects = self.get_trait_tier(count, self.SOULBOUND_EFFECTS)
+        if not effects:
+            return
+
+        lucian_da = effects['LucianDA']
+
+        for unit in team:
+            if 'Soulbound' in unit.traits:
+                unit.stats.damage_amp += lucian_da
+
+    def _apply_eternal(self, team: List['Unit'], count: int):
+        """Apply Eternal trait: Increased damage multiplier for Kindred."""
+        effects = self.get_trait_tier(count, self.ETERNAL_EFFECTS)
+        if not effects:
+            return
+
+        damage_mult = effects['PercentDamageMult']
+
+        for unit in team:
+            if 'Eternal' in unit.traits:
+                unit._eternal_damage_mult = damage_mult
+
+    def _apply_the_boss(self, team: List['Unit'], count: int):
+        """Apply The Boss trait: Transform data for Sett below HP threshold."""
+        effects = self.get_trait_tier(count, self.THE_BOSS_EFFECTS)
+        if not effects:
+            return
+
+        for unit in team:
+            if 'The Boss' in unit.traits:
+                unit._boss_as_bonus = effects['AttackSpeedPercent']
+                unit._boss_heal_percent = effects['HealPercent']
+                unit._boss_hp_threshold = effects['MaxHealthThreshold']
+                unit._boss_transformed = False
+
+    def _apply_pair_synergies(self, team: List['Unit'], trait_counts: Dict[str, int]):
+        """Apply pair synergies that require specific champion combinations."""
+        # Build name lookup
+        team_api_names = {u.api_name for u in team}
+        team_by_api = {u.api_name: u for u in team}
+
+        # Chosen Wolves: Ambessa + Kindred
+        if 'TFT16_Ambessa' in team_api_names and 'TFT16_Kindred' in team_api_names:
+            effects = self.CHOSEN_WOLVES_EFFECTS[2]
+            ambessa = team_by_api['TFT16_Ambessa']
+            ad_bonus = ambessa.base_stats.ad * effects['AmbessaBonusAD']
+            ambessa.stats.ad += ad_bonus
+            kindred = team_by_api['TFT16_Kindred']
+            kindred._wolf_bonus_damage = effects['WolfDamage']
+
+        # Dragonguards: Jarvan IV + Shyvana
+        if 'TFT16_JarvanIV' in team_api_names and 'TFT16_Shyvana' in team_api_names:
+            effects = self.DRAGONGUARDS_EFFECTS[2]
+            jarvan = team_by_api['TFT16_JarvanIV']
+            jarvan._dragonguard_shield_share = effects['JarvanShieldShare']
+
+        # Sentinels of Light: Lucian + Vayne
+        if 'TFT16_Lucian' in team_api_names and 'TFT16_Vayne' in team_api_names:
+            effects = self.SENTINELS_EFFECTS[2]
+            lucian = team_by_api['TFT16_Lucian']
+            lucian.stats.attack_speed += effects['LucianSennaAS']
+            lucian._sentinel_bonus_bolts = effects['NumBonusBolts']
+            lucian._sentinel_bolt_effectiveness = effects['BoltEffectiveness']
+
+        # Poison Pals: Singed + Teemo
+        if 'TFT16_Singed' in team_api_names and 'TFT16_Teemo' in team_api_names:
+            effects = self.POISON_PALS_EFFECTS[2]
+            singed = team_by_api['TFT16_Singed']
+            singed._poison_pals_ap_gain = effects['SingedAPGain']
+            singed._poison_pals_damage_req = effects['TeemoDamageReq']
+
+        # Timewinders: Ekko + Zilean
+        if 'TFT16_Ekko' in team_api_names and 'TFT16_Zilean' in team_api_names:
+            effects = self.TIMEWINDERS_EFFECTS[2]
+            for api_name in ['TFT16_Ekko', 'TFT16_Zilean']:
+                unit = team_by_api[api_name]
+                unit._timewinder_damage_share = effects['DamageShare']
 
 
 # =============================================================================
@@ -1655,6 +2225,15 @@ class AbilityDatabase:
 
         variables = ability_data.get('variables', {})
 
+        # Helper to extract star-level values from a variable that may be
+        # a list [0, 1star, 2star, 3star, ...] or a dict {'1star': v, ...}
+        def _star_val(var, star):
+            if isinstance(var, list):
+                return (var[star] if star < len(var) else 0) or 0
+            elif isinstance(var, dict):
+                return (var.get(f'{star}star', 0)) or 0
+            return 0
+
         # Try to find primary damage variable
         damage_by_star = {1: 0, 2: 0, 3: 0}
         damage_var = None
@@ -1664,9 +2243,7 @@ class AbilityDatabase:
         for key in ['NumMissiles', 'NumHits', 'NumBounces', 'NumAttacks']:
             if key in variables:
                 hit_var = variables[key]
-                if isinstance(hit_var, dict):
-                    # Use star level value
-                    num_hits = hit_var.get(f'{star_level}star', 1) or 1
+                num_hits = _star_val(hit_var, star_level) or 1
                 break
 
         # Common damage variable names (prefer per-hit damage for multi-hit)
@@ -1681,7 +2258,10 @@ class AbilityDatabase:
         # Fallback to first variable with star values
         if not damage_var:
             for key, val in variables.items():
-                if isinstance(val, dict) and '1star' in val:
+                if isinstance(val, list) and len(val) >= 4:
+                    damage_var = val
+                    break
+                elif isinstance(val, dict) and '1star' in val:
                     damage_var = val
                     break
 
@@ -1689,9 +2269,9 @@ class AbilityDatabase:
             # For multi-hit abilities, multiply by number of hits
             # But cap it to avoid insane damage (TFT spreads damage across targets)
             hit_multiplier = min(num_hits, 6)  # Cap at 6 hits effective
-            damage_by_star[1] = (damage_var.get('1star', 0) or 0) * hit_multiplier
-            damage_by_star[2] = (damage_var.get('2star', 0) or 0) * hit_multiplier
-            damage_by_star[3] = (damage_var.get('3star', 0) or 0) * hit_multiplier
+            damage_by_star[1] = _star_val(damage_var, 1) * hit_multiplier
+            damage_by_star[2] = _star_val(damage_var, 2) * hit_multiplier
+            damage_by_star[3] = _star_val(damage_var, 3) * hit_multiplier
 
         # Determine ability type from role
         role = champ_data.get('role', '')
@@ -2200,14 +2780,14 @@ class CombatEngine:
             # Get NumAttacks threshold from ability data
             champ_data = self.champions.get(unit.api_name, {})
             ability_vars = champ_data.get('ability', {}).get('variables', {})
-            num_attacks_data = ability_vars.get('NumAttacks', {})
-            threshold = num_attacks_data.get(f'{unit.star_level}star', 18) or 18
+            num_attacks_data = ability_vars.get('NumAttacks')
+            threshold = _star_val(num_attacks_data, unit.star_level, 18)
 
             if unit.attacks_performed > threshold:
                 is_jinx_rockets = True
                 # Rocket form: Gets AD bonus from ability
-                ad_bonus_data = ability_vars.get('ADDamage', {})
-                ad_bonus = ad_bonus_data.get(f'{unit.star_level}star', 100) or 100
+                ad_bonus_data = ability_vars.get('ADDamage')
+                ad_bonus = _star_val(ad_bonus_data, unit.star_level, 100)
                 base_damage = unit.stats.ad + ad_bonus
 
         final_damage, did_crit = self.calculate_damage(
@@ -2311,16 +2891,16 @@ class CombatEngine:
                 unit.untargetable_duration = 0.3  # Brief untargetable during leap
 
                 # Get ability damage values
-                ap_dmg_data = ability_vars.get('APDamage', {})
-                base_damage = ap_dmg_data.get(f'{unit.star_level}star', 150) or 150
+                ap_dmg_data = ability_vars.get('APDamage')
+                base_damage = _star_val(ap_dmg_data, unit.star_level, 150)
 
                 # Get enhanced attack values
-                as_bonus_data = ability_vars.get('ASBonus', ability_vars.get('AttackSpeed', {}))
-                as_bonus = (as_bonus_data.get(f'{unit.star_level}star', 100) or 100) / 100  # Convert to decimal
-                on_hit_data = ability_vars.get('OnHitDamage', ability_vars.get('APOnHit', {}))
-                on_hit_dmg = on_hit_data.get(f'{unit.star_level}star', 50) or 50
-                num_attacks_data = ability_vars.get('NumAttacks', {})
-                num_enhanced = int(num_attacks_data.get(f'{unit.star_level}star', 4) or 4)
+                as_bonus_data = ability_vars.get('ASBonus') or ability_vars.get('AttackSpeed')
+                as_bonus = _star_val(as_bonus_data, unit.star_level, 100) / 100  # Convert to decimal
+                on_hit_data = ability_vars.get('OnHitDamage') or ability_vars.get('APOnHit')
+                on_hit_dmg = _star_val(on_hit_data, unit.star_level, 50)
+                num_attacks_data = ability_vars.get('NumAttacks')
+                num_enhanced = int(_star_val(num_attacks_data, unit.star_level, 4))
 
                 # Find position adjacent to target
                 target_neighbors = HexGrid.get_neighbors(target.position)
@@ -2365,11 +2945,11 @@ class CombatEngine:
 
         # Handle Kai'Sa (and other FormSwapper champions) - uses higher of AD or AP damage
         if 'FormSwapper' in unit.role:
-            ad_dmg_data = ability_vars.get('ADDamage', {})
-            ap_dmg_data = ability_vars.get('APDamage', {})
+            ad_dmg_data = ability_vars.get('ADDamage')
+            ap_dmg_data = ability_vars.get('APDamage')
 
-            ad_base = ad_dmg_data.get(f'{unit.star_level}star', 0) or 0
-            ap_base = ap_dmg_data.get(f'{unit.star_level}star', 0) or 0
+            ad_base = _star_val(ad_dmg_data, unit.star_level, 0)
+            ap_base = _star_val(ap_dmg_data, unit.star_level, 0)
 
             # Calculate total damage for each form
             ad_total = ad_base + (unit.stats.ad * 1.0)  # AD scaling
@@ -2388,10 +2968,10 @@ class CombatEngine:
                 ability.ap_scaling = 1.0
 
             # For multi-target abilities like Kai'Sa missiles
-            num_targets_data = ability_vars.get('NumTargets', {})
-            num_targets = int(num_targets_data.get(f'{unit.star_level}star', 4) or 4)
-            num_missiles_data = ability_vars.get('NumMissiles', {})
-            num_missiles = int(num_missiles_data.get(f'{unit.star_level}star', 15) or 15)
+            num_targets_data = ability_vars.get('NumTargets')
+            num_targets = int(_star_val(num_targets_data, unit.star_level, 4))
+            num_missiles_data = ability_vars.get('NumMissiles')
+            num_missiles = int(_star_val(num_missiles_data, unit.star_level, 15))
 
             # Kai'Sa fires missiles at multiple targets
             # 60% on current target, rest spread among others
@@ -2416,25 +2996,25 @@ class CombatEngine:
         # Handle tank abilities with defensive scaling
         if 'Tank' in unit.role:
             # Check for armor scaling (e.g., Braum's ArmorDamage)
-            armor_dmg_data = ability_vars.get('ArmorDamage', {})
+            armor_dmg_data = ability_vars.get('ArmorDamage')
             if armor_dmg_data:
-                armor_scaling = armor_dmg_data.get(f'{unit.star_level}star', 0) or 0
+                armor_scaling = _star_val(armor_dmg_data, unit.star_level, 0)
                 total_damage += unit.stats.armor * armor_scaling
 
             # Check for HP scaling (e.g., percentage of max HP damage)
-            hp_pct_data = ability_vars.get('HealthPercent', ability_vars.get('PercentHealthDamage', {}))
+            hp_pct_data = ability_vars.get('HealthPercent') or ability_vars.get('PercentHealthDamage')
             if hp_pct_data:
-                hp_scaling = hp_pct_data.get(f'{unit.star_level}star', 0) or 0
+                hp_scaling = _star_val(hp_pct_data, unit.star_level, 0)
                 total_damage += unit.stats.max_hp * hp_scaling
 
             # Check for shield abilities (Galio, Nautilus, Shen, Poppy)
-            shield_data = ability_vars.get('Shield', ability_vars.get('ShieldAmt', ability_vars.get('APShield', {})))
+            shield_data = ability_vars.get('Shield') or ability_vars.get('ShieldAmt') or ability_vars.get('APShield')
             if shield_data:
-                shield_amount = shield_data.get(f'{unit.star_level}star', 0) or 0
+                shield_amount = _star_val(shield_data, unit.star_level, 0)
                 # Nautilus also has percent HP shield
-                pct_hp_shield = ability_vars.get('PercentHealthShield', {})
+                pct_hp_shield = ability_vars.get('PercentHealthShield')
                 if pct_hp_shield:
-                    pct = pct_hp_shield.get(f'{unit.star_level}star', 0) or 0
+                    pct = _star_val(pct_hp_shield, unit.star_level, 0)
                     shield_amount += unit.stats.max_hp * pct
                 ability.ability_type = AbilityType.SHIELD
                 total_damage = shield_amount  # Use shield amount instead of damage
@@ -2729,8 +3309,8 @@ class CombatEngine:
         # Apply stat-buffing traits at combat start
         team0_traits = self._count_traits(team0)
         team1_traits = self._count_traits(team1)
-        self.trait_manager.apply_stat_traits(team0, team0_traits)
-        self.trait_manager.apply_stat_traits(team1, team1_traits)
+        self.trait_manager.apply_stat_traits(team0, team0_traits, enemy_team=team1)
+        self.trait_manager.apply_stat_traits(team1, team1_traits, enemy_team=team0)
 
         # Apply augments if provided (after traits so they can stack)
         if team0_augments:
