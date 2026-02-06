@@ -19,6 +19,7 @@ class ActionType(Enum):
     LEVEL = "level"
     REFRESH = "refresh"
     EQUIP_ITEM = "equip_item"
+    CHOOSE_AUGMENT = "choose_augment"
     PASS = "pass"
 
 
@@ -52,6 +53,11 @@ class Action:
     @staticmethod
     def equip_item(item_idx: int, unit_pos: Tuple[int, ...]) -> 'Action':
         return Action(ActionType.EQUIP_ITEM, (item_idx, unit_pos))
+
+    @staticmethod
+    def choose_augment(choice_idx: int) -> 'Action':
+        """Choose an augment from the offered options (0, 1, or 2)."""
+        return Action(ActionType.CHOOSE_AUGMENT, (choice_idx,))
 
     @staticmethod
     def pass_action() -> 'Action':
