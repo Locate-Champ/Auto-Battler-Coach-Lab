@@ -5,6 +5,7 @@ Imports pool/trait data from existing files. All game rules in one place.
 
 import sys
 import os
+from typing import Optional
 
 # Add project root to path for imports
 _project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -130,6 +131,79 @@ API_TO_NAME = {v: k for k, v in NAME_TO_API.items()}
 # Re-exported from origin_class_stats
 CHAMPION_TRAITS = origin_class
 TRAIT_TIERS = tiers
+
+# ── Item components and recipes ───────────────────────────────────────────────
+ITEM_COMPONENTS_LIST = [
+    'BF_Sword', 'Recurve_Bow', 'Needlessly_Large_Rod', 'Tear_of_the_Goddess',
+    'Chain_Vest', 'Negatron_Cloak', 'Giants_Belt', 'Sparring_Gloves', 'Spatula',
+]
+
+# Component combinations -> completed items
+# Format: (component1, component2) -> item_name
+ITEM_RECIPES = {
+    ('BF_Sword', 'BF_Sword'): 'TFT_Item_Deathblade',
+    ('BF_Sword', 'Recurve_Bow'): 'TFT_Item_GiantSlayer',
+    ('BF_Sword', 'Needlessly_Large_Rod'): 'TFT_Item_HextechGunblade',
+    ('BF_Sword', 'Tear_of_the_Goddess'): 'TFT_Item_SpearOfShojin',
+    ('BF_Sword', 'Chain_Vest'): 'TFT_Item_GuardianAngel',
+    ('BF_Sword', 'Negatron_Cloak'): 'TFT_Item_Bloodthirster',
+    ('BF_Sword', 'Giants_Belt'): 'TFT_Item_SteraksGage',
+    ('BF_Sword', 'Sparring_Gloves'): 'TFT_Item_InfinityEdge',
+    ('Recurve_Bow', 'Recurve_Bow'): 'TFT_Item_LastWhisper',
+    ('Recurve_Bow', 'Needlessly_Large_Rod'): 'TFT_Item_GuinsoosRageblade',
+    ('Recurve_Bow', 'Tear_of_the_Goddess'): 'TFT_Item_StatikkShiv',
+    ('Recurve_Bow', 'Chain_Vest'): 'TFT_Item_TitansResolve',
+    ('Recurve_Bow', 'Negatron_Cloak'): 'TFT_Item_RunaansHurricane',
+    ('Recurve_Bow', 'Giants_Belt'): 'TFT_Item_RedBuff',
+    ('Recurve_Bow', 'Sparring_Gloves'): 'TFT_Item_MadredsBloodrazor',
+    ('Needlessly_Large_Rod', 'Needlessly_Large_Rod'): 'TFT_Item_RabadonsDeathcap',
+    ('Needlessly_Large_Rod', 'Tear_of_the_Goddess'): 'TFT_Item_ArchangelsStaff',
+    ('Needlessly_Large_Rod', 'Chain_Vest'): 'TFT_Item_IonicSpark',
+    ('Needlessly_Large_Rod', 'Negatron_Cloak'): 'TFT_Item_Morellonomicon',
+    ('Needlessly_Large_Rod', 'Giants_Belt'): 'TFT_Item_Leviathan',
+    ('Needlessly_Large_Rod', 'Sparring_Gloves'): 'TFT_Item_JeweledGauntlet',
+    ('Tear_of_the_Goddess', 'Tear_of_the_Goddess'): 'TFT_Item_BlueBuff',
+    ('Tear_of_the_Goddess', 'Chain_Vest'): 'TFT_Item_FrozenHeart',
+    ('Tear_of_the_Goddess', 'Negatron_Cloak'): 'TFT_Item_Crownguard',
+    ('Tear_of_the_Goddess', 'Giants_Belt'): 'TFT_Item_Redemption',
+    ('Tear_of_the_Goddess', 'Sparring_Gloves'): 'TFT_Item_HandOfJustice',
+    ('Chain_Vest', 'Chain_Vest'): 'TFT_Item_BrambleVest',
+    ('Chain_Vest', 'Negatron_Cloak'): 'TFT_Item_GargoyleStoneplate',
+    ('Chain_Vest', 'Giants_Belt'): 'TFT_Item_SunfireCape',
+    ('Chain_Vest', 'Sparring_Gloves'): 'TFT_Item_Quicksilver',
+    ('Negatron_Cloak', 'Negatron_Cloak'): 'TFT_Item_DragonsClaw',
+    ('Negatron_Cloak', 'Giants_Belt'): 'TFT_Item_NightHarvester',
+    ('Negatron_Cloak', 'Sparring_Gloves'): 'TFT_Item_AdaptiveHelm',
+    ('Giants_Belt', 'Giants_Belt'): 'TFT_Item_WarmogsArmor',
+    ('Giants_Belt', 'Sparring_Gloves'): 'TFT_Item_UnstableConcoction',
+    ('Sparring_Gloves', 'Sparring_Gloves'): 'TFT_Item_ThiefsGloves',
+}
+
+# Make recipe lookup bidirectional
+for (_c1, _c2), _item in list(ITEM_RECIPES.items()):
+    if _c1 != _c2:
+        ITEM_RECIPES[(_c2, _c1)] = _item
+
+def is_component(item_name: str) -> bool:
+    """Check if an item name is a base component (not a completed item)."""
+    return item_name in ITEM_COMPONENTS_LIST
+
+def combine_items(item1: str, item2: str) -> Optional[str]:
+    """Try to combine two items. Returns completed item name or None."""
+    return ITEM_RECIPES.get((item1, item2))
+
+# PvE round item drops: (min_components, max_components) per round
+PVE_ITEM_DROPS = {
+    0: (0, 1),  # Round 0: 0-1 components
+    1: (1, 1),  # Round 1: 1 component
+    2: (1, 2),  # Round 2: 1-2 components
+    3: (1, 2),  # Round 3: 1-2 components
+}
+
+# ── Augment selection ────────────────────────────────────────────────────────
+# Rounds where augment selection occurs (game round number → augment tier)
+# Round 4 = Stage 2-1, Round 11 = Stage 3-2, Round 18 = Stage 4-2
+AUGMENT_ROUNDS = {4: 'silver', 11: 'gold', 18: 'prismatic'}
 
 # ── HP damage per round ──────────────────────────────────────────────────────
 # (max_round, base_damage) — base damage for the loser, before per-unit damage
