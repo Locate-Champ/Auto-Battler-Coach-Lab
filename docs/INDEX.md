@@ -37,12 +37,13 @@ UI/UX and visual design documentation.
 
 ## Simulator
 
-Combat simulation system documentation.
+Combat simulation and game loop documentation.
 
-- [OVERVIEW.md](simulator/OVERVIEW.md) - Simulator project overview
-- [TODO_REMAINING_WORK.md](simulator/TODO_REMAINING_WORK.md) - Outstanding work items
+- **[GAME_LOOP.md](simulator/GAME_LOOP.md)** - Full game loop: 8-player sim, economy, shop, combat (START HERE)
+- [TODO_REMAINING_WORK.md](simulator/TODO_REMAINING_WORK.md) - Progress tracker and remaining work
+- [champion_ability_audit.md](simulator/champion_ability_audit.md) - Champion ability validation (60+ champions)
 - [EXTRACTED_DATA_SUMMARY.md](simulator/EXTRACTED_DATA_SUMMARY.md) - Extracted game data summary
-- [champion_ability_audit.md](simulator/champion_ability_audit.md) - Champion ability validation
+- [OVERVIEW.md](simulator/OVERVIEW.md) - Simulator project overview
 - [artifact_item_analysis.md](simulator/artifact_item_analysis.md) - Artifact/item analysis
 - [calibration_sources.md](simulator/calibration_sources.md) - Video sources for calibration
 - [calibration_overview.md](simulator/calibration_overview.md) - Calibration system overview
@@ -75,8 +76,8 @@ Third-party integrations.
 | Quick Start | [../README.md](../README.md) | Project quick-start |
 | Data | [architecture/DATA_SCHEMAS.md](architecture/DATA_SCHEMAS.md) | Data formats |
 | Live Data | [integration/LIVE_DATA_PROGRESS.md](integration/LIVE_DATA_PROGRESS.md) | Integration status |
-| Simulator | [simulator/OVERVIEW.md](simulator/OVERVIEW.md) | Combat simulator |
+| Simulator | [simulator/GAME_LOOP.md](simulator/GAME_LOOP.md) | Game loop + combat engine |
 
 ---
 
-*Last updated: 2026-02-03*
+*Last updated: 2026-02-05*
