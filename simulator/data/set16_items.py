@@ -230,16 +230,16 @@ EMBLEM_TO_TRAIT = {
 PILTOVER_MODULES = {
     # Tier 1-2 modules
     "AccelerationGate": {"effect": "Piltover units restore 35% max mana over 2s after cast"},
-    "ArmorNullifier": {"effect": "Piltover deal 25% more damage, 35% vs tanks"},
-    "BlastShield": {"effect": "All allies gain 20% max HP shield"},
-    "ContinuumCogs": {"effect": "All allies gain 2 mana regen and 12 AP"},
+    "ArmorNullifier": {"effect": "Piltover deal 25% more damage, 45% vs tanks"},  # 16.3: tank amp 35%→45%
+    "BlastShield": {"effect": "All allies gain 18% max HP shield"},  # 16.4: 20%→18%
+    "ContinuumCogs": {"effect": "All allies gain 2 mana regen and 15 AP"},  # 16.3: 12→15 AP
     "EMP": {"effect": "Increase enemy mana costs by 15"},
-    "GigantificationRay": {"effect": "Piltover gain 23% max HP and grow larger"},
-    "KineticBarrier": {"effect": "Piltover gain 60 Armor and 20 MR (or opposite)"},
+    "GigantificationRay": {"effect": "Piltover gain 28% max HP and grow larger"},  # 16.4: 23%→28%
+    "KineticBarrier": {"effect": "Piltover gain 65 Armor and 30 MR (or opposite)"},  # 16.4: 60/20→65/30
     "MagnetronCoil": {"effect": "Piltover gain 18% damage amp + 1% per cast"},
     "MomentumDrive": {"effect": "Cleanse CC, team gains 50% tenacity"},
-    "OverclockedCapacitors": {"effect": "Team gains 22% attack speed"},
-    "TunedOscillator": {"effect": "Increase healing/shielding by 25%"},
+    "OverclockedCapacitors": {"effect": "Team gains 25% attack speed"},  # 16.4: 22%→25%
+    "TunedOscillator": {"effect": "Increase healing/shielding by 28%"},  # 16.4: 25%→28%
 
     # Tier 2-3 modules
     "ElectricalOverload": {"effect": "Deal 100 + 10% max HP true damage to all enemies"},
