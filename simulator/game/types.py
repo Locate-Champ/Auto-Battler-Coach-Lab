@@ -19,6 +19,9 @@ class ActionType(Enum):
     LEVEL = "level"
     REFRESH = "refresh"
     EQUIP_ITEM = "equip_item"
+    CHOOSE_AUGMENT = "choose_augment"
+    PLACE_TOWER = "place_tower"
+    PLACE_SOLDIER = "place_soldier"
     PASS = "pass"
 
 
@@ -52,6 +55,21 @@ class Action:
     @staticmethod
     def equip_item(item_idx: int, unit_pos: Tuple[int, ...]) -> 'Action':
         return Action(ActionType.EQUIP_ITEM, (item_idx, unit_pos))
+
+    @staticmethod
+    def choose_augment(choice_idx: int) -> 'Action':
+        """Choose an augment from the offered options (0, 1, or 2)."""
+        return Action(ActionType.CHOOSE_AUGMENT, (choice_idx,))
+
+    @staticmethod
+    def place_tower(row: int, col: int) -> 'Action':
+        """Place the Freljord tower at (row, col)."""
+        return Action(ActionType.PLACE_TOWER, (row, col))
+
+    @staticmethod
+    def place_soldier(row: int, col: int) -> 'Action':
+        """Place an Azir soldier at (row, col)."""
+        return Action(ActionType.PLACE_SOLDIER, (row, col))
 
     @staticmethod
     def pass_action() -> 'Action':
