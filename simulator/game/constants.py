@@ -13,7 +13,7 @@ if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
 from simulator.Simulator.pool_stats import (
-    COST_1, COST_2, COST_3, COST_4, COST_5,
+    COST_1, COST_2, COST_3, COST_4, COST_5, COST_7,
     level_percentage, cost_star_values, base_pool_values,
 )
 from simulator.Simulator.origin_class_stats import origin_class, tiers
@@ -62,7 +62,7 @@ def get_streak_gold(streak: int) -> int:
     return 0
 
 # ── Champion pool ─────────────────────────────────────────────────────────────
-POOL_SIZES = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10}
+POOL_SIZES = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10, 7: 1}
 
 # Champion lists by cost tier
 CHAMPIONS_BY_COST = {
@@ -71,7 +71,12 @@ CHAMPIONS_BY_COST = {
     3: COST_3,
     4: COST_4,
     5: COST_5,
+    7: COST_7,
 }
+
+# 7-cost unlockable champions - never appear in shop
+# These are unlocked through special in-game conditions
+UNLOCKABLE_CHAMPIONS = set(COST_7.keys())
 
 # Sell values: SELL_VALUES[cost-1][star-1]
 SELL_VALUES = cost_star_values

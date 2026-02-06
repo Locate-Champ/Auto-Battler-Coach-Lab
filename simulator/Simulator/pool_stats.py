@@ -113,28 +113,33 @@ COST_4 = {
 COST_5 = {
     'aatrox': 10,
     'annie': 10,
-    'aurelionsol': 10,
     'azir': 10,
-    'baronnashor': 10,
-    'brock': 10,
     'fiddlesticks': 10,
     'galio': 10,
     'kindred': 10,
     'lucian': 10,
     'mel': 10,
     'ornn': 10,
-    'ryze': 10,
     'sett': 10,
     'shyvana': 10,
-    'sylas': 10,
     'tahmkench': 10,
     'thex': 10,
     'thresh': 10,
     'volibear': 10,
     'xerath': 10,
-    'zaahen': 10,
     'ziggs': 10,
     'zilean': 10,
+}
+
+# 7-cost unlockable champions - 1 copy each (unique unlock conditions)
+# These never appear in the shop; they are unlocked via special mechanics.
+COST_7 = {
+    'aurelionsol': 1,   # Unlock: Targon 5 (5 unique Targonians)
+    'baronnashor': 1,    # Unlock: Void 7 + Level 10 (takes 2 team slots)
+    'brock': 1,          # Unlock: 500 Ixtal Clues
+    'ryze': 1,           # Unlock: 4 Region Traits + Level 9
+    'sylas': 1,          # Unlock: Sell 2-star Jarvan, Garen, and Lux
+    'zaahen': 1,         # Unlock: Trials of Twilight augment + 3-star Xin Zhao
 }
 
 # Set 16 does not have the Chosen mechanic (that was Set 4).
@@ -157,7 +162,9 @@ cost_star_values = [
     [2, 5, 17],
     [3, 8, 26],
     [4, 11, 35],
-    [5, 14, 44]
+    [5, 14, 44],
+    [7, 21, 63],   # 6-cost placeholder (unused in Set 16)
+    [7, 21, 63],   # 7-cost: buy=7g, 2-star=21g, 3-star=63g
 ]
 
-base_pool_values = [29, 22, 18, 12, 10]
+base_pool_values = [29, 22, 18, 12, 10, 0, 1]

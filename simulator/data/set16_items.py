@@ -83,7 +83,9 @@ BASE_COMPLETED = {
     "AdaptiveHelm": {"magic_resist": 20, "mana_regen": 3},
     "ThiefsGloves": {"crit_chance": 0.20, "hp": 150},
     "StrikersFlail": {"attack_speed": 0.10, "crit_chance": 0.20, "hp": 150},
-    "TacticiansCrown": {},
+    "TacticiansCrown": {},   # +1 max team size
+    "TacticiansCape": {"armor": 20, "magic_resist": 20},  # +1 max team size
+    "TacticiansShield": {"hp": 250},  # +1 max team size
 
     # Set 16 new items
     "Leviathan": {"ap": 60, "hp": 150},  # Rod + Belt: Deal 4% max HP magic damage on ability
@@ -183,6 +185,37 @@ EMBLEM_ITEMS = {
     "WardenEmblem": {"hp": 150},
     "YordleEmblem": {"hp": 150},
     "ZaunEmblem": {"hp": 150},
+}
+
+# Emblem name → trait name it grants (for trait counting in combat)
+EMBLEM_TO_TRAIT = {
+    "BilgewaterEmblem": "Bilgewater",
+    "BruiserEmblem": "Bruiser",
+    "DefenderEmblem": "Defender",
+    "DemaciaEmblem": "Demacia",
+    "FreljordEmblem": "Freljord",
+    "GunslingerEmblem": "Gunslinger",
+    "InvokerEmblem": "Invoker",
+    "IoniaEmblem": "Ionia",
+    "IxtalEmblem": "Ixtal",
+    "JuggernautEmblem": "Juggernaut",
+    "LongshotEmblem": "Longshot",
+    "NoxusEmblem": "Noxus",
+    "PiltoverEmblem": "Piltover",
+    "QuickstrikerEmblem": "Quickstriker",
+    "ShurimaEmblem": "Shurima",
+    "SorcererEmblem": "Arcanist",  # Sorcerer emblem grants Arcanist trait
+    "VoidEmblem": "Void",
+    "WardenEmblem": "Warden",
+    "YordleEmblem": "Yordle",
+    "ZaunEmblem": "Zaun",
+    # Also support Slayer emblem from augments
+    "SlayerEmblem": "Slayer",
+    "VanquisherEmblem": "Vanquisher",
+    "HarvesterEmblem": "Harvester",
+    "TargonEmblem": "Targon",
+    "ShadowIslesEmblem": "Shadow Isles",
+    "DisruptorEmblem": "Disruptor",
 }
 
 # =============================================================================

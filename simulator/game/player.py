@@ -58,8 +58,24 @@ class Player:
 
     @property
     def max_units(self) -> int:
-        """Maximum units allowed on board (equals level)."""
-        return self.level
+        """Maximum units allowed on board (level + Tactician items)."""
+        bonus = 0
+        # Tactician's Crown/Cape/Shield each grant +1 team size
+        tactician_items = {'TacticiansCrown', 'TacticiansCape', 'TacticiansShield'}
+        for item in self.item_bench:
+            if item in tactician_items:
+                bonus += 1
+        # Also check items equipped on board/bench units
+        for row_col, champ in self.board.items():
+            for item in champ.items:
+                if item in tactician_items:
+                    bonus += 1
+        for champ in self.bench:
+            if champ:
+                for item in champ.items:
+                    if item in tactician_items:
+                        bonus += 1
+        return self.level + bonus
 
     @property
     def board_count(self) -> int:
