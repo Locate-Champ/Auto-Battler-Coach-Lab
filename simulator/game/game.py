@@ -228,6 +228,8 @@ class TFTGame:
         for player in self.alive_players:
             _return_shop_to_pool(player, self.pool)
             player.shop = generate_shop(self.pool, player.level)
+            # Reset placeable structures (player re-places each round)
+            player.soldier_positions = []
             self.agent_fn(player, self.pool)
             player.auto_fill_board()
 

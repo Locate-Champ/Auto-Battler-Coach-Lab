@@ -44,6 +44,12 @@ class Player:
         # Current shop: list of champion names (or None for empty slots)
         self.shop: List[Optional[str]] = [None] * 5
 
+        # Placeable structures (set during planning phase)
+        # Freljord Tower: position on board where ice tower is placed
+        self.tower_position: Optional[Tuple[int, int]] = None
+        # Azir Soldiers: up to 2 positions where soldiers are placed
+        self.soldier_positions: List[Tuple[int, int]] = []
+
         # Streaks
         self.win_streak = 0
         self.loss_streak = 0
@@ -437,10 +443,54 @@ class Player:
                 trait_counts[trait] = trait_counts.get(trait, 0) + 1
         return trait_counts
 
+    # ── Placeable Structures ─────────────────────────────────────────────
+
+    def place_tower(self, row: int, col: int) -> bool:
+        """Place the Freljord tower at a board position.
+
+        The tower is a separate structure (not a unit) that provides
+        area buffs. Requires Freljord 3+ to be active.
+        """
+        if not (0 <= row < BOARD_ROWS and 0 <= col < BOARD_COLS):
+            return False
+        # Tower can be placed on any hex (even occupied - it's a structure)
+        self.tower_position = (row, col)
+        return True
+
+    def place_soldier(self, row: int, col: int) -> bool:
+        """Place an Azir soldier at a board position.
+
+        Requires Azir on the board. Max 2 soldiers.
+        Soldiers can be placed on any empty hex on your side.
+        """
+        if not (0 <= row < BOARD_ROWS and 0 <= col < BOARD_COLS):
+            return False
+        if len(self.soldier_positions) >= 2:
+            return False
+        # Don't place on top of another soldier
+        if (row, col) in self.soldier_positions:
+            return False
+        self.soldier_positions.append((row, col))
+        return True
+
+    def has_azir_on_board(self) -> bool:
+        """Check if Azir is on the board."""
+        for champ in self.board.values():
+            if champ.name == 'azir':
+                return True
+        return False
+
+    def has_freljord_active(self) -> bool:
+        """Check if Freljord 3+ is active (needed for tower)."""
+        traits = self.get_active_traits()
+        return traits.get('freljord', 0) >= 3
+
     # ── Combat Bridge ─────────────────────────────────────────────────────
 
     def build_combat_team(self, engine: 'CombatEngine') -> list:
         """Convert board state into combat Unit objects.
+
+        Also spawns Freljord tower and Azir soldiers at their placed positions.
 
         Args:
             engine: The CombatEngine instance to create units with.
@@ -459,6 +509,33 @@ class Player:
             )
             if unit is not None:
                 units.append(unit)
+
+        # Spawn Azir soldiers at player-placed positions
+        if self.has_azir_on_board() and self.soldier_positions:
+            # Get Azir's star level for soldier scaling
+            azir_star = 1
+            for champ in self.board.values():
+                if champ.name == 'azir':
+                    azir_star = champ.star_level
+                    break
+            for pos in self.soldier_positions:
+                soldier = engine.create_unit(
+                    'TFT16_AzirSoldier', azir_star, pos, 0
+                )
+                if soldier:
+                    soldier._is_summon = True
+                    soldier._summoner = 'Azir'
+                    units.append(soldier)
+
+        # Spawn Freljord tower at player-placed position
+        if self.tower_position and self.has_freljord_active():
+            tower = engine.create_unit(
+                'TFT16_FreljordProp', 1, self.tower_position, 0
+            )
+            if tower:
+                tower._is_tower = True
+                units.append(tower)
+
         return units
 
     # ── HP / Elimination ──────────────────────────────────────────────────
