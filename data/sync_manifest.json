@@ -1,15 +1,11 @@
 {
-  "last_sync": "2026-02-05T11:42:24.528071+00:00",
+  "last_sync": "2026-02-04T18:55:33.155105+00:00",
   "script": "scripts/sync_all_data.py",
   "results": {
     "successes": [
-      "fetch_meta_data.py",
-      "fetch_metatft_items.py",
-      "fetch_metatft_positions.py"
-    ],
-    "failures": [
       "fetch_game_data.py"
     ],
+    "failures": [],
     "skipped": []
   },
   "data_sources": {
