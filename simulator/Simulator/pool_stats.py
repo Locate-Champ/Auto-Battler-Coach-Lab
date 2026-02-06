@@ -107,6 +107,7 @@ COST_4 = {
     'wukong': 12,
     'yone': 12,
     'yunara': 12,
+    'riftherald': 12,  # Unlockable 4-cost (Void/Bruiser) - Source: metatft.com, tftactics.gg
 }
 
 # 10 copies each
