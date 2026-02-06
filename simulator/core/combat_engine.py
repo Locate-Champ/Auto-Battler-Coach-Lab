@@ -336,7 +336,7 @@ class TraitManager:
         7: 65,
         10: 150,
     }
-    BILGEWATER_SERPENTS_PER_TAKEDOWN = 2
+    BILGEWATER_SERPENTS_PER_TAKEDOWN = 1  # Patch 16.3: nerfed from 2 to 1
 
     # Shadow Isles soul multipliers by trait count
     SHADOW_ISLES_SOUL_MULTIPLIER = {
@@ -812,9 +812,10 @@ class TraitManager:
     }
 
     # Gunslinger - AD + every 4th attack bonus damage
+    # Patch 16.4: AD 20/35% → 22/40%
     GUNSLINGER_EFFECTS = {
-        2: {'AD': 0.20, 'BonusDamage': 100, 'NumAttacks': 4},
-        4: {'AD': 0.35, 'BonusDamage': 200, 'NumAttacks': 4},
+        2: {'AD': 0.22, 'BonusDamage': 100, 'NumAttacks': 4},
+        4: {'AD': 0.40, 'BonusDamage': 200, 'NumAttacks': 4},
     }
 
     # Warden - Shields at HP thresholds (75% and 25%)
