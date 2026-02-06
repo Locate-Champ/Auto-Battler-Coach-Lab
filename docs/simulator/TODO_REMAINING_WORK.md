@@ -20,9 +20,11 @@ This document outlines what still needs to be implemented in the combat simulato
 | Pool/Trait Data | ✅ Complete | Set 16 data in pool_stats + origin_class_stats |
 | Item Combining | ✅ Complete | 36 recipes, auto-combine on equip |
 | Item Equip Actions | ✅ Complete | Equip from item bench to board/bench units |
-| Augment Selection | ✅ Complete | 3 tiers at rounds 2-1, 3-2, 4-2 |
+| Augment Selection | ✅ Complete | Silver/Gold/Prismatic tier odds, trait-synergy weighting |
+| Carousel | ✅ Complete | HP-based pick order, stage-specific champion tiers |
+| Trait Wiring | ✅ Complete | Shadow Isles, Bilgewater, Huntress connected |
 
-**Overall: ~97% of combat mechanics, game loop near-complete (only carousel missing)**
+**Overall: ~98% of combat mechanics, game loop feature-complete**
 
 ---
 
@@ -234,12 +236,12 @@ This runs several test scenarios including 1v1s, team fights, and item impact te
 
 - **Champions with abilities:** 60+ of ~103 total
 - **Traits implemented:** 10 stat-buffing traits + special traits
-- **Augments functional:** 131 combat-relevant, 3-tier selection in game loop
+- **Augments functional:** 131 combat-relevant, Silver/Gold/Prismatic tier selection with trait synergy
 - **Item effects:** 20+ items with on-hit/ability/damage effects
 - **Item combining:** 36 recipes with auto-combine on equip
 - **Core mechanics:** All basic combat working
 - **Complex mechanics:** All 8 high/medium priority complete
-- **Game loop:** Full 8-player game with economy, shop, items, augments, combat
+- **Game loop:** Full 8-player game with economy, shop, items, augments, carousel, combat
 
 ---
 
@@ -416,9 +418,14 @@ python position_search.py --strategies  # Explain positioning strategies
 - [x] Augment selection at rounds 2-1, 3-2, 4-2 (159/147/107 options per tier)
 - [x] Augments wired into combat engine
 - [x] Item name aliases for combat engine compatibility
+- [x] Augment tier distribution: Silver/Gold/Prismatic odds per stage (from tftodds.com)
+- [x] Augment trait-synergy weighting (3x boost for matching active traits)
+- [x] Carousel mechanics with HP-based pick order
+- [x] Stage-specific carousel champion cost tiers (from littlebuddybot.com)
+- [x] Shadow Isles, Bilgewater, Huntress traits wired into combat
+- [x] Statikk Shiv hex_distance bugfix
 
 ### Still Needed for RL Training
-- [ ] Carousel mechanics (currently skipped)
 - [ ] RL observation/action space encoding
 - [ ] Smarter heuristic agents for training opponents
 - [ ] Training data generation pipeline
@@ -436,4 +443,4 @@ Fixed row orientation for MetaTFT position data:
 
 ---
 
-*Last updated: 2026-02-05*
+*Last updated: 2026-02-06*
