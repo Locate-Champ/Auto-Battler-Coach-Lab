@@ -291,7 +291,6 @@ class TFTGame:
 
         for player in self.alive_players:
             already_chosen = set(self.player_augments[player.player_id])
-            active_traits = set(player.get_active_traits().keys())
 
             choices = []
             for _ in range(3):
@@ -308,18 +307,9 @@ class TFTGame:
                 if not pool:
                     continue
 
-                # Weight augments: trait-synergistic augments get 3x weight
-                aug_weights = []
-                for aug in pool:
-                    w = 1.0
-                    aug_traits = _AUGMENT_TRAITS.get(aug, [])
-                    if aug_traits and active_traits:
-                        # Boost if any associated trait matches player's board
-                        if active_traits & set(aug_traits):
-                            w = 3.0
-                    aug_weights.append(w)
-
-                chosen_aug = random.choices(pool, weights=aug_weights, k=1)[0]
+                # Equal weights for all augments (no trait-synergy boost
+                # until full simulations validate the weighting)
+                chosen_aug = random.choice(pool)
                 choices.append(chosen_aug)
 
             if not choices:
