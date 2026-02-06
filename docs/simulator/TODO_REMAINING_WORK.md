@@ -10,14 +10,16 @@ This document outlines what still needs to be implemented in the combat simulato
 |-----------|--------|-------|
 | Combat Engine Core | ✅ Complete | `combat_engine.py` - damage, targeting, stats |
 | Champion Data | ✅ Complete | `combat_data.json` - all Set 16 champions |
-| Champion Abilities | ✅ Complete | 40+ champions with special mechanics |
+| Champion Abilities | ✅ Complete | 60+ champions with special mechanics |
 | Augment System | ✅ Complete | 284 augments, 131 combat-relevant |
 | Item Effects | ✅ Complete | Items affect combat stats + on-hit/ability effects |
 | Item Optimizer | ✅ Complete | `item_optimizer.py` - best items, builds, distribution |
 | Trait Bonuses | ✅ Complete | 10 stat-buffing traits in TraitManager |
-| Complex Mechanics | ⚠️ Partial | 4 high-priority, 4 medium-priority remaining |
+| Complex Mechanics | ✅ Complete | All 8 high/medium priority implemented |
+| Game Loop | ✅ Complete | `simulator/game/` - 8-player full game sim |
+| Pool/Trait Data | ✅ Complete | Set 16 data in pool_stats + origin_class_stats |
 
-**Overall: ~80% of combat mechanics implemented**
+**Overall: ~95% of combat mechanics, game loop MVP complete**
 
 ---
 
@@ -122,103 +124,20 @@ Added 10 stat-buffing traits to TraitManager that auto-apply at combat start.
 
 ---
 
-## High Priority - Complex Mechanics
+## Complex Mechanics — All Implemented
 
-### 1. Lucian → Senna Transition
-**What it does:** Lucian channels for 3s, then transforms into Senna who continues the fight.
-**Implementation notes:**
-- Need to track channel state
-- On channel complete, replace Lucian unit with Senna unit
-- Senna inherits position, items, and partial stats
-- Channel can be interrupted
+All 8 previously high/medium priority mechanics are now in `champion_abilities.py`:
 
-**Location:** Add `_cast_luciansenna` handler in `champion_abilities.py`
-
-### 2. Shadow Isles Soul Collection
-**What it does:** Shared trait mechanic. When enemies die, Shadow Isles units collect souls.
-**Affected champions:**
-- Thresh: `HealthDrainPerSoul` - drains more HP per soul
-- Gwen: `SnipPerSoulBreakpoint` - extra snips at soul thresholds
-- Kalista: `SoulsPerSpearBreakpoint` - more spears at thresholds
-- Viego: `BaseAttackSpeed` scales with souls
-
-**Soul multipliers:** 1.0x → 1.3x → 1.6x → 1.9x
-**Stat bonuses:** 18-33% AD/AP
-
-**Implementation notes:**
-- Add `soul_count` tracking to TraitManager
-- Hook into death processing to award souls
-- Modify each champion's ability to check soul count
-
-### 3. Ryze Trait-Dependent Ability
-**What it does:** Ryze's ability changes based on what traits are active on your team.
-**25+ trait interactions:**
-- Targon: 10% heal
-- Yordle: 12% damage reduction
-- Bilgewater: 25% explosion damage
-- Void: 30% resist ignore
-- Shadow Isles: 5% + soul scaling
-- Piltover: 40% overcharge
-- Demacia: 12% execute
-- Freljord: chill + 6% true damage
-- Zaun: poison/ticks
-- Shurima: coin/component drops
-- Noxus/Ionia: damage reduction
-
-**Implementation notes:**
-- Check team traits at cast time
-- Select ability effect based on highest/most relevant trait
-- May need priority system if multiple traits active
-
-### 4. Sylas Trifold Ability Rotation
-**What it does:** Sylas rotates between 3 stolen abilities:
-1. Jarvan - Stun
-2. Garen - Execute
-3. Lux - Shield
-
-**Rules:** Cannot cast same ability twice in a row.
-
-**Implementation notes:**
-- Track `_sylas_last_ability` index
-- Cycle through abilities, skipping last used
-- Each ability has different targeting/effects
-
----
-
-## Medium Priority - Unique Mechanics
-
-### 5. Tahm Kench Glutton Feeding
-**What it does:** Tahm Kench can "eat" units to gain permanent stats.
-**Stat gains:** Based on unit cost/star level (need wiki data)
-
-**Implementation notes:**
-- Need bench/feeding UI interaction (may be out of scope for combat sim)
-- Could simulate as pre-combat stat bonus based on "fed units" config
-
-### 6. Galio Bench Mechanic
-**What it does:** Galio stays on bench until first Demacia rally, then joins fight.
-
-**Implementation notes:**
-- Track Demacia rally event
-- On first rally, spawn Galio onto board
-- Need to determine spawn position logic
-
-### 7. T-Hex Pilot System
-**What it does:** T-Hex strength scales with who is piloting it.
-
-**Implementation notes:**
-- Need pilot assignment mechanic
-- Scale T-Hex stats based on pilot's stats/cost
-- Pilot determines some ability interactions
-
-### 8. Baron Nashor Riftscourge
-**What it does:** Baron has Riftscourge trait for Void synergy.
-- 10 acid shots per cast
-- 3s refresh (0.25s at 3-star!)
-
-**Implementation notes:**
-- Implement acid shot targeting
-- Add Void rift passive mechanics
+| # | Mechanic | Status | Notes |
+|---|----------|--------|-------|
+| 1 | Lucian → Senna Transition | ✅ Done | Soulbound swap mechanic |
+| 2 | Shadow Isles Soul Collection | ✅ Done | Thresh, Gwen, Kalista, Viego, Yorick |
+| 3 | Ryze Trait-Dependent Ability | ✅ Done | 11 trait effects |
+| 4 | Sylas Trifold Rotation | ✅ Done | Jarvan/Garen/Lux cycle |
+| 5 | Tahm Kench Glutton | ✅ Done | Pre-combat stat bonus |
+| 6 | Galio Bench Mechanic | ✅ Done | Demacia rally spawn |
+| 7 | T-Hex Pilot System | ✅ Done | Pilot-scaled stats |
+| 8 | Baron Nashor Riftscourge | ✅ Done | Acid shots + Void rift |
 
 ---
 
@@ -310,12 +229,13 @@ This runs several test scenarios including 1v1s, team fights, and item impact te
 
 ## Quick Stats
 
-- **Champions with abilities:** 40+ of ~55 total
-- **Traits implemented:** 10 stat-buffing traits
+- **Champions with abilities:** 60+ of ~103 total
+- **Traits implemented:** 10 stat-buffing traits + special traits
 - **Augments functional:** 131 combat-relevant
 - **Item effects:** 20+ items with on-hit/ability/damage effects
 - **Core mechanics:** All basic combat working
-- **Remaining complex mechanics:** 8 (4 high priority, 4 medium priority)
+- **Complex mechanics:** All 8 high/medium priority complete
+- **Game loop:** Full 8-player game with economy, shop, leveling, combat
 
 ---
 
@@ -462,21 +382,39 @@ python position_search.py --strategies  # Explain positioning strategies
 
 ---
 
-## Phase 4: Full Game RL (Future)
+## Phase 4: Full Game Loop (Completed 2026-02-05)
 
-**Goal:** Train agents for economy, leveling, shop decisions, augment selection.
+**Goal:** Full 8-player game simulation for RL agent training.
 
-### Options
-1. **Update `Simulator/`** - Existing MuZero game env, needs Set 16 update
-2. **Build new wrapper** - Around combat engine with fresh architecture
+**Decision:** Built new wrapper (`simulator/game/`) around the combat engine, replacing the legacy Set 4 `simulator/Simulator/` code.
 
-### Required Components
-- Game state (gold, XP, health, round, stage)
-- Shop/roll mechanics
-- Level-up decisions
-- Augment selection (rounds 1-3-2, 2-3-2, etc.)
-- Player matchmaking
-- Carousel
+### Completed
+- [x] `simulator/game/` — 9 files, clean modular architecture
+- [x] 8-player game with elimination and placement tracking
+- [x] Full economy (gold, interest, streaks, income)
+- [x] Shop with shared pool and level-based odds
+- [x] Champion buying, selling, upgrading (3 → star up)
+- [x] Board/bench management with swapping
+- [x] Leveling (XP buy, passive XP, auto-level)
+- [x] Combat resolution via `core/combat_engine.py`
+- [x] HP damage (base + per surviving unit)
+- [x] Weighted matchmaking (ghost for odd player count)
+- [x] Random agent + custom agent interface
+- [x] Deterministic seeding
+- [x] Observable game state via `get_state()`
+- [x] Set 16 pool data (pool_stats.py) and traits (origin_class_stats.py)
+
+### Still Needed for RL Training
+- [ ] Carousel mechanics (currently skipped)
+- [ ] Augment selection at specific rounds
+- [ ] Item combining (2 components → full item)
+- [ ] Item equip action in planning phase
+- [ ] RL observation/action space encoding
+- [ ] Smarter heuristic agents for training opponents
+- [ ] Training data generation pipeline
+- [ ] Choose RL architecture (PPO, MuZero, etc.)
+
+**Full docs:** [GAME_LOOP.md](GAME_LOOP.md)
 
 ---
 
@@ -488,4 +426,4 @@ Fixed row orientation for MetaTFT position data:
 
 ---
 
-*Last updated: 2026-02-02*
+*Last updated: 2026-02-05*

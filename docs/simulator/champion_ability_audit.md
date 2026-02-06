@@ -200,15 +200,18 @@
   - Deals damage to nearby enemies
 
 ### Taric (TFT16_Taric) ✅ IMPLEMENTED
-- PassiveDR: 0.9 (90% damage reduction passive!)
-- InvunerabilityHealthThreshold: 35%
-- InvunerabilityDuration: 2s
-- PassiveHeal: 300-2500
-- MRForAllies: 10-100 aura
+**Ability:** Starlight's Touch
+- **Passive MR Aura** (always active): All allies gain 10/20/100 Magic Resist
+- **Passive Heal at 35% HP** (once per combat): Restore 300/700/2500 health over 2 seconds
+- **Active - Self Shield:** 600/700/2500
+- **Active - Ally Shield:** Grant 2 LOWEST HEALTH allies 125/150/1000 shield for 4 seconds
+- **Empowered Attacks:** Next 2/2/10 attacks deal 200/300/3000 bonus **magic damage**
 - **Implemented:**
-  - 90% passive damage reduction applied on first cast
-  - Invulnerability at 35% HP via `check_taric_invulnerability()`
-  - MR aura granted to all allies on ability cast
+  - Passive MR aura at combat start via `apply_taric_passive_mr()`
+  - Self shield on ability cast
+  - Ally shields on 2 **lowest health** allies (not nearest!)
+  - Empowered attacks with bonus MAGIC damage via `check_taric_empowered_attack()`
+  - 35% HP heal trigger via `check_taric_low_hp_heal()` (NOT invulnerability!)
 
 ### Skarner (TFT16_Skarner) ✅ IMPLEMENTED
 - ArmorForAllies: 10-100 aura
@@ -220,13 +223,19 @@
   - Self shield on ability
   - Impale: Stun + drag enemy to adjacent hex
 
-### Leona (TFT16_Leona) ⚠️ STATS ONLY
-- FlatDR: 15-60 damage reduction
-- PassiveTimer: 4s
-- FlatDRCooldownPerAttacker: 1s per attacker
-- **Missing:**
-  - Passive damage reduction
-  - Diana synergy (MoonlightDamageReduction: 10%)
+### Leona (TFT16_Leona) ✅ IMPLEMENTED
+**Ability:** Solar Flare
+- FlatDR: 15/30/60 damage reduction (passive)
+- NumEnemies: 3
+- StunDuration: 1.0s
+- Damage: 80/120/200
+- IgniteDuration: 4.0s
+- DianaAP: 3/4/5 (bonus AP to Diana)
+- **Implemented:**
+  - Passive flat damage reduction on first cast
+  - AOE stun + damage centered on target
+  - Ignite burn damage
+  - Diana synergy: Grants Diana bonus AP
 
 ### Wukong (TFT16_Wukong) ✅ IMPLEMENTED
 - SummonMaxHealthPercent: 40% clone HP
@@ -235,70 +244,91 @@
 - Duration: 4s
 - **Implemented:** Simulated clone damage output
 
-### Warwick (TFT16_Warwick) ⚠️ STATS ONLY
-- AttackSpeed: 0.8→4.0 at 3-star
+### Warwick (TFT16_Warwick) ✅ IMPLEMENTED
+**Ability:** Eternal Hunger
+- AttackSpeed: 1.0/1.0/4.0 (self buff)
+- ADDamage: 45/70/550 (bonus AD)
 - Omnivamp: 15%
-- AllyAttackSpeed: 0.2→0.5 buff
-- AllyBuffDuration: 3s
-- **Missing:**
-  - Single cast only mechanic
-  - Jinx/Vi/Warwick takedown synergy
-  - Ally AS buff application
+- AllyAttackSpeed: 0.2/0.2/0.5 (ally buff)
+- AllyBuffDuration: 3.0s
+- **Implemented:**
+  - Single cast only mechanic (permanent self buff)
+  - Self AS + AD + Omnivamp buff
+  - Ally attack speed buff
+  - Buff duration tracking
 
-### Singed (TFT16_Singed) ⚠️ STATS ONLY
-- PoisonCloudDuration: 4s
-- DamagePerSecond: 8→160
-- ArmorMR: 20 reduction aura
-- HealPerSecond: 15→500
-- MovementSpeedMultiplier: 1.4x slow
-- **Missing:**
-  - Walk through enemy units
-  - Aggro drawing from backline
-  - Poison trail placement
+### Singed (TFT16_Singed) ✅ IMPLEMENTED
+**Ability:** Poison Trail
+- PoisonCloudDuration: 4.0s
+- DamagePerSecond: 8/50/160
+- ArmorMR: 20 reduction
+- HealPerSecond: 15/150/500
+- **Implemented:**
+  - Walk through enemies (dash to farthest enemy)
+  - Aggro drawing (backline enemies re-target Singed)
+  - Poison damage to all enemies
+  - Armor/MR reduction debuff
+  - Self-heal over duration
 
 ### Ambessa (TFT16_Ambessa) ✅ IMPLEMENTED
 - SlamDamageMultiplier: 3.15x
 - ADDamage: 45-320
 - **Implemented:** Dash mechanic, kill reset (mana refund)
 
-### Nidalee (TFT16_Nidalee) ⚠️ STATS ONLY
-- TargetDamage: 320-2000
-- SecondaryDamage: 100-600
+### Nidalee (TFT16_Nidalee) ✅ IMPLEMENTED
+**Ability:** Javelin Toss / Takedown
+- TargetDamage: 320/540/2000
+- SecondaryDamage: 100/180/600
 - TankDamageMult: 0.6x (40% less vs tanks)
 - FighterDamageMult: 0.3x (70% less vs fighters)
 - DamageReductionPerCast: 0.7 (30% less per cast)
-- **Missing:**
-  - Huntress passive (extra damage to certain targets)
-  - Cougar form transformation
-  - Reduced damage vs tanks/fighters application
+- **Implemented:**
+  - Role-based damage reduction (tanks, fighters)
+  - Damage reduction per prior cast
+  - Secondary damage to nearby enemies
+- **Huntress Trait:** See Traits section below
 
-### Miss Fortune (TFT16_MissFortune) ⚠️ STATS ONLY
-- AutoRicochetMultiplier: 0.5→1.0 at 3-star
-- BaseNumWaves: 2→6
+### Miss Fortune (TFT16_MissFortune) ✅ IMPLEMENTED
+**Ability:** Heartbreaker
+- AutoRicochetMultiplier: 0.5/0.5/1.0 (passive)
+- BaseNumWaves: 2/2/6
 - NumCaststoGainExtraWave: 3
-- **Missing:**
-  - Auto-attack ricochet passive
-  - Wave accumulation tracking
+- ADDamage: 145/220/3000
+- APDamage: 15/25/70
+- PercentDamageOfSecondaryWaves: 50%
+- **Implemented:**
+  - Auto-attack ricochet passive enabled on first cast
+  - Wave accumulation tracking (every 3 casts = +1 wave)
+  - Cone damage to enemies in range
+  - Secondary wave damage falloff
 
-### Diana (TFT16_Diana) ⚠️ STATS ONLY
-- MoonlightDamageReduction: 10%
-- Shield: 100→300
+### Diana (TFT16_Diana) ✅ IMPLEMENTED
+**Ability:** Lunar Rush
+- Shield: 100/175/300
+- ShieldDuration: 2.0s
 - HexLimit: 4 hex radius
-- TargetDamage: 125→600
-- DianaAP: 3→5 bonus AP with Leona
-- **Missing:**
-  - Leona synergy passive
-  - Shield + dash mechanic
-  - Pull enemies together
+- TargetDamage: 125/190/600
+- SecondaryDamage: 140/210/1350
+- MoonlightDamageReduction: 10%
+- **Implemented:**
+  - Dash to target within range
+  - Shield self on cast
+  - Deal damage to primary target
+  - Secondary damage to nearby enemies (pull effect)
+  - Leona synergy: Gains 10% damage reduction when Leona is on team
 
-### Ziggs (TFT16_Ziggs) ⚠️ STATS ONLY
-- BABounceNumber: 1 bounce per cast
+### Ziggs (TFT16_Ziggs) ✅ IMPLEMENTED
+**Ability:** Mega Inferno Bomb
+- BABounceNumber: 1 (auto attack bounce)
+- BAPercentAP: 40/65/500%
 - BombAOERange: 4 hex
-- MinAOEDamage: 70→3000
-- MaxAOEDamage: 550→7000
-- **Missing:**
-  - Auto-attack bounce passive
-  - Bomb placement and detonation
+- MinAOEDamage: 70/105/3000 (edge damage)
+- MaxAOEDamage: 550/875/7000 (center damage)
+- **Implemented:**
+  - Auto-attack bounce passive enabled on first cast
+  - Large AOE bomb at target position
+  - Distance-based damage (max at center, min at edge)
+  - Linear damage interpolation based on distance
 
 ### Xerath (TFT16_Xerath) ✅ IMPLEMENTED
 - NumberOfBlasts: 10→99
@@ -310,40 +340,59 @@
   - Each blast targets random alive enemy
   - Ascendant trait (shop items) handled externally
 
-### Shyvana (TFT16_Shyvana) ⚠️ STATS ONLY
-- TransformHP: 600→9999
-- TransformDurability: 20%→90%
-- DivebombADDamage: 100→3000
-- FireDamagePerSecond: 185→12345 AD, 20→1234 AP
-- SpellDuration: 3s
-- **Missing:**
-  - Dragon form transformation (2 abilities)
-  - Dragon form passive persists until combat end
-  - Durability buff in dragon form
+### Yorick (TFT16_Yorick) ✅ IMPLEMENTED
+**Ability:** Mourning Mist
+- FlatDamage: 80/110/150
+- PercentHealthDamage: 5% (all star levels)
+- APHeal: 325/370/500
+- HealPerSoulBreakpoint: 7 (heals 7 HP per breakpoint)
+- SoulBreakpoint: 10 (every 10 souls = 1 breakpoint)
+- DebuffDuration: 4.0s
+- **Implemented:**
+  - Deals flat + 5% max HP magic damage to target
+  - Marks target for 4 seconds (debuff)
+  - Heals Yorick based on APHeal + soul scaling
+  - Soul scaling: Every 10 souls = +7 bonus heal per cast
 
-### Fiddlesticks (TFT16_Fiddlesticks) ⚠️ STATS ONLY
-- FearDuration: 1.25→99s at 3-star
+### Shyvana (TFT16_Shyvana) ✅ IMPLEMENTED
+**Ability:** Dragon Transformation
+- TransformHP: 600/1500/9999 bonus HP
+- TransformDurability: 20%/50%/90% damage reduction
+- DivebombADDamage: 100/350/3000
+- FireDamagePerSecond: 185/500/12345
+- SpellDuration: 3.0s
+- **Implemented:**
+  - Dragon form transformation (permanent until combat end)
+  - Bonus HP and durability on transform
+  - Divebomb damage + dash on initial transform
+  - Fire breath AOE damage on subsequent casts
+
+### Fiddlesticks (TFT16_Fiddlesticks) ✅ IMPLEMENTED
+**Ability:** Crowstorm
+- FearDuration: 1.25/2.0/99s
 - ManaLossPerSecond: 22 mana/sec
-- NearestBonusDamage: 33% to 2 nearest
-- DamagePerSecond: 100→6666
+- NearestBonusDamage: 33%
+- DamagePerSecond: 100/300/6666
 - AOERadius: 2 hex
-- **Missing:**
-  - Fear/stun application
-  - Mana drain on enemies
-  - Damage amp to 2 closest
-  - Trait passive (enemy mana drain)
+- **Implemented:**
+  - Fear (stun) application to enemies in AOE
+  - Mana drain on enemies (3s worth)
+  - 33% bonus damage to 2 nearest enemies
+  - AOE damage in 2-hex radius
 
-### Kindred (TFT16_Kindred) ⚠️ STATS ONLY
-- ShieldAmount: 350→10000
-- Duration: 2.5→99s at 3-star
-- NumExtraArrows: 1→10
+### Kindred (TFT16_Kindred) ✅ IMPLEMENTED
+**Ability:** Lamb's Respite
+- ShieldAmount: 350/700/10000
+- Duration: 2.5/4.0/99s
+- NumExtraArrows: 1/2/10
 - HealPercentage: 8%
-- ADDamage: 25→999
-- **Missing:**
-  - Zone shield placement
-  - Double attack speed in zone
-  - Secondary arrow to nearby enemy
-  - Heal on attack
+- ADDamage: 25/75/999
+- **Implemented:**
+  - 2-hex zone shield placement
+  - Shield self + allies in zone (50% for allies)
+  - Double attack speed while in zone
+  - Extra arrows to nearby enemies
+  - Heal on attack (8% target max HP)
 
 ### Lucian & Senna (TFT16_LucianSenna) ✅ IMPLEMENTED
 - Duration: 3s channeled
@@ -429,13 +478,34 @@
   - Slam damage: Flat + 9% target max HP
   - AoE 50% splash to nearby enemies
 
-### Annie (TFT16_Annie) ⚠️ STATS ONLY
-- Damage: 1500→8000 AOE
-- SingleTargetDamage for Tibbers
-- Duration: 45s
-- **Missing:**
-  - Tibbers summon passive
-  - Board-wide enemy damage on first cast
+### Annie (TFT16_Annie) ✅ IMPLEMENTED
+**Ability:** Enraged Inferno
+- Damage: 1500/2250/8000 (first cast board-wide AOE)
+- SingleTargetDamage: 240/360/3000 (subsequent casts)
+- ManaCostReduction: 140 (mana cost drops from 160→20 after first cast)
+- **Implemented:**
+  - First cast: Board-wide AOE magic damage to all enemies
+  - Mana cost reduction (160→20) after first cast
+  - Subsequent casts: Single target magic damage
+- **Note:** Tibbers is a SEPARATE unit fielded via Dark Child trait
+
+### Tibbers (TFT16_AnnieTibbers) ✅ IMPLEMENTED
+**Ability:** Rage of Embers
+- Shield: 1000/1200/9000
+- AttackSpeed: 2.0/2.0/5.0 (self AS buff)
+- HealPercentHealth: 2.5%/2.5%/100% max HP
+- Duration: 4.0s
+- Stats: 1500 HP, 90 AD, 0.75 AS, 80 armor/MR, melee
+- **IMPORTANT:** Tibbers is NOT a summon - he appears automatically!
+  - When you BUY Annie, Tibbers AUTOMATICALLY APPEARS on your bench
+  - CANNOT sell Tibbers separately - selling Annie removes Tibbers
+  - Can be fielded independently and equip items
+- **Implemented:**
+  - Separate unit with own mana pool (100 max, 40 starting)
+  - Own attack loop and timing (0.35s windup)
+  - Rage of Embers: Self shield + AS buff + HP heal
+  - Arcanist trait (benefits from Annie's Arcanist bonus)
+  - Inherits star level from Annie
 
 ### T-Hex (TFT16_THex) ✅ IMPLEMENTED
 - 4 missiles
@@ -528,6 +598,7 @@ All Shadow Isles units have soul-based mechanics:
 - **Gwen:** SnipPerSoulBreakpoint (bonus snips from souls)
 - **Kalista:** SoulsPerSpearBreakpoint (bonus spears from souls)
 - **Viego:** BaseAttackSpeed from souls
+- **Yorick:** HealPerSoulBreakpoint (bonus healing from souls)
 - Soul multipliers: 1.0x → 1.3x → 1.6x → 1.9x
 - Stat bonuses: 18-33% AD/AP
 
@@ -549,9 +620,9 @@ All Shadow Isles units have soul-based mechanics:
 - **Line Abilities:** Lux, Seraphine, Yunara, Senna
 - **Executes:** Aatrox, Darius, Zaahen (Divine Challenge), Sylas (Garen), Ryze (Demacia)
 - **Stacking:** Veigar (AP), Draven (gold), Seraphine (crystals), Aurelion Sol (stardust), Viego
-- **Synergies:** Yasuo+Yone, Diana+Leona, Lucian+Senna (Soulbound)
+- **Synergies:** Yasuo+Yone, Diana+Leona, Lucian+Senna (Soulbound), Neeko+Nidalee (Huntress)
 - **Trait-Dependent:** Ryze (11 trait effects), Sylas (3 stolen abilities)
-- **Soul Scaling:** Thresh, Gwen, Kalista, Viego (Shadow Isles)
+- **Soul Scaling:** Thresh, Gwen, Kalista, Viego, Yorick (Shadow Isles)
 - **Complex Mechanics:** Tahm Kench (Glutton), Galio (Bench), T-Hex (Pilot), Baron (Riftscourge)
 - **Tanks:** Taric (90% DR + Invuln), Skarner (Armor aura + Impale), Leona (Flat DR)
 - **Board-Wide:** Brock (Seismic), Xerath (Random blasts), Zilean (Double bombs)
@@ -579,10 +650,11 @@ The `ChampionAbilities` class contains:
 
 ---
 
-## Implemented Traits (2026-02-02)
+## Implemented Traits (2026-02-04)
 
-10 stat-buffing traits have been implemented in TraitManager. These auto-apply at combat start.
+12 traits have been implemented in TraitManager. Stat-buffing traits auto-apply at combat start.
 
+### Stat-Buffing Traits (10)
 | Trait | Effect |
 |-------|--------|
 | Arcanist | Team +18/25/40 AP, Arcanists +25/40/60 bonus |
@@ -597,8 +669,14 @@ The `ChampionAbilities` class contains:
 | Gunslinger | +20/35% AD, 4th attack bonus damage |
 | Warden | Shield triggers at 75%/25% HP |
 
+### Champion Synergy Traits (2)
+| Trait | Champions | Effect |
+|-------|-----------|--------|
+| **Huntress** | Neeko + Nidalee | While Neeko alive: Nidalee immune to basic attacks + 50% durability |
+| **Dark Child** | Annie + Tibbers | Tibbers is a separate unit on bench, inherits Annie's star level |
+
 **Note:** Trait names use display names (e.g., "Arcanist") not backend API names (e.g., "TFT16_Sorcerer").
 
 ---
 
-*Last Updated: 2026-02-03*
+*Last Updated: 2026-02-04*
