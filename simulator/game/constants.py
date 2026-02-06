@@ -30,7 +30,7 @@ MAX_ITEMS_PER_UNIT = 3
 STARTING_HP = 100
 STARTING_GOLD = 0
 STARTING_LEVEL = 1
-MAX_LEVEL = 9
+MAX_LEVEL = 10
 
 # ── Economy ───────────────────────────────────────────────────────────────────
 BASE_INCOME = 5
@@ -42,7 +42,8 @@ PASSIVE_XP_PER_ROUND = 2
 
 # XP required to reach each level (index = level)
 # Level 1→2: 2 XP, 2→3: 2 XP, 3→4: 6 XP, etc.
-LEVEL_XP_REQUIRED = [0, 2, 2, 6, 10, 20, 36, 56, 80, 100]
+# Source: Riot patch notes 16.1 + 16.4 (7→8: 60, 8→9: 68, 9→10: 68)
+LEVEL_XP_REQUIRED = [0, 2, 2, 6, 10, 20, 36, 60, 68, 68]
 
 # Early round gold (rounds 0-4, before standard income kicks in)
 STARTING_ROUND_GOLD = [0, 2, 2, 3, 4]
