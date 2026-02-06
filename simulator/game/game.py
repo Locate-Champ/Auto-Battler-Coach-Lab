@@ -273,10 +273,19 @@ class TFTGame:
     _ROUND_TO_TAG = {4: '2-1', 11: '3-2', 18: '4-2'}
 
     def _augment_selection_phase(self):
-        """Offer each player 3 augments with proper tier distribution.
+        """Offer each player 3 augments of the same tier.
 
-        Uses Silver/Gold/Prismatic odds from tftodds.com per stage,
-        and boosts trait-synergistic augments in the pool.
+        In TFT, each armory rolls a single tier per player, and all 3
+        offered augments are that tier. Uses Silver/Gold/Prismatic odds
+        from tftodds.com per stage.
+
+        TODO: In the real game, the tier is shared across the entire lobby
+        (all players get the same tier at each armory). Currently each player
+        rolls independently.
+
+        TODO: Stage tiers are dependent (not independent). The real game uses
+        conditional probabilities across stages (e.g., Silver at 2-1 makes
+        Prismatic at 3-2 less likely). Currently uses marginal probabilities.
         """
         tag = self._ROUND_TO_TAG.get(self.round_num)
         if not tag:
@@ -292,28 +301,21 @@ class TFTGame:
         for player in self.alive_players:
             already_chosen = set(self.player_augments[player.player_id])
 
-            choices = []
-            for _ in range(3):
-                # Roll a tier using Silver/Gold/Prismatic distribution
-                tier = random.choices(tiers, weights=weights, k=1)[0]
-                pool = [a for a in tier_pools.get(tier, [])
-                        if a not in already_chosen and a not in choices]
+            # Roll a single tier for this player's armory
+            tier = random.choices(tiers, weights=weights, k=1)[0]
+            pool = [a for a in tier_pools.get(tier, [])
+                    if a not in already_chosen]
 
-                if not pool:
-                    # Fallback: try any tier
-                    pool = [a for a in _AUGMENTS_BY_ROUND.get(tag, [])
-                            if a not in already_chosen and a not in choices]
+            if not pool:
+                # Fallback: try any augment available at this stage
+                pool = [a for a in _AUGMENTS_BY_ROUND.get(tag, [])
+                        if a not in already_chosen]
 
-                if not pool:
-                    continue
-
-                # Equal weights for all augments (no trait-synergy boost
-                # until full simulations validate the weighting)
-                chosen_aug = random.choice(pool)
-                choices.append(chosen_aug)
-
-            if not choices:
+            if not pool:
                 continue
+
+            # Pick 3 distinct augments from the same tier pool
+            choices = random.sample(pool, min(3, len(pool)))
 
             # Random agent picks randomly; a real agent_fn would use
             # a separate augment callback
@@ -321,9 +323,8 @@ class TFTGame:
             self.player_augments[player.player_id].append(chosen)
 
             if self.verbose:
-                tier_str = _AUGMENT_TIERS.get(chosen, '?')
                 print(f"  P{player.player_id} chose augment: {chosen} "
-                      f"[{tier_str}] (from {len(choices)} options)")
+                      f"[{tier}] (from {len(choices)} options)")
 
     # ── Carousel ──────────────────────────────────────────────────────────
 
