@@ -207,9 +207,11 @@ PVE_ITEM_DROPS = {
 }
 
 # ── Augment selection ────────────────────────────────────────────────────────
-# Rounds where augment selection occurs (game round number → augment tier)
+# Rounds where augment selection occurs (game round number → stage tag)
+# Any tier (silver/gold/prismatic) can appear at any stage; tier is rolled
+# using _TIER_ODDS_BY_STAGE in game.py.
 # Round 4 = Stage 2-1, Round 11 = Stage 3-2, Round 18 = Stage 4-2
-AUGMENT_ROUNDS = {4: 'silver', 11: 'gold', 18: 'prismatic'}
+AUGMENT_ROUNDS = {4: '2-1', 11: '3-2', 18: '4-2'}
 
 # ── Carousel ─────────────────────────────────────────────────────────────────
 # Carousel rounds: round 3 (first carousel), then every 7 rounds (10, 17, 24, ...)
