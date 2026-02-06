@@ -709,49 +709,38 @@ class TraitManager:
                 unit.stats.damage_reduction = max(0, unit.stats.damage_reduction - self.HUNTRESS_DURABILITY)
 
     def check_freljord_on_death(self, dead_unit: 'Unit', all_units: List['Unit']):
-        """Freljord Tower destruction: stun enemies when the Frozen Tower breaks.
+        """Freljord Tower destruction: stun enemies ONLY at 7 Freljord.
 
-        At 3/5 Freljord: stun enemies within 2 hexes for 1.0/1.25s.
+        At 3/5 Freljord: no stun on tower break (stats only).
         At 7 Freljord: stun the ENTIRE enemy team for 1.5s.
 
         Args:
             dead_unit: The unit that just died (only triggers for tower)
             all_units: All units in combat
         """
-        # Only trigger when the Freljord tower is destroyed
+        # Only trigger when a Freljord tower is destroyed
         if not (getattr(dead_unit, '_is_tower', False)
                 and dead_unit.api_name == 'TFT16_FreljordProp'):
             return
 
         by_team = getattr(self, '_freljord_by_team', {})
         freljord_count = by_team.get(dead_unit.team, 0)
-        if freljord_count < 3:
+
+        # Stun only triggers at 7 Freljord
+        if freljord_count < 7:
             return
 
         effects = self.get_trait_tier(freljord_count, self.FRELJORD_EFFECTS)
-        if not effects:
+        if not effects or 'StunDuration' not in effects:
             return
 
         stun_duration = effects['StunDuration']
-        stun_radius = effects['StunRadius']
 
-        # Find enemies to stun
+        # 7 Freljord: stun entire enemy team
         enemies = [u for u in all_units if u.team != dead_unit.team and u.is_alive]
-
-        stunned = []
         for enemy in enemies:
-            if stun_radius >= 999:
-                # 7 Freljord: stun entire enemy team
-                enemy.stun_timer = max(getattr(enemy, 'stun_timer', 0), stun_duration)
-                enemy.state = UnitState.STUNNED
-                stunned.append(enemy.name)
-            else:
-                # Check distance from ice block (dead unit's position)
-                dist = HexGrid.hex_distance(dead_unit.position, enemy.position)
-                if dist <= stun_radius:
-                    enemy.stun_timer = max(getattr(enemy, 'stun_timer', 0), stun_duration)
-                    enemy.state = UnitState.STUNNED
-                    stunned.append(enemy.name)
+            enemy.stun_timer = max(getattr(enemy, 'stun_timer', 0), stun_duration)
+            enemy.state = UnitState.STUNNED
 
     # =========================================================================
     # STAT-BUFFING TRAITS
@@ -853,12 +842,13 @@ class TraitManager:
     # Units in front of the tower (toward row 0) get HP buff.
     # Units behind the tower (toward row 3) get damage buff.
     # The tower's area follows a 3-2-3-2 width pattern per row.
-    # When the tower is destroyed: stun nearby enemies.
-    # At 7 Freljord: stun the ENTIRE enemy team for 1.5s.
+    # 3 Freljord: one tower, stats only (no stun)
+    # 5 Freljord: second tower + increased stats (no stun)
+    # 7 Freljord: stun ENTIRE enemy team when ANY tower is destroyed
     FRELJORD_EFFECTS = {
-        3: {'HealthPercent': 0.08, 'DA': 0.10, 'StunDuration': 1.0, 'StunRadius': 2},
-        5: {'HealthPercent': 0.12, 'DA': 0.16, 'StunDuration': 1.25, 'StunRadius': 2},
-        7: {'HealthPercent': 0.16, 'DA': 0.22, 'StunDuration': 1.5, 'StunRadius': 999},
+        3: {'HealthPercent': 0.08, 'DA': 0.10},
+        5: {'HealthPercent': 0.12, 'DA': 0.16},
+        7: {'HealthPercent': 0.16, 'DA': 0.22, 'StunDuration': 1.5},
     }
 
     # Void - AS for Void units
@@ -898,12 +888,55 @@ class TraitManager:
         7: {'ShimmerAS': 0.90, 'ShimmerDurability': 0.15, 'ShimmerDuration': 4.0, 'InitialDelay': 4.0, 'HealThreshold': 0.60, 'MaxHealthHeal': 0.30},
     }
 
-    # Noxus - gain stats when losing HP (combat-time mechanic)
+    # Noxus - Atakhan summoning trait
+    # After enemy team loses 15% total HP, Atakhan is summoned.
+    # Atakhan's star level = sum of all Noxian star levels on the team.
+    # Noxus breakpoints unlock different Atakhan abilities:
+    #   3: Cleave (slash enemies dealing magic damage)
+    #   5: Damage amp (Noxians get stacking damage amp while Atakhan alive)
+    #   7: Soul drain (DOT ability on cast)
+    #  10: Bring Ruin (after 10s, devour ALL enemy units)
+    # Health multiplier scales by Noxus count and game stage.
     NOXUS_EFFECTS = {
-        3: {'HPLostTrigger': 0.15},
-        5: {'HPLostTrigger': 0.15},
-        7: {'HPLostTrigger': 0.15},
-        10: {'HPLostTrigger': 0.15},
+        3: {'HPLostTrigger': 0.15, 'RuinTimer': 10},
+        5: {'HPLostTrigger': 0.15, 'RuinTimer': 10},
+        7: {'HPLostTrigger': 0.15, 'RuinTimer': 10},
+        10: {'HPLostTrigger': 0.15, 'RuinTimer': 10},
+    }
+
+    # Atakhan base stats by star level (from combat_data.json)
+    # Star level is determined by total Noxian star levels on team
+    # Index: [_, 1-star, 2-star, 3-star, 4-star, ...]
+    ATAKHAN_STATS = {
+        1: {'hp': 320, 'ad': 50, 'as': 0.75, 'armor': 45, 'mr': 45,
+            'omnivamp': 0.30, 'cleave_damage': 150, 'per_star_hp': 112,
+            'per_star_ad_pct': 0.07, 'per_star_ap_pct': 0.07,
+            'damage_amp': 0.0, 'dot_damage': 0, 'dot_duration': 0},
+        2: {'hp': 560, 'ad': 50, 'as': 0.90, 'armor': 60, 'mr': 60,
+            'omnivamp': 0.30, 'cleave_damage': 225, 'per_star_hp': 112,
+            'per_star_ad_pct': 0.07, 'per_star_ap_pct': 0.07,
+            'damage_amp': 0.03, 'dot_damage': 0, 'dot_duration': 0},
+        3: {'hp': 800, 'ad': 50, 'as': 1.01, 'armor': 75, 'mr': 75,
+            'omnivamp': 0.30, 'cleave_damage': 340, 'per_star_hp': 112,
+            'per_star_ad_pct': 0.11, 'per_star_ap_pct': 0.11,
+            'damage_amp': 0.03, 'dot_damage': 750, 'dot_duration': 2.5},
+        4: {'hp': 16640, 'ad': 50, 'as': 1.61, 'armor': 150, 'mr': 150,
+            'omnivamp': 1.0, 'cleave_damage': 500, 'per_star_hp': 112,
+            'per_star_ad_pct': 0.20, 'per_star_ap_pct': 0.20,
+            'damage_amp': 0.03, 'dot_damage': 750, 'dot_duration': 30.0},
+    }
+
+    # Atakhan star thresholds: total Noxian stars needed for each Atakhan tier
+    # 3 Noxians all 1-star = 3 total => 1-star Atakhan
+    # Typical 5 Noxians at 2-star = 10 total => 2-star
+    # Typical 7 Noxians at 2-star = 14 total => 3-star
+    # 10 Noxians at high stars = 4-star
+    ATAKHAN_STAR_THRESHOLDS = [0, 3, 8, 14, 22]  # [_, 1*, 2*, 3*, 4*]
+
+    # Noxus health multiplier by stage (patch 16.2 values)
+    NOXUS_HP_MULTIPLIER = {
+        5: {4: 4.5, 5: 5.25, 6: 6.5},
+        7: {4: 5.75, 5: 7.25, 6: 9.25},
     }
 
     # Ionia - multiple sub-effects (simplified: use Determination path stats)
@@ -1508,19 +1541,44 @@ class TraitManager:
                 unit._zaun_shimmer_triggered = False
 
     def _apply_noxus(self, team: List['Unit'], count: int):
-        """Apply Noxus trait: Setup HP-loss trigger for combat-time activation.
+        """Apply Noxus trait: Set up Atakhan summoning for combat.
 
-        Noxus units gain stats when they lose 15% of max HP.
+        After the enemy team loses 15% of total HP, Atakhan is summoned.
+        Atakhan's star level = sum of all Noxian star levels.
+        Noxus breakpoints (3/5/7/10) unlock different Atakhan abilities.
         """
         effects = self.get_trait_tier(count, self.NOXUS_EFFECTS)
         if not effects:
             return
 
+        # Calculate total Noxian star levels for Atakhan's power
+        total_noxian_stars = 0
         for unit in team:
             if 'Noxus' in unit.traits:
-                unit._noxus_hp_trigger = effects['HPLostTrigger']
-                unit._noxus_triggered = False
-                unit._noxus_tier = count
+                total_noxian_stars += unit.star_level
+
+        # Determine Atakhan's star level from thresholds
+        atakhan_star = 1
+        for star, threshold in enumerate(self.ATAKHAN_STAR_THRESHOLDS):
+            if star == 0:
+                continue
+            if total_noxian_stars >= threshold:
+                atakhan_star = star
+
+        # Store Noxus data on the team for mid-combat summoning
+        if not hasattr(self, '_noxus_team_data'):
+            self._noxus_team_data = {}
+
+        team_id = team[0].team if team else 0
+        self._noxus_team_data[team_id] = {
+            'count': count,
+            'total_stars': total_noxian_stars,
+            'atakhan_star': atakhan_star,
+            'hp_trigger': effects['HPLostTrigger'],
+            'ruin_timer': effects.get('RuinTimer', 10),
+            'summoned': False,
+            'team': team,
+        }
 
     def _apply_ionia(self, team: List['Unit'], count: int):
         """Apply Ionia trait: Simplified stat buffs for Ionia units.
@@ -3411,6 +3469,12 @@ class CombatEngine:
         team0 = [u for u in self.units if u.team == 0 and u.is_alive]
         team1 = [u for u in self.units if u.team == 1 and u.is_alive]
 
+        # Check Noxus Atakhan summoning (mid-combat)
+        self._check_noxus_atakhan_summon(team0, team1)
+
+        # Check Atakhan "Bring Ruin" at 10 Noxus (4-star Atakhan after timer)
+        self._check_atakhan_ruin()
+
         # Process in random order to avoid bias
         units_to_process = [u for u in self.units if u.is_alive]
         random.shuffle(units_to_process)
@@ -3419,6 +3483,190 @@ class CombatEngine:
             enemies = team1 if unit.team == 0 else team0
             allies = team0 if unit.team == 0 else team1
             self.process_unit_tick(unit, enemies, allies)
+
+    def _check_noxus_atakhan_summon(self, team0: List[Unit], team1: List[Unit]):
+        """Check if enemy team has lost enough HP to trigger Atakhan summon.
+
+        For each team with Noxus active, check if the ENEMY team has lost
+        15% of their total starting HP. If so, summon Atakhan.
+        """
+        noxus_data = getattr(self, '_noxus_team_data', {})
+        if not noxus_data:
+            return
+
+        for team_id, data in noxus_data.items():
+            if data['summoned']:
+                continue
+
+            # Enemy team is the opposite
+            enemy_team = team1 if team_id == 0 else team0
+            ally_team = team0 if team_id == 0 else team1
+
+            # Calculate enemy total HP loss
+            if not hasattr(data, '_enemy_starting_hp'):
+                # Cache starting HP on first check
+                total_max_hp = sum(u.stats.max_hp for u in enemy_team)
+                # Include dead enemies (they lost all HP)
+                all_enemies = [u for u in self.units if u.team != team_id]
+                total_max_hp = sum(u.stats.max_hp for u in all_enemies)
+                data['_enemy_starting_hp'] = total_max_hp
+
+            starting_hp = data.get('_enemy_starting_hp', 0)
+            if starting_hp <= 0:
+                continue
+
+            # Current enemy HP (alive units only)
+            current_hp = sum(u.stats.hp for u in self.units
+                           if u.team != team_id and u.is_alive)
+            hp_lost_pct = (starting_hp - current_hp) / starting_hp
+
+            if hp_lost_pct >= data['hp_trigger']:
+                # Summon Atakhan!
+                self._summon_atakhan(team_id, data, ally_team)
+                data['summoned'] = True
+
+    def _summon_atakhan(self, team_id: int, noxus_data: Dict, ally_team: List[Unit]):
+        """Summon Atakhan onto the board for the given team.
+
+        Creates Atakhan as a combat unit with stats scaled by:
+        - Total Noxian star levels -> Atakhan's star level
+        - Noxus count -> ability tier (3/5/7/10)
+        """
+        atakhan_star = noxus_data['atakhan_star']
+        noxus_count = noxus_data['count']
+        total_stars = noxus_data['total_stars']
+
+        # Get Atakhan stats for this star level
+        stats = self.trait_manager.ATAKHAN_STATS.get(
+            min(atakhan_star, 4), self.trait_manager.ATAKHAN_STATS[1])
+
+        # Calculate HP with per-star scaling
+        base_hp = stats['hp'] + stats['per_star_hp'] * total_stars
+        base_ad = stats['ad'] * (1.0 + stats['per_star_ad_pct'] * total_stars)
+        base_ap_pct = stats['per_star_ap_pct'] * total_stars
+
+        atakhan_stats = CombatStats(
+            hp=base_hp,
+            max_hp=base_hp,
+            ad=base_ad,
+            ap=base_ap_pct * 100,  # AP as flat value
+            attack_speed=stats['as'],
+            armor=stats['armor'],
+            magic_resist=stats['mr'],
+            range=1,
+            mana=40 if atakhan_star >= 3 else 0,
+            max_mana=85 if atakhan_star >= 3 else 0,
+            crit_chance=0.25,
+            crit_multiplier=1.4,
+            omnivamp=stats['omnivamp'],
+        )
+
+        # Find a position to spawn (left side of board, behind allies)
+        spawn_pos = self._find_atakhan_spawn(team_id, ally_team)
+
+        atakhan = Unit(
+            name='Atakhan',
+            api_name='TFT16_Atakhan',
+            star_level=atakhan_star,
+            stats=atakhan_stats,
+            base_stats=deepcopy(atakhan_stats),
+            position=spawn_pos,
+            team=team_id,
+            traits=[],
+            ability=Ability(
+                name='Punish the Unworthy',
+                ability_type=AbilityType.DAMAGE,
+                damage_type=DamageType.MAGIC,
+                targeting=TargetingType.CURRENT_TARGET,
+                base_damage={1: stats['cleave_damage']},
+                ap_scaling=1.0,
+                cast_time=0.5,
+                aoe_radius=1,
+                effects={
+                    'noxus_count': noxus_count,
+                    'damage_amp': stats['damage_amp'],
+                    'dot_damage': stats['dot_damage'],
+                    'dot_duration': stats['dot_duration'],
+                },
+            ),
+            role='APTank',
+            attack_windup=0.4,
+        )
+
+        # Mark as Atakhan for special handling
+        atakhan._is_atakhan = True
+        atakhan._atakhan_summon_time = self.time
+        atakhan._atakhan_noxus_count = noxus_count
+        atakhan._atakhan_ruin_timer = noxus_data['ruin_timer']
+        atakhan._atakhan_attacks_since_cleave = 0
+
+        # Add to combat
+        self.units.append(atakhan)
+        ally_team.append(atakhan)
+
+        # At 5+ Noxus: grant Noxians damage amp while Atakhan is alive
+        if noxus_count >= 5 and stats['damage_amp'] > 0:
+            for unit in ally_team:
+                if 'Noxus' in unit.traits:
+                    unit.stats.damage_amp += stats['damage_amp']
+
+        self.log_event('atakhan_summoned', team=team_id,
+                      star=atakhan_star, noxus_count=noxus_count,
+                      total_stars=total_stars,
+                      hp=round(base_hp), ad=round(base_ad, 1))
+
+    def _find_atakhan_spawn(self, team_id: int, ally_team: List[Unit]) -> Tuple[int, int]:
+        """Find a spawn position for Atakhan (left side of board)."""
+        occupied = {u.position for u in self.units if u.is_alive}
+
+        # Atakhan spawns from the left side — prefer back row for the team
+        if team_id == 0:
+            preferred_rows = [3, 2, 1, 0]  # Back rows for team 0
+        else:
+            preferred_rows = [0, 1, 2, 3]  # Back rows for team 1
+
+        for row in preferred_rows:
+            for col in [0, 1, 2, 3, 4, 5, 6]:
+                pos = (row, col)
+                if pos not in occupied:
+                    return pos
+
+        # Fallback: just find any open position
+        for row in range(4):
+            for col in range(7):
+                if (row, col) not in occupied:
+                    return (row, col)
+        return (0, 0)  # Absolute fallback
+
+    def _check_atakhan_ruin(self):
+        """Check if a 4-star Atakhan at 10 Noxus should BRING RUIN.
+
+        At 10 Noxus with 4-star Atakhan, after 10 seconds from summoning,
+        Atakhan devours ALL enemy units.
+        """
+        for unit in self.units:
+            if not (unit.is_alive and getattr(unit, '_is_atakhan', False)):
+                continue
+
+            noxus_count = getattr(unit, '_atakhan_noxus_count', 0)
+            if noxus_count < 10 or unit.star_level < 4:
+                continue
+
+            summon_time = getattr(unit, '_atakhan_summon_time', 0)
+            ruin_timer = getattr(unit, '_atakhan_ruin_timer', 10)
+
+            if self.time - summon_time >= ruin_timer:
+                if not getattr(unit, '_ruin_triggered', False):
+                    unit._ruin_triggered = True
+                    # BRING RUIN: kill all enemy units
+                    enemies = [u for u in self.units
+                             if u.team != unit.team and u.is_alive]
+                    for enemy in enemies:
+                        enemy.stats.hp = 0
+                        enemy.is_alive = False
+                        enemy.state = UnitState.DEAD
+                    self.log_event('atakhan_bring_ruin', team=unit.team,
+                                  enemies_devoured=len(enemies))
 
     def _count_traits(self, team: List[Unit]) -> Dict[str, int]:
         """Count trait occurrences for a team.
@@ -3527,6 +3775,9 @@ class CombatEngine:
         # Reset Shadow Isles souls for new combat
         self.trait_manager.reset_shadow_isles()
 
+        # Reset Noxus Atakhan state for new combat
+        self._noxus_team_data = {}
+
         # Reset augment manager for new combat
         self.augment_manager.reset()
 
@@ -3550,6 +3801,12 @@ class CombatEngine:
             self.augment_manager.set_augments(team1_augments)
             self.augment_manager.apply_augments(team1, team1_traits)
             self.log_event('augments_applied', team=1, augments=team1_augments)
+
+        # Cache enemy starting HP for Noxus Atakhan trigger (after all buffs)
+        noxus_data = getattr(self, '_noxus_team_data', {})
+        for team_id, data in noxus_data.items():
+            enemy_hp = sum(u.stats.max_hp for u in self.units if u.team != team_id)
+            data['_enemy_starting_hp'] = enemy_hp
 
         # Combat loop
         while self.time < max_time:
