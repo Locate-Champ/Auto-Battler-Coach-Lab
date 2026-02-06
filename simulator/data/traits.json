@@ -1,0 +1,1620 @@
+{
+  "set": 16,
+  "last_updated": "2026-02-05T03:41:25.953643+00:00",
+  "traits": {
+    "TFT16_Teamup_SingedTeemo": {
+      "apiName": "TFT16_Teamup_SingedTeemo",
+      "name": "Poison Pals",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "SingedAPGain": 2,
+            "TeemoDamageReq": 100
+          }
+        }
+      ]
+    },
+    "TFT16_XerathUnique": {
+      "apiName": "TFT16_XerathUnique",
+      "name": "Ascendant",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {}
+        }
+      ]
+    },
+    "TFT16_Freljord": {
+      "apiName": "TFT16_Freljord",
+      "name": "Freljord",
+      "effects": [
+        {
+          "minUnits": 3,
+          "maxUnits": 4,
+          "style": 1,
+          "variables": {
+            "DA": 0.10000000149011612,
+            "FreljordBonus": 1.5,
+            "HealthPercent": 0.07999999821186066,
+            "StunDuration": null,
+            "{03c21e23}": null,
+            "{7dced3cd}": 1.0
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 6,
+          "style": 3,
+          "variables": {
+            "DA": 0.1599999964237213,
+            "FreljordBonus": 1.5,
+            "HealthPercent": 0.11999999731779099,
+            "StunDuration": null,
+            "{03c21e23}": 1.0,
+            "{7dced3cd}": 2.0
+          }
+        },
+        {
+          "minUnits": 7,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "DA": 0.2199999988079071,
+            "FreljordBonus": 1.5,
+            "HealthPercent": 0.1599999964237213,
+            "StunDuration": 1.5,
+            "{03c21e23}": 1.0,
+            "{7dced3cd}": 2.0
+          }
+        }
+      ]
+    },
+    "TFT16_Juggernaut": {
+      "apiName": "TFT16_Juggernaut",
+      "name": "Juggernaut",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "BaseDR": 0.18000000715255737,
+            "HealRatio": 0.05000000074505806,
+            "HealthBreakpoint": 0.5,
+            "IncreasedDR": 0.25
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 5,
+          "style": 3,
+          "variables": {
+            "BaseDR": 0.20000000298023224,
+            "HealRatio": 0.05000000074505806,
+            "HealthBreakpoint": 0.5,
+            "IncreasedDR": 0.30000001192092896
+          }
+        },
+        {
+          "minUnits": 6,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "BaseDR": 0.25999999046325684,
+            "HealRatio": 0.05000000074505806,
+            "HealthBreakpoint": 0.5,
+            "IncreasedDR": 0.36000001430511475
+          }
+        }
+      ]
+    },
+    "TFT16_Rapidfire": {
+      "apiName": "TFT16_Rapidfire",
+      "name": "Quickstriker",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 2,
+          "style": 1,
+          "variables": {
+            "MaxBonusAS": 0.30000001192092896,
+            "MinBonusAS": 0.10000000149011612,
+            "TeamwideAS": 0.15000000596046448
+          }
+        },
+        {
+          "minUnits": 3,
+          "maxUnits": 3,
+          "style": 3,
+          "variables": {
+            "MaxBonusAS": 0.44999998807907104,
+            "MinBonusAS": 0.20000000298023224,
+            "TeamwideAS": 0.15000000596046448
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 4,
+          "style": 3,
+          "variables": {
+            "MaxBonusAS": 0.6000000238418579,
+            "MinBonusAS": 0.30000001192092896,
+            "TeamwideAS": 0.15000000596046448
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "MaxBonusAS": 0.800000011920929,
+            "MinBonusAS": 0.4000000059604645,
+            "TeamwideAS": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    "TFT16_Longshot": {
+      "apiName": "TFT16_Longshot",
+      "name": "Longshot",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 2,
+          "style": 1,
+          "variables": {
+            "BaseDamageAmp": 0.18000000715255737,
+            "PercentDamageIncrease": 0.019999999552965164
+          }
+        },
+        {
+          "minUnits": 3,
+          "maxUnits": 3,
+          "style": 3,
+          "variables": {
+            "BaseDamageAmp": 0.23999999463558197,
+            "PercentDamageIncrease": 0.029999999329447746
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 4,
+          "style": 5,
+          "variables": {
+            "BaseDamageAmp": 0.2800000011920929,
+            "PercentDamageIncrease": 0.03999999910593033
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "BaseDamageAmp": 0.3199999928474426,
+            "PercentDamageIncrease": 0.05000000074505806
+          }
+        }
+      ]
+    },
+    "TFT16_Vanquisher": {
+      "apiName": "TFT16_Vanquisher",
+      "name": "Vanquisher",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 2,
+          "style": 1,
+          "variables": {
+            "BaseCritChance": 15.0,
+            "CritDmg": 15.0
+          }
+        },
+        {
+          "minUnits": 3,
+          "maxUnits": 3,
+          "style": 3,
+          "variables": {
+            "BaseCritChance": 20.0,
+            "CritDmg": 20.0
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 4,
+          "style": 3,
+          "variables": {
+            "BaseCritChance": 25.0,
+            "CritDmg": 25.0
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "BaseCritChance": 30.0,
+            "CritDmg": 30.0
+          }
+        }
+      ]
+    },
+    "TFT16_Caretaker": {
+      "apiName": "TFT16_Caretaker",
+      "name": "Caretaker",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {}
+        }
+      ]
+    },
+    "TFT16_Explorer": {
+      "apiName": "TFT16_Explorer",
+      "name": "Ixtal",
+      "effects": [
+        {
+          "minUnits": 3,
+          "maxUnits": 4,
+          "style": 1,
+          "variables": {
+            "BonusHealth_Pairs": null,
+            "Heal": null
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 6,
+          "style": 3,
+          "variables": {
+            "BonusHealth_Pairs": 250,
+            "Heal": 2.0
+          }
+        },
+        {
+          "minUnits": 7,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "BonusClues": 50.0,
+            "BonusHealth_Pairs": 250,
+            "Heal": 2.0
+          }
+        }
+      ]
+    },
+    "TFT16_Slayer": {
+      "apiName": "TFT16_Slayer",
+      "name": "Slayer",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "AmountIncrease": 0.5,
+            "BonusAD": 0.2199999988079071,
+            "BonusOmnivamp": 0.10000000149011612
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 5,
+          "style": 3,
+          "variables": {
+            "AmountIncrease": 0.5,
+            "BonusAD": 0.33000001311302185,
+            "BonusOmnivamp": 0.1599999964237213
+          }
+        },
+        {
+          "minUnits": 6,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "AmountIncrease": 0.5,
+            "BonusAD": 0.4399999976158142,
+            "BonusOmnivamp": 0.20000000298023224
+          }
+        }
+      ]
+    },
+    "TFT16_Sorcerer": {
+      "apiName": "TFT16_Sorcerer",
+      "name": "Arcanist",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "AllyAP": 18.0,
+            "BonusAP": 25.0
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 5,
+          "style": 3,
+          "variables": {
+            "AllyAP": 25.0,
+            "BonusAP": 40.0
+          }
+        },
+        {
+          "minUnits": 6,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "AllyAP": 40.0,
+            "BonusAP": 60.0
+          }
+        }
+      ]
+    },
+    "TFT16_Emperor": {
+      "apiName": "TFT16_Emperor",
+      "name": "Emperor",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {}
+        }
+      ]
+    },
+    "TFT16_AurelionSolUnique": {
+      "apiName": "TFT16_AurelionSolUnique",
+      "name": "Star Forger",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "BonusStardustPerOneStar": 0.25,
+            "BonusStardustPerThreeStar": 1.0,
+            "BonusStardustPerTwoStar": 0.30000001192092896
+          }
+        }
+      ]
+    },
+    "TFT16_ShyvanaUnique": {
+      "apiName": "TFT16_ShyvanaUnique",
+      "name": "Dragonborn",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "AbilityDamageReduction": 0.07999999821186066
+          }
+        }
+      ]
+    },
+    "TFT16_Gunslinger": {
+      "apiName": "TFT16_Gunslinger",
+      "name": "Gunslinger",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "AD": 0.2199999988079071,
+            "BonusDamage": 100,
+            "NumAttacks": 4
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "AD": 0.4000000059604645,
+            "BonusDamage": 200,
+            "NumAttacks": 4
+          }
+        }
+      ]
+    },
+    "TFT16_HexMech": {
+      "apiName": "TFT16_HexMech",
+      "name": "HexMech",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "AD1": 20.0,
+            "AD2": 30.0,
+            "AD3": 40.0,
+            "Amp1": 12.0,
+            "Amp2": 20.0,
+            "Amp3": 30.0,
+            "Crit1": 40.0,
+            "Crit2": 70.0,
+            "Crit3": 100.0,
+            "Mana1": 2.0,
+            "Mana2": 4.0,
+            "Mana3": 5.0,
+            "PercentHealth": 0.800000011920929,
+            "StunDuration": 1.5,
+            "Vamp1": 20.0,
+            "Vamp2": 30.0,
+            "Vamp3": 40.0,
+            "{99dbd967}": 0.5
+          }
+        }
+      ]
+    },
+    "TFT16_Teamup_AmbessaKindred": {
+      "apiName": "TFT16_Teamup_AmbessaKindred",
+      "name": "Chosen Wolves",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "AmbessaBonusAD": 0.4000000059604645,
+            "WolfDamage": 0.30000001192092896
+          }
+        }
+      ]
+    },
+    "TFT16_SylasTrait": {
+      "apiName": "TFT16_SylasTrait",
+      "name": "Chainbreaker",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {}
+        }
+      ]
+    },
+    "TFT16_Soulbound": {
+      "apiName": "TFT16_Soulbound",
+      "name": "Soulbound",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "LucianDA": 0.07000000029802322,
+            "SennaDR": 0.07000000029802322
+          }
+        }
+      ]
+    },
+    "TFT16_Piltover": {
+      "apiName": "TFT16_Piltover",
+      "name": "Piltover",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "InventionFireTime": 8.0
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 5,
+          "style": 3,
+          "variables": {
+            "InventionFireTime": 8.0
+          }
+        },
+        {
+          "minUnits": 6,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "InventionFireTime": 8.0
+          }
+        }
+      ]
+    },
+    "TFT16_Teamup_EkkoZilean": {
+      "apiName": "TFT16_Teamup_EkkoZilean",
+      "name": "Timewinders",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 1,
+          "style": 4,
+          "variables": {
+            "DamageShare": 0.10000000149011612,
+            "TOOLTIPONLYXP": 2
+          }
+        },
+        {
+          "minUnits": 2,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "DamageShare": 0.10000000149011612,
+            "TOOLTIPONLYXP": 2
+          }
+        }
+      ]
+    },
+    "TFT16_DarkinWeapon": {
+      "apiName": "TFT16_DarkinWeapon",
+      "name": "Darkin",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 1,
+          "style": 1,
+          "variables": {
+            "Damage": 333,
+            "EnemyNum": 2,
+            "HealThreshold": 600,
+            "TacticianPercent": 0.25,
+            "Vamp": 0.15000000596046448
+          }
+        },
+        {
+          "minUnits": 2,
+          "maxUnits": 2,
+          "style": 3,
+          "variables": {
+            "Damage": 333,
+            "EnemyNum": 2,
+            "HealThreshold": 600,
+            "TacticianPercent": 0.25,
+            "Vamp": 0.15000000596046448
+          }
+        },
+        {
+          "minUnits": 3,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "Damage": 333,
+            "EnemyNum": 2,
+            "HealThreshold": 600,
+            "TacticianPercent": 0.25,
+            "Vamp": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    "TFT16_KindredUnique": {
+      "apiName": "TFT16_KindredUnique",
+      "name": "Eternal",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "PercentDamageMult": 3.25
+          }
+        }
+      ]
+    },
+    "TFT16_DarkChild": {
+      "apiName": "TFT16_DarkChild",
+      "name": "Dark Child",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {}
+        }
+      ]
+    },
+    "TFT16_AatroxUnique": {
+      "apiName": "TFT16_AatroxUnique",
+      "name": "World Ender",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "Durability": 0.20000000298023224,
+            "HealDuration": 2.0,
+            "ManaReduction": 10.0,
+            "{63ed7d87}": 1.5
+          }
+        }
+      ]
+    },
+    "TFT16_KaisaUnique": {
+      "apiName": "TFT16_KaisaUnique",
+      "name": "Assimilator",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {}
+        }
+      ]
+    },
+    "TFT16_Teamup_JarvanShyvana": {
+      "apiName": "TFT16_Teamup_JarvanShyvana",
+      "name": "Dragonguards",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "JarvanResistDamage1": 1.0,
+            "JarvanResistDamage2": 1.2000000476837158,
+            "JarvanResistDamage3": 1.5499999523162842,
+            "JarvanResistDamage4": 2.0,
+            "JarvanShieldShare": 1.0
+          }
+        }
+      ]
+    },
+    "TFT16_Magus": {
+      "apiName": "TFT16_Magus",
+      "name": "Disruptor",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "DamageAmp": 0.18000000715255737,
+            "DamageReduction": 0.10000000149011612
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "DamageAmp": 0.4000000059604645,
+            "DamageReduction": 0.10000000149011612
+          }
+        }
+      ]
+    },
+    "TFT16_Void": {
+      "apiName": "TFT16_Void",
+      "name": "Void",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "BonusAS": 0.07999999821186066,
+            "NumMutations": 1,
+            "SuperchargedMult": null
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 5,
+          "style": 3,
+          "variables": {
+            "BonusAS": 0.18000000715255737,
+            "NumMutations": 2,
+            "{12afd090}": null
+          }
+        },
+        {
+          "minUnits": 6,
+          "maxUnits": 8,
+          "style": 5,
+          "variables": {
+            "BonusAS": 0.33000001311302185,
+            "NumMutations": 3,
+            "SuperchargedMult": null
+          }
+        },
+        {
+          "minUnits": 9,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "BonusAS": 0.4000000059604645,
+            "NumMutations": 3,
+            "SuperchargedMult": 1.0
+          }
+        }
+      ]
+    },
+    "TFT16_RuneMage": {
+      "apiName": "TFT16_RuneMage",
+      "name": "Rune Mage",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {}
+        }
+      ]
+    },
+    "TFT16_TheBoss": {
+      "apiName": "TFT16_TheBoss",
+      "name": "The Boss",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "AttackSpeedPercent": 60.0,
+            "HealPercent": 15.0,
+            "MaxHealthThreshold": 0.44999998807907104
+          }
+        }
+      ]
+    },
+    "TFT16_Glutton": {
+      "apiName": "TFT16_Glutton",
+      "name": "Glutton",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "{6502b165}": 20.0,
+            "{72c78315}": 1.25
+          }
+        }
+      ]
+    },
+    "TFT16_Invoker": {
+      "apiName": "TFT16_Invoker",
+      "name": "Invoker",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "PercentManaIncrease": 0.25,
+            "TeamBonusMana": 1
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "PercentManaIncrease": 0.4000000059604645,
+            "TeamBonusMana": 1
+          }
+        }
+      ]
+    },
+    "TFT16_Demacia": {
+      "apiName": "TFT16_Demacia",
+      "name": "Demacia",
+      "effects": [
+        {
+          "minUnits": 3,
+          "maxUnits": 4,
+          "style": 1,
+          "variables": {
+            "ArmorMR": 12.0,
+            "EnemyTrueDamage": 0.05000000074505806,
+            "ManaReductionPct": 0.10000000149011612,
+            "MaxHealthLost": 0.25,
+            "{050353fe}": 0.25,
+            "{54b32412}": 1500.0,
+            "{556d8bdf}": 3,
+            "{95d6e9fc}": 0.5
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 6,
+          "style": 3,
+          "variables": {
+            "ArmorMR": 35.0,
+            "EnemyTrueDamage": 0.05000000074505806,
+            "ManaReductionPct": 0.10000000149011612,
+            "MaxHealthLost": 0.25,
+            "{050353fe}": 0.25,
+            "{54b32412}": 1500.0,
+            "{556d8bdf}": 3,
+            "{95d6e9fc}": 0.5
+          }
+        },
+        {
+          "minUnits": 7,
+          "maxUnits": 10,
+          "style": 5,
+          "variables": {
+            "ArmorMR": 35.0,
+            "EnemyTrueDamage": 0.05000000074505806,
+            "ManaReductionPct": 0.10000000149011612,
+            "MaxHealthLost": 0.25,
+            "{050353fe}": 0.25,
+            "{54b32412}": 1500.0,
+            "{556d8bdf}": 3,
+            "{95d6e9fc}": 0.5
+          }
+        },
+        {
+          "minUnits": 11,
+          "maxUnits": 25000,
+          "style": 6,
+          "variables": {
+            "ArmorMR": 150.0,
+            "EnemyTrueDamage": 0.05000000074505806,
+            "ManaReductionPct": 0.10000000149011612,
+            "MaxHealthLost": 0.25,
+            "{050353fe}": 0.25,
+            "{54b32412}": 1500.0,
+            "{556d8bdf}": 3,
+            "{95d6e9fc}": 0.5
+          }
+        }
+      ]
+    },
+    "TFT16_Bilgewater": {
+      "apiName": "TFT16_Bilgewater",
+      "name": "Bilgewater",
+      "effects": [
+        {
+          "minUnits": 3,
+          "maxUnits": 4,
+          "style": 1,
+          "variables": {
+            "MaxItems": 8.0,
+            "SerpentsPerRound": 15.0,
+            "SerpentsPerTakedown": 1,
+            "StatMult": 1.0,
+            "{79b25b0f}": 300.0,
+            "{853eaa6d}": 1.5,
+            "{fb25c87b}": 2.0
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 6,
+          "style": 3,
+          "variables": {
+            "MaxItems": 8.0,
+            "SerpentsPerRound": 35.0,
+            "SerpentsPerTakedown": 1,
+            "StatMult": 1.0,
+            "{79b25b0f}": 300.0,
+            "{853eaa6d}": 1.5,
+            "{fb25c87b}": 2.0
+          }
+        },
+        {
+          "minUnits": 7,
+          "maxUnits": 9,
+          "style": 5,
+          "variables": {
+            "MaxItems": 8.0,
+            "SerpentsPerRound": 65.0,
+            "SerpentsPerTakedown": 1,
+            "StatMult": 1.0,
+            "{79b25b0f}": 300.0,
+            "{853eaa6d}": 1.5,
+            "{fb25c87b}": 2.0
+          }
+        },
+        {
+          "minUnits": 10,
+          "maxUnits": 25000,
+          "style": 6,
+          "variables": {
+            "MaxItems": 8.0,
+            "SerpentsPerRound": 150.0,
+            "SerpentsPerTakedown": 1,
+            "StatMult": 2.0,
+            "{79b25b0f}": 300.0,
+            "{853eaa6d}": 1.5,
+            "{fb25c87b}": 2.0
+          }
+        }
+      ]
+    },
+    "TFT16_BaronUnique": {
+      "apiName": "TFT16_BaronUnique",
+      "name": "Riftscourge",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "DamageAmp": 0.30000001192092896,
+            "LightningPercentHealth": 0.05000000074505806,
+            "VoidTime": 8.0,
+            "{79ea70c9}": 0.5
+          }
+        }
+      ]
+    },
+    "TFT16_Targon": {
+      "apiName": "TFT16_Targon",
+      "name": "Targon",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {}
+        }
+      ]
+    },
+    "TFT16_Shurima": {
+      "apiName": "TFT16_Shurima",
+      "name": "Shurima",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 2,
+          "style": 1,
+          "variables": {
+            "ASPerSecond": 0.019999999552965164,
+            "ArmorMR": null,
+            "BonusHealth": 0.20000000298023224,
+            "GodhoodCadence": null,
+            "HealthRestorePerSecond": 20,
+            "{2b696a57}": null,
+            "{a1f805da}": 0.07999999821186066
+          }
+        },
+        {
+          "minUnits": 3,
+          "maxUnits": 3,
+          "style": 5,
+          "variables": {
+            "ASPerSecond": 0.019999999552965164,
+            "ArmorMR": 50.0,
+            "BonusHealth": 0.20000000298023224,
+            "GodhoodCadence": null,
+            "HealthRestorePerSecond": 20,
+            "{2b696a57}": null,
+            "{a1f805da}": 0.07999999821186066
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 25000,
+          "style": 6,
+          "variables": {
+            "ASPerSecond": 0.019999999552965164,
+            "ArmorMR": 50.0,
+            "BonusHealth": 0.20000000298023224,
+            "GodhoodCadence": 3,
+            "HealthRestorePerSecond": 20,
+            "{2b696a57}": 1,
+            "{a1f805da}": 0.07999999821186066
+          }
+        }
+      ]
+    },
+    "TFT16_Blacksmith": {
+      "apiName": "TFT16_Blacksmith",
+      "name": "Blacksmith",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "ArtifactMult": 3.0,
+            "FlatHealthPerItem1Star": 350,
+            "FlatHealthPerItem2Star": 600,
+            "FlatHealthPerItem3Star": 2000.0,
+            "RoundsToCraft": 4,
+            "{85699349}": null
+          }
+        }
+      ]
+    },
+    "TFT16_ShadowIsles": {
+      "apiName": "TFT16_ShadowIsles",
+      "name": "Shadow Isles",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 2,
+          "style": 1,
+          "variables": {
+            "ADAP": 0.18000000715255737,
+            "SoulMult": 1.0,
+            "{1e24d16e}": 135.0,
+            "{263593f9}": 65.0,
+            "{2c785ea4}": null,
+            "{30214014}": 25.0,
+            "{570dee69}": 1.0,
+            "{689e69ab}": 160.0,
+            "{b3900e2d}": 215.0,
+            "{cd71fc1d}": 255.0,
+            "{e99a6f18}": 185.0
+          }
+        },
+        {
+          "minUnits": 3,
+          "maxUnits": 3,
+          "style": 3,
+          "variables": {
+            "ADAP": 0.20000000298023224,
+            "SoulMult": 1.2999999523162842,
+            "{1e24d16e}": 135.0,
+            "{263593f9}": 65.0,
+            "{2c785ea4}": null,
+            "{30214014}": 25.0,
+            "{570dee69}": 1.0,
+            "{689e69ab}": 160.0,
+            "{b3900e2d}": 215.0,
+            "{cd71fc1d}": 255.0,
+            "{e99a6f18}": 185.0
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 4,
+          "style": 3,
+          "variables": {
+            "ADAP": 0.25,
+            "SoulMult": 1.600000023841858,
+            "{1e24d16e}": 135.0,
+            "{263593f9}": 65.0,
+            "{2c785ea4}": null,
+            "{30214014}": 25.0,
+            "{570dee69}": 1.0,
+            "{689e69ab}": 160.0,
+            "{b3900e2d}": 215.0,
+            "{cd71fc1d}": 255.0,
+            "{e99a6f18}": 185.0
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "ADAP": 0.33000001311302185,
+            "SoulMult": 1.899999976158142,
+            "{1e24d16e}": 135.0,
+            "{263593f9}": 65.0,
+            "{2c785ea4}": null,
+            "{30214014}": 25.0,
+            "{570dee69}": 1.0,
+            "{689e69ab}": 160.0,
+            "{b3900e2d}": 215.0,
+            "{cd71fc1d}": 255.0,
+            "{e99a6f18}": 185.0
+          }
+        }
+      ]
+    },
+    "TFT16_Harvester": {
+      "apiName": "TFT16_Harvester",
+      "name": "Harvester",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "EnemyArmorMRReduction": 10,
+            "ManaPerEnemyDeath": 10.0
+          }
+        }
+      ]
+    },
+    "TFT16_ZaahenTrait": {
+      "apiName": "TFT16_ZaahenTrait",
+      "name": "Immortal",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "FocusNeededToRevive": 3,
+            "PercentMaxHealthHeal": 0.6000000238418579,
+            "ReviveDuration": 0.5,
+            "{54747e02}": null
+          }
+        }
+      ]
+    },
+    "TFT16_Heroic": {
+      "apiName": "TFT16_Heroic",
+      "name": "Heroic",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "HexRadius": 3.0,
+            "KnockupDuration": 1.0,
+            "PercentMaxHP": 0.10000000149011612
+          }
+        }
+      ]
+    },
+    "TFT16_Noxus": {
+      "apiName": "TFT16_Noxus",
+      "name": "Noxus",
+      "effects": [
+        {
+          "minUnits": 3,
+          "maxUnits": 4,
+          "style": 1,
+          "variables": {
+            "HPLostTrigger": 0.15000000596046448,
+            "RuinTimer": 10
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 6,
+          "style": 3,
+          "variables": {
+            "HPLostTrigger": 0.15000000596046448,
+            "RuinTimer": 10
+          }
+        },
+        {
+          "minUnits": 7,
+          "maxUnits": 9,
+          "style": 5,
+          "variables": {
+            "HPLostTrigger": 0.15000000596046448,
+            "RuinTimer": 10
+          }
+        },
+        {
+          "minUnits": 10,
+          "maxUnits": 25000,
+          "style": 6,
+          "variables": {
+            "HPLostTrigger": 0.15000000596046448,
+            "RuinTimer": 10
+          }
+        }
+      ]
+    },
+    "TFT16_Yordle": {
+      "apiName": "TFT16_Yordle",
+      "name": "Yordle",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "AS": 0.05000000074505806,
+            "BonusHealth": 40.0,
+            "BonusMultiplier": 1.0,
+            "BonusStatMultiplier": 1.0,
+            "FreeRerolls": null,
+            "{12cd8d20}": null,
+            "{94706038}": null,
+            "{9f843340}": 700.0,
+            "{a90bd1e4}": 1.5,
+            "{ada76fc3}": 800.0,
+            "{b46678c7}": 200.0,
+            "{fe25b795}": null
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 5,
+          "style": 3,
+          "variables": {
+            "AS": 0.05000000074505806,
+            "BonusHealth": 40.0,
+            "BonusMultiplier": 1.0,
+            "BonusStatMultiplier": 1.0,
+            "FreeRerolls": null,
+            "{12cd8d20}": 1.0,
+            "{94706038}": null,
+            "{9f843340}": 700.0,
+            "{a90bd1e4}": 1.5,
+            "{ada76fc3}": 800.0,
+            "{b46678c7}": 200.0,
+            "{fe25b795}": null
+          }
+        },
+        {
+          "minUnits": 6,
+          "maxUnits": 7,
+          "style": 3,
+          "variables": {
+            "AS": 0.05000000074505806,
+            "BonusHealth": 40.0,
+            "BonusMultiplier": 1.0,
+            "BonusStatMultiplier": 1.0,
+            "FreeRerolls": 1.0,
+            "{12cd8d20}": 1.0,
+            "{94706038}": null,
+            "{9f843340}": 700.0,
+            "{a90bd1e4}": 1.5,
+            "{ada76fc3}": 800.0,
+            "{b46678c7}": 200.0,
+            "{fe25b795}": null
+          }
+        },
+        {
+          "minUnits": 8,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "AS": 0.05000000074505806,
+            "BonusHealth": 40.0,
+            "BonusMultiplier": 1.0,
+            "BonusStatMultiplier": 1.0,
+            "FreeRerolls": 1.0,
+            "{12cd8d20}": 1.0,
+            "{94706038}": 1.0,
+            "{9f843340}": 700.0,
+            "{a90bd1e4}": 1.5,
+            "{ada76fc3}": 800.0,
+            "{b46678c7}": 200.0,
+            "{fe25b795}": null
+          }
+        },
+        {
+          "minUnits": 10,
+          "maxUnits": 25000,
+          "style": 6,
+          "variables": {
+            "AS": 0.05000000074505806,
+            "BonusHealth": 40.0,
+            "BonusMultiplier": 1.0,
+            "BonusStatMultiplier": 1.0,
+            "FreeRerolls": 1.0,
+            "{12cd8d20}": 1.0,
+            "{94706038}": 1.0,
+            "{9f843340}": 700.0,
+            "{a90bd1e4}": 1.5,
+            "{ada76fc3}": 800.0,
+            "{b46678c7}": 200.0,
+            "{fe25b795}": 1.0
+          }
+        }
+      ]
+    },
+    "TFT16_Zaun": {
+      "apiName": "TFT16_Zaun",
+      "name": "Zaun",
+      "effects": [
+        {
+          "minUnits": 3,
+          "maxUnits": 4,
+          "style": 1,
+          "variables": {
+            "HealDuration": 3.0,
+            "HealThreshold": 0.6000000238418579,
+            "InitialDelay": 4.0,
+            "MaxHealthHeal": null,
+            "RefreshSeconds": 4.0,
+            "ReviveDuration": 3.0,
+            "ShimmerFuseAttackSpeed": 0.8999999761581421,
+            "ShimmerFuseDurability": 0.15000000596046448,
+            "ShimmerFuseDuration": 4.0,
+            "ShimmerFustMult": null,
+            "{19b47e58}": 0.3499999940395355
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 6,
+          "style": 3,
+          "variables": {
+            "HealDuration": 3.0,
+            "HealThreshold": 0.6000000238418579,
+            "InitialDelay": 4.0,
+            "MaxHealthHeal": 0.30000001192092896,
+            "RefreshSeconds": 4.0,
+            "ReviveDuration": 3.0,
+            "ShimmerFuseAttackSpeed": 0.8999999761581421,
+            "ShimmerFuseDurability": 0.15000000596046448,
+            "ShimmerFuseDuration": 4.0,
+            "ShimmerFustMult": null,
+            "{19b47e58}": 0.3499999940395355
+          }
+        },
+        {
+          "minUnits": 7,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "HealDuration": 3.0,
+            "HealThreshold": 0.6000000238418579,
+            "InitialDelay": 4.0,
+            "MaxHealthHeal": 0.30000001192092896,
+            "RefreshSeconds": 3.0,
+            "ReviveDuration": 3.0,
+            "ShimmerFuseAttackSpeed": 0.8999999761581421,
+            "ShimmerFuseDurability": 0.15000000596046448,
+            "ShimmerFuseDuration": 4.0,
+            "ShimmerFustMult": 0.5,
+            "{19b47e58}": 0.3499999940395355
+          }
+        }
+      ]
+    },
+    "TFT16_Brawler": {
+      "apiName": "TFT16_Brawler",
+      "name": "Bruiser",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "BonusPercentHealth": 0.25,
+            "TeamFlatHealth": 150
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 5,
+          "style": 3,
+          "variables": {
+            "BonusPercentHealth": 0.44999998807907104,
+            "TeamFlatHealth": 150
+          }
+        },
+        {
+          "minUnits": 6,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "BonusPercentHealth": 0.6499999761581421,
+            "TeamFlatHealth": 150
+          }
+        }
+      ]
+    },
+    "TFT16_Chronokeeper": {
+      "apiName": "TFT16_Chronokeeper",
+      "name": "Chronokeeper",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "CastsToGainXP": 2,
+            "CastsToGainXPPAIRS": 2,
+            "DAGainAtMaxLevel": 15,
+            "XPPerCast": 1,
+            "{bffe0f35}": null
+          }
+        }
+      ]
+    },
+    "TFT16_Warden": {
+      "apiName": "TFT16_Warden",
+      "name": "Warden",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 2,
+          "style": 1,
+          "variables": {
+            "FirstShieldPercentHealth": 0.75,
+            "PercentHealthShield": 0.1599999964237213,
+            "SecondShieldPercentHealth": 0.25
+          }
+        },
+        {
+          "minUnits": 3,
+          "maxUnits": 3,
+          "style": 3,
+          "variables": {
+            "FirstShieldPercentHealth": 0.75,
+            "PercentHealthShield": 0.20000000298023224,
+            "SecondShieldPercentHealth": 0.25
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 4,
+          "style": 3,
+          "variables": {
+            "FirstShieldPercentHealth": 0.75,
+            "PercentHealthShield": 0.25999999046325684,
+            "SecondShieldPercentHealth": 0.25
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "FirstShieldPercentHealth": 0.75,
+            "PercentHealthShield": 0.33000001311302185,
+            "SecondShieldPercentHealth": 0.25
+          }
+        }
+      ]
+    },
+    "TFT16_Ionia": {
+      "apiName": "TFT16_Ionia",
+      "name": "Ionia",
+      "effects": [
+        {
+          "minUnits": 3,
+          "maxUnits": 4,
+          "style": 1,
+          "variables": {
+            "BladesFlatDamage": 3.0,
+            "BladesPercentChance": 30.0,
+            "DeterminationFlatDamage": 20,
+            "DeterminationResists": 15,
+            "EnlightenmentADAP": 10.0,
+            "EnlightenmentADAPPerLevel": 2.0,
+            "EnlightenmentXP": 1,
+            "GenerosityADAP": 10,
+            "GenerosityIncreasePerGold": 0.019999999552965164,
+            "SpiritADAP": 3.0,
+            "SpiritHealth": 0.25,
+            "Transcendence3StarBuff": 1.0,
+            "TranscendenceHealth": 0.10000000149011612,
+            "TranscendenceMagicDamage": 0.20000000298023224,
+            "{11fa863c}": 5.0
+          }
+        },
+        {
+          "minUnits": 5,
+          "maxUnits": 6,
+          "style": 3,
+          "variables": {
+            "BladesFlatDamage": 8.0,
+            "BladesPercentChance": 38.0,
+            "DeterminationFlatDamage": 40,
+            "DeterminationResists": 25,
+            "EnlightenmentADAP": 15.0,
+            "EnlightenmentADAPPerLevel": 3.0,
+            "EnlightenmentXP": 2,
+            "GenerosityADAP": 25,
+            "GenerosityIncreasePerGold": 0.019999999552965164,
+            "SpiritADAP": 4.0,
+            "SpiritHealth": 0.30000001192092896,
+            "Transcendence3StarBuff": 1.0,
+            "TranscendenceHealth": 0.15000000596046448,
+            "TranscendenceMagicDamage": 0.25,
+            "{11fa863c}": 4.0
+          }
+        },
+        {
+          "minUnits": 7,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "BladesFlatDamage": 15.0,
+            "BladesPercentChance": 45.0,
+            "DeterminationFlatDamage": 60,
+            "DeterminationResists": 40,
+            "EnlightenmentADAP": 20.0,
+            "EnlightenmentADAPPerLevel": 4.0,
+            "EnlightenmentXP": 4,
+            "GenerosityADAP": 40,
+            "GenerosityIncreasePerGold": 0.019999999552965164,
+            "SpiritADAP": 5.0,
+            "SpiritHealth": 0.3499999940395355,
+            "Transcendence3StarBuff": 1.0,
+            "TranscendenceHealth": 0.20000000298023224,
+            "TranscendenceMagicDamage": 0.30000001192092896,
+            "{11fa863c}": 3.0
+          }
+        },
+        {
+          "minUnits": 10,
+          "maxUnits": 25000,
+          "style": 6,
+          "variables": {
+            "BladesFlatDamage": 25.0,
+            "BladesPercentChance": 70.0,
+            "DeterminationFlatDamage": 100,
+            "DeterminationResists": 75,
+            "EnlightenmentADAP": 100.0,
+            "EnlightenmentADAPPerLevel": null,
+            "EnlightenmentXP": 4,
+            "GenerosityADAP": 50,
+            "GenerosityIncreasePerGold": 0.019999999552965164,
+            "SpiritADAP": 7.0,
+            "SpiritHealth": 0.75,
+            "Transcendence3StarBuff": 1.0,
+            "TranscendenceHealth": 0.30000001192092896,
+            "TranscendenceMagicDamage": 0.699999988079071,
+            "{0c4f63cb}": 0.05000000074505806,
+            "{11fa863c}": 1.0,
+            "{ab6ec39e}": 1.0,
+            "{cf068040}": 0.4000000059604645,
+            "{ec4adf8d}": 5.0
+          }
+        }
+      ]
+    },
+    "TFT16_Defender": {
+      "apiName": "TFT16_Defender",
+      "name": "Defender",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 3,
+          "style": 1,
+          "variables": {
+            "BonusArmorMR": 30.0,
+            "TeamwideArmorMR": 12
+          }
+        },
+        {
+          "minUnits": 4,
+          "maxUnits": 5,
+          "style": 3,
+          "variables": {
+            "BonusArmorMR": 55.0,
+            "TeamwideArmorMR": 12
+          }
+        },
+        {
+          "minUnits": 6,
+          "maxUnits": 25000,
+          "style": 5,
+          "variables": {
+            "BonusArmorMR": 80.0,
+            "TeamwideArmorMR": 12
+          }
+        }
+      ]
+    },
+    "TFT16_Teamup_LucianVayne": {
+      "apiName": "TFT16_Teamup_LucianVayne",
+      "name": "Sentinels of Light",
+      "effects": [
+        {
+          "minUnits": 2,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "BoltEffectiveness": 0.25,
+            "LucianSennaAS": 0.5,
+            "NumBonusBolts": 2
+          }
+        }
+      ]
+    },
+    "TFT16_Huntress": {
+      "apiName": "TFT16_Huntress",
+      "name": "Huntress",
+      "effects": [
+        {
+          "minUnits": 1,
+          "maxUnits": 25000,
+          "style": 4,
+          "variables": {
+            "Durability": 0.5
+          }
+        }
+      ]
+    }
+  }
+}
