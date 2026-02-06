@@ -120,6 +120,7 @@ for cost, champs in CHAMPIONS_BY_COST.items():
             'baronnashor': 'BaronNashor',
             'tahmkench': 'TahmKench',
             'thex': 'THex',
+            'riftherald': 'RiftHerald',
         }
         if name in _API_MAP:
             api_suffix = _API_MAP[name]
