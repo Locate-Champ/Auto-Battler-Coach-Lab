@@ -90,6 +90,20 @@ def get_legal_actions(player: 'Player', pool: 'ChampionPool') -> List[Action]:
             if champ is not None and len(champ.items) < MAX_ITEMS_PER_UNIT:
                 actions.append(Action.equip_item(item_idx, (-1, bench_idx)))
 
+    # Place Freljord tower (if Freljord 3+ active)
+    if player.has_freljord_active():
+        for row in range(BOARD_ROWS):
+            for col in range(BOARD_COLS):
+                actions.append(Action.place_tower(row, col))
+
+    # Place Azir soldiers (if Azir on board, max 2)
+    if player.has_azir_on_board() and len(player.soldier_positions) < 2:
+        occupied = set(player.board.keys()) | set(player.soldier_positions)
+        for row in range(BOARD_ROWS):
+            for col in range(BOARD_COLS):
+                if (row, col) not in occupied:
+                    actions.append(Action.place_soldier(row, col))
+
     return actions
 
 
@@ -141,6 +155,14 @@ def execute_action(action: Action, player: 'Player',
         # Handled directly by game loop, not via execute_action
         return False
 
+    elif action.action_type == ActionType.PLACE_TOWER:
+        row, col = action.args
+        return player.place_tower(row, col)
+
+    elif action.action_type == ActionType.PLACE_SOLDIER:
+        row, col = action.args
+        return player.place_soldier(row, col)
+
     return False
 
 
@@ -172,6 +194,10 @@ def random_agent_actions(player: 'Player', pool: 'ChampionPool',
                 weights.append(3)
             elif a.action_type == ActionType.SELL:
                 weights.append(1)
+            elif a.action_type == ActionType.PLACE_TOWER:
+                weights.append(6)
+            elif a.action_type == ActionType.PLACE_SOLDIER:
+                weights.append(6)
             else:
                 weights.append(1)
 

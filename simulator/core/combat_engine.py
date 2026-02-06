@@ -709,16 +709,18 @@ class TraitManager:
                 unit.stats.damage_reduction = max(0, unit.stats.damage_reduction - self.HUNTRESS_DURABILITY)
 
     def check_freljord_on_death(self, dead_unit: 'Unit', all_units: List['Unit']):
-        """Freljord Ice Block: When a Freljord unit dies, stun nearby enemies.
+        """Freljord Tower destruction: stun enemies when the Frozen Tower breaks.
 
         At 3/5 Freljord: stun enemies within 2 hexes for 1.0/1.25s.
         At 7 Freljord: stun the ENTIRE enemy team for 1.5s.
 
         Args:
-            dead_unit: The Freljord unit that just died
+            dead_unit: The unit that just died (only triggers for tower)
             all_units: All units in combat
         """
-        if 'Freljord' not in dead_unit.traits:
+        # Only trigger when the Freljord tower is destroyed
+        if not (getattr(dead_unit, '_is_tower', False)
+                and dead_unit.api_name == 'TFT16_FreljordProp'):
             return
 
         by_team = getattr(self, '_freljord_by_team', {})
@@ -846,9 +848,13 @@ class TraitManager:
         11: {'ArmorMR': 150},
     }
 
-    # Freljord - HP% + Damage Amp for Freljord units
-    # Ice Block: On death, Freljord units become a Frozen Tower that stuns
-    # 3: stun nearby enemies for 1.0s, 5: 1.25s, 7: stun ENTIRE enemy team for 1.5s
+    # Freljord - Tower-based area buffs
+    # A Frozen Tower is placed on the board before combat.
+    # Units in front of the tower (toward row 0) get HP buff.
+    # Units behind the tower (toward row 3) get damage buff.
+    # The tower's area follows a 3-2-3-2 width pattern per row.
+    # When the tower is destroyed: stun nearby enemies.
+    # At 7 Freljord: stun the ENTIRE enemy team for 1.5s.
     FRELJORD_EFFECTS = {
         3: {'HealthPercent': 0.08, 'DA': 0.10, 'StunDuration': 1.0, 'StunRadius': 2},
         5: {'HealthPercent': 0.12, 'DA': 0.16, 'StunDuration': 1.25, 'StunRadius': 2},
@@ -1298,10 +1304,80 @@ class TraitManager:
                 unit.stats.armor += armor_mr
                 unit.stats.magic_resist += armor_mr
 
-    def _apply_freljord(self, team: List['Unit'], count: int):
-        """Apply Freljord trait: HP% + damage amp for Freljord units.
+    @staticmethod
+    def _get_tower_zone(tower_pos: Tuple[int, int]) -> dict:
+        """Compute the Freljord tower's area-of-effect zones.
 
-        Also stores the count per team for ice block death mechanic.
+        The tower affects hexes in a 3-2-3-2 width pattern:
+        - At the tower's row: 3 wide (tower + 1 left + 1 right)
+        - 1 row away: 2 wide
+        - 2 rows away: 3 wide
+        - 3 rows away: 2 wide
+
+        Units in front of the tower (lower row = closer to enemy) get HP buff.
+        Units directly beside the tower (same row) also get HP buff.
+        Units behind the tower (higher row = toward back) get damage buff.
+
+        Returns:
+            {'hp': set of (row, col), 'damage': set of (row, col)}
+        """
+        t_row, t_col = tower_pos
+        hp_hexes = set()
+        damage_hexes = set()
+
+        # Width pattern per row offset: 0→3, 1→2, 2→3, 3→2
+        width_pattern = {0: 3, 1: 2, 2: 3, 3: 2}
+
+        for row_offset in range(-3, 4):  # -3 to +3 rows from tower
+            target_row = t_row + row_offset
+            if target_row < 0 or target_row >= 4:
+                continue
+
+            abs_offset = abs(row_offset)
+            if abs_offset > 3:
+                continue
+
+            width = width_pattern.get(abs_offset, 0)
+
+            # Calculate which columns are in range
+            # Width 3: col-1, col, col+1
+            # Width 2: col, col+1 (or col-1, col depending on hex parity)
+            if width == 3:
+                cols = [t_col - 1, t_col, t_col + 1]
+            elif width == 2:
+                # For even offset rows: center on tower col
+                cols = [t_col, t_col + 1] if t_col % 2 == 0 else [t_col - 1, t_col]
+            else:
+                cols = [t_col]
+
+            valid_cols = [c for c in cols if 0 <= c < 7]
+
+            for col in valid_cols:
+                pos = (target_row, col)
+                if pos == tower_pos:
+                    continue  # Tower hex itself
+
+                if row_offset < 0:
+                    # In front of tower (lower row = toward front/enemy side)
+                    hp_hexes.add(pos)
+                elif row_offset > 0:
+                    # Behind tower (higher row = toward back)
+                    damage_hexes.add(pos)
+                else:
+                    # Same row as tower (beside it) = HP buff
+                    hp_hexes.add(pos)
+
+        return {'hp': hp_hexes, 'damage': damage_hexes}
+
+    def _apply_freljord(self, team: List['Unit'], count: int):
+        """Apply Freljord trait via the Frozen Tower's area buffs.
+
+        The tower provides directional buffs based on unit position:
+        - HP buff to units in front of / beside the tower
+        - Damage buff to units behind the tower
+        Both scale with Freljord count (3/5/7 breakpoints).
+
+        Also stores the count per team for tower destruction stun.
         """
         if not hasattr(self, '_freljord_by_team'):
             self._freljord_by_team = {}
@@ -1316,12 +1392,36 @@ class TraitManager:
         hp_percent = effects['HealthPercent']
         damage_amp = effects['DA']
 
+        # Find the Freljord tower on this team
+        tower = None
         for unit in team:
-            if 'Freljord' in unit.traits:
-                bonus_hp = unit.base_stats.max_hp * hp_percent
-                unit.stats.max_hp += bonus_hp
-                unit.stats.hp += bonus_hp
-                unit.stats.damage_amp += damage_amp
+            if getattr(unit, '_is_tower', False) and unit.api_name == 'TFT16_FreljordProp':
+                tower = unit
+                break
+
+        if tower:
+            # Use tower position for directional buffs
+            zones = self._get_tower_zone(tower.position)
+            hp_zone = zones['hp']
+            damage_zone = zones['damage']
+
+            for unit in team:
+                if unit == tower:
+                    continue
+                if unit.position in hp_zone:
+                    bonus_hp = unit.base_stats.max_hp * hp_percent
+                    unit.stats.max_hp += bonus_hp
+                    unit.stats.hp += bonus_hp
+                elif unit.position in damage_zone:
+                    unit.stats.damage_amp += damage_amp
+        else:
+            # No tower placed - fall back to basic Freljord buff on Freljord units
+            for unit in team:
+                if 'Freljord' in unit.traits:
+                    bonus_hp = unit.base_stats.max_hp * hp_percent
+                    unit.stats.max_hp += bonus_hp
+                    unit.stats.hp += bonus_hp
+                    unit.stats.damage_amp += damage_amp
 
     def _apply_void(self, team: List['Unit'], count: int):
         """Apply Void trait: Attack speed for Void units."""
@@ -2543,24 +2643,42 @@ class CombatEngine:
                 else:
                     setattr(unit.stats, stat, current + value)
 
-    def _spawn_azir_soldiers(self, team: List[Unit], team_id: int):
-        """Spawn 2 Sand Soldiers adjacent to Azir at combat start.
+    def _spawn_azir_soldiers(self, team: List[Unit], team_id: int,
+                              positions: List[Tuple[int, int]] = None):
+        """Spawn Sand Soldiers for Azir.
 
-        Soldiers are defensive units (750 HP, 50 armor/MR) that block
-        enemy movement but don't attack.
+        In the game loop, soldiers are placed by the player at chosen positions
+        (via Player.build_combat_team). This method is a fallback for direct
+        combat engine usage (e.g., simulate_1v1) - it places soldiers in
+        adjacent free hexes if no positions are specified.
+
+        Soldiers are targetable blockers: enemies will attack them, but
+        they don't attack back (0 AD). They have 750 HP, 50 armor/MR.
+        Friendly units walk around them.
+
+        Args:
+            team: The team to add soldiers to
+            team_id: Which team (0 or 1)
+            positions: Explicit positions to place soldiers. If None,
+                       auto-places adjacent to Azir (fallback).
         """
         for unit in team:
             if unit.api_name != 'TFT16_Azir' or not unit.is_alive:
                 continue
 
-            occupied = self.get_occupied_hexes()
-            adjacent = HexGrid.get_neighbors(unit.position)
-            free_spots = [pos for pos in adjacent
-                          if pos not in occupied
-                          and 0 <= pos[0] < 4 and 0 <= pos[1] < 7]
+            if positions:
+                # Use player-specified positions
+                spots = [(r, c) for r, c in positions
+                         if 0 <= r < 4 and 0 <= c < 7]
+            else:
+                # Fallback: adjacent to Azir
+                occupied = self.get_occupied_hexes()
+                adjacent = HexGrid.get_neighbors(unit.position)
+                spots = [pos for pos in adjacent
+                         if pos not in occupied
+                         and 0 <= pos[0] < 4 and 0 <= pos[1] < 7]
 
-            # Spawn up to 2 soldiers in adjacent free hexes
-            for i, pos in enumerate(free_spots[:2]):
+            for pos in spots[:2]:
                 soldier = self.create_unit(
                     'TFT16_AzirSoldier', unit.star_level, pos, team_id
                 )
@@ -2569,7 +2687,6 @@ class CombatEngine:
                     soldier._summoner = unit.name
                     team.append(soldier)
                     self.units.append(soldier)
-                    occupied.add(pos)
 
     def get_occupied_hexes(self) -> set:
         """Get set of all occupied hex positions."""
@@ -3416,10 +3533,6 @@ class CombatEngine:
         # Process round start for traits (both teams)
         self.process_round_start(team0)
         self.process_round_start(team1)
-
-        # Spawn Azir soldiers pre-combat
-        for team_list, team_id in [(team0, 0), (team1, 1)]:
-            self._spawn_azir_soldiers(team_list, team_id)
 
         # Apply stat-buffing traits at combat start
         team0_traits = self._count_traits(team0)
