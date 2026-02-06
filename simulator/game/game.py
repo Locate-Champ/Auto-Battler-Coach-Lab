@@ -19,6 +19,8 @@ from .actions import random_agent_actions, execute_action
 from .constants import (
     get_round_damage, STARTING_ROUND_GOLD, BOARD_ROWS,
     ITEM_COMPONENTS_LIST, PVE_ITEM_DROPS, AUGMENT_ROUNDS,
+    CAROUSEL_ROUNDS, CAROUSEL_CHAMPION_ODDS, CAROUSEL_ITEM_WEIGHTS,
+    CAROUSEL_SIZE, CHAMPIONS_BY_COST, NAME_TO_API,
 )
 
 # Import combat engine
@@ -34,16 +36,63 @@ from pathlib import Path
 
 _AUGMENT_PATH = Path(__file__).parent.parent.parent / "data" / "api" / "processed" / "augments_set16.json"
 _AUGMENTS_BY_ROUND: Dict[str, List[str]] = {'2-1': [], '3-2': [], '4-2': []}
+_AUGMENT_TRAITS: Dict[str, List[str]] = {}  # apiName -> associated trait names
+
+# Augment tier inference from stage availability:
+# - 2-1 only → Silver (weaker, early)
+# - 3-2 only, 2-1+3-2 → Gold (mid-tier)
+# - 4-2 only, 3-2+4-2 → Prismatic (powerful, late)
+# - All stages → Gold (flexible)
+_AUGMENT_TIERS: Dict[str, str] = {}  # apiName -> 'silver'|'gold'|'prismatic'
+
+# Tier distribution per stage from tftodds.com (Set 16)
+# At each stage, each of the 3 offered augments independently rolls a tier
+_TIER_ODDS_BY_STAGE = {
+    '2-1': {'silver': 0.28, 'gold': 0.62, 'prismatic': 0.10},
+    '3-2': {'silver': 0.35, 'gold': 0.45, 'prismatic': 0.20},
+    '4-2': {'silver': 0.06, 'gold': 0.74, 'prismatic': 0.20},
+}
+
+# Augments by tier within each round (for weighted selection)
+_AUGMENTS_BY_ROUND_TIER: Dict[str, Dict[str, List[str]]] = {
+    '2-1': {'silver': [], 'gold': [], 'prismatic': []},
+    '3-2': {'silver': [], 'gold': [], 'prismatic': []},
+    '4-2': {'silver': [], 'gold': [], 'prismatic': []},
+}
+
 try:
     if _AUGMENT_PATH.exists():
         with open(_AUGMENT_PATH, 'r', encoding='utf-8') as _f:
             _raw = json.load(_f)
+        _round_tags = {'2-1', '3-2', '4-2'}
         for _aug in _raw:
             if _aug.get('disabled'):
                 continue
-            for _tag in _aug.get('tags', []):
-                if _tag in _AUGMENTS_BY_ROUND:
-                    _AUGMENTS_BY_ROUND[_tag].append(_aug['apiName'])
+            _api = _aug['apiName']
+            _stages = sorted(t for t in _aug.get('tags', []) if t in _round_tags)
+
+            # Store trait associations
+            if _aug.get('associatedTraits'):
+                _AUGMENT_TRAITS[_api] = _aug['associatedTraits']
+
+            # Infer tier from stage availability
+            _stage_key = tuple(_stages)
+            if _stage_key == ('2-1',):
+                _AUGMENT_TIERS[_api] = 'silver'
+            elif _stage_key in (('3-2',), ('2-1', '3-2')):
+                _AUGMENT_TIERS[_api] = 'gold'
+            elif _stage_key in (('4-2',), ('3-2', '4-2')):
+                _AUGMENT_TIERS[_api] = 'prismatic'
+            elif _stage_key == ('2-1', '3-2', '4-2'):
+                _AUGMENT_TIERS[_api] = 'gold'  # Flexible → default gold
+            else:
+                _AUGMENT_TIERS[_api] = 'gold'
+
+            # Add to round + tier pools
+            for _tag in _stages:
+                _AUGMENTS_BY_ROUND[_tag].append(_api)
+                _tier = _AUGMENT_TIERS[_api]
+                _AUGMENTS_BY_ROUND_TIER[_tag][_tier].append(_api)
 except Exception:
     pass
 
@@ -107,11 +156,20 @@ class TFTGame:
         # Rounds 0-3: PvE / early game (simplified: just grant gold)
         for r in range(min(4, len(STARTING_ROUND_GOLD))):
             self.round_num = r
+            if r in CAROUSEL_ROUNDS:
+                # Round 3: first carousel
+                if self.verbose:
+                    print(f"\n--- Round {r} (Carousel) ---")
+                self._carousel_phase()
             self._pve_round()
 
         # Main game loop
         self.round_num = 4
         while len(self.alive_players) > 1:
+            if self.round_num in CAROUSEL_ROUNDS:
+                if self.verbose:
+                    print(f"\n--- Round {self.round_num} (Carousel) ---")
+                self._carousel_phase()
             self._pvp_round()
             self.round_num += 1
 
@@ -213,33 +271,128 @@ class TFTGame:
     _ROUND_TO_TAG = {4: '2-1', 11: '3-2', 18: '4-2'}
 
     def _augment_selection_phase(self):
-        """Offer each player 3 augments to choose from."""
+        """Offer each player 3 augments with proper tier distribution.
+
+        Uses Silver/Gold/Prismatic odds from tftodds.com per stage,
+        and boosts trait-synergistic augments in the pool.
+        """
         tag = self._ROUND_TO_TAG.get(self.round_num)
         if not tag:
             return
-        available = _AUGMENTS_BY_ROUND.get(tag, [])
-        if not available:
+        tier_pools = _AUGMENTS_BY_ROUND_TIER.get(tag, {})
+        tier_odds = _TIER_ODDS_BY_STAGE.get(tag, {})
+        if not tier_pools or not tier_odds:
             return
 
+        tiers = list(tier_odds.keys())
+        weights = [tier_odds[t] for t in tiers]
+
         for player in self.alive_players:
-            # Pick 3 unique augments the player doesn't already have
-            pool = [a for a in available
-                    if a not in self.player_augments[player.player_id]]
-            if len(pool) < 3:
-                pool = available[:]  # Fallback: allow repeats if pool is tiny
-            choices = random.sample(pool, min(3, len(pool)))
+            already_chosen = set(self.player_augments[player.player_id])
+            active_traits = set(player.get_active_traits().keys())
+
+            choices = []
+            for _ in range(3):
+                # Roll a tier using Silver/Gold/Prismatic distribution
+                tier = random.choices(tiers, weights=weights, k=1)[0]
+                pool = [a for a in tier_pools.get(tier, [])
+                        if a not in already_chosen and a not in choices]
+
+                if not pool:
+                    # Fallback: try any tier
+                    pool = [a for a in _AUGMENTS_BY_ROUND.get(tag, [])
+                            if a not in already_chosen and a not in choices]
+
+                if not pool:
+                    continue
+
+                # Weight augments: trait-synergistic augments get 3x weight
+                aug_weights = []
+                for aug in pool:
+                    w = 1.0
+                    aug_traits = _AUGMENT_TRAITS.get(aug, [])
+                    if aug_traits and active_traits:
+                        # Boost if any associated trait matches player's board
+                        if active_traits & set(aug_traits):
+                            w = 3.0
+                    aug_weights.append(w)
+
+                chosen_aug = random.choices(pool, weights=aug_weights, k=1)[0]
+                choices.append(chosen_aug)
 
             if not choices:
                 continue
 
             # Random agent picks randomly; a real agent_fn would use
-            # a separate augment callback. For now, random choice.
+            # a separate augment callback
             chosen = random.choice(choices)
             self.player_augments[player.player_id].append(chosen)
 
             if self.verbose:
+                tier_str = _AUGMENT_TIERS.get(chosen, '?')
                 print(f"  P{player.player_id} chose augment: {chosen} "
-                      f"(from {len(choices)} options)")
+                      f"[{tier_str}] (from {len(choices)} options)")
+
+    # ── Carousel ──────────────────────────────────────────────────────────
+
+    def _carousel_phase(self):
+        """Shared draft: players pick a champion with an item.
+
+        Pick order is based on HP (lowest HP picks first).
+        Each carousel champion has a random component item.
+        """
+        # Sort players by HP ascending (lowest picks first)
+        pick_order = sorted(self.alive_players, key=lambda p: (p.hp, p.player_id))
+
+        # Generate carousel champions with items
+        cost_odds = CAROUSEL_CHAMPION_ODDS.get(self.round_num, [0.5, 0.3, 0.2, 0, 0])
+        item_names = list(CAROUSEL_ITEM_WEIGHTS.keys())
+        item_weights = list(CAROUSEL_ITEM_WEIGHTS.values())
+
+        carousel = []
+        for _ in range(CAROUSEL_SIZE):
+            # Roll champion cost tier
+            cost = random.choices([1, 2, 3, 4, 5], weights=cost_odds, k=1)[0]
+            champs = CHAMPIONS_BY_COST.get(cost, {})
+            if not champs:
+                continue
+            champ_name = random.choice(list(champs.keys()))
+            # Roll an item component
+            item = random.choices(item_names, weights=item_weights, k=1)[0]
+            carousel.append((champ_name, cost, item))
+
+        if not carousel:
+            return
+
+        # Each player picks one champion (lowest HP first)
+        for player in pick_order:
+            if not carousel:
+                break
+
+            # Simple AI: pick randomly (a real agent would prefer items/champs)
+            pick_idx = random.randrange(len(carousel))
+            champ_name, cost, item = carousel.pop(pick_idx)
+
+            # Try to add to bench
+            from .types import ChampionInstance
+            champ = ChampionInstance(
+                name=champ_name,
+                api_name=NAME_TO_API.get(champ_name, f'TFT16_{champ_name.capitalize()}'),
+                cost=cost,
+                star_level=1,
+                items=[item],
+            )
+            bench_idx = player._find_empty_bench()
+            if bench_idx is not None:
+                player.bench[bench_idx] = champ
+                # Take from pool
+                self.pool.take(champ_name)
+                # Check for upgrade
+                player._check_upgrade(champ_name, self.pool)
+
+            if self.verbose:
+                print(f"  P{player.player_id} (HP={player.hp}) picks "
+                      f"{champ_name} [{item}]")
 
     # ── Combat Resolution ─────────────────────────────────────────────────
 

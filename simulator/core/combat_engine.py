@@ -1009,6 +1009,21 @@ class TraitManager:
             self._apply_harvester(team, [team],
                                   trait_counts.get('Harvester', 0))
 
+        # --- SPECIAL REGION TRAITS ---
+        # Shadow Isles: AD/AP bonus for Shadow Isles units
+        si_count = trait_counts.get('Shadow Isles', 0)
+        if si_count >= 2:
+            self.set_shadow_isles_count(si_count, [u for u in team if 'Shadow Isles' in u.traits])
+            self.apply_shadow_isles_stats(team)
+
+        # Bilgewater: Set count for serpent tracking
+        bg_count = trait_counts.get('Bilgewater', 0)
+        if bg_count >= 3:
+            self.set_bilgewater_count(bg_count)
+
+        # Huntress: Neeko + Nidalee synergy
+        self.apply_huntress_synergy(team)
+
         # --- PAIR SYNERGIES ---
         self._apply_pair_synergies(team, trait_counts)
 

@@ -205,6 +205,38 @@ PVE_ITEM_DROPS = {
 # Round 4 = Stage 2-1, Round 11 = Stage 3-2, Round 18 = Stage 4-2
 AUGMENT_ROUNDS = {4: 'silver', 11: 'gold', 18: 'prismatic'}
 
+# ── Carousel ─────────────────────────────────────────────────────────────────
+# Carousel rounds: round 3 (first carousel), then every 7 rounds (10, 17, 24, ...)
+# In TFT: Stage 2 carousel=round 3, Stage 3=round 10, Stage 4=round 17, etc.
+CAROUSEL_ROUNDS = {3, 10, 17, 24, 31}
+
+# Champion cost tier distribution per carousel stage
+# Key = round number, value = weights for [1-cost, 2-cost, 3-cost, 4-cost, 5-cost]
+CAROUSEL_CHAMPION_ODDS = {
+    3:  [1.0, 0.0, 0.0, 0.0, 0.0],   # First carousel: all 1-costs
+    10: [0.0, 1.0, 0.0, 0.0, 0.0],   # Stage 3: all 2-costs
+    17: [0.0, 0.0, 1.0, 0.0, 0.0],   # Stage 4: all 3-costs
+    24: [0.0, 0.0, 0.3, 0.7, 0.0],   # Stage 5: 3/4-costs
+    31: [0.0, 0.0, 0.0, 0.3, 0.7],   # Stage 6: 4/5-costs
+}
+
+# Items on carousel champions: component distribution weights
+# Components are roughly equally distributed, with Spatula being rare
+CAROUSEL_ITEM_WEIGHTS = {
+    'BF_Sword': 12,
+    'Recurve_Bow': 12,
+    'Needlessly_Large_Rod': 12,
+    'Tear_of_the_Goddess': 12,
+    'Chain_Vest': 12,
+    'Negatron_Cloak': 12,
+    'Giants_Belt': 12,
+    'Sparring_Gloves': 12,
+    'Spatula': 4,
+}
+
+# Number of champions on carousel (1 per player + 1 extra)
+CAROUSEL_SIZE = 9
+
 # ── HP damage per round ──────────────────────────────────────────────────────
 # (max_round, base_damage) — base damage for the loser, before per-unit damage
 ROUND_BASE_DAMAGE = [
