@@ -62,7 +62,7 @@ def get_streak_gold(streak: int) -> int:
     return 0
 
 # ── Champion pool ─────────────────────────────────────────────────────────────
-POOL_SIZES = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10, 7: 1}
+POOL_SIZES = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10, 7: 10}
 
 # Champion lists by cost tier
 CHAMPIONS_BY_COST = {
@@ -74,9 +74,9 @@ CHAMPIONS_BY_COST = {
     7: COST_7,
 }
 
-# 7-cost unlockable champions - never appear in shop
-# These are unlocked through special in-game conditions
-UNLOCKABLE_CHAMPIONS = set(COST_7.keys())
+# 7-cost champions share the same shop odds and pool size as 5-costs.
+# The only difference is the gold cost (7g instead of 5g).
+SEVEN_COST_CHAMPIONS = set(COST_7.keys())
 
 # Sell values: SELL_VALUES[cost-1][star-1]
 SELL_VALUES = cost_star_values
