@@ -708,6 +708,49 @@ class TraitManager:
                 unit.is_basic_attack_immune = False
                 unit.stats.damage_reduction = max(0, unit.stats.damage_reduction - self.HUNTRESS_DURABILITY)
 
+    def check_freljord_on_death(self, dead_unit: 'Unit', all_units: List['Unit']):
+        """Freljord Ice Block: When a Freljord unit dies, stun nearby enemies.
+
+        At 3/5 Freljord: stun enemies within 2 hexes for 1.0/1.25s.
+        At 7 Freljord: stun the ENTIRE enemy team for 1.5s.
+
+        Args:
+            dead_unit: The Freljord unit that just died
+            all_units: All units in combat
+        """
+        if 'Freljord' not in dead_unit.traits:
+            return
+
+        by_team = getattr(self, '_freljord_by_team', {})
+        freljord_count = by_team.get(dead_unit.team, 0)
+        if freljord_count < 3:
+            return
+
+        effects = self.get_trait_tier(freljord_count, self.FRELJORD_EFFECTS)
+        if not effects:
+            return
+
+        stun_duration = effects['StunDuration']
+        stun_radius = effects['StunRadius']
+
+        # Find enemies to stun
+        enemies = [u for u in all_units if u.team != dead_unit.team and u.is_alive]
+
+        stunned = []
+        for enemy in enemies:
+            if stun_radius >= 999:
+                # 7 Freljord: stun entire enemy team
+                enemy.stun_timer = max(getattr(enemy, 'stun_timer', 0), stun_duration)
+                enemy.state = UnitState.STUNNED
+                stunned.append(enemy.name)
+            else:
+                # Check distance from ice block (dead unit's position)
+                dist = HexGrid.hex_distance(dead_unit.position, enemy.position)
+                if dist <= stun_radius:
+                    enemy.stun_timer = max(getattr(enemy, 'stun_timer', 0), stun_duration)
+                    enemy.state = UnitState.STUNNED
+                    stunned.append(enemy.name)
+
     # =========================================================================
     # STAT-BUFFING TRAITS
     # =========================================================================
@@ -804,10 +847,12 @@ class TraitManager:
     }
 
     # Freljord - HP% + Damage Amp for Freljord units
+    # Ice Block: On death, Freljord units become a Frozen Tower that stuns
+    # 3: stun nearby enemies for 1.0s, 5: 1.25s, 7: stun ENTIRE enemy team for 1.5s
     FRELJORD_EFFECTS = {
-        3: {'HealthPercent': 0.08, 'DA': 0.10},
-        5: {'HealthPercent': 0.12, 'DA': 0.16},
-        7: {'HealthPercent': 0.16, 'DA': 0.22},
+        3: {'HealthPercent': 0.08, 'DA': 0.10, 'StunDuration': 1.0, 'StunRadius': 2},
+        5: {'HealthPercent': 0.12, 'DA': 0.16, 'StunDuration': 1.25, 'StunRadius': 2},
+        7: {'HealthPercent': 0.16, 'DA': 0.22, 'StunDuration': 1.5, 'StunRadius': 999},
     }
 
     # Void - AS for Void units
@@ -1254,7 +1299,16 @@ class TraitManager:
                 unit.stats.magic_resist += armor_mr
 
     def _apply_freljord(self, team: List['Unit'], count: int):
-        """Apply Freljord trait: HP% + damage amp for Freljord units."""
+        """Apply Freljord trait: HP% + damage amp for Freljord units.
+
+        Also stores the count per team for ice block death mechanic.
+        """
+        if not hasattr(self, '_freljord_by_team'):
+            self._freljord_by_team = {}
+        if team:
+            team_id = team[0].team
+            self._freljord_by_team[team_id] = count
+
         effects = self.get_trait_tier(count, self.FRELJORD_EFFECTS)
         if not effects:
             return
@@ -2450,8 +2504,18 @@ class CombatEngine:
 
         Note: In Set 16, AD on items is a percentage (e.g., 0.35 = 35% bonus AD).
         Other stats like HP, armor, AP are flat values.
+        Emblems also grant their associated trait to the unit.
         """
         unit.items.append(item)
+
+        # Check if item is an emblem and grant the trait
+        try:
+            from simulator.data.set16_items import EMBLEM_TO_TRAIT
+            trait = EMBLEM_TO_TRAIT.get(item.name)
+            if trait and trait not in unit.traits:
+                unit.traits.append(trait)
+        except ImportError:
+            pass
 
         for stat, value in item.stats.items():
             if hasattr(unit.stats, stat):
@@ -2478,6 +2542,34 @@ class CombatEngine:
 
                 else:
                     setattr(unit.stats, stat, current + value)
+
+    def _spawn_azir_soldiers(self, team: List[Unit], team_id: int):
+        """Spawn 2 Sand Soldiers adjacent to Azir at combat start.
+
+        Soldiers are defensive units (750 HP, 50 armor/MR) that block
+        enemy movement but don't attack.
+        """
+        for unit in team:
+            if unit.api_name != 'TFT16_Azir' or not unit.is_alive:
+                continue
+
+            occupied = self.get_occupied_hexes()
+            adjacent = HexGrid.get_neighbors(unit.position)
+            free_spots = [pos for pos in adjacent
+                          if pos not in occupied
+                          and 0 <= pos[0] < 4 and 0 <= pos[1] < 7]
+
+            # Spawn up to 2 soldiers in adjacent free hexes
+            for i, pos in enumerate(free_spots[:2]):
+                soldier = self.create_unit(
+                    'TFT16_AzirSoldier', unit.star_level, pos, team_id
+                )
+                if soldier:
+                    soldier._is_summon = True
+                    soldier._summoner = unit.name
+                    team.append(soldier)
+                    self.units.append(soldier)
+                    occupied.add(pos)
 
     def get_occupied_hexes(self) -> set:
         """Get set of all occupied hex positions."""
@@ -2620,6 +2712,10 @@ class CombatEngine:
             defender.stats.hp = 0
             defender.is_alive = False
             defender.state = UnitState.DEAD
+
+            # Freljord Ice Block: stun enemies on death
+            if self.trait_manager:
+                self.trait_manager.check_freljord_on_death(defender, self.units)
 
             # Check for Immortal resurrection (Zaahen)
             if self.champion_abilities and self.champion_abilities.check_immortal_resurrection(defender):
@@ -3320,6 +3416,10 @@ class CombatEngine:
         # Process round start for traits (both teams)
         self.process_round_start(team0)
         self.process_round_start(team1)
+
+        # Spawn Azir soldiers pre-combat
+        for team_list, team_id in [(team0, 0), (team1, 1)]:
+            self._spawn_azir_soldiers(team_list, team_id)
 
         # Apply stat-buffing traits at combat start
         team0_traits = self._count_traits(team0)
