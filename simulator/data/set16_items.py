@@ -353,6 +353,22 @@ ITEM_ALIASES = {
     "TFT_Item_SparringGloves": "SparringGloves",
     "TFT_Item_Spatula": "Spatula",
 
+    # Components with underscore-separated names (used by game loop)
+    "BF_Sword": "BFSword",
+    "Recurve_Bow": "RecurveBow",
+    "Needlessly_Large_Rod": "NeedlesslyLargeRod",
+    "Tear_of_the_Goddess": "TearOfTheGoddess",
+    "Chain_Vest": "ChainVest",
+    "Negatron_Cloak": "NegatronCloak",
+    "Giants_Belt": "GiantsBelt",
+    "Sparring_Gloves": "SparringGloves",
+
+    # Completed items with TFT_Item_ prefix (additional aliases)
+    "TFT_Item_RunaansHurricane": "KrakensFury",
+    "TFT_Item_Redemption": "SpiritVisage",
+    "TFT_Item_GuardianAngel": "EdgeOfNight",
+    "TFT_Item_FrozenHeart": "ProtectorsVow",
+
     # Artifacts with TFT_Item_Artifact_ prefix
     "TFT_Item_Artifact_LichBane": "Artifact_LichBane",
     "TFT_Item_Artifact_StatikkShiv": "Artifact_StatikkShiv",
