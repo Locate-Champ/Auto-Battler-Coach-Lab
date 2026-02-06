@@ -709,49 +709,38 @@ class TraitManager:
                 unit.stats.damage_reduction = max(0, unit.stats.damage_reduction - self.HUNTRESS_DURABILITY)
 
     def check_freljord_on_death(self, dead_unit: 'Unit', all_units: List['Unit']):
-        """Freljord Tower destruction: stun enemies when the Frozen Tower breaks.
+        """Freljord Tower destruction: stun enemies ONLY at 7 Freljord.
 
-        At 3/5 Freljord: stun enemies within 2 hexes for 1.0/1.25s.
+        At 3/5 Freljord: no stun on tower break (stats only).
         At 7 Freljord: stun the ENTIRE enemy team for 1.5s.
 
         Args:
             dead_unit: The unit that just died (only triggers for tower)
             all_units: All units in combat
         """
-        # Only trigger when the Freljord tower is destroyed
+        # Only trigger when a Freljord tower is destroyed
         if not (getattr(dead_unit, '_is_tower', False)
                 and dead_unit.api_name == 'TFT16_FreljordProp'):
             return
 
         by_team = getattr(self, '_freljord_by_team', {})
         freljord_count = by_team.get(dead_unit.team, 0)
-        if freljord_count < 3:
+
+        # Stun only triggers at 7 Freljord
+        if freljord_count < 7:
             return
 
         effects = self.get_trait_tier(freljord_count, self.FRELJORD_EFFECTS)
-        if not effects:
+        if not effects or 'StunDuration' not in effects:
             return
 
         stun_duration = effects['StunDuration']
-        stun_radius = effects['StunRadius']
 
-        # Find enemies to stun
+        # 7 Freljord: stun entire enemy team
         enemies = [u for u in all_units if u.team != dead_unit.team and u.is_alive]
-
-        stunned = []
         for enemy in enemies:
-            if stun_radius >= 999:
-                # 7 Freljord: stun entire enemy team
-                enemy.stun_timer = max(getattr(enemy, 'stun_timer', 0), stun_duration)
-                enemy.state = UnitState.STUNNED
-                stunned.append(enemy.name)
-            else:
-                # Check distance from ice block (dead unit's position)
-                dist = HexGrid.hex_distance(dead_unit.position, enemy.position)
-                if dist <= stun_radius:
-                    enemy.stun_timer = max(getattr(enemy, 'stun_timer', 0), stun_duration)
-                    enemy.state = UnitState.STUNNED
-                    stunned.append(enemy.name)
+            enemy.stun_timer = max(getattr(enemy, 'stun_timer', 0), stun_duration)
+            enemy.state = UnitState.STUNNED
 
     # =========================================================================
     # STAT-BUFFING TRAITS
@@ -853,12 +842,13 @@ class TraitManager:
     # Units in front of the tower (toward row 0) get HP buff.
     # Units behind the tower (toward row 3) get damage buff.
     # The tower's area follows a 3-2-3-2 width pattern per row.
-    # When the tower is destroyed: stun nearby enemies.
-    # At 7 Freljord: stun the ENTIRE enemy team for 1.5s.
+    # 3 Freljord: one tower, stats only (no stun)
+    # 5 Freljord: second tower + increased stats (no stun)
+    # 7 Freljord: stun ENTIRE enemy team when ANY tower is destroyed
     FRELJORD_EFFECTS = {
-        3: {'HealthPercent': 0.08, 'DA': 0.10, 'StunDuration': 1.0, 'StunRadius': 2},
-        5: {'HealthPercent': 0.12, 'DA': 0.16, 'StunDuration': 1.25, 'StunRadius': 2},
-        7: {'HealthPercent': 0.16, 'DA': 0.22, 'StunDuration': 1.5, 'StunRadius': 999},
+        3: {'HealthPercent': 0.08, 'DA': 0.10},
+        5: {'HealthPercent': 0.12, 'DA': 0.16},
+        7: {'HealthPercent': 0.16, 'DA': 0.22, 'StunDuration': 1.5},
     }
 
     # Void - AS for Void units
