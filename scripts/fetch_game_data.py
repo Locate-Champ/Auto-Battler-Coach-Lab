@@ -296,61 +296,122 @@ def fetch_traits() -> bool:
 
 
 def fetch_augments() -> bool:
-    """Fetch augment data from MetaTFT API."""
+    """Fetch augment data from MetaTFT lookup and tier list APIs.
+
+    The primary /augments endpoint returns HTTP 500, so we use:
+    - Lookup data: https://data.metatft.com/lookups/TFTSet16_latest_en_us.json
+    - Tier list: https://api-hc.metatft.com/tft-stat-api/augments_tiers
+    """
     print("\n[4/4] Fetching augments...")
+    import re
 
-    # Try the augments endpoint
-    data = fetch_json(f"{API_BASE}/augments", DEFAULT_PARAMS)
+    # 1. Fetch lookup data for augment details
+    print("  Fetching augment lookup data...")
+    lookup_data = fetch_json(f"{DATA_BASE}/lookups/TFTSet16_latest_en_us.json")
 
-    if not data or "results" not in data:
-        # Try alternate endpoint
-        print("  Primary endpoint failed, trying comps_data for augment info...")
+    if not lookup_data or "augments" not in lookup_data:
+        print("  Failed to fetch augment lookup data")
         return False
 
-    results = data.get("results", [])
-    if not results:
-        print("  No augment data available")
-        return False
+    augments_lookup = {aug['apiName']: aug for aug in lookup_data['augments']}
+    print(f"  Found {len(augments_lookup)} augments in lookup")
 
-    tft_set = data.get("tft_set", "TFTSet16")
+    # 2. Fetch tier list for rankings
+    print("  Fetching augment tier list...")
+    tiers_data = fetch_json(f"{API_BASE}/augments_tiers", DEFAULT_PARAMS)
 
-    # Process and save as JSONL
+    tier_mapping = {}
+    tft_set = "TFTSet16"
+
+    if tiers_data and "content" in tiers_data:
+        tft_set = tiers_data.get("tft_set", "TFTSet16")
+        try:
+            tier_list = tiers_data['content']['content']['tierList']
+            tier_labels = ['S', 'A', 'B', 'C', 'D']
+            for i, tier in enumerate(tier_list):
+                label = tier_labels[i] if i < len(tier_labels) else f'T{i}'
+                for aug in tier['content']:
+                    tier_mapping[aug['id']] = label
+            print(f"  Found {len(tier_mapping)} augments with tier rankings")
+        except (KeyError, TypeError):
+            print("  Could not parse tier list, using 'U' for all")
+    else:
+        print("  Tier list unavailable, using 'U' for all augments")
+
+    # Helper functions
+    def determine_rarity(api_name: str) -> int:
+        """Determine augment rarity (1=Silver, 2=Gold, 3=Prismatic)."""
+        if api_name.endswith('PlusPlus') or '_III' in api_name or api_name.endswith('3'):
+            return 3
+        elif api_name.endswith('Plus') or '_II' in api_name or api_name.endswith('2'):
+            return 2
+        return 1
+
+    def clean_description(desc: str) -> str:
+        """Clean HTML/XML tags from description."""
+        if not desc:
+            return ''
+        desc = re.sub(r'<[^>]+>', '', desc)
+        desc = re.sub(r'@\w+@', 'X', desc)
+        return desc.strip()
+
+    def extract_display_name(api_name: str, lookup_entry: dict) -> str:
+        """Get display name from lookup or derive from API name."""
+        if lookup_entry:
+            if lookup_entry.get('name'):
+                return lookup_entry['name']
+            if lookup_entry.get('en_name'):
+                return lookup_entry['en_name']
+        name = api_name
+        for prefix in ['TFT16_Augment_', 'TFT9_Augment_', 'TFT6_Augment_', 'TFT_Augment_']:
+            name = name.replace(prefix, '')
+        return name
+
+    # 3. Combine and write augments.jsonl
     output_path = GAME_DATA_DIR / "augments.jsonl"
     count = 0
 
     with open(output_path, 'w', encoding='utf-8') as f:
-        for aug in results:
-            aug_name = aug.get("augment", aug.get("augmentName", ""))
-            places = aug.get("places", [])
-
-            if not aug_name:
-                continue
-
-            stats = calculate_stats(places)
-
-            # Determine tier from name
-            tier = 1
-            if "II" in aug_name or "_II" in aug_name:
-                tier = 2
-            elif "III" in aug_name or "_III" in aug_name:
-                tier = 3
-
-            # Extract display name
-            display_name = aug_name
-            for prefix in ["TFT16_Augment_", "TFT_Augment_", "TFT9_Augment_"]:
-                display_name = display_name.replace(prefix, "")
+        # Process all augments from lookup
+        for api_name, aug_data in augments_lookup.items():
+            tier = tier_mapping.get(api_name, 'U')
+            rarity = determine_rarity(api_name)
 
             record = {
-                "apiName": aug_name,
-                "name": display_name,
-                "tier": tier,
-                "set": tft_set,
-                "placements": places[:8] if len(places) >= 8 else places,
-                **stats
+                'apiName': api_name,
+                'name': extract_display_name(api_name, aug_data),
+                'description': clean_description(aug_data.get('desc', '')),
+                'tier': tier,
+                'rarity': rarity,
+                'set': tft_set,
+                'effects': aug_data.get('effects', {}),
+                'associatedTraits': aug_data.get('associatedTraits', []),
+                'tags': aug_data.get('tags', [])
             }
 
-            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+            f.write(json.dumps(record, ensure_ascii=False) + '\n')
             count += 1
+
+        # Add any augments from tier list not in lookup
+        for api_name in tier_mapping:
+            if api_name not in augments_lookup:
+                tier = tier_mapping[api_name]
+                rarity = determine_rarity(api_name)
+
+                record = {
+                    'apiName': api_name,
+                    'name': extract_display_name(api_name, None),
+                    'description': '',
+                    'tier': tier,
+                    'rarity': rarity,
+                    'set': tft_set,
+                    'effects': {},
+                    'associatedTraits': [],
+                    'tags': []
+                }
+
+                f.write(json.dumps(record, ensure_ascii=False) + '\n')
+                count += 1
 
     print(f"  Saved {count} augments to {output_path}")
     return True

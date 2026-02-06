@@ -55,6 +55,7 @@ jobs:
           fi
         env:
           META_TFT_API_KEY: ${{ secrets.META_TFT_API_KEY }}
+        timeout-minutes: 10
         continue-on-error: true
 
       - name: Check for changes
