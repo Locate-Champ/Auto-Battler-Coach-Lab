@@ -66,11 +66,11 @@ BASE_COMPLETED = {
     "VoidStaff": {"ap": 35, "attack_speed": 0.15, "mana_regen": 1},  # MR shred on hit
 
     # Tank Items
-    "WarmogsArmor": {"hp": 500},
+    "WarmogsArmor": {"hp": 500, "bonus_hp_pct": 0.15},  # +15% max HP
     "GargoyleStoneplate": {"armor": 25, "magic_resist": 25, "hp": 100},
     "SunfireCape": {"armor": 20, "hp": 150},  # AOE burn
-    "DragonsClaw": {"magic_resist": 75},
-    "BrambleVest": {"armor": 65},  # Reflect damage
+    "DragonsClaw": {"magic_resist": 75, "bonus_hp_pct": 0.09},  # +9% max HP
+    "BrambleVest": {"armor": 65, "bonus_hp_pct": 0.09},  # +9% max HP, reflect damage
     "SpiritVisage": {"hp": 300, "mana_regen": 2},  # Missing HP heal
     "SteadfastHeart": {"armor": 20, "crit_chance": 0.20, "hp": 250},
     "ProtectorsVow": {"armor": 25, "magic_resist": 25, "mana_regen": 1},  # Shield
@@ -87,12 +87,14 @@ BASE_COMPLETED = {
     "TacticiansCape": {},    # +1 max team size (Spatula + Frying Pan)
     "TacticiansShield": {},  # +1 max team size (Frying Pan + Frying Pan)
 
-    # Set 16 new items
-    "Leviathan": {"ap": 60, "hp": 150},  # Rod + Belt: Deal 4% max HP magic damage on ability
-    "NightHarvester": {"ap": 20, "hp": 200, "magic_resist": 20},  # Cloak + Belt: Damage on takedown
-    "UnstableConcoction": {"hp": 300, "attack_speed": 0.20},  # Belt + Glove: Execute threshold
-    "MadredsBloodrazor": {"ad": 0.15, "attack_speed": 0.30},  # Bow + Glove: %HP on-hit
-    "SpectralGauntlet": {"ap": 25, "armor": 25, "magic_resist": 25},  # Tear + Vest: Shield allies
+    # TODO: UNVERIFIED - These items may not exist in Set 16 final.
+    # Their recipe slots were occupied by existing items (Morellonomicon, Evenshroud, etc.)
+    # Kept for backward compatibility with test/fetch code that references them.
+    "Leviathan": {"ap": 60, "hp": 150},  # TODO: UNVERIFIED - recipe slot is Morellonomicon (Rod+Belt)
+    "NightHarvester": {"ap": 20, "hp": 200, "magic_resist": 20},  # TODO: UNVERIFIED - recipe slot is Evenshroud (Cloak+Belt)
+    "UnstableConcoction": {"hp": 300, "attack_speed": 0.20},  # TODO: UNVERIFIED - recipe slot is Striker's Flail (Belt+Glove)
+    "MadredsBloodrazor": {"ad": 0.15, "attack_speed": 0.30},  # TODO: UNVERIFIED - recipe slot is Last Whisper (Bow+Glove)
+    "SpectralGauntlet": {"ap": 25, "armor": 25, "magic_resist": 25},  # TODO: UNVERIFIED - may not exist
 }
 
 # =============================================================================
@@ -368,12 +370,16 @@ ITEM_ALIASES = {
     "TFT_Item_HandOfJustice": "HandOfJustice",
     "TFT_Item_AdaptiveHelm": "AdaptiveHelm",
     "TFT_Item_ThiefsGloves": "ThiefsGloves",
-    "TFT_Item_Leviathan": "Leviathan",  # Need to add this item
+    "TFT_Item_SteadfastHeart": "SteadfastHeart",
+    "TFT_Item_Evenshroud": "Evenshroud",
+    "TFT_Item_StrikersFlail": "StrikersFlail",
     "TFT_Item_StatikkShiv": "Artifact_StatikkShiv",
-    "TFT_Item_MadredsBloodrazor": "MadredsBloodrazor",  # Need to add
-    "TFT_Item_UnstableConcoction": "UnstableConcoction",  # Need to add
-    "TFT_Item_NightHarvester": "NightHarvester",  # Need to add
-    "TFT_Item_SpectralGauntlet": "SpectralGauntlet",  # Need to add
+    # Legacy aliases for removed/renamed Set 16 items
+    "TFT_Item_Leviathan": "Morellonomicon",  # Leviathan slot replaced by Morellonomicon
+    "TFT_Item_MadredsBloodrazor": "LastWhisper",  # Slot replaced by Last Whisper
+    "TFT_Item_UnstableConcoction": "StrikersFlail",  # Slot replaced by Striker's Flail
+    "TFT_Item_NightHarvester": "Evenshroud",  # Slot replaced by Evenshroud
+    "TFT_Item_SpectralGauntlet": "SpectralGauntlet",  # TODO: UNVERIFIED - may not exist in Set 16
 
     # Components with TFT_Item_ prefix
     "TFT_Item_BFSword": "BFSword",

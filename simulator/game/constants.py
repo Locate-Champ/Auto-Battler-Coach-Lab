@@ -155,33 +155,33 @@ ITEM_RECIPES = {
     ('BF_Sword', 'Negatron_Cloak'): 'TFT_Item_Bloodthirster',
     ('BF_Sword', 'Giants_Belt'): 'TFT_Item_SteraksGage',
     ('BF_Sword', 'Sparring_Gloves'): 'TFT_Item_InfinityEdge',
-    ('Recurve_Bow', 'Recurve_Bow'): 'TFT_Item_LastWhisper',
+    ('Recurve_Bow', 'Recurve_Bow'): 'TFT_Item_RedBuff',            # Red Buff (was LastWhisper)
     ('Recurve_Bow', 'Needlessly_Large_Rod'): 'TFT_Item_GuinsoosRageblade',
-    ('Recurve_Bow', 'Tear_of_the_Goddess'): 'TFT_Item_StatikkShiv',
+    ('Recurve_Bow', 'Tear_of_the_Goddess'): 'TFT_Item_StatikkShiv',  # Void Staff (legacy API name)
     ('Recurve_Bow', 'Chain_Vest'): 'TFT_Item_TitansResolve',
-    ('Recurve_Bow', 'Negatron_Cloak'): 'TFT_Item_RunaansHurricane',
-    ('Recurve_Bow', 'Giants_Belt'): 'TFT_Item_RedBuff',
-    ('Recurve_Bow', 'Sparring_Gloves'): 'TFT_Item_MadredsBloodrazor',
+    ('Recurve_Bow', 'Negatron_Cloak'): 'TFT_Item_RunaansHurricane',  # Kraken's Fury
+    ('Recurve_Bow', 'Giants_Belt'): 'TFT_Item_NashorsTooth',       # Nashor's Tooth (was RedBuff)
+    ('Recurve_Bow', 'Sparring_Gloves'): 'TFT_Item_LastWhisper',    # Last Whisper (was MadredsBloodrazor)
     ('Needlessly_Large_Rod', 'Needlessly_Large_Rod'): 'TFT_Item_RabadonsDeathcap',
     ('Needlessly_Large_Rod', 'Tear_of_the_Goddess'): 'TFT_Item_ArchangelsStaff',
     ('Needlessly_Large_Rod', 'Chain_Vest'): 'TFT_Item_IonicSpark',
-    ('Needlessly_Large_Rod', 'Negatron_Cloak'): 'TFT_Item_Morellonomicon',
-    ('Needlessly_Large_Rod', 'Giants_Belt'): 'TFT_Item_Leviathan',
+    ('Needlessly_Large_Rod', 'Negatron_Cloak'): 'TFT_Item_Crownguard',       # Crownguard (was Morellonomicon)
+    ('Needlessly_Large_Rod', 'Giants_Belt'): 'TFT_Item_Morellonomicon',      # Morellonomicon (was Leviathan)
     ('Needlessly_Large_Rod', 'Sparring_Gloves'): 'TFT_Item_JeweledGauntlet',
     ('Tear_of_the_Goddess', 'Tear_of_the_Goddess'): 'TFT_Item_BlueBuff',
     ('Tear_of_the_Goddess', 'Chain_Vest'): 'TFT_Item_FrozenHeart',
-    ('Tear_of_the_Goddess', 'Negatron_Cloak'): 'TFT_Item_Crownguard',
+    ('Tear_of_the_Goddess', 'Negatron_Cloak'): 'TFT_Item_AdaptiveHelm',  # Adaptive Helm (was Crownguard)
     ('Tear_of_the_Goddess', 'Giants_Belt'): 'TFT_Item_Redemption',
     ('Tear_of_the_Goddess', 'Sparring_Gloves'): 'TFT_Item_HandOfJustice',
     ('Chain_Vest', 'Chain_Vest'): 'TFT_Item_BrambleVest',
     ('Chain_Vest', 'Negatron_Cloak'): 'TFT_Item_GargoyleStoneplate',
     ('Chain_Vest', 'Giants_Belt'): 'TFT_Item_SunfireCape',
-    ('Chain_Vest', 'Sparring_Gloves'): 'TFT_Item_Quicksilver',
+    ('Chain_Vest', 'Sparring_Gloves'): 'TFT_Item_SteadfastHeart',  # Steadfast Heart (was Quicksilver)
     ('Negatron_Cloak', 'Negatron_Cloak'): 'TFT_Item_DragonsClaw',
-    ('Negatron_Cloak', 'Giants_Belt'): 'TFT_Item_NightHarvester',
-    ('Negatron_Cloak', 'Sparring_Gloves'): 'TFT_Item_AdaptiveHelm',
+    ('Negatron_Cloak', 'Giants_Belt'): 'TFT_Item_Evenshroud',       # Evenshroud (was NightHarvester)
+    ('Negatron_Cloak', 'Sparring_Gloves'): 'TFT_Item_Quicksilver',  # Quicksilver (was AdaptiveHelm)
     ('Giants_Belt', 'Giants_Belt'): 'TFT_Item_WarmogsArmor',
-    ('Giants_Belt', 'Sparring_Gloves'): 'TFT_Item_UnstableConcoction',
+    ('Giants_Belt', 'Sparring_Gloves'): 'TFT_Item_StrikersFlail',   # Striker's Flail (was UnstableConcoction)
     ('Sparring_Gloves', 'Sparring_Gloves'): 'TFT_Item_ThiefsGloves',
 }
 
