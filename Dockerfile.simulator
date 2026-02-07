@@ -1,0 +1,17 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install minimal dependencies
+COPY requirements-simulator.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy only the simulator and data files needed
+COPY simulator/ simulator/
+COPY data/api/processed/ data/api/processed/
+
+# Default entry point: batch runner
+ENTRYPOINT ["python", "-m", "simulator.cloud_runner"]
+
+# Default args (can be overridden)
+CMD ["--games", "100", "--workers", "4", "--output", "/app/results"]

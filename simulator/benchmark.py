@@ -14,12 +14,16 @@ Tests:
 import sys
 import time
 import random
+import os
 from pathlib import Path
 
 # Add parent directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent))
+_project_root = str(Path(__file__).parent.parent)
+if _project_root not in sys.path:
+    sys.path.insert(0, _project_root)
 
-from core.combat_engine import CombatEngine, Unit
+from simulator.core.combat_engine import CombatEngine, Unit
+from simulator.game.game import TFTGame
 
 
 def benchmark_1v1(engine: CombatEngine, num_sims: int = 1000) -> dict:
@@ -162,6 +166,57 @@ def test_determinism_team_combat(engine: CombatEngine, num_runs: int = 50) -> di
     }
 
 
+def benchmark_full_game(num_games: int = 5) -> dict:
+    """Benchmark full 8-player game throughput."""
+    times = []
+    rounds_list = []
+
+    for i in range(num_games):
+        start = time.perf_counter()
+        game = TFTGame(num_players=8, seed=i, verbose=False)
+        placements = game.play()
+        elapsed = time.perf_counter() - start
+        times.append(elapsed)
+        rounds_list.append(game.round_num)
+
+    avg_time = sum(times) / len(times)
+    avg_rounds = sum(rounds_list) / len(rounds_list)
+    return {
+        'num_games': num_games,
+        'total_sec': round(sum(times), 3),
+        'avg_sec_per_game': round(avg_time, 3),
+        'min_sec': round(min(times), 3),
+        'max_sec': round(max(times), 3),
+        'avg_rounds': round(avg_rounds, 1),
+        'games_per_hour': round(3600 / avg_time, 0),
+    }
+
+
+def test_determinism_full_game(num_runs: int = 5) -> dict:
+    """Test determinism for full 8-player games."""
+    results = []
+    seed = 99
+
+    for _ in range(num_runs):
+        random.seed(seed)
+        game = TFTGame(num_players=8, seed=seed, verbose=False)
+        placements = game.play()
+        results.append({
+            'placements': placements,
+            'round_num': game.round_num,
+        })
+
+    first = results[0]
+    all_identical = all(r == first for r in results)
+    return {
+        'num_runs': num_runs,
+        'seed': seed,
+        'deterministic': all_identical,
+        'num_differences': sum(1 for r in results if r != first),
+        'sample_result': first,
+    }
+
+
 def run_full_benchmark():
     """Run all benchmarks and tests."""
     print("=" * 60)
@@ -194,6 +249,14 @@ def run_full_benchmark():
     print(f"  Elapsed: {bench_team['elapsed_sec']}s")
     print(f"  Throughput: {bench_team['sims_per_sec']} sims/sec")
 
+    print("\nFull Game Benchmark (5 games, 8 players each)...")
+    bench_game = benchmark_full_game(5)
+    print(f"  Total: {bench_game['total_sec']}s")
+    print(f"  Avg: {bench_game['avg_sec_per_game']}s/game "
+          f"(min={bench_game['min_sec']}s, max={bench_game['max_sec']}s)")
+    print(f"  Avg rounds: {bench_game['avg_rounds']}")
+    print(f"  Throughput: {bench_game['games_per_hour']:.0f} games/hour")
+
     # Determinism tests
     print()
     print("-" * 60)
@@ -203,17 +266,25 @@ def run_full_benchmark():
     print("\n1v1 Determinism (100 runs, same seed)...")
     det_1v1 = test_determinism(engine, 100)
     if det_1v1['deterministic']:
-        print(f"  ✅ PASS - All {det_1v1['num_runs']} runs identical")
+        print(f"  [PASS] - All {det_1v1['num_runs']} runs identical")
     else:
-        print(f"  ❌ FAIL - {det_1v1['num_differences']} runs differed!")
+        print(f"  [FAIL] - {det_1v1['num_differences']} runs differed!")
         print(f"  First difference: {det_1v1['first_difference']}")
 
     print("\nTeam Combat Determinism (50 runs, same seed)...")
     det_team = test_determinism_team_combat(engine, 50)
     if det_team['deterministic']:
-        print(f"  ✅ PASS - All {det_team['num_runs']} runs identical")
+        print(f"  [PASS] - All {det_team['num_runs']} runs identical")
     else:
-        print(f"  ❌ FAIL - {det_team['num_differences']} runs differed!")
+        print(f"  [FAIL] - {det_team['num_differences']} runs differed!")
+
+    print("\nFull Game Determinism (5 runs, same seed)...")
+    det_game = test_determinism_full_game(5)
+    if det_game['deterministic']:
+        print(f"  [PASS] - All {det_game['num_runs']} runs identical")
+        print(f"    Placements: {det_game['sample_result']['placements']}")
+    else:
+        print(f"  [FAIL] - {det_game['num_differences']} runs differed!")
 
     # Summary
     print()
@@ -226,24 +297,32 @@ def run_full_benchmark():
     print(f"| Engine load time | {load_time:.3f}s |")
     print(f"| 1v1 throughput | {bench_1v1['sims_per_sec']} sims/sec |")
     print(f"| Team combat throughput | {bench_team['sims_per_sec']} sims/sec |")
-    print(f"| 1v1 deterministic | {'✅ Yes' if det_1v1['deterministic'] else '❌ No'} |")
-    print(f"| Team combat deterministic | {'✅ Yes' if det_team['deterministic'] else '❌ No'} |")
+    print(f"| 1v1 deterministic | {'Yes' if det_1v1['deterministic'] else 'No'} |")
+    print(f"| Team combat deterministic | {'Yes' if det_team['deterministic'] else 'No'} |")
+    print(f"| Full game throughput | {bench_game['avg_sec_per_game']}s/game ({bench_game['games_per_hour']:.0f}/hr) |")
+    print(f"| Full game deterministic | {'Yes' if det_game['deterministic'] else 'No'} |")
     print()
 
     # Cost projections
     print("Cost Projections (estimated):")
     sims_per_hour_1v1 = bench_1v1['sims_per_sec'] * 3600
     sims_per_hour_team = bench_team['sims_per_sec'] * 3600
+    games_per_hour = bench_game['games_per_hour']
     print(f"  1M 1v1 sims: {1_000_000 / sims_per_hour_1v1:.1f} hours")
     print(f"  1M team sims: {1_000_000 / sims_per_hour_team:.1f} hours")
+    print(f"  1M full games (1 core): {1_000_000 / games_per_hour:.1f} hours")
+    print(f"  1M full games (32 cores): {1_000_000 / (games_per_hour * 32):.1f} hours")
+    print(f"  1M full games (32x32 cluster): {1_000_000 / (games_per_hour * 1024):.2f} hours")
     print()
 
     return {
         'load_time': load_time,
         'benchmark_1v1': bench_1v1,
         'benchmark_team': bench_team,
+        'benchmark_game': bench_game,
         'determinism_1v1': det_1v1,
         'determinism_team': det_team,
+        'determinism_game': det_game,
     }
 
 
