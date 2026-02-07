@@ -1,0 +1,400 @@
+API_Name,Display_Name,Tier,Rarity,Description,Effects,Associated_Traits,Tags
+TFT_Augment_MagicRoll,A Magic Roll,A,1,Roll 3 dice. Gain rewards based on their total.Reward: @TFTUnitProperty.item:TFT_Augment_MagicRoll@,EggTurns=3; NumComponents=2 (+5 hidden vars),,3-2
+TFT_Augment_AdvancedLoan,Advanced Loan,A,1,Gain X Gold. Your next augment is one tier lower.,Gold=20,,2-1
+TFT7_Augment_BandOfThieves1,Band of Thieves,A,1,Gain X Thief's Gloves.,NumGloves=1,,"2-1, 3-2, 4-2"
+TFT6_Augment_BandOfThieves2,Band of Thieves II,A,2,"Gain X Thief's Gloves. After X player combats, gain another.",DelayTurns=8; NumGloves=2,,2-1
+TFT9_Augment_BigGrabBag,Big Grab Bag,A,1,"Gain X random components, X gold, and 1 Reforger. Reforgers allow you to remake any item.",Gold=2; NumItems=3; NumReforgers=1,,"3-2, 4-2"
+TFT_Augment_BirthdayReunion,Birthday Reunion,A,1,"Gain a random 2-star 2-cost champion. When you reach Level X, gain a Thief's Gloves. When you reach Level X, gain a random 2-star 5-cost champion.Inkborn Fables Tactician's Crown, 2024",FirstLevelBreakpoint=7; SecondLevelBreakpoint=9,,2-1
+TFT_Augment_BodyguardTraining,Bodyguard Training,A,1,"Allies gain X Armor and Magic Resist, increased by X per player level.Gizmos & Gadgets Championship, 2022",BaseResistGained=10; ResistsPerLevel=3,,2-1
+TFT_Augment_BoxingLessons,Boxing Lessons,A,1,Your team gains X Health for each ally that starts combat in the front row.,Health=30,,"3-2, 4-2"
+TFT_Augment_BranchingOut,Branching Out,A,1,Gain a random Emblem.,NumReforgers=None; Numberofcombats=None,,2-1
+TFT_Augment_BranchingOutPlus,Branching Out+,A,2,Gain a random Emblem and a Reforger.Reforgers allow you to remake any item.,NumReforgers=1; Numberofcombats=None,,3-2
+TFT9_Augment_BuildingACollectionPlusPlus,Buried Treasures,A,3,Gain a random item component now and at the start of the next X rounds.,Gold=None; UpfrontItems=1; roundsofbonusitems=5,,2-1
+TFT6_Augment_CalculatedLoss,Calculated Loss,A,1,"After losing your combat, gain X gold and a free Shop reroll.",Gold=2,,2-1
+TFT11_Augment_Calltochaos,Call to Chaos,A,1,Gain a powerful and random reward.Reward: @TFTUnitProperty.item:TFT11_Augment_CallToChaos@,EggTurns=11; Gold=58; NumEmblems=5; Rerolls=40; ThreeStarGold=20; XP=64; numtg=3 (+9 hidden vars),,4-2
+TFT7_Augment_ClutteredMind,Cluttered Mind,A,1,"Gain X random 1-cost champions now. If your bench is full at the end of player combat, gain X XP.",Units=4; XP=3,,2-1
+TFT_Augment_ComebackStory,Comeback Story,A,1,Your team gains X Health and X% Attack Speed per missing player Health.@TFTUnitProperty.item:TFT_Augment_ComebackStory_Tooltip@,ASPerMissingHP=0.4000000059604645; HPPerMissingHP=5,,2-1
+TFT9_Augment_CustomerIsAlwaysRight,Component Buffet,A,1,"Whenever you would get a component, gain a component anvil instead. Gain a random component now.The anvil offers 4 choices.",,,2-1
+TFT_Augment_ComponentQuestRod,Continuous Conjuration,A,1,"Gain a Needlessly Large Rod. After your team deals X magic damage, gain X more.Damage dealt: @TFTUnitProperty.item:TFT_Augment_ComponentQuest_Tracker@",NumDelayed=2; StacksForReward=38000 (+1 hidden vars),,2-1
+TFT_Augment_Coronation,Coronation,A,1,"Gain a Tactician's Crown. Tactician's Crown, Shield, and Cape grant the holder an additional @BonusAS*100@% Attack Speed, @BonusAD*100@% Attack Damage, and X% Ability Power.",BonusAD=0.25; BonusAP=30; BonusAS=0.20000000298023224,,"3-2, 4-2"
+TFT_Augment_DeadlierCaps,Deadlier Caps,A,1,Gain a Rabadon's Deathcap. Rabadon's Deathcaps permanently gain X% Ability Power whenever their holders score a takedown.,AP=1; TakeDowns=1,,2-1
+TFT_Augment_DuoQueue,Duo Queue,A,1,Gain X random 5-cost champions and X copies of a random component.,NumComponents=2; NumUnits=2,,4-2
+TFT11_Augment_Epoch,Epoch,A,1,"Now, and at the start of every stage, gain X XP and X free rerolls.",Rerolls=3; XP=4,,2-1
+TFT16_Augment_Void_EvolveAndOvercome,Evolve and Overcome,A,1,"For every X enemies that Mutated Void allies takedown, gain X XP. Gain a Cho'Gath and a 2-star Kog'Maw. @TFTUnitProperty.item:TFT_Augment_EvolveAndOvercome_Tooltip@Void provides unique Mutations.",NumTakedownsReq=5; XP=2,Void,2-1
+TFT_Augment_ExclusiveCustomization,Exclusive Customization,A,1,Gain a Lucky Item Chest and a Magnetic Remover and X gold.Use a Lucky Item Chest on a champion to choose from an armory of recommended items!,Gold=10; NumRemovers=1,,"3-2, 4-2"
+TFT6_Augment_Distancing2,Exiles II,A,2,Your champions that start combat with no adjacent champions gain a X% max Health shield for X seconds.,MaxHealthShield=30; ShieldDuration=10,,"3-2, 4-2"
+TFT_Augment_ExpectedUnexpectedness,Expected Unexpectedness,A,1,"Now and at the start of the next X stages, roll 3 dice. Gain various rewards based on their total.",NumReforgers=3; NumStages=2 (+4 hidden vars),,2-1
+TFT_Augment_ComponentQuestBelt,Extra Buckles,A,1,"Gain a Giant's Belt. After your team takes X damage, gain X more.Damage taken: @TFTUnitProperty.item:TFT_Augment_ComponentQuest_Tracker@",NumDelayed=2; StacksForReward=75000 (+1 hidden vars),,2-1
+TFT_Augment_FiresalePlus,Firesale,A,2,"Each round, steal a random X-cost or lower champion from the shop. Gain X gold.",CostLimit=3; Gold=1,,3-2
+TFT_Augment_Flexible,Flexible,A,1,"Gain X random Emblem. At the start of every Stage, gain a random Emblem. Your team gains X Health for each Emblem they are holding.",BonusStages=99; HPPerEmblem=40; StartingEmblems=1,,2-1
+TFT_Augment_ComponentQuestTear,Flowing Tears,A,1,"Gain a Tear of the Goddess. After your team spends X Mana, gain X more.Mana spent: @TFTUnitProperty.item:TFT_Augment_ComponentQuest_Tracker@",NumDelayed=2; StacksForReward=6500 (+1 hidden vars),,2-1
+TFT_Augment_GiantAndMighty,Giant and Mighty,A,1,"Your team becomes large, gaining X Health and @PercentHealth*100@% max Health.",FlatHealth=200; PercentHealth=0.10000000149011612 (+1 hidden vars),,"3-2, 4-2"
+TFT10_Augment_GoingLong,Going Long,A,1,You no longer gain interest. Gain X gold now. Round start: gain X XP.Interest is extra gold you gain per 10g saved.,Gold=15; XP=4,,2-1
+TFT10_Augment_GoodForSomethingSilver,Good For Something I,A,1,Champions that aren't holding items have a @dropchance*100@% chance to drop X gold on death.,DropChance=0.5; Gold=1,,2-1
+TFT10_Augment_HeroicGrabBag,Heroic Grab Bag,A,1,Gain X Lesser Champion Duplicators and X gold.This item allows you to copy a 3-cost or less champion.,Gold=5; LesserDuplicatorAmount=2,,2-1
+TFT_Augment_HeroicGrabBagPlus,Heroic Grab Bag+,A,2,Gain X Lesser Champion Duplicators and X gold.This item allows you to copy a 3-cost or less champion.,Gold=8; LesserDuplicatorAmount=2,,3-2
+TFT_Augment_InfinityProtection,Infinity Protection,A,1,"Gain X gold now. On Stage 3-7, gain an Infinity Force. Infinity Force gives allies in the same row a X% Health shield.Monsters Attack Championship, 2023",GoldAmount=4; HealthPercent=15,,2-1
+TFT_Augment_InvestedPlusPlus,Invested++,A,3,"Gain X gold. After every combat, gain 1 Shop reroll for every X gold above X (max X gold).",Gold=40; GoldPerReroll=10; GoldThreshold=50; MaxGold=80,,4-2
+TFT9_Augment_IronAssets,Iron Assets,A,1,Gain a component anvil and X gold.,Gold=3,,2-1
+TFT6_Augment_ItemGrabBag1,Item Grab Bag,A,1,Gain X random completed item.,NumItems=1,,"2-1, 3-2, 4-2"
+TFT9_Augment_JeweledLotus,Jeweled Lotus I,A,1,"Your team gains X% Critical Strike Chance, and their Abilities can critically strike.",CritChance=20; CritDamage=None,,"3-2, 4-2"
+TFT9_Augment_GreaterJeweledLotus,Jeweled Lotus II,A,1,"Your team gains X% Critical Strike Chance and @CritDamage*100@% Critical Strike Damage, and their Abilities can critically strike.",CritChance=25; CritDamage=0.10000000149011612,,"3-2, 4-2"
+TFT_Augment_LastSecondSave,Last Second Save,A,1,"The first time each ally falls below @HealthThreshold*100@% Health, they restore @HealPercent*100@% maximum Health.",HealPercent=0.20000000298023224; HealthThreshold=0.3499999940395355,,"3-2, 4-2"
+TFT7_Augment_LategameSpecialist,Late Game Specialist,A,1,"When you reach Level X, gain X gold.",Gold=36; LevelReq=9,,3-2
+TFT_Augment_LegionOfThrees,Legion of Threes,A,1,"Gain a random Emblem. Your 3-cost champions and all allies equipped with an Emblem gain X Health and @AS*100@% Attack Speed.Reckoning Championship, 2021",AS=0.11999999731779099; HealthAmount=200,,2-1
+TFT16_Augment_Weightlifting,Lifting Competition,A,1,"At the start of each round, if the combined Health of all your unique Bruisers is high enough, gain a reward and increase the threshold (up to four times). Gain a Shen and a Sion.@TFTUnitProperty.item:TFT16_Augment_Weightlifting_RewardName@@TFTUnitProperty.item:TFT16_Augment_Weightlifting_CurrentHealth@ / @TFTUnitProperty.item:TFT16_Augment_Weightlifting_MaxHealth@",Breakpoint2=8500; Breakpoint3=14000; Breakpoint4=36000 (+1 hidden vars),Brawler,2-1
+TFT6_Augment_MakeshiftArmor1,Makeshift Armor I,A,1,Allies without items equipped gain X Armor and Magic Resist.,Resists=30,,"2-1, 3-2, 4-2"
+TFT_Augment_MaxBuild,Max Build,A,1,"Gain X free Shop rerolls. On Stage 4-5 and 6-1, gain a Champion Duplicator.Galaxies Championship, 2020",RerollCount=10,,4-2
+TFT_Augment_FoodfightTactics,Mess Hall,A,1,"After X seconds of combat, your champions gain @AttackSpeed*100@% Attack Speed and attacks also hurl X delicious projectiles that deal X (%i:scaleAD%%i:scaleAP%) magic damage.",ADRatio=1; APRatio=1; AttackSpeed=0.07999999821186066; BaseDamage=25; EndSeconds=10; ProjectileCount=2 (+1 hidden vars),,"3-2, 4-2"
+TFT9_Augment_MissedConnections,Missed Connections,A,1,Gain a copy of each 1-cost champion.,,,"3-2, 4-2"
+TFT_Augment_MoneyMonsoon,Money Monsoon,A,1,Gain X gold now and every round for the rest of the game.,RoundGold=7,,4-2
+TFT6_Augment_PandorasItems,Pandora's Items,A,1,Round start: items on your bench are randomized. Gain X random component.,NumComponents=1,,"2-1, 3-2, 4-2"
+TFT9_Augment_LearningFromExperience2,Patient Study,A,2,"After player combat, gain X XP if you won or X XP if you lost.",lossxp=3; winxp=2,,2-1
+TFT_Augment_PlaceboPlus,Placebo+,A,2,Your team gains @AttackSpeed*100@% Attack Speed. Gain X gold.,AttackSpeed=0.009999999776482582; Gold=14,,3-2
+TFT_Augment_ChallengerDash,Precision and Grace,A,1,"At the start of combat, allies gain @BonusAS*100@% Attack Speed for X seconds. On takedown, allies dash to their next target and gain this bonus again.",BonusAS=0.25; BurstDuration=3,,"3-2, 4-2"
+TFT11_Augment_Reinfourcement,ReinFOURcement,A,1,The next 4-cost champion you buy with gold is instantly upgraded to 2-star. Gain X gold.,Gold=5,,4-2
+TFT6_Augment_SalvageBin,Salvage Bin,A,1,"Gain 1 random completed item now, and 1 component after X player combats. Selling champions breaks completed items into components (excluding Tactician's items and Emblems).",NumRounds=8,,2-1
+TFT6_Augment_SecondWind1,Second Wind,A,1,"After X seconds of combat, your team heals X% of their missing Health.",Delay=10; HealPercent=40,,"3-2, 4-2"
+TFT_Augment_SeraphimsStaff,Seraphim's Staff,A,1,Gain an Archangel's Staff. Archangel's Staff grants X additional Mana Regen if its holder has X% or more Ability Power.,APThreshold=90; IncreasedMana=2 (+1 hidden vars),,"2-1, 3-2"
+TFT9_Augment_SilverSpoon,Silver Spoon,A,1,Gain X XP.,Experience=10,,2-1
+TFT11_Augment_Slammin,Slammin',A,1,"Gain X random component(s). After each player combat, if there are no items on your bench (other than consumables), gain X XP.",XP=2; XPNow=None; components=1,,2-1
+TFT11_Augment_Slammin_Plus,Slammin'+,A,2,"Gain X random component(s) and X XP now. After each player combat, if there are no items on your bench (other than consumables), gain X XP.",XP=2; XPNow=10; components=1,,3-2
+TFT_Augment_SmallGrabBag,Small Grab Bag,A,1,Gain X random item components.,NumComponents=2,,"3-2, 4-2"
+TFT_Augment_SpeedyDoubleKill,Speedy Double Kill,A,1,"Gain a Guinsoo's Rageblade. When 2 players are eliminated, gain X gold.Fates Championship, 2021",GoldAmount=40,,2-1
+TFT_Augment_SpiritLink1,Spirit Link,A,1,Champions restore @BaseRegenBonus*100@% of their max Health every X seconds. Increase the healing by X% for every 10 missing player Health.,BaseRegenBonus=0.05000000074505806; RegenPerMissingHP=0.5; RegenPeriod=4,,"3-2, 4-2"
+TFT_Augment_ItemSpiritVisage,Spirit of Redemption,A,1,"Gain a Spirit Visage. Every X seconds, Spirit Visage heals allies within X hex for X% of their missing Health.",Frequency=5; HexRadius=1; Missinghealth=7.5,,"2-1, 3-2"
+TFT_Augment_ForgeRod,Staffsmith,A,1,Gain X random completed items that build from Needlessly Large Rod.,NumItems=2,,4-2
+TFT6_Augment_Diversify1,Stand United,A,1,Gain @AD*100@% Attack Damage and X% Ability Power for each non-unique Trait active across your team.Current Bonus: @TFTUnitProperty.item:TFT_Augment_Diversify_ADCounter@% %i:scaleAD%  @TFTUnitProperty.item:TFT_Augment_Diversify_APCounter@% %i:scaleAP%,AD=0.014999999664723873; AP=1.5,,"3-2, 4-2"
+TFT_Augment_SweetTreats,Sweet Treats,A,1,"Gain an Artifact anvil. Your team gains X Health for each item equipped on champions.Health Gained: @TFTUnitProperty.item:TFT_Augment_SweetTreats_TeamHealth@Magic N' Mayhem Tactician's Crown, 2024",HealthPerItem=20,,"3-2, 4-2"
+TFT_Augment_ForgeSword,Swordsmith,A,1,Gain X random completed items that build from B.F. Sword.,NumItems=2,,4-2
+TFT_Augment_TableScraps,Table Scraps,A,1,"After the next X carousels, gain one champion that was not taken and its item. Gain X gold.",Gold=1; NumStages=2,,2-1
+TFT16_Augment_ShadowIsles_RuinedKing,The Ruined King,A,1,"Gain a 2-star Viego. Your strongest Viego shares @PassiveSharePercent*100@% of his Passive with other Shadow Isles allies. After collecting X souls, his Ability upgrades.",PassiveSharePercent=0.30000001192092896; SoulReq=100,"ShadowIsles, Rapidfire",2-1
+TFT9_Augment_TiniestTitanPlus,Tiniest Titan,A,2,Gain X player Health and X gold after every player combat. Your Tactician also moves faster. Gain X gold now.,Gold=2; Heal=2; InitialGold=15,,3-2
+TFT_Augment_TitanicTitan,Titanic Titan,A,1,"Increase your current and max player Health by X. On carousel rounds you are released earlier, but are much slower.",Heal=25,,"2-1, 3-2"
+TFT16_Augment_TheDarkinForge,Unsealed From Steel,A,1,Choose 1 of 4 Darkin Weapons. Darkin Weapons are Artifacts that grant the Darkin trait.,,,"2-1, 3-2, 4-2"
+TFT_Augment_UpwardMobility,Upward Mobility,A,1,Buying XP costs 1 less. Gain X Health and X free rerolls whenever you level up.,Health=2; Rerolls=2,,"2-1, 3-2, 4-2"
+TFT16_Augment_WaterAxiom,Water Axiom,A,1,Gain a Water Hex. Champions within gain X Mana Regen. Their damage @ShredPercent*100@% Shreds enemies for X seconds.,Duration=5; ManaRegen=3; ShredPercent=0.30000001192092896,,"2-1, 3-2, 4-2"
+TFT_Augment_AdvancedLoanPlus,Advanced Loan+,B,2,Gain X Gold. Your next augment is one tier lower.,Gold=33,,3-2
+TFT16_Augment_AirAxiom,Air Axiom,B,1,Gain an Air Hex. Champions within gain @AttackSpeed*100@% Attack Speed and their damage @SunderPercent*100@% Sunders enemies for X seconds.,AttackSpeed=0.25; Duration=5; SunderPercent=0.30000001192092896,,"2-1, 3-2, 4-2"
+TFT_Augment_ArcaneViktory,Arcane Viktor-y,B,1,"After X seconds of combat, stun the enemy team for X seconds. Repeat this after X seconds of combat.TFT Macao Open, 2024",FirstStunSeconds=8; SecondStunSeconds=20; StunDuration=1.5,,"3-2, 4-2"
+TFT16_Augment_RumbleCarry,Artillery Barrage,B,1,"Gain a Rumble. Your strongest Rumble gains +X Range and constantly fires missiles at enemies, increased with Attack Speed.",MaxRange=7,"Yordle, Defender",2-1
+TFT9_Augment_Commander_Ascension,Ascension,B,1,"After X seconds of combat, gain X% Damage Amp.",DamageAmp=45; Delay=12,,"3-2, 4-2"
+TFT_Augment_AuraFarming,Aura Farming,B,1,Gain a X-star 5-cost champion holding a recommended item. You cannot field it until Stage X-X.,NumItems=1; UnlockRound=5; UnlockStage=4; starLevel=2,,2-1
+TFT_Augment_ComponentQuestBow,Backup Bows,B,1,"Gain a Recurve Bow. After your team attacks X times, gain X more.Attacks: @TFTUnitProperty.item:TFT_Augment_ComponentQuest_Tracker@",NumDelayed=2; StacksForReward=1000 (+1 hidden vars),,2-1
+TFT16_Augment_BandleBounty,Bandle Bounty I,B,1,"For every Yordle you've unlocked or unlock, gain X gold. The Bandle Paths reveal a secret Yordle 10. Gain a Rumble and Lulu.",Gold=2,Yordle,3-2
+TFT16_Augment_BandleBountyPlus,Bandle Bounty II,B,2,"For every Yordle you've unlocked or unlock, gain X gold. The Bandle Paths reveal a secret Yordle 10! Gain a Tristana and Teemo.",Gold=4,Yordle,3-2
+TFT_Augment_BeltOverflow,Belt Overflow,B,1,Gain X Giant's Belts. Your Giant's Belts grant +X bonus Health.,BonusHealth=85; NumItems=4,,"3-2, 4-2"
+TFT7_Augment_BestFriends1,Best Friends I,B,1,Allies isolated in pairs gain @AS*100@% Attack Speed and X Armor at the start of combat.,AS=0.10000000149011612; Armor=10,,"3-2, 4-2"
+TFT7_Augment_BestFriends2,Best Friends II,B,2,Allies isolated in pairs gain @AS*100@% Attack Speed and X Armor at the start of combat.,AS=0.15000000596046448; Armor=18,,"3-2, 4-2"
+TFT7_Augment_BirthdayPresents,Birthday Present,B,1,Gain a 2-star champion and X gold every time you level up. The champion's cost tier is your level minus 4 (max: 5-cost).,Gold=1,,2-1
+TFT_Augment_TheDarkinBlade,Blood Offering,B,1,Gain a Bloodthirster. Combat start: Allies holding Bloodthirsters lose @HPLossPercent*100@% Health but gain a @HPShieldPercent*100@% Health shield and @BonusAD*100@% Attack Damage.,BonusAD=0.10000000149011612; HPLossPercent=0.20000000298023224; HPShieldPercent=0.30000001192092896; ShieldDuration=8,,"2-1, 3-2"
+TFT16_Augment_Noxus_BringerOfRuin,Bringer of Ruin,B,1,Every takedown Atakhan scores permanently grants him X% Ability Power and X max Health. Gain a Briar and a Sion. (Current Takedowns: @TFTUnitProperty.trait:TFT16_Augment_Noxus_BringerOfRuin_Takedowns@),AP=1; MaxHealth=40; TakedownBreakpoint=1,Noxus,2-1
+TFT_Augment_BronzeForLifeI,Bronze For Life I,B,1,Your team gains @DamageAmpBonus*100@% Damage Amp for each Bronze-tier trait.Damage Amp Bonus: @TFTUnitProperty.item:TFT_Augment_BronzeForLife_CurrentDamageAmp@%,DamageAmpBonus=0.02500000037252903; DurabilityBonus=None,,"3-2, 4-2"
+TFT_Augment_BronzeForLife2,Bronze For Life II,B,2,Your team gains @DamageAmpBonus*100@% Damage Amp and X Armor and Magic Resist for each Bronze-tier trait.Damage Amp: @TFTUnitProperty.item:TFT_Augment_BronzeForLife_CurrentDamageAmp@%Armor and Magic Resist: @TFTUnitProperty.item:TFT_Augment_BronzeForLife_CurrentDurability@,DamageAmpBonus=0.02500000037252903; Resists=4,,"3-2, 4-2"
+TFT_Augment_HomeCooking,Care Package,B,1,"Now and at the start of the next X Stages, receive a care package with loot and X gold.",Gold=3; Health=4; NumStages=2; component=1,,3-2
+TFT9_Augment_BardPlaybook1,Caretaker's Ally,B,1,Gain a random X-cost champion now. Gain the same one again every time you level up.Champion: @TFTUnitProperty.item:TFT_Augment_WorthTheWait@,UnitTier=2,,2-1
+TFT9_Augment_BardPlaybook2,Caretaker's Favor,B,2,"Gain a component anvil when you reach level X, X, X, and X.The anvil offers 4 choices.",levelreqa=5; levelreqb=6; levelreqc=7; levelreqd=8,,2-1
+TFT_Augment_ComponentQuestSword,Carve a Path,B,1,"Gain a B.F. Sword. After your team deals X physical damage, gain X more.Damage dealt: @TFTUnitProperty.item:TFT_Augment_ComponentQuest_Tracker@",NumDelayed=2; StacksForReward=65000 (+1 hidden vars),,2-1
+TFT6_Augment_CelestialBlessing1,Celestial Blessing I,B,1,Your team gains X% Omnivamp. Excess healing is converted to a shield up to X Health.,MaxShield=200; Omnivamp=12,,"3-2, 4-2"
+TFT6_Augment_CelestialBlessing2,Celestial Blessing II,B,2,Your team gains X% Omnivamp. Excess healing is converted to a shield up to X Health.,MaxShield=400; Omnivamp=18,,"3-2, 4-2"
+TFT16_TeamupAugment_AmbessaKindred,Chosen Wolves,B,1,"Gain an Ambessa and a Kindred. When Kindred casts, Ambessa always gains their protection against death and gains Attack Damage while protected. When Ambessa casts, Wolf strikes all enemies hit, dealing reduced damage.",,"Vanquisher, Rapidfire, Noxus, KindredUnique",4-2
+TFT_Augment_ClockworkAccelerator,Clockwork Accelerator,B,1,Your team gains @attackspeed*100@% Attack Speed every X seconds in combat.,AttackSpeed=0.10000000149011612; Frequency=3,,"3-2, 4-2"
+TFT6_Augment_TradeSector2,Commerce Core,B,2,Gain X free Shop rerolls now and X every round for the rest of the game.,Gold=None; RerollCount=2; RerollsNow=16,,4-2
+TFT_Augment_CookingPot,Cooking Pot,B,1,"At the start of each turn, all allies holding a Frying Pan or Spatula item grant the nearest champion X permanent Health. Gain a Frying Pan.",AbilityPower=1; Health=50,,2-1
+TFT_Augment_Corrosion,Corrosion,B,1,Enemy champions in the first two rows lose X Armor and Magic Resist every X seconds.,ResistLoss=4; Time=2,,"3-2, 4-2"
+TFT16_Augment_Targon_CosmicCalling,Cosmic Calling,B,1,"Gain a Spear of Shojin and a Leona. On Stage X-X, gain a Taric.",RoundNum=7; StageNum=3,,3-2
+TFT10_Augment_CrashTestDummies,Crash Test Dummies,B,1,Gain X Training Dummies. Combat start: Your Training Dummies launch themselves towards a group of enemies and Stun them for X seconds.,NumDummies=2; SearchRange=1; Stun=1.75,,"3-2, 4-2"
+TFT_Augment_CrownguardSpirit,Crown's Will,B,1,Gain a Needlessly Large Rod. Your team gains X Ability Power and X Armor.,AP=12; Armor=10,,"2-1, 3-2, 4-2"
+TFT7_Augment_CursedCrown,Cursed Crown,B,1,"Gain +X max team size and your team gains @DurabilityBonus*100@% Durability, but you take double player damage when you lose a player combat.",DurabilityBonus=0.03999999910593033; MaxArmySizeIncrease=2; PlayerCombatDamageIncrease=100,,"2-1, 3-2"
+TFT_Augment_TragicalBlade,Deadlier Blades,B,1,Gain a Deathblade. Deathblades permanently gain @AD*100@% Attack Damage whenever their holders score a takedown.,AD=0.009999999776482582; TakeDowns=1,,2-1
+TFT16_Augment_DemaciaForever,Demacia Forever,B,1,"Demacians gain X permanent Health every time they rally. They also gain X% permanent Attack Damage and Ability Power every X rallies. Gain a Jarvan IV, a Sona, and a Xin Zhao.",Health=3; RallyCount=3; Stats=1.5,Demacia,2-1
+TFT6_Augment_Twins2,Double Trouble,B,2,"When you field exactly 2 copies of a champion, they both gain X% Attack Damage and X% Ability Power, Armor, and Magic Resist. When you 3-star, gain a 2-star copy.",BonusStats=30,,2-1
+TFT_Augment_Dummify,Dummify,B,1,Lose all champions on your board and bench. Gain a Training Dummy with X% of their combined health. The dummy gains X Health per stage.,HPPerStage=1200; HealthPercent=80,,3-2
+TFT_Augment_EarlyLearning,Early Learnings,B,1,"Your team gains X% Attack Damage & Ability Power. This increases by X% after each player combat. 1-cost champions gain double.@TFTUnitProperty.item:TFT_Augment_EarlyLearning_TRAKey@TFT Vegas Open, 2023",IncPerPlayerCombat=1; NumADAP=8,,2-1
+TFT16_Augment_EarthAxiom,Earth Axiom,B,1,"Gain an Earth Hex. Champions within gain X Armor and Magic Resist. At @HealthThreshold*100@% Health, they Stun enemies within X hexes for X seconds.",HealthThreshold=0.5; HexRadius=2; Resistances=30; StunDuration=1.5,,"2-1, 3-2, 4-2"
+TFT11_Augment_EpochPlus,Epoch+,B,2,"Now, and at the start of every stage, gain X XP and X free rerolls.",Rerolls=3; XP=8,,3-2
+TFT_Augment_ExplosiveGrowth,Explosive Growth,B,1,"Now and at the start of the next X rounds, gain X XP.",XP=7; rounds=3,,3-2
+TFT_Augment_ExplosiveGrowthPlus,Explosive Growth+,B,2,"Now and at the start of the next X rounds, gain X XP.",XP=10; rounds=3,,4-2
+TFT_Augment_EyeForAnEye,Eye For An Eye,B,1,"For every X ally champions that die, gain a random component (max X).Deaths Remaining: @TFTUnitProperty.item:TFT_Augment_EyeForAnEyeDeaths@",AllyDeaths=15; NumComponents=3 (+1 hidden vars),,2-1
+TFT_Augment_EyeForAnEyePlus,Eye For An Eye+,B,2,"Gain a random component. For every X ally champions that die, gain another component (max X).Deaths Remaining: @TFTUnitProperty.item:TFT_Augment_EyeForAnEyeDeaths@",AllyDeaths=18; NumComponents=2 (+1 hidden vars),,3-2
+TFT_Augment_FeedTheFlames,Feed the Flames,B,1,Gain a Sunfire Cape. Your team gains @Omnivamp*100@% Omnivamp when attacking Burning enemies.,Omnivamp=0.11999999731779099,,"2-1, 3-2"
+TFT16_Augment_FireAxiom,Fire Axiom,B,1,Gain a Fire Hex. Champions within gain X% Attack Damage and Ability Power. Their damage @BurnPercent*100@% Burns and @GrievousWoundsPercent*100@% Wounds for X seconds.,ADAP=15; BurnPercent=0.009999999776482582; Duration=6; GrievousWoundsPercent=0.33000001311302185,,"2-1, 3-2, 4-2"
+TFT_Augment_ForgedInStrength,Forged in Strength,B,1,"Gain X random Artifact. When you drop below X Health, gain X more random Artifacts.Remix Rumble Championship, 2023",HealthThreshold=35; NumArtifacts=1; NumMoreArtifacts=3,,2-1
+TFT_Augment_GainGold,Gain @Gold@ Gold,B,1,Gain X gold.,Gold=21,,3-2
+TFT_Augment_GildedSteel,Gilded Steel,B,1,"Gain X non-Tank 5-cost champions. If you field a 5-cost champion, your 1 to 4-cost champions gain @Durability*100@% Durability.K.O. Coliseum Championship, 2025",Durability=0.07999999821186066; NumUnits=3,,4-2
+TFT_Augment_GlassCannonI,Glass Cannon I,B,1,Allies that start combat in the back row begin combat at @Health*100@% Health but gain @DamageAmp*100@% Damage Amp.,DamageAmp=0.17000000178813934; Health=0.800000011920929,,"3-2, 4-2"
+TFT_Augment_GlassCannonII,Glass Cannon II,B,1,Allies that start combat in the back row begin combat at @Health*100@% Health but gain @DamageAmp*100@% Damage Amp.,DamageAmp=0.30000001192092896; Health=0.800000011920929,,"3-2, 4-2"
+TFT_Augment_GoldDestiny,Gold Destiny,B,1,Gain a random Gold Augment and X gold.,Gold=3,,2-1
+TFT_Augment_GoldDestinyPlus,Gold Destiny+,B,2,Gain a random Gold Augment and X gold.,Gold=6,,3-2
+TFT_Augment_Golemify,Golemify,B,1,Lose all champions on your board and bench. Gain a Golem with X% of their combined Health and X% of their combined Attack Damage. The Golem gains X Health per stage.,ADPercent=50; HPPerStage=1000; HealthPercent=60,,3-2
+TFT_Augment_GrowthMindset,Growth Mindset,B,1,Gain X XP.,UpfrontXP=50,,4-2
+TFT_Augment_HardBargain,Hard Bargain,B,1,"You cannot choose your Carousel rewards. Gain an additional X player Health and X Gold each carousel round.When you do not pick a Carousel Reward, you are given an unpicked champion and the item it carries",Gold=10; PlayerHealth=6,,2-1
+TFT_Augment_HardCommit,Hard Commit,B,1,"Gain a random Emblem. Now and at the start of each Stage, gain a 1-star champion of that trait with a cost equal to the Stage (max 5) and X gold.",GoldPerStage=7,,2-1
+TFT9_Augment_HealingOrbsI,Healing Orbs I,B,1,"When an enemy dies, the nearest ally is healed for X.",Heal=220,,"3-2, 4-2"
+TFT9_Augment_HealingOrbsII,Healing Orbs II,B,1,"When an enemy dies, the nearest ally is healed for X.",Heal=440,,"3-2, 4-2"
+TFT_Augment_WarmogsBuckle,Heart of Steel,B,1,"Gain a Steadfast Heart. Every X seconds of combat its holder survives, Steadfast Heart gains additional X permanent max Health.",Health=12; SecondsPerGain=10,,2-1
+TFT_Augment_HeavyIsTheCrown,Heavy Is the Crown,B,1,"Gain a Crown of Demacia, which provides significant bonuses to the wearer. If the holder dies, lose the round.",,,"2-1, 3-2"
+TFT9_Augment_HedgeFund,Hedge Fund,B,1,Gain X gold. Your max interest is increased to X.Interest is extra gold you gain per 10g saved.,Gold=25; InterestCap=10,,2-1
+TFT_Augment_HeroicGrabBagPlusPlus,Heroic Grab Bag++,B,3,Gain X Lesser Champion Duplicators and X gold.This item allows you to copy a 3-cost or less champion.,Gold=14; LesserDuplicatorAmount=2,,4-2
+TFT_Augment_HighVoltage,High Voltage,B,1,Gain an Ionic Spark. Your Ionic Sparks have +X hex radius and do @effectincrease*100@% more damage.,effectincrease=0.20000000298023224; hexincreasetooltip=3 (+1 hidden vars),,"2-1, 3-2"
+TFT_Augment_HoldTheLine,Hold the Line,B,1,Allies in your back 2 rows gain X% Ability Power and @AD*100@% Attack Damage for each ally that starts combat in your front row.,AD=0.09000000357627869; AP=10,,"3-2, 4-2"
+TFT6_Augment_HyperRoll,Hustler,B,1,You no longer gain interest but gain X gold at the start of every player combat round. Gain X gold now.Interest is extra gold you gain per 10g saved.,Gold=3; InitialGold=6; XP=None,,2-1
+TFT_Augment_InvestedPlus,Invested+,B,2,"Gain X gold. After every combat, gain 1 Shop reroll for every X gold above X (max X gold).",Gold=26; GoldPerReroll=10; GoldThreshold=50; MaxGold=80,,3-2
+TFT_Augment_JustHit,Just Hit,B,1,"Gain a Champion Duplicator, X Shop rerolls, and X gold.",Gold=10; Numrolls=18,,4-2
+TFT9_Augment_KnowYourEnemy,Know Your Enemy,B,1,"You can see who you will fight next. Your team gains X% Damage Amp, increased to X% if you and your opponent have any of the same traits active.",BaseDamageAmp=8; FullDamageAmp=15,,"3-2, 4-2"
+TFT_Augment_LateGameScaling,Late Game Scaling,B,1,"Gain X XP at the start of player combat rounds. Your 5-cost champions gain @BonusHealth*100@% Health and @AttackSpeed*100@% Attack Speed.CyberCity Tactician's Crown, 2025",AttackSpeed=0.11999999731779099; BonusHealth=0.11999999731779099; XPGain=2,,2-1
+TFT9_Augment_LongTimeCrafting,Latent Forge,B,1,"After X player combats, gain an Artifact anvil. The anvil offers 4 choices. Artifacts are more powerful items with a unique effect.",Numberofcombats=8,,2-1
+TFT16_Augment_IllaoiCarry,Leap of Faith,B,1,Gain an Illaoi. Your strongest Illaoi becomes a Fighter. Her Ability is replaced with an airborne slam that's recast when she kills her target.,,"Bilgewater, Brawler",2-1
+TFT6_Augment_MaxLevel10,Level Up!,B,1,"When you buy XP, gain an additional X. Gain X immediately.",InitialXP=12; XP=2,,2-1
+TFT_Augment_Lineup,Lineup,B,1,Your team gains X Armor and Magic Resist for each ally that starts combat in the front two rows.,Resistances=2,,"3-2, 4-2"
+TFT10_Augment_LittleBuddies,Little Buddies,B,1,Your 4-cost and 5-cost champions gain X Health and @AttackSpeed*100@% Attack Speed for every 1-cost and 2-cost champion on your board.,AttackSpeed=0.05999999865889549; Health=55 (+2 hidden vars),,"3-2, 4-2"
+TFT7_Augment_LivingForge,Living Forge,B,1,Gain an Artifact anvil now and after every X player combats.Artifacts are more powerful items with a unique effect.,Numberofcombats=9,,2-1
+TFT7_Augment_LuckyGloves,Lucky Gloves,B,1,Thief's Gloves will always give your champions ideal items. Gain X Sparring Gloves.,NumGloves=2; NumRounds=9999,,2-1
+TFT7_Augment_LuckyGlovesPlus,Lucky Gloves+,B,2,"Thief's Gloves will always give your champions ideal items. Gain X Sparring Gloves now, then another after X player combats.",DelayTurns=4; NumGloves=2,,"3-2, 4-2"
+TFT_Augment_GuardbreakerSpirit,Mace's Will,B,1,Gain a Sparring Gloves. Your team gains @AS*100@% Attack Speed and @CritChance*100@% Critical Strike Chance.,AS=0.07999999821186066; CritChance=0.20000000298023224,,"2-1, 3-2, 4-2"
+TFT6_Augment_MakeshiftArmor2,Makeshift Armor II,B,2,Allies without items equipped gain X Armor and Magic Resist.,Resists=45,,"2-1, 3-2, 4-2"
+TFT_Augment_MirroredMonetization,Malicious Monetization,B,1,"Gain X gold. For the next X rounds, enemy champions drop X gold when killed.@TFTUnitProperty.item:TFT_Augment_MirroredMonetization_TotalGoldTooltip@",GoldContained=2; PercCost=2; rounds=3,,4-2
+TFT_Augment_MinMaxer,Min-Max,B,1,Gain a Golden Item Remover and X random components.Golden Item Remover is a Magnetic Remover with infinite uses.,NumItems=4,,3-2
+TFT_Augment_NineLives,Nine Lives,B,1,"Set your current and max player Health to X. On combat loss, you only lose X health and gain loot. You can't gain health.",HealthLoss=1; NumberOfLives=9,,2-1
+TFT_Augment_Waverider,On a Roll,B,1,"Whenever you star up a champion that you fielded last combat, gain X free Shop rerolls. Gain X gold.",Gold=2; Numrolls=2,,3-2
+TFT_Augment_OneBuffTwoBuff,"One Buff, Two Buff",B,1,"Gain a Red Buff, a Blue Buff, and a Champion Duplicator.",,,"3-2, 4-2"
+TFT6_Augment_OneTwoFive,"One, Two, Five!",B,1,"Gain X random component, X gold, and X random 5-cost champion.",Gold=2; NumChamps=1; NumComponents=1,,4-2
+TFT11_Augment_OverEncumbered,Over Encumbered,B,1,"For the next stage, you only get X bench slots. After, get X item&nbsp;components.",BenchSlots=2; Gold=None; components=2,,2-1
+TFT_Augment_PairOfFours,Pair of Fours,B,1,"If your team has exactly X 4-cost champions, they each gain X Health and @AttackSpeed*100@% Attack Speed. Gain a random 4-cost.",AttackSpeed=0.2840000092983246; Health=504; NumChampsToGrant=1; NumCopies=2; Tier=4 (+3 hidden vars),,4-2
+TFT7_Augment_PandorasBench,Pandora's Bench,B,1,"At the start of every round, champions on the X rightmost bench slots transform into random champions of the same cost. Gain X gold.",BenchSlots=3; Gold=6; LesserDuplicatorAmount=None,,"2-1, 3-2"
+TFT9_Augment_PandorasItems2,Pandora's Items II,B,2,Round start: items on your bench are randomized.Gain X random components.,NumCompletedItems=None; NumComponents=2,,"2-1, 3-2, 4-2"
+TFT9_Augment_PandorasRadiantBox,Pandora's Items III,B,1,Round start: items on your bench are randomized. Gain 1 random Radiant item.,,,"2-1, 3-2"
+TFT_Augment_Pilfer,Pilfer,B,1,"Each round, gain a 1-star copy of the first champion you killed last combat. The first time you gain X gold worth of champions in this way, gain a Thief's Gloves. @TFTUnitProperty.item:TFT_Augment_Pilfer_Tooltip@@TFTUnitProperty.item:TFT_Augment_Pilfer_RulesText@",Gold=None; goldrequired=35,,"2-1, 3-2, 4-2"
+TFT_Augment_Placebo,Placebo,B,1,Your team gains @AttackSpeed*100@% Attack Speed. Gain X gold.,AttackSpeed=0.009999999776482582; Gold=8,,2-1
+TFT_Augment_PlotArmor,Plot Armor,B,1,"Your team gains X Armor and Magic Resist. After falling below @HealthThreshold*100@% Health, increase this to X for the rest of combat.",BaseResists=8; EnhancedTotalResists=40; HealthThreshold=0.5,,"3-2, 4-2"
+TFT6_Augment_PortableForge,Portable Forge,B,1,Choose 1 of X Artifacts.Artifacts are more powerful items with a unique effect.,ArmoryChoiceCount=4,,"2-1, 3-2, 4-2"
+TFT_Augment_PrismaticDestiny,Prismatic Destiny,B,1,Gain a random Prismatic Augment and X gold.,Gold=4,,2-1
+TFT_Augment_PrismaticDestinyPlus,Prismatic Destiny+,B,2,Gain a random Prismatic Augment and X gold.,Gold=10,,3-2
+TFT11_Augment_Prizefighter,Prizefighter,B,1,Gain X item components. Every X wins gives you an item&nbsp;component.,WinsNeeded=5; component=2,,2-1
+TFT_Augment_Pyromaniac,Pyromaniac,B,1,Gain a Red Buff. Your Burns deal @BurnIncrease*100@% increased damage.,BurnIncrease=0.5,,"2-1, 3-2"
+TFT9_Augment_RollTheDice,Radiant Rascal,B,1,Gain a Rascal's Gloves item. This equips 2 random Radiant items every round.Radiant items are very powerful versions of completed items.,,,"3-2, 4-2"
+TFT6_Augment_RadiantRelics,Radiant Relics,B,1,Choose 1 of X Radiant items. Gain a Magnetic Remover.Radiant items are very powerful versions of completed items.,ArmoryChoiceCount=5,,"2-1, 3-2, 4-2"
+TFT11_Augment_RainingGold,Raining Gold,B,1,Gain X gold now and X gold every&nbsp;round.,InstantGold=7; RoundGold=1,,2-1
+TFT_Augment_Replication,Replication,B,1,"Choose 1 of 3 components. For the next X rounds, gain a copy of that component.",Gold=None; roundsofbonusitems=2,,"2-1, 3-2"
+TFT_Augment_Retribution,Retribution,B,1,Gain X Hands of Justice. Allies equipped with Hand of Justice can critically strike with their Abilities.,ItemCount=2,,"3-2, 4-2"
+TFT9_Augment_RiskyMoves,Risky Moves,B,1,"Your Tactician loses X Health, but after X player combats, gain X gold.",Gold=30; Health=20; PlayerCombatNum=7,,2-1
+TFT8_Augment_SalvageBinPlus,Salvage Bin+,B,2,"Gain 1 random completed item now, and 1 component after X player combats. Selling champions breaks completed items into components (excluding Tactician's items and Emblems).",NumRounds=4,,"3-2, 4-2"
+TFT_Augment_SavingsAccount,Savings Account,B,1,"After you earn X gold in interest, gain X gold. Your max interest is increased to X. Gain X gold now.Gold earned: @TFTUnitProperty.item:TFT_Augment_SavingsAccount_Tracker@",GoldNow=4; GoldToGain=30; InterestCap=7; goldrequired=50,,2-1
+TFT16_TeamupAugment_LucianVayne,Sentinels of Light,B,1,"Gain a Lucian & Senna and a 2-star Vayne. Vayne fires additional bolts at enemies afflicted with Black Mist and on takedown, grants Attack Speed to Lucian & Senna.",,"Demacia, Longshot, Gunslinger",2-1
+TFT_Augment_ShimmerscaleEssence,Shimmerscale Essence,B,1,"Gain a Mogul's Mail. In X rounds, gain a Gamblers Blade.These items give gold as well as combat power.",CombatNum=5,,2-1
+TFT16_Augment_Zaun_SilcosRevenge,Silco's Revenge,B,1,"Zaunites explode into Shimmer on death, dealing @PercentMaxHealthDamage*100@% of their max Health to X nearby enemies as magic damage. Gain a Blitzcrank, an Ekko, and a Vi.",AS=0.20000000298023224; ASDuration=3; EnemiesToDamage=2; PercentMaxHealthDamage=0.30000001192092896 (+1 hidden vars),Zaun,"2-1, 3-2, 4-2"
+TFT_Augment_SilverDestiny,Silver Destiny,B,1,Gain a random Silver Augment and X gold.,Gold=2,,2-1
+TFT_Augment_SilverDestinyPlus,Silver Destiny+,B,2,Gain a random Silver Augment and X gold.,Gold=4,,3-2
+TFT_Augment_SliceOfLife,Slice of Life,B,1,"Twice per stage, gain a random champion. Its cost increases by Stage. This effect ends after receiving X 5-cost champion.",Max5Costs=1 (+8 hidden vars),,2-1
+TFT_Augment_SoloLeveling,Solo Leveling,B,1,"For the next X combats, your team size is 1 but the champion you field has massively increased stats. Gain X XP for every kill they get. Afterwards, gain X item components.",ADBonus=0.5; APBonus=50; ASBonus=0.5; DamageAmpBonus=0.30000001192092896; DurabilityBonus=0.25; FlatHealthBonus=666; NumCombats=5; NumComponents=2; OmnivampBonus=0.20000000298023224; XPPerKill=1,,2-1
+TFT_Augment_ItemGargoyleStoneplate,Solo Plate,B,1,Gain a Gargoyle Stoneplate. Combat start: Allies holding Gargoyle Stoneplate gain @HealthIncrease*100@% max Health if they're the only one in their row.,HealthIncrease=0.15000000596046448,,"2-1, 3-2"
+TFT_Augment_ShojinSpirit,Spear's Will,B,1,Your team gains @AD*100@% Attack Damage and X Mana. Gain a B.F. Sword.,AD=0.11999999731779099; Mana=5,,"2-1, 3-2, 4-2"
+TFT_Augment_SwordOverflow,Sword Overflow,B,1,Gain X B.F. Swords. Your B.F. Swords grant +@BonusStat*100@% Attack Speed.,BonusStat=0.05000000074505806; NumItems=4,,"3-2, 4-2"
+TFT9_Augment_ArmyBuilding,Team Building,B,1,Gain a Lesser Champion Duplicator. Gain another after X player combats.This item allows you to copy a 3-cost or less champion.,PlayerCombatNum=5,,"2-1, 3-2"
+TFT9_Augment_Commander_TeamingUp1,Teaming Up,B,1,Gain X random component and X random 3-cost champions.,NumChamps=2; NumComponents=1,,"3-2, 4-2"
+TFT_Augment_TheGoldenDragon,The Golden Dragon,B,1,"Gain a Mogul's Mail. Champions holding Mogul's Mail take up 2 team slots but gain X Health and @DurabilityPct*100@% Durability.Mogul's Mail gives gold as well as combat power.Dragonlands Championship, 2022",BonusHealth=700; DurabilityPct=0.20000000298023224,,3-2
+TFT_Augment_ThornPlatedArmor,Thorn-Plated Armor,B,1,Gain a Bramble Vest. Your Bramble Vests deal @damageamp1*100@-@damageamp4*100@% more damage (based on Stage).,DamageAmp1=0.20000000298023224; DamageAmp2=0.4000000059604645; DamageAmp3=1; DamageAmp4=1.7000000476837158; Heal=None,,"2-1, 3-2"
+TFT11_Augment_TinyButDeadly,"Tiny, but Deadly",B,1,"Your team becomes small, gaining @AttackSpeed*100@% Attack Speed and Movement Speed.",AttackSpeed=0.30000001192092896; MoveSpeed=0.75; TooltipSizeScale=0.5 (+1 hidden vars),,"3-2, 4-2"
+TFT9_Augment_TonsOfStats,Tons of Stats!,B,1,"Your team gains X Health, X% Attack Damage, X% Ability Power, X Armor, X Magic Resist, X% Attack Speed, and X Mana.",AbilityPower=4; Armor=4; AttackDamage=4; AttackSpeed=4; Health=44; MR=4; Mana=4,,"3-2, 4-2"
+TFT6_Augment_TradeSector,Trade Sector,B,1,Gain a free Shop reroll every round. Gain X gold.,Gold=4; RerollCount=1; RerollsNow=1,,2-1
+TFT_Augment_TreasureHunt,Treasure Hunt,B,1,Gain a locked chest each Stage between now and Stage X. Unlock each chest when you spend X gold on Shop rerolls. These chests persist until opened.,GoldNeededPerChest=20; MaxNumChests=6,,2-1
+TFT_Augment_TwoTrick,Two Trick,B,1,Gain a random 2-star 2-cost and 2 random 2-star 1-cost champions.,,,2-1
+TFT16_Augment_UltraRapidFire,U.R.F,B,1,Gain a Spatula. Champions holding Spatula or Frying Pan items gain @AttackSpeed*100@% Attack Speed and X Mana Regen.,AttackSpeed=0.15000000596046448; ManaRegen=2,,"2-1, 3-2, 4-2"
+TFT_Augment_UrfsGambit,Urf's Gambit,B,1,"If you win your next player combat, gain a Spatula. If you lose, gain a Frying Pan. Gain a component anvil and X gold now.",Gold=6,,3-2
+TFT_Augment_WandOverflow,Wand Overflow,B,1,Gain X Needlessly Large Rods. Your Needlessly Large Rods grant +@BonusStat*100@% Attack Speed.,BonusStat=0.05000000074505806; NumItems=4,,"3-2, 4-2"
+TFT_Augment_WeStickTogether,We Stick Together,B,1,"Gain a random Emblem and a completed item anvil. Allies that share a trait with that Emblem gain X% Attack Speed. (Emblem Trait: @TFTUnitProperty.item:TFT_Augment_WeStickTogether_Trait@)Into The Arcane Tactician's Crown, 2025",ASPercent=20,,2-1
+TFT_Augment_WinOut,Win Out,B,1,"When you reach level 9, immediately level to 10 and gain X free Shop rerolls. Gain X XP now.",InstantXP=6; LevelReq=9; RerollCount=2,,3-2
+TFT_Augment_WorthTheWaitGold,Worth the Wait,B,1,Gain a random X-cost champion. Gain another copy of them at the start of each round for the rest of the game.Champion: @TFTUnitProperty.item:TFT_Augment_WorthTheWait@,AdditionalCopies=99; Delay=None; InitialCopies=1; UnitTier=1,,2-1
+TFT_Augment_TheVidalion,Woven Magic,B,1,Gain a random item component. Every X Mana your team spends grants an additional component (max @TFTUnitProperty.trait:TFT_Augment_TheVidalion_NumComponents@/X).Mana spent: @TFTUnitProperty.trait:TFT_Augment_TheVidalion_TrackedMana@/X,ComponentMax=3; ManaPerComponent=2200,,2-1
+TFT_Augment_PowerUp,Augmented Power,C,1,Your next augment is one tier higher.,,,"2-1, 3-2"
+TFT7_Augment_BigFriend,Big Friend I,C,1,Allies that start combat next to an ally with over X Health gain X% Durability.,DamageReductionPercent=10; RequiredHealth=1750,,"3-2, 4-2"
+TFT6_Augment_BinaryAirdrop,Binary Airdrop,C,1,Combat start: Champions holding 2 items gain a random 3rd completed item. Gain X random component now.,ComponentCount=2; MaxUnits=99,,2-1
+TFT_Augment_CalledShot,Called Shot,C,1,Set your win streak to X. Gain X gold.,Gold=4; Streak=4,,2-1
+TFT6_Augment_CelestialBlessing3,Celestial Blessing III,C,3,Your team gains X% Omnivamp. Excess healing is converted to a shield up to X Health.,MaxShield=1000; Omnivamp=25,,"3-2, 4-2"
+TFT16_Augment_Arcanist_ChaosMagic,Chaos Magic,C,1,"Arcanists gain X Mana Regen. After every X Mana they spend, a magical effect hits the board. Gain a Neeko and an Ahri.",ManaRegen=1; ManaToSpend=150 (+4 hidden vars),Sorcerer,"3-2, 4-2"
+TFT_Augment_ChaosEvolution,Chaotic Evolution,C,1,"Starring up a champion grants them one of the following: X Health, @Durability*100@% Durability, X% Ability Power, @AD*100@% Attack Damage, @AttackSpeed*100@% Attack Speed. Bonuses stack.",AD=0.10000000149011612; AP=10; AttackSpeed=0.10000000149011612; Durability=0.05999999865889549; Health=100,,2-1
+TFT6_Augment_ClearMind,Clear Mind,C,1,"If there are no champions on your bench at the end of player combat, gain X XP.",XP=3,,2-1
+TFT_Augment_MuseumHeist,Component Heist,C,1,"After X player combats, gain 1 of every item component.@TFTUnitProperty.item:TFT_Augment_MuseumHeist_TooltipTRAKey@ @TFTUnitProperty.item:TFT_Augment_MuseumHeist_CompleteTRAKey@",Numberofcombats=4,,4-2
+TFT_Augment_ConstructACompanion,Construct a Companion,C,1,The next 1-cost champion you buy is 3 star. Gain X gold.,Gold=2,,3-2
+TFT_Augment_CraftedCrafting,Crafted Crafting,C,1,"Whenever you craft a completed item, gain X rerolls.",Rerolls=2,,2-1
+TFT_Augment_ComponentQuestGlove,Critical Success,C,1,"Gain a Sparring Glove. After your team's attacks critically strike X times, gain X more.Critical strikes: @TFTUnitProperty.item:TFT_Augment_ComponentQuest_Tracker@",NumDelayed=2; StacksForReward=320 (+1 hidden vars),,2-1
+TFT_Augment_CryMeARiver,Cry Me A River,C,1,"Gain a Tear of the Goddess. Your team gains X Mana Regen. After X seconds in combat, increase this to X.",DelayTime=12; RegenBonus=1; UpgradedRegenBonus=3 (+1 hidden vars),,"2-1, 3-2"
+TFT16_Augment_NoxianInvasion,Darkwill's Invasion,C,1,"Your team gains @DamageAmp*100@% Damage Amp, increased to @EnhancedDamageAmp*100@% if the Noxus trait is active.",DamageAmp=0.10000000149011612; EnhancedDamageAmp=0.15000000596046448,Noxus,"3-2, 4-2"
+TFT16_Augment_DefenseOfIonia,Defense of the Placidium,C,1,"Your team gains @Durability*100@% Durability, increased to @EnhancedDurability*100@% if the Ionia trait is active.",Durability=0.07999999821186066; EnhancedDurability=0.11999999731779099,Ionia,"3-2, 4-2"
+TFT_Augment_EfficientShopper,Efficient Shopper,C,1,"For the next X carousels, gain a second copy of the champion taken.",Gold=4; NumStages=4,,2-1
+TFT_Augment_FindYourCenter,Find Your Center,C,1,Your champion that starts combat in the center of the front row gains @BonusDamage*100@% Damage Amp and @BonusHealth*100@% max Health.,BonusDamage=0.15000000596046448; BonusHealth=0.15000000596046448,,"3-2, 4-2"
+TFT_Augment_MarksMan,Focused Fire,C,1,"Your team gains @BaselineAD*100@% Attack Damage. Every X seconds, they gain @ADPerProc*100@% more.",ADPerProc=0.05000000074505806; BaselineAD=0.05000000074505806; ProcDelay=5,,"3-2, 4-2"
+TFT_Augment_HeftyRolls,Hefty Rolls,C,1,Your team gains X Health and size for each time you've rolled this game.Rolls: @TFTUnitProperty.Item:TFT_Augment_HeftyRolls_NumRolls@ Health: @TFTUnitProperty.Item:TFT_Augment_HeftyRolls_HealthBonus@,Health=9; NumRerolls=None; Size=0.019999999552965164 (+1 hidden vars),,2-1
+TFT16_Augment_Piltover_HexgateTravel,Hexgate Travel,C,1,"When the Piltover invention triggers for the first time each combat, gain a random number of Piltover champions that cost between 1 and X gold. Gain a Caitlyn and a Vi.",MaxGold=3,Piltover,2-1
+TFT_Augment_JustSlayer,Indiscriminate Killer,C,1,Gain a Giant Slayer. Giant Slayers gain their Damage Amp against all enemies instead of just Tanks.,,,"3-2, 4-2"
+TFT_Augment_FuriousBlows,Kahunahuna,C,1,Every Xth attack deals bonus true damage equal to @PercentAD*100@% Basic Attack Damage.,NumAttacks=5; PercentAD=2,,"2-1, 3-2, 4-2"
+TFT_Augment_LuxurySubscription,Luxury Subscription,C,1,"Gain a package containing a 5-cost champion, a 2-star 1-cost champion, and X gold.At the start of the next X stages, gain the package again.",FutureChampionCount=2; Gold=5,,3-2
+TFT_Augment_NoScoutNoPivot,NO SCOUT NO PIVOT,C,1,"Champions that fight in player combat cannot be benched or sold. Your team gains @HPScale*100@% Health, and X% Attack Damage and Ability Power after player combat. @TFTUnitProperty.item:TFT_Augment_NoScoutNoPivot_TrackerTRAKEY_Holder@",ADScale=0.014999999664723873; APScale=1.5; HPScale=0.009999999776482582; MaxUnits=99 (+1 hidden vars),,2-1
+TFT16_TeamupAugment_SingedTeemo,Poison Pals,C,1,"Gain a 2-star Teemo. Singed's damage refreshes Teemo's poisons, and every X magic damage Teemo deals grants your strongest Singed X% Ability Power. Gain a Teemo after each player combat.",SingedAPGain=2; TeemoDamageReq=100,,2-1
+TFT7_Augment_Preparation,Preparation I,C,1,"Champions on your bench permanently gain X Health, X% Attack Damage, and X% Ability Power every round. Champions start with X stack of this effect, and can stack up to X times.",HPBonus=30; MaxStacks=4; StartingStacks=1; Stats=3,,2-1
+TFT7_Augment_Preparation2,Preparation II,C,2,"Champions on your bench permanently gain X Health, X% Attack Damage, and X% Ability Power every round. Champions start with X stack of this effect, and can stack up to X times.",HPBonus=50; MaxStacks=4; StartingStacks=1; Stats=4,,2-1
+TFT_Augment_PromisedProtection,Promised Protection,C,1,Gain a Protector's Vow. Protector's Vow grants its holder X% additional Mana from all sources.,ManaPercent=18,,"2-1, 3-2"
+TFT6_Augment_Recombobulator,Recombobulator,C,1,Champions on your board permanently transform into random champions 1 cost tier higher (max 5). Gain X Magnetic Removers.,NumRemovers=2,,3-2
+TFT16_Augment_Shurima_SecretsOfTheSands,Secrets of the Sands,C,1,"Gain X gold. Gain an Azir on Stage X-X. Each time you unlock a Shuriman, gain an ideal item for them.",Gold=6; RoundNum=5; StageNum=3,,2-1
+TFT9_Augment_DravenSpoilsOfWar,Spoils of War I,C,1,Enemies have a @LootDropChance*100@% chance to drop loot when killed.,LootDropChance=0.25 (+1 hidden vars),,2-1
+TFT9_Augment_DravenSpoilsOfWar2,Spoils of War II,C,2,Enemies have a @LootDropChance*100@% chance to drop loot when killed.,LootDropChance=0.30000001192092896 (+1 hidden vars),,2-1
+TFT9_Augment_StarterKit,Starter Kit,C,1,"Gain a 4-cost champion, a 2-star 1-cost champion that shares a trait with them, and X gold.At the start of the next X stages, gain that 4-cost champion again.",FutureChampionCount=2; Gold=8,,2-1
+TFT16_Augment_TheAxiomata,The Axiomata,C,1,Gain X random elemental hex augments. Future augment rounds instead grant you items and gold based on the augment's tier.,Health=None; NumAugments=3; NumHexes=1; StatIncrease=None (+3 hidden vars),,2-1
+TFT6_Augment_TheGoldenEgg,The Golden Egg,C,1,Gain a golden egg that hatches in X turns for a huge amount of loot. Winning player combat speeds up the hatch timer by an extra turn.,EggTurns=11 (+1 hidden vars),,4-2
+TFT_Augment_Trifecta1,Trifecta I,C,1,Gain X X-cost champions.Combat Start: X random X-cost champions gain X Health and @AttackSpeed*100@% Attack Speed.,AttackSpeed=0.20000000298023224; BuffedNumber=3; Health=220; NumUnits=2; TeamAttackSpeed=None; Tier=3,,"3-2, 4-2"
+TFT_Augment_Trifecta2,Trifecta II,C,2,Gain X X-cost champions. Allies gain @TeamAttackSpeed*100@% Attack Speed. Combat Start: X random X-cost champions gain X Health and @AttackSpeed*100@% Attack Speed.,AttackSpeed=0.25; BuffedNumber=3; Health=300; NumUnits=3; TeamAttackSpeed=0.05000000074505806; Tier=3,,"3-2, 4-2"
+TFT16_Augment_WalkTheTruePath,Walk The True Path I,C,1,"Gain a Lesser Champion Duplicator, a Shen, a Jhin, and X gold. Ionia 10 gains a Prismatic upgrade.",Gold=6; LesserDuplicatorAmount=1,Ionia,3-2
+TFT16_Augment_WalkTheTruePathPlus,Walk The True Path II,C,2,"Gain X Lesser Champion Duplicators, a Jhin, a Shen, and an Infinity Edge. Ionia 10 gains a Prismatic upgrade.",LesserDuplicatorAmount=2,Ionia,3-2
+TFT_Augment_Unforgotten,Warlord's Honor,C,1,"Every round, your team gain X% Attack Damage and Ability Power, stacking up to X times.",MaxStacks=4; Stats=5,,"2-1, 3-2"
+TFT_Augment_Warpath,Warpath,C,1,"Gain a 2-star 2-cost champion. After dealing X player damage, gain a chest of high cost champions and items.(Current: @TFTUnitProperty.item:TFT_Augment_Warpath_DamageCount@)",PlayerDamage=80 (+5 hidden vars),,2-1
+TFT16_Augment_Yordle_WildGrowth,Wild Growth,C,1,"3-star Yordles become massive, moving slower but gaining @Health*100@% Health and X% Attack Damage and Ability Power. Gain a Rumble and Lulu.",ADAP=35; Health=0.15000000596046448 (+1 hidden vars),Yordle,"2-1, 3-2"
+TFT16_Augment_WoodAxiom,Wood Axiom,C,1,"Gain a Wood Hex. Champions within gain @PercentHealth*100@% max Health. After combat, they permanently gain X Health.",PercentHealth=0.15000000596046448; PermanentHealth=40 (+1 hidden vars),,2-1
+TFT_Augment_WorthTheWaitPrismatic,Worth the Wait II,C,1,Gain X copies of a random X-cost champion. Gain another copy of them at the start of each round for the rest of the game.Champion: @TFTUnitProperty.item:TFT_Augment_WorthTheWait@,AdditionalCopies=99; Delay=None; InitialCopies=2; UnitTier=2,,2-1
+TFT11_Augment_BloodBank,Lunch Money,D,1,Every X damage you deal to enemy tacticians gives you X gold.Total Payouts: @TFTUnitProperty.item:TFT11_BloodBankPayoutTotal@ Gold,Damage=7; Gold=2,,"2-1, 3-2"
+TFT9_Augment_DravenSpoilsOfWar3,Spoils of War III,D,3,Enemies have a @LootDropChance*100@% chance to drop loot when killed.,LootDropChance=0.44999998807907104 (+1 hidden vars),,2-1
+TFT_Augment_Survivor,Survivor,D,1,"Gain X gold. After X players are eliminated, gain X more gold.",Gold=100; InitialGold=4; PlayersDead=3,,2-1
+TFT_Augment_TwinGuardians,Twin Guardians,D,1,"If you have exactly X allies in your first row, grant them X Armor and X Magic Resist.",BonusAR=50; BonusMR=50; NumUnits=2 (+1 hidden vars),,"3-2, 4-2"
+TFT_Augment_ThreeThrees,3 Threes,S,1,Gain X random 2-star 3-cost champions and X gold.,Gold=3; NumChamps=3,,4-2
+TFT6_Augment_BandOfThieves2Plus,Band of Thieves II+,S,2,"Gain X Thief's Gloves. After X player combats, gain another.",DelayTurns=6; NumGloves=2,,3-2
+TFT6_Augment_BandOfThieves2PlusPlus,Band of Thieves II++,S,3,"Gain X Thief's Gloves. After X player combats, gain another.",DelayTurns=3; NumGloves=2,,4-2
+TFT_Augment_HeadStart,Delayed Start,S,1,Sell your board and bench. Gain X random 2-star X-cost champions. Disable your Shop for the next X rounds.,NumUnits=4; RoundsToSkip=3; Tier=1,,2-1
+TFT16_TeamupAugment_JarvanShyvana,Dragonguards,S,1,"Gain a Shyvana and a 2-star Jarvan IV. When Jarvan casts, Shyvana gains Shield. When Shyvana casts, Jarvan jumps in and deals damage based on his Armor and Magic Resist. After every player combat, gain a Jarvan IV.",,"Demacia, Juggernaut, Defender",4-2
+TFT_Augment_EpicRolldown,Epic Rolldown,S,1,"When you reach Level 8, gain X Shop rerolls.Runeterra Reforged Championship, 2023",NumRerolls=20,,3-2
+TFT6_Augment_Distancing,Exiles I,S,1,Your champions that start combat with no adjacent champions gain a X% max Health shield for X seconds.,MaxHealthShield=20; ShieldDuration=10,,"3-2, 4-2"
+TFT_Augment_ForwardThinking,Forward Thinking,S,1,"Lose all your gold. After X player combats, gain back the original amount and another X gold.Incoming Gold: @TFTUnitProperty.item:TFT_Augment_ForwardThinkingGold@",BaseGold=70; rounds=5 (+1 hidden vars),,3-2
+TFT_Augment_Indecision1,Indecision I,S,1,"In X rounds, choose a new augment of the same tier. Gain X gold now.",Gold=5; RoundDelay=3 (+1 hidden vars),,3-2
+TFT_Augment_Indecision2,Indecision II,S,2,"In X rounds, choose a new augment of the same tier. Gain X gold now.",Gold=8; RoundDelay=3 (+1 hidden vars),,3-2
+TFT16_Augment_Ixtal_Expeditionist,Ixtal Expeditionist,S,1,"Gain a Qiyana, a Neeko, and a Milio. Increase your current and max player Health by X.",PlayerHealth=10,Explorer,2-1
+TFT9_Augment_OneTwosThree,One Twos Three,S,1,"Gain X 1-cost champion, X 2-cost champions, and 1 3-cost champion.",NumChamps=2; tier1champs=1,,2-1
+TFT_Augment_PatienceIsAVirtue,Patience is a Virtue,S,1,"Each round, gain X free rerolls if you did not buy a champion last round.",FreeRerolls=2 (+1 hidden vars),,2-1
+TFT6_Augment_GachaAddict,Prismatic Ticket,S,1,"Each time your Shop is rerolled, you have a X% chance to gain a free reroll.",RerollPercent=50,,"2-1, 3-2"
+TFT_Augment_RestartMission,Restart Mission,S,1,"Remove all champions on your board and bench. Gain X random 2-star 3-costs, X 2-star 2-costs, and X 2-star 1-cost champion.",1Cost=1; 2Cost=3; 3Cost=2; NumUnits=2,,3-2
+TFT9_Augment_Commander_RollingForDays,Rolling For Days I,S,1,Gain X free Shop rerolls.,Numrolls=10,,"3-2, 4-2"
+TFT_Augment_MagicRollMinus,Slightly Magic Roll,S,1,Roll a die. Gain rewards based on the number rolled.Reward: @TFTUnitProperty.item:TFT_Augment_MagicRoll@,Gold=10; NumRerolls=6 (+3 hidden vars),,2-1
+TFT_Augment_AwakenedSoul,Soul Awakening,S,1,"Combat start: Your team gains X% Attack Damage and Ability Power per second for X seconds. At max stacks, deal @BonusTrueDamage*100@% bonus true damage.",BonusTrueDamage=0.11999999731779099; MaxStacks=10; StatsPerSecond=2,,"3-2, 4-2"
+TFT_Augment_SpreadingRoots,Spreading Roots,S,1,Gain X random Emblems and X gold.,Gold=1; NumOfEmblems=2; NumReforgers=None,,2-1
+TFT_Augment_SpreadingRootsPlus,Spreading Roots+,S,2,"Gain X random Emblems, a Reforger, and X gold.",Gold=2; NumOfEmblems=2; NumReforgers=1,,3-2
+TFT9_Augment_StarsAreBorn,Stars Are Born,S,1,The first 1-cost and 2-cost champions you buy are instantly upgraded to 2-star. Gain X gold.,Gold=7,,2-1
+TFT_Augment_TacticiansKitchen,Tactician's Kitchen,S,1,"Gain a random Emblem. After X rounds, gain a Tactician's Cape.",NumFryingPan=1; NumItemAnvils=1; NumSpatula=1; TurnDelay=6,,2-1
+TFT_Augment_TraitTree,The Trait Tree,S,1,Gain X random Emblems and X gold.,Gold=2; NumOfEmblems=3; NumReforgers=None,,2-1
+TFT_Augment_TraitTreePlus,The Trait Tree+,S,2,"Gain X random Emblems, a Reforger, and X gold.",Gold=4; NumOfEmblems=3; NumReforgers=1,,3-2
+TFT16_Augment_TheWorldRunes,The World Runes,S,1,"Gain X Emblems from random Region traits. Gain X XP every player combat, increased to X XP if X or more Region traits are active.",MaxWorldRunes=4; MinRegionTraitsActive=4; NumEmblems=2 (+2 hidden vars),,2-1
+TFT16_Augment_XinZhaoCarry,Trials of Twilight,S,1,"Gain X Xin Zhao. Your strongest Xin Zhao constantly strikes nearby enemies and executes enemies. After X player combats as a 3-star, unlock Zaahen. He replaces Xin Zhao and takes his items.",NumberOfCopies=2; RoundsBeforeTransformation=5,"Ionia, Demacia, Warden",2-1
+TFT16_Augment_XinZhaoCarryII,Trials of Twilight II,S,1,"Gain X Xin Zhaos and a Bloodthirster. Xin Zhao becomes an Attack Fighter. After X player combats as a 3-star, unlock Zaahen. At the start of the next X stages, gain a Lesser Champion Duplicator.",NumberOfCopies=2; RoundsBeforeTransformation=5 (+1 hidden vars),"Ionia, Demacia, Warden",2-1
+TFT_Augment_TwoMuchValue,Two Much Value,S,1,Gain X reroll for every X unique 2-cost champions fielded last player combat. Gain X 2-cost champions.,FreeRerolls=1; NumChampsToGrant=2; UnitCost=2; UnitCount=2; augmentselectbonusgold=None (+3 hidden vars),,2-1
+TFT16_Augment_ArcanistCirclet,Arcanist Circlet,U,1,"Get an Arcanist Emblem, a Tear of the Goddess, and a Lux.",,Sorcerer,
+TFT16_Augment_ArcanistCrest,Arcanist Crest,U,1,Get an Arcanist Emblem.,,Sorcerer,
+TFT16_Augment_ArcanistCrown,Arcanist Crown,U,1,"Get an Arcanist Emblem, an Ahri, and a Jeweled Gauntlet.",,Sorcerer,
+TFT16_Augment_ArtifactExpert_BlightingJewel,Artifact Expert: Blighting Jewel,U,1,"Get a Teemo, a Blighting Jewel, and a Needlessly Large Rod",,,
+TFT16_Augment_ArtifactExpert_Dawncore,Artifact Expert: Dawncore,U,1,"Get a Teemo, a Dawncore, and a Tear Of The Goddess",,,
+TFT16_Augment_ArtifactExpert_DeathfireGrasp,Artifact Expert: Deathfire Grasp,U,1,"Get a 2* Kog'Maw, a Deathfire Grasp, and a Recurve Bow",,,
+TFT16_Augment_ArtifactExpert_Fishbones,Artifact Expert: Fishbones,U,1,"Get a 2* Ashe, a Fishbones, and a Sparring Gloves",,,
+TFT16_Augment_ArtifactExpert_NavoriFlickerblades,Artifact Expert: Flickerblade,U,1,"Get an Aphelios, a Flickerblade, and a Recurve Bow",,,
+TFT16_Augment_ArtifactExpert_HorizonFocus,Artifact Expert: Horizon Focus,U,1,"Get a Cho'Gath, a Horizon Focus, and a Needlessly Large Rod",,,
+TFT16_Augment_ArtifactExpert_Hullbreaker,Artifact Expert: Hullbreaker,U,1,"Get a 2* Xin Zhao, a Hullbreaker, and a Chain Vest",,,
+TFT16_Augment_ArtifactExpert_InnvervatingLocket,Artifact Expert: Innervating Locket,U,1,"Get a 2* Illaoi, a Innervating Locket, and a Giant Belt",,,
+TFT16_Augment_ArtifactExpert_LichBane,Artifact Expert: Lich Bane,U,1,"Get a 2* Sona , a Lich Bane, and a Tear Of The Goddess",,,
+TFT16_Augment_ArtifactExpert_LightshieldCrest,Artifact Expert: Lightshield Crest,U,1,"Get a 2* Neeko, a Lightshield Crest, and a Chain Vest",,,
+TFT16_Augment_ArtifactExpert_LudensTempest,Artifact Expert: Luden's Tempest,U,1,"Get a 2* Caitlyn , a Luden's Tempest, and a Recurve Bow",,,
+TFT16_Augment_ArtifactExpert_Manazane,Artifact Expert: Manazane,U,1,"Get a 2* Anivia, a Manazane , and a Tear Of The Goddess",,,
+TFT16_Augment_ArtifactExpert_ProwlersClaw,Artifact Expert: Prowler's Claw,U,1,"Get a 2* RekSai, a Prowler's Claw, and a Sparring Gloves",,,
+TFT16_Augment_ArtifactExpert_SeekersArmguard,Artifact Expert: Seeker's Armguard,U,1,"Get a 2* Ekko, a Seeker's Armguard, and a Needlessly Large Rod",,,
+TFT16_Augment_ArtifactExpert_SnipersFocus,Artifact Expert: Sniper's Focus,U,1,"Get a 2* Tristana , a Sniper's Focus, and a B.F. Sword",,,
+TFT16_Augment_ArtifactExpert_SpectralCutlass,Artifact Expert: Spectral Cutlass,U,1,"Get a 2* Yasuo, a Spectral Cutlass, and a Sparring Gloves",,,
+TFT16_Augment_ArtifactExpert_TalismanOfAscension,Artifact Expert: Talisman Of Ascension,U,1,"Get a 2* Zac, a Talisman Of Ascension, and a Giant Belt",,,
+TFT16_Augment_ArtifactExpert_IndomitableGauntlet,Artifact Expert: The Indomitable,U,1,"Get a Sion, The Indomitable, and a Giant Belt.",,,
+TFT16_Augment_ArtifactExpert_TitanicHydra,Artifact Expert: Titanic Hydra,U,1,"Get a 2* Briar, a Titanic Hydra , and a B.F. Sword",,,
+TFT16_Augment_ArtifactExpert_UnendingDespair,Artifact Expert: Unending Despair,U,1,"Get a 2* Rumble, a Unending Despair, and a Negatron Cloak",,,
+TFT16_Augment_ArtifactExpert_WitsEnd,Artifact Expert: Wits End,U,1,"Get a 2* Viego, a Wits End, and a Needlessly Large Rod",,,
+TFT16_Augment_ArtifactExpert_ZhonyasParadox,Artifact Expert: Zhonya's Paradox,U,1,"Get a 2* Milio, a Zhonya's Paradox, and a Negatron Cloak",,,
+TFT16_Augment_BilgewaterCirclet,Bilgewater Circlet,U,1,"Get a Bilgewater Emblem, a Miss Fortune, and a Recurve Bow.",,Bilgewater,
+TFT16_Augment_BilgewaterCrest,Bilgewater Crest,U,1,Get a Bilgewater Emblem.,,Bilgewater,
+TFT16_Augment_BilgewaterCrown,Bilgewater Crown,U,1,"Get a Bilgewater Emblem, a Twisted Fate, and a Guinsoo's Rageblade.",,Bilgewater,
+TFT16_Augment_BrawlerCirclet,Bruiser Circlet,U,1,Get a Bruiser Emblem and a Wukong.,,Brawler,
+TFT16_Augment_BrawlerCrest,Bruiser Crest,U,1,Get a Bruiser Emblem.,,Brawler,
+TFT16_Augment_BrawlerCrown,Bruiser Crown,U,1,"Get a Bruiser Emblem, a Sion, and a Spirit Visage.",,Brawler,
+TFT16_Augment_Targon_ClimbtheMountain,Climb the Mountain,U,1,Your Targonians gain X max Health and X% Attack Damage and Ability Power for every Targonian fielded. Gain an Aphelios.,ADAP=5; MaxHealth=50,Targon,
+TFT16_Augment_CompleteCollection,Complete Collection,U,1,"After you unlock X champions from an origin, gain that origin's Emblem.",ChampsToEmblem=3,,
+TFT7_Augment_SacrificialPact,Cruel Pact,U,1,Buying XP costs X player health instead of 4 gold. Heal X player health before each player combat. Gain X now.,Gold=6; Heal=3; HealthCost=5,,2-1
+TFT16_Augment_DefenderCirclet,Defender Circlet,U,1,"Get a Defender Emblem, a Garen, and a Chain Vest.",,Defender,
+TFT16_Augment_DefenderCrest,Defender Crest,U,1,Get a Defender Emblem.,,Defender,
+TFT16_Augment_DefenderCrown,Defender Crown,U,1,"Get a Defender Emblem, a Neeko, and a Steadfast Heart.",,Defender,
+TFT16_Augment_DemaciaCirclet,Demacia Circlet,U,1,"Get a Demacia Emblem, a Garen, and a Needlessly Large Rod.",,Demacia,
+TFT16_Augment_DemaciaCrest,Demacia Crest,U,1,Get a Demacia Emblem.,,Demacia,
+TFT16_Augment_DemaciaCrown,Demacia Crown,U,1,"Get a Demacia Emblem, a Crownguard, and a Jarvan IV.",,Demacia,
+TFT16_Augment_DemaciaVsNoxus,Demacia-Noxus War,U,1,@TFTUnitProperty.item:TFT16_Augment_DemaciaVsNoxus_DescriptionTRA@,AtakhanFrequency=4; KillsRequired=30; KillsToGive=1; RallyPercent=1; goldtogive=1,"Demacia, Noxus",
+TFT16_Augment_DisruptorCirclet,Disruptor Circlet,U,1,"Get a Disruptor Emblem, a Seraphine, and a Tear of the Goddess.",,Magus,
+TFT16_Augment_DisruptorCrest,Disruptor Crest,U,1,Get a DIsruptor Emblem.,,Magus,
+TFT16_Augment_DisruptorCrown,Disruptor Crown,U,1,"Get a Disruptor Emblem, a Malzahar, and a Blue Buff.",,Magus,
+TFT16_Augment_FreljordCirclet,Freljord Circlet,U,1,"Get a Freljord Emblem, a Lissandra, and a Needlessly Large Rod.",,Freljord,
+TFT16_Augment_FreljordCrest,Freljord Crest,U,1,Get a Freljord Emblem.,,Freljord,
+TFT16_Augment_FreljordCrown,Freljord Crown,U,1,"Get a Freljord Emblem, a Hextech Gunblade, and an Anivia.",,Freljord,
+TFT16_Augment_TenetGuile,Guile,U,1,The first X&nbsp;champions that die each combat spawn copies of your strongest champion. Copies have @ReducedHealth*100@% max&nbsp;Health and deal @ReducedDamage*100@%&nbsp;damage.,NumChampions=2; ReducedDamage=0.5; ReducedHealth=0.6000000238418579,,
+TFT16_Augment_GunslingerCirclet,Gunslinger Circlet,U,1,"Get a Gunslinger Emblem, a Miss Fortune, and a Recurve Bow.",,Gunslinger,
+TFT16_Augment_GunslingerCrest,Gunslinger Crest,U,1,Get a Gunslinger Emblem.,,Gunslinger,
+TFT16_Augment_GunslingerCrown,Gunslinger Crown,U,1,"Get a Gunslinger Emblem, a Tristana, and an Infinity Edge.",,Gunslinger,
+TFT16_Augment_PoppyCarry,Hammer of Orlon,U,1,Gain an Illaoi. Your strongest Illaoi becomes a Fighter. Her Ability is replaced with an airborne slam that's recast when she kills her target.,,"Demacia, Yordle, Juggernaut",
+TFT16_Augment_HeroOfThePlacidium,Hero of the Placidium,U,1,"Strike enemies with telekinetic blades during combat, dealing damage and 30% Shredding and Sundering. Blade damage increases based on your total star level of Ionian champions.",EnemyCount=4 (+9 hidden vars),Ionia,
+TFT16_Augment_InvokerCirclet,Invoker Circlet,U,1,"Get an InvokerEmblem, a Lissandra, and a Needlessly Large Rod.",,Invoker,
+TFT16_Augment_InvokerCrest,Invoker Crest,U,1,"Get an Invoker Emblem,",,Invoker,
+TFT16_Augment_InvokerCrown,Invoker Crown,U,1,"Get an Invoker Emblem, a Milio, and an Archangel's Staff.",,Invoker,
+TFT16_Augment_IoniaCirclet,Ionia Circlet,U,1,"Get an Ionia Emblem, a Yunara, and a B.F. Sword.",,Ionia,
+TFT16_Augment_IoniaCrest,Ionia Crest,U,1,Get an Ionia Emblem.,,Ionia,
+TFT16_Augment_IoniaCrown,Ionia Crown,U,1,"Get an Ionia Emblem, a Yasuo, and a Deathblade.",,Ionia,
+TFT16_Augment_IxtalCirclet,Ixtal Circlet,U,1,"Get an Ixtal Emblem, a Giant's Belt, and...a Lesser Duplicator!?",,Explorer,
+TFT16_Augment_IxtalCrest,Ixtal Crest,U,1,Get an Ixtal Emblem.,,Explorer,
+TFT16_Augment_IxtalCrown,Ixtal Crown,U,1,"Get an Ixtal Emblem, a Neeko, and a Gargoyle Stoneplate.",,Explorer,
+TFT16_TeamupAugment_SeraphineSona,Joint Album,U,1,Gain a Seraphine. Seraphine's heal is increased based on her ally's missing Health. Sona gains the Disruptor trait and fires an additional bolt with every cast. Gain a Sona after each player combat.,,,
+TFT16_Augment_JuggernautCirclet,Juggernaut Circlet,U,1,"Get a Juggernaut Emblem, a Negatron Cloak, and a Swain.",,Gunslinger,
+TFT16_Augment_JuggernautCrest,Juggernaut Crest,U,1,Get a Juggernaut Emblem.,,Juggernaut,
+TFT16_Augment_JuggernautCrown,Juggernaut Crown,U,1,"Get a Juggernaut Emblem, a Cho'gath, and a Protector's Vow.",,Juggernaut,
+TFT16_Augment_Longshot_KeepAway,Keep Away,U,1,"Longshots gain @AttackSpeed*100@% Attack Speed. If they cast while their target is within X hexes, the target is knocked back X hexes (cooldown: Xs). Gain a Caitlyn and a Kog'Maw.",AttackSpeed=0.20000000298023224; CooldownDuration=1; HexDistanceFromTarget=2; KnockbackDistanceInHexes=2; StunDuration=1.5,Longshot,
+TFT16_Augment_LongshotCirclet,Longshot Circlet,U,1,"Get a Longshot Emblem, a Recurve Bow, and a Vayne.",,Longshot,
+TFT16_Augment_LongshotCrest,Longshot Crest,U,1,Get a Longshot Emblem.,,Juggernaut,
+TFT16_Augment_LongshotCrown,Longshot Crown,U,1,"Get a Longshot Emblem, a Teemo, and a Guinsoo's Rageblade.",,Longshot,
+TFT16_Augment_TenetMight,Might,U,1,Your team gains @BaseTeamAD*100@% Attack Damage and X Health. Gain an additional @TeamADPerDefeat*100@% Attack Damage and X Health per unique defeated or eliminated Tactician&nbsp;(@TFTUnitProperty.trait:TFT16_Augment_TenetMight_DefeatedOpponents@/7).,BaseTeamAD=0.05999999865889549; BaseTeamHealth=60; TeamADPerDefeat=0.019999999552965164; TeamHealthPerDefeat=20,,
+TFT16_Augment_NoxusCirclet,Noxus Circlet,U,1,"Get an Noxus Emblem, an Ambessa, and a Sparring Glove.",,Noxus,
+TFT16_Augment_NoxusCrest,Noxus Crest,U,1,Get an Noxus Emblem.,,Noxus,
+TFT16_Augment_NoxusCrown,Noxus Crown,U,1,"Get an Noxus Emblem, a Sion, and a Protector's Vow.",,Noxus,
+TFT16_Augment_Vanquisher_PerfectParry,Perfect Parry,U,1,"Vanquishers have a chance to Parry equal to their Critical Strike Chance. When Parrying, they reduce their damage taken by @ParryDR*100@%. Gain a Rek'Sai.",ParryDR=0.25,Vanquisher,
+TFT16_Augment_PiltoverCirclet,Piltover Circlet,U,1,"Get a Piltover Emblem, a Seraphine, and a Tear of the Goddess.",,Piltover,
+TFT16_Augment_PiltoverCrest,Piltover Crest,U,1,Get a Piltover Emblem.,,Piltover,
+TFT16_Augment_PiltoverCrown,Piltover Crown,U,1,"Get a Piltover Crown, a Loris, and a Gargoyle Stoneplate.",,Piltover,
+TFT16_Augment_QuickstrikerCirclet,Quickstriker Circlet,U,1,"Get a Quickstriker Emblem, a Yunara, and a B.F. Sword.",,Rapidfire,
+TFT16_Augment_QuickstrikerCrest,Quickstriker Crest,U,1,Get a Quickstriker Emblem.,,Rapidfire,
+TFT16_Augment_QuickstrikerCrown,Quickstriker Crown,U,1,"Get a Quickstriker Emblem, an Ashe, and a Kraken's Fury.",,Rapidfire,
+TFT16_Augment_BlitzcrankCarry,Rocket Fist,U,1,Gain a Blitzcrank. Your strongest one becomes an Attack Fighter. His Ability no longer shields but instead fires a hook towards the furthest enemy and gains powerful punches for a set amount of attacks.,RangeIncrease=1,"Zaun, Juggernaut",
+TFT16_Augment_ShenCarry,Shadow Dash,U,1,Gain a Shen. Your strongest Shen becomes an Attack Fighter. His Ability is replaced with a dash that strikes low Health enemies. The number of dashes increases with each cast.,,"Ionia, Brawler",
+TFT16_Augment_ArtifactExpert_Shiv,Shiv Expert: Twisted Fate,U,1,"Get a Twisted Fate, a Statikk Shiv, and a Needlessly Large Rod.",,,
+TFT9_Augment_Legend_HighEndSector,Shopping Spree,U,1,"When you level up, gain a number of free shop refreshes equal to your level+X. Gain X gold.",BonusRollPerLevel=1; Gold=2 (+1 hidden vars),,2-1
+TFT16_Augment_SlayerCirclet,Slayer Circlet,U,1,"Get a Slayer Emblem, a Bel'veth, and a Sparring Glove.",,Slayer,
+TFT16_Augment_SlayerCrest,Slayer Crest,U,1,Get a Slayer Emblem.,,Slayer,
+TFT16_Augment_SlayerCrown,Slayer Crown,U,1,"Get a Slayer Emblem, a Yasuo, and a Quicksilver.",,Slayer,
+TFT16_Augment_BilgewaterVsShadowIsles,Souls or Serpents,U,1,@TFTUnitProperty.item:TFT16_Augment_BilgewaterVsShadowIsles_DescriptionTRA@,KillsRequired=30; KillsToGive=1; SerpentsNeededPerSoul=10; SerpentsToGivePerSoul=2; goldtogive=1,"Bilgewater, ShadowIsles",
+TFT16_TeamupAugment_SpinToWin,Spin to Win,U,1,Gain a Yasuo and Rek'Sai. Each time your spinning champions spend X total Mana they permanently gain X Health and @DamageAmp*100@% Damage Amp. Fielding more increases their spin area by 1-hex.,DamageAmp=0.004999999888241291; Health=8; ManaToSpend=120,"Noxus, Demacia, Ionia, Void, Defender, Brawler, Vanquisher, Slayer",
+TFT16_Augment_DarkinWeapon_Aegis,The Darkin Aegis,U,1,"Gain the Darkin Aegis, a powerful Artifact for Tanks that grants the Darkin trait. Darkin heal the Tactician with takedowns.",,,
+TFT16_Augment_DarkinWeapon_Bow,The Darkin Bow,U,1,"Gain the Darkin Bow, a powerful Artifact for Marksmen that grants the Darkin trait. Darkin heal the Tactician with takedowns.",,,
+TFT16_Augment_DarkinWeapon_Scythe,The Darkin Scythe,U,1,"Gain the Darkin Scythe, a powerful Artifact for Attack Fighters that grants the Darkin trait. Darkin heal the Tactician with takedowns.",,,
+TFT16_Augment_DarkinWeapon_Staff,The Darkin Staff,U,1,"Gain the Darkin Staff, a powerful Artifact for Magic Casters that grants the Darkin trait. Darkin heal the Tactician with takedowns.",,,
+TFT16_Augment_TheTrifarix,The Trifarix,U,1,"Your X strongest champions gain X Health, @DamageAmp*100@% Damage Amp, and execute enemies under @ExecuteThreshold*100@% Health.",DamageAmp=0.15000000596046448; ExecuteThreshold=0.15000000596046448; Health=150; NumChampions=3,,
+TFT16_CarouselOfChaosAugment_TimeUndilator,Time UNdilator,U,1,"Gain a Time Undilator, a dangerous bomb that destroys ALL units in an X-pattern at the start of combat. Also, something is terribly wrong with your shop...",,,"2-1, 3-2, 4-2"
+TFT16_TeamupAugment_EkkoZilean,Timewinders,U,1,"Gain 2 Ekkos. Gain XXP every combat Ekko participates in. Gain an Ekko every time you level up. At 3-Star, gain a Zilean.Ekko's empowered attacks echo to all enemies being damaged by Zilean's spell, dealing @DamageShare*100@% of the original damage.",DamageShare=0.10000000149011612; XP=2,Zaun,
+TFT16_Augment_Slayer_TotalDomination,Total Domination,U,1,"Slayers gain @BaseDA*100@% Damage Amp, plus @DAPerBreakpoint*100@% for every X surviving Slayers at the end of combat. Gain a Briar and a Qiyana.Current Damage Amp: @TFTUnitProperty.trait:TFT16_Augment_Slayer_TotalDomination_CurrentDA@%",BaseDA=0.10000000149011612; DAPerBreakpoint=0.009999999776482582; SurvivingSlayerBreakpoint=2,Slayer,
+TFT16_Augment_Slayer_TotalDominationPlus,Total Domination+,U,2,"Slayers gain @BaseDA*100@% Damage Amp, plus @DAPerBreakpoint*100@% for every X surviving Slayers at the end of combat. Gain a Briar and a Qiyana.Current Damage Amp: @TFTUnitProperty.trait:TFT16_Augment_Slayer_TotalDomination_CurrentDA@%",BaseDA=0.2199999988079071; DAPerBreakpoint=0.009999999776482582; SurvivingSlayerBreakpoint=2,Slayer,
+TFT16_Augment_VanquisherCirclet,Vanquisher Circlet,U,1,"Get a Vanquisher Emblem, an Ambessa, and a B.F. Sword.",,Vanquisher,
+TFT16_Augment_VanquisherCrest,Vanquisher Crest,U,1,Get a Vanquisher Emblem.,,Vanquisher,
+TFT16_Augment_VanquisherCrown,Vanquisher Crown,U,1,"Get a Vanquisher Emblem, a Gangplank, and a Hand of Justice.",,Vanquisher,
+TFT16_Augment_TenetVision,Vision,U,1,"You will be offered Might and Guile augments this game. When you reach Level&nbsp;X, gain a random 5-cost champion, a completed item anvil, and a Champion Duplicator. Collecting all 3 Tenet augments grants a powerful reward.",LevelReq=9,,
+TFT16_Augment_VoidCirclet,Void Circlet,U,1,"Get a Void Emblem, a Bel'veth, and a Recurve Bow.",,Void,
+TFT16_Augment_VoidCrest,Void Crest,U,1,Get a Void Emblem.,,Void,
+TFT16_Augment_VoidCrown,Void Crown,U,1,"Get a Void Emblem, a Rek'Sai, and a Striker's Flail",,Void,
+TFT16_Augment_ChoGathCarry,Vorpal Spikes,U,1,Gain a Cho'Gath. Your strongest Cho'Gath gains +1 Attack Range and his attacks launch spikes that deal magic damage based on his max Health.,,"Void, Juggernaut",
+TFT16_Augment_WardenCirclet,Warden Circlet,U,1,"Get a Warden Emblem, a Braum, and a Giant's Belt.",,Warden,
+TFT16_Augment_WardenCrest,Warden Crest,U,1,Get a Warden Emblem.,,Warden,
+TFT16_Augment_WardenCrown,Warden Crown,U,1,"Get a Warden Emblem, a Xin Zhao, and an Adaptive Helm.",,Warden,
+TFT16_Augment_YordleCirclet,Yordle Circlet,U,1,"Get a Yordle Emblem, a Needlessly Large Rod, and...a Rabadon's Deathcap!?",,Yordle,
+TFT16_Augment_YordleCrest,Yordle Crest,U,1,Get a Yordle Emblem.,,Yordle,
+TFT16_Augment_YordleCrown,Yordle Crown,U,1,"Get a Yordle Emblem, a Teemo, and a Rabadon's Deathcap.",,Yordle,
+TFT16_Augment_ZaunCirclet,Zaun Circlet,U,1,"Get a Zaun Emblem, a Recurve Bow, and...a 2-Star Vi!?",,Zaun,
+TFT16_Augment_ZaunCrest,Zaun Crest,U,1,Get a Zaun Emblem.,,Zaun,
+TFT16_Augment_ZaunCrown,Zaun Crown,U,1,"Get a Zaun Emblem, a Giant Slayer, and an Ekko.",,Zaun,

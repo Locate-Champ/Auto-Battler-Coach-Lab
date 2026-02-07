@@ -203,8 +203,9 @@ Use the todo list to track progress. Each section should:
 - **Ornn/Blacksmith**: HP per item 250/450/2000 → 35 (all star levels)
 
 ### Coverage note:
-- 59 of 100 champions have ability handlers
-- 41 champions use the fallback auto-attack mechanism
+- **99 of 100 champions** have ability handlers (was 59)
+- 40 new handlers added: anivia, blitzcrank, briar, jarvaniv, kogmaw, lulu, qiyana, shen, sona, ashe, chogath, ekko, graves, neeko, orianna, poppy, reksai, sion, teemo, tristana, tryndamere, twistedfate, vi, ahri, drmundo, jinx, kennen, kobuko, nautilus, sejuani, zoe, belveth, braum, fizz, garen, kaisa, nasus, azir, ornn, volibear
+- 1 champion (kobuko) uses simplified healing logic (full attach mechanic not modeled)
 - 3 orphaned handlers: `annietibbers` (summon), `atakhan` (summon), `senna` (not in Set 16 pool)
 
 ---
@@ -415,25 +416,30 @@ These were known issues from previous sessions, all re-verified during the audit
 
 These items could not be fully verified or require further work:
 
-### Cannot verify from Riot patch notes:
-- **Pool sizes**: Code has 1-cost=29, 2-cost=22, 3-cost=18, 4-cost=12, 5-cost=10. Some community sites show 30/25/18/10/9 respectively. Left as-is since Riot patch notes don't specify pool sizes.
-- **SpectralGauntlet item**: Marked `TODO: UNVERIFIED` - could not confirm this item exists in Set 16
-- **Leviathan, NightHarvester, UnstableConcoction, MadredsBloodrazor**: Marked `TODO: UNVERIFIED` - their recipe slots are occupied by existing items. May be Set 16 items that were renamed before launch.
+### ~~Cannot verify from Riot patch notes~~ (RESOLVED 2026-02-06):
+- **Pool sizes**: ~~Code has 1-cost=29, 2-cost=22, 3-cost=18, 4-cost=12, 5-cost=10.~~ **FIXED** to 30/25/18/10/9. Confirmed by tftodds.com, wiki.leagueoflegends.com, esportstales.com, and Riot's Lore & Legends overview (5-cost=9). Old values were from Set 4 (pre-Set 12). Files updated: pool_stats.py, constants.py.
+- **SpectralGauntlet item**: **RESOLVED** - `TFT_Item_SpectralGauntlet` is Riot's internal API name for **Evenshroud** (Cloak+Belt). Removed duplicate entry with wrong stats, alias now correctly maps to Evenshroud.
+- **Leviathan, NightHarvester, UnstableConcoction, MadredsBloodrazor**: **RESOLVED** - These are Riot internal API names for existing items with different display names: `TFT_Item_Leviathan` = NashorsTooth, `TFT_Item_MadredsBloodrazor` = GiantSlayer, `TFT_Item_UnstableConcoction` = HandOfJustice, `TFT_Item_NightHarvester` = SteadfastHeart. Aliases corrected, duplicate stat entries removed. Also fixed outdated recipe table in item_optimizer.py.
 
 ### Implementation TODOs (augment system):
-- **Lobby-wide tier sharing**: In the real game, all players get the same augment tier at each armory. The simulator rolls independently per player.
-- **Dependent stage probabilities**: Real TFT uses conditional probabilities across stages (Silver at 2-1 makes Prismatic at 3-2 less likely). tftodds.com has the full 18-entry sequence probability table. The simulator uses marginal (independent) probabilities.
+- **Lobby-wide tier sharing**: ~~In the real game, all players get the same augment tier at each armory. The simulator rolls independently per player.~~ **FIXED** (2026-02-06) - Tier is now rolled once per lobby, shared across all players.
+- ~~**Dependent stage probabilities**: Real TFT uses conditional probabilities across stages (Silver at 2-1 makes Prismatic at 3-2 less likely). tftodds.com has the full 18-entry sequence probability table. The simulator uses marginal (independent) probabilities.~~ **FIXED** (2026-02-06) - Implemented joint probability table from tftodds.com (18 entries, dependent conditional probabilities across stages). Also added per-player tier-shifting from augments: Augmented Power (+1 tier), Advanced Loan/Advanced Loan+ (-1 tier).
 
-### Missing ability handlers:
-- 41 of 100 champions lack specific `_cast_*` handlers and use the fallback auto-attack mechanism
-- Jhin is missing a handler entirely (should have fixed Attack Speed = 1.0 per patch 16.3)
-- Shyvana is missing death-persistence for her aura
+### ~~Missing ability handlers~~ (RESOLVED 2026-02-06):
+- ~~40 of 100 champions lack specific `_cast_*` handlers and use the fallback auto-attack mechanism~~ **FIXED** - Added 40 new handlers. 99/100 champions now have ability implementations. All handlers validated across 40 1v1 matchups and 10 full game simulations.
+- ~~Jhin is missing a handler entirely (should have fixed Attack Speed = 1.0 per patch 16.3)~~ **FIXED** (2026-02-06) - Added `_cast_jhin` with Curtain Call: 4 cannon shots (3 normal + 1 at 1.44x), AD/AP scaling per star level from combat_data.json. Regular attacks use normal AS; Curtain Call caps at 1.0 AS (3.0s channel lockout via `_custom_cast_time`).
+- ~~Shyvana is missing death-persistence for her aura~~ **FIXED** (2026-02-06) - Dragonborn aura (10% ability damage reduction for allies) now applied on transform and persists after Shyvana's death. Added `_dragonborn_protected` flag to allies + check in `calculate_damage`.
 
-### Augment data freshness:
-- augments_set16.json was extracted before patch 16.4
-- Missing new augments: Gilded Steel (Gold, 4-2), Trials of Twilight II (Prismatic, 2-1)
-- Reworked augment not updated: The World Runes (now gives 2 Region Emblems + 2/4 XP per combat)
-- Multiple augments had balance changes in 16.2-16.4 that are not reflected in the data
+### ~~Augment data freshness~~ (RESOLVED 2026-02-06):
+- ~~augments_set16.json was extracted before patch 16.4~~ **FIXED** - Applied 22 changes from patches 16.2/16.3/16.4:
+  - **3 new augments**: Gilded Steel (Gold, 4-2), Trials of Twilight II (Prismatic, 2-1), Cosmic Calling (Gold, 3-2)
+  - **3 reworked**: The World Runes (2 emblems + XP engine), Max Build (10 rerolls + duplicators), Commerce Core (16 initial / 2 per turn)
+  - **8 econ nerfs**: Ascension, Epic Rolldown, Indecision I/II, ReinFOURcement, 3 Threes, Jeweled Lotus II, Spirit of Redemption
+  - **3 buffs**: Twin Guardians, Living Forge, Efficient Shopper
+  - **3 disabled/removed**: Chaos Magic (16.4), Pair of Fours (16.3), On a Roll removed from 2-1
+  - **1 re-enabled**: Growth Mindset (UpfrontXP=50)
+  - **1 bugfix**: NoneType guard in `_apply_stat_bonus` for null augment effect values
+  - Pool: 400 total, 284 enabled, 116 disabled
 
 ---
 
