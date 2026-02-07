@@ -1,0 +1,14 @@
+# Only include simulator and required data
+*
+!simulator/
+!data/api/processed/
+!requirements-simulator.txt
+
+# Exclude non-essential simulator files
+simulator/Concurrency/
+simulator/UnitTests/
+simulator/TestInterface/
+simulator/Simulator/*.py
+!simulator/Simulator/pool_stats.py
+!simulator/Simulator/origin_class_stats.py
+!simulator/Simulator/__init__.py

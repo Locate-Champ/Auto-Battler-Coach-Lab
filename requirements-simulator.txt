@@ -1,0 +1,4 @@
+# Minimal dependencies for running the TFT simulator in batch mode.
+# The simulator core is pure Python stdlib - only pyarrow is optional
+# for efficient Parquet output (falls back to JSON if unavailable).
+pyarrow>=14.0
