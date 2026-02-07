@@ -62,9 +62,18 @@ class Player:
         # location is ('board', (row, col)) or ('bench', idx)
         self._upgrade_tracker: Dict[str, int] = {}
 
+        # Cached max_units value (invalidated on level/item changes)
+        self._max_units_cache: Optional[int] = None
+
+    def invalidate_max_units(self):
+        """Call when level changes or Tactician items are added/removed."""
+        self._max_units_cache = None
+
     @property
     def max_units(self) -> int:
         """Maximum units allowed on board (level + Tactician items)."""
+        if self._max_units_cache is not None:
+            return self._max_units_cache
         bonus = 0
         # Tactician's Crown/Cape/Shield each grant +1 team size
         tactician_items = {'TacticiansCrown', 'TacticiansCape', 'TacticiansShield'}
@@ -81,7 +90,8 @@ class Player:
                 for item in champ.items:
                     if item in tactician_items:
                         bonus += 1
-        return self.level + bonus
+        self._max_units_cache = self.level + bonus
+        return self._max_units_cache
 
     @property
     def board_count(self) -> int:
@@ -124,6 +134,7 @@ class Player:
 
     def _check_level_up(self):
         """Auto-level when XP threshold is reached."""
+        old_level = self.level
         while self.level < MAX_LEVEL:
             required = LEVEL_XP_REQUIRED[self.level]
             if self.xp >= required:
@@ -131,6 +142,8 @@ class Player:
                 self.level += 1
             else:
                 break
+        if self.level != old_level:
+            self.invalidate_max_units()
 
     # ── Shop / Buying ─────────────────────────────────────────────────────
 
@@ -209,6 +222,7 @@ class Player:
         pool.return_champion(champ.name, copies)
         # Return items to item bench
         self.item_bench.extend(champ.items)
+        self.invalidate_max_units()
 
     # ── Item Management ──────────────────────────────────────────────────
 
@@ -217,6 +231,7 @@ class Player:
         if len(self.item_bench) >= ITEM_BENCH_SIZE:
             return False
         self.item_bench.append(item_name)
+        self.invalidate_max_units()
         return True
 
     def equip_item(self, item_bench_idx: int, target_pos: Tuple[int, int]) -> bool:
@@ -258,6 +273,7 @@ class Player:
         # No combination possible — just add the item directly
         champ.items.append(item)
         self.item_bench.pop(item_bench_idx)
+        self.invalidate_max_units()
         return True
 
     def equip_item_bench(self, item_bench_idx: int, bench_idx: int) -> bool:
@@ -500,12 +516,18 @@ class Player:
         """
         units = []
         for pos, champ in self.board.items():
+            items = list(champ.items) if champ.items else None
+
+            # Thief's Gloves: replace with 2 random items based on player level
+            if items and any(i in ('ThiefsGloves', 'TFT_Item_ThiefsGloves') for i in items):
+                items = self._roll_thiefs_gloves_items()
+
             unit = engine.create_unit(
                 api_name=champ.api_name,
                 star_level=champ.star_level,
                 position=pos,
                 team=0,
-                items=champ.items if champ.items else None,
+                items=items,
             )
             if unit is not None:
                 units.append(unit)
@@ -537,6 +559,35 @@ class Player:
                 units.append(tower)
 
         return units
+
+    # Thief's Gloves tier odds by player level
+    _THIEFS_GLOVES_TIERS = {
+        1: [1.0, 0.0, 0.0, 0.0],
+        2: [1.0, 0.0, 0.0, 0.0],
+        3: [1.0, 0.0, 0.0, 0.0],
+        4: [0.80, 0.20, 0.0, 0.0],
+        5: [0.60, 0.30, 0.10, 0.0],
+        6: [0.40, 0.40, 0.20, 0.0],
+        7: [0.20, 0.40, 0.30, 0.10],
+        8: [0.10, 0.30, 0.40, 0.20],
+        9: [0.0, 0.20, 0.40, 0.40],
+    }
+
+    _THIEFS_EXCLUDED = frozenset({
+        'ThiefsGloves', 'TacticiansCrown', 'TacticiansCape', 'TacticiansShield',
+    })
+
+    def _roll_thiefs_gloves_items(self) -> list:
+        """Roll 2 random completed items for Thief's Gloves based on player level."""
+        import random
+        try:
+            from simulator.data.set16_items import BASE_COMPLETED
+        except ImportError:
+            return []  # Fallback: no items
+        pool = [name for name in BASE_COMPLETED if name not in self._THIEFS_EXCLUDED]
+        if not pool:
+            return []
+        return [random.choice(pool), random.choice(pool)]
 
     # ── HP / Elimination ──────────────────────────────────────────────────
 
