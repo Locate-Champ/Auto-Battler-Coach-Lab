@@ -221,7 +221,7 @@ def cmd_distribute(args):
     # Parse items
     if not args.items:
         items = [
-            'TFT_Item_Leviathan',
+            'TFT_Item_Morellonomicon',
             'TFT_Item_JeweledGauntlet',
             'TFT_Item_SpearOfShojin',
             'TFT_Item_DragonsClaw',
