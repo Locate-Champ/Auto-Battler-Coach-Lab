@@ -18,9 +18,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import multiprocessing
 import os
 import random
+import subprocess
 import sys
 import time
 import traceback
@@ -37,6 +39,53 @@ from simulator.game.game import TFTGame
 from simulator.game.collector import GameCollector
 from simulator.game.actions import MixedLobbyAgent, fast_random_agent
 
+# 95% Wilson interval z-score
+WILSON_Z_95 = 1.959963984540054
+
+# Agent profile presets for cloud-scale runs.
+# random -> legacy fast_random behavior (no lobby mixing).
+AGENT_PROFILES = {
+    'random': None,
+    'mixed': {'random': 50, 'econ': 30, 'slam': 20},
+    'ladder': {'random': 20, 'econ': 45, 'slam': 35},
+}
+
+
+def _wilson_interval(successes: int, trials: int,
+                     z: float = WILSON_Z_95) -> Tuple[float, float]:
+    """Wilson score interval for Bernoulli metrics."""
+    if trials <= 0:
+        return 0.0, 0.0
+
+    p = successes / trials
+    z2 = z * z
+    denom = 1 + (z2 / trials)
+    center = (p + (z2 / (2 * trials))) / denom
+    margin = (z / denom) * math.sqrt((p * (1 - p) / trials) + (z2 / (4 * trials * trials)))
+    low = max(0.0, center - margin)
+    high = min(1.0, center + margin)
+    return low, high
+
+
+def _validate_reference_data_preflight() -> None:
+    """Fail-fast if simulator reference data is out of sync."""
+    validator = Path(__file__).parent / 'data' / 'validate_reference_data.py'
+    if not validator.exists():
+        print(f"Warning: reference validator not found at {validator} (skipping)")
+        return
+
+    result = subprocess.run(
+        [sys.executable, str(validator)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.stdout.strip():
+        print(result.stdout.strip())
+    if result.stderr.strip():
+        print(result.stderr.strip())
+    if result.returncode != 0:
+        raise RuntimeError("Simulator reference validation failed before batch run.")
 
 # ── Per-Game Runner ──────────────────────────────────────────────────────
 
@@ -116,9 +165,15 @@ class StreamingWriter:
 
         # Running analytics (accumulated across all games)
         self._champ_placements: Counter = Counter()
+        self._champ_placements_sq: Counter = Counter()
         self._champ_counts: Counter = Counter()
+        self._champ_top4_counts: Counter = Counter()
+        self._champ_win_counts: Counter = Counter()
         self._aug_placements: Counter = Counter()
+        self._aug_placements_sq: Counter = Counter()
         self._aug_counts: Counter = Counter()
+        self._aug_top4_counts: Counter = Counter()
+        self._aug_win_counts: Counter = Counter()
 
         # Tracking
         self._completed_seeds: List[int] = []
@@ -136,9 +191,15 @@ class StreamingWriter:
             self._sum_game_time = resume_state.get('sum_game_time', 0.0)
             self._total_rounds = resume_state.get('total_rounds', 0)
             self._champ_placements = Counter(resume_state.get('champ_placements', {}))
+            self._champ_placements_sq = Counter(resume_state.get('champ_placements_sq', {}))
             self._champ_counts = Counter(resume_state.get('champ_counts', {}))
+            self._champ_top4_counts = Counter(resume_state.get('champ_top4_counts', {}))
+            self._champ_win_counts = Counter(resume_state.get('champ_win_counts', {}))
             self._aug_placements = Counter(resume_state.get('aug_placements', {}))
+            self._aug_placements_sq = Counter(resume_state.get('aug_placements_sq', {}))
             self._aug_counts = Counter(resume_state.get('aug_counts', {}))
+            self._aug_top4_counts = Counter(resume_state.get('aug_top4_counts', {}))
+            self._aug_win_counts = Counter(resume_state.get('aug_win_counts', {}))
 
     @property
     def num_completed(self) -> int:
@@ -169,10 +230,20 @@ class StreamingWriter:
         analytics = result['analytics']
         for name, placement in analytics['champion_placements']:
             self._champ_placements[name] += placement
+            self._champ_placements_sq[name] += placement * placement
             self._champ_counts[name] += 1
+            if placement <= 4:
+                self._champ_top4_counts[name] += 1
+            if placement == 1:
+                self._champ_win_counts[name] += 1
         for name, placement in analytics['augment_placements']:
             self._aug_placements[name] += placement
+            self._aug_placements_sq[name] += placement * placement
             self._aug_counts[name] += 1
+            if placement <= 4:
+                self._aug_top4_counts[name] += 1
+            if placement == 1:
+                self._aug_win_counts[name] += 1
 
         self._games_in_buffer += 1
 
@@ -230,9 +301,15 @@ class StreamingWriter:
             'sum_game_time': self._sum_game_time,
             'total_rounds': self._total_rounds,
             'champ_placements': dict(self._champ_placements),
+            'champ_placements_sq': dict(self._champ_placements_sq),
             'champ_counts': dict(self._champ_counts),
+            'champ_top4_counts': dict(self._champ_top4_counts),
+            'champ_win_counts': dict(self._champ_win_counts),
             'aug_placements': dict(self._aug_placements),
+            'aug_placements_sq': dict(self._aug_placements_sq),
             'aug_counts': dict(self._aug_counts),
+            'aug_top4_counts': dict(self._aug_top4_counts),
+            'aug_win_counts': dict(self._aug_win_counts),
         }
         path = os.path.join(self.output_dir, 'checkpoint.json')
         # Write atomically (write to temp, then rename)
@@ -241,7 +318,8 @@ class StreamingWriter:
             json.dump(checkpoint, f)
         os.replace(tmp_path, path)
 
-    def finalize(self, total_time: float, num_workers: int) -> Dict:
+    def finalize(self, total_time: float, num_workers: int,
+                 run_metadata: Optional[Dict[str, Any]] = None) -> Dict:
         """Flush remaining data, write errors, summary, and final checkpoint."""
         self._flush_chunk()
 
@@ -253,7 +331,7 @@ class StreamingWriter:
             print(f"  Errors: {error_path} ({len(self._errors)} failures)")
 
         # Compute and write summary
-        summary = self._compute_summary(total_time, num_workers)
+        summary = self._compute_summary(total_time, num_workers, run_metadata or {})
         summary_path = os.path.join(self.output_dir, 'summary.json')
         with open(summary_path, 'w', encoding='utf-8') as f:
             json.dump(summary, f, indent=2)
@@ -264,7 +342,8 @@ class StreamingWriter:
 
         return summary
 
-    def _compute_summary(self, total_time: float, num_workers: int) -> Dict:
+    def _compute_summary(self, total_time: float, num_workers: int,
+                         run_metadata: Dict[str, Any]) -> Dict:
         """Compute aggregate statistics."""
         num_games = len(self._completed_seeds)
         if num_games == 0:
@@ -277,18 +356,63 @@ class StreamingWriter:
         # Champion average placements
         champ_avg = {}
         for name in self._champ_counts:
-            champ_avg[name] = round(
-                self._champ_placements[name] / self._champ_counts[name], 2
-            )
+            champ_avg[name] = round(self._champ_placements[name] / self._champ_counts[name], 2)
         aug_avg = {}
         for name in self._aug_counts:
-            aug_avg[name] = round(
-                self._aug_placements[name] / self._aug_counts[name], 2
-            )
+            aug_avg[name] = round(self._aug_placements[name] / self._aug_counts[name], 2)
 
         top_champs = sorted(champ_avg.items(), key=lambda x: x[1])[:20]
         bot_champs = sorted(champ_avg.items(), key=lambda x: x[1], reverse=True)[:20]
         top_augs = sorted(aug_avg.items(), key=lambda x: x[1])[:20]
+
+        def _build_rate_rows(names: List[str], counts: Counter, placements: Counter,
+                             placements_sq: Counter, top4_counts: Counter,
+                             win_counts: Counter) -> List[Dict[str, Any]]:
+            rows = []
+            for name in names:
+                n = int(counts[name])
+                if n <= 0:
+                    continue
+                avg = placements[name] / n
+                mean_sq = placements_sq[name] / n
+                variance = max(0.0, mean_sq - (avg * avg))
+                std_dev = math.sqrt(variance)
+
+                top4 = int(top4_counts[name])
+                wins = int(win_counts[name])
+                top4_rate = top4 / n
+                win_rate = wins / n
+                top4_low, top4_high = _wilson_interval(top4, n)
+                win_low, win_high = _wilson_interval(wins, n)
+
+                rows.append({
+                    'name': name,
+                    'samples': n,
+                    'avg_placement': round(avg, 3),
+                    'placement_stddev': round(std_dev, 3),
+                    'top4_rate': round(top4_rate, 4),
+                    'top4_ci95': [round(top4_low, 4), round(top4_high, 4)],
+                    'win_rate': round(win_rate, 4),
+                    'win_ci95': [round(win_low, 4), round(win_high, 4)],
+                })
+            return rows
+
+        champion_metric_rows = _build_rate_rows(
+            [name for name, _ in self._champ_counts.most_common(30)],
+            self._champ_counts,
+            self._champ_placements,
+            self._champ_placements_sq,
+            self._champ_top4_counts,
+            self._champ_win_counts,
+        )
+        augment_metric_rows = _build_rate_rows(
+            [name for name, _ in self._aug_counts.most_common(30)],
+            self._aug_counts,
+            self._aug_placements,
+            self._aug_placements_sq,
+            self._aug_top4_counts,
+            self._aug_win_counts,
+        )
 
         return {
             'num_games': num_games,
@@ -304,6 +428,10 @@ class StreamingWriter:
             'bottom_champions': bot_champs,
             'top_augments': top_augs,
             'champion_pick_rates': dict(self._champ_counts.most_common(20)),
+            'confidence_method': 'wilson_95',
+            'champion_metrics': sorted(champion_metric_rows, key=lambda x: x['avg_placement'])[:20],
+            'augment_metrics': sorted(augment_metric_rows, key=lambda x: x['avg_placement'])[:20],
+            'run_config': run_metadata,
         }
 
 
@@ -319,7 +447,8 @@ def _worker_init():
 
 def run_batch(num_games: int, num_workers: int, output_dir: str,
               seed_start: int = 0, agent_mix: Optional[Dict] = None,
-              chunk_size: int = 100, resume: bool = False) -> Dict:
+              chunk_size: int = 100, resume: bool = False,
+              agent_profile: str = 'random') -> Dict:
     """Run num_games in parallel with streaming output and checkpoints.
 
     Args:
@@ -330,6 +459,7 @@ def run_batch(num_games: int, num_workers: int, output_dir: str,
         agent_mix: Agent type distribution, e.g. {'random': 50, 'econ': 30, 'slam': 20}.
         chunk_size: Number of games per output chunk (controls memory usage).
         resume: If True, resume from existing checkpoint in output_dir.
+        agent_profile: Agent profile name used for this run.
 
     Returns:
         Summary dict with timing and aggregate stats.
@@ -359,7 +489,18 @@ def run_batch(num_games: int, num_workers: int, output_dir: str,
 
     if remaining == 0:
         print("All games already completed!")
-        return writer.finalize(0.0, num_workers)
+        return writer.finalize(
+            0.0,
+            num_workers,
+            run_metadata={
+                'seed_start': seed_start,
+                'seed_end': seed_start + num_games - 1,
+                'agent_profile': agent_profile,
+                'agent_mix': agent_mix if agent_mix else {'random': 100},
+                'chunk_size': chunk_size,
+                'resume': resume,
+            },
+        )
 
     agent_desc = 'default (fast_random)' if not agent_mix else str(agent_mix)
     print(f"Running {remaining} games across {num_workers} workers "
@@ -409,7 +550,18 @@ def run_batch(num_games: int, num_workers: int, output_dir: str,
         print(f"  {writer.num_errors} games failed (see errors.json)")
 
     print("Writing final results...")
-    summary = writer.finalize(total_time, num_workers)
+    summary = writer.finalize(
+        total_time,
+        num_workers,
+        run_metadata={
+            'seed_start': seed_start,
+            'seed_end': seed_start + num_games - 1,
+            'agent_profile': agent_profile,
+            'agent_mix': agent_mix if agent_mix else {'random': 100},
+            'chunk_size': chunk_size,
+            'resume': resume,
+        },
+    )
     return summary
 
 
@@ -424,7 +576,12 @@ def _parse_agent_mix(s: str) -> Dict[str, int]:
         if name not in ('random', 'econ', 'slam'):
             raise ValueError(f"Unknown agent type '{name}'. "
                              f"Valid types: random, econ, slam")
-        mix[name] = int(weight.strip())
+        parsed_weight = int(weight.strip())
+        if parsed_weight < 0:
+            raise ValueError(f"Weight for '{name}' cannot be negative")
+        mix[name] = parsed_weight
+    if not mix or sum(mix.values()) <= 0:
+        raise ValueError("Agent mix must include at least one positive weight")
     return mix
 
 
@@ -438,6 +595,7 @@ Examples:
   Production run:   python -m simulator.cloud_runner --games 10000 --workers 8 --output results/run_001
   Resume crashed:   python -m simulator.cloud_runner --games 10000 --resume results/run_001
   Mixed agents:     python -m simulator.cloud_runner --games 1000 --agent-mix random:50,econ:30,slam:20
+  Ladder profile:   python -m simulator.cloud_runner --games 1000 --agent-profile ladder
   Large scale:      python -m simulator.cloud_runner --games 100000 --chunk-size 500
         """,
     )
@@ -451,13 +609,25 @@ Examples:
                         help='Starting seed for deterministic runs')
     parser.add_argument('--agent-mix', type=str, default=None,
                         help='Agent type distribution, e.g. "random:50,econ:30,slam:20"')
+    parser.add_argument('--agent-profile', type=str, default='random',
+                        choices=sorted(AGENT_PROFILES.keys()),
+                        help='Preset agent behavior profile used when --agent-mix is not provided')
     parser.add_argument('--chunk-size', type=int, default=100,
                         help='Games per output chunk (controls memory usage)')
     parser.add_argument('--resume', type=str, default=None, metavar='DIR',
                         help='Resume an interrupted batch from checkpoint in DIR')
+    parser.add_argument('--skip-reference-validation', action='store_true',
+                        help='Skip simulator reference preflight validation')
     args = parser.parse_args()
 
     num_workers = args.workers or max(1, multiprocessing.cpu_count() - 1)
+
+    if not args.skip_reference_validation:
+        try:
+            _validate_reference_data_preflight()
+        except RuntimeError as exc:
+            print(str(exc))
+            sys.exit(1)
 
     # Handle resume mode
     if args.resume:
@@ -467,17 +637,27 @@ Examples:
         if not os.path.exists(checkpoint_path):
             print(f"Error: No checkpoint.json found in {output_dir}")
             sys.exit(1)
+        if args.agent_mix:
+            agent_mix = _parse_agent_mix(args.agent_mix)
+        else:
+            profile_mix = AGENT_PROFILES.get(args.agent_profile)
+            agent_mix = dict(profile_mix) if profile_mix else None
         summary = run_batch(
             num_games=args.games,
             num_workers=num_workers,
             output_dir=output_dir,
             seed_start=args.seed_start,
-            agent_mix=_parse_agent_mix(args.agent_mix) if args.agent_mix else None,
+            agent_mix=agent_mix,
             chunk_size=args.chunk_size,
             resume=True,
+            agent_profile=args.agent_profile,
         )
     else:
-        agent_mix = _parse_agent_mix(args.agent_mix) if args.agent_mix else None
+        if args.agent_mix:
+            agent_mix = _parse_agent_mix(args.agent_mix)
+        else:
+            profile_mix = AGENT_PROFILES.get(args.agent_profile)
+            agent_mix = dict(profile_mix) if profile_mix else None
         summary = run_batch(
             num_games=args.games,
             num_workers=num_workers,
@@ -485,6 +665,7 @@ Examples:
             seed_start=args.seed_start,
             agent_mix=agent_mix,
             chunk_size=args.chunk_size,
+            agent_profile=args.agent_profile,
         )
 
     print(f"\n{'='*50}")
@@ -509,3 +690,4 @@ Examples:
 
 if __name__ == '__main__':
     main()
+

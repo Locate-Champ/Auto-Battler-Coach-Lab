@@ -215,6 +215,61 @@ def sync_simulator_positions(result: SyncResult, dry_run: bool = False):
         print(f"  ERROR: {output}")
 
 
+def sync_simulator_reference_data(result: SyncResult, dry_run: bool = False):
+    """
+    Sync and validate simulator reference data.
+
+    Runs:
+      - simulator/data/sync_reference_data.py
+      - simulator/data/validate_reference_data.py
+    Updates:
+      - simulator/data/traits.json
+      - simulator/data/helper_units.json
+    """
+    print("\n" + "-" * 60)
+    print("Syncing simulator reference traits + helper units...")
+    print("-" * 60)
+
+    sync_script = SIMULATOR_DATA_DIR / "sync_reference_data.py"
+    validate_script = SIMULATOR_DATA_DIR / "validate_reference_data.py"
+
+    if not sync_script.exists():
+        result.add_failure("sync_reference_data.py", "Script not found")
+        return
+    if not validate_script.exists():
+        result.add_failure("validate_reference_data.py", "Script not found")
+        return
+
+    if dry_run:
+        result.add_skip("sync_reference_data.py", "Dry run mode")
+        result.add_skip("validate_reference_data.py", "Dry run mode")
+        print(f"  [DRY RUN] Would run: {sync_script}")
+        print(f"  [DRY RUN] Would run: {validate_script}")
+        return
+
+    print(f"Running {sync_script.name}...")
+    success, output = run_script(sync_script, cwd=SIMULATOR_DATA_DIR)
+    if success:
+        result.add_success(
+            "sync_reference_data.py",
+            "Updated simulator/data/traits.json + simulator/data/helper_units.json",
+        )
+        print(output)
+    else:
+        result.add_failure("sync_reference_data.py", output[:200])
+        print(f"  ERROR: {output}")
+        return
+
+    print(f"Running {validate_script.name}...")
+    success, output = run_script(validate_script, cwd=SIMULATOR_DATA_DIR)
+    if success:
+        result.add_success("validate_reference_data.py", "Reference data validation passed")
+        print(output)
+    else:
+        result.add_failure("validate_reference_data.py", output[:200])
+        print(f"  ERROR: {output}")
+
+
 def sync_simulator_data(result: SyncResult, dry_run: bool = False):
     """
     Sync all simulator data in /simulator/data/ folder.
@@ -225,6 +280,7 @@ def sync_simulator_data(result: SyncResult, dry_run: bool = False):
 
     sync_simulator_items(result, dry_run)
     sync_simulator_positions(result, dry_run)
+    sync_simulator_reference_data(result, dry_run)
 
 
 def sync_game_data(result: SyncResult, dry_run: bool = False):
@@ -329,6 +385,16 @@ def update_sync_manifest(result: SyncResult):
                 "folder": "simulator/data/",
                 "source": "MetaTFT API",
                 "file": "metatft_positions.json"
+            },
+            "simulator_traits": {
+                "folder": "simulator/data/",
+                "source": "data/api/processed/traits_set16.json",
+                "file": "traits.json"
+            },
+            "simulator_helper_units": {
+                "folder": "simulator/data/",
+                "source": "data/api/processed/units_set16.json",
+                "file": "helper_units.json"
             }
         }
     }

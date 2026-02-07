@@ -122,6 +122,16 @@ origin_class = {
     'malzaharvoidling': [],
     'piltoverinvention': [],
     'atakhan': [],
+    'bluegolem': [],
+    'elderdragon': [],
+    'trainingdummy': [],
+    'slimecrab': [],
+    'emblemarmorykey': [],
+    'mercenarychest': [],
+    'armorykeycompleted': [],
+    'armorykeycomponent': [],
+    'armorykeyornn': [],
+    'armorykeysupport': [],
 }
 
 # Set 16 does not have the Chosen mechanic (that was Set 4).
