@@ -226,8 +226,8 @@ def classify_item_type(item_name: str) -> str:
         'JeweledGauntlet', 'RabadonsDeathcap', 'Morellonomicon',
         'StatikkShiv', 'GuinsoosRageblade', 'RunaansHurricane',
         'HandOfJustice', 'HextechGunblade', 'Bloodthirster',
-        'TitansResolve', 'Leviathan', 'SpearOfShojin', 'BlueBuff',
-        'ArchangelsStaff', 'NashorsTooth', 'RedBuff'
+        'TitansResolve', 'NashorsTooth', 'SpearOfShojin', 'BlueBuff',
+        'ArchangelsStaff', 'RedBuff'
     }
 
     # Defensive items

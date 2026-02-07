@@ -29,6 +29,18 @@ except ImportError:
     _ABILITIES_LOADED = False
     ChampionAbilities = None
 
+# Module-level cache for combat data (loaded once, shared across all CombatEngine instances)
+_COMBAT_DATA_CACHE: Dict[str, Any] = {}
+
+
+def _load_combat_data(path: Path) -> dict:
+    """Load combat data from JSON, using module-level cache."""
+    key = str(path)
+    if key not in _COMBAT_DATA_CACHE:
+        with open(path, 'r', encoding='utf-8') as f:
+            _COMBAT_DATA_CACHE[key] = json.load(f)
+    return _COMBAT_DATA_CACHE[key]
+
 
 def _star_val(var_data, star_level: int, default=0):
     """Extract star-level value from ability variable data.
@@ -86,6 +98,9 @@ class UnitState(Enum):
     ATTACKING = "attacking"
     CASTING = "casting"
     STUNNED = "stunned"
+    FEARED = "feared"              # Forced random movement away from source
+    TAUNTED = "taunted"            # Forced to attack taunter
+    ROOTED = "rooted"              # Cannot move but can attack/cast
     DEAD = "dead"
     UNTARGETABLE = "untargetable"  # Cannot be targeted (Fizz, Zhonya's, Edge of Night)
 
@@ -156,6 +171,18 @@ class Buff:
 
 
 @dataclass
+class DotEffect:
+    """Damage-over-time effect on a unit (burn, bleed, etc.)."""
+    source_unit: Optional['Unit']  # Who applied this DOT
+    damage_per_tick: float         # Damage each tick
+    tick_interval: float           # Seconds between ticks
+    remaining_duration: float      # Seconds left
+    damage_type: 'DamageType' = DamageType.TRUE
+    source_name: str = "burn"      # For logging
+    time_since_last_tick: float = 0.0
+
+
+@dataclass
 class Unit:
     """A unit in combat."""
     name: str
@@ -178,6 +205,7 @@ class Unit:
     stun_duration: float = 0.0
     is_alive: bool = True
     buffs: List[Buff] = field(default_factory=list)
+    dot_effects: List[DotEffect] = field(default_factory=list)
 
     # Movement
     move_target: Optional[Tuple[int, int]] = None
@@ -358,7 +386,7 @@ class TraitManager:
         self.blacksmith_progress: Dict[str, int] = {}  # unit_id -> rounds_crafted
         self.blacksmith_items: Dict[str, List[str]] = {}  # unit_id -> list of crafted artifacts
         self.bilgewater_serpents: int = 0
-        self.bilgewater_purchases: int = 0  # Track total purchases
+        self.bilgewater_purchases: Dict[str, int] = {}  # category -> purchase count
         self.piltover_modules: List[str] = []
         self.round_number: int = 0
         self.bilgewater_count: int = 0  # Current Bilgewater trait count
@@ -452,66 +480,117 @@ class TraitManager:
         """Add serpent currency from Bilgewater trait."""
         self.bilgewater_serpents += amount
 
-    def buy_from_bilgewater_store(self, item_key: str) -> Optional[str]:
-        """Purchase item from Bilgewater store using serpents.
+    def _get_category_cost(self, category: str) -> Optional[int]:
+        """Get the next purchase cost for a store category, or None if maxed out.
 
-        Args:
-            item_key: Key from BILGEWATER_STORE (champion or item)
+        Uses escalating cost lists from BILGEWATER_COSTS.
+        """
+        costs = BILGEWATER_STORE.get('costs', {})
+        cost_list = costs.get(category)
+        if cost_list is None:
+            return None
+        count = self.bilgewater_purchases.get(category, 0)
+        if isinstance(cost_list, list):
+            if count >= len(cost_list):
+                return None  # Max purchases reached
+            return cost_list[count]
+        return cost_list  # Flat cost (e.g., shop_reroll)
 
-        Returns the item/champion purchased, or None if insufficient serpents or max purchases reached.
+    def _get_unit_cost(self, gold_cost: int) -> int:
+        """Get serpent cost for a unit by its gold cost tier."""
+        unit_costs = BILGEWATER_STORE.get('unit_costs', {})
+        return unit_costs.get(gold_cost, gold_cost * 20)
+
+    def buy_from_bilgewater_store(self, category: str, **kwargs) -> Optional[str]:
+        """Purchase from Bilgewater Black Market using Silver Serpents.
+
+        Categories:
+        - 'tier1_stats'/'tier2_stats'/'tier3_stats': Buy stat buff
+        - 'tier1_items'/'tier2_items': Buy random item from that tier
+        - 'unit': Buy a unit (pass gold_cost=N in kwargs)
+        - 'lesser_dupe': Buy lesser duplicator
+        - 'shop_reroll': Reroll the shop
+
+        Returns category/item name purchased, or None if can't afford.
         """
         if not _ITEMS_LOADED:
             return None
 
-        max_purchases = BILGEWATER_STORE.get('max_purchases', 8)
-        if self.bilgewater_purchases >= max_purchases:
+        # Check layout: is this category available at our BG count?
+        layout = BILGEWATER_STORE.get('layout', {})
+        available_cats = set()
+        for tier in sorted(layout.keys(), reverse=True):
+            if self.bilgewater_count >= tier:
+                available_cats = set(layout[tier])
+                break
+
+        # Unit purchases use tierN_units format in layout
+        if category == 'unit':
+            gold_cost = kwargs.get('gold_cost', 1)
+            unit_cat = f'tier{gold_cost}_units'
+            if unit_cat not in available_cats:
+                return None
+            cost = self._get_unit_cost(gold_cost)
+            if self.bilgewater_serpents >= cost:
+                self.bilgewater_serpents -= cost
+                self.bilgewater_purchases[category] = self.bilgewater_purchases.get(category, 0) + 1
+                return f'unit_cost{gold_cost}'
             return None
 
-        # Check items first
-        store_items = BILGEWATER_STORE.get('items', {})
-        if item_key in store_items:
-            item_info = store_items[item_key]
-            cost = item_info.get('cost', 0)
-
+        if category == 'shop_reroll':
+            cost = BILGEWATER_STORE.get('costs', {}).get('shop_reroll', 1)
             if self.bilgewater_serpents >= cost:
                 self.bilgewater_serpents -= cost
-                self.bilgewater_purchases += 1
-                return item_key
+                return 'shop_reroll'
+            return None
 
-        # Check champions
-        store_champions = BILGEWATER_STORE.get('champions', {})
-        if item_key in store_champions:
-            champ_info = store_champions[item_key]
-            cost = champ_info.get('cost', 0)
-
-            if self.bilgewater_serpents >= cost:
-                self.bilgewater_serpents -= cost
-                self.bilgewater_purchases += 1
-                return item_key
-
+        # Stats, items, lesser_dupe: use escalating cost lists
+        if category not in available_cats:
+            return None
+        cost = self._get_category_cost(category)
+        if cost is None:
+            return None  # Maxed out
+        if self.bilgewater_serpents >= cost:
+            self.bilgewater_serpents -= cost
+            self.bilgewater_purchases[category] = self.bilgewater_purchases.get(category, 0) + 1
+            return category
         return None
 
     def get_store_affordables(self) -> Dict[str, List[str]]:
-        """Get list of items and champions affordable with current serpents.
+        """Get list of affordable store categories at current serpent count.
 
-        Returns dict with 'items' and 'champions' keys.
+        Returns dict with 'stats', 'items', 'units' keys listing affordable categories.
         """
         if not _ITEMS_LOADED:
-            return {'items': [], 'champions': []}
+            return {'stats': [], 'items': [], 'units': []}
 
-        max_purchases = BILGEWATER_STORE.get('max_purchases', 8)
-        if self.bilgewater_purchases >= max_purchases:
-            return {'items': [], 'champions': []}
+        layout = BILGEWATER_STORE.get('layout', {})
+        available_cats = set()
+        for tier in sorted(layout.keys(), reverse=True):
+            if self.bilgewater_count >= tier:
+                available_cats = set(layout[tier])
+                break
 
-        affordables = {'items': [], 'champions': []}
+        affordables = {'stats': [], 'items': [], 'units': []}
 
-        for item_key, item_info in BILGEWATER_STORE.get('items', {}).items():
-            if self.bilgewater_serpents >= item_info.get('cost', 0):
-                affordables['items'].append(item_key)
-
-        for champ_key, champ_info in BILGEWATER_STORE.get('champions', {}).items():
-            if self.bilgewater_serpents >= champ_info.get('cost', 0):
-                affordables['champions'].append(champ_key)
+        for cat in available_cats:
+            if cat.endswith('_units'):
+                # Parse gold cost from tierN_units
+                try:
+                    gold_cost = int(cat.replace('tier', '').replace('_units', ''))
+                except ValueError:
+                    continue
+                cost = self._get_unit_cost(gold_cost)
+                if self.bilgewater_serpents >= cost:
+                    affordables['units'].append(cat)
+            elif cat.endswith('_stats'):
+                cost = self._get_category_cost(cat)
+                if cost is not None and self.bilgewater_serpents >= cost:
+                    affordables['stats'].append(cat)
+            elif cat.endswith('_items') or cat == 'lesser_dupe':
+                cost = self._get_category_cost(cat)
+                if cost is not None and self.bilgewater_serpents >= cost:
+                    affordables['items'].append(cat)
 
         return affordables
 
@@ -1540,6 +1619,8 @@ class TraitManager:
                 unit._zaun_initial_delay = effects['InitialDelay']
                 unit._zaun_shimmer_active = False
                 unit._zaun_shimmer_triggered = False
+                unit._zaun_heal_threshold = effects['HealThreshold']
+                unit._zaun_max_health_heal = effects.get('MaxHealthHeal', 0)
 
     def _apply_noxus(self, team: List['Unit'], count: int):
         """Apply Noxus trait: Set up Atakhan summoning for combat.
@@ -2130,6 +2211,8 @@ class AugmentManager:
         """
         if not hasattr(unit.stats, stat_name):
             return
+        if value is None:
+            return
 
         current = getattr(unit.stats, stat_name)
 
@@ -2415,17 +2498,20 @@ class ItemDatabase:
         try:
             from .item_effects import (
                 get_item_on_hit, get_item_on_ability,
-                get_item_on_damage_dealt, get_item_on_damage_taken
+                get_item_on_damage_dealt, get_item_on_damage_taken,
+                get_item_passive
             )
             on_hit = get_item_on_hit(resolved_name)
             on_ability = get_item_on_ability(resolved_name)
             on_damage_dealt = get_item_on_damage_dealt(resolved_name)
             on_damage_taken = get_item_on_damage_taken(resolved_name)
+            passive = get_item_passive(resolved_name)
         except ImportError:
             on_hit = None
             on_ability = None
             on_damage_dealt = None
             on_damage_taken = None
+            passive = None
 
         return Item(
             name=resolved_name,
@@ -2433,7 +2519,8 @@ class ItemDatabase:
             on_hit=on_hit,
             on_ability_cast=on_ability,
             on_damage_dealt=on_damage_dealt,
-            on_damage_taken=on_damage_taken
+            on_damage_taken=on_damage_taken,
+            passive=passive,
         )
 
 
@@ -2559,8 +2646,15 @@ class CombatEngine:
 
     # Game constants
     HEX_SIZE = 180              # Game units per hex
-    MANA_PER_ATTACK = 10        # Mana gained per auto attack
-    MANA_ON_DAMAGE_TAKEN = 0.01 # Mana per 1% max HP lost
+    # Mana per attack by role (Set 15+ role rework)
+    MANA_PER_ATTACK_BY_ROLE = {
+        'ADCarry': 10, 'APCaster': 7, 'APTank': 5, 'ADTank': 5,
+        'Tank': 5, 'Defender': 5, 'ADFighter': 10, 'Specialist': 10,
+        'Support': 7, 'Assassin': 10,
+    }
+    MANA_PER_ATTACK_DEFAULT = 10
+    MANA_ON_DAMAGE_TAKEN_CAP = 42.5  # Max mana per damage instance
+    ATTACK_SPEED_CAP = 5.0      # Hard cap on attack speed
     MOVE_SPEED_BASE = 550       # Base movement speed
     HEX_MOVE_TIME = 0.5         # Seconds to move one hex at base speed
 
@@ -2568,13 +2662,13 @@ class CombatEngine:
     HP_SCALING = {1: 1.0, 2: 1.8, 3: 3.24}
     AD_SCALING = {1: 1.0, 2: 1.5, 3: 2.25}
 
-    def __init__(self, combat_data_path: Optional[Path] = None):
+    def __init__(self, combat_data_path: Optional[Path] = None, logging_enabled: bool = True):
         """Initialize the combat engine with game data."""
         if combat_data_path is None:
             combat_data_path = Path(__file__).parent.parent / "data" / "combat_data.json"
 
-        with open(combat_data_path, 'r', encoding='utf-8') as f:
-            self.combat_data = json.load(f)
+        self.combat_data = _load_combat_data(combat_data_path)
+        self.logging_enabled = logging_enabled
 
         self.champions = self.combat_data.get('champions', {})
         self.constants = self.combat_data.get('constants', {})
@@ -2585,6 +2679,10 @@ class CombatEngine:
         self.combat_log: List[Dict] = []
         self.units: List[Unit] = []
         self.projectiles: List[Dict] = []
+        self._alive_team0: List[Unit] = []
+        self._alive_team1: List[Unit] = []
+        self._alive_dirty = False
+        self._has_noxus = False
 
         # Trait manager for Blacksmith, Bilgewater, Piltover
         self.trait_manager = TraitManager()
@@ -2699,6 +2797,12 @@ class CombatEngine:
                     # Mana regen doesn't map to a single stat, skip for now
                     pass
 
+                # Bonus HP percentage (Warmog's, Dragon's Claw, Bramble Vest, Sunfire Cape)
+                elif stat == 'bonus_hp_pct':
+                    bonus_hp = unit.base_stats.max_hp * value
+                    unit.stats.max_hp += bonus_hp
+                    unit.stats.hp += bonus_hp
+
                 else:
                     setattr(unit.stats, stat, current + value)
 
@@ -2757,15 +2861,20 @@ class CombatEngine:
         """Calculate final damage after all modifiers."""
         damage = base_damage
 
-        # Apply damage amp
-        damage *= (1 + attacker.stats.damage_amp)
+        # Apply damage amp (including Longshot per-hex bonus)
+        longshot_bonus = 0
+        if hasattr(attacker, '_longshot_per_hex') and attacker._longshot_per_hex > 0:
+            distance = HexGrid.hex_distance(attacker.position, defender.position)
+            longshot_bonus = attacker._longshot_per_hex * distance
+        damage *= (1 + attacker.stats.damage_amp + longshot_bonus)
 
         # Check for crit
         did_crit = False
         if can_crit:
-            # Check for Jeweled Gauntlet (abilities can crit)
+            # Check for Jeweled Gauntlet or Vanquisher trait (abilities can crit)
             has_jeweled = any(i.name == "JeweledGauntlet" for i in attacker.items)
-            if not is_ability or has_jeweled:
+            has_vanquisher_crit = getattr(attacker, '_vanquisher_ability_crit', False)
+            if not is_ability or has_jeweled or has_vanquisher_crit:
                 if random.random() < attacker.stats.crit_chance:
                     damage *= attacker.stats.crit_multiplier
                     did_crit = True
@@ -2782,10 +2891,14 @@ class CombatEngine:
         if defender.stats.damage_reduction > 0:
             damage *= (1 - defender.stats.damage_reduction)
 
-        # Giant Slayer check
-        if any(i.name == "GiantSlayer" for i in attacker.items):
+        # Dragonborn aura: allies take 10% less ability damage (persists after Shyvana death)
+        if is_ability and getattr(defender, '_dragonborn_protected', False):
+            damage *= 0.90
+
+        # Giant Slayer: +15% damage vs tanks (units with >1750 max HP)
+        if any(i.name in ("GiantSlayer", "RadiantGiantSlayer") for i in attacker.items):
             if defender.stats.max_hp > 1750:
-                damage *= 1.25
+                damage *= 1.15
 
         return max(0, damage), did_crit
 
@@ -2798,9 +2911,9 @@ class CombatEngine:
         hp_percent = unit.stats.hp / unit.stats.max_hp
 
         # Edge of Night - triggers at 60% HP (one time per combat)
+        # Effect: untargetable, shed negative effects, heal 30% missing HP
         has_edge_of_night = any(i.name in ["EdgeOfNight", "TFT_Item_EdgeOfNight"] for i in unit.items)
         if has_edge_of_night and hp_percent <= 0.60:
-            # Check if we already triggered (use a marker)
             if not hasattr(unit, '_edge_of_night_triggered'):
                 unit._edge_of_night_triggered = True
 
@@ -2811,7 +2924,11 @@ class CombatEngine:
 
                 # Cleanse negative effects (remove stun, debuffs)
                 unit.stun_duration = 0
-                unit.buffs = [b for b in unit.buffs if b.stacks > 0]  # Remove debuffs (simplified)
+                unit.buffs = [b for b in unit.buffs if b.stacks > 0]
+
+                # Heal 30% of missing HP
+                missing_hp = unit.stats.max_hp - unit.stats.hp
+                self.heal_unit(unit, missing_hp * 0.30, "edge_of_night")
 
                 self.log_event('edge_of_night_proc', unit=unit.name, hp_percent=round(hp_percent * 100, 1))
 
@@ -2867,9 +2984,10 @@ class CombatEngine:
                 damage -= defender.stats.shield
                 defender.stats.shield = 0
 
-        # Mana on damage taken
-        hp_percent_lost = damage / defender.stats.max_hp
-        mana_gain = hp_percent_lost * 100 * self.MANA_ON_DAMAGE_TAKEN
+        # Mana on damage taken (1% pre-mitigation + 3% post-mitigation, capped)
+        pre_mit_mana = damage * 0.01  # 1% of pre-mitigation damage
+        post_mit_mana = min(damage, defender.stats.hp) * 0.03  # 3% of actual damage
+        mana_gain = min(pre_mit_mana + post_mit_mana, self.MANA_ON_DAMAGE_TAKEN_CAP)
         defender.stats.mana = min(defender.stats.mana + mana_gain, defender.stats.max_mana)
 
         # Apply damage
@@ -2888,6 +3006,7 @@ class CombatEngine:
             defender.stats.hp = 0
             defender.is_alive = False
             defender.state = UnitState.DEAD
+            self._alive_dirty = True
 
             # Freljord Ice Block: stun enemies on death
             if self.trait_manager:
@@ -2905,6 +3024,13 @@ class CombatEngine:
                         self.log_event('bilgewater_takedown', killer=attacker.name,
                                       victim=defender.name, serpents=serpents,
                                       total=self.trait_manager.bilgewater_serpents)
+
+                # Harvester: grant mana to Harvester units on enemy death
+                allies_team = self._alive_team0 if attacker.team == 0 else self._alive_team1
+                for ally in allies_team:
+                    harvest_mana = getattr(ally, '_harvester_mana_per_kill', 0)
+                    if harvest_mana > 0 and ally.is_alive:
+                        ally.stats.mana = min(ally.stats.mana + harvest_mana, ally.stats.max_mana)
 
                 # Award Shadow Isles souls for takedown
                 if self.trait_manager.shadow_isles_count >= 2 and attacker.team != defender.team:
@@ -2926,6 +3052,15 @@ class CombatEngine:
                       defender_hp=round(defender.stats.hp, 1),
                       defender_alive=defender.is_alive)
 
+        # Juggernaut: heal allies for % of damage taken
+        if defender.is_alive and hasattr(defender, '_juggernaut_heal_ratio') and actual_damage > 0:
+            heal_amt = actual_damage * defender._juggernaut_heal_ratio
+            if heal_amt > 0:
+                allies = [u for u in (self._alive_team0 if defender.team == 0 else self._alive_team1)
+                          if u.is_alive and u is not defender]
+                for ally in allies:
+                    self.heal_unit(ally, heal_amt, "juggernaut")
+
         # Check for HP threshold effects (Edge of Night, Zhonya's)
         if defender.is_alive:
             self.check_hp_threshold_effects(defender)
@@ -2944,9 +3079,14 @@ class CombatEngine:
         return actual_damage
 
     def heal_unit(self, unit: Unit, amount: float, source: str = "heal"):
-        """Heal a unit."""
+        """Heal a unit. Reduced by 33% if Wounded."""
         if not unit.is_alive:
             return
+
+        # Check Wound debuff (33% healing reduction)
+        wound_until = getattr(unit, '_wound_until', 0)
+        if self.time < wound_until:
+            amount *= 0.67
 
         actual_heal = min(amount, unit.stats.max_hp - unit.stats.hp)
         unit.stats.hp += actual_heal
@@ -2965,8 +3105,131 @@ class CombatEngine:
         self.log_event('shield', unit=unit.name, amount=round(amount, 1),
                       source=source, total_shield=round(unit.stats.shield, 1))
 
+    def apply_burn(self, attacker: Unit, target: Unit, burn_pct: float,
+                   duration: float, source: str = "burn"):
+        """Apply Burn debuff: X% max HP as true damage per second for duration.
+
+        Damage ticks once per second over the full duration.
+        """
+        if not target.is_alive:
+            return
+        damage_per_tick = target.stats.max_hp * burn_pct
+        dot = DotEffect(
+            source_unit=attacker,
+            damage_per_tick=damage_per_tick,
+            tick_interval=1.0,
+            remaining_duration=duration,
+            damage_type=DamageType.TRUE,
+            source_name=source,
+            time_since_last_tick=0.0,
+        )
+        target.dot_effects.append(dot)
+        self.log_event('burn_applied', target=target.name,
+                       dps=round(damage_per_tick, 1), duration=duration, source=source)
+
+    def apply_cc(self, target: Unit, cc_type: str, duration: float,
+                 source: str = "cc", source_unit: 'Unit' = None):
+        """Apply crowd control effect to a unit.
+
+        Args:
+            target: Unit to CC
+            cc_type: 'stun', 'fear', 'taunt', 'root'
+            duration: Duration in seconds
+            source: Source name for logging
+            source_unit: For taunt, the unit that taunted
+        """
+        if not target.is_alive:
+            return
+        # Check CC immunity
+        if hasattr(target, 'immune_until') and self.time < target.immune_until:
+            return
+        # Apply tenacity
+        tenacity = getattr(target, '_tenacity', 0)
+        if tenacity > 0:
+            duration *= (1 - tenacity)
+        if duration <= 0:
+            return
+
+        if cc_type == 'fear':
+            target.state = UnitState.FEARED
+            target.stun_duration = max(target.stun_duration, duration)
+        elif cc_type == 'taunt':
+            target.state = UnitState.TAUNTED
+            target.stun_duration = max(target.stun_duration, duration)
+            target._taunt_source = source_unit
+        elif cc_type == 'root':
+            target.state = UnitState.ROOTED
+            target.stun_duration = max(target.stun_duration, duration)
+        else:  # stun
+            target.state = UnitState.STUNNED
+            target.stun_duration = max(target.stun_duration, duration)
+
+        self.log_event('cc_applied', target=target.name, cc_type=cc_type,
+                       duration=round(duration, 2), source=source)
+
+    def apply_wound(self, target: Unit, duration: float, source: str = "wound"):
+        """Apply Wound debuff: reduce healing received by 33% for duration.
+
+        Simplified: sets a marker on the unit; heal_unit checks it.
+        """
+        if not target.is_alive:
+            return
+        target._wound_until = self.time + duration
+        self.log_event('wound', target=target.name, duration=duration, source=source)
+
+    def apply_sunder(self, target: Unit, pct: float, duration: float,
+                     source: str = "sunder"):
+        """Apply Sunder debuff: reduce armor by X% for duration.
+
+        Stacks are tracked; armor is restored when the debuff expires.
+        Re-applying refreshes the duration but does not double-stack from same source.
+        """
+        if not target.is_alive:
+            return
+        # Track active sunders: list of (reduction_amount, expiry_time, source)
+        if not hasattr(target, '_sunder_stacks'):
+            target._sunder_stacks = []
+        expiry = self.time + duration
+        # Refresh existing sunder from same source instead of stacking
+        for i, (red, exp, src) in enumerate(target._sunder_stacks):
+            if src == source:
+                target._sunder_stacks[i] = (red, expiry, src)
+                self.log_event('sunder_refresh', target=target.name, source=source)
+                return
+        # New sunder from this source
+        reduction = target.stats.armor * pct
+        target.stats.armor = max(0, target.stats.armor - reduction)
+        target._sunder_stacks.append((reduction, expiry, source))
+        self.log_event('sunder', target=target.name, reduction=round(reduction, 1), source=source)
+
+    def apply_shred(self, target: Unit, pct: float, duration: float,
+                    source: str = "shred"):
+        """Apply Shred debuff: reduce magic resist by X% for duration.
+
+        Stacks are tracked; MR is restored when the debuff expires.
+        Re-applying refreshes the duration but does not double-stack from same source.
+        """
+        if not target.is_alive:
+            return
+        if not hasattr(target, '_shred_stacks'):
+            target._shred_stacks = []
+        expiry = self.time + duration
+        # Refresh existing shred from same source
+        for i, (red, exp, src) in enumerate(target._shred_stacks):
+            if src == source:
+                target._shred_stacks[i] = (red, expiry, src)
+                self.log_event('shred_refresh', target=target.name, source=source)
+                return
+        # New shred from this source
+        reduction = target.stats.magic_resist * pct
+        target.stats.magic_resist = max(0, target.stats.magic_resist - reduction)
+        target._shred_stacks.append((reduction, expiry, source))
+        self.log_event('shred', target=target.name, reduction=round(reduction, 1), source=source)
+
     def log_event(self, event_type: str, **kwargs):
         """Log a combat event."""
+        if not self.logging_enabled:
+            return
         self.combat_log.append({
             'time': round(self.time, 2),
             'type': event_type,
@@ -3111,32 +3374,51 @@ class CombatEngine:
                 unit.enhanced_attack_on_hit_dmg = 0
                 self.log_event('enhanced_attacks_ended', unit=unit.name)
 
-        # Gain mana
-        unit.stats.mana = min(unit.stats.mana + self.MANA_PER_ATTACK, unit.stats.max_mana)
+        # Gunslinger: every Nth attack deals bonus physical damage
+        if hasattr(unit, '_gunslinger_attack_counter'):
+            unit._gunslinger_attack_counter += 1
+            if unit._gunslinger_attack_counter >= unit._gunslinger_attack_interval:
+                unit._gunslinger_attack_counter = 0
+                bonus = unit._gunslinger_bonus_damage
+                if bonus > 0 and unit.target and unit.target.is_alive:
+                    self.apply_damage(unit, unit.target, bonus, DamageType.PHYSICAL, "gunslinger_proc")
+
+        # Gain mana (role-based)
+        mana_per_attack = self.MANA_PER_ATTACK_BY_ROLE.get(unit.role, self.MANA_PER_ATTACK_DEFAULT)
+        unit.stats.mana = min(unit.stats.mana + mana_per_attack, unit.stats.max_mana)
 
         # Item on-hit effects
         for item in unit.items:
             if item.on_hit:
                 item.on_hit(self, unit, unit.target)
 
-        # Red Buff burn (this is the actual base item - 1% max HP burn)
-        if any(i.name == "RedBuff" for i in unit.items):
-            self._apply_burn(unit, unit.target, "red_buff",
-                            unit.target.stats.max_hp * 0.01, 5.0)
+        # Red Buff / Morellonomicon burn now handled via item_effects.py on_hit/on_damage_dealt
 
-    def _proc_void_staff(self, unit: Unit, target: Unit):
-        """Proc Void Staff MR shred (30% for 5s)."""
-        # Void Staff shreds MR on hit - simplified as instant MR reduction
-        mr_shred = target.stats.magic_resist * 0.30
-        target.stats.magic_resist = max(0, target.stats.magic_resist - mr_shred)
+    def _post_ability_cast(self, unit: Unit):
+        """Shared post-ability-cast logic: item on-ability effects + Ionic Spark reaction."""
+        # Trigger item on-ability effects
+        for item in unit.items:
+            if item.on_ability_cast:
+                item.on_ability_cast(self, unit)
 
-    def _apply_burn(self, attacker: Unit, target: Unit, source: str,
-                   damage_per_tick: float, duration: float):
-        """Apply burn debuff (simplified - instant damage for now)."""
-        total_damage = damage_per_tick * duration
-        damage, _ = self.calculate_damage(attacker, target, total_damage,
-                                         DamageType.TRUE, can_crit=False)
-        self.apply_damage(attacker, target, damage, DamageType.TRUE, source)
+        # Ionic Spark reactive damage: enemies with Ionic Spark within 2 hexes
+        # deal 150% of caster's max mana as magic damage to the caster
+        for enemy in self.units:
+            if enemy.team == unit.team or not enemy.is_alive:
+                continue
+            has_ionic = any(
+                n == 'IonicSpark' or n.endswith('IonicSpark')
+                for item in enemy.items for n in [item.name]
+            )
+            if not has_ionic:
+                continue
+            dist = HexGrid.hex_distance(enemy.position, unit.position)
+            if dist <= 2:
+                spark_damage = unit.stats.max_mana * 1.50
+                final_dmg, _ = self.calculate_damage(
+                    enemy, unit, spark_damage, DamageType.MAGIC, can_crit=False
+                )
+                self.apply_damage(enemy, unit, final_dmg, DamageType.MAGIC, "ionic_spark_react")
 
     def cast_ability(self, unit: Unit, enemies: List[Unit], allies: List[Unit]):
         """Cast unit's ability."""
@@ -3153,6 +3435,8 @@ class CombatEngine:
         # Try champion-specific ability handler first
         if self.champion_abilities:
             if self.champion_abilities.cast(unit, enemies, allies, ability_vars):
+                self._post_ability_cast(unit)
+                self.log_event('ability_cast', unit=unit.name, ability=ability.name, targets=[])
                 return  # Ability fully handled by champion-specific code
 
         # ==========================
@@ -3221,10 +3505,8 @@ class CombatEngine:
             # Reset mana
             unit.stats.mana = 0
 
-            # Trigger item on-ability effects
-            for item in unit.items:
-                if item.on_ability_cast:
-                    item.on_ability_cast(self, unit)
+            # Shared post-cast logic (item effects + Ionic Spark reaction)
+            self._post_ability_cast(unit)
 
             self.log_event('ability_cast', unit=unit.name, ability=ability.name,
                           targets=[t.name for t in enemies_in_range[:1]])
@@ -3349,10 +3631,8 @@ class CombatEngine:
         # Reset mana
         unit.stats.mana = 0
 
-        # Trigger item on-ability effects
-        for item in unit.items:
-            if item.on_ability_cast:
-                item.on_ability_cast(self, unit)
+        # Shared post-cast logic (item effects + Ionic Spark reaction)
+        self._post_ability_cast(unit)
 
         self.log_event('ability_cast', unit=unit.name, ability=ability.name,
                       targets=[t.name for t in targets])
@@ -3396,16 +3676,138 @@ class CombatEngine:
                     self.log_event('teleport_return', unit=unit.name, position=unit.position)
             return  # Cannot act while untargetable (unless it's Fizz mid-leap)
 
-        # Handle stun
+        # Handle stun/fear (both fully disable)
         if unit.stun_duration > 0:
             unit.stun_duration -= self.tick_rate
-            unit.state = UnitState.STUNNED
-            return
+            # Apply tenacity to reduce remaining duration
+            tenacity = getattr(unit, '_tenacity', 0)
+            if tenacity > 0:
+                unit.stun_duration -= self.tick_rate * tenacity
+            if unit.state not in (UnitState.FEARED, UnitState.TAUNTED, UnitState.ROOTED):
+                unit.state = UnitState.STUNNED
+            # Fear: random movement away (treated like stun but moves)
+            if unit.state == UnitState.FEARED and unit.stun_duration > 0:
+                neighbors = HexGrid.get_neighbors(unit.position)
+                occupied = self.get_occupied_hexes()
+                valid = [n for n in neighbors if n not in occupied]
+                if valid:
+                    unit.position = random.choice(valid)
+                return
+            # Taunt: forced to attack taunter (can attack, not move freely)
+            if unit.state == UnitState.TAUNTED:
+                taunt_src = getattr(unit, '_taunt_source', None)
+                if taunt_src and taunt_src.is_alive:
+                    unit.target = taunt_src
+                    # Fall through to attack logic below
+                else:
+                    unit.state = UnitState.IDLE
+                    unit.stun_duration = 0
+            # Root: can't move but can attack/cast in range
+            elif unit.state == UnitState.ROOTED:
+                pass  # Fall through but skip movement
+            else:
+                return  # Regular stun: fully disabled
 
         # Update buffs
         unit.buffs = [b for b in unit.buffs if b.duration > 0]
         for buff in unit.buffs:
             buff.duration -= self.tick_rate
+
+        # Passive item effects (Guinsoo's, Archangel's, Quicksilver, Dragon's Claw, etc.)
+        for item in unit.items:
+            if item.passive:
+                item.passive(self, unit)
+
+        # --- Trait combat-time effects ---
+
+        # Shurima: heal over time
+        if hasattr(unit, '_shurima_heal_per_sec'):
+            shurima_last = getattr(unit, '_shurima_last_tick', -1.0)
+            if self.time - shurima_last >= 1.0:
+                unit._shurima_last_tick = self.time
+                self.heal_unit(unit, unit._shurima_heal_per_sec, "shurima")
+
+        # Ixtal: heal over time
+        if hasattr(unit, '_ixtal_heal_per_sec'):
+            ixtal_last = getattr(unit, '_ixtal_last_tick', -1.0)
+            if self.time - ixtal_last >= 1.0:
+                unit._ixtal_last_tick = self.time
+                self.heal_unit(unit, unit._ixtal_heal_per_sec, "ixtal")
+
+        # Warden: shield at HP thresholds
+        if hasattr(unit, '_warden_shield_percent'):
+            hp_pct = unit.stats.hp / unit.stats.max_hp if unit.stats.max_hp > 0 else 1.0
+            if not unit._warden_first_triggered and hp_pct < unit._warden_first_threshold:
+                unit._warden_first_triggered = True
+                shield = unit.stats.max_hp * unit._warden_shield_percent
+                unit.stats.shield += shield
+                self.log_event('warden_shield', unit=unit.name, shield=round(shield, 1), threshold='first')
+            if not unit._warden_second_triggered and hp_pct < unit._warden_second_threshold:
+                unit._warden_second_triggered = True
+                shield = unit.stats.max_hp * unit._warden_shield_percent
+                unit.stats.shield += shield
+                self.log_event('warden_shield', unit=unit.name, shield=round(shield, 1), threshold='second')
+
+        # Slayer: bonus AD scaling with missing HP (checked once per second)
+        if hasattr(unit, '_slayer_ad_increase'):
+            slayer_last = getattr(unit, '_slayer_last_tick', -1.0)
+            if self.time - slayer_last >= 1.0:
+                unit._slayer_last_tick = self.time
+                hp_pct = unit.stats.hp / unit.stats.max_hp if unit.stats.max_hp > 0 else 1.0
+                missing_pct = 1.0 - hp_pct
+                # AD bonus = base_ad * ad_increase * missing_hp_percent
+                new_bonus = unit.base_stats.ad * unit._slayer_ad_increase * missing_pct
+                old_bonus = getattr(unit, '_slayer_current_bonus', 0.0)
+                unit.stats.ad += (new_bonus - old_bonus)
+                unit._slayer_current_bonus = new_bonus
+
+        # Juggernaut: increased DR below 50% HP
+        if hasattr(unit, '_juggernaut_increased_dr'):
+            hp_pct = unit.stats.hp / unit.stats.max_hp if unit.stats.max_hp > 0 else 1.0
+            was_below = getattr(unit, '_juggernaut_below_50', False)
+            if hp_pct < 0.5 and not was_below:
+                unit._juggernaut_below_50 = True
+                unit.stats.damage_reduction += unit._juggernaut_increased_dr
+            elif hp_pct >= 0.5 and was_below:
+                unit._juggernaut_below_50 = False
+                unit.stats.damage_reduction -= unit._juggernaut_increased_dr
+
+        # Zaun: shimmer fuse - delayed AS + durability burst
+        if hasattr(unit, '_zaun_shimmer_as') and not getattr(unit, '_zaun_shimmer_triggered', False):
+            if self.time >= unit._zaun_initial_delay:
+                hp_pct = unit.stats.hp / unit.stats.max_hp if unit.stats.max_hp > 0 else 1.0
+                heal_threshold = getattr(unit, '_zaun_heal_threshold', 0.60)
+                if hp_pct < heal_threshold:
+                    unit._zaun_shimmer_triggered = True
+                    unit._zaun_shimmer_active = True
+                    unit._zaun_shimmer_end = self.time + unit._zaun_shimmer_duration
+                    unit.stats.attack_speed += unit._zaun_shimmer_as
+                    unit.stats.damage_reduction += unit._zaun_shimmer_durability
+                    # Tier 5+: heal on activation
+                    max_heal = getattr(unit, '_zaun_max_health_heal', 0)
+                    if max_heal > 0:
+                        self.heal_unit(unit, unit.stats.max_hp * max_heal, "zaun_shimmer")
+                    self.log_event('zaun_shimmer_activate', unit=unit.name,
+                                   as_bonus=unit._zaun_shimmer_as, dr_bonus=unit._zaun_shimmer_durability)
+        # Zaun shimmer expiry
+        if getattr(unit, '_zaun_shimmer_active', False):
+            if self.time >= unit._zaun_shimmer_end:
+                unit._zaun_shimmer_active = False
+                unit.stats.attack_speed -= unit._zaun_shimmer_as
+                unit.stats.damage_reduction -= unit._zaun_shimmer_durability
+                self.log_event('zaun_shimmer_expire', unit=unit.name)
+
+        # Quickstriker: bonus AS based on target's missing HP (checked once per second)
+        if hasattr(unit, '_quickstriker_min_as') and unit.target and unit.target.is_alive:
+            qs_last = getattr(unit, '_qs_last_tick', -1.0)
+            if self.time - qs_last >= 1.0:
+                unit._qs_last_tick = self.time
+                t_hp_pct = unit.target.stats.hp / unit.target.stats.max_hp if unit.target.stats.max_hp > 0 else 1.0
+                t_missing = 1.0 - t_hp_pct
+                new_bonus = unit._quickstriker_min_as + (unit._quickstriker_max_as - unit._quickstriker_min_as) * t_missing
+                old_bonus = getattr(unit, '_qs_current_bonus', 0.0)
+                unit.stats.attack_speed += (new_bonus - old_bonus)
+                unit._qs_current_bonus = new_bonus
 
         # Find/update target
         if not unit.target or not unit.target.is_alive:
@@ -3418,8 +3820,10 @@ class CombatEngine:
         # Check if in range
         in_range = self.can_attack(unit, unit.target)
 
-        # Movement if not in range
+        # Movement if not in range (rooted units cannot move)
         if not in_range:
+            if unit.state == UnitState.ROOTED:
+                return  # Rooted: can't move to get in range, just wait
             unit.state = UnitState.MOVING
 
             # Move towards target (simplified - one hex per 0.5s)
@@ -3451,7 +3855,11 @@ class CombatEngine:
         if unit.stats.mana >= unit.stats.max_mana and unit.ability:
             unit.state = UnitState.CASTING
             self.cast_ability(unit, enemies, allies)
-            unit.attack_cooldown = unit.ability.cast_time
+            # Allow champion-specific handlers to override the cast lockout
+            if getattr(unit, '_custom_cast_time', False):
+                unit._custom_cast_time = False
+            else:
+                unit.attack_cooldown = unit.ability.cast_time
             return
 
         # Auto attack
@@ -3459,7 +3867,9 @@ class CombatEngine:
         unit.attack_cooldown -= self.tick_rate
 
         if unit.attack_cooldown <= 0:
-            attack_interval = 1.0 / unit.stats.attack_speed
+            # Enforce attack speed hard cap
+            effective_as = min(unit.stats.attack_speed, self.ATTACK_SPEED_CAP)
+            attack_interval = 1.0 / effective_as
             unit.attack_cooldown = attack_interval
             self.process_attack(unit)
 
@@ -3467,23 +3877,155 @@ class CombatEngine:
         """Process one simulation tick."""
         self.time += self.tick_rate
 
-        team0 = [u for u in self.units if u.team == 0 and u.is_alive]
-        team1 = [u for u in self.units if u.team == 1 and u.is_alive]
+        # Refresh cached alive lists only when a unit has died
+        if self._alive_dirty:
+            self._alive_team0 = [u for u in self._alive_team0 if u.is_alive]
+            self._alive_team1 = [u for u in self._alive_team1 if u.is_alive]
+            self._alive_dirty = False
 
-        # Check Noxus Atakhan summoning (mid-combat)
-        self._check_noxus_atakhan_summon(team0, team1)
+        team0 = self._alive_team0
+        team1 = self._alive_team1
 
-        # Check Atakhan "Bring Ruin" at 10 Noxus (4-star Atakhan after timer)
-        self._check_atakhan_ruin()
+        # Process DOT effects on all alive units
+        for unit in team0 + team1:
+            if not unit.is_alive or not unit.dot_effects:
+                continue
+            remaining_dots = []
+            for dot in unit.dot_effects:
+                dot.remaining_duration -= self.tick_rate
+                dot.time_since_last_tick += self.tick_rate
+                if dot.time_since_last_tick >= dot.tick_interval:
+                    dot.time_since_last_tick -= dot.tick_interval
+                    if unit.is_alive:
+                        self.apply_damage(
+                            dot.source_unit, unit, dot.damage_per_tick,
+                            dot.damage_type, dot.source_name)
+                if dot.remaining_duration > 0:
+                    remaining_dots.append(dot)
+            unit.dot_effects = remaining_dots
+
+        # Expire sunder/shred debuffs and restore armor/MR
+        for unit in team0 + team1:
+            if not unit.is_alive:
+                continue
+            if hasattr(unit, '_sunder_stacks') and unit._sunder_stacks:
+                remaining = []
+                for reduction, expiry, src in unit._sunder_stacks:
+                    if self.time >= expiry:
+                        unit.stats.armor += reduction
+                        self.log_event('sunder_expired', target=unit.name, restored=round(reduction, 1), source=src)
+                    else:
+                        remaining.append((reduction, expiry, src))
+                unit._sunder_stacks = remaining
+            if hasattr(unit, '_shred_stacks') and unit._shred_stacks:
+                remaining = []
+                for reduction, expiry, src in unit._shred_stacks:
+                    if self.time >= expiry:
+                        unit.stats.magic_resist += reduction
+                        self.log_event('shred_expired', target=unit.name, restored=round(reduction, 1), source=src)
+                    else:
+                        remaining.append((reduction, expiry, src))
+                unit._shred_stacks = remaining
+
+        # Piltover module fire at 8 seconds
+        if hasattr(self, '_piltover_data') and self.time >= 8.0:
+            for team_id, pdata in self._piltover_data.items():
+                if not pdata['fired']:
+                    pdata['fired'] = True
+                    self._fire_piltover_module(pdata, team0, team1)
+
+        # Check Noxus Atakhan summoning (only when Noxus is active)
+        if self._has_noxus:
+            self._check_noxus_atakhan_summon(team0, team1)
+            self._check_atakhan_ruin()
 
         # Process in random order to avoid bias
-        units_to_process = [u for u in self.units if u.is_alive]
+        units_to_process = team0 + team1
         random.shuffle(units_to_process)
 
         for unit in units_to_process:
             enemies = team1 if unit.team == 0 else team0
             allies = team0 if unit.team == 0 else team1
             self.process_unit_tick(unit, enemies, allies)
+
+    def _fire_piltover_module(self, pdata: Dict, team0: List[Unit], team1: List[Unit]):
+        """Apply Piltover module effects at 8 seconds into combat."""
+        module = pdata['module']
+        team = [u for u in pdata['team'] if u.is_alive]
+        piltover_units = [u for u in pdata['piltover_units'] if u.is_alive]
+        team_id = pdata.get('team', [None])[0].team if team else 0
+        enemies = team1 if team_id == 0 else team0
+
+        self.log_event('piltover_module_fire', module=module)
+
+        if module == "BlastShield":
+            for u in team:
+                shield = u.stats.max_hp * 0.18
+                self.apply_shield(u, shield, "piltover_blast_shield")
+
+        elif module == "ContinuumCogs":
+            for u in team:
+                u.stats.ap += 15
+
+        elif module == "EMP":
+            for e in enemies:
+                if e.is_alive:
+                    e.stats.max_mana += 15
+
+        elif module == "KineticBarrier":
+            for u in piltover_units:
+                u.stats.armor += 65
+                u.stats.magic_resist += 30
+
+        elif module == "OverclockedCapacitors":
+            for u in team:
+                u.stats.attack_speed += 0.25
+
+        elif module == "AccelerationGate":
+            # Mark Piltover units for mana restore after cast
+            for u in piltover_units:
+                u._piltover_accel_gate = True
+
+        elif module == "ArmorNullifier":
+            for u in piltover_units:
+                u.stats.damage_amp += 0.25
+
+        elif module == "GigantificationRay":
+            for u in piltover_units:
+                hp_bonus = u.stats.max_hp * 0.28
+                u.stats.hp += hp_bonus
+                u.stats.max_hp += hp_bonus
+
+        elif module == "MagnetronCoil":
+            for u in piltover_units:
+                u.stats.damage_amp += 0.18
+
+        elif module == "MomentumDrive":
+            # Cleanse CC and grant tenacity (50% stun duration reduction)
+            for u in team:
+                if u.state == UnitState.STUNNED:
+                    u.state = UnitState.IDLE
+                    u.stun_duration = 0
+                u._tenacity = 0.50
+
+        elif module == "TunedOscillator":
+            # Increase healing/shielding by 28% (mark for heal_unit to check)
+            for u in team:
+                u._healing_amp = getattr(u, '_healing_amp', 0) + 0.28
+
+        elif module == "ElectricalOverload":
+            for e in enemies:
+                if e.is_alive:
+                    dmg = 100 + e.stats.max_hp * 0.10
+                    self.apply_damage(None, e, dmg, DamageType.TRUE, "piltover_electrical_overload")
+
+        elif module == "90CaliberNets":
+            # Stun 3 highest DPS enemies for 2s
+            alive_enemies = [e for e in enemies if e.is_alive]
+            alive_enemies.sort(key=lambda e: e.total_damage_dealt, reverse=True)
+            for e in alive_enemies[:3]:
+                e.state = UnitState.STUNNED
+                e.stun_duration = 2.0
 
     def _check_noxus_atakhan_summon(self, team0: List[Unit], team1: List[Unit]):
         """Check if enemy team has lost enough HP to trigger Atakhan summon.
@@ -3666,6 +4208,7 @@ class CombatEngine:
                         enemy.stats.hp = 0
                         enemy.is_alive = False
                         enemy.state = UnitState.DEAD
+                    self._alive_dirty = True
                     self.log_event('atakhan_bring_ruin', team=unit.team,
                                   enemies_devoured=len(enemies))
 
@@ -3724,18 +4267,33 @@ class CombatEngine:
                           reward=serpent_reward,
                           total=self.trait_manager.bilgewater_serpents)
 
-            # Show affordable items
+            # Show affordable categories
             affordables = self.trait_manager.get_store_affordables()
-            if affordables['items'] or affordables['champions']:
-                self.log_event('bilgewater_store', affordable_items=affordables['items'],
-                              affordable_champions=affordables['champions'])
+            if affordables['stats'] or affordables['items'] or affordables['units']:
+                self.log_event('bilgewater_store',
+                              affordable_stats=affordables['stats'],
+                              affordable_items=affordables['items'],
+                              affordable_units=affordables['units'])
 
-        # Piltover module availability
+        # Piltover module selection and storage
         piltover_count = trait_counts.get('Piltover', 0)
         if piltover_count >= 2:
             available_modules = self.trait_manager.assign_piltover_modules(piltover_count)
-            self.log_event('piltover_modules', count=piltover_count,
-                          available=len(available_modules))
+            if available_modules:
+                selected = random.choice(available_modules)
+                team_id = team[0].team if team else 0
+                if not hasattr(self, '_piltover_data'):
+                    self._piltover_data = {}
+                piltover_units = [u for u in team if 'Piltover' in u.traits]
+                self._piltover_data[team_id] = {
+                    'module': selected,
+                    'fired': False,
+                    'team': team,
+                    'piltover_units': piltover_units,
+                    'count': piltover_count,
+                }
+                self.log_event('piltover_module_selected', count=piltover_count,
+                              module=selected, team=team_id)
 
         # Shadow Isles soul collection setup
         shadow_isles_count = trait_counts.get('Shadow Isles', 0)
@@ -3746,6 +4304,20 @@ class CombatEngine:
             self.log_event('shadow_isles_setup', count=shadow_isles_count,
                           units=[u.name for u in shadow_isles_units],
                           stat_bonus=self.trait_manager.get_shadow_isles_stat_bonus())
+
+    def _apply_combat_start_items(self, all_units: List[Unit]):
+        """Apply combat-start item effects for all units."""
+        try:
+            from .item_effects import ITEM_ON_COMBAT_START, _resolve_item_name
+        except ImportError:
+            return
+        for unit in all_units:
+            if not unit.is_alive:
+                continue
+            for item in unit.items:
+                handler = ITEM_ON_COMBAT_START.get(item.name) or ITEM_ON_COMBAT_START.get(_resolve_item_name(item.name))
+                if handler:
+                    handler(self, unit, all_units)
 
     def run_combat(self, team0: List[Unit], team1: List[Unit],
                   max_time: float = 60.0, verbose: bool = False,
@@ -3779,6 +4351,9 @@ class CombatEngine:
         # Reset Noxus Atakhan state for new combat
         self._noxus_team_data = {}
 
+        # Reset Piltover module state for new combat
+        self._piltover_data = {}
+
         # Reset augment manager for new combat
         self.augment_manager.reset()
 
@@ -3809,12 +4384,18 @@ class CombatEngine:
             enemy_hp = sum(u.stats.max_hp for u in self.units if u.team != team_id)
             data['_enemy_starting_hp'] = enemy_hp
 
+        # Initialize cached alive lists for tick() optimization
+        self._alive_team0 = list(team0)
+        self._alive_team1 = list(team1)
+        self._alive_dirty = False  # Set True when a unit dies
+        self._has_noxus = bool(noxus_data)  # Skip Atakhan checks when no Noxus
+
+        # Apply combat-start item effects (Crownguard, Quicksilver, SteadfastHeart, etc.)
+        self._apply_combat_start_items(team0 + team1)
+
         # Combat loop
         while self.time < max_time:
-            team0_alive = any(u.is_alive for u in team0)
-            team1_alive = any(u.is_alive for u in team1)
-
-            if not team0_alive or not team1_alive:
+            if not self._alive_team0 or not self._alive_team1:
                 break
 
             self.tick()
