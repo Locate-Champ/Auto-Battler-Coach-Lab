@@ -1,0 +1,64 @@
+TFT Set 16 Simulator - Model Description
+What It Is
+A full-game simulator that models complete 8-player TFT lobbies from round 0 through elimination. It's ~13,800 lines of Python across two main subsystems: a game loop (economy, shopping, matchmaking) and a combat engine (hex-grid physics, abilities, items, traits).
+
+Architecture
+Game Loop (simulator/game/)
+
+8 players each with HP, gold, level, board (4x7 hex), bench (9 slots), item bench
+Shared champion pool with real depletion mechanics (buying removes copies, selling/elimination returns them)
+Level-based shop odds with weighted random sampling from the remaining pool
+Full economy: 5 base gold + interest (1g per 10g, max 5) + streak bonuses + passive XP
+Augment selection at rounds 4, 11, 18 with tier-dependent probabilities (18 joint sequences)
+Carousel rounds with HP-ordered picks
+Matchmaking avoids repeat opponents, ghost army for odd player counts
+Combat Engine (simulator/core/combat_engine.py - 4,679 lines)
+
+60 Hz tick-based simulation on hex grid with A* pathfinding
+Physical/Magic/True damage with armor/MR mitigation
+Mana generation on damage dealt and taken (capped at 42.5)
+Attack speed 0.5-5.0 hard cap, star-level scaling (2-star = 1.8x HP, 1.5x AD)
+CC types: Stun, Fear (random movement), Taunt (forced target), Root (no movement)
+DOT system with burn ticks, sunder/shred expiry tracking
+Champion Abilities (simulator/core/champion_abilities.py - 5,124 lines)
+
+99/100 champions have custom _cast_* handlers
+Examples: Aatrox 3-hit combo with execute, Volibear 3-cast transform, Fizz untargetable jump, Jinx form-swap
+Item Effects (simulator/core/item_effects.py - 1,245 lines)
+
+6 hook types: on_hit, on_ability, on_damage_dealt, on_damage_taken, passive, combat_start
+28 craftable items - all have combat effects
+22/36 artifacts - Darkin items, DFG, RFC, Silvermere, Titanic, etc.
+8 Bilgewater items - burn/chill, bleed DOTs, executes
+15 Piltover modules - fire at 8s with stat buffs, shields, damage, CC
+Radiant items inherit base effects automatically
+Traits - 48/48 accounted for
+
+33 with TraitManager stat buffs (Arcanist AP, Defender Armor/MR, Bruiser HP, etc.)
+13 handled in champion_abilities (Huntress, Blacksmith, etc.)
+2 non-combat (Chronokeeper XP, Targon)
+Combat-time logic: Warden shields, Slayer AD scaling, Gunslinger procs, Zaun shimmer, Piltover modules
+AI Agents
+fast_random_agent: O(1) weighted action sampling (default, optimized for speed)
+econ_agent: Saves for interest, levels to 8, buys pairs
+slam_agent: Equips items immediately, buys everything, levels aggressively
+MixedLobbyAgent: Different strategies per player in the same game
+Output
+Training data: ~128 rows per game (1 per player per round) with board state, traits, economy, and final placement label
+Analytics: Champion/augment/comp winrates aggregated across games
+Formats: Parquet chunks (if pyarrow) or JSONL, streamed to avoid OOM
+Performance
+0.87s/game single core, ~2.9 games/sec on 4 workers
+1M games: ~7.6 hrs on 32 cores, 14 min on 1024 cores ($19 AWS spot)
+Deterministic with seed-based RNG, checkpoint/resume for long runs
+Fidelity: ~85-90%
+Area	Fidelity	Notes
+Champion pool	95-100%	Depletion, return, weighted sampling
+Economy	95-100%	Interest, streaks, XP, leveling
+Combat physics	90-95%	Hex grid, A* pathfinding, damage/mana
+Champion abilities	90%	99/100 handlers, some simplified
+Items	85-90%	28 base + 22 artifacts + 8 Bilgewater
+Traits	85-90%	All 48 accounted, some combat logic simplified
+Augment effects	Low	Selected but zero combat effects applied
+PvE rounds	Low	Grants gold/items but no combat
+The biggest remaining gap is augment combat effects (399 augments selected but none modify gameplay), followed by some artifact items being stats-only and missing missile speed data for 36 ranged champions.
