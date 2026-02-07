@@ -77,7 +77,7 @@
     "texture": "ChaosMagic_II",
     "type": "regular",
     "disabled": true,
-    "disabled_reason": "Removed/disabled per patch notes (16.2-16.4)"
+    "disabled_reason": "Temporarily disabled in patch 16.4"
   },
   {
     "apiName": "TFT16_Augment_BandleBounty",
@@ -3336,11 +3336,12 @@
     "apiName": "TFT16_Augment_TheWorldRunes",
     "associatedTraits": [],
     "composition": [],
-    "desc": "Gain @NumEmblems@ Emblems from random Region traits. After @MaxWorldRunes@ player combats with @MinRegionTraitsActive@ Region traits active, gain a powerful reward. (@TFTUnitProperty.trait:TFT16_Augment_TheWorldRunes_NumRunes@/@MaxWorldRunes@)",
+    "desc": "Gain 2 Emblems from random Region traits. Gain 2 XP every player combat, or 4 XP if you have 4+ Region traits active.",
     "effects": {
-      "MaxWorldRunes": 4,
-      "MinRegionTraitsActive": 4,
-      "NumEmblems": 2
+      "NumEmblems": 2,
+      "XPPerCombat": 2,
+      "XPPerCombatEnhanced": 4,
+      "MinRegionTraitsActive": 4
     },
     "from": null,
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/TheWorldRunes_III.TFT_Set16.tex",
@@ -4578,7 +4579,7 @@
     "composition": [],
     "desc": "In @RoundDelay@ rounds, choose a new augment of the same tier. Gain @Gold@ gold now.",
     "effects": {
-      "Gold": 12,
+      "Gold": 8,
       "RoundDelay": 3,
       "{0a1e010e}": null
     },
@@ -4664,7 +4665,7 @@
     "composition": [],
     "desc": "When you reach Level 8, gain @NumRerolls@ Shop rerolls.<br><br><tftitemrules>Runeterra Reforged Championship, 2023</tftitemrules>",
     "effects": {
-      "NumRerolls": 23
+      "NumRerolls": 20
     },
     "from": null,
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/EpicRolldown_II.TFT_Set16_ChampionAugments.tex",
@@ -4692,9 +4693,10 @@
     "apiName": "TFT_Augment_MaxBuild",
     "associatedTraits": [],
     "composition": [],
-    "desc": "Gain a Champion Duplicator and @RerollCount@ free Shop rerolls. On Stage 6-1, gain these again.<br><br><tftitemrules>Galaxies Championship, 2020</tftitemrules>",
+    "desc": "Gain 10 rerolls. Gain a Champion Duplicator at the start of Stage 4-5 and 6-1.",
     "effects": {
-      "RerollCount": 5
+      "RerollCount": 10,
+      "DuplicatorStages": "4-5,6-1"
     },
     "from": null,
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/MaxBuild_II.TFT_Set16_ChampionAugments.tex",
@@ -4801,7 +4803,7 @@
     "composition": [],
     "desc": "In @RoundDelay@ rounds, choose a new augment of the same tier. Gain @Gold@ gold now.",
     "effects": {
-      "Gold": 8,
+      "Gold": 5,
       "RoundDelay": 3,
       "{0a1e010e}": null
     },
@@ -5730,9 +5732,7 @@
       }
     ],
     "texture": "GrowthMindset_III",
-    "type": "regular",
-    "disabled": true,
-    "disabled_reason": "Removed/disabled per patch notes (16.2-16.4)"
+    "type": "regular"
   },
   {
     "apiName": "TFT_Augment_PrismaticDestinyPlus",
@@ -8363,7 +8363,7 @@
     "effects": {
       "Frequency": 5,
       "HexRadius": 1,
-      "Missinghealth": 10
+      "Missinghealth": 7.5
     },
     "from": null,
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/SpiritofRedemption_II.TFT_Set16.tex",
@@ -8478,7 +8478,7 @@
     "desc": "Gain @StartingEmblems@ random Emblem. At the start of every Stage, gain a random Emblem. Your team gains @HPPerEmblem@ Health for each Emblem they are holding.",
     "effects": {
       "BonusStages": 99,
-      "HPPerEmblem": 20,
+      "HPPerEmblem": 40,
       "StartingEmblems": 1
     },
     "from": null,
@@ -8744,8 +8744,8 @@
     "composition": [],
     "desc": "If you have exactly @NumUnits@ allies in your first row, grant them @BonusAR@ Armor and @BonusMR@ Magic Resist.",
     "effects": {
-      "BonusAR": 40,
-      "BonusMR": 40,
+      "BonusAR": 50,
+      "BonusMR": 50,
       "NumUnits": 2,
       "{2b04af7e}": 1
     },
@@ -10109,8 +10109,8 @@
     "composition": [],
     "desc": "After @Delay@ seconds of combat, gain @DamageAmp@% Damage Amp.",
     "effects": {
-      "DamageAmp": 60,
-      "Delay": 15
+      "DamageAmp": 45,
+      "Delay": 12
     },
     "from": null,
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Ascension2.tex",
@@ -10399,7 +10399,7 @@
     "composition": [],
     "desc": "For the next @NumStages@ carousels, gain a second copy of the champion taken.",
     "effects": {
-      "Gold": null,
+      "Gold": 4,
       "NumStages": 4
     },
     "from": null,
@@ -10541,8 +10541,8 @@
     "desc": "Gain @RerollsNow@ free Shop rerolls now and @RerollCount@ every round for the rest of the game.",
     "effects": {
       "Gold": null,
-      "RerollCount": 4,
-      "RerollsNow": 10
+      "RerollCount": 2,
+      "RerollsNow": 16
     },
     "from": null,
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Trade3.tex",
@@ -11835,7 +11835,7 @@
     "composition": [],
     "desc": "The next 4-cost champion you buy with gold is instantly upgraded to 2-star. Gain @Gold@ gold.",
     "effects": {
-      "Gold": 12
+      "Gold": 5
     },
     "from": null,
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Reinfourcement_II.tex",
@@ -11967,7 +11967,6 @@
     "incompatibleTraits": [],
     "name": "On a Roll",
     "tags": [
-      "2-1",
       "3-2"
     ],
     "unique": false,
@@ -12295,7 +12294,7 @@
     "composition": [],
     "desc": "Gain @NumChamps@ random 2-star 3-cost champions and @Gold@ gold.",
     "effects": {
-      "Gold": 8,
+      "Gold": 3,
       "NumChamps": 3
     },
     "from": null,
@@ -12808,7 +12807,7 @@
     "composition": [],
     "desc": "Your team gains @CritChance@% Critical Strike Chance and @CritDamage*100@% Critical Strike Damage, and their Abilities can critically strike.",
     "effects": {
-      "CritChance": 35,
+      "CritChance": 25,
       "CritDamage": 0.10000000149011612
     },
     "from": null,
@@ -12877,7 +12876,7 @@
     "composition": [],
     "desc": "Gain an Artifact anvil now and after every @NumberOfCombats@ player combats.<br><br><rules>Artifacts are more powerful items with a unique effect.</rules>",
     "effects": {
-      "Numberofcombats": 10
+      "Numberofcombats": 9
     },
     "from": null,
     "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Living-Forge-III.tex",
@@ -13413,7 +13412,9 @@
       }
     ],
     "texture": "PairofFours_II",
-    "type": "regular"
+    "type": "regular",
+    "disabled": true,
+    "disabled_reason": "Removed in patch 16.3"
   },
   {
     "apiName": "TFT11_Augment_Epoch",
@@ -13790,5 +13791,84 @@
       "TFT16_Augment_DemaciaVsNoxus_DescriptionTRA": "Noxus and Demacia fight! Whichever trait gets @KillsRequired@ kills first gains a permanent boon, and you gain @GoldToGive@ per @KillsToGive@ kills the other trait made. <br><tftitemrules>Demacia@TFTUnitProperty.item:TFT16_Augment_WarringFactions_Faction1KillsTRA@: Demacians Rally again when Atakhan spawns.<br>Noxus@TFTUnitProperty.item:TFT16_Augment_WarringFactions_Faction2KillsTRA@: Atakhan periodically gains Demacia's Rally effect.</tftitemrules>"
     },
     "type": "regular"
+  },
+  {
+    "apiName": "TFT16_Augment_GildedSteel",
+    "associatedTraits": [],
+    "composition": [],
+    "desc": "Gain 3 non-Tank 5-cost champions. If you have a 5-cost champion on your board, your 1-4 cost units gain 8% Durability.",
+    "effects": {
+      "NumChampions": 3,
+      "DurabilityBonus": 0.08,
+      "MaxCostRequirement": 5
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/GildedSteel_II.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Gilded Steel",
+    "tags": [
+      "4-2"
+    ],
+    "unique": false,
+    "en_name": "Gilded Steel",
+    "variable_matches": [],
+    "texture": "GildedSteel_II",
+    "type": "regular",
+    "added_patch": "16.4"
+  },
+  {
+    "apiName": "TFT16_Augment_XinZhao_Transform_II",
+    "associatedTraits": [
+      "Ionia",
+      "Demacia",
+      "Warden"
+    ],
+    "composition": [],
+    "desc": "Gain 2 Xin Zhaos and a Bloodthirster. Xin Zhao becomes an Attack Fighter. After 5 combats while Xin Zhao is 3-star, unlock Zaahen. At the start of the next 3 stages, gain a Lesser Champion Duplicator.",
+    "effects": {
+      "NumberOfCopies": 2,
+      "RoundsBeforeTransformation": 5,
+      "DuplicatorStages": 3
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/TrialsOfTwilight_III.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Trials of Twilight II",
+    "tags": [
+      "2-1"
+    ],
+    "unique": false,
+    "en_name": "Trials of Twilight II",
+    "variable_matches": [],
+    "texture": "TrialsOfTwilight_III",
+    "type": "regular",
+    "added_patch": "16.4"
+  },
+  {
+    "apiName": "TFT16_Augment_CosmicCalling",
+    "associatedTraits": [
+      "Targon"
+    ],
+    "composition": [],
+    "desc": "Gain a Spear of Shojin and a Leona. On Stage 3-7, gain a Taric.",
+    "effects": {
+      "Stage37Unit": "TFT16_Taric"
+    },
+    "from": null,
+    "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/CosmicCalling_II.TFT_Set16.tex",
+    "id": null,
+    "incompatibleTraits": [],
+    "name": "Cosmic Calling",
+    "tags": [
+      "3-2"
+    ],
+    "unique": false,
+    "en_name": "Cosmic Calling",
+    "variable_matches": [],
+    "texture": "CosmicCalling_II",
+    "type": "regular",
+    "added_patch": "16.3"
   }
 ]

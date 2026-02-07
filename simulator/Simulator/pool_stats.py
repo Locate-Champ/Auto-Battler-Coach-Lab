@@ -17,45 +17,45 @@ level_percentage = [
     [.05, .15, .35, .75, 1],       # Level 10: 5/10/20/40/25
 ]
 
-# 29 copies each
+# 30 copies each (Set 16 - source: tftodds.com, wiki.leagueoflegends.com, esportstales.com)
 COST_1 = {
-    'anivia': 29,
-    'blitzcrank': 29,
-    'briar': 29,
-    'caitlyn': 29,
-    'illaoi': 29,
-    'jarvaniv': 29,
-    'jhin': 29,
-    'kogmaw': 29,
-    'lulu': 29,
-    'qiyana': 29,
-    'rumble': 29,
-    'shen': 29,
-    'sona': 29,
-    'viego': 29,
+    'anivia': 30,
+    'blitzcrank': 30,
+    'briar': 30,
+    'caitlyn': 30,
+    'illaoi': 30,
+    'jarvaniv': 30,
+    'jhin': 30,
+    'kogmaw': 30,
+    'lulu': 30,
+    'qiyana': 30,
+    'rumble': 30,
+    'shen': 30,
+    'sona': 30,
+    'viego': 30,
 }
 
-# 22 copies each
+# 25 copies each (Set 16 - source: tftodds.com, wiki.leagueoflegends.com, esportstales.com)
 COST_2 = {
-    'aphelios': 22,
-    'ashe': 22,
-    'bard': 22,
-    'chogath': 22,
-    'ekko': 22,
-    'graves': 22,
-    'neeko': 22,
-    'orianna': 22,
-    'poppy': 22,
-    'reksai': 22,
-    'sion': 22,
-    'teemo': 22,
-    'tristana': 22,
-    'tryndamere': 22,
-    'twistedfate': 22,
-    'vi': 22,
-    'xinzhao': 22,
-    'yasuo': 22,
-    'yorick': 22,
+    'aphelios': 25,
+    'ashe': 25,
+    'bard': 25,
+    'chogath': 25,
+    'ekko': 25,
+    'graves': 25,
+    'neeko': 25,
+    'orianna': 25,
+    'poppy': 25,
+    'reksai': 25,
+    'sion': 25,
+    'teemo': 25,
+    'tristana': 25,
+    'tryndamere': 25,
+    'twistedfate': 25,
+    'vi': 25,
+    'xinzhao': 25,
+    'yasuo': 25,
+    'yorick': 25,
 }
 
 # 18 copies each
@@ -80,66 +80,66 @@ COST_3 = {
     'zoe': 18,
 }
 
-# 12 copies each
+# 10 copies each (Set 16 - source: tftodds.com, wiki.leagueoflegends.com, esportstales.com)
 COST_4 = {
-    'ambessa': 12,
-    'belveth': 12,
-    'braum': 12,
-    'diana': 12,
-    'fizz': 12,
-    'garen': 12,
-    'kaisa': 12,
-    'kalista': 12,
-    'lissandra': 12,
-    'lux': 12,
-    'missfortune': 12,
-    'nasus': 12,
-    'nidalee': 12,
-    'renekton': 12,
-    'seraphine': 12,
-    'singed': 12,
-    'skarner': 12,
-    'swain': 12,
-    'taric': 12,
-    'veigar': 12,
-    'warwick': 12,
-    'wukong': 12,
-    'yone': 12,
-    'yunara': 12,
-    'riftherald': 12,  # Unlockable 4-cost (Void/Bruiser) - Source: metatft.com, tftactics.gg
+    'ambessa': 10,
+    'belveth': 10,
+    'braum': 10,
+    'diana': 10,
+    'fizz': 10,
+    'garen': 10,
+    'kaisa': 10,
+    'kalista': 10,
+    'lissandra': 10,
+    'lux': 10,
+    'missfortune': 10,
+    'nasus': 10,
+    'nidalee': 10,
+    'renekton': 10,
+    'seraphine': 10,
+    'singed': 10,
+    'skarner': 10,
+    'swain': 10,
+    'taric': 10,
+    'veigar': 10,
+    'warwick': 10,
+    'wukong': 10,
+    'yone': 10,
+    'yunara': 10,
+    'riftherald': 10,  # Unlockable 4-cost (Void/Bruiser) - Source: metatft.com, tftactics.gg
 }
 
-# 10 copies each
+# 9 copies each (Set 16 - source: tftodds.com, wiki.leagueoflegends.com, Riot Lore & Legends overview)
 COST_5 = {
-    'aatrox': 10,
-    'annie': 10,
-    'azir': 10,
-    'fiddlesticks': 10,
-    'galio': 10,
-    'kindred': 10,
-    'lucian': 10,
-    'mel': 10,
-    'ornn': 10,
-    'sett': 10,
-    'shyvana': 10,
-    'tahmkench': 10,
-    'thex': 10,
-    'thresh': 10,
-    'volibear': 10,
-    'xerath': 10,
-    'ziggs': 10,
-    'zilean': 10,
+    'aatrox': 9,
+    'annie': 9,
+    'azir': 9,
+    'fiddlesticks': 9,
+    'galio': 9,
+    'kindred': 9,
+    'lucian': 9,
+    'mel': 9,
+    'ornn': 9,
+    'sett': 9,
+    'shyvana': 9,
+    'tahmkench': 9,
+    'thex': 9,
+    'thresh': 9,
+    'volibear': 9,
+    'xerath': 9,
+    'ziggs': 9,
+    'zilean': 9,
 }
 
-# 10 copies each (same pool size and shop odds as 5-cost)
+# 9 copies each (same pool size and shop odds as 5-cost)
 # The only difference from 5-cost is the increased gold cost (7g).
 COST_7 = {
-    'aurelionsol': 10,
-    'baronnashor': 10,
-    'brock': 10,
-    'ryze': 10,
-    'sylas': 10,
-    'zaahen': 10,
+    'aurelionsol': 9,
+    'baronnashor': 9,
+    'brock': 9,
+    'ryze': 9,
+    'sylas': 9,
+    'zaahen': 9,
 }
 
 # Set 16 does not have the Chosen mechanic (that was Set 4).
@@ -167,4 +167,4 @@ cost_star_values = [
     [7, 21, 63],   # 7-cost: buy=7g, 2-star=21g, 3-star=63g
 ]
 
-base_pool_values = [29, 22, 18, 12, 10, 0, 10]
+base_pool_values = [30, 25, 18, 10, 9, 0, 9]

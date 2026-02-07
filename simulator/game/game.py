@@ -15,7 +15,7 @@ from .types import RoundResult, GamePhase
 from .player import Player
 from .champion_pool import ChampionPool
 from .shop import generate_shop, _return_shop_to_pool
-from .actions import random_agent_actions, execute_action
+from .actions import random_agent_actions, fast_random_agent, execute_action
 from .constants import (
     get_round_damage, STARTING_ROUND_GOLD, BOARD_ROWS,
     ITEM_COMPONENTS_LIST, PVE_ITEM_DROPS, AUGMENT_ROUNDS,
@@ -45,12 +45,41 @@ _AUGMENT_TRAITS: Dict[str, List[str]] = {}  # apiName -> associated trait names
 # - All stages → Gold (flexible)
 _AUGMENT_TIERS: Dict[str, str] = {}  # apiName -> 'silver'|'gold'|'prismatic'
 
-# Tier distribution per stage from tftodds.com (Set 16)
-# At each stage, each of the 3 offered augments independently rolls a tier
-_TIER_ODDS_BY_STAGE = {
-    '2-1': {'silver': 0.28, 'gold': 0.62, 'prismatic': 0.10},
-    '3-2': {'silver': 0.35, 'gold': 0.45, 'prismatic': 0.20},
-    '4-2': {'silver': 0.06, 'gold': 0.74, 'prismatic': 0.20},
+# Joint probability table for augment tier sequences (source: tftodds.com Set 16).
+# Each entry is (stage_1_tier, stage_2_tier, stage_3_tier, percent).
+# The 18 entries sum to 100%. Tiers are dependent across stages.
+_AUGMENT_TIER_SEQUENCES = [
+    ('silver', 'silver', 'gold', 5),
+    ('silver', 'silver', 'prismatic', 5),
+    ('silver', 'gold', 'gold', 12),
+    ('silver', 'gold', 'prismatic', 5),
+    ('silver', 'prismatic', 'prismatic', 1),
+    ('gold', 'silver', 'gold', 18),
+    ('gold', 'silver', 'prismatic', 2),
+    ('gold', 'gold', 'gold', 22),
+    ('gold', 'gold', 'prismatic', 3),
+    ('gold', 'prismatic', 'silver', 6),
+    ('gold', 'prismatic', 'gold', 10),
+    ('gold', 'prismatic', 'prismatic', 1),
+    ('prismatic', 'silver', 'gold', 4),
+    ('prismatic', 'silver', 'prismatic', 1),
+    ('prismatic', 'gold', 'gold', 2),
+    ('prismatic', 'gold', 'prismatic', 1),
+    ('prismatic', 'prismatic', 'gold', 1),
+    ('prismatic', 'prismatic', 'prismatic', 1),
+]
+
+# Marginal probabilities for stage 1 (derived from joint table)
+_TIER_ODDS_STAGE_1 = {'silver': 28, 'gold': 62, 'prismatic': 10}
+
+# Tier ordering for tier-shift augments
+_TIER_ORDER = ['silver', 'gold', 'prismatic']
+
+# Augments that shift the NEXT augment tier for the player who chose them
+_TIER_SHIFT_AUGMENTS = {
+    'TFT_Augment_PowerUp': +1,          # "Augmented Power" - next tier higher
+    'TFT_Augment_AdvancedLoan': -1,     # "Advanced Loan" (2-1) - next tier lower
+    'TFT_Augment_AdvancedLoanPlus': -1, # "Advanced Loan+" (3-2) - next tier lower
 }
 
 # Augments by tier within each round (for weighted selection)
@@ -107,32 +136,42 @@ class TFTGame:
     """
 
     def __init__(self, num_players: int = 8, seed: int = None,
-                 agent_fn: Callable = None, verbose: bool = False):
+                 agent_fn: Callable = None, verbose: bool = False,
+                 logging_enabled: bool = True, collector=None):
         """Initialize a new TFT game.
 
         Args:
             num_players: Number of players (default 8).
             seed: Random seed for deterministic games.
             agent_fn: Function(player, pool) -> list of Actions.
-                      Defaults to random_agent_actions.
+                      Defaults to fast_random_agent.
             verbose: Print round-by-round updates.
+            logging_enabled: Enable combat event logging (disable for batch).
+            collector: Optional GameCollector for data capture.
         """
         if seed is not None:
             random.seed(seed)
 
         self.num_players = num_players
         self.verbose = verbose
-        self.agent_fn = agent_fn or random_agent_actions
+        self.agent_fn = agent_fn or fast_random_agent
 
         # Initialize shared state
         self.pool = ChampionPool()
-        self.engine = CombatEngine()
+        self.engine = CombatEngine(logging_enabled=logging_enabled)
         self.players = [Player(i) for i in range(num_players)]
+        self.collector = collector
         self.round_num = 0
         self.placements: List[Tuple[int, int]] = []  # (player_id, placement)
 
         # Player augments: player_id -> list of chosen augment apiNames
         self.player_augments: Dict[int, List[str]] = {i: [] for i in range(num_players)}
+
+        # Lobby-wide augment tier history (dependent probabilities)
+        self.lobby_augment_tiers: List[str] = []  # e.g. ['gold', 'silver']
+
+        # Per-player tier shift for next augment (from tier-shifting augments)
+        self.player_tier_shifts: Dict[int, int] = {i: 0 for i in range(num_players)}
 
         # Matchmaking weights: tracks recent opponents to avoid repeats
         # weights[i][j] = weight for player i fighting player j
@@ -183,6 +222,10 @@ class TFTGame:
             p.placement = 1
 
         self.placements.sort(key=lambda x: x[1])
+
+        if self.collector:
+            self.collector.on_game_end(self)
+
         return self.placements
 
     # ── PvE Rounds (Simplified) ───────────────────────────────────────────
@@ -230,6 +273,7 @@ class TFTGame:
             player.shop = generate_shop(self.pool, player.level)
             # Reset placeable structures (player re-places each round)
             player.soldier_positions = []
+            player.tower_position = None  # Reset Freljord tower each round
             self.agent_fn(player, self.pool)
             player.auto_fill_board()
 
@@ -237,6 +281,7 @@ class TFTGame:
         matchups = self._matchmake()
 
         # 4. Combat phase
+        combat_results = []
         for p1_id, p2_id, is_ghost in matchups:
             p1 = self.players[p1_id]
             p2 = self.players[p2_id]
@@ -245,10 +290,20 @@ class TFTGame:
 
             result = self._resolve_combat(p1, p2)
 
+            if self.collector:
+                combat_results.append({
+                    'p1': p1_id, 'p2': p2_id,
+                    'winner': result.winner_id,
+                    'damage': result.damage_to_loser,
+                    'survivors': result.survivors,
+                    'time': result.combat_time,
+                })
+
             if result.is_draw:
-                # Both take base damage
+                # Both take base damage (ghost owner exempt)
                 p1.take_damage(result.damage_to_loser)
-                p2.take_damage(result.damage_to_loser)
+                if not is_ghost:
+                    p2.take_damage(result.damage_to_loser)
             elif result.winner_id == p1.player_id:
                 p1.win_round()
                 if not is_ghost:
@@ -260,6 +315,10 @@ class TFTGame:
 
         # 5. Check eliminations
         self._check_eliminations()
+
+        # 6. Collect round data
+        if self.collector:
+            self.collector.on_round_end(self, self.round_num, combat_results)
 
         if self.verbose:
             for p in self.players:
@@ -273,37 +332,45 @@ class TFTGame:
     _ROUND_TO_TAG = {4: '2-1', 11: '3-2', 18: '4-2'}
 
     def _augment_selection_phase(self):
-        """Offer each player 3 augments of the same tier.
+        """Offer each player 3 augments of the same lobby-wide tier.
 
-        In TFT, each armory rolls a single tier per player, and all 3
-        offered augments are that tier. Uses Silver/Gold/Prismatic odds
-        from tftodds.com per stage.
+        Uses dependent conditional probabilities across stages:
+        - Stage 1 (2-1): marginal probabilities (Silver 28%, Gold 62%, Prismatic 10%)
+        - Stage 2 (3-2): conditional on stage 1 tier
+        - Stage 3 (4-2): conditional on stages 1+2 tiers
+        Source: tftodds.com Set 16 joint distribution table (18 entries).
 
-        TODO: In the real game, the tier is shared across the entire lobby
-        (all players get the same tier at each armory). Currently each player
-        rolls independently.
-
-        TODO: Stage tiers are dependent (not independent). The real game uses
-        conditional probabilities across stages (e.g., Silver at 2-1 makes
-        Prismatic at 3-2 less likely). Currently uses marginal probabilities.
+        Tier-shifting augments (Augmented Power, Advanced Loan) override the
+        lobby tier for that specific player.
         """
         tag = self._ROUND_TO_TAG.get(self.round_num)
         if not tag:
             return
         tier_pools = _AUGMENTS_BY_ROUND_TIER.get(tag, {})
-        tier_odds = _TIER_ODDS_BY_STAGE.get(tag, {})
-        if not tier_pools or not tier_odds:
+        if not tier_pools:
             return
 
-        tiers = list(tier_odds.keys())
-        weights = [tier_odds[t] for t in tiers]
+        # Determine which armory stage this is (0=2-1, 1=3-2, 2=4-2)
+        stage_idx = len(self.lobby_augment_tiers)
+
+        # Roll the lobby tier using dependent conditional probabilities
+        lobby_tier = self._roll_lobby_tier(stage_idx)
+        self.lobby_augment_tiers.append(lobby_tier)
 
         for player in self.alive_players:
-            already_chosen = set(self.player_augments[player.player_id])
+            pid = player.player_id
+            already_chosen = set(self.player_augments[pid])
 
-            # Roll a single tier for this player's armory
-            tier = random.choices(tiers, weights=weights, k=1)[0]
-            pool = [a for a in tier_pools.get(tier, [])
+            # Apply per-player tier shift from tier-shifting augments
+            player_tier = lobby_tier
+            shift = self.player_tier_shifts.get(pid, 0)
+            if shift != 0:
+                idx = _TIER_ORDER.index(player_tier)
+                idx = max(0, min(len(_TIER_ORDER) - 1, idx + shift))
+                player_tier = _TIER_ORDER[idx]
+                self.player_tier_shifts[pid] = 0  # Consume the shift
+
+            pool = [a for a in tier_pools.get(player_tier, [])
                     if a not in already_chosen]
 
             if not pool:
@@ -320,11 +387,57 @@ class TFTGame:
             # Random agent picks randomly; a real agent_fn would use
             # a separate augment callback
             chosen = random.choice(choices)
-            self.player_augments[player.player_id].append(chosen)
+            self.player_augments[pid].append(chosen)
+
+            # Check if chosen augment shifts the next tier
+            if chosen in _TIER_SHIFT_AUGMENTS:
+                self.player_tier_shifts[pid] = _TIER_SHIFT_AUGMENTS[chosen]
 
             if self.verbose:
-                print(f"  P{player.player_id} chose augment: {chosen} "
-                      f"[{tier}] (from {len(choices)} options)")
+                tier_info = f"[{player_tier}]"
+                if player_tier != lobby_tier:
+                    tier_info += f" (shifted from {lobby_tier})"
+                print(f"  P{pid} chose augment: {chosen} "
+                      f"{tier_info} (from {len(choices)} options)")
+
+    def _roll_lobby_tier(self, stage_idx: int) -> str:
+        """Roll the lobby augment tier using dependent conditional probabilities.
+
+        Args:
+            stage_idx: 0 for first armory, 1 for second, 2 for third.
+
+        Returns:
+            The tier string ('silver', 'gold', or 'prismatic').
+        """
+        if stage_idx == 0:
+            # First armory: use marginal probabilities
+            tiers = list(_TIER_ODDS_STAGE_1.keys())
+            weights = list(_TIER_ODDS_STAGE_1.values())
+            return random.choices(tiers, weights=weights, k=1)[0]
+
+        # Filter sequences matching the tiers we've already rolled
+        matching = []
+        for seq in _AUGMENT_TIER_SEQUENCES:
+            match = True
+            for i in range(stage_idx):
+                if seq[i] != self.lobby_augment_tiers[i]:
+                    match = False
+                    break
+            if match:
+                matching.append((seq[stage_idx], seq[3]))  # (tier, weight)
+
+        if not matching:
+            # Fallback: uniform if no sequences match (shouldn't happen)
+            return random.choice(_TIER_ORDER)
+
+        # Build conditional distribution from matching sequences
+        tier_weights: Dict[str, int] = {}
+        for tier, weight in matching:
+            tier_weights[tier] = tier_weights.get(tier, 0) + weight
+
+        tiers = list(tier_weights.keys())
+        weights = [tier_weights[t] for t in tiers]
+        return random.choices(tiers, weights=weights, k=1)[0]
 
     # ── Carousel ──────────────────────────────────────────────────────────
 
