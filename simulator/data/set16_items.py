@@ -52,23 +52,23 @@ BASE_COMPLETED = {
     "GuinsoosRageblade": {"ap": 10, "attack_speed": 0.10},  # Stacking AS
     "KrakensFury": {"ad": 0.10, "attack_speed": 0.10, "magic_resist": 20},  # Stacking AD
     "TitansResolve": {"attack_speed": 0.10, "armor": 20},  # Stacking stats
-    "NashorsTooth": {"ap": 20, "attack_speed": 0.10, "crit_chance": 0.20, "hp": 150},
+    "NashorsTooth": {"ap": 18, "attack_speed": 0.10, "crit_chance": 0.20, "hp": 150},
 
     # AP Items
     "RabadonsDeathcap": {"ap": 50, "damage_amp": 0.15},
     "JeweledGauntlet": {"ap": 35, "crit_chance": 0.35, "crit_multiplier": 0.10},
-    "HextechGunblade": {"ad": 0.20, "ap": 20, "omnivamp": 0.15},
+    "HextechGunblade": {"ad": 0.20, "ap": 20, "omnivamp": 0.15, "mana_regen": 1},
     "SpearOfShojin": {"ad": 0.15, "ap": 15, "mana_regen": 1},  # Mana on cast
-    "BlueBuff": {"ad": 0.15, "ap": 15, "mana_regen": 5},  # Bonus after cast
+    "BlueBuff": {"ad": 0.15, "ap": 15, "mana_regen": 1},  # +10% AD/AP amp (combat_start)
     "Morellonomicon": {"ap": 20, "hp": 150, "mana_regen": 1},  # Burn + anti-heal
     "ArchangelsStaff": {"ap": 30, "mana_regen": 1},  # Stacking AP
     "IonicSpark": {"ap": 15, "hp": 250, "magic_resist": 35},  # MR shred aura
     "VoidStaff": {"ap": 35, "attack_speed": 0.15, "mana_regen": 1},  # MR shred on hit
 
     # Tank Items
-    "WarmogsArmor": {"hp": 500, "bonus_hp_pct": 0.15},  # +15% max HP
-    "GargoyleStoneplate": {"armor": 25, "magic_resist": 25, "hp": 100},
-    "SunfireCape": {"armor": 20, "hp": 150},  # AOE burn
+    "WarmogsArmor": {"hp": 500, "bonus_hp_pct": 0.18},  # +18% max HP
+    "GargoyleStoneplate": {"armor": 30, "magic_resist": 30, "hp": 100},
+    "SunfireCape": {"armor": 20, "hp": 150, "bonus_hp_pct": 0.08},  # +8% max HP, AOE burn
     "DragonsClaw": {"magic_resist": 75, "bonus_hp_pct": 0.09},  # +9% max HP
     "BrambleVest": {"armor": 65, "bonus_hp_pct": 0.09},  # +9% max HP, reflect damage
     "SpiritVisage": {"hp": 300, "mana_regen": 2},  # Missing HP heal
@@ -87,14 +87,10 @@ BASE_COMPLETED = {
     "TacticiansCape": {},    # +1 max team size (Spatula + Frying Pan)
     "TacticiansShield": {},  # +1 max team size (Frying Pan + Frying Pan)
 
-    # TODO: UNVERIFIED - These items may not exist in Set 16 final.
-    # Their recipe slots were occupied by existing items (Morellonomicon, Evenshroud, etc.)
-    # Kept for backward compatibility with test/fetch code that references them.
-    "Leviathan": {"ap": 60, "hp": 150},  # TODO: UNVERIFIED - recipe slot is Morellonomicon (Rod+Belt)
-    "NightHarvester": {"ap": 20, "hp": 200, "magic_resist": 20},  # TODO: UNVERIFIED - recipe slot is Evenshroud (Cloak+Belt)
-    "UnstableConcoction": {"hp": 300, "attack_speed": 0.20},  # TODO: UNVERIFIED - recipe slot is Striker's Flail (Belt+Glove)
-    "MadredsBloodrazor": {"ad": 0.15, "attack_speed": 0.30},  # TODO: UNVERIFIED - recipe slot is Last Whisper (Bow+Glove)
-    "SpectralGauntlet": {"ap": 25, "armor": 25, "magic_resist": 25},  # TODO: UNVERIFIED - may not exist
+    # Legacy API name aliases - these are internal Riot API names for existing items.
+    # Kept for backward compatibility with test/fetch code that references old names.
+    # Source: metatft.com, wiki.leagueoflegends.com (API names map to display names)
+    # Stats are NOT duplicated here - lookups redirect via ITEM_ALIASES below.
 }
 
 # =============================================================================
@@ -102,41 +98,50 @@ BASE_COMPLETED = {
 # =============================================================================
 
 ARTIFACT_ITEMS = {
-    "AegisOfDawn": {"armor": 50, "hp": 200},  # Armor steal
-    "AegisOfDusk": {"magic_resist": 70, "hp": 200},  # MR steal
-    "BlightingJewel": {"ap": 60},  # MR reduction on damage
-    "CappaJuice": {"ad": 0.25, "ap": 25, "attack_speed": 0.20},  # AD/AP on takedown
-    "CorruptVampiricScepter": {"attack_speed": 0.60},  # 60% damage as healing
-    "Dawncore": {"ad": 0.15, "ap": 0.15},  # Reduces mana cost per cast
-    "EternalPact": {"ap": 40, "mana_regen": 1},  # Shield ally with AP
-    "Fishbones": {"ad": 0.50, "attack_speed": 0.50},  # Jinx's rockets
-    "ForbiddenIdol": {"armor": 25, "hp": 200, "magic_resist": 25},  # Shield to heal
-    "HellfireHatchet": {"ad": 0.20, "hp": 150, "omnivamp": 0.20},  # Max HP damage
-    "HorizonFocus": {"armor": 20, "hp": 250, "magic_resist": 20, "mana_regen": 2},  # % HP damage
-    "InnervatingLocket": {"hp": 150, "mana_regen": 2},  # Heal + mana on cast
+    # --- Returning items (stats verified against vntft.com Set 16) ---
+    "AegisOfDawn": {"armor": 50, "hp": 200},  # Every 2.5s steal 5 Armor within 1 hex, heal 15x holder Armor
+    "AegisOfDusk": {"magic_resist": 70, "hp": 200},  # Every 2.5s steal 5 MR within 1 hex, deal 15x holder MR
+    "BlightingJewel": {"ap": 60, "mana_regen": 2},  # Magic damage reduces target MR by 2, if MR=0 grant 2 Mana
+    "CappaJuice": {"ad": 0.25, "ap": 25, "attack_speed": 0.20},  # +1% AD/AP per Hat on takedown, -20% hats on death
+    "Dawncore": {"ad": 0.10, "ap": 15},  # Reduce max Mana by 10, subsequent casts -10% max Mana (min 10)
+    "EternalPact": {"ap": 40, "mana_regen": 1},  # Pact with highest HP ally; +10 mana regen +40% AP if they die
+    "Fishbones": {"ad": 0.50, "attack_speed": 0.50},  # Attacks target random enemies
+    "HellfireHatchet": {"ad": 0.20, "hp": 150, "omnivamp": 0.20},  # 2% max HP bonus phys on attacks, +1% AS per 1% missing HP
+    "HorizonFocus": {"armor": 20, "hp": 250, "magic_resist": 20, "mana_regen": 2},  # Stun → 30% max HP magic damage
     "LesserMirroredPersona": {"ad": 0.10, "ap": 10, "attack_speed": 0.10, "armor": 10, "hp": 100, "magic_resist": 10},
-    "LichBane": {"ap": 55, "attack_speed": 0.10},  # Empowered auto after ability
-    "LightshieldCrest": {"armor": 55, "magic_resist": 55},  # Shield from resists
-    "LudensTempest": {"ad": 0.50, "ap": 50},  # Overkill splash damage
-    "MendingEchoes": {"hp": 200, "mana_regen": 2},  # Increased healing
+    "LichBane": {"ap": 55, "attack_speed": 0.10},  # First attack after cast: bonus magic damage (scales with stage)
+    "LightshieldCrest": {"armor": 55, "magic_resist": 55},  # Every 3s shield lowest HP ally for 70% combined resists
+    "LudensTempest": {"ad": 0.50, "ap": 50},  # 100% overkill + 100 as magic damage to 3 nearest enemies
     "MirroredPersona": {"ad": 0.10, "ap": 10, "attack_speed": 0.10, "armor": 10, "hp": 100, "magic_resist": 10},
-    "Mittens": {"attack_speed": 0.65},  # Damage reduction
-    "NavoriFlickerblades": {"ap": 10, "attack_speed": 0.12},  # Stacking AD/AP/AS
-    "ProwlersClaw": {"ad": 0.35, "crit_chance": 0.45, "crit_multiplier": 0.50, "hp": 200},
-    "RapidFirecannon": {"attack_speed": 0.65},  # Extra range
-    "SeekersArmguard": {"ap": 25, "armor": 10, "magic_resist": 10, "omnivamp": 0.20},
-    "ShadowPuppet": {"attack_speed": 0.10, "armor": 10, "magic_resist": 10},  # Clone on death
-    "SilvermereDawn": {"ad": 1.40, "armor": 80, "magic_resist": 80},  # Stun on hit
-    "SpectralCutlass": {"ad": 0.40, "crit_chance": 0.20, "hp": 300},  # Teleport to enemy side
-    "StatikkShiv": {"ap": 15, "attack_speed": 0.50},  # Chain lightning every 3rd attack
-    "SuspiciousTrenchCoat": {"hp": 400, "attack_speed": 0.30},  # Split into 3 at 60% HP
-    "TalismanOfAscension": {"ap": 25, "armor": 25, "magic_resist": 25},  # +100% HP/dmg after 22s
-    "TheIndomitable": {"hp": 600, "armor": 40, "magic_resist": 40},  # Pull target into melee
-    "TitanicHydra": {"ad": 0.30, "hp": 400},  # 3% max HP splash damage
-    "UnendingDespair": {"armor": 30, "hp": 400, "magic_resist": 30},  # Damage on shield break
-    "VoidGauntlet": {"ap": 30, "armor": 30, "magic_resist": 30},  # Death AoE damage
-    "WitsEnd": {"attack_speed": 0.40, "magic_resist": 40},  # On-hit magic damage + heal
-    "ZhonyasParadox": {"ap": 30, "armor": 40},  # Untargetable at 50% HP
+    "Mittens": {"attack_speed": 0.65},  # Shrinks holder, +move speed, immune to Chill/Burn/Wound
+    "ProwlersClaw": {"ad": 0.35, "crit_chance": 0.45, "hp": 200},  # On kill: cleanse + dash, next 2 crits +50% crit damage
+    "RapidFirecannon": {"attack_speed": 0.65},  # +1 range, +1 more per kill
+    "SeekersArmguard": {"ap": 25, "armor": 10, "magic_resist": 10, "omnivamp": 0.20},  # Takedowns: +20 Armor/MR/AP
+    "SilvermereDawn": {"ad": 1.40, "armor": 80, "magic_resist": 80},  # Stun immune, attacks stun 0.8s, AS locked 0.5
+    "StatikkShiv": {"ap": 15, "attack_speed": 0.50},  # Every 3rd attack: 30+40% AP magic damage to 4 enemies
+    "TalismanOfAscension": {"hp": 450, "ap": 20, "ad": 0.20},  # After 22s: +100% max HP, +120% damage amp
+    "TheIndomitable": {"hp": 500, "armor": 20, "magic_resist": 20},  # -move speed, +15% max HP, stun immune, pull target
+    "TitanicHydra": {"hp": 300, "ad": 0.20, "attack_speed": 0.20},  # 3% max HP + 8% AD as bonus phys to target + adjacent
+    "VoidGauntlet": {"hp": 300},  # Combat start: store 30% max HP (+2.5%/s). On death: stored HP as magic damage in 4 hexes
+    "WitsEnd": {"hp": 400, "armor": 20, "magic_resist": 20, "attack_speed": 0.25},  # On-hit magic damage (scales), heal 30% magic dealt
+    "ZhonyasParadox": {"ap": 25, "armor": 25, "magic_resist": 25},  # At 40% HP: invulnerable 3s (once)
+
+    # --- New Set 16 artifacts ---
+    "DeathfireGrasp": {"ap": 50},  # Combat start: 20% max HP magic damage, +25% damage amp 10s (+35% vs target)
+    "DeathsDefiance": {"ad": 0.25, "armor": 40, "attack_speed": 0.15, "omnivamp": 0.25},  # 50% damage dealt over 4s (non-lethal)
+    "Flickerblade": {"ap": 10, "attack_speed": 0.12},  # +6% stacking AS, every 5 attacks +2% AD/AP
+    "GamblersBlade": {"attack_speed": 0.45},  # +1% AS per gold (up to 30). 6% chance to drop 1 gold on attack
+    "GoldCollector": {"ad": 0.40, "crit_chance": 0.20},  # Execute below 12% HP, 33% chance to drop gold
+    "Hullcrusher": {"armor": 50, "magic_resist": 50},  # No adjacent allies: +400 HP, +10% AD, +10% AP
+    "InfinityForce": {"hp": 300},  # +30% AD, +30 AP, +30 Armor, +30 MR, +30% AS (in effect)
+    "Manazane": {"ad": 0.15, "ap": 10, "attack_speed": 0.10},  # After first cast: +120 Mana over 5s
+    "MogulsMail": {"hp": 300},  # +1 Armor/MR +5 HP per hit taken (35 stacks), full stacks: 1 gold/12s
+    "SnipersFocus": {"ad": 0.25, "ap": 25, "attack_speed": 0.20},  # +2 range, +9% damage amp per hex distance
+    "TrickstersGlass": {"armor": 10, "magic_resist": 10, "attack_speed": 0.10, "crit_chance": 0.15},  # Clone 70% HP +30% mana
+    "TheDarkinAegis": {"hp": 200, "armor": 25, "magic_resist": 25},  # Darkin. 1% max HP/s aura, 2% heal on deaths
+    "TheDarkinBow": {"ad": 0.10, "attack_speed": 0.25},  # Darkin. Every 10 attacks: 500% AD arrow
+    "TheDarkinScythe": {"hp": 250, "ad": 0.25},  # Darkin. Every 4s: 200% AD slash adjacent
+    "TheDarkinStaff": {"ap": 40, "mana_regen": 2},  # Darkin. Per 20 mana spent: tendril 50 magic damage
 }
 
 # =============================================================================
@@ -166,30 +171,30 @@ RADIANT_ITEMS = {
 # EMBLEM ITEMS (trait spatulas)
 # =============================================================================
 
-# 22 emblems verified against data/game_data/items.jsonl
+# 22 emblems - stats verified against vntft.com Set 16
 EMBLEM_ITEMS = {
-    "BilgewaterEmblem": {"hp": 150},
-    "BruiserEmblem": {"hp": 150},       # JSONL: BrawlerEmblemItem
-    "DefenderEmblem": {"hp": 150},
-    "DemaciaEmblem": {"hp": 150},
-    "FreljordEmblem": {"hp": 150},
-    "GunslingerEmblem": {"hp": 150},
-    "InvokerEmblem": {"hp": 150},
-    "IoniaEmblem": {"hp": 150},
-    "IxtalEmblem": {"hp": 150},
-    "JuggernautEmblem": {"hp": 150},
-    "LongshotEmblem": {"hp": 150},
-    "MagusEmblem": {"hp": 150},          # JSONL: MagusEmblemItem
-    "NoxusEmblem": {"hp": 150},
+    "BilgewaterEmblem": {"mana_regen": 1},
+    "BruiserEmblem": {"hp": 250},
+    "DefenderEmblem": {"armor": 30, "magic_resist": 30},
+    "DemaciaEmblem": {"armor": 25, "magic_resist": 25, "mana_regen": 3},
+    "FreljordEmblem": {"hp": 400},
+    "GunslingerEmblem": {"ad": 0.20, "hp": 150},
+    "InvokerEmblem": {"mana_regen": 3},
+    "IoniaEmblem": {"ad": 0.25, "ap": 25},
+    "IxtalEmblem": {"hp": 250},
+    "JuggernautEmblem": {"armor": 30, "magic_resist": 30},
+    "LongshotEmblem": {"hp": 150, "attack_speed": 0.20},
+    "MagusEmblem": {"hp": 150, "attack_speed": 0.20},  # JSONL: MagusEmblemItem = Disruptor
+    "NoxusEmblem": {"ad": 0.25, "ap": 25},
     "PiltoverEmblem": {"hp": 150},
-    "QuickstrikerEmblem": {"hp": 150},   # JSONL: RapidfireEmblemItem
-    "SlayerEmblem": {"hp": 150},
-    "SorcererEmblem": {"hp": 150},
-    "VanquisherEmblem": {"hp": 150},
-    "VoidEmblem": {"hp": 150},
-    "WardenEmblem": {"hp": 150},
-    "YordleEmblem": {"hp": 150},
-    "ZaunEmblem": {"hp": 150},
+    "QuickstrikerEmblem": {"attack_speed": 0.25},  # JSONL: RapidfireEmblemItem
+    "SlayerEmblem": {"ad": 0.20},
+    "SorcererEmblem": {"ap": 25},  # Display: Arcanist Emblem
+    "VanquisherEmblem": {"ad": 0.15, "ap": 15, "crit_chance": 0.20},
+    "VoidEmblem": {"ad": 0.10, "ap": 10, "attack_speed": 0.20},
+    "WardenEmblem": {"hp": 250},
+    "YordleEmblem": {"ad": 0.20, "ap": 20, "armor": 30, "magic_resist": 30},
+    "ZaunEmblem": {"hp": 350, "crit_chance": 0.20},
 }
 
 # Emblem name → display trait name it grants (for trait counting in combat)
@@ -266,43 +271,167 @@ PILTOVER_TIERS = {
 }
 
 # =============================================================================
-# BILGEWATER STORE
+# BILGEWATER STORE (Black Market)
 # =============================================================================
 
-# Bilgewater trait gives Serpent currency based on:
-# - 3 Bilgewater: 15 per round, 2 per takedown
-# - 5 Bilgewater: 35 per round, 2 per takedown
-# - 7 Bilgewater: 65 per round, 2 per takedown
-# - 10 Bilgewater: 150 per round, 2 per takedown + 2x item stats
+# Bilgewater trait gives Silver Serpent currency:
+# - (3) 15 per round, +1 per takedown
+# - (5) 35 per round, +1 per takedown, improved loot
+# - (7) 65 per round, +1 per takedown, superior loot
+# - (10) 150 per round, +1 per takedown, 2x stats, fire cannons
+#
+# The Black Market sells stat buffs, equippable items, units, and lesser dupes.
+# Each category has escalating costs per successive purchase.
+# Source: littlebuddybot.com Bilgewater tables (patch 16.3)
+
+# ── Equippable Bilgewater items (stats from tft.tools / user-provided tables) ──
+
+BILGEWATER_ITEMS = {
+    # --- Tier 1 items (available at 5 Bilgewater) ---
+    "CaptainsBrew": {
+        "display_name": "Captain's Brew",
+        "tier": 1,
+        "stats": {"ad": 0.10, "hp": 100, "ap": 10},
+        "effect": "burn_chill",
+        "effect_desc": "Attacks and Abilities Burn and Chill enemies for 2 seconds",
+    },
+    "LuckyEyepatch": {
+        "display_name": "Lucky Doubloon",
+        "tier": 1,
+        "stats": {"attack_speed": 0.20, "crit_chance": 0.20},
+        "effect": "bonus_serpents_takedown",
+        "effect_desc": "On takedown, generate an additional 1 Silver Serpent",
+        "bonus_serpents_per_takedown": 1,
+    },
+
+    # --- Tier 2 items (available at 7 Bilgewater) ---
+    "FreebootersFrock": {
+        "display_name": "Barknuckles",
+        "tier": 2,
+        "stats": {"hp": 300, "armor": 35, "magic_resist": 35},
+        "effect": "tank_aura",
+        "effect_desc": "Above 50% HP, double Armor/MR. Every 4s, 50% Armor+MR magic damage to 2 nearest",
+        "double_threshold": 0.50,
+        "aura_interval": 4.0,
+        "aura_pct": 0.50,
+    },
+    "BlackmarketExplosives": {
+        "display_name": "Blackmarket Explosives",
+        "tier": 2,
+        "stats": {"ap": 20, "attack_speed": 0.10},
+        "effect": "aoe_explosion",
+        "effect_desc": "Every 5s, deal 15 + 12% of damage dealt as magic damage to target + 2 nearest",
+    },
+    "BilgeratCutlass": {
+        "display_name": "Cutthroat's Cutlass",
+        "tier": 2,
+        "stats": {"ad": 0.20, "ap": 20, "omnivamp": 0.15},
+        "effect": "bleed",
+        "effect_desc": "Damaging enemies causes 35% bleed over 4s",
+        "bleed_pct": 0.35,
+        "bleed_duration": 4.0,
+    },
+    "DeadmansDagger": {
+        "display_name": "Dead Man's Dagger",
+        "tier": 2,
+        "stats": {"ad": 0.20, "ap": 20},
+        "effect": "execute_on_kill",
+        "effect_desc": "Execute below 12% HP. On kill, gain +10% AD and +15% AP",
+        "execute_threshold": 0.12,
+        "on_kill_ad": 0.10,
+        "on_kill_ap": 0.15,
+    },
+    "FirstMatesFlintlock": {
+        "display_name": "First Mate's Flintlock",
+        "tier": 2,
+        "stats": {"ad": 0.10, "crit_chance": 0.20},
+        "effect": "stacking_as_ad",
+        "effect_desc": "Every second, gain +3% AD and +3% AS",
+    },
+    "PileOCitrus": {
+        "display_name": "Pile O' Citrus",
+        "tier": 2,
+        "stats": {"hp": 600},
+        "effect": "heal_cleanse",
+        "effect_desc": "Every 15s, heal 15% max HP and cleanse. After 15s, gain 10 bonus serpents",
+        "heal_interval": 15.0,
+        "heal_pct": 0.15,
+        "bonus_serpents": 10,
+        "serpent_delay": 15.0,
+    },
+}
+
+# ── Stat buff tiers (applied to ALL Bilgewater champions) ──
+
+BILGEWATER_STAT_BUFFS = {
+    1: {"hp_pct": 0.04, "attack_speed": 0.04, "ad_ap_pct": 0.03},
+    2: {"hp_pct": 0.06, "attack_speed": 0.06, "ad_ap_pct": 0.05},
+    3: {"hp_pct": 0.08, "attack_speed": 0.08, "ad_ap_pct": 0.07},
+}
+
+# ── Escalating costs per successive purchase (in Silver Serpents) ──
+
+BILGEWATER_COSTS = {
+    "tier1_stats": [15, 30, 45, 60, 75, 90, 105],
+    "tier2_stats": [30, 60, 90, 120, 150, 180, 210],
+    "tier3_stats": [50, 100, 150, 200, 250, 300, 350],
+    "tier1_items": [60, 80],           # Max 2 purchases
+    "tier2_items": [100, 180, 260, 340],  # Max 4 purchases
+    "lesser_dupe": [35, 35],           # Max 2 (flat cost)
+    "shop_reroll": 1,                  # Flat cost
+}
+
+# ── Unit costs (flat, by gold cost tier) ──
+
+BILGEWATER_UNIT_COSTS = {
+    1: 15,   # 1-cost units (Illaoi)
+    2: 35,   # 2-cost units (Graves, Twisted Fate)
+    3: 50,   # 3-cost units (Gangplank, Nautilus)
+    4: 75,   # 4-cost units (Fizz, Miss Fortune)
+    5: 100,  # 5-cost units (Tahm Kench)
+}
+
+# ── Bilgewater champions by cost tier ──
+
+BILGEWATER_CHAMPIONS = {
+    1: [{"api_name": "TFT16_Illaoi", "display_name": "Illaoi"}],
+    2: [
+        {"api_name": "TFT16_Graves", "display_name": "Graves"},
+        {"api_name": "TFT16_TwistedFate", "display_name": "Twisted Fate"},
+    ],
+    3: [
+        {"api_name": "TFT16_Gangplank", "display_name": "Gangplank"},
+        {"api_name": "TFT16_Nautilus", "display_name": "Nautilus"},
+    ],
+    4: [
+        {"api_name": "TFT16_Fizz", "display_name": "Fizz"},
+        {"api_name": "TFT16_MissFortune", "display_name": "Miss Fortune"},
+    ],
+    5: [{"api_name": "TFT16_TahmKench", "display_name": "Tahm Kench"}],
+}
+
+# ── Store offerings per Bilgewater count ──
+
+BILGEWATER_STORE_LAYOUT = {
+    3: ["tier1_stats", "tier1_units", "lesser_dupe"],
+    5: ["tier1_stats", "tier2_stats", "tier1_items", "tier2_units", "lesser_dupe"],
+    7: ["tier2_stats", "tier3_stats", "tier1_items", "tier2_items",
+        "tier2_units", "tier3_units", "lesser_dupe"],
+    10: ["tier3_stats", "tier2_items", "tier4_units", "lesser_dupe"],
+    # At 10 Bilgewater: 2x all stat buffs + fire cannons
+}
+
+# ── Combined store config (for engine import) ──
 
 BILGEWATER_STORE = {
-    # Champions available for purchase with Serpents
-    "champions": {
-        "Fizz_1star": {"cost": 30},
-        "Fizz_2star": {"cost": 90},
-        "Gangplank_1star": {"cost": 60},
-        "Gangplank_2star": {"cost": 180},
-        "Graves_1star": {"cost": 30},
-        "Graves_2star": {"cost": 90},
-        "Illaoi_1star": {"cost": 30},
-        "Illaoi_2star": {"cost": 90},
-        "MissFortune_1star": {"cost": 60},
-        "MissFortune_2star": {"cost": 180},
-        "Nautilus_1star": {"cost": 45},
-        "Nautilus_2star": {"cost": 135},
-        "TahmKench_1star": {"cost": 30},
-        "TahmKench_2star": {"cost": 90},
-        "TwistedFate_1star": {"cost": 45},
-        "TwistedFate_2star": {"cost": 135},
-    },
-    # Items available (max 8 purchases)
-    "items": {
-        "Component": {"cost": 25},  # Random component
-        "CompletedItem": {"cost": 50},  # Random completed item
-        "Emblem": {"cost": 75},  # Random emblem
-        "Gold": {"cost": 10, "amount": 3},  # 3 gold
-    },
-    "max_purchases": 8,
+    "items": BILGEWATER_ITEMS,
+    "stat_buffs": BILGEWATER_STAT_BUFFS,
+    "costs": BILGEWATER_COSTS,
+    "unit_costs": BILGEWATER_UNIT_COSTS,
+    "champions": BILGEWATER_CHAMPIONS,
+    "layout": BILGEWATER_STORE_LAYOUT,
+    "bg10_stat_multiplier": 2.0,
+    "fire_cannon_damage": 500,
 }
 
 # =============================================================================
@@ -329,6 +458,7 @@ ALL_ITEMS = {
     **{f"Artifact_{k}": v for k, v in ARTIFACT_ITEMS.items()},
     **RADIANT_ITEMS,
     **EMBLEM_ITEMS,
+    **{f"Bilgewater_{k}": v.get("stats", {}) for k, v in BILGEWATER_ITEMS.items()},
 }
 
 # Aliases for common names
@@ -374,12 +504,13 @@ ITEM_ALIASES = {
     "TFT_Item_Evenshroud": "Evenshroud",
     "TFT_Item_StrikersFlail": "StrikersFlail",
     "TFT_Item_StatikkShiv": "Artifact_StatikkShiv",
-    # Legacy aliases for removed/renamed Set 16 items
-    "TFT_Item_Leviathan": "Morellonomicon",  # Leviathan slot replaced by Morellonomicon
-    "TFT_Item_MadredsBloodrazor": "LastWhisper",  # Slot replaced by Last Whisper
-    "TFT_Item_UnstableConcoction": "StrikersFlail",  # Slot replaced by Striker's Flail
-    "TFT_Item_NightHarvester": "Evenshroud",  # Slot replaced by Evenshroud
-    "TFT_Item_SpectralGauntlet": "SpectralGauntlet",  # TODO: UNVERIFIED - may not exist in Set 16
+    # Legacy API name aliases - Riot internal names that map to current display names
+    # Source: metatft.com, wiki.leagueoflegends.com, Riot API data
+    "TFT_Item_Leviathan": "NashorsTooth",          # API name for Nashor's Tooth (Bow+Belt)
+    "TFT_Item_MadredsBloodrazor": "GiantSlayer",    # API name for Giant Slayer (Sword+Bow)
+    "TFT_Item_UnstableConcoction": "HandOfJustice",  # API name for Hand of Justice (Tear+Gloves)
+    "TFT_Item_NightHarvester": "SteadfastHeart",    # API name for Steadfast Heart (Vest+Gloves)
+    "TFT_Item_SpectralGauntlet": "Evenshroud",      # API name for Evenshroud (Cloak+Belt)
 
     # Components with TFT_Item_ prefix
     "TFT_Item_BFSword": "BFSword",
@@ -412,4 +543,38 @@ ITEM_ALIASES = {
     "TFT_Item_Artifact_LichBane": "Artifact_LichBane",
     "TFT_Item_Artifact_StatikkShiv": "Artifact_StatikkShiv",
     "TFT_Item_Artifact_RapidFirecannon": "Artifact_RapidFirecannon",
+    "TFT_Item_Artifact_NavoriFlickerblades": "Artifact_Flickerblade",  # Renamed in Set 16
+    "TFT_Item_Artifact_Flickerblade": "Artifact_Flickerblade",
+    "TFT_Item_Artifact_Fishbones": "Artifact_Fishbones",
+    "TFT_Item_Artifact_DeathfireGrasp": "Artifact_DeathfireGrasp",
+    "TFT_Item_Artifact_DeathsDefiance": "Artifact_DeathsDefiance",
+    "TFT_Item_Artifact_GamblersBlade": "Artifact_GamblersBlade",
+    "TFT_Item_Artifact_GoldCollector": "Artifact_GoldCollector",
+    "TFT_Item_Artifact_InfinityForce": "Artifact_InfinityForce",
+    "TFT_Item_Artifact_SnipersFocus": "Artifact_SnipersFocus",
+    "TFT_Item_Artifact_TrickstersGlass": "Artifact_TrickstersGlass",
+    "TFT_Item_Artifact_MogulsMail": "Artifact_MogulsMail",
+    "TFT_Item_Artifact_Manazane": "Artifact_Manazane",
+    "TFT_Item_Artifact_Hullcrusher": "Artifact_Hullcrusher",
+
+    # Darkin items (TFT16_ prefix in API data)
+    "TFT16_TheDarkinAegis": "Artifact_TheDarkinAegis",
+    "TFT16_TheDarkinBow": "Artifact_TheDarkinBow",
+    "TFT16_TheDarkinScythe": "Artifact_TheDarkinScythe",
+    "TFT16_TheDarkinStaff": "Artifact_TheDarkinStaff",
+
+    # Bilgewater items (API names from items.jsonl → internal names)
+    "TFT16_Item_Bilgewater_BilgeratCutlass": "Bilgewater_BilgeratCutlass",
+    "TFT16_Item_Bilgewater_BlackmarketExplosives": "Bilgewater_BlackmarketExplosives",
+    "TFT16_Item_Bilgewater_CaptainsBrew": "Bilgewater_CaptainsBrew",
+    "TFT16_Item_Bilgewater_DeadmansDagger": "Bilgewater_DeadmansDagger",
+    "TFT16_Item_Bilgewater_FirstMatesFlintlock": "Bilgewater_FirstMatesFlintlock",
+    "TFT16_Item_Bilgewater_FreebootersFrock": "Bilgewater_FreebootersFrock",
+    "TFT16_Item_Bilgewater_LuckyEyepatch": "Bilgewater_LuckyEyepatch",
+    "TFT16_Item_Bilgewater_PileOCitrus": "Bilgewater_PileOCitrus",
+    # Display name aliases
+    "Barknuckles": "Bilgewater_FreebootersFrock",
+    "LuckyDoubloon": "Bilgewater_LuckyEyepatch",
+    "CutthroatsCutlass": "Bilgewater_BilgeratCutlass",
+    "DeadMansDagger": "Bilgewater_DeadmansDagger",
 }

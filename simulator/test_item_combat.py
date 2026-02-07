@@ -101,7 +101,7 @@ def test_item_distribution():
 
     # Available items
     available_items = [
-        'TFT_Item_Leviathan',           # AP
+        'TFT_Item_Morellonomicon',      # AP
         'TFT_Item_JeweledGauntlet',     # AP
         'TFT_Item_SpearOfShojin',       # AP/Utility
         'TFT_Item_Bloodthirster',       # AD
@@ -131,7 +131,7 @@ def test_item_distribution():
     braum_items = result.assignments.get('TFT16_Braum', [])
 
     # Check if Seraphine got AP items
-    ap_items = {'Leviathan', 'JeweledGauntlet', 'SpearOfShojin', 'RabadonsDeathcap'}
+    ap_items = {'Morellonomicon', 'JeweledGauntlet', 'SpearOfShojin', 'RabadonsDeathcap'}
     sera_has_ap = any(any(ap in item for ap in ap_items) for item in sera_items)
 
     # Check if Braum got tank items
