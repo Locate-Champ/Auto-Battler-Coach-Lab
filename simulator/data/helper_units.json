@@ -1,0 +1,112 @@
+{
+  "set": 16,
+  "source": "data/api/processed/units_set16.json",
+  "last_updated": "2026-02-07T22:32:18.445491+00:00",
+  "helpers": [
+    {
+      "apiName": "TFT16_Atakhan",
+      "name": "Atakhan",
+      "cost": 11,
+      "traits": [],
+      "icon": "ASSETS/Characters/TFT16_Atakhan/Skins/Base/Images/TFT16_Atakhan_splash_centered_34.TFT_Set16.tex"
+    },
+    {
+      "apiName": "TFT16_AzirSoldier",
+      "name": "Sand Soldier",
+      "cost": 11,
+      "traits": [],
+      "icon": "ASSETS/Characters/TFT16_AzirSoldier/HUD/TFT16_AzirSoldier_splash_uncentered_0.TFT_Set16.tex"
+    },
+    {
+      "apiName": "TFT16_FreljordProp",
+      "name": "Frozen Tower",
+      "cost": 11,
+      "traits": [],
+      "icon": "ASSETS/Characters/TFT16_FreljordProp/Skins/Base/Images/TFT16_Freljord_FreljordPropSplash.TFT_Set16.tex"
+    },
+    {
+      "apiName": "TFT16_MalzaharVoidling",
+      "name": "MalzaharVoidling",
+      "cost": 11,
+      "traits": [],
+      "icon": null
+    },
+    {
+      "apiName": "TFT16_PiltoverInvention",
+      "name": "Piltover Invention",
+      "cost": 1,
+      "traits": [],
+      "icon": "ASSETS/Characters/TFT16_PiltoverInvention/Skins/Base/Images/TFT16_PiltoverInvention.TFT_Set16.tex"
+    },
+    {
+      "apiName": "TFT5_EmblemArmoryKey",
+      "name": "Tome of Traits",
+      "cost": 8,
+      "traits": [],
+      "icon": "ASSETS/UX/TFT/ChampionSplashes/TFT5_EmblemArmoryKey.tex"
+    },
+    {
+      "apiName": "TFT6_MercenaryChest",
+      "name": "Mercenary Chest",
+      "cost": 11,
+      "traits": [],
+      "icon": "ASSETS/UX/TFT/ChampionSplashes/TFT6_MercenaryChest.tex"
+    },
+    {
+      "apiName": "TFT9_SLIME_Crab",
+      "name": "Rift Scuttler",
+      "cost": 1,
+      "traits": [],
+      "icon": "ASSETS/UX/TFT/ChampionSplashes/TFT_ScuttleCrab.TFT_Set13.tex"
+    },
+    {
+      "apiName": "TFT_ArmoryKeyCompleted",
+      "name": "Completed Item Anvil",
+      "cost": 8,
+      "traits": [],
+      "icon": null
+    },
+    {
+      "apiName": "TFT_ArmoryKeyComponent",
+      "name": "Component Anvil",
+      "cost": 8,
+      "traits": [],
+      "icon": null
+    },
+    {
+      "apiName": "TFT_ArmoryKeyOrnn",
+      "name": "Artifact Item Anvil",
+      "cost": 8,
+      "traits": [],
+      "icon": null
+    },
+    {
+      "apiName": "TFT_ArmoryKeySupport",
+      "name": "Support item anvil",
+      "cost": 8,
+      "traits": [],
+      "icon": null
+    },
+    {
+      "apiName": "TFT_BlueGolem",
+      "name": "Golem",
+      "cost": 1,
+      "traits": [],
+      "icon": "ASSETS/UX/TFT/ChampionSplashes/TFT_BlueGolem.tex"
+    },
+    {
+      "apiName": "TFT_ElderDragon",
+      "name": "Elder Dragon",
+      "cost": 1,
+      "traits": [],
+      "icon": "ASSETS/UX/TFT/ChampionSplashes/TFT_ElderDragon.tex"
+    },
+    {
+      "apiName": "TFT_TrainingDummy",
+      "name": "Training Dummy",
+      "cost": 1,
+      "traits": [],
+      "icon": "ASSETS/UX/TFT/ChampionSplashes/TFTDebug_Dummy.tex"
+    }
+  ]
+}

@@ -99,8 +99,15 @@ def load_champion_traits_map():
 
 def normalize_trait_name(api_name: str) -> str:
     """Convert API trait name to display name."""
-    if api_name in TRAIT_ID_MAP:
-        return TRAIT_ID_MAP[api_name].get('displayName', api_name)
+    payload = TRAIT_ID_MAP.get(api_name)
+    if isinstance(payload, dict):
+        return payload.get("displayName", api_name)
+    if isinstance(payload, str):
+        # Backward compatibility with slug -> apiName maps.
+        alias = TRAIT_ID_MAP.get(payload)
+        if isinstance(alias, dict):
+            return alias.get("displayName", api_name)
+        return payload
     return api_name
 
 
