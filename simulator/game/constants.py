@@ -63,7 +63,7 @@ def get_streak_gold(streak: int) -> int:
     return 0
 
 # ── Champion pool ─────────────────────────────────────────────────────────────
-POOL_SIZES = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10, 7: 10}
+POOL_SIZES = {1: 30, 2: 25, 3: 18, 4: 10, 5: 9, 7: 9}
 
 # Champion lists by cost tier
 CHAMPIONS_BY_COST = {
