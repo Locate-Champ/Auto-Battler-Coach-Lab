@@ -20,6 +20,9 @@ const CHAMPION_COSTS: Record<string, ChampionCost> = {
   'TFT16_KogMaw': 1,
   'TFT16_Lulu': 1,
   'TFT16_PiltoverInvention': 1,
+  'TFT16_AzirSoldier': 1,
+  'TFT16_FreljordProp': 1,
+  'TFT16_MalzaharVoidling': 1,
   'TFT16_Qiyana': 1,
   'TFT16_Rumble': 1,
   'TFT16_Shen': 1,
@@ -119,6 +122,19 @@ const CHAMPION_COSTS: Record<string, ChampionCost> = {
   'TFT16_Zaahen': 5,
   'TFT16_Ziggs': 5,
   'TFT16_Zilean': 5,
+  // Helper/summon units (non-playable, shown on board overlays)
+  'TFT16_Atakhan': 5,
+  'TFT16_AnnieTibbers': 5,
+  'TFT5_EmblemArmoryKey': 1,
+  'TFT6_MercenaryChest': 1,
+  'TFT_ArmoryKeyCompleted': 1,
+  'TFT_ArmoryKeyComponent': 1,
+  'TFT_ArmoryKeyOrnn': 1,
+  'TFT_ArmoryKeySupport': 1,
+  'TFT_TrainingDummy': 1,
+  'TFT_BlueGolem': 1,
+  'TFT_ElderDragon': 1,
+  'TFT9_SLIME_Crab': 1,
 };
 
 // Item ID to display name and image file mapping

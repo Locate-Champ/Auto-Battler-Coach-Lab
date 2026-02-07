@@ -1175,11 +1175,11 @@ class ChampionAbilities:
                     self._deal_damage(unit, enemy, damage, DamageType.MAGIC, "annie_enraged_inferno")
                     total_damage += damage
 
-            # Apply mana cost reduction for future casts
-            unit.stats.mana_cost = max(20, unit.stats.mana_cost - mana_reduction)
+            # Combat uses max_mana as cast threshold, so reduce that for later casts.
+            unit.stats.max_mana = max(20, unit.stats.max_mana - mana_reduction)
             self.engine.log_event('ability_cast', unit=unit.name, ability="Enraged Inferno",
                                  damage=total_damage, first_cast=True,
-                                 new_mana_cost=unit.stats.mana_cost)
+                                 new_mana_cost=unit.stats.max_mana)
         else:
             # Subsequent casts: Single target damage (Annie continues attacking)
             target = unit.target or self._find_nearest_enemy(unit, enemies)

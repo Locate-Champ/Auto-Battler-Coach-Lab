@@ -56,7 +56,14 @@ jobs:
         env:
           META_TFT_API_KEY: ${{ secrets.META_TFT_API_KEY }}
         timeout-minutes: 10
-        continue-on-error: true
+
+      - name: Validate simulator reference data
+        run: |
+          if [ "${{ github.event.inputs.sync_target }}" = "meta" ] || [ "${{ github.event.inputs.sync_target }}" = "game" ]; then
+            echo "Skipping simulator reference validation for sync_target=${{ github.event.inputs.sync_target }}"
+          else
+            python simulator/data/validate_reference_data.py
+          fi
 
       - name: Check for changes
         id: changes

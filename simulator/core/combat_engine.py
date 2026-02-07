@@ -2963,7 +2963,7 @@ class CombatEngine:
 
                 self.log_event('radiant_edge_proc', unit=unit.name, hp_percent=round(hp_percent * 100, 1))
 
-    def apply_damage(self, attacker: Unit, defender: Unit, damage: float,
+    def apply_damage(self, attacker: Optional[Unit], defender: Unit, damage: float,
                     damage_type: DamageType, source: str = "attack") -> float:
         """Apply damage to a unit and return actual damage dealt."""
         if not defender.is_alive:
@@ -2973,11 +2973,13 @@ class CombatEngine:
         if not defender.is_targetable:
             return 0
 
+        attacker_name = attacker.name if attacker is not None else "system"
+
         # Damage shield first
         if defender.stats.shield > 0:
             if damage <= defender.stats.shield:
                 defender.stats.shield -= damage
-                self.log_event('shield_absorb', attacker=attacker.name,
+                self.log_event('shield_absorb', attacker=attacker_name,
                               defender=defender.name, damage=damage)
                 return 0
             else:
@@ -2994,10 +2996,11 @@ class CombatEngine:
         actual_damage = min(damage, defender.stats.hp)
         defender.stats.hp -= actual_damage
         defender.total_damage_taken += actual_damage
-        attacker.total_damage_dealt += actual_damage
+        if attacker is not None:
+            attacker.total_damage_dealt += actual_damage
 
         # Omnivamp healing
-        if attacker.stats.omnivamp > 0:
+        if attacker is not None and attacker.stats.omnivamp > 0:
             heal_amount = actual_damage * attacker.stats.omnivamp
             self.heal_unit(attacker, heal_amount, "omnivamp")
 
@@ -3018,7 +3021,9 @@ class CombatEngine:
                 pass
             else:
                 # Award Bilgewater serpents for takedown (attacker's team)
-                if 'Bilgewater' in attacker.traits or self.trait_manager.bilgewater_count >= 3:
+                if attacker is not None and (
+                    'Bilgewater' in attacker.traits or self.trait_manager.bilgewater_count >= 3
+                ):
                     serpents = self.trait_manager.award_takedown_serpents()
                     if serpents > 0:
                         self.log_event('bilgewater_takedown', killer=attacker.name,
@@ -3026,14 +3031,19 @@ class CombatEngine:
                                       total=self.trait_manager.bilgewater_serpents)
 
                 # Harvester: grant mana to Harvester units on enemy death
-                allies_team = self._alive_team0 if attacker.team == 0 else self._alive_team1
-                for ally in allies_team:
-                    harvest_mana = getattr(ally, '_harvester_mana_per_kill', 0)
-                    if harvest_mana > 0 and ally.is_alive:
-                        ally.stats.mana = min(ally.stats.mana + harvest_mana, ally.stats.max_mana)
+                if attacker is not None:
+                    allies_team = self._alive_team0 if attacker.team == 0 else self._alive_team1
+                    for ally in allies_team:
+                        harvest_mana = getattr(ally, '_harvester_mana_per_kill', 0)
+                        if harvest_mana > 0 and ally.is_alive:
+                            ally.stats.mana = min(ally.stats.mana + harvest_mana, ally.stats.max_mana)
 
                 # Award Shadow Isles souls for takedown
-                if self.trait_manager.shadow_isles_count >= 2 and attacker.team != defender.team:
+                if (
+                    attacker is not None
+                    and self.trait_manager.shadow_isles_count >= 2
+                    and attacker.team != defender.team
+                ):
                     # Get victim's cost (from champion data)
                     victim_data = self.champions.get(defender.api_name, {})
                     victim_cost = victim_data.get('cost', 1)
@@ -3046,7 +3056,7 @@ class CombatEngine:
                                       total=self.trait_manager.shadow_isles_souls,
                                       victim_cost=victim_cost, victim_star=victim_star)
 
-        self.log_event('damage', source=source, attacker=attacker.name,
+        self.log_event('damage', source=source, attacker=attacker_name,
                       defender=defender.name, damage=round(actual_damage, 1),
                       damage_type=damage_type.value,
                       defender_hp=round(defender.stats.hp, 1),
@@ -3066,9 +3076,10 @@ class CombatEngine:
             self.check_hp_threshold_effects(defender)
 
         # Trigger item on-damage-dealt effects for attacker
-        for item in attacker.items:
-            if item.on_damage_dealt:
-                item.on_damage_dealt(self, attacker, defender, actual_damage, damage_type)
+        if attacker is not None:
+            for item in attacker.items:
+                if item.on_damage_dealt:
+                    item.on_damage_dealt(self, attacker, defender, actual_damage, damage_type)
 
         # Trigger item on-damage-taken effects for defender
         if defender.is_alive:
