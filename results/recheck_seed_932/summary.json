@@ -1,0 +1,936 @@
+{
+  "num_games": 1,
+  "num_errors": 0,
+  "num_workers": 1,
+  "total_time_sec": 1.1,
+  "games_per_sec": 0.88,
+  "avg_game_time_sec": 1.133,
+  "avg_rounds": 25.0,
+  "total_training_rows": 127,
+  "total_chunks": 1,
+  "top_champions": [
+    [
+      "sona",
+      1.0
+    ],
+    [
+      "reksai",
+      1.0
+    ],
+    [
+      "sejuani",
+      1.0
+    ],
+    [
+      "fizz",
+      1.0
+    ],
+    [
+      "jinx",
+      1.0
+    ],
+    [
+      "tahmkench",
+      1.0
+    ],
+    [
+      "teemo",
+      2.0
+    ],
+    [
+      "orianna",
+      2.0
+    ],
+    [
+      "drmundo",
+      2.0
+    ],
+    [
+      "gwen",
+      3.0
+    ],
+    [
+      "lux",
+      3.0
+    ],
+    [
+      "riftherald",
+      3.0
+    ],
+    [
+      "qiyana",
+      3.33
+    ],
+    [
+      "caitlyn",
+      3.5
+    ],
+    [
+      "jarvaniv",
+      4.0
+    ],
+    [
+      "viego",
+      4.0
+    ],
+    [
+      "yorick",
+      4.0
+    ],
+    [
+      "kobuko",
+      4.0
+    ],
+    [
+      "rumble",
+      4.75
+    ],
+    [
+      "briar",
+      5.0
+    ]
+  ],
+  "bottom_champions": [
+    [
+      "vi",
+      8.0
+    ],
+    [
+      "draven",
+      7.0
+    ],
+    [
+      "nautilus",
+      7.0
+    ],
+    [
+      "jhin",
+      6.0
+    ],
+    [
+      "lulu",
+      5.8
+    ],
+    [
+      "tristana",
+      5.5
+    ],
+    [
+      "shen",
+      5.33
+    ],
+    [
+      "kogmaw",
+      5.25
+    ],
+    [
+      "briar",
+      5.0
+    ],
+    [
+      "blitzcrank",
+      5.0
+    ],
+    [
+      "anivia",
+      5.0
+    ],
+    [
+      "yasuo",
+      5.0
+    ],
+    [
+      "rumble",
+      4.75
+    ],
+    [
+      "jarvaniv",
+      4.0
+    ],
+    [
+      "viego",
+      4.0
+    ],
+    [
+      "yorick",
+      4.0
+    ],
+    [
+      "kobuko",
+      4.0
+    ],
+    [
+      "caitlyn",
+      3.5
+    ],
+    [
+      "qiyana",
+      3.33
+    ],
+    [
+      "gwen",
+      3.0
+    ]
+  ],
+  "top_augments": [
+    [
+      "TFT_Augment_ComebackStory",
+      1.0
+    ],
+    [
+      "TFT_Augment_GoldDestinyPlus",
+      1.0
+    ],
+    [
+      "TFT_Augment_ForgeRod",
+      1.0
+    ],
+    [
+      "TFT6_Augment_HyperRoll",
+      2.0
+    ],
+    [
+      "TFT6_Augment_GachaAddict",
+      2.0
+    ],
+    [
+      "TFT_Augment_OneBuffTwoBuff",
+      2.0
+    ],
+    [
+      "TFT_Augment_WeStickTogether",
+      3.0
+    ],
+    [
+      "TFT6_Augment_RadiantRelics",
+      3.0
+    ],
+    [
+      "TFT9_Augment_RollTheDice",
+      3.0
+    ],
+    [
+      "TFT7_Augment_Preparation2",
+      4.0
+    ],
+    [
+      "TFT16_Augment_UltraRapidFire",
+      4.0
+    ],
+    [
+      "TFT_Augment_LastSecondSave",
+      4.0
+    ],
+    [
+      "TFT_Augment_SilverDestiny",
+      5.0
+    ],
+    [
+      "TFT7_Augment_LategameSpecialist",
+      5.0
+    ],
+    [
+      "TFT_Augment_BronzeForLife2",
+      5.0
+    ],
+    [
+      "TFT9_Augment_IronAssets",
+      6.0
+    ],
+    [
+      "TFT11_Augment_BloodBank",
+      6.0
+    ],
+    [
+      "TFT16_Augment_DemaciaForever",
+      7.0
+    ],
+    [
+      "TFT16_Augment_WalkTheTruePathPlus",
+      7.0
+    ],
+    [
+      "TFT16_TeamupAugment_SingedTeemo",
+      8.0
+    ]
+  ],
+  "champion_pick_rates": {
+    "lulu": 5,
+    "rumble": 4,
+    "caitlyn": 4,
+    "kogmaw": 4,
+    "jarvaniv": 3,
+    "qiyana": 3,
+    "jhin": 3,
+    "shen": 3,
+    "viego": 2,
+    "briar": 2,
+    "tristana": 2,
+    "sona": 1,
+    "reksai": 1,
+    "sejuani": 1,
+    "fizz": 1,
+    "jinx": 1,
+    "tahmkench": 1,
+    "teemo": 1,
+    "orianna": 1,
+    "drmundo": 1
+  },
+  "confidence_method": "wilson_95",
+  "champion_metrics": [
+    {
+      "name": "sona",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "reksai",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "sejuani",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "fizz",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "jinx",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "tahmkench",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "teemo",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "orianna",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "drmundo",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "gwen",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "lux",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "riftherald",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "qiyana",
+      "samples": 3,
+      "avg_placement": 3.333,
+      "placement_stddev": 1.247,
+      "top4_rate": 0.6667,
+      "top4_ci95": [
+        0.2077,
+        0.9385
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.5615
+      ]
+    },
+    {
+      "name": "caitlyn",
+      "samples": 4,
+      "avg_placement": 3.5,
+      "placement_stddev": 2.598,
+      "top4_rate": 0.75,
+      "top4_ci95": [
+        0.3006,
+        0.9544
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.4899
+      ]
+    },
+    {
+      "name": "jarvaniv",
+      "samples": 3,
+      "avg_placement": 4.0,
+      "placement_stddev": 2.944,
+      "top4_rate": 0.6667,
+      "top4_ci95": [
+        0.2077,
+        0.9385
+      ],
+      "win_rate": 0.3333,
+      "win_ci95": [
+        0.0615,
+        0.7923
+      ]
+    },
+    {
+      "name": "viego",
+      "samples": 2,
+      "avg_placement": 4.0,
+      "placement_stddev": 1.0,
+      "top4_rate": 0.5,
+      "top4_ci95": [
+        0.0945,
+        0.9055
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.6576
+      ]
+    },
+    {
+      "name": "yorick",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "kobuko",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "rumble",
+      "samples": 4,
+      "avg_placement": 4.75,
+      "placement_stddev": 2.586,
+      "top4_rate": 0.5,
+      "top4_ci95": [
+        0.15,
+        0.85
+      ],
+      "win_rate": 0.25,
+      "win_ci95": [
+        0.0456,
+        0.6994
+      ]
+    },
+    {
+      "name": "briar",
+      "samples": 2,
+      "avg_placement": 5.0,
+      "placement_stddev": 1.0,
+      "top4_rate": 0.5,
+      "top4_ci95": [
+        0.0945,
+        0.9055
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.6576
+      ]
+    }
+  ],
+  "augment_metrics": [
+    {
+      "name": "TFT_Augment_ComebackStory",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "TFT_Augment_GoldDestinyPlus",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "TFT_Augment_ForgeRod",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "TFT6_Augment_HyperRoll",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT6_Augment_GachaAddict",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_OneBuffTwoBuff",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_WeStickTogether",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT6_Augment_RadiantRelics",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT9_Augment_RollTheDice",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT7_Augment_Preparation2",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT16_Augment_UltraRapidFire",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_LastSecondSave",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_SilverDestiny",
+      "samples": 1,
+      "avg_placement": 5.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT7_Augment_LategameSpecialist",
+      "samples": 1,
+      "avg_placement": 5.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_BronzeForLife2",
+      "samples": 1,
+      "avg_placement": 5.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT9_Augment_IronAssets",
+      "samples": 1,
+      "avg_placement": 6.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT11_Augment_BloodBank",
+      "samples": 1,
+      "avg_placement": 6.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT16_Augment_DemaciaForever",
+      "samples": 1,
+      "avg_placement": 7.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT16_Augment_WalkTheTruePathPlus",
+      "samples": 1,
+      "avg_placement": 7.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT16_TeamupAugment_SingedTeemo",
+      "samples": 1,
+      "avg_placement": 8.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    }
+  ],
+  "run_config": {
+    "seed_start": 932,
+    "seed_end": 932,
+    "agent_profile": "ladder",
+    "agent_mix": {
+      "random": 20,
+      "econ": 45,
+      "slam": 35
+    },
+    "chunk_size": 100,
+    "resume": false
+  }
+}

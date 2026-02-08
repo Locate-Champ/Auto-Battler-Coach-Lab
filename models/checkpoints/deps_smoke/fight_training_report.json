@@ -1,0 +1,143 @@
+{
+  "task": "fight",
+  "params": {
+    "max_depth": 8,
+    "learning_rate": 0.05,
+    "n_estimators": 10,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "min_child_weight": 5,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.0,
+    "tree_method": "hist",
+    "random_state": 42,
+    "objective": "binary:logistic",
+    "eval_metric": "auc",
+    "device": "cpu"
+  },
+  "metrics": {
+    "task": "fight",
+    "accuracy": 0.6966964538433545,
+    "auc_roc": 0.7706580774726153,
+    "confusion_matrix": [
+      [
+        6812,
+        4894
+      ],
+      [
+        2607,
+        10418
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.7232190253742435,
+        "recall": 0.5819237997608064,
+        "f1-score": 0.6449230769230769,
+        "support": 11706.0
+      },
+      "1": {
+        "precision": 0.6803814002089864,
+        "recall": 0.7998464491362763,
+        "f1-score": 0.7352930797190952,
+        "support": 13025.0
+      },
+      "accuracy": 0.6966964538433545,
+      "macro avg": {
+        "precision": 0.701800212791615,
+        "recall": 0.6908851244485414,
+        "f1-score": 0.690108078321086,
+        "support": 24731.0
+      },
+      "weighted avg": {
+        "precision": 0.7006578645729223,
+        "recall": 0.6966964538433545,
+        "f1-score": 0.6925179694231028,
+        "support": 24731.0
+      }
+    }
+  },
+  "top_features": [
+    [
+      "augment_slot_3_id",
+      2196.56591796875
+    ],
+    [
+      "streak",
+      586.10498046875
+    ],
+    [
+      "augment_tier_sum",
+      211.69186401367188
+    ],
+    [
+      "hp",
+      108.8145751953125
+    ],
+    [
+      "hp_percentage",
+      94.0842056274414
+    ],
+    [
+      "total_team_cost",
+      72.92632293701172
+    ],
+    [
+      "stage",
+      55.625823974609375
+    ],
+    [
+      "trait_TFT16_Noxus_count",
+      41.85464096069336
+    ],
+    [
+      "trait_TFT16_Targon_count",
+      34.66372299194336
+    ],
+    [
+      "trait_TFT16_Targon_active",
+      33.317440032958984
+    ],
+    [
+      "round",
+      29.180219650268555
+    ],
+    [
+      "trait_TFT16_Juggernaut_active",
+      28.493515014648438
+    ],
+    [
+      "trait_TFT16_Juggernaut_tier",
+      28.455469131469727
+    ],
+    [
+      "total_hp_pool",
+      28.2193660736084
+    ],
+    [
+      "stage_hp_pressure",
+      27.186084747314453
+    ],
+    [
+      "num_units_cost_2",
+      26.46686553955078
+    ],
+    [
+      "team_dps_estimate",
+      20.627817153930664
+    ],
+    [
+      "trait_TFT16_Juggernaut_count",
+      20.506868362426758
+    ],
+    [
+      "trait_TFT16_Vanquisher_count",
+      19.382654190063477
+    ],
+    [
+      "num_units_cost_3",
+      16.614408493041992
+    ]
+  ],
+  "feature_count": 232
+}

@@ -1,0 +1,152 @@
+{
+  "task": "top4",
+  "params": {
+    "max_depth": 8,
+    "learning_rate": 0.05,
+    "n_estimators": 500,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "min_child_weight": 5,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.0,
+    "tree_method": "hist",
+    "random_state": 42,
+    "objective": "binary:logistic",
+    "eval_metric": "auc",
+    "device": "cpu"
+  },
+  "metrics": {
+    "task": "top4",
+    "accuracy": 0.8514189062206352,
+    "auc_roc": 0.9301027783482294,
+    "confusion_matrix": [
+      [
+        6697,
+        3005
+      ],
+      [
+        948,
+        15955
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.875997383911053,
+        "recall": 0.6902700474129045,
+        "f1-score": 0.7721219807459503,
+        "support": 9702.0
+      },
+      "1": {
+        "precision": 0.8415084388185654,
+        "recall": 0.9439152813110099,
+        "f1-score": 0.8897749769957896,
+        "support": 16903.0
+      },
+      "accuracy": 0.8514189062206352,
+      "macro avg": {
+        "precision": 0.8587529113648091,
+        "recall": 0.8170926643619572,
+        "f1-score": 0.8309484788708699,
+        "support": 26605.0
+      },
+      "weighted avg": {
+        "precision": 0.8540854636367318,
+        "recall": 0.8514189062206352,
+        "f1-score": 0.8468706594007532,
+        "support": 26605.0
+      }
+    }
+  },
+  "top_features": [
+    [
+      "streak",
+      204.42262268066406
+    ],
+    [
+      "stage",
+      130.7775115966797
+    ],
+    [
+      "augment_slot_3_id",
+      114.70169830322266
+    ],
+    [
+      "round",
+      103.68548583984375
+    ],
+    [
+      "augment_tier_sum",
+      69.59903717041016
+    ],
+    [
+      "hp_advantage",
+      41.242977142333984
+    ],
+    [
+      "hp",
+      31.163801193237305
+    ],
+    [
+      "stage_hp_pressure",
+      31.15120506286621
+    ],
+    [
+      "hp_percentage",
+      29.8067626953125
+    ],
+    [
+      "num_units",
+      26.781511306762695
+    ],
+    [
+      "unit_count_advantage",
+      26.185373306274414
+    ],
+    [
+      "carry_personal_avg_place",
+      25.709136962890625
+    ],
+    [
+      "trait_TFT16_Targon_active",
+      23.603418350219727
+    ],
+    [
+      "trait_TFT16_Targon_count",
+      23.264060974121094
+    ],
+    [
+      "trait_TFT16_Sorcerer_tier",
+      22.834993362426758
+    ],
+    [
+      "trait_TFT16_Vanquisher_active",
+      17.62171173095703
+    ],
+    [
+      "trait_TFT16_Caretaker_tier",
+      16.593252182006836
+    ],
+    [
+      "has_trait_augment",
+      15.486599922180176
+    ],
+    [
+      "trait_TFT16_Sorcerer_active",
+      14.44935131072998
+    ],
+    [
+      "trait_TFT16_Invoker_tier",
+      14.203073501586914
+    ]
+  ],
+  "feature_count": 232,
+  "ablation": {
+    "use_composition": 0.005450103364029291,
+    "use_economy": 0.00037586919751930736,
+    "use_traits": 0.003645931215936815,
+    "use_items": 0.00616425483931593,
+    "use_augments": -0.021650065777109595,
+    "use_matchup": 0.005036647246758119,
+    "use_personal_weights": 0.005938733320804412
+  }
+}
