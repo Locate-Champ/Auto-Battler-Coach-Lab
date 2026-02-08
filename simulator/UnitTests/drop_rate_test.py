@@ -4,23 +4,27 @@
 
 from Simulator.player import Player
 from Simulator.pool import pool
-from Simulator.champion import champion
 from Simulator.pool import COST_1, COST_2, COST_3, COST_4, COST_5
+from Simulator.pool_stats import level_percentage
 
-# Verify shop drop rates for each cost are correct
-
-# Correct drop rates of each cost by level for set 4
-CORRECT_DROP_RATES = [
-    [1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0],
-    [0.75, 0.25, 0, 0, 0],
-    [0.55, 0.30, 0.15, 0, 0],
-    [0.45, 0.33, 0.20, 0.02, 0],
-    [0.25, 0.40, 0.30, 0.05, 0],
-    [0.20, 0.30, 0.35, 0.14, 0.01],
-    [0.15, 0.20, 0.35, 0.25, 0.05],
-    [0.10, 0.15, 0.30, 0.30, 0.15],
-]
+def expected_drop_rates_for_level(level):
+    """Convert cumulative threshold odds into per-cost probabilities."""
+    thresholds = level_percentage[level - 1]
+    cumulative = []
+    prev = 0.0
+    for threshold in thresholds:
+        # Values > 1 are sentinels meaning "no additional costs available".
+        if threshold > 1:
+            threshold = prev
+        cumulative.append(threshold)
+        prev = threshold
+    return [
+        cumulative[0],
+        cumulative[1] - cumulative[0],
+        cumulative[2] - cumulative[1],
+        cumulative[3] - cumulative[2],
+        cumulative[4] - cumulative[3],
+    ]
 
 
 def verifyShopDropRate():
@@ -68,30 +72,32 @@ def verifyShopDropRate():
             total_5_cost += costs[4][list(costs[4])[i]]
 
         # need to add proper statistical one way ANOVA to be extra sure, right now error is arbitrary (variance of 1%)
-        assert (CORRECT_DROP_RATES[level - 1][0] - 0.01) <= total_1_cost / 100000 <= (
-                    CORRECT_DROP_RATES[level - 1][0] + 0.01), \
+        expected = expected_drop_rates_for_level(level)
+
+        assert (expected[0] - 0.01) <= total_1_cost / 100000 <= (
+                    expected[0] + 0.01), \
             f"1 Cost Champion drop rate at level {level} is significantly incorrect! Control: " \
-            f"{CORRECT_DROP_RATES[level - 1][0]} Sample: {total_1_cost / 100000}"
+            f"{expected[0]} Sample: {total_1_cost / 100000}"
 
-        assert (CORRECT_DROP_RATES[level - 1][1] - 0.01) <= total_2_cost / 100000 <= (
-                    CORRECT_DROP_RATES[level - 1][1] + 0.01), \
+        assert (expected[1] - 0.01) <= total_2_cost / 100000 <= (
+                    expected[1] + 0.01), \
             f"2 Cost Champion drop rate at level {level} is significantly incorrect! Control: " \
-            f"{CORRECT_DROP_RATES[level - 1][1]} Sample: {total_2_cost / 100000}"
+            f"{expected[1]} Sample: {total_2_cost / 100000}"
 
-        assert (CORRECT_DROP_RATES[level - 1][2] - 0.01) <= total_3_cost / 100000 <= (
-                    CORRECT_DROP_RATES[level - 1][2] + 0.01), \
+        assert (expected[2] - 0.01) <= total_3_cost / 100000 <= (
+                    expected[2] + 0.01), \
             f"3 Cost Champion drop rate at level {level} is significantly incorrect! Control: " \
-            f"{CORRECT_DROP_RATES[level - 1][2]} Sample: {total_3_cost / 100000}"
+            f"{expected[2]} Sample: {total_3_cost / 100000}"
 
-        assert (CORRECT_DROP_RATES[level - 1][3] - 0.01) <= total_4_cost / 100000 <= (
-                    CORRECT_DROP_RATES[level - 1][3] + 0.01), \
+        assert (expected[3] - 0.01) <= total_4_cost / 100000 <= (
+                    expected[3] + 0.01), \
             f"4 Cost Champion drop rate at level {level} is significantly incorrect! Control: " \
-            f"{CORRECT_DROP_RATES[level - 1][3]} Sample: {total_4_cost / 100000}"
+            f"{expected[3]} Sample: {total_4_cost / 100000}"
 
-        assert (CORRECT_DROP_RATES[level - 1][4] - 0.01) <= total_5_cost / 100000 <= (
-                    CORRECT_DROP_RATES[level - 1][4] + 0.01), \
+        assert (expected[4] - 0.01) <= total_5_cost / 100000 <= (
+                    expected[4] + 0.01), \
             f"5 Cost Champion drop rate at level {level} is significantly incorrect! Control: " \
-            f"{CORRECT_DROP_RATES[level - 1][4]} Sample: {total_5_cost / 100000}"
+            f"{expected[4]} Sample: {total_5_cost / 100000}"
 
         print("Total percent (should be 1.0 or very close)  : " + str(
             (total_1_cost + total_2_cost + total_3_cost + total_4_cost + total_5_cost) / 100000))
