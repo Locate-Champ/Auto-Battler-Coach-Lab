@@ -1,0 +1,152 @@
+{
+  "task": "fight",
+  "params": {
+    "max_depth": 8,
+    "learning_rate": 0.05,
+    "n_estimators": 500,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "min_child_weight": 5,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.0,
+    "tree_method": "hist",
+    "random_state": 42,
+    "objective": "binary:logistic",
+    "eval_metric": "auc",
+    "device": "cpu"
+  },
+  "metrics": {
+    "task": "fight",
+    "accuracy": 0.7131209783781624,
+    "auc_roc": 0.7869244713316985,
+    "confusion_matrix": [
+      [
+        8073,
+        3749
+      ],
+      [
+        3429,
+        9770
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.7018779342723005,
+        "recall": 0.6828793774319066,
+        "f1-score": 0.6922483279025896,
+        "support": 11822.0
+      },
+      "1": {
+        "precision": 0.7226865892447666,
+        "recall": 0.7402075914842033,
+        "f1-score": 0.7313421663298151,
+        "support": 13199.0
+      },
+      "accuracy": 0.7131209783781624,
+      "macro avg": {
+        "precision": 0.7122822617585336,
+        "recall": 0.711543484458055,
+        "f1-score": 0.7117952471162023,
+        "support": 25021.0
+      },
+      "weighted avg": {
+        "precision": 0.7128548511413937,
+        "recall": 0.7131209783781624,
+        "f1-score": 0.7128709878043101,
+        "support": 25021.0
+      }
+    }
+  },
+  "top_features": [
+    [
+      "augment_slot_3_id",
+      36.51546096801758
+    ],
+    [
+      "streak",
+      31.858158111572266
+    ],
+    [
+      "carry_personal_avg_place",
+      22.2344970703125
+    ],
+    [
+      "hp_advantage",
+      17.54151725769043
+    ],
+    [
+      "unit_count_advantage",
+      17.01430320739746
+    ],
+    [
+      "trait_TFT16_Targon_count",
+      14.398577690124512
+    ],
+    [
+      "hp",
+      14.08813762664795
+    ],
+    [
+      "trait_TFT16_Targon_active",
+      13.627323150634766
+    ],
+    [
+      "hp_percentage",
+      12.42786693572998
+    ],
+    [
+      "augment_tier_sum",
+      12.077943801879883
+    ],
+    [
+      "trait_TFT16_Juggernaut_tier",
+      11.184701919555664
+    ],
+    [
+      "trait_TFT16_KaisaUnique_count",
+      10.619271278381348
+    ],
+    [
+      "carry_cost_advantage",
+      9.077106475830078
+    ],
+    [
+      "stage_hp_pressure",
+      8.958540916442871
+    ],
+    [
+      "stage",
+      8.839390754699707
+    ],
+    [
+      "level",
+      8.792583465576172
+    ],
+    [
+      "carry_cost",
+      8.758313179016113
+    ],
+    [
+      "trait_TFT16_Rapidfire_active",
+      7.806428909301758
+    ],
+    [
+      "round",
+      7.749016284942627
+    ],
+    [
+      "total_team_cost",
+      7.53308629989624
+    ]
+  ],
+  "feature_count": 232,
+  "ablation": {
+    "use_composition": -0.0011590264178090726,
+    "use_economy": -0.008512849206666395,
+    "use_traits": -0.00807321849646303,
+    "use_items": -0.0021581871228167904,
+    "use_augments": -0.01762519483633751,
+    "use_matchup": -0.0020782542664161685,
+    "use_personal_weights": -0.0025578514048200107
+  }
+}

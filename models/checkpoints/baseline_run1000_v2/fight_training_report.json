@@ -1,0 +1,152 @@
+{
+  "task": "fight",
+  "params": {
+    "max_depth": 8,
+    "learning_rate": 0.05,
+    "n_estimators": 500,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "min_child_weight": 5,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.0,
+    "tree_method": "hist",
+    "random_state": 42,
+    "objective": "binary:logistic",
+    "eval_metric": "auc",
+    "device": "cpu"
+  },
+  "metrics": {
+    "task": "fight",
+    "accuracy": 1.0,
+    "auc_roc": 0.9999999999999999,
+    "confusion_matrix": [
+      [
+        12622,
+        0
+      ],
+      [
+        0,
+        13999
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 12622.0
+      },
+      "1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 13999.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 26621.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 26621.0
+      }
+    }
+  },
+  "top_features": [
+    [
+      "streak",
+      6548.37060546875
+    ],
+    [
+      "augment_slot_3_id",
+      401.1498107910156
+    ],
+    [
+      "hp_advantage",
+      134.3423309326172
+    ],
+    [
+      "hp_percentage",
+      108.35979461669922
+    ],
+    [
+      "hp",
+      101.29203033447266
+    ],
+    [
+      "num_units",
+      99.22065734863281
+    ],
+    [
+      "trait_TFT16_KaisaUnique_count",
+      86.14935302734375
+    ],
+    [
+      "frontline_tankiness",
+      77.29574584960938
+    ],
+    [
+      "level",
+      74.66582489013672
+    ],
+    [
+      "gold",
+      39.10908508300781
+    ],
+    [
+      "total_team_cost",
+      36.15184783935547
+    ],
+    [
+      "unit_count_advantage",
+      35.13458251953125
+    ],
+    [
+      "round",
+      22.23931312561035
+    ],
+    [
+      "team_dps_estimate",
+      20.199209213256836
+    ],
+    [
+      "carry_personal_avg_place",
+      18.92563247680664
+    ],
+    [
+      "carry_cost",
+      10.99216079711914
+    ],
+    [
+      "cost_advantage",
+      7.7530622482299805
+    ],
+    [
+      "stage_hp_pressure",
+      7.325500965118408
+    ],
+    [
+      "trait_TFT16_Gunslinger_active",
+      6.376096248626709
+    ],
+    [
+      "trait_TFT16_Targon_active",
+      4.817660331726074
+    ]
+  ],
+  "feature_count": 232,
+  "ablation": {
+    "use_composition": 0.0,
+    "use_economy": -0.22963074264678263,
+    "use_traits": 0.0,
+    "use_items": 0.0,
+    "use_augments": 0.0,
+    "use_matchup": 0.0,
+    "use_personal_weights": 0.0
+  }
+}

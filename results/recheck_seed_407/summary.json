@@ -1,0 +1,836 @@
+{
+  "num_games": 1,
+  "num_errors": 0,
+  "num_workers": 1,
+  "total_time_sec": 2.3,
+  "games_per_sec": 0.43,
+  "avg_game_time_sec": 2.307,
+  "avg_rounds": 29.0,
+  "total_training_rows": 147,
+  "total_chunks": 1,
+  "top_champions": [
+    [
+      "yasuo",
+      1.0
+    ],
+    [
+      "chogath",
+      1.0
+    ],
+    [
+      "draven",
+      2.0
+    ],
+    [
+      "warwick",
+      2.0
+    ],
+    [
+      "annie",
+      2.0
+    ],
+    [
+      "xinzhao",
+      2.67
+    ],
+    [
+      "briar",
+      2.67
+    ],
+    [
+      "leblanc",
+      3.0
+    ],
+    [
+      "graves",
+      3.0
+    ],
+    [
+      "ekko",
+      3.0
+    ],
+    [
+      "loris",
+      3.0
+    ],
+    [
+      "anivia",
+      3.67
+    ],
+    [
+      "shen",
+      3.75
+    ],
+    [
+      "jhin",
+      4.0
+    ],
+    [
+      "wukong",
+      4.0
+    ],
+    [
+      "tryndamere",
+      4.0
+    ],
+    [
+      "gangplank",
+      4.0
+    ],
+    [
+      "orianna",
+      4.0
+    ],
+    [
+      "caitlyn",
+      4.5
+    ],
+    [
+      "viego",
+      4.5
+    ]
+  ],
+  "bottom_champions": [
+    [
+      "tristana",
+      7.0
+    ],
+    [
+      "lissandra",
+      7.0
+    ],
+    [
+      "gwen",
+      7.0
+    ],
+    [
+      "jarvaniv",
+      7.0
+    ],
+    [
+      "vi",
+      7.0
+    ],
+    [
+      "vayne",
+      6.0
+    ],
+    [
+      "rumble",
+      6.0
+    ],
+    [
+      "sion",
+      6.0
+    ],
+    [
+      "nasus",
+      6.0
+    ],
+    [
+      "blitzcrank",
+      5.5
+    ],
+    [
+      "kogmaw",
+      5.0
+    ],
+    [
+      "illaoi",
+      5.0
+    ],
+    [
+      "sona",
+      5.0
+    ],
+    [
+      "qiyana",
+      5.0
+    ],
+    [
+      "poppy",
+      5.0
+    ],
+    [
+      "kobuko",
+      5.0
+    ],
+    [
+      "nidalee",
+      5.0
+    ],
+    [
+      "caitlyn",
+      4.5
+    ],
+    [
+      "viego",
+      4.5
+    ],
+    [
+      "jhin",
+      4.0
+    ]
+  ],
+  "top_augments": [
+    [
+      "TFT_Augment_PlotArmor",
+      1.0
+    ],
+    [
+      "TFT16_Augment_Arcanist_ChaosMagic",
+      2.0
+    ],
+    [
+      "TFT6_Augment_MakeshiftArmor1",
+      3.0
+    ],
+    [
+      "TFT10_Augment_LittleBuddies",
+      3.0
+    ],
+    [
+      "TFT_Augment_UpwardMobility",
+      3.25
+    ],
+    [
+      "TFT16_Augment_EarthAxiom",
+      3.67
+    ],
+    [
+      "TFT16_Augment_Yordle_WildGrowth",
+      4.0
+    ],
+    [
+      "TFT_Augment_TwinGuardians",
+      4.0
+    ],
+    [
+      "TFT7_Augment_BandOfThieves1",
+      4.0
+    ],
+    [
+      "TFT_Augment_Replication",
+      5.0
+    ],
+    [
+      "TFT_Augment_ThornPlatedArmor",
+      6.0
+    ],
+    [
+      "TFT16_Augment_BandleBounty",
+      6.0
+    ],
+    [
+      "TFT16_Augment_AirAxiom",
+      6.0
+    ],
+    [
+      "TFT6_Augment_GachaAddict",
+      7.0
+    ],
+    [
+      "TFT_Augment_SilverDestinyPlus",
+      7.0
+    ]
+  ],
+  "champion_pick_rates": {
+    "shen": 4,
+    "illaoi": 4,
+    "xinzhao": 3,
+    "anivia": 3,
+    "briar": 3,
+    "kogmaw": 3,
+    "leblanc": 3,
+    "jhin": 2,
+    "caitlyn": 2,
+    "wukong": 2,
+    "sona": 2,
+    "viego": 2,
+    "blitzcrank": 2,
+    "vayne": 2,
+    "yasuo": 1,
+    "chogath": 1,
+    "draven": 1,
+    "warwick": 1,
+    "annie": 1,
+    "graves": 1
+  },
+  "confidence_method": "wilson_95",
+  "champion_metrics": [
+    {
+      "name": "yasuo",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "chogath",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "draven",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "warwick",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "annie",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "xinzhao",
+      "samples": 3,
+      "avg_placement": 2.667,
+      "placement_stddev": 1.247,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.4385,
+        1.0
+      ],
+      "win_rate": 0.3333,
+      "win_ci95": [
+        0.0615,
+        0.7923
+      ]
+    },
+    {
+      "name": "briar",
+      "samples": 3,
+      "avg_placement": 2.667,
+      "placement_stddev": 1.247,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.4385,
+        1.0
+      ],
+      "win_rate": 0.3333,
+      "win_ci95": [
+        0.0615,
+        0.7923
+      ]
+    },
+    {
+      "name": "leblanc",
+      "samples": 3,
+      "avg_placement": 3.0,
+      "placement_stddev": 2.16,
+      "top4_rate": 0.6667,
+      "top4_ci95": [
+        0.2077,
+        0.9385
+      ],
+      "win_rate": 0.3333,
+      "win_ci95": [
+        0.0615,
+        0.7923
+      ]
+    },
+    {
+      "name": "graves",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "ekko",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "loris",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "anivia",
+      "samples": 3,
+      "avg_placement": 3.667,
+      "placement_stddev": 2.055,
+      "top4_rate": 0.6667,
+      "top4_ci95": [
+        0.2077,
+        0.9385
+      ],
+      "win_rate": 0.3333,
+      "win_ci95": [
+        0.0615,
+        0.7923
+      ]
+    },
+    {
+      "name": "shen",
+      "samples": 4,
+      "avg_placement": 3.75,
+      "placement_stddev": 1.92,
+      "top4_rate": 0.75,
+      "top4_ci95": [
+        0.3006,
+        0.9544
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.4899
+      ]
+    },
+    {
+      "name": "jhin",
+      "samples": 2,
+      "avg_placement": 4.0,
+      "placement_stddev": 3.0,
+      "top4_rate": 0.5,
+      "top4_ci95": [
+        0.0945,
+        0.9055
+      ],
+      "win_rate": 0.5,
+      "win_ci95": [
+        0.0945,
+        0.9055
+      ]
+    },
+    {
+      "name": "wukong",
+      "samples": 2,
+      "avg_placement": 4.0,
+      "placement_stddev": 2.0,
+      "top4_rate": 0.5,
+      "top4_ci95": [
+        0.0945,
+        0.9055
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.6576
+      ]
+    },
+    {
+      "name": "tryndamere",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "gangplank",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "orianna",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "caitlyn",
+      "samples": 2,
+      "avg_placement": 4.5,
+      "placement_stddev": 2.5,
+      "top4_rate": 0.5,
+      "top4_ci95": [
+        0.0945,
+        0.9055
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.6576
+      ]
+    },
+    {
+      "name": "viego",
+      "samples": 2,
+      "avg_placement": 4.5,
+      "placement_stddev": 0.5,
+      "top4_rate": 0.5,
+      "top4_ci95": [
+        0.0945,
+        0.9055
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.6576
+      ]
+    }
+  ],
+  "augment_metrics": [
+    {
+      "name": "TFT_Augment_PlotArmor",
+      "samples": 1,
+      "avg_placement": 1.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 1.0,
+      "win_ci95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "name": "TFT16_Augment_Arcanist_ChaosMagic",
+      "samples": 1,
+      "avg_placement": 2.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT6_Augment_MakeshiftArmor1",
+      "samples": 2,
+      "avg_placement": 3.0,
+      "placement_stddev": 2.0,
+      "top4_rate": 0.5,
+      "top4_ci95": [
+        0.0945,
+        0.9055
+      ],
+      "win_rate": 0.5,
+      "win_ci95": [
+        0.0945,
+        0.9055
+      ]
+    },
+    {
+      "name": "TFT10_Augment_LittleBuddies",
+      "samples": 1,
+      "avg_placement": 3.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_UpwardMobility",
+      "samples": 4,
+      "avg_placement": 3.25,
+      "placement_stddev": 2.278,
+      "top4_rate": 0.75,
+      "top4_ci95": [
+        0.3006,
+        0.9544
+      ],
+      "win_rate": 0.25,
+      "win_ci95": [
+        0.0456,
+        0.6994
+      ]
+    },
+    {
+      "name": "TFT16_Augment_EarthAxiom",
+      "samples": 3,
+      "avg_placement": 3.667,
+      "placement_stddev": 1.7,
+      "top4_rate": 0.6667,
+      "top4_ci95": [
+        0.2077,
+        0.9385
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.5615
+      ]
+    },
+    {
+      "name": "TFT16_Augment_Yordle_WildGrowth",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_TwinGuardians",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT7_Augment_BandOfThieves1",
+      "samples": 1,
+      "avg_placement": 4.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 1.0,
+      "top4_ci95": [
+        0.2065,
+        1.0
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_Replication",
+      "samples": 1,
+      "avg_placement": 5.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_ThornPlatedArmor",
+      "samples": 2,
+      "avg_placement": 6.0,
+      "placement_stddev": 1.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.6576
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.6576
+      ]
+    },
+    {
+      "name": "TFT16_Augment_BandleBounty",
+      "samples": 1,
+      "avg_placement": 6.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT16_Augment_AirAxiom",
+      "samples": 1,
+      "avg_placement": 6.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT6_Augment_GachaAddict",
+      "samples": 1,
+      "avg_placement": 7.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "name": "TFT_Augment_SilverDestinyPlus",
+      "samples": 1,
+      "avg_placement": 7.0,
+      "placement_stddev": 0.0,
+      "top4_rate": 0.0,
+      "top4_ci95": [
+        0.0,
+        0.7935
+      ],
+      "win_rate": 0.0,
+      "win_ci95": [
+        0.0,
+        0.7935
+      ]
+    }
+  ],
+  "run_config": {
+    "seed_start": 407,
+    "seed_end": 407,
+    "agent_profile": "ladder",
+    "agent_mix": {
+      "random": 20,
+      "econ": 45,
+      "slam": 35
+    },
+    "chunk_size": 100,
+    "resume": false
+  }
+}
