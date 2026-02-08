@@ -1,0 +1,33 @@
+{
+  "scraped_at": "2026-02-05T04:50:48.397424+00:00",
+  "source": "metatft.com",
+  "total_champions": 1,
+  "successful": 1,
+  "failed": 0,
+  "champions": {
+    "TFT16_Aatrox": {
+      "api_name": "TFT16_Aatrox",
+      "display_name": "Aatrox ",
+      "cost": 5,
+      "url": "https://www.metatft.com/units/Aatrox ",
+      "ability_description": "On cast, cycle through one of the following abilities:\n\nSlash in a line, dealing 110/210/2500 () physical damage to enemies hit and 20% Sundering them for 4 seconds.\n\nSwipe in a cone, dealing 132/252/3000 () physical damage to enemies hit and knocking them up for 1 second.\n\nSlam on target, dealing 176/336/4000 () physical damage in a 1 hex circle. Targets below 15% max Health are executed.\nDamage:\n15/25/100\nSlash Damage:\n110/210/2500\n95/185/2400 ()\n+\n15/25/100 ()\nSwipe Damage:\n132/252/3000\n120\n% of\n110/210/2500\nSlam Damage:\n176/336/4000\n160\n% of\n110/210/2500",
+      "stats": {
+        "raw_text": "Health\n1000/1800/3240\nMana\n0/20\nAttack Damage\n65/98/146\nAbility Power\n100\nArmor\n55\nMagic Resist\n55\nAttack Speed\n0.9\nCrit Chance\n25%\nCrit Damage\n140%\nRange\n1",
+        "parsed": {
+          "Health": "1000/1800/3240",
+          "Mana": "0/20",
+          "Attack Damage": "65/98/146",
+          "Ability Power": "100",
+          "Armor": "55",
+          "Magic Resist": "55",
+          "Attack Speed": "0.9",
+          "Crit Chance": "25%",
+          "Crit Damage": "140%",
+          "Range": "1"
+        }
+      },
+      "scraped": true,
+      "error": null
+    }
+  }
+}
