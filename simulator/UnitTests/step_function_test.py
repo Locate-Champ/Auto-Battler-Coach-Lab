@@ -2,7 +2,7 @@ import config
 import pytest
 import numpy as np
 from Simulator import pool
-from Simulator.battle_generator import BattleGenerator
+from Simulator.battle_generator import BattleGenerator, base_level_config
 from Simulator.player_manager import PlayerManager
 from Simulator.observation.vector.observation import ObservationVector
 from Simulator.step_function import Step_Function
@@ -11,7 +11,7 @@ from Simulator.utils import x_y_to_1d_coord
 
 
 def test_position_controller():
-    battle_generator = BattleGenerator()
+    battle_generator = BattleGenerator(base_level_config)
     [player, opponent, other_players] = battle_generator.generate_battle()
 
     PLAYER = player
