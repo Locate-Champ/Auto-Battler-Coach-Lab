@@ -111,7 +111,7 @@ class Util:
     def get_champion_id(self, champion) -> int:
         if champion.target_dummy:
             return self.champion_ids['target_dummy']
-        return self.champion_ids[champion.name]
+        return self.champion_ids.get(champion.name, 0)
     
     def get_champion_cost(self, champion) -> int:
         return cost_star_values[champion.cost - 1][champion.stars - 1]
@@ -120,7 +120,7 @@ class Util:
     def get_item_id(self, item) -> int:
         if item is None:
             return 0
-        return self.item_ids[item]
+        return self.item_ids.get(item, 0)
     
     def get_item_stats(self, item) -> dict:
         return items[item]
@@ -133,7 +133,7 @@ class Util:
     
     # -- Traits -- #
     def get_trait_id(self, trait) -> int:
-        return self.trait_ids[trait]
+        return self.trait_ids.get(trait, 0)
 
     def get_item_trait(self, item) -> str:
         if item in self.item_traits:

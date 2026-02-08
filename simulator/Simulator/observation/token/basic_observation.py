@@ -9,7 +9,7 @@ from Simulator.observation.interface import ObservationBase, ObservationUpdateBa
 from Simulator.config import MAX_CHAMPION_IN_SET, MAX_ITEMS_IN_SET
 from Simulator.item_stats import items
 from Simulator.stats import COST
-from Simulator.origin_class_stats import tiers, origin_class
+from Simulator.origin_class_stats import origin_class
 from Simulator.utils import x_y_to_1d_coord
 
 
@@ -529,17 +529,16 @@ class ObservationToken(ObservationBase, ObservationUpdateBase):
     def create_trait_vector(self, player):
         current_position = 0
         tiers_vector = np.zeros(config.TIERS_FLATTEN_LENGTH, dtype=np.float32)
-        base_tier_values = list(tiers.values())
         player_tier_values = list(player.team_tiers.values())
-        for i in range(len(base_tier_values)):
-            try:
-                tiers_vector[current_position + player_tier_values[i]] = 1
-                player.team_tier_labels[i] = np.zeros(config.TEAM_TIERS_VECTOR[i], dtype=np.float32)
-                player.team_tier_labels[i][player_tier_values[i]] = 1
-                current_position += len(base_tier_values[i]) + 1
-            except IndexError:
-                print("index i {} with player_tier_values[i] {}".format(i, player_tier_values[i]))
-                print("team_tier_labels {}".format(player.team_tier_labels))
+        max_traits = min(len(config.TEAM_TIERS_VECTOR), len(player_tier_values))
+        for i in range(max_traits):
+            tier_size = config.TEAM_TIERS_VECTOR[i]
+            tier_idx = int(player_tier_values[i])
+            tier_idx = max(0, min(tier_idx, tier_size - 1))
+            tiers_vector[current_position + tier_idx] = 1
+            player.team_tier_labels[i] = np.zeros(tier_size, dtype=np.float32)
+            player.team_tier_labels[i][tier_idx] = 1
+            current_position += tier_size
 
         chosen_vector = np.zeros(5, dtype=np.float32)
         if player.chosen:

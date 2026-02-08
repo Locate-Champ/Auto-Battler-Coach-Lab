@@ -114,7 +114,7 @@ class champion:
         self.underlords = []
         self.overlord = overlord
         self.overlord_coordinates = sandguard_overlord_coordinates
-        self.origin = origin_class_stats.origin_class[self.name].copy()
+        self.origin = origin_class_stats.origin_class.get(self.name, []).copy()
 
         self.will_revive = [[None], [None]]  # consists of [[zilean_champion], [GA]]
 
@@ -616,14 +616,26 @@ def run(champion_q, player_1, player_2, round_damage=0):
         if MILLIS() > 150000:
             test_multiple['bugged out'] += 1
             break
-        if MILLIS() > 0 and MILLIS() % origin_class_stats.length['elderwood'] == 0:
+        length_table = getattr(origin_class_stats, 'length', {})
+        threshold_table = getattr(origin_class_stats, 'threshold', {})
+
+        elderwood_tick = length_table.get('elderwood', 0)
+        if elderwood_tick and MILLIS() > 0 and MILLIS() % elderwood_tick == 0:
             origin_class.elderwood(blue, red)  # elderwood -trait
-        if MILLIS() > 0 and MILLIS() % \
-                origin_class_stats.threshold['hunter'][origin_class.get_origin_class_tier('blue', 'hunter')] == 0:
-            origin_class.hunter(blue)  # hunter -trait
-        if MILLIS() > 0 and MILLIS() % \
-                origin_class_stats.threshold['hunter'][origin_class.get_origin_class_tier('red', 'hunter')] == 0:
-            origin_class.hunter(red)  # hunter -trait
+
+        hunter_thresholds = threshold_table.get('hunter', [])
+        if hunter_thresholds:
+            blue_hunter_tier = origin_class.get_origin_class_tier('blue', 'hunter')
+            if blue_hunter_tier < len(hunter_thresholds):
+                blue_hunter_tick = hunter_thresholds[blue_hunter_tier]
+                if blue_hunter_tick and MILLIS() > 0 and MILLIS() % blue_hunter_tick == 0:
+                    origin_class.hunter(blue)  # hunter -trait
+
+            red_hunter_tier = origin_class.get_origin_class_tier('red', 'hunter')
+            if red_hunter_tier < len(hunter_thresholds):
+                red_hunter_tick = hunter_thresholds[red_hunter_tier]
+                if red_hunter_tick and MILLIS() > 0 and MILLIS() % red_hunter_tick == 0:
+                    origin_class.hunter(red)  # hunter -trait
 
         for b, o in itertools.zip_longest(blue, red):
             if b and not b.target_dummy:
