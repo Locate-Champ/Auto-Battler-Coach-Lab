@@ -59,14 +59,21 @@ def default_mapping_test():
             local_counter += 1
     for a in range(38):
         if a == 0:
-            assert default_mapping[local_counter] == "0"
-            assert default_mapping[local_counter + 1] == "1"
-            assert default_mapping[local_counter + 2] == "2"
+            assert default_mapping[local_counter + a] == "0"
         else:
-            assert default_mapping[local_counter] == f"0_{a}"
-            assert default_mapping[local_counter + 1] == f"1_{a}"
-            assert default_mapping[local_counter + 2] == f"2_{a}"
-        local_counter += 3
+            assert default_mapping[local_counter + a] == f"0_{a}"
+    local_counter += 38
+    for a in range(38):
+        if a == 0:
+            assert default_mapping[local_counter + a] == "1"
+        else:
+            assert default_mapping[local_counter + a] == f"1_{a}"
+    local_counter += 38
+    for a in range(38):
+        if a == 0:
+            assert default_mapping[local_counter + a] == "2"
+        else:
+            assert default_mapping[local_counter + a] == f"2_{a}"
 
 # So let me figure out a few tests that I need to run.
 def mask_basic_test():

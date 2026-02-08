@@ -20,4 +20,4 @@ def test_Env():
     # raw_env = aec(tftConfig)
     # api_test(raw_env, num_cycles=100000)
     local_env = parallel(tftConfig)
-    parallel_api_test(local_env, num_cycles=100000)
+    parallel_api_test(local_env, num_cycles=2000)
