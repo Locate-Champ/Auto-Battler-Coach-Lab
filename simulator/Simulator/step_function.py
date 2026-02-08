@@ -104,6 +104,9 @@ class Step_Function:
                 | (21) (22) (23) (24) (25) (26) (27) |
                                         Bottom
         """
+        if not self.position_list:
+            self.create_unit_list(player)
+
         # print(f"action {action} for player {player.player_num}")
         # Remove all duplicate actions, keep the early ones.
         destination = []
@@ -119,9 +122,13 @@ class Step_Function:
             destination_coords.append([x1, y1])
 
         for i, coord in enumerate(destination_coords):
+            if i >= len(self.position_list):
+                break
             # 28 pass rule.
             if coord[0] != 7:
                 temp_square = self.position_list[i]
+                if temp_square == [-1, -1]:
+                    continue
                 player.move_board_to_board(temp_square[0], temp_square[1], coord[0], coord[1])
                 # Make note that this square was already used
                 self.position_list[i] = [-1, -1]

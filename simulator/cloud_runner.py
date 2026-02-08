@@ -274,9 +274,18 @@ class StreamingWriter:
 
         rows = self._row_buffer
         for row in rows:
-            for key in ('board_names', 'board_stars', 'trait_names',
-                        'trait_counts', 'augments'):
-                if key in row:
+            for key in (
+                'board_names',
+                'board_stars',
+                'trait_names',
+                'trait_counts',
+                'augments',
+                'units',
+                'traits',
+                'opponent_units',
+                'opponent_traits',
+            ):
+                if key in row and isinstance(row[key], (list, dict)):
                     row[key] = json.dumps(row[key])
 
         table = pa.Table.from_pylist(rows)

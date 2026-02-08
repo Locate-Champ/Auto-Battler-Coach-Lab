@@ -1301,3 +1301,77 @@ BASE_CHAMPION_LIST = ['diana', 'elise', 'fiora', 'garen', 'lissandra', 'tahmkenc
                       'warwick', 'azir', 'ezreal', 'kayn', 'leesin', 'lillia', 'sett', 'yone', 'zilean'
                       ]
 
+
+def _default_stats_for_cost(cost):
+    """Return conservative fallback base stats for unknown units by cost tier."""
+    base = {
+        1: {"health": 600, "ad": 50, "as": 0.70, "armor": 20, "mr": 20, "range": 1},
+        2: {"health": 700, "ad": 58, "as": 0.75, "armor": 25, "mr": 25, "range": 1},
+        3: {"health": 820, "ad": 68, "as": 0.80, "armor": 30, "mr": 30, "range": 2},
+        4: {"health": 950, "ad": 80, "as": 0.85, "armor": 35, "mr": 35, "range": 3},
+        5: {"health": 1100, "ad": 92, "as": 0.90, "armor": 40, "mr": 40, "range": 3},
+        7: {"health": 1350, "ad": 108, "as": 0.95, "armor": 45, "mr": 45, "range": 3},
+    }
+    return base.get(cost, base[1])
+
+
+def _register_missing_unit(name, cost):
+    if name in COST:
+        return
+    defaults = _default_stats_for_cost(cost)
+    AD[name] = defaults["ad"]
+    AS[name] = defaults["as"]
+    HEALTH[name] = defaults["health"]
+    ARMOR[name] = defaults["armor"]
+    MR[name] = defaults["mr"]
+    RANGE[name] = defaults["range"]
+    MANA[name] = 0
+    MAXMANA[name] = 0
+    COST[name] = cost
+    MANALOCK[name] = 0
+    ABILITY_REQUIRES_TARGET[name] = False
+    ABILITY_WHILE_DISARMED[name] = False
+
+
+try:
+    from Simulator.pool_stats import COST_1 as _POOL_COST_1
+    from Simulator.pool_stats import COST_2 as _POOL_COST_2
+    from Simulator.pool_stats import COST_3 as _POOL_COST_3
+    from Simulator.pool_stats import COST_4 as _POOL_COST_4
+    from Simulator.pool_stats import COST_5 as _POOL_COST_5
+    from Simulator.pool_stats import COST_7 as _POOL_COST_7
+    from Simulator.origin_class_stats import origin_class as _ORIGIN_CLASS
+
+    _cost_lookup = {}
+    for _name in _POOL_COST_1:
+        _cost_lookup[_name] = 1
+    for _name in _POOL_COST_2:
+        _cost_lookup[_name] = 2
+    for _name in _POOL_COST_3:
+        _cost_lookup[_name] = 3
+    for _name in _POOL_COST_4:
+        _cost_lookup[_name] = 4
+    for _name in _POOL_COST_5:
+        _cost_lookup[_name] = 5
+    for _name in _POOL_COST_7:
+        _cost_lookup[_name] = 7
+
+    # Legacy typo present in default-agent tables.
+    _cost_lookup.setdefault("katerina", 3)
+
+    for _name, _cost in _cost_lookup.items():
+        if _name in COST:
+            COST[_name] = _cost
+        else:
+            _register_missing_unit(_name, _cost)
+
+    for _name in _ORIGIN_CLASS:
+        _register_missing_unit(_name, _cost_lookup.get(_name, 1))
+
+    for _name in list(_cost_lookup.keys()):
+        if _name not in BASE_CHAMPION_LIST:
+            BASE_CHAMPION_LIST.append(_name)
+except Exception:
+    # Keep legacy tables untouched if compatibility bootstrap fails.
+    pass
+

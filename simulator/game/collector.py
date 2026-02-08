@@ -44,6 +44,7 @@ class GameCollector:
             for (r, c), ch in player.board.items():
                 board_champs.append({
                     'name': ch.name,
+                    'api_name': ch.api_name,
                     'star': ch.star_level,
                     'items': ch.items[:],
                     'pos': [r, c],
@@ -73,6 +74,7 @@ class GameCollector:
             for (r, c), ch in player.board.items():
                 board_champs.append({
                     'name': ch.name,
+                    'api_name': ch.api_name,
                     'star': ch.star_level,
                     'items': ch.items[:],
                 })
@@ -108,8 +110,80 @@ class GameCollector:
 
         rows = []
         for round_data in self.rounds:
+            players_by_id = {player['id']: player for player in round_data['players']}
+
+            # Build per-player combat metadata from matchup records
+            combat_by_player: Dict[int, Dict] = {}
+            for combat in round_data.get('combats', []):
+                p1 = combat.get('p1')
+                p2 = combat.get('p2')
+                winner = combat.get('winner')
+                damage = combat.get('damage', 0)
+                if p1 is None or p2 is None:
+                    continue
+
+                is_draw = winner not in (p1, p2)
+                for player_id, opponent_id in ((p1, p2), (p2, p1)):
+                    if is_draw:
+                        combat_result = 2
+                        damage_dealt = 0.0
+                        damage_taken = float(damage)
+                    elif winner == player_id:
+                        combat_result = 1
+                        damage_dealt = float(damage)
+                        damage_taken = 0.0
+                    else:
+                        combat_result = 0
+                        damage_dealt = 0.0
+                        damage_taken = float(damage)
+
+                    combat_by_player[player_id] = {
+                        'opponent_id': opponent_id,
+                        'combat_result': combat_result,
+                        'damage_dealt': damage_dealt,
+                        'damage_taken': damage_taken,
+                    }
+
             for player_state in round_data['players']:
                 pid = player_state['id']
+                matchup = combat_by_player.get(pid, {})
+                opponent_id = matchup.get('opponent_id')
+                opponent_state = players_by_id.get(opponent_id)
+
+                units = []
+                for unit in player_state['board']:
+                    position = unit.get('pos')
+                    if isinstance(position, list) and len(position) == 2:
+                        hex_pos = int(position[0]) * 7 + int(position[1])
+                    else:
+                        hex_pos = None
+                    units.append({
+                        'champion_id': unit.get('api_name', unit.get('name')),
+                        'star_level': unit.get('star', 1),
+                        'items': unit.get('items', []),
+                        'position': hex_pos,
+                    })
+
+                opponent_units = []
+                opponent_traits = {}
+                opponent_hp = 0
+                if opponent_state is not None:
+                    for unit in opponent_state.get('board', []):
+                        position = unit.get('pos')
+                        if isinstance(position, list) and len(position) == 2:
+                            hex_pos = int(position[0]) * 7 + int(position[1])
+                        else:
+                            hex_pos = None
+                        opponent_units.append({
+                            'champion_id': unit.get('api_name', unit.get('name')),
+                            'star_level': unit.get('star', 1),
+                            'items': unit.get('items', []),
+                            'position': hex_pos,
+                        })
+                    opponent_traits = opponent_state.get('traits', {})
+                    opponent_hp = opponent_state.get('hp', 0)
+
+                streak = int(player_state.get('win_streak', 0)) - int(player_state.get('loss_streak', 0))
                 rows.append({
                     'game_id': self.game_id,
                     'round': round_data['round'],
@@ -118,18 +192,28 @@ class GameCollector:
                     'hp': player_state['hp'],
                     'gold': player_state['gold'],
                     'level': player_state['level'],
+                    'streak': streak,
                     'board_count': player_state['board_count'],
                     'win_streak': player_state['win_streak'],
                     'loss_streak': player_state['loss_streak'],
                     'num_augments': len(player_state['augments']),
                     'num_traits': len(player_state['traits']),
                     'alive_count': round_data['alive_count'],
+                    # Rich schema for model training
+                    'units': units,
+                    'traits': player_state['traits'],
+                    'augments': player_state['augments'],
+                    'opponent_units': opponent_units,
+                    'opponent_traits': opponent_traits,
+                    'opponent_hp': opponent_hp,
+                    'combat_result': matchup.get('combat_result'),
+                    'damage_dealt': matchup.get('damage_dealt', 0.0),
+                    'damage_taken': matchup.get('damage_taken', 0.0),
                     # Compact board representation
                     'board_names': [c['name'] for c in player_state['board']],
                     'board_stars': [c['star'] for c in player_state['board']],
                     'trait_names': list(player_state['traits'].keys()),
                     'trait_counts': list(player_state['traits'].values()),
-                    'augments': player_state['augments'],
                 })
         return rows
 
