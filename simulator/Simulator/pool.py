@@ -91,17 +91,17 @@ class pool:
 			return [" " for _ in range(num)]
 		ranInt = [0 for _ in range(num)]
 		championOptions = [None for _ in range(num)]
-		chosen = player.chosen or not allow_chosen
+		# Set 16 has no Chosen mechanic; keep offers as normal units.
+		chosen = True
 		chosen_index = -1
-		if not chosen:
-			if random.random() < .5:
-				chosen_index = random.randint(0, 4)
 		index = idx
 		for i in range(0, num):
 			if chosen_index != i:
-				percents = level_percentage[player.level]
+				# `level_percentage` is 0-indexed by level-1.
+				percents = level_percentage[player.level - 1]
 			else:
-				percents = chosen_stats[player.level]
+				chosen_level = max(player.level - 1, 0)
+				percents = chosen_stats[chosen_level]
 			ranInt[i] = random.random()
 			if index == -1:
 				index = 0
@@ -183,7 +183,8 @@ class pool:
 			# This adds the chosen aspect to the champion.
 			if chosen_index == i:
 				chosen_type = self.pick_chosen(championOptions[i])
-				championOptions[i] = str(championOptions[i]) + "_" + chosen_type + "_c"
+				if chosen_type:
+					championOptions[i] = str(championOptions[i]) + "_" + chosen_type + "_c"
 				# player.print("Offering chosen unit {} at index {}".format(championOptions[i], index))
 			index = idx
 		return championOptions

@@ -37,8 +37,8 @@ Description - This is the Battle Generator class
               Generates random battles with random items and random number of players with random positioning
 """
 class BattleGenerator:
-    def __init__(self, generator_config):
-        self.generator_config = generator_config
+    def __init__(self, generator_config=None):
+        self.generator_config = dict(base_level_config if generator_config is None else generator_config)
         unit_cost_list = [ONE_COST_UNITS, TWO_COST_UNITS, THREE_COST_UNITS, FOUR_COST_UNITS, FIVE_COST_UNITS]
         self.list_of_units = []
         self.sample_from_pool = self.generator_config["sample_from_pool"]
@@ -60,19 +60,23 @@ class BattleGenerator:
                     self.stationary_coords[0] = x_y_to_1d_coord(self.generator_config["test_position"][0],
                                                                 self.generator_config["test_position"][1])
 
-        self.set_composition = [[champion('vi'), champion('katarina'), champion('nunu')],
-                                [champion('tahmkench'), champion('katarina', itemlist=['hand_of_justice']),
-                                 champion('nunu'), champion('annie')],
-                                [champion('tahmkench'), champion('katarina', itemlist=['hand_of_justice']),
-                                 champion('jinx'), champion('vi'), champion('vayne', chosen='duelist')]
-                                ]
+        # Keep deterministic preset battles but avoid unit names that are often
+        # absent in mixed/updated trait tables.
+        self.set_composition = [
+            [champion('vi'), champion('teemo'), champion('aphelios')],
+            [champion('tahmkench'), champion('annie', itemlist=['hand_of_justice']),
+             champion('vi'), champion('ashe')],
+            [champion('tahmkench'), champion('annie', itemlist=['hand_of_justice']),
+             champion('jinx'), champion('vi'), champion('vayne')]
+        ]
 
-        self.set_oppo_composition = [[champion('sylas'), champion('maokai'), champion('diana', stars=2)],
-                                     [champion('sylas'), champion('vi'), champion('vayne'),
-                                      champion('janna', stars=2)],
-                                     [champion('tahmkench', stars=2), champion('vi', stars=2), champion('elise'),
-                                      champion('vayne', stars=2), champion('twistedfate', stars=2)]
-                                     ]
+        self.set_oppo_composition = [
+            [champion('sylas'), champion('diana'), champion('teemo', stars=2)],
+            [champion('sylas'), champion('vi'), champion('vayne'),
+             champion('janna', stars=2)],
+            [champion('tahmkench', stars=2), champion('vi', stars=2), champion('elise'),
+             champion('vayne', stars=2), champion('twistedfate', stars=2)]
+        ]
 
 
     """

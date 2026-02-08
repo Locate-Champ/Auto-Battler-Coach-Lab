@@ -5,8 +5,23 @@ import time
 
 import numpy as np
 import torch
-import core.gumbelctree.gmz_tree as tree_gumbel_muzero
 from Models.MCTS_Util import create_default_mapping
+
+try:
+    import core.gumbelctree.gmz_tree as tree_gumbel_muzero
+    _GMZ_IMPORT_ERROR = None
+except ModuleNotFoundError as exc:
+    tree_gumbel_muzero = None
+    _GMZ_IMPORT_ERROR = exc
+
+
+def _require_gumbel_ctree() -> None:
+    """Ensure the optional gumbel C-tree extension is available when needed."""
+    if tree_gumbel_muzero is None:
+        raise ModuleNotFoundError(
+            "Missing optional module 'core.gumbelctree.gmz_tree'. "
+            "Install/build the gumbel ctree extension before running with GUMBEL=True."
+        ) from _GMZ_IMPORT_ERROR
 
 
 class GumbelMuZeroMCTSCtree(object):
@@ -33,6 +48,7 @@ class GumbelMuZeroMCTSCtree(object):
             - cfg (:obj:`EasyDict`): The configuration passed in by the user.
         """
         # Get the default configuration.
+        _require_gumbel_ctree()
         self.model_config = model_config
         self.discount_factor = config.DISCOUNT
         _, self.default_mask = create_default_mapping()
@@ -51,6 +67,7 @@ class GumbelMuZeroMCTSCtree(object):
         ..note::
             The initialization is achieved by the ``Roots`` class from the ``ctree_gumbel_muzero`` module.
         """
+        _require_gumbel_ctree()
         return tree_gumbel_muzero.Roots(active_collect_env_num, legal_actions)
 
     def search(self, roots: Any, model: torch.nn.Module, latent_state_roots: List[Any],

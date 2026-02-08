@@ -523,20 +523,22 @@ class Player:
         return num
 
     def generate_tier_vector(self):
-        # Create a vector where there is a 1 for the tier of the specific trait.
+        # Create a one-hot tier vector using the configured legacy dimensions.
+        # This is intentionally decoupled from `origin_class_stats.tiers` so
+        # observation shapes stay stable even when trait tables differ.
         current_position = 0
         self.tiers_vector = np.zeros(TIERS_FLATTEN_LENGTH, dtype=np.float32)
-        base_tier_values = list(tiers.values())
         player_tier_values = list(self.team_tiers.values())
-        for i in range(len(base_tier_values)):
-            try:
-                self.tiers_vector[current_position + player_tier_values[i]] = 1
-                self.team_tier_labels[i] = np.zeros(TEAM_TIERS_VECTOR[i], dtype=np.float32)
-                self.team_tier_labels[i][player_tier_values[i]] = 1
-                current_position += len(base_tier_values[i]) + 1
-            except IndexError:
-                print("index i {} with player_tier_values[i] {}".format(i, player_tier_values[i]))
-                print("team_tier_labels {}".format(self.team_tier_labels))
+        max_traits = min(len(TEAM_TIERS_VECTOR), len(player_tier_values))
+
+        for i in range(max_traits):
+            tier_size = TEAM_TIERS_VECTOR[i]
+            tier_idx = int(player_tier_values[i])
+            tier_idx = max(0, min(tier_idx, tier_size - 1))
+            self.tiers_vector[current_position + tier_idx] = 1
+            self.team_tier_labels[i] = np.zeros(tier_size, dtype=np.float32)
+            self.team_tier_labels[i][tier_idx] = 1
+            current_position += tier_size
 
     def golden(self, a_champion) -> champion:
         """Upgrades a champion to the next star level of the champion.
@@ -1157,7 +1159,7 @@ class Player:
         for c in directions[parity]:
             nY = c[0] + y
             nX = c[1] + x
-            if (0 <= nY < 4 and 0 <= nX < 7) and not self.board[x][y]:
+            if (0 <= nY < 4 and 0 <= nX < 7) and not self.board[nX][nY]:
                 neighbors.append([nX, nY])
         return neighbors
 
@@ -1693,12 +1695,14 @@ class Player:
                     if team[x][y].name not in unique_champions:
                         unique_champions.append(team[x][y].name)
                         for trait in team[x][y].origin:
-                            self.team_composition[trait] += 1
+                            if trait in self.team_composition:
+                                self.team_composition[trait] += 1
                     for item in team[x][y].items:
                         if item in trait_items.values():
                             item_index = list(trait_items.values()).index(item)
                             class_trait = list(trait_items.keys())[item_index]
-                            self.team_composition[class_trait] += 1
+                            if class_trait in self.team_composition:
+                                self.team_composition[class_trait] += 1
 
     def thieves_gloves(self, x, y) -> bool:
         """Gives new thieves gloves items to a champion in thieves_gloves_loc
@@ -1797,10 +1801,16 @@ class Player:
         if self.chosen in self.team_composition.keys():
             self.team_composition[self.chosen] += 1
         for trait in self.team_composition:
+            trait_tiers = tiers.get(trait)
+            if not trait_tiers:
+                # Keep legacy traits at tier 0 when not present in the active
+                # trait table.
+                self.team_tiers[trait] = 0
+                continue
             counter = 0
-            while self.team_composition[trait] >= tiers[trait][counter]:
+            while self.team_composition[trait] >= trait_tiers[counter]:
                 counter += 1
-                if counter >= len(tiers[trait]):
+                if counter >= len(trait_tiers):
                     break
             self.team_tiers[trait] = counter
         origin_class.game_comp_tiers[self.player_num] = self.team_tiers

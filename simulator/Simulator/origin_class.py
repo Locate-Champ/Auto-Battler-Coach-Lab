@@ -142,7 +142,8 @@ def total_origin_class(blue_champion, red_champion):
     for team in [blue_team, red_team]:  # team layer
         for c in team:                 # champions in teams
             for t in traits:           # traits
-                if t in champion_data[c.name] and not [team, t, c.name] in counted:
+                champion_traits = champion_data.get(c.name, [])
+                if t in champion_traits and not [team, t, c.name] in counted:
                     amounts[t][c.team] += 1
                     counted.append([team, t, c.name])
 
@@ -155,7 +156,7 @@ def total_origin_class(blue_champion, red_champion):
 
 def is_trait(champion, trait):
     champion_data = origin_class_stats.origin_class
-    if trait in champion_data[champion.name]:
+    if trait in champion_data.get(champion.name, []):
         return True
     elif trait in item_stats.trait_items and item_stats.trait_items[trait] in champion.items:
         return True
