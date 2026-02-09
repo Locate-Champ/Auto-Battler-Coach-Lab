@@ -51,6 +51,18 @@ AGENT_PROFILES = {
 }
 
 
+class BatchAbort(Exception):
+    """Raised when a run should stop early while preserving output state."""
+
+
+def _pyarrow_available() -> bool:
+    try:  # pragma: no cover - optional dependency
+        import pyarrow  # noqa: F401
+        return True
+    except Exception:
+        return False
+
+
 def _wilson_interval(successes: int, trials: int,
                      z: float = WILSON_Z_95) -> Tuple[float, float]:
     """Wilson score interval for Bernoulli metrics."""
@@ -153,10 +165,16 @@ class StreamingWriter:
     Checkpoints are written periodically for resume capability.
     """
 
-    def __init__(self, output_dir: str, chunk_size: int = 100,
-                 resume_state: Optional[Dict] = None):
+    def __init__(
+        self,
+        output_dir: str,
+        chunk_size: int = 100,
+        resume_state: Optional[Dict] = None,
+        require_parquet: bool = False,
+    ):
         self.output_dir = output_dir
         self.chunk_size = chunk_size
+        self.require_parquet = require_parquet
         os.makedirs(output_dir, exist_ok=True)
 
         # Training row buffer (flushed every chunk_size games)
@@ -257,10 +275,13 @@ class StreamingWriter:
             return
 
         chunk_name = f'chunk_{self._chunk_idx:04d}'
-        try:
+        if self.require_parquet:
             self._write_parquet_chunk(chunk_name)
-        except (ImportError, Exception):
-            self._write_jsonl_chunk(chunk_name)
+        else:
+            try:
+                self._write_parquet_chunk(chunk_name)
+            except (ImportError, Exception):
+                self._write_jsonl_chunk(chunk_name)
 
         self._total_rows += len(self._row_buffer)
         self._row_buffer = []
@@ -454,10 +475,20 @@ def _worker_init():
 
 # ── Batch Runner ─────────────────────────────────────────────────────────
 
-def run_batch(num_games: int, num_workers: int, output_dir: str,
-              seed_start: int = 0, agent_mix: Optional[Dict] = None,
-              chunk_size: int = 100, resume: bool = False,
-              agent_profile: str = 'random') -> Dict:
+def run_batch(
+    num_games: int,
+    num_workers: int,
+    output_dir: str,
+    seed_start: int = 0,
+    agent_mix: Optional[Dict] = None,
+    chunk_size: int = 100,
+    resume: bool = False,
+    agent_profile: str = 'random',
+    checkpoint_every: Optional[int] = None,
+    progress_every: Optional[int] = None,
+    max_errors: Optional[int] = None,
+    require_parquet: bool = False,
+) -> Dict:
     """Run num_games in parallel with streaming output and checkpoints.
 
     Args:
@@ -469,6 +500,10 @@ def run_batch(num_games: int, num_workers: int, output_dir: str,
         chunk_size: Number of games per output chunk (controls memory usage).
         resume: If True, resume from existing checkpoint in output_dir.
         agent_profile: Agent profile name used for this run.
+        checkpoint_every: Number of completed tasks between checkpoints.
+        progress_every: Number of completed tasks between progress prints.
+        max_errors: Stop run early after this many per-game errors.
+        require_parquet: Fail output writes if parquet cannot be written.
 
     Returns:
         Summary dict with timing and aggregate stats.
@@ -486,9 +521,19 @@ def run_batch(num_games: int, num_workers: int, output_dir: str,
         else:
             print("No checkpoint found, starting fresh")
 
+    if require_parquet and not _pyarrow_available():
+        raise RuntimeError(
+            "require_parquet was set but pyarrow is unavailable. "
+            "Install pyarrow or remove --require-parquet."
+        )
+
     os.makedirs(output_dir, exist_ok=True)
-    writer = StreamingWriter(output_dir, chunk_size=chunk_size,
-                             resume_state=resume_state)
+    writer = StreamingWriter(
+        output_dir,
+        chunk_size=chunk_size,
+        resume_state=resume_state,
+        require_parquet=require_parquet,
+    )
 
     # Build task list, skipping completed seeds
     all_seeds = [seed_start + i for i in range(num_games)]
@@ -508,6 +553,12 @@ def run_batch(num_games: int, num_workers: int, output_dir: str,
                 'agent_mix': agent_mix if agent_mix else {'random': 100},
                 'chunk_size': chunk_size,
                 'resume': resume,
+                'checkpoint_every': checkpoint_every,
+                'progress_every': progress_every,
+                'max_errors': max_errors,
+                'require_parquet': require_parquet,
+                'aborted': False,
+                'aborted_reason': None,
             },
         )
 
@@ -521,43 +572,60 @@ def run_batch(num_games: int, num_workers: int, output_dir: str,
     print()
 
     start = time.perf_counter()
-    checkpoint_interval = max(1, remaining // 20)  # Every 5%
+    checkpoint_interval = checkpoint_every if checkpoint_every and checkpoint_every > 0 else max(1, remaining // 20)
+    progress_interval = progress_every if progress_every and progress_every > 0 else max(1, remaining // 10)
     done = 0
+    aborted_reason: Optional[str] = None
 
     def _process_result(result):
         nonlocal done
         writer.add_result(result)
         done += 1
-        if done % max(1, remaining // 10) == 0 or done == remaining:
+        if done % progress_interval == 0 or done == remaining:
             elapsed = time.perf_counter() - start
             rate = done / elapsed if elapsed > 0 else 0
             eta = (remaining - done) / rate if rate > 0 else 0
             err_str = f", {writer.num_errors} errors" if writer.num_errors else ""
             print(f"  [{done}/{remaining}] {rate:.1f} games/sec, "
                   f"ETA: {eta:.0f}s{err_str}")
+
+        if max_errors is not None and writer.num_errors >= max_errors:
+            raise BatchAbort(f"Reached max error threshold ({writer.num_errors}/{max_errors}).")
+
         if done % checkpoint_interval == 0:
             writer.write_checkpoint()
 
     if num_workers <= 1:
         # Sequential mode
         _worker_init()
-        for task in tasks:
-            result = run_game(task)
-            _process_result(result)
+        try:
+            for task in tasks:
+                result = run_game(task)
+                _process_result(result)
+        except BatchAbort as exc:
+            aborted_reason = str(exc)
     else:
         # Parallel mode
         with multiprocessing.Pool(num_workers, initializer=_worker_init) as pool:
             chunksize = max(1, remaining // (num_workers * 4))
-            for result in pool.imap_unordered(run_game, tasks,
-                                              chunksize=chunksize):
-                _process_result(result)
+            try:
+                for result in pool.imap_unordered(run_game, tasks, chunksize=chunksize):
+                    _process_result(result)
+            except BatchAbort as exc:
+                aborted_reason = str(exc)
+                pool.terminate()
 
     total_time = time.perf_counter() - start
-    print(f"\nAll {remaining} games completed in {total_time:.1f}s "
-          f"({remaining / total_time:.1f} games/sec)")
+    if aborted_reason:
+        print(f"\nRun aborted early: {aborted_reason}")
+        print(f"Processed {done}/{remaining} tasks before stop.")
+    else:
+        print(f"\nAll {remaining} games completed in {total_time:.1f}s "
+              f"({remaining / total_time:.1f} games/sec)")
     if writer.num_errors:
         print(f"  {writer.num_errors} games failed (see errors.json)")
 
+    writer.write_checkpoint()
     print("Writing final results...")
     summary = writer.finalize(
         total_time,
@@ -569,6 +637,12 @@ def run_batch(num_games: int, num_workers: int, output_dir: str,
             'agent_mix': agent_mix if agent_mix else {'random': 100},
             'chunk_size': chunk_size,
             'resume': resume,
+            'checkpoint_every': checkpoint_interval,
+            'progress_every': progress_interval,
+            'max_errors': max_errors,
+            'require_parquet': require_parquet,
+            'aborted': bool(aborted_reason),
+            'aborted_reason': aborted_reason,
         },
     )
     return summary
@@ -625,6 +699,14 @@ Examples:
                         help='Games per output chunk (controls memory usage)')
     parser.add_argument('--resume', type=str, default=None, metavar='DIR',
                         help='Resume an interrupted batch from checkpoint in DIR')
+    parser.add_argument('--checkpoint-every', type=int, default=None,
+                        help='Write checkpoint every N completed tasks')
+    parser.add_argument('--progress-every', type=int, default=None,
+                        help='Print progress every N completed tasks')
+    parser.add_argument('--max-errors', type=int, default=None,
+                        help='Stop run early after N game errors')
+    parser.add_argument('--require-parquet', action='store_true',
+                        help='Fail run if parquet output is unavailable')
     parser.add_argument('--skip-reference-validation', action='store_true',
                         help='Skip simulator reference preflight validation')
     args = parser.parse_args()
@@ -660,6 +742,10 @@ Examples:
             chunk_size=args.chunk_size,
             resume=True,
             agent_profile=args.agent_profile,
+            checkpoint_every=args.checkpoint_every,
+            progress_every=args.progress_every,
+            max_errors=args.max_errors,
+            require_parquet=args.require_parquet,
         )
     else:
         if args.agent_mix:
@@ -675,6 +761,10 @@ Examples:
             agent_mix=agent_mix,
             chunk_size=args.chunk_size,
             agent_profile=args.agent_profile,
+            checkpoint_every=args.checkpoint_every,
+            progress_every=args.progress_every,
+            max_errors=args.max_errors,
+            require_parquet=args.require_parquet,
         )
 
     print(f"\n{'='*50}")
