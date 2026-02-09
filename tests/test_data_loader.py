@@ -192,3 +192,23 @@ def test_fight_loader_uses_next_round_labels(tmp_path: Path) -> None:
     # We have 4 player timelines with at least 2 rounds each -> 4 temporal examples.
     assert total_examples == 4
     assert set(combined_labels.tolist()) == {0, 1}
+
+
+def test_load_raw_supports_row_caps_and_sampling(tmp_path: Path) -> None:
+    _write_jsonl(tmp_path / "chunk_0000.jsonl", _make_rows())
+    loader = DataLoader(tmp_path)
+
+    capped = loader.load_raw(max_rows=3)
+    assert len(capped) == 3
+
+    sample_a = loader.load_raw(max_rows=4, sample=True, seed=7)
+    sample_b = loader.load_raw(max_rows=4, sample=True, seed=7)
+    assert len(sample_a) == 4
+    assert sample_a == sample_b
+
+
+def test_count_rows_matches_written_rows(tmp_path: Path) -> None:
+    rows = _make_rows()
+    _write_jsonl(tmp_path / "chunk_0000.jsonl", rows)
+    loader = DataLoader(tmp_path)
+    assert loader.count_rows() == len(rows)
