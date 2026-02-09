@@ -1,0 +1,54 @@
+Simulator reference validation passed.
+Running 10000 games across 7 workers (chunk_size=500)
+Seeds: 0 to 9999 (0 already done)
+Agents: {'random': 50, 'econ': 30, 'slam': 20}
+Output: results/do_calibration_10k_w7
+
+  [500/10000] 1.0 games/sec, ETA: 9930s
+  [1000/10000] 1.9 games/sec, ETA: 4747s
+  [1500/10000] 2.8 games/sec, ETA: 3015s
+  [2000/10000] 3.7 games/sec, ETA: 2143s
+  [2500/10000] 2.4 games/sec, ETA: 3086s
+  [3000/10000] 2.9 games/sec, ETA: 2410s
+  [3500/10000] 3.4 games/sec, ETA: 1931s
+  [4000/10000] 3.8 games/sec, ETA: 1571s
+  [4500/10000] 4.3 games/sec, ETA: 1291s
+  [5000/10000] 3.3 games/sec, ETA: 1529s
+  [5500/10000] 3.6 games/sec, ETA: 1255s
+  [6000/10000] 3.9 games/sec, ETA: 1025s
+  [6500/10000] 4.2 games/sec, ETA: 832s
+  [7000/10000] 4.5 games/sec, ETA: 667s
+  [7500/10000] 3.7 games/sec, ETA: 676s
+  [8000/10000] 3.9 games/sec, ETA: 508s
+  [8500/10000] 4.2 games/sec, ETA: 359s
+  [9000/10000] 4.4 games/sec, ETA: 227s
+  [9500/10000] 4.6 games/sec, ETA: 108s
+  [10000/10000] 4.9 games/sec, ETA: 0s
+
+All 10000 games completed in 2060.7s (4.9 games/sec)
+Writing final results...
+  Summary: results/do_calibration_10k_w7/summary.json
+
+==================================================
+BATCH COMPLETE
+==================================================
+Games:  10000
+Errors: 0
+Time:   2060.7s
+Rate:   4.85 games/sec
+Rows:   1324649
+Chunks: 20
+
+Top 5 champions (avg placement):
+  baronnashor: 1.1
+  shyvana: 1.26
+  aurelionsol: 1.32
+  fiddlesticks: 1.34
+  sylas: 1.36
+
+Bottom 5 champions (avg placement):
+  sona: 4.78
+  lulu: 4.72
+  anivia: 4.71
+  kogmaw: 4.67
+  jhin: 4.64
