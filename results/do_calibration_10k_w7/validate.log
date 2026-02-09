@@ -1,0 +1,28 @@
+
+============================================================
+VALIDATION REPORT
+============================================================
+  [PASS] Output directory exists
+  [PASS] summary.json exists
+  [PASS] Games completed
+  [PASS] Error rate < 5%
+  [PASS] Training data exists
+  [PASS] Rows per game in range (50-300)
+  [PASS] Placement mean ~4.5 (range 3.5-5.5)
+  [PASS] Placements in valid range (1-8)
+  [FAIL] No excessive placement duplicates
+         13 games with >3 players at same placement
+  [PASS] All games have 8 players
+  [PASS] Average rounds in range (10-45)
+  [PASS] No round-count outliers (<5 or >50)
+  [PASS] Champion coverage > 50 unique champions
+  [PASS] No dominant champion (>10% pick rate)
+  [PASS] Augment coverage > 20 unique augments
+  [PASS] All required fields present
+  [PASS] HP values in range (0-100)
+  [PASS] Gold values reasonable (avg < 100, max < 500)
+  [PASS] Performance > 0.5 games/sec
+
+============================================================
+Result: 1 CHECK(S) FAILED (18 passed, 1 failed)
+============================================================
