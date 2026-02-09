@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Dict, Iterator, List, Optional, Sequence, Tuple
 
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -53,28 +53,99 @@ class DataLoader:
         self.data_dir = Path(data_dir)
         self.feature_engineer = feature_engineer or TFTFeatureEngineer()
 
-    def load_raw(self, data_dir: Optional[str | Path] = None) -> List[Dict[str, Any]]:
-        """Load all parquet/jsonl rows from ``data_dir``."""
+    def _iter_parquet_rows(
+        self,
+        path: Path,
+        row_batch_size: int = 4096,
+    ) -> Iterator[Dict[str, Any]]:
+        if pq is None:  # pragma: no cover - optional dependency
+            return
+        parquet_file = pq.ParquetFile(path)
+        for batch in parquet_file.iter_batches(batch_size=row_batch_size):
+            for row in batch.to_pylist():
+                yield self._normalize_row(row)
+
+    def _iter_jsonl_rows(self, path: Path) -> Iterator[Dict[str, Any]]:
+        with path.open("r", encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                yield self._normalize_row(json.loads(line))
+
+    def iter_raw(
+        self,
+        data_dir: Optional[str | Path] = None,
+        row_batch_size: int = 4096,
+    ) -> Iterator[Dict[str, Any]]:
+        """Stream parquet/jsonl rows from ``data_dir`` without full materialization."""
         root = Path(data_dir) if data_dir is not None else self.data_dir
         parquet_files = sorted(root.rglob("*.parquet"))
         jsonl_files = sorted(root.rglob("*.jsonl"))
-        rows: List[Dict[str, Any]] = []
 
         if pq is not None:
             for path in parquet_files:
-                table = pq.read_table(path)
-                for row in table.to_pylist():
-                    rows.append(self._normalize_row(row))
+                yield from self._iter_parquet_rows(path, row_batch_size=row_batch_size)
+
+        for path in jsonl_files:
+            yield from self._iter_jsonl_rows(path)
+
+    def load_raw(
+        self,
+        data_dir: Optional[str | Path] = None,
+        *,
+        max_rows: Optional[int] = None,
+        sample: bool = False,
+        seed: int = 42,
+        row_batch_size: int = 4096,
+    ) -> List[Dict[str, Any]]:
+        """Load rows from ``data_dir`` with optional streaming cap/sampling."""
+        if max_rows is not None and max_rows <= 0:
+            return []
+
+        iterator = self.iter_raw(data_dir=data_dir, row_batch_size=row_batch_size)
+
+        if max_rows is None:
+            return list(iterator)
+
+        if not sample:
+            rows: List[Dict[str, Any]] = []
+            for row in iterator:
+                rows.append(row)
+                if len(rows) >= max_rows:
+                    break
+            return rows
+
+        rng = np.random.default_rng(seed)
+        reservoir: List[Dict[str, Any]] = []
+        for seen, row in enumerate(iterator, start=1):
+            if len(reservoir) < max_rows:
+                reservoir.append(row)
+                continue
+            swap_index = int(rng.integers(0, seen))
+            if swap_index < max_rows:
+                reservoir[swap_index] = row
+        return reservoir
+
+    def count_rows(
+        self,
+        data_dir: Optional[str | Path] = None,
+    ) -> int:
+        """Return the number of rows in parquet/jsonl chunks."""
+        root = Path(data_dir) if data_dir is not None else self.data_dir
+        parquet_files = sorted(root.rglob("*.parquet"))
+        jsonl_files = sorted(root.rglob("*.jsonl"))
+        total = 0
+
+        if pq is not None:
+            for path in parquet_files:
+                total += int(pq.ParquetFile(path).metadata.num_rows)
 
         for path in jsonl_files:
             with path.open("r", encoding="utf-8") as handle:
-                for line in handle:
-                    line = line.strip()
-                    if not line:
-                        continue
-                    rows.append(self._normalize_row(json.loads(line)))
+                total += sum(1 for line in handle if line.strip())
 
-        return rows
+        return total
 
     def _normalize_row(self, row: Dict[str, Any]) -> Dict[str, Any]:
         normalized = dict(row)
@@ -207,13 +278,21 @@ class DataLoader:
         self,
         test_size: float = 0.2,
         seed: int = 42,
+        max_rows: Optional[int] = None,
+        sample_rows: bool = False,
+        row_batch_size: int = 4096,
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Build dataset for win/loss prediction.
 
         To avoid post-combat leakage, features are taken from round N and the
         label is the player's combat_result at round N+1.
         """
-        rows = self.load_raw()
+        rows = self.load_raw(
+            max_rows=max_rows,
+            sample=sample_rows,
+            seed=seed,
+            row_batch_size=row_batch_size,
+        )
         filtered_rows, labels = self._build_temporal_fight_examples(rows)
 
         if not filtered_rows:
@@ -284,9 +363,17 @@ class DataLoader:
         self,
         test_size: float = 0.2,
         seed: int = 42,
+        max_rows: Optional[int] = None,
+        sample_rows: bool = False,
+        row_batch_size: int = 4096,
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Build dataset for final placement regression (1-8)."""
-        rows = self.load_raw()
+        rows = self.load_raw(
+            max_rows=max_rows,
+            sample=sample_rows,
+            seed=seed,
+            row_batch_size=row_batch_size,
+        )
         filtered_rows = [row for row in rows if row.get("placement") is not None and int(row.get("placement", 0)) > 0]
         if not filtered_rows:
             raise ValueError("No placement labels found in the provided dataset.")
@@ -316,9 +403,17 @@ class DataLoader:
         self,
         test_size: float = 0.2,
         seed: int = 42,
+        max_rows: Optional[int] = None,
+        sample_rows: bool = False,
+        row_batch_size: int = 4096,
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Build dataset for top4-vs-bot4 classification."""
-        rows = self.load_raw()
+        rows = self.load_raw(
+            max_rows=max_rows,
+            sample=sample_rows,
+            seed=seed,
+            row_batch_size=row_batch_size,
+        )
         filtered_rows = [row for row in rows if row.get("placement") is not None and int(row.get("placement", 0)) > 0]
         if not filtered_rows:
             raise ValueError("No placement labels found in the provided dataset.")
