@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+import random
+from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
 
-import numpy as np
 import torch
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, IterableDataset, get_worker_info
 
 from .feature_engineering import TFTFeatureEngineer
 
@@ -43,6 +44,145 @@ def _decode_jsonish(value: Any) -> Any:
         return value
 
 
+def _normalize_row(row: Dict[str, Any]) -> Dict[str, Any]:
+    normalized = dict(row)
+    for key in JSONISH_COLUMNS:
+        if key in normalized:
+            normalized[key] = _decode_jsonish(normalized[key])
+    return normalized
+
+
+def _discover_chunk_files(root: Path) -> List[Path]:
+    parquet_files = sorted(root.rglob("*.parquet"))
+    jsonl_files = sorted(root.rglob("*.jsonl"))
+    # Prefer parquet when present in the same directory tree.
+    return parquet_files if parquet_files else jsonl_files
+
+
+def _iter_file_rows(path: Path, row_batch_size: int = 4096) -> Iterator[Dict[str, Any]]:
+    if path.suffix == ".parquet":
+        if pq is None:  # pragma: no cover - optional dependency
+            raise RuntimeError("pyarrow is required to read parquet chunks.")
+        parquet_file = pq.ParquetFile(path)
+        for batch in parquet_file.iter_batches(batch_size=row_batch_size):
+            for row in batch.to_pylist():
+                yield _normalize_row(row)
+        return
+
+    with path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if not line:
+                continue
+            yield _normalize_row(json.loads(line))
+
+
+def _iter_rows_from_files(
+    files: Iterable[Path],
+    row_batch_size: int = 4096,
+) -> Iterator[Dict[str, Any]]:
+    for path in files:
+        yield from _iter_file_rows(path, row_batch_size=row_batch_size)
+
+
+def _infer_binary_fight_result(row: Dict[str, Any]) -> Optional[int]:
+    combat_result = row.get("combat_result")
+    if combat_result is not None:
+        result = int(combat_result)
+        if result in (0, 1):
+            return result
+        return None
+
+    win_streak = int(row.get("win_streak", 0) or 0)
+    loss_streak = int(row.get("loss_streak", 0) or 0)
+    if win_streak > 0 and loss_streak == 0:
+        return 1
+    if loss_streak > 0 and win_streak == 0:
+        return 0
+    return None
+
+
+def assign_split_for_game_id(
+    game_id: int,
+    split_seed: int = 42,
+    train_ratio: float = 0.8,
+    val_ratio: float = 0.1,
+) -> str:
+    token = f"{split_seed}:{game_id}".encode("utf-8")
+    digest = hashlib.sha1(token).hexdigest()
+    bucket = int(digest[:8], 16) / 0xFFFFFFFF
+    if bucket < train_ratio:
+        return "train"
+    if bucket < train_ratio + val_ratio:
+        return "val"
+    return "test"
+
+
+def estimate_streaming_split_counts(
+    data_dir: str | Path,
+    *,
+    split_seed: int = 42,
+    label_mode: str = "next_round",
+    train_ratio: float = 0.8,
+    val_ratio: float = 0.1,
+    row_batch_size: int = 4096,
+    max_rows: Optional[int] = None,
+) -> Dict[str, int]:
+    """Count train/val/test examples without loading all rows into memory."""
+    if label_mode not in {"current", "next_round"}:
+        raise ValueError("label_mode must be 'current' or 'next_round'")
+
+    root = Path(data_dir)
+    files = _discover_chunk_files(root)
+    counts = {"train": 0, "val": 0, "test": 0}
+
+    seen_rows = 0
+    current_game_id: Optional[int] = None
+    prev_rows_by_player: Dict[int, Dict[str, Any]] = {}
+
+    for row in _iter_rows_from_files(files, row_batch_size=row_batch_size):
+        seen_rows += 1
+        if max_rows is not None and seen_rows > max_rows:
+            break
+
+        game_id = row.get("game_id")
+        if game_id is None:
+            continue
+        game_id_int = int(game_id)
+        split = assign_split_for_game_id(
+            game_id_int,
+            split_seed=split_seed,
+            train_ratio=train_ratio,
+            val_ratio=val_ratio,
+        )
+
+        if label_mode == "current":
+            counts[split] += 1
+            continue
+
+        player_id = row.get("player_id")
+        round_num = row.get("round")
+        if player_id is None or round_num is None:
+            continue
+
+        if current_game_id is None or game_id_int != current_game_id:
+            current_game_id = game_id_int
+            prev_rows_by_player = {}
+
+        player_id_int = int(player_id)
+        round_int = int(round_num)
+        prev_row = prev_rows_by_player.get(player_id_int)
+        if prev_row is not None:
+            prev_round = int(prev_row.get("round", -1))
+            if round_int > prev_round:
+                next_result = _infer_binary_fight_result(row)
+                if next_result is not None:
+                    counts[split] += 1
+        prev_rows_by_player[player_id_int] = row
+
+    return counts
+
+
 class TFTDataset(Dataset[Dict[str, torch.Tensor]]):
     """Structured dataset matching ``TFTTransformerV2`` input schema."""
 
@@ -70,27 +210,7 @@ class TFTDataset(Dataset[Dict[str, torch.Tensor]]):
         self.trait_order = [trait.api_name for trait in self.feature_engineer.traits]
 
     def _load_rows(self, root: Path) -> List[Dict[str, Any]]:
-        rows: List[Dict[str, Any]] = []
-        if pq is not None:
-            for path in sorted(root.rglob("*.parquet")):
-                table = pq.read_table(path)
-                for row in table.to_pylist():
-                    rows.append(self._normalize_row(row))
-        for path in sorted(root.rglob("*.jsonl")):
-            with path.open("r", encoding="utf-8") as handle:
-                for line in handle:
-                    line = line.strip()
-                    if not line:
-                        continue
-                    rows.append(self._normalize_row(json.loads(line)))
-        return rows
-
-    def _normalize_row(self, row: Dict[str, Any]) -> Dict[str, Any]:
-        normalized = dict(row)
-        for key in JSONISH_COLUMNS:
-            if key in normalized:
-                normalized[key] = _decode_jsonish(normalized[key])
-        return normalized
+        return list(_iter_rows_from_files(_discover_chunk_files(root)))
 
     def _build_champion_lookup(self) -> Dict[str, int]:
         lookup = {"<PAD>": 0, "<UNK>": 1}
@@ -194,14 +314,22 @@ class TFTDataset(Dataset[Dict[str, torch.Tensor]]):
             dtype=torch.float32,
         )
 
-    def _targets(self, row: Dict[str, Any]) -> Dict[str, torch.Tensor]:
-        combat_result = row.get("combat_result")
-        if combat_result in (0, 1):
-            fight_result = float(combat_result)
+    def _targets(
+        self,
+        row: Dict[str, Any],
+        *,
+        fight_result_override: Optional[float] = None,
+    ) -> Dict[str, torch.Tensor]:
+        if fight_result_override is not None:
+            fight_result = float(fight_result_override)
         else:
-            win_streak = int(row.get("win_streak", 0) or 0)
-            loss_streak = int(row.get("loss_streak", 0) or 0)
-            fight_result = 1.0 if win_streak > 0 and loss_streak == 0 else 0.0
+            combat_result = row.get("combat_result")
+            if combat_result in (0, 1):
+                fight_result = float(combat_result)
+            else:
+                win_streak = int(row.get("win_streak", 0) or 0)
+                loss_streak = int(row.get("loss_streak", 0) or 0)
+                fight_result = 1.0 if win_streak > 0 and loss_streak == 0 else 0.0
 
         placement = int(row.get("placement", 8) or 8)
         placement = max(1, min(8, placement)) - 1
@@ -211,8 +339,12 @@ class TFTDataset(Dataset[Dict[str, torch.Tensor]]):
             "placement": torch.tensor([placement], dtype=torch.long),
         }
 
-    def __getitem__(self, index: int) -> Dict[str, torch.Tensor]:
-        row = self.rows[index]
+    def encode_row(
+        self,
+        row: Dict[str, Any],
+        *,
+        fight_result_override: Optional[float] = None,
+    ) -> Dict[str, torch.Tensor]:
         sample: Dict[str, torch.Tensor] = {}
 
         player_fields = self._encode_units(row, prefix="")
@@ -237,5 +369,138 @@ class TFTDataset(Dataset[Dict[str, torch.Tensor]]):
         sample["opponent_augments"] = self._encode_augments(row, prefix="opponent_")
         sample["opponent_game_state"] = self._encode_game_state(row, prefix="opponent_")
 
-        sample.update(self._targets(row))
+        sample.update(self._targets(row, fight_result_override=fight_result_override))
         return sample
+
+    def __getitem__(self, index: int) -> Dict[str, torch.Tensor]:
+        return self.encode_row(self.rows[index])
+
+
+class TFTStreamingDataset(IterableDataset[Dict[str, torch.Tensor]]):
+    """Streaming dataset for large training corpora."""
+
+    def __init__(
+        self,
+        data_dir: str | Path,
+        *,
+        split: str = "train",
+        split_seed: int = 42,
+        label_mode: str = "next_round",
+        train_ratio: float = 0.8,
+        val_ratio: float = 0.1,
+        max_examples: Optional[int] = None,
+        shuffle_files: bool = True,
+        row_batch_size: int = 4096,
+        max_units: int = 14,
+        champion_vocab_size: int = 109,
+        item_vocab_size: int = 152,
+        augment_vocab_size: int = 375,
+    ) -> None:
+        if split not in {"train", "val", "test"}:
+            raise ValueError("split must be one of {'train', 'val', 'test'}")
+        if label_mode not in {"current", "next_round"}:
+            raise ValueError("label_mode must be 'current' or 'next_round'")
+        if not (0.0 < train_ratio <= 1.0):
+            raise ValueError("train_ratio must be in (0, 1]")
+        if not (0.0 <= val_ratio < 1.0):
+            raise ValueError("val_ratio must be in [0, 1)")
+        if train_ratio + val_ratio > 1.0:
+            raise ValueError("train_ratio + val_ratio must be <= 1")
+
+        self.data_dir = Path(data_dir)
+        self.split = split
+        self.split_seed = split_seed
+        self.label_mode = label_mode
+        self.train_ratio = train_ratio
+        self.val_ratio = val_ratio
+        self.max_examples = max_examples
+        self.shuffle_files = shuffle_files
+        self.row_batch_size = row_batch_size
+        self._epoch = 0
+        self._files = _discover_chunk_files(self.data_dir)
+        self._encoder = TFTDataset(
+            data_dir=self.data_dir,
+            rows=[],
+            max_units=max_units,
+            champion_vocab_size=champion_vocab_size,
+            item_vocab_size=item_vocab_size,
+            augment_vocab_size=augment_vocab_size,
+        )
+
+    def set_epoch(self, epoch: int) -> None:
+        self._epoch = max(0, int(epoch))
+
+    def _split_for_row(self, row: Dict[str, Any]) -> Optional[str]:
+        game_id = row.get("game_id")
+        if game_id is None:
+            return None
+        return assign_split_for_game_id(
+            int(game_id),
+            split_seed=self.split_seed,
+            train_ratio=self.train_ratio,
+            val_ratio=self.val_ratio,
+        )
+
+    def _iter_files_for_worker(self) -> List[Path]:
+        worker_info = get_worker_info()
+        files = list(self._files)
+        if worker_info is not None:
+            files = files[worker_info.id :: worker_info.num_workers]
+            worker_offset = worker_info.id * 10007
+        else:
+            worker_offset = 0
+
+        if self.shuffle_files and len(files) > 1:
+            rng = random.Random(self.split_seed + self._epoch + worker_offset)
+            rng.shuffle(files)
+        return files
+
+    def __iter__(self) -> Iterator[Dict[str, torch.Tensor]]:
+        files = self._iter_files_for_worker()
+        emitted = 0
+
+        if self.label_mode == "current":
+            for row in _iter_rows_from_files(files, row_batch_size=self.row_batch_size):
+                split = self._split_for_row(row)
+                if split != self.split:
+                    continue
+                yield self._encoder.encode_row(row)
+                emitted += 1
+                if self.max_examples is not None and emitted >= self.max_examples:
+                    return
+            return
+
+        current_game_id: Optional[int] = None
+        prev_rows_by_player: Dict[int, Dict[str, Any]] = {}
+        for row in _iter_rows_from_files(files, row_batch_size=self.row_batch_size):
+            split = self._split_for_row(row)
+            if split != self.split:
+                continue
+
+            game_id = row.get("game_id")
+            player_id = row.get("player_id")
+            round_num = row.get("round")
+            if game_id is None or player_id is None or round_num is None:
+                continue
+
+            game_id_int = int(game_id)
+            if current_game_id is None or game_id_int != current_game_id:
+                current_game_id = game_id_int
+                prev_rows_by_player = {}
+
+            player_id_int = int(player_id)
+            round_int = int(round_num)
+            prev_row = prev_rows_by_player.get(player_id_int)
+            if prev_row is not None:
+                prev_round = int(prev_row.get("round", -1))
+                if round_int > prev_round:
+                    next_result = _infer_binary_fight_result(row)
+                    if next_result is not None:
+                        yield self._encoder.encode_row(
+                            prev_row,
+                            fight_result_override=float(next_result),
+                        )
+                        emitted += 1
+                        if self.max_examples is not None and emitted >= self.max_examples:
+                            return
+            prev_rows_by_player[player_id_int] = row
