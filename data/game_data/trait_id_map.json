@@ -1,11 +1,4 @@
 {
-  "Teamup_SingedTeemo": {
-    "apiName": "TFT16_Teamup_SingedTeemo",
-    "shortName": "Teamup_SingedTeemo",
-    "displayName": "Poison Pals",
-    "slug": "poison-pals",
-    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_PoisonPals.TFT_Set16.tex"
-  },
   "Poison Pals": {
     "apiName": "TFT16_Teamup_SingedTeemo",
     "shortName": "Teamup_SingedTeemo",
@@ -14,6 +7,13 @@
     "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_PoisonPals.TFT_Set16.tex"
   },
   "TFT16_Teamup_SingedTeemo": {
+    "apiName": "TFT16_Teamup_SingedTeemo",
+    "shortName": "Teamup_SingedTeemo",
+    "displayName": "Poison Pals",
+    "slug": "poison-pals",
+    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_PoisonPals.TFT_Set16.tex"
+  },
+  "Teamup_SingedTeemo": {
     "apiName": "TFT16_Teamup_SingedTeemo",
     "shortName": "Teamup_SingedTeemo",
     "displayName": "Poison Pals",
@@ -34,13 +34,6 @@
     "slug": "ascendant",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_12_Ascendant.TFT_Set12.tex"
   },
-  "Ascendant": {
-    "apiName": "TFT16_XerathUnique",
-    "shortName": "XerathUnique",
-    "displayName": "Ascendant",
-    "slug": "ascendant",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_12_Ascendant.TFT_Set12.tex"
-  },
   "TFT16_XerathUnique": {
     "apiName": "TFT16_XerathUnique",
     "shortName": "XerathUnique",
@@ -55,14 +48,21 @@
     "slug": "ascendant",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_12_Ascendant.TFT_Set12.tex"
   },
-  "TFT16_Freljord": {
+  "Ascendant": {
+    "apiName": "TFT16_XerathUnique",
+    "shortName": "XerathUnique",
+    "displayName": "Ascendant",
+    "slug": "ascendant",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_12_Ascendant.TFT_Set12.tex"
+  },
+  "freljord": {
     "apiName": "TFT16_Freljord",
     "shortName": "Freljord",
     "displayName": "Freljord",
     "slug": "freljord",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Freljord.TFT_Set16.tex"
   },
-  "freljord": {
+  "TFT16_Freljord": {
     "apiName": "TFT16_Freljord",
     "shortName": "Freljord",
     "displayName": "Freljord",
@@ -76,14 +76,14 @@
     "slug": "freljord",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Freljord.TFT_Set16.tex"
   },
-  "TFT16_Juggernaut": {
+  "Juggernaut": {
     "apiName": "TFT16_Juggernaut",
     "shortName": "Juggernaut",
     "displayName": "Juggernaut",
     "slug": "juggernaut",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Juggernaut.tex"
   },
-  "Juggernaut": {
+  "TFT16_Juggernaut": {
     "apiName": "TFT16_Juggernaut",
     "shortName": "Juggernaut",
     "displayName": "Juggernaut",
@@ -96,13 +96,6 @@
     "displayName": "Juggernaut",
     "slug": "juggernaut",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Juggernaut.tex"
-  },
-  "Rapidfire": {
-    "apiName": "TFT16_Rapidfire",
-    "shortName": "Rapidfire",
-    "displayName": "Quickstriker",
-    "slug": "quickstriker",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Quickstriker.tex"
   },
   "Quickstriker": {
     "apiName": "TFT16_Rapidfire",
@@ -118,19 +111,19 @@
     "slug": "quickstriker",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Quickstriker.tex"
   },
-  "quickstriker": {
+  "Rapidfire": {
     "apiName": "TFT16_Rapidfire",
     "shortName": "Rapidfire",
     "displayName": "Quickstriker",
     "slug": "quickstriker",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Quickstriker.tex"
   },
-  "longshot": {
-    "apiName": "TFT16_Longshot",
-    "shortName": "Longshot",
-    "displayName": "Longshot",
-    "slug": "longshot",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Longshot.TFT_Set16.tex"
+  "quickstriker": {
+    "apiName": "TFT16_Rapidfire",
+    "shortName": "Rapidfire",
+    "displayName": "Quickstriker",
+    "slug": "quickstriker",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Quickstriker.tex"
   },
   "Longshot": {
     "apiName": "TFT16_Longshot",
@@ -146,6 +139,20 @@
     "slug": "longshot",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Longshot.TFT_Set16.tex"
   },
+  "longshot": {
+    "apiName": "TFT16_Longshot",
+    "shortName": "Longshot",
+    "displayName": "Longshot",
+    "slug": "longshot",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Longshot.TFT_Set16.tex"
+  },
+  "Vanquisher": {
+    "apiName": "TFT16_Vanquisher",
+    "shortName": "Vanquisher",
+    "displayName": "Vanquisher",
+    "slug": "vanquisher",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Vanquisher.tex"
+  },
   "TFT16_Vanquisher": {
     "apiName": "TFT16_Vanquisher",
     "shortName": "Vanquisher",
@@ -160,14 +167,7 @@
     "slug": "vanquisher",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Vanquisher.tex"
   },
-  "Vanquisher": {
-    "apiName": "TFT16_Vanquisher",
-    "shortName": "Vanquisher",
-    "displayName": "Vanquisher",
-    "slug": "vanquisher",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Vanquisher.tex"
-  },
-  "caretaker": {
+  "Caretaker": {
     "apiName": "TFT16_Caretaker",
     "shortName": "Caretaker",
     "displayName": "Caretaker",
@@ -181,7 +181,7 @@
     "slug": "caretaker",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Caretaker.TFT_Set16.tex"
   },
-  "Caretaker": {
+  "caretaker": {
     "apiName": "TFT16_Caretaker",
     "shortName": "Caretaker",
     "displayName": "Caretaker",
@@ -216,14 +216,14 @@
     "slug": "ixtal",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Ixtal.TFT_Set16.tex"
   },
-  "Slayer": {
+  "slayer": {
     "apiName": "TFT16_Slayer",
     "shortName": "Slayer",
     "displayName": "Slayer",
     "slug": "slayer",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Slayer.tex"
   },
-  "slayer": {
+  "Slayer": {
     "apiName": "TFT16_Slayer",
     "shortName": "Slayer",
     "displayName": "Slayer",
@@ -251,14 +251,14 @@
     "slug": "arcanist",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_6_Arcanist.tex"
   },
-  "Arcanist": {
+  "TFT16_Sorcerer": {
     "apiName": "TFT16_Sorcerer",
     "shortName": "Sorcerer",
     "displayName": "Arcanist",
     "slug": "arcanist",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_6_Arcanist.tex"
   },
-  "TFT16_Sorcerer": {
+  "Arcanist": {
     "apiName": "TFT16_Sorcerer",
     "shortName": "Sorcerer",
     "displayName": "Arcanist",
@@ -286,13 +286,6 @@
     "slug": "emperor",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Emperor.TFT_Set16.tex"
   },
-  "AurelionSolUnique": {
-    "apiName": "TFT16_AurelionSolUnique",
-    "shortName": "AurelionSolUnique",
-    "displayName": "Star Forger",
-    "slug": "star-forger",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_StarForger.TFT_Set16.tex"
-  },
   "Star Forger": {
     "apiName": "TFT16_AurelionSolUnique",
     "shortName": "AurelionSolUnique",
@@ -307,19 +300,19 @@
     "slug": "star-forger",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_StarForger.TFT_Set16.tex"
   },
-  "star-forger": {
+  "AurelionSolUnique": {
     "apiName": "TFT16_AurelionSolUnique",
     "shortName": "AurelionSolUnique",
     "displayName": "Star Forger",
     "slug": "star-forger",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_StarForger.TFT_Set16.tex"
   },
-  "Dragonborn": {
-    "apiName": "TFT16_ShyvanaUnique",
-    "shortName": "ShyvanaUnique",
-    "displayName": "Dragonborn",
-    "slug": "dragonborn",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Dragonborn.TFT_Set16.tex"
+  "star-forger": {
+    "apiName": "TFT16_AurelionSolUnique",
+    "shortName": "AurelionSolUnique",
+    "displayName": "Star Forger",
+    "slug": "star-forger",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_StarForger.TFT_Set16.tex"
   },
   "dragonborn": {
     "apiName": "TFT16_ShyvanaUnique",
@@ -335,19 +328,19 @@
     "slug": "dragonborn",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Dragonborn.TFT_Set16.tex"
   },
-  "ShyvanaUnique": {
+  "Dragonborn": {
     "apiName": "TFT16_ShyvanaUnique",
     "shortName": "ShyvanaUnique",
     "displayName": "Dragonborn",
     "slug": "dragonborn",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Dragonborn.TFT_Set16.tex"
   },
-  "Gunslinger": {
-    "apiName": "TFT16_Gunslinger",
-    "shortName": "Gunslinger",
-    "displayName": "Gunslinger",
-    "slug": "gunslinger",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Gunslinger.TFT_Set16.tex"
+  "ShyvanaUnique": {
+    "apiName": "TFT16_ShyvanaUnique",
+    "shortName": "ShyvanaUnique",
+    "displayName": "Dragonborn",
+    "slug": "dragonborn",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Dragonborn.TFT_Set16.tex"
   },
   "TFT16_Gunslinger": {
     "apiName": "TFT16_Gunslinger",
@@ -363,7 +356,14 @@
     "slug": "gunslinger",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Gunslinger.TFT_Set16.tex"
   },
-  "hexmech": {
+  "Gunslinger": {
+    "apiName": "TFT16_Gunslinger",
+    "shortName": "Gunslinger",
+    "displayName": "Gunslinger",
+    "slug": "gunslinger",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Gunslinger.TFT_Set16.tex"
+  },
+  "TFT16_HexMech": {
     "apiName": "TFT16_HexMech",
     "shortName": "HexMech",
     "displayName": "HexMech",
@@ -377,21 +377,14 @@
     "slug": "hexmech",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Hexmech.TFT_Set16.tex"
   },
-  "TFT16_HexMech": {
+  "hexmech": {
     "apiName": "TFT16_HexMech",
     "shortName": "HexMech",
     "displayName": "HexMech",
     "slug": "hexmech",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Hexmech.TFT_Set16.tex"
   },
-  "Chosen Wolves": {
-    "apiName": "TFT16_Teamup_AmbessaKindred",
-    "shortName": "Teamup_AmbessaKindred",
-    "displayName": "Chosen Wolves",
-    "slug": "chosen-wolves",
-    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_ChosenWolves.TFT_Set16.tex"
-  },
-  "TFT16_Teamup_AmbessaKindred": {
+  "Teamup_AmbessaKindred": {
     "apiName": "TFT16_Teamup_AmbessaKindred",
     "shortName": "Teamup_AmbessaKindred",
     "displayName": "Chosen Wolves",
@@ -405,14 +398,21 @@
     "slug": "chosen-wolves",
     "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_ChosenWolves.TFT_Set16.tex"
   },
-  "Teamup_AmbessaKindred": {
+  "TFT16_Teamup_AmbessaKindred": {
     "apiName": "TFT16_Teamup_AmbessaKindred",
     "shortName": "Teamup_AmbessaKindred",
     "displayName": "Chosen Wolves",
     "slug": "chosen-wolves",
     "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_ChosenWolves.TFT_Set16.tex"
   },
-  "Chainbreaker": {
+  "Chosen Wolves": {
+    "apiName": "TFT16_Teamup_AmbessaKindred",
+    "shortName": "Teamup_AmbessaKindred",
+    "displayName": "Chosen Wolves",
+    "slug": "chosen-wolves",
+    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_ChosenWolves.TFT_Set16.tex"
+  },
+  "chainbreaker": {
     "apiName": "TFT16_SylasTrait",
     "shortName": "SylasTrait",
     "displayName": "Chainbreaker",
@@ -426,7 +426,7 @@
     "slug": "chainbreaker",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Chainbreaker.TFT_Set16.tex"
   },
-  "chainbreaker": {
+  "Chainbreaker": {
     "apiName": "TFT16_SylasTrait",
     "shortName": "SylasTrait",
     "displayName": "Chainbreaker",
@@ -439,6 +439,13 @@
     "displayName": "Chainbreaker",
     "slug": "chainbreaker",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Chainbreaker.TFT_Set16.tex"
+  },
+  "soulbound": {
+    "apiName": "TFT16_Soulbound",
+    "shortName": "Soulbound",
+    "displayName": "Soulbound",
+    "slug": "soulbound",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Soulbound.TFT_Set16.tex"
   },
   "Soulbound": {
     "apiName": "TFT16_Soulbound",
@@ -454,21 +461,7 @@
     "slug": "soulbound",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Soulbound.TFT_Set16.tex"
   },
-  "soulbound": {
-    "apiName": "TFT16_Soulbound",
-    "shortName": "Soulbound",
-    "displayName": "Soulbound",
-    "slug": "soulbound",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Soulbound.TFT_Set16.tex"
-  },
   "Piltover": {
-    "apiName": "TFT16_Piltover",
-    "shortName": "Piltover",
-    "displayName": "Piltover",
-    "slug": "piltover",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Piltover.TFT_Set16.tex"
-  },
-  "TFT16_Piltover": {
     "apiName": "TFT16_Piltover",
     "shortName": "Piltover",
     "displayName": "Piltover",
@@ -482,12 +475,12 @@
     "slug": "piltover",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Piltover.TFT_Set16.tex"
   },
-  "timewinders": {
-    "apiName": "TFT16_Teamup_EkkoZilean",
-    "shortName": "Teamup_EkkoZilean",
-    "displayName": "Timewinders",
-    "slug": "timewinders",
-    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_Timewinders.TFT_Set16.tex"
+  "TFT16_Piltover": {
+    "apiName": "TFT16_Piltover",
+    "shortName": "Piltover",
+    "displayName": "Piltover",
+    "slug": "piltover",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Piltover.TFT_Set16.tex"
   },
   "TFT16_Teamup_EkkoZilean": {
     "apiName": "TFT16_Teamup_EkkoZilean",
@@ -496,7 +489,7 @@
     "slug": "timewinders",
     "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_Timewinders.TFT_Set16.tex"
   },
-  "Teamup_EkkoZilean": {
+  "timewinders": {
     "apiName": "TFT16_Teamup_EkkoZilean",
     "shortName": "Teamup_EkkoZilean",
     "displayName": "Timewinders",
@@ -510,12 +503,12 @@
     "slug": "timewinders",
     "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_Timewinders.TFT_Set16.tex"
   },
-  "DarkinWeapon": {
-    "apiName": "TFT16_DarkinWeapon",
-    "shortName": "DarkinWeapon",
-    "displayName": "Darkin",
-    "slug": "darkin",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Darkin.TFT_Set16.tex"
+  "Teamup_EkkoZilean": {
+    "apiName": "TFT16_Teamup_EkkoZilean",
+    "shortName": "Teamup_EkkoZilean",
+    "displayName": "Timewinders",
+    "slug": "timewinders",
+    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_Timewinders.TFT_Set16.tex"
   },
   "Darkin": {
     "apiName": "TFT16_DarkinWeapon",
@@ -531,19 +524,19 @@
     "slug": "darkin",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Darkin.TFT_Set16.tex"
   },
-  "darkin": {
+  "DarkinWeapon": {
     "apiName": "TFT16_DarkinWeapon",
     "shortName": "DarkinWeapon",
     "displayName": "Darkin",
     "slug": "darkin",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Darkin.TFT_Set16.tex"
   },
-  "KindredUnique": {
-    "apiName": "TFT16_KindredUnique",
-    "shortName": "KindredUnique",
-    "displayName": "Eternal",
-    "slug": "eternal",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_5_Eternal.tex"
+  "darkin": {
+    "apiName": "TFT16_DarkinWeapon",
+    "shortName": "DarkinWeapon",
+    "displayName": "Darkin",
+    "slug": "darkin",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Darkin.TFT_Set16.tex"
   },
   "Eternal": {
     "apiName": "TFT16_KindredUnique",
@@ -566,21 +559,14 @@
     "slug": "eternal",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_5_Eternal.tex"
   },
-  "TFT16_DarkChild": {
-    "apiName": "TFT16_DarkChild",
-    "shortName": "DarkChild",
-    "displayName": "Dark Child",
-    "slug": "dark-child",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_DarkChild.TFT_Set16.tex"
+  "KindredUnique": {
+    "apiName": "TFT16_KindredUnique",
+    "shortName": "KindredUnique",
+    "displayName": "Eternal",
+    "slug": "eternal",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_5_Eternal.tex"
   },
   "DarkChild": {
-    "apiName": "TFT16_DarkChild",
-    "shortName": "DarkChild",
-    "displayName": "Dark Child",
-    "slug": "dark-child",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_DarkChild.TFT_Set16.tex"
-  },
-  "Dark Child": {
     "apiName": "TFT16_DarkChild",
     "shortName": "DarkChild",
     "displayName": "Dark Child",
@@ -594,21 +580,28 @@
     "slug": "dark-child",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_DarkChild.TFT_Set16.tex"
   },
-  "AatroxUnique": {
-    "apiName": "TFT16_AatroxUnique",
-    "shortName": "AatroxUnique",
-    "displayName": "World Ender",
-    "slug": "world-ender",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Darkin.tex"
+  "TFT16_DarkChild": {
+    "apiName": "TFT16_DarkChild",
+    "shortName": "DarkChild",
+    "displayName": "Dark Child",
+    "slug": "dark-child",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_DarkChild.TFT_Set16.tex"
   },
-  "TFT16_AatroxUnique": {
-    "apiName": "TFT16_AatroxUnique",
-    "shortName": "AatroxUnique",
-    "displayName": "World Ender",
-    "slug": "world-ender",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Darkin.tex"
+  "Dark Child": {
+    "apiName": "TFT16_DarkChild",
+    "shortName": "DarkChild",
+    "displayName": "Dark Child",
+    "slug": "dark-child",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_DarkChild.TFT_Set16.tex"
   },
   "world-ender": {
+    "apiName": "TFT16_AatroxUnique",
+    "shortName": "AatroxUnique",
+    "displayName": "World Ender",
+    "slug": "world-ender",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Darkin.tex"
+  },
+  "AatroxUnique": {
     "apiName": "TFT16_AatroxUnique",
     "shortName": "AatroxUnique",
     "displayName": "World Ender",
@@ -622,19 +615,12 @@
     "slug": "world-ender",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Darkin.tex"
   },
-  "TFT16_KaisaUnique": {
-    "apiName": "TFT16_KaisaUnique",
-    "shortName": "KaisaUnique",
-    "displayName": "Assimilator",
-    "slug": "assimilator",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Assimilator.TFT_Set16.tex"
-  },
-  "KaisaUnique": {
-    "apiName": "TFT16_KaisaUnique",
-    "shortName": "KaisaUnique",
-    "displayName": "Assimilator",
-    "slug": "assimilator",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Assimilator.TFT_Set16.tex"
+  "TFT16_AatroxUnique": {
+    "apiName": "TFT16_AatroxUnique",
+    "shortName": "AatroxUnique",
+    "displayName": "World Ender",
+    "slug": "world-ender",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Darkin.tex"
   },
   "assimilator": {
     "apiName": "TFT16_KaisaUnique",
@@ -650,12 +636,19 @@
     "slug": "assimilator",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Assimilator.TFT_Set16.tex"
   },
-  "Teamup_JarvanShyvana": {
-    "apiName": "TFT16_Teamup_JarvanShyvana",
-    "shortName": "Teamup_JarvanShyvana",
-    "displayName": "Dragonguards",
-    "slug": "dragonguards",
-    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_UncompromisingWill.TFT_Set16.tex"
+  "TFT16_KaisaUnique": {
+    "apiName": "TFT16_KaisaUnique",
+    "shortName": "KaisaUnique",
+    "displayName": "Assimilator",
+    "slug": "assimilator",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Assimilator.TFT_Set16.tex"
+  },
+  "KaisaUnique": {
+    "apiName": "TFT16_KaisaUnique",
+    "shortName": "KaisaUnique",
+    "displayName": "Assimilator",
+    "slug": "assimilator",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Assimilator.TFT_Set16.tex"
   },
   "Dragonguards": {
     "apiName": "TFT16_Teamup_JarvanShyvana",
@@ -678,6 +671,13 @@
     "slug": "dragonguards",
     "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_UncompromisingWill.TFT_Set16.tex"
   },
+  "Teamup_JarvanShyvana": {
+    "apiName": "TFT16_Teamup_JarvanShyvana",
+    "shortName": "Teamup_JarvanShyvana",
+    "displayName": "Dragonguards",
+    "slug": "dragonguards",
+    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_UncompromisingWill.TFT_Set16.tex"
+  },
   "Magus": {
     "apiName": "TFT16_Magus",
     "shortName": "Magus",
@@ -692,14 +692,14 @@
     "slug": "disruptor",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Disruptor.tex"
   },
-  "Disruptor": {
+  "disruptor": {
     "apiName": "TFT16_Magus",
     "shortName": "Magus",
     "displayName": "Disruptor",
     "slug": "disruptor",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Disruptor.tex"
   },
-  "disruptor": {
+  "Disruptor": {
     "apiName": "TFT16_Magus",
     "shortName": "Magus",
     "displayName": "Disruptor",
@@ -713,13 +713,6 @@
     "slug": "void",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Void.TFT_Set16.tex"
   },
-  "void": {
-    "apiName": "TFT16_Void",
-    "shortName": "Void",
-    "displayName": "Void",
-    "slug": "void",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Void.TFT_Set16.tex"
-  },
   "Void": {
     "apiName": "TFT16_Void",
     "shortName": "Void",
@@ -727,7 +720,21 @@
     "slug": "void",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Void.TFT_Set16.tex"
   },
+  "void": {
+    "apiName": "TFT16_Void",
+    "shortName": "Void",
+    "displayName": "Void",
+    "slug": "void",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Void.TFT_Set16.tex"
+  },
   "TFT16_RuneMage": {
+    "apiName": "TFT16_RuneMage",
+    "shortName": "RuneMage",
+    "displayName": "Rune Mage",
+    "slug": "rune-mage",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_RuneMage.TFT_Set16.tex"
+  },
+  "RuneMage": {
     "apiName": "TFT16_RuneMage",
     "shortName": "RuneMage",
     "displayName": "Rune Mage",
@@ -747,20 +754,6 @@
     "displayName": "Rune Mage",
     "slug": "rune-mage",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_RuneMage.TFT_Set16.tex"
-  },
-  "RuneMage": {
-    "apiName": "TFT16_RuneMage",
-    "shortName": "RuneMage",
-    "displayName": "Rune Mage",
-    "slug": "rune-mage",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_RuneMage.TFT_Set16.tex"
-  },
-  "The Boss": {
-    "apiName": "TFT16_TheBoss",
-    "shortName": "TheBoss",
-    "displayName": "The Boss",
-    "slug": "the-boss",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_4_Theboss.tex"
   },
   "TFT16_TheBoss": {
     "apiName": "TFT16_TheBoss",
@@ -783,14 +776,21 @@
     "slug": "the-boss",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_4_Theboss.tex"
   },
-  "TFT16_Glutton": {
+  "The Boss": {
+    "apiName": "TFT16_TheBoss",
+    "shortName": "TheBoss",
+    "displayName": "The Boss",
+    "slug": "the-boss",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_4_Theboss.tex"
+  },
+  "glutton": {
     "apiName": "TFT16_Glutton",
     "shortName": "Glutton",
     "displayName": "Glutton",
     "slug": "glutton",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Glutton.TFT_Set16.tex"
   },
-  "glutton": {
+  "TFT16_Glutton": {
     "apiName": "TFT16_Glutton",
     "shortName": "Glutton",
     "displayName": "Glutton",
@@ -846,13 +846,6 @@
     "slug": "demacia",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Demacia.TFT_Set16.tex"
   },
-  "Bilgewater": {
-    "apiName": "TFT16_Bilgewater",
-    "shortName": "Bilgewater",
-    "displayName": "Bilgewater",
-    "slug": "bilgewater",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Bilgewater.tex"
-  },
   "TFT16_Bilgewater": {
     "apiName": "TFT16_Bilgewater",
     "shortName": "Bilgewater",
@@ -867,21 +860,14 @@
     "slug": "bilgewater",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Bilgewater.tex"
   },
+  "Bilgewater": {
+    "apiName": "TFT16_Bilgewater",
+    "shortName": "Bilgewater",
+    "displayName": "Bilgewater",
+    "slug": "bilgewater",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Bilgewater.tex"
+  },
   "riftscourge": {
-    "apiName": "TFT16_BaronUnique",
-    "shortName": "BaronUnique",
-    "displayName": "Riftscourge",
-    "slug": "riftscourge",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Riftscourge.tex"
-  },
-  "BaronUnique": {
-    "apiName": "TFT16_BaronUnique",
-    "shortName": "BaronUnique",
-    "displayName": "Riftscourge",
-    "slug": "riftscourge",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Riftscourge.tex"
-  },
-  "Riftscourge": {
     "apiName": "TFT16_BaronUnique",
     "shortName": "BaronUnique",
     "displayName": "Riftscourge",
@@ -895,12 +881,19 @@
     "slug": "riftscourge",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Riftscourge.tex"
   },
-  "Targon": {
-    "apiName": "TFT16_Targon",
-    "shortName": "Targon",
-    "displayName": "Targon",
-    "slug": "targon",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Targon.TFT_Set16.tex"
+  "Riftscourge": {
+    "apiName": "TFT16_BaronUnique",
+    "shortName": "BaronUnique",
+    "displayName": "Riftscourge",
+    "slug": "riftscourge",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Riftscourge.tex"
+  },
+  "BaronUnique": {
+    "apiName": "TFT16_BaronUnique",
+    "shortName": "BaronUnique",
+    "displayName": "Riftscourge",
+    "slug": "riftscourge",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Riftscourge.tex"
   },
   "targon": {
     "apiName": "TFT16_Targon",
@@ -916,6 +909,20 @@
     "slug": "targon",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Targon.TFT_Set16.tex"
   },
+  "Targon": {
+    "apiName": "TFT16_Targon",
+    "shortName": "Targon",
+    "displayName": "Targon",
+    "slug": "targon",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Targon.TFT_Set16.tex"
+  },
+  "shurima": {
+    "apiName": "TFT16_Shurima",
+    "shortName": "Shurima",
+    "displayName": "Shurima",
+    "slug": "shurima",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Shurima.TFT_Set16.tex"
+  },
   "TFT16_Shurima": {
     "apiName": "TFT16_Shurima",
     "shortName": "Shurima",
@@ -930,21 +937,14 @@
     "slug": "shurima",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Shurima.TFT_Set16.tex"
   },
-  "shurima": {
-    "apiName": "TFT16_Shurima",
-    "shortName": "Shurima",
-    "displayName": "Shurima",
-    "slug": "shurima",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Shurima.TFT_Set16.tex"
-  },
-  "blacksmith": {
+  "Blacksmith": {
     "apiName": "TFT16_Blacksmith",
     "shortName": "Blacksmith",
     "displayName": "Blacksmith",
     "slug": "blacksmith",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Blacksmith.TFT_Set16.tex"
   },
-  "Blacksmith": {
+  "blacksmith": {
     "apiName": "TFT16_Blacksmith",
     "shortName": "Blacksmith",
     "displayName": "Blacksmith",
@@ -986,6 +986,13 @@
     "slug": "shadow-isles",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_ShadowIsles.TFT_Set16.tex"
   },
+  "Harvester": {
+    "apiName": "TFT16_Harvester",
+    "shortName": "Harvester",
+    "displayName": "Harvester",
+    "slug": "harvester",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Harvester.TFT_Set16.tex"
+  },
   "TFT16_Harvester": {
     "apiName": "TFT16_Harvester",
     "shortName": "Harvester",
@@ -1000,14 +1007,7 @@
     "slug": "harvester",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Harvester.TFT_Set16.tex"
   },
-  "Harvester": {
-    "apiName": "TFT16_Harvester",
-    "shortName": "Harvester",
-    "displayName": "Harvester",
-    "slug": "harvester",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Harvester.TFT_Set16.tex"
-  },
-  "immortal": {
+  "Immortal": {
     "apiName": "TFT16_ZaahenTrait",
     "shortName": "ZaahenTrait",
     "displayName": "Immortal",
@@ -1028,12 +1028,19 @@
     "slug": "immortal",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Immortal.TFT_Set16.tex"
   },
-  "Immortal": {
+  "immortal": {
     "apiName": "TFT16_ZaahenTrait",
     "shortName": "ZaahenTrait",
     "displayName": "Immortal",
     "slug": "immortal",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Immortal.TFT_Set16.tex"
+  },
+  "Heroic": {
+    "apiName": "TFT16_Heroic",
+    "shortName": "Heroic",
+    "displayName": "Heroic",
+    "slug": "heroic",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Heroic.TFT_Set16.tex"
   },
   "heroic": {
     "apiName": "TFT16_Heroic",
@@ -1049,21 +1056,7 @@
     "slug": "heroic",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Heroic.TFT_Set16.tex"
   },
-  "Heroic": {
-    "apiName": "TFT16_Heroic",
-    "shortName": "Heroic",
-    "displayName": "Heroic",
-    "slug": "heroic",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Heroic.TFT_Set16.tex"
-  },
   "TFT16_Noxus": {
-    "apiName": "TFT16_Noxus",
-    "shortName": "Noxus",
-    "displayName": "Noxus",
-    "slug": "noxus",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Noxus.TFT_Set16.tex"
-  },
-  "noxus": {
     "apiName": "TFT16_Noxus",
     "shortName": "Noxus",
     "displayName": "Noxus",
@@ -1077,14 +1070,21 @@
     "slug": "noxus",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Noxus.TFT_Set16.tex"
   },
-  "TFT16_Yordle": {
+  "noxus": {
+    "apiName": "TFT16_Noxus",
+    "shortName": "Noxus",
+    "displayName": "Noxus",
+    "slug": "noxus",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Noxus.TFT_Set16.tex"
+  },
+  "yordle": {
     "apiName": "TFT16_Yordle",
     "shortName": "Yordle",
     "displayName": "Yordle",
     "slug": "yordle",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Yordle.TFT_Set16.tex"
   },
-  "yordle": {
+  "TFT16_Yordle": {
     "apiName": "TFT16_Yordle",
     "shortName": "Yordle",
     "displayName": "Yordle",
@@ -1105,13 +1105,6 @@
     "slug": "zaun",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Zaun.TFT_Set16.tex"
   },
-  "Zaun": {
-    "apiName": "TFT16_Zaun",
-    "shortName": "Zaun",
-    "displayName": "Zaun",
-    "slug": "zaun",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Zaun.TFT_Set16.tex"
-  },
   "TFT16_Zaun": {
     "apiName": "TFT16_Zaun",
     "shortName": "Zaun",
@@ -1119,7 +1112,14 @@
     "slug": "zaun",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Zaun.TFT_Set16.tex"
   },
-  "TFT16_Brawler": {
+  "Zaun": {
+    "apiName": "TFT16_Zaun",
+    "shortName": "Zaun",
+    "displayName": "Zaun",
+    "slug": "zaun",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Zaun.TFT_Set16.tex"
+  },
+  "Bruiser": {
     "apiName": "TFT16_Brawler",
     "shortName": "Brawler",
     "displayName": "Bruiser",
@@ -1133,14 +1133,14 @@
     "slug": "bruiser",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Bruiser.TFT_Set16.tex"
   },
-  "bruiser": {
+  "TFT16_Brawler": {
     "apiName": "TFT16_Brawler",
     "shortName": "Brawler",
     "displayName": "Bruiser",
     "slug": "bruiser",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Bruiser.TFT_Set16.tex"
   },
-  "Bruiser": {
+  "bruiser": {
     "apiName": "TFT16_Brawler",
     "shortName": "Brawler",
     "displayName": "Bruiser",
@@ -1168,6 +1168,13 @@
     "slug": "chronokeeper",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Chronokeeper.TFT_Set16.tex"
   },
+  "Warden": {
+    "apiName": "TFT16_Warden",
+    "shortName": "Warden",
+    "displayName": "Warden",
+    "slug": "warden",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Warden.TFT_Set16.tex"
+  },
   "TFT16_Warden": {
     "apiName": "TFT16_Warden",
     "shortName": "Warden",
@@ -1182,21 +1189,14 @@
     "slug": "warden",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Warden.TFT_Set16.tex"
   },
-  "Warden": {
-    "apiName": "TFT16_Warden",
-    "shortName": "Warden",
-    "displayName": "Warden",
-    "slug": "warden",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Warden.TFT_Set16.tex"
-  },
-  "ionia": {
+  "TFT16_Ionia": {
     "apiName": "TFT16_Ionia",
     "shortName": "Ionia",
     "displayName": "Ionia",
     "slug": "ionia",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Ionia.TFT_Set16.tex"
   },
-  "TFT16_Ionia": {
+  "ionia": {
     "apiName": "TFT16_Ionia",
     "shortName": "Ionia",
     "displayName": "Ionia",
@@ -1209,13 +1209,6 @@
     "displayName": "Ionia",
     "slug": "ionia",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Ionia.TFT_Set16.tex"
-  },
-  "defender": {
-    "apiName": "TFT16_Defender",
-    "shortName": "Defender",
-    "displayName": "Defender",
-    "slug": "defender",
-    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Defender.tex"
   },
   "Defender": {
     "apiName": "TFT16_Defender",
@@ -1231,19 +1224,12 @@
     "slug": "defender",
     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Defender.tex"
   },
-  "Sentinels of Light": {
-    "apiName": "TFT16_Teamup_LucianVayne",
-    "shortName": "Teamup_LucianVayne",
-    "displayName": "Sentinels of Light",
-    "slug": "sentinels-of-light",
-    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_SentinelsOfLight.TFT_Set16.tex"
-  },
-  "sentinels-of-light": {
-    "apiName": "TFT16_Teamup_LucianVayne",
-    "shortName": "Teamup_LucianVayne",
-    "displayName": "Sentinels of Light",
-    "slug": "sentinels-of-light",
-    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_SentinelsOfLight.TFT_Set16.tex"
+  "defender": {
+    "apiName": "TFT16_Defender",
+    "shortName": "Defender",
+    "displayName": "Defender",
+    "slug": "defender",
+    "icon": "ASSETS/UX/TraitIcons/Trait_Icon_16_Defender.tex"
   },
   "Teamup_LucianVayne": {
     "apiName": "TFT16_Teamup_LucianVayne",
@@ -1253,6 +1239,20 @@
     "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_SentinelsOfLight.TFT_Set16.tex"
   },
   "TFT16_Teamup_LucianVayne": {
+    "apiName": "TFT16_Teamup_LucianVayne",
+    "shortName": "Teamup_LucianVayne",
+    "displayName": "Sentinels of Light",
+    "slug": "sentinels-of-light",
+    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_SentinelsOfLight.TFT_Set16.tex"
+  },
+  "Sentinels of Light": {
+    "apiName": "TFT16_Teamup_LucianVayne",
+    "shortName": "Teamup_LucianVayne",
+    "displayName": "Sentinels of Light",
+    "slug": "sentinels-of-light",
+    "icon": "ASSETS/UX/TraitIcons/TeamUp_Trait_SentinelsOfLight.TFT_Set16.tex"
+  },
+  "sentinels-of-light": {
     "apiName": "TFT16_Teamup_LucianVayne",
     "shortName": "Teamup_LucianVayne",
     "displayName": "Sentinels of Light",
