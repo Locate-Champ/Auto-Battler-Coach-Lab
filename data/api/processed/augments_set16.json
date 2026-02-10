@@ -37,6 +37,7 @@
       }
     ],
     "texture": "CrashTestDummies_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 Training Dummies. Combat start: Your Training Dummies launch themselves towards a group of enemies and Stun them for 1.75 seconds.",
     "disabled": false
@@ -77,6 +78,7 @@
       }
     ],
     "texture": "GoingLong_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "You no longer gain interest. Gain 15 gold now. Round start: gain 4 XP. Interest is extra gold you gain per 10g saved.",
     "disabled": false
@@ -118,6 +120,7 @@
       }
     ],
     "texture": "GoodForSomething_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Champions that aren't holding items have a 50% chance to drop 1 gold on death.",
     "disabled": false
@@ -158,6 +161,7 @@
       }
     ],
     "texture": "HeroicGrabBag_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 Lesser Champion Duplicators and 5 gold. This item allows you to copy a 3-cost or less champion.",
     "disabled": false
@@ -202,6 +206,7 @@
       }
     ],
     "texture": "TinyButMighty_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your 4-cost and 5-cost champions gain 55 Health and 6% Attack Speed for every 1-cost and 2-cost champion on your board.",
     "disabled": false
@@ -243,6 +248,7 @@
       }
     ],
     "texture": "BloodBank_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Every 7 damage you deal to enemy tacticians gives you 2 gold. Total Payouts: Varies Gold",
     "disabled": false
@@ -284,6 +290,7 @@
       "TFT11_Augment_CallToChaos": "???"
     },
     "texture": "CallToChaos_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a powerful and random reward. Reward: Varies",
     "disabled": false
@@ -324,6 +331,7 @@
       }
     ],
     "texture": "Epoch_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Now, and at the start of every stage, gain 4 XP and 3 free rerolls.",
     "disabled": false
@@ -364,6 +372,7 @@
       }
     ],
     "texture": "Epoch_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Now, and at the start of every stage, gain 8 XP and 3 free rerolls.",
     "disabled": false
@@ -405,6 +414,7 @@
       }
     ],
     "texture": "OverEncumbered_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "For the next stage, you only get 2 bench slots. After, get 2 item components.",
     "disabled": false
@@ -445,6 +455,7 @@
       }
     ],
     "texture": "PrizeFighter_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 item components. Every 5 wins gives you an item component.",
     "disabled": false
@@ -485,6 +496,7 @@
       }
     ],
     "texture": "RainingGold_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 7 gold now and 1 gold every round.",
     "disabled": false
@@ -517,6 +529,7 @@
       }
     ],
     "texture": "Reinfourcement_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "The next 4-cost champion you buy with gold is instantly upgraded to 2-star. Gain 5 gold.",
     "disabled": false
@@ -558,6 +571,7 @@
       }
     ],
     "texture": "Slammin_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 1 random component(s). After each player combat, if there are no items on your bench (other than consumables), gain 2 XP.",
     "disabled": false
@@ -606,6 +620,7 @@
       }
     ],
     "texture": "Slammin_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 1 random component(s) and 10 XP now. After each player combat, if there are no items on your bench (other than consumables), gain 2 XP.",
     "disabled": false
@@ -643,6 +658,7 @@
       }
     ],
     "texture": "TinyButDeadly_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Your team becomes small, gaining 30% Attack Speed and Movement Speed.",
     "disabled": false
@@ -695,6 +711,7 @@
       }
     ],
     "texture": "AirAxiom_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain an Air Hex. Champions within gain 25% Attack Speed and their damage 30% Sunders enemies for 5 seconds.",
     "disabled": false
@@ -742,6 +759,7 @@
       }
     ],
     "texture": "ChaosMagic_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Arcanists gain 1 Mana Regen. After every 150 Mana they spend, a magical effect hits the board. Gain a Neeko and an Ahri.",
     "disabled": false
@@ -776,6 +794,7 @@
       }
     ],
     "texture": "BandleBounty_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "For every Yordle you've unlocked or unlock, gain 2 gold. The Bandle Paths reveal a secret Yordle 10. Gain a Rumble and Lulu.",
     "disabled": false
@@ -810,6 +829,7 @@
       }
     ],
     "texture": "BandleBountyPlus_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "For every Yordle you've unlocked or unlock, gain 4 gold. The Bandle Paths reveal a secret Yordle 10! Gain a Tristana and Teemo.",
     "disabled": false
@@ -855,6 +875,7 @@
       }
     ],
     "texture": "DefenseofIonia_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 8% Durability, increased to 12% if the Ionia trait is active.",
     "disabled": false
@@ -905,6 +926,7 @@
       }
     ],
     "texture": "DemaciaForever_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Demacians gain 3 permanent Health every time they rally. They also gain 1.5% permanent Attack Damage and Ability Power every 3 rallies. Gain a Jarvan IV, a Sona, and a Xin Zhao.",
     "disabled": false
@@ -964,6 +986,7 @@
       }
     ],
     "texture": "EarthAxiom_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain an Earth Hex. Champions within gain 30 Armor and Magic Resist. At 50% Health, they Stun enemies within 2 hexes for 1.5 seconds.",
     "disabled": false
@@ -1024,6 +1047,7 @@
       }
     ],
     "texture": "FireAxiom_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Fire Hex. Champions within gain 15% Attack Damage and Ability Power. Their damage 1% Burns and 33% Wounds for 6 seconds.",
     "disabled": false
@@ -1048,6 +1072,7 @@
     "unique": false,
     "en_name": "Leap of Faith",
     "texture": "LeapofFaith_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain an Illaoi. Your strongest Illaoi becomes a Fighter. Her Ability is replaced with an airborne slam that's recast when she kills her target.",
     "disabled": false
@@ -1081,6 +1106,7 @@
         "value": 10
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Qiyana, a Neeko, and a Milio. Increase your current and max player Health by 10.",
     "disabled": false
@@ -1126,6 +1152,7 @@
       }
     ],
     "texture": "NoxianInvasion_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 10% Damage Amp, increased to 15% if the Noxus trait is active.",
     "disabled": false
@@ -1169,6 +1196,7 @@
       }
     ],
     "texture": "BringerOfRuin_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Every takedown Atakhan scores permanently grants him 1% Ability Power and 40 max Health. Gain a Briar and a Sion. (Current Takedowns: Varies)",
     "disabled": false
@@ -1203,6 +1231,7 @@
       }
     ],
     "texture": "HexgateTravel_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "When the Piltover invention triggers for the first time each combat, gain a random number of Piltover champions that cost between 1 and 3 gold. Gain a Caitlyn and a Vi.",
     "disabled": false
@@ -1238,6 +1267,7 @@
       }
     ],
     "texture": "ArtilleryBarrage_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Rumble. Your strongest Rumble gains +7 Range and constantly fires missiles at enemies, increased with Attack Speed.",
     "disabled": false
@@ -1282,6 +1312,7 @@
       }
     ],
     "texture": "RuinedKing_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a 2-star Viego. Your strongest Viego shares 30% of his Passive with other Shadow Isles allies. After collecting 100 souls, his Ability upgrades.",
     "disabled": false
@@ -1330,6 +1361,7 @@
       }
     ],
     "texture": "SecretsOfSand_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 6 gold. Gain an Azir on Stage 3-5. Each time you unlock a Shuriman, gain an ideal item for them.",
     "disabled": false
@@ -1369,6 +1401,7 @@
         "value": 7
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Spear of Shojin and a Leona. On Stage 3-7, gain a Taric.",
     "disabled": false
@@ -1407,6 +1440,7 @@
       }
     ],
     "texture": "TheAxiomata_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 3 random elemental hex augments. Future augment rounds instead grant you items and gold based on the augment's tier.",
     "disabled": false
@@ -1429,6 +1463,7 @@
     ],
     "unique": false,
     "en_name": "Unsealed From Steel",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Choose 1 of 4 Darkin Weapons. Darkin Weapons are Artifacts that grant the Darkin trait.",
     "disabled": false
@@ -1486,6 +1521,7 @@
       }
     ],
     "texture": "TheWorldRunes_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 Emblems from random Region traits. Gain 2 XP every player combat, increased to 4 XP if 4 or more Region traits are active.",
     "disabled": false
@@ -1529,6 +1565,7 @@
       }
     ],
     "texture": "UltraRapidFire_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Spatula. Champions holding Spatula or Frying Pan items gain 15% Attack Speed and 2 Mana Regen.",
     "disabled": false
@@ -1574,6 +1611,7 @@
       }
     ],
     "texture": "EvolveAndOvercome_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "For every 5 enemies that Mutated Void allies takedown, gain 2 XP. Gain a Cho'Gath and a 2-star Kog'Maw. TFT_Augment_Template_Blank Void provides unique Mutations.",
     "disabled": false
@@ -1609,6 +1647,7 @@
       }
     ],
     "texture": "WalkTheTruePath_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Lesser Champion Duplicator, a Shen, a Jhin, and 6 gold. Ionia 10 gains a Prismatic upgrade.",
     "disabled": false
@@ -1643,6 +1682,7 @@
       }
     ],
     "texture": "WalkTheTruePathPlus_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 Lesser Champion Duplicators, a Jhin, a Shen, and an Infinity Edge. Ionia 10 gains a Prismatic upgrade.",
     "disabled": false
@@ -1694,6 +1734,7 @@
       }
     ],
     "texture": "WaterAxiom_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Water Hex. Champions within gain 3 Mana Regen. Their damage 30% Shreds enemies for 5 seconds.",
     "disabled": false
@@ -1727,6 +1768,7 @@
     },
     "variable_matches": [],
     "texture": "LiftingContest_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "At the start of each round, if the combined Health of all your unique Bruisers is high enough, gain a reward and increase the threshold (up to four times). Gain a Shen and a Sion. Easy Lift: Varies / 3500",
     "disabled": false
@@ -1769,6 +1811,7 @@
       }
     ],
     "texture": "WoodAxiom_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Wood Hex. Champions within gain 15% max Health. After combat, they permanently gain 40 Health.",
     "disabled": false
@@ -1813,6 +1856,7 @@
       }
     ],
     "texture": "XinZhaoCarry_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 Xin Zhao. Your strongest Xin Zhao constantly strikes nearby enemies and executes enemies. After 5 player combats as a 3-star, unlock Zaahen. He replaces Xin Zhao and takes his items.",
     "disabled": false
@@ -1865,6 +1909,7 @@
       }
     ],
     "texture": "{035788de}",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 Xin Zhaos and a Bloodthirster. Xin Zhao becomes an Attack Fighter. After 5 player combats as a 3-star, unlock Zaahen. At the start of the next 3 stages, gain a Lesser Champion Duplicator.",
     "disabled": false
@@ -1910,6 +1955,7 @@
       }
     ],
     "texture": "WildGrowth_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "3-star Yordles become massive, moving slower but gaining 15% Health and 35% Attack Damage and Ability Power. Gain a Rumble and Lulu.",
     "disabled": false
@@ -1958,6 +2004,7 @@
       }
     ],
     "texture": "SilcosRevenge_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Zaunites explode into Shimmer on death, dealing 30% of their max Health to 2 nearby enemies as magic damage. Gain a Blitzcrank, an Ekko, and a Vi.",
     "disabled": false
@@ -2109,6 +2156,7 @@
         "value": 8
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 Thief's Gloves. After 8 player combats, gain another.",
     "disabled": false
@@ -2148,6 +2196,7 @@
         "value": 6
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 Thief's Gloves. After 6 player combats, gain another.",
     "disabled": false
@@ -2187,6 +2236,7 @@
         "value": 3
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 Thief's Gloves. After 3 player combats, gain another.",
     "disabled": false
@@ -2219,6 +2269,7 @@
         "value": 2
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Combat start: Champions holding 2 items gain a random 3rd completed item. Gain 2 random component now.",
     "disabled": false
@@ -2250,6 +2301,7 @@
         "value": 2
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "After losing your combat, gain 2 gold and a free Shop reroll.",
     "disabled": false
@@ -2290,6 +2342,7 @@
         "value": 200
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your team gains 12% Omnivamp. Excess healing is converted to a shield up to 200 Health.",
     "disabled": false
@@ -2330,6 +2383,7 @@
         "value": 400
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 18% Omnivamp. Excess healing is converted to a shield up to 400 Health.",
     "disabled": false
@@ -2370,6 +2424,7 @@
         "value": 1000
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Your team gains 25% Omnivamp. Excess healing is converted to a shield up to 1000 Health.",
     "disabled": false
@@ -2401,6 +2456,7 @@
         "value": 3
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "If there are no champions on your bench at the end of player combat, gain 3 XP.",
     "disabled": false
@@ -2441,6 +2497,7 @@
         "value": 10
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your champions that start combat with no adjacent champions gain a 20% max Health shield for 10 seconds.",
     "disabled": false
@@ -2481,6 +2538,7 @@
         "value": 10
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your champions that start combat with no adjacent champions gain a 30% max Health shield for 10 seconds.",
     "disabled": false
@@ -2522,6 +2580,7 @@
         "value": 0.015
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 1.5% Attack Damage and 1.5% Ability Power for each non-unique Trait active across your team. Current Bonus: Varies AD Varies AP",
     "disabled": false
@@ -2554,6 +2613,7 @@
         "value": 50
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Each time your Shop is rerolled, you have a 50% chance to gain a free reroll.",
     "disabled": false
@@ -2594,6 +2654,7 @@
         "value": 6
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "You no longer gain interest but gain 3 gold at the start of every player combat round. Gain 6 gold now. Interest is extra gold you gain per 10g saved.",
     "disabled": false
@@ -2627,6 +2688,7 @@
         "value": 1
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 1 random completed item.",
     "disabled": false
@@ -2660,6 +2722,7 @@
         "value": 30
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Allies without items equipped gain 30 Armor and Magic Resist.",
     "disabled": false
@@ -2693,6 +2756,7 @@
         "value": 45
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Allies without items equipped gain 45 Armor and Magic Resist.",
     "disabled": false
@@ -2732,6 +2796,7 @@
         "value": 12
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "When you buy XP, gain an additional 2. Gain 12 immediately.",
     "disabled": false
@@ -2779,6 +2844,7 @@
         "value": 1
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 1 random component, 2 gold, and 1 random 5-cost champion.",
     "disabled": false
@@ -2812,6 +2878,7 @@
         "value": 1
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Round start: items on your bench are randomized. Gain 1 random component.",
     "disabled": false
@@ -2845,6 +2912,7 @@
         "value": 4
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Choose 1 of 4 Artifacts. Artifacts are more powerful items with a unique effect.",
     "disabled": false
@@ -2878,6 +2946,7 @@
         "value": 5
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Choose 1 of 5 Radiant items. Gain a Magnetic Remover. Radiant items are very powerful versions of completed items.",
     "disabled": false
@@ -2909,6 +2978,7 @@
         "value": 2
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Champions on your board permanently transform into random champions 1 cost tier higher (max 5). Gain 2 Magnetic Removers.",
     "disabled": false
@@ -2940,6 +3010,7 @@
         "value": 8
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 1 random completed item now, and 1 component after 8 player combats. Selling champions breaks completed items into components (excluding Tactician's items and Emblems).",
     "disabled": false
@@ -2980,6 +3051,7 @@
         "value": 40
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "After 10 seconds of combat, your team heals 40% of their missing Health.",
     "disabled": false
@@ -3012,6 +3084,7 @@
         "value": 11
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a golden egg that hatches in 11 turns for a huge amount of loot. Winning player combat speeds up the hatch timer by an extra turn.",
     "disabled": false
@@ -3045,6 +3118,7 @@
         "value": 4
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a free Shop reroll every round. Gain 4 gold.",
     "disabled": false
@@ -3085,6 +3159,7 @@
         "value": 2
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 16 free Shop rerolls now and 2 every round for the rest of the game.",
     "disabled": false
@@ -3123,6 +3198,7 @@
         "value": 30
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "When you field exactly 2 copies of a champion, they both gain 30% Attack Damage and 30% Ability Power, Armor, and Magic Resist. When you 3-star, gain a 2-star copy.",
     "disabled": false
@@ -3156,6 +3232,7 @@
         "value": 1
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 1 Thief's Gloves.",
     "disabled": false
@@ -3197,6 +3274,7 @@
         "value": 0.1
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Allies isolated in pairs gain 10% Attack Speed and 10 Armor at the start of combat.",
     "disabled": false
@@ -3238,6 +3316,7 @@
         "value": 0.15
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Allies isolated in pairs gain 15% Attack Speed and 18 Armor at the start of combat.",
     "disabled": false
@@ -3278,6 +3357,7 @@
         "value": 10
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Allies that start combat next to an ally with over 1750 Health gain 10% Durability.",
     "disabled": false
@@ -3309,6 +3389,7 @@
         "value": 1
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a 2-star champion and 1 gold every time you level up. The champion's cost tier is your level minus 4 (max: 5-cost).",
     "disabled": false
@@ -3348,6 +3429,7 @@
         "value": 3
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 4 random 1-cost champions now. If your bench is full at the end of player combat, gain 3 XP.",
     "disabled": false
@@ -3390,6 +3472,7 @@
         "value": 0.04
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain +2 max team size and your team gains 4% Durability, but you take double player damage when you lose a player combat.",
     "disabled": false
@@ -3429,6 +3512,7 @@
         "value": 36
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "When you reach Level 9, gain 36 gold.",
     "disabled": false
@@ -3460,6 +3544,7 @@
         "value": 9
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain an Artifact anvil now and after every 9 player combats. Artifacts are more powerful items with a unique effect.",
     "disabled": false
@@ -3492,6 +3577,7 @@
         "value": 2
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Thief's Gloves will always give your champions ideal items. Gain 2 Sparring Gloves.",
     "disabled": false
@@ -3532,6 +3618,7 @@
         "value": 4
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Thief's Gloves will always give your champions ideal items. Gain 2 Sparring Gloves now, then another after 4 player combats.",
     "disabled": false
@@ -3573,6 +3660,7 @@
         "value": 6
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "At the start of every round, champions on the 3 rightmost bench slots transform into random champions of the same cost. Gain 6 gold.",
     "disabled": false
@@ -3635,6 +3723,7 @@
         "value": 4
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Champions on your bench permanently gain 30 Health, 3% Attack Damage, and 3% Ability Power every round. Champions start with 1 stack of this effect, and can stack up to 4 times.",
     "disabled": false
@@ -3697,6 +3786,7 @@
         "value": 4
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Champions on your bench permanently gain 50 Health, 4% Attack Damage, and 4% Ability Power every round. Champions start with 1 stack of this effect, and can stack up to 4 times.",
     "disabled": false
@@ -3729,6 +3819,7 @@
         "value": 4
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 1 random completed item now, and 1 component after 4 player combats. Selling champions breaks completed items into components (excluding Tactician's items and Emblems).",
     "disabled": false
@@ -3761,6 +3852,7 @@
         "value": 5
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Lesser Champion Duplicator. Gain another after 5 player combats. This item allows you to copy a 3-cost or less champion.",
     "disabled": false
@@ -3795,6 +3887,7 @@
         "value": 2
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a random 2-cost champion now. Gain the same one again every time you level up. Champion: Varies",
     "disabled": false
@@ -3850,6 +3943,7 @@
         "value": 8
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a component anvil when you reach level 5, 6, 7, and 8. The anvil offers 4 choices.",
     "disabled": false
@@ -3891,6 +3985,7 @@
         "value": 2
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 3 random components, 2 gold, and 1 Reforger. Reforgers allow you to remake any item.",
     "disabled": false
@@ -3924,6 +4019,7 @@
         "value": 5
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a random item component now and at the start of the next 5 rounds.",
     "disabled": false
@@ -3964,6 +4060,7 @@
         "value": 45
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "After 12 seconds of combat, gain 45% Damage Amp.",
     "disabled": false
@@ -3996,6 +4093,7 @@
         "value": 10
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 10 free Shop rerolls.",
     "disabled": false
@@ -4036,6 +4134,7 @@
         "value": 2
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 1 random component and 2 random 3-cost champions.",
     "disabled": false
@@ -4056,6 +4155,7 @@
     ],
     "unique": false,
     "en_name": "Component Buffet",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Whenever you would get a component, gain a component anvil instead. Gain a random component now. The anvil offers 4 choices.",
     "disabled": false
@@ -4089,6 +4189,7 @@
         "value": 0.25
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Enemies have a 25% chance to drop loot when killed.",
     "disabled": false
@@ -4122,6 +4223,7 @@
         "value": 0.3
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Enemies have a 30% chance to drop loot when killed.",
     "disabled": false
@@ -4155,6 +4257,7 @@
         "value": 0.45
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Enemies have a 45% chance to drop loot when killed.",
     "disabled": false
@@ -4196,6 +4299,7 @@
         "value": 0.1
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Your team gains 25% Critical Strike Chance and 10% Critical Strike Damage, and their Abilities can critically strike.",
     "disabled": false
@@ -4228,6 +4332,7 @@
         "value": 220
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "When an enemy dies, the nearest ally is healed for 220.",
     "disabled": false
@@ -4260,6 +4365,7 @@
         "value": 440
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "When an enemy dies, the nearest ally is healed for 440.",
     "disabled": false
@@ -4299,6 +4405,7 @@
         "value": 10
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 25 gold. Your max interest is increased to 10. Interest is extra gold you gain per 10g saved.",
     "disabled": false
@@ -4330,6 +4437,7 @@
         "value": 3
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a component anvil and 3 gold.",
     "disabled": false
@@ -4363,6 +4471,7 @@
         "value": 20
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 20% Critical Strike Chance, and their Abilities can critically strike.",
     "disabled": false
@@ -4403,6 +4512,7 @@
         "value": 15
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "You can see who you will fight next. Your team gains 8% Damage Amp, increased to 15% if you and your opponent have any of the same traits active.",
     "disabled": false
@@ -4442,6 +4552,7 @@
         "value": 3
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "After player combat, gain 2 XP if you won or 3 XP if you lost.",
     "disabled": false
@@ -4473,6 +4584,7 @@
         "value": 8
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "After 8 player combats, gain an Artifact anvil. The anvil offers 4 choices. Artifacts are more powerful items with a unique effect.",
     "disabled": false
@@ -4494,6 +4606,7 @@
     ],
     "unique": false,
     "en_name": "Missed Connections",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a copy of each 1-cost champion.",
     "disabled": false
@@ -4533,6 +4646,7 @@
         "value": 2
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 1 1-cost champion, 2 2-cost champions, and 1 3-cost champion.",
     "disabled": false
@@ -4567,6 +4681,7 @@
         "value": 2
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Round start: items on your bench are randomized. Gain 2 random components.",
     "disabled": false
@@ -4588,6 +4703,7 @@
     ],
     "unique": false,
     "en_name": "Pandora's Items III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Round start: items on your bench are randomized. Gain 1 random Radiant item.",
     "disabled": false
@@ -4635,6 +4751,7 @@
         "value": 30
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your Tactician loses 20 Health, but after 7 player combats, gain 30 gold.",
     "disabled": false
@@ -4656,6 +4773,7 @@
     ],
     "unique": false,
     "en_name": "Radiant Rascal",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a Rascal's Gloves item. This equips 2 random Radiant items every round. Radiant items are very powerful versions of completed items.",
     "disabled": false
@@ -4687,6 +4805,7 @@
         "value": 10
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 10 XP.",
     "disabled": false
@@ -4718,6 +4837,7 @@
         "value": 7
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "The first 1-cost and 2-cost champions you buy are instantly upgraded to 2-star. Gain 7 gold.",
     "disabled": false
@@ -4757,6 +4877,7 @@
         "value": 2
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a 4-cost champion, a 2-star 1-cost champion that shares a trait with them, and 8 gold. At the start of the next 2 stages, gain that 4-cost champion again.",
     "disabled": false
@@ -4804,6 +4925,7 @@
         "value": 15
       }
     ],
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 player Health and 2 gold after every player combat. Your Tactician also moves faster. Gain 15 gold now.",
     "disabled": false
@@ -4884,6 +5006,7 @@
         "value": 4
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 44 Health, 4% Attack Damage, 4% Ability Power, 4 Armor, 4 Magic Resist, 4% Attack Speed, and 4 Mana.",
     "disabled": false
@@ -4916,6 +5039,7 @@
       }
     ],
     "texture": "AdvancedLoan_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 20 Gold. Your next augment is one tier lower.",
     "disabled": false
@@ -4947,6 +5071,7 @@
         "value": 33
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 33 Gold. Your next augment is one tier lower.",
     "disabled": false
@@ -4996,6 +5121,7 @@
       }
     ],
     "texture": "ArcaneViktory_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "After 8 seconds of combat, stun the enemy team for 1.5 seconds. Repeat this after 20 seconds of combat. TFT Macao Open, 2024",
     "disabled": false
@@ -5045,6 +5171,7 @@
       }
     ],
     "texture": "AuraFarming_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a 2-star 5-cost champion holding a recommended item. You cannot field it until Stage 4-5.",
     "disabled": false
@@ -5095,6 +5222,7 @@
       }
     ],
     "texture": "AwakenedSoul_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Combat start: Your team gains 2% Attack Damage and Ability Power per second for 10 seconds. At max stacks, deal 12% bonus true damage.",
     "disabled": false
@@ -5136,6 +5264,7 @@
       }
     ],
     "texture": "BeltOverflow_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 4 Giant's Belts. Your Giant's Belts grant +85 bonus Health.",
     "disabled": false
@@ -5176,6 +5305,7 @@
       }
     ],
     "texture": "BirthdayReunion_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a random 2-star 2-cost champion. When you reach Level 7, gain a Thief's Gloves. When you reach Level 9, gain a random 2-star 5-cost champion. Inkborn Fables Tactician's Crown, 2024",
     "disabled": false
@@ -5216,6 +5346,7 @@
       }
     ],
     "texture": "BodyguardsTraining_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Allies gain 10 Armor and Magic Resist, increased by 3 per player level. Gizmos & Gadgets Championship, 2022",
     "disabled": false
@@ -5249,6 +5380,7 @@
       }
     ],
     "texture": "BoxingLessons_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your team gains 30 Health for each ally that starts combat in the front row.",
     "disabled": false
@@ -5272,6 +5404,7 @@
     ],
     "unique": false,
     "en_name": "Branching Out",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a random Emblem.",
     "disabled": false
@@ -5295,6 +5428,7 @@
     ],
     "unique": false,
     "en_name": "Branching Out+",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a random Emblem and a Reforger. Reforgers allow you to remake any item.",
     "disabled": false
@@ -5337,6 +5471,7 @@
       }
     ],
     "texture": "BronzeForLife_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Your team gains 2.5% Damage Amp and 4 Armor and Magic Resist for each Bronze-tier trait. Damage Amp: Varies Armor and Magic Resist: Varies",
     "disabled": false
@@ -5372,6 +5507,7 @@
       }
     ],
     "texture": "BronzeForLife_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 2.5% Damage Amp for each Bronze-tier trait. Damage Amp Bonus: Varies",
     "disabled": false
@@ -5412,6 +5548,7 @@
       }
     ],
     "texture": "CalledShot_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Set your win streak to 4. Gain 4 gold.",
     "disabled": false
@@ -5454,6 +5591,7 @@
       }
     ],
     "texture": "PrecisionGrace_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "At the start of combat, allies gain 25% Attack Speed for 3 seconds. On takedown, allies dash to their next target and gain this bonus again.",
     "disabled": false
@@ -5521,6 +5659,7 @@
       }
     ],
     "texture": "ChaosEvolution_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Starring up a champion grants them one of the following: 100 Health, 6% Durability, 10% Ability Power, 10% Attack Damage, 10% Attack Speed. Bonuses stack.",
     "disabled": false
@@ -5563,6 +5702,7 @@
       }
     ],
     "texture": "ClockworkAccelerator_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 10% Attack Speed every 3 seconds in combat.",
     "disabled": false
@@ -5606,6 +5746,7 @@
       }
     ],
     "texture": "ComebackStory_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Your team gains 5 Health and 0.4% Attack Speed per missing player Health. TFT_Augment_Template_Blank",
     "disabled": false
@@ -5647,6 +5788,7 @@
       }
     ],
     "texture": "ExtraBuckles_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Giant's Belt. After your team takes 75000 damage, gain 2 more. Damage taken: Varies",
     "disabled": false
@@ -5688,6 +5830,7 @@
       }
     ],
     "texture": "RecurveWrecker_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Recurve Bow. After your team attacks 1000 times, gain 2 more. Attacks: Varies",
     "disabled": false
@@ -5729,6 +5872,7 @@
       }
     ],
     "texture": "CriticalSuccess_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Sparring Glove. After your team's attacks critically strike 320 times, gain 2 more. Critical strikes: Varies",
     "disabled": false
@@ -5770,6 +5914,7 @@
       }
     ],
     "texture": "HyperbolicRodExtender_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Needlessly Large Rod. After your team deals 38000 magic damage, gain 2 more. Damage dealt: Varies",
     "disabled": false
@@ -5811,6 +5956,7 @@
       }
     ],
     "texture": "CarveAPath_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a B.F. Sword. After your team deals 65000 physical damage, gain 2 more. Damage dealt: Varies",
     "disabled": false
@@ -5852,6 +5998,7 @@
       }
     ],
     "texture": "GriefoftheGreatGoddess_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a Tear of the Goddess. After your team spends 6500 Mana, gain 2 more. Mana spent: Varies",
     "disabled": false
@@ -5884,6 +6031,7 @@
       }
     ],
     "texture": "ConstructACompanion_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "The next 1-cost champion you buy is 3 star. Gain 2 gold.",
     "disabled": false
@@ -5917,6 +6065,7 @@
       }
     ],
     "texture": "CookingPot_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "At the start of each turn, all allies holding a Frying Pan or Spatula item grant the nearest champion 50 permanent Health. Gain a Frying Pan.",
     "disabled": false
@@ -5968,6 +6117,7 @@
       }
     ],
     "texture": "Coronation_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a Tactician's Crown. Tactician's Crown, Shield, and Cape grant the holder an additional 20% Attack Speed, 25% Attack Damage, and 30% Ability Power.",
     "disabled": false
@@ -6009,6 +6159,7 @@
       }
     ],
     "texture": "Corrosion_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Enemy champions in the first two rows lose 4 Armor and Magic Resist every 2 seconds.",
     "disabled": false
@@ -6041,6 +6192,7 @@
       }
     ],
     "texture": "CraftedCrafting_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Whenever you craft a completed item, gain 2 rerolls.",
     "disabled": false
@@ -6083,6 +6235,7 @@
       }
     ],
     "texture": "CrownguardSpirit_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Needlessly Large Rod. Your team gains 12 Ability Power and 10 Armor.",
     "disabled": false
@@ -6133,6 +6286,7 @@
       }
     ],
     "texture": "CryMeARiver_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Tear of the Goddess. Your team gains 1 Mana Regen. After 12 seconds in combat, increase this to 3.",
     "disabled": false
@@ -6166,6 +6320,7 @@
       }
     ],
     "texture": "DeadlierCaps_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a Rabadon's Deathcap. Rabadon's Deathcaps permanently gain 1% Ability Power whenever their holders score a takedown.",
     "disabled": false
@@ -6206,6 +6361,7 @@
       }
     ],
     "texture": "Dummify_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Lose all champions on your board and bench. Gain a Training Dummy with 80% of their combined health. The dummy gains 1200 Health per stage.",
     "disabled": false
@@ -6246,6 +6402,7 @@
       }
     ],
     "texture": "DuoQueue_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 random 5-cost champions and 2 copies of a random component.",
     "disabled": false
@@ -6289,6 +6446,7 @@
       }
     ],
     "texture": "EarlyLearning_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 8% Attack Damage & Ability Power. This increases by 1% after each player combat. 1-cost champions gain double. tft10_headliner_default TFT Vegas Open, 2023",
     "disabled": false
@@ -6321,6 +6479,7 @@
         "value": 4
       }
     ],
+    "rarity": "Silver",
     "type": "regular",
     "description": "For the next 4 carousels, gain a second copy of the champion taken.",
     "disabled": false
@@ -6353,6 +6512,7 @@
       }
     ],
     "texture": "EpicRolldown_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "When you reach Level 8, gain 20 Shop rerolls. Runeterra Reforged Championship, 2023",
     "disabled": false
@@ -6387,6 +6547,7 @@
       }
     ],
     "texture": "ExclusiveCustomization_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Lucky Item Chest and a Magnetic Remover and 10 gold. Use a Lucky Item Chest on a champion to choose from an armory of recommended items!",
     "disabled": false
@@ -6424,6 +6585,7 @@
       }
     ],
     "texture": "ExpectedUnexpectedness_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Now and at the start of the next 2 stages, roll 3 dice. Gain various rewards based on their total.",
     "disabled": false
@@ -6464,6 +6626,7 @@
       }
     ],
     "texture": "ExplosiveGrowth_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Now and at the start of the next 3 rounds, gain 7 XP.",
     "disabled": false
@@ -6504,6 +6667,7 @@
       }
     ],
     "texture": "ExplosiveGrowth_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Now and at the start of the next 3 rounds, gain 10 XP.",
     "disabled": false
@@ -6545,6 +6709,7 @@
       }
     ],
     "texture": "EyeforanEye_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "For every 15 ally champions that die, gain a random component (max 3). Deaths Remaining: Varies",
     "disabled": false
@@ -6586,6 +6751,7 @@
       }
     ],
     "texture": "EyeforanEye_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a random component. For every 18 ally champions that die, gain another component (max 2). Deaths Remaining: Varies",
     "disabled": false
@@ -6620,6 +6786,7 @@
       }
     ],
     "texture": "FeedTheFlames_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Sunfire Cape. Your team gains 12% Omnivamp when attacking Burning enemies.",
     "disabled": false
@@ -6663,6 +6830,7 @@
       }
     ],
     "texture": "FindYourCenter_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your champion that starts combat in the center of the front row gains 15% Damage Amp and 15% max Health.",
     "disabled": false
@@ -6703,6 +6871,7 @@
       }
     ],
     "texture": "Firesale_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Each round, steal a random 3-cost or lower champion from the shop. Gain 1 gold.",
     "disabled": false
@@ -6744,6 +6913,7 @@
       }
     ],
     "texture": "Flexible_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 1 random Emblem. At the start of every Stage, gain a random Emblem. Your team gains 40 Health for each Emblem they are holding.",
     "disabled": false
@@ -6804,6 +6974,7 @@
         "value": 0.08
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "After 10 seconds of combat, your champions gain 8% Attack Speed and attacks also hurl 2 delicious projectiles that deal 25 (ADAP) magic damage.",
     "disabled": false
@@ -6836,6 +7007,7 @@
       }
     ],
     "texture": "Rodsmith_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 random completed items that build from Needlessly Large Rod.",
     "disabled": false
@@ -6868,6 +7040,7 @@
       }
     ],
     "texture": "Swordsmith_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 random completed items that build from B.F. Sword.",
     "disabled": false
@@ -6916,6 +7089,7 @@
       }
     ],
     "texture": "ForgedInStrength_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 1 random Artifact. When you drop below 35 Health, gain 3 more random Artifacts. Remix Rumble Championship, 2023",
     "disabled": false
@@ -6957,6 +7131,7 @@
       }
     ],
     "texture": "ForwardThinking_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Lose all your gold. After 5 player combats, gain back the original amount and another 70 gold. Incoming Gold: Varies",
     "disabled": false
@@ -7000,6 +7175,7 @@
       }
     ],
     "texture": "FuriousBlows_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Every 5th attack deals bonus true damage equal to 200% Basic Attack Damage.",
     "disabled": false
@@ -7031,6 +7207,7 @@
         "value": 21
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 21 gold.",
     "disabled": false
@@ -7074,6 +7251,7 @@
       }
     ],
     "texture": "GiantandMighty_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Your team becomes large, gaining 200 Health and 10% max Health.",
     "disabled": false
@@ -7115,6 +7293,7 @@
       }
     ],
     "texture": "{5310f1d3}",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 3 non-Tank 5-cost champions. If you field a 5-cost champion, your 1 to 4-cost champions gain 8% Durability. K.O. Coliseum Championship, 2025",
     "disabled": false
@@ -7158,6 +7337,7 @@
       }
     ],
     "texture": "GlassCannon_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Allies that start combat in the back row begin combat at 80% Health but gain 17% Damage Amp.",
     "disabled": false
@@ -7201,6 +7381,7 @@
       }
     ],
     "texture": "GlassCannon_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Allies that start combat in the back row begin combat at 80% Health but gain 30% Damage Amp.",
     "disabled": false
@@ -7233,6 +7414,7 @@
       }
     ],
     "texture": "GoldenDestiny_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a random Gold Augment and 3 gold.",
     "disabled": false
@@ -7265,6 +7447,7 @@
       }
     ],
     "texture": "GoldenDestiny_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a random Gold Augment and 6 gold.",
     "disabled": false
@@ -7313,6 +7496,7 @@
       }
     ],
     "texture": "Golemify_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Lose all champions on your board and bench. Gain a Golem with 60% of their combined Health and 50% of their combined Attack Damage. The Golem gains 1000 Health per stage.",
     "disabled": false
@@ -7345,6 +7529,7 @@
       }
     ],
     "texture": "GrowthMindset_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 50 XP.",
     "disabled": false
@@ -7389,6 +7574,7 @@
       }
     ],
     "texture": "WilloftheFlail_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Sparring Gloves. Your team gains 8% Attack Speed and 20% Critical Strike Chance.",
     "disabled": false
@@ -7429,6 +7615,7 @@
       }
     ],
     "texture": "HardBargain_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "You cannot choose your Carousel rewards. Gain an additional 6 player Health and 10 Gold each carousel round. When you do not pick a Carousel Reward, you are given an unpicked champion and the item it carries",
     "disabled": false
@@ -7461,6 +7648,7 @@
       }
     ],
     "texture": "HardCommit_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a random Emblem. Now and at the start of each Stage, gain a 1-star champion of that trait with a cost equal to the Stage (max 5) and 7 gold.",
     "disabled": false
@@ -7509,6 +7697,7 @@
       }
     ],
     "texture": "HeadStart_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Sell your board and bench. Gain 4 random 2-star 1-cost champions. Disable your Shop for the next 3 rounds.",
     "disabled": false
@@ -7531,6 +7720,7 @@
     "unique": false,
     "en_name": "Heavy Is the Crown",
     "texture": "HeavyIsTheCrown_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Crown of Demacia, which provides significant bonuses to the wearer. If the holder dies, lose the round.",
     "disabled": false
@@ -7566,6 +7756,7 @@
       }
     ],
     "texture": "HeftyRolls_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 9 Health and size for each time you've rolled this game. Rolls: Varies Health: Varies",
     "disabled": false
@@ -7606,6 +7797,7 @@
       }
     ],
     "texture": "HeroicGrabBag_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 Lesser Champion Duplicators and 8 gold. This item allows you to copy a 3-cost or less champion.",
     "disabled": false
@@ -7646,6 +7838,7 @@
       }
     ],
     "texture": "HeroicGrabBag_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 Lesser Champion Duplicators and 14 gold. This item allows you to copy a 3-cost or less champion.",
     "disabled": false
@@ -7689,6 +7882,7 @@
       }
     ],
     "texture": "HighVoltage_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain an Ionic Spark. Your Ionic Sparks have +3 hex radius and do 20% more damage.",
     "disabled": false
@@ -7731,6 +7925,7 @@
       }
     ],
     "texture": "HoldTheLine_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Allies in your back 2 rows gain 10% Ability Power and 9% Attack Damage for each ally that starts combat in your front row.",
     "disabled": false
@@ -7773,6 +7968,7 @@
       }
     ],
     "texture": "CarePackage_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Now and at the start of the next 2 Stages, receive a care package with loot and 3 gold.",
     "disabled": false
@@ -7814,6 +8010,7 @@
       }
     ],
     "texture": "IndecisionI_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "In 3 rounds, choose a new augment of the same tier. Gain 5 gold now.",
     "disabled": false
@@ -7855,6 +8052,7 @@
       }
     ],
     "texture": "Indecision2_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "In 3 rounds, choose a new augment of the same tier. Gain 8 gold now.",
     "disabled": false
@@ -7895,6 +8093,7 @@
       }
     ],
     "texture": "InfinityProtection_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 4 gold now. On Stage 3-7, gain an Infinity Force. Infinity Force gives allies in the same row a 15% Health shield. Monsters Attack Championship, 2023",
     "disabled": false
@@ -7951,6 +8150,7 @@
       }
     ],
     "texture": "Invested_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 26 gold. After every combat, gain 1 Shop reroll for every 10 gold above 50 (max 80 gold).",
     "disabled": false
@@ -8007,6 +8207,7 @@
       }
     ],
     "texture": "Invested_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 40 gold. After every combat, gain 1 Shop reroll for every 10 gold above 50 (max 80 gold).",
     "disabled": false
@@ -8041,6 +8242,7 @@
       }
     ],
     "texture": "SoloPlate_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Gargoyle Stoneplate. Combat start: Allies holding Gargoyle Stoneplate gain 15% max Health if they're the only one in their row.",
     "disabled": false
@@ -8090,6 +8292,7 @@
       }
     ],
     "texture": "SpiritofRedemption_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Spirit Visage. Every 5 seconds, Spirit Visage heals allies within 1 hex for 7.5% of their missing Health.",
     "disabled": false
@@ -8130,6 +8333,7 @@
       }
     ],
     "texture": "JustHit_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a Champion Duplicator, 18 Shop rerolls, and 10 gold.",
     "disabled": false
@@ -8152,6 +8356,7 @@
     "unique": false,
     "en_name": "Indiscriminate Killer",
     "texture": "IndiscriminateSlayer_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Giant Slayer. Giant Slayers gain their Damage Amp against all enemies instead of just Tanks.",
     "disabled": false
@@ -8195,6 +8400,7 @@
       }
     ],
     "texture": "LastSecondSave_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "The first time each ally falls below 35% Health, they restore 20% maximum Health.",
     "disabled": false
@@ -8245,6 +8451,7 @@
       }
     ],
     "texture": "LateGameScaling_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 XP at the start of player combat rounds. Your 5-cost champions gain 12% Health and 12% Attack Speed. CyberCity Tactician's Crown, 2025",
     "disabled": false
@@ -8286,6 +8493,7 @@
       }
     ],
     "texture": "LegionofThrees_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a random Emblem. Your 3-cost champions and all allies equipped with an Emblem gain 200 Health and 12% Attack Speed. Reckoning Championship, 2021",
     "disabled": false
@@ -8319,6 +8527,7 @@
       }
     ],
     "texture": "Lineup_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your team gains 2 Armor and Magic Resist for each ally that starts combat in the front two rows.",
     "disabled": false
@@ -8359,6 +8568,7 @@
       }
     ],
     "texture": "LuxurySubscription_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a package containing a 5-cost champion, a 2-star 1-cost champion, and 5 gold. At the start of the next 2 stages, gain the package again.",
     "disabled": false
@@ -8391,6 +8601,7 @@
       "TFT_Augment_MagicRoll": "???"
     },
     "texture": "MagicRoll_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Roll 3 dice. Gain rewards based on their total. Reward: Varies",
     "disabled": false
@@ -8421,6 +8632,7 @@
       "TFT_Augment_MagicRoll": "???"
     },
     "texture": "SlightlyMagicRoll_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Roll a die. Gain rewards based on the number rolled. Reward: Varies",
     "disabled": false
@@ -8472,6 +8684,7 @@
       }
     ],
     "texture": "MarksMan_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your team gains 5% Attack Damage. Every 5 seconds, they gain 5% more.",
     "disabled": false
@@ -8504,6 +8717,7 @@
       }
     ],
     "texture": "MaxBuild_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 10 free Shop rerolls. On Stage 4-5 and 6-1, gain a Champion Duplicator. Galaxies Championship, 2020",
     "disabled": false
@@ -8536,6 +8750,7 @@
       }
     ],
     "texture": "MinMax_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a Golden Item Remover and 4 random components. Golden Item Remover is a Magnetic Remover with infinite uses.",
     "disabled": false
@@ -8587,6 +8802,7 @@
       }
     ],
     "texture": "MirroredMonetization_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 gold. For the next 3 rounds, enemy champions drop 2 gold when killed. TFT_Augment_Template_Blank",
     "disabled": false
@@ -8619,6 +8835,7 @@
       }
     ],
     "texture": "MoneyMonsoon_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 7 gold now and every round for the rest of the game.",
     "disabled": false
@@ -8655,6 +8872,7 @@
       }
     ],
     "texture": "MuseumHeist_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "After 4 player combats, gain 1 of every item component. TFT_Augment_Template_Blank TFT_Augment_Template_Blank",
     "disabled": false
@@ -8695,6 +8913,7 @@
       }
     ],
     "texture": "NineLives_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Set your current and max player Health to 9. On combat loss, you only lose 1 health and gain loot. You can't gain health.",
     "disabled": false
@@ -8742,6 +8961,7 @@
       }
     ],
     "texture": "NoScoutNoPivot_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Champions that fight in player combat cannot be benched or sold. Your team gains 1% Health, and 1.5% Attack Damage and Ability Power after player combat. tft10_headliner_default",
     "disabled": false
@@ -8764,6 +8984,7 @@
     "unique": false,
     "en_name": "One Buff, Two Buff",
     "texture": "OneBuffTwoBuff_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a Red Buff, a Blue Buff, and a Champion Duplicator.",
     "disabled": false
@@ -8818,6 +9039,7 @@
       }
     ],
     "texture": "PairofFours_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "If your team has exactly 2 4-cost champions, they each gain 504 Health and 28.4% Attack Speed. Gain a random 4-cost.",
     "disabled": false
@@ -8851,6 +9073,7 @@
       }
     ],
     "texture": "PatienceIsAVirtue_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Each round, gain 2 free rerolls if you did not buy a champion last round.",
     "disabled": false
@@ -8890,6 +9113,7 @@
       }
     ],
     "texture": "Pilfer_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Each round, gain a 1-star copy of the first champion you killed last combat. The first time you gain 35 gold worth of champions in this way, gain a Thief's Gloves. TFT_Augment_Template_Blank TFT_Augment_Template_Blank",
     "disabled": false
@@ -8931,6 +9155,7 @@
       }
     ],
     "texture": "Placebo_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your team gains 1% Attack Speed. Gain 8 gold.",
     "disabled": false
@@ -8972,6 +9197,7 @@
       }
     ],
     "texture": "Placebo_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your team gains 1% Attack Speed. Gain 14 gold.",
     "disabled": false
@@ -9022,6 +9248,7 @@
       }
     ],
     "texture": "PlotArmor_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 8 Armor and Magic Resist. After falling below 50% Health, increase this to 40 for the rest of combat.",
     "disabled": false
@@ -9044,6 +9271,7 @@
     "unique": false,
     "en_name": "Augmented Power",
     "texture": "PowerUp_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Your next augment is one tier higher.",
     "disabled": false
@@ -9076,6 +9304,7 @@
       }
     ],
     "texture": "PrismaticDestiny_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a random Prismatic Augment and 4 gold.",
     "disabled": false
@@ -9108,6 +9337,7 @@
       }
     ],
     "texture": "PrismaticDestiny_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a random Prismatic Augment and 10 gold.",
     "disabled": false
@@ -9141,6 +9371,7 @@
       }
     ],
     "texture": "PromisedProtection_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Protector's Vow. Protector's Vow grants its holder 18% additional Mana from all sources.",
     "disabled": false
@@ -9175,6 +9406,7 @@
       }
     ],
     "texture": "Pyromaniac_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Red Buff. Your Burns deal 50% increased damage.",
     "disabled": false
@@ -9208,6 +9440,7 @@
         "value": 2
       }
     ],
+    "rarity": "Gold",
     "type": "regular",
     "description": "Choose 1 of 3 components. For the next 2 rounds, gain a copy of that component.",
     "disabled": false
@@ -9257,6 +9490,7 @@
       }
     ],
     "texture": "RestartMission_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Remove all champions on your board and bench. Gain 2 random 2-star 3-costs, 3 2-star 2-costs, and 1 2-star 1-cost champion.",
     "disabled": false
@@ -9290,6 +9524,7 @@
       }
     ],
     "texture": "Retribution_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 Hands of Justice. Allies equipped with Hand of Justice can critically strike with their Abilities.",
     "disabled": false
@@ -9346,6 +9581,7 @@
       }
     ],
     "texture": "SavingsAccount_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "After you earn 50 gold in interest, gain 30 gold. Your max interest is increased to 7. Gain 4 gold now. Gold earned: Varies",
     "disabled": false
@@ -9388,6 +9624,7 @@
       }
     ],
     "texture": "SeraphimsStaff_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain an Archangel's Staff. Archangel's Staff grants 2 additional Mana Regen if its holder has 90% or more Ability Power.",
     "disabled": false
@@ -9420,6 +9657,7 @@
       }
     ],
     "texture": "ShimmerscaleEssence_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a Mogul's Mail. In 5 rounds, gain a Gamblers Blade. These items give gold as well as combat power.",
     "disabled": false
@@ -9463,6 +9701,7 @@
       }
     ],
     "texture": "ShowjinSpirit_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Your team gains 12% Attack Damage and 5 Mana. Gain a B.F. Sword.",
     "disabled": false
@@ -9495,6 +9734,7 @@
       }
     ],
     "texture": "SilverDestiny_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a random Silver Augment and 2 gold.",
     "disabled": false
@@ -9527,6 +9767,7 @@
       }
     ],
     "texture": "SilverDestiny_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain a random Silver Augment and 4 gold.",
     "disabled": false
@@ -9567,6 +9808,7 @@
       }
     ],
     "texture": "Slice_of_Life_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Twice per stage, gain a random champion. Its cost increases by Stage. This effect ends after receiving 1 5-cost champion.",
     "disabled": false
@@ -9600,6 +9842,7 @@
       }
     ],
     "texture": "SmallGrabBag_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 2 random item components.",
     "disabled": false
@@ -9655,6 +9898,7 @@
       }
     ],
     "texture": "SoloLeveling_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "For the next 5 combats, your team size is 1 but the champion you field has massively increased stats. Gain 1 XP for every kill they get. Afterwards, gain 2 item components.",
     "disabled": false
@@ -9687,6 +9931,7 @@
       }
     ],
     "texture": "SpeedyDoubleKill_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Guinsoo's Rageblade. When 2 players are eliminated, gain 40 gold. Fates Championship, 2021",
     "disabled": false
@@ -9737,6 +9982,7 @@
       }
     ],
     "texture": "SpiritLink_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Champions restore 5% of their max Health every 4 seconds. Increase the healing by 0.5% for every 10 missing player Health.",
     "disabled": false
@@ -9778,6 +10024,7 @@
       }
     ],
     "texture": "SpreadingRoots_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 random Emblems and 1 gold.",
     "disabled": false
@@ -9819,6 +10066,7 @@
       }
     ],
     "texture": "SpreadingRoots_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 random Emblems, a Reforger, and 2 gold.",
     "disabled": false
@@ -9867,6 +10115,7 @@
       }
     ],
     "texture": "Survivor_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Gain 4 gold. After 3 players are eliminated, gain 100 more gold.",
     "disabled": false
@@ -9900,6 +10149,7 @@
       }
     ],
     "texture": "SweetTreats_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain an Artifact anvil. Your team gains 20 Health for each item equipped on champions. Health Gained: Varies Magic N' Mayhem Tactician's Crown, 2024",
     "disabled": false
@@ -9942,6 +10192,7 @@
       }
     ],
     "texture": "BladeOverflow_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 4 B.F. Swords. Your B.F. Swords grant +5% Attack Speed.",
     "disabled": false
@@ -9982,6 +10233,7 @@
       }
     ],
     "texture": "TableScraps_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "After the next 2 carousels, gain one champion that was not taken and its item. Gain 1 gold.",
     "disabled": false
@@ -10017,6 +10269,7 @@
       }
     ],
     "texture": "TacticiansKitchen_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a random Emblem. After 6 rounds, gain a Tactician's Cape.",
     "disabled": false
@@ -10070,6 +10323,7 @@
       }
     ],
     "texture": "TrailofBlood_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Bloodthirster. Combat start: Allies holding Bloodthirsters lose 20% Health but gain a 30% Health shield and 10% Attack Damage.",
     "disabled": false
@@ -10111,6 +10365,7 @@
       }
     ],
     "texture": "TheGoldenDragon_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Mogul's Mail. Champions holding Mogul's Mail take up 2 team slots but gain 700 Health and 20% Durability. Mogul's Mail gives gold as well as combat power. Dragonlands Championship, 2022",
     "disabled": false
@@ -10158,6 +10413,7 @@
       }
     ],
     "texture": "WovenMagic_III",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a random item component. Every 2200 Mana your team spends grants an additional component (max Varies/3). Mana spent: Varies/2200",
     "disabled": false
@@ -10204,6 +10460,7 @@
       }
     ],
     "texture": "ThornPlatedArmor_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Bramble Vest. Your Bramble Vests deal 20-170% more damage (based on Stage).",
     "disabled": false
@@ -10244,6 +10501,7 @@
       }
     ],
     "texture": "ThreeThrees_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 3 random 2-star 3-cost champions and 3 gold.",
     "disabled": false
@@ -10277,6 +10535,7 @@
       }
     ],
     "texture": "TitanicTitan_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Increase your current and max player Health by 25. On carousel rounds you are released earlier, but are much slower.",
     "disabled": false
@@ -10311,6 +10570,7 @@
       }
     ],
     "texture": "TragicalBlade_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a Deathblade. Deathblades permanently gain 1% Attack Damage whenever their holders score a takedown.",
     "disabled": false
@@ -10352,6 +10612,7 @@
       }
     ],
     "texture": "TheTraitTree_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 3 random Emblems and 2 gold.",
     "disabled": false
@@ -10393,6 +10654,7 @@
       }
     ],
     "texture": "TheTraitTree_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 3 random Emblems, a Reforger, and 4 gold.",
     "disabled": false
@@ -10433,6 +10695,7 @@
       }
     ],
     "texture": "TreasureHunt_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a locked chest each Stage between now and Stage 6. Unlock each chest when you spend 20 gold on Shop rerolls. These chests persist until opened.",
     "disabled": false
@@ -10507,6 +10770,7 @@
       }
     ],
     "texture": "Trifecta_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 2 3-cost champions. Combat Start: 3 random 3-cost champions gain 220 Health and 20% Attack Speed.",
     "disabled": false
@@ -10589,6 +10853,7 @@
       }
     ],
     "texture": "Trifecta_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 3 3-cost champions. Allies gain 5% Attack Speed. Combat Start: 3 random 3-cost champions gain 300 Health and 25% Attack Speed.",
     "disabled": false
@@ -10639,6 +10904,7 @@
       }
     ],
     "texture": "TwinGuardians_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "If you have exactly 2 allies in your first row, grant them 50 Armor and 50 Magic Resist.",
     "disabled": false
@@ -10692,6 +10958,7 @@
       }
     ],
     "texture": "TwoMuchValue_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain 1 reroll for every 2 unique 2-cost champions fielded last player combat. Gain 2 2-cost champions.",
     "disabled": false
@@ -10713,6 +10980,7 @@
     "unique": false,
     "en_name": "Two Trick",
     "texture": "TwoTricks_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a random 2-star 2-cost and 2 random 2-star 1-cost champions.",
     "disabled": false
@@ -10754,6 +11022,7 @@
       }
     ],
     "texture": "Unforgotten_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Every round, your team gain 5% Attack Damage and Ability Power, stacking up to 4 times.",
     "disabled": false
@@ -10796,6 +11065,7 @@
       }
     ],
     "texture": "UpwardMobility_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Buying XP costs 1 less. Gain 2 Health and 2 free rerolls whenever you level up.",
     "disabled": false
@@ -10828,6 +11098,7 @@
       }
     ],
     "texture": "UrfsGambit_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "If you win your next player combat, gain a Spatula. If you lose, gain a Frying Pan. Gain a component anvil and 6 gold now.",
     "disabled": false
@@ -10870,6 +11141,7 @@
       }
     ],
     "texture": "WandOverflow_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 4 Needlessly Large Rods. Your Needlessly Large Rods grant +5% Attack Speed.",
     "disabled": false
@@ -10910,6 +11182,7 @@
       }
     ],
     "texture": "HealthyGains_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a Steadfast Heart. Every 10 seconds of combat its holder survives, Steadfast Heart gains additional 12 permanent max Health.",
     "disabled": false
@@ -10947,6 +11220,7 @@
       }
     ],
     "texture": "Warpath_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a 2-star 2-cost champion. After dealing 80 player damage, gain a chest of high cost champions and items. (Current: Varies)",
     "disabled": false
@@ -10987,6 +11261,7 @@
       }
     ],
     "texture": "OnARoll_I",
+    "rarity": "Silver",
     "type": "regular",
     "description": "Whenever you star up a champion that you fielded last combat, gain 2 free Shop rerolls. Gain 2 gold.",
     "disabled": false
@@ -11022,6 +11297,7 @@
       }
     ],
     "texture": "WeStickTogether_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain a random Emblem and a completed item anvil. Allies that share a trait with that Emblem gain 20% Attack Speed. (Emblem Trait: TFT_Augment_WeStickTogether_Blank) Into The Arcane Tactician's Crown, 2025",
     "disabled": false
@@ -11063,6 +11339,7 @@
       }
     ],
     "texture": "WinOut_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "When you reach level 9, immediately level to 10 and gain 2 free Shop rerolls. Gain 6 XP now.",
     "disabled": false
@@ -11101,6 +11378,7 @@
       }
     ],
     "texture": "WorthTheWait_II",
+    "rarity": "Gold",
     "type": "regular",
     "description": "Gain a random 1-cost champion. Gain another copy of them at the start of each round for the rest of the game. Champion: Varies",
     "disabled": false
@@ -11146,6 +11424,7 @@
       }
     ],
     "texture": "WorthTheWait_III",
+    "rarity": "Prismatic",
     "type": "regular",
     "description": "Gain 2 copies of a random 2-cost champion. Gain another copy of them at the start of each round for the rest of the game. Champion: Varies",
     "disabled": false
