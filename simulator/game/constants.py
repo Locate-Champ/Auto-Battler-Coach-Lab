@@ -144,6 +144,7 @@ ITEM_COMPONENTS_LIST = [
     'BF_Sword', 'Recurve_Bow', 'Needlessly_Large_Rod', 'Tear_of_the_Goddess',
     'Chain_Vest', 'Negatron_Cloak', 'Giants_Belt', 'Sparring_Gloves', 'Spatula',
 ]
+ITEM_COMPONENTS_SET = frozenset(ITEM_COMPONENTS_LIST)
 
 # Component combinations -> completed items
 # Format: (component1, component2) -> item_name
@@ -193,7 +194,7 @@ for (_c1, _c2), _item in list(ITEM_RECIPES.items()):
 
 def is_component(item_name: str) -> bool:
     """Check if an item name is a base component (not a completed item)."""
-    return item_name in ITEM_COMPONENTS_LIST
+    return item_name in ITEM_COMPONENTS_SET
 
 def combine_items(item1: str, item2: str) -> Optional[str]:
     """Try to combine two items. Returns completed item name or None."""

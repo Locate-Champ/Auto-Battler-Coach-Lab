@@ -267,8 +267,7 @@ def _try_move(player: 'Player') -> bool:
             return False
         idx = random.choice(bench_occupied)
         # Pick a random empty board position
-        empty = [(r, c) for r in range(BOARD_ROWS) for c in range(BOARD_COLS)
-                 if (r, c) not in player.board]
+        empty = tuple(sorted(player._empty_positions))
         if not empty:
             return False
         row, col = random.choice(empty)

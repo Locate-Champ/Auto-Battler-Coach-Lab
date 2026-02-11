@@ -9,9 +9,9 @@ from __future__ import annotations
 import random
 import sys
 import os
-from typing import List, Dict, Optional, Tuple, Callable
+from typing import Any, List, Dict, Optional, Tuple, Callable
 
-from .types import RoundResult, GamePhase
+from .types import RoundResult, GamePhase, ChampionInstance
 from .player import Player
 from .champion_pool import ChampionPool
 from .shop import generate_shop, _return_shop_to_pool
@@ -137,7 +137,8 @@ class TFTGame:
 
     def __init__(self, num_players: int = 8, seed: int = None,
                  agent_fn: Callable = None, verbose: bool = False,
-                 logging_enabled: bool = True, collector=None):
+                 logging_enabled: bool = True, collector=None,
+                 engine: str = 'python'):
         """Initialize a new TFT game.
 
         Args:
@@ -148,6 +149,7 @@ class TFTGame:
             verbose: Print round-by-round updates.
             logging_enabled: Enable combat event logging (disable for batch).
             collector: Optional GameCollector for data capture.
+            engine: Combat engine backend ('python' or 'rust').
         """
         if seed is not None:
             random.seed(seed)
@@ -158,8 +160,10 @@ class TFTGame:
 
         # Initialize shared state
         self.pool = ChampionPool()
-        self.engine = CombatEngine(logging_enabled=logging_enabled)
+        self.engine_name = engine
+        self.engine: Any = self._create_combat_engine(logging_enabled)
         self.players = [Player(i) for i in range(num_players)]
+        self._alive_cache: List[Player] = self.players[:]
         self.collector = collector
         self.round_num = 0
         self.placements: List[Tuple[int, int]] = []  # (player_id, placement)
@@ -181,9 +185,31 @@ class TFTGame:
         for i in range(num_players):
             self._matchmaking_weights[i][i] = 0  # Can't fight yourself
 
+    def _create_combat_engine(self, logging_enabled: bool) -> Any:
+        """Create the selected combat engine backend."""
+        if self.engine_name == 'rust':
+            try:
+                from tft_combat_engine import RustCombatEngine
+            except Exception as exc:
+                raise RuntimeError(
+                    "Rust engine selected but tft_combat_engine is unavailable. "
+                    "Build/install it via maturin first."
+                ) from exc
+
+            combat_data_path = Path(__file__).parent.parent / 'data' / 'combat_data.json'
+            return RustCombatEngine(str(combat_data_path))
+
+        if self.engine_name != 'python':
+            raise ValueError(f"Unknown engine '{self.engine_name}'. Expected 'python' or 'rust'.")
+
+        return CombatEngine(logging_enabled=logging_enabled)
+
     @property
     def alive_players(self) -> List[Player]:
-        return [p for p in self.players if p.alive]
+        return self._alive_cache
+
+    def _refresh_alive_cache(self) -> None:
+        self._alive_cache = [p for p in self.players if p.alive]
 
     def play(self) -> List[Tuple[int, int]]:
         """Run the full game and return placements.
@@ -480,7 +506,6 @@ class TFTGame:
             champ_name, cost, item = carousel.pop(pick_idx)
 
             # Try to add to bench
-            from .types import ChampionInstance
             champ = ChampionInstance(
                 name=champ_name,
                 api_name=NAME_TO_API.get(champ_name, f'TFT16_{champ_name.capitalize()}'),
@@ -504,8 +529,9 @@ class TFTGame:
 
     def _resolve_combat(self, p1: Player, p2: Player) -> RoundResult:
         """Resolve combat between two players using the combat engine."""
-        team0 = p1.build_combat_team(self.engine)
-        team1 = p2.build_combat_team(self.engine)
+        use_rust_engine = self.engine_name == 'rust'
+        team0 = p1.build_combat_team(self.engine, use_rust_engine=use_rust_engine)
+        team1 = p2.build_combat_team(self.engine, use_rust_engine=use_rust_engine)
 
         # Handle empty boards
         if not team0 and not team1:
@@ -532,9 +558,14 @@ class TFTGame:
 
         # Mirror team1 positions (flip rows) for opponent side
         for unit in team1:
-            unit.team = 1
-            row, col = unit.position
-            unit.position = (BOARD_ROWS - 1 - row, col)
+            if use_rust_engine:
+                unit['team'] = 1
+                row, col = unit['position']
+                unit['position'] = [BOARD_ROWS - 1 - row, col]
+            else:
+                unit.team = 1
+                row, col = unit.position
+                unit.position = (BOARD_ROWS - 1 - row, col)
 
         # Pass player augments to combat engine
         p1_augments = self.player_augments.get(p1.player_id, [])
@@ -633,8 +664,10 @@ class TFTGame:
         if not newly_dead:
             return
 
+        self._refresh_alive_cache()
+
         # All players dying this round get the same placement
-        placement = len(self.alive_players) + 1
+        placement = len(self._alive_cache) + 1
         for player in newly_dead:
             player.placement = placement
             self.placements.append((player.player_id, placement))

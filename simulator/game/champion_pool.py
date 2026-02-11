@@ -36,6 +36,26 @@ class ChampionPool:
             else:
                 self._names_by_cost[cost] = list(champs.keys())
 
+        self._name_index_by_cost: Dict[int, Dict[str, int]] = {}
+        self._weights_by_cost: Dict[int, List[int]] = {}
+        self._cum_weights_by_cost: Dict[int, List[int]] = {}
+        self._total_by_cost: Dict[int, int] = {}
+        for cost, names in self._names_by_cost.items():
+            indices: Dict[str, int] = {}
+            weights: List[int] = []
+            cum_weights: List[int] = []
+            running_total = 0
+            for idx, name in enumerate(names):
+                weight = max(0, self.pool.get(name, 0))
+                indices[name] = idx
+                weights.append(weight)
+                running_total += weight
+                cum_weights.append(running_total)
+            self._name_index_by_cost[cost] = indices
+            self._weights_by_cost[cost] = weights
+            self._cum_weights_by_cost[cost] = cum_weights
+            self._total_by_cost[cost] = running_total
+
     def roll_shop(self, level: int) -> List[Optional[str]]:
         """Generate a shop of 5 champions based on player level.
 
@@ -76,13 +96,14 @@ class ChampionPool:
         if not names:
             return None
 
-        # Build weights from remaining copies
-        weights = [max(0, self.pool.get(n, 0)) for n in names]
-        total = sum(weights)
+        total = self._total_by_cost.get(cost, 0)
         if total == 0:
             return None
 
-        return random.choices(names, weights=weights, k=1)[0]
+        cum_weights = self._cum_weights_by_cost.get(cost)
+        if not cum_weights:
+            return None
+        return random.choices(names, cum_weights=cum_weights, k=1)[0]
 
     def take(self, name: str) -> bool:
         """Remove one copy of a champion from the pool.
@@ -92,6 +113,7 @@ class ChampionPool:
         if self.pool.get(name, 0) <= 0:
             return False
         self.pool[name] -= 1
+        self._update_cached_weights(name, -1)
         return True
 
     def return_champion(self, name: str, count: int = 1):
@@ -99,7 +121,11 @@ class ChampionPool:
         if name not in self.pool:
             return
         max_count = POOL_SIZES.get(NAME_TO_COST.get(name, 1), 29)
-        self.pool[name] = min(self.pool[name] + count, max_count)
+        old_count = self.pool[name]
+        self.pool[name] = min(old_count + count, max_count)
+        restored = self.pool[name] - old_count
+        if restored:
+            self._update_cached_weights(name, restored)
 
     def available(self, name: str) -> int:
         """Get remaining copies of a champion in the pool."""
@@ -115,3 +141,29 @@ class ChampionPool:
             # A 2-star = 3 copies, 3-star = 9 copies
             copies = 3 ** (champ.star_level - 1)
             self.return_champion(champ.name, copies)
+
+    def _update_cached_weights(self, name: str, delta: int) -> None:
+        """Incrementally update cached tier weights/cumulative totals."""
+        base_cost = NAME_TO_COST.get(name)
+        if base_cost is None:
+            return
+        tier_cost = 5 if base_cost == 7 else base_cost
+        indices = self._name_index_by_cost.get(tier_cost)
+        if not indices:
+            return
+        idx = indices.get(name)
+        if idx is None:
+            return
+
+        weights = self._weights_by_cost[tier_cost]
+        old_weight = weights[idx]
+        new_weight = max(0, old_weight + delta)
+        actual_delta = new_weight - old_weight
+        if actual_delta == 0:
+            return
+
+        weights[idx] = new_weight
+        cum_weights = self._cum_weights_by_cost[tier_cost]
+        for i in range(idx, len(cum_weights)):
+            cum_weights[i] += actual_delta
+        self._total_by_cost[tier_cost] += actual_delta

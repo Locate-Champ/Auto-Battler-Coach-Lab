@@ -4,6 +4,8 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Optional, Tuple, Dict, Any
 
+from .constants import SELL_VALUES
+
 
 class GamePhase(Enum):
     MINION = "minion"
@@ -25,7 +27,7 @@ class ActionType(Enum):
     PASS = "pass"
 
 
-@dataclass
+@dataclass(slots=True)
 class Action:
     """An action a player can take during the planning phase."""
     action_type: ActionType
@@ -76,7 +78,7 @@ class Action:
         return Action(ActionType.PASS)
 
 
-@dataclass
+@dataclass(slots=True)
 class ChampionInstance:
     """A champion instance on board, bench, or in shop."""
     name: str           # Lowercase key (e.g., 'jinx')
@@ -87,11 +89,10 @@ class ChampionInstance:
 
     @property
     def sell_value(self) -> int:
-        from .constants import SELL_VALUES
         return SELL_VALUES[self.cost - 1][self.star_level - 1]
 
 
-@dataclass
+@dataclass(slots=True)
 class RoundResult:
     """Result of a combat round between two players."""
     winner_id: int

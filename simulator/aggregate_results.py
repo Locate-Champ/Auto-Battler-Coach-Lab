@@ -78,6 +78,17 @@ def merge_summaries(input_dirs: List[str]) -> Dict:
 
 def merge_training_data(input_dirs: List[str], output_dir: str):
     """Merge training data files (JSON or Parquet)."""
+    chunked_outputs = []
+    for d in input_dirs:
+        has_chunk = any(Path(d).glob('chunk_*.parquet')) or any(Path(d).glob('chunk_*.jsonl'))
+        if has_chunk:
+            chunked_outputs.append(d)
+    if chunked_outputs:
+        print("  Detected chunked shard outputs (chunk_*.parquet/jsonl).")
+        print("  Skipping monolithic training-data merge in aggregate_results.")
+        print("  Use models.data_loader.DataLoader on the shard root directory instead.")
+        return
+
     # Try Parquet merge first
     parquet_files = []
     json_files = []
