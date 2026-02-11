@@ -46,8 +46,8 @@ class GameCollector:
                     'name': ch.name,
                     'api_name': ch.api_name,
                     'star': ch.star_level,
-                    'items': ch.items[:],
-                    'pos': [r, c],
+                    'items': tuple(ch.items),
+                    'pos': (r, c),
                 })
 
             round_data['players'].append({
@@ -76,7 +76,7 @@ class GameCollector:
                     'name': ch.name,
                     'api_name': ch.api_name,
                     'star': ch.star_level,
-                    'items': ch.items[:],
+                    'items': tuple(ch.items),
                 })
 
             self.placements.append({
@@ -153,7 +153,7 @@ class GameCollector:
                 units = []
                 for unit in player_state['board']:
                     position = unit.get('pos')
-                    if isinstance(position, list) and len(position) == 2:
+                    if isinstance(position, (list, tuple)) and len(position) == 2:
                         hex_pos = int(position[0]) * 7 + int(position[1])
                     else:
                         hex_pos = None
@@ -170,7 +170,7 @@ class GameCollector:
                 if opponent_state is not None:
                     for unit in opponent_state.get('board', []):
                         position = unit.get('pos')
-                        if isinstance(position, list) and len(position) == 2:
+                        if isinstance(position, (list, tuple)) and len(position) == 2:
                             hex_pos = int(position[0]) * 7 + int(position[1])
                         else:
                             hex_pos = None
