@@ -44,8 +44,6 @@ Thumbs.db
 node_modules/
 
 # Logs and runtime artifacts
-*.log
-*.html.log
 logs/
 
 # Archives and binaries (use external storage)
@@ -65,3 +63,5 @@ nul
 Advanced math for simulation.md
 chatgpt simulator diagnosis.md
 simulator/docs/Session Summary*.md
+.ntfy-topic
+.agent/

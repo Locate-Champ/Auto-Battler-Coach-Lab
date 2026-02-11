@@ -1,10 +1,33 @@
+FROM python:3.12-slim AS rust-builder
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    ca-certificates \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# Build/install rust combat engine wheel into builder site-packages
+COPY simulator/core/rust_engine/ simulator/core/rust_engine/
+RUN pip install --no-cache-dir maturin && \
+    cd simulator/core/rust_engine && \
+    maturin build --release && \
+    pip install --no-cache-dir target/wheels/*.whl
+
 FROM python:3.12-slim
 
 WORKDIR /app
 
-# Install minimal dependencies
+# Install simulator runtime dependencies
 COPY requirements-simulator.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy rust engine wheel install from builder stage
+COPY --from=rust-builder /usr/local/lib/python3.12/site-packages/ /usr/local/lib/python3.12/site-packages/
 
 # Copy only the simulator and data files needed
 COPY simulator/ simulator/
@@ -14,4 +37,4 @@ COPY data/api/processed/ data/api/processed/
 ENTRYPOINT ["python", "-m", "simulator.cloud_runner"]
 
 # Default args (can be overridden)
-CMD ["--games", "100", "--workers", "4", "--output", "/app/results"]
+CMD ["--games", "100", "--workers", "4", "--engine", "rust", "--output", "/app/results"]
