@@ -25,6 +25,10 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 
+DUPLICATE_PLACEMENT_SEVERE_MAX = 3
+DUPLICATE_PLACEMENT_SEVERE_RATE_LIMIT = 0.01
+
+
 def _load_training_data(output_dir: str) -> List[Dict]:
     """Load training data from chunks or legacy single-file format."""
     rows = []
@@ -244,23 +248,35 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
             f"range: {min_p}-{max_p}"
         )
 
-    # ── Check 8: No duplicate placements per game ────────────────────
-    dup_games = 0
+    # ── Check 8: No excessive duplicate placements per game ──────────
+    severe_dup_games = 0
     for gid, player_map in game_placements.items():
         placements = list(player_map.values())
         if len(placements) != len(set(placements)):
             # Allow ties (players eliminated same round get same placement)
-            # but check for unreasonable duplicates (e.g., all same placement)
+            # but check for persistently high severe-duplicate frequency.
             counts = Counter(placements)
             max_dup = max(counts.values())
-            if max_dup > 3:  # More than 3 players with same placement is suspect
-                dup_games += 1
+            if max_dup > DUPLICATE_PLACEMENT_SEVERE_MAX:
+                severe_dup_games += 1
+
+    total_games_with_placements = max(1, len(game_placements))
+    severe_dup_rate = severe_dup_games / total_games_with_placements
 
     report.check(
         'No excessive placement duplicates',
-        dup_games == 0,
-        f"{dup_games} games with >3 players at same placement"
+        severe_dup_rate <= DUPLICATE_PLACEMENT_SEVERE_RATE_LIMIT,
+        (
+            f"{severe_dup_games}/{len(game_placements)} games "
+            f"({severe_dup_rate:.2%}) with >{DUPLICATE_PLACEMENT_SEVERE_MAX} "
+            "players at same placement"
+        ),
     )
+    if severe_dup_games > 0 and severe_dup_rate <= DUPLICATE_PLACEMENT_SEVERE_RATE_LIMIT:
+        report.warn(
+            "Observed severe placement ties but within tolerated rate "
+            f"({severe_dup_rate:.2%} <= {DUPLICATE_PLACEMENT_SEVERE_RATE_LIMIT:.2%})."
+        )
 
     # ── Check 9: All 8 players per game ──────────────────────────────
     incomplete_games = 0

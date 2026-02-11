@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import math
-from typing import Dict, List, Optional, Tuple, TYPE_CHECKING
+import random
+from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING
 
 from .types import ChampionInstance
 from .constants import (
@@ -22,6 +23,16 @@ if TYPE_CHECKING:
     from simulator.core.combat_engine import CombatEngine
     from .champion_pool import ChampionPool
 
+try:
+    from simulator.data.set16_items import BASE_COMPLETED
+except ImportError:
+    BASE_COMPLETED = ()
+
+_THIEFS_EXCLUDED = frozenset({
+    'ThiefsGloves', 'TacticiansCrown', 'TacticiansCape', 'TacticiansShield',
+})
+_THIEFS_POOL = tuple(name for name in BASE_COMPLETED if name not in _THIEFS_EXCLUDED)
+
 
 class Player:
     """Represents a single TFT player's state."""
@@ -37,6 +48,12 @@ class Player:
 
         # Board: dict mapping (row, col) → ChampionInstance
         self.board: Dict[Tuple[int, int], ChampionInstance] = {}
+        self._empty_positions: set[Tuple[int, int]] = {
+            (row, col)
+            for row in range(BOARD_ROWS)
+            for col in range(BOARD_COLS)
+        }
+        self._traits_cache: Optional[Dict[str, int]] = None
         # Bench: list of BENCH_SIZE slots (None = empty)
         self.bench: List[Optional[ChampionInstance]] = [None] * BENCH_SIZE
         # Item bench: list of item names
@@ -196,10 +213,9 @@ class Player:
     def sell_from_board(self, row: int, col: int, pool: 'ChampionPool') -> bool:
         """Sell a champion from the board. Returns True if successful."""
         pos = (row, col)
-        champ = self.board.get(pos)
+        champ = self._board_remove(pos)
         if champ is None:
             return False
-        del self.board[pos]
         self._complete_sell(champ, pool)
         return True
 
@@ -309,6 +325,18 @@ class Player:
 
     # ── Board Management ──────────────────────────────────────────────────
 
+    def _board_add(self, pos: Tuple[int, int], champ: ChampionInstance) -> None:
+        self.board[pos] = champ
+        self._empty_positions.discard(pos)
+        self._traits_cache = None
+
+    def _board_remove(self, pos: Tuple[int, int]) -> Optional[ChampionInstance]:
+        champ = self.board.pop(pos, None)
+        if champ is not None:
+            self._empty_positions.add(pos)
+            self._traits_cache = None
+        return champ
+
     def bench_to_board(self, bench_idx: int, row: int, col: int) -> bool:
         """Move a champion from bench to board. Returns True if successful."""
         if bench_idx < 0 or bench_idx >= BENCH_SIZE:
@@ -325,6 +353,7 @@ class Player:
         if existing:
             self.bench[bench_idx] = existing
             self.board[pos] = champ
+            self._traits_cache = None
             return True
 
         # Check board capacity
@@ -332,7 +361,7 @@ class Player:
             return False
 
         self.bench[bench_idx] = None
-        self.board[pos] = champ
+        self._board_add(pos, champ)
         return True
 
     def board_to_bench(self, row: int, col: int) -> bool:
@@ -346,8 +375,10 @@ class Player:
         if bench_idx is None:
             return False
 
-        del self.board[pos]
-        self.bench[bench_idx] = champ
+        removed = self._board_remove(pos)
+        if removed is None:
+            return False
+        self.bench[bench_idx] = removed
         return True
 
     def move_on_board(self, from_row: int, from_col: int,
@@ -368,8 +399,8 @@ class Player:
             self.board[from_pos] = other
             self.board[to_pos] = champ
         else:
-            del self.board[from_pos]
-            self.board[to_pos] = champ
+            self._board_remove(from_pos)
+            self._board_add(to_pos, champ)
         return True
 
     def _valid_board_pos(self, pos: Tuple[int, int]) -> bool:
@@ -383,10 +414,38 @@ class Player:
 
         Checks for 1→2 star, then immediately checks for 2→3 star.
         """
-        for target_star in (1, 2):
-            copies = self._find_copies(name, target_star)
-            if len(copies) >= 3:
-                self._do_upgrade(name, target_star, copies)
+        star1_copies = []
+        star2_copies = []
+
+        for pos, champ in self.board.items():
+            if champ.name != name:
+                continue
+            if champ.star_level == 1:
+                star1_copies.append(('board', pos))
+            elif champ.star_level == 2:
+                star2_copies.append(('board', pos))
+
+        for idx, champ in enumerate(self.bench):
+            if champ is None or champ.name != name:
+                continue
+            if champ.star_level == 1:
+                star1_copies.append(('bench', idx))
+            elif champ.star_level == 2:
+                star2_copies.append(('bench', idx))
+
+        upgraded_to_two = False
+        if len(star1_copies) >= 3:
+            self._do_upgrade(name, 1, star1_copies)
+            upgraded_to_two = True
+
+        if len(star2_copies) >= 3:
+            self._do_upgrade(name, 2, star2_copies)
+            return
+
+        if upgraded_to_two:
+            copies_after_upgrade = self._find_copies(name, 2)
+            if len(copies_after_upgrade) >= 3:
+                self._do_upgrade(name, 2, copies_after_upgrade)
 
     def _find_copies(self, name: str, star_level: int) -> list:
         """Find all copies of a champion at a specific star level.
@@ -422,7 +481,7 @@ class Player:
             if first_loc is None:
                 first_loc = (loc_type, loc_key)
             if loc_type == 'board':
-                del self.board[loc_key]
+                self._board_remove(loc_key)
             else:
                 self.bench[loc_key] = None
 
@@ -441,7 +500,7 @@ class Player:
         # Place upgraded champ in first copy's location
         loc_type, loc_key = first_loc
         if loc_type == 'board':
-            self.board[loc_key] = upgraded
+            self._board_add(loc_key, upgraded)
         else:
             self.bench[loc_key] = upgraded
 
@@ -452,12 +511,16 @@ class Player:
 
         Returns dict of trait_name → unit count.
         """
+        if self._traits_cache is not None:
+            return self._traits_cache
+
         trait_counts: Dict[str, int] = {}
         for champ in self.board.values():
             traits = CHAMPION_TRAITS.get(champ.name, [])
             for trait in traits:
                 trait_counts[trait] = trait_counts.get(trait, 0) + 1
-        return trait_counts
+        self._traits_cache = trait_counts
+        return self._traits_cache
 
     # ── Placeable Structures ─────────────────────────────────────────────
 
@@ -503,16 +566,17 @@ class Player:
 
     # ── Combat Bridge ─────────────────────────────────────────────────────
 
-    def build_combat_team(self, engine: 'CombatEngine') -> list:
+    def build_combat_team(self, engine: Any, use_rust_engine: bool = False) -> list:
         """Convert board state into combat Unit objects.
 
         Also spawns Freljord tower and Azir soldiers at their placed positions.
 
         Args:
             engine: The CombatEngine instance to create units with.
+            use_rust_engine: Return Rust unit spec dicts instead of Python Unit objects.
 
         Returns:
-            List of Unit objects ready for run_combat().
+            List of Unit objects or Rust unit specs ready for run_combat().
         """
         units = []
         for pos, champ in self.board.items():
@@ -522,15 +586,25 @@ class Player:
             if items and any(i in ('ThiefsGloves', 'TFT_Item_ThiefsGloves') for i in items):
                 items = self._roll_thiefs_gloves_items()
 
-            unit = engine.create_unit(
-                api_name=champ.api_name,
-                star_level=champ.star_level,
-                position=pos,
-                team=0,
-                items=items,
-            )
-            if unit is not None:
-                units.append(unit)
+            if use_rust_engine:
+                units.append({
+                    'api_name': champ.api_name,
+                    'star_level': champ.star_level,
+                    'position': [pos[0], pos[1]],
+                    'team': 0,
+                    'items': items or [],
+                    'traits': [],
+                })
+            else:
+                unit = engine.create_unit(
+                    api_name=champ.api_name,
+                    star_level=champ.star_level,
+                    position=pos,
+                    team=0,
+                    items=items,
+                )
+                if unit is not None:
+                    units.append(unit)
 
         # Spawn Azir soldiers at player-placed positions
         if self.has_azir_on_board() and self.soldier_positions:
@@ -541,22 +615,42 @@ class Player:
                     azir_star = champ.star_level
                     break
             for pos in self.soldier_positions:
-                soldier = engine.create_unit(
-                    'TFT16_AzirSoldier', azir_star, pos, 0
-                )
-                if soldier:
-                    soldier._is_summon = True
-                    soldier._summoner = 'Azir'
-                    units.append(soldier)
+                if use_rust_engine:
+                    units.append({
+                        'api_name': 'TFT16_AzirSoldier',
+                        'star_level': azir_star,
+                        'position': [pos[0], pos[1]],
+                        'team': 0,
+                        'items': [],
+                        'traits': [],
+                    })
+                else:
+                    soldier = engine.create_unit(
+                        'TFT16_AzirSoldier', azir_star, pos, 0
+                    )
+                    if soldier:
+                        soldier._is_summon = True
+                        soldier._summoner = 'Azir'
+                        units.append(soldier)
 
         # Spawn Freljord tower at player-placed position
         if self.tower_position and self.has_freljord_active():
-            tower = engine.create_unit(
-                'TFT16_FreljordProp', 1, self.tower_position, 0
-            )
-            if tower:
-                tower._is_tower = True
-                units.append(tower)
+            if use_rust_engine:
+                units.append({
+                    'api_name': 'TFT16_FreljordProp',
+                    'star_level': 1,
+                    'position': [self.tower_position[0], self.tower_position[1]],
+                    'team': 0,
+                    'items': [],
+                    'traits': [],
+                })
+            else:
+                tower = engine.create_unit(
+                    'TFT16_FreljordProp', 1, self.tower_position, 0
+                )
+                if tower:
+                    tower._is_tower = True
+                    units.append(tower)
 
         return units
 
@@ -573,21 +667,11 @@ class Player:
         9: [0.0, 0.20, 0.40, 0.40],
     }
 
-    _THIEFS_EXCLUDED = frozenset({
-        'ThiefsGloves', 'TacticiansCrown', 'TacticiansCape', 'TacticiansShield',
-    })
-
     def _roll_thiefs_gloves_items(self) -> list:
         """Roll 2 random completed items for Thief's Gloves based on player level."""
-        import random
-        try:
-            from simulator.data.set16_items import BASE_COMPLETED
-        except ImportError:
-            return []  # Fallback: no items
-        pool = [name for name in BASE_COMPLETED if name not in self._THIEFS_EXCLUDED]
-        if not pool:
+        if not _THIEFS_POOL:
             return []
-        return [random.choice(pool), random.choice(pool)]
+        return [random.choice(_THIEFS_POOL), random.choice(_THIEFS_POOL)]
 
     # ── HP / Elimination ──────────────────────────────────────────────────
 
@@ -627,16 +711,11 @@ class Player:
             champ = self.bench[idx]
             if champ is None:
                 continue
-            # Find an empty board position
-            for row in range(BOARD_ROWS):
-                for col in range(BOARD_COLS):
-                    if (row, col) not in self.board:
-                        self.board[(row, col)] = champ
-                        self.bench[idx] = None
-                        break
-                else:
-                    continue
+            if not self._empty_positions:
                 break
+            target_pos = min(self._empty_positions)
+            self._board_add(target_pos, champ)
+            self.bench[idx] = None
 
     def __repr__(self):
         return (f"Player({self.player_id}, lvl={self.level}, "

@@ -50,6 +50,8 @@ AGENT_PROFILES = {
     'ladder': {'random': 20, 'econ': 45, 'slam': 35},
 }
 
+_RUST_FULL_SIMULATOR: Any = None
+
 
 class BatchAbort(Exception):
     """Raised when a run should stop early while preserving output state."""
@@ -99,21 +101,110 @@ def _validate_reference_data_preflight() -> None:
     if result.returncode != 0:
         raise RuntimeError("Simulator reference validation failed before batch run.")
 
+
+def _compute_seed_end(seed_start: int, num_games: int) -> Optional[int]:
+    """Compute inclusive seed end for a [seed_start, num_games] run."""
+    if num_games <= 0:
+        return None
+    return seed_start + num_games - 1
+
+
+def _resolve_shard_range(
+    seed_start: int,
+    num_games: int,
+    shard_index: Optional[int],
+    num_shards: Optional[int],
+) -> Tuple[int, int]:
+    """Resolve shard-specific seed_start and num_games.
+
+    If shard params are omitted, returns the input values unchanged.
+    """
+    if shard_index is None and num_shards is None:
+        return seed_start, num_games
+
+    if shard_index is None or num_shards is None:
+        raise ValueError("Both shard_index and num_shards must be provided together.")
+
+    if num_shards <= 0:
+        raise ValueError("num_shards must be > 0.")
+
+    if shard_index < 0 or shard_index >= num_shards:
+        raise ValueError(f"shard_index must be in [0, {num_shards - 1}]")
+
+    if num_games < 0:
+        raise ValueError("num_games must be >= 0.")
+
+    base = num_games // num_shards
+    remainder = num_games % num_shards
+    shard_games = base + (1 if shard_index < remainder else 0)
+    shard_offset = shard_index * base + min(shard_index, remainder)
+    shard_seed_start = seed_start + shard_offset
+    return shard_seed_start, shard_games
+
 # ── Per-Game Runner ──────────────────────────────────────────────────────
 
 def run_game(args: Tuple) -> Dict:
     """Run a single game with error handling.
 
     Args:
-        args: (game_id, seed, agent_mix_or_none) tuple.
+        args: (
+            game_id,
+            seed,
+            agent_mix_or_none,
+            engine_name,
+            include_training_rows,
+            rust_full_native_jsonl,
+            rust_full_native_parquet,
+        ) tuple.
 
     Returns:
         Dict with status='ok' and game data, or status='error' with traceback.
     """
-    game_id, seed, agent_mix = args
+    game_id, seed, agent_mix, engine, include_training_rows, rust_full_native_jsonl, rust_full_native_parquet = args
     try:
         # Seed before agent assignment for determinism
         random.seed(seed)
+
+        if engine == 'rust_full':
+            global _RUST_FULL_SIMULATOR
+            if _RUST_FULL_SIMULATOR is None:
+                from tft_combat_engine import RustGameSimulator
+
+                combat_data_path = Path(__file__).parent / 'data' / 'combat_data.json'
+                _RUST_FULL_SIMULATOR = RustGameSimulator(str(combat_data_path))
+
+            start = time.perf_counter()
+            if rust_full_native_parquet and include_training_rows:
+                rust_result = _RUST_FULL_SIMULATOR.run_game_parquet(game_id, seed, agent_mix)
+            elif rust_full_native_jsonl and include_training_rows:
+                rust_result = _RUST_FULL_SIMULATOR.run_game_jsonl(game_id, seed, agent_mix)
+            else:
+                rust_result = _RUST_FULL_SIMULATOR.run_game(
+                    game_id,
+                    seed,
+                    agent_mix,
+                    include_training_rows,
+                )
+            elapsed = time.perf_counter() - start
+            analytics = rust_result.get('analytics') or {
+                'comp_placements': [],
+                'augment_placements': [],
+                'champion_placements': [],
+            }
+
+            return {
+                'status': 'ok',
+                'game_id': game_id,
+                'seed': seed,
+                'elapsed': round(elapsed, 3),
+                'rounds': int(rust_result.get('rounds', 0)),
+                'placements': rust_result.get('placements', []),
+                'training_rows': rust_result.get('training_rows', []),
+                'training_rows_jsonl': rust_result.get('training_rows_jsonl', ''),
+                'training_rows_parquet': rust_result.get('training_rows_parquet', b''),
+                'training_row_count': int(rust_result.get('training_row_count', 0)),
+                'analytics': analytics,
+            }
 
         # Build agent
         if agent_mix:
@@ -131,6 +222,7 @@ def run_game(args: Tuple) -> Dict:
             logging_enabled=False,
             collector=collector,
             agent_fn=agent_fn,
+            engine=engine,
         )
         start = time.perf_counter()
         game.play()
@@ -179,6 +271,9 @@ class StreamingWriter:
 
         # Training row buffer (flushed every chunk_size games)
         self._row_buffer: List[Dict] = []
+        self._jsonl_blob_buffer: List[str] = []
+        self._parquet_blob_buffer: List[bytes] = []
+        self._pending_row_count = 0
         self._games_in_buffer = 0
 
         # Running analytics (accumulated across all games)
@@ -242,7 +337,18 @@ class StreamingWriter:
         self._total_rounds += result['rounds']
 
         # Buffer training rows
-        self._row_buffer.extend(result['training_rows'])
+        training_rows = result.get('training_rows', [])
+        if training_rows:
+            self._row_buffer.extend(training_rows)
+            self._pending_row_count += len(training_rows)
+        training_rows_jsonl = result.get('training_rows_jsonl', '')
+        if training_rows_jsonl:
+            self._jsonl_blob_buffer.append(training_rows_jsonl)
+            self._pending_row_count += int(result.get('training_row_count', 0))
+        training_rows_parquet = result.get('training_rows_parquet', b'')
+        if training_rows_parquet:
+            self._parquet_blob_buffer.append(training_rows_parquet)
+            self._pending_row_count += int(result.get('training_row_count', 0))
 
         # Accumulate analytics
         analytics = result['analytics']
@@ -271,20 +377,34 @@ class StreamingWriter:
 
     def _flush_chunk(self):
         """Write buffered training rows to a chunk file."""
-        if not self._row_buffer:
+        if not self._row_buffer and not self._jsonl_blob_buffer and not self._parquet_blob_buffer:
             return
 
         chunk_name = f'chunk_{self._chunk_idx:04d}'
-        if self.require_parquet:
-            self._write_parquet_chunk(chunk_name)
+        if self._parquet_blob_buffer:
+            self._write_parquet_blob_chunk(chunk_name)
+        elif self._jsonl_blob_buffer:
+            if self.require_parquet:
+                self._write_parquet_from_jsonl_blob_chunk(chunk_name)
+            else:
+                try:
+                    self._write_parquet_from_jsonl_blob_chunk(chunk_name)
+                except (ImportError, Exception):
+                    self._write_jsonl_blob_chunk(chunk_name)
         else:
-            try:
+            if self.require_parquet:
                 self._write_parquet_chunk(chunk_name)
-            except (ImportError, Exception):
-                self._write_jsonl_chunk(chunk_name)
+            else:
+                try:
+                    self._write_parquet_chunk(chunk_name)
+                except (ImportError, Exception):
+                    self._write_jsonl_chunk(chunk_name)
 
-        self._total_rows += len(self._row_buffer)
+        self._total_rows += self._pending_row_count
         self._row_buffer = []
+        self._jsonl_blob_buffer = []
+        self._parquet_blob_buffer = []
+        self._pending_row_count = 0
         self._chunk_idx += 1
         self._games_in_buffer = 0
 
@@ -319,6 +439,42 @@ class StreamingWriter:
         with open(path, 'w', encoding='utf-8') as f:
             for row in self._row_buffer:
                 f.write(json.dumps(row) + '\n')
+
+    def _write_jsonl_blob_chunk(self, chunk_name: str):
+        """Write pre-serialized JSONL payloads from Rust."""
+        path = os.path.join(self.output_dir, chunk_name + '.jsonl')
+        with open(path, 'w', encoding='utf-8') as f:
+            for blob in self._jsonl_blob_buffer:
+                if not blob:
+                    continue
+                f.write(blob)
+                if not blob.endswith('\n'):
+                    f.write('\n')
+
+    def _write_parquet_blob_chunk(self, chunk_name: str):
+        """Write Rust-prebuilt parquet blobs as chunk parquet files."""
+        for idx, blob in enumerate(self._parquet_blob_buffer):
+            if not blob:
+                continue
+            path = os.path.join(self.output_dir, f'{chunk_name}_{idx:04d}.parquet')
+            with open(path, 'wb') as f:
+                f.write(blob)
+
+    def _write_parquet_from_jsonl_blob_chunk(self, chunk_name: str):
+        """Convert pre-serialized JSONL blobs to Parquet with Arrow JSON parser."""
+        import pyarrow as pa
+        import pyarrow.json as paj
+        import pyarrow.parquet as pq
+
+        payload = ''.join(blob for blob in self._jsonl_blob_buffer if blob)
+        if payload and not payload.endswith('\n'):
+            payload += '\n'
+        if not payload:
+            return
+
+        table = paj.read_json(pa.BufferReader(payload.encode('utf-8')))
+        path = os.path.join(self.output_dir, chunk_name + '.parquet')
+        pq.write_table(table, path)
 
     def write_checkpoint(self):
         """Write checkpoint for resume capability."""
@@ -380,7 +536,9 @@ class StreamingWriter:
             return {
                 'num_games': 0,
                 'num_errors': len(self._errors),
+                'num_workers': num_workers,
                 'total_time_sec': round(total_time, 1),
+                'run_config': run_metadata,
             }
 
         # Champion average placements
@@ -467,8 +625,22 @@ class StreamingWriter:
 
 # ── Worker Init ──────────────────────────────────────────────────────────
 
-def _worker_init():
+def _worker_init(engine: str = 'python'):
     """Worker process initializer - pre-loads shared data."""
+    if engine == 'rust':
+        from tft_combat_engine import RustCombatEngine
+
+        combat_data_path = Path(__file__).parent / 'data' / 'combat_data.json'
+        RustCombatEngine(str(combat_data_path))
+        return
+    if engine == 'rust_full':
+        global _RUST_FULL_SIMULATOR
+        from tft_combat_engine import RustGameSimulator
+
+        combat_data_path = Path(__file__).parent / 'data' / 'combat_data.json'
+        _RUST_FULL_SIMULATOR = RustGameSimulator(str(combat_data_path))
+        return
+
     from simulator.core.combat_engine import CombatEngine
     CombatEngine()  # Warm the cache
 
@@ -485,9 +657,17 @@ def run_batch(
     resume: bool = False,
     agent_profile: str = 'random',
     checkpoint_every: Optional[int] = None,
-    progress_every: Optional[int] = None,
+    progress_every: Optional[int] = 500,
     max_errors: Optional[int] = None,
     require_parquet: bool = False,
+    pool_chunksize: Optional[int] = None,
+    pool_chunksize_max: Optional[int] = None,
+    shard_index: Optional[int] = None,
+    num_shards: Optional[int] = None,
+    engine: str = 'python',
+    rust_full_include_training_rows: bool = True,
+    rust_full_native_jsonl: bool = False,
+    rust_full_native_parquet: bool = False,
 ) -> Dict:
     """Run num_games in parallel with streaming output and checkpoints.
 
@@ -501,13 +681,43 @@ def run_batch(
         resume: If True, resume from existing checkpoint in output_dir.
         agent_profile: Agent profile name used for this run.
         checkpoint_every: Number of completed tasks between checkpoints.
-        progress_every: Number of completed tasks between progress prints.
+        progress_every: Number of completed tasks between progress prints (defaults to 500).
         max_errors: Stop run early after this many per-game errors.
         require_parquet: Fail output writes if parquet cannot be written.
+        pool_chunksize: Explicit multiprocessing imap chunk size.
+        pool_chunksize_max: Upper bound on multiprocessing imap chunk size.
+        shard_index: Shard index for deterministic seed partitioning.
+        num_shards: Total shard count for deterministic seed partitioning.
+        engine: Simulation backend ('python', 'rust', or 'rust_full').
+        rust_full_include_training_rows: If False, skip per-round training rows in rust_full.
+        rust_full_native_jsonl: Use Rust-pre-serialized JSONL rows in rust_full mode.
+        rust_full_native_parquet: Use Rust-pre-serialized parquet rows in rust_full mode.
 
     Returns:
         Summary dict with timing and aggregate stats.
     """
+    if pool_chunksize is not None and pool_chunksize <= 0:
+        raise ValueError("pool_chunksize must be > 0 when provided.")
+    if pool_chunksize_max is not None and pool_chunksize_max <= 0:
+        raise ValueError("pool_chunksize_max must be > 0 when provided.")
+    if rust_full_native_jsonl and engine != 'rust_full':
+        raise ValueError("rust_full_native_jsonl can only be used with engine='rust_full'.")
+    if rust_full_native_parquet and engine != 'rust_full':
+        raise ValueError("rust_full_native_parquet can only be used with engine='rust_full'.")
+    if rust_full_native_jsonl and rust_full_native_parquet:
+        raise ValueError("rust_full_native_jsonl and rust_full_native_parquet are mutually exclusive.")
+
+    requested_seed_start = seed_start
+    requested_num_games = num_games
+    requested_seed_end = _compute_seed_end(requested_seed_start, requested_num_games)
+    effective_seed_start, effective_num_games = _resolve_shard_range(
+        seed_start=requested_seed_start,
+        num_games=requested_num_games,
+        shard_index=shard_index,
+        num_shards=num_shards,
+    )
+    effective_seed_end = _compute_seed_end(effective_seed_start, effective_num_games)
+
     # Load checkpoint if resuming
     resume_state = None
     completed_seeds = set()
@@ -536,10 +746,28 @@ def run_batch(
     )
 
     # Build task list, skipping completed seeds
-    all_seeds = [seed_start + i for i in range(num_games)]
-    tasks = [(i, s, agent_mix) for i, s in enumerate(all_seeds)
+    all_seeds = [effective_seed_start + i for i in range(effective_num_games)]
+    tasks = [
+        (
+            s,
+            s,
+            agent_mix,
+            engine,
+            rust_full_include_training_rows,
+            rust_full_native_jsonl,
+            rust_full_native_parquet,
+        )
+        for s in all_seeds
              if s not in completed_seeds]
     remaining = len(tasks)
+
+    resolved_pool_chunksize: Optional[int] = None
+    if num_workers > 1 and remaining > 0:
+        default_pool_chunksize = max(1, remaining // (num_workers * 4))
+        resolved_pool_chunksize = pool_chunksize or default_pool_chunksize
+        if pool_chunksize_max is not None:
+            resolved_pool_chunksize = min(resolved_pool_chunksize, pool_chunksize_max)
+        resolved_pool_chunksize = min(resolved_pool_chunksize, remaining)
 
     if remaining == 0:
         print("All games already completed!")
@@ -547,11 +775,25 @@ def run_batch(
             0.0,
             num_workers,
             run_metadata={
-                'seed_start': seed_start,
-                'seed_end': seed_start + num_games - 1,
+                'seed_start': effective_seed_start,
+                'seed_end': effective_seed_end,
+                'effective_seed_start': effective_seed_start,
+                'effective_seed_end': effective_seed_end,
+                'requested_seed_start': requested_seed_start,
+                'requested_seed_end': requested_seed_end,
+                'requested_num_games': requested_num_games,
+                'effective_num_games': effective_num_games,
                 'agent_profile': agent_profile,
                 'agent_mix': agent_mix if agent_mix else {'random': 100},
                 'chunk_size': chunk_size,
+                'pool_chunksize': resolved_pool_chunksize,
+                'pool_chunksize_max': pool_chunksize_max,
+                'shard_index': shard_index,
+                'num_shards': num_shards,
+                'engine': engine,
+                'rust_full_include_training_rows': rust_full_include_training_rows,
+                'rust_full_native_jsonl': rust_full_native_jsonl,
+                'rust_full_native_parquet': rust_full_native_parquet,
                 'resume': resume,
                 'checkpoint_every': checkpoint_every,
                 'progress_every': progress_every,
@@ -565,15 +807,25 @@ def run_batch(
     agent_desc = 'default (fast_random)' if not agent_mix else str(agent_mix)
     print(f"Running {remaining} games across {num_workers} workers "
           f"(chunk_size={chunk_size})")
-    print(f"Seeds: {seed_start} to {seed_start + num_games - 1} "
-          f"({len(completed_seeds)} already done)")
+    if effective_seed_end is None:
+        seed_span = "none"
+    else:
+        seed_span = f"{effective_seed_start} to {effective_seed_end}"
+    print(f"Seeds: {seed_span} ({len(completed_seeds)} already done)")
+    if num_shards is not None and shard_index is not None:
+        print(f"Shard: {shard_index + 1}/{num_shards} "
+              f"(requested_games={requested_num_games}, shard_games={effective_num_games})")
+    if resolved_pool_chunksize is not None:
+        print(f"Pool chunksize: {resolved_pool_chunksize}"
+              f"{'' if pool_chunksize_max is None else f' (cap={pool_chunksize_max})'}")
     print(f"Agents: {agent_desc}")
+    print(f"Engine: {engine}")
     print(f"Output: {output_dir}")
     print()
 
     start = time.perf_counter()
     checkpoint_interval = checkpoint_every if checkpoint_every and checkpoint_every > 0 else max(1, remaining // 20)
-    progress_interval = progress_every if progress_every and progress_every > 0 else max(1, remaining // 10)
+    progress_interval = progress_every if progress_every and progress_every > 0 else 500
     done = 0
     aborted_reason: Optional[str] = None
 
@@ -597,7 +849,7 @@ def run_batch(
 
     if num_workers <= 1:
         # Sequential mode
-        _worker_init()
+        _worker_init(engine)
         try:
             for task in tasks:
                 result = run_game(task)
@@ -606,8 +858,12 @@ def run_batch(
             aborted_reason = str(exc)
     else:
         # Parallel mode
-        with multiprocessing.Pool(num_workers, initializer=_worker_init) as pool:
-            chunksize = max(1, remaining // (num_workers * 4))
+        with multiprocessing.Pool(
+            num_workers,
+            initializer=_worker_init,
+            initargs=(engine,),
+        ) as pool:
+            chunksize = resolved_pool_chunksize or 1
             try:
                 for result in pool.imap_unordered(run_game, tasks, chunksize=chunksize):
                     _process_result(result)
@@ -631,11 +887,25 @@ def run_batch(
         total_time,
         num_workers,
         run_metadata={
-            'seed_start': seed_start,
-            'seed_end': seed_start + num_games - 1,
+            'seed_start': effective_seed_start,
+            'seed_end': effective_seed_end,
+            'effective_seed_start': effective_seed_start,
+            'effective_seed_end': effective_seed_end,
+            'requested_seed_start': requested_seed_start,
+            'requested_seed_end': requested_seed_end,
+            'requested_num_games': requested_num_games,
+            'effective_num_games': effective_num_games,
             'agent_profile': agent_profile,
             'agent_mix': agent_mix if agent_mix else {'random': 100},
             'chunk_size': chunk_size,
+            'pool_chunksize': resolved_pool_chunksize,
+            'pool_chunksize_max': pool_chunksize_max,
+            'shard_index': shard_index,
+            'num_shards': num_shards,
+            'engine': engine,
+            'rust_full_include_training_rows': rust_full_include_training_rows,
+            'rust_full_native_jsonl': rust_full_native_jsonl,
+            'rust_full_native_parquet': rust_full_native_parquet,
             'resume': resume,
             'checkpoint_every': checkpoint_interval,
             'progress_every': progress_interval,
@@ -680,6 +950,8 @@ Examples:
   Mixed agents:     python -m simulator.cloud_runner --games 1000 --agent-mix random:50,econ:30,slam:20
   Ladder profile:   python -m simulator.cloud_runner --games 1000 --agent-profile ladder
   Large scale:      python -m simulator.cloud_runner --games 100000 --chunk-size 500
+  Shard 1/4:        python -m simulator.cloud_runner --games 1000000 --num-shards 4 --shard-index 0
+  Shard 2/4:        python -m simulator.cloud_runner --games 1000000 --num-shards 4 --shard-index 1
         """,
     )
     parser.add_argument('--games', type=int, default=10,
@@ -701,15 +973,51 @@ Examples:
                         help='Resume an interrupted batch from checkpoint in DIR')
     parser.add_argument('--checkpoint-every', type=int, default=None,
                         help='Write checkpoint every N completed tasks')
-    parser.add_argument('--progress-every', type=int, default=None,
-                        help='Print progress every N completed tasks')
+    parser.add_argument('--progress-every', type=int, default=500,
+                        help='Print progress every N completed tasks (default: 500)')
     parser.add_argument('--max-errors', type=int, default=None,
                         help='Stop run early after N game errors')
     parser.add_argument('--require-parquet', action='store_true',
                         help='Fail run if parquet output is unavailable')
+    parser.add_argument('--pool-chunksize', type=int, default=None,
+                        help='Explicit multiprocessing imap chunk size (default: auto)')
+    parser.add_argument('--pool-chunksize-max', type=int, default=None,
+                        help='Optional upper bound for multiprocessing imap chunk size')
+    parser.add_argument('--shard-index', type=int, default=None,
+                        help='Shard index (0-based) when partitioning a run across machines')
+    parser.add_argument('--num-shards', type=int, default=None,
+                        help='Total number of shards when partitioning a run across machines')
+    parser.add_argument('--engine', type=str, default='python', choices=['python', 'rust', 'rust_full'],
+                        help='Simulation backend (default: python)')
+    parser.add_argument('--rust-full-summary-only', action='store_true',
+                        help='Skip training row generation in rust_full mode for max throughput')
+    parser.add_argument('--rust-full-native-jsonl', action='store_true',
+                        help='Use Rust-pre-serialized JSONL rows in rust_full mode (fast path)')
+    parser.add_argument('--rust-full-native-parquet', action='store_true',
+                        help='Use Rust-pre-serialized parquet rows in rust_full mode (fastest path)')
     parser.add_argument('--skip-reference-validation', action='store_true',
                         help='Skip simulator reference preflight validation')
     args = parser.parse_args()
+
+    if (args.shard_index is None) != (args.num_shards is None):
+        parser.error("--shard-index and --num-shards must be provided together")
+    if args.games < 0:
+        parser.error("--games must be >= 0")
+    if args.pool_chunksize is not None and args.pool_chunksize <= 0:
+        parser.error("--pool-chunksize must be > 0")
+    if args.pool_chunksize_max is not None and args.pool_chunksize_max <= 0:
+        parser.error("--pool-chunksize-max must be > 0")
+    if args.num_shards is not None:
+        if args.num_shards <= 0:
+            parser.error("--num-shards must be > 0")
+        if args.shard_index < 0 or args.shard_index >= args.num_shards:
+            parser.error(f"--shard-index must be in [0, {args.num_shards - 1}]")
+    if args.rust_full_native_jsonl and args.engine != 'rust_full':
+        parser.error("--rust-full-native-jsonl requires --engine rust_full")
+    if args.rust_full_native_parquet and args.engine != 'rust_full':
+        parser.error("--rust-full-native-parquet requires --engine rust_full")
+    if args.rust_full_native_jsonl and args.rust_full_native_parquet:
+        parser.error("--rust-full-native-jsonl and --rust-full-native-parquet cannot be combined")
 
     num_workers = args.workers or max(1, multiprocessing.cpu_count() - 1)
 
@@ -746,6 +1054,14 @@ Examples:
             progress_every=args.progress_every,
             max_errors=args.max_errors,
             require_parquet=args.require_parquet,
+            pool_chunksize=args.pool_chunksize,
+            pool_chunksize_max=args.pool_chunksize_max,
+            shard_index=args.shard_index,
+            num_shards=args.num_shards,
+            engine=args.engine,
+            rust_full_include_training_rows=not args.rust_full_summary_only,
+            rust_full_native_jsonl=args.rust_full_native_jsonl,
+            rust_full_native_parquet=args.rust_full_native_parquet,
         )
     else:
         if args.agent_mix:
@@ -765,6 +1081,14 @@ Examples:
             progress_every=args.progress_every,
             max_errors=args.max_errors,
             require_parquet=args.require_parquet,
+            pool_chunksize=args.pool_chunksize,
+            pool_chunksize_max=args.pool_chunksize_max,
+            shard_index=args.shard_index,
+            num_shards=args.num_shards,
+            engine=args.engine,
+            rust_full_include_training_rows=not args.rust_full_summary_only,
+            rust_full_native_jsonl=args.rust_full_native_jsonl,
+            rust_full_native_parquet=args.rust_full_native_parquet,
         )
 
     print(f"\n{'='*50}")
