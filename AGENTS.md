@@ -2,7 +2,7 @@
 
 > Universal rules for any AI coding assistant (Claude Code, Codex, Copilot, Cursor, etc.) working on this codebase.
 > This document is self-contained. Read it fully before making any changes.
-> Last updated: 2026-02-09
+> Last updated: 2026-02-12
 
 ---
 
@@ -20,6 +20,12 @@ Use the first available source:
 1. `NTFY_TOPIC_URL` environment variable (full URL, e.g. `https://ntfy.sh/your-topic`)
 2. `NTFY_TOPIC` environment variable (topic slug or full URL)
 3. `.ntfy-topic` file in repo root (topic slug or full URL)
+
+## Phase Completion Improvement Rule
+
+- At the conclusion of any phase or implementation, every AI assistant must include a short **Next Improvements** section.
+- That section must propose concrete opportunities to improve, innovate, or speed up the codebase.
+- If no high-confidence opportunity is identified, explicitly state that and what data is needed to find one.
 
 ---
 
@@ -750,4 +756,4 @@ Profiles: `random`, `mixed` (50/30/20), `ladder` (20/45/35), or custom `--agent-
 
 ---
 
-*Last updated: 2026-02-09*
+*Last updated: 2026-02-12*
