@@ -305,6 +305,7 @@ class TFTGame:
 
         # 3. Matchmaking
         matchups = self._matchmake()
+        pre_combat_hp = {player.player_id: player.hp for player in self.alive_players}
 
         # 4. Combat phase
         combat_results = []
@@ -340,7 +341,7 @@ class TFTGame:
                 p1.lose_round(result.damage_to_loser)
 
         # 5. Check eliminations
-        self._check_eliminations()
+        self._check_eliminations(pre_combat_hp)
 
         # 6. Collect round data
         if self.collector:
@@ -658,25 +659,36 @@ class TFTGame:
 
     # ── Elimination ───────────────────────────────────────────────────────
 
-    def _check_eliminations(self):
-        """Check for eliminated players and record placements."""
+    def _check_eliminations(self, pre_combat_hp: Dict[int, int]):
+        """Check eliminated players and apply official end-of-round tie-breakers."""
         newly_dead = [p for p in self.players if not p.alive and p.placement == 0]
         if not newly_dead:
             return
 
         self._refresh_alive_cache()
 
-        # All players dying this round get the same placement
+        # Official order for same-round eliminations:
+        # 1) least negative HP after lethal damage, 2) most HP before combat, 3) random.
+        random.shuffle(newly_dead)
+        newly_dead.sort(
+            key=lambda player: (
+                player.elimination_hp,
+                pre_combat_hp.get(player.player_id, player.hp),
+            ),
+            reverse=True,
+        )
+
         placement = len(self._alive_cache) + 1
         for player in newly_dead:
             player.placement = placement
             self.placements.append((player.player_id, placement))
             # Return champions to pool
             self.pool.return_player_champions(player.get_all_champions())
+            placement += 1
 
             if self.verbose:
                 print(f"  ** Player {player.player_id} eliminated "
-                      f"(placement: {placement}) **")
+                      f"(placement: {player.placement}) **")
 
     # ── State Inspection ──────────────────────────────────────────────────
 

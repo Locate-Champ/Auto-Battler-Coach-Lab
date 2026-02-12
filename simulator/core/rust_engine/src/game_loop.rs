@@ -1,9 +1,8 @@
 use crate::engine::{CombatEngine, UnitSpec};
+use crate::python_rng::PyRng;
 use pyo3::prelude::*;
-use rand::rngs::StdRng;
-use rand::seq::SliceRandom;
-use rand::{Rng, SeedableRng};
-use serde::Deserialize;
+use pyo3::types::PyDict;
+use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::collections::{BTreeMap, HashMap, HashSet};
 use std::fs;
@@ -34,6 +33,7 @@ pub struct GameConfig {
     pub starting_round_gold: Vec<i32>,
     pub pool_sizes: HashMap<i32, i32>,
     pub champions_by_cost: HashMap<i32, HashMap<String, i32>>,
+    pub champion_names_by_cost: HashMap<i32, Vec<String>>,
     pub level_odds: Vec<Vec<f64>>,
     pub name_to_api: HashMap<String, String>,
     pub name_to_cost: HashMap<String, i32>,
@@ -53,12 +53,31 @@ impl GameConfig {
     pub fn from_python(py: Python<'_>) -> PyResult<Self> {
         let constants = py.import("simulator.game.constants")?;
 
-        let mut carousel_item_weights: Vec<(String, i32)> = constants
-            .getattr("CAROUSEL_ITEM_WEIGHTS")?
-            .extract::<HashMap<String, i32>>()?
-            .into_iter()
-            .collect();
-        carousel_item_weights.sort_by(|a, b| a.0.cmp(&b.0));
+        let carousel_item_weights = {
+            let weight_obj = constants.getattr("CAROUSEL_ITEM_WEIGHTS")?;
+            let weight_dict = weight_obj.downcast::<PyDict>()?;
+            let mut ordered = Vec::with_capacity(weight_dict.len());
+            for (item_name, weight) in weight_dict.iter() {
+                ordered.push((item_name.extract::<String>()?, weight.extract::<i32>()?));
+            }
+            ordered
+        };
+
+        let champion_names_by_cost = {
+            let by_cost_obj = constants.getattr("CHAMPIONS_BY_COST")?;
+            let by_cost = by_cost_obj.downcast::<PyDict>()?;
+            let mut ordered: HashMap<i32, Vec<String>> = HashMap::new();
+            for (cost_obj, champs_obj) in by_cost.iter() {
+                let cost = cost_obj.extract::<i32>()?;
+                let champs_dict = champs_obj.downcast::<PyDict>()?;
+                let mut names = Vec::with_capacity(champs_dict.len());
+                for (champ_name, _) in champs_dict.iter() {
+                    names.push(champ_name.extract::<String>()?);
+                }
+                ordered.insert(cost, names);
+            }
+            ordered
+        };
 
         Ok(Self {
             board_rows: constants.getattr("BOARD_ROWS")?.extract()?,
@@ -81,6 +100,7 @@ impl GameConfig {
             starting_round_gold: constants.getattr("STARTING_ROUND_GOLD")?.extract()?,
             pool_sizes: constants.getattr("POOL_SIZES")?.extract()?,
             champions_by_cost: constants.getattr("CHAMPIONS_BY_COST")?.extract()?,
+            champion_names_by_cost,
             level_odds: constants.getattr("LEVEL_ODDS")?.extract()?,
             name_to_api: constants.getattr("NAME_TO_API")?.extract()?,
             name_to_cost: constants.getattr("NAME_TO_COST")?.extract()?,
@@ -177,6 +197,7 @@ struct PlayerState {
     loss_streak: i32,
     alive: bool,
     placement: i32,
+    elimination_hp: i32,
 }
 
 impl PlayerState {
@@ -195,6 +216,7 @@ impl PlayerState {
             loss_streak: 0,
             alive: true,
             placement: 0,
+            elimination_hp: 0,
         }
     }
 
@@ -474,10 +496,15 @@ impl PlayerState {
     }
 
     fn take_damage(&mut self, amount: i32) {
-        self.hp = std::cmp::max(0, self.hp - amount);
-        if self.hp <= 0 {
+        let raw_hp = self.hp - amount;
+        if raw_hp <= 0 {
+            self.elimination_hp = raw_hp;
+            self.hp = 0;
             self.alive = false;
+            return;
         }
+        self.elimination_hp = 0;
+        self.hp = raw_hp;
     }
 
     fn win_round(&mut self) {
@@ -518,28 +545,26 @@ impl ChampionPool {
         }
 
         let mut names_by_cost: HashMap<i32, Vec<String>> = HashMap::new();
-        for (cost, champs) in &config.champions_by_cost {
-            if *cost == 7 {
-                names_by_cost
-                    .entry(5)
-                    .or_default()
-                    .extend(champs.keys().cloned());
-            } else {
-                names_by_cost
-                    .entry(*cost)
-                    .or_default()
-                    .extend(champs.keys().cloned());
+        for cost in [1_i32, 2, 3, 4, 5, 7] {
+            let Some(ordered_names) = config.champion_names_by_cost.get(&cost) else {
+                continue;
+            };
+            let tier_cost = if cost == 7 { 5 } else { cost };
+            let tier_names = names_by_cost.entry(tier_cost).or_default();
+            for name in ordered_names {
+                if !tier_names.iter().any(|existing| existing == name) {
+                    tier_names.push(name.clone());
+                }
             }
         }
-        for names in names_by_cost.values_mut() {
-            names.sort();
-            names.dedup();
-        }
 
-        Self { pool, names_by_cost }
+        Self {
+            pool,
+            names_by_cost,
+        }
     }
 
-    fn roll_shop(&self, level: i32, config: &GameConfig, rng: &mut StdRng) -> Vec<Option<String>> {
+    fn roll_shop(&self, level: i32, config: &GameConfig, rng: &mut PyRng) -> Vec<Option<String>> {
         let level_idx = std::cmp::max(
             0,
             std::cmp::min(level - 1, (config.level_odds.len() as i32) - 1),
@@ -548,37 +573,48 @@ impl ChampionPool {
         let mut shop = Vec::with_capacity(config.shop_size);
 
         for _ in 0..config.shop_size {
-            let cost_idx = sample_weighted_f64(odds, rng).unwrap_or(0);
-            let cost = (cost_idx + 1) as i32;
-            shop.push(self.pick_from_tier(cost, rng));
+            let mut cumulative = 0.0;
+            let mut chosen_cost = 1_i32;
+            let roll = rng.random();
+            for (cost_idx, prob) in odds.iter().enumerate() {
+                cumulative += if *prob > 0.0 { *prob } else { 0.0 };
+                if roll < cumulative {
+                    chosen_cost = (cost_idx + 1) as i32;
+                    break;
+                }
+            }
+            shop.push(self.pick_from_tier(chosen_cost, rng));
         }
 
         shop
     }
 
-    fn pick_from_tier(&self, cost: i32, rng: &mut StdRng) -> Option<String> {
+    fn pick_from_tier(&self, cost: i32, rng: &mut PyRng) -> Option<String> {
         let names = self.names_by_cost.get(&cost)?;
-        let total: i32 = names
+        let total: f64 = names
             .iter()
-            .map(|name| std::cmp::max(0, *self.pool.get(name).unwrap_or(&0)))
+            .map(|name| std::cmp::max(0, *self.pool.get(name).unwrap_or(&0)) as f64)
             .sum();
-        if total <= 0 {
+        if total <= 0.0 {
             return None;
         }
 
-        let mut roll = rng.gen_range(0..total);
+        let mut cumulative = 0.0_f64;
+        let mut last_nonzero: Option<String> = None;
+        let roll = rng.random() * total;
         for name in names {
             let weight = std::cmp::max(0, *self.pool.get(name).unwrap_or(&0));
             if weight <= 0 {
                 continue;
             }
-            if roll < weight {
+            cumulative += weight as f64;
+            last_nonzero = Some(name.clone());
+            if roll < cumulative {
                 return Some(name.clone());
             }
-            roll -= weight;
         }
 
-        None
+        last_nonzero
     }
 
     fn take(&mut self, name: &str) -> bool {
@@ -607,6 +643,10 @@ impl ChampionPool {
             self.return_champion(&champ.name, copies, config);
         }
     }
+
+    fn available(&self, name: &str) -> i32 {
+        *self.pool.get(name).unwrap_or(&0)
+    }
 }
 
 #[derive(Clone, Copy)]
@@ -617,58 +657,62 @@ enum AgentStyle {
 }
 
 #[derive(Clone)]
-struct BoardUnitSnapshot {
-    name: String,
-    api_name: String,
-    star: i32,
-    items: Vec<String>,
-    pos: (i32, i32),
-}
-
-#[derive(Clone)]
-struct PlayerRoundSnapshot {
-    id: usize,
-    hp: i32,
-    gold: i32,
-    level: i32,
-    board: Vec<BoardUnitSnapshot>,
-    board_count: i32,
-    traits: HashMap<String, i32>,
-    augments: Vec<String>,
-    win_streak: i32,
-    loss_streak: i32,
-}
-
-#[derive(Clone)]
 struct CombatRoundSnapshot {
     p1: usize,
     p2: usize,
     winner: usize,
     damage: i32,
-    survivors: i32,
-    time: f64,
-}
-
-struct RoundSnapshot {
-    round: i32,
-    alive_count: i32,
-    players: Vec<PlayerRoundSnapshot>,
-    combats: Vec<CombatRoundSnapshot>,
 }
 
 struct RoundOutcome {
     winner_id: usize,
-    loser_id: usize,
-    survivors: i32,
-    combat_time: f64,
     damage_to_loser: i32,
     is_draw: bool,
+}
+
+#[derive(Clone, Serialize)]
+pub struct TrainingUnitSnapshot {
+    pub champion_id: String,
+    pub star_level: i32,
+    pub items: Vec<String>,
+    pub position: i32,
+}
+
+#[derive(Clone, Serialize)]
+pub struct TrainingRow {
+    pub game_id: i64,
+    pub round: i32,
+    pub player_id: i32,
+    pub placement: i32,
+    pub hp: i32,
+    pub gold: i32,
+    pub level: i32,
+    pub streak: i32,
+    pub board_count: i32,
+    pub win_streak: i32,
+    pub loss_streak: i32,
+    pub num_augments: i32,
+    pub num_traits: i32,
+    pub alive_count: i32,
+    pub units: Vec<TrainingUnitSnapshot>,
+    pub traits: HashMap<String, i32>,
+    pub augments: Vec<String>,
+    pub opponent_units: Vec<TrainingUnitSnapshot>,
+    pub opponent_traits: HashMap<String, i32>,
+    pub opponent_hp: i32,
+    pub combat_result: Option<i32>,
+    pub damage_dealt: f64,
+    pub damage_taken: f64,
+    pub board_names: Vec<String>,
+    pub board_stars: Vec<i32>,
+    pub trait_names: Vec<String>,
+    pub trait_counts: Vec<i32>,
 }
 
 pub struct GameRunOutput {
     pub rounds: i32,
     pub placements: Vec<Value>,
-    pub training_rows: Vec<Value>,
+    pub training_rows: Vec<TrainingRow>,
     pub analytics: Value,
 }
 
@@ -678,10 +722,10 @@ pub fn run_game(
     augment_pools: &AugmentPools,
     game_id: i64,
     seed: u64,
-    agent_mix: Option<HashMap<String, i32>>,
+    agent_mix: Option<&HashMap<String, i32>>,
     include_training_rows: bool,
 ) -> Result<GameRunOutput, String> {
-    let mut rng = StdRng::seed_from_u64(seed);
+    let mut rng = PyRng::seed_from_u64(seed);
     let mut pool = ChampionPool::new(config);
     let mut players: Vec<PlayerState> = (0..DEFAULT_NUM_PLAYERS)
         .map(|player_id| PlayerState::new(player_id, config))
@@ -689,7 +733,7 @@ pub fn run_game(
     let mut player_augments: HashMap<usize, Vec<String>> = (0..DEFAULT_NUM_PLAYERS)
         .map(|player_id| (player_id, Vec::new()))
         .collect();
-    let player_styles = assign_agent_styles(DEFAULT_NUM_PLAYERS, agent_mix.as_ref(), &mut rng);
+    let player_styles = assign_agent_styles(DEFAULT_NUM_PLAYERS, agent_mix, &mut rng);
     let mut matchmaking_weights = vec![vec![10_i32; DEFAULT_NUM_PLAYERS]; DEFAULT_NUM_PLAYERS];
     for idx in 0..DEFAULT_NUM_PLAYERS {
         matchmaking_weights[idx][idx] = 0;
@@ -697,7 +741,7 @@ pub fn run_game(
 
     let mut round_num: i32 = 0;
     let mut placements: Vec<(usize, i32)> = Vec::new();
-    let mut round_snapshots: Vec<RoundSnapshot> = Vec::new();
+    let mut training_rows: Vec<TrainingRow> = Vec::new();
 
     let pve_rounds = std::cmp::min(4_i32, config.starting_round_gold.len() as i32);
     for round in 0..pve_rounds {
@@ -731,7 +775,8 @@ pub fn run_game(
             &player_styles,
             &mut matchmaking_weights,
             &mut placements,
-            &mut round_snapshots,
+            game_id,
+            &mut training_rows,
             include_training_rows,
             &mut rng,
         );
@@ -748,12 +793,17 @@ pub fn run_game(
     placements.sort_by(|a, b| a.1.cmp(&b.1).then_with(|| a.0.cmp(&b.0)));
 
     let placement_rows = build_placement_rows(&players, &placements, &player_augments, config);
-    let training_rows = if include_training_rows {
+    if include_training_rows {
         let placement_map: HashMap<usize, i32> = placements.iter().copied().collect();
-        build_training_rows(game_id, &round_snapshots, &placement_map, config)
+        for row in &mut training_rows {
+            row.placement = placement_map
+                .get(&(row.player_id as usize))
+                .copied()
+                .unwrap_or(0);
+        }
     } else {
-        Vec::new()
-    };
+        training_rows.clear();
+    }
     let analytics = build_analytics(&placement_rows);
 
     Ok(GameRunOutput {
@@ -770,7 +820,7 @@ fn pve_round(
     pool: &mut ChampionPool,
     config: &GameConfig,
     player_styles: &[AgentStyle],
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) {
     let ids = alive_ids(players);
     for player_id in ids {
@@ -778,14 +828,18 @@ fn pve_round(
         let player = &mut players[player_id];
         player.add_income(round_num, config);
 
-        let (min_drop, max_drop) = config.pve_item_drops.get(&round_num).copied().unwrap_or((0, 0));
+        let (min_drop, max_drop) = config
+            .pve_item_drops
+            .get(&round_num)
+            .copied()
+            .unwrap_or((0, 0));
         if min_drop <= max_drop && !config.item_components.is_empty() {
-            let drops = rng.gen_range(min_drop..=max_drop);
+            let drops = rng.randint_i32(min_drop, max_drop);
             for _ in 0..drops {
                 if player.item_bench.len() >= config.item_bench_size {
                     break;
                 }
-                let idx = rng.gen_range(0..config.item_components.len());
+                let idx = rng.randrange_usize_stop(config.item_components.len());
                 player.item_bench.push(config.item_components[idx].clone());
             }
         }
@@ -809,9 +863,10 @@ fn pvp_round(
     player_styles: &[AgentStyle],
     matchmaking_weights: &mut [Vec<i32>],
     placements: &mut Vec<(usize, i32)>,
-    round_snapshots: &mut Vec<RoundSnapshot>,
+    game_id: i64,
+    training_rows: &mut Vec<TrainingRow>,
     include_training_rows: bool,
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) {
     if let Some(tag) = config.augment_rounds.get(&round_num) {
         augment_selection_phase(players, tag, augment_pools, player_augments, rng);
@@ -832,6 +887,11 @@ fn pvp_round(
     }
 
     let matchups = matchmake(&ids, matchmaking_weights, rng);
+    let pre_combat_hp: HashMap<usize, i32> = ids
+        .iter()
+        .copied()
+        .map(|player_id| (player_id, players[player_id].hp))
+        .collect();
     let mut combat_results: Vec<CombatRoundSnapshot> = Vec::new();
 
     for (p1_id, p2_id, is_ghost) in matchups {
@@ -839,19 +899,24 @@ fn pvp_round(
             continue;
         }
 
-        let p1_augments = player_augments.get(&p1_id).cloned().unwrap_or_default();
-        let p2_augments = player_augments.get(&p2_id).cloned().unwrap_or_default();
+        let p1_augments: &[String] = player_augments
+            .get(&p1_id)
+            .map(Vec::as_slice)
+            .unwrap_or(&[]);
+        let p2_augments: &[String] = player_augments
+            .get(&p2_id)
+            .map(Vec::as_slice)
+            .unwrap_or(&[]);
 
-        let combat_seed = rng.gen::<u64>();
         let result = resolve_combat(
             round_num,
             &players[p1_id],
             &players[p2_id],
-            &p1_augments,
-            &p2_augments,
-            combat_seed,
+            p1_augments,
+            p2_augments,
             engine,
             config,
+            rng,
         );
 
         combat_results.push(CombatRoundSnapshot {
@@ -859,8 +924,6 @@ fn pvp_round(
             p2: p2_id,
             winner: result.winner_id,
             damage: result.damage_to_loser,
-            survivors: result.survivors,
-            time: result.combat_time,
         });
 
         let (p1, p2) = two_players_mut(players, p1_id, p2_id);
@@ -882,15 +945,16 @@ fn pvp_round(
         }
     }
 
-    check_eliminations(players, pool, config, placements);
+    check_eliminations(players, pool, config, placements, &pre_combat_hp, rng);
     if include_training_rows {
-        collect_round_snapshot(
+        collect_training_rows(
+            game_id,
             round_num,
             players,
             player_augments,
             config,
-            combat_results,
-            round_snapshots,
+            &combat_results,
+            training_rows,
         );
     }
 }
@@ -900,7 +964,7 @@ fn augment_selection_phase(
     tag: &str,
     augment_pools: &AugmentPools,
     player_augments: &mut HashMap<usize, Vec<String>>,
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) {
     let Some(pool) = augment_pools.by_round.get(tag) else {
         return;
@@ -920,62 +984,151 @@ fn augment_selection_phase(
         if available.is_empty() {
             continue;
         }
-        available.shuffle(rng);
+        rng.shuffle(&mut available);
         let pick_count = std::cmp::min(3, available.len());
-        let choice_idx = rng.gen_range(0..pick_count);
+        let choice_idx = rng.randrange_usize_stop(pick_count);
         chosen.push(available[choice_idx].clone());
     }
 }
 
-fn collect_round_snapshot(
+fn collect_training_rows(
+    game_id: i64,
     round_num: i32,
     players: &[PlayerState],
     player_augments: &HashMap<usize, Vec<String>>,
     config: &GameConfig,
-    combat_results: Vec<CombatRoundSnapshot>,
-    snapshots: &mut Vec<RoundSnapshot>,
+    combat_results: &[CombatRoundSnapshot],
+    training_rows: &mut Vec<TrainingRow>,
 ) {
-    let alive_count = alive_count(players) as i32;
-    let mut player_snapshots: Vec<PlayerRoundSnapshot> = Vec::new();
+    #[derive(Clone, Copy)]
+    struct CombatMatch {
+        opponent_id: usize,
+        combat_result: i32,
+        damage_dealt: f64,
+        damage_taken: f64,
+    }
 
+    let alive_count = alive_count(players) as i32;
+    let alive_players = players.iter().filter(|player| player.alive).count();
+    let mut players_by_id: HashMap<usize, &PlayerState> = HashMap::with_capacity(alive_players);
+    for player in players {
+        if player.alive {
+            players_by_id.insert(player.player_id, player);
+        }
+    }
+
+    let mut combat_by_player: HashMap<usize, CombatMatch> =
+        HashMap::with_capacity(combat_results.len() * 2);
+    for combat in combat_results {
+        let is_draw = combat.winner != combat.p1 && combat.winner != combat.p2;
+        for (player_id, opponent_id) in [(combat.p1, combat.p2), (combat.p2, combat.p1)] {
+            let (combat_result, damage_dealt, damage_taken) = if is_draw {
+                (2_i32, 0.0_f64, combat.damage as f64)
+            } else if combat.winner == player_id {
+                (1_i32, combat.damage as f64, 0.0_f64)
+            } else {
+                (0_i32, 0.0_f64, combat.damage as f64)
+            };
+
+            combat_by_player.insert(
+                player_id,
+                CombatMatch {
+                    opponent_id,
+                    combat_result,
+                    damage_dealt,
+                    damage_taken,
+                },
+            );
+        }
+    }
+
+    training_rows.reserve(alive_players);
     for player in players {
         if !player.alive {
             continue;
         }
-        let mut board_units: Vec<BoardUnitSnapshot> = Vec::new();
+
+        let matchup = combat_by_player.get(&player.player_id);
+        let opponent_state = matchup.and_then(|m| players_by_id.get(&m.opponent_id).copied());
+        let player_traits = player.active_traits(config);
+
+        let board_len = player.board.len();
+        let mut units: Vec<TrainingUnitSnapshot> = Vec::with_capacity(board_len);
+        let mut board_names: Vec<String> = Vec::with_capacity(board_len);
+        let mut board_stars: Vec<i32> = Vec::with_capacity(board_len);
         for (pos, champ) in &player.board {
-            board_units.push(BoardUnitSnapshot {
-                name: champ.name.clone(),
-                api_name: champ.api_name.clone(),
-                star: champ.star_level,
+            let hex_pos = pos.0 * config.board_cols + pos.1;
+            units.push(TrainingUnitSnapshot {
+                champion_id: champ.api_name.clone(),
+                star_level: champ.star_level,
                 items: champ.items.clone(),
-                pos: *pos,
+                position: hex_pos,
             });
+            board_names.push(champ.name.clone());
+            board_stars.push(champ.star_level);
         }
 
-        player_snapshots.push(PlayerRoundSnapshot {
-            id: player.player_id,
+        let mut opponent_units: Vec<TrainingUnitSnapshot> = Vec::new();
+        let mut opponent_traits: HashMap<String, i32> = HashMap::new();
+        let mut opponent_hp = 0_i32;
+        if let Some(opponent) = opponent_state {
+            opponent_units = Vec::with_capacity(opponent.board.len());
+            for (pos, champ) in &opponent.board {
+                let hex_pos = pos.0 * config.board_cols + pos.1;
+                opponent_units.push(TrainingUnitSnapshot {
+                    champion_id: champ.api_name.clone(),
+                    star_level: champ.star_level,
+                    items: champ.items.clone(),
+                    position: hex_pos,
+                });
+            }
+            opponent_traits = opponent.active_traits(config);
+            opponent_hp = opponent.hp;
+        }
+
+        let streak = player.win_streak - player.loss_streak;
+        let mut trait_names = Vec::with_capacity(player_traits.len());
+        let mut trait_counts = Vec::with_capacity(player_traits.len());
+        for (trait_name, trait_count) in &player_traits {
+            trait_names.push(trait_name.clone());
+            trait_counts.push(*trait_count);
+        }
+
+        let augments = player_augments
+            .get(&player.player_id)
+            .cloned()
+            .unwrap_or_default();
+
+        training_rows.push(TrainingRow {
+            game_id,
+            round: round_num,
+            player_id: player.player_id as i32,
+            placement: 0,
             hp: player.hp,
             gold: player.gold,
             level: player.level,
-            board: board_units,
+            streak,
             board_count: player.board_count() as i32,
-            traits: player.active_traits(config),
-            augments: player_augments
-                .get(&player.player_id)
-                .cloned()
-                .unwrap_or_default(),
             win_streak: player.win_streak,
             loss_streak: player.loss_streak,
+            num_augments: augments.len() as i32,
+            num_traits: player_traits.len() as i32,
+            alive_count,
+            units,
+            traits: player_traits,
+            augments,
+            opponent_units,
+            opponent_traits,
+            opponent_hp,
+            combat_result: matchup.map(|m| m.combat_result),
+            damage_dealt: matchup.map_or(0.0, |m| m.damage_dealt),
+            damage_taken: matchup.map_or(0.0, |m| m.damage_taken),
+            board_names,
+            board_stars,
+            trait_names,
+            trait_counts,
         });
     }
-
-    snapshots.push(RoundSnapshot {
-        round: round_num,
-        alive_count,
-        players: player_snapshots,
-        combats: combat_results,
-    });
 }
 
 fn check_eliminations(
@@ -983,6 +1136,8 @@ fn check_eliminations(
     pool: &mut ChampionPool,
     config: &GameConfig,
     placements: &mut Vec<(usize, i32)>,
+    pre_combat_hp: &HashMap<usize, i32>,
+    rng: &mut PyRng,
 ) {
     let newly_dead: Vec<usize> = players
         .iter()
@@ -993,22 +1148,41 @@ fn check_eliminations(
         return;
     }
 
-    let placement = (alive_count(players) as i32) + 1;
-    for player_id in newly_dead {
+    let mut ranked_dead: Vec<(usize, i32, i32, u64)> = newly_dead
+        .into_iter()
+        .map(|player_id| {
+            let elimination_hp = players[player_id].elimination_hp;
+            let prior_hp = *pre_combat_hp
+                .get(&player_id)
+                .unwrap_or(&players[player_id].hp);
+            let random_tiebreak = rng.random_u64();
+            (player_id, elimination_hp, prior_hp, random_tiebreak)
+        })
+        .collect();
+
+    ranked_dead.sort_by(|a, b| {
+        b.1.cmp(&a.1)
+            .then_with(|| b.2.cmp(&a.2))
+            .then_with(|| b.3.cmp(&a.3))
+    });
+
+    let mut placement = (alive_count(players) as i32) + 1;
+    for (player_id, _, _, _) in ranked_dead {
         let champs = players[player_id].all_champions();
         players[player_id].placement = placement;
         placements.push((player_id, placement));
         pool.return_player_champions(&champs, config);
+        placement += 1;
     }
 }
 
 fn matchmake(
     alive_ids: &[usize],
     matchmaking_weights: &mut [Vec<i32>],
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) -> Vec<(usize, usize, bool)> {
     let mut alive = alive_ids.to_vec();
-    alive.shuffle(rng);
+    rng.shuffle(&mut alive);
 
     let mut paired: HashSet<usize> = HashSet::new();
     let mut matchups: Vec<(usize, usize, bool)> = Vec::new();
@@ -1032,7 +1206,7 @@ fn matchmake(
             if others.is_empty() {
                 continue;
             }
-            let ghost = others[rng.gen_range(0..others.len())];
+            let ghost = others[rng.randrange_usize_stop(others.len())];
             paired.insert(player_id);
             matchups.push((player_id, ghost, true));
             continue;
@@ -1046,7 +1220,7 @@ fn matchmake(
             weights.fill(1);
         }
         let pick_idx = sample_weighted_i32(&weights, rng)
-            .unwrap_or_else(|| rng.gen_range(0..candidates.len()));
+            .unwrap_or_else(|| rng.randrange_usize_stop(candidates.len()));
         let opponent_id = candidates[pick_idx];
 
         paired.insert(player_id);
@@ -1072,9 +1246,9 @@ fn resolve_combat(
     p2: &PlayerState,
     p1_augments: &[String],
     p2_augments: &[String],
-    seed: u64,
     engine: &mut CombatEngine,
     config: &GameConfig,
+    rng: &mut PyRng,
 ) -> RoundOutcome {
     let team0 = build_team_specs(p1, 0, false, config);
     let team1 = build_team_specs(p2, 1, true, config);
@@ -1083,9 +1257,6 @@ fn resolve_combat(
         let damage = round_damage(round_num, 0, config);
         return RoundOutcome {
             winner_id: p1.player_id,
-            loser_id: p2.player_id,
-            survivors: 0,
-            combat_time: 0.0,
             damage_to_loser: damage,
             is_draw: true,
         };
@@ -1095,9 +1266,6 @@ fn resolve_combat(
         let damage = round_damage(round_num, survivors, config);
         return RoundOutcome {
             winner_id: p2.player_id,
-            loser_id: p1.player_id,
-            survivors,
-            combat_time: 0.0,
             damage_to_loser: damage,
             is_draw: false,
         };
@@ -1107,14 +1275,12 @@ fn resolve_combat(
         let damage = round_damage(round_num, survivors, config);
         return RoundOutcome {
             winner_id: p1.player_id,
-            loser_id: p2.player_id,
-            survivors,
-            combat_time: 0.0,
             damage_to_loser: damage,
             is_draw: false,
         };
     }
 
+    engine.rng = rng.clone();
     let result = engine.run_combat(
         team0,
         team1,
@@ -1128,16 +1294,14 @@ fn resolve_combat(
         } else {
             Some(p2_augments.to_vec())
         },
-        Some(seed),
+        None,
     );
+    *rng = engine.rng.clone();
 
     if result.winner == 0 {
         let damage = round_damage(round_num, result.team0_survivors, config);
         RoundOutcome {
             winner_id: p1.player_id,
-            loser_id: p2.player_id,
-            survivors: result.team0_survivors,
-            combat_time: result.combat_time,
             damage_to_loser: damage,
             is_draw: false,
         }
@@ -1145,9 +1309,6 @@ fn resolve_combat(
         let damage = round_damage(round_num, result.team1_survivors, config);
         RoundOutcome {
             winner_id: p2.player_id,
-            loser_id: p1.player_id,
-            survivors: result.team1_survivors,
-            combat_time: result.combat_time,
             damage_to_loser: damage,
             is_draw: false,
         }
@@ -1185,11 +1346,11 @@ fn run_agent(
     pool: &mut ChampionPool,
     config: &GameConfig,
     style: AgentStyle,
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) {
     let mut consecutive_fails = 0;
     for _ in 0..10 {
-        let action_roll = rng.gen_range(0..100);
+        let action_roll = rng.randrange_i32_stop(100);
         let success = match style {
             AgentStyle::Random => {
                 if action_roll < 56 {
@@ -1241,7 +1402,7 @@ fn try_buy(
     player: &mut PlayerState,
     pool: &mut ChampionPool,
     config: &GameConfig,
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) -> bool {
     if player.find_empty_bench().is_none() {
         return false;
@@ -1257,7 +1418,7 @@ fn try_buy(
     if slots.is_empty() {
         return false;
     }
-    let slot = slots[rng.gen_range(0..slots.len())];
+    let slot = slots[rng.randrange_usize_stop(slots.len())];
     player.buy_champion(slot, pool, config)
 }
 
@@ -1265,7 +1426,7 @@ fn try_refresh(
     player: &mut PlayerState,
     pool: &mut ChampionPool,
     config: &GameConfig,
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) -> bool {
     if !player.can_afford(config.refresh_cost) {
         return false;
@@ -1279,7 +1440,7 @@ fn try_refresh(
 fn assign_agent_styles(
     num_players: usize,
     mix: Option<&HashMap<String, i32>>,
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) -> Vec<AgentStyle> {
     let Some(mix) = mix else {
         return vec![AgentStyle::Random; num_players];
@@ -1316,13 +1477,15 @@ fn carousel_phase(
     players: &mut [PlayerState],
     pool: &mut ChampionPool,
     config: &GameConfig,
-    rng: &mut StdRng,
+    rng: &mut PyRng,
 ) {
     let mut pick_order = alive_ids(players);
     pick_order.sort_by(|a, b| {
         let pa = &players[*a];
         let pb = &players[*b];
-        pa.hp.cmp(&pb.hp).then_with(|| pa.player_id.cmp(&pb.player_id))
+        pa.hp
+            .cmp(&pb.hp)
+            .then_with(|| pa.player_id.cmp(&pb.player_id))
     });
 
     let cost_odds = config
@@ -1338,12 +1501,17 @@ fn carousel_phase(
         let Some(champs) = config.champions_by_cost.get(&cost) else {
             continue;
         };
-        if champs.is_empty() {
+        let Some(ordered_names) = config.champion_names_by_cost.get(&cost) else {
+            continue;
+        };
+        let available_names: Vec<&String> = ordered_names
+            .iter()
+            .filter(|name| champs.contains_key(*name) && pool.available(name.as_str()) > 0)
+            .collect();
+        if available_names.is_empty() {
             continue;
         }
-        let mut names: Vec<&String> = champs.keys().collect();
-        names.sort();
-        let champ_name = names[rng.gen_range(0..names.len())].clone().to_string();
+        let champ_name = available_names[rng.randrange_usize_stop(available_names.len())].clone();
         if config.carousel_item_weights.is_empty() {
             continue;
         }
@@ -1353,7 +1521,7 @@ fn carousel_phase(
             .map(|(_, weight)| *weight)
             .collect();
         let item_idx = sample_weighted_i32(&item_weights, rng)
-            .unwrap_or_else(|| rng.gen_range(0..config.carousel_item_weights.len()));
+            .unwrap_or_else(|| rng.randrange_usize_stop(config.carousel_item_weights.len()));
         let item = config.carousel_item_weights[item_idx].0.clone();
         carousel.push((champ_name, cost, item));
     }
@@ -1366,7 +1534,7 @@ fn carousel_phase(
         if carousel.is_empty() {
             break;
         }
-        let pick_idx = rng.gen_range(0..carousel.len());
+        let pick_idx = rng.randrange_usize_stop(carousel.len());
         let (champ_name, cost, item) = carousel.swap_remove(pick_idx);
 
         let player = &mut players[player_id];
@@ -1425,116 +1593,6 @@ fn build_placement_rows(
             "augments": player_augments.get(player_id).cloned().unwrap_or_default(),
         }));
     }
-    rows
-}
-
-fn build_training_rows(
-    game_id: i64,
-    rounds: &[RoundSnapshot],
-    placement_map: &HashMap<usize, i32>,
-    config: &GameConfig,
-) -> Vec<Value> {
-    let mut rows: Vec<Value> = Vec::new();
-
-    for round_data in rounds {
-        let mut players_by_id: HashMap<usize, &PlayerRoundSnapshot> = HashMap::new();
-        for player in &round_data.players {
-            players_by_id.insert(player.id, player);
-        }
-
-        let mut combat_by_player: HashMap<usize, Value> = HashMap::new();
-        for combat in &round_data.combats {
-            let is_draw = combat.winner != combat.p1 && combat.winner != combat.p2;
-            for (player_id, opponent_id) in [(combat.p1, combat.p2), (combat.p2, combat.p1)] {
-                let (combat_result, damage_dealt, damage_taken) = if is_draw {
-                    (2_i32, 0.0_f64, combat.damage as f64)
-                } else if combat.winner == player_id {
-                    (1_i32, combat.damage as f64, 0.0_f64)
-                } else {
-                    (0_i32, 0.0_f64, combat.damage as f64)
-                };
-
-                combat_by_player.insert(
-                    player_id,
-                    json!({
-                        "opponent_id": opponent_id,
-                        "combat_result": combat_result,
-                        "damage_dealt": damage_dealt,
-                        "damage_taken": damage_taken,
-                    }),
-                );
-            }
-        }
-
-        for player in &round_data.players {
-            let matchup = combat_by_player.get(&player.id);
-            let opponent_id = matchup
-                .and_then(|m| m.get("opponent_id"))
-                .and_then(Value::as_u64)
-                .map(|v| v as usize);
-            let opponent_state = opponent_id.and_then(|id| players_by_id.get(&id).copied());
-
-            let mut units: Vec<Value> = Vec::new();
-            for unit in &player.board {
-                let hex_pos = unit.pos.0 * config.board_cols + unit.pos.1;
-                units.push(json!({
-                    "champion_id": unit.api_name,
-                    "star_level": unit.star,
-                    "items": unit.items,
-                    "position": hex_pos,
-                }));
-            }
-
-            let mut opponent_units: Vec<Value> = Vec::new();
-            let mut opponent_traits: HashMap<String, i32> = HashMap::new();
-            let mut opponent_hp = 0_i32;
-            if let Some(opponent) = opponent_state {
-                for unit in &opponent.board {
-                    let hex_pos = unit.pos.0 * config.board_cols + unit.pos.1;
-                    opponent_units.push(json!({
-                        "champion_id": unit.api_name,
-                        "star_level": unit.star,
-                        "items": unit.items,
-                        "position": hex_pos,
-                    }));
-                }
-                opponent_traits = opponent.traits.clone();
-                opponent_hp = opponent.hp;
-            }
-
-            let streak = player.win_streak - player.loss_streak;
-            rows.push(json!({
-                "game_id": game_id,
-                "round": round_data.round,
-                "player_id": player.id,
-                "placement": placement_map.get(&player.id).copied().unwrap_or(0),
-                "hp": player.hp,
-                "gold": player.gold,
-                "level": player.level,
-                "streak": streak,
-                "board_count": player.board_count,
-                "win_streak": player.win_streak,
-                "loss_streak": player.loss_streak,
-                "num_augments": player.augments.len(),
-                "num_traits": player.traits.len(),
-                "alive_count": round_data.alive_count,
-                "units": units,
-                "traits": player.traits,
-                "augments": player.augments,
-                "opponent_units": opponent_units,
-                "opponent_traits": opponent_traits,
-                "opponent_hp": opponent_hp,
-                "combat_result": matchup.and_then(|m| m.get("combat_result")).cloned().unwrap_or(Value::Null),
-                "damage_dealt": matchup.and_then(|m| m.get("damage_dealt")).cloned().unwrap_or_else(|| json!(0.0)),
-                "damage_taken": matchup.and_then(|m| m.get("damage_taken")).cloned().unwrap_or_else(|| json!(0.0)),
-                "board_names": player.board.iter().map(|unit| unit.name.clone()).collect::<Vec<_>>(),
-                "board_stars": player.board.iter().map(|unit| unit.star).collect::<Vec<_>>(),
-                "trait_names": player.traits.keys().cloned().collect::<Vec<_>>(),
-                "trait_counts": player.traits.values().copied().collect::<Vec<_>>(),
-            }));
-        }
-    }
-
     rows
 }
 
@@ -1648,28 +1706,31 @@ fn two_players_mut(
     }
 }
 
-fn sample_weighted_i32(weights: &[i32], rng: &mut StdRng) -> Option<usize> {
-    let total: i32 = weights.iter().map(|w| std::cmp::max(0, *w)).sum();
-    if total <= 0 {
+fn sample_weighted_i32(weights: &[i32], rng: &mut PyRng) -> Option<usize> {
+    let total: f64 = weights.iter().map(|w| std::cmp::max(0, *w) as f64).sum();
+    if total <= 0.0 {
         return None;
     }
 
-    let mut roll = rng.gen_range(0..total);
+    let roll = rng.random() * total;
+    let mut cumulative = 0.0_f64;
+    let mut last_nonzero: Option<usize> = None;
     for (idx, weight) in weights.iter().enumerate() {
         let clamped = std::cmp::max(0, *weight);
         if clamped == 0 {
             continue;
         }
-        if roll < clamped {
+        cumulative += clamped as f64;
+        last_nonzero = Some(idx);
+        if roll < cumulative {
             return Some(idx);
         }
-        roll -= clamped;
     }
 
-    Some(weights.len().saturating_sub(1))
+    last_nonzero
 }
 
-fn sample_weighted_f64(weights: &[f64], rng: &mut StdRng) -> Option<usize> {
+fn sample_weighted_f64(weights: &[f64], rng: &mut PyRng) -> Option<usize> {
     let total: f64 = weights
         .iter()
         .map(|w| if *w > 0.0 { *w } else { 0.0 })
@@ -1678,7 +1739,7 @@ fn sample_weighted_f64(weights: &[f64], rng: &mut StdRng) -> Option<usize> {
         return None;
     }
 
-    let mut roll = rng.gen::<f64>() * total;
+    let mut roll = rng.random() * total;
     for (idx, weight) in weights.iter().enumerate() {
         let clamped = if *weight > 0.0 { *weight } else { 0.0 };
         if clamped <= 0.0 {

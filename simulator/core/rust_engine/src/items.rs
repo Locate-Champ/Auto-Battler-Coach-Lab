@@ -4,7 +4,6 @@ use crate::engine::CombatEngine;
 use crate::hex_grid;
 use crate::types::{DamageType, UnitId};
 use crate::unit::{DotEffect, Item, Unit};
-use rand::Rng;
 use std::borrow::Cow;
 
 fn data_key(item_name: &str, field: &str) -> String {
@@ -325,7 +324,7 @@ pub fn on_combat_start(engine: &mut CombatEngine, unit_idx: UnitId) {
         engine.units[unit_idx].stats.shield += shield;
     }
     if unit_has_item(&engine.units[unit_idx], "HandOfJustice") {
-        let roll = engine.rng.gen_range(0..2);
+        let roll = engine.rng.randrange_usize_stop(2);
         if roll == 0 {
             engine.units[unit_idx].stats.damage_amp += 0.15;
             set_item_data(&mut engine.units[unit_idx], "HandOfJustice", "mode", 0.0);

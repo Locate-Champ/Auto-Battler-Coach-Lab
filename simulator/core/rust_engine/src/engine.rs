@@ -4,12 +4,11 @@ use crate::damage;
 use crate::data::{get_f64, get_i64, get_str, star_val, CombatData};
 use crate::hex_grid;
 use crate::items;
+use crate::python_rng::PyRng;
 use crate::targeting;
 use crate::types::*;
 use crate::unit::*;
 
-use rand::rngs::StdRng;
-use rand::{Rng, SeedableRng};
 use std::collections::{HashMap, HashSet};
 
 const TICK_RATE: f64 = 0.033; // ~30 FPS
@@ -24,13 +23,14 @@ const AD_SCALING: [f64; 4] = [1.0, 1.0, 1.5, 2.25];
 pub struct CombatEngine {
     pub units: Vec<Unit>,
     pub time: f64,
-    pub rng: StdRng,
+    pub rng: PyRng,
     pub combat_data: CombatData,
     pub alive_dirty: bool,
 
     // Cached alive indices per team
     alive_team0: Vec<UnitId>,
     alive_team1: Vec<UnitId>,
+    process_order: Vec<UnitId>,
 
     // Occupied hexes cache
     occupied_hexes: HashSet<HexPos>,
@@ -42,11 +42,12 @@ impl CombatEngine {
         Self {
             units: Vec::new(),
             time: 0.0,
-            rng: StdRng::seed_from_u64(0),
+            rng: PyRng::seed_from_u64(0),
             combat_data,
             alive_dirty: false,
             alive_team0: Vec::new(),
             alive_team1: Vec::new(),
+            process_order: Vec::new(),
             occupied_hexes: HashSet::new(),
         }
     }
@@ -774,7 +775,7 @@ impl CombatEngine {
 
         // Set RNG seed
         if let Some(s) = seed {
-            self.rng = StdRng::seed_from_u64(s);
+            self.rng.reseed_from_u64(s);
         }
 
         // Create units from specs
@@ -849,40 +850,40 @@ impl CombatEngine {
         self.process_trait_combat_effects();
 
         // Process units in random order
-        let mut process_order: Vec<UnitId> = self.alive_team0.clone();
-        process_order.extend_from_slice(&self.alive_team1);
+        self.process_order.clear();
+        self.process_order.extend_from_slice(&self.alive_team0);
+        self.process_order.extend_from_slice(&self.alive_team1);
 
         // Fisher-Yates shuffle
-        let len = process_order.len();
+        let len = self.process_order.len();
         for i in (1..len).rev() {
-            let j = self.rng.gen_range(0..=i);
-            process_order.swap(i, j);
+            let j = self.rng.randbelow(i + 1);
+            self.process_order.swap(i, j);
         }
 
-        for &unit_idx in &process_order {
+        let team0_indices = self.alive_team0.clone();
+        let team1_indices = self.alive_team1.clone();
+
+        for i in 0..len {
+            let unit_idx = self.process_order[i];
             if !self.units[unit_idx].is_alive {
                 continue;
             }
             items::passive_tick(self, unit_idx);
 
             let team = self.units[unit_idx].team;
-            let enemies: Vec<UnitId> = if team == 0 {
-                self.alive_team1.clone()
-            } else {
-                self.alive_team0.clone()
-            };
-            let allies: Vec<UnitId> = if team == 0 {
-                self.alive_team0.clone()
-            } else {
-                self.alive_team1.clone()
-            };
-
-            self.process_unit_tick(unit_idx, &enemies, &allies);
+            self.process_unit_tick(unit_idx, team, &team0_indices, &team1_indices);
         }
     }
 
     /// Process a single unit's tick.
-    fn process_unit_tick(&mut self, unit_idx: UnitId, enemies: &[UnitId], allies: &[UnitId]) {
+    fn process_unit_tick(
+        &mut self,
+        unit_idx: UnitId,
+        team: i32,
+        team0_indices: &[UnitId],
+        team1_indices: &[UnitId],
+    ) {
         // Update buffs
         {
             let unit = &mut self.units[unit_idx];
@@ -920,6 +921,11 @@ impl CombatEngine {
                 .unwrap_or(true);
 
         if needs_target {
+            let enemies = if team == 0 {
+                team1_indices
+            } else {
+                team0_indices
+            };
             let target = targeting::find_target(unit_idx, &self.units, enemies, &mut self.rng);
             self.units[unit_idx].target_idx = target;
         }
@@ -949,7 +955,7 @@ impl CombatEngine {
                 && self.units[unit_idx].stats.mana >= self.units[unit_idx].stats.max_mana;
 
             if can_cast {
-                self.cast_ability(unit_idx, enemies, allies);
+                self.cast_ability(unit_idx, team, team0_indices, team1_indices);
             } else {
                 // Auto-attack
                 self.process_attack(unit_idx, target_idx);
@@ -1165,8 +1171,20 @@ impl CombatEngine {
     }
 
     /// Cast an ability.
-    fn cast_ability(&mut self, caster_idx: UnitId, enemies: &[UnitId], allies: &[UnitId]) {
+    fn cast_ability(
+        &mut self,
+        caster_idx: UnitId,
+        caster_team: i32,
+        team0_indices: &[UnitId],
+        team1_indices: &[UnitId],
+    ) {
         self.units[caster_idx].state = UnitState::Casting;
+
+        let (enemies, allies) = if caster_team == 0 {
+            (team1_indices, team0_indices)
+        } else {
+            (team0_indices, team1_indices)
+        };
 
         // Call ability dispatch
         let _ = abilities::cast_ability(self, caster_idx, enemies, allies);
