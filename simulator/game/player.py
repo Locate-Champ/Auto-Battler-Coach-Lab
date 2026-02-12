@@ -74,6 +74,7 @@ class Player:
         # Game state
         self.alive = True
         self.placement = 0  # Set when eliminated (1 = winner, 8 = first out)
+        self.elimination_hp = 0  # Raw HP after lethal damage (can be negative)
 
         # Tracking for upgrades: name → list of (location, ChampionInstance)
         # location is ('board', (row, col)) or ('bench', idx)
@@ -677,9 +678,14 @@ class Player:
 
     def take_damage(self, amount: int):
         """Take HP damage. Player is eliminated when HP reaches 0."""
-        self.hp = max(0, self.hp - amount)
-        if self.hp <= 0:
+        raw_hp = self.hp - amount
+        if raw_hp <= 0:
+            self.elimination_hp = raw_hp
+            self.hp = 0
             self.alive = False
+            return
+        self.elimination_hp = 0
+        self.hp = raw_hp
 
     def win_round(self):
         """Record a round win."""

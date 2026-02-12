@@ -1,15 +1,15 @@
 use crate::hex_grid;
 /// Target selection logic for the TFT combat engine.
+use crate::python_rng::PyRng;
 use crate::types::*;
 use crate::unit::Unit;
-use rand::Rng;
 
 /// Find the best target for a unit from a list of enemy indices.
 pub fn find_target(
     unit_idx: UnitId,
     units: &[Unit],
     enemy_indices: &[UnitId],
-    rng: &mut impl Rng,
+    rng: &mut PyRng,
 ) -> Option<UnitId> {
     let unit = &units[unit_idx];
 
@@ -68,17 +68,52 @@ pub fn find_target(
 
 /// Find the nearest enemy (with tie-breaking for closest to center).
 fn find_nearest(unit: &Unit, enemies: &[UnitId], units: &[Unit]) -> Option<UnitId> {
-    let mut best_idx = None;
-    let mut best_dist = i32::MAX;
+    let mut min_dist = i32::MAX;
+    let mut distances: Vec<(UnitId, i32)> = Vec::with_capacity(enemies.len());
 
     for &idx in enemies {
         let dist = hex_grid::hex_distance(unit.position, units[idx].position);
-        if dist < best_dist {
-            best_dist = dist;
-            best_idx = Some(idx);
+        distances.push((idx, dist));
+        if dist < min_dist {
+            min_dist = dist;
         }
     }
-    best_idx
+
+    if distances.is_empty() {
+        return None;
+    }
+
+    let mut frontline_best: Option<UnitId> = None;
+    let mut frontline_best_dist = i32::MAX;
+    for (idx, dist) in distances.iter().copied() {
+        if dist > min_dist + 1 {
+            continue;
+        }
+        if !is_frontline(&units[idx]) {
+            continue;
+        }
+        if dist < frontline_best_dist {
+            frontline_best_dist = dist;
+            frontline_best = Some(idx);
+        }
+    }
+    if frontline_best.is_some() {
+        return frontline_best;
+    }
+
+    let mut closest_idx: Option<UnitId> = None;
+    let mut closest_dist = i32::MAX;
+    for (idx, dist) in distances.iter().copied() {
+        if dist < closest_dist {
+            closest_dist = dist;
+            closest_idx = Some(idx);
+        }
+    }
+    closest_idx
+}
+
+fn is_frontline(unit: &Unit) -> bool {
+    unit.role.contains("Tank") || unit.role.contains("Fighter")
 }
 
 fn find_lowest_hp(units: &[Unit], enemies: &[UnitId]) -> Option<UnitId> {
@@ -133,11 +168,11 @@ fn find_farthest(unit: &Unit, enemies: &[UnitId], units: &[Unit]) -> Option<Unit
     best_idx
 }
 
-fn find_random(enemies: &[UnitId], rng: &mut impl Rng) -> Option<UnitId> {
+fn find_random(enemies: &[UnitId], rng: &mut PyRng) -> Option<UnitId> {
     if enemies.is_empty() {
         return None;
     }
-    let idx = rng.gen_range(0..enemies.len());
+    let idx = rng.randbelow(enemies.len());
     Some(enemies[idx])
 }
 
@@ -185,4 +220,51 @@ pub fn get_enemies_in_range(
             enemy.is_alive && hex_grid::hex_distance(center, enemy.position) <= range
         })
         .collect()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::unit::{CombatStats, Unit};
+
+    fn make_unit(role: &str, position: HexPos, team: i32) -> Unit {
+        let mut stats = CombatStats::default();
+        stats.hp = 1000.0;
+        stats.max_hp = 1000.0;
+        Unit::new(
+            role.to_string(),
+            format!("TFT16_{role}"),
+            1,
+            1,
+            role.to_string(),
+            stats.clone(),
+            stats,
+            position,
+            team,
+        )
+    }
+
+    #[test]
+    fn test_nearest_prefers_frontline_within_plus_one() {
+        let attacker = make_unit("ADCarry", (0, 0), 0);
+        let backline = make_unit("APCaster", (0, 1), 1); // dist=1
+        let frontline = make_unit("Tank", (1, 1), 1); // dist=2 (within min+1)
+        let units = vec![attacker, backline, frontline];
+        let enemies = vec![1_usize, 2_usize];
+
+        let target = find_nearest(&units[0], &enemies, &units);
+        assert_eq!(target, Some(2));
+    }
+
+    #[test]
+    fn test_nearest_uses_closest_when_no_frontline() {
+        let attacker = make_unit("ADCarry", (0, 0), 0);
+        let mage = make_unit("APCaster", (0, 1), 1); // dist=1
+        let specialist = make_unit("Specialist", (1, 1), 1); // dist=2
+        let units = vec![attacker, mage, specialist];
+        let enemies = vec![1_usize, 2_usize];
+
+        let target = find_nearest(&units[0], &enemies, &units);
+        assert_eq!(target, Some(1));
+    }
 }
