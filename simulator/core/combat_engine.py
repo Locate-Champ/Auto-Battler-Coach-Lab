@@ -157,6 +157,7 @@ class CombatStats:
     omnivamp: float = 0.0         # Heal for % of damage dealt
     shield: float = 0.0           # Current shield amount
     move_speed: float = 550.0     # Movement speed (units per second)
+    mana_regen: float = 0.0       # Bonus mana per attack (Invoker trait)
 
     def copy(self) -> 'CombatStats':
         """Fast manual copy (10-20x faster than deepcopy for this class)."""
@@ -168,7 +169,7 @@ class CombatStats:
             crit_chance=self.crit_chance, crit_multiplier=self.crit_multiplier,
             damage_amp=self.damage_amp, damage_reduction=self.damage_reduction,
             omnivamp=self.omnivamp, shield=self.shield,
-            move_speed=self.move_speed,
+            move_speed=self.move_speed, mana_regen=self.mana_regen,
         )
 
 
@@ -1417,9 +1418,7 @@ class TraitManager:
 
         for unit in team:
             # All allies get mana regen
-            if not hasattr(unit.stats, 'mana_regen'):
-                unit.stats.mana_regen = 0
-            unit.stats.mana_regen = getattr(unit.stats, 'mana_regen', 0) + team_mana
+            unit.stats.mana_regen += team_mana
 
             # Invokers get % increased mana gain
             if 'Invoker' in unit.traits:
@@ -3014,6 +3013,12 @@ class CombatEngine:
         jg_or_vanq = attacker._has_jeweled_gauntlet or has_vanquisher
 
         if _CYTHON_OK:
+            # Only consume RNG when a crit check would actually execute,
+            # matching the Python fallback path to preserve RNG parity.
+            if can_crit and (not is_ability or jg_or_vanq):
+                rng_roll = random.random()
+            else:
+                rng_roll = 1.0  # No crit possible; don't consume RNG
             return _cy_calculate_damage(
                 base_damage,
                 attacker.stats.damage_amp,
@@ -3030,7 +3035,7 @@ class CombatEngine:
                 attacker._has_giant_slayer,
                 getattr(defender, '_dragonborn_protected', False),
                 longshot_bonus,
-                random.random(),
+                rng_roll,
             )
 
         # Pure-Python fallback
@@ -3825,15 +3830,15 @@ class CombatEngine:
         occupied = self.get_occupied_hexes()
         occupied.discard(unit.position)  # Current pos is fine
 
-        # Use greedy step (much cheaper than full A* for short paths)
-        next_pos = HexGrid.find_best_step(unit.position, target_pos, occupied)
-        if next_pos is not None:
+        # Use A* pathfinding (matches Rust engine for parity)
+        path = HexGrid.find_path(unit.position, target_pos, occupied)
+        if path:
             old_pos = unit.position
-            unit.position = next_pos
+            unit.position = path[0]
             self._occupied_dirty = True
             if self.logging_enabled:
                 self.log_event('move', unit=unit.name,
-                              from_pos=old_pos, to_pos=next_pos)
+                              from_pos=old_pos, to_pos=path[0])
 
     def process_unit_tick(self, unit: Unit, enemies: List[Unit], allies: List[Unit]):
         """Process one tick for a unit."""

@@ -6,7 +6,7 @@
 use crate::engine::CombatEngine;
 use crate::hex_grid;
 use crate::targeting;
-use crate::types::{CcType, DamageType, UnitId, UnitState};
+use crate::types::{CcType, DamageType, HexPos, UnitId, UnitState};
 use crate::unit::{Ability, Unit};
 
 fn star_index(star_level: i32) -> usize {
