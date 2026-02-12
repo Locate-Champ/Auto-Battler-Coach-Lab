@@ -29,6 +29,24 @@ except ImportError:
     _ABILITIES_LOADED = False
     ChampionAbilities = None
 
+# Cache item effect lookups at module level (avoids per-item import overhead)
+try:
+    from .item_effects import (
+        get_item_on_hit as _get_item_on_hit,
+        get_item_on_ability as _get_item_on_ability,
+        get_item_on_damage_dealt as _get_item_on_damage_dealt,
+        get_item_on_damage_taken as _get_item_on_damage_taken,
+        get_item_passive as _get_item_passive
+    )
+    _ITEM_EFFECTS_LOADED = True
+except ImportError:
+    _ITEM_EFFECTS_LOADED = False
+    _get_item_on_hit = None
+    _get_item_on_ability = None
+    _get_item_on_damage_dealt = None
+    _get_item_on_damage_taken = None
+    _get_item_passive = None
+
 # Module-level cache for combat data (loaded once, shared across all CombatEngine instances)
 _COMBAT_DATA_CACHE: Dict[str, Any] = {}
 
@@ -109,7 +127,7 @@ class UnitState(Enum):
 # DATA CLASSES
 # =============================================================================
 
-@dataclass
+@dataclass(slots=True)
 class CombatStats:
     """Combat-ready stats for a unit."""
     hp: float
@@ -129,6 +147,19 @@ class CombatStats:
     omnivamp: float = 0.0         # Heal for % of damage dealt
     shield: float = 0.0           # Current shield amount
     move_speed: float = 550.0     # Movement speed (units per second)
+
+    def copy(self) -> 'CombatStats':
+        """Fast manual copy (10-20x faster than deepcopy for this class)."""
+        return CombatStats(
+            hp=self.hp, max_hp=self.max_hp, ad=self.ad, ap=self.ap,
+            attack_speed=self.attack_speed, armor=self.armor,
+            magic_resist=self.magic_resist, range=self.range,
+            mana=self.mana, max_mana=self.max_mana,
+            crit_chance=self.crit_chance, crit_multiplier=self.crit_multiplier,
+            damage_amp=self.damage_amp, damage_reduction=self.damage_reduction,
+            omnivamp=self.omnivamp, shield=self.shield,
+            move_speed=self.move_speed,
+        )
 
 
 @dataclass
@@ -235,6 +266,11 @@ class Unit:
     attack_windup: float = 0.3
     missile_speed: Optional[int] = None
 
+    # Cached item flags (set once at unit creation, avoids repeated item list scans)
+    _has_jeweled_gauntlet: bool = False
+    _has_giant_slayer: bool = False
+    _has_ionic_spark: bool = False
+
     def __hash__(self):
         return hash((self.api_name, id(self)))
 
@@ -257,7 +293,11 @@ class Unit:
 # =============================================================================
 
 class HexGrid:
-    """Hex grid utilities for TFT board (4 rows x 7 cols)."""
+    """Hex grid utilities for TFT board (4 rows x 7 cols).
+
+    Performance: Uses precomputed lookup tables for distance and neighbors
+    to avoid repeated cube-coordinate conversions in the hot path.
+    """
 
     ROWS = 4
     COLS = 7
@@ -266,34 +306,67 @@ class HexGrid:
     DIRECTIONS_EVEN = [(0, -1), (1, -1), (1, 0), (0, 1), (-1, 0), (-1, -1)]
     DIRECTIONS_ODD = [(0, -1), (1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0)]
 
+    # --- Precomputed lookup tables (built once at module load) ---
+
+    # _DISTANCE_LUT[(r1,c1)][(r2,c2)] = hex distance
+    _DISTANCE_LUT: Dict[Tuple[int, int], Dict[Tuple[int, int], int]] = {}
+
+    # _NEIGHBOR_LUT[(r,c)] = list of valid neighbor positions
+    _NEIGHBOR_LUT: Dict[Tuple[int, int], List[Tuple[int, int]]] = {}
+
+    # _HEXES_IN_RANGE_LUT[(r,c)][radius] = list of hexes within radius
+    _HEXES_IN_RANGE_LUT: Dict[Tuple[int, int], Dict[int, List[Tuple[int, int]]]] = {}
+
+    @classmethod
+    def _build_luts(cls):
+        """Build all lookup tables once. Called at module load."""
+        if cls._DISTANCE_LUT:
+            return  # Already built
+
+        all_hexes = [(r, c) for r in range(cls.ROWS) for c in range(cls.COLS)]
+
+        # Build neighbor LUT
+        for pos in all_hexes:
+            row, col = pos
+            directions = cls.DIRECTIONS_ODD if col % 2 == 1 else cls.DIRECTIONS_EVEN
+            neighbors = []
+            for dr, dc in directions:
+                new_row, new_col = row + dr, col + dc
+                if 0 <= new_row < cls.ROWS and 0 <= new_col < cls.COLS:
+                    neighbors.append((new_row, new_col))
+            cls._NEIGHBOR_LUT[pos] = neighbors
+
+        # Build distance LUT using cube-coordinate conversion
+        for pos1 in all_hexes:
+            cls._DISTANCE_LUT[pos1] = {}
+            r1, c1 = pos1
+            x1 = c1
+            z1 = r1 - (c1 - (c1 & 1)) // 2
+            y1 = -x1 - z1
+            for pos2 in all_hexes:
+                r2, c2 = pos2
+                x2 = c2
+                z2 = r2 - (c2 - (c2 & 1)) // 2
+                y2 = -x2 - z2
+                cls._DISTANCE_LUT[pos1][pos2] = (abs(x1 - x2) + abs(y1 - y2) + abs(z1 - z2)) // 2
+
+        # Build hexes-in-range LUT for common radii (0-6 covers entire board)
+        for pos in all_hexes:
+            cls._HEXES_IN_RANGE_LUT[pos] = {}
+            for radius in range(7):
+                cls._HEXES_IN_RANGE_LUT[pos][radius] = [
+                    p for p in all_hexes if cls._DISTANCE_LUT[pos][p] <= radius
+                ]
+
     @staticmethod
     def get_neighbors(pos: Tuple[int, int]) -> List[Tuple[int, int]]:
-        """Get all valid neighboring hexes."""
-        row, col = pos
-        directions = HexGrid.DIRECTIONS_ODD if col % 2 == 1 else HexGrid.DIRECTIONS_EVEN
-        neighbors = []
-        for dr, dc in directions:
-            new_row, new_col = row + dr, col + dc
-            if 0 <= new_row < HexGrid.ROWS and 0 <= new_col < HexGrid.COLS:
-                neighbors.append((new_row, new_col))
-        return neighbors
+        """Get all valid neighboring hexes (from precomputed LUT)."""
+        return HexGrid._NEIGHBOR_LUT[pos]
 
     @staticmethod
     def hex_distance(pos1: Tuple[int, int], pos2: Tuple[int, int]) -> int:
-        """Calculate distance between two hexes in hex steps."""
-        r1, c1 = pos1
-        r2, c2 = pos2
-
-        # Convert odd-q offset to cube coordinates
-        x1 = c1
-        z1 = r1 - (c1 - (c1 & 1)) // 2
-        y1 = -x1 - z1
-
-        x2 = c2
-        z2 = r2 - (c2 - (c2 & 1)) // 2
-        y2 = -x2 - z2
-
-        return (abs(x1 - x2) + abs(y1 - y2) + abs(z1 - z2)) // 2
+        """Calculate distance between two hexes (from precomputed LUT)."""
+        return HexGrid._DISTANCE_LUT[pos1][pos2]
 
     @staticmethod
     def find_path(start: Tuple[int, int], goal: Tuple[int, int],
@@ -302,10 +375,11 @@ class HexGrid:
         if start == goal:
             return []
 
+        dist_lut = HexGrid._DISTANCE_LUT
         open_set = [(0, start)]
         came_from = {}
         g_score = {start: 0}
-        f_score = {start: HexGrid.hex_distance(start, goal)}
+        f_score = {start: dist_lut[start][goal]}
 
         while open_set:
             _, current = heapq.heappop(open_set)
@@ -318,7 +392,7 @@ class HexGrid:
                     current = came_from[current]
                 return path[::-1]
 
-            for neighbor in HexGrid.get_neighbors(current):
+            for neighbor in HexGrid._NEIGHBOR_LUT[current]:
                 if neighbor in occupied and neighbor != goal:
                     continue
 
@@ -327,20 +401,55 @@ class HexGrid:
                 if neighbor not in g_score or tentative_g < g_score[neighbor]:
                     came_from[neighbor] = current
                     g_score[neighbor] = tentative_g
-                    f_score[neighbor] = tentative_g + HexGrid.hex_distance(neighbor, goal)
+                    f_score[neighbor] = tentative_g + dist_lut[neighbor][goal]
                     heapq.heappush(open_set, (f_score[neighbor], neighbor))
 
         return []  # No path found
 
     @staticmethod
+    def find_best_step(start: Tuple[int, int], goal: Tuple[int, int],
+                       occupied: set) -> Optional[Tuple[int, int]]:
+        """Find the single best next step toward goal, avoiding occupied hexes.
+
+        Greedy neighbor selection — much cheaper than full A* for the common
+        case where the path is short and unobstructed. Falls back to A* only
+        when all neighbors are blocked.
+        """
+        dist_lut = HexGrid._DISTANCE_LUT
+        best_pos = None
+        best_dist = dist_lut[start][goal]
+
+        for neighbor in HexGrid._NEIGHBOR_LUT[start]:
+            if neighbor in occupied and neighbor != goal:
+                continue
+            d = dist_lut[neighbor][goal]
+            if d < best_dist:
+                best_dist = d
+                best_pos = neighbor
+
+        if best_pos is not None:
+            return best_pos
+
+        # All direct neighbors blocked — fall back to A*
+        path = HexGrid.find_path(start, goal, occupied)
+        return path[0] if path else None
+
+    @staticmethod
     def get_hexes_in_range(center: Tuple[int, int], radius: int) -> List[Tuple[int, int]]:
-        """Get all hexes within radius of center."""
-        hexes = []
-        for row in range(HexGrid.ROWS):
-            for col in range(HexGrid.COLS):
-                if HexGrid.hex_distance(center, (row, col)) <= radius:
-                    hexes.append((row, col))
-        return hexes
+        """Get all hexes within radius of center (from precomputed LUT)."""
+        lut = HexGrid._HEXES_IN_RANGE_LUT.get(center)
+        if lut and radius in lut:
+            return lut[radius]
+        # Fallback for out-of-range radius
+        return [
+            (r, c)
+            for r in range(HexGrid.ROWS) for c in range(HexGrid.COLS)
+            if HexGrid._DISTANCE_LUT[center][(r, c)] <= radius
+        ]
+
+
+# Build lookup tables at module load time
+HexGrid._build_luts()
 
 
 # =============================================================================
@@ -2494,19 +2603,14 @@ class ItemDatabase:
 
         stats = ItemDatabase.ITEMS[resolved_name].copy()
 
-        # Get item effects
-        try:
-            from .item_effects import (
-                get_item_on_hit, get_item_on_ability,
-                get_item_on_damage_dealt, get_item_on_damage_taken,
-                get_item_passive
-            )
-            on_hit = get_item_on_hit(resolved_name)
-            on_ability = get_item_on_ability(resolved_name)
-            on_damage_dealt = get_item_on_damage_dealt(resolved_name)
-            on_damage_taken = get_item_on_damage_taken(resolved_name)
-            passive = get_item_passive(resolved_name)
-        except ImportError:
+        # Get item effects (using module-level cached imports)
+        if _ITEM_EFFECTS_LOADED:
+            on_hit = _get_item_on_hit(resolved_name)
+            on_ability = _get_item_on_ability(resolved_name)
+            on_damage_dealt = _get_item_on_damage_dealt(resolved_name)
+            on_damage_taken = _get_item_on_damage_taken(resolved_name)
+            passive = _get_item_passive(resolved_name)
+        else:
             on_hit = None
             on_ability = None
             on_damage_dealt = None
@@ -2683,6 +2787,9 @@ class CombatEngine:
         self._alive_team1: List[Unit] = []
         self._alive_dirty = False
         self._has_noxus = False
+        self._ionic_spark_units: List[Unit] = []  # Units with Ionic Spark (cached)
+        self._occupied_hexes: set = set()  # Cached occupied hex positions
+        self._occupied_dirty = True  # True when occupied cache needs rebuild
 
         # Trait manager for Blacksmith, Bilgewater, Piltover
         self.trait_manager = TraitManager()
@@ -2730,7 +2837,7 @@ class CombatEngine:
         ability = AbilityDatabase.create_ability(api_name, champ_data, star_level)
 
         # Create unit with copied stats (so items can modify)
-        current_stats = deepcopy(base_stats)
+        current_stats = base_stats.copy()
 
         unit = Unit(
             name=champ_data.get('name', api_name).strip(),
@@ -2764,6 +2871,14 @@ class CombatEngine:
         Emblems also grant their associated trait to the unit.
         """
         unit.items.append(item)
+
+        # Update cached item flags for hot-path checks
+        if item.name == "JeweledGauntlet":
+            unit._has_jeweled_gauntlet = True
+        elif item.name in ("GiantSlayer", "RadiantGiantSlayer"):
+            unit._has_giant_slayer = True
+        elif item.name == "IonicSpark" or item.name.endswith("IonicSpark"):
+            unit._has_ionic_spark = True
 
         # Check if item is an emblem and grant the trait
         try:
@@ -2852,8 +2967,15 @@ class CombatEngine:
                     self.units.append(soldier)
 
     def get_occupied_hexes(self) -> set:
-        """Get set of all occupied hex positions."""
-        return {u.position for u in self.units if u.is_alive}
+        """Get set of all occupied hex positions (cached, rebuilt on death/move)."""
+        if self._occupied_dirty:
+            self._occupied_hexes = {u.position for u in self.units if u.is_alive}
+            self._occupied_dirty = False
+        return self._occupied_hexes
+
+    def _invalidate_occupied_cache(self):
+        """Mark the occupied hex cache as needing rebuild."""
+        self._occupied_dirty = True
 
     def calculate_damage(self, attacker: Unit, defender: Unit,
                         base_damage: float, damage_type: DamageType,
@@ -2863,18 +2985,18 @@ class CombatEngine:
 
         # Apply damage amp (including Longshot per-hex bonus)
         longshot_bonus = 0
-        if hasattr(attacker, '_longshot_per_hex') and attacker._longshot_per_hex > 0:
-            distance = HexGrid.hex_distance(attacker.position, defender.position)
-            longshot_bonus = attacker._longshot_per_hex * distance
+        longshot_per_hex = getattr(attacker, '_longshot_per_hex', 0)
+        if longshot_per_hex > 0:
+            distance = HexGrid._DISTANCE_LUT[attacker.position][defender.position]
+            longshot_bonus = longshot_per_hex * distance
         damage *= (1 + attacker.stats.damage_amp + longshot_bonus)
 
         # Check for crit
         did_crit = False
         if can_crit:
             # Check for Jeweled Gauntlet or Vanquisher trait (abilities can crit)
-            has_jeweled = any(i.name == "JeweledGauntlet" for i in attacker.items)
             has_vanquisher_crit = getattr(attacker, '_vanquisher_ability_crit', False)
-            if not is_ability or has_jeweled or has_vanquisher_crit:
+            if not is_ability or attacker._has_jeweled_gauntlet or has_vanquisher_crit:
                 if random.random() < attacker.stats.crit_chance:
                     damage *= attacker.stats.crit_multiplier
                     did_crit = True
@@ -2896,9 +3018,8 @@ class CombatEngine:
             damage *= 0.90
 
         # Giant Slayer: +15% damage vs tanks (units with >1750 max HP)
-        if any(i.name in ("GiantSlayer", "RadiantGiantSlayer") for i in attacker.items):
-            if defender.stats.max_hp > 1750:
-                damage *= 1.15
+        if attacker._has_giant_slayer and defender.stats.max_hp > 1750:
+            damage *= 1.15
 
         return max(0, damage), did_crit
 
@@ -3010,6 +3131,7 @@ class CombatEngine:
             defender.is_alive = False
             defender.state = UnitState.DEAD
             self._alive_dirty = True
+            self._occupied_dirty = True
 
             # Freljord Ice Block: stun enemies on death
             if self.trait_manager:
@@ -3056,11 +3178,12 @@ class CombatEngine:
                                       total=self.trait_manager.shadow_isles_souls,
                                       victim_cost=victim_cost, victim_star=victim_star)
 
-        self.log_event('damage', source=source, attacker=attacker_name,
-                      defender=defender.name, damage=round(actual_damage, 1),
-                      damage_type=damage_type.value,
-                      defender_hp=round(defender.stats.hp, 1),
-                      defender_alive=defender.is_alive)
+        if self.logging_enabled:
+            self.log_event('damage', source=source, attacker=attacker_name,
+                          defender=defender.name, damage=round(actual_damage, 1),
+                          damage_type=damage_type.value,
+                          defender_hp=round(defender.stats.hp, 1),
+                          defender_alive=defender.is_alive)
 
         # Juggernaut: heal allies for % of damage taken
         if defender.is_alive and hasattr(defender, '_juggernaut_heal_ratio') and actual_damage > 0:
@@ -3103,7 +3226,7 @@ class CombatEngine:
         unit.stats.hp += actual_heal
         unit.total_healing += actual_heal
 
-        if actual_heal > 0:
+        if actual_heal > 0 and self.logging_enabled:
             self.log_event('heal', unit=unit.name, amount=round(actual_heal, 1),
                           source=source, hp=round(unit.stats.hp, 1))
 
@@ -3271,21 +3394,31 @@ class CombatEngine:
 
         if targeting == TargetingType.NEAREST:
             # TFT targeting: Prioritize frontline units when distances are close
-            # Units within 1 hex of the closest are considered "in range"
-            distances = [(e, HexGrid.hex_distance(unit.position, e.position)) for e in valid_enemies]
-            min_dist = min(d for _, d in distances)
+            dist_row = HexGrid._DISTANCE_LUT[unit.position]
+            min_dist = 999
+            for e in valid_enemies:
+                d = dist_row[e.position]
+                if d < min_dist:
+                    min_dist = d
 
-            # Get all enemies within 1 hex of the closest
-            close_enemies = [e for e, d in distances if d <= min_dist + 1]
+            # Single pass: find closest frontline, and closest overall
+            best_frontline = None
+            best_frontline_dist = 999
+            best_any = None
+            best_any_dist = 999
+            threshold = min_dist + 1
 
-            # Prefer frontline targets among close enemies
-            frontline = [e for e in close_enemies if e.is_frontline]
-            if frontline:
-                # Among frontline, pick the closest
-                return min(frontline, key=lambda e: HexGrid.hex_distance(unit.position, e.position))
+            for e in valid_enemies:
+                d = dist_row[e.position]
+                if d <= threshold and e.is_frontline:
+                    if d < best_frontline_dist:
+                        best_frontline_dist = d
+                        best_frontline = e
+                if d < best_any_dist:
+                    best_any_dist = d
+                    best_any = e
 
-            # Otherwise, just pick the closest overall
-            return min(valid_enemies, key=lambda e: HexGrid.hex_distance(unit.position, e.position))
+            return best_frontline if best_frontline is not None else best_any
 
         elif targeting == TargetingType.LOWEST_HP:
             return min(valid_enemies, key=lambda e: e.stats.hp)
@@ -3294,7 +3427,8 @@ class CombatEngine:
         elif targeting == TargetingType.HIGHEST_HP:
             return max(valid_enemies, key=lambda e: e.stats.hp)
         elif targeting == TargetingType.FARTHEST:
-            return max(valid_enemies, key=lambda e: HexGrid.hex_distance(unit.position, e.position))
+            dist_row = HexGrid._DISTANCE_LUT[unit.position]
+            return max(valid_enemies, key=lambda e: dist_row[e.position])
         elif targeting == TargetingType.RANDOM:
             return random.choice(valid_enemies)
 
@@ -3308,16 +3442,16 @@ class CombatEngine:
         Args:
             include_untargetable: If True, include untargetable units (for positioning/AoE checks)
         """
+        dist_row = HexGrid._DISTANCE_LUT[unit.position]
         if include_untargetable:
             return [e for e in enemies if e.is_alive and
-                    HexGrid.hex_distance(unit.position, e.position) <= radius]
+                    dist_row[e.position] <= radius]
         return [e for e in enemies if e.is_alive and e.is_targetable and
-                HexGrid.hex_distance(unit.position, e.position) <= radius]
+                dist_row[e.position] <= radius]
 
     def can_attack(self, unit: Unit, target: Unit) -> bool:
         """Check if unit can attack target (in range)."""
-        distance = HexGrid.hex_distance(unit.position, target.position)
-        return distance <= unit.stats.range
+        return HexGrid._DISTANCE_LUT[unit.position][target.position] <= unit.stats.range
 
     def process_attack(self, unit: Unit):
         """Process an auto attack."""
@@ -3413,23 +3547,19 @@ class CombatEngine:
                 item.on_ability_cast(self, unit)
 
         # Ionic Spark reactive damage: enemies with Ionic Spark within 2 hexes
-        # deal 150% of caster's max mana as magic damage to the caster
-        for enemy in self.units:
-            if enemy.team == unit.team or not enemy.is_alive:
-                continue
-            has_ionic = any(
-                n == 'IonicSpark' or n.endswith('IonicSpark')
-                for item in enemy.items for n in [item.name]
-            )
-            if not has_ionic:
-                continue
-            dist = HexGrid.hex_distance(enemy.position, unit.position)
-            if dist <= 2:
-                spark_damage = unit.stats.max_mana * 1.50
-                final_dmg, _ = self.calculate_damage(
-                    enemy, unit, spark_damage, DamageType.MAGIC, can_crit=False
-                )
-                self.apply_damage(enemy, unit, final_dmg, DamageType.MAGIC, "ionic_spark_react")
+        # deal 150% of caster's max mana as magic damage to the caster.
+        # Only check units with the cached _has_ionic_spark flag.
+        if self._ionic_spark_units:
+            dist_lut = HexGrid._DISTANCE_LUT
+            spark_damage = unit.stats.max_mana * 1.50
+            for enemy in self._ionic_spark_units:
+                if not enemy.is_alive or enemy.team == unit.team:
+                    continue
+                if dist_lut[enemy.position][unit.position] <= 2:
+                    final_dmg, _ = self.calculate_damage(
+                        enemy, unit, spark_damage, DamageType.MAGIC, can_crit=False
+                    )
+                    self.apply_damage(enemy, unit, final_dmg, DamageType.MAGIC, "ionic_spark_react")
 
     def cast_ability(self, unit: Unit, enemies: List[Unit], allies: List[Unit]):
         """Cast unit's ability."""
@@ -3656,13 +3786,15 @@ class CombatEngine:
         occupied = self.get_occupied_hexes()
         occupied.discard(unit.position)  # Current pos is fine
 
-        path = HexGrid.find_path(unit.position, target_pos, occupied)
-        if path:
-            next_pos = path[0]
-            if next_pos not in occupied or next_pos == target_pos:
-                unit.position = next_pos
+        # Use greedy step (much cheaper than full A* for short paths)
+        next_pos = HexGrid.find_best_step(unit.position, target_pos, occupied)
+        if next_pos is not None:
+            old_pos = unit.position
+            unit.position = next_pos
+            self._occupied_dirty = True
+            if self.logging_enabled:
                 self.log_event('move', unit=unit.name,
-                              from_pos=unit.position, to_pos=next_pos)
+                              from_pos=old_pos, to_pos=next_pos)
 
     def process_unit_tick(self, unit: Unit, enemies: List[Unit], allies: List[Unit]):
         """Process one tick for a unit."""
@@ -3840,13 +3972,20 @@ class CombatEngine:
             # Move towards target (simplified - one hex per 0.5s)
             if unit.attack_cooldown <= 0:
                 # Find adjacent hex to target that's in range
-                target_neighbors = HexGrid.get_neighbors(unit.target.position)
-                valid_spots = [n for n in target_neighbors
-                              if n not in self.get_occupied_hexes()]
+                target_neighbors = HexGrid._NEIGHBOR_LUT[unit.target.position]
+                occupied = self.get_occupied_hexes()
+                dist_lut = HexGrid._DISTANCE_LUT[unit.position]
 
-                if valid_spots:
-                    best_spot = min(valid_spots,
-                                   key=lambda s: HexGrid.hex_distance(unit.position, s))
+                best_spot = None
+                best_dist = 999
+                for n in target_neighbors:
+                    if n not in occupied:
+                        d = dist_lut[n]
+                        if d < best_dist:
+                            best_dist = d
+                            best_spot = n
+
+                if best_spot is not None:
                     self.move_unit_towards(unit, best_spot)
 
                 unit.attack_cooldown = self.HEX_MOVE_TIME
@@ -3887,6 +4026,7 @@ class CombatEngine:
     def tick(self):
         """Process one simulation tick."""
         self.time += self.tick_rate
+        tick_rate = self.tick_rate  # Local var for tight loops
 
         # Refresh cached alive lists only when a unit has died
         if self._alive_dirty:
@@ -3897,14 +4037,17 @@ class CombatEngine:
         team0 = self._alive_team0
         team1 = self._alive_team1
 
+        # Build combined list once for this tick (reused below)
+        all_alive = team0 + team1
+
         # Process DOT effects on all alive units
-        for unit in team0 + team1:
-            if not unit.is_alive or not unit.dot_effects:
+        for unit in all_alive:
+            if not unit.dot_effects:
                 continue
             remaining_dots = []
             for dot in unit.dot_effects:
-                dot.remaining_duration -= self.tick_rate
-                dot.time_since_last_tick += self.tick_rate
+                dot.remaining_duration -= tick_rate
+                dot.time_since_last_tick += tick_rate
                 if dot.time_since_last_tick >= dot.tick_interval:
                     dot.time_since_last_tick -= dot.tick_interval
                     if unit.is_alive:
@@ -3916,30 +4059,36 @@ class CombatEngine:
             unit.dot_effects = remaining_dots
 
         # Expire sunder/shred debuffs and restore armor/MR
-        for unit in team0 + team1:
+        current_time = self.time
+        logging_on = self.logging_enabled
+        for unit in all_alive:
             if not unit.is_alive:
                 continue
-            if hasattr(unit, '_sunder_stacks') and unit._sunder_stacks:
+            sunder = getattr(unit, '_sunder_stacks', None)
+            if sunder:
                 remaining = []
-                for reduction, expiry, src in unit._sunder_stacks:
-                    if self.time >= expiry:
+                for reduction, expiry, src in sunder:
+                    if current_time >= expiry:
                         unit.stats.armor += reduction
-                        self.log_event('sunder_expired', target=unit.name, restored=round(reduction, 1), source=src)
+                        if logging_on:
+                            self.log_event('sunder_expired', target=unit.name, restored=round(reduction, 1), source=src)
                     else:
                         remaining.append((reduction, expiry, src))
                 unit._sunder_stacks = remaining
-            if hasattr(unit, '_shred_stacks') and unit._shred_stacks:
+            shred = getattr(unit, '_shred_stacks', None)
+            if shred:
                 remaining = []
-                for reduction, expiry, src in unit._shred_stacks:
-                    if self.time >= expiry:
+                for reduction, expiry, src in shred:
+                    if current_time >= expiry:
                         unit.stats.magic_resist += reduction
-                        self.log_event('shred_expired', target=unit.name, restored=round(reduction, 1), source=src)
+                        if logging_on:
+                            self.log_event('shred_expired', target=unit.name, restored=round(reduction, 1), source=src)
                     else:
                         remaining.append((reduction, expiry, src))
                 unit._shred_stacks = remaining
 
         # Piltover module fire at 8 seconds
-        if hasattr(self, '_piltover_data') and self.time >= 8.0:
+        if self._piltover_data and current_time >= 8.0:
             for team_id, pdata in self._piltover_data.items():
                 if not pdata['fired']:
                     pdata['fired'] = True
@@ -3950,11 +4099,11 @@ class CombatEngine:
             self._check_noxus_atakhan_summon(team0, team1)
             self._check_atakhan_ruin()
 
-        # Process in random order to avoid bias
-        units_to_process = team0 + team1
-        random.shuffle(units_to_process)
+        # Process units in random order to avoid bias.
+        # Shuffle in-place on the already-built list (avoids extra allocation).
+        random.shuffle(all_alive)
 
-        for unit in units_to_process:
+        for unit in all_alive:
             enemies = team1 if unit.team == 0 else team0
             allies = team0 if unit.team == 0 else team1
             self.process_unit_tick(unit, enemies, allies)
@@ -4399,7 +4548,11 @@ class CombatEngine:
         self._alive_team0 = list(team0)
         self._alive_team1 = list(team1)
         self._alive_dirty = False  # Set True when a unit dies
+        self._occupied_dirty = True  # Rebuild occupied hex cache
         self._has_noxus = bool(noxus_data)  # Skip Atakhan checks when no Noxus
+
+        # Cache units with Ionic Spark for fast ability-cast reaction checks
+        self._ionic_spark_units = [u for u in self.units if u._has_ionic_spark]
 
         # Apply combat-start item effects (Crownguard, Quicksilver, SteadfastHeart, etc.)
         self._apply_combat_start_items(team0 + team1)
