@@ -269,17 +269,35 @@ fn apply_self_shield(
     ability: &Ability,
     star: usize,
 ) -> bool {
-    let mut shield = ability_var_any(
+    let flat_shield = ability_var_any(
         ability,
-        &["Shield", "APShield", "ShieldAmount", "PercentHealthShield"],
+        &["Shield", "APShield", "ShieldAmount", "FlatShield"],
         star,
         0.0,
     );
+    let percent_shield = ability_var_any(
+        ability,
+        &["PercentHealthShield", "MaxHealthShieldPercent"],
+        star,
+        0.0,
+    );
+
+    let max_hp = engine.units[caster_idx].stats.max_hp.max(0.0);
+    let mut shield = 0.0_f64;
+
+    if flat_shield > 0.0 {
+        if flat_shield <= 1.0 && percent_shield <= 0.0 {
+            shield += flat_shield * max_hp;
+        } else {
+            shield += flat_shield;
+        }
+    }
+    if percent_shield > 0.0 {
+        shield += percent_shield * max_hp;
+    }
+
     if shield <= 0.0 {
         return false;
-    }
-    if ability.variables.contains_key("PercentHealthShield") || shield <= 1.0 {
-        shield *= engine.units[caster_idx].stats.max_hp;
     }
     engine.units[caster_idx].stats.shield += shield.max(0.0);
     true
@@ -291,17 +309,35 @@ fn apply_self_heal(
     ability: &Ability,
     star: usize,
 ) -> bool {
-    let mut heal = ability_var_any(
+    let flat_heal = ability_var_any(
         ability,
-        &["Heal", "APHeal", "HealAmount", "PercentHealthHeal"],
+        &["Heal", "APHeal", "HealAmount", "FlatHeal"],
         star,
         0.0,
     );
+    let percent_heal = ability_var_any(
+        ability,
+        &["PercentHealthHeal", "MaxHealthHealPercent"],
+        star,
+        0.0,
+    );
+
+    let max_hp = engine.units[caster_idx].stats.max_hp.max(0.0);
+    let mut heal = 0.0_f64;
+
+    if flat_heal > 0.0 {
+        if flat_heal <= 1.0 && percent_heal <= 0.0 {
+            heal += flat_heal * max_hp;
+        } else {
+            heal += flat_heal;
+        }
+    }
+    if percent_heal > 0.0 {
+        heal += percent_heal * max_hp;
+    }
+
     if heal <= 0.0 {
         return false;
-    }
-    if ability.variables.contains_key("PercentHealthHeal") || heal <= 1.0 {
-        heal *= engine.units[caster_idx].stats.max_hp;
     }
     crate::damage::heal_unit(&mut engine.units[caster_idx], heal.max(0.0));
     true
@@ -913,6 +949,10 @@ fn default_ability_cast(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::data::CombatData;
+    use crate::engine::CombatEngine;
+    use crate::unit::{CombatStats, Unit};
+    use std::collections::HashMap;
     use std::fs;
     use std::path::PathBuf;
 
@@ -946,5 +986,50 @@ mod tests {
             "ability dispatch missing champion API names: {:?}",
             missing
         );
+    }
+
+    #[test]
+    fn test_apply_self_shield_combines_flat_and_percent_components() {
+        let combat_data = CombatData {
+            champions: HashMap::new(),
+        };
+        let mut engine = CombatEngine::new(combat_data);
+
+        let mut stats = CombatStats::default();
+        stats.hp = 1000.0;
+        stats.max_hp = 1000.0;
+        let unit = Unit::new(
+            "Sion".to_string(),
+            "TFT16_Sion".to_string(),
+            2,
+            4,
+            "Tank".to_string(),
+            stats.clone(),
+            stats,
+            (0, 0),
+            0,
+        );
+        engine.units.push(unit);
+
+        let ability = Ability {
+            name: "Soul Furnace".to_string(),
+            ability_type: crate::types::AbilityType::Shield,
+            damage_type: DamageType::Magic,
+            targeting: crate::types::TargetingType::Nearest,
+            base_damage: [0.0, 0.0, 0.0, 0.0],
+            ap_scaling: 0.0,
+            ad_scaling: 0.0,
+            cast_time: 0.0,
+            aoe_radius: 0,
+            num_targets: 1,
+            variables: HashMap::from([
+                ("APShield".to_string(), serde_json::json!(225.0)),
+                ("PercentHealthShield".to_string(), serde_json::json!(0.04)),
+            ]),
+        };
+
+        let applied = apply_self_shield(&mut engine, 0, &ability, 2);
+        assert!(applied);
+        assert!((engine.units[0].stats.shield - 265.0).abs() < 1e-9);
     }
 }

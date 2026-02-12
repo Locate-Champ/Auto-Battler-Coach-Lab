@@ -1,8 +1,8 @@
 use crate::hex_grid;
 /// Damage calculation, application, and healing for the TFT combat engine.
+use crate::python_rng::PyRng;
 use crate::types::*;
 use crate::unit::Unit;
-use rand::Rng;
 
 /// Result of a damage calculation.
 pub struct DamageResult {
@@ -18,7 +18,7 @@ pub fn calculate_damage(
     damage_type: DamageType,
     can_crit: bool,
     is_ability: bool,
-    rng: &mut impl Rng,
+    rng: &mut PyRng,
 ) -> DamageResult {
     let mut damage = base_damage;
 
@@ -36,7 +36,7 @@ pub fn calculate_damage(
         let has_jeweled = attacker.has_jeweled_gauntlet;
         let has_vanquisher_crit = attacker.vanquisher_ability_crit;
         if !is_ability || has_jeweled || has_vanquisher_crit {
-            if rng.gen::<f64>() < attacker.stats.crit_chance {
+            if rng.random() < attacker.stats.crit_chance {
                 damage *= attacker.stats.crit_multiplier;
                 did_crit = true;
             }
