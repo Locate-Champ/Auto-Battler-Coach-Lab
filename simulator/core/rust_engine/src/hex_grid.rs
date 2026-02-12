@@ -2,52 +2,92 @@
 ///
 /// The board is a 4-row x 7-column offset hex grid (odd-q layout).
 /// Odd columns are shifted down by 0.5 hexes.
+///
+/// Performance: Uses precomputed lookup tables for distance and neighbors
+/// to avoid cube-coordinate conversion in hot paths.
 use crate::types::HexPos;
 use std::cmp::Ordering;
 use std::collections::{BinaryHeap, HashMap};
+use std::sync::OnceLock;
 
 pub const BOARD_ROWS: i32 = 4;
 pub const BOARD_COLS: i32 = 7;
+const NUM_HEXES: usize = (BOARD_ROWS * BOARD_COLS) as usize; // 28
 
-/// Convert odd-q offset coordinates (row, col) to cube coordinates (x, y, z).
-#[inline]
-fn offset_to_cube(pos: HexPos) -> (i32, i32, i32) {
-    let (row, col) = pos;
-    let x = col;
-    let z = row - (col - (col & 1)) / 2;
-    let y = -x - z;
-    (x, y, z)
+/// Flat index into the board: row * BOARD_COLS + col.
+#[inline(always)]
+fn flat_idx(pos: HexPos) -> usize {
+    (pos.0 * BOARD_COLS + pos.1) as usize
 }
 
-/// Hex distance between two positions using cube coordinates.
-#[inline]
-pub fn hex_distance(a: HexPos, b: HexPos) -> i32 {
-    let (q1, r1, s1) = offset_to_cube(a);
-    let (q2, r2, s2) = offset_to_cube(b);
-    ((q1 - q2).abs() + (r1 - r2).abs() + (s1 - s2).abs()) / 2
+/// Precomputed lookup tables built once at first access.
+struct HexLuts {
+    /// distance_lut[flat(a)][flat(b)] = hex distance
+    distance: [[i32; NUM_HEXES]; NUM_HEXES],
+    /// neighbors[flat(pos)] = list of valid neighbor positions
+    neighbors: [Vec<HexPos>; NUM_HEXES],
 }
 
-/// Get the 6 hex neighbors of a position (filtered to valid board positions).
-pub fn hex_neighbors(pos: HexPos) -> Vec<HexPos> {
-    let (row, col) = pos;
-    let is_odd_col = (col & 1) == 1;
+static HEX_LUTS: OnceLock<HexLuts> = OnceLock::new();
 
-    // Offset hex neighbor directions differ for even/odd columns (odd-q)
-    let directions: [(i32, i32); 6] = if is_odd_col {
-        [(0, -1), (1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0)]
-    } else {
-        [(0, -1), (1, -1), (1, 0), (0, 1), (-1, 0), (-1, -1)]
-    };
+fn build_luts() -> HexLuts {
+    let mut distance = [[0i32; NUM_HEXES]; NUM_HEXES];
+    // Initialize neighbors array
+    let neighbors: [Vec<HexPos>; NUM_HEXES] = std::array::from_fn(|_| Vec::new());
+    let mut luts = HexLuts { distance, neighbors };
 
-    let mut neighbors = Vec::with_capacity(6);
-    for (dr, dc) in directions {
-        let nr = row + dr;
-        let nc = col + dc;
-        if nr >= 0 && nr < BOARD_ROWS && nc >= 0 && nc < BOARD_COLS {
-            neighbors.push((nr, nc));
+    let even_dirs: [(i32, i32); 6] = [(0, -1), (1, -1), (1, 0), (0, 1), (-1, 0), (-1, -1)];
+    let odd_dirs: [(i32, i32); 6] = [(0, -1), (1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0)];
+
+    for r in 0..BOARD_ROWS {
+        for c in 0..BOARD_COLS {
+            let idx = flat_idx((r, c));
+
+            // Neighbors
+            let dirs = if (c & 1) == 1 { &odd_dirs } else { &even_dirs };
+            let mut nbrs = Vec::with_capacity(6);
+            for &(dr, dc) in dirs {
+                let nr = r + dr;
+                let nc = c + dc;
+                if nr >= 0 && nr < BOARD_ROWS && nc >= 0 && nc < BOARD_COLS {
+                    nbrs.push((nr, nc));
+                }
+            }
+            luts.neighbors[idx] = nbrs;
+
+            // Distances (cube coordinates)
+            let x1 = c;
+            let z1 = r - (c - (c & 1)) / 2;
+            let y1 = -x1 - z1;
+            for r2 in 0..BOARD_ROWS {
+                for c2 in 0..BOARD_COLS {
+                    let x2 = c2;
+                    let z2 = r2 - (c2 - (c2 & 1)) / 2;
+                    let y2 = -x2 - z2;
+                    luts.distance[idx][flat_idx((r2, c2))] =
+                        ((x1 - x2).abs() + (y1 - y2).abs() + (z1 - z2).abs()) / 2;
+                }
+            }
         }
     }
-    neighbors
+    luts
+}
+
+#[inline(always)]
+fn luts() -> &'static HexLuts {
+    HEX_LUTS.get_or_init(build_luts)
+}
+
+/// Hex distance between two positions (precomputed LUT).
+#[inline]
+pub fn hex_distance(a: HexPos, b: HexPos) -> i32 {
+    luts().distance[flat_idx(a)][flat_idx(b)]
+}
+
+/// Get the 6 hex neighbors of a position (precomputed LUT).
+#[inline]
+pub fn hex_neighbors(pos: HexPos) -> &'static [HexPos] {
+    &luts().neighbors[flat_idx(pos)]
 }
 
 /// A* pathfinding on the hex grid, avoiding occupied hexes.
@@ -63,8 +103,7 @@ pub fn find_next_step(
     }
 
     // Check if goal is a neighbor (fast path)
-    let neighbors = hex_neighbors(start);
-    if neighbors.contains(&goal) && !occupied.contains(&goal) {
+    if hex_neighbors(start).contains(&goal) && !occupied.contains(&goal) {
         return Some(goal);
     }
 
@@ -228,13 +267,13 @@ mod tests {
     #[test]
     fn test_neighbors_even_col_match_python_order() {
         let n = hex_neighbors((1, 2));
-        assert_eq!(n, vec![(1, 1), (2, 1), (2, 2), (1, 3), (0, 2), (0, 1)]);
+        assert_eq!(n, &[(1, 1), (2, 1), (2, 2), (1, 3), (0, 2), (0, 1)]);
     }
 
     #[test]
     fn test_neighbors_odd_col_match_python_order() {
         let n = hex_neighbors((1, 3));
-        assert_eq!(n, vec![(1, 2), (2, 3), (2, 4), (1, 4), (0, 4), (0, 3)]);
+        assert_eq!(n, &[(1, 2), (2, 3), (2, 4), (1, 4), (0, 4), (0, 3)]);
     }
 
     #[test]
@@ -242,7 +281,7 @@ mod tests {
         for row in 0..BOARD_ROWS {
             for col in 0..BOARD_COLS {
                 let pos = (row, col);
-                assert_eq!(hex_neighbors(pos), expected_python_neighbors(pos));
+                assert_eq!(hex_neighbors(pos), expected_python_neighbors(pos).as_slice());
             }
         }
     }
