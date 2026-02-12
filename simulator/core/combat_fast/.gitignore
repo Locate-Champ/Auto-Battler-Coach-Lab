@@ -1,0 +1,6 @@
+# Cython build artifacts
+*.c
+*.so
+*.pyd
+build/
+*.egg-info/
