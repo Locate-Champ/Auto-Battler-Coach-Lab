@@ -65,6 +65,23 @@ def _pyarrow_available() -> bool:
         return False
 
 
+def _normalize_parquet_compression(name: str) -> str:
+    value = name.strip().lower()
+    mapping = {
+        'uncompressed': 'NONE',
+        'none': 'NONE',
+        'snappy': 'SNAPPY',
+        'gzip': 'GZIP',
+        'brotli': 'BROTLI',
+        'lz4': 'LZ4',
+        'zstd': 'ZSTD',
+    }
+    if value not in mapping:
+        valid = ', '.join(sorted(mapping))
+        raise ValueError(f"Unsupported parquet compression '{name}'. Valid values: {valid}")
+    return mapping[value]
+
+
 def _wilson_interval(successes: int, trials: int,
                      z: float = WILSON_Z_95) -> Tuple[float, float]:
     """Wilson score interval for Bernoulli metrics."""
@@ -140,6 +157,11 @@ def _resolve_shard_range(
     shard_offset = shard_index * base + min(shard_index, remainder)
     shard_seed_start = seed_start + shard_offset
     return shard_seed_start, shard_games
+
+
+def _iter_task_batches(tasks: List[Tuple], batch_size: int):
+    for start in range(0, len(tasks), batch_size):
+        yield tasks[start:start + batch_size]
 
 # ── Per-Game Runner ──────────────────────────────────────────────────────
 
@@ -263,10 +285,16 @@ class StreamingWriter:
         chunk_size: int = 100,
         resume_state: Optional[Dict] = None,
         require_parquet: bool = False,
+        parquet_compression: str = 'uncompressed',
+        parquet_use_dictionary: bool = False,
+        parquet_write_statistics: bool = False,
     ):
         self.output_dir = output_dir
         self.chunk_size = chunk_size
         self.require_parquet = require_parquet
+        self.parquet_compression = _normalize_parquet_compression(parquet_compression)
+        self.parquet_use_dictionary = parquet_use_dictionary
+        self.parquet_write_statistics = parquet_write_statistics
         os.makedirs(output_dir, exist_ok=True)
 
         # Training row buffer (flushed every chunk_size games)
@@ -322,7 +350,15 @@ class StreamingWriter:
     def num_errors(self) -> int:
         return len(self._errors)
 
-    def add_result(self, result: Dict):
+    @property
+    def games_in_buffer(self) -> int:
+        return self._games_in_buffer
+
+    @property
+    def next_chunk_name(self) -> str:
+        return f'chunk_{self._chunk_idx:04d}'
+
+    def add_result(self, result: Dict, *, buffer_training_rows: bool = True):
         """Process a completed game result."""
         if result['status'] == 'error':
             self._errors.append({
@@ -336,19 +372,20 @@ class StreamingWriter:
         self._sum_game_time += result['elapsed']
         self._total_rounds += result['rounds']
 
-        # Buffer training rows
-        training_rows = result.get('training_rows', [])
-        if training_rows:
-            self._row_buffer.extend(training_rows)
-            self._pending_row_count += len(training_rows)
-        training_rows_jsonl = result.get('training_rows_jsonl', '')
-        if training_rows_jsonl:
-            self._jsonl_blob_buffer.append(training_rows_jsonl)
-            self._pending_row_count += int(result.get('training_row_count', 0))
-        training_rows_parquet = result.get('training_rows_parquet', b'')
-        if training_rows_parquet:
-            self._parquet_blob_buffer.append(training_rows_parquet)
-            self._pending_row_count += int(result.get('training_row_count', 0))
+        if buffer_training_rows:
+            # Buffer training rows
+            training_rows = result.get('training_rows', [])
+            if training_rows:
+                self._row_buffer.extend(training_rows)
+                self._pending_row_count += len(training_rows)
+            training_rows_jsonl = result.get('training_rows_jsonl', '')
+            if training_rows_jsonl:
+                self._jsonl_blob_buffer.append(training_rows_jsonl)
+                self._pending_row_count += int(result.get('training_row_count', 0))
+            training_rows_parquet = result.get('training_rows_parquet', b'')
+            if training_rows_parquet:
+                self._parquet_blob_buffer.append(training_rows_parquet)
+                self._pending_row_count += int(result.get('training_row_count', 0))
 
         # Accumulate analytics
         analytics = result['analytics']
@@ -369,11 +406,18 @@ class StreamingWriter:
             if placement == 1:
                 self._aug_win_counts[name] += 1
 
-        self._games_in_buffer += 1
+        if buffer_training_rows:
+            self._games_in_buffer += 1
 
-        # Flush if buffer is full
-        if self._games_in_buffer >= self.chunk_size:
-            self._flush_chunk()
+            # Flush if buffer is full
+            if self._games_in_buffer >= self.chunk_size:
+                self._flush_chunk()
+
+    def record_external_parquet_chunk(self, row_count: int):
+        """Record a chunk file that was already written outside this writer."""
+        self._total_rows += max(0, row_count)
+        self._chunk_idx += 1
+        self._games_in_buffer = 0
 
     def _flush_chunk(self):
         """Write buffered training rows to a chunk file."""
@@ -431,7 +475,13 @@ class StreamingWriter:
 
         table = pa.Table.from_pylist(rows)
         path = os.path.join(self.output_dir, chunk_name + '.parquet')
-        pq.write_table(table, path)
+        pq.write_table(
+            table,
+            path,
+            compression=self.parquet_compression,
+            use_dictionary=self.parquet_use_dictionary,
+            write_statistics=self.parquet_write_statistics,
+        )
 
     def _write_jsonl_chunk(self, chunk_name: str):
         """Write chunk as JSON Lines (fallback)."""
@@ -452,13 +502,58 @@ class StreamingWriter:
                     f.write('\n')
 
     def _write_parquet_blob_chunk(self, chunk_name: str):
-        """Write Rust-prebuilt parquet blobs as chunk parquet files."""
-        for idx, blob in enumerate(self._parquet_blob_buffer):
-            if not blob:
-                continue
-            path = os.path.join(self.output_dir, f'{chunk_name}_{idx:04d}.parquet')
-            with open(path, 'wb') as f:
-                f.write(blob)
+        """Aggregate Rust-prebuilt parquet blobs into one chunk parquet file."""
+        try:
+            import pyarrow as pa
+            import pyarrow.parquet as pq
+        except Exception:
+            # Fallback: preserve behavior if pyarrow is unavailable.
+            for idx, blob in enumerate(self._parquet_blob_buffer):
+                if not blob:
+                    continue
+                path = os.path.join(self.output_dir, f'{chunk_name}_{idx:04d}.parquet')
+                with open(path, 'wb') as f:
+                    f.write(blob)
+            return
+
+        path = os.path.join(self.output_dir, chunk_name + '.parquet')
+        writer = None
+        schema = None
+        try:
+            for blob in self._parquet_blob_buffer:
+                if not blob:
+                    continue
+                table = pq.read_table(pa.BufferReader(blob))
+                if schema is None:
+                    schema = table.schema
+                    writer = pq.ParquetWriter(
+                        path,
+                        schema,
+                        compression=self.parquet_compression,
+                        use_dictionary=self.parquet_use_dictionary,
+                        write_statistics=self.parquet_write_statistics,
+                    )
+                elif not table.schema.equals(schema, check_metadata=False):
+                    table = table.cast(schema)
+                writer.write_table(table)
+        except Exception:
+            if writer is not None:
+                writer.close()
+                writer = None
+            if os.path.exists(path):
+                os.remove(path)
+            if self.require_parquet:
+                raise
+            for idx, blob in enumerate(self._parquet_blob_buffer):
+                if not blob:
+                    continue
+                fallback_path = os.path.join(self.output_dir, f'{chunk_name}_{idx:04d}.parquet')
+                with open(fallback_path, 'wb') as f:
+                    f.write(blob)
+            return
+        finally:
+            if writer is not None:
+                writer.close()
 
     def _write_parquet_from_jsonl_blob_chunk(self, chunk_name: str):
         """Convert pre-serialized JSONL blobs to Parquet with Arrow JSON parser."""
@@ -474,7 +569,13 @@ class StreamingWriter:
 
         table = paj.read_json(pa.BufferReader(payload.encode('utf-8')))
         path = os.path.join(self.output_dir, chunk_name + '.parquet')
-        pq.write_table(table, path)
+        pq.write_table(
+            table,
+            path,
+            compression=self.parquet_compression,
+            use_dictionary=self.parquet_use_dictionary,
+            write_statistics=self.parquet_write_statistics,
+        )
 
     def write_checkpoint(self):
         """Write checkpoint for resume capability."""
@@ -668,6 +769,12 @@ def run_batch(
     rust_full_include_training_rows: bool = True,
     rust_full_native_jsonl: bool = False,
     rust_full_native_parquet: bool = False,
+    rust_full_native_parquet_direct: bool = False,
+    rust_full_rayon_batch_size: Optional[int] = None,
+    rust_full_rayon_threads: Optional[int] = None,
+    parquet_compression: str = 'uncompressed',
+    parquet_use_dictionary: bool = False,
+    parquet_write_statistics: bool = False,
 ) -> Dict:
     """Run num_games in parallel with streaming output and checkpoints.
 
@@ -692,6 +799,12 @@ def run_batch(
         rust_full_include_training_rows: If False, skip per-round training rows in rust_full.
         rust_full_native_jsonl: Use Rust-pre-serialized JSONL rows in rust_full mode.
         rust_full_native_parquet: Use Rust-pre-serialized parquet rows in rust_full mode.
+        rust_full_native_parquet_direct: Write chunk parquet files directly from Rust in batch mode.
+        rust_full_rayon_batch_size: Batch size for Rust rayon batch API (rust_full only).
+        rust_full_rayon_threads: Rayon thread count override for rust_full batch API.
+        parquet_compression: Output parquet compression codec.
+        parquet_use_dictionary: Whether parquet dictionary encoding is enabled.
+        parquet_write_statistics: Whether parquet statistics are written.
 
     Returns:
         Summary dict with timing and aggregate stats.
@@ -704,8 +817,25 @@ def run_batch(
         raise ValueError("rust_full_native_jsonl can only be used with engine='rust_full'.")
     if rust_full_native_parquet and engine != 'rust_full':
         raise ValueError("rust_full_native_parquet can only be used with engine='rust_full'.")
+    if rust_full_native_parquet_direct and engine != 'rust_full':
+        raise ValueError("rust_full_native_parquet_direct can only be used with engine='rust_full'.")
     if rust_full_native_jsonl and rust_full_native_parquet:
         raise ValueError("rust_full_native_jsonl and rust_full_native_parquet are mutually exclusive.")
+    if rust_full_native_parquet_direct and rust_full_native_jsonl:
+        raise ValueError("rust_full_native_parquet_direct cannot be combined with rust_full_native_jsonl.")
+    if rust_full_native_parquet_direct and not rust_full_native_parquet:
+        raise ValueError("rust_full_native_parquet_direct requires rust_full_native_parquet.")
+    if rust_full_native_parquet_direct and not rust_full_include_training_rows:
+        raise ValueError("rust_full_native_parquet_direct requires rust_full_include_training_rows.")
+    if rust_full_native_parquet_direct and rust_full_rayon_batch_size is None:
+        raise ValueError("rust_full_native_parquet_direct requires rust_full_rayon_batch_size.")
+    if rust_full_rayon_batch_size is not None and rust_full_rayon_batch_size <= 0:
+        raise ValueError("rust_full_rayon_batch_size must be > 0 when provided.")
+    if rust_full_rayon_threads is not None and rust_full_rayon_threads <= 0:
+        raise ValueError("rust_full_rayon_threads must be > 0 when provided.")
+    if (rust_full_rayon_batch_size is not None or rust_full_rayon_threads is not None) and engine != 'rust_full':
+        raise ValueError("Rust rayon batch options require engine='rust_full'.")
+    _normalize_parquet_compression(parquet_compression)
 
     requested_seed_start = seed_start
     requested_num_games = num_games
@@ -743,6 +873,9 @@ def run_batch(
         chunk_size=chunk_size,
         resume_state=resume_state,
         require_parquet=require_parquet,
+        parquet_compression=parquet_compression,
+        parquet_use_dictionary=parquet_use_dictionary,
+        parquet_write_statistics=parquet_write_statistics,
     )
 
     # Build task list, skipping completed seeds
@@ -769,6 +902,20 @@ def run_batch(
             resolved_pool_chunksize = min(resolved_pool_chunksize, pool_chunksize_max)
         resolved_pool_chunksize = min(resolved_pool_chunksize, remaining)
 
+    use_rust_rayon_batches = (
+        engine == 'rust_full'
+        and rust_full_rayon_batch_size is not None
+    )
+    use_rust_batch_parquet_api = (
+        use_rust_rayon_batches
+        and rust_full_include_training_rows
+        and rust_full_native_parquet
+    )
+    use_rust_batch_parquet_file_api = (
+        use_rust_batch_parquet_api
+        and rust_full_native_parquet_direct
+    )
+
     if remaining == 0:
         print("All games already completed!")
         return writer.finalize(
@@ -794,6 +941,14 @@ def run_batch(
                 'rust_full_include_training_rows': rust_full_include_training_rows,
                 'rust_full_native_jsonl': rust_full_native_jsonl,
                 'rust_full_native_parquet': rust_full_native_parquet,
+                'rust_full_native_parquet_direct': rust_full_native_parquet_direct,
+                'rust_full_rayon_batch_size': rust_full_rayon_batch_size,
+                'rust_full_rayon_threads': rust_full_rayon_threads,
+                'rust_full_batch_parquet_api': use_rust_batch_parquet_api,
+                'rust_full_batch_parquet_file_api': use_rust_batch_parquet_file_api,
+                'parquet_compression': parquet_compression,
+                'parquet_use_dictionary': parquet_use_dictionary,
+                'parquet_write_statistics': parquet_write_statistics,
                 'resume': resume,
                 'checkpoint_every': checkpoint_every,
                 'progress_every': progress_every,
@@ -829,9 +984,9 @@ def run_batch(
     done = 0
     aborted_reason: Optional[str] = None
 
-    def _process_result(result):
+    def _process_result(result: Dict, *, buffer_training_rows: bool = True):
         nonlocal done
-        writer.add_result(result)
+        writer.add_result(result, buffer_training_rows=buffer_training_rows)
         done += 1
         if done % progress_interval == 0 or done == remaining:
             elapsed = time.perf_counter() - start
@@ -847,7 +1002,115 @@ def run_batch(
         if done % checkpoint_interval == 0:
             writer.write_checkpoint()
 
-    if num_workers <= 1:
+    if use_rust_rayon_batches:
+        _worker_init('rust_full')
+        global _RUST_FULL_SIMULATOR
+        rayon_threads = rust_full_rayon_threads or num_workers
+        if use_rust_batch_parquet_file_api and not hasattr(_RUST_FULL_SIMULATOR, 'run_games_batch_parquet_to_file'):
+            print(
+                "Warning: rust_full direct batch parquet-to-file API unavailable in this extension build; "
+                "falling back to Python chunk finalization."
+            )
+            use_rust_batch_parquet_file_api = False
+        if use_rust_batch_parquet_api and not hasattr(_RUST_FULL_SIMULATOR, 'run_games_batch_parquet'):
+            print(
+                "Warning: rust_full batch parquet API unavailable in this extension build; "
+                "falling back to per-game parquet batch output."
+            )
+            use_rust_batch_parquet_api = False
+        batch_output_mode = 'rows'
+        if rust_full_include_training_rows and not use_rust_batch_parquet_api:
+            if rust_full_native_parquet:
+                batch_output_mode = 'parquet'
+            elif rust_full_native_jsonl:
+                batch_output_mode = 'jsonl'
+        print(
+            "Rust rayon batch mode: "
+            f"batch_size={rust_full_rayon_batch_size}, threads={rayon_threads}, "
+            f"output_mode={batch_output_mode}, "
+            f"batch_parquet_api={use_rust_batch_parquet_api}, "
+            f"batch_parquet_file_api={use_rust_batch_parquet_file_api}"
+        )
+
+        try:
+            task_cursor = 0
+            while task_cursor < len(tasks):
+                next_batch_size = rust_full_rayon_batch_size
+                if use_rust_batch_parquet_file_api:
+                    # In direct-file mode, each Rust batch call writes one chunk file.
+                    next_batch_size = min(chunk_size, len(tasks) - task_cursor)
+                elif use_rust_batch_parquet_api:
+                    games_until_chunk_flush = max(1, chunk_size - writer.games_in_buffer)
+                    next_batch_size = min(next_batch_size, games_until_chunk_flush)
+                task_batch = tasks[task_cursor:task_cursor + next_batch_size]
+                task_cursor += len(task_batch)
+                batch_game_ids = [task[0] for task in task_batch]
+                batch_seeds = [task[1] for task in task_batch]
+                batch_wrote_parquet = False
+                batch_training_row_count = 0
+                try:
+                    if use_rust_batch_parquet_file_api:
+                        chunk_name = writer.next_chunk_name
+                        chunk_path = os.path.join(output_dir, chunk_name + '.parquet')
+                        batch_payload = _RUST_FULL_SIMULATOR.run_games_batch_parquet_to_file(
+                            batch_game_ids,
+                            batch_seeds,
+                            chunk_path,
+                            agent_mix,
+                            rust_full_include_training_rows,
+                            rayon_threads,
+                        )
+                        batch_results = list(batch_payload.get('results', []))
+                        batch_training_row_count = int(batch_payload.get('training_row_count', 0))
+                        batch_wrote_parquet = bool(batch_payload.get('wrote_parquet', False))
+                    elif use_rust_batch_parquet_api:
+                        batch_payload = _RUST_FULL_SIMULATOR.run_games_batch_parquet(
+                            batch_game_ids,
+                            batch_seeds,
+                            agent_mix,
+                            rust_full_include_training_rows,
+                            rayon_threads,
+                        )
+                        batch_results = list(batch_payload.get('results', []))
+                        batch_parquet_blob = batch_payload.get('training_rows_parquet', b'')
+                        batch_training_row_count = int(batch_payload.get('training_row_count', 0))
+                        if batch_parquet_blob:
+                            for result in batch_results:
+                                if result.get('status') == 'ok':
+                                    result['training_rows_parquet'] = batch_parquet_blob
+                                    result['training_row_count'] = batch_training_row_count
+                                    break
+                    else:
+                        batch_results = _RUST_FULL_SIMULATOR.run_games_batch(
+                            batch_game_ids,
+                            batch_seeds,
+                            agent_mix,
+                            rust_full_include_training_rows,
+                            batch_output_mode,
+                            rayon_threads,
+                        )
+                except Exception:
+                    error_text = traceback.format_exc()
+                    batch_results = [
+                        {
+                            'status': 'error',
+                            'game_id': game_id,
+                            'seed': seed,
+                            'error': error_text,
+                        }
+                        for game_id, seed in zip(batch_game_ids, batch_seeds)
+                    ]
+
+                for result in batch_results:
+                    _process_result(
+                        result,
+                        buffer_training_rows=not use_rust_batch_parquet_file_api,
+                    )
+                if use_rust_batch_parquet_file_api and batch_wrote_parquet:
+                    writer.record_external_parquet_chunk(batch_training_row_count)
+        except BatchAbort as exc:
+            aborted_reason = str(exc)
+    elif num_workers <= 1:
         # Sequential mode
         _worker_init(engine)
         try:
@@ -906,6 +1169,14 @@ def run_batch(
             'rust_full_include_training_rows': rust_full_include_training_rows,
             'rust_full_native_jsonl': rust_full_native_jsonl,
             'rust_full_native_parquet': rust_full_native_parquet,
+            'rust_full_native_parquet_direct': rust_full_native_parquet_direct,
+            'rust_full_rayon_batch_size': rust_full_rayon_batch_size,
+            'rust_full_rayon_threads': rust_full_rayon_threads,
+            'rust_full_batch_parquet_api': use_rust_batch_parquet_api,
+            'rust_full_batch_parquet_file_api': use_rust_batch_parquet_file_api,
+            'parquet_compression': parquet_compression,
+            'parquet_use_dictionary': parquet_use_dictionary,
+            'parquet_write_statistics': parquet_write_statistics,
             'resume': resume,
             'checkpoint_every': checkpoint_interval,
             'progress_every': progress_interval,
@@ -936,6 +1207,10 @@ def _parse_agent_mix(s: str) -> Dict[str, int]:
     if not mix or sum(mix.values()) <= 0:
         raise ValueError("Agent mix must include at least one positive weight")
     return mix
+
+
+def _cli_flag_present(argv: List[str], flag: str) -> bool:
+    return any(arg == flag or arg.startswith(f"{flag}=") for arg in argv)
 
 
 def main():
@@ -989,12 +1264,26 @@ Examples:
                         help='Total number of shards when partitioning a run across machines')
     parser.add_argument('--engine', type=str, default='python', choices=['python', 'rust', 'rust_full'],
                         help='Simulation backend (default: python)')
+    parser.add_argument('--no-rust-full-auto-profile', action='store_true',
+                        help='Disable rust_full auto-tuned defaults and use explicit/baseline options')
     parser.add_argument('--rust-full-summary-only', action='store_true',
                         help='Skip training row generation in rust_full mode for max throughput')
-    parser.add_argument('--rust-full-native-jsonl', action='store_true',
-                        help='Use Rust-pre-serialized JSONL rows in rust_full mode (fast path)')
-    parser.add_argument('--rust-full-native-parquet', action='store_true',
-                        help='Use Rust-pre-serialized parquet rows in rust_full mode (fastest path)')
+    parser.add_argument('--rust-full-native-jsonl', action=argparse.BooleanOptionalAction, default=None,
+                        help='Enable/disable Rust-pre-serialized JSONL rows in rust_full mode')
+    parser.add_argument('--rust-full-native-parquet', action=argparse.BooleanOptionalAction, default=None,
+                        help='Enable/disable Rust-pre-serialized parquet rows in rust_full mode')
+    parser.add_argument('--rust-full-native-parquet-direct', action=argparse.BooleanOptionalAction, default=None,
+                        help='Enable/disable direct Rust chunk parquet file writing in rust_full batch mode')
+    parser.add_argument('--rust-full-rayon-batch-size', type=int, default=None,
+                        help='Use Rust rayon batch API with this per-call batch size (rust_full only)')
+    parser.add_argument('--rust-full-rayon-threads', type=int, default=None,
+                        help='Override rayon thread count for rust_full batch API')
+    parser.add_argument('--parquet-compression', type=str, default=None,
+                        help='Parquet compression codec: uncompressed|snappy|zstd|gzip|brotli|lz4')
+    parser.add_argument('--parquet-use-dictionary', action=argparse.BooleanOptionalAction, default=None,
+                        help='Enable/disable parquet dictionary encoding for chunk writes')
+    parser.add_argument('--parquet-write-statistics', action=argparse.BooleanOptionalAction, default=None,
+                        help='Enable/disable parquet column statistics for chunk writes')
     parser.add_argument('--skip-reference-validation', action='store_true',
                         help='Skip simulator reference preflight validation')
     args = parser.parse_args()
@@ -1012,14 +1301,117 @@ Examples:
             parser.error("--num-shards must be > 0")
         if args.shard_index < 0 or args.shard_index >= args.num_shards:
             parser.error(f"--shard-index must be in [0, {args.num_shards - 1}]")
-    if args.rust_full_native_jsonl and args.engine != 'rust_full':
+    if args.rust_full_native_jsonl is True and args.engine != 'rust_full':
         parser.error("--rust-full-native-jsonl requires --engine rust_full")
-    if args.rust_full_native_parquet and args.engine != 'rust_full':
+    if args.rust_full_native_parquet is True and args.engine != 'rust_full':
         parser.error("--rust-full-native-parquet requires --engine rust_full")
-    if args.rust_full_native_jsonl and args.rust_full_native_parquet:
+    if args.rust_full_native_parquet_direct is True and args.engine != 'rust_full':
+        parser.error("--rust-full-native-parquet-direct requires --engine rust_full")
+    if args.rust_full_native_jsonl is True and args.rust_full_native_parquet is True:
         parser.error("--rust-full-native-jsonl and --rust-full-native-parquet cannot be combined")
+    if args.rust_full_native_parquet_direct is True and args.rust_full_native_jsonl is True:
+        parser.error("--rust-full-native-parquet-direct cannot be combined with --rust-full-native-jsonl")
+    if args.rust_full_rayon_batch_size is not None:
+        if args.rust_full_rayon_batch_size <= 0:
+            parser.error("--rust-full-rayon-batch-size must be > 0")
+        if args.engine != 'rust_full':
+            parser.error("--rust-full-rayon-batch-size requires --engine rust_full")
+    if args.rust_full_rayon_threads is not None:
+        if args.rust_full_rayon_threads <= 0:
+            parser.error("--rust-full-rayon-threads must be > 0")
+        if args.engine != 'rust_full':
+            parser.error("--rust-full-rayon-threads requires --engine rust_full")
+    if args.parquet_compression is not None:
+        try:
+            _normalize_parquet_compression(args.parquet_compression)
+        except ValueError as exc:
+            parser.error(str(exc))
 
     num_workers = args.workers or max(1, multiprocessing.cpu_count() - 1)
+
+    raw_cli_args = sys.argv[1:]
+    explicit_chunk_size = _cli_flag_present(raw_cli_args, '--chunk-size')
+    explicit_native_jsonl = args.rust_full_native_jsonl is not None
+    explicit_native_parquet = args.rust_full_native_parquet is not None
+    explicit_native_parquet_direct = args.rust_full_native_parquet_direct is not None
+    explicit_rayon_batch_size = args.rust_full_rayon_batch_size is not None
+    explicit_rayon_threads = args.rust_full_rayon_threads is not None
+    explicit_parquet_compression = args.parquet_compression is not None
+    explicit_parquet_use_dictionary = args.parquet_use_dictionary is not None
+    explicit_parquet_write_statistics = args.parquet_write_statistics is not None
+
+    effective_chunk_size = args.chunk_size
+    effective_rust_full_native_jsonl = bool(args.rust_full_native_jsonl) if args.rust_full_native_jsonl is not None else False
+    effective_rust_full_native_parquet = bool(args.rust_full_native_parquet) if args.rust_full_native_parquet is not None else False
+    effective_rust_full_native_parquet_direct = bool(args.rust_full_native_parquet_direct) if args.rust_full_native_parquet_direct is not None else False
+    effective_rust_full_rayon_batch_size = args.rust_full_rayon_batch_size
+    effective_rust_full_rayon_threads = args.rust_full_rayon_threads
+    effective_parquet_compression = args.parquet_compression if args.parquet_compression is not None else 'uncompressed'
+    effective_parquet_use_dictionary = bool(args.parquet_use_dictionary) if args.parquet_use_dictionary is not None else False
+    effective_parquet_write_statistics = bool(args.parquet_write_statistics) if args.parquet_write_statistics is not None else False
+    auto_profile_applied = False
+
+    if args.engine == 'rust_full' and not args.no_rust_full_auto_profile:
+        if not explicit_chunk_size and args.chunk_size == 100:
+            effective_chunk_size = 1000
+            auto_profile_applied = True
+        if (
+            not args.rust_full_summary_only
+            and not args.rust_full_native_jsonl
+            and not args.rust_full_native_parquet
+            and not explicit_native_jsonl
+            and not explicit_native_parquet
+        ):
+            effective_rust_full_native_parquet = True
+            auto_profile_applied = True
+        if (
+            effective_rust_full_native_parquet
+            and not args.rust_full_summary_only
+            and not explicit_native_parquet_direct
+        ):
+            effective_rust_full_native_parquet_direct = True
+            auto_profile_applied = True
+        if args.rust_full_rayon_batch_size is None and not explicit_rayon_batch_size:
+            effective_rust_full_rayon_batch_size = 64
+            auto_profile_applied = True
+        if args.rust_full_rayon_threads is None and not explicit_rayon_threads:
+            effective_rust_full_rayon_threads = num_workers
+            auto_profile_applied = True
+        if not explicit_parquet_compression:
+            effective_parquet_compression = 'snappy'
+            auto_profile_applied = True
+        if not explicit_parquet_use_dictionary:
+            effective_parquet_use_dictionary = True
+            auto_profile_applied = True
+        if not explicit_parquet_write_statistics:
+            effective_parquet_write_statistics = True
+            auto_profile_applied = True
+
+    try:
+        _normalize_parquet_compression(effective_parquet_compression)
+    except ValueError as exc:
+        parser.error(str(exc))
+    if effective_rust_full_native_parquet_direct and not effective_rust_full_native_parquet:
+        parser.error("--rust-full-native-parquet-direct requires --rust-full-native-parquet")
+    if effective_rust_full_native_parquet_direct and effective_rust_full_native_jsonl:
+        parser.error("--rust-full-native-parquet-direct cannot be combined with --rust-full-native-jsonl")
+    if effective_rust_full_native_parquet_direct and args.rust_full_summary_only:
+        parser.error("--rust-full-native-parquet-direct requires training rows (do not use --rust-full-summary-only)")
+    if effective_rust_full_native_parquet_direct and effective_rust_full_rayon_batch_size is None:
+        parser.error("--rust-full-native-parquet-direct requires --rust-full-rayon-batch-size")
+
+    if auto_profile_applied:
+        print(
+            "Applying rust_full default speed profile: "
+            f"chunk_size={effective_chunk_size}, "
+            f"native_parquet={effective_rust_full_native_parquet}, "
+            f"native_parquet_direct={effective_rust_full_native_parquet_direct}, "
+            f"rayon_batch_size={effective_rust_full_rayon_batch_size}, "
+            f"rayon_threads={effective_rust_full_rayon_threads}, "
+            f"parquet_compression={effective_parquet_compression}, "
+            f"parquet_use_dictionary={effective_parquet_use_dictionary}, "
+            f"parquet_write_statistics={effective_parquet_write_statistics}"
+        )
 
     if not args.skip_reference_validation:
         try:
@@ -1047,7 +1439,7 @@ Examples:
             output_dir=output_dir,
             seed_start=args.seed_start,
             agent_mix=agent_mix,
-            chunk_size=args.chunk_size,
+            chunk_size=effective_chunk_size,
             resume=True,
             agent_profile=args.agent_profile,
             checkpoint_every=args.checkpoint_every,
@@ -1060,8 +1452,14 @@ Examples:
             num_shards=args.num_shards,
             engine=args.engine,
             rust_full_include_training_rows=not args.rust_full_summary_only,
-            rust_full_native_jsonl=args.rust_full_native_jsonl,
-            rust_full_native_parquet=args.rust_full_native_parquet,
+            rust_full_native_jsonl=effective_rust_full_native_jsonl,
+            rust_full_native_parquet=effective_rust_full_native_parquet,
+            rust_full_native_parquet_direct=effective_rust_full_native_parquet_direct,
+            rust_full_rayon_batch_size=effective_rust_full_rayon_batch_size,
+            rust_full_rayon_threads=effective_rust_full_rayon_threads,
+            parquet_compression=effective_parquet_compression,
+            parquet_use_dictionary=effective_parquet_use_dictionary,
+            parquet_write_statistics=effective_parquet_write_statistics,
         )
     else:
         if args.agent_mix:
@@ -1075,7 +1473,7 @@ Examples:
             output_dir=args.output,
             seed_start=args.seed_start,
             agent_mix=agent_mix,
-            chunk_size=args.chunk_size,
+            chunk_size=effective_chunk_size,
             agent_profile=args.agent_profile,
             checkpoint_every=args.checkpoint_every,
             progress_every=args.progress_every,
@@ -1087,8 +1485,14 @@ Examples:
             num_shards=args.num_shards,
             engine=args.engine,
             rust_full_include_training_rows=not args.rust_full_summary_only,
-            rust_full_native_jsonl=args.rust_full_native_jsonl,
-            rust_full_native_parquet=args.rust_full_native_parquet,
+            rust_full_native_jsonl=effective_rust_full_native_jsonl,
+            rust_full_native_parquet=effective_rust_full_native_parquet,
+            rust_full_native_parquet_direct=effective_rust_full_native_parquet_direct,
+            rust_full_rayon_batch_size=effective_rust_full_rayon_batch_size,
+            rust_full_rayon_threads=effective_rust_full_rayon_threads,
+            parquet_compression=effective_parquet_compression,
+            parquet_use_dictionary=effective_parquet_use_dictionary,
+            parquet_write_statistics=effective_parquet_write_statistics,
         )
 
     print(f"\n{'='*50}")
