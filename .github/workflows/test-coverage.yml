@@ -72,3 +72,52 @@ jobs:
           files: ./coverage.xml
           flags: python
           fail_ci_if_error: false
+
+  parity-gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install simulator dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-simulator.txt maturin pytest
+
+      - name: Run parity helper tests
+        run: |
+          python -m pytest tests/test_benchmark_parity_helpers.py -q
+
+      - name: Build and install Rust engine
+        run: |
+          cd simulator/core/rust_engine
+          maturin build --release --interpreter python
+          python -m pip install target/wheels/*.whl
+
+      - name: Run parity gate
+        run: |
+          python -m simulator.benchmark \
+            --parity-only \
+            --parity-engines python,rust_full \
+            --parity-layered \
+            --parity-layer1-sims 40 \
+            --parity-layer2-sims 40 \
+            --parity-layer3-games 5 \
+            --parity-focused \
+            --parity-focused-sims 40 \
+            --parity-sample-limit 5 \
+            --parity-gate \
+            --parity-gate-min-layer1-match 0.55 \
+            --parity-gate-min-layer2-match 0.70 \
+            --parity-gate-max-layer2-timeout 0.40 \
+            --parity-gate-min-focused-mean 0.60 \
+            --parity-gate-min-focused-case 0.45
