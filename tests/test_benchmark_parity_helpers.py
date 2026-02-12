@@ -1,0 +1,538 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import pytest
+
+from simulator import benchmark
+
+
+def _row(
+    round_num: int,
+    player_id: int,
+    units: list[dict],
+    opponent_units: list[dict],
+    *,
+    hp: int = 100,
+    opponent_hp: int = 100,
+    traits: dict | None = None,
+    opponent_traits: dict | None = None,
+    combat_result: int | None = 1,
+    damage_dealt: float = 3.0,
+    damage_taken: float = 0.0,
+) -> dict:
+    return {
+        "round": round_num,
+        "player_id": player_id,
+        "hp": hp,
+        "gold": 0,
+        "level": 5,
+        "streak": 0,
+        "board_count": len(units),
+        "win_streak": 0,
+        "loss_streak": 0,
+        "num_augments": 0,
+        "num_traits": len(traits or {}),
+        "alive_count": 8,
+        "combat_result": combat_result,
+        "damage_dealt": damage_dealt,
+        "damage_taken": damage_taken,
+        "opponent_hp": opponent_hp,
+        "traits": traits or {},
+        "opponent_traits": opponent_traits or {},
+        "augments": [],
+        "units": units,
+        "opponent_units": opponent_units,
+    }
+
+
+def _unit(champion_id: str, position: int) -> dict:
+    return {
+        "champion_id": champion_id,
+        "star_level": 2,
+        "items": [],
+        "position": position,
+    }
+
+
+def test_matchup_context_infers_exact_opponents() -> None:
+    rows = [
+        _row(
+            1,
+            0,
+            [_unit("TFT16_Draven", 0)],
+            [_unit("TFT16_Leona", 21)],
+            hp=100,
+            opponent_hp=97,
+            traits={"Conqueror": 2},
+            opponent_traits={"Bastion": 2},
+        ),
+        _row(
+            1,
+            1,
+            [_unit("TFT16_Leona", 21)],
+            [_unit("TFT16_Draven", 0)],
+            hp=97,
+            opponent_hp=100,
+            traits={"Bastion": 2},
+            opponent_traits={"Conqueror": 2},
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=3.0,
+        ),
+    ]
+
+    rows_by_key = benchmark._rows_by_round_player(rows)
+    context = benchmark._build_matchup_context_map(rows_by_key)
+
+    assert context[(1, 0)]["inferred_opponent_id"] == 1
+    assert context[(1, 0)]["matchup_inference"] == "exact"
+    assert context[(1, 1)]["inferred_opponent_id"] == 0
+    assert context[(1, 1)]["matchup_inference"] == "exact"
+
+
+def test_divergence_context_identifies_board_transform() -> None:
+    baseline = benchmark._normalize_training_row(
+        _row(1, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+    )
+    candidate = benchmark._normalize_training_row(
+        _row(1, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 0)])
+    )
+
+    field_diffs = [
+        {
+            "field": "opponent_units",
+            "baseline": baseline["opponent_units"],
+            "candidate": candidate["opponent_units"],
+        }
+    ]
+    context = benchmark._build_divergence_context(
+        baseline_row=baseline,
+        candidate_row=candidate,
+        baseline_context=None,
+        candidate_context=None,
+        field_diffs=field_diffs,
+    )
+
+    assert context["origin_hint"] == "board_transform"
+    assert context["mirror_alignment"] == "mirrored_positions"
+
+
+def test_divergence_context_identifies_combat_resolution() -> None:
+    rows = [
+        _row(2, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)]),
+        _row(
+            2,
+            1,
+            [_unit("TFT16_Leona", 21)],
+            [_unit("TFT16_Draven", 0)],
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=3.0,
+        ),
+    ]
+    rows_by_key = benchmark._rows_by_round_player(rows)
+    context_map = benchmark._build_matchup_context_map(rows_by_key)
+
+    baseline = rows_by_key[(2, 0)]
+    candidate = dict(baseline)
+    candidate["combat_result"] = 0
+    candidate["damage_dealt"] = 0.0
+    candidate["damage_taken"] = 3.0
+
+    field_diffs = [
+        {"field": "combat_result", "baseline": 1, "candidate": 0},
+        {"field": "damage_dealt", "baseline": 3.0, "candidate": 0.0},
+        {"field": "damage_taken", "baseline": 0.0, "candidate": 3.0},
+    ]
+    context = benchmark._build_divergence_context(
+        baseline_row=baseline,
+        candidate_row=candidate,
+        baseline_context=context_map[(2, 0)],
+        candidate_context=context_map[(2, 0)],
+        field_diffs=field_diffs,
+    )
+
+    assert context["origin_hint"] == "combat_resolution"
+
+
+def test_divergence_context_identifies_missing_snapshot_origin() -> None:
+    candidate = benchmark._normalize_training_row(
+        _row(3, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+    )
+    context = benchmark._build_divergence_context(
+        baseline_row=None,
+        candidate_row=candidate,
+        baseline_context=None,
+        candidate_context=None,
+        field_diffs=None,
+    )
+
+    assert context["origin_hint"] == "matchmaking_or_snapshot_presence"
+    assert context["baseline"] is None
+    assert context["candidate"] is not None
+
+
+def test_parity_dump_payload_contains_required_context_keys(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    baseline_rows = [
+        _row(
+            4,
+            0,
+            [_unit("TFT16_Draven", 0)],
+            [_unit("TFT16_Leona", 21)],
+            hp=96,
+            opponent_hp=92,
+        ),
+        _row(
+            4,
+            1,
+            [_unit("TFT16_Leona", 21)],
+            [_unit("TFT16_Draven", 0)],
+            hp=92,
+            opponent_hp=96,
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=4.0,
+        ),
+    ]
+    candidate_rows = [
+        _row(
+            4,
+            0,
+            [_unit("TFT16_Draven", 0)],
+            [_unit("TFT16_Leona", 0)],
+            hp=92,
+            opponent_hp=96,
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=4.0,
+        ),
+    ]
+
+    def _fake_run_single_full_game_with_rows(
+        engine_name: str,
+        game_seed: int,
+        rust_sim_cache: dict,
+    ) -> dict:
+        del game_seed, rust_sim_cache
+        if engine_name == "python":
+            rows = baseline_rows
+            placement_vector = (1, 2, 0, 0, 0, 0, 0, 0)
+            rank_order = (0, 1)
+            top4 = (0, 1)
+            placements = [(0, 1), (1, 2)]
+            round_num = 4
+        else:
+            rows = candidate_rows
+            placement_vector = (2, 1, 0, 0, 0, 0, 0, 0)
+            rank_order = (1, 0)
+            top4 = (0, 1)
+            placements = [(1, 1), (0, 2)]
+            round_num = 4
+        return {
+            "placements": placements,
+            "placement_vector": placement_vector,
+            "rank_order": rank_order,
+            "top4_set": top4,
+            "round_num": round_num,
+            "training_rows": rows,
+        }
+
+    monkeypatch.setattr(
+        benchmark,
+        "_run_single_full_game_with_rows",
+        _fake_run_single_full_game_with_rows,
+    )
+
+    output_path = tmp_path / "parity_dump_schema.json"
+    payload = benchmark.run_parity_dump_seed(
+        baseline_engine="python",
+        candidate_engine="rust_full",
+        seed=123,
+        sample_limit=3,
+        output_path=str(output_path),
+    )
+
+    assert payload["divergence_count"] > 0
+    assert "divergence_origin_counts" in payload
+    assert isinstance(payload["divergence_origin_counts"], dict)
+
+    first = payload["first_divergence"]
+    assert first is not None
+    assert "origin_hint" in first
+    assert "context" in first
+
+    context = first["context"]
+    for key in (
+        "origin_hint",
+        "matchup_alignment",
+        "mirror_alignment",
+        "baseline",
+        "candidate",
+    ):
+        assert key in context
+
+    baseline_ctx = context["baseline"]
+    candidate_ctx = context["candidate"]
+    if baseline_ctx is not None:
+        assert "opponent_candidates_by_units" in baseline_ctx
+        assert "player_units_mirrored" in baseline_ctx
+        assert "opponent_units_mirrored" in baseline_ctx
+    if candidate_ctx is not None:
+        assert "opponent_candidates_by_units" in candidate_ctx
+        assert "player_units_mirrored" in candidate_ctx
+        assert "opponent_units_mirrored" in candidate_ctx
+
+    written_payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert "divergence_origin_counts" in written_payload
+    assert "first_divergence" in written_payload
+
+
+def test_parity_dump_missing_candidate_snapshot_shape(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    shared_row = _row(
+        5,
+        0,
+        [_unit("TFT16_Draven", 0)],
+        [_unit("TFT16_Leona", 21)],
+        hp=95,
+        opponent_hp=90,
+    )
+    baseline_rows = [
+        shared_row,
+        _row(
+            5,
+            1,
+            [_unit("TFT16_Leona", 21)],
+            [_unit("TFT16_Draven", 0)],
+            hp=90,
+            opponent_hp=95,
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=5.0,
+        ),
+    ]
+    candidate_rows = [shared_row]
+
+    def _fake_run_single_full_game_with_rows(
+        engine_name: str,
+        game_seed: int,
+        rust_sim_cache: dict,
+    ) -> dict:
+        del game_seed, rust_sim_cache
+        rows = baseline_rows if engine_name == "python" else candidate_rows
+        return {
+            "placements": [(0, 1), (1, 2)],
+            "placement_vector": (1, 2, 0, 0, 0, 0, 0, 0),
+            "rank_order": (0, 1),
+            "top4_set": (0, 1),
+            "round_num": 5,
+            "training_rows": rows,
+        }
+
+    monkeypatch.setattr(
+        benchmark,
+        "_run_single_full_game_with_rows",
+        _fake_run_single_full_game_with_rows,
+    )
+
+    output_path = tmp_path / "parity_dump_missing_candidate.json"
+    payload = benchmark.run_parity_dump_seed(
+        baseline_engine="python",
+        candidate_engine="rust_full",
+        seed=55,
+        sample_limit=5,
+        output_path=str(output_path),
+    )
+
+    first = payload["first_divergence"]
+    assert first is not None
+    assert first["type"] == "missing_candidate_snapshot"
+    assert first["origin_hint"] == "matchmaking_or_snapshot_presence"
+
+    context = first["context"]
+    assert context["baseline"] is not None
+    assert context["candidate"] is None
+    assert context["origin_hint"] == "matchmaking_or_snapshot_presence"
+    assert "matchup_alignment" in context
+    assert "mirror_alignment" in context
+
+    written_payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert written_payload["first_divergence"]["type"] == "missing_candidate_snapshot"
+
+
+def test_divergence_origin_counts_labels_are_known(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    baseline_rows = [
+        _row(6, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)]),
+        _row(6, 1, [_unit("TFT16_Leona", 21)], [_unit("TFT16_Draven", 0)]),
+    ]
+    candidate_rows = [
+        _row(6, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 0)]),
+    ]
+
+    def _fake_run_single_full_game_with_rows(
+        engine_name: str,
+        game_seed: int,
+        rust_sim_cache: dict,
+    ) -> dict:
+        del game_seed, rust_sim_cache
+        rows = baseline_rows if engine_name == "python" else candidate_rows
+        return {
+            "placements": [(0, 1), (1, 2)],
+            "placement_vector": (1, 2, 0, 0, 0, 0, 0, 0),
+            "rank_order": (0, 1),
+            "top4_set": (0, 1),
+            "round_num": 6,
+            "training_rows": rows,
+        }
+
+    monkeypatch.setattr(
+        benchmark,
+        "_run_single_full_game_with_rows",
+        _fake_run_single_full_game_with_rows,
+    )
+
+    payload = benchmark.run_parity_dump_seed(
+        baseline_engine="python",
+        candidate_engine="rust_full",
+        seed=77,
+        sample_limit=5,
+        output_path=str(tmp_path / "parity_dump_origin_labels.json"),
+    )
+
+    known_labels = {
+        "matchmaking_or_snapshot_presence",
+        "matchmaking",
+        "board_transform",
+        "matchmaking_or_board_state",
+        "combat_resolution",
+        "combat_resolution_or_downstream",
+        "unknown",
+    }
+    observed_labels = set(payload["divergence_origin_counts"].keys())
+    assert observed_labels
+    assert observed_labels.issubset(known_labels)
+
+
+@pytest.mark.parametrize(
+    ("baseline_row", "candidate_row", "baseline_context", "candidate_context", "field_diffs", "expected"),
+    [
+        pytest.param(
+            None,
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            None,
+            None,
+            None,
+            "matchmaking_or_snapshot_presence",
+            id="matchmaking_or_snapshot_presence",
+        ),
+        pytest.param(
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            {"inferred_opponent_id": 1},
+            {"inferred_opponent_id": 2},
+            [{"field": "hp", "baseline": 100, "candidate": 99}],
+            "matchmaking",
+            id="matchmaking",
+        ),
+        pytest.param(
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 0)])
+            ),
+            {"inferred_opponent_id": 1},
+            {"inferred_opponent_id": 1},
+            [{"field": "opponent_units", "baseline": "x", "candidate": "y"}],
+            "board_transform",
+            id="board_transform",
+        ),
+        pytest.param(
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 14)])
+            ),
+            {"inferred_opponent_id": 1},
+            {"inferred_opponent_id": None},
+            [{"field": "opponent_units", "baseline": "x", "candidate": "z"}],
+            "matchmaking_or_board_state",
+            id="matchmaking_or_board_state",
+        ),
+        pytest.param(
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            {"inferred_opponent_id": 1},
+            {"inferred_opponent_id": 1},
+            [{"field": "combat_result", "baseline": 1, "candidate": 0}],
+            "combat_resolution",
+            id="combat_resolution",
+        ),
+        pytest.param(
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            {"inferred_opponent_id": 1},
+            {"inferred_opponent_id": 1},
+            [
+                {"field": "combat_result", "baseline": 1, "candidate": 0},
+                {"field": "hp", "baseline": 96, "candidate": 90},
+            ],
+            "combat_resolution_or_downstream",
+            id="combat_resolution_or_downstream",
+        ),
+        pytest.param(
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            benchmark._normalize_training_row(
+                _row(7, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+            ),
+            {"inferred_opponent_id": 1},
+            {"inferred_opponent_id": 1},
+            [{"field": "gold", "baseline": 0, "candidate": 2}],
+            "unknown",
+            id="unknown",
+        ),
+    ],
+)
+def test_infer_divergence_origin_known_labels(
+    baseline_row: dict | None,
+    candidate_row: dict | None,
+    baseline_context: dict | None,
+    candidate_context: dict | None,
+    field_diffs: list[dict] | None,
+    expected: str,
+) -> None:
+    observed = benchmark._infer_divergence_origin(
+        baseline_row=baseline_row,
+        candidate_row=candidate_row,
+        baseline_context=baseline_context,
+        candidate_context=candidate_context,
+        field_diffs=field_diffs,
+    )
+    assert observed == expected
