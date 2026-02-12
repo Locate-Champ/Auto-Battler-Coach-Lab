@@ -158,7 +158,7 @@ pub fn find_next_step(
 
         let current_g = g_score[&current.pos];
 
-        for neighbor in hex_neighbors(current.pos) {
+        for &neighbor in hex_neighbors(current.pos) {
             // Can move to the goal hex or any unoccupied hex
             if neighbor != goal && occupied.contains(&neighbor) {
                 continue;
@@ -180,7 +180,7 @@ pub fn find_next_step(
     // No path found - try to move to the closest unoccupied neighbor to goal
     let mut best_neighbor = None;
     let mut best_dist = i32::MAX;
-    for neighbor in hex_neighbors(start) {
+    for &neighbor in hex_neighbors(start) {
         if !occupied.contains(&neighbor) {
             let dist = hex_distance(neighbor, goal);
             if dist < best_dist {
@@ -253,8 +253,8 @@ mod tests {
     fn test_neighbors_corner() {
         let n = hex_neighbors((0, 0));
         assert!(n.len() >= 2 && n.len() <= 3);
-        for (r, c) in &n {
-            assert!(is_valid_pos((*r, *c)));
+        for &(r, c) in n {
+            assert!(is_valid_pos((r, c)));
         }
     }
 
