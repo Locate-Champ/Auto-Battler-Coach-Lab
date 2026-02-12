@@ -1,32 +1,35 @@
 """Performance benchmark for the TFT combat simulator.
 
-Measures throughput for common simulation workloads:
-- 1v1 duels (single champion pairs)
-- 4v4 team fights
-- 8v8 full team fights
-- Batch 1v1 simulations (100+ runs)
+Measures throughput for common simulation workloads across all engine modes:
+- Standard Python engine (run_combat)
+- Adaptive tick skipping (run_combat_fast)
+- Cython-accelerated damage math
+- Multiprocessing batch simulation
 
 Usage:
     python -m simulator.perf_benchmark
 """
 
 import time
+import multiprocessing as mp
 from simulator.core.combat_engine import CombatEngine, HexGrid
 
 
-def benchmark_1v1_duel(engine: CombatEngine, n: int = 500) -> float:
+def benchmark_1v1_duel(engine: CombatEngine, n: int = 500, fast: bool = False) -> float:
     """Benchmark N 1v1 duels between two champions."""
+    run = engine.run_combat_fast if fast else engine.run_combat
     start = time.perf_counter()
     for i in range(n):
         u1 = engine.create_unit("TFT16_Draven", 2, (0, 3), 0, ["InfinityEdge"])
         u2 = engine.create_unit("TFT16_Leona", 2, (3, 3), 1, ["WarmogsArmor"])
-        engine.run_combat([u1], [u2], seed=i)
+        run([u1], [u2], seed=i)
     elapsed = time.perf_counter() - start
     return elapsed
 
 
-def benchmark_4v4(engine: CombatEngine, n: int = 200) -> float:
+def benchmark_4v4(engine: CombatEngine, n: int = 200, fast: bool = False) -> float:
     """Benchmark N 4v4 team fights."""
+    run = engine.run_combat_fast if fast else engine.run_combat
     start = time.perf_counter()
     for i in range(n):
         team0 = [
@@ -41,13 +44,14 @@ def benchmark_4v4(engine: CombatEngine, n: int = 200) -> float:
             engine.create_unit("TFT16_Braum", 2, (2, 3), 1, ["GargoyleStoneplate"]),
             engine.create_unit("TFT16_Ekko", 2, (2, 4), 1, ["LastWhisper"]),
         ]
-        engine.run_combat(team0, team1, seed=i)
+        run(team0, team1, seed=i)
     elapsed = time.perf_counter() - start
     return elapsed
 
 
-def benchmark_8v8(engine: CombatEngine, n: int = 100) -> float:
+def benchmark_8v8(engine: CombatEngine, n: int = 100, fast: bool = False) -> float:
     """Benchmark N 8v8 full team fights."""
+    run = engine.run_combat_fast if fast else engine.run_combat
     champs_t0 = [
         ("TFT16_Jinx", (0, 2), ["InfinityEdge"]),
         ("TFT16_Lux", (0, 4), ["RabadonsDeathcap"]),
@@ -72,58 +76,106 @@ def benchmark_8v8(engine: CombatEngine, n: int = 100) -> float:
     for i in range(n):
         team0 = [engine.create_unit(c, 2, p, 0, it) for c, p, it in champs_t0]
         team1 = [engine.create_unit(c, 2, p, 1, it) for c, p, it in champs_t1]
-        engine.run_combat(team0, team1, seed=i)
+        run(team0, team1, seed=i)
     elapsed = time.perf_counter() - start
     return elapsed
 
 
-def benchmark_simulate_1v1(engine: CombatEngine) -> float:
-    """Benchmark the simulate_1v1 helper (100 sims internally)."""
+def benchmark_batch_multiprocess(n: int = 1000, workers: int = None) -> float:
+    """Benchmark parallel 1v1 via multiprocessing."""
+    from simulator.core.batch_simulator import batch_simulate_1v1
+    if workers is None:
+        workers = mp.cpu_count()
     start = time.perf_counter()
-    engine.simulate_1v1(
+    batch_simulate_1v1(
         "TFT16_Draven", "TFT16_Leona",
         star1=2, star2=2,
         items1=["InfinityEdge", "LastWhisper"],
         items2=["WarmogsArmor", "BrambleVest"],
-        num_simulations=500,
-        seed=42,
+        num_simulations=n, workers=workers, seed=42,
+        use_fast=True,
     )
     elapsed = time.perf_counter() - start
     return elapsed
 
 
-def main():
-    print("=" * 60)
-    print("TFT Combat Simulator - Performance Benchmark")
-    print("=" * 60)
+def _print_result(name, elapsed, count):
+    rate = count / elapsed
+    per_sim = elapsed / count * 1000
+    print(f"  {name:40s}  {elapsed:7.3f}s  {rate:8.1f}/s  {per_sim:6.2f}ms/sim")
 
-    # Initialize engine (with logging disabled for perf)
+
+def main():
+    print("=" * 78)
+    print("TFT Combat Simulator - Performance Benchmark")
+    print("=" * 78)
+
+    # Check Cython availability
+    try:
+        from simulator.core.combat_fast import CYTHON_AVAILABLE
+        cython_status = "YES" if CYTHON_AVAILABLE else "NO (not built)"
+    except ImportError:
+        cython_status = "NO (not installed)"
+        CYTHON_AVAILABLE = False
+
+    # Check Rust availability
+    try:
+        from tft_combat_engine import RustCombatEngine
+        rust_status = "YES"
+    except ImportError:
+        rust_status = "NO (not built)"
+
     engine = CombatEngine(logging_enabled=False)
     print(f"Champions loaded: {len(engine.champions)}")
+    print(f"Cython accel:     {cython_status}")
+    print(f"Rust engine:      {rust_status}")
+    print(f"CPU cores:        {mp.cpu_count()}")
     print()
 
     # Warmup
     u1 = engine.create_unit("TFT16_Draven", 2, (0, 3), 0)
     u2 = engine.create_unit("TFT16_Leona", 2, (3, 3), 1)
     engine.run_combat([u1], [u2], seed=0)
+    engine.run_combat_fast([u1], [u2], seed=0)
 
-    # Run benchmarks
-    tests = [
-        ("1v1 Duel (500 runs)", lambda: benchmark_1v1_duel(engine, 500), 500),
-        ("4v4 Team Fight (200 runs)", lambda: benchmark_4v4(engine, 200), 200),
-        ("8v8 Full Fight (100 runs)", lambda: benchmark_8v8(engine, 100), 100),
-        ("simulate_1v1 (500 internal)", lambda: benchmark_simulate_1v1(engine), 500),
-    ]
+    n1v1, n4v4, n8v8 = 500, 200, 100
 
-    for name, fn, count in tests:
-        elapsed = fn()
-        rate = count / elapsed
-        per_sim = elapsed / count * 1000
-        print(f"{name}:")
-        print(f"  Total: {elapsed:.3f}s | {rate:.1f} sims/sec | {per_sim:.2f} ms/sim")
-        print()
+    # Standard engine
+    print(f"{'Test':42s}  {'Time':>7s}  {'Rate':>8s}  {'Per sim':>10s}")
+    print("-" * 78)
 
-    print("=" * 60)
+    t = benchmark_1v1_duel(engine, n1v1, fast=False)
+    _print_result(f"1v1 standard ({n1v1})", t, n1v1)
+
+    t = benchmark_1v1_duel(engine, n1v1, fast=True)
+    _print_result(f"1v1 adaptive-tick ({n1v1})", t, n1v1)
+
+    t = benchmark_4v4(engine, n4v4, fast=False)
+    _print_result(f"4v4 standard ({n4v4})", t, n4v4)
+
+    t = benchmark_4v4(engine, n4v4, fast=True)
+    _print_result(f"4v4 adaptive-tick ({n4v4})", t, n4v4)
+
+    t = benchmark_8v8(engine, n8v8, fast=False)
+    _print_result(f"8v8 standard ({n8v8})", t, n8v8)
+
+    t = benchmark_8v8(engine, n8v8, fast=True)
+    _print_result(f"8v8 adaptive-tick ({n8v8})", t, n8v8)
+
+    print()
+    print("--- Multiprocessing Batch ---")
+    workers = mp.cpu_count()
+    n_batch = 1000
+
+    t = benchmark_batch_multiprocess(n_batch, workers=1)
+    _print_result(f"batch 1v1 x{n_batch} (1 worker, fast)", t, n_batch)
+
+    if workers > 1:
+        t = benchmark_batch_multiprocess(n_batch, workers=workers)
+        _print_result(f"batch 1v1 x{n_batch} ({workers} workers, fast)", t, n_batch)
+
+    print()
+    print("=" * 78)
     print("Benchmark complete.")
 
 
