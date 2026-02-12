@@ -390,7 +390,7 @@ fn apply_lowest_ally_heal(
 fn dash_adjacent_to_target(engine: &mut CombatEngine, caster_idx: UnitId, target_idx: UnitId) {
     let caster_pos = engine.units[caster_idx].position;
     let target_pos = engine.units[target_idx].position;
-    let mut candidates = hex_grid::hex_neighbors(target_pos);
+    let mut candidates: Vec<HexPos> = hex_grid::hex_neighbors(target_pos).to_vec();
     candidates.sort_by_key(|pos| hex_grid::hex_distance(*pos, caster_pos));
 
     for pos in candidates {
