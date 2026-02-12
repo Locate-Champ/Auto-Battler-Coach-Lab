@@ -9,6 +9,7 @@ cross-engine statistical checks.
 from __future__ import annotations
 
 import argparse
+import json
 import math
 import random
 import statistics
@@ -24,7 +25,11 @@ if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
 from simulator.core.combat_engine import CombatEngine
+from simulator.game.collector import GameCollector
+from simulator.game.constants import BOARD_COLS, BOARD_ROWS
 from simulator.game.game import TFTGame
+
+UnitSnapshotSig = Tuple[str, int, Tuple[str, ...], int]
 
 
 def _create_engine(engine_name: str) -> Any:
@@ -57,17 +62,27 @@ def _build_unit(
     team: int,
     position: Tuple[int, int],
     star_level: int = 2,
+    items: List[str] | None = None,
+    traits: List[str] | None = None,
 ) -> Any:
+    item_list = items or []
+    trait_list = traits or []
     if engine_name in ('rust', 'rust_full'):
         return {
             'api_name': api_name,
             'star_level': star_level,
             'position': [position[0], position[1]],
             'team': team,
-            'items': [],
-            'traits': [],
+            'items': item_list,
+            'traits': trait_list,
         }
-    return engine.create_unit(api_name, star_level=star_level, team=team, position=position)
+    return engine.create_unit(
+        api_name,
+        star_level=star_level,
+        team=team,
+        position=position,
+        items=item_list,
+    )
 
 
 def _build_duel_teams(engine: Any, engine_name: str) -> Tuple[List[Any], List[Any]]:
@@ -88,6 +103,76 @@ def _build_teamfight_teams(engine: Any, engine_name: str) -> Tuple[List[Any], Li
         _build_unit(engine, engine_name, 'TFT16_Leona', 1, (2, 6)),
         _build_unit(engine, engine_name, 'TFT16_Lux', 1, (1, 6)),
         _build_unit(engine, engine_name, 'TFT16_Yasuo', 1, (0, 6)),
+    ]
+    return team0, team1
+
+
+def _build_teamfight_teams_8v8(engine: Any, engine_name: str) -> Tuple[List[Any], List[Any]]:
+    team0 = [
+        _build_unit(engine, engine_name, 'TFT16_Leona', 0, (0, 0), items=['WarmogsArmor']),
+        _build_unit(engine, engine_name, 'TFT16_Braum', 0, (1, 0), items=['SunfireCape']),
+        _build_unit(engine, engine_name, 'TFT16_Nautilus', 0, (2, 0), items=['GargoyleStoneplate']),
+        _build_unit(engine, engine_name, 'TFT16_Sejuani', 0, (3, 0), items=['ProtectorsVow']),
+        _build_unit(engine, engine_name, 'TFT16_Draven', 0, (0, 2), items=['InfinityEdge', 'LastWhisper']),
+        _build_unit(engine, engine_name, 'TFT16_Lux', 0, (1, 2), items=['JeweledGauntlet', 'BlueBuff']),
+        _build_unit(engine, engine_name, 'TFT16_Ryze', 0, (2, 2), items=['ArchangelsStaff']),
+        _build_unit(engine, engine_name, 'TFT16_Jinx', 0, (3, 2), items=['GuinsoosRageblade', 'GiantSlayer']),
+    ]
+    team1 = [
+        _build_unit(engine, engine_name, 'TFT16_Sion', 1, (0, 6), items=['WarmogsArmor']),
+        _build_unit(engine, engine_name, 'TFT16_Taric', 1, (1, 6), items=['GargoyleStoneplate']),
+        _build_unit(engine, engine_name, 'TFT16_ChoGath', 1, (2, 6), items=['SunfireCape']),
+        _build_unit(engine, engine_name, 'TFT16_Vi', 1, (3, 6), items=['TitansResolve']),
+        _build_unit(engine, engine_name, 'TFT16_Caitlyn', 1, (0, 4), items=['InfinityEdge', 'LastWhisper']),
+        _build_unit(engine, engine_name, 'TFT16_Leblanc', 1, (1, 4), items=['JeweledGauntlet', 'BlueBuff']),
+        _build_unit(engine, engine_name, 'TFT16_Xerath', 1, (2, 4), items=['ArchangelsStaff']),
+        _build_unit(engine, engine_name, 'TFT16_Yasuo', 1, (3, 4), items=['Bloodthirster']),
+    ]
+    return team0, team1
+
+
+def _build_focus_case_draven_vs_leona(engine: Any, engine_name: str) -> Tuple[List[Any], List[Any]]:
+    team0 = [
+        _build_unit(
+            engine,
+            engine_name,
+            'TFT16_Draven',
+            0,
+            (0, 3),
+        ),
+    ]
+    team1 = [
+        _build_unit(
+            engine,
+            engine_name,
+            'TFT16_Leona',
+            1,
+            (3, 3),
+        ),
+    ]
+    return team0, team1
+
+
+def _build_focus_case_sion_vs_draven(engine: Any, engine_name: str) -> Tuple[List[Any], List[Any]]:
+    team0 = [
+        _build_unit(
+            engine,
+            engine_name,
+            'TFT16_Sion',
+            0,
+            (0, 3),
+            items=['WarmogsArmor', 'DragonsClaw'],
+        ),
+    ]
+    team1 = [
+        _build_unit(
+            engine,
+            engine_name,
+            'TFT16_Draven',
+            1,
+            (3, 3),
+            items=['InfinityEdge', 'LastWhisper', 'GiantSlayer'],
+        ),
     ]
     return team0, team1
 
@@ -467,6 +552,851 @@ def _run_single_full_game(
     }
 
 
+def _run_single_full_game_with_rows(
+    engine_name: str,
+    game_seed: int,
+    rust_sim_cache: Dict[str, Any],
+) -> Dict[str, Any]:
+    if engine_name == 'rust_full':
+        sim = rust_sim_cache.get('rust_full')
+        if sim is None:
+            sim = _create_rust_game_simulator()
+            rust_sim_cache['rust_full'] = sim
+        result = sim.run_game(game_seed, game_seed, None, True)
+        placements = [
+            (int(row.get('player_id', -1)), int(row.get('placement', 0)))
+            for row in result.get('placements', [])
+        ]
+        round_num = int(result.get('rounds', 0))
+        training_rows = result.get('training_rows', []) or []
+    else:
+        collector = GameCollector(game_id=game_seed)
+        game = TFTGame(
+            num_players=8,
+            seed=game_seed,
+            verbose=False,
+            logging_enabled=False,
+            collector=collector,
+            engine=engine_name,
+        )
+        placements = game.play()
+        round_num = game.round_num
+        training_rows = collector.get_training_rows()
+
+    placements = [(pid, place) for pid, place in placements if pid >= 0]
+    placements.sort(key=lambda x: (x[1], x[0]))
+    placement_map = {pid: place for pid, place in placements}
+    placement_vector = tuple(int(placement_map.get(pid, 0)) for pid in range(8))
+    top4_set = tuple(sorted(pid for pid, place in placements if place <= 4))
+    rank_order = tuple(pid for pid, _ in placements)
+
+    return {
+        'placements': placements,
+        'placement_vector': placement_vector,
+        'rank_order': rank_order,
+        'top4_set': top4_set,
+        'round_num': int(round_num),
+        'training_rows': training_rows,
+    }
+
+
+def _normalize_unit_snapshot(unit: Dict[str, Any]) -> UnitSnapshotSig:
+    champion_id = str(
+        unit.get('champion_id')
+        or unit.get('api_name')
+        or unit.get('name')
+        or ''
+    )
+    star_level = int(unit.get('star_level', unit.get('star', 1)) or 1)
+    items = tuple(sorted(str(item) for item in (unit.get('items') or [])))
+
+    position = unit.get('position')
+    if position is None:
+        pos = unit.get('pos')
+        if isinstance(pos, (list, tuple)) and len(pos) == 2:
+            position = int(pos[0]) * 7 + int(pos[1])
+
+    return champion_id, star_level, items, int(position) if position is not None else -1
+
+
+def _normalize_trait_map(value: Any) -> Tuple[Tuple[str, int], ...]:
+    if not isinstance(value, dict):
+        return tuple()
+    return tuple(sorted((str(name), int(count)) for name, count in value.items()))
+
+
+def _normalize_training_row(row: Dict[str, Any]) -> Dict[str, Any]:
+    traits = row.get('traits') or {}
+    opponent_traits = row.get('opponent_traits') or {}
+    augments = tuple(sorted(str(augment) for augment in (row.get('augments') or [])))
+    units = tuple(sorted(_normalize_unit_snapshot(unit) for unit in (row.get('units') or [])))
+    opponent_units = tuple(
+        sorted(_normalize_unit_snapshot(unit) for unit in (row.get('opponent_units') or []))
+    )
+
+    return {
+        'round': int(row.get('round', 0)),
+        'player_id': int(row.get('player_id', -1)),
+        'hp': int(row.get('hp', 0)),
+        'gold': int(row.get('gold', 0)),
+        'level': int(row.get('level', 0)),
+        'streak': int(row.get('streak', 0)),
+        'board_count': int(row.get('board_count', 0)),
+        'win_streak': int(row.get('win_streak', 0)),
+        'loss_streak': int(row.get('loss_streak', 0)),
+        'num_augments': int(row.get('num_augments', len(augments))),
+        'num_traits': int(row.get('num_traits', len(traits))),
+        'alive_count': int(row.get('alive_count', 0)),
+        'combat_result': None if row.get('combat_result') is None else int(row.get('combat_result', 0)),
+        'damage_dealt': round(float(row.get('damage_dealt', 0.0)), 6),
+        'damage_taken': round(float(row.get('damage_taken', 0.0)), 6),
+        'opponent_hp': int(row.get('opponent_hp', 0)),
+        'traits': _normalize_trait_map(traits),
+        'opponent_traits': _normalize_trait_map(opponent_traits),
+        'augments': augments,
+        'units': units,
+        'opponent_units': opponent_units,
+    }
+
+
+def _rows_by_round_player(rows: List[Dict[str, Any]]) -> Dict[Tuple[int, int], Dict[str, Any]]:
+    normalized: Dict[Tuple[int, int], Dict[str, Any]] = {}
+    for row in rows:
+        entry = _normalize_training_row(row)
+        key = (entry['round'], entry['player_id'])
+        normalized[key] = entry
+    return normalized
+
+
+def _mirror_hex_position(position: int) -> int:
+    if position < 0:
+        return position
+
+    row = position // BOARD_COLS
+    col = position % BOARD_COLS
+    if row < 0 or row >= BOARD_ROWS or col < 0 or col >= BOARD_COLS:
+        return position
+    return (BOARD_ROWS - 1 - row) * BOARD_COLS + col
+
+
+def _mirror_units_signature(units: Tuple[UnitSnapshotSig, ...]) -> Tuple[UnitSnapshotSig, ...]:
+    mirrored_units: List[UnitSnapshotSig] = []
+    for champion_id, star_level, items, position in units:
+        mirrored_units.append((champion_id, star_level, items, _mirror_hex_position(position)))
+    return tuple(sorted(mirrored_units))
+
+
+def _build_matchup_context_map(
+    rows_by_key: Dict[Tuple[int, int], Dict[str, Any]]
+) -> Dict[Tuple[int, int], Dict[str, Any]]:
+    rows_by_round: Dict[int, Dict[int, Dict[str, Any]]] = {}
+    for (round_num, player_id), row in rows_by_key.items():
+        rows_by_round.setdefault(round_num, {})[player_id] = row
+
+    context_map: Dict[Tuple[int, int], Dict[str, Any]] = {}
+    for round_num, round_rows in rows_by_round.items():
+        board_to_player_ids: Dict[Tuple[UnitSnapshotSig, ...], List[int]] = {}
+        for player_id, row in round_rows.items():
+            board_to_player_ids.setdefault(row['units'], []).append(player_id)
+
+        for player_id, row in round_rows.items():
+            candidates_by_units = [
+                opp_id
+                for opp_id in board_to_player_ids.get(row['opponent_units'], [])
+                if opp_id != player_id
+            ]
+            candidate_ids = candidates_by_units[:]
+
+            if len(candidate_ids) > 1:
+                by_traits_hp = [
+                    opp_id
+                    for opp_id in candidate_ids
+                    if round_rows[opp_id]['traits'] == row['opponent_traits']
+                    and round_rows[opp_id]['hp'] == row['opponent_hp']
+                ]
+                if by_traits_hp:
+                    candidate_ids = by_traits_hp
+
+            if len(candidate_ids) > 1:
+                by_hp = [
+                    opp_id
+                    for opp_id in candidate_ids
+                    if round_rows[opp_id]['hp'] == row['opponent_hp']
+                ]
+                if by_hp:
+                    candidate_ids = by_hp
+
+            if len(candidate_ids) > 1:
+                by_traits = [
+                    opp_id
+                    for opp_id in candidate_ids
+                    if round_rows[opp_id]['traits'] == row['opponent_traits']
+                ]
+                if by_traits:
+                    candidate_ids = by_traits
+
+            inferred_opponent = candidate_ids[0] if len(candidate_ids) == 1 else None
+            if inferred_opponent is not None:
+                inference = 'exact'
+            elif candidate_ids:
+                inference = 'ambiguous'
+            else:
+                inference = 'unresolved'
+
+            context_map[(round_num, player_id)] = {
+                'inferred_opponent_id': inferred_opponent,
+                'opponent_candidates': candidate_ids,
+                'opponent_candidates_by_units': candidates_by_units,
+                'matchup_inference': inference,
+                'player_units_mirrored': _mirror_units_signature(row['units']),
+                'opponent_units_mirrored': _mirror_units_signature(row['opponent_units']),
+            }
+
+    return context_map
+
+
+def _summarize_row_context(
+    row: Dict[str, Any] | None,
+    context: Dict[str, Any] | None,
+) -> Dict[str, Any] | None:
+    if row is None:
+        return None
+
+    player_units = row['units']
+    opponent_units = row['opponent_units']
+    return {
+        'inferred_opponent_id': context.get('inferred_opponent_id') if context is not None else None,
+        'matchup_inference': context.get('matchup_inference') if context is not None else 'missing',
+        'opponent_candidates': context.get('opponent_candidates', []) if context is not None else [],
+        'opponent_candidates_by_units': (
+            context.get('opponent_candidates_by_units', [])
+            if context is not None
+            else []
+        ),
+        'player_units': player_units,
+        'player_units_mirrored': (
+            context.get('player_units_mirrored')
+            if context is not None
+            else _mirror_units_signature(player_units)
+        ),
+        'opponent_units': opponent_units,
+        'opponent_units_mirrored': (
+            context.get('opponent_units_mirrored')
+            if context is not None
+            else _mirror_units_signature(opponent_units)
+        ),
+    }
+
+
+def _infer_divergence_origin(
+    baseline_row: Dict[str, Any] | None,
+    candidate_row: Dict[str, Any] | None,
+    baseline_context: Dict[str, Any] | None,
+    candidate_context: Dict[str, Any] | None,
+    field_diffs: List[Dict[str, Any]] | None,
+) -> str:
+    if baseline_row is None or candidate_row is None:
+        return 'matchmaking_or_snapshot_presence'
+
+    baseline_opponent_id = (
+        baseline_context.get('inferred_opponent_id')
+        if baseline_context is not None
+        else None
+    )
+    candidate_opponent_id = (
+        candidate_context.get('inferred_opponent_id')
+        if candidate_context is not None
+        else None
+    )
+    if (
+        baseline_opponent_id is not None
+        and candidate_opponent_id is not None
+        and baseline_opponent_id != candidate_opponent_id
+    ):
+        return 'matchmaking'
+
+    baseline_opponents = baseline_row['opponent_units']
+    candidate_opponents = candidate_row['opponent_units']
+    if baseline_opponents != candidate_opponents:
+        if _mirror_units_signature(baseline_opponents) == candidate_opponents:
+            return 'board_transform'
+        if _mirror_units_signature(candidate_opponents) == baseline_opponents:
+            return 'board_transform'
+        if baseline_opponent_id is None or candidate_opponent_id is None:
+            return 'matchmaking_or_board_state'
+
+    diff_fields = {diff['field'] for diff in (field_diffs or [])}
+    if not diff_fields:
+        return 'unknown'
+
+    combat_fields = {'combat_result', 'damage_dealt', 'damage_taken'}
+    downstream_combat_fields = {
+        'hp',
+        'opponent_hp',
+        'streak',
+        'win_streak',
+        'loss_streak',
+        'alive_count',
+    }
+    if diff_fields.issubset(combat_fields):
+        return 'combat_resolution'
+    if diff_fields.issubset(combat_fields | downstream_combat_fields):
+        return 'combat_resolution_or_downstream'
+
+    return 'unknown'
+
+
+def _build_divergence_context(
+    baseline_row: Dict[str, Any] | None,
+    candidate_row: Dict[str, Any] | None,
+    baseline_context: Dict[str, Any] | None,
+    candidate_context: Dict[str, Any] | None,
+    field_diffs: List[Dict[str, Any]] | None,
+) -> Dict[str, Any]:
+    baseline_summary = _summarize_row_context(baseline_row, baseline_context)
+    candidate_summary = _summarize_row_context(candidate_row, candidate_context)
+
+    matchup_alignment = 'unknown'
+    if baseline_context is not None and candidate_context is not None:
+        baseline_opponent = baseline_context.get('inferred_opponent_id')
+        candidate_opponent = candidate_context.get('inferred_opponent_id')
+        if baseline_opponent is not None and candidate_opponent is not None:
+            matchup_alignment = (
+                'same_inferred_opponent'
+                if baseline_opponent == candidate_opponent
+                else 'different_inferred_opponent'
+            )
+        elif baseline_context.get('opponent_candidates_by_units') == candidate_context.get(
+            'opponent_candidates_by_units'
+        ):
+            matchup_alignment = 'same_matchup_candidates'
+
+    baseline_equals_candidate_mirrored = False
+    candidate_equals_baseline_mirrored = False
+    mirror_alignment = 'unknown'
+    if baseline_row is not None and candidate_row is not None:
+        baseline_opponents = baseline_row['opponent_units']
+        candidate_opponents = candidate_row['opponent_units']
+        baseline_equals_candidate_mirrored = (
+            baseline_opponents == _mirror_units_signature(candidate_opponents)
+        )
+        candidate_equals_baseline_mirrored = (
+            candidate_opponents == _mirror_units_signature(baseline_opponents)
+        )
+
+        if baseline_opponents == candidate_opponents:
+            mirror_alignment = 'same_positions'
+        elif baseline_equals_candidate_mirrored or candidate_equals_baseline_mirrored:
+            mirror_alignment = 'mirrored_positions'
+        else:
+            mirror_alignment = 'different_positions'
+
+    origin_hint = _infer_divergence_origin(
+        baseline_row=baseline_row,
+        candidate_row=candidate_row,
+        baseline_context=baseline_context,
+        candidate_context=candidate_context,
+        field_diffs=field_diffs,
+    )
+
+    return {
+        'origin_hint': origin_hint,
+        'matchup_alignment': matchup_alignment,
+        'mirror_alignment': mirror_alignment,
+        'baseline_equals_candidate_mirrored': baseline_equals_candidate_mirrored,
+        'candidate_equals_baseline_mirrored': candidate_equals_baseline_mirrored,
+        'baseline': baseline_summary,
+        'candidate': candidate_summary,
+    }
+
+
+def run_parity_dump_seed(
+    baseline_engine: str,
+    candidate_engine: str,
+    seed: int,
+    sample_limit: int = 20,
+    output_path: str | None = None,
+) -> Dict[str, Any]:
+    print()
+    print("=" * 60)
+    print("PARITY DUMP (SINGLE SEED)")
+    print("=" * 60)
+    print(f"Seed:             {seed}")
+    print(f"Baseline engine:  {baseline_engine}")
+    print(f"Candidate engine: {candidate_engine}")
+    print()
+
+    rust_sim_cache: Dict[str, Any] = {}
+    baseline = _run_single_full_game_with_rows(baseline_engine, seed, rust_sim_cache)
+    candidate = _run_single_full_game_with_rows(candidate_engine, seed, rust_sim_cache)
+
+    baseline_rows = _rows_by_round_player(baseline['training_rows'])
+    candidate_rows = _rows_by_round_player(candidate['training_rows'])
+    baseline_matchup_context = _build_matchup_context_map(baseline_rows)
+    candidate_matchup_context = _build_matchup_context_map(candidate_rows)
+    keys = sorted(set(baseline_rows.keys()) | set(candidate_rows.keys()))
+
+    compare_fields = (
+        'hp',
+        'gold',
+        'level',
+        'streak',
+        'board_count',
+        'win_streak',
+        'loss_streak',
+        'num_augments',
+        'num_traits',
+        'alive_count',
+        'combat_result',
+        'damage_dealt',
+        'damage_taken',
+        'opponent_hp',
+        'traits',
+        'opponent_traits',
+        'augments',
+        'units',
+        'opponent_units',
+    )
+    float_fields = {'damage_dealt', 'damage_taken'}
+
+    first_divergence: Dict[str, Any] | None = None
+    divergence_count = 0
+    sampled_divergences: List[Dict[str, Any]] = []
+    missing_baseline = 0
+    missing_candidate = 0
+    divergence_origin_counts: Counter[str] = Counter()
+
+    for key in keys:
+        baseline_row = baseline_rows.get(key)
+        candidate_row = candidate_rows.get(key)
+        baseline_context = baseline_matchup_context.get(key)
+        candidate_context = candidate_matchup_context.get(key)
+
+        if baseline_row is None:
+            missing_baseline += 1
+            divergence_context = _build_divergence_context(
+                baseline_row=None,
+                candidate_row=candidate_row,
+                baseline_context=None,
+                candidate_context=candidate_context,
+                field_diffs=None,
+            )
+            divergence = {
+                'round': key[0],
+                'player_id': key[1],
+                'type': 'missing_baseline_snapshot',
+                'baseline': None,
+                'candidate': candidate_row,
+                'origin_hint': divergence_context['origin_hint'],
+                'context': divergence_context,
+            }
+        elif candidate_row is None:
+            missing_candidate += 1
+            divergence_context = _build_divergence_context(
+                baseline_row=baseline_row,
+                candidate_row=None,
+                baseline_context=baseline_context,
+                candidate_context=None,
+                field_diffs=None,
+            )
+            divergence = {
+                'round': key[0],
+                'player_id': key[1],
+                'type': 'missing_candidate_snapshot',
+                'baseline': baseline_row,
+                'candidate': None,
+                'origin_hint': divergence_context['origin_hint'],
+                'context': divergence_context,
+            }
+        else:
+            field_diffs: List[Dict[str, Any]] = []
+            for field in compare_fields:
+                bval = baseline_row[field]
+                cval = candidate_row[field]
+                if field in float_fields:
+                    if abs(float(bval) - float(cval)) <= 1e-6:
+                        continue
+                elif bval == cval:
+                    continue
+                field_diffs.append({
+                    'field': field,
+                    'baseline': bval,
+                    'candidate': cval,
+                })
+
+            if not field_diffs:
+                continue
+            divergence_context = _build_divergence_context(
+                baseline_row=baseline_row,
+                candidate_row=candidate_row,
+                baseline_context=baseline_context,
+                candidate_context=candidate_context,
+                field_diffs=field_diffs,
+            )
+            divergence = {
+                'round': key[0],
+                'player_id': key[1],
+                'type': 'snapshot_mismatch',
+                'field_diffs': field_diffs,
+                'origin_hint': divergence_context['origin_hint'],
+                'context': divergence_context,
+            }
+
+        divergence_count += 1
+        divergence_origin_counts[divergence['origin_hint']] += 1
+        if first_divergence is None:
+            first_divergence = divergence
+        if len(sampled_divergences) < sample_limit:
+            sampled_divergences.append(divergence)
+
+    placement_match = baseline['placement_vector'] == candidate['placement_vector']
+    round_match = baseline['round_num'] == candidate['round_num']
+
+    print(f"  Placement vectors match: {'yes' if placement_match else 'no'}")
+    print(f"  Round count match:       {'yes' if round_match else 'no'}")
+    print(f"  Baseline round-rows:     {len(baseline_rows)}")
+    print(f"  Candidate round-rows:    {len(candidate_rows)}")
+    print(f"  Total snapshot diffs:    {divergence_count}")
+    if first_divergence is None:
+        print("  First divergence:        none")
+    else:
+        print(
+            "  First divergence:        "
+            f"round={first_divergence['round']} player={first_divergence['player_id']} "
+            f"origin={first_divergence.get('origin_hint', 'unknown')}"
+        )
+    if divergence_origin_counts:
+        print(f"  Divergence origins:      {dict(divergence_origin_counts)}")
+    print()
+
+    payload = {
+        'seed': seed,
+        'baseline_engine': baseline_engine,
+        'candidate_engine': candidate_engine,
+        'placement_vector_match': placement_match,
+        'round_count_match': round_match,
+        'baseline': {
+            'round_num': baseline['round_num'],
+            'placements': baseline['placements'],
+            'placement_vector': baseline['placement_vector'],
+            'rank_order': baseline['rank_order'],
+            'top4_set': baseline['top4_set'],
+            'row_count': len(baseline_rows),
+        },
+        'candidate': {
+            'round_num': candidate['round_num'],
+            'placements': candidate['placements'],
+            'placement_vector': candidate['placement_vector'],
+            'rank_order': candidate['rank_order'],
+            'top4_set': candidate['top4_set'],
+            'row_count': len(candidate_rows),
+        },
+        'snapshot_key_count': len(keys),
+        'missing_baseline_snapshots': missing_baseline,
+        'missing_candidate_snapshots': missing_candidate,
+        'divergence_count': divergence_count,
+        'divergence_origin_counts': dict(divergence_origin_counts),
+        'first_divergence': first_divergence,
+        'divergence_samples': sampled_divergences,
+    }
+
+    if output_path:
+        output_file = Path(output_path)
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+        output_file.write_text(json.dumps(payload, indent=2), encoding='utf-8')
+        print(f"  Saved parity dump: {output_file}")
+        print()
+
+    return payload
+
+
+def _get_combat_engine(engine_name: str, engine_cache: Dict[str, Any]) -> Any:
+    cache_key = f"combat::{engine_name}"
+    engine = engine_cache.get(cache_key)
+    if engine is None:
+        engine = _create_engine(engine_name)
+        engine_cache[cache_key] = engine
+    return engine
+
+
+def _run_combat_parity_layer(
+    layer_name: str,
+    baseline_engine: str,
+    candidate_engine: str,
+    num_sims: int,
+    seed_start: int,
+    sample_limit: int,
+    team_builder: Any,
+    engine_cache: Dict[str, Any],
+) -> Dict[str, Any]:
+    print(f"{layer_name}: {num_sims} sims ({seed_start}..{seed_start + num_sims - 1})")
+    progress_every = max(1, num_sims // 10)
+
+    winner_matches = 0
+    mismatch_samples: List[Dict[str, Any]] = []
+    baseline_elapsed = 0.0
+    candidate_elapsed = 0.0
+    baseline_timeouts = 0
+    candidate_timeouts = 0
+    mismatch_with_candidate_timeout = 0
+
+    baseline_combat = _get_combat_engine(baseline_engine, engine_cache)
+    candidate_combat = _get_combat_engine(candidate_engine, engine_cache)
+
+    for i in range(num_sims):
+        seed = seed_start + i
+        team0_b, team1_b = team_builder(baseline_combat, baseline_engine)
+        team0_c, team1_c = team_builder(candidate_combat, candidate_engine)
+
+        start = time.perf_counter()
+        baseline_result = _normalize_result(
+            _run_combat(baseline_combat, baseline_engine, team0_b, team1_b, seed=seed)
+        )
+        baseline_elapsed += time.perf_counter() - start
+
+        start = time.perf_counter()
+        candidate_result = _normalize_result(
+            _run_combat(candidate_combat, candidate_engine, team0_c, team1_c, seed=seed)
+        )
+        candidate_elapsed += time.perf_counter() - start
+
+        baseline_timed_out = baseline_result['combat_time'] >= 59.99
+        candidate_timed_out = candidate_result['combat_time'] >= 59.99
+        if baseline_timed_out:
+            baseline_timeouts += 1
+        if candidate_timed_out:
+            candidate_timeouts += 1
+
+        winner_match = baseline_result['winner'] == candidate_result['winner']
+        if winner_match:
+            winner_matches += 1
+        elif candidate_timed_out:
+            mismatch_with_candidate_timeout += 1
+        elif len(mismatch_samples) < sample_limit:
+            mismatch_samples.append({
+                'seed': seed,
+                'baseline': baseline_result,
+                'candidate': candidate_result,
+            })
+
+        done = i + 1
+        if done % progress_every == 0 or done == num_sims:
+            print(f"  [{done}/{num_sims}] complete")
+
+    winner_match_rate = winner_matches / max(1, num_sims)
+    baseline_timeout_rate = baseline_timeouts / max(1, num_sims)
+    candidate_timeout_rate = candidate_timeouts / max(1, num_sims)
+    mismatch_total = num_sims - winner_matches
+    mismatch_timeout_share = (
+        mismatch_with_candidate_timeout / mismatch_total if mismatch_total > 0 else 0.0
+    )
+    print(f"  Winner match rate: {winner_match_rate:.2%}")
+    print(
+        f"  Timeout rate ({baseline_engine}/{candidate_engine}): "
+        f"{baseline_timeout_rate:.2%}/{candidate_timeout_rate:.2%}"
+    )
+    print(f"  Mismatch share with candidate timeout: {mismatch_timeout_share:.2%}")
+    print(
+        f"  Throughput ({baseline_engine}/{candidate_engine}): "
+        f"{(num_sims / baseline_elapsed) if baseline_elapsed > 0 else 0.0:.2f}/"
+        f"{(num_sims / candidate_elapsed) if candidate_elapsed > 0 else 0.0:.2f} sims/sec"
+    )
+    print()
+
+    return {
+        'layer': layer_name,
+        'num_sims': num_sims,
+        'seed_start': seed_start,
+        'seed_end': seed_start + num_sims - 1,
+        'winner_match_rate': round(winner_match_rate, 4),
+        'baseline_timeout_rate': round(baseline_timeout_rate, 4),
+        'candidate_timeout_rate': round(candidate_timeout_rate, 4),
+        'mismatch_candidate_timeout_share': round(mismatch_timeout_share, 4),
+        'baseline_sims_per_sec': round((num_sims / baseline_elapsed) if baseline_elapsed > 0 else 0.0, 4),
+        'candidate_sims_per_sec': round((num_sims / candidate_elapsed) if candidate_elapsed > 0 else 0.0, 4),
+        'mismatch_samples': mismatch_samples,
+    }
+
+
+def run_layered_parity_harness(
+    baseline_engine: str,
+    candidate_engine: str,
+    layer1_sims: int = 1000,
+    layer2_sims: int = 1000,
+    layer3_games: int = 100,
+    seed_start: int = 0,
+    sample_limit: int = 10,
+) -> Dict[str, Any]:
+    print()
+    print("=" * 60)
+    print("LAYERED PARITY HARNESS")
+    print("=" * 60)
+    print(f"Baseline engine:  {baseline_engine}")
+    print(f"Candidate engine: {candidate_engine}")
+    print()
+
+    combat_engine_cache: Dict[str, Any] = {}
+    layer1 = _run_combat_parity_layer(
+        layer_name="Layer 1 (1v1)",
+        baseline_engine=baseline_engine,
+        candidate_engine=candidate_engine,
+        num_sims=layer1_sims,
+        seed_start=seed_start,
+        sample_limit=sample_limit,
+        team_builder=_build_duel_teams,
+        engine_cache=combat_engine_cache,
+    )
+    layer2 = _run_combat_parity_layer(
+        layer_name="Layer 2 (8v8 Team Combat)",
+        baseline_engine=baseline_engine,
+        candidate_engine=candidate_engine,
+        num_sims=layer2_sims,
+        seed_start=seed_start,
+        sample_limit=sample_limit,
+        team_builder=_build_teamfight_teams_8v8,
+        engine_cache=combat_engine_cache,
+    )
+    layer3 = run_seed_parity_harness(
+        baseline_engine=baseline_engine,
+        candidate_engine=candidate_engine,
+        num_games=layer3_games,
+        seed_start=seed_start,
+        sample_limit=sample_limit,
+    )
+
+    return {
+        'baseline_engine': baseline_engine,
+        'candidate_engine': candidate_engine,
+        'layer1_1v1': layer1,
+        'layer2_team_combat': layer2,
+        'layer3_full_game': layer3,
+    }
+
+
+def run_focused_combat_parity_suite(
+    baseline_engine: str,
+    candidate_engine: str,
+    sims_per_case: int = 200,
+    seed_start: int = 0,
+    sample_limit: int = 10,
+) -> Dict[str, Any]:
+    print()
+    print("=" * 60)
+    print("FOCUSED CHAMPION PARITY SUITE")
+    print("=" * 60)
+    print(f"Baseline engine:  {baseline_engine}")
+    print(f"Candidate engine: {candidate_engine}")
+    print(f"Sims per case:    {sims_per_case}")
+    print()
+
+    scenarios = [
+        ('Draven vs Leona', _build_focus_case_draven_vs_leona),
+        ('Sion vs Draven', _build_focus_case_sion_vs_draven),
+        ('4v4 Mixed Board', _build_teamfight_teams),
+    ]
+
+    combat_engine_cache: Dict[str, Any] = {}
+    case_results: Dict[str, Dict[str, Any]] = {}
+    winner_rates: List[float] = []
+    worst_case_name = ''
+    worst_case_rate = 1.0
+
+    for idx, (name, team_builder) in enumerate(scenarios):
+        case_seed_start = seed_start + idx * max(1_000_000, sims_per_case)
+        case_result = _run_combat_parity_layer(
+            layer_name=f"Focused: {name}",
+            baseline_engine=baseline_engine,
+            candidate_engine=candidate_engine,
+            num_sims=sims_per_case,
+            seed_start=case_seed_start,
+            sample_limit=sample_limit,
+            team_builder=team_builder,
+            engine_cache=combat_engine_cache,
+        )
+        case_results[name] = case_result
+        rate = float(case_result['winner_match_rate'])
+        winner_rates.append(rate)
+        if rate < worst_case_rate:
+            worst_case_rate = rate
+            worst_case_name = name
+
+    mean_rate = statistics.mean(winner_rates) if winner_rates else 0.0
+    print("Focused parity summary:")
+    print(f"  Mean winner-match rate: {mean_rate:.2%}")
+    print(f"  Worst case:             {worst_case_name} ({worst_case_rate:.2%})")
+    print()
+
+    return {
+        'baseline_engine': baseline_engine,
+        'candidate_engine': candidate_engine,
+        'sims_per_case': sims_per_case,
+        'mean_winner_match_rate': round(mean_rate, 4),
+        'worst_case_name': worst_case_name,
+        'worst_case_winner_match_rate': round(worst_case_rate, 4),
+        'cases': case_results,
+    }
+
+
+def enforce_parity_gate(
+    layered_result: Dict[str, Any] | None,
+    focused_result: Dict[str, Any] | None,
+    min_layer1_match: float,
+    min_layer2_match: float,
+    max_layer2_timeout: float,
+    min_focused_mean: float,
+    min_focused_case: float,
+) -> None:
+    failures: List[str] = []
+
+    if layered_result is not None:
+        layer1 = layered_result.get('layer1_1v1', {})
+        layer2 = layered_result.get('layer2_team_combat', {})
+
+        layer1_rate = float(layer1.get('winner_match_rate', 0.0))
+        layer2_rate = float(layer2.get('winner_match_rate', 0.0))
+        layer2_timeout = float(layer2.get('candidate_timeout_rate', 1.0))
+
+        if layer1_rate < min_layer1_match:
+            failures.append(
+                f"Layer1 winner-match {layer1_rate:.4f} < required {min_layer1_match:.4f}"
+            )
+        if layer2_rate < min_layer2_match:
+            failures.append(
+                f"Layer2 winner-match {layer2_rate:.4f} < required {min_layer2_match:.4f}"
+            )
+        if layer2_timeout > max_layer2_timeout:
+            failures.append(
+                f"Layer2 candidate-timeout {layer2_timeout:.4f} > allowed {max_layer2_timeout:.4f}"
+            )
+
+    if focused_result is not None:
+        focused_mean = float(focused_result.get('mean_winner_match_rate', 0.0))
+        focused_case = float(focused_result.get('worst_case_winner_match_rate', 0.0))
+
+        if focused_mean < min_focused_mean:
+            failures.append(
+                f"Focused mean winner-match {focused_mean:.4f} < required {min_focused_mean:.4f}"
+            )
+        if focused_case < min_focused_case:
+            failures.append(
+                f"Focused worst-case winner-match {focused_case:.4f} < required {min_focused_case:.4f}"
+            )
+
+    if failures:
+        print("=" * 60)
+        print("PARITY GATE FAILED")
+        print("=" * 60)
+        for failure in failures:
+            print(f"  - {failure}")
+        print()
+        raise SystemExit(1)
+
+    print("=" * 60)
+    print("PARITY GATE PASSED")
+    print("=" * 60)
+    print()
+
+
 def run_seed_parity_harness(
     baseline_engine: str,
     candidate_engine: str,
@@ -732,6 +1662,11 @@ def _parse_args() -> argparse.Namespace:
         help='Starting seed for Phase 6 distribution comparison',
     )
     parser.add_argument(
+        '--parity-only',
+        action='store_true',
+        help='Skip throughput/determinism benchmarks and run parity checks only',
+    )
+    parser.add_argument(
         '--parity-games',
         type=int,
         default=0,
@@ -755,29 +1690,151 @@ def _parse_args() -> argparse.Namespace:
         default=10,
         help='Maximum mismatch samples to include in parity output',
     )
+    parser.add_argument(
+        '--parity-layered',
+        action='store_true',
+        help='Run layered parity harness (1v1, 8v8 combat, full game)',
+    )
+    parser.add_argument(
+        '--parity-layer1-sims',
+        type=int,
+        default=1000,
+        help='Layered parity: number of 1v1 combat simulations',
+    )
+    parser.add_argument(
+        '--parity-layer2-sims',
+        type=int,
+        default=1000,
+        help='Layered parity: number of 8v8 team combat simulations',
+    )
+    parser.add_argument(
+        '--parity-layer3-games',
+        type=int,
+        default=100,
+        help='Layered parity: number of full-game comparisons',
+    )
+    parser.add_argument(
+        '--parity-focused',
+        action='store_true',
+        help='Run focused champion parity suite (targeted combat cases)',
+    )
+    parser.add_argument(
+        '--parity-focused-sims',
+        type=int,
+        default=200,
+        help='Focused parity: simulations per champion scenario',
+    )
+    parser.add_argument(
+        '--parity-dump-seed',
+        type=int,
+        default=None,
+        help='Run single-seed full-game parity dump with first divergence details',
+    )
+    parser.add_argument(
+        '--parity-dump-max-diffs',
+        type=int,
+        default=20,
+        help='Maximum divergence entries to retain in parity dump output',
+    )
+    parser.add_argument(
+        '--parity-dump-output',
+        type=str,
+        default='',
+        help='Optional output path for parity dump JSON payload',
+    )
+    parser.add_argument(
+        '--parity-gate',
+        action='store_true',
+        help='Fail with non-zero exit when parity thresholds are not met',
+    )
+    parser.add_argument(
+        '--parity-gate-min-layer1-match',
+        type=float,
+        default=0.55,
+        help='Parity gate: minimum Layer1 winner-match rate',
+    )
+    parser.add_argument(
+        '--parity-gate-min-layer2-match',
+        type=float,
+        default=0.70,
+        help='Parity gate: minimum Layer2 winner-match rate',
+    )
+    parser.add_argument(
+        '--parity-gate-max-layer2-timeout',
+        type=float,
+        default=0.40,
+        help='Parity gate: maximum Layer2 candidate timeout rate',
+    )
+    parser.add_argument(
+        '--parity-gate-min-focused-mean',
+        type=float,
+        default=0.60,
+        help='Parity gate: minimum focused-suite mean winner-match rate',
+    )
+    parser.add_argument(
+        '--parity-gate-min-focused-case',
+        type=float,
+        default=0.45,
+        help='Parity gate: minimum focused-suite worst-case winner-match rate',
+    )
     args = parser.parse_args()
 
-    for field in (
-        'sims_1v1',
-        'sims_team',
-        'games',
-        'det_1v1',
-        'det_team',
-        'det_games',
-        'compare_games',
-    ):
-        if getattr(args, field) <= 0 and field != 'compare_games':
-            parser.error(f"--{field.replace('_', '-')} must be > 0")
     if args.compare_games < 0:
         parser.error("--compare-games must be >= 0")
-    if args.compare_games > 0 and args.engine != 'both':
-        parser.error("--compare-games requires --engine both")
+    if not args.parity_only:
+        for field in (
+            'sims_1v1',
+            'sims_team',
+            'games',
+            'det_1v1',
+            'det_team',
+            'det_games',
+        ):
+            if getattr(args, field) <= 0:
+                parser.error(f"--{field.replace('_', '-')} must be > 0")
+        if args.compare_games > 0 and args.engine != 'both':
+            parser.error("--compare-games requires --engine both")
+    elif args.compare_games > 0:
+        parser.error("--compare-games cannot be used with --parity-only")
     if args.parity_games < 0:
         parser.error("--parity-games must be >= 0")
     if args.parity_sample_limit <= 0:
         parser.error("--parity-sample-limit must be > 0")
+    if args.parity_layer1_sims <= 0:
+        parser.error("--parity-layer1-sims must be > 0")
+    if args.parity_layer2_sims <= 0:
+        parser.error("--parity-layer2-sims must be > 0")
+    if args.parity_layer3_games <= 0:
+        parser.error("--parity-layer3-games must be > 0")
+    if args.parity_focused_sims <= 0:
+        parser.error("--parity-focused-sims must be > 0")
+    if args.parity_dump_seed is not None and args.parity_dump_seed < 0:
+        parser.error("--parity-dump-seed must be >= 0")
+    if args.parity_dump_max_diffs <= 0:
+        parser.error("--parity-dump-max-diffs must be > 0")
+    for field in (
+        'parity_gate_min_layer1_match',
+        'parity_gate_min_layer2_match',
+        'parity_gate_max_layer2_timeout',
+        'parity_gate_min_focused_mean',
+        'parity_gate_min_focused_case',
+    ):
+        value = float(getattr(args, field))
+        if value < 0.0 or value > 1.0:
+            parser.error(f"--{field.replace('_', '-')} must be in [0, 1]")
     parsed_parity_engines = [value.strip() for value in args.parity_engines.split(',') if value.strip()]
-    if args.parity_games > 0:
+    parity_requested = (
+        args.parity_games > 0
+        or args.parity_layered
+        or args.parity_focused
+        or args.parity_dump_seed is not None
+    )
+    if args.parity_only and not parity_requested:
+        parser.error(
+            "--parity-only requires at least one parity check "
+            "(--parity-games, --parity-layered, --parity-focused, or --parity-dump-seed)"
+        )
+    if parity_requested:
         valid_engines = {'python', 'rust', 'rust_full'}
         if len(parsed_parity_engines) != 2:
             parser.error("--parity-engines must provide exactly two engines")
@@ -786,15 +1843,29 @@ def _parse_args() -> argparse.Namespace:
         for engine_name in parsed_parity_engines:
             if engine_name not in valid_engines:
                 parser.error(f"Unknown parity engine '{engine_name}'")
+    if args.parity_gate and not (args.parity_layered or args.parity_focused):
+        parser.error("--parity-gate requires --parity-layered and/or --parity-focused")
     args.parity_engine_pair = parsed_parity_engines
     return args
 
 
 def main() -> Dict[str, Any]:
     args = _parse_args()
-    parity_result: Dict[str, Any] | None = None
+    layered_result: Dict[str, Any] | None = None
+    focused_result: Dict[str, Any] | None = None
 
-    if args.engine == 'both':
+    results: Dict[str, Any]
+    if args.parity_only:
+        print("=" * 60)
+        print("PARITY-ONLY MODE")
+        print("=" * 60)
+        print("Skipping throughput and determinism benchmark sections.")
+        print()
+        results = {
+            'mode': 'parity_only',
+            'parity_engine_pair': args.parity_engine_pair,
+        }
+    elif args.engine == 'both':
         python_results = run_full_benchmark(
             engine_name='python',
             sims_1v1=args.sims_1v1,
@@ -832,36 +1903,66 @@ def main() -> Dict[str, Any]:
                 num_games=args.compare_games,
                 seed_start=args.compare_seed_start,
             )
-        if args.parity_games > 0:
-            parity_result = run_seed_parity_harness(
-                baseline_engine=args.parity_engine_pair[0],
-                candidate_engine=args.parity_engine_pair[1],
-                num_games=args.parity_games,
-                seed_start=args.parity_seed_start,
-                sample_limit=args.parity_sample_limit,
-            )
-            results['parity_harness'] = parity_result
-        return results
+    else:
+        results = run_full_benchmark(
+            engine_name=args.engine,
+            sims_1v1=args.sims_1v1,
+            sims_team=args.sims_team,
+            full_games=args.games,
+            det_1v1_runs=args.det_1v1,
+            det_team_runs=args.det_team,
+            det_game_runs=args.det_games,
+        )
 
-    result = run_full_benchmark(
-        engine_name=args.engine,
-        sims_1v1=args.sims_1v1,
-        sims_team=args.sims_team,
-        full_games=args.games,
-        det_1v1_runs=args.det_1v1,
-        det_team_runs=args.det_team,
-        det_game_runs=args.det_games,
-    )
     if args.parity_games > 0:
-        parity_result = run_seed_parity_harness(
+        results['parity_harness'] = run_seed_parity_harness(
             baseline_engine=args.parity_engine_pair[0],
             candidate_engine=args.parity_engine_pair[1],
             num_games=args.parity_games,
             seed_start=args.parity_seed_start,
             sample_limit=args.parity_sample_limit,
         )
-        result['parity_harness'] = parity_result
-    return result
+    if args.parity_layered:
+        layered_result = run_layered_parity_harness(
+            baseline_engine=args.parity_engine_pair[0],
+            candidate_engine=args.parity_engine_pair[1],
+            layer1_sims=args.parity_layer1_sims,
+            layer2_sims=args.parity_layer2_sims,
+            layer3_games=args.parity_layer3_games,
+            seed_start=args.parity_seed_start,
+            sample_limit=args.parity_sample_limit,
+        )
+        results['parity_layered'] = layered_result
+    if args.parity_focused:
+        focused_result = run_focused_combat_parity_suite(
+            baseline_engine=args.parity_engine_pair[0],
+            candidate_engine=args.parity_engine_pair[1],
+            sims_per_case=args.parity_focused_sims,
+            seed_start=args.parity_seed_start,
+            sample_limit=args.parity_sample_limit,
+        )
+        results['parity_focused'] = focused_result
+    if args.parity_dump_seed is not None:
+        results['parity_dump'] = run_parity_dump_seed(
+            baseline_engine=args.parity_engine_pair[0],
+            candidate_engine=args.parity_engine_pair[1],
+            seed=args.parity_dump_seed,
+            sample_limit=args.parity_dump_max_diffs,
+            output_path=args.parity_dump_output if args.parity_dump_output else None,
+        )
+
+    if args.parity_gate:
+        enforce_parity_gate(
+            layered_result=layered_result,
+            focused_result=focused_result,
+            min_layer1_match=args.parity_gate_min_layer1_match,
+            min_layer2_match=args.parity_gate_min_layer2_match,
+            max_layer2_timeout=args.parity_gate_max_layer2_timeout,
+            min_focused_mean=args.parity_gate_min_focused_mean,
+            min_focused_case=args.parity_gate_min_focused_case,
+        )
+
+    return results
 
 
 if __name__ == "__main__":
