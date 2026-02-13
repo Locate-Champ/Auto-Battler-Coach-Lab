@@ -76,6 +76,8 @@ class TFTTransformerV2(nn.Module):
 
         self.fight_head = nn.Linear(64, 1)
         self.damage_head = nn.Linear(64, 1)
+        self.survivors_head = nn.Linear(64, 1)
+        self.combat_time_head = nn.Linear(64, 1)
         self.placement_head = nn.Linear(64, 8)
         self.board_strength_head = nn.Linear(64, 1)
 
@@ -126,6 +128,8 @@ class TFTTransformerV2(nn.Module):
 
         fight_logits = self.fight_head(hidden).squeeze(-1)
         damage_dealt = F.relu(self.damage_head(hidden).squeeze(-1))
+        survivors = F.relu(self.survivors_head(hidden).squeeze(-1))
+        combat_time = F.relu(self.combat_time_head(hidden).squeeze(-1))
         placement_logits = self.placement_head(hidden)
         board_strength = self.board_strength_head(hidden).squeeze(-1)
 
@@ -133,6 +137,8 @@ class TFTTransformerV2(nn.Module):
             "fight_win_logits": fight_logits,
             "fight_win_prob": torch.sigmoid(fight_logits),
             "damage_dealt": damage_dealt,
+            "survivors": survivors,
+            "combat_time": combat_time,
             "placement_logits": placement_logits,
             "placement_distribution": F.softmax(placement_logits, dim=-1),
             "board_strength": board_strength,
@@ -148,19 +154,32 @@ class TFTTransformerV2(nn.Module):
         """Compute weighted multi-task training loss."""
         target_win = targets["fight_result"].float().view(-1)
         target_damage = targets["damage_dealt"].float().view(-1)
+        target_survivors = targets["survivors"].float().view(-1)
+        target_time = targets["combat_time"].float().view(-1)
         target_placement = targets["placement"].long().view(-1)
         target_strength = board_strength_m * target_win + board_strength_c
 
         loss_fight = F.binary_cross_entropy_with_logits(outputs["fight_win_logits"], target_win)
         loss_damage = F.mse_loss(outputs["damage_dealt"], target_damage)
+        loss_survivors = F.smooth_l1_loss(outputs["survivors"], target_survivors)
+        loss_time = F.smooth_l1_loss(outputs["combat_time"], target_time)
         loss_place = F.cross_entropy(outputs["placement_logits"], target_placement)
         loss_strength = F.mse_loss(outputs["board_strength"], target_strength)
 
-        total = (1.0 * loss_fight) + (0.3 * loss_damage) + (0.5 * loss_place) + (0.2 * loss_strength)
+        total = (
+            (1.0 * loss_fight)
+            + (0.3 * loss_damage)
+            + (0.1 * loss_survivors)
+            + (0.05 * loss_time)
+            + (0.5 * loss_place)
+            + (0.2 * loss_strength)
+        )
         return {
             "total": total,
             "fight": loss_fight,
             "damage": loss_damage,
+            "survivors": loss_survivors,
+            "time": loss_time,
             "placement": loss_place,
             "strength": loss_strength,
         }
