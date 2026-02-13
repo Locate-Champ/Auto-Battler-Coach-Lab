@@ -181,7 +181,7 @@ def test_task_loaders_return_feature_matrices(tmp_path: Path) -> None:
     assert X_train.shape[1] == X_test.shape[1]
 
 
-def test_fight_loader_uses_next_round_labels(tmp_path: Path) -> None:
+def test_fight_loader_uses_current_round_labels(tmp_path: Path) -> None:
     _write_jsonl(tmp_path / "chunk_0000.jsonl", _make_rows())
     loader = DataLoader(tmp_path)
 
@@ -189,8 +189,7 @@ def test_fight_loader_uses_next_round_labels(tmp_path: Path) -> None:
     total_examples = X_train.shape[0] + X_test.shape[0]
     combined_labels = np.concatenate([y_train, y_test])
 
-    # We have 4 player timelines with at least 2 rounds each -> 4 temporal examples.
-    assert total_examples == 4
+    assert total_examples == 8
     assert set(combined_labels.tolist()) == {0, 1}
 
 

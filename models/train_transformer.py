@@ -38,7 +38,7 @@ class TrainConfig:
     num_workers: int = 4
     seed: int = 42
     streaming: bool = True
-    label_mode: str = "next_round"
+    label_mode: str = "current"
     steps_per_epoch: Optional[int] = None
     val_steps: Optional[int] = None
     test_steps: Optional[int] = None
@@ -86,6 +86,30 @@ def _evaluate(
     *,
     max_steps: Optional[int] = None,
 ) -> Dict[str, float]:
+    def _brier_score(y_true: np.ndarray, y_prob: np.ndarray) -> float:
+        if y_true.size == 0:
+            return 0.0
+        return float(np.mean((y_prob - y_true) ** 2))
+
+    def _expected_calibration_error(y_true: np.ndarray, y_prob: np.ndarray, n_bins: int = 10) -> float:
+        if y_true.size == 0:
+            return 0.0
+        bins = np.linspace(0.0, 1.0, n_bins + 1)
+        ece = 0.0
+        for idx in range(n_bins):
+            lo = bins[idx]
+            hi = bins[idx + 1]
+            if idx == n_bins - 1:
+                mask = (y_prob >= lo) & (y_prob <= hi)
+            else:
+                mask = (y_prob >= lo) & (y_prob < hi)
+            if not np.any(mask):
+                continue
+            acc = float(np.mean(y_true[mask]))
+            conf = float(np.mean(y_prob[mask]))
+            ece += abs(acc - conf) * (float(np.sum(mask)) / float(y_true.size))
+        return float(ece)
+
     model.eval()
     losses = []
     probs = []
@@ -102,8 +126,12 @@ def _evaluate(
             labels.extend(batch["fight_result"].view(-1).detach().cpu().tolist())
 
     avg_loss = float(np.mean(losses)) if losses else 0.0
-    auc = roc_auc_score(labels, probs) if len(set(labels)) > 1 else 0.5
-    return {"loss": avg_loss, "auc": float(auc)}
+    y_true = np.asarray(labels, dtype=np.float32)
+    y_prob = np.asarray(probs, dtype=np.float32)
+    auc = roc_auc_score(y_true, y_prob) if len(set(labels)) > 1 else 0.5
+    brier = _brier_score(y_true, y_prob)
+    ece = _expected_calibration_error(y_true, y_prob, n_bins=10)
+    return {"loss": avg_loss, "auc": float(auc), "brier": brier, "ece": ece}
 
 
 def parse_args() -> TrainConfig:
@@ -118,8 +146,8 @@ def parse_args() -> TrainConfig:
         "--label-mode",
         type=str,
         choices=("current", "next_round"),
-        default="next_round",
-        help="Fight label strategy. next_round avoids same-round leakage.",
+        default="current",
+        help="Fight label strategy (current round requires pre-combat snapshots).",
     )
     parser.add_argument(
         "--steps-per-epoch",
@@ -349,11 +377,19 @@ def main() -> None:
         val_metrics = (
             _evaluate(model, val_loader, device, max_steps=config.val_steps)
             if dataset_sizes["val"] > 0
-            else {"loss": 0.0, "auc": 0.5}
+            else {"loss": 0.0, "auc": 0.5, "brier": 0.0, "ece": 0.0}
         )
         writer.add_scalar("val/loss", val_metrics["loss"], epoch)
         writer.add_scalar("val/auc", val_metrics["auc"], epoch)
-        print(f"epoch={epoch} train_loss={train_loss:.4f} val_loss={val_metrics['loss']:.4f} val_auc={val_metrics['auc']:.4f}")
+        writer.add_scalar("val/brier", val_metrics["brier"], epoch)
+        writer.add_scalar("val/ece", val_metrics["ece"], epoch)
+        print(
+            f"epoch={epoch} train_loss={train_loss:.4f} "
+            f"val_loss={val_metrics['loss']:.4f} "
+            f"val_auc={val_metrics['auc']:.4f} "
+            f"val_brier={val_metrics['brier']:.4f} "
+            f"val_ece={val_metrics['ece']:.4f}"
+        )
 
         if val_metrics["auc"] > best_auc:
             best_auc = val_metrics["auc"]
@@ -371,10 +407,12 @@ def main() -> None:
     test_metrics = (
         _evaluate(model, test_loader, device, max_steps=config.test_steps)
         if dataset_sizes["test"] > 0
-        else {"loss": 0.0, "auc": 0.5}
+        else {"loss": 0.0, "auc": 0.5, "brier": 0.0, "ece": 0.0}
     )
     writer.add_scalar("test/loss", test_metrics["loss"], 0)
     writer.add_scalar("test/auc", test_metrics["auc"], 0)
+    writer.add_scalar("test/brier", test_metrics["brier"], 0)
+    writer.add_scalar("test/ece", test_metrics["ece"], 0)
     writer.close()
 
     summary = {

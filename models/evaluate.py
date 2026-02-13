@@ -54,12 +54,33 @@ def _feature_importance_table(model: Any, feature_names: List[str]) -> List[Tupl
 
 
 def _classification_metrics(y_true: np.ndarray, y_prob: np.ndarray) -> Dict[str, Any]:
+    def _expected_calibration_error(y_true_arr: np.ndarray, y_prob_arr: np.ndarray, n_bins: int = 10) -> float:
+        if y_true_arr.size == 0:
+            return 0.0
+        bins = np.linspace(0.0, 1.0, n_bins + 1)
+        ece = 0.0
+        for idx in range(n_bins):
+            lo = bins[idx]
+            hi = bins[idx + 1]
+            if idx == n_bins - 1:
+                mask = (y_prob_arr >= lo) & (y_prob_arr <= hi)
+            else:
+                mask = (y_prob_arr >= lo) & (y_prob_arr < hi)
+            if not np.any(mask):
+                continue
+            acc = float(np.mean(y_true_arr[mask]))
+            conf = float(np.mean(y_prob_arr[mask]))
+            ece += abs(acc - conf) * (float(np.sum(mask)) / float(y_true_arr.size))
+        return float(ece)
+
     y_pred = (y_prob >= 0.5).astype(np.int64)
     accuracy = float(accuracy_score(y_true, y_pred))
     precision = float(precision_score(y_true, y_pred, zero_division=0))
     recall = float(recall_score(y_true, y_pred, zero_division=0))
     f1 = float(f1_score(y_true, y_pred, zero_division=0))
     auc = float(roc_auc_score(y_true, y_prob))
+    brier = float(np.mean((y_prob - y_true.astype(np.float32)) ** 2))
+    ece = _expected_calibration_error(y_true.astype(np.float32), y_prob.astype(np.float32), n_bins=10)
     predicted_positive = int((y_pred == 1).sum())
     true_positive = int(((y_pred == 1) & (y_true == 1)).sum())
     lower, upper = wilson_interval(true_positive, predicted_positive) if predicted_positive > 0 else (0.0, 0.0)
@@ -70,6 +91,8 @@ def _classification_metrics(y_true: np.ndarray, y_prob: np.ndarray) -> Dict[str,
         "recall": recall,
         "f1": f1,
         "auc_roc": auc,
+        "brier": brier,
+        "ece": ece,
         "precision_wilson_95": [lower, upper],
         "calibration_curve": [{"pred": float(p), "true": float(t)} for p, t in zip(cal_pred, cal_true)],
     }
