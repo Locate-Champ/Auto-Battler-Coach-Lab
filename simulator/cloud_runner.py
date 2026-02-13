@@ -469,6 +469,7 @@ class StreamingWriter:
                 'traits',
                 'opponent_units',
                 'opponent_traits',
+                'opponent_augments',
             ):
                 if key in row and isinstance(row[key], (list, dict)):
                     row[key] = json.dumps(row[key])
@@ -981,6 +982,9 @@ def run_batch(
     start = time.perf_counter()
     checkpoint_interval = checkpoint_every if checkpoint_every and checkpoint_every > 0 else max(1, remaining // 20)
     progress_interval = progress_every if progress_every and progress_every > 0 else 500
+    if remaining > 0 and progress_interval > remaining:
+        # Avoid small test runs appearing "stuck" until completion.
+        progress_interval = max(1, remaining // 10)
     done = 0
     aborted_reason: Optional[str] = None
 
@@ -994,7 +998,7 @@ def run_batch(
             eta = (remaining - done) / rate if rate > 0 else 0
             err_str = f", {writer.num_errors} errors" if writer.num_errors else ""
             print(f"  [{done}/{remaining}] {rate:.1f} games/sec, "
-                  f"ETA: {eta:.0f}s{err_str}")
+                  f"ETA: {eta:.0f}s{err_str}", flush=True)
 
         if max_errors is not None and writer.num_errors >= max_errors:
             raise BatchAbort(f"Reached max error threshold ({writer.num_errors}/{max_errors}).")

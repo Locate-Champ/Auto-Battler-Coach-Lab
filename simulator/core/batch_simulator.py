@@ -48,7 +48,7 @@ def _worker_simulate_1v1(args: Tuple) -> Dict:
             continue
 
         if use_fast:
-            result = engine.run_combat_fast(
+            result = engine.run_combat_adaptive_tick(
                 [unit1], [unit2],
                 team0_augments=augments1,
                 team1_augments=augments2,
@@ -94,7 +94,7 @@ def batch_simulate_1v1(
     num_simulations: int = 1000,
     workers: Optional[int] = None,
     seed: Optional[int] = None,
-    use_fast: bool = True,
+    use_fast: bool = False,
 ) -> Dict:
     """Run parallel 1v1 simulations across multiple CPU cores.
 
@@ -106,7 +106,7 @@ def batch_simulate_1v1(
         num_simulations: Total number of simulations to run
         workers: Number of processes (default: CPU count)
         seed: Base random seed for deterministic results
-        use_fast: Use run_combat_fast() with adaptive tick skipping
+        use_fast: Use run_combat_adaptive_tick() with adaptive tick skipping (experimental)
 
     Returns:
         Same format as CombatEngine.simulate_1v1()
@@ -191,7 +191,7 @@ def _worker_run_combat(args: Tuple) -> Dict:
     team1 = [u for u in team1 if u is not None]
 
     if use_fast:
-        return engine.run_combat_fast(
+        return engine.run_combat_adaptive_tick(
             team0, team1,
             team0_augments=team0_augments,
             team1_augments=team1_augments,
@@ -209,7 +209,7 @@ def _worker_run_combat(args: Tuple) -> Dict:
 def batch_run_combats(
     scenarios: List[Dict],
     workers: Optional[int] = None,
-    use_fast: bool = True,
+    use_fast: bool = False,
 ) -> List[Dict]:
     """Run multiple team combat scenarios in parallel.
 
