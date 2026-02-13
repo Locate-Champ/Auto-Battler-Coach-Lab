@@ -95,7 +95,7 @@ class ChampionAbilities:
 
         if target_pos not in occupied:
             old_pos = unit.position
-            unit.position = target_pos
+            self.engine.set_unit_position(unit, target_pos)
             self.engine.log_event('dash', unit=unit.name, from_pos=old_pos, to_pos=target_pos)
             return True
 
@@ -104,7 +104,7 @@ class ChampionAbilities:
         valid = [n for n in neighbors if n not in occupied]
         if valid:
             old_pos = unit.position
-            unit.position = valid[0]
+            self.engine.set_unit_position(unit, valid[0])
             self.engine.log_event('dash', unit=unit.name, from_pos=old_pos, to_pos=valid[0])
             return True
         return False
@@ -864,7 +864,7 @@ class ChampionAbilities:
                     best_hex = pos
 
         if best_hex:
-            unit.position = best_hex
+            self.engine.set_unit_position(unit, best_hex)
             self.engine.log_event('vayne_tumble', unit=unit.name, from_pos=old_pos, to_pos=best_hex)
 
         # Deal damage

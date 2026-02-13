@@ -2,7 +2,7 @@
 
 Measures throughput for common simulation workloads across all engine modes:
 - Standard Python engine (run_combat)
-- Adaptive tick skipping (run_combat_fast)
+- Adaptive tick skipping (run_combat_adaptive_tick)
 - Cython-accelerated damage math
 - Multiprocessing batch simulation
 
@@ -17,7 +17,7 @@ from simulator.core.combat_engine import CombatEngine, HexGrid
 
 def benchmark_1v1_duel(engine: CombatEngine, n: int = 500, fast: bool = False) -> float:
     """Benchmark N 1v1 duels between two champions."""
-    run = engine.run_combat_fast if fast else engine.run_combat
+    run = engine.run_combat_adaptive_tick if fast else engine.run_combat
     start = time.perf_counter()
     for i in range(n):
         u1 = engine.create_unit("TFT16_Draven", 2, (0, 3), 0, ["InfinityEdge"])
@@ -29,7 +29,7 @@ def benchmark_1v1_duel(engine: CombatEngine, n: int = 500, fast: bool = False) -
 
 def benchmark_4v4(engine: CombatEngine, n: int = 200, fast: bool = False) -> float:
     """Benchmark N 4v4 team fights."""
-    run = engine.run_combat_fast if fast else engine.run_combat
+    run = engine.run_combat_adaptive_tick if fast else engine.run_combat
     start = time.perf_counter()
     for i in range(n):
         team0 = [
@@ -51,7 +51,7 @@ def benchmark_4v4(engine: CombatEngine, n: int = 200, fast: bool = False) -> flo
 
 def benchmark_8v8(engine: CombatEngine, n: int = 100, fast: bool = False) -> float:
     """Benchmark N 8v8 full team fights."""
-    run = engine.run_combat_fast if fast else engine.run_combat
+    run = engine.run_combat_adaptive_tick if fast else engine.run_combat
     champs_t0 = [
         ("TFT16_Jinx", (0, 2), ["InfinityEdge"]),
         ("TFT16_Lux", (0, 4), ["RabadonsDeathcap"]),
@@ -136,7 +136,7 @@ def main():
     u1 = engine.create_unit("TFT16_Draven", 2, (0, 3), 0)
     u2 = engine.create_unit("TFT16_Leona", 2, (3, 3), 1)
     engine.run_combat([u1], [u2], seed=0)
-    engine.run_combat_fast([u1], [u2], seed=0)
+    engine.run_combat_adaptive_tick([u1], [u2], seed=0)
 
     n1v1, n4v4, n8v8 = 500, 200, 100
 

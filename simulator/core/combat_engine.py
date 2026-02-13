@@ -2974,6 +2974,7 @@ class CombatEngine:
                     soldier._summoner = unit.name
                     team.append(soldier)
                     self.units.append(soldier)
+                    self._invalidate_occupied_cache()
 
     def get_occupied_hexes(self) -> set:
         """Get set of all occupied hex positions (cached, rebuilt on death/move)."""
@@ -2985,6 +2986,17 @@ class CombatEngine:
     def _invalidate_occupied_cache(self):
         """Mark the occupied hex cache as needing rebuild."""
         self._occupied_dirty = True
+
+    def set_unit_position(self, unit: Unit, new_pos: Tuple[int, int]) -> None:
+        """Set a unit's position and invalidate occupied-hex caching.
+
+        Any mid-combat position changes (dash/teleport/forced move) must go
+        through this helper so occupied-hex caching stays correct.
+        """
+        if unit.position == new_pos:
+            return
+        unit.position = new_pos
+        self._invalidate_occupied_cache()
 
     def calculate_damage(self, attacker: Unit, defender: Unit,
                         base_damage: float, damage_type: DamageType,
@@ -3665,7 +3677,7 @@ class CombatEngine:
                 if valid_spots:
                     # Teleport to position adjacent to target
                     old_pos = unit.position
-                    unit.position = valid_spots[0]
+                    self.set_unit_position(unit, valid_spots[0])
                     self.log_event('fizz_leap', unit=unit.name, from_pos=old_pos,
                                   to_pos=unit.position, target=target.name)
 
@@ -3834,8 +3846,7 @@ class CombatEngine:
         path = HexGrid.find_path(unit.position, target_pos, occupied)
         if path:
             old_pos = unit.position
-            unit.position = path[0]
-            self._occupied_dirty = True
+            self.set_unit_position(unit, path[0])
             if self.logging_enabled:
                 self.log_event('move', unit=unit.name,
                               from_pos=old_pos, to_pos=path[0])
@@ -3858,7 +3869,7 @@ class CombatEngine:
 
                 # If there's a return position (like Spectral Cutlass), teleport back
                 if unit.untargetable_return_pos:
-                    unit.position = unit.untargetable_return_pos
+                    self.set_unit_position(unit, unit.untargetable_return_pos)
                     unit.untargetable_return_pos = None
                     self.log_event('teleport_return', unit=unit.name, position=unit.position)
             return  # Cannot act while untargetable (unless it's Fizz mid-leap)
@@ -3878,7 +3889,7 @@ class CombatEngine:
                 occupied = self.get_occupied_hexes()
                 valid = [n for n in neighbors if n not in occupied]
                 if valid:
-                    unit.position = random.choice(valid)
+                    self.set_unit_position(unit, random.choice(valid))
                 return
             # Taunt: forced to attack taunter (can attack, not move freely)
             if unit.state == UnitState.TAUNTED:
@@ -4350,6 +4361,7 @@ class CombatEngine:
         # Add to combat
         self.units.append(atakhan)
         ally_team.append(atakhan)
+        self._invalidate_occupied_cache()
 
         # At 5+ Noxus: grant Noxians damage amp while Atakhan is alive
         if noxus_count >= 5 and stats['damage_amp'] > 0:
@@ -4692,15 +4704,16 @@ class CombatEngine:
 
         return dt
 
-    def run_combat_fast(self, team0: List[Unit], team1: List[Unit],
+    def run_combat_adaptive_tick(self, team0: List[Unit], team1: List[Unit],
                         max_time: float = 60.0,
                         team0_augments: List[str] = None,
                         team1_augments: List[str] = None,
                         seed: int = None) -> Dict:
-        """Run combat with adaptive tick skipping.
+        """Run combat with adaptive tick skipping (experimental).
 
-        Same as run_combat() but skips idle ticks where all units are
-        just counting down cooldowns. Typically 30-60% fewer ticks.
+        Skips some idle ticks by fast-forwarding a subset of timers.
+        Not guaranteed to exactly match run_combat() because many effects
+        are evaluated via per-tick hooks.
         Logging is always disabled for this fast path.
         """
         saved_logging = self.logging_enabled

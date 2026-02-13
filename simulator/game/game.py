@@ -307,6 +307,9 @@ class TFTGame:
         matchups = self._matchmake()
         pre_combat_hp = {player.player_id: player.hp for player in self.alive_players}
 
+        if self.collector:
+            self.collector.on_round_start(self, self.round_num)
+
         # 4. Combat phase
         combat_results = []
         for p1_id, p2_id, is_ghost in matchups:
@@ -320,10 +323,11 @@ class TFTGame:
             if self.collector:
                 combat_results.append({
                     'p1': p1_id, 'p2': p2_id,
+                    'is_ghost': is_ghost,
                     'winner': result.winner_id,
                     'damage': result.damage_to_loser,
                     'survivors': result.survivors,
-                    'time': result.combat_time,
+                    'combat_time': result.combat_time,
                 })
 
             if result.is_draw:
