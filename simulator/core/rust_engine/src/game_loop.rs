@@ -660,14 +660,22 @@ enum AgentStyle {
 struct CombatRoundSnapshot {
     p1: usize,
     p2: usize,
+    is_ghost: bool,
     winner: usize,
+    is_draw: bool,
     damage: i32,
+    combat_time: f64,
+    team0_survivors: i32,
+    team1_survivors: i32,
 }
 
 struct RoundOutcome {
     winner_id: usize,
     damage_to_loser: i32,
     is_draw: bool,
+    combat_time: f64,
+    team0_survivors: i32,
+    team1_survivors: i32,
 }
 
 #[derive(Clone, Serialize)]
@@ -700,9 +708,21 @@ pub struct TrainingRow {
     pub opponent_units: Vec<TrainingUnitSnapshot>,
     pub opponent_traits: HashMap<String, i32>,
     pub opponent_hp: i32,
+    pub opponent_gold: i32,
+    pub opponent_level: i32,
+    pub opponent_streak: i32,
+    pub opponent_board_count: i32,
+    pub opponent_win_streak: i32,
+    pub opponent_loss_streak: i32,
+    pub opponent_num_augments: i32,
+    pub opponent_num_traits: i32,
+    pub opponent_augments: Vec<String>,
     pub combat_result: Option<i32>,
     pub damage_dealt: f64,
     pub damage_taken: f64,
+    pub combat_time: f64,
+    pub survivors: i32,
+    pub is_ghost: bool,
     pub board_names: Vec<String>,
     pub board_stars: Vec<i32>,
     pub trait_names: Vec<String>,
@@ -894,7 +914,21 @@ fn pvp_round(
         .collect();
     let mut combat_results: Vec<CombatRoundSnapshot> = Vec::new();
 
-    for (p1_id, p2_id, is_ghost) in matchups {
+    let row_index_by_player = if include_training_rows {
+        collect_training_rows_precombat(
+            game_id,
+            round_num,
+            players,
+            player_augments,
+            config,
+            &matchups,
+            training_rows,
+        )
+    } else {
+        HashMap::new()
+    };
+
+    for (p1_id, p2_id, is_ghost) in matchups.iter().copied() {
         if !players[p1_id].alive {
             continue;
         }
@@ -922,8 +956,13 @@ fn pvp_round(
         combat_results.push(CombatRoundSnapshot {
             p1: p1_id,
             p2: p2_id,
+            is_ghost,
             winner: result.winner_id,
+            is_draw: result.is_draw,
             damage: result.damage_to_loser,
+            combat_time: result.combat_time,
+            team0_survivors: result.team0_survivors,
+            team1_survivors: result.team1_survivors,
         });
 
         let (p1, p2) = two_players_mut(players, p1_id, p2_id);
@@ -947,15 +986,7 @@ fn pvp_round(
 
     check_eliminations(players, pool, config, placements, &pre_combat_hp, rng);
     if include_training_rows {
-        collect_training_rows(
-            game_id,
-            round_num,
-            players,
-            player_augments,
-            config,
-            &combat_results,
-            training_rows,
-        );
+        apply_combat_results_to_training_rows(&combat_results, &row_index_by_player, training_rows);
     }
 }
 
@@ -991,23 +1022,15 @@ fn augment_selection_phase(
     }
 }
 
-fn collect_training_rows(
+fn collect_training_rows_precombat(
     game_id: i64,
     round_num: i32,
     players: &[PlayerState],
     player_augments: &HashMap<usize, Vec<String>>,
     config: &GameConfig,
-    combat_results: &[CombatRoundSnapshot],
+    matchups: &[(usize, usize, bool)],
     training_rows: &mut Vec<TrainingRow>,
-) {
-    #[derive(Clone, Copy)]
-    struct CombatMatch {
-        opponent_id: usize,
-        combat_result: i32,
-        damage_dealt: f64,
-        damage_taken: f64,
-    }
-
+) -> HashMap<usize, usize> {
     let alive_count = alive_count(players) as i32;
     let alive_players = players.iter().filter(|player| player.alive).count();
     let mut players_by_id: HashMap<usize, &PlayerState> = HashMap::with_capacity(alive_players);
@@ -1017,39 +1040,27 @@ fn collect_training_rows(
         }
     }
 
-    let mut combat_by_player: HashMap<usize, CombatMatch> =
-        HashMap::with_capacity(combat_results.len() * 2);
-    for combat in combat_results {
-        let is_draw = combat.winner != combat.p1 && combat.winner != combat.p2;
-        for (player_id, opponent_id) in [(combat.p1, combat.p2), (combat.p2, combat.p1)] {
-            let (combat_result, damage_dealt, damage_taken) = if is_draw {
-                (2_i32, 0.0_f64, combat.damage as f64)
-            } else if combat.winner == player_id {
-                (1_i32, combat.damage as f64, 0.0_f64)
-            } else {
-                (0_i32, 0.0_f64, combat.damage as f64)
-            };
-
-            combat_by_player.insert(
-                player_id,
-                CombatMatch {
-                    opponent_id,
-                    combat_result,
-                    damage_dealt,
-                    damage_taken,
-                },
-            );
+    let mut opponent_by_player: HashMap<usize, usize> = HashMap::with_capacity(matchups.len() * 2);
+    let mut is_ghost_by_player: HashMap<usize, bool> = HashMap::with_capacity(matchups.len() * 2);
+    for (p1_id, p2_id, is_ghost) in matchups.iter().copied() {
+        opponent_by_player.insert(p1_id, p2_id);
+        is_ghost_by_player.insert(p1_id, is_ghost);
+        if !is_ghost {
+            opponent_by_player.insert(p2_id, p1_id);
+            is_ghost_by_player.insert(p2_id, false);
         }
     }
 
+    let mut row_index_by_player: HashMap<usize, usize> = HashMap::with_capacity(alive_players);
     training_rows.reserve(alive_players);
     for player in players {
         if !player.alive {
             continue;
         }
 
-        let matchup = combat_by_player.get(&player.player_id);
-        let opponent_state = matchup.and_then(|m| players_by_id.get(&m.opponent_id).copied());
+        let opponent_state = opponent_by_player
+            .get(&player.player_id)
+            .and_then(|opponent_id| players_by_id.get(opponent_id).copied());
         let player_traits = player.active_traits(config);
 
         let board_len = player.board.len();
@@ -1071,6 +1082,15 @@ fn collect_training_rows(
         let mut opponent_units: Vec<TrainingUnitSnapshot> = Vec::new();
         let mut opponent_traits: HashMap<String, i32> = HashMap::new();
         let mut opponent_hp = 0_i32;
+        let mut opponent_gold = 0_i32;
+        let mut opponent_level = 0_i32;
+        let mut opponent_win_streak = 0_i32;
+        let mut opponent_loss_streak = 0_i32;
+        let mut opponent_streak = 0_i32;
+        let mut opponent_board_count = 0_i32;
+        let mut opponent_augments: Vec<String> = Vec::new();
+        let mut opponent_num_augments = 0_i32;
+        let mut opponent_num_traits = 0_i32;
         if let Some(opponent) = opponent_state {
             opponent_units = Vec::with_capacity(opponent.board.len());
             for (pos, champ) in &opponent.board {
@@ -1084,6 +1104,18 @@ fn collect_training_rows(
             }
             opponent_traits = opponent.active_traits(config);
             opponent_hp = opponent.hp;
+            opponent_gold = opponent.gold;
+            opponent_level = opponent.level;
+            opponent_win_streak = opponent.win_streak;
+            opponent_loss_streak = opponent.loss_streak;
+            opponent_streak = opponent_win_streak - opponent_loss_streak;
+            opponent_board_count = opponent.board_count() as i32;
+            opponent_augments = player_augments
+                .get(&opponent.player_id)
+                .cloned()
+                .unwrap_or_default();
+            opponent_num_augments = opponent_augments.len() as i32;
+            opponent_num_traits = opponent_traits.len() as i32;
         }
 
         let streak = player.win_streak - player.loss_streak;
@@ -1099,6 +1131,7 @@ fn collect_training_rows(
             .cloned()
             .unwrap_or_default();
 
+        let row_index = training_rows.len();
         training_rows.push(TrainingRow {
             game_id,
             round: round_num,
@@ -1120,14 +1153,65 @@ fn collect_training_rows(
             opponent_units,
             opponent_traits,
             opponent_hp,
-            combat_result: matchup.map(|m| m.combat_result),
-            damage_dealt: matchup.map_or(0.0, |m| m.damage_dealt),
-            damage_taken: matchup.map_or(0.0, |m| m.damage_taken),
+            opponent_gold,
+            opponent_level,
+            opponent_streak,
+            opponent_board_count,
+            opponent_win_streak,
+            opponent_loss_streak,
+            opponent_num_augments,
+            opponent_num_traits,
+            opponent_augments,
+            combat_result: None,
+            damage_dealt: 0.0,
+            damage_taken: 0.0,
+            combat_time: 0.0,
+            survivors: 0,
+            is_ghost: is_ghost_by_player
+                .get(&player.player_id)
+                .copied()
+                .unwrap_or(false),
             board_names,
             board_stars,
             trait_names,
             trait_counts,
         });
+        row_index_by_player.insert(player.player_id, row_index);
+    }
+    row_index_by_player
+}
+
+fn apply_combat_results_to_training_rows(
+    combat_results: &[CombatRoundSnapshot],
+    row_index_by_player: &HashMap<usize, usize>,
+    training_rows: &mut [TrainingRow],
+) {
+    for combat in combat_results {
+        let update = |training_rows: &mut [TrainingRow], player_id: usize, survivors: i32| {
+            let Some(row_idx) = row_index_by_player.get(&player_id).copied() else {
+                return;
+            };
+            let row = &mut training_rows[row_idx];
+
+            let (combat_result, damage_dealt, damage_taken) = if combat.is_draw {
+                (2_i32, 0.0_f64, combat.damage as f64)
+            } else if combat.winner == player_id {
+                (1_i32, combat.damage as f64, 0.0_f64)
+            } else {
+                (0_i32, 0.0_f64, combat.damage as f64)
+            };
+
+            row.combat_result = Some(combat_result);
+            row.damage_dealt = damage_dealt;
+            row.damage_taken = damage_taken;
+            row.combat_time = combat.combat_time;
+            row.survivors = survivors;
+        };
+
+        update(training_rows, combat.p1, combat.team0_survivors);
+        if !combat.is_ghost {
+            update(training_rows, combat.p2, combat.team1_survivors);
+        }
     }
 }
 
@@ -1259,6 +1343,9 @@ fn resolve_combat(
             winner_id: p1.player_id,
             damage_to_loser: damage,
             is_draw: true,
+            combat_time: 0.0,
+            team0_survivors: 0,
+            team1_survivors: 0,
         };
     }
     if team0.is_empty() {
@@ -1268,6 +1355,9 @@ fn resolve_combat(
             winner_id: p2.player_id,
             damage_to_loser: damage,
             is_draw: false,
+            combat_time: 0.0,
+            team0_survivors: 0,
+            team1_survivors: survivors,
         };
     }
     if team1.is_empty() {
@@ -1277,6 +1367,9 @@ fn resolve_combat(
             winner_id: p1.player_id,
             damage_to_loser: damage,
             is_draw: false,
+            combat_time: 0.0,
+            team0_survivors: survivors,
+            team1_survivors: 0,
         };
     }
 
@@ -1304,6 +1397,9 @@ fn resolve_combat(
             winner_id: p1.player_id,
             damage_to_loser: damage,
             is_draw: false,
+            combat_time: result.combat_time,
+            team0_survivors: result.team0_survivors,
+            team1_survivors: result.team1_survivors,
         }
     } else {
         let damage = round_damage(round_num, result.team1_survivors, config);
@@ -1311,6 +1407,9 @@ fn resolve_combat(
             winner_id: p2.player_id,
             damage_to_loser: damage,
             is_draw: false,
+            combat_time: result.combat_time,
+            team0_survivors: result.team0_survivors,
+            team1_survivors: result.team1_survivors,
         }
     }
 }
