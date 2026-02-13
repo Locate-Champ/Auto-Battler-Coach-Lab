@@ -28,6 +28,8 @@ def _fake_batch(batch_size: int = 3) -> dict[str, torch.Tensor]:
 
     batch["fight_result"] = torch.ones((batch_size, 1), dtype=torch.float32)
     batch["damage_dealt"] = torch.ones((batch_size, 1), dtype=torch.float32)
+    batch["survivors"] = torch.zeros((batch_size, 1), dtype=torch.float32)
+    batch["combat_time"] = torch.zeros((batch_size, 1), dtype=torch.float32)
     batch["placement"] = torch.zeros((batch_size, 1), dtype=torch.long)
     return batch
 
@@ -38,6 +40,8 @@ def test_forward_shapes() -> None:
     assert outputs["fight_win_logits"].shape == (3,)
     assert outputs["fight_win_prob"].shape == (3,)
     assert outputs["damage_dealt"].shape == (3,)
+    assert outputs["survivors"].shape == (3,)
+    assert outputs["combat_time"].shape == (3,)
     assert outputs["placement_logits"].shape == (3, 8)
     assert outputs["placement_distribution"].shape == (3, 8)
     assert outputs["board_strength"].shape == (3,)
@@ -49,4 +53,4 @@ def test_multitask_loss_computes() -> None:
     outputs = model(batch)
     losses = model.compute_loss(outputs, batch)
     assert losses["total"].item() >= 0
-    assert set(losses.keys()) == {"total", "fight", "damage", "placement", "strength"}
+    assert set(losses.keys()) == {"total", "fight", "damage", "survivors", "time", "placement", "strength"}
