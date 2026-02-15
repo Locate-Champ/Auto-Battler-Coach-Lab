@@ -88,6 +88,9 @@ class LogParser:
         # Bench state: tft_bench with slot data
         "bench": re.compile(r'"key":"tft_bench","value":"(\{[^}]+(?:\}[^}]+)*\})"'),
 
+        # Shop state: tft_shop with current shop offerings
+        "shop": re.compile(r'"key":"tft_shop","value":"(\{[^}]+(?:\}[^}]+)*\})"'),
+
         # Roster state: tft_roster with all 8 players
         "roster": re.compile(r'"key":"tft_roster","value":"(\[[^\]]+\])"'),
     }
@@ -226,6 +229,20 @@ class LogParser:
                     event_type=EventType.BENCH_UPDATE,
                     timestamp=timestamp,
                     data={"bench": bench_data},
+                    raw_line=line,
+                )
+            except json.JSONDecodeError:
+                pass
+
+        # Shop update: tft_shop with store offerings
+        if match := self.PATTERNS["shop"].search(line):
+            try:
+                shop_json = match.group(1).replace('\\"', '"')
+                shop_data = json.loads(shop_json)
+                return GameEvent(
+                    event_type=EventType.SHOP_UPDATE,
+                    timestamp=timestamp,
+                    data={"shop": shop_data},
                     raw_line=line,
                 )
             except json.JSONDecodeError:

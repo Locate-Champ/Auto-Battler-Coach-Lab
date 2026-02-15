@@ -1,5 +1,4 @@
-# Test and coverage reporting with Codecov
-# Runs tests and uploads coverage reports
+# Tests (frontend build + python unit tests + regression gates)
 
 name: Tests & Coverage
 
@@ -26,24 +25,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./app
-        continue-on-error: true
+        working-directory: ./app/frontend
 
-      - name: Run tests with coverage
-        run: npm test -- --coverage --watchAll=false
-        working-directory: ./app
-        continue-on-error: true
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          # Get your token from https://codecov.io
-          token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./app/coverage
-          flags: unittests
-          name: tft-coach-coverage
-          fail_ci_if_error: false
-          verbose: true
+      - name: Build frontend
+        run: npm run build
+        working-directory: ./app/frontend
 
   # Python tests (if any)
   python-test:
@@ -59,19 +45,18 @@ jobs:
           python-version: '3.11'
 
       - name: Install test dependencies
-        run: pip install pytest pytest-cov
+        run: pip install pytest
 
-      - name: Run Python tests
-        run: pytest scripts/ -v --cov=scripts --cov-report=xml
-        continue-on-error: true
-
-      - name: Upload Python coverage
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage.xml
-          flags: python
-          fail_ci_if_error: false
+      - name: Run coach + simulator unit tests
+        run: |
+          python -m pytest \
+            tests/test_coach_archetype_library.py \
+            tests/test_coach_combat_scorer.py \
+            tests/test_coach_planner.py \
+            tests/test_coach_position_module.py \
+            tests/test_validate_output.py \
+            simulator/test_item_combat.py \
+            -q
 
   parity-gate:
     runs-on: ubuntu-latest
@@ -121,6 +106,26 @@ jobs:
             --parity-gate-max-layer2-timeout 0.40 \
             --parity-gate-min-focused-mean 0.60 \
             --parity-gate-min-focused-case 0.45
+
+  coach-eval-gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run coach eval gate
+        run: |
+          python -m coach.offline.eval_coach \
+            --eval-set outputs/coach/eval_sets/fixed_eval_set_opt_phase1_25.jsonl \
+            --limit 25 \
+            --output outputs/coach/eval_reports/fixed_current_opt_phase1_25.json \
+            --baseline-report outputs/coach/eval_reports/fixed_baseline_opt_phase1_25.json
 
   cython-build-windows:
     runs-on: windows-latest

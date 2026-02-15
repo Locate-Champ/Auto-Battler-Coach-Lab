@@ -50,6 +50,8 @@ class ReduxBridgeHandler:
         self.on_state_update: Optional[Callable[[dict], None]] = None
         self.last_board_hash: Optional[str] = None
         self.last_bench_hash: Optional[str] = None
+        self.last_shop_hash: Optional[str] = None
+        self.last_player_hash: Optional[str] = None
 
     def process_message(self, message: str) -> Optional[dict]:
         """
@@ -71,37 +73,53 @@ class ReduxBridgeHandler:
             logger.debug(f"Ignoring message type: {data.get('type')}")
             return None
 
+        raw = data.get("raw", {})
+        if not isinstance(raw, dict):
+            raw = {}
+
         # Extract and validate data
         state = {
             "timestamp": data.get("timestamp"),
             "board_units": self._parse_board_units(data.get("board_units", [])),
             "bench_units": self._parse_bench_units(data.get("bench_units", [])),
+            "shop_units": self._parse_shop_units(data.get("shop_units", []), raw.get("shop")),
             "player": self._parse_player_info(data.get("me", {})),
             "roster": data.get("roster", {}),
             "opponent_boards": self._parse_all_boards(data.get("board_data", {})),
-            "raw": data.get("raw", {}),
+            "raw": raw,
         }
 
         # Check if state actually changed
         current_board_hash = json.dumps(state["board_units"], sort_keys=True)
         current_bench_hash = json.dumps(state["bench_units"], sort_keys=True)
+        current_shop_hash = json.dumps(state["shop_units"], sort_keys=True)
+        current_player_hash = json.dumps(state["player"], sort_keys=True)
 
-        if (current_board_hash != self.last_board_hash or
-            current_bench_hash != self.last_bench_hash):
+        if (
+            current_board_hash != self.last_board_hash
+            or current_bench_hash != self.last_bench_hash
+            or current_shop_hash != self.last_shop_hash
+            or current_player_hash != self.last_player_hash
+        ):
 
             self.last_board_hash = current_board_hash
             self.last_bench_hash = current_bench_hash
+            self.last_shop_hash = current_shop_hash
+            self.last_player_hash = current_player_hash
 
             logger.info(
                 f"Redux state update: {len(state['board_units'])} board units, "
-                f"{len(state['bench_units'])} bench units"
+                f"{len(state['bench_units'])} bench units, "
+                f"{len(state['shop_units'])} shop units"
             )
 
             # Notify callback
             if self.on_state_update:
                 self.on_state_update(state)
 
-        return state
+            return state
+
+        return None
 
     def _parse_board_units(self, units: list) -> list[dict]:
         """Parse board units from Redux format."""
@@ -132,6 +150,33 @@ class ReduxBridgeHandler:
                 "stars": unit.get("stars", 1),
                 "items": unit.get("items", []),
             })
+        return parsed
+
+    def _parse_shop_units(self, shop_units: Any, raw_shop: Any) -> list[dict]:
+        """Parse shop units from Redux format (or raw shop_pieces)."""
+        parsed: list[dict] = []
+
+        if isinstance(shop_units, list) and shop_units:
+            for unit in shop_units:
+                if isinstance(unit, dict):
+                    cid = unit.get("character_id") or unit.get("name") or ""
+                    cost = unit.get("cost")
+                    if isinstance(cid, str) and cid:
+                        parsed.append({"character_id": cid, "cost": cost})
+                elif isinstance(unit, str) and unit:
+                    parsed.append({"character_id": unit, "cost": None})
+            return parsed
+
+        # Fallback: parse raw shop_pieces object.
+        if isinstance(raw_shop, dict):
+            for _, unit in raw_shop.items():
+                if not isinstance(unit, dict):
+                    continue
+                cid = unit.get("name") or unit.get("character_id") or ""
+                if not isinstance(cid, str) or not cid:
+                    continue
+                parsed.append({"character_id": cid, "cost": unit.get("cost") or unit.get("tier")})
+
         return parsed
 
     def _parse_player_info(self, me: dict) -> dict:

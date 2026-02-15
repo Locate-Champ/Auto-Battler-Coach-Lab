@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import type { CoachDecisionKey, CoachRecommendation, GameState as LiveGameState } from './hooks/useGameState';
+
 // Types
 type TipType = 'econ' | 'combat' | 'strength' | 'warning' | 'augment' | 'level';
 type AugmentChoiceType = 'econ' | 'combat' | 'flex';
@@ -420,12 +422,144 @@ const StageSectionComponent: React.FC<{
   </div>
 );
 
+const _formatCoachAction = (rec: CoachRecommendation): string => {
+  const title = rec?.action?.title;
+  if (typeof title === 'string' && title.trim()) return title;
+  return 'Action';
+};
+
+const LiveCoachBox: React.FC<{ gameState: LiveGameState | null | undefined }> = ({ gameState }) => {
+  const coach = gameState?.coach;
+  const recs: Partial<Record<CoachDecisionKey, CoachRecommendation[]>> = coach?.recommendations ?? {};
+  const hasAny = Object.values(recs).some((xs) => (xs?.length ?? 0) > 0);
+  const hasErrors = Object.values(coach?.errors ?? {}).some((e) => typeof e === 'string' && e.trim());
+  const hasAnyOutput = hasAny || hasErrors;
+
+  const order: CoachDecisionKey[] = ['items', 'position', 'econ', 'shop'];
+  const labels: Record<CoachDecisionKey, string> = {
+    items: 'Items',
+    position: 'Position',
+    econ: 'Econ',
+    shop: 'Shop',
+  };
+
+  return (
+    <div
+      className="px-3 py-2"
+      style={{
+        borderBottom: `1px solid ${COLORS.panelBorder}`,
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00))',
+      }}
+    >
+      <div className="flex items-center justify-between">
+        <div className="text-[11px] font-semibold text-white">Live Coach</div>
+        {gameState && (
+          <div className="text-[10px]" style={{ color: '#999' }}>
+            {gameState.stage} â€¢ L{gameState.player.level} â€¢ {gameState.player.health} HP
+          </div>
+        )}
+      </div>
+
+      {!gameState && (
+        <div className="text-[10px] mt-1" style={{ color: '#666' }}>
+          Waiting for live stateâ€¦ (toggle LIVE)
+        </div>
+      )}
+
+      {gameState && typeof coach?.coach_payload_version === 'number' && coach.coach_payload_version !== 1 && (
+        <div className="text-[10px] mt-1" style={{ color: COLORS.tipTypes.warning }}>
+          Unsupported coach payload version: {coach.coach_payload_version}
+        </div>
+      )}
+
+      {gameState &&
+        coach?.coach_state_validation_errors &&
+        coach.coach_state_validation_errors.length > 0 && (
+          <div className="text-[10px] mt-1" style={{ color: COLORS.tipTypes.warning }}>
+            Coach state validation: {coach.coach_state_validation_errors.length} issue(s)
+          </div>
+        )}
+
+      {gameState && coach?.error && (
+        <div className="text-[10px] mt-1" style={{ color: COLORS.tipTypes.warning }}>
+          Coach error: {coach.error}
+        </div>
+      )}
+
+      {gameState && !coach?.error && !hasAnyOutput && (
+        <div className="text-[10px] mt-1" style={{ color: '#666' }}>
+          Waiting for recommendationsâ€¦
+        </div>
+      )}
+
+      {gameState && !coach?.error && hasAnyOutput && (
+        <div className="mt-2 flex flex-col gap-2">
+          {order.map((key) => {
+            const decisionError = coach?.errors?.[key];
+            const xs = recs[key] ?? [];
+            const top = xs[0];
+
+            if (!top && !(typeof decisionError === 'string' && decisionError.trim())) {
+              return null;
+            }
+
+            return (
+              <div
+                key={key}
+                className="rounded-md p-2"
+                style={{
+                  backgroundColor: COLORS.sectionHover,
+                  border: `1px solid ${COLORS.panelBorder}`,
+                }}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[10px] font-semibold" style={{ color: COLORS.gold }}>
+                    {labels[key] || key}
+                  </span>
+                  <span className="text-[10px]" style={{ color: '#999' }}>
+                    {top ? top.score.total_score.toFixed(3) : '--'}
+                  </span>
+                </div>
+                {top ? (
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="text-[11px] font-semibold text-white">{_formatCoachAction(top)}</div>
+                    <div className="text-[10px]" style={{ color: '#999' }}>
+                      {top.explanation.confidence}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-[10px]" style={{ color: '#999' }}>
+                    No recommendations
+                  </div>
+                )}
+                {typeof decisionError === 'string' && decisionError.trim() && (
+                  <div className="mt-1 text-[10px]" style={{ color: COLORS.tipTypes.warning }}>
+                    Module error: {decisionError}
+                  </div>
+                )}
+                {top?.explanation?.lines?.length > 0 && (
+                  <div className="mt-1 text-[10px]" style={{ color: '#999' }}>
+                    {top.explanation.lines.slice(0, 3).map((line, idx) => (
+                      <div key={idx}>{line}</div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
+
 // Main component
 interface CoachingPanelProps {
   className?: string;
+  gameState?: LiveGameState | null;
 }
 
-const CoachingPanel: React.FC<CoachingPanelProps> = ({ className }) => {
+const CoachingPanel: React.FC<CoachingPanelProps> = ({ className, gameState }) => {
   // Default to Stage 3 (Mid Game) expanded since it's marked as active
   const [expandedSection, setExpandedSection] = useState<string | null>('stage-3');
 
@@ -453,6 +587,8 @@ const CoachingPanel: React.FC<CoachingPanelProps> = ({ className }) => {
           Tailored to your playstyle
         </p>
       </div>
+
+      <LiveCoachBox gameState={gameState} />
 
       {/* Stages container */}
       <div className="p-2 flex flex-col gap-1.5">

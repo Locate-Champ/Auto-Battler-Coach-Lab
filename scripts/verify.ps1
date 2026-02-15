@@ -13,6 +13,8 @@ param(
 
     [switch]$Plan,
 
+    [switch]$CoachEvalGate,
+
     [int]$ValidateOutputGames = 30,
 
     [int]$ValidateOutputWorkers = 1
@@ -26,12 +28,12 @@ function Invoke-Checked {
         [string]$Exe,
 
         [Parameter(ValueFromRemainingArguments = $true)]
-        [string[]]$Args
+        [string[]]$ArgList
     )
 
-    $joined = ($Args | ForEach-Object { $_ }) -join " "
+    $joined = ($ArgList | ForEach-Object { $_ }) -join " "
     Write-Host ("[RUN] {0} {1}" -f $Exe, $joined)
-    & $Exe @Args
+    & $Exe @ArgList
     if ($LASTEXITCODE -ne 0) {
         throw ("Command failed with exit code {0}: {1} {2}" -f $LASTEXITCODE, $Exe, $joined)
     }
@@ -65,9 +67,12 @@ $repo_root = Get-RepoRoot
 Push-Location $repo_root
 try {
     $python_exe = "python"
-    $venv_python = Join-Path $repo_root ".venv\\Scripts\\python.exe"
-    if (Test-Path $venv_python) {
-        $python_exe = $venv_python
+    $venv_python_win = Join-Path $repo_root ".venv\\Scripts\\python.exe"
+    $venv_python_posix = Join-Path $repo_root ".venv/bin/python"
+    if (Test-Path $venv_python_win) {
+        $python_exe = $venv_python_win
+    } elseif (Test-Path $venv_python_posix) {
+        $python_exe = $venv_python_posix
     }
 
     $changed = @()
@@ -75,7 +80,7 @@ try {
         $changed = Get-ChangedFiles
     }
 
-    if ($Mode -eq "changed" -and $changed.Count -eq 0) {
+    if ($Mode -eq "changed" -and $changed.Count -eq 0 -and -not $CoachEvalGate) {
         Write-Host "[OK] No staged/unstaged changes detected via git; nothing to verify."
         exit 0
     }
@@ -84,12 +89,14 @@ try {
     $run_benchmark = $false
     $run_validate_output = $false
     $run_frontend_build = $false
+    $run_coach_eval_gate = $false
 
     if ($Mode -eq "all") {
         $run_pytest = $true
         $run_benchmark = $true
         $run_validate_output = $true
         $run_frontend_build = $true
+        $run_coach_eval_gate = $true
     } else {
         $docs_only = $true
         foreach ($path in $changed) {
@@ -100,7 +107,7 @@ try {
             break
         }
 
-        if ($docs_only) {
+        if ($docs_only -and -not $CoachEvalGate) {
             Write-Host "[OK] Only documentation changes detected; skipping checks."
             exit 0
         }
@@ -128,6 +135,15 @@ try {
             $changed |
                 Where-Object { $_ -match "^app/frontend/" -or $_ -match "\.(ts|tsx|css|html)$" }
         ).Count -gt 0
+
+        $run_coach_eval_gate = $CoachEvalGate -or (
+            $changed |
+                Where-Object {
+                    $_ -match "^coach/" -or
+                    $_ -eq "app/server/websocket.py" -or
+                    $_ -match "^tests/test_coach_"
+                }
+        ).Count -gt 0
     }
 
     Write-Host "[INFO] verify.ps1 plan"
@@ -135,11 +151,13 @@ try {
     $benchmark_label = if ($run_benchmark) { "yes" } else { "no" }
     $validate_label = if ($run_validate_output) { "yes" } else { "no" }
     $frontend_label = if ($run_frontend_build) { "yes" } else { "no" }
+    $coach_eval_label = if ($run_coach_eval_gate) { "yes" } else { "no" }
 
     Write-Host ("  pytest:              {0}" -f $pytest_label)
     Write-Host ("  simulator.benchmark: {0}" -f $benchmark_label)
     Write-Host ("  simulator.validate_output: {0}" -f $validate_label)
     Write-Host ("  frontend build:      {0}" -f $frontend_label)
+    Write-Host ("  coach eval gate:     {0}" -f $coach_eval_label)
 
     if ($Plan) {
         exit 0
@@ -168,6 +186,20 @@ try {
             Invoke-Checked npm "run" "build"
         } finally {
             Pop-Location
+        }
+    }
+
+    if ($run_coach_eval_gate) {
+        $eval_set = Join-Path $repo_root "outputs\\coach\\eval_sets\\fixed_eval_set_opt_phase1_25.jsonl"
+        $baseline = Join-Path $repo_root "outputs\\coach\\eval_reports\\fixed_baseline_opt_phase1_25.json"
+        $current = Join-Path $repo_root "outputs\\coach\\eval_reports\\fixed_current_opt_phase1_25.json"
+
+        if ((Test-Path $eval_set) -and (Test-Path $baseline)) {
+            Invoke-Checked $python_exe "-m" "coach.offline.eval_coach" "--eval-set" "$eval_set" "--limit" "25" "--output" "$current" "--baseline-report" "$baseline"
+        } else {
+            Write-Host "[WARN] Coach eval gate skipped: missing fixed eval set and/or baseline report."
+            Write-Host ("[WARN] Expected: {0}" -f $eval_set)
+            Write-Host ("[WARN] Expected: {0}" -f $baseline)
         }
     }
 

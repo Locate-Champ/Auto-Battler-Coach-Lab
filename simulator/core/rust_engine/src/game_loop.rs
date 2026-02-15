@@ -688,6 +688,7 @@ pub struct TrainingUnitSnapshot {
 
 #[derive(Clone, Serialize)]
 pub struct TrainingRow {
+    pub row_schema_version: i32,
     pub game_id: i64,
     pub round: i32,
     pub player_id: i32,
@@ -1133,6 +1134,7 @@ fn collect_training_rows_precombat(
 
         let row_index = training_rows.len();
         training_rows.push(TrainingRow {
+            row_schema_version: 1,
             game_id,
             round: round_num,
             player_id: player.player_id as i32,

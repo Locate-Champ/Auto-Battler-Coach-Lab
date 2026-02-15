@@ -762,6 +762,7 @@ fn to_json_text<T: serde::Serialize>(value: &T, default: &str) -> String {
 }
 
 fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
+    let mut row_schema_version_builder = Int64Builder::with_capacity(rows.len());
     let mut game_id_builder = Int64Builder::with_capacity(rows.len());
     let mut round_builder = Int64Builder::with_capacity(rows.len());
     let mut player_id_builder = Int64Builder::with_capacity(rows.len());
@@ -804,6 +805,7 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
     let mut opponent_traits_builder = StringBuilder::with_capacity(rows.len(), 0);
 
     for row in rows {
+        row_schema_version_builder.append_value(row.row_schema_version as i64);
         game_id_builder.append_value(row.game_id);
         round_builder.append_value(row.round as i64);
         player_id_builder.append_value(row.player_id as i64);
@@ -852,6 +854,7 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
     }
 
     let schema = Schema::new(vec![
+        Field::new("row_schema_version", DataType::Int64, false),
         Field::new("game_id", DataType::Int64, false),
         Field::new("round", DataType::Int64, false),
         Field::new("player_id", DataType::Int64, false),
@@ -894,6 +897,7 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
     ]);
 
     let arrays: Vec<ArrayRef> = vec![
+        Arc::new(row_schema_version_builder.finish()),
         Arc::new(game_id_builder.finish()),
         Arc::new(round_builder.finish()),
         Arc::new(player_id_builder.finish()),

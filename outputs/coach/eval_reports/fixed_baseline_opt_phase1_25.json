@@ -1,0 +1,50 @@
+{
+  "input_dir": "results\\opt_phase1_validate_100",
+  "eval_set": null,
+  "limit": 25,
+  "states_loaded": 25,
+  "run_config": {
+    "combat_base_seed": 1337,
+    "top_k": 1,
+    "sim_budget_pass1": 32,
+    "sim_budget_pass2": 0,
+    "sim_budget_pass3": 0,
+    "topk_refine": 0,
+    "max_total_sims": 1024,
+    "seed_stride_per_opponent": 1000
+  },
+  "decisions": {
+    "shop": {
+      "n": 25,
+      "proxy_only_skipped": 0,
+      "no_recs": 0,
+      "mean_win_prob_delta": 0.0,
+      "pct_positive_win_prob_delta": 0.0,
+      "mean_expected_hp_delta": -4.562499999999999
+    },
+    "items": {
+      "n": 25,
+      "proxy_only_skipped": 0,
+      "no_recs": 0,
+      "mean_win_prob_delta": 0.0,
+      "pct_positive_win_prob_delta": 0.0,
+      "mean_expected_hp_delta": -4.562499999999999
+    },
+    "position": {
+      "n": 14,
+      "proxy_only_skipped": 11,
+      "no_recs": 0,
+      "mean_win_prob_delta": 0.2857142857142857,
+      "pct_positive_win_prob_delta": 0.2857142857142857,
+      "mean_expected_hp_delta": 0.0
+    },
+    "econ": {
+      "n": 25,
+      "proxy_only_skipped": 0,
+      "no_recs": 0,
+      "mean_win_prob_delta": 0.0,
+      "pct_positive_win_prob_delta": 0.0,
+      "mean_expected_hp_delta": -4.562499999999999
+    }
+  }
+}
