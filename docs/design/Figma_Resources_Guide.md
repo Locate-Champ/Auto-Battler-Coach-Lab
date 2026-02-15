@@ -1,12 +1,12 @@
 # Figma Community Resources for TFT Coach Companion
 
-## ðŸŽ¯ BEST RESOURCES FOR YOUR PROJECT
+## BEST RESOURCES FOR YOUR PROJECT
 
 Your app needs: dark theme, gaming aesthetic, dashboard components, data visualization, hexagon shapes, counters/steppers, and card layouts.
 
 ---
 
-## ðŸ“Š DASHBOARDS & ANALYTICS (High Priority)
+## DASHBOARDS & ANALYTICS (High Priority)
 
 ### 1. Analytics Dashboard Dark Mode - MingCute
 **URL:** https://www.figma.com/community/file/1132250387709963790/analytics-dashboard-dark-mode-mingcute
@@ -30,7 +30,7 @@ Your app needs: dark theme, gaming aesthetic, dashboard components, data visuali
 
 ---
 
-## ðŸŽ® GAMING UI KITS (High Priority)
+## GAMING UI KITS (High Priority)
 
 ### 1. Game UX Kit
 **URL:** https://www.figma.com/community/file/1460785931676185568/game-ux-kit
@@ -58,7 +58,7 @@ Your app needs: dark theme, gaming aesthetic, dashboard components, data visuali
 
 ---
 
-## ðŸ§© COMPONENT LIBRARIES (Medium Priority)
+## COMPONENT LIBRARIES (Medium Priority)
 
 ### 1. Components Library - Light & Dark Mode
 **URL:** https://www.figma.com/community/file/1131119460069711481/components-library-light-dark-mode
@@ -86,7 +86,7 @@ Your app needs: dark theme, gaming aesthetic, dashboard components, data visuali
 
 ---
 
-## ðŸ“š LEARNING RESOURCES
+## LEARNING RESOURCES
 
 ### Figma Best Practices - Components & Libraries
 **URL:** https://www.figma.com/best-practices/components-styles-and-shared-libraries/
@@ -98,7 +98,7 @@ Your app needs: dark theme, gaming aesthetic, dashboard components, data visuali
 
 ---
 
-## ðŸ› ï¸ RECOMMENDED WORKFLOW
+## RECOMMENDED WORKFLOW
 
 ### Step 1: Set Up Your File
 1. Create new Figma file
@@ -117,7 +117,7 @@ Your app needs: dark theme, gaming aesthetic, dashboard components, data visuali
 8. **SuggestionCard** - Medal + name + score
 9. **EmptyHex** - Empty board slot
 10. **HexUnit** - Champion in hex (most complex)
-11. **HexBoard** - 7Ã—4 grid of hexes
+11. **HexBoard** - 7x4 grid of hexes
 
 ### Step 3: Assemble Panels
 1. TraitsPanel (uses PanelCard, TraitRow)
@@ -135,18 +135,18 @@ Your app needs: dark theme, gaming aesthetic, dashboard components, data visuali
 ### Step 5: Create Variants
 - HexUnit variants: 1-5 cost (different border colors)
 - TierBadge variants: S/A/B/C/D/F
-- StatusIcon variants: âœ“/âš /â›”
+- StatusIcon variants: OK/WARN/FIX
 - Counter states: default/hover/active
 
 ---
 
-## ðŸ’¡ FIGMA TIPS FOR THIS PROJECT
+## FIGMA TIPS FOR THIS PROJECT
 
 ### Creating Hexagons
 In Figma, you can create hexagons by:
 1. Use the Polygon tool (P)
 2. Set sides to 6
-3. Rotate 90Â° for flat-top hexagon (TFT style)
+3. Rotate 90 degrees for flat-top hexagon (TFT style)
 4. Or use Frame with clip-path in CSS when exporting
 
 ### Auto Layout for Panels
@@ -174,7 +174,7 @@ Use instance swap for:
 
 ---
 
-## ðŸ”— QUICK LINKS
+## QUICK LINKS
 
 | Resource | Link |
 |----------|------|

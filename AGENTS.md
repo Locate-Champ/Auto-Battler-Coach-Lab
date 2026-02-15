@@ -2,10 +2,27 @@
 
 > Universal rules for any AI coding assistant (Claude Code, Codex, Copilot, Cursor, etc.) working on this codebase.
 > This document is self-contained. Read it fully before making any changes.
-> Last updated: 2026-02-12
+> Last updated: 2026-02-15
 
 ---
 
+## READ THIS FIRST (One Screen)
+
+These are the rules that break the project if ignored:
+
+1. **Minimal scope.** No drive-by refactors or “cleanups” unless explicitly asked.
+2. **Determinism + schema gates.**
+   - If you touch combat logic: run `python -m simulator.benchmark` and determinism checks must pass.
+   - If you touch collector/output: run `python -m simulator.validate_output <dir>` and all 19 checks must pass.
+3. **No data leakage.** Any training/validation split must be by `game_id` (never by row).
+4. **Don’t guess data formats.** `combat_data.json` ability variables are lists `[0, 1★, 2★, 3★]`. Use `_star_val()` / `_get_var()` (never index manually).
+5. **Legacy simulator is off-limits.** Don’t add new features to `simulator/Simulator/` (Set 4). Use `simulator/core/` and `simulator/game/`.
+6. **Measure before scaling.** Benchmark small (10–1000 games) before big runs. Use end-to-end numbers from `cloud_runner`.
+7. **No invented performance/cost claims.** Only report measured numbers from existing docs or fresh benchmarks you ran.
+8. **Docs + continuity are part of the work.** Keep `docs/` consistent, and update `.agent/CONTINUITY.md` on meaningful deltas.
+9. **Close the loop.** Before any “done” response: run the ntfy notification script and end with **Next Improvements**.
+
+---
 ## Completion Notification Rule
 
 - Before sending any final response, run:
@@ -26,6 +43,13 @@ Use the first available source:
 - At the conclusion of any phase or implementation, every AI assistant must include a short **Next Improvements** section.
 - That section must propose concrete opportunities to improve, innovate, or speed up the codebase.
 - If no high-confidence opportunity is identified, explicitly state that and what data is needed to find one.
+
+## Documentation Sync Rule
+
+- After completing any batch of changes, scan `docs/INDEX.md` and the files it references.
+- If any changed code, schema, config, or workflow invalidates or gaps existing documentation in `docs/`, update the affected doc(s) in the same task.
+- If a doc update is needed but out of scope, add a `TODO(docs):` entry to `.agent/CONTINUITY.md` under `[PLANS]` with the file path and what changed.
+- Do NOT create new doc files unless explicitly asked — only update existing ones.
 
 ## Autonomous Completion Checklist (One Screen)
 
@@ -136,14 +160,14 @@ A task is done when:
 1. **Read before writing.** Always read existing code before proposing changes. Understand the patterns, imports, and conventions already in use.
 2. **Use existing helpers.** The codebase has helper functions for common operations. Use `_star_val()`, `_get_var()`, `_resolve_item_name()`, etc. Do not rewrite them.
 3. **Follow established naming.** Match the file's existing naming style. Python: `snake_case`. TypeScript: `camelCase`/`PascalCase`. Constants: `UPPER_SNAKE_CASE`.
-4. **Use type hints** on all Python function signatures. The codebase uses `from __future__ import annotations` and `from typing import ...` consistently.
+4. **Use type hints** on all new or changed Python function signatures. The codebase uses `from __future__ import annotations` and `from typing import ...` consistently.
 5. **Use dataclasses** for data structures (not plain dicts or NamedTuples). The codebase uses `@dataclass` extensively.
 6. **Verify name mappings** before touching champion/item/trait code. There are three champion name formats and the item API names are obfuscated (see Name Mapping section below).
 7. **Test determinism** after any combat engine change. Run `python -m simulator.benchmark` and verify the determinism checks pass.
 8. **Validate output** after any simulator change. Run `python -m simulator.validate_output <dir>` to confirm all 19 quality checks pass.
 9. **Use Parquet** as the preferred output format. Install `pyarrow` before large runs. JSONL is a 6x larger fallback.
 10. **Measure before scaling.** Always benchmark small (10-1000 games) before running large batches. Use end-to-end numbers from `cloud_runner`, not microbenchmark numbers.
-11. **Use absolute file paths** in responses and references.
+11. **Use absolute file paths** in responses and references. Repo-root-relative paths like `simulator/core/combat_engine.py` are preferred over ambiguous `../` paths.
 12. **Keep the existing section dividers** in large files. The codebase uses ASCII art comment headers like `# -- Section Name ----` to organize long files.
 13. **Split training data by `game_id`**, never by row. Row-level splits leak future game state.
 14. **Use gate-based progression** for any scale-up work: Gate A (1k) -> Gate B (50k) -> Gate C (250k) -> Gate D (1M), each with measurable pass criteria.
