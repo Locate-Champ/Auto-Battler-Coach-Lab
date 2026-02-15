@@ -50,6 +50,7 @@ logs/
 *.zip
 *.rar
 *.7z
+*.wad.client
 *.docx
 *.doc
 
@@ -57,6 +58,8 @@ logs/
 # Raw log dumps from MetaTFT/Overwolf should not be committed
 
 # Local scratch
+/PLAN.md
+/set-16-tables-*.avif
 overlay_list.txt
 .claude/
 nul
