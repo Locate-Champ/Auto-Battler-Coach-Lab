@@ -19,27 +19,20 @@ class GameCollector:
         self.game_id = game_id
         self.rounds: List[Dict] = []
         self.placements: List[Dict] = []
+        self._round_data_by_round: Dict[int, Dict] = {}
 
-    def on_round_end(self, game: 'TFTGame', round_num: int,
-                     combat_results: List[Dict]):
-        """Called after each PvP round.
-
-        Args:
-            game: The TFTGame instance.
-            round_num: Current round number.
-            combat_results: List of combat result dicts from this round.
-        """
+    def on_round_start(self, game: 'TFTGame', round_num: int):
+        """Called after matchmaking and before combat resolves."""
         round_data = {
             'round': round_num,
             'alive_count': len(game.alive_players),
             'players': [],
-            'combats': combat_results,
+            'combats': [],
         }
 
         for player in game.players:
             if not player.alive:
                 continue
-            # Compact state snapshot for ML training
             board_champs = []
             for (r, c), ch in player.board.items():
                 board_champs.append({
@@ -64,6 +57,24 @@ class GameCollector:
             })
 
         self.rounds.append(round_data)
+        self._round_data_by_round[round_num] = round_data
+
+    def on_round_end(self, game: 'TFTGame', round_num: int,
+                     combat_results: List[Dict]):
+        """Called after each PvP round.
+
+        Args:
+            game: The TFTGame instance.
+            round_num: Current round number.
+            combat_results: List of combat result dicts from this round.
+        """
+        round_data = self._round_data_by_round.get(round_num)
+        if round_data is None:
+            self.on_round_start(game, round_num)
+            round_data = self._round_data_by_round.get(round_num)
+        if round_data is None:
+            return
+        round_data['combats'] = combat_results
 
     def on_game_end(self, game: 'TFTGame'):
         """Called when the game finishes."""
@@ -119,29 +130,39 @@ class GameCollector:
                 p2 = combat.get('p2')
                 winner = combat.get('winner')
                 damage = combat.get('damage', 0)
+                survivors = int(combat.get('survivors', 0) or 0)
+                combat_time = float(combat.get('combat_time', 0.0) or 0.0)
+                is_ghost = bool(combat.get('is_ghost', False))
                 if p1 is None or p2 is None:
                     continue
 
                 is_draw = winner not in (p1, p2)
-                for player_id, opponent_id in ((p1, p2), (p2, p1)):
+                pairs = ((p1, p2),) if is_ghost else ((p1, p2), (p2, p1))
+                for player_id, opponent_id in pairs:
                     if is_draw:
                         combat_result = 2
                         damage_dealt = 0.0
                         damage_taken = float(damage)
+                        player_survivors = 0
                     elif winner == player_id:
                         combat_result = 1
                         damage_dealt = float(damage)
                         damage_taken = 0.0
+                        player_survivors = survivors
                     else:
                         combat_result = 0
                         damage_dealt = 0.0
                         damage_taken = float(damage)
+                        player_survivors = 0
 
                     combat_by_player[player_id] = {
                         'opponent_id': opponent_id,
                         'combat_result': combat_result,
                         'damage_dealt': damage_dealt,
                         'damage_taken': damage_taken,
+                        'combat_time': combat_time,
+                        'survivors': player_survivors,
+                        'is_ghost': is_ghost,
                     }
 
             for player_state in round_data['players']:
@@ -167,6 +188,14 @@ class GameCollector:
                 opponent_units = []
                 opponent_traits = {}
                 opponent_hp = 0
+                opponent_gold = 0
+                opponent_level = 0
+                opponent_win_streak = 0
+                opponent_loss_streak = 0
+                opponent_board_count = 0
+                opponent_augments = []
+                opponent_num_augments = 0
+                opponent_num_traits = 0
                 if opponent_state is not None:
                     for unit in opponent_state.get('board', []):
                         position = unit.get('pos')
@@ -182,6 +211,14 @@ class GameCollector:
                         })
                     opponent_traits = opponent_state.get('traits', {})
                     opponent_hp = opponent_state.get('hp', 0)
+                    opponent_gold = opponent_state.get('gold', 0)
+                    opponent_level = opponent_state.get('level', 0)
+                    opponent_win_streak = opponent_state.get('win_streak', 0)
+                    opponent_loss_streak = opponent_state.get('loss_streak', 0)
+                    opponent_board_count = opponent_state.get('board_count', 0)
+                    opponent_augments = opponent_state.get('augments', [])
+                    opponent_num_augments = len(opponent_augments)
+                    opponent_num_traits = len(opponent_traits)
 
                 streak = int(player_state.get('win_streak', 0)) - int(player_state.get('loss_streak', 0))
                 rows.append({
@@ -206,9 +243,21 @@ class GameCollector:
                     'opponent_units': opponent_units,
                     'opponent_traits': opponent_traits,
                     'opponent_hp': opponent_hp,
+                    'opponent_gold': opponent_gold,
+                    'opponent_level': opponent_level,
+                    'opponent_win_streak': opponent_win_streak,
+                    'opponent_loss_streak': opponent_loss_streak,
+                    'opponent_streak': int(opponent_win_streak) - int(opponent_loss_streak),
+                    'opponent_board_count': opponent_board_count,
+                    'opponent_augments': opponent_augments,
+                    'opponent_num_augments': opponent_num_augments,
+                    'opponent_num_traits': opponent_num_traits,
                     'combat_result': matchup.get('combat_result'),
                     'damage_dealt': matchup.get('damage_dealt', 0.0),
                     'damage_taken': matchup.get('damage_taken', 0.0),
+                    'combat_time': matchup.get('combat_time', 0.0),
+                    'survivors': matchup.get('survivors', 0),
+                    'is_ghost': matchup.get('is_ghost', False),
                     # Compact board representation
                     'board_names': [c['name'] for c in player_state['board']],
                     'board_stars': [c['star'] for c in player_state['board']],

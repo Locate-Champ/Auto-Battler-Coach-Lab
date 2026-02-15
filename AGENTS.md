@@ -27,6 +27,18 @@ Use the first available source:
 - That section must propose concrete opportunities to improve, innovate, or speed up the codebase.
 - If no high-confidence opportunity is identified, explicitly state that and what data is needed to find one.
 
+## Autonomous Completion Checklist (One Screen)
+
+Use this when running autonomously, or when the user asks to "do it end-to-end".
+
+1. Re-read the request and restate concrete success criteria.
+2. Read `.agent/CONTINUITY.md` before acting (autonomous sessions).
+3. Implement the minimal-scope change (no drive-by refactors).
+4. Verify based on what changed (or run `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\verify.ps1 -Mode changed` to auto-pick checks).
+5. Update `.agent/CONTINUITY.md` on meaningful deltas.
+6. Before the final response, run the ntfy notification (Completion Notification Rule).
+7. End the response with a short **Next Improvements** section.
+
 ---
 
 ## Continuity Protocol (Autonomous Sessions)
@@ -703,6 +715,217 @@ pytest
 ```
 
 ---
+
+## AWS Batch Simulation (Beginner Guide)
+
+> Goal: Run `simulator.cloud_runner` on a large EC2 instance, store outputs in S3, and avoid SSH by using AWS Systems Manager (SSM) Session Manager.
+
+### 1) Create an S3 Bucket (Results Storage)
+
+AWS Console steps:
+
+1. Go to **S3** -> **Buckets** -> **Create bucket**
+2. Bucket name: something like `tft-sim-results-<yourname>`
+3. Region: pick the same region you plan to run EC2 in
+4. **Block Public Access**: leave ON (recommended)
+5. **Bucket Versioning**: optional (usually OFF for large generated data; costs more if ON)
+6. **Default encryption**: ON (SSE-S3 is fine)
+7. Create bucket
+
+Suggested prefix layout in the bucket:
+
+- `tft-results/calib/` (throwaway tests)
+- `tft-results/gates/` (Gate A/B/C)
+- `tft-results/prod/` (gold datasets you trained on)
+
+### 2) Create the EC2 IAM Role (So the Instance Can Upload to S3 + Use SSM)
+
+AWS Console steps:
+
+1. Go to **IAM** -> **Roles** -> **Create role**
+2. Trusted entity:
+   - Select **AWS service**
+   - Use case: **EC2**
+   - This creates the *trust policy* (it should include `sts:AssumeRole` + `ec2.amazonaws.com`)
+3. Permissions:
+   - Attach **AmazonSSMManagedInstanceCore** (so you can connect via Session Manager)
+4. Create the role (example name: `tft-sim-ec2-role`)
+
+Add the S3 permissions policy snippet (this is **NOT** the trust policy):
+
+1. IAM -> Roles -> `tft-sim-ec2-role` -> **Permissions** tab
+2. Click **Add permissions** -> **Create inline policy**
+3. Choose the **JSON** tab, paste the S3 policy JSON, and edit:
+   - `YOUR_BUCKET`
+   - the prefix (for example `tft-results/*`)
+4. Review + name it (example: `tft-results-s3-write`) -> Create
+
+Example S3 write policy (edit bucket + prefix):
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListBucketPrefix",
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": ["arn:aws:s3:::YOUR_BUCKET"],
+      "Condition": { "StringLike": { "s3:prefix": ["tft-results/*"] } }
+    },
+    {
+      "Sid": "WriteObjects",
+      "Effect": "Allow",
+      "Action": ["s3:PutObject", "s3:AbortMultipartUpload"],
+      "Resource": ["arn:aws:s3:::YOUR_BUCKET/tft-results/*"]
+    }
+  ]
+}
+```
+
+### 3) Add S3 Lifecycle Rules (Auto-Expire Old Runs)
+
+This prevents storage creep. Use different rules per prefix (calib vs prod).
+
+AWS Console steps:
+
+1. S3 -> your bucket -> **Management** tab -> **Lifecycle rules** -> **Create lifecycle rule**
+2. Rule name: `expire-calib-30d` (example)
+3. Choose rule scope:
+   - **Limit the scope of this rule using one or more filters**
+   - Filter type: **Prefix**
+   - Prefix: `tft-results/calib/`
+4. Actions:
+   - Optional: **Transition current versions of objects between storage classes**
+     - Example: transition to **Standard-IA** after 7 days
+   - **Expire current versions of objects**
+     - Example: expire after 30 days
+   - Recommended: **Abort incomplete multipart uploads**
+     - Example: abort after 7 days
+5. Create rule
+
+Repeat for other prefixes with longer retention:
+
+- `tft-results/gates/`: expire after 90-180 days (optional transition to IA after 14-30 days)
+- `tft-results/prod/`: 6-12 months minimum; consider transitioning to Glacier tiers rather than expiring
+
+### 4) Launch the EC2 Instance (Ubuntu + User Data)
+
+AWS Console steps:
+
+1. EC2 -> **Instances** -> **Launch instances**
+2. AMI: Ubuntu 22.04 LTS (x86_64)
+3. Instance type: pick the compute-optimized size you want (make sure your account has quota)
+4. Key pair: optional if using SSM only (no SSH required)
+5. Network settings:
+   - Security group: you can run with **no inbound rules** when using Session Manager
+6. Storage:
+   - Use `gp3` and size it for your target output (Parquet is much smaller than JSONL)
+7. Advanced details:
+   - **IAM instance profile**: select `tft-sim-ec2-role`
+   - **User data**: paste a cloud-init script that installs deps, builds the Rust extension, runs the simulator, and uploads to S3
+
+If your AWS account can’t launch the big instance type:
+
+1. Go to **Service Quotas** -> **Amazon Elastic Compute Cloud (Amazon EC2)**
+2. Find quotas for **Running On-Demand vCPUs** (and the instance family you want)
+3. Request an increase in the region you’re launching in
+
+Example user-data (cloud-init) script (edit the CONFIG block):
+
+```bash
+#!/bin/bash
+set -euo pipefail
+exec > >(tee -a /var/log/tft-user-data.log) 2>&1
+
+# ---------------- CONFIG ----------------
+REPO_URL="https://github.com/YOUR_GITHUB_USER_OR_ORG/tft-coach-234.git"
+REPO_REF="main"  # branch/tag/sha
+
+RUN_ID="aws_calib_10k_$(date +%Y%m%d_%H%M%S)"
+TOTAL_GAMES=10000
+WORKERS="$(nproc)"
+ENGINE="rust_full"
+AGENT_PROFILE="mixed"
+
+S3_URI="s3://YOUR_BUCKET/tft-results/calib/${RUN_ID}/"
+OUTDIR="/home/ubuntu/tft-coach-234/results/${RUN_ID}"
+# ---------------------------------------
+
+apt-get update
+apt-get install -y git python3 python3-venv python3-pip python3-dev build-essential pkg-config libssl-dev curl awscli
+
+# Install Rust toolchain (as ubuntu user)
+sudo -u ubuntu -H bash -lc 'curl https://sh.rustup.rs -sSf | sh -s -- -y'
+
+# Clone repo
+sudo -u ubuntu -H bash -lc "cd /home/ubuntu; if [ ! -d tft-coach-234 ]; then git clone --filter=blob:none ${REPO_URL} tft-coach-234; fi"
+sudo -u ubuntu -H bash -lc "cd /home/ubuntu/tft-coach-234; git fetch --all --tags; git checkout ${REPO_REF}"
+
+# Python venv + minimal deps for simulator batch
+sudo -u ubuntu -H bash -lc "cd /home/ubuntu/tft-coach-234; python3 -m venv .venv; source .venv/bin/activate; pip install -U pip"
+sudo -u ubuntu -H bash -lc "cd /home/ubuntu/tft-coach-234; source .venv/bin/activate; pip install -r requirements-simulator.txt maturin"
+
+# Build Rust extension into the venv
+sudo -u ubuntu -H bash -lc "cd /home/ubuntu/tft-coach-234/simulator/core/rust_engine; source /home/ubuntu/tft-coach-234/.venv/bin/activate; maturin develop --release"
+
+# Run
+sudo -u ubuntu -H bash -lc "cd /home/ubuntu/tft-coach-234; source .venv/bin/activate; mkdir -p \"${OUTDIR}\"; \
+  python -m simulator.cloud_runner --engine ${ENGINE} --games ${TOTAL_GAMES} --workers ${WORKERS} \
+    --output \"${OUTDIR}\" --agent-profile ${AGENT_PROFILE} --require-parquet --progress-every 500"
+
+# Upload results to S3 (uses instance role creds)
+aws s3 sync "${OUTDIR}" "${S3_URI}" --only-show-errors
+echo "Uploaded to ${S3_URI}"
+```
+
+Private GitHub repo note:
+
+- Avoid putting a GitHub token directly into user-data (it can leak via logs/metadata).
+- For private repos, prefer an SSH deploy key or fetch a source tarball from S3.
+
+### 5) Connect Without SSH (Session Manager)
+
+AWS Console steps:
+
+1. EC2 -> Instances -> select your instance -> **Connect** -> **Session Manager**
+2. Or: Systems Manager -> **Session Manager** -> **Start session**
+
+If the instance doesn’t show up in Session Manager:
+
+- Confirm the instance role includes `AmazonSSMManagedInstanceCore`
+- Confirm the instance has outbound network access to SSM endpoints (default VPC + public internet works)
+- Check agent status on the instance (Ubuntu is often preconfigured, but not always):
+  - `systemctl status amazon-ssm-agent` (or `snap services amazon-ssm-agent`)
+
+On the instance, tail user-data logs:
+
+```bash
+sudo tail -f /var/log/tft-user-data.log
+```
+
+### 6) Validate Upload Worked
+
+AWS Console:
+
+- S3 -> your bucket -> browse to `tft-results/...`
+
+On the instance:
+
+```bash
+aws s3 ls s3://YOUR_BUCKET/tft-results/ --recursive | head
+```
+
+### 7) Scale Out (Optional): Shard Across Multiple Instances
+
+If you run multiple smaller boxes, shard deterministically:
+
+```bash
+python -m simulator.cloud_runner --engine rust_full --games 1000000 --num-shards 10 --shard-index 0 --output results/shard_00 ...
+python -m simulator.cloud_runner --engine rust_full --games 1000000 --num-shards 10 --shard-index 1 --output results/shard_01 ...
+```
+
+Each shard runs a disjoint contiguous seed range (so you can merge results later).
 
 ## Key Documentation Files
 

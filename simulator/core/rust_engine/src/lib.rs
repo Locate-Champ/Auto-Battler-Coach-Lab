@@ -14,7 +14,7 @@ mod targeting;
 mod types;
 mod unit;
 
-use arrow_array::builder::{Float64Builder, Int64Builder, StringBuilder};
+use arrow_array::builder::{BooleanBuilder, Float64Builder, Int64Builder, StringBuilder};
 use arrow_array::{ArrayRef, RecordBatch};
 use arrow_schema::{DataType, Field, Schema};
 use parquet::arrow::ArrowWriter;
@@ -777,15 +777,27 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
     let mut num_traits_builder = Int64Builder::with_capacity(rows.len());
     let mut alive_count_builder = Int64Builder::with_capacity(rows.len());
     let mut opponent_hp_builder = Int64Builder::with_capacity(rows.len());
+    let mut opponent_gold_builder = Int64Builder::with_capacity(rows.len());
+    let mut opponent_level_builder = Int64Builder::with_capacity(rows.len());
+    let mut opponent_streak_builder = Int64Builder::with_capacity(rows.len());
+    let mut opponent_board_count_builder = Int64Builder::with_capacity(rows.len());
+    let mut opponent_win_streak_builder = Int64Builder::with_capacity(rows.len());
+    let mut opponent_loss_streak_builder = Int64Builder::with_capacity(rows.len());
+    let mut opponent_num_augments_builder = Int64Builder::with_capacity(rows.len());
+    let mut opponent_num_traits_builder = Int64Builder::with_capacity(rows.len());
+    let mut is_ghost_builder = BooleanBuilder::with_capacity(rows.len());
     let mut combat_result_builder = Int64Builder::with_capacity(rows.len());
     let mut damage_dealt_builder = Float64Builder::with_capacity(rows.len());
     let mut damage_taken_builder = Float64Builder::with_capacity(rows.len());
+    let mut combat_time_builder = Float64Builder::with_capacity(rows.len());
+    let mut survivors_builder = Int64Builder::with_capacity(rows.len());
 
     let mut board_names_builder = StringBuilder::with_capacity(rows.len(), 0);
     let mut board_stars_builder = StringBuilder::with_capacity(rows.len(), 0);
     let mut trait_names_builder = StringBuilder::with_capacity(rows.len(), 0);
     let mut trait_counts_builder = StringBuilder::with_capacity(rows.len(), 0);
     let mut augments_builder = StringBuilder::with_capacity(rows.len(), 0);
+    let mut opponent_augments_builder = StringBuilder::with_capacity(rows.len(), 0);
     let mut units_builder = StringBuilder::with_capacity(rows.len(), 0);
     let mut traits_builder = StringBuilder::with_capacity(rows.len(), 0);
     let mut opponent_units_builder = StringBuilder::with_capacity(rows.len(), 0);
@@ -807,6 +819,15 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
         num_traits_builder.append_value(row.num_traits as i64);
         alive_count_builder.append_value(row.alive_count as i64);
         opponent_hp_builder.append_value(row.opponent_hp as i64);
+        opponent_gold_builder.append_value(row.opponent_gold as i64);
+        opponent_level_builder.append_value(row.opponent_level as i64);
+        opponent_streak_builder.append_value(row.opponent_streak as i64);
+        opponent_board_count_builder.append_value(row.opponent_board_count as i64);
+        opponent_win_streak_builder.append_value(row.opponent_win_streak as i64);
+        opponent_loss_streak_builder.append_value(row.opponent_loss_streak as i64);
+        opponent_num_augments_builder.append_value(row.opponent_num_augments as i64);
+        opponent_num_traits_builder.append_value(row.opponent_num_traits as i64);
+        is_ghost_builder.append_value(row.is_ghost);
 
         match row.combat_result {
             Some(value) => combat_result_builder.append_value(value as i64),
@@ -815,12 +836,15 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
 
         damage_dealt_builder.append_value(row.damage_dealt);
         damage_taken_builder.append_value(row.damage_taken);
+        combat_time_builder.append_value(row.combat_time);
+        survivors_builder.append_value(row.survivors as i64);
 
         board_names_builder.append_value(to_json_text(&row.board_names, "[]"));
         board_stars_builder.append_value(to_json_text(&row.board_stars, "[]"));
         trait_names_builder.append_value(to_json_text(&row.trait_names, "[]"));
         trait_counts_builder.append_value(to_json_text(&row.trait_counts, "[]"));
         augments_builder.append_value(to_json_text(&row.augments, "[]"));
+        opponent_augments_builder.append_value(to_json_text(&row.opponent_augments, "[]"));
         units_builder.append_value(to_json_text(&row.units, "[]"));
         traits_builder.append_value(to_json_text(&row.traits, "{}"));
         opponent_units_builder.append_value(to_json_text(&row.opponent_units, "[]"));
@@ -848,9 +872,21 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
         Field::new("opponent_units", DataType::Utf8, false),
         Field::new("opponent_traits", DataType::Utf8, false),
         Field::new("opponent_hp", DataType::Int64, false),
+        Field::new("opponent_gold", DataType::Int64, false),
+        Field::new("opponent_level", DataType::Int64, false),
+        Field::new("opponent_streak", DataType::Int64, false),
+        Field::new("opponent_board_count", DataType::Int64, false),
+        Field::new("opponent_win_streak", DataType::Int64, false),
+        Field::new("opponent_loss_streak", DataType::Int64, false),
+        Field::new("opponent_num_augments", DataType::Int64, false),
+        Field::new("opponent_num_traits", DataType::Int64, false),
+        Field::new("opponent_augments", DataType::Utf8, false),
+        Field::new("is_ghost", DataType::Boolean, false),
         Field::new("combat_result", DataType::Int64, true),
         Field::new("damage_dealt", DataType::Float64, false),
         Field::new("damage_taken", DataType::Float64, false),
+        Field::new("combat_time", DataType::Float64, false),
+        Field::new("survivors", DataType::Int64, false),
         Field::new("board_names", DataType::Utf8, false),
         Field::new("board_stars", DataType::Utf8, false),
         Field::new("trait_names", DataType::Utf8, false),
@@ -878,9 +914,21 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
         Arc::new(opponent_units_builder.finish()),
         Arc::new(opponent_traits_builder.finish()),
         Arc::new(opponent_hp_builder.finish()),
+        Arc::new(opponent_gold_builder.finish()),
+        Arc::new(opponent_level_builder.finish()),
+        Arc::new(opponent_streak_builder.finish()),
+        Arc::new(opponent_board_count_builder.finish()),
+        Arc::new(opponent_win_streak_builder.finish()),
+        Arc::new(opponent_loss_streak_builder.finish()),
+        Arc::new(opponent_num_augments_builder.finish()),
+        Arc::new(opponent_num_traits_builder.finish()),
+        Arc::new(opponent_augments_builder.finish()),
+        Arc::new(is_ghost_builder.finish()),
         Arc::new(combat_result_builder.finish()),
         Arc::new(damage_dealt_builder.finish()),
         Arc::new(damage_taken_builder.finish()),
+        Arc::new(combat_time_builder.finish()),
+        Arc::new(survivors_builder.finish()),
         Arc::new(board_names_builder.finish()),
         Arc::new(board_stars_builder.finish()),
         Arc::new(trait_names_builder.finish()),

@@ -282,24 +282,27 @@ class DataLoader:
         sample_rows: bool = False,
         row_batch_size: int = 4096,
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-        """Build dataset for win/loss prediction.
-
-        To avoid post-combat leakage, features are taken from round N and the
-        label is the player's combat_result at round N+1.
-        """
+        """Build dataset for win/loss prediction."""
         rows = self.load_raw(
             max_rows=max_rows,
             sample=sample_rows,
             seed=seed,
             row_batch_size=row_batch_size,
         )
-        filtered_rows, labels = self._build_temporal_fight_examples(rows)
+
+        filtered_rows: List[Dict[str, Any]] = []
+        labels: List[int] = []
+        for row in rows:
+            result = self._infer_binary_fight_result(row)
+            if result is None:
+                continue
+            filtered_rows.append(row)
+            labels.append(int(result))
 
         if not filtered_rows:
             raise ValueError(
-                "No temporal fight examples found. "
-                "Need at least two rounds per (game_id, player_id) with "
-                "next-round combat_result or streak fields."
+                "No fight examples found. "
+                "Need combat_result=0/1 (draw rows are ignored) or inferrable streak fields."
             )
 
         label_array = np.asarray(labels, dtype=np.int64)
@@ -321,7 +324,7 @@ class DataLoader:
             y_test=y_test,
             feature_count=X_train.shape[1] if X_train.size else len(self.feature_engineer.feature_names()),
         )
-        print("[fight] labeling=next_round_combat_result (leak-safe temporal shift)")
+        print("[fight] labeling=current_round_combat_result")
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
 
     def _build_temporal_fight_examples(

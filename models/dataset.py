@@ -336,6 +336,8 @@ class TFTDataset(Dataset[Dict[str, torch.Tensor]]):
         return {
             "fight_result": torch.tensor([fight_result], dtype=torch.float32),
             "damage_dealt": torch.tensor([float(row.get("damage_dealt", row.get("damage", 0.0)) or 0.0)], dtype=torch.float32),
+            "survivors": torch.tensor([float(row.get("survivors", 0) or 0)], dtype=torch.float32),
+            "combat_time": torch.tensor([float(row.get("combat_time", 0.0) or 0.0)], dtype=torch.float32),
             "placement": torch.tensor([placement], dtype=torch.long),
         }
 
