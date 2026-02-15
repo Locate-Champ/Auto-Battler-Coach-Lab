@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "type": "linear_logistic_pairwise_diff",
+  "input_dir": "results\\opt_phase1_validate_100",
+  "features": [
+    "board_power",
+    "level",
+    "gold",
+    "hp",
+    "interest",
+    "streak",
+    "num_traits_2plus"
+  ],
+  "weights": [
+    0.28909261970137456,
+    3.4484470214984886,
+    0.08540347170546807,
+    0.04744879520276372,
+    -0.4492700125630893,
+    0.13505684822284272,
+    -0.03318827399726756
+  ],
+  "bias": 0.0,
+  "train_pairs": 2164,
+  "val_pairs": 541,
+  "train_acc": 0.9075785582255084,
+  "val_acc": 0.88909426987061
+}

@@ -1,0 +1,1804 @@
+{
+  "schema_version": 1,
+  "type": "coach_archetypes",
+  "source": "data\\meta\\comps.json",
+  "count": 25,
+  "archetypes": [
+    {
+      "archetype_id": "388000",
+      "name": "TFT16_Augment_XinZhaoCarry, TFT16_Garen",
+      "tier": "S",
+      "units": [
+        "TFT16_Galio",
+        "TFT16_Garen",
+        "TFT16_JarvanIV",
+        "TFT16_Lux",
+        "TFT16_Poppy",
+        "TFT16_Sona",
+        "TFT16_Swain",
+        "TFT16_Vayne",
+        "TFT16_Zaahen"
+      ],
+      "traits": [
+        "Demacia",
+        "Heroic",
+        "Defender",
+        "Arcanist",
+        "Yordle",
+        "Juggernaut",
+        "Invoker",
+        "Noxus",
+        "Longshot",
+        "Darkin",
+        "Immortal"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Zaahen",
+          "unit_token": "Zaahen",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_InfinityEdge",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 50338,
+          "avg_placement": 3.08,
+          "place_change": -0.794
+        },
+        {
+          "unit": "TFT16_Garen",
+          "unit_token": "Garen",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_Redemption",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 2373,
+          "avg_placement": 3.01,
+          "place_change": -0.868
+        },
+        {
+          "unit": "TFT16_Lux",
+          "unit_token": "Lux",
+          "items": [
+            "TFT_Item_Morellonomicon",
+            "TFT_Item_SpearOfShojin",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 2620,
+          "avg_placement": 3.1,
+          "place_change": -0.775
+        }
+      ],
+      "stats": {
+        "avg_placement": 3.88,
+        "top4_rate": 100,
+        "games_played": 186215,
+        "win_rate": 11.23
+      }
+    },
+    {
+      "archetype_id": "388001",
+      "name": "TFT16_Augment_XinZhaoCarry, TFT16_Yasuo",
+      "tier": "S",
+      "units": [
+        "TFT16_Kennen",
+        "TFT16_Sett",
+        "TFT16_Shen",
+        "TFT16_Wukong",
+        "TFT16_Yasuo",
+        "TFT16_Yone",
+        "TFT16_Yunara",
+        "TFT16_Zaahen"
+      ],
+      "traits": [
+        "Ionia",
+        "Yordle",
+        "Defender",
+        "The Boss",
+        "Bruiser",
+        "Slayer",
+        "Quickstriker",
+        "Darkin",
+        "Immortal"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Zaahen",
+          "unit_token": "Zaahen",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_SteraksGage",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 6336,
+          "avg_placement": 3.25,
+          "place_change": -0.673
+        },
+        {
+          "unit": "TFT16_Yasuo",
+          "unit_token": "Yasuo",
+          "items": [
+            "TFT_Item_InfinityEdge",
+            "TFT_Item_Quicksilver",
+            "TFT_Item_UnstableConcoction"
+          ],
+          "games": 550,
+          "avg_placement": 3.52,
+          "place_change": -0.397
+        },
+        {
+          "unit": "TFT16_Yone",
+          "unit_token": "Yone",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_GuardianAngel",
+            "TFT_Item_GuinsoosRageblade"
+          ],
+          "games": 522,
+          "avg_placement": 2.78,
+          "place_change": -1.143
+        }
+      ],
+      "stats": {
+        "avg_placement": 3.92,
+        "top4_rate": 100,
+        "games_played": 29100,
+        "win_rate": 10.81
+      }
+    },
+    {
+      "archetype_id": "388002",
+      "name": "TFT16_Zaun, TFT16_Warwick, TFT16_Wukong",
+      "tier": "S",
+      "units": [
+        "TFT16_Blitzcrank",
+        "TFT16_DrMundo",
+        "TFT16_Fiddlesticks",
+        "TFT16_Jinx",
+        "TFT16_Kindred",
+        "TFT16_Lucian",
+        "TFT16_Singed",
+        "TFT16_Warwick",
+        "TFT16_Wukong"
+      ],
+      "traits": [
+        "Zaun",
+        "Juggernaut",
+        "Bruiser",
+        "Harvester",
+        "Vanquisher",
+        "Gunslinger",
+        "Eternal",
+        "Quickstriker",
+        "Soulbound",
+        "Ionia"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Warwick",
+          "unit_token": "Warwick",
+          "items": [
+            "TFT16_Item_GunslingerEmblemItem",
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 2182,
+          "avg_placement": 3.13,
+          "place_change": -0.837
+        },
+        {
+          "unit": "TFT16_Wukong",
+          "unit_token": "Wukong",
+          "items": [
+            "TFT16_Item_ZaunEmblemItem",
+            "TFT_Item_RedBuff",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 1540,
+          "avg_placement": 3.28,
+          "place_change": -0.688
+        },
+        {
+          "unit": "TFT16_Jinx",
+          "unit_token": "Jinx",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_InfinityEdge",
+            "TFT_Item_RunaansHurricane"
+          ],
+          "games": 11145,
+          "avg_placement": 3.72,
+          "place_change": -0.246
+        }
+      ],
+      "stats": {
+        "avg_placement": 3.97,
+        "top4_rate": 100,
+        "games_played": 74898,
+        "win_rate": 10.31
+      }
+    },
+    {
+      "archetype_id": "388011",
+      "name": "TFT16_Augment_RumbleCarry",
+      "tier": "A",
+      "units": [
+        "TFT16_Fizz",
+        "TFT16_Kennen",
+        "TFT16_Kobuko",
+        "TFT16_Lulu",
+        "TFT16_Poppy",
+        "TFT16_Rumble",
+        "TFT16_Teemo",
+        "TFT16_Tristana"
+      ],
+      "traits": [
+        "Bilgewater",
+        "Yordle",
+        "Ionia",
+        "Defender",
+        "Bruiser",
+        "Invoker",
+        "Arcanist",
+        "Demacia",
+        "Juggernaut",
+        "Longshot",
+        "Gunslinger"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Rumble",
+          "unit_token": "Rumble",
+          "items": [
+            "TFT16_Item_LongshotEmblemItem",
+            "TFT_Item_ArchangelsStaff",
+            "TFT_Item_GuinsoosRageblade"
+          ],
+          "games": 116,
+          "avg_placement": 3.02,
+          "place_change": -1.016
+        },
+        {
+          "unit": "TFT16_Kennen",
+          "unit_token": "Kennen",
+          "items": [
+            "TFT_Item_GargoyleStoneplate",
+            "TFT_Item_RedBuff",
+            "TFT_Item_WarmogsArmor"
+          ],
+          "games": 1767,
+          "avg_placement": 3.72,
+          "place_change": -0.317
+        },
+        {
+          "unit": "TFT16_Fizz",
+          "unit_token": "Fizz",
+          "items": [
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_PowerGauntlet",
+            "TFT_Item_UnstableConcoction"
+          ],
+          "games": 204,
+          "avg_placement": 3.07,
+          "place_change": -0.96
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.03,
+        "top4_rate": 99.17,
+        "games_played": 39097,
+        "win_rate": 9.67
+      }
+    },
+    {
+      "archetype_id": "388021",
+      "name": "TFT16_Zaun, TFT16_Warwick, TFT16_Singed",
+      "tier": "A",
+      "units": [
+        "TFT16_Blitzcrank",
+        "TFT16_DrMundo",
+        "TFT16_Ekko",
+        "TFT16_Kindred",
+        "TFT16_Seraphine",
+        "TFT16_Singed",
+        "TFT16_Vi",
+        "TFT16_Warwick",
+        "TFT16_Ziggs"
+      ],
+      "traits": [
+        "Zaun",
+        "Juggernaut",
+        "Bruiser",
+        "Disruptor",
+        "Eternal",
+        "Quickstriker",
+        "Piltover",
+        "Defender",
+        "Yordle",
+        "Longshot"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Warwick",
+          "unit_token": "Warwick",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_SteraksGage",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 51623,
+          "avg_placement": 3.83,
+          "place_change": -0.208
+        },
+        {
+          "unit": "TFT16_Ziggs",
+          "unit_token": "Ziggs",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 10493,
+          "avg_placement": 3.5,
+          "place_change": -0.543
+        },
+        {
+          "unit": "TFT16_Singed",
+          "unit_token": "Singed",
+          "items": [
+            "TFT_Item_Crownguard",
+            "TFT_Item_IonicSpark",
+            "TFT_Item_Morellonomicon"
+          ],
+          "games": 5246,
+          "avg_placement": 3.56,
+          "place_change": -0.477
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.04,
+        "top4_rate": 99.02,
+        "games_played": 123222,
+        "win_rate": 9.61
+      }
+    },
+    {
+      "archetype_id": "388007",
+      "name": "TFT16_Warden, TFT16_Kalista",
+      "tier": "A",
+      "units": [
+        "TFT16_Braum",
+        "TFT16_Fiddlesticks",
+        "TFT16_Gwen",
+        "TFT16_Kalista",
+        "TFT16_Loris",
+        "TFT16_Ornn",
+        "TFT16_Seraphine",
+        "TFT16_Thresh",
+        "TFT16_Yorick"
+      ],
+      "traits": [
+        "Freljord",
+        "Warden",
+        "Harvester",
+        "Vanquisher",
+        "Shadow Isles",
+        "Disruptor",
+        "Piltover",
+        "Blacksmith"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Kalista",
+          "unit_token": "Kalista",
+          "items": [
+            "TFT_Item_LastWhisper",
+            "TFT_Item_PowerGauntlet",
+            "TFT_Item_SpearOfShojin"
+          ],
+          "games": 84018,
+          "avg_placement": 3.99,
+          "place_change": -0.062
+        },
+        {
+          "unit": "TFT16_Thresh",
+          "unit_token": "Thresh",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_Morellonomicon",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 42470,
+          "avg_placement": 3.67,
+          "place_change": -0.378
+        },
+        {
+          "unit": "TFT16_Braum",
+          "unit_token": "Braum",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_NightHarvester"
+          ],
+          "games": 4013,
+          "avg_placement": 3.41,
+          "place_change": -0.64
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.05,
+        "top4_rate": 98.73,
+        "games_played": 323146,
+        "win_rate": 9.49
+      }
+    },
+    {
+      "archetype_id": "388016",
+      "name": "TFT16_Yordle, TFT16_Veigar",
+      "tier": "A",
+      "units": [
+        "TFT16_Fizz",
+        "TFT16_Kennen",
+        "TFT16_Kobuko",
+        "TFT16_Poppy",
+        "TFT16_Rumble",
+        "TFT16_Swain",
+        "TFT16_Teemo",
+        "TFT16_Veigar",
+        "TFT16_Ziggs"
+      ],
+      "traits": [
+        "Bilgewater",
+        "Yordle",
+        "Ionia",
+        "Defender",
+        "Bruiser",
+        "Invoker",
+        "Demacia",
+        "Juggernaut",
+        "Noxus",
+        "Arcanist",
+        "Longshot",
+        "Zaun"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Veigar",
+          "unit_token": "Veigar",
+          "items": [
+            "TFT_Item_HextechGunblade",
+            "TFT_Item_RabadonsDeathcap",
+            "TFT_Item_SpearOfShojin"
+          ],
+          "games": 48613,
+          "avg_placement": 3.73,
+          "place_change": -0.313
+        },
+        {
+          "unit": "TFT16_Kennen",
+          "unit_token": "Kennen",
+          "items": [
+            "TFT_Item_IonicSpark",
+            "TFT_Item_RedBuff",
+            "TFT_Item_Redemption"
+          ],
+          "games": 18147,
+          "avg_placement": 3.59,
+          "place_change": -0.46
+        },
+        {
+          "unit": "TFT16_Fizz",
+          "unit_token": "Fizz",
+          "items": [
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_PowerGauntlet",
+            "TFT_Item_UnstableConcoction"
+          ],
+          "games": 7825,
+          "avg_placement": 3.36,
+          "place_change": -0.685
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.05,
+        "top4_rate": 98.81,
+        "games_played": 401448,
+        "win_rate": 9.52
+      }
+    },
+    {
+      "archetype_id": "388005",
+      "name": "TFT16_Noxus, TFT16_Skarner, TFT16_Kindred",
+      "tier": "A",
+      "units": [
+        "TFT16_Ambessa",
+        "TFT16_Draven",
+        "TFT16_Fiddlesticks",
+        "TFT16_Kindred",
+        "TFT16_Lucian",
+        "TFT16_Shyvana",
+        "TFT16_Skarner",
+        "TFT16_Swain",
+        "TFT16_Taric"
+      ],
+      "traits": [
+        "Noxus",
+        "Vanquisher",
+        "Quickstriker",
+        "Harvester",
+        "Eternal",
+        "Soulbound",
+        "Gunslinger",
+        "Dragonborn",
+        "Juggernaut",
+        "Ixtal",
+        "Arcanist",
+        "Targon"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Kindred",
+          "unit_token": "Kindred",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_MadredsBloodrazor",
+            "TFT_Item_RunaansHurricane"
+          ],
+          "games": 27642,
+          "avg_placement": 3.37,
+          "place_change": -0.777
+        },
+        {
+          "unit": "TFT16_Skarner",
+          "unit_token": "Skarner",
+          "items": [
+            "TFT_Item_GargoyleStoneplate",
+            "TFT_Item_RedBuff",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 11861,
+          "avg_placement": 3.86,
+          "place_change": -0.289
+        },
+        {
+          "unit": "TFT16_Lucian",
+          "unit_token": "Lucian",
+          "items": [
+            "TFT_Item_LastWhisper",
+            "TFT_Item_RapidFireCannon",
+            "TFT_Item_SpearOfShojin"
+          ],
+          "games": 3451,
+          "avg_placement": 2.99,
+          "place_change": -1.161
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.15,
+        "top4_rate": 96.3,
+        "games_played": 263574,
+        "win_rate": 8.52
+      }
+    },
+    {
+      "archetype_id": "388008",
+      "name": "TFT16_Piltover, TFT16_Seraphine",
+      "tier": "A",
+      "units": [
+        "TFT16_Azir",
+        "TFT16_Braum",
+        "TFT16_Lissandra",
+        "TFT16_Loris",
+        "TFT16_Orianna",
+        "TFT16_Sejuani",
+        "TFT16_Seraphine",
+        "TFT16_Vi"
+      ],
+      "traits": [
+        "Shurima",
+        "Emperor",
+        "Disruptor",
+        "Freljord",
+        "Warden",
+        "Invoker",
+        "Piltover",
+        "Defender",
+        "Zaun"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Seraphine",
+          "unit_token": "Seraphine",
+          "items": [
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_Leviathan",
+            "TFT_Item_Leviathan"
+          ],
+          "games": 98001,
+          "avg_placement": 3.85,
+          "place_change": -0.298
+        },
+        {
+          "unit": "TFT16_Braum",
+          "unit_token": "Braum",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_Redemption"
+          ],
+          "games": 31116,
+          "avg_placement": 3.74,
+          "place_change": -0.406
+        },
+        {
+          "unit": "TFT16_Lissandra",
+          "unit_token": "Lissandra",
+          "items": [
+            "TFT_Item_Morellonomicon",
+            "TFT_Item_SpearOfShojin",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 32089,
+          "avg_placement": 3.51,
+          "place_change": -0.641
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.15,
+        "top4_rate": 96.33,
+        "games_played": 484479,
+        "win_rate": 8.53
+      }
+    },
+    {
+      "archetype_id": "388025",
+      "name": "TFT16_Augment_XinZhaoCarry, TFT16_Yunara",
+      "tier": "A",
+      "units": [
+        "TFT16_Aatrox",
+        "TFT16_Ahri",
+        "TFT16_Kennen",
+        "TFT16_Sett",
+        "TFT16_Shen",
+        "TFT16_Wukong",
+        "TFT16_Yasuo",
+        "TFT16_Yunara",
+        "TFT16_Zaahen"
+      ],
+      "traits": [
+        "Darkin",
+        "World Ender",
+        "Slayer",
+        "Ionia",
+        "Arcanist",
+        "Yordle",
+        "Defender",
+        "The Boss",
+        "Bruiser",
+        "Quickstriker",
+        "Immortal"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Zaahen",
+          "unit_token": "Zaahen",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_SteraksGage",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 5970,
+          "avg_placement": 3.25,
+          "place_change": -0.898
+        },
+        {
+          "unit": "TFT16_Yunara",
+          "unit_token": "Yunara",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_InfinityEdge",
+            "TFT_Item_RapidFireCannon"
+          ],
+          "games": 281,
+          "avg_placement": 3.59,
+          "place_change": -0.56
+        },
+        {
+          "unit": "TFT16_Wukong",
+          "unit_token": "Wukong",
+          "items": [
+            "TFT_Item_GargoyleStoneplate",
+            "TFT_Item_RedBuff",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 232,
+          "avg_placement": 3.12,
+          "place_change": -1.027
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.15,
+        "top4_rate": 96.32,
+        "games_played": 32822,
+        "win_rate": 8.53
+      }
+    },
+    {
+      "archetype_id": "388014",
+      "name": "TFT16_Void, TFT16_Kaisa, TFT16_Brawler",
+      "tier": "A",
+      "units": [
+        "TFT16_ChoGath",
+        "TFT16_Kaisa",
+        "TFT16_KogMaw",
+        "TFT16_RiftHerald",
+        "TFT16_Shen",
+        "TFT16_Swain",
+        "TFT16_Volibear",
+        "TFT16_Wukong",
+        "TFT16_Ziggs"
+      ],
+      "traits": [
+        "Void",
+        "Juggernaut",
+        "Assimilator",
+        "Longshot",
+        "Arcanist",
+        "Bruiser",
+        "Ionia",
+        "Noxus",
+        "Freljord",
+        "Zaun",
+        "Yordle"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Kaisa",
+          "unit_token": "Kaisa",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_HextechGunblade",
+            "TFT_Item_JeweledGauntlet"
+          ],
+          "games": 55132,
+          "avg_placement": 4.14,
+          "place_change": -0.085
+        },
+        {
+          "unit": "TFT16_RiftHerald",
+          "unit_token": "RiftHerald",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_Redemption"
+          ],
+          "games": 18662,
+          "avg_placement": 4.06,
+          "place_change": -0.166
+        },
+        {
+          "unit": "TFT16_Volibear",
+          "unit_token": "Volibear",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_SteraksGage",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 4274,
+          "avg_placement": 3.65,
+          "place_change": -0.58
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.23,
+        "top4_rate": 94.29,
+        "games_played": 193344,
+        "win_rate": 7.72
+      }
+    },
+    {
+      "archetype_id": "388027",
+      "name": "TFT16_Noxus, TFT16_Swain",
+      "tier": "A",
+      "units": [
+        "TFT16_Ambessa",
+        "TFT16_Briar",
+        "TFT16_Darius",
+        "TFT16_Draven",
+        "TFT16_Fiddlesticks",
+        "TFT16_Kindred",
+        "TFT16_Mel",
+        "TFT16_Sion",
+        "TFT16_Swain"
+      ],
+      "traits": [
+        "Noxus",
+        "Vanquisher",
+        "Slayer",
+        "Juggernaut",
+        "Defender",
+        "Quickstriker",
+        "Harvester",
+        "Eternal",
+        "Disruptor",
+        "Bruiser",
+        "Arcanist"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Swain",
+          "unit_token": "Swain",
+          "items": [
+            "TFT_Item_RedBuff",
+            "TFT_Item_Redemption",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 4563,
+          "avg_placement": 3.78,
+          "place_change": -0.455
+        },
+        {
+          "unit": "TFT16_Mel",
+          "unit_token": "Mel",
+          "items": [
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_SpearOfShojin",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 7157,
+          "avg_placement": 3.77,
+          "place_change": -0.462
+        },
+        {
+          "unit": "TFT16_Ambessa",
+          "unit_token": "Ambessa",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_GuardianAngel",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 3690,
+          "avg_placement": 3.93,
+          "place_change": -0.311
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.24,
+        "top4_rate": 94.09,
+        "games_played": 143167,
+        "win_rate": 7.64
+      }
+    },
+    {
+      "archetype_id": "388012",
+      "name": "TFT16_Slayer, TFT16_BelVeth",
+      "tier": "A",
+      "units": [
+        "TFT16_Aatrox",
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_Briar",
+        "TFT16_ChoGath",
+        "TFT16_Fiddlesticks",
+        "TFT16_Gangplank",
+        "TFT16_Shyvana",
+        "TFT16_Swain"
+      ],
+      "traits": [
+        "Darkin",
+        "World Ender",
+        "Slayer",
+        "Noxus",
+        "Vanquisher",
+        "Void",
+        "Juggernaut",
+        "Harvester",
+        "Bilgewater",
+        "Dragonborn",
+        "Arcanist"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_BelVeth",
+          "unit_token": "BelVeth",
+          "items": [
+            "TFT_Item_MadredsBloodrazor",
+            "TFT_Item_Quicksilver",
+            "TFT_Item_RunaansHurricane"
+          ],
+          "games": 45447,
+          "avg_placement": 4.05,
+          "place_change": -0.201
+        },
+        {
+          "unit": "TFT16_Ambessa",
+          "unit_token": "Ambessa",
+          "items": [
+            "TFT_Item_GuardianAngel",
+            "TFT_Item_LastWhisper",
+            "TFT_Item_UnstableConcoction"
+          ],
+          "games": 3231,
+          "avg_placement": 3.64,
+          "place_change": -0.605
+        },
+        {
+          "unit": "TFT16_Swain",
+          "unit_token": "Swain",
+          "items": [
+            "TFT_Item_FrozenHeart",
+            "TFT_Item_RedBuff",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 9517,
+          "avg_placement": 3.52,
+          "place_change": -0.728
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.25,
+        "top4_rate": 93.79,
+        "games_played": 277436,
+        "win_rate": 7.52
+      }
+    },
+    {
+      "archetype_id": "388004",
+      "name": "TFT16_Void, TFT16_BelVeth",
+      "tier": "A",
+      "units": [
+        "TFT16_Ambessa",
+        "TFT16_BelVeth",
+        "TFT16_ChoGath",
+        "TFT16_Gangplank",
+        "TFT16_RekSai",
+        "TFT16_RiftHerald",
+        "TFT16_Sion",
+        "TFT16_Swain"
+      ],
+      "traits": [
+        "Noxus",
+        "Vanquisher",
+        "Void",
+        "Slayer",
+        "Juggernaut",
+        "Bilgewater",
+        "Bruiser",
+        "Arcanist"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_BelVeth",
+          "unit_token": "BelVeth",
+          "items": [
+            "TFT_Item_MadredsBloodrazor",
+            "TFT_Item_Quicksilver",
+            "TFT_Item_RunaansHurricane"
+          ],
+          "games": 54310,
+          "avg_placement": 4.03,
+          "place_change": -0.235
+        },
+        {
+          "unit": "TFT16_Ambessa",
+          "unit_token": "Ambessa",
+          "items": [
+            "TFT_Item_Deathblade",
+            "TFT_Item_SteraksGage",
+            "TFT_Item_UnstableConcoction"
+          ],
+          "games": 14552,
+          "avg_placement": 3.87,
+          "place_change": -0.397
+        },
+        {
+          "unit": "TFT16_RiftHerald",
+          "unit_token": "RiftHerald",
+          "items": [
+            "TFT_Item_RedBuff",
+            "TFT_Item_Redemption",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 13836,
+          "avg_placement": 3.65,
+          "place_change": -0.614
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.26,
+        "top4_rate": 93.4,
+        "games_played": 253266,
+        "win_rate": 7.36
+      }
+    },
+    {
+      "archetype_id": "388003",
+      "name": "TFT16_Void, TFT16_Kaisa, TFT16_BelVeth",
+      "tier": "A",
+      "units": [
+        "TFT16_BaronNashor",
+        "TFT16_BelVeth",
+        "TFT16_ChoGath",
+        "TFT16_Kaisa",
+        "TFT16_KogMaw",
+        "TFT16_Malzahar",
+        "TFT16_RekSai",
+        "TFT16_RiftHerald",
+        "TFT16_RiftHerald"
+      ],
+      "traits": [
+        "Void",
+        "Riftscourge",
+        "Slayer",
+        "Juggernaut",
+        "Assimilator",
+        "Longshot",
+        "Arcanist",
+        "Disruptor",
+        "Vanquisher",
+        "Bruiser"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Kaisa",
+          "unit_token": "Kaisa",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 63579,
+          "avg_placement": 4.08,
+          "place_change": -0.204
+        },
+        {
+          "unit": "TFT16_RiftHerald",
+          "unit_token": "RiftHerald",
+          "items": [
+            "TFT_Item_RedBuff",
+            "TFT_Item_Redemption",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 5574,
+          "avg_placement": 3.73,
+          "place_change": -0.551
+        },
+        {
+          "unit": "TFT16_BelVeth",
+          "unit_token": "BelVeth",
+          "items": [
+            "TFT_Item_MadredsBloodrazor",
+            "TFT_Item_Quicksilver",
+            "TFT_Item_RunaansHurricane"
+          ],
+          "games": 14330,
+          "avg_placement": 4.02,
+          "place_change": -0.263
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.28,
+        "top4_rate": 92.96,
+        "games_played": 437809,
+        "win_rate": 7.18
+      }
+    },
+    {
+      "archetype_id": "388020",
+      "name": "TFT16_Defender, TFT16_Aphelios",
+      "tier": "A",
+      "units": [
+        "TFT16_Aphelios",
+        "TFT16_Bard",
+        "TFT16_Loris",
+        "TFT16_Neeko",
+        "TFT16_Nidalee",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Vi"
+      ],
+      "traits": [
+        "Targon",
+        "Caretaker",
+        "Piltover",
+        "Warden",
+        "Ixtal",
+        "Arcanist",
+        "Defender",
+        "Huntress",
+        "Noxus",
+        "Juggernaut",
+        "Zaun"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Aphelios",
+          "unit_token": "Aphelios",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_InfinityEdge",
+            "TFT_Item_RunaansHurricane"
+          ],
+          "games": 36633,
+          "avg_placement": 4.06,
+          "place_change": -0.213
+        },
+        {
+          "unit": "TFT16_Neeko",
+          "unit_token": "Neeko",
+          "items": [
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_RedBuff",
+            "TFT_Item_Redemption"
+          ],
+          "games": 6474,
+          "avg_placement": 3.86,
+          "place_change": -0.419
+        },
+        {
+          "unit": "TFT16_Bard",
+          "unit_token": "Bard",
+          "items": [
+            "TFT_Item_ArchangelsStaff",
+            "TFT_Item_SpearOfShojin",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 4200,
+          "avg_placement": 3.65,
+          "place_change": -0.625
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.28,
+        "top4_rate": 93.08,
+        "games_played": 85013,
+        "win_rate": 7.23
+      }
+    },
+    {
+      "archetype_id": "388013",
+      "name": "TFT16_Demacia, TFT16_Lux",
+      "tier": "A",
+      "units": [
+        "TFT16_Galio",
+        "TFT16_Garen",
+        "TFT16_JarvanIV",
+        "TFT16_Lux",
+        "TFT16_Poppy",
+        "TFT16_Sona",
+        "TFT16_Swain",
+        "TFT16_XinZhao",
+        "TFT16_Zilean"
+      ],
+      "traits": [
+        "Demacia",
+        "Heroic",
+        "Defender",
+        "Arcanist",
+        "Yordle",
+        "Juggernaut",
+        "Invoker",
+        "Noxus",
+        "Ionia",
+        "Warden",
+        "Chronokeeper"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Lux",
+          "unit_token": "Lux",
+          "items": [
+            "TFT_Item_HextechGunblade",
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_Leviathan"
+          ],
+          "games": 49871,
+          "avg_placement": 4.13,
+          "place_change": -0.17
+        },
+        {
+          "unit": "TFT16_Garen",
+          "unit_token": "Garen",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_Redemption"
+          ],
+          "games": 39523,
+          "avg_placement": 3.99,
+          "place_change": -0.312
+        },
+        {
+          "unit": "TFT16_Galio",
+          "unit_token": "Galio",
+          "items": [
+            "TFT_Item_AdaptiveHelm",
+            "TFT_Item_AdaptiveHelm",
+            "TFT_Item_DragonsClaw"
+          ],
+          "games": 1499,
+          "avg_placement": 3.13,
+          "place_change": -1.164
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.3,
+        "top4_rate": 92.52,
+        "games_played": 415036,
+        "win_rate": 7.01
+      }
+    },
+    {
+      "archetype_id": "388017",
+      "name": "TFT16_Zaun, TFT16_Warwick, TFT16_Juggernaut",
+      "tier": "B",
+      "units": [
+        "TFT16_Ekko",
+        "TFT16_Jinx",
+        "TFT16_Kindred",
+        "TFT16_Neeko",
+        "TFT16_Seraphine",
+        "TFT16_Singed",
+        "TFT16_Swain",
+        "TFT16_Vi",
+        "TFT16_Warwick"
+      ],
+      "traits": [
+        "Zaun",
+        "Disruptor",
+        "Gunslinger",
+        "Eternal",
+        "Quickstriker",
+        "Ixtal",
+        "Arcanist",
+        "Defender",
+        "Piltover",
+        "Juggernaut",
+        "Noxus"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Warwick",
+          "unit_token": "Warwick",
+          "items": [
+            "TFT16_Item_GunslingerEmblemItem",
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 779,
+          "avg_placement": 3.39,
+          "place_change": -0.929
+        },
+        {
+          "unit": "TFT16_Swain",
+          "unit_token": "Swain",
+          "items": [
+            "TFT16_Item_ZaunEmblemItem",
+            "TFT_Item_FrozenHeart",
+            "TFT_Item_Redemption"
+          ],
+          "games": 484,
+          "avg_placement": 3.64,
+          "place_change": -0.676
+        },
+        {
+          "unit": "TFT16_Jinx",
+          "unit_token": "Jinx",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_LastWhisper",
+            "TFT_Item_RunaansHurricane"
+          ],
+          "games": 5750,
+          "avg_placement": 4.17,
+          "place_change": -0.147
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.31,
+        "top4_rate": 92.14,
+        "games_played": 69595,
+        "win_rate": 6.86
+      }
+    },
+    {
+      "archetype_id": "388018",
+      "name": "TFT16_Ionia, TFT16_Yunara",
+      "tier": "B",
+      "units": [
+        "TFT16_Ahri",
+        "TFT16_Kindred",
+        "TFT16_Sett",
+        "TFT16_Shen",
+        "TFT16_Shyvana",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Wukong",
+        "TFT16_Yunara"
+      ],
+      "traits": [
+        "Ionia",
+        "Arcanist",
+        "Eternal",
+        "Quickstriker",
+        "The Boss",
+        "Bruiser",
+        "Dragonborn",
+        "Juggernaut",
+        "Noxus",
+        "Targon"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Yunara",
+          "unit_token": "Yunara",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_InfinityEdge",
+            "TFT_Item_PowerGauntlet"
+          ],
+          "games": 92768,
+          "avg_placement": 3.97,
+          "place_change": -0.346
+        },
+        {
+          "unit": "TFT16_Wukong",
+          "unit_token": "Wukong",
+          "items": [
+            "TFT_Item_RedBuff",
+            "TFT_Item_Redemption",
+            "TFT_Item_SpectralGauntlet"
+          ],
+          "games": 84782,
+          "avg_placement": 3.74,
+          "place_change": -0.567
+        },
+        {
+          "unit": "TFT16_Sett",
+          "unit_token": "Sett",
+          "items": [
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_PowerGauntlet",
+            "TFT_Item_UnstableConcoction"
+          ],
+          "games": 25593,
+          "avg_placement": 3.51,
+          "place_change": -0.804
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.31,
+        "top4_rate": 92.23,
+        "games_played": 821224,
+        "win_rate": 6.89
+      }
+    },
+    {
+      "archetype_id": "388010",
+      "name": "TFT16_Piltover, TFT16_Diana, TFT16_Seraphine",
+      "tier": "B",
+      "units": [
+        "TFT16_AurelionSol",
+        "TFT16_Azir",
+        "TFT16_Diana",
+        "TFT16_Neeko",
+        "TFT16_Seraphine",
+        "TFT16_Shyvana",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Vi"
+      ],
+      "traits": [
+        "Star Forger",
+        "Targon",
+        "Shurima",
+        "Emperor",
+        "Disruptor",
+        "Ixtal",
+        "Arcanist",
+        "Defender",
+        "Piltover",
+        "Dragonborn",
+        "Juggernaut",
+        "Noxus",
+        "Zaun"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_AurelionSol",
+          "unit_token": "AurelionSol",
+          "items": [
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_Leviathan",
+            "TFT_Item_Leviathan"
+          ],
+          "games": 42570,
+          "avg_placement": 4.07,
+          "place_change": -0.255
+        },
+        {
+          "unit": "TFT16_Taric",
+          "unit_token": "Taric",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_Redemption"
+          ],
+          "games": 7034,
+          "avg_placement": 3.96,
+          "place_change": -0.366
+        },
+        {
+          "unit": "TFT16_Diana",
+          "unit_token": "Diana",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 16976,
+          "avg_placement": 4.09,
+          "place_change": -0.236
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.32,
+        "top4_rate": 91.96,
+        "games_played": 151739,
+        "win_rate": 6.78
+      }
+    },
+    {
+      "archetype_id": "388006",
+      "name": "TFT16_ShadowIsles, TFT16_Viego",
+      "tier": "B",
+      "units": [
+        "TFT16_Braum",
+        "TFT16_Gwen",
+        "TFT16_Kalista",
+        "TFT16_Loris",
+        "TFT16_Seraphine",
+        "TFT16_Thresh",
+        "TFT16_Viego",
+        "TFT16_Yorick"
+      ],
+      "traits": [
+        "Freljord",
+        "Warden",
+        "Shadow Isles",
+        "Disruptor",
+        "Vanquisher",
+        "Piltover",
+        "Quickstriker"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Viego",
+          "unit_token": "Viego",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_GuardianAngel",
+            "TFT_Item_TitansResolve"
+          ],
+          "games": 34652,
+          "avg_placement": 3.41,
+          "place_change": -0.994
+        },
+        {
+          "unit": "TFT16_Kalista",
+          "unit_token": "Kalista",
+          "items": [
+            "TFT_Item_InfinityEdge",
+            "TFT_Item_LastWhisper",
+            "TFT_Item_PowerGauntlet"
+          ],
+          "games": 1470,
+          "avg_placement": 3.44,
+          "place_change": -0.971
+        },
+        {
+          "unit": "TFT16_Thresh",
+          "unit_token": "Thresh",
+          "items": [
+            "TFT_Item_Bloodthirster",
+            "TFT_Item_Morellonomicon",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 11330,
+          "avg_placement": 3.45,
+          "place_change": -0.96
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.41,
+        "top4_rate": 89.78,
+        "games_played": 150787,
+        "win_rate": 5.91
+      }
+    },
+    {
+      "archetype_id": "388022",
+      "name": "TFT16_Void, TFT16_Kaisa, TFT16_Juggernaut",
+      "tier": "B",
+      "units": [
+        "TFT16_ChoGath",
+        "TFT16_DrMundo",
+        "TFT16_Kaisa",
+        "TFT16_KogMaw",
+        "TFT16_RiftHerald",
+        "TFT16_Shyvana",
+        "TFT16_Singed",
+        "TFT16_Swain",
+        "TFT16_Ziggs"
+      ],
+      "traits": [
+        "Void",
+        "Juggernaut",
+        "Zaun",
+        "Bruiser",
+        "Assimilator",
+        "Longshot",
+        "Arcanist",
+        "Dragonborn",
+        "Noxus",
+        "Yordle"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Kaisa",
+          "unit_token": "Kaisa",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_HextechGunblade",
+            "TFT_Item_JeweledGauntlet"
+          ],
+          "games": 21545,
+          "avg_placement": 4.3,
+          "place_change": -0.123
+        },
+        {
+          "unit": "TFT16_RiftHerald",
+          "unit_token": "RiftHerald",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_Redemption"
+          ],
+          "games": 6051,
+          "avg_placement": 4.12,
+          "place_change": -0.3
+        },
+        {
+          "unit": "TFT16_Ziggs",
+          "unit_token": "Ziggs",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 2576,
+          "avg_placement": 3.18,
+          "place_change": -1.24
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.42,
+        "top4_rate": 89.48,
+        "games_played": 93222,
+        "win_rate": 5.79
+      }
+    },
+    {
+      "archetype_id": "388019",
+      "name": "TFT16_Noxus, TFT16_Seraphine",
+      "tier": "B",
+      "units": [
+        "TFT16_Ambessa",
+        "TFT16_Fiddlesticks",
+        "TFT16_Mel",
+        "TFT16_Neeko",
+        "TFT16_Seraphine",
+        "TFT16_Shyvana",
+        "TFT16_Swain",
+        "TFT16_Taric",
+        "TFT16_Vi"
+      ],
+      "traits": [
+        "Noxus",
+        "Vanquisher",
+        "Harvester",
+        "Disruptor",
+        "Ixtal",
+        "Arcanist",
+        "Defender",
+        "Piltover",
+        "Dragonborn",
+        "Juggernaut",
+        "Targon",
+        "Zaun"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Swain",
+          "unit_token": "Swain",
+          "items": [
+            "TFT_Item_FrozenHeart",
+            "TFT_Item_IonicSpark",
+            "TFT_Item_RedBuff"
+          ],
+          "games": 438,
+          "avg_placement": 3.87,
+          "place_change": -0.573
+        },
+        {
+          "unit": "TFT16_Seraphine",
+          "unit_token": "Seraphine",
+          "items": [
+            "TFT_Item_BlueBuff",
+            "TFT_Item_Morellonomicon",
+            "TFT_Item_StatikkShiv"
+          ],
+          "games": 243,
+          "avg_placement": 3.35,
+          "place_change": -1.092
+        },
+        {
+          "unit": "TFT16_Mel",
+          "unit_token": "Mel",
+          "items": [
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_Leviathan",
+            "TFT_Item_Leviathan"
+          ],
+          "games": 4988,
+          "avg_placement": 3.84,
+          "place_change": -0.601
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.44,
+        "top4_rate": 89.05,
+        "games_played": 92039,
+        "win_rate": 5.62
+      }
+    },
+    {
+      "archetype_id": "388026",
+      "name": "TFT16_Warden, TFT16_Malzahar",
+      "tier": "B",
+      "units": [
+        "TFT16_ChoGath",
+        "TFT16_Loris",
+        "TFT16_Loris",
+        "TFT16_Malzahar",
+        "TFT16_Malzahar",
+        "TFT16_Nautilus",
+        "TFT16_Nautilus",
+        "TFT16_Seraphine"
+      ],
+      "traits": [
+        "Void",
+        "Juggernaut",
+        "Piltover",
+        "Warden",
+        "Disruptor",
+        "Bilgewater"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Malzahar",
+          "unit_token": "Malzahar",
+          "items": [
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_Leviathan",
+            "TFT_Item_Leviathan"
+          ],
+          "games": 11091,
+          "avg_placement": 3.98,
+          "place_change": -0.485
+        },
+        {
+          "unit": "TFT16_Nautilus",
+          "unit_token": "Nautilus",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_WarmogsArmor"
+          ],
+          "games": 1697,
+          "avg_placement": 3.56,
+          "place_change": -0.905
+        },
+        {
+          "unit": "TFT16_Loris",
+          "unit_token": "Loris",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_NightHarvester"
+          ],
+          "games": 179,
+          "avg_placement": 3.5,
+          "place_change": -0.962
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.46,
+        "top4_rate": 88.51,
+        "games_played": 56247,
+        "win_rate": 5.4
+      }
+    },
+    {
+      "archetype_id": "388032",
+      "name": "TFT16_Brawler, TFT16_Sion, TFT16_Bard",
+      "tier": "B",
+      "units": [
+        "TFT16_Aphelios",
+        "TFT16_Bard",
+        "TFT16_Illaoi",
+        "TFT16_Kobuko",
+        "TFT16_Shen",
+        "TFT16_Sion",
+        "TFT16_Volibear",
+        "TFT16_Wukong"
+      ],
+      "traits": [
+        "Targon",
+        "Caretaker",
+        "Bilgewater",
+        "Bruiser",
+        "Yordle",
+        "Invoker",
+        "Ionia",
+        "Noxus",
+        "Freljord"
+      ],
+      "builds": [
+        {
+          "unit": "TFT16_Sion",
+          "unit_token": "Sion",
+          "items": [
+            "TFT_Item_BrambleVest",
+            "TFT_Item_DragonsClaw",
+            "TFT_Item_RedBuff"
+          ],
+          "games": 13787,
+          "avg_placement": 4.04,
+          "place_change": -0.423
+        },
+        {
+          "unit": "TFT16_Aphelios",
+          "unit_token": "Aphelios",
+          "items": [
+            "TFT_Item_GuinsoosRageblade",
+            "TFT_Item_InfinityEdge",
+            "TFT_Item_RunaansHurricane"
+          ],
+          "games": 41230,
+          "avg_placement": 4.1,
+          "place_change": -0.362
+        },
+        {
+          "unit": "TFT16_Bard",
+          "unit_token": "Bard",
+          "items": [
+            "TFT_Item_ArchangelsStaff",
+            "TFT_Item_JeweledGauntlet",
+            "TFT_Item_SpearOfShojin"
+          ],
+          "games": 23132,
+          "avg_placement": 4.13,
+          "place_change": -0.336
+        }
+      ],
+      "stats": {
+        "avg_placement": 4.46,
+        "top4_rate": 88.48,
+        "games_played": 177950,
+        "win_rate": 5.39
+      }
+    }
+  ]
+}

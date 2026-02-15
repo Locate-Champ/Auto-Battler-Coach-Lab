@@ -65,3 +65,10 @@ chatgpt simulator diagnosis.md
 simulator/docs/Session Summary*.md
 .ntfy-topic
 .agent/
+
+# Coach artifacts: keep fixed eval gate inputs committed; ignore generated reports/traces.
+outputs/coach/traces/*
+outputs/coach/eval_reports/*
+!outputs/coach/eval_reports/fixed_baseline_opt_phase1_25.json
+outputs/coach/eval_sets/*
+!outputs/coach/eval_sets/fixed_eval_set_opt_phase1_25.jsonl
