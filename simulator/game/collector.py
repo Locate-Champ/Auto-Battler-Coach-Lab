@@ -222,6 +222,7 @@ class GameCollector:
 
                 streak = int(player_state.get('win_streak', 0)) - int(player_state.get('loss_streak', 0))
                 rows.append({
+                    'row_schema_version': 1,
                     'game_id': self.game_id,
                     'round': round_data['round'],
                     'player_id': pid,
