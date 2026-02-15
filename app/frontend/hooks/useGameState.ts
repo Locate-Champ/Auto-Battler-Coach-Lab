@@ -40,6 +40,104 @@ export interface OpponentBoardUnit {
   stars: number;
 }
 
+export interface ShopUnitData {
+  character_id: string;
+  name: string;
+  cost: number | null;
+}
+
+export type CoachDecisionKey = 'items' | 'position' | 'econ' | 'shop';
+
+export interface CoachActionPlan {
+  decision_type: CoachDecisionKey;
+  action_id: string;
+  title: string;
+  details: Record<string, unknown>;
+  constraints: string[];
+  tags: string[];
+}
+
+export interface CoachPenalty {
+  reason: string;
+  amount: number;
+}
+
+export interface CoachTempoBreakdown {
+  win_prob: number;
+  win_prob_delta: number;
+  expected_hp_delta: number;
+  n_sims: number;
+  ci95?: [number, number] | null;
+  opponent_policy?: string;
+}
+
+export interface CoachEvaluatorBreakdown {
+  board_score: number;
+  matchup_score?: number | null;
+  uncertainty?: number | null;
+}
+
+export interface CoachEconBreakdown {
+  gold_delta: number;
+  interest_delta: number;
+  level_delta: number;
+  roll_delta: number;
+  hp_risk: number;
+  upgrade_hit_prob?: number | null;
+  upgrade_top_targets?: [string, number][];
+}
+
+export interface CoachArchetypeSummary {
+  name: string;
+  similarity: number;
+}
+
+export interface CoachArchetypeBreakdown {
+  top_archetypes: CoachArchetypeSummary[];
+  alignment_delta: number;
+}
+
+export interface CoachScoreBreakdown {
+  total_score: number;
+  tempo: CoachTempoBreakdown;
+  evaluator: CoachEvaluatorBreakdown;
+  econ: CoachEconBreakdown;
+  archetype: CoachArchetypeBreakdown;
+  penalties: CoachPenalty[];
+}
+
+export interface CoachExplanation {
+  confidence: string;
+  lines: string[];
+  numbers: Record<string, number>;
+}
+
+export interface CoachRecommendation {
+  action: CoachActionPlan;
+  score: CoachScoreBreakdown;
+  explanation: CoachExplanation;
+}
+
+export interface CoachPayload {
+  coach_payload_version?: number;
+  generated_at: string;
+  coach_state_schema_version?: number;
+  coach_state_validation_errors?: string[] | null;
+  config?: {
+    sim_budget_pass1: number;
+    sim_budget_pass2: number;
+    sim_budget_pass3: number;
+    max_candidates_items: number;
+    max_candidates_position: number;
+    max_candidates_econ: number;
+    max_candidates_shop: number;
+    top_k: number;
+  };
+  recommendations?: Partial<Record<CoachDecisionKey, CoachRecommendation[]>>;
+  errors?: Partial<Record<CoachDecisionKey, string>>;
+  error?: string;
+}
+
 export interface GameState {
   game_id: string | null;
   game_phase: string;
@@ -60,6 +158,9 @@ export interface GameState {
   win_chance: number | null;
   board_units: BoardUnitData[];
   bench_units: BenchUnitData[];
+  shop_units?: ShopUnitData[];
+  unassigned_items?: string[];
+  coach?: CoachPayload;
 }
 
 interface UseGameStateOptions {

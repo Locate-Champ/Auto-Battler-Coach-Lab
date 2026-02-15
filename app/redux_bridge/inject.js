@@ -140,6 +140,29 @@
     return units;
   }
 
+  // Transform shop_pieces to our format
+  function transformShopPieces(shopPieces) {
+    if (!shopPieces) return [];
+
+    const entries = Array.isArray(shopPieces) ? shopPieces.entries() : Object.entries(shopPieces);
+    const units = [];
+
+    for (const [, unit] of entries) {
+      if (!unit) continue;
+
+      const characterId = unit.name || unit.character_id || '';
+      if (!characterId) continue;
+
+      units.push({
+        character_id: characterId,
+        name: characterId.replace('TFT16_', '').replace('TFT15_', '').replace('TFT14_', ''),
+        cost: unit.cost ?? unit.tier ?? null,
+      });
+    }
+
+    return units;
+  }
+
   // WebSocket connection management
   class ReduxBridge {
     constructor() {
@@ -233,14 +256,30 @@
       // Check if board or bench changed
       const currentBoard = JSON.stringify(game.board?.board_pieces);
       const currentBench = JSON.stringify(game.bench?.bench_pieces);
+      const currentShop = JSON.stringify(game.store?.shop_pieces);
+      const currentMe = JSON.stringify({
+        gold: game.me?.gold,
+        health: game.me?.health,
+        xp: game.me?.xp,
+        rank: game.me?.rank,
+        summoner_name: game.me?.summoner_name,
+      });
       const lastBoard = this.lastState?.board;
       const lastBench = this.lastState?.bench;
 
-      if (currentBoard !== lastBoard || currentBench !== lastBench) {
-        log('Board/Bench state changed');
+      const lastShop = this.lastState?.shop;
+      const lastMe = this.lastState?.me;
+
+      if (currentBoard !== lastBoard ||
+          currentBench !== lastBench ||
+          currentShop !== lastShop ||
+          currentMe !== lastMe) {
+        log('State changed (board/bench/shop/me)');
         this.lastState = {
           board: currentBoard,
           bench: currentBench,
+          shop: currentShop,
+          me: currentMe,
         };
         this.sendCurrentState();
       }
@@ -266,6 +305,7 @@
         timestamp: gameData.timestamp,
         board_units: transformBoardPieces(gameData.board),
         bench_units: transformBenchPieces(gameData.bench),
+        shop_units: transformShopPieces(gameData.shop),
         me: gameData.me,
         roster: gameData.roster,
         // All 8 players' boards (for scouting/opponent display)

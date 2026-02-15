@@ -1,14 +1,14 @@
 # Live Data Integration Progress
 
-> Tracking implementation progress for connecting overlay to live game data
+> Tracking implementation progress for connecting the UI to live game data
 
-**Last Updated:** 2026-01-30
+**Last Updated:** 2026-02-14
 
 ---
 
 ## Overview
 
-Connecting the TFT overlay to real-time game data from MetaTFT/Overwolf logs.
+Connecting the TFT UI (`app/frontend/`) to real-time game data from MetaTFT/Overwolf (log parsing + Redux bridge).
 
 ---
 
@@ -18,8 +18,8 @@ Connecting the TFT overlay to real-time game data from MetaTFT/Overwolf logs.
 
 | Task | File | Notes |
 |------|------|-------|
-| Document data format | `docs/LIVE_BOARD_DATA_GUIDE.md` | Cell ID mapping, champion/item formats |
-| Analyze existing parser | `app/watcher/parser.py` | Found 11 event types, missing board data |
+| Document data format | `docs/integration/LIVE_BOARD_DATA_GUIDE.md` | Cell ID mapping, champion/item formats |
+| Analyze existing parser | `app/watcher/parser.py` | Found 11 event types; board/bench/shop/roster now parsed |
 | Analyze game state | `app/state/game_state.py` | Unit/PlayerState exist, need wiring |
 | Add BOARD_UPDATE event type | `app/watcher/parser.py` | ✅ Added |
 | Add BENCH_UPDATE event type | `app/watcher/parser.py` | ✅ Added |
@@ -32,12 +32,12 @@ Connecting the TFT overlay to real-time game data from MetaTFT/Overwolf logs.
 | Serialize board_units | `app/state/game_state.py` | ✅ Added to to_dict() |
 | Serialize bench_units | `app/state/game_state.py` | ✅ Added to to_dict() |
 
-| Create WebSocket hook | `overlay/hooks/useGameState.ts` | ✅ Auto-reconnect, state management |
-| Create data transformer | `overlay/utils/transformBoardData.ts` | ✅ Log format → PositionedUnit[] |
-| Add champion cost lookup | `overlay/utils/transformBoardData.ts` | ✅ All Set 16 champions mapped |
-| Add item image mapping | `overlay/utils/transformBoardData.ts` | ✅ Component + completed items |
-| Create LiveBoard component | `overlay/LiveBoard.tsx` | ✅ Connects WS to DualBoard |
-| Add live data toggle | `overlay/src/App.tsx` | ✅ Switch between sample/live |
+| Create WebSocket hook | `app/frontend/hooks/useGameState.ts` | ✅ Auto-reconnect, state management |
+| Create data transformer | `app/frontend/utils/transformBoardData.ts` | ✅ Log format → PositionedUnit[] |
+| Add champion cost lookup | `app/frontend/utils/transformBoardData.ts` | ✅ All Set 16 champions mapped |
+| Add item image mapping | `app/frontend/utils/transformBoardData.ts` | ✅ Component + completed items |
+| Create LiveBoard component | `app/frontend/LiveBoard.tsx` | ✅ Connects WS to DualBoard |
+| Add live data toggle | `app/frontend/src/App.tsx` | ✅ Switch between sample/live |
 
 ### ⏳ Up Next
 
@@ -102,7 +102,7 @@ ROSTER_UPDATE = "roster_update"
 "bench_units": [...]
 ```
 
-### Overlay WebSocket Hook (`overlay/hooks/useGameState.ts`)
+### Frontend WebSocket Hook (`app/frontend/hooks/useGameState.ts`)
 
 **Features:**
 - Connects to `ws://127.0.0.1:8765/ws`
@@ -115,7 +115,7 @@ const { state, isConnected, error } = useGameState();
 const playerUnits = state?.board_units ? transformBoardUnits(state.board_units) : [];
 ```
 
-### Data Transformer (`overlay/utils/transformBoardData.ts`)
+### Data Transformer (`app/frontend/utils/transformBoardData.ts`)
 
 **Functions:**
 - `getChampionCost(characterId)` - Returns cost 1-5 for TFT16 champions
@@ -127,7 +127,7 @@ const playerUnits = state?.board_units ? transformBoardUnits(state.board_units) 
 
 **Item mappings:** 9 components + 30 completed items with display names and image files
 
-### LiveBoard Component (`overlay/LiveBoard.tsx`)
+### LiveBoard Component (`app/frontend/LiveBoard.tsx`)
 
 **Features:**
 - Shows connection status (green/red indicator)
@@ -146,13 +146,13 @@ const playerUnits = state?.board_units ? transformBoardUnits(state.board_units) 
 | `app/state/state_manager.py` | +3 event handlers (board, bench, roster) |
 | `app/state/game_state.py` | +board_units, +bench_units in to_dict() |
 
-### Frontend (Overlay)
+### Frontend (`app/frontend/`)
 | File | Changes |
 |------|---------|
-| `overlay/hooks/useGameState.ts` | New: WebSocket hook with auto-reconnect |
-| `overlay/utils/transformBoardData.ts` | New: Data transformer, champion costs, item mappings |
-| `overlay/LiveBoard.tsx` | New: Component connecting WebSocket to DualBoard |
-| `overlay/src/App.tsx` | Updated: Added toggle for live/sample data |
+| `app/frontend/hooks/useGameState.ts` | New: WebSocket hook with auto-reconnect |
+| `app/frontend/utils/transformBoardData.ts` | New: Data transformer, champion costs, item mappings |
+| `app/frontend/LiveBoard.tsx` | New: Component connecting WebSocket to DualBoard |
+| `app/frontend/src/App.tsx` | Updated: Added toggle for live/sample data |
 
 ---
 
@@ -182,7 +182,7 @@ LiveBoard → DualBoard (renders units on hex grid)
 
 ## What's Left
 
-1. ~~**Overlay WebSocket connection**~~ ✅ Done
+1. ~~**Frontend WebSocket connection**~~ ✅ Done
 2. ~~**Data transformer**~~ ✅ Done
 3. ~~**Champion cost lookup**~~ ✅ Done
 4. ~~**Item image mapping**~~ ✅ Done
@@ -190,7 +190,7 @@ LiveBoard → DualBoard (renders units on hex grid)
 
 ### Testing Checklist
 - [ ] Start backend: `python -m app.main`
-- [ ] Start overlay: `cd overlay && npm run dev`
+- [ ] Start frontend: `cd app/frontend && npm run dev`
 - [ ] Click "○ Sample Data" toggle to switch to "● LIVE"
 - [ ] Start a TFT game with MetaTFT running
 - [ ] Verify units appear on player board
@@ -201,8 +201,8 @@ LiveBoard → DualBoard (renders units on hex grid)
 
 ## Notes
 
-- Overwolf does NOT provide opponent board data directly via GEP
-- Only player board (`tft_board`) and bench (`tft_bench`) available from logs
+- Overwolf does NOT provide opponent board data directly via GEP/logs, but the Redux bridge can provide all 8 boards (`board_data`) in real time.
+- Only player board (`tft_board`) and bench (`tft_bench`) are available from the log-parsed path.
 - Roster data (`tft_roster`) gives health/xp for all 8 players
 - Cell IDs: 0-6 = row 0, 7-13 = row 1, 14-20 = row 2, 21-27 = row 3
 
@@ -416,7 +416,7 @@ MetaTFT Window
      │
      └─→ WebSocket (ws://127.0.0.1:8765/redux)
             │
-            └─→ handler.py → StateManager → Overlay
+            └─→ handler.py → StateManager → Frontend
 ```
 
 ### Usage Instructions
@@ -465,7 +465,7 @@ StateManager (updates GameState)
      ↓
 WebSocket ws://127.0.0.1:8765/ws
      ↓
-Overlay (receives live updates)
+Frontend (receives live updates)
 ```
 
 ---
@@ -475,7 +475,7 @@ Overlay (receives live updates)
 | Approach | Real-time | Board Data | Opponent Data | Difficulty |
 |----------|-----------|------------|---------------|------------|
 | Log parsing | ✅ Yes | ❌ Not in logs | ❌ No | Easy |
-| Redux Bridge | ✅ Yes | ✅ Yes | ❌ No | Medium |
+| Redux Bridge | ✅ Yes | ✅ Yes | ✅ Yes (board_data) | Medium |
 | UUID/DigitalOcean | ❌ Post-game | ✅ Yes | ✅ All 8 boards | Easy |
 | Live Client API | ✅ Yes | ⚠️ Limited | ❌ No | Easy |
 

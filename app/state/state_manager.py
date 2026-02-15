@@ -1,10 +1,12 @@
 """Manages game state by processing log events."""
 
+import threading
 from datetime import datetime
+import re
 from typing import Callable, Optional
 
 from app.watcher.parser import GameEvent, EventType
-from .game_state import GameState, GamePhase, PlayerState, Unit
+from .game_state import GameState, GamePhase, PlayerState, ShopUnit, Unit
 
 
 class StateManager:
@@ -14,6 +16,7 @@ class StateManager:
         self.state = GameState()
         self.state_callbacks: list[Callable[[GameState], None]] = []
         self._previous_phase = self.state.game_phase
+        self._lock = threading.Lock()
 
     def on_state_change(self, callback: Callable[[GameState], None]):
         """Register a callback for state changes."""
@@ -31,8 +34,9 @@ class StateManager:
         """Process a game event and update state."""
         handler = getattr(self, f"_handle_{event.event_type.value}", None)
         if handler:
-            handler(event)
-            self.state.last_update = event.timestamp
+            with self._lock:
+                handler(event)
+                self.state.last_update = event.timestamp
             self._notify_state_change()
 
     def _handle_game_start(self, event: GameEvent):
@@ -137,13 +141,31 @@ class StateManager:
         """Handle item selection event."""
         items = event.data.get("items", {})
         self.state.game_phase = GamePhase.ITEM_SELECT
+
+        unassigned: list[str] = []
+        if isinstance(items, dict):
+            for _, item_data in items.items():
+                if isinstance(item_data, dict):
+                    name = item_data.get("name") or item_data.get("api_name") or item_data.get("id")
+                    if isinstance(name, str) and name:
+                        unassigned.append(name)
+                elif isinstance(item_data, str) and item_data:
+                    unassigned.append(item_data)
+
+        if unassigned:
+            self.state.unassigned_items = unassigned
         print(f"[STATE] Item selection: {items}")
 
     def _handle_scouting(self, event: GameEvent):
         """Handle scouting event."""
-        player = event.data.get("player", "")
-        self.state.currently_scouting = player
-        print(f"[STATE] Scouting: {player}")
+        player = (event.data.get("player", "") or "").strip()
+        if not player:
+            self.state.currently_scouting = None
+        elif self.state.player.name and player.lower() == self.state.player.name.lower():
+            self.state.currently_scouting = None
+        else:
+            self.state.currently_scouting = player
+        print(f"[STATE] Scouting: {self.state.currently_scouting or 'self'}")
 
     def _handle_win_chance(self, event: GameEvent):
         """Handle win chance prediction event."""
@@ -180,8 +202,12 @@ class StateManager:
             except (ValueError, KeyError) as e:
                 print(f"[STATE] Error parsing board unit {cell_key}: {e}")
 
-        self.state.player.board_units = units
-        print(f"[STATE] Board updated: {len(units)} units")
+        if self.state.currently_scouting:
+            self.state.opponent_boards[self.state.currently_scouting] = units
+            print(f"[STATE] Scouted board updated: {self.state.currently_scouting} ({len(units)} units)")
+        else:
+            self.state.player.board_units = units
+            print(f"[STATE] Board updated: {len(units)} units")
 
     def _handle_bench_update(self, event: GameEvent):
         """Handle bench update event with bench units."""
@@ -210,6 +236,38 @@ class StateManager:
 
         self.state.bench_units = units
         print(f"[STATE] Bench updated: {len(units)} units")
+
+    def _handle_shop_update(self, event: GameEvent):
+        """Handle shop update event with shop offerings."""
+        shop_data = event.data.get("shop", {})
+        units: list[ShopUnit] = []
+
+        if isinstance(shop_data, dict):
+            for _, unit_data in shop_data.items():
+                if isinstance(unit_data, dict):
+                    character_id = unit_data.get("name") or unit_data.get("character_id") or ""
+                    cost_raw = unit_data.get("cost") or unit_data.get("tier") or unit_data.get("price")
+                elif isinstance(unit_data, str):
+                    character_id = unit_data
+                    cost_raw = None
+                else:
+                    continue
+
+                if not isinstance(character_id, str) or not character_id:
+                    continue
+
+                cost = None
+                if cost_raw is not None:
+                    try:
+                        cost = int(cost_raw)
+                    except (TypeError, ValueError):
+                        cost = None
+
+                units.append(ShopUnit(character_id=character_id, cost=cost))
+
+        self.state.shop_units = units
+        if units:
+            print(f"[STATE] Shop updated: {len(units)} units")
 
     def _handle_roster_update(self, event: GameEvent):
         """Handle roster update event with all 8 players."""
@@ -262,3 +320,189 @@ class StateManager:
     def get_state_dict(self) -> dict:
         """Get current game state as dictionary."""
         return self.state.to_dict()
+
+    def apply_redux_state(self, redux_state: dict) -> None:
+        """Apply a Redux bridge snapshot into the live GameState."""
+        now = datetime.now()
+
+        # Timestamp (best effort).
+        last_update = now
+        ts = redux_state.get("timestamp")
+        if isinstance(ts, str) and ts:
+            try:
+                last_update = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+            except Exception:
+                last_update = now
+
+        player = redux_state.get("player") if isinstance(redux_state.get("player"), dict) else {}
+
+        with self._lock:
+            self.state.last_update = last_update
+
+            # Player identity + vitals
+            name = player.get("summoner_name")
+            if isinstance(name, str) and name:
+                self.state.player.name = name
+
+            health = player.get("health")
+            if isinstance(health, int):
+                self.state.player.health = health
+            elif isinstance(health, str) and health:
+                try:
+                    self.state.player.health = int(health)
+                except ValueError:
+                    pass
+
+            gold = player.get("gold")
+            if isinstance(gold, int):
+                self.state.gold = gold
+            elif isinstance(gold, str):
+                try:
+                    self.state.gold = int(gold) if gold else 0
+                except ValueError:
+                    pass
+
+            # XP as "cur/max" to reuse existing level inference logic.
+            xp = player.get("xp")
+            if isinstance(xp, dict):
+                cur = xp.get("current")
+                mx = xp.get("max")
+                try:
+                    cur_i = int(cur)
+                    mx_i = int(mx)
+                    self.state.xp = f"{cur_i}/{mx_i}"
+                    self.state.player.level = self._get_level_from_xp(self.state.xp)
+                except Exception:
+                    pass
+            elif isinstance(xp, str) and xp:
+                self.state.xp = xp
+                self.state.player.level = self._get_level_from_xp(self.state.xp)
+
+            # Board units
+            board_units_raw = redux_state.get("board_units")
+            if isinstance(board_units_raw, list):
+                board_units: list[Unit] = []
+                for unit_data in board_units_raw:
+                    if not isinstance(unit_data, dict):
+                        continue
+                    pos = unit_data.get("position")
+                    pos_tuple = None
+                    if isinstance(pos, dict):
+                        try:
+                            pos_tuple = (int(pos.get("row")), int(pos.get("col")))
+                        except Exception:
+                            pos_tuple = None
+                    board_units.append(
+                        Unit(
+                            character_id=str(unit_data.get("character_id") or ""),
+                            star_level=int(unit_data.get("stars") or 1),
+                            items=list(unit_data.get("items") or []),
+                            position=pos_tuple,
+                        )
+                    )
+                self.state.player.board_units = board_units
+
+            # Bench units
+            bench_units_raw = redux_state.get("bench_units")
+            if isinstance(bench_units_raw, list):
+                bench_units: list[Unit] = []
+                for unit_data in bench_units_raw:
+                    if not isinstance(unit_data, dict):
+                        continue
+                    bench_units.append(
+                        Unit(
+                            character_id=str(unit_data.get("character_id") or ""),
+                            star_level=int(unit_data.get("stars") or 1),
+                            items=list(unit_data.get("items") or []),
+                            position=None,
+                        )
+                    )
+                self.state.bench_units = bench_units
+
+            # Shop units
+            shop_units_raw = redux_state.get("shop_units")
+            shop_units: list[ShopUnit] = []
+            if isinstance(shop_units_raw, list):
+                for su in shop_units_raw:
+                    if isinstance(su, dict):
+                        cid = su.get("character_id")
+                        cost_raw = su.get("cost")
+                    elif isinstance(su, str):
+                        cid = su
+                        cost_raw = None
+                    else:
+                        continue
+
+                    if not isinstance(cid, str) or not cid:
+                        continue
+
+                    cost = None
+                    if cost_raw is not None:
+                        try:
+                            cost = int(cost_raw)
+                        except (TypeError, ValueError):
+                            cost = None
+                    shop_units.append(ShopUnit(character_id=cid, cost=cost))
+
+            # Back-compat: parse raw shop_pieces when inject.js only sends raw.shop
+            if not shop_units:
+                raw = redux_state.get("raw") if isinstance(redux_state.get("raw"), dict) else {}
+                raw_shop = raw.get("shop")
+                if isinstance(raw_shop, dict):
+                    for _, unit_data in raw_shop.items():
+                        if not isinstance(unit_data, dict):
+                            continue
+                        cid = unit_data.get("name") or unit_data.get("character_id")
+                        if not isinstance(cid, str) or not cid:
+                            continue
+                        shop_units.append(ShopUnit(character_id=cid, cost=None))
+
+            self.state.shop_units = shop_units
+
+            # Opponent boards (for pool tracking and coach tempo robustness)
+            opponent_boards = redux_state.get("opponent_boards")
+            if isinstance(opponent_boards, dict):
+                parsed: dict[str, list[Unit]] = {}
+                pos_re = re.compile(r"^([A-Da-d])([0-9])$")
+                for board_id, units_data in opponent_boards.items():
+                    if not isinstance(units_data, list):
+                        continue
+                    units: list[Unit] = []
+                    for unit_data in units_data:
+                        if not isinstance(unit_data, dict):
+                            continue
+                        cid = unit_data.get("character_id") or unit_data.get("name") or ""
+                        stars_raw = unit_data.get("stars") or unit_data.get("level") or 1
+                        try:
+                            stars = int(stars_raw)
+                        except Exception:
+                            stars = 1
+
+                        pos_tuple = None
+                        pos_raw = unit_data.get("position")
+                        if isinstance(pos_raw, str):
+                            m = pos_re.match(pos_raw.strip())
+                            if m:
+                                row = ord(m.group(1).upper()) - ord("A")
+                                col = int(m.group(2)) - 1
+                                pos_tuple = (row, col)
+                        elif isinstance(pos_raw, dict):
+                            try:
+                                pos_tuple = (int(pos_raw.get("row")), int(pos_raw.get("col")))
+                            except Exception:
+                                pos_tuple = None
+
+                        units.append(
+                            Unit(
+                                character_id=str(cid),
+                                star_level=stars,
+                                items=list(unit_data.get("items") or []),
+                                position=pos_tuple,
+                            )
+                        )
+                    if units:
+                        parsed[str(board_id)] = units
+                if parsed:
+                    self.state.opponent_boards = parsed
+
+        self._notify_state_change()

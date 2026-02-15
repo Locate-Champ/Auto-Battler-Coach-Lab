@@ -22,7 +22,7 @@ class TFTCoach:
             file_patterns=config.log_files,
         )
         self.with_server = with_server
-        self.server = WebSocketServer(host=config.host, port=config.port) if with_server else None
+        self.server = WebSocketServer(host=config.host, port=config.port, state_manager=self.state_manager) if with_server else None
         self._running = False
 
     def _on_game_event(self, event: GameEvent):
