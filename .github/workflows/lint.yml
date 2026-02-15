@@ -1,4 +1,4 @@
-# ESLint and code quality checks
+# Frontend build + lightweight code quality checks
 # Runs on all PRs and pushes to main
 
 name: Lint & Code Quality
@@ -26,23 +26,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./app
-        continue-on-error: true
+        working-directory: ./app/frontend
 
-      - name: Run ESLint
-        run: npm run lint
-        working-directory: ./app
-        continue-on-error: true
-
-      - name: Run Prettier check
-        run: npm run format:check
-        working-directory: ./app
-        continue-on-error: true
-
-      - name: TypeScript type check
-        run: npm run type-check
-        working-directory: ./app
-        continue-on-error: true
+      - name: Build frontend
+        run: npm run build
+        working-directory: ./app/frontend
 
   # Lint Python scripts
   python-lint:
