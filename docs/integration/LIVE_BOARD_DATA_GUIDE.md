@@ -1,12 +1,14 @@
 # Live Board Data Integration Guide
 
-> How to get real-time TFT board data for the overlay
+> How to get real-time TFT board data for the frontend
 
 ---
 
 ## Data Source
 
-MetaTFT/Overwolf logs provide real-time board state through file monitoring.
+Two live data sources exist:
+1. Log parsing (file monitoring): reliable for stage/augments/scouting; sometimes contains board/bench/shop.
+2. Redux bridge injection (recommended): reliable board/bench/shop + all 8 boards (`board_data`) via `ws://127.0.0.1:8765/redux` (see `app/redux_bridge/inject.js`).
 
 **Log Location:**
 ```
@@ -102,10 +104,12 @@ function getItemImageFile(itemId: string): string {
 
 ### Opponent Board
 
-**Important:** Overwolf does NOT provide direct opponent board data.
+**Log parsing:** Overwolf does NOT provide direct opponent board data.
 
-Options:
-1. **Skip opponent board** in overlay (show only player board)
+**Redux bridge:** MetaTFT Redux `board_data` includes all 8 boards; the backend forwards it as `opponent_boards`.
+
+Options (when opponent boards are missing):
+1. **Skip opponent board** in frontend (show only player board)
 2. **Use mock/demo data** for opponent
 3. **Build scouting feature** - track what you see when scouting
 
@@ -143,7 +147,7 @@ app/api/server.py             → REST API endpoints
 ### Data Flow
 
 ```
-MetaTFT Logs → Log Watcher → Parser → State Manager → WebSocket → Overlay
+MetaTFT Logs → Log Watcher → Parser → State Manager → WebSocket → Frontend
      ↑                                                              ↓
   Overwolf GEP                                              React Components
 ```
@@ -164,10 +168,11 @@ MetaTFT Logs → Log Watcher → Parser → State Manager → WebSocket → Over
 - ✅ Item select (JSON data)
 - ✅ Game start indicators
 
-**Missing:**
-- ❌ `tft_board` - Board unit positions
-- ❌ `tft_bench` - Bench units
-- ❌ `tft_roster` - All 8 players roster
+**Also parses (when present in logs):**
+- ✅ `tft_board` - Board unit positions
+- ✅ `tft_bench` - Bench units
+- ✅ `tft_roster` - All 8 players roster
+- ✅ `tft_shop` - Shop offerings
 
 ### Game State (`app/state/game_state.py`)
 
@@ -190,15 +195,17 @@ class PlayerState:
     traits: dict[str, int] = field(default_factory=dict)
 ```
 
-**Issues:**
-- ❌ `to_dict()` doesn't serialize `board_units` or `bench_units`
-- ❌ No code to populate `board_units` from parsed events
+**Status:**
+- ✅ `to_dict()` serializes `board_units`, `bench_units`, `shop_units`, `unassigned_items`, and `opponent_boards`.
+- ✅ `StateManager` populates board/bench/shop from log events (when present) and via the Redux bridge (`/redux`).
 
 ---
 
-## What Needs to Be Done
+## What Remains
 
-### Step 1: Add Board Parsing to `parser.py`
+These implementation steps are now complete. Remaining work is end-to-end validation in a real live game and deciding whether Redux bridge or log parsing is the default for board/bench/shop/opponent boards.
+
+### Step 1 (Done): Add Board Parsing to `parser.py`
 
 Add new event type and pattern:
 
@@ -212,7 +219,7 @@ BENCH_UPDATE = "bench_update"
 "bench": re.compile(r'"key":"tft_bench","value":"(\{.+?\})"'),
 ```
 
-### Step 2: Update State Manager
+### Step 2 (Done): Update State Manager
 
 Handle new events in `state_manager.py`:
 
@@ -233,7 +240,7 @@ def handle_board_update(self, event: GameEvent):
     self.state.player.board_units = units
 ```
 
-### Step 3: Fix `to_dict()` Serialization
+### Step 3 (Done): Fix `to_dict()` Serialization
 
 Add board units to JSON output in `game_state.py`:
 
@@ -255,13 +262,13 @@ def to_dict(self) -> dict:
     }
 ```
 
-### Step 4: Connect Overlay to WebSocket
+### Step 4 (Done): Connect Frontend to WebSocket
 
-In overlay React components, subscribe to WebSocket updates
+In `app/frontend/`, subscribe to WebSocket updates (via the Vite `/ws` proxy in dev).
 
 ---
 
-## Transformation: Log Data → Overlay Format
+## Transformation: Live Data → Frontend Format
 
 ### Input (from logs)
 ```json
@@ -270,7 +277,7 @@ In overlay React components, subscribe to WebSocket updates
 }
 ```
 
-### Output (for overlay)
+### Output (for frontend)
 ```typescript
 {
   id: "cell_1",
@@ -313,12 +320,12 @@ function transformBoardData(logData: Record<string, LogUnit>): PositionedUnit[] 
 |---------|------|
 | Champion data | `data/game_data/champions.jsonl` |
 | Item data | `data/game_data/items.jsonl` |
-| Champion images | `overlay/images/champion images/` |
-| Item images | `overlay/images/craftable items images/` |
+| Champion images | `app/frontend/images/champion images/` |
+| Item images | `app/frontend/images/craftable items images/` |
 | Log parser | `app/watcher/parser.py` |
 | Game state | `app/state/game_state.py` |
 | WebSocket | `app/server/websocket.py` |
-| Overlay components | `overlay/` |
+| Frontend components | `app/frontend/` |
 
 ---
 
@@ -326,14 +333,14 @@ function transformBoardData(logData: Record<string, LogUnit>): PositionedUnit[] 
 
 1. **Start the backend:**
    ```bash
-   cd app && python main.py
+   python -m app.main
    ```
 
-2. **Start the overlay:**
+2. **Start the frontend:**
    ```bash
-   cd overlay && npm run dev
+   npm start
    ```
 
 3. **Play a TFT game** with MetaTFT running
 
-4. **Board data flows:** Logs → Parser → WebSocket → Overlay
+4. **Board data flows:** Logs/Redux → State Manager → WebSocket → Frontend

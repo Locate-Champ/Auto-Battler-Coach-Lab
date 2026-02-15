@@ -35,6 +35,20 @@ class Unit:
 
 
 @dataclass
+class ShopUnit:
+    """A shop offering."""
+    character_id: str  # e.g., "TFT16_Ekko"
+    cost: Optional[int] = None
+
+    @property
+    def name(self) -> str:
+        """Extract clean name from character_id."""
+        if "_" in self.character_id:
+            return self.character_id.split("_")[-1]
+        return self.character_id
+
+
+@dataclass
 class PlayerState:
     """State of a player (self or opponent)."""
     name: str
@@ -70,6 +84,12 @@ class GameState:
 
     # Bench
     bench_units: list[Unit] = field(default_factory=list)
+
+    # Shop
+    shop_units: list[ShopUnit] = field(default_factory=list)
+
+    # Unassigned items (components/completed items not equipped)
+    unassigned_items: list[str] = field(default_factory=list)
 
     # Opponents
     opponents: dict[str, PlayerState] = field(default_factory=dict)
@@ -133,6 +153,15 @@ class GameState:
                 }
                 for u in self.bench_units
             ],
+            "shop_units": [
+                {
+                    "character_id": u.character_id,
+                    "name": u.name,
+                    "cost": u.cost,
+                }
+                for u in self.shop_units
+            ],
+            "unassigned_items": list(self.unassigned_items),
             # Opponent boards for pool tracking
             "opponent_boards": {
                 board_id: [
@@ -183,6 +212,8 @@ class GameState:
         self.augment_options = []
         self.augment_armory_active = False
         self.bench_units = []
+        self.shop_units = []
+        self.unassigned_items = []
         self.opponents = {}
         self.opponent_boards = {}
         self.currently_scouting = None

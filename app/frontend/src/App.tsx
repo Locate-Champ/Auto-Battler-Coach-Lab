@@ -27,7 +27,7 @@ function App() {
       <div className="flex gap-4 items-start">
 
         {/* Left: Coaching Panel */}
-        <CoachingPanel />
+        <CoachingPanel gameState={gameState} />
 
         {/* Center: Boards + Items */}
         <div className="flex flex-col" style={{ width: '787px' }}>
