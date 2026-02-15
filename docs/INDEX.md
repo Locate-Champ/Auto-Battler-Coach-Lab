@@ -11,6 +11,20 @@ Technical design and data structure documentation.
 - [DATA_SCHEMAS.md](architecture/DATA_SCHEMAS.md) - Data schema definitions for match data, units, traits
 - [FILE_TREE_DECISIONS.md](architecture/FILE_TREE_DECISIONS.md) - Project directory structure rationale
 - [PROTOTYPE_PLAN.md](architecture/PROTOTYPE_PLAN.md) - Implementation roadmap and milestones
+- [REPO_ARCHITECTURE.md](REPO_ARCHITECTURE.md) - Repo folder guide + runtime/offline flows
+- [CURRENT_MODEL_AND_SIMULATOR.md](CURRENT_MODEL_AND_SIMULATOR.md) - Current simulator + ML stack overview
+
+---
+
+## Coach
+
+Planner + critic runtime, schemas, and upgrade plan.
+
+- [COACH_UPGRADE_INDEX.md](COACH_UPGRADE_INDEX.md) - Entry-point for coach upgrade milestones + contracts
+- [LIVE_TO_COACH_STATE_CONTRACT.md](specs/LIVE_TO_COACH_STATE_CONTRACT.md) - Live runtime -> coach state contract
+- [SNAPSHOT_ROW_SCHEMA.md](specs/SNAPSHOT_ROW_SCHEMA.md) - Simulator SnapshotRow (collector) schema
+- [COACH_EXPLANATION_SCHEMA.md](specs/COACH_EXPLANATION_SCHEMA.md) - Coach -> WS/UI payload schema
+- [MODEL_ARTIFACT_SCHEMA.md](specs/MODEL_ARTIFACT_SCHEMA.md) - Runtime model/archetype artifact schemas
 
 ---
 
@@ -80,4 +94,4 @@ Third-party integrations.
 
 ---
 
-*Last updated: 2026-02-05*
+*Last updated: 2026-02-14*
