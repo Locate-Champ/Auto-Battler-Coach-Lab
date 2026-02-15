@@ -55,6 +55,7 @@ logs/
 
 # Large data dumps (keep sample data in data/, store full dumps externally)
 # Raw log dumps from MetaTFT/Overwolf should not be committed
+tft-scraper/data/
 
 # Local scratch
 overlay_list.txt
