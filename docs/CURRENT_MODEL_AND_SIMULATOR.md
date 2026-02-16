@@ -452,6 +452,28 @@ python -m simulator.validate_output results/batch
 
 If you plan to scale past small runs, install `pyarrow` so you stay on Parquet rather than JSONL.
 
+For large single-node CPU runs, prefer the rust-first path with Rayon batching and direct native parquet:
+
+```bash
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+python -m simulator.cloud_runner --engine rust_full --games 10000 --workers 1 \
+  --output results/rust_full_batch --agent-profile mixed --require-parquet \
+  --rust-full-native-parquet --rust-full-native-parquet-direct \
+  --rust-full-rayon-batch-size 64 --rust-full-rayon-threads <PHYSICAL_CORES> \
+  --parquet-compression snappy --parquet-use-dictionary --parquet-write-statistics
+```
+
+When Rayon batching is enabled, keep Python worker count low (often `1`) and tune `--rust-full-rayon-threads`/`--rust-full-rayon-batch-size` for best `summary.json` throughput.
+If you need parquet layout tuning for very large datasets, you can also pass `--parquet-row-group-size <N>` and `--parquet-write-batch-size <N>` (Rust-native parquet paths).
+
+When Rust extension APIs change, rebuild/install `tft_combat_engine` into the same CPython interpreter that runs your simulator commands:
+
+```bash
+PYTHON_EXE=$(python -c "import sys; print(sys.executable)")
+python -m maturin build --release -m simulator/core/rust_engine/Cargo.toml --interpreter "$PYTHON_EXE"
+python -m pip install --force-reinstall simulator/core/rust_engine/target/wheels/tft_combat_engine-*.whl
+```
+
 ### 4.2 Benchmark Determinism
 
 ```bash

@@ -249,7 +249,53 @@ compute_cost = hourly_rate * projected_runtime_hours
 buffered_compute_cost = compute_cost * 1.25
 ```
 
-### 5.3 Provider Options (Verify Pricing at Execution Time)
+### 5.3 Rust-First Large-Core Single-Node Recipe
+
+For maximum throughput on one very large CPU machine, prefer:
+
+- `--engine rust_full`
+- Rust rayon batch mode (`--rust-full-rayon-batch-size`, `--rust-full-rayon-threads`)
+- direct parquet writing (`--rust-full-native-parquet --rust-full-native-parquet-direct`)
+- a small Python worker count (typically `--workers 1`) to avoid Python+Rayon oversubscription
+
+Set thread-pool guardrails before running:
+
+```bash
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+```
+
+Reference command:
+
+```bash
+python -m simulator.cloud_runner --engine rust_full --games 10000 --workers 1 \
+  --output /data/rust_full_10k --agent-profile mixed --require-parquet \
+  --rust-full-native-parquet --rust-full-native-parquet-direct \
+  --rust-full-rayon-batch-size 64 --rust-full-rayon-threads <PHYSICAL_CORES> \
+  --parquet-compression snappy --parquet-use-dictionary --parquet-write-statistics \
+  --checkpoint-every 500 --progress-every 500 --max-errors 100
+```
+
+Optional parquet layout tuning for large scans: add `--parquet-row-group-size <N>` and `--parquet-write-batch-size <N>`.
+
+Measure first, then scale: run a thread/batch sweep and pick the best `games_per_sec` from each run's `summary.json`:
+
+```bash
+for threads in <PHYSICAL_CORES-8> <PHYSICAL_CORES-4> <PHYSICAL_CORES>; do
+  for batch in 32 64 128; do
+    python -m simulator.cloud_runner --engine rust_full --games 10000 --workers 1 \
+      --output /data/rust_sweep_t${threads}_b${batch} --agent-profile mixed \
+      --rust-full-native-parquet --rust-full-native-parquet-direct \
+      --rust-full-rayon-batch-size ${batch} --rust-full-rayon-threads ${threads} \
+      --parquet-compression snappy --parquet-use-dictionary --parquet-write-statistics \
+      --require-parquet --checkpoint-every 500 --progress-every 500 --max-errors 100
+  done
+done
+```
+
+### 5.4 Provider Options (Verify Pricing at Execution Time)
 
 | Option | Strength | Must Verify Right Before Run |
 |--------|----------|------------------------------|
