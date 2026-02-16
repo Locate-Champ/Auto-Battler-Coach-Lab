@@ -17,6 +17,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import inspect
 import json
 import math
 import multiprocessing
@@ -51,6 +52,7 @@ AGENT_PROFILES = {
 }
 
 _RUST_FULL_SIMULATOR: Any = None
+_RUST_PARQUET_API_VALIDATED: set[str] = set()
 
 
 class BatchAbort(Exception):
@@ -80,6 +82,72 @@ def _normalize_parquet_compression(name: str) -> str:
         valid = ', '.join(sorted(mapping))
         raise ValueError(f"Unsupported parquet compression '{name}'. Valid values: {valid}")
     return mapping[value]
+
+
+def _rust_extension_rebuild_hint() -> str:
+    python_exe = Path(sys.executable)
+    cargo_toml = Path(__file__).parent / 'core' / 'rust_engine' / 'Cargo.toml'
+    wheel_glob = Path(__file__).parent / 'core' / 'rust_engine' / 'target' / 'wheels' / 'tft_combat_engine-*.whl'
+    return (
+        f"\"{python_exe}\" -m maturin build --release -m \"{cargo_toml}\" --interpreter \"{python_exe}\"\n"
+        f"\"{python_exe}\" -m pip install --force-reinstall \"{wheel_glob}\""
+    )
+
+
+def _extract_signature_parameter_names(method: Any) -> List[str]:
+    try:
+        return list(inspect.signature(method).parameters.keys())
+    except (TypeError, ValueError):
+        text_sig = getattr(method, '__text_signature__', None) or ''
+        if '(' not in text_sig or ')' not in text_sig:
+            return []
+        inside = text_sig[text_sig.find('(') + 1:text_sig.rfind(')')]
+        names: List[str] = []
+        for raw_part in inside.split(','):
+            part = raw_part.strip()
+            if not part:
+                continue
+            name = part.split('=')[0].strip()
+            if name.startswith('$'):
+                name = name[1:]
+            names.append(name)
+        return names
+
+
+def _ensure_rust_parquet_method_support(
+    rust_simulator: Any,
+    method_name: str,
+    required_kwargs: Tuple[str, ...] = (
+        'compression',
+        'use_dictionary',
+        'write_statistics',
+        'row_group_size',
+        'write_batch_size',
+    ),
+) -> None:
+    global _RUST_PARQUET_API_VALIDATED
+    if method_name in _RUST_PARQUET_API_VALIDATED:
+        return
+
+    method = getattr(rust_simulator, method_name, None)
+    if method is None:
+        raise RuntimeError(
+            f"tft_combat_engine is missing '{method_name}'. Rebuild for the active CPython interpreter:\n"
+            f"{_rust_extension_rebuild_hint()}"
+        )
+
+    param_names = set(_extract_signature_parameter_names(method))
+    missing_kwargs = [name for name in required_kwargs if name not in param_names]
+    if missing_kwargs:
+        missing_text = ', '.join(missing_kwargs)
+        raise RuntimeError(
+            f"tft_combat_engine.{method_name} is missing expected kwargs ({missing_text}). "
+            f"This usually means the extension was built/installed for a different CPython interpreter than "
+            f"the one running this command ({sys.executable}). Rebuild/install into this interpreter:\n"
+            f"{_rust_extension_rebuild_hint()}"
+        )
+
+    _RUST_PARQUET_API_VALIDATED.add(method_name)
 
 
 def _wilson_interval(successes: int, trials: int,
@@ -177,27 +245,57 @@ def run_game(args: Tuple) -> Dict:
             include_training_rows,
             rust_full_native_jsonl,
             rust_full_native_parquet,
+            parquet_compression,
+            parquet_use_dictionary,
+            parquet_write_statistics,
+            parquet_row_group_size,
+            parquet_write_batch_size,
         ) tuple.
 
     Returns:
         Dict with status='ok' and game data, or status='error' with traceback.
     """
-    game_id, seed, agent_mix, engine, include_training_rows, rust_full_native_jsonl, rust_full_native_parquet = args
+    (
+        game_id,
+        seed,
+        agent_mix,
+        engine,
+        include_training_rows,
+        rust_full_native_jsonl,
+        rust_full_native_parquet,
+        parquet_compression,
+        parquet_use_dictionary,
+        parquet_write_statistics,
+        parquet_row_group_size,
+        parquet_write_batch_size,
+    ) = args
     try:
         # Seed before agent assignment for determinism
         random.seed(seed)
 
         if engine == 'rust_full':
             global _RUST_FULL_SIMULATOR
+            global _RUST_PARQUET_API_VALIDATED
             if _RUST_FULL_SIMULATOR is None:
                 from tft_combat_engine import RustGameSimulator
 
                 combat_data_path = Path(__file__).parent / 'data' / 'combat_data.json'
                 _RUST_FULL_SIMULATOR = RustGameSimulator(str(combat_data_path))
+                _RUST_PARQUET_API_VALIDATED.clear()
 
             start = time.perf_counter()
             if rust_full_native_parquet and include_training_rows:
-                rust_result = _RUST_FULL_SIMULATOR.run_game_parquet(game_id, seed, agent_mix)
+                _ensure_rust_parquet_method_support(_RUST_FULL_SIMULATOR, 'run_game_parquet')
+                rust_result = _RUST_FULL_SIMULATOR.run_game_parquet(
+                    game_id,
+                    seed,
+                    agent_mix,
+                    compression=parquet_compression,
+                    use_dictionary=parquet_use_dictionary,
+                    write_statistics=parquet_write_statistics,
+                    row_group_size=parquet_row_group_size,
+                    write_batch_size=parquet_write_batch_size,
+                )
             elif rust_full_native_jsonl and include_training_rows:
                 rust_result = _RUST_FULL_SIMULATOR.run_game_jsonl(game_id, seed, agent_mix)
             else:
@@ -737,10 +835,12 @@ def _worker_init(engine: str = 'python'):
         return
     if engine == 'rust_full':
         global _RUST_FULL_SIMULATOR
+        global _RUST_PARQUET_API_VALIDATED
         from tft_combat_engine import RustGameSimulator
 
         combat_data_path = Path(__file__).parent / 'data' / 'combat_data.json'
         _RUST_FULL_SIMULATOR = RustGameSimulator(str(combat_data_path))
+        _RUST_PARQUET_API_VALIDATED.clear()
         return
 
     from simulator.core.combat_engine import CombatEngine
@@ -776,6 +876,8 @@ def run_batch(
     parquet_compression: str = 'uncompressed',
     parquet_use_dictionary: bool = False,
     parquet_write_statistics: bool = False,
+    parquet_row_group_size: Optional[int] = None,
+    parquet_write_batch_size: Optional[int] = None,
 ) -> Dict:
     """Run num_games in parallel with streaming output and checkpoints.
 
@@ -806,6 +908,8 @@ def run_batch(
         parquet_compression: Output parquet compression codec.
         parquet_use_dictionary: Whether parquet dictionary encoding is enabled.
         parquet_write_statistics: Whether parquet statistics are written.
+        parquet_row_group_size: Optional parquet row-group size hint for Rust-native parquet paths.
+        parquet_write_batch_size: Optional parquet write batch size hint for Rust-native parquet paths.
 
     Returns:
         Summary dict with timing and aggregate stats.
@@ -836,6 +940,10 @@ def run_batch(
         raise ValueError("rust_full_rayon_threads must be > 0 when provided.")
     if (rust_full_rayon_batch_size is not None or rust_full_rayon_threads is not None) and engine != 'rust_full':
         raise ValueError("Rust rayon batch options require engine='rust_full'.")
+    if parquet_row_group_size is not None and parquet_row_group_size <= 0:
+        raise ValueError("parquet_row_group_size must be > 0 when provided.")
+    if parquet_write_batch_size is not None and parquet_write_batch_size <= 0:
+        raise ValueError("parquet_write_batch_size must be > 0 when provided.")
     _normalize_parquet_compression(parquet_compression)
 
     requested_seed_start = seed_start
@@ -890,6 +998,11 @@ def run_batch(
             rust_full_include_training_rows,
             rust_full_native_jsonl,
             rust_full_native_parquet,
+            parquet_compression,
+            parquet_use_dictionary,
+            parquet_write_statistics,
+            parquet_row_group_size,
+            parquet_write_batch_size,
         )
         for s in all_seeds
              if s not in completed_seeds]
@@ -950,6 +1063,8 @@ def run_batch(
                 'parquet_compression': parquet_compression,
                 'parquet_use_dictionary': parquet_use_dictionary,
                 'parquet_write_statistics': parquet_write_statistics,
+                'parquet_row_group_size': parquet_row_group_size,
+                'parquet_write_batch_size': parquet_write_batch_size,
                 'resume': resume,
                 'checkpoint_every': checkpoint_every,
                 'progress_every': progress_every,
@@ -1010,18 +1125,16 @@ def run_batch(
         _worker_init('rust_full')
         global _RUST_FULL_SIMULATOR
         rayon_threads = rust_full_rayon_threads or num_workers
-        if use_rust_batch_parquet_file_api and not hasattr(_RUST_FULL_SIMULATOR, 'run_games_batch_parquet_to_file'):
-            print(
-                "Warning: rust_full direct batch parquet-to-file API unavailable in this extension build; "
-                "falling back to Python chunk finalization."
+        if use_rust_batch_parquet_file_api:
+            _ensure_rust_parquet_method_support(
+                _RUST_FULL_SIMULATOR,
+                'run_games_batch_parquet_to_file',
             )
-            use_rust_batch_parquet_file_api = False
-        if use_rust_batch_parquet_api and not hasattr(_RUST_FULL_SIMULATOR, 'run_games_batch_parquet'):
-            print(
-                "Warning: rust_full batch parquet API unavailable in this extension build; "
-                "falling back to per-game parquet batch output."
+        if use_rust_batch_parquet_api:
+            _ensure_rust_parquet_method_support(
+                _RUST_FULL_SIMULATOR,
+                'run_games_batch_parquet',
             )
-            use_rust_batch_parquet_api = False
         batch_output_mode = 'rows'
         if rust_full_include_training_rows and not use_rust_batch_parquet_api:
             if rust_full_native_parquet:
@@ -1063,6 +1176,11 @@ def run_batch(
                             agent_mix,
                             rust_full_include_training_rows,
                             rayon_threads,
+                            compression=parquet_compression,
+                            use_dictionary=parquet_use_dictionary,
+                            write_statistics=parquet_write_statistics,
+                            row_group_size=parquet_row_group_size,
+                            write_batch_size=parquet_write_batch_size,
                         )
                         batch_results = list(batch_payload.get('results', []))
                         batch_training_row_count = int(batch_payload.get('training_row_count', 0))
@@ -1074,6 +1192,11 @@ def run_batch(
                             agent_mix,
                             rust_full_include_training_rows,
                             rayon_threads,
+                            compression=parquet_compression,
+                            use_dictionary=parquet_use_dictionary,
+                            write_statistics=parquet_write_statistics,
+                            row_group_size=parquet_row_group_size,
+                            write_batch_size=parquet_write_batch_size,
                         )
                         batch_results = list(batch_payload.get('results', []))
                         batch_parquet_blob = batch_payload.get('training_rows_parquet', b'')
@@ -1181,6 +1304,8 @@ def run_batch(
             'parquet_compression': parquet_compression,
             'parquet_use_dictionary': parquet_use_dictionary,
             'parquet_write_statistics': parquet_write_statistics,
+            'parquet_row_group_size': parquet_row_group_size,
+            'parquet_write_batch_size': parquet_write_batch_size,
             'resume': resume,
             'checkpoint_every': checkpoint_interval,
             'progress_every': progress_interval,
@@ -1288,6 +1413,10 @@ Examples:
                         help='Enable/disable parquet dictionary encoding for chunk writes')
     parser.add_argument('--parquet-write-statistics', action=argparse.BooleanOptionalAction, default=None,
                         help='Enable/disable parquet column statistics for chunk writes')
+    parser.add_argument('--parquet-row-group-size', type=int, default=None,
+                        help='Optional parquet row-group size for Rust-native parquet writes')
+    parser.add_argument('--parquet-write-batch-size', type=int, default=None,
+                        help='Optional parquet write batch size for Rust-native parquet writes')
     parser.add_argument('--skip-reference-validation', action='store_true',
                         help='Skip simulator reference preflight validation')
     args = parser.parse_args()
@@ -1325,6 +1454,10 @@ Examples:
             parser.error("--rust-full-rayon-threads must be > 0")
         if args.engine != 'rust_full':
             parser.error("--rust-full-rayon-threads requires --engine rust_full")
+    if args.parquet_row_group_size is not None and args.parquet_row_group_size <= 0:
+        parser.error("--parquet-row-group-size must be > 0")
+    if args.parquet_write_batch_size is not None and args.parquet_write_batch_size <= 0:
+        parser.error("--parquet-write-batch-size must be > 0")
     if args.parquet_compression is not None:
         try:
             _normalize_parquet_compression(args.parquet_compression)
@@ -1353,6 +1486,8 @@ Examples:
     effective_parquet_compression = args.parquet_compression if args.parquet_compression is not None else 'uncompressed'
     effective_parquet_use_dictionary = bool(args.parquet_use_dictionary) if args.parquet_use_dictionary is not None else False
     effective_parquet_write_statistics = bool(args.parquet_write_statistics) if args.parquet_write_statistics is not None else False
+    effective_parquet_row_group_size = args.parquet_row_group_size
+    effective_parquet_write_batch_size = args.parquet_write_batch_size
     auto_profile_applied = False
 
     if args.engine == 'rust_full' and not args.no_rust_full_auto_profile:
@@ -1414,7 +1549,9 @@ Examples:
             f"rayon_threads={effective_rust_full_rayon_threads}, "
             f"parquet_compression={effective_parquet_compression}, "
             f"parquet_use_dictionary={effective_parquet_use_dictionary}, "
-            f"parquet_write_statistics={effective_parquet_write_statistics}"
+            f"parquet_write_statistics={effective_parquet_write_statistics}, "
+            f"parquet_row_group_size={effective_parquet_row_group_size}, "
+            f"parquet_write_batch_size={effective_parquet_write_batch_size}"
         )
 
     if not args.skip_reference_validation:
@@ -1464,6 +1601,8 @@ Examples:
             parquet_compression=effective_parquet_compression,
             parquet_use_dictionary=effective_parquet_use_dictionary,
             parquet_write_statistics=effective_parquet_write_statistics,
+            parquet_row_group_size=effective_parquet_row_group_size,
+            parquet_write_batch_size=effective_parquet_write_batch_size,
         )
     else:
         if args.agent_mix:
@@ -1497,6 +1636,8 @@ Examples:
             parquet_compression=effective_parquet_compression,
             parquet_use_dictionary=effective_parquet_use_dictionary,
             parquet_write_statistics=effective_parquet_write_statistics,
+            parquet_row_group_size=effective_parquet_row_group_size,
+            parquet_write_batch_size=effective_parquet_write_batch_size,
         )
 
     print(f"\n{'='*50}")

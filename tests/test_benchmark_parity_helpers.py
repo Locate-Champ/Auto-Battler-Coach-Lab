@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from simulator import benchmark
+from simulator import benchmark, cloud_runner
 
 
 def _row(
@@ -850,3 +850,123 @@ def test_infer_divergence_origin_known_labels(
         field_diffs=field_diffs,
     )
     assert observed == expected
+
+
+def test_cloud_runner_parquet_guard_missing_method_includes_rebuild_hint(
+    monkeypatch,
+) -> None:
+    monkeypatch.setattr(cloud_runner, "_RUST_PARQUET_API_VALIDATED", set())
+
+    class MissingMethodSimulator:
+        pass
+
+    with pytest.raises(RuntimeError) as exc:
+        cloud_runner._ensure_rust_parquet_method_support(
+            MissingMethodSimulator(),
+            "run_games_batch_parquet_to_file",
+        )
+
+    message = str(exc.value)
+    assert "missing 'run_games_batch_parquet_to_file'" in message
+    assert "maturin build --release" in message
+    assert str(Path(sys.executable)) in message
+
+
+def test_cloud_runner_parquet_guard_missing_kwargs_reports_names(
+    monkeypatch,
+) -> None:
+    monkeypatch.setattr(cloud_runner, "_RUST_PARQUET_API_VALIDATED", set())
+
+    class LegacySimulator:
+        def run_games_batch_parquet_to_file(
+            self,
+            game_ids,
+            seeds,
+            output_path,
+            compression=None,
+            use_dictionary=False,
+            write_statistics=False,
+        ):
+            del game_ids, seeds, output_path, compression, use_dictionary, write_statistics
+            return None
+
+    with pytest.raises(RuntimeError) as exc:
+        cloud_runner._ensure_rust_parquet_method_support(
+            LegacySimulator(),
+            "run_games_batch_parquet_to_file",
+        )
+
+    message = str(exc.value)
+    assert "missing expected kwargs" in message
+    assert "row_group_size" in message
+    assert "write_batch_size" in message
+
+
+def test_cloud_runner_parquet_guard_accepts_current_signature(
+    monkeypatch,
+) -> None:
+    monkeypatch.setattr(cloud_runner, "_RUST_PARQUET_API_VALIDATED", set())
+
+    class CurrentSimulator:
+        def run_games_batch_parquet_to_file(
+            self,
+            game_ids,
+            seeds,
+            output_path,
+            agent_mix=None,
+            include_training_rows=True,
+            rayon_threads=None,
+            compression=None,
+            use_dictionary=False,
+            write_statistics=False,
+            row_group_size=None,
+            write_batch_size=None,
+        ):
+            del (
+                game_ids,
+                seeds,
+                output_path,
+                agent_mix,
+                include_training_rows,
+                rayon_threads,
+                compression,
+                use_dictionary,
+                write_statistics,
+                row_group_size,
+                write_batch_size,
+            )
+            return None
+
+    simulator = CurrentSimulator()
+    cloud_runner._ensure_rust_parquet_method_support(
+        simulator,
+        "run_games_batch_parquet_to_file",
+    )
+    cloud_runner._ensure_rust_parquet_method_support(
+        simulator,
+        "run_games_batch_parquet_to_file",
+    )
+    assert "run_games_batch_parquet_to_file" in cloud_runner._RUST_PARQUET_API_VALIDATED
+
+
+def test_cloud_runner_extract_signature_uses_text_signature_fallback(
+    monkeypatch,
+) -> None:
+    def _raise_type_error(_method):
+        raise TypeError("no signature available")
+
+    monkeypatch.setattr(cloud_runner.inspect, "signature", _raise_type_error)
+
+    class TextSignatureMethod:
+        __text_signature__ = (
+            "($self, game_ids, seeds, output_path, compression=None, "
+            "use_dictionary=False, write_statistics=False, row_group_size=None, write_batch_size=None)"
+        )
+
+    names = cloud_runner._extract_signature_parameter_names(TextSignatureMethod())
+    assert "self" in names
+    assert "compression" in names
+    assert "use_dictionary" in names
+    assert "write_statistics" in names
+    assert "row_group_size" in names
+    assert "write_batch_size" in names
