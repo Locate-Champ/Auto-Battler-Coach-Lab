@@ -12,6 +12,12 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROCESSED_DIR = PROJECT_ROOT / "data" / "api" / "processed"
 SIMULATOR_DATA_DIR = PROJECT_ROOT / "simulator" / "data"
+REQUIRED_PROCESSED_FILES: dict[str, tuple[str, ...]] = {
+    "traits_set16.json": ("apiName", "effects"),
+    "units_set16.json": ("apiName", "cost", "stats"),
+    "items_set16.json": ("apiName", "name", "effects"),
+    "augments_set16.json": ("apiName", "name", "effects"),
+}
 
 
 def _load_json(path: Path) -> Any:
@@ -49,6 +55,45 @@ def _trait_signature(trait: dict[str, Any]) -> tuple[str, tuple[tuple[Any, Any, 
             )
         )
     return trait.get("apiName"), tuple(effects)
+
+
+def validate_required_processed_files() -> list[str]:
+    problems: list[str] = []
+
+    for filename, required_keys in REQUIRED_PROCESSED_FILES.items():
+        path = PROCESSED_DIR / filename
+        if not path.exists():
+            problems.append(f"Missing required processed file: {path}")
+            continue
+
+        try:
+            payload = _load_json(path)
+        except Exception as exc:  # noqa: BLE001
+            problems.append(f"Failed to load {path}: {exc}")
+            continue
+
+        if not isinstance(payload, list):
+            problems.append(f"{path} must be a JSON array, got {type(payload).__name__}")
+            continue
+        if not payload:
+            problems.append(f"{path} is empty")
+            continue
+
+        for idx, entry in enumerate(payload):
+            if not isinstance(entry, dict):
+                problems.append(
+                    f"{path} entries must be objects, got {type(entry).__name__} at index {idx}"
+                )
+                break
+
+            missing_keys = [key for key in required_keys if key not in entry]
+            if missing_keys:
+                problems.append(
+                    f"{path} entry index {idx} missing required keys: {missing_keys}"
+                )
+                break
+
+    return problems
 
 
 def validate_traits() -> list[str]:
@@ -145,9 +190,11 @@ def validate_helpers() -> list[str]:
 
 
 def main() -> int:
-    problems = []
-    problems.extend(validate_traits())
-    problems.extend(validate_helpers())
+    problems = validate_required_processed_files()
+
+    if not problems:
+        problems.extend(validate_traits())
+        problems.extend(validate_helpers())
 
     if problems:
         print("Simulator reference validation failed:")
