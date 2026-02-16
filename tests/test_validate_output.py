@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import Iterable
 
-from simulator.validate_output import validate_output
+from simulator.validate_output import _reservoir_sample_game_ids, validate_output
 
 
 def _write_jsonl(path: Path, rows: Iterable[dict]) -> None:
@@ -94,3 +94,25 @@ def test_validate_output_fails_when_severe_duplicate_rate_is_high(tmp_path: Path
     duplicate_check = _check(report, "No excessive placement duplicates")
     assert duplicate_check["passed"] is False
     assert report.all_passed is False
+
+
+def test_validate_output_streaming_flags(tmp_path: Path) -> None:
+    output_dir = tmp_path / "run_sampled"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    rows = _build_rows(num_games=20, severe_duplicate_games=set())
+    _write_jsonl(output_dir / "chunk_0000.jsonl", rows)
+    _write_summary(output_dir / "summary.json", num_games=20, total_rows=len(rows))
+
+    report = validate_output(str(output_dir), max_rows=640, sample_games=5, sample_seed=19)
+    training_check = _check(report, "Training data exists")
+    assert training_check["passed"] is True
+    assert report.all_passed is True
+
+
+def test_reservoir_game_sampling_is_seeded_and_non_prefix() -> None:
+    sampled = _reservoir_sample_game_ids(iter(range(20)), sample_games=5, sample_seed=11)
+    sampled_again = _reservoir_sample_game_ids(iter(range(20)), sample_games=5, sample_seed=11)
+    assert sampled == sampled_again
+    assert sampled != {0, 1, 2, 3, 4}
+    assert len(sampled) == 5
