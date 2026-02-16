@@ -211,3 +211,13 @@ def test_count_rows_matches_written_rows(tmp_path: Path) -> None:
     _write_jsonl(tmp_path / "chunk_0000.jsonl", rows)
     loader = DataLoader(tmp_path)
     assert loader.count_rows() == len(rows)
+
+
+def test_normalize_row_decodes_opponent_augments_json_string(tmp_path: Path) -> None:
+    loader = DataLoader(tmp_path)
+    normalized = loader._normalize_row(  # noqa: SLF001
+        {
+            "opponent_augments": '["TFT_Augment_PowerUp", "TFT16_Augment_AirAxiom"]',
+        }
+    )
+    assert normalized["opponent_augments"] == ["TFT_Augment_PowerUp", "TFT16_Augment_AirAxiom"]

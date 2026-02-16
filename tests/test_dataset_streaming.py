@@ -9,7 +9,7 @@ import pytest
 
 pytest.importorskip("torch")
 
-from models.dataset import TFTStreamingDataset, estimate_streaming_split_counts
+from models.dataset import TFTStreamingDataset, _normalize_row, estimate_streaming_split_counts
 
 
 def _rows() -> list[dict]:
@@ -125,3 +125,12 @@ def test_streaming_dataset_next_round_labels(tmp_path: Path) -> None:
         assert "player_champion_ids" in sample
         assert "opponent_champion_ids" in sample
         assert sample["placement"].shape == (1,)
+
+
+def test_normalize_row_decodes_opponent_augments_json_string() -> None:
+    normalized = _normalize_row(
+        {
+            "opponent_augments": '["TFT_Augment_PowerUp", "TFT16_Augment_AirAxiom"]',
+        }
+    )
+    assert normalized["opponent_augments"] == ["TFT_Augment_PowerUp", "TFT16_Augment_AirAxiom"]

@@ -38,7 +38,7 @@ class TrainConfig:
     num_workers: int = 4
     seed: int = 42
     streaming: bool = True
-    label_mode: str = "current"
+    label_mode: str = "next_round"
     steps_per_epoch: Optional[int] = None
     val_steps: Optional[int] = None
     test_steps: Optional[int] = None
@@ -146,7 +146,7 @@ def parse_args() -> TrainConfig:
         "--label-mode",
         type=str,
         choices=("current", "next_round"),
-        default="current",
+        default="next_round",
         help="Fight label strategy (current round requires pre-combat snapshots).",
     )
     parser.add_argument(

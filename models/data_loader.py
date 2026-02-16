@@ -10,36 +10,12 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 from .feature_engineering import TFTFeatureEngineer
+from snapshot_schema import normalize_jsonish_fields
 
 try:  # pragma: no cover - optional dependency
     import pyarrow.parquet as pq
 except Exception:  # pragma: no cover - optional dependency
     pq = None
-
-
-JSONISH_COLUMNS = {
-    "board_names",
-    "board_stars",
-    "trait_names",
-    "trait_counts",
-    "augments",
-    "units",
-    "traits",
-    "opponent_units",
-    "opponent_traits",
-}
-
-
-def _decode_jsonish(value: Any) -> Any:
-    if not isinstance(value, str):
-        return value
-    text = value.strip()
-    if not text or text[0] not in ("[", "{"):
-        return value
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        return value
 
 
 class DataLoader:
@@ -148,11 +124,7 @@ class DataLoader:
         return total
 
     def _normalize_row(self, row: Dict[str, Any]) -> Dict[str, Any]:
-        normalized = dict(row)
-        for key in JSONISH_COLUMNS:
-            if key in normalized:
-                normalized[key] = _decode_jsonish(normalized[key])
-        return normalized
+        return normalize_jsonish_fields(row)
 
     def _split_by_game_id(
         self,

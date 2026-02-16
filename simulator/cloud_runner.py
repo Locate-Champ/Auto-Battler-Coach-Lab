@@ -36,6 +36,7 @@ _project_root = str(Path(__file__).parent.parent)
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
+from snapshot_schema import JSONISH_COLUMNS
 from simulator.game.game import TFTGame
 from simulator.game.collector import GameCollector
 from simulator.game.actions import MixedLobbyAgent, fast_random_agent
@@ -557,18 +558,7 @@ class StreamingWriter:
 
         rows = self._row_buffer
         for row in rows:
-            for key in (
-                'board_names',
-                'board_stars',
-                'trait_names',
-                'trait_counts',
-                'augments',
-                'units',
-                'traits',
-                'opponent_units',
-                'opponent_traits',
-                'opponent_augments',
-            ):
+            for key in JSONISH_COLUMNS:
                 if key in row and isinstance(row[key], (list, dict)):
                     row[key] = json.dumps(row[key])
 
