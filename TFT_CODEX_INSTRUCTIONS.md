@@ -1,7 +1,7 @@
 # TFT Coach ML Pipeline — Codex Implementation Instructions
 
 > Feed this entire document as context to Codex / Claude Code / any coding LLM.
-> Last updated: 2026-02-07
+> Last updated: 2026-02-16
 > Repo: `e:\VS Code\tft-coach-234`
 
 ---
@@ -14,11 +14,13 @@ A Teamfight Tactics (TFT) coaching application that uses machine learning to pre
 
 1. **Combat Simulator** (DONE) — A deterministic, tick-based (30 FPS) full-game simulator in Python that generates synthetic training data. Benchmarked at 2,717 full 8-player games/hour. Determinism verified. 106 champions, 283 augments, 134 items, 53 traits implemented.
 
-2. **ML Prediction Models** (TO BUILD) — Multiple model tiers from XGBoost baseline through Transformer with cross-attention, trained on simulator output.
+2. **ML Prediction Models** (ACTIVE) — XGBoost + Transformer pipelines are implemented in `models/` and trained on simulator output.
 
 3. **Coaching Interface** (LATER) — React frontend consuming model predictions. Not in scope for this document.
 
 ### Current Codebase Layout
+
+Status note: the core `models/` pipeline files referenced in this document already exist in this repo. Sections that say "Create `<file>`" should be interpreted as "update/extend `<file>` unless explicitly building a new module."
 
 ```
 tft-coach-234/
@@ -42,8 +44,8 @@ tft-coach-234/
 │   └── config.py                # 268 lines — Legacy RL config (observation_size=10432)
 ├── data/api/processed/
 │   └── augments_set16.json      # 283 augments
-├── models/                      # TO CREATE — ML model code goes here
-├── training_data/               # TO CREATE — Parquet output from simulator
+├── models/                      # ACTIVE — Feature engineering, loaders, XGBoost, transformer, eval
+├── training_data/               # Generated datasets from simulator (Parquet/JSONL chunks)
 ├── scripts/
 │   ├── generate_data.py         # Calls cloud_runner for batch gen
 │   ├── train.py                 # Model training entry point

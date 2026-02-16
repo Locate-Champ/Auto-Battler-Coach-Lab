@@ -1,6 +1,6 @@
 # Current Model + Simulator (TFT Coach)
 
-Last updated: 2026-02-13
+Last updated: 2026-02-16
 
 This document describes what the repo currently implements for:
 
@@ -260,7 +260,7 @@ Key correctness rule:
 The streaming dataset supports two fight label modes:
 
 - `label_mode=current`: label is this row's `combat_result` (valid if the snapshot is pre-combat, which `collector.py` is designed to do)
-- `label_mode=next_round`: label is next round's result for the same player (useful for leak-safe temporal training / "pre-combat to next outcome" supervision)
+- `label_mode=next_round` (**default in `models/train_transformer.py`**): label is next round's result for the same player (leak-safe temporal supervision)
 
 ### 2.2 XGBoost Baseline (What It Is)
 
@@ -448,6 +448,8 @@ That means the coach can be personalized without pretending we can learn a full 
 ```bash
 python -m simulator.cloud_runner --games 1000 --workers 11 --output results/batch --agent-profile mixed
 python -m simulator.validate_output results/batch
+# Large-output sampling mode (streaming validator, avoids loading full corpus)
+python -m simulator.validate_output results/batch --sample-games 500 --sample-seed 42 --max-rows 200000
 ```
 
 If you plan to scale past small runs, install `pyarrow` so you stay on Parquet rather than JSONL.
@@ -499,4 +501,4 @@ python -m models.train_xgboost --data training_data/gate_b_50k --task fight --ou
 python -m models.train_transformer --data results/batch --output models/checkpoints/transformer_smoke --epochs 1 --steps-per-epoch 2 --val-steps 1 --test-steps 1 --max-examples-per-split 256
 ```
 
-For larger runs, set `--label-mode next_round` and use the gate-based data directories described in `TFT_CLOUD_SIMULATION_PLAN.md`.
+For larger runs, keep the default `--label-mode next_round` (or set it explicitly) and use the gate-based data directories described in `TFT_CLOUD_SIMULATION_PLAN.md`.
