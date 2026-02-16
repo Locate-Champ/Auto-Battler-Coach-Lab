@@ -126,6 +126,26 @@ except Exception:
     pass
 
 
+_MASK64 = (1 << 64) - 1
+
+
+def _mix_u64(x: int) -> int:
+    """SplitMix64 mixing (stable across processes)."""
+    x = (x + 0x9E3779B97F4A7C15) & _MASK64
+    x = (x ^ (x >> 30)) * 0xBF58476D1CE4E5B9 & _MASK64
+    x = (x ^ (x >> 27)) * 0x94D049BB133111EB & _MASK64
+    x = x ^ (x >> 31)
+    return x & _MASK64
+
+
+def _derive_combat_seed(game_seed: int, round_num: int, p1_id: int, p2_id: int, is_ghost: bool) -> int:
+    """Derive a deterministic combat seed without using Python's randomized hash()."""
+    x = int(game_seed) & _MASK64
+    x = _mix_u64(x ^ int(round_num))
+    x = _mix_u64(x ^ int(p1_id) ^ (int(p2_id) << 8) ^ (int(is_ghost) << 16))
+    return x
+
+
 class TFTGame:
     """Runs a full 8-player TFT game.
 
@@ -154,6 +174,7 @@ class TFTGame:
         if seed is not None:
             random.seed(seed)
 
+        self.seed = seed
         self.num_players = num_players
         self.verbose = verbose
         self.agent_fn = agent_fn or fast_random_agent
@@ -293,6 +314,11 @@ class TFTGame:
         for player in self.alive_players:
             player.add_income(self.round_num)
 
+        # 1.5 Round-persistent trait currencies (planning-phase resources)
+        for player in self.alive_players:
+            player.award_bilgewater_round_serpents()
+            player.progress_blacksmith()
+
         # 2. Planning phase (shop + actions)
         for player in self.alive_players:
             _return_shop_to_pool(player, self.pool)
@@ -318,7 +344,7 @@ class TFTGame:
             if not p1.alive:
                 continue
 
-            result = self._resolve_combat(p1, p2)
+            result, debug_takedowns = self._resolve_combat(p1, p2, is_ghost=is_ghost)
 
             if self.collector:
                 combat_results.append({
@@ -328,6 +354,7 @@ class TFTGame:
                     'damage': result.damage_to_loser,
                     'survivors': result.survivors,
                     'combat_time': result.combat_time,
+                    'debug_takedowns': debug_takedowns,
                 })
 
             if result.is_draw:
@@ -512,6 +539,7 @@ class TFTGame:
 
             # Try to add to bench
             champ = ChampionInstance(
+                instance_id=player._alloc_instance_id(),
                 name=champ_name,
                 api_name=NAME_TO_API.get(champ_name, f'TFT16_{champ_name.capitalize()}'),
                 cost=cost,
@@ -532,7 +560,13 @@ class TFTGame:
 
     # ── Combat Resolution ─────────────────────────────────────────────────
 
-    def _resolve_combat(self, p1: Player, p2: Player) -> RoundResult:
+    def _resolve_combat(
+        self,
+        p1: Player,
+        p2: Player,
+        *,
+        is_ghost: bool,
+    ) -> Tuple[RoundResult, List[Dict[str, Any]]]:
         """Resolve combat between two players using the combat engine."""
         use_rust_engine = self.engine_name == 'rust'
         team0 = p1.build_combat_team(self.engine, use_rust_engine=use_rust_engine)
@@ -541,24 +575,33 @@ class TFTGame:
         # Handle empty boards
         if not team0 and not team1:
             base_damage = get_round_damage(self.round_num, 0)
-            return RoundResult(
-                winner_id=p1.player_id, loser_id=p2.player_id,
-                survivors=0, combat_time=0, damage_to_loser=base_damage,
-                is_draw=True,
+            return (
+                RoundResult(
+                    winner_id=p1.player_id, loser_id=p2.player_id,
+                    survivors=0, combat_time=0, damage_to_loser=base_damage,
+                    is_draw=True,
+                ),
+                [],
             )
         if not team0:
             damage = get_round_damage(self.round_num, len(team1))
-            return RoundResult(
-                winner_id=p2.player_id, loser_id=p1.player_id,
-                survivors=len(team1), combat_time=0,
-                damage_to_loser=damage,
+            return (
+                RoundResult(
+                    winner_id=p2.player_id, loser_id=p1.player_id,
+                    survivors=len(team1), combat_time=0,
+                    damage_to_loser=damage,
+                ),
+                [],
             )
         if not team1:
             damage = get_round_damage(self.round_num, len(team0))
-            return RoundResult(
-                winner_id=p1.player_id, loser_id=p2.player_id,
-                survivors=len(team0), combat_time=0,
-                damage_to_loser=damage,
+            return (
+                RoundResult(
+                    winner_id=p1.player_id, loser_id=p2.player_id,
+                    survivors=len(team0), combat_time=0,
+                    damage_to_loser=damage,
+                ),
+                [],
             )
 
         # Mirror team1 positions (flip rows) for opponent side
@@ -575,27 +618,45 @@ class TFTGame:
         # Pass player augments to combat engine
         p1_augments = self.player_augments.get(p1.player_id, [])
         p2_augments = self.player_augments.get(p2.player_id, [])
-        result = self.engine.run_combat(
-            team0, team1,
-            team0_augments=p1_augments if p1_augments else None,
-            team1_augments=p2_augments if p2_augments else None,
-        )
+
+        run_kwargs: Dict[str, Any] = {
+            'team0_augments': p1_augments if p1_augments else None,
+            'team1_augments': p2_augments if p2_augments else None,
+        }
+        if self.engine_name == 'python' and self.seed is not None:
+            run_kwargs['seed'] = _derive_combat_seed(self.seed, self.round_num, p1.player_id, p2.player_id, is_ghost)
+
+        if self.engine_name == 'python':
+            self.engine.set_round_persistent_players(p1, None if is_ghost else p2)
+            try:
+                result = self.engine.run_combat(team0, team1, **run_kwargs)
+            finally:
+                self.engine.set_round_persistent_players(None, None)
+        else:
+            result = self.engine.run_combat(team0, team1, **run_kwargs)
+        debug_takedowns = result.get('debug_takedowns', []) or []
 
         if result['winner'] == 0:
             damage = get_round_damage(self.round_num, result['team0_survivors'])
-            return RoundResult(
-                winner_id=p1.player_id, loser_id=p2.player_id,
-                survivors=result['team0_survivors'],
-                combat_time=result['combat_time'],
-                damage_to_loser=damage,
+            return (
+                RoundResult(
+                    winner_id=p1.player_id, loser_id=p2.player_id,
+                    survivors=result['team0_survivors'],
+                    combat_time=result['combat_time'],
+                    damage_to_loser=damage,
+                ),
+                debug_takedowns,
             )
         else:
             damage = get_round_damage(self.round_num, result['team1_survivors'])
-            return RoundResult(
-                winner_id=p2.player_id, loser_id=p1.player_id,
-                survivors=result['team1_survivors'],
-                combat_time=result['combat_time'],
-                damage_to_loser=damage,
+            return (
+                RoundResult(
+                    winner_id=p2.player_id, loser_id=p1.player_id,
+                    survivors=result['team1_survivors'],
+                    combat_time=result['combat_time'],
+                    damage_to_loser=damage,
+                ),
+                debug_takedowns,
             )
 
     # ── Matchmaking ───────────────────────────────────────────────────────

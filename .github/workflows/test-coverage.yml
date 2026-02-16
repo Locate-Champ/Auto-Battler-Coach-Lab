@@ -82,11 +82,19 @@ jobs:
         run: |
           python -m pytest tests/test_benchmark_parity_helpers.py -q
 
+      - name: Run parity dump compactness regression
+        run: |
+          python -m pytest tests/test_benchmark_parity_helpers.py::test_cli_parity_dump_signatures_only_artifact_is_smaller -q
+
       - name: Build and install Rust engine
         run: |
           cd simulator/core/rust_engine
           maturin build --release --interpreter python
           python -m pip install target/wheels/*.whl
+
+      - name: Run Rust-enabled combat regressions
+        run: |
+          python -m pytest tests/test_combat_regressions.py -q
 
       - name: Run parity gate
         run: |

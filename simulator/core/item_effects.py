@@ -43,7 +43,7 @@ def set_item_data(unit: 'Unit', item_name: str, key: str, value):
 
 def spear_of_shojin_on_hit(engine: 'CombatEngine', attacker: 'Unit', target: 'Unit'):
     """Spear of Shojin: Attacks grant 5 bonus Mana."""
-    attacker.stats.mana = min(attacker.stats.max_mana, attacker.stats.mana + 5)
+    engine.gain_mana(attacker, 5, source="spear_of_shojin")
 
 
 def giant_slayer_on_hit(engine: 'CombatEngine', attacker: 'Unit', target: 'Unit'):
@@ -103,7 +103,7 @@ def nashors_tooth_on_hit(engine: 'CombatEngine', attacker: 'Unit', target: 'Unit
     # Check if last attack was a crit (use tracking data set by process_attack)
     last_crit = getattr(attacker, '_last_attack_crit', False)
     mana_gain = 4 if last_crit else 2
-    attacker.stats.mana = min(attacker.stats.max_mana, attacker.stats.mana + mana_gain)
+    engine.gain_mana(attacker, mana_gain, source="nashors_tooth")
 
 
 def krakens_fury_on_hit(engine: 'CombatEngine', attacker: 'Unit', target: 'Unit'):
@@ -295,7 +295,7 @@ def protectors_vow_on_damage(engine: 'CombatEngine', defender: 'Unit', attacker:
     triggered = get_item_data(defender, 'ProtectorsVow', 'shield_triggered', False)
     if not triggered and defender.stats.hp <= defender.stats.max_hp * 0.40:
         set_item_data(defender, 'ProtectorsVow', 'shield_triggered', True)
-        defender.stats.mana = min(defender.stats.max_mana, defender.stats.mana + 15)
+        engine.gain_mana(defender, 15, source="protectors_vow")
         shield_amount = defender.stats.max_hp * 0.20
         defender.stats.shield += shield_amount
 
@@ -538,7 +538,7 @@ def adaptive_helm_combat_start(engine: 'CombatEngine', unit: 'Unit', all_units: 
 
 def protectors_vow_combat_start(engine: 'CombatEngine', unit: 'Unit', all_units: list):
     """Protector's Vow: Combat Start: gain 20 Mana."""
-    unit.stats.mana = min(unit.stats.max_mana, unit.stats.mana + 20)
+    engine.gain_mana(unit, 20, source="protectors_vow_start")
 
 
 # =============================================================================
@@ -805,7 +805,7 @@ def manazane_passive(engine: 'CombatEngine', unit: 'Unit'):
     last = get_item_data(unit, 'Manazane', 'last_tick', start - 1.0)
     if engine.time - last >= 1.0:
         set_item_data(unit, 'Manazane', 'last_tick', engine.time)
-        unit.stats.mana = min(unit.stats.max_mana, unit.stats.mana + 24)
+        engine.gain_mana(unit, 24, source="manazane")
 
 
 def moguls_mail_on_damage_taken(engine: 'CombatEngine', defender: 'Unit', attacker: 'Unit',
@@ -1084,7 +1084,7 @@ def blighting_jewel_on_damage(engine: 'CombatEngine', attacker: 'Unit', target: 
         if target.stats.magic_resist > 0:
             target.stats.magic_resist = max(0, target.stats.magic_resist - 2)
         else:
-            attacker.stats.mana = min(attacker.stats.max_mana, attacker.stats.mana + 2)
+            engine.gain_mana(attacker, 2, source="blighting_jewel")
 
 
 # =============================================================================

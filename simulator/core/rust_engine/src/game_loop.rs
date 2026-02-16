@@ -1,4 +1,4 @@
-use crate::engine::{CombatEngine, UnitSpec};
+use crate::engine::{CombatEngine, TakedownAttribution, UnitSpec};
 use crate::python_rng::PyRng;
 use pyo3::prelude::*;
 use pyo3::types::PyDict;
@@ -669,6 +669,23 @@ struct CombatRoundSnapshot {
     team1_survivors: i32,
 }
 
+#[derive(Clone, Serialize)]
+pub struct CombatDebugTakedown {
+    pub killer_team: i32,
+    pub killer_api_name: String,
+    pub victim_team: i32,
+    pub victim_api_name: String,
+}
+
+#[derive(Clone, Serialize)]
+pub struct CombatDebugRound {
+    pub round: i32,
+    pub p1: i32,
+    pub p2: i32,
+    pub is_ghost: bool,
+    pub debug_takedowns: Vec<CombatDebugTakedown>,
+}
+
 struct RoundOutcome {
     winner_id: usize,
     damage_to_loser: i32,
@@ -676,6 +693,7 @@ struct RoundOutcome {
     combat_time: f64,
     team0_survivors: i32,
     team1_survivors: i32,
+    debug_takedowns: Vec<CombatDebugTakedown>,
 }
 
 #[derive(Clone, Serialize)]
@@ -734,6 +752,7 @@ pub struct GameRunOutput {
     pub rounds: i32,
     pub placements: Vec<Value>,
     pub training_rows: Vec<TrainingRow>,
+    pub combat_debug: Vec<CombatDebugRound>,
     pub analytics: Value,
 }
 
@@ -763,6 +782,7 @@ pub fn run_game(
     let mut round_num: i32 = 0;
     let mut placements: Vec<(usize, i32)> = Vec::new();
     let mut training_rows: Vec<TrainingRow> = Vec::new();
+    let mut combat_debug: Vec<CombatDebugRound> = Vec::new();
 
     let pve_rounds = std::cmp::min(4_i32, config.starting_round_gold.len() as i32);
     for round in 0..pve_rounds {
@@ -798,6 +818,7 @@ pub fn run_game(
             &mut placements,
             game_id,
             &mut training_rows,
+            &mut combat_debug,
             include_training_rows,
             &mut rng,
         );
@@ -831,6 +852,7 @@ pub fn run_game(
         rounds: round_num,
         placements: placement_rows,
         training_rows,
+        combat_debug,
         analytics,
     })
 }
@@ -886,6 +908,7 @@ fn pvp_round(
     placements: &mut Vec<(usize, i32)>,
     game_id: i64,
     training_rows: &mut Vec<TrainingRow>,
+    combat_debug: &mut Vec<CombatDebugRound>,
     include_training_rows: bool,
     rng: &mut PyRng,
 ) {
@@ -964,6 +987,13 @@ fn pvp_round(
             combat_time: result.combat_time,
             team0_survivors: result.team0_survivors,
             team1_survivors: result.team1_survivors,
+        });
+        combat_debug.push(CombatDebugRound {
+            round: round_num,
+            p1: p1_id as i32,
+            p2: p2_id as i32,
+            is_ghost,
+            debug_takedowns: result.debug_takedowns.clone(),
         });
 
         let (p1, p2) = two_players_mut(players, p1_id, p2_id);
@@ -1348,6 +1378,7 @@ fn resolve_combat(
             combat_time: 0.0,
             team0_survivors: 0,
             team1_survivors: 0,
+            debug_takedowns: Vec::new(),
         };
     }
     if team0.is_empty() {
@@ -1360,6 +1391,7 @@ fn resolve_combat(
             combat_time: 0.0,
             team0_survivors: 0,
             team1_survivors: survivors,
+            debug_takedowns: Vec::new(),
         };
     }
     if team1.is_empty() {
@@ -1372,6 +1404,7 @@ fn resolve_combat(
             combat_time: 0.0,
             team0_survivors: survivors,
             team1_survivors: 0,
+            debug_takedowns: Vec::new(),
         };
     }
 
@@ -1392,6 +1425,7 @@ fn resolve_combat(
         None,
     );
     *rng = engine.rng.clone();
+    let debug_takedowns = convert_debug_takedowns(&result.debug_takedowns);
 
     if result.winner == 0 {
         let damage = round_damage(round_num, result.team0_survivors, config);
@@ -1402,6 +1436,7 @@ fn resolve_combat(
             combat_time: result.combat_time,
             team0_survivors: result.team0_survivors,
             team1_survivors: result.team1_survivors,
+            debug_takedowns: debug_takedowns.clone(),
         }
     } else {
         let damage = round_damage(round_num, result.team1_survivors, config);
@@ -1412,8 +1447,21 @@ fn resolve_combat(
             combat_time: result.combat_time,
             team0_survivors: result.team0_survivors,
             team1_survivors: result.team1_survivors,
+            debug_takedowns,
         }
     }
+}
+
+fn convert_debug_takedowns(entries: &[TakedownAttribution]) -> Vec<CombatDebugTakedown> {
+    entries
+        .iter()
+        .map(|entry| CombatDebugTakedown {
+            killer_team: entry.killer_team,
+            killer_api_name: entry.killer_api_name.clone(),
+            victim_team: entry.victim_team,
+            victim_api_name: entry.victim_api_name.clone(),
+        })
+        .collect()
 }
 
 fn build_team_specs(

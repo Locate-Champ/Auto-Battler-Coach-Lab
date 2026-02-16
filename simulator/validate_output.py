@@ -163,6 +163,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
         return report
 
     summary = _load_summary(output_dir)
+    # ── Check 2: summary.json exists ────────────────────────────────
     report.check('summary.json exists', summary is not None)
     if not summary:
         report.warn("Cannot run remaining checks without summary.json")
@@ -171,14 +172,14 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
     num_games = summary.get('num_games', 0)
     num_errors = summary.get('num_errors', 0)
 
-    # ── Check 2: Games completed ─────────────────────────────────────
+    # ── Check 3: Games completed ─────────────────────────────────────
     report.check(
         'Games completed',
         num_games > 0,
         f"{num_games} games, {num_errors} errors"
     )
 
-    # ── Check 3: Error rate ──────────────────────────────────────────
+    # ── Check 4: Error rate ──────────────────────────────────────────
     total = num_games + num_errors
     error_rate = num_errors / total if total > 0 else 0
     report.check(
@@ -192,7 +193,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
             sample = errors[0].get('error', '')[:200]
             report.warn(f"First error: {sample}")
 
-    # ── Check 4: Training data exists ────────────────────────────────
+    # ── Check 5: Training data exists ────────────────────────────────
     rows = _load_training_data(output_dir)
     report.check(
         'Training data exists',
@@ -202,7 +203,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
     if not rows:
         return report
 
-    # ── Check 5: Rows per game ───────────────────────────────────────
+    # ── Check 6: Rows per game ───────────────────────────────────────
     rows_per_game = len(rows) / num_games if num_games > 0 else 0
     # Expect ~128 rows per game (8 players * ~16 rounds)
     report.check(
@@ -211,7 +212,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
         f"{rows_per_game:.1f} rows/game (expect ~128)"
     )
 
-    # ── Check 6: Placement distribution ──────────────────────────────
+    # ── Check 7: Placement distribution ──────────────────────────────
     # Group rows by game_id, find final placement per player per game
     game_placements: Dict[int, List[int]] = {}
     for row in rows:
@@ -239,7 +240,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
             f"mean={mean_placement:.2f}, std={std_placement:.2f}"
         )
 
-        # ── Check 7: Placement range ────────────────────────────────
+        # ── Check 8: Placement range ────────────────────────────────
         min_p = min(all_placements)
         max_p = max(all_placements)
         report.check(
@@ -248,7 +249,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
             f"range: {min_p}-{max_p}"
         )
 
-    # ── Check 8: No excessive duplicate placements per game ──────────
+    # ── Check 9: No excessive duplicate placements per game ──────────
     severe_dup_games = 0
     for gid, player_map in game_placements.items():
         placements = list(player_map.values())
@@ -278,7 +279,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
             f"({severe_dup_rate:.2%} <= {DUPLICATE_PLACEMENT_SEVERE_RATE_LIMIT:.2%})."
         )
 
-    # ── Check 9: All 8 players per game ──────────────────────────────
+    # ── Check 10: All 8 players per game ─────────────────────────────
     incomplete_games = 0
     for gid, player_map in game_placements.items():
         if len(player_map) < 8:
@@ -290,7 +291,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
         f"{incomplete_games} games with <8 players"
     )
 
-    # ── Check 10: Round count sanity ─────────────────────────────────
+    # ── Check 11: Round count sanity ────────────────────────────────
     avg_rounds = summary.get('avg_rounds', 0)
     report.check(
         'Average rounds in range (10-45)',
@@ -308,13 +309,14 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
     if game_max_rounds:
         outlier_short = sum(1 for r in game_max_rounds.values() if r < 5)
         outlier_long = sum(1 for r in game_max_rounds.values() if r > 50)
+        # ── Check 12: No round-count outliers (<5 or >50) ────────────
         report.check(
             'No round-count outliers (<5 or >50)',
             outlier_short == 0 and outlier_long == 0,
             f"{outlier_short} too short, {outlier_long} too long"
         )
 
-    # ── Check 11: Champion coverage ──────────────────────────────────
+    # ── Check 13: Champion coverage ─────────────────────────────────
     champ_counts = Counter()
     for row in rows:
         names = row.get('board_names', [])
@@ -331,7 +333,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
         f"{unique_champs} unique champions seen"
     )
 
-    # Check for dominant champion (no single champ > 10% of picks)
+    # ── Check 14: No dominant champion (>10% pick rate) ──────────────
     total_picks = sum(champ_counts.values())
     if total_picks > 0:
         max_champ_name, max_champ_count = champ_counts.most_common(1)[0]
@@ -342,7 +344,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
             f"Most picked: {max_champ_name} at {max_pct:.1%}"
         )
 
-    # ── Check 12: Augment coverage ───────────────────────────────────
+    # ── Check 15: Augment coverage ──────────────────────────────────
     aug_counts = Counter()
     for row in rows:
         augs = row.get('augments', [])
@@ -358,7 +360,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
         f"{unique_augs} unique augments seen"
     )
 
-    # ── Check 13: Required fields present ────────────────────────────
+    # ── Check 16: Required fields present ───────────────────────────
     sample_row = rows[0]
     required_fields = [
         'game_id', 'round', 'player_id', 'placement', 'hp', 'gold',
@@ -372,7 +374,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
         f"Missing: {missing_fields}" if missing_fields else "All 15 fields present"
     )
 
-    # ── Check 14: HP values sensible ─────────────────────────────────
+    # ── Check 17: HP values sensible ────────────────────────────────
     hp_values = [row.get('hp', 0) for row in rows]
     if hp_values:
         min_hp = min(hp_values)
@@ -383,7 +385,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
             f"range: {min_hp}-{max_hp}"
         )
 
-    # ── Check 15: Gold values sensible ───────────────────────────────
+    # ── Check 18: Gold values sensible ──────────────────────────────
     gold_values = [row.get('gold', 0) for row in rows]
     if gold_values:
         max_gold = max(gold_values)
@@ -394,7 +396,7 @@ def validate_output(output_dir: str, verbose: bool = False) -> ValidationReport:
             f"avg={avg_gold:.1f}, max={max_gold}"
         )
 
-    # ── Check 16: Performance ────────────────────────────────────────
+    # ── Check 19: Performance ───────────────────────────────────────
     games_per_sec = summary.get('games_per_sec', 0)
     if games_per_sec > 0:
         report.check(

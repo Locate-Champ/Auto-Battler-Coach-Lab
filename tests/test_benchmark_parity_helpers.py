@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import pytest
@@ -240,6 +241,22 @@ def test_parity_dump_payload_contains_required_context_keys(
             "top4_set": top4,
             "round_num": round_num,
             "training_rows": rows,
+            "combat_debug": [
+                {
+                    "round": 4,
+                    "p1": 0,
+                    "p2": 1,
+                    "is_ghost": False,
+                    "debug_takedowns": [
+                        {
+                            "killer_team": 0,
+                            "killer_api_name": "TFT16_Draven",
+                            "victim_team": 1,
+                            "victim_api_name": "TFT16_Leona",
+                        }
+                    ],
+                }
+            ],
         }
 
     monkeypatch.setattr(
@@ -271,8 +288,11 @@ def test_parity_dump_payload_contains_required_context_keys(
         "origin_hint",
         "matchup_alignment",
         "mirror_alignment",
+        "last_hit_alignment",
         "baseline",
         "candidate",
+        "baseline_combat_debug",
+        "candidate_combat_debug",
     ):
         assert key in context
 
@@ -290,6 +310,225 @@ def test_parity_dump_payload_contains_required_context_keys(
     written_payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert "divergence_origin_counts" in written_payload
     assert "first_divergence" in written_payload
+
+
+def test_parity_dump_signatures_only_omits_raw_takedown_events(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    baseline_rows = [
+        _row(
+            4,
+            0,
+            [_unit("TFT16_Draven", 0)],
+            [_unit("TFT16_Leona", 21)],
+            hp=96,
+            opponent_hp=92,
+        ),
+        _row(
+            4,
+            1,
+            [_unit("TFT16_Leona", 21)],
+            [_unit("TFT16_Draven", 0)],
+            hp=92,
+            opponent_hp=96,
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=4.0,
+        ),
+    ]
+    candidate_rows = [
+        _row(
+            4,
+            0,
+            [_unit("TFT16_Draven", 0)],
+            [_unit("TFT16_Leona", 0)],
+            hp=92,
+            opponent_hp=96,
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=4.0,
+        ),
+    ]
+
+    def _fake_run_single_full_game_with_rows(
+        engine_name: str,
+        game_seed: int,
+        rust_sim_cache: dict,
+    ) -> dict:
+        del game_seed, rust_sim_cache
+        rows = baseline_rows if engine_name == "python" else candidate_rows
+        return {
+            "placements": [(0, 1), (1, 2)],
+            "placement_vector": (1, 2, 0, 0, 0, 0, 0, 0),
+            "rank_order": (0, 1),
+            "top4_set": (0, 1),
+            "round_num": 4,
+            "training_rows": rows,
+            "combat_debug": [
+                {
+                    "round": 4,
+                    "p1": 0,
+                    "p2": 1,
+                    "is_ghost": False,
+                    "debug_takedowns": [
+                        {
+                            "killer_team": 0,
+                            "killer_api_name": "TFT16_Draven",
+                            "victim_team": 1,
+                            "victim_api_name": "TFT16_Leona",
+                        }
+                    ],
+                }
+            ],
+        }
+
+    monkeypatch.setattr(
+        benchmark,
+        "_run_single_full_game_with_rows",
+        _fake_run_single_full_game_with_rows,
+    )
+
+    payload = benchmark.run_parity_dump_seed(
+        baseline_engine="python",
+        candidate_engine="rust_full",
+        seed=123,
+        sample_limit=3,
+        output_path=str(tmp_path / "parity_dump_signatures_only.json"),
+        parity_dump_signatures_only=True,
+    )
+
+    assert payload["parity_dump_signatures_only"] is True
+    first = payload["first_divergence"]
+    assert first is not None
+    context = first["context"]
+    assert context["baseline_combat_debug"] is not None
+    assert context["candidate_combat_debug"] is not None
+    assert "debug_takedowns" not in context["baseline_combat_debug"]
+    assert "debug_takedowns" not in context["candidate_combat_debug"]
+    assert "player_last_hit_signature" in context["baseline_combat_debug"]
+    assert "player_last_hit_signature" in context["candidate_combat_debug"]
+
+
+def test_cli_parity_dump_signatures_only_artifact_is_smaller(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    baseline_rows = [
+        _row(
+            9,
+            0,
+            [_unit("TFT16_Draven", 0)],
+            [_unit("TFT16_Leona", 21)],
+            hp=96,
+            opponent_hp=92,
+        ),
+        _row(
+            9,
+            1,
+            [_unit("TFT16_Leona", 21)],
+            [_unit("TFT16_Draven", 0)],
+            hp=92,
+            opponent_hp=96,
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=4.0,
+        ),
+    ]
+    candidate_rows = [
+        _row(
+            9,
+            0,
+            [_unit("TFT16_Draven", 0)],
+            [_unit("TFT16_Leona", 0)],
+            hp=92,
+            opponent_hp=96,
+            combat_result=0,
+            damage_dealt=0.0,
+            damage_taken=4.0,
+        ),
+    ]
+    verbose_takedowns = [
+        {
+            "killer_team": i % 2,
+            "killer_api_name": "TFT16_Draven" if i % 2 == 0 else "TFT16_Leona",
+            "victim_team": 1 if i % 2 == 0 else 0,
+            "victim_api_name": "TFT16_Leona" if i % 2 == 0 else "TFT16_Draven",
+        }
+        for i in range(120)
+    ]
+
+    def _fake_run_single_full_game_with_rows(
+        engine_name: str,
+        game_seed: int,
+        rust_sim_cache: dict,
+    ) -> dict:
+        del game_seed, rust_sim_cache
+        rows = baseline_rows if engine_name == "python" else candidate_rows
+        return {
+            "placements": [(0, 1), (1, 2)],
+            "placement_vector": (1, 2, 0, 0, 0, 0, 0, 0),
+            "rank_order": (0, 1),
+            "top4_set": (0, 1),
+            "round_num": 9,
+            "training_rows": rows,
+            "combat_debug": [
+                {
+                    "round": 9,
+                    "p1": 0,
+                    "p2": 1,
+                    "is_ghost": False,
+                    "debug_takedowns": verbose_takedowns,
+                }
+            ],
+        }
+
+    monkeypatch.setattr(
+        benchmark,
+        "_run_single_full_game_with_rows",
+        _fake_run_single_full_game_with_rows,
+    )
+
+    full_output = tmp_path / "parity_dump_full.json"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "benchmark.py",
+            "--parity-only",
+            "--parity-engines",
+            "python,rust_full",
+            "--parity-dump-seed",
+            "9",
+            "--parity-dump-output",
+            str(full_output),
+        ],
+    )
+    benchmark.main()
+
+    compact_output = tmp_path / "parity_dump_signatures.json"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "benchmark.py",
+            "--parity-only",
+            "--parity-engines",
+            "python,rust_full",
+            "--parity-dump-seed",
+            "9",
+            "--parity-dump-output",
+            str(compact_output),
+            "--parity-dump-signatures-only",
+        ],
+    )
+    benchmark.main()
+
+    full_payload = json.loads(full_output.read_text(encoding="utf-8"))
+    compact_payload = json.loads(compact_output.read_text(encoding="utf-8"))
+    assert full_payload["parity_dump_signatures_only"] is False
+    assert compact_payload["parity_dump_signatures_only"] is True
+    assert compact_output.stat().st_size < full_output.stat().st_size
 
 
 def test_parity_dump_missing_candidate_snapshot_shape(
@@ -334,6 +573,7 @@ def test_parity_dump_missing_candidate_snapshot_shape(
             "top4_set": (0, 1),
             "round_num": 5,
             "training_rows": rows,
+            "combat_debug": [],
         }
 
     monkeypatch.setattr(
@@ -393,6 +633,7 @@ def test_divergence_origin_counts_labels_are_known(
             "top4_set": (0, 1),
             "round_num": 6,
             "training_rows": rows,
+            "combat_debug": [],
         }
 
     monkeypatch.setattr(
@@ -416,11 +657,84 @@ def test_divergence_origin_counts_labels_are_known(
         "matchmaking_or_board_state",
         "combat_resolution",
         "combat_resolution_or_downstream",
+        "last_hit_attribution_drift",
         "unknown",
     }
     observed_labels = set(payload["divergence_origin_counts"].keys())
     assert observed_labels
     assert observed_labels.issubset(known_labels)
+
+
+def test_infer_divergence_origin_identifies_last_hit_attribution_drift() -> None:
+    baseline = benchmark._normalize_training_row(
+        _row(8, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+    )
+    candidate = dict(baseline)
+    candidate["combat_result"] = 0
+
+    observed = benchmark._infer_divergence_origin(
+        baseline_row=baseline,
+        candidate_row=candidate,
+        baseline_context={"inferred_opponent_id": 1},
+        candidate_context={"inferred_opponent_id": 1},
+        field_diffs=[{"field": "combat_result", "baseline": 1, "candidate": 0}],
+        baseline_combat_debug={
+            "player_last_hit_signature": (("TFT16_Draven", "TFT16_Leona", 1),),
+        },
+        candidate_combat_debug={
+            "player_last_hit_signature": (("TFT16_Braum", "TFT16_Leona", 1),),
+        },
+    )
+
+    assert observed == "last_hit_attribution_drift"
+
+
+def test_infer_divergence_origin_missing_combat_debug_on_one_side_avoids_last_hit_drift() -> None:
+    baseline = benchmark._normalize_training_row(
+        _row(8, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+    )
+    candidate = dict(baseline)
+    candidate["combat_result"] = 0
+
+    observed = benchmark._infer_divergence_origin(
+        baseline_row=baseline,
+        candidate_row=candidate,
+        baseline_context={"inferred_opponent_id": 1},
+        candidate_context={"inferred_opponent_id": 1},
+        field_diffs=[{"field": "combat_result", "baseline": 1, "candidate": 0}],
+        baseline_combat_debug={
+            "player_last_hit_signature": (("TFT16_Draven", "TFT16_Leona", 1),),
+        },
+        candidate_combat_debug={
+            "player_last_hit_signature": (),
+        },
+    )
+
+    assert observed == "combat_resolution"
+
+
+def test_infer_divergence_origin_zero_takedowns_both_sides_avoids_last_hit_drift() -> None:
+    baseline = benchmark._normalize_training_row(
+        _row(8, 0, [_unit("TFT16_Draven", 0)], [_unit("TFT16_Leona", 21)])
+    )
+    candidate = dict(baseline)
+    candidate["combat_result"] = 0
+
+    observed = benchmark._infer_divergence_origin(
+        baseline_row=baseline,
+        candidate_row=candidate,
+        baseline_context={"inferred_opponent_id": 1},
+        candidate_context={"inferred_opponent_id": 1},
+        field_diffs=[{"field": "combat_result", "baseline": 1, "candidate": 0}],
+        baseline_combat_debug={
+            "player_last_hit_signature": (),
+        },
+        candidate_combat_debug={
+            "player_last_hit_signature": (),
+        },
+    )
+
+    assert observed == "combat_resolution"
 
 
 @pytest.mark.parametrize(

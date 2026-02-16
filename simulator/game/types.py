@@ -81,6 +81,7 @@ class Action:
 @dataclass(slots=True)
 class ChampionInstance:
     """A champion instance on board, bench, or in shop."""
+    instance_id: str    # Stable per-instance id (unique within a game)
     name: str           # Lowercase key (e.g., 'jinx')
     api_name: str       # API name (e.g., 'TFT16_Jinx')
     cost: int           # Base cost (1-5)

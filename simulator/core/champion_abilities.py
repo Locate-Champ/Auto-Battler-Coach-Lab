@@ -273,11 +273,11 @@ class ChampionAbilities:
 
         # Kill reset - if target died, reset mana for another cast
         # Patch 16.4: reset 100% → 80%
+        unit.stats.mana = 0
         if not target.is_alive:
-            unit.stats.mana = unit.stats.max_mana * 0.80  # 80% refund (16.4)
+            # Refund after spending mana so Invoker scaling applies consistently.
+            self.engine.gain_mana(unit, unit.stats.max_mana * 0.80, source="ambessa_kill_refund")
             self.engine.log_event('ambessa_reset', unit=unit.name)
-        else:
-            unit.stats.mana = 0
 
         return True
 
@@ -1673,7 +1673,7 @@ class ChampionAbilities:
         from .combat_engine import DamageType
 
         # Get soul count from centralized TraitManager
-        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        soul_count = self.engine.trait_manager.get_shadow_isles_souls(unit.team)
 
         # Get damage variables
         health_drain_per_soul = self._get_var(ability_vars, 'HealthDrainPerSoul', unit.star_level, 5)
@@ -1817,11 +1817,10 @@ class ChampionAbilities:
                     self._deal_damage(unit, enemy, explosion_damage * 0.5,
                                      DamageType.MAGIC, "zilean_chain")
 
-        # Mana on kill
-        if not target.is_alive:
-            unit.stats.mana = min(unit.stats.mana + mana_on_kill, unit.stats.max_mana)
-
         unit.stats.mana = 0
+        # Mana on kill (refund after spending mana)
+        if not target.is_alive:
+            self.engine.gain_mana(unit, mana_on_kill, source="zilean_kill_refund")
         return True
 
     def _cast_loris(self, unit: 'Unit', enemies: List['Unit'], allies: List['Unit'],
@@ -2195,7 +2194,7 @@ class ChampionAbilities:
             base_pct = self._get_var(ability_vars, 'ShadowIslesBasePercentage', unit.star_level, 0.05)
             souls_per_bonus = self._get_var(ability_vars, 'ShadowIslesSoulsNeededForOnePercentBonusDamage', unit.star_level, 8)
             # Get soul count from trait manager
-            soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+            soul_count = self.engine.trait_manager.get_shadow_isles_souls(unit.team)
             bonus_pct = soul_count / souls_per_bonus / 100  # Convert to percentage
             total_pct = base_pct + bonus_pct
             bonus_damage = (self._get_var(ability_vars, 'Damage', unit.star_level, 425) + unit.stats.ap) * total_pct
@@ -2404,7 +2403,7 @@ class ChampionAbilities:
         secondary_damage = self._get_var(ability_vars, 'SecondaryMagicDamage', unit.star_level, 25)
 
         # Get soul count for bonus snips
-        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        soul_count = self.engine.trait_manager.get_shadow_isles_souls(unit.team)
         bonus_snips = int(soul_count / soul_breakpoint * snip_per_soul)
         total_snips = base_snips + bonus_snips
 
@@ -2454,7 +2453,7 @@ class ChampionAbilities:
         pct_on_primary = self._get_var(ability_vars, 'PercentMissilesOnPrimaryTarget', unit.star_level, 0.5)
 
         # Get soul count for bonus spears
-        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        soul_count = self.engine.trait_manager.get_shadow_isles_souls(unit.team)
         bonus_spears = int(soul_count / souls_per_spear) * spears_per_breakpoint
         total_spears = base_spears + bonus_spears
 
@@ -2507,7 +2506,7 @@ class ChampionAbilities:
         base_as = self._get_var(ability_vars, 'BaseAttackSpeed', unit.star_level, 10) / 100  # Convert to decimal
 
         # Get soul count for bonus attack speed
-        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        soul_count = self.engine.trait_manager.get_shadow_isles_souls(unit.team)
         bonus_as = (soul_count / souls_for_as) * as_per_breakpoint / 100  # Percentage
 
         # Track stacks on unit
@@ -2548,7 +2547,7 @@ class ChampionAbilities:
         debuff_duration = self._get_var(ability_vars, 'DebuffDuration', unit.star_level, 4.0)
 
         # Get soul count for bonus healing
-        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        soul_count = self.engine.trait_manager.get_shadow_isles_souls(unit.team)
         bonus_heal = int(soul_count / soul_breakpoint) * heal_per_soul_breakpoint
 
         target = unit.target or self._find_nearest_enemy(unit, enemies)
@@ -3463,11 +3462,10 @@ class ChampionAbilities:
             target._zilean_bombs = 0  # Reset bombs
             self.engine.log_event('zilean_double_bomb', unit=unit.name, target=target.name)
 
-        # Mana refund on kill
-        if not target.is_alive:
-            unit.stats.mana += mana_on_kill
-
         unit.stats.mana = 0
+        # Mana refund on kill (refund after spending mana)
+        if not target.is_alive:
+            self.engine.gain_mana(unit, mana_on_kill, source="zilean_kill_refund")
         self.engine.log_event('ability_cast', unit=unit.name, ability="Visions of the End",
                              bombs_on_target=target._zilean_bombs if target.is_alive else 0)
         return True
@@ -3957,7 +3955,7 @@ class ChampionAbilities:
 
         # Check for ability upgrade at 100 souls
         soul_req = hero_effects.get('soul_req_upgrade', 100)
-        soul_count = getattr(self.engine.trait_manager, 'shadow_isles_souls', 0)
+        soul_count = self.engine.trait_manager.get_shadow_isles_souls(unit.team)
 
         if soul_count >= soul_req and not getattr(unit, '_viego_ability_upgraded', False):
             unit._viego_ability_upgraded = True
@@ -3997,10 +3995,9 @@ class ChampionAbilities:
         actual, _ = self._deal_damage(unit, target, damage + unit.stats.ap,
                                       DamageType.MAGIC, "anivia_frostbite")
 
-        if not target.is_alive:
-            unit.stats.mana = min(unit.stats.max_mana, unit.stats.mana + mana_refund)
-
         unit.stats.mana = 0
+        if not target.is_alive:
+            self.engine.gain_mana(unit, mana_refund, source="anivia_kill_refund")
         self.engine.log_event('ability_cast', unit=unit.name, ability="Frostbite")
         return True
 

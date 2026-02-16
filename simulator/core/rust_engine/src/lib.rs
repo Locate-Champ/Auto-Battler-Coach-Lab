@@ -33,7 +33,7 @@ use std::time::Instant;
 
 use data::CombatData;
 use engine::{CombatEngine, CombatResult, UnitSpec};
-use game_loop::{AugmentPools, GameConfig, TrainingRow};
+use game_loop::{AugmentPools, CombatDebugRound, GameConfig, TrainingRow};
 
 /// Python-facing combat engine wrapper.
 #[pyclass]
@@ -188,11 +188,19 @@ impl RustGameSimulator {
                 .map(training_row_to_value)
                 .collect(),
         );
+        let combat_debug_value = Value::Array(
+            result
+                .combat_debug
+                .iter()
+                .map(combat_debug_to_value)
+                .collect(),
+        );
 
         let dict = PyDict::new(py);
         dict.set_item("rounds", result.rounds)?;
         dict.set_item("placements", json_to_py(py, &placements_value)?)?;
         dict.set_item("training_rows", json_to_py(py, &training_rows_value)?)?;
+        dict.set_item("combat_debug", json_to_py(py, &combat_debug_value)?)?;
         dict.set_item("analytics", json_to_py(py, &result.analytics)?)?;
         Ok(dict)
     }
@@ -620,6 +628,32 @@ fn result_to_dict<'py>(py: Python<'py>, result: &CombatResult) -> PyResult<Bound
     dict.set_item("team1_total_damage", result.team1_total_damage)?;
     dict.set_item("team0_abilities_cast", result.team0_abilities_cast)?;
     dict.set_item("team1_abilities_cast", result.team1_abilities_cast)?;
+    dict.set_item(
+        "team0_bilgewater_serpents",
+        result.team0_bilgewater_serpents,
+    )?;
+    dict.set_item(
+        "team1_bilgewater_serpents",
+        result.team1_bilgewater_serpents,
+    )?;
+    dict.set_item(
+        "team0_shadow_isles_souls",
+        result.team0_shadow_isles_souls,
+    )?;
+    dict.set_item(
+        "team1_shadow_isles_souls",
+        result.team1_shadow_isles_souls,
+    )?;
+    let debug_takedowns = PyList::empty(py);
+    for takedown in &result.debug_takedowns {
+        let entry = PyDict::new(py);
+        entry.set_item("killer_team", takedown.killer_team)?;
+        entry.set_item("killer_api_name", &takedown.killer_api_name)?;
+        entry.set_item("victim_team", takedown.victim_team)?;
+        entry.set_item("victim_api_name", &takedown.victim_api_name)?;
+        debug_takedowns.append(entry)?;
+    }
+    dict.set_item("debug_takedowns", debug_takedowns)?;
 
     // Also add nested total_damage_dealt for compatibility
     let damage_dict = PyDict::new(py);
@@ -754,6 +788,10 @@ fn default_augment_path(combat_data_path: &Path) -> PathBuf {
 }
 
 fn training_row_to_value(row: &TrainingRow) -> Value {
+    serde_json::to_value(row).unwrap_or(Value::Null)
+}
+
+fn combat_debug_to_value(row: &CombatDebugRound) -> Value {
     serde_json::to_value(row).unwrap_or(Value::Null)
 }
 

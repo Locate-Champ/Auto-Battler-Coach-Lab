@@ -234,6 +234,7 @@ class Unit:
     base_stats: CombatStats  # Original stats without items/buffs
     position: Tuple[int, int]  # (row, col) on hex grid
     team: int  # 0 or 1
+    instance_id: str = ""  # Stable game-layer id (ChampionInstance.instance_id) when available
     items: List[Item] = field(default_factory=list)
     traits: List[str] = field(default_factory=list)
     ability: Optional[Ability] = None
@@ -467,23 +468,21 @@ HexGrid._build_luts()
 # TRAIT MANAGER - Handle Trait Mechanics
 # =============================================================================
 
+@dataclass(slots=True)
+class TeamTraitState:
+    bilgewater_count: int = 0
+    shadow_isles_count: int = 0
+    shadow_isles_souls: int = 0
+
+
 class TraitManager:
     """Manages trait effects and mechanics.
 
     Key traits with special mechanics:
-    - Blacksmith (Ornn): Craft artifact items over 4 rounds
-    - Bilgewater: Serpent currency for store purchases
     - Piltover: T-Hex modules at 2/4/6 trait count
     - Shadow Isles: Soul collection from enemy deaths
     """
 
-    # Bilgewater serpent rewards by trait count
-    BILGEWATER_SERPENTS_PER_ROUND = {
-        3: 15,
-        5: 35,
-        7: 65,
-        10: 150,
-    }
     BILGEWATER_SERPENTS_PER_TAKEDOWN = 1  # Patch 16.3: nerfed from 2 to 1
 
     # Shadow Isles soul multipliers by trait count
@@ -503,216 +502,21 @@ class TraitManager:
     }
 
     def __init__(self):
-        self.blacksmith_progress: Dict[str, int] = {}  # unit_id -> rounds_crafted
-        self.blacksmith_items: Dict[str, List[str]] = {}  # unit_id -> list of crafted artifacts
-        self.bilgewater_serpents: int = 0
-        self.bilgewater_purchases: Dict[str, int] = {}  # category -> purchase count
+        self.team_state: Dict[int, TeamTraitState] = {}
         self.piltover_modules: List[str] = []
-        self.round_number: int = 0
-        self.bilgewater_count: int = 0  # Current Bilgewater trait count
 
-        # Shadow Isles soul tracking
-        self.shadow_isles_souls: int = 0
-        self.shadow_isles_count: int = 0  # Current Shadow Isles trait count
-        self.shadow_isles_units: List['Unit'] = []  # Units with the trait
+    def get_team_state(self, team_id: int) -> TeamTraitState:
+        """Get (and create if needed) per-team trait state."""
+        state = self.team_state.get(team_id)
+        if state is None:
+            state = TeamTraitState()
+            self.team_state[team_id] = state
+        return state
 
-    def start_round(self, units: List['Unit']):
-        """Process start of round for trait mechanics."""
-        self.round_number += 1
-
-        # Blacksmith progress
-        for unit in units:
-            if 'Blacksmith' in unit.traits:
-                unit_id = f"{unit.api_name}_{id(unit)}"
-                if unit_id not in self.blacksmith_progress:
-                    self.blacksmith_progress[unit_id] = 0
-                    self.blacksmith_items[unit_id] = []
-
-                self.blacksmith_progress[unit_id] += 1
-
-                # Check if artifact is ready (4 rounds)
-                if self.blacksmith_progress[unit_id] >= 4:
-                    self.blacksmith_progress[unit_id] = 0
-                    self._craft_artifact(unit)
-
-    def _craft_artifact(self, unit: 'Unit'):
-        """Ornn crafts an artifact item."""
-        unit_id = f"{unit.api_name}_{id(unit)}"
-
-        # Get random artifact from the pool
-        if _ITEMS_LOADED and ARTIFACT_ITEMS:
-            import random
-            artifact_name = random.choice(list(ARTIFACT_ITEMS.keys()))
-            self.blacksmith_items[unit_id].append(artifact_name)
-
-            # Ornn also gains HP per item crafted
-            hp_bonus = BLACKSMITH_CONFIG.get('hp_per_item', {}).get(unit.star_level, 250)
-            unit.stats.max_hp += hp_bonus
-            unit.stats.hp += hp_bonus
-
-            return artifact_name
-        return None
-
-    def get_crafted_artifacts(self, unit: 'Unit') -> List[str]:
-        """Get list of artifacts crafted by a Blacksmith unit."""
-        unit_id = f"{unit.api_name}_{id(unit)}"
-        return self.blacksmith_items.get(unit_id, [])
-
-    def get_blacksmith_progress(self, unit: 'Unit') -> int:
-        """Get current crafting progress for a Blacksmith unit."""
-        unit_id = f"{unit.api_name}_{id(unit)}"
-        return self.blacksmith_progress.get(unit_id, 0)
-
-    def set_bilgewater_count(self, count: int):
-        """Set the current Bilgewater trait count."""
-        self.bilgewater_count = count
-
-    def award_round_serpents(self) -> int:
-        """Award serpents at the start of a round based on Bilgewater trait count.
-
-        Returns the amount of serpents awarded.
-        """
-        if self.bilgewater_count < 3:
-            return 0
-
-        # Find the highest tier we qualify for
-        serpent_reward = 0
-        for tier in sorted(self.BILGEWATER_SERPENTS_PER_ROUND.keys(), reverse=True):
-            if self.bilgewater_count >= tier:
-                serpent_reward = self.BILGEWATER_SERPENTS_PER_ROUND[tier]
-                break
-
-        self.bilgewater_serpents += serpent_reward
-        return serpent_reward
-
-    def award_takedown_serpents(self) -> int:
-        """Award serpents for a takedown (kill/assist).
-
-        Returns the amount of serpents awarded.
-        """
-        if self.bilgewater_count < 3:
-            return 0
-
-        self.bilgewater_serpents += self.BILGEWATER_SERPENTS_PER_TAKEDOWN
-        return self.BILGEWATER_SERPENTS_PER_TAKEDOWN
-
-    def add_bilgewater_serpents(self, amount: int):
-        """Add serpent currency from Bilgewater trait."""
-        self.bilgewater_serpents += amount
-
-    def _get_category_cost(self, category: str) -> Optional[int]:
-        """Get the next purchase cost for a store category, or None if maxed out.
-
-        Uses escalating cost lists from BILGEWATER_COSTS.
-        """
-        costs = BILGEWATER_STORE.get('costs', {})
-        cost_list = costs.get(category)
-        if cost_list is None:
-            return None
-        count = self.bilgewater_purchases.get(category, 0)
-        if isinstance(cost_list, list):
-            if count >= len(cost_list):
-                return None  # Max purchases reached
-            return cost_list[count]
-        return cost_list  # Flat cost (e.g., shop_reroll)
-
-    def _get_unit_cost(self, gold_cost: int) -> int:
-        """Get serpent cost for a unit by its gold cost tier."""
-        unit_costs = BILGEWATER_STORE.get('unit_costs', {})
-        return unit_costs.get(gold_cost, gold_cost * 20)
-
-    def buy_from_bilgewater_store(self, category: str, **kwargs) -> Optional[str]:
-        """Purchase from Bilgewater Black Market using Silver Serpents.
-
-        Categories:
-        - 'tier1_stats'/'tier2_stats'/'tier3_stats': Buy stat buff
-        - 'tier1_items'/'tier2_items': Buy random item from that tier
-        - 'unit': Buy a unit (pass gold_cost=N in kwargs)
-        - 'lesser_dupe': Buy lesser duplicator
-        - 'shop_reroll': Reroll the shop
-
-        Returns category/item name purchased, or None if can't afford.
-        """
-        if not _ITEMS_LOADED:
-            return None
-
-        # Check layout: is this category available at our BG count?
-        layout = BILGEWATER_STORE.get('layout', {})
-        available_cats = set()
-        for tier in sorted(layout.keys(), reverse=True):
-            if self.bilgewater_count >= tier:
-                available_cats = set(layout[tier])
-                break
-
-        # Unit purchases use tierN_units format in layout
-        if category == 'unit':
-            gold_cost = kwargs.get('gold_cost', 1)
-            unit_cat = f'tier{gold_cost}_units'
-            if unit_cat not in available_cats:
-                return None
-            cost = self._get_unit_cost(gold_cost)
-            if self.bilgewater_serpents >= cost:
-                self.bilgewater_serpents -= cost
-                self.bilgewater_purchases[category] = self.bilgewater_purchases.get(category, 0) + 1
-                return f'unit_cost{gold_cost}'
-            return None
-
-        if category == 'shop_reroll':
-            cost = BILGEWATER_STORE.get('costs', {}).get('shop_reroll', 1)
-            if self.bilgewater_serpents >= cost:
-                self.bilgewater_serpents -= cost
-                return 'shop_reroll'
-            return None
-
-        # Stats, items, lesser_dupe: use escalating cost lists
-        if category not in available_cats:
-            return None
-        cost = self._get_category_cost(category)
-        if cost is None:
-            return None  # Maxed out
-        if self.bilgewater_serpents >= cost:
-            self.bilgewater_serpents -= cost
-            self.bilgewater_purchases[category] = self.bilgewater_purchases.get(category, 0) + 1
-            return category
-        return None
-
-    def get_store_affordables(self) -> Dict[str, List[str]]:
-        """Get list of affordable store categories at current serpent count.
-
-        Returns dict with 'stats', 'items', 'units' keys listing affordable categories.
-        """
-        if not _ITEMS_LOADED:
-            return {'stats': [], 'items': [], 'units': []}
-
-        layout = BILGEWATER_STORE.get('layout', {})
-        available_cats = set()
-        for tier in sorted(layout.keys(), reverse=True):
-            if self.bilgewater_count >= tier:
-                available_cats = set(layout[tier])
-                break
-
-        affordables = {'stats': [], 'items': [], 'units': []}
-
-        for cat in available_cats:
-            if cat.endswith('_units'):
-                # Parse gold cost from tierN_units
-                try:
-                    gold_cost = int(cat.replace('tier', '').replace('_units', ''))
-                except ValueError:
-                    continue
-                cost = self._get_unit_cost(gold_cost)
-                if self.bilgewater_serpents >= cost:
-                    affordables['units'].append(cat)
-            elif cat.endswith('_stats'):
-                cost = self._get_category_cost(cat)
-                if cost is not None and self.bilgewater_serpents >= cost:
-                    affordables['stats'].append(cat)
-            elif cat.endswith('_items') or cat == 'lesser_dupe':
-                cost = self._get_category_cost(cat)
-                if cost is not None and self.bilgewater_serpents >= cost:
-                    affordables['items'].append(cat)
-
-        return affordables
+    def set_bilgewater_count(self, team_id: int, count: int):
+        """Set the current Bilgewater trait count for a team."""
+        state = self.get_team_state(team_id)
+        state.bilgewater_count = count
 
     def assign_piltover_modules(self, piltover_count: int) -> List[str]:
         """Assign Piltover modules based on trait count.
@@ -758,31 +562,27 @@ class TraitManager:
     # SHADOW ISLES SOUL COLLECTION
     # =========================================================================
 
-    def set_shadow_isles_count(self, count: int, units: List['Unit'] = None):
-        """Set the current Shadow Isles trait count and track affected units.
+    def set_shadow_isles_count(self, team_id: int, count: int):
+        """Set the current Shadow Isles trait count for a team."""
+        state = self.get_team_state(team_id)
+        state.shadow_isles_count = count
 
-        Args:
-            count: Number of Shadow Isles champions active
-            units: List of Shadow Isles units to track
-        """
-        self.shadow_isles_count = count
-        if units:
-            self.shadow_isles_units = units
-
-    def award_soul(self, victim_cost: int = 1, victim_star: int = 1) -> int:
+    def award_soul(self, team_id: int, victim_cost: int = 1, victim_star: int = 1) -> int:
         """Award souls when an enemy dies.
 
         Soul value is based on victim's cost and star level.
         Higher cost/star units are worth more souls.
 
         Args:
+            team_id: Team to award souls to
             victim_cost: Champion cost (1-5)
             victim_star: Star level (1-3)
 
         Returns:
             Number of souls awarded
         """
-        if self.shadow_isles_count < 2:
+        state = self.get_team_state(team_id)
+        if state.shadow_isles_count < 2:
             return 0
 
         # Base souls by cost
@@ -796,39 +596,41 @@ class TraitManager:
         # Apply trait count multiplier
         soul_mult = 1.0
         for tier in sorted(self.SHADOW_ISLES_SOUL_MULTIPLIER.keys(), reverse=True):
-            if self.shadow_isles_count >= tier:
+            if state.shadow_isles_count >= tier:
                 soul_mult = self.SHADOW_ISLES_SOUL_MULTIPLIER[tier]
                 break
 
         souls = int(souls * soul_mult)
-        self.shadow_isles_souls += souls
+        state.shadow_isles_souls += souls
 
         return souls
 
-    def get_shadow_isles_stat_bonus(self) -> float:
+    def get_shadow_isles_stat_bonus(self, team_id: int) -> float:
         """Get the AD/AP bonus percentage for Shadow Isles units.
 
         Returns:
             Stat bonus as a decimal (0.18 = 18%)
         """
-        if self.shadow_isles_count < 2:
+        state = self.get_team_state(team_id)
+        if state.shadow_isles_count < 2:
             return 0.0
 
         for tier in sorted(self.SHADOW_ISLES_STAT_BONUS.keys(), reverse=True):
-            if self.shadow_isles_count >= tier:
+            if state.shadow_isles_count >= tier:
                 return self.SHADOW_ISLES_STAT_BONUS[tier]
 
         return 0.0
 
-    def apply_shadow_isles_stats(self, units: List['Unit']):
+    def apply_shadow_isles_stats(self, team_id: int, units: List['Unit']):
         """Apply Shadow Isles stat bonuses to units with the trait.
 
         Called at combat start to give AD/AP bonus based on trait count.
         """
-        if self.shadow_isles_count < 2:
+        state = self.get_team_state(team_id)
+        if state.shadow_isles_count < 2:
             return
 
-        bonus = self.get_shadow_isles_stat_bonus()
+        bonus = self.get_shadow_isles_stat_bonus(team_id)
 
         for unit in units:
             if 'Shadow Isles' in unit.traits:
@@ -839,9 +641,15 @@ class TraitManager:
                 unit.stats.ad += ad_bonus
                 unit.stats.ap += ap_bonus
 
+    def get_shadow_isles_souls(self, team_id: int) -> int:
+        """Get current Shadow Isles soul count for a team."""
+        state = self.get_team_state(team_id)
+        return state.shadow_isles_souls
+
     def reset_shadow_isles(self):
         """Reset Shadow Isles state for new combat."""
-        self.shadow_isles_souls = 0
+        for state in self.team_state.values():
+            state.shadow_isles_souls = 0
 
     # =========================================================================
     # HUNTRESS TRAIT (Neeko + Nidalee synergy)
@@ -1292,18 +1100,6 @@ class TraitManager:
         else:
             self._apply_harvester(team, [team],
                                   trait_counts.get('Harvester', 0))
-
-        # --- SPECIAL REGION TRAITS ---
-        # Shadow Isles: AD/AP bonus for Shadow Isles units
-        si_count = trait_counts.get('Shadow Isles', 0)
-        if si_count >= 2:
-            self.set_shadow_isles_count(si_count, [u for u in team if 'Shadow Isles' in u.traits])
-            self.apply_shadow_isles_stats(team)
-
-        # Bilgewater: Set count for serpent tracking
-        bg_count = trait_counts.get('Bilgewater', 0)
-        if bg_count >= 3:
-            self.set_bilgewater_count(bg_count)
 
         # Huntress: Neeko + Nidalee synergy
         self.apply_huntress_synergy(team)
@@ -2026,6 +1822,10 @@ class AugmentManager:
         'Mana': 'mana',
         'Range': 'range',
     }
+    PERSISTENT_EFFECT_STAT_MAP = {
+        'AbilityPower': ('ability_power', 'ap'),
+        'ManaRegen': ('mana_regen', 'mana_regen'),
+    }
 
     # Traits that can be checked for conditional augments
     # Maps lowercase search terms to actual trait display names (as used in combat_data.json)
@@ -2069,8 +1869,6 @@ class AugmentManager:
             'on_damage_dealt': [],
             'on_round_start': [],
         }
-        # Track permanent stat gains from on-event augments
-        self.permanent_bonuses: Dict[str, Dict[str, float]] = {}  # unit_id -> stat_bonuses
 
     def reset(self):
         """Reset augment state for new combat."""
@@ -2081,7 +1879,6 @@ class AugmentManager:
             'on_damage_dealt': [],
             'on_round_start': [],
         }
-        self.permanent_bonuses.clear()
 
     def set_augments(self, augment_names: List[str]):
         """Set the active augments for combat.
@@ -2108,7 +1905,12 @@ class AugmentManager:
         """Get augment data by apiName."""
         return self.augment_data.get(api_name)
 
-    def apply_augments(self, team: List['Unit'], trait_counts: Dict[str, int]):
+    def apply_augments(
+        self,
+        team: List['Unit'],
+        trait_counts: Dict[str, int],
+        round_persistent_player: Any = None,
+    ):
         """Apply all active augments to a team at combat start.
 
         Args:
@@ -2134,7 +1936,11 @@ class AugmentManager:
             elif self._is_event_augment(augment):
                 self._register_event_augment(team, augment)
             elif self._is_item_conditional_augment(augment):
-                self._apply_item_conditional_augment(team, augment)
+                self._apply_item_conditional_augment(
+                    team,
+                    augment,
+                    round_persistent_player=round_persistent_player,
+                )
 
     def _is_team_stat_augment(self, augment: Dict) -> bool:
         """Check if augment is a simple team-wide stat buff."""
@@ -2421,7 +2227,12 @@ class AugmentManager:
         if 'cast' in desc and 'when' in desc:
             self.event_listeners['on_cast'].append(event_data)
 
-    def _apply_item_conditional_augment(self, team: List['Unit'], augment: Dict):
+    def _apply_item_conditional_augment(
+        self,
+        team: List['Unit'],
+        augment: Dict,
+        round_persistent_player: Any = None,
+    ):
         """Apply augments that check for specific items."""
         effects = augment.get('effects', {})
         desc = augment.get('desc', '').lower()
@@ -2438,12 +2249,26 @@ class AugmentManager:
                 # Apply stat bonuses
                 if 'AttackSpeed' in effects:
                     self._apply_stat_bonus(unit, 'attack_speed', effects['AttackSpeed'])
-                if 'ManaRegen' in effects:
-                    # Store mana regen for per-tick application
-                    unit_id = f"{unit.api_name}_{id(unit)}"
-                    if unit_id not in self.permanent_bonuses:
-                        self.permanent_bonuses[unit_id] = {}
-                    self.permanent_bonuses[unit_id]['mana_regen'] = effects['ManaRegen']
+                for effect_name, (bonus_name, stat_name) in self.PERSISTENT_EFFECT_STAT_MAP.items():
+                    if effect_name not in effects:
+                        continue
+                    bonus_value = float(effects[effect_name])
+                    if round_persistent_player is not None and unit.instance_id:
+                        existing = round_persistent_player.get_augment_permanent_bonus(
+                            unit.instance_id,
+                            bonus_name,
+                            0.0,
+                        )
+                        delta = bonus_value - existing
+                        if delta != 0.0:
+                            self._apply_stat_bonus(unit, stat_name, delta)
+                        round_persistent_player.set_augment_permanent_bonus(
+                            unit.instance_id,
+                            bonus_name,
+                            bonus_value,
+                        )
+                    else:
+                        self._apply_stat_bonus(unit, stat_name, bonus_value)
 
     def apply_hex_effects(self, unit: 'Unit') -> Dict[str, float]:
         """Get hex effects that apply to a unit based on their position.
@@ -2797,11 +2622,13 @@ class CombatEngine:
         self._alive_dirty = False
         self._has_noxus = False
         self._ionic_spark_units: List[Unit] = []  # Units with Ionic Spark (cached)
+        self._debug_takedowns: List[Dict[str, Any]] = []
         self._occupied_hexes: set = set()  # Cached occupied hex positions
         self._occupied_dirty = True  # True when occupied cache needs rebuild
 
         # Trait manager for Blacksmith, Bilgewater, Piltover
         self.trait_manager = TraitManager()
+        self._round_persistent_players: Dict[int, Any] = {}  # combat team (0/1) -> game-layer Player (or None)
 
         # Augment manager for augment effects
         self.augment_manager = AugmentManager()
@@ -2813,7 +2640,7 @@ class CombatEngine:
             self.champion_abilities = None
 
     def create_unit(self, api_name: str, star_level: int, position: Tuple[int, int],
-                   team: int, items: List[str] = None) -> Optional[Unit]:
+                   team: int, items: List[str] = None, instance_id: str = "") -> Optional[Unit]:
         """Create a unit from champion data."""
         champ_data = self.champions.get(api_name)
         if not champ_data:
@@ -2851,6 +2678,7 @@ class CombatEngine:
         unit = Unit(
             name=champ_data.get('name', api_name).strip(),
             api_name=api_name,
+            instance_id=instance_id,
             star_level=star_level,
             stats=current_stats,
             base_stats=base_stats,
@@ -2871,6 +2699,14 @@ class CombatEngine:
                     self.apply_item(unit, item)
 
         return unit
+
+    def set_round_persistent_players(self, team0_player: Any = None, team1_player: Any = None) -> None:
+        """Attach per-round persistent game-layer state for combat triggers.
+
+        This is used for effects like Bilgewater takedown currency, which should
+        be scoped to the owning player (not the combat engine instance).
+        """
+        self._round_persistent_players = {0: team0_player, 1: team1_player}
 
     def apply_item(self, unit: Unit, item: Item):
         """Apply item stats to a unit.
@@ -2909,7 +2745,14 @@ class CombatEngine:
                     setattr(unit.stats, stat, current + flat_ad)
 
                 # Flat stats
-                elif stat in ['hp', 'max_hp', 'armor', 'magic_resist', 'ap']:
+                elif stat == 'hp':
+                    # Set 16 item `hp` is flat max HP. Mirror Rust semantics.
+                    unit.stats.max_hp += value
+                    unit.stats.hp += value
+                elif stat == 'max_hp':
+                    unit.stats.max_hp += value
+                    unit.stats.hp += value
+                elif stat in ['armor', 'magic_resist', 'ap']:
                     setattr(unit.stats, stat, current + value)
 
                 # Percentage stats (already stored as decimals)
@@ -2918,8 +2761,7 @@ class CombatEngine:
 
                 # Mana stats
                 elif stat == 'mana_regen':
-                    # Mana regen doesn't map to a single stat, skip for now
-                    pass
+                    unit.stats.mana_regen += value
 
                 # Bonus HP percentage (Warmog's, Dragon's Claw, Bramble Vest, Sunfire Cape)
                 elif stat == 'bonus_hp_pct':
@@ -3140,6 +2982,22 @@ class CombatEngine:
 
                 self.log_event('radiant_edge_proc', unit=unit.name, hp_percent=round(hp_percent * 100, 1))
 
+    def gain_mana(self, unit: Unit, amount: float, source: str = "mana") -> float:
+        """Gain mana for a unit, respecting Invoker and max mana cap.
+
+        Returns the actual mana gained (after cap).
+        """
+        if amount <= 0 or unit.stats.max_mana <= 0:
+            return 0.0
+
+        invoker_increase = getattr(unit, "_invoker_mana_increase", 0.0)
+        if invoker_increase:
+            amount *= (1.0 + float(invoker_increase))
+
+        before = unit.stats.mana
+        unit.stats.mana = min(unit.stats.mana + amount, unit.stats.max_mana)
+        return unit.stats.mana - before
+
     def apply_damage(self, attacker: Optional[Unit], defender: Unit, damage: float,
                     damage_type: DamageType, source: str = "attack") -> float:
         """Apply damage to a unit and return actual damage dealt."""
@@ -3167,7 +3025,7 @@ class CombatEngine:
         pre_mit_mana = damage * 0.01  # 1% of pre-mitigation damage
         post_mit_mana = min(damage, defender.stats.hp) * 0.03  # 3% of actual damage
         mana_gain = min(pre_mit_mana + post_mit_mana, self.MANA_ON_DAMAGE_TAKEN_CAP)
-        defender.stats.mana = min(defender.stats.mana + mana_gain, defender.stats.max_mana)
+        self.gain_mana(defender, mana_gain, source="damage_taken")
 
         # Apply damage
         actual_damage = min(damage, defender.stats.hp)
@@ -3198,15 +3056,25 @@ class CombatEngine:
                 # Unit was resurrected - don't award takedown
                 pass
             else:
+                if attacker is not None:
+                    self._debug_takedowns.append({
+                        'killer_team': int(attacker.team),
+                        'killer_api_name': attacker.api_name,
+                        'victim_team': int(defender.team),
+                        'victim_api_name': defender.api_name,
+                    })
                 # Award Bilgewater serpents for takedown (attacker's team)
-                if attacker is not None and (
-                    'Bilgewater' in attacker.traits or self.trait_manager.bilgewater_count >= 3
-                ):
-                    serpents = self.trait_manager.award_takedown_serpents()
-                    if serpents > 0:
-                        self.log_event('bilgewater_takedown', killer=attacker.name,
-                                      victim=defender.name, serpents=serpents,
-                                      total=self.trait_manager.bilgewater_serpents)
+                if attacker is not None and attacker.team != defender.team:
+                    bg_state = self.trait_manager.get_team_state(attacker.team)
+                    if 'Bilgewater' in attacker.traits and bg_state.bilgewater_count >= 3:
+                        player = getattr(self, '_round_persistent_players', {}).get(attacker.team)
+                        if player is not None:
+                            serpents = self.trait_manager.BILGEWATER_SERPENTS_PER_TAKEDOWN
+                            player.add_bilgewater_serpents(serpents)
+                            if serpents > 0:
+                                self.log_event('bilgewater_takedown', killer=attacker.name,
+                                              victim=defender.name, serpents=serpents,
+                                              total=getattr(player, 'bilgewater_serpents', None))
 
                 # Harvester: grant mana to Harvester units on enemy death
                 if attacker is not None:
@@ -3214,25 +3082,23 @@ class CombatEngine:
                     for ally in allies_team:
                         harvest_mana = getattr(ally, '_harvester_mana_per_kill', 0)
                         if harvest_mana > 0 and ally.is_alive:
-                            ally.stats.mana = min(ally.stats.mana + harvest_mana, ally.stats.max_mana)
+                            self.gain_mana(ally, harvest_mana, source="harvester_kill")
 
                 # Award Shadow Isles souls for takedown
-                if (
-                    attacker is not None
-                    and self.trait_manager.shadow_isles_count >= 2
-                    and attacker.team != defender.team
-                ):
-                    # Get victim's cost (from champion data)
-                    victim_data = self.champions.get(defender.api_name, {})
-                    victim_cost = victim_data.get('cost', 1)
-                    victim_star = defender.star_level
+                if attacker is not None and attacker.team != defender.team:
+                    si_state = self.trait_manager.get_team_state(attacker.team)
+                    if 'Shadow Isles' in attacker.traits and si_state.shadow_isles_count >= 2:
+                        # Get victim's cost (from champion data)
+                        victim_data = self.champions.get(defender.api_name, {})
+                        victim_cost = victim_data.get('cost', 1)
+                        victim_star = defender.star_level
 
-                    souls = self.trait_manager.award_soul(victim_cost, victim_star)
-                    if souls > 0:
-                        self.log_event('shadow_isles_soul', killer=attacker.name,
-                                      victim=defender.name, souls=souls,
-                                      total=self.trait_manager.shadow_isles_souls,
-                                      victim_cost=victim_cost, victim_star=victim_star)
+                        souls = self.trait_manager.award_soul(attacker.team, victim_cost, victim_star)
+                        if souls > 0:
+                            self.log_event('shadow_isles_soul', killer=attacker.name,
+                                          victim=defender.name, souls=souls,
+                                          total=si_state.shadow_isles_souls,
+                                          victim_cost=victim_cost, victim_star=victim_star)
 
         if self.logging_enabled:
             self.log_event('damage', source=source, attacker=attacker_name,
@@ -3585,8 +3451,9 @@ class CombatEngine:
                     self.apply_damage(unit, unit.target, bonus, DamageType.PHYSICAL, "gunslinger_proc")
 
         # Gain mana (role-based)
-        mana_per_attack = self.MANA_PER_ATTACK_BY_ROLE.get(unit.role, self.MANA_PER_ATTACK_DEFAULT)
-        unit.stats.mana = min(unit.stats.mana + mana_per_attack, unit.stats.max_mana)
+        base_mana = self.MANA_PER_ATTACK_BY_ROLE.get(unit.role, self.MANA_PER_ATTACK_DEFAULT)
+        mana_per_attack = base_mana + unit.stats.mana_regen
+        self.gain_mana(unit, mana_per_attack, source="attack")
 
         # Item on-hit effects
         for item in unit.items:
@@ -4447,11 +4314,10 @@ class CombatEngine:
         """Process start of round for trait mechanics.
 
         Called at the beginning of each round to:
-        - Progress Blacksmith crafting
-        - Award Bilgewater serpents
+        - Set per-combat trait counts for combat-time triggers
         - Check Piltover module availability
         """
-        self.trait_manager.start_round(team)
+        team_id = team[0].team if team else 0
 
         # Count trait occurrences
         trait_counts = {}
@@ -4461,35 +4327,11 @@ class CombatEngine:
 
         # Log trait info
         self.log_event('round_start',
-                      round=self.trait_manager.round_number,
                       trait_counts=trait_counts)
 
-        # Check Blacksmith progress
-        for unit in team:
-            if 'Blacksmith' in unit.traits:
-                progress = self.trait_manager.get_blacksmith_progress(unit)
-                artifacts = self.trait_manager.get_crafted_artifacts(unit)
-                if artifacts:
-                    self.log_event('blacksmith_status', unit=unit.name,
-                                  progress=progress, artifacts_crafted=len(artifacts),
-                                  latest_artifact=artifacts[-1] if artifacts else None)
-
-        # Bilgewater serpent rewards
+        # Bilgewater count is used for combat-time takedown rewards (currency stored in game layer).
         bilgewater_count = trait_counts.get('Bilgewater', 0)
-        self.trait_manager.set_bilgewater_count(bilgewater_count)
-        if bilgewater_count >= 3:
-            serpent_reward = self.trait_manager.award_round_serpents()
-            self.log_event('bilgewater_serpents', count=bilgewater_count,
-                          reward=serpent_reward,
-                          total=self.trait_manager.bilgewater_serpents)
-
-            # Show affordable categories
-            affordables = self.trait_manager.get_store_affordables()
-            if affordables['stats'] or affordables['items'] or affordables['units']:
-                self.log_event('bilgewater_store',
-                              affordable_stats=affordables['stats'],
-                              affordable_items=affordables['items'],
-                              affordable_units=affordables['units'])
+        self.trait_manager.set_bilgewater_count(team_id, bilgewater_count)
 
         # Piltover module selection and storage
         piltover_count = trait_counts.get('Piltover', 0)
@@ -4497,7 +4339,6 @@ class CombatEngine:
             available_modules = self.trait_manager.assign_piltover_modules(piltover_count)
             if available_modules:
                 selected = random.choice(available_modules)
-                team_id = team[0].team if team else 0
                 if not hasattr(self, '_piltover_data'):
                     self._piltover_data = {}
                 piltover_units = [u for u in team if 'Piltover' in u.traits]
@@ -4513,13 +4354,12 @@ class CombatEngine:
 
         # Shadow Isles soul collection setup
         shadow_isles_count = trait_counts.get('Shadow Isles', 0)
+        self.trait_manager.set_shadow_isles_count(team_id, shadow_isles_count)
         if shadow_isles_count >= 2:
             shadow_isles_units = [u for u in team if 'Shadow Isles' in u.traits]
-            self.trait_manager.set_shadow_isles_count(shadow_isles_count, shadow_isles_units)
-            self.trait_manager.apply_shadow_isles_stats(team)
             self.log_event('shadow_isles_setup', count=shadow_isles_count,
                           units=[u.name for u in shadow_isles_units],
-                          stat_bonus=self.trait_manager.get_shadow_isles_stat_bonus())
+                          stat_bonus=self.trait_manager.get_shadow_isles_stat_bonus(team_id))
 
     def _apply_combat_start_items(self, all_units: List[Unit]):
         """Apply combat-start item effects for all units."""
@@ -4551,105 +4391,126 @@ class CombatEngine:
             team1_augments: List of augment names/apiNames for team 1
             seed: Random seed for deterministic simulation. If None, uses current RNG state.
         """
-        # Set random seed for determinism if provided
+        saved_random_state = None
         if seed is not None:
+            saved_random_state = random.getstate()
             random.seed(seed)
 
-        # Reset state
-        self.time = 0.0
-        self.combat_log = []
-        self.units = team0 + team1
-        self.projectiles = []
+        try:
+            # Reset state
+            self.time = 0.0
+            self.combat_log = []
+            self.units = team0 + team1
+            self.projectiles = []
+            self._debug_takedowns = []
 
-        # Reset Shadow Isles souls for new combat
-        self.trait_manager.reset_shadow_isles()
+            # Reset Shadow Isles souls for new combat
+            self.trait_manager.reset_shadow_isles()
 
-        # Reset Noxus Atakhan state for new combat
-        self._noxus_team_data = {}
+            # Reset Noxus Atakhan state for new combat
+            self._noxus_team_data = {}
 
-        # Reset Piltover module state for new combat
-        self._piltover_data = {}
+            # Reset Piltover module state for new combat
+            self._piltover_data = {}
 
-        # Reset augment manager for new combat
-        self.augment_manager.reset()
+            # Reset augment manager for new combat
+            self.augment_manager.reset()
 
-        # Process round start for traits (both teams)
-        self.process_round_start(team0)
-        self.process_round_start(team1)
+            # Process round start for traits (both teams)
+            self.process_round_start(team0)
+            self.process_round_start(team1)
 
-        # Apply stat-buffing traits at combat start
-        team0_traits = self._count_traits(team0)
-        team1_traits = self._count_traits(team1)
-        self.trait_manager.apply_stat_traits(team0, team0_traits, enemy_team=team1)
-        self.trait_manager.apply_stat_traits(team1, team1_traits, enemy_team=team0)
+            # Apply stat-buffing traits at combat start
+            team0_traits = self._count_traits(team0)
+            team1_traits = self._count_traits(team1)
+            self.trait_manager.apply_stat_traits(team0, team0_traits, enemy_team=team1)
+            self.trait_manager.apply_stat_traits(team1, team1_traits, enemy_team=team0)
 
-        # Apply augments if provided (after traits so they can stack)
-        if team0_augments:
-            self.augment_manager.set_augments(team0_augments)
-            self.augment_manager.apply_augments(team0, team0_traits)
-            self.log_event('augments_applied', team=0, augments=team0_augments)
+            # Shadow Isles stat bonus should be applied once per team (post-traits)
+            team0_id = team0[0].team if team0 else 0
+            team1_id = team1[0].team if team1 else 1
+            self.trait_manager.apply_shadow_isles_stats(team0_id, team0)
+            self.trait_manager.apply_shadow_isles_stats(team1_id, team1)
 
-        if team1_augments:
-            self.augment_manager.set_augments(team1_augments)
-            self.augment_manager.apply_augments(team1, team1_traits)
-            self.log_event('augments_applied', team=1, augments=team1_augments)
+            # Apply augments if provided (after traits so they can stack)
+            if team0_augments:
+                self.augment_manager.set_augments(team0_augments)
+                self.augment_manager.apply_augments(
+                    team0,
+                    team0_traits,
+                    round_persistent_player=self._round_persistent_players.get(0),
+                )
+                self.log_event('augments_applied', team=0, augments=team0_augments)
 
-        # Cache enemy starting HP for Noxus Atakhan trigger (after all buffs)
-        noxus_data = getattr(self, '_noxus_team_data', {})
-        for team_id, data in noxus_data.items():
-            enemy_hp = sum(u.stats.max_hp for u in self.units if u.team != team_id)
-            data['_enemy_starting_hp'] = enemy_hp
+            if team1_augments:
+                self.augment_manager.set_augments(team1_augments)
+                self.augment_manager.apply_augments(
+                    team1,
+                    team1_traits,
+                    round_persistent_player=self._round_persistent_players.get(1),
+                )
+                self.log_event('augments_applied', team=1, augments=team1_augments)
 
-        # Initialize cached alive lists for tick() optimization
-        self._alive_team0 = list(team0)
-        self._alive_team1 = list(team1)
-        self._alive_dirty = False  # Set True when a unit dies
-        self._occupied_dirty = True  # Rebuild occupied hex cache
-        self._has_noxus = bool(noxus_data)  # Skip Atakhan checks when no Noxus
+            # Cache enemy starting HP for Noxus Atakhan trigger (after all buffs)
+            noxus_data = getattr(self, '_noxus_team_data', {})
+            for team_id, data in noxus_data.items():
+                enemy_hp = sum(u.stats.max_hp for u in self.units if u.team != team_id)
+                data['_enemy_starting_hp'] = enemy_hp
 
-        # Cache units with Ionic Spark for fast ability-cast reaction checks
-        self._ionic_spark_units = [u for u in self.units if u._has_ionic_spark]
+            # Initialize cached alive lists for tick() optimization
+            self._alive_team0 = list(team0)
+            self._alive_team1 = list(team1)
+            self._alive_dirty = False  # Set True when a unit dies
+            self._occupied_dirty = True  # Rebuild occupied hex cache
+            self._has_noxus = bool(noxus_data)  # Skip Atakhan checks when no Noxus
 
-        # Apply combat-start item effects (Crownguard, Quicksilver, SteadfastHeart, etc.)
-        self._apply_combat_start_items(team0 + team1)
+            # Cache units with Ionic Spark for fast ability-cast reaction checks
+            self._ionic_spark_units = [u for u in self.units if u._has_ionic_spark]
 
-        # Combat loop
-        while self.time < max_time:
-            if not self._alive_team0 or not self._alive_team1:
-                break
+            # Apply combat-start item effects (Crownguard, Quicksilver, SteadfastHeart, etc.)
+            self._apply_combat_start_items(team0 + team1)
 
-            self.tick()
+            # Combat loop
+            while self.time < max_time:
+                if not self._alive_team0 or not self._alive_team1:
+                    break
 
-        # Determine winner
-        team0_survivors = [u for u in team0 if u.is_alive]
-        team1_survivors = [u for u in team1 if u.is_alive]
+                self.tick()
 
-        if team0_survivors and not team1_survivors:
-            winner = 0
-        elif team1_survivors and not team0_survivors:
-            winner = 1
-        else:
-            team0_hp = sum(u.stats.hp for u in team0_survivors)
-            team1_hp = sum(u.stats.hp for u in team1_survivors)
-            winner = 0 if team0_hp >= team1_hp else 1
+            # Determine winner
+            team0_survivors = [u for u in team0 if u.is_alive]
+            team1_survivors = [u for u in team1 if u.is_alive]
 
-        results = {
-            'winner': winner,
-            'combat_time': round(self.time, 2),
-            'team0_survivors': len(team0_survivors),
-            'team1_survivors': len(team1_survivors),
-            'team0_total_damage': round(sum(u.total_damage_dealt for u in team0), 1),
-            'team1_total_damage': round(sum(u.total_damage_dealt for u in team1), 1),
-            'total_damage_dealt': {
-                'team0': round(sum(u.total_damage_dealt for u in team0), 1),
-                'team1': round(sum(u.total_damage_dealt for u in team1), 1),
-            },
-            'team0_abilities_cast': sum(u.abilities_cast for u in team0),
-            'team1_abilities_cast': sum(u.abilities_cast for u in team1),
-            'combat_log': self.combat_log if verbose else [],
-        }
+            if team0_survivors and not team1_survivors:
+                winner = 0
+            elif team1_survivors and not team0_survivors:
+                winner = 1
+            else:
+                team0_hp = sum(u.stats.hp for u in team0_survivors)
+                team1_hp = sum(u.stats.hp for u in team1_survivors)
+                winner = 0 if team0_hp >= team1_hp else 1
 
-        return results
+            results = {
+                'winner': winner,
+                'combat_time': round(self.time, 2),
+                'team0_survivors': len(team0_survivors),
+                'team1_survivors': len(team1_survivors),
+                'team0_total_damage': round(sum(u.total_damage_dealt for u in team0), 1),
+                'team1_total_damage': round(sum(u.total_damage_dealt for u in team1), 1),
+                'total_damage_dealt': {
+                    'team0': round(sum(u.total_damage_dealt for u in team0), 1),
+                    'team1': round(sum(u.total_damage_dealt for u in team1), 1),
+                },
+                'team0_abilities_cast': sum(u.abilities_cast for u in team0),
+                'team1_abilities_cast': sum(u.abilities_cast for u in team1),
+                'combat_log': self.combat_log if verbose else [],
+                'debug_takedowns': list(self._debug_takedowns),
+            }
+
+            return results
+        finally:
+            if saved_random_state is not None:
+                random.setstate(saved_random_state)
 
     def _next_event_dt(self, all_alive: List[Unit]) -> float:
         """Compute the time delta to the next meaningful event.
@@ -4718,16 +4579,19 @@ class CombatEngine:
         """
         saved_logging = self.logging_enabled
         self.logging_enabled = False
+        saved_random_state = None
 
         try:
             # Use the same initialization as run_combat
             if seed is not None:
+                saved_random_state = random.getstate()
                 random.seed(seed)
 
             self.time = 0.0
             self.combat_log = []
             self.units = team0 + team1
             self.projectiles = []
+            self._debug_takedowns = []
             self.trait_manager.reset_shadow_isles()
             self._noxus_team_data = {}
             self._piltover_data = {}
@@ -4741,12 +4605,25 @@ class CombatEngine:
             self.trait_manager.apply_stat_traits(team0, team0_traits, enemy_team=team1)
             self.trait_manager.apply_stat_traits(team1, team1_traits, enemy_team=team0)
 
+            team0_id = team0[0].team if team0 else 0
+            team1_id = team1[0].team if team1 else 1
+            self.trait_manager.apply_shadow_isles_stats(team0_id, team0)
+            self.trait_manager.apply_shadow_isles_stats(team1_id, team1)
+
             if team0_augments:
                 self.augment_manager.set_augments(team0_augments)
-                self.augment_manager.apply_augments(team0, team0_traits)
+                self.augment_manager.apply_augments(
+                    team0,
+                    team0_traits,
+                    round_persistent_player=self._round_persistent_players.get(0),
+                )
             if team1_augments:
                 self.augment_manager.set_augments(team1_augments)
-                self.augment_manager.apply_augments(team1, team1_traits)
+                self.augment_manager.apply_augments(
+                    team1,
+                    team1_traits,
+                    round_persistent_player=self._round_persistent_players.get(1),
+                )
 
             noxus_data = getattr(self, '_noxus_team_data', {})
             for team_id, data in noxus_data.items():
@@ -4815,8 +4692,11 @@ class CombatEngine:
                 'team0_abilities_cast': sum(u.abilities_cast for u in team0),
                 'team1_abilities_cast': sum(u.abilities_cast for u in team1),
                 'combat_log': [],
+                'debug_takedowns': list(self._debug_takedowns),
             }
         finally:
+            if saved_random_state is not None:
+                random.setstate(saved_random_state)
             self.logging_enabled = saved_logging
 
     def simulate_1v1(self, champ1: str, champ2: str,

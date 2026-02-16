@@ -24,14 +24,23 @@ if TYPE_CHECKING:
     from .champion_pool import ChampionPool
 
 try:
-    from simulator.data.set16_items import BASE_COMPLETED
+    from simulator.data.set16_items import ARTIFACT_ITEMS, BASE_COMPLETED, BLACKSMITH_CONFIG
 except ImportError:
     BASE_COMPLETED = ()
+    ARTIFACT_ITEMS = {}
+    BLACKSMITH_CONFIG = {}
 
 _THIEFS_EXCLUDED = frozenset({
     'ThiefsGloves', 'TacticiansCrown', 'TacticiansCape', 'TacticiansShield',
 })
 _THIEFS_POOL = tuple(name for name in BASE_COMPLETED if name not in _THIEFS_EXCLUDED)
+
+_BILGEWATER_SERPENTS_PER_ROUND = {
+    3: 15,
+    5: 35,
+    7: 65,
+    10: 150,
+}
 
 
 class Player:
@@ -39,6 +48,7 @@ class Player:
 
     def __init__(self, player_id: int):
         self.player_id = player_id
+        self._next_instance_id: int = 0
 
         # Resources
         self.gold = STARTING_GOLD
@@ -82,6 +92,111 @@ class Player:
 
         # Cached max_units value (invalidated on level/item changes)
         self._max_units_cache: Optional[int] = None
+
+        # Round-persistent trait currencies (stored at the game layer)
+        self.bilgewater_serpents: int = 0
+        self.bilgewater_purchases: Dict[str, int] = {}
+        self.blacksmith_progress: Dict[str, int] = {}  # instance_id -> rounds progressed
+        self.blacksmith_artifacts: Dict[str, List[str]] = {}  # instance_id -> crafted artifacts
+        self.augment_permanent_bonuses: Dict[str, Dict[str, float]] = {}  # instance_id -> bonus_name -> value
+
+    def _alloc_instance_id(self) -> str:
+        iid = f"p{self.player_id}_u{self._next_instance_id}"
+        self._next_instance_id += 1
+        return iid
+
+    def add_bilgewater_serpents(self, amount: int) -> None:
+        if amount <= 0:
+            return
+        self.bilgewater_serpents += amount
+
+    def get_augment_permanent_bonus(self, instance_id: str, bonus_name: str, default: float = 0.0) -> float:
+        bonuses = self.augment_permanent_bonuses.get(instance_id)
+        if bonuses is None:
+            return default
+        return float(bonuses.get(bonus_name, default))
+
+    def set_augment_permanent_bonus(self, instance_id: str, bonus_name: str, value: float) -> None:
+        bonuses = self.augment_permanent_bonuses.setdefault(instance_id, {})
+        bonuses[bonus_name] = float(value)
+
+    def _augment_bonus_stat_map(self, engine: Any) -> Dict[str, str]:
+        augment_manager = getattr(engine, 'augment_manager', None)
+        effect_map = getattr(augment_manager, 'PERSISTENT_EFFECT_STAT_MAP', {})
+        bonus_map: Dict[str, str] = {}
+        if not isinstance(effect_map, dict):
+            return bonus_map
+
+        for value in effect_map.values():
+            if not isinstance(value, (list, tuple)) or len(value) != 2:
+                continue
+            bonus_map[str(value[0])] = str(value[1])
+        return bonus_map
+
+    def _apply_persistent_augment_bonuses(
+        self,
+        unit: Any,
+        bonus_stat_map: Dict[str, str],
+    ) -> None:
+        if not unit.instance_id:
+            return
+        bonuses = self.augment_permanent_bonuses.get(unit.instance_id)
+        if not bonuses:
+            return
+
+        for bonus_name, bonus_value in bonuses.items():
+            stat_name = bonus_stat_map.get(bonus_name)
+            if stat_name is None:
+                continue
+            current = getattr(unit.stats, stat_name, None)
+            if current is None:
+                continue
+            setattr(unit.stats, stat_name, float(current) + float(bonus_value))
+
+    def award_bilgewater_round_serpents(self) -> int:
+        traits = self.get_active_traits()
+        count = int(traits.get('bilgewater', 0) or 0)
+        if count < 3:
+            return 0
+
+        reward = 0
+        for tier in sorted(_BILGEWATER_SERPENTS_PER_ROUND.keys(), reverse=True):
+            if count >= tier:
+                reward = _BILGEWATER_SERPENTS_PER_ROUND[tier]
+                break
+
+        self.add_bilgewater_serpents(reward)
+        return reward
+
+    def progress_blacksmith(self) -> List[str]:
+        """Advance Blacksmith crafting for any on-board Blacksmith unit(s).
+
+        Returns the list of crafted artifact item names added to the item bench.
+        """
+        if not ARTIFACT_ITEMS:
+            return []
+
+        rounds_to_craft = int(BLACKSMITH_CONFIG.get('rounds_to_craft', 4) or 4)
+        if rounds_to_craft <= 0:
+            rounds_to_craft = 4
+
+        crafted: List[str] = []
+        for champ in self.board.values():
+            traits = CHAMPION_TRAITS.get(champ.name, [])
+            if 'blacksmith' not in traits:
+                continue
+
+            iid = champ.instance_id
+            progress = self.blacksmith_progress.get(iid, 0) + 1
+            if progress >= rounds_to_craft:
+                progress = 0
+                artifact_key = random.choice(list(ARTIFACT_ITEMS.keys()))
+                artifact_item = f"Artifact_{artifact_key}"
+                if self.add_item_to_bench(artifact_item):
+                    crafted.append(artifact_item)
+                self.blacksmith_artifacts.setdefault(iid, []).append(artifact_item)
+            self.blacksmith_progress[iid] = progress
+        return crafted
 
     def invalidate_max_units(self):
         """Call when level changes or Tactician items are added/removed."""
@@ -191,6 +306,7 @@ class Player:
 
         # Create champion instance
         champ = ChampionInstance(
+            instance_id=self._alloc_instance_id(),
             name=name,
             api_name=NAME_TO_API.get(name, f'TFT16_{name.capitalize()}'),
             cost=cost,
@@ -237,6 +353,7 @@ class Player:
         # Return copies to pool (1-star=1, 2-star=3, 3-star=9)
         copies = 3 ** (champ.star_level - 1)
         pool.return_champion(champ.name, copies)
+        self.augment_permanent_bonuses.pop(champ.instance_id, None)
         # Return items to item bench
         self.item_bench.extend(champ.items)
         self.invalidate_max_units()
@@ -468,19 +585,28 @@ class Player:
 
         # Collect all items from the copies being merged
         all_items = []
+        merged_instance_ids = []
         for loc_type, loc_key in copies:
             if loc_type == 'board':
                 champ = self.board[loc_key]
-                all_items.extend(champ.items)
             else:
                 champ = self.bench[loc_key]
-                all_items.extend(champ.items)
+            if champ is None:
+                continue
+            all_items.extend(champ.items)
+            merged_instance_ids.append(champ.instance_id)
 
         # Remove all 3 copies
         first_loc = None
+        upgrade_instance_id = ''
         for loc_type, loc_key in copies:
             if first_loc is None:
                 first_loc = (loc_type, loc_key)
+                if loc_type == 'board':
+                    upgrade_instance_id = self.board[loc_key].instance_id
+                else:
+                    champ = self.bench[loc_key]
+                    upgrade_instance_id = champ.instance_id if champ is not None else ''
             if loc_type == 'board':
                 self._board_remove(loc_key)
             else:
@@ -488,6 +614,7 @@ class Player:
 
         # Create upgraded champion
         upgraded = ChampionInstance(
+            instance_id=upgrade_instance_id or self._alloc_instance_id(),
             name=name,
             api_name=NAME_TO_API.get(name, f'TFT16_{name.capitalize()}'),
             cost=NAME_TO_COST.get(name, 1),
@@ -504,6 +631,19 @@ class Player:
             self._board_add(loc_key, upgraded)
         else:
             self.bench[loc_key] = upgraded
+
+        merged_bonus_values: Dict[str, float] = {}
+        for instance_id in merged_instance_ids:
+            bonuses = self.augment_permanent_bonuses.pop(instance_id, None)
+            if bonuses is None:
+                continue
+            for bonus_name, bonus_value in bonuses.items():
+                value = float(bonus_value)
+                existing = merged_bonus_values.get(bonus_name)
+                if existing is None or value > existing:
+                    merged_bonus_values[bonus_name] = value
+        if merged_bonus_values:
+            self.augment_permanent_bonuses[upgraded.instance_id] = merged_bonus_values
 
     # ── Traits ────────────────────────────────────────────────────────────
 
@@ -580,6 +720,7 @@ class Player:
             List of Unit objects or Rust unit specs ready for run_combat().
         """
         units = []
+        bonus_stat_map = self._augment_bonus_stat_map(engine)
         for pos, champ in self.board.items():
             items = list(champ.items) if champ.items else None
 
@@ -603,8 +744,10 @@ class Player:
                     position=pos,
                     team=0,
                     items=items,
+                    instance_id=champ.instance_id,
                 )
                 if unit is not None:
+                    self._apply_persistent_augment_bonuses(unit, bonus_stat_map)
                     units.append(unit)
 
         # Spawn Azir soldiers at player-placed positions

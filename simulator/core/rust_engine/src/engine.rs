@@ -27,6 +27,13 @@ pub struct CombatEngine {
     pub combat_data: CombatData,
     pub alive_dirty: bool,
 
+    // Combat-scope trait counters used for parity/debug visibility.
+    bilgewater_count_by_team: [i32; 2],
+    shadow_isles_count_by_team: [i32; 2],
+    bilgewater_serpents_by_team: [i32; 2],
+    shadow_isles_souls_by_team: [i32; 2],
+    debug_takedowns: Vec<TakedownAttribution>,
+
     // Cached alive indices per team
     alive_team0: Vec<UnitId>,
     alive_team1: Vec<UnitId>,
@@ -45,6 +52,11 @@ impl CombatEngine {
             rng: PyRng::seed_from_u64(0),
             combat_data,
             alive_dirty: false,
+            bilgewater_count_by_team: [0, 0],
+            shadow_isles_count_by_team: [0, 0],
+            bilgewater_serpents_by_team: [0, 0],
+            shadow_isles_souls_by_team: [0, 0],
+            debug_takedowns: Vec::new(),
             alive_team0: Vec::new(),
             alive_team1: Vec::new(),
             process_order: Vec::new(),
@@ -249,6 +261,13 @@ impl CombatEngine {
 
         let team0_traits = self.count_traits(&team0_indices);
         let team1_traits = self.count_traits(&team1_indices);
+
+        // Cache counts for takedown-triggered trait currencies (parity/debug).
+        self.bilgewater_count_by_team[0] = *team0_traits.get("Bilgewater").unwrap_or(&0);
+        self.bilgewater_count_by_team[1] = *team1_traits.get("Bilgewater").unwrap_or(&0);
+        self.shadow_isles_count_by_team[0] = *team0_traits.get("Shadow Isles").unwrap_or(&0);
+        self.shadow_isles_count_by_team[1] = *team1_traits.get("Shadow Isles").unwrap_or(&0);
+
         self.apply_stat_traits_for_team(&team0_indices, &team1_indices, &team0_traits);
         self.apply_stat_traits_for_team(&team1_indices, &team0_indices, &team1_traits);
         self.apply_pair_synergies(&team0_indices);
@@ -772,6 +791,11 @@ impl CombatEngine {
         self.units.clear();
         self.time = 0.0;
         self.alive_dirty = false;
+        self.bilgewater_count_by_team = [0, 0];
+        self.shadow_isles_count_by_team = [0, 0];
+        self.bilgewater_serpents_by_team = [0, 0];
+        self.shadow_isles_souls_by_team = [0, 0];
+        self.debug_takedowns.clear();
 
         // Set RNG seed
         if let Some(s) = seed {
@@ -1099,11 +1123,82 @@ impl CombatEngine {
         if !self.units[target_idx].is_alive {
             self.alive_dirty = true;
             if let Some(attacker) = attacker_idx {
+                self.on_takedown(attacker, target_idx);
                 self.units[attacker].target_idx = None;
             }
         }
 
         (hp_damage, did_crit)
+    }
+
+    fn on_takedown(&mut self, attacker_idx: UnitId, target_idx: UnitId) {
+        let attacker_team = self.units[attacker_idx].team;
+        let target_team = self.units[target_idx].team;
+        if attacker_team == target_team {
+            return;
+        }
+        let team = attacker_team as usize;
+        if team > 1 {
+            return;
+        }
+
+        self.debug_takedowns.push(TakedownAttribution {
+            killer_team: attacker_team,
+            killer_api_name: self.units[attacker_idx].api_name.clone(),
+            victim_team: target_team,
+            victim_api_name: self.units[target_idx].api_name.clone(),
+        });
+
+        // Bilgewater: +1 serpent per takedown when 3+ Bilgewater is active.
+        if self.bilgewater_count_by_team[team] >= 3
+            && self.units[attacker_idx]
+                .traits
+                .iter()
+                .any(|t| t == "Bilgewater")
+        {
+            self.bilgewater_serpents_by_team[team] += 1;
+        }
+
+        // Shadow Isles: gain souls on takedown when 2+ Shadow Isles is active.
+        if self.shadow_isles_count_by_team[team] >= 2
+            && self.units[attacker_idx]
+                .traits
+                .iter()
+                .any(|t| t == "Shadow Isles")
+        {
+            let victim_cost = self.units[target_idx].cost;
+            let victim_star = self.units[target_idx].star_level;
+
+            let base_souls: f64 = match victim_cost {
+                1 => 1.0,
+                2 => 2.0,
+                3 => 3.0,
+                4 => 5.0,
+                5 => 8.0,
+                _ => 1.0,
+            };
+            let star_mult: f64 = match victim_star {
+                1 => 1.0,
+                2 => 1.5,
+                3 => 2.0,
+                _ => 1.0,
+            };
+
+            let base = (base_souls * star_mult).floor() as i32;
+            let soul_mult = if self.shadow_isles_count_by_team[team] >= 5 {
+                1.9
+            } else if self.shadow_isles_count_by_team[team] >= 4 {
+                1.6
+            } else if self.shadow_isles_count_by_team[team] >= 3 {
+                1.3
+            } else {
+                1.0
+            };
+            let awarded = ((base as f64) * soul_mult).floor() as i32;
+            if awarded > 0 {
+                self.shadow_isles_souls_by_team[team] += awarded;
+            }
+        }
     }
 
     /// Process an auto-attack.
@@ -1511,6 +1606,11 @@ impl CombatEngine {
             team1_total_damage: team1_damage,
             team0_abilities_cast: team0_abilities,
             team1_abilities_cast: team1_abilities,
+            team0_bilgewater_serpents: self.bilgewater_serpents_by_team[0],
+            team1_bilgewater_serpents: self.bilgewater_serpents_by_team[1],
+            team0_shadow_isles_souls: self.shadow_isles_souls_by_team[0],
+            team1_shadow_isles_souls: self.shadow_isles_souls_by_team[1],
+            debug_takedowns: self.debug_takedowns.clone(),
         }
     }
 }
@@ -1537,6 +1637,19 @@ pub struct CombatResult {
     pub team1_total_damage: f64,
     pub team0_abilities_cast: i32,
     pub team1_abilities_cast: i32,
+    pub team0_bilgewater_serpents: i32,
+    pub team1_bilgewater_serpents: i32,
+    pub team0_shadow_isles_souls: i32,
+    pub team1_shadow_isles_souls: i32,
+    pub debug_takedowns: Vec<TakedownAttribution>,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct TakedownAttribution {
+    pub killer_team: i32,
+    pub killer_api_name: String,
+    pub victim_team: i32,
+    pub victim_api_name: String,
 }
 
 impl CombatResult {
@@ -1550,6 +1663,11 @@ impl CombatResult {
             team1_total_damage: 0.0,
             team0_abilities_cast: 0,
             team1_abilities_cast: 0,
+            team0_bilgewater_serpents: 0,
+            team1_bilgewater_serpents: 0,
+            team0_shadow_isles_souls: 0,
+            team1_shadow_isles_souls: 0,
+            debug_takedowns: Vec::new(),
         }
     }
 }

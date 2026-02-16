@@ -30,6 +30,7 @@ from simulator.game.constants import BOARD_COLS, BOARD_ROWS
 from simulator.game.game import TFTGame
 
 UnitSnapshotSig = Tuple[str, int, Tuple[str, ...], int]
+TakedownSig = Tuple[int, str, int, str]
 
 
 def _create_engine(engine_name: str) -> Any:
@@ -569,6 +570,7 @@ def _run_single_full_game_with_rows(
         ]
         round_num = int(result.get('rounds', 0))
         training_rows = result.get('training_rows', []) or []
+        combat_debug = result.get('combat_debug', []) or []
     else:
         collector = GameCollector(game_id=game_seed)
         game = TFTGame(
@@ -582,6 +584,17 @@ def _run_single_full_game_with_rows(
         placements = game.play()
         round_num = game.round_num
         training_rows = collector.get_training_rows()
+        combat_debug = []
+        for round_data in collector.rounds:
+            round_num_value = int(round_data.get('round', 0))
+            for combat in round_data.get('combats', []):
+                combat_debug.append({
+                    'round': round_num_value,
+                    'p1': int(combat.get('p1', -1)),
+                    'p2': int(combat.get('p2', -1)),
+                    'is_ghost': bool(combat.get('is_ghost', False)),
+                    'debug_takedowns': combat.get('debug_takedowns', []) or [],
+                })
 
     placements = [(pid, place) for pid, place in placements if pid >= 0]
     placements.sort(key=lambda x: (x[1], x[0]))
@@ -597,6 +610,7 @@ def _run_single_full_game_with_rows(
         'top4_set': top4_set,
         'round_num': int(round_num),
         'training_rows': training_rows,
+        'combat_debug': combat_debug,
     }
 
 
@@ -666,6 +680,97 @@ def _rows_by_round_player(rows: List[Dict[str, Any]]) -> Dict[Tuple[int, int], D
         key = (entry['round'], entry['player_id'])
         normalized[key] = entry
     return normalized
+
+
+def _normalize_takedown_entry(entry: Dict[str, Any]) -> TakedownSig:
+    return (
+        int(entry.get('killer_team', -1)),
+        str(entry.get('killer_api_name', '')),
+        int(entry.get('victim_team', -1)),
+        str(entry.get('victim_api_name', '')),
+    )
+
+
+def _summarize_takedowns_for_player(
+    takedowns: List[TakedownSig],
+    *,
+    player_team: int,
+) -> Dict[str, Any]:
+    counts: Counter[TakedownSig] = Counter(takedowns)
+    total_signature = tuple(
+        sorted(
+            (killer_team, killer_api_name, victim_team, victim_api_name, count)
+            for (killer_team, killer_api_name, victim_team, victim_api_name), count in counts.items()
+        )
+    )
+    player_signature = tuple(
+        sorted(
+            (killer_api_name, victim_api_name, count)
+            for (killer_team, killer_api_name, _victim_team, victim_api_name), count in counts.items()
+            if killer_team == player_team
+        )
+    )
+    opponent_signature = tuple(
+        sorted(
+            (killer_api_name, victim_api_name, count)
+            for (killer_team, killer_api_name, _victim_team, victim_api_name), count in counts.items()
+            if killer_team != player_team
+        )
+    )
+    return {
+        'takedown_count': int(sum(counts.values())),
+        'player_kill_count': int(sum(count for (killer_team, _, _, _), count in counts.items() if killer_team == player_team)),
+        'opponent_kill_count': int(sum(count for (killer_team, _, _, _), count in counts.items() if killer_team != player_team)),
+        'takedown_signature': total_signature,
+        'player_last_hit_signature': player_signature,
+        'opponent_last_hit_signature': opponent_signature,
+    }
+
+
+def _build_combat_debug_context_by_key(
+    combat_debug_rows: List[Dict[str, Any]],
+    *,
+    include_raw_takedowns: bool = True,
+) -> Dict[Tuple[int, int], Dict[str, Any]]:
+    debug_by_key: Dict[Tuple[int, int], Dict[str, Any]] = {}
+    for row in combat_debug_rows:
+        round_num = int(row.get('round', 0))
+        p1 = int(row.get('p1', -1))
+        p2 = int(row.get('p2', -1))
+        is_ghost = bool(row.get('is_ghost', False))
+        if p1 < 0:
+            continue
+
+        normalized_takedowns = [
+            _normalize_takedown_entry(entry)
+            for entry in (row.get('debug_takedowns') or [])
+            if isinstance(entry, dict)
+        ]
+        summary_team0 = _summarize_takedowns_for_player(normalized_takedowns, player_team=0)
+        team0_context = {
+            'opponent_id': p2,
+            'is_ghost': is_ghost,
+            'player_team': 0,
+            **summary_team0,
+        }
+        if include_raw_takedowns:
+            team0_context['debug_takedowns'] = normalized_takedowns
+        debug_by_key[(round_num, p1)] = team0_context
+
+        if is_ghost or p2 < 0:
+            continue
+
+        summary_team1 = _summarize_takedowns_for_player(normalized_takedowns, player_team=1)
+        team1_context = {
+            'opponent_id': p1,
+            'is_ghost': False,
+            'player_team': 1,
+            **summary_team1,
+        }
+        if include_raw_takedowns:
+            team1_context['debug_takedowns'] = normalized_takedowns
+        debug_by_key[(round_num, p2)] = team1_context
+    return debug_by_key
 
 
 def _mirror_hex_position(position: int) -> int:
@@ -794,6 +899,8 @@ def _infer_divergence_origin(
     baseline_context: Dict[str, Any] | None,
     candidate_context: Dict[str, Any] | None,
     field_diffs: List[Dict[str, Any]] | None,
+    baseline_combat_debug: Dict[str, Any] | None = None,
+    candidate_combat_debug: Dict[str, Any] | None = None,
 ) -> str:
     if baseline_row is None or candidate_row is None:
         return 'matchmaking_or_snapshot_presence'
@@ -826,9 +933,6 @@ def _infer_divergence_origin(
             return 'matchmaking_or_board_state'
 
     diff_fields = {diff['field'] for diff in (field_diffs or [])}
-    if not diff_fields:
-        return 'unknown'
-
     combat_fields = {'combat_result', 'damage_dealt', 'damage_taken'}
     downstream_combat_fields = {
         'hp',
@@ -838,6 +942,29 @@ def _infer_divergence_origin(
         'loss_streak',
         'alive_count',
     }
+    if baseline_combat_debug is not None and candidate_combat_debug is not None:
+        baseline_last_hit = tuple(
+            tuple(item)
+            for item in baseline_combat_debug.get('player_last_hit_signature', ())
+        )
+        candidate_last_hit = tuple(
+            tuple(item)
+            for item in candidate_combat_debug.get('player_last_hit_signature', ())
+        )
+        baseline_has_last_hit = bool(baseline_last_hit)
+        candidate_has_last_hit = bool(candidate_last_hit)
+        if (
+            baseline_has_last_hit
+            and candidate_has_last_hit
+            and baseline_last_hit != candidate_last_hit
+            and diff_fields
+            and diff_fields.issubset(combat_fields | downstream_combat_fields)
+        ):
+            return 'last_hit_attribution_drift'
+
+    if not diff_fields:
+        return 'unknown'
+
     if diff_fields.issubset(combat_fields):
         return 'combat_resolution'
     if diff_fields.issubset(combat_fields | downstream_combat_fields):
@@ -852,6 +979,8 @@ def _build_divergence_context(
     baseline_context: Dict[str, Any] | None,
     candidate_context: Dict[str, Any] | None,
     field_diffs: List[Dict[str, Any]] | None,
+    baseline_combat_debug: Dict[str, Any] | None = None,
+    candidate_combat_debug: Dict[str, Any] | None = None,
 ) -> Dict[str, Any]:
     baseline_summary = _summarize_row_context(baseline_row, baseline_context)
     candidate_summary = _summarize_row_context(candidate_row, candidate_context)
@@ -897,16 +1026,40 @@ def _build_divergence_context(
         baseline_context=baseline_context,
         candidate_context=candidate_context,
         field_diffs=field_diffs,
+        baseline_combat_debug=baseline_combat_debug,
+        candidate_combat_debug=candidate_combat_debug,
     )
+    last_hit_alignment = 'missing'
+    if baseline_combat_debug is not None and candidate_combat_debug is not None:
+        baseline_sig = tuple(
+            tuple(item)
+            for item in baseline_combat_debug.get('player_last_hit_signature', ())
+        )
+        candidate_sig = tuple(
+            tuple(item)
+            for item in candidate_combat_debug.get('player_last_hit_signature', ())
+        )
+        last_hit_alignment = (
+            'same_last_hit_signature'
+            if baseline_sig == candidate_sig
+            else 'different_last_hit_signature'
+        )
+    elif baseline_combat_debug is not None:
+        last_hit_alignment = 'missing_candidate_debug'
+    elif candidate_combat_debug is not None:
+        last_hit_alignment = 'missing_baseline_debug'
 
     return {
         'origin_hint': origin_hint,
         'matchup_alignment': matchup_alignment,
         'mirror_alignment': mirror_alignment,
+        'last_hit_alignment': last_hit_alignment,
         'baseline_equals_candidate_mirrored': baseline_equals_candidate_mirrored,
         'candidate_equals_baseline_mirrored': candidate_equals_baseline_mirrored,
         'baseline': baseline_summary,
         'candidate': candidate_summary,
+        'baseline_combat_debug': baseline_combat_debug,
+        'candidate_combat_debug': candidate_combat_debug,
     }
 
 
@@ -916,6 +1069,7 @@ def run_parity_dump_seed(
     seed: int,
     sample_limit: int = 20,
     output_path: str | None = None,
+    parity_dump_signatures_only: bool = False,
 ) -> Dict[str, Any]:
     print()
     print("=" * 60)
@@ -924,6 +1078,7 @@ def run_parity_dump_seed(
     print(f"Seed:             {seed}")
     print(f"Baseline engine:  {baseline_engine}")
     print(f"Candidate engine: {candidate_engine}")
+    print(f"Signatures only:  {'yes' if parity_dump_signatures_only else 'no'}")
     print()
 
     rust_sim_cache: Dict[str, Any] = {}
@@ -934,6 +1089,15 @@ def run_parity_dump_seed(
     candidate_rows = _rows_by_round_player(candidate['training_rows'])
     baseline_matchup_context = _build_matchup_context_map(baseline_rows)
     candidate_matchup_context = _build_matchup_context_map(candidate_rows)
+    include_raw_takedowns = not parity_dump_signatures_only
+    baseline_combat_debug = _build_combat_debug_context_by_key(
+        baseline.get('combat_debug', []) or [],
+        include_raw_takedowns=include_raw_takedowns,
+    )
+    candidate_combat_debug = _build_combat_debug_context_by_key(
+        candidate.get('combat_debug', []) or [],
+        include_raw_takedowns=include_raw_takedowns,
+    )
     keys = sorted(set(baseline_rows.keys()) | set(candidate_rows.keys()))
 
     compare_fields = (
@@ -971,6 +1135,8 @@ def run_parity_dump_seed(
         candidate_row = candidate_rows.get(key)
         baseline_context = baseline_matchup_context.get(key)
         candidate_context = candidate_matchup_context.get(key)
+        baseline_debug_context = baseline_combat_debug.get(key)
+        candidate_debug_context = candidate_combat_debug.get(key)
 
         if baseline_row is None:
             missing_baseline += 1
@@ -980,6 +1146,8 @@ def run_parity_dump_seed(
                 baseline_context=None,
                 candidate_context=candidate_context,
                 field_diffs=None,
+                baseline_combat_debug=None,
+                candidate_combat_debug=candidate_debug_context,
             )
             divergence = {
                 'round': key[0],
@@ -998,6 +1166,8 @@ def run_parity_dump_seed(
                 baseline_context=baseline_context,
                 candidate_context=None,
                 field_diffs=None,
+                baseline_combat_debug=baseline_debug_context,
+                candidate_combat_debug=None,
             )
             divergence = {
                 'round': key[0],
@@ -1032,6 +1202,8 @@ def run_parity_dump_seed(
                 baseline_context=baseline_context,
                 candidate_context=candidate_context,
                 field_diffs=field_diffs,
+                baseline_combat_debug=baseline_debug_context,
+                candidate_combat_debug=candidate_debug_context,
             )
             divergence = {
                 'round': key[0],
@@ -1096,6 +1268,7 @@ def run_parity_dump_seed(
         'missing_candidate_snapshots': missing_candidate,
         'divergence_count': divergence_count,
         'divergence_origin_counts': dict(divergence_origin_counts),
+        'parity_dump_signatures_only': parity_dump_signatures_only,
         'first_divergence': first_divergence,
         'divergence_samples': sampled_divergences,
     }
@@ -1743,6 +1916,11 @@ def _parse_args() -> argparse.Namespace:
         help='Optional output path for parity dump JSON payload',
     )
     parser.add_argument(
+        '--parity-dump-signatures-only',
+        action='store_true',
+        help='Parity dump: keep takedown signatures only (omit raw debug_takedowns event lists)',
+    )
+    parser.add_argument(
         '--parity-gate',
         action='store_true',
         help='Fail with non-zero exit when parity thresholds are not met',
@@ -1949,6 +2127,7 @@ def main() -> Dict[str, Any]:
             seed=args.parity_dump_seed,
             sample_limit=args.parity_dump_max_diffs,
             output_path=args.parity_dump_output if args.parity_dump_output else None,
+            parity_dump_signatures_only=args.parity_dump_signatures_only,
         )
 
     if args.parity_gate:
