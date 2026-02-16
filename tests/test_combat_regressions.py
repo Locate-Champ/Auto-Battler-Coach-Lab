@@ -313,6 +313,14 @@ def test_instance_id_augment_bonus_persists_through_upgrade_and_clears_on_sell_r
     assert player.get_augment_permanent_bonus(replacement.instance_id, "mana_regen", 0.0) == 0.0
 
 
+def test_full_game_determinism_rust_engine_regression() -> None:
+    pytest.importorskip("tft_combat_engine")
+    from simulator.benchmark import test_determinism_full_game
+
+    result = test_determinism_full_game(engine_name="rust", num_runs=3)
+    assert result["deterministic"], f"Rust full-game determinism regression: {result}"
+
+
 def test_parity_hp_item_and_takedown_trait_counters_python_vs_rust() -> None:
     pytest.importorskip("tft_combat_engine")
     from tft_combat_engine import RustCombatEngine

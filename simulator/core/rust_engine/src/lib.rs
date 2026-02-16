@@ -18,7 +18,7 @@ use arrow_array::builder::{BooleanBuilder, Float64Builder, Int64Builder, StringB
 use arrow_array::{ArrayRef, RecordBatch};
 use arrow_schema::{DataType, Field, Schema};
 use parquet::arrow::ArrowWriter;
-use parquet::basic::Compression;
+use parquet::basic::{BrotliLevel, Compression, GzipLevel, ZstdLevel};
 use parquet::file::properties::{EnabledStatistics, WriterProperties};
 use pyo3::prelude::*;
 use pyo3::types::{PyBytes, PyDict, PyList};
@@ -122,6 +122,54 @@ impl BatchOutputMode {
             )),
         }
     }
+}
+
+fn parse_parquet_compression(compression: Option<&str>) -> Result<Compression, String> {
+    let raw = compression.unwrap_or("uncompressed").trim();
+    let normalized = raw.to_ascii_lowercase();
+    match normalized.as_str() {
+        "uncompressed" | "none" => Ok(Compression::UNCOMPRESSED),
+        "snappy" => Ok(Compression::SNAPPY),
+        "zstd" => Ok(Compression::ZSTD(ZstdLevel::default())),
+        "gzip" => Ok(Compression::GZIP(GzipLevel::default())),
+        "brotli" => Ok(Compression::BROTLI(BrotliLevel::default())),
+        "lz4" => Ok(Compression::LZ4),
+        _ => Err(format!(
+            "Unsupported parquet compression '{raw}'. Valid values: uncompressed|snappy|zstd|gzip|brotli|lz4"
+        )),
+    }
+}
+
+fn parquet_statistics_mode(write_statistics: bool) -> EnabledStatistics {
+    if write_statistics {
+        EnabledStatistics::Chunk
+    } else {
+        EnabledStatistics::None
+    }
+}
+
+fn parse_optional_parquet_size(value: Option<usize>, label: &str) -> Result<Option<usize>, String> {
+    if matches!(value, Some(0)) {
+        return Err(format!("{label} must be >= 1 when provided"));
+    }
+    Ok(value)
+}
+
+fn build_writer_properties(
+    compression: Compression,
+    use_dictionary: bool,
+    write_statistics: bool,
+    row_group_size: Option<usize>,
+    write_batch_size: Option<usize>,
+    row_count: usize,
+) -> WriterProperties {
+    WriterProperties::builder()
+        .set_compression(compression)
+        .set_dictionary_enabled(use_dictionary)
+        .set_statistics_enabled(parquet_statistics_mode(write_statistics))
+        .set_max_row_group_size(row_group_size.unwrap_or(row_count))
+        .set_write_batch_size(write_batch_size.unwrap_or(row_count))
+        .build()
 }
 
 struct BatchGameRun {
@@ -237,14 +285,25 @@ impl RustGameSimulator {
         Ok(dict)
     }
 
-    #[pyo3(signature = (game_id, seed, agent_mix=None))]
+    #[pyo3(signature = (game_id, seed, agent_mix=None, compression=None, use_dictionary=false, write_statistics=false, row_group_size=None, write_batch_size=None))]
     fn run_game_parquet<'py>(
         &mut self,
         py: Python<'py>,
         game_id: i64,
         seed: i64,
         agent_mix: Option<HashMap<String, i32>>,
+        compression: Option<String>,
+        use_dictionary: bool,
+        write_statistics: bool,
+        row_group_size: Option<usize>,
+        write_batch_size: Option<usize>,
     ) -> PyResult<Bound<'py, PyDict>> {
+        let parquet_compression = parse_parquet_compression(compression.as_deref())
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
+        let row_group_size = parse_optional_parquet_size(row_group_size, "row_group_size")
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
+        let write_batch_size = parse_optional_parquet_size(write_batch_size, "write_batch_size")
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
         let result = game_loop::run_game(
             &mut self.engine,
             &self.config,
@@ -257,8 +316,15 @@ impl RustGameSimulator {
         .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?;
 
         let placements_value = Value::Array(result.placements);
-        let training_rows_parquet = rows_to_parquet_bytes(&result.training_rows)
-            .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?;
+        let training_rows_parquet = rows_to_parquet_bytes(
+            &result.training_rows,
+            parquet_compression,
+            use_dictionary,
+            write_statistics,
+            row_group_size,
+            write_batch_size,
+        )
+        .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?;
 
         let dict = PyDict::new(py);
         dict.set_item("rounds", result.rounds)?;
@@ -347,10 +413,15 @@ impl RustGameSimulator {
                             dict.set_item("training_row_count", result.training_rows.len())?;
                         }
                         BatchOutputMode::Parquet => {
-                            let training_rows_parquet =
-                                rows_to_parquet_bytes(&result.training_rows).map_err(|e| {
-                                    PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e)
-                                })?;
+                            let training_rows_parquet = rows_to_parquet_bytes(
+                                &result.training_rows,
+                                Compression::UNCOMPRESSED,
+                                false,
+                                false,
+                                None,
+                                None,
+                            )
+                            .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?;
                             dict.set_item(
                                 "training_rows_parquet",
                                 PyBytes::new(py, &training_rows_parquet),
@@ -371,7 +442,7 @@ impl RustGameSimulator {
         Ok(result_list)
     }
 
-    #[pyo3(signature = (game_ids, seeds, agent_mix=None, include_training_rows=true, rayon_threads=None))]
+    #[pyo3(signature = (game_ids, seeds, agent_mix=None, include_training_rows=true, rayon_threads=None, compression=None, use_dictionary=false, write_statistics=false, row_group_size=None, write_batch_size=None))]
     fn run_games_batch_parquet<'py>(
         &self,
         py: Python<'py>,
@@ -380,7 +451,18 @@ impl RustGameSimulator {
         agent_mix: Option<HashMap<String, i32>>,
         include_training_rows: bool,
         rayon_threads: Option<usize>,
+        compression: Option<String>,
+        use_dictionary: bool,
+        write_statistics: bool,
+        row_group_size: Option<usize>,
+        write_batch_size: Option<usize>,
     ) -> PyResult<Bound<'py, PyDict>> {
+        let parquet_compression = parse_parquet_compression(compression.as_deref())
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
+        let row_group_size = parse_optional_parquet_size(row_group_size, "row_group_size")
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
+        let write_batch_size = parse_optional_parquet_size(write_batch_size, "write_batch_size")
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
         if game_ids.len() != seeds.len() {
             return Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
                 "game_ids and seeds must have the same length",
@@ -444,8 +526,15 @@ impl RustGameSimulator {
         }
 
         let training_rows_parquet = if include_training_rows && total_training_row_count > 0 {
-            rows_to_parquet_bytes(&merged_training_rows)
-                .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?
+            rows_to_parquet_bytes(
+                &merged_training_rows,
+                parquet_compression,
+                use_dictionary,
+                write_statistics,
+                row_group_size,
+                write_batch_size,
+            )
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?
         } else {
             Vec::new()
         };
@@ -460,7 +549,7 @@ impl RustGameSimulator {
         Ok(payload)
     }
 
-    #[pyo3(signature = (game_ids, seeds, output_path, agent_mix=None, include_training_rows=true, rayon_threads=None))]
+    #[pyo3(signature = (game_ids, seeds, output_path, agent_mix=None, include_training_rows=true, rayon_threads=None, compression=None, use_dictionary=false, write_statistics=false, row_group_size=None, write_batch_size=None))]
     fn run_games_batch_parquet_to_file<'py>(
         &self,
         py: Python<'py>,
@@ -470,7 +559,18 @@ impl RustGameSimulator {
         agent_mix: Option<HashMap<String, i32>>,
         include_training_rows: bool,
         rayon_threads: Option<usize>,
+        compression: Option<String>,
+        use_dictionary: bool,
+        write_statistics: bool,
+        row_group_size: Option<usize>,
+        write_batch_size: Option<usize>,
     ) -> PyResult<Bound<'py, PyDict>> {
+        let parquet_compression = parse_parquet_compression(compression.as_deref())
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
+        let row_group_size = parse_optional_parquet_size(row_group_size, "row_group_size")
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
+        let write_batch_size = parse_optional_parquet_size(write_batch_size, "write_batch_size")
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e))?;
         if game_ids.len() != seeds.len() {
             return Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
                 "game_ids and seeds must have the same length",
@@ -497,31 +597,29 @@ impl RustGameSimulator {
         .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?;
 
         let result_list = PyList::empty(py);
-        let mut merged_training_rows: Vec<TrainingRow> = Vec::new();
         let mut total_training_row_count: usize = 0;
 
-        for run in batch_runs {
+        for run in &batch_runs {
             let dict = PyDict::new(py);
             dict.set_item("game_id", run.game_id)?;
             dict.set_item("seed", run.seed)?;
             dict.set_item("elapsed", (run.elapsed * 1000.0).round() / 1000.0)?;
 
-            match run.output {
+            match &run.output {
                 Ok(result) => {
                     dict.set_item("status", "ok")?;
                     dict.set_item("rounds", result.rounds)?;
                     dict.set_item(
                         "placements",
-                        json_to_py(py, &Value::Array(result.placements))?,
+                        json_to_py(py, &Value::Array(result.placements.clone()))?,
                     )?;
                     dict.set_item("analytics", json_to_py(py, &result.analytics)?)?;
 
                     let row_count = result.training_rows.len();
                     dict.set_item("training_row_count", row_count)?;
 
-                    if include_training_rows && row_count > 0 {
+                    if include_training_rows {
                         total_training_row_count += row_count;
-                        merged_training_rows.extend(result.training_rows);
                     }
                 }
                 Err(error) => {
@@ -543,10 +641,17 @@ impl RustGameSimulator {
                     })?;
                 }
             }
-            let training_rows_parquet = rows_to_parquet_bytes(&merged_training_rows)
-                .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?;
-            fs::write(output_path_ref, training_rows_parquet)
-                .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e.to_string()))?;
+            write_batch_runs_to_parquet_file(
+                &batch_runs,
+                output_path_ref,
+                parquet_compression,
+                use_dictionary,
+                write_statistics,
+                row_group_size,
+                write_batch_size,
+                total_training_row_count,
+            )
+            .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e))?;
             wrote_parquet = true;
         }
 
@@ -799,7 +904,55 @@ fn to_json_text<T: serde::Serialize>(value: &T, default: &str) -> String {
     serde_json::to_string(value).unwrap_or_else(|_| default.to_string())
 }
 
-fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
+fn training_row_schema() -> Arc<Schema> {
+    Arc::new(Schema::new(vec![
+        Field::new("row_schema_version", DataType::Int64, false),
+        Field::new("game_id", DataType::Int64, false),
+        Field::new("round", DataType::Int64, false),
+        Field::new("player_id", DataType::Int64, false),
+        Field::new("placement", DataType::Int64, false),
+        Field::new("hp", DataType::Int64, false),
+        Field::new("gold", DataType::Int64, false),
+        Field::new("level", DataType::Int64, false),
+        Field::new("streak", DataType::Int64, false),
+        Field::new("board_count", DataType::Int64, false),
+        Field::new("win_streak", DataType::Int64, false),
+        Field::new("loss_streak", DataType::Int64, false),
+        Field::new("num_augments", DataType::Int64, false),
+        Field::new("num_traits", DataType::Int64, false),
+        Field::new("alive_count", DataType::Int64, false),
+        Field::new("units", DataType::Utf8, false),
+        Field::new("traits", DataType::Utf8, false),
+        Field::new("augments", DataType::Utf8, false),
+        Field::new("opponent_units", DataType::Utf8, false),
+        Field::new("opponent_traits", DataType::Utf8, false),
+        Field::new("opponent_hp", DataType::Int64, false),
+        Field::new("opponent_gold", DataType::Int64, false),
+        Field::new("opponent_level", DataType::Int64, false),
+        Field::new("opponent_streak", DataType::Int64, false),
+        Field::new("opponent_board_count", DataType::Int64, false),
+        Field::new("opponent_win_streak", DataType::Int64, false),
+        Field::new("opponent_loss_streak", DataType::Int64, false),
+        Field::new("opponent_num_augments", DataType::Int64, false),
+        Field::new("opponent_num_traits", DataType::Int64, false),
+        Field::new("opponent_augments", DataType::Utf8, false),
+        Field::new("is_ghost", DataType::Boolean, false),
+        Field::new("combat_result", DataType::Int64, true),
+        Field::new("damage_dealt", DataType::Float64, false),
+        Field::new("damage_taken", DataType::Float64, false),
+        Field::new("combat_time", DataType::Float64, false),
+        Field::new("survivors", DataType::Int64, false),
+        Field::new("board_names", DataType::Utf8, false),
+        Field::new("board_stars", DataType::Utf8, false),
+        Field::new("trait_names", DataType::Utf8, false),
+        Field::new("trait_counts", DataType::Utf8, false),
+    ]))
+}
+
+fn training_rows_to_record_batch(
+    rows: &[TrainingRow],
+    schema: Arc<Schema>,
+) -> Result<RecordBatch, String> {
     let mut row_schema_version_builder = Int64Builder::with_capacity(rows.len());
     let mut game_id_builder = Int64Builder::with_capacity(rows.len());
     let mut round_builder = Int64Builder::with_capacity(rows.len());
@@ -891,49 +1044,6 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
         opponent_traits_builder.append_value(to_json_text(&row.opponent_traits, "{}"));
     }
 
-    let schema = Schema::new(vec![
-        Field::new("row_schema_version", DataType::Int64, false),
-        Field::new("game_id", DataType::Int64, false),
-        Field::new("round", DataType::Int64, false),
-        Field::new("player_id", DataType::Int64, false),
-        Field::new("placement", DataType::Int64, false),
-        Field::new("hp", DataType::Int64, false),
-        Field::new("gold", DataType::Int64, false),
-        Field::new("level", DataType::Int64, false),
-        Field::new("streak", DataType::Int64, false),
-        Field::new("board_count", DataType::Int64, false),
-        Field::new("win_streak", DataType::Int64, false),
-        Field::new("loss_streak", DataType::Int64, false),
-        Field::new("num_augments", DataType::Int64, false),
-        Field::new("num_traits", DataType::Int64, false),
-        Field::new("alive_count", DataType::Int64, false),
-        Field::new("units", DataType::Utf8, false),
-        Field::new("traits", DataType::Utf8, false),
-        Field::new("augments", DataType::Utf8, false),
-        Field::new("opponent_units", DataType::Utf8, false),
-        Field::new("opponent_traits", DataType::Utf8, false),
-        Field::new("opponent_hp", DataType::Int64, false),
-        Field::new("opponent_gold", DataType::Int64, false),
-        Field::new("opponent_level", DataType::Int64, false),
-        Field::new("opponent_streak", DataType::Int64, false),
-        Field::new("opponent_board_count", DataType::Int64, false),
-        Field::new("opponent_win_streak", DataType::Int64, false),
-        Field::new("opponent_loss_streak", DataType::Int64, false),
-        Field::new("opponent_num_augments", DataType::Int64, false),
-        Field::new("opponent_num_traits", DataType::Int64, false),
-        Field::new("opponent_augments", DataType::Utf8, false),
-        Field::new("is_ghost", DataType::Boolean, false),
-        Field::new("combat_result", DataType::Int64, true),
-        Field::new("damage_dealt", DataType::Float64, false),
-        Field::new("damage_taken", DataType::Float64, false),
-        Field::new("combat_time", DataType::Float64, false),
-        Field::new("survivors", DataType::Int64, false),
-        Field::new("board_names", DataType::Utf8, false),
-        Field::new("board_stars", DataType::Utf8, false),
-        Field::new("trait_names", DataType::Utf8, false),
-        Field::new("trait_counts", DataType::Utf8, false),
-    ]);
-
     let arrays: Vec<ArrayRef> = vec![
         Arc::new(row_schema_version_builder.finish()),
         Arc::new(game_id_builder.finish()),
@@ -977,25 +1087,92 @@ fn rows_to_parquet_bytes(rows: &[TrainingRow]) -> Result<Vec<u8>, String> {
         Arc::new(trait_counts_builder.finish()),
     ];
 
+    RecordBatch::try_new(schema, arrays).map_err(|e| e.to_string())
+}
+
+fn write_rows_to_parquet_writer<W: std::io::Write + Send>(
+    rows: &[TrainingRow],
+    writer_target: W,
+    compression: Compression,
+    use_dictionary: bool,
+    write_statistics: bool,
+    row_group_size: Option<usize>,
+    write_batch_size: Option<usize>,
+) -> Result<(), String> {
     let row_count = rows.len().max(1);
-    let batch =
-        RecordBatch::try_new(Arc::new(schema.clone()), arrays).map_err(|e| e.to_string())?;
-    let writer_props = WriterProperties::builder()
-        .set_compression(Compression::UNCOMPRESSED)
-        .set_dictionary_enabled(false)
-        .set_statistics_enabled(EnabledStatistics::None)
-        .set_max_row_group_size(row_count)
-        .set_write_batch_size(row_count)
-        .build();
+    let schema = training_row_schema();
+    let batch = training_rows_to_record_batch(rows, schema.clone())?;
+    let writer_props = build_writer_properties(
+        compression,
+        use_dictionary,
+        write_statistics,
+        row_group_size,
+        write_batch_size,
+        row_count,
+    );
+    let mut writer = ArrowWriter::try_new(writer_target, schema, Some(writer_props))
+        .map_err(|e| e.to_string())?;
+    writer.write(&batch).map_err(|e| e.to_string())?;
+    writer.close().map_err(|e| e.to_string())?;
+    Ok(())
+}
+
+fn rows_to_parquet_bytes(
+    rows: &[TrainingRow],
+    compression: Compression,
+    use_dictionary: bool,
+    write_statistics: bool,
+    row_group_size: Option<usize>,
+    write_batch_size: Option<usize>,
+) -> Result<Vec<u8>, String> {
     let mut buffer: Vec<u8> = Vec::new();
-    {
-        let mut writer = ArrowWriter::try_new(&mut buffer, Arc::new(schema), Some(writer_props))
-            .map_err(|e| e.to_string())?;
-        writer.write(&batch).map_err(|e| e.to_string())?;
-        writer.close().map_err(|e| e.to_string())?;
+    write_rows_to_parquet_writer(
+        rows,
+        &mut buffer,
+        compression,
+        use_dictionary,
+        write_statistics,
+        row_group_size,
+        write_batch_size,
+    )?;
+    Ok(buffer)
+}
+
+fn write_batch_runs_to_parquet_file(
+    batch_runs: &[BatchGameRun],
+    output_path: &Path,
+    compression: Compression,
+    use_dictionary: bool,
+    write_statistics: bool,
+    row_group_size: Option<usize>,
+    write_batch_size: Option<usize>,
+    total_row_count: usize,
+) -> Result<(), String> {
+    let schema = training_row_schema();
+    let writer_props = build_writer_properties(
+        compression,
+        use_dictionary,
+        write_statistics,
+        row_group_size,
+        write_batch_size,
+        total_row_count.max(1),
+    );
+    let file = fs::File::create(output_path).map_err(|e| e.to_string())?;
+    let mut writer =
+        ArrowWriter::try_new(file, schema.clone(), Some(writer_props)).map_err(|e| e.to_string())?;
+
+    for run in batch_runs {
+        if let Ok(result) = &run.output {
+            if result.training_rows.is_empty() {
+                continue;
+            }
+            let batch = training_rows_to_record_batch(&result.training_rows, schema.clone())?;
+            writer.write(&batch).map_err(|e| e.to_string())?;
+        }
     }
 
-    Ok(buffer)
+    writer.close().map_err(|e| e.to_string())?;
+    Ok(())
 }
 
 fn json_to_py(py: Python<'_>, value: &Value) -> PyResult<PyObject> {

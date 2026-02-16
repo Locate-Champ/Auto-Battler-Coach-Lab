@@ -955,6 +955,7 @@ mod tests {
     use std::collections::HashMap;
     use std::fs;
     use std::path::PathBuf;
+    use std::sync::Arc;
 
     #[test]
     fn test_supported_champion_coverage_matches_combat_data() {
@@ -991,7 +992,7 @@ mod tests {
     #[test]
     fn test_apply_self_shield_combines_flat_and_percent_components() {
         let combat_data = CombatData {
-            champions: HashMap::new(),
+            champions: Arc::new(HashMap::new()),
         };
         let mut engine = CombatEngine::new(combat_data);
 

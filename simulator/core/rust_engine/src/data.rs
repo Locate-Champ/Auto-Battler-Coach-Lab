@@ -3,11 +3,12 @@ use serde_json::Value;
 use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
+use std::sync::Arc;
 
 /// Loaded and parsed combat data for all champions.
 #[derive(Debug, Clone)]
 pub struct CombatData {
-    pub champions: HashMap<String, Value>,
+    pub champions: Arc<HashMap<String, Value>>,
 }
 
 impl CombatData {
@@ -31,7 +32,9 @@ impl CombatData {
             return Err("No champions data found in combat_data.json".to_string());
         }
 
-        Ok(Self { champions })
+        Ok(Self {
+            champions: Arc::new(champions),
+        })
     }
 
     /// Get champion data by API name.

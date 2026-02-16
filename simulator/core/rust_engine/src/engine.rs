@@ -1677,6 +1677,7 @@ mod tests {
     use super::*;
     use serde_json::json;
     use std::collections::{HashMap, HashSet};
+    use std::sync::Arc;
 
     fn champion_json(
         api_name: &str,
@@ -1735,7 +1736,9 @@ mod tests {
             "TFT16_MoverB".to_string(),
             champion_json("TFT16_MoverB", 2500.0, 10.0, 0.6, 1, "Tank"),
         );
-        CombatData { champions }
+        CombatData {
+            champions: Arc::new(champions),
+        }
     }
 
     #[test]

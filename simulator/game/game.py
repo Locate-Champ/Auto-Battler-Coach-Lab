@@ -623,7 +623,7 @@ class TFTGame:
             'team0_augments': p1_augments if p1_augments else None,
             'team1_augments': p2_augments if p2_augments else None,
         }
-        if self.engine_name == 'python' and self.seed is not None:
+        if self.engine_name in ('python', 'rust') and self.seed is not None:
             run_kwargs['seed'] = _derive_combat_seed(self.seed, self.round_num, p1.player_id, p2.player_id, is_ghost)
 
         if self.engine_name == 'python':
