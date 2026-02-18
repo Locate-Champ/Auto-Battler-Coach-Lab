@@ -61,21 +61,28 @@ def _train_with_fallback(
     early_stopping_rounds: Optional[int] = None,
 ) -> Any:
     """Train XGBoost model and gracefully fallback to CPU when needed."""
-    fit_kwargs: Dict[str, Any] = {
-        "eval_set": [(X_valid, y_valid)],
-        "verbose": False,
-    }
+    merged = dict(params)
     if early_stopping_rounds is not None:
-        fit_kwargs["early_stopping_rounds"] = early_stopping_rounds
-    model = model_class(**params)
+        merged["early_stopping_rounds"] = early_stopping_rounds
+    model = model_class(**merged)
     try:
-        model.fit(X_train, y_train, **fit_kwargs)
+        model.fit(
+            X_train,
+            y_train,
+            eval_set=[(X_valid, y_valid)],
+            verbose=False,
+        )
         return model
     except xgb.core.XGBoostError:
-        fallback = dict(params)
+        fallback = dict(merged)
         fallback["device"] = "cpu"
         model = model_class(**fallback)
-        model.fit(X_train, y_train, **fit_kwargs)
+        model.fit(
+            X_train,
+            y_train,
+            eval_set=[(X_valid, y_valid)],
+            verbose=False,
+        )
         return model
 
 
