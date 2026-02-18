@@ -387,6 +387,7 @@ class StreamingWriter:
         parquet_compression: str = 'uncompressed',
         parquet_use_dictionary: bool = False,
         parquet_write_statistics: bool = False,
+        s3_uri: Optional[str] = None,
     ):
         self.output_dir = output_dir
         self.chunk_size = chunk_size
@@ -394,6 +395,7 @@ class StreamingWriter:
         self.parquet_compression = _normalize_parquet_compression(parquet_compression)
         self.parquet_use_dictionary = parquet_use_dictionary
         self.parquet_write_statistics = parquet_write_statistics
+        self.s3_uri = s3_uri.rstrip('/') if s3_uri else None
         os.makedirs(output_dir, exist_ok=True)
 
         # Training row buffer (flushed every chunk_size games)
@@ -457,6 +459,25 @@ class StreamingWriter:
     def next_chunk_name(self) -> str:
         return f'chunk_{self._chunk_idx:04d}'
 
+    def _s3_upload(self, local_path: str) -> None:
+        """Upload a local file to S3 if s3_uri is configured."""
+        if not self.s3_uri:
+            return
+        filename = os.path.basename(local_path)
+        s3_dest = f'{self.s3_uri}/{filename}'
+        try:
+            result = subprocess.run(
+                ['aws', 's3', 'cp', local_path, s3_dest, '--only-show-errors'],
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=300,
+            )
+            if result.returncode != 0:
+                print(f"  [WARN] S3 upload failed for {filename}: {result.stderr.strip()}")
+        except Exception as exc:
+            print(f"  [WARN] S3 upload failed for {filename}: {exc}")
+
     def add_result(self, result: Dict, *, buffer_training_rows: bool = True):
         """Process a completed game result."""
         if result['status'] == 'error':
@@ -514,6 +535,12 @@ class StreamingWriter:
 
     def record_external_parquet_chunk(self, row_count: int):
         """Record a chunk file that was already written outside this writer."""
+        # Upload the chunk that was just written by Rust
+        chunk_name = f'chunk_{self._chunk_idx:04d}'
+        chunk_path = os.path.join(self.output_dir, chunk_name + '.parquet')
+        if os.path.exists(chunk_path):
+            self._s3_upload(chunk_path)
+
         self._total_rows += max(0, row_count)
         self._chunk_idx += 1
         self._games_in_buffer = 0
@@ -544,6 +571,14 @@ class StreamingWriter:
                     self._write_jsonl_chunk(chunk_name)
 
         self._total_rows += self._pending_row_count
+
+        # Stream chunk to S3 immediately
+        for ext in ('.parquet', '.jsonl'):
+            chunk_path = os.path.join(self.output_dir, chunk_name + ext)
+            if os.path.exists(chunk_path):
+                self._s3_upload(chunk_path)
+                break
+
         self._row_buffer = []
         self._jsonl_blob_buffer = []
         self._parquet_blob_buffer = []
@@ -705,6 +740,7 @@ class StreamingWriter:
             with open(error_path, 'w', encoding='utf-8') as f:
                 json.dump(self._errors, f, indent=2)
             print(f"  Errors: {error_path} ({len(self._errors)} failures)")
+            self._s3_upload(error_path)
 
         # Compute and write summary
         summary = self._compute_summary(total_time, num_workers, run_metadata or {})
@@ -712,9 +748,15 @@ class StreamingWriter:
         with open(summary_path, 'w', encoding='utf-8') as f:
             json.dump(summary, f, indent=2)
         print(f"  Summary: {summary_path}")
+        self._s3_upload(summary_path)
 
         # Final checkpoint
         self.write_checkpoint()
+        checkpoint_path = os.path.join(self.output_dir, 'checkpoint.json')
+        self._s3_upload(checkpoint_path)
+
+        if self.s3_uri:
+            print(f"  S3: All files uploaded to {self.s3_uri}/")
 
         return summary
 
@@ -868,6 +910,7 @@ def run_batch(
     parquet_write_statistics: bool = False,
     parquet_row_group_size: Optional[int] = None,
     parquet_write_batch_size: Optional[int] = None,
+    s3_uri: Optional[str] = None,
 ) -> Dict:
     """Run num_games in parallel with streaming output and checkpoints.
 
@@ -900,6 +943,7 @@ def run_batch(
         parquet_write_statistics: Whether parquet statistics are written.
         parquet_row_group_size: Optional parquet row-group size hint for Rust-native parquet paths.
         parquet_write_batch_size: Optional parquet write batch size hint for Rust-native parquet paths.
+        s3_uri: Optional S3 URI to stream chunk uploads as they complete.
 
     Returns:
         Summary dict with timing and aggregate stats.
@@ -975,6 +1019,7 @@ def run_batch(
         parquet_compression=parquet_compression,
         parquet_use_dictionary=parquet_use_dictionary,
         parquet_write_statistics=parquet_write_statistics,
+        s3_uri=s3_uri,
     )
 
     # Build task list, skipping completed seeds
@@ -1060,6 +1105,7 @@ def run_batch(
                 'progress_every': progress_every,
                 'max_errors': max_errors,
                 'require_parquet': require_parquet,
+                's3_uri': s3_uri,
                 'aborted': False,
                 'aborted_reason': None,
             },
@@ -1082,6 +1128,8 @@ def run_batch(
     print(f"Agents: {agent_desc}")
     print(f"Engine: {engine}")
     print(f"Output: {output_dir}")
+    if s3_uri:
+        print(f"S3:     {s3_uri} (streaming upload)")
     print()
 
     start = time.perf_counter()
@@ -1301,6 +1349,7 @@ def run_batch(
             'progress_every': progress_interval,
             'max_errors': max_errors,
             'require_parquet': require_parquet,
+            's3_uri': s3_uri,
             'aborted': bool(aborted_reason),
             'aborted_reason': aborted_reason,
         },
@@ -1407,6 +1456,8 @@ Examples:
                         help='Optional parquet row-group size for Rust-native parquet writes')
     parser.add_argument('--parquet-write-batch-size', type=int, default=None,
                         help='Optional parquet write batch size for Rust-native parquet writes')
+    parser.add_argument('--s3-uri', type=str, default=None,
+                        help='S3 URI to stream chunk uploads as they complete (e.g. s3://bucket/prefix)')
     parser.add_argument('--skip-reference-validation', action='store_true',
                         help='Skip simulator reference preflight validation')
     args = parser.parse_args()
@@ -1593,6 +1644,7 @@ Examples:
             parquet_write_statistics=effective_parquet_write_statistics,
             parquet_row_group_size=effective_parquet_row_group_size,
             parquet_write_batch_size=effective_parquet_write_batch_size,
+            s3_uri=args.s3_uri,
         )
     else:
         if args.agent_mix:
@@ -1628,6 +1680,7 @@ Examples:
             parquet_write_statistics=effective_parquet_write_statistics,
             parquet_row_group_size=effective_parquet_row_group_size,
             parquet_write_batch_size=effective_parquet_write_batch_size,
+            s3_uri=args.s3_uri,
         )
 
     print(f"\n{'='*50}")

@@ -53,17 +53,20 @@ def bench_dict(loader: DataLoader) -> dict:
     }
 
 
-def bench_arrow_parallel(loader: DataLoader, workers: int) -> dict:
-    """Benchmark Arrow parallel vectorization path."""
-    # Override worker count for this benchmark
-    old_workers = loader.n_workers
-    loader.n_workers = workers
+def bench_arrow_parallel(data_dir: str, workers: int) -> dict:
+    """Benchmark Arrow parallel vectorization path.
+
+    Creates a fresh DataLoader per run to avoid pool caching bug
+    (DataLoader._ensure_pool caches the pool on first call).
+    """
+    fe = TFTFeatureEngineer()
+    loader = DataLoader(data_dir, feature_engineer=fe, n_workers=workers)
 
     t0 = time.perf_counter()
     X = loader.vectorize_arrow_parallel()
     elapsed = time.perf_counter() - t0
 
-    loader.n_workers = old_workers
+    loader.close()
     total = len(X)
     return {
         "path": f"arrow_parallel(w={workers})",
@@ -117,7 +120,7 @@ def main():
         print("=" * 60)
         print(f"Benchmark: Arrow parallel (workers={w})")
         print("=" * 60)
-        r = bench_arrow_parallel(loader, w)
+        r = bench_arrow_parallel(args.data, w)
         results.append(r)
         if "error" in r:
             print(f"  Error: {r['error']}")
