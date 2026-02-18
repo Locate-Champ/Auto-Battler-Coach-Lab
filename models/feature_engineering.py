@@ -874,10 +874,17 @@ class TFTFeatureEngineer:
             "carry_stars",
         ]
 
-    def _composition_features(self, row: Mapping[str, Any]) -> List[float]:
-        units = self._extract_units(row, prefix="")
-        traits = self._extract_traits(row, prefix="")
-        summary = self._team_summary(units)
+    def _composition_features(
+        self,
+        row: Mapping[str, Any],
+        *,
+        _units: Optional[List[Dict[str, Any]]] = None,
+        _summary: Optional[Dict[str, float]] = None,
+        _traits: Optional[Dict[str, int]] = None,
+    ) -> List[float]:
+        units = _units if _units is not None else self._extract_units(row, prefix="")
+        traits = _traits if _traits is not None else self._extract_traits(row, prefix="")
+        summary = _summary if _summary is not None else self._team_summary(units)
         trait_active_count = float(sum(1 for value in traits.values() if value > 0))
         total_ap_pool = summary["item_ap"] + (trait_active_count * 5.0)
         return [
@@ -947,8 +954,13 @@ class TFTFeatureEngineer:
             names.append(f"trait_{trait.api_name}_tier")
         return names
 
-    def _trait_features(self, row: Mapping[str, Any]) -> List[float]:
-        active_traits = self._extract_traits(row, prefix="")
+    def _trait_features(
+        self,
+        row: Mapping[str, Any],
+        *,
+        _traits: Optional[Dict[str, int]] = None,
+    ) -> List[float]:
+        active_traits = _traits if _traits is not None else self._extract_traits(row, prefix="")
         values: List[float] = []
         for trait in self.traits:
             count = float(active_traits.get(trait.api_name, 0))
@@ -984,9 +996,15 @@ class TFTFeatureEngineer:
             "total_item_mr",
         ]
 
-    def _item_features(self, row: Mapping[str, Any]) -> List[float]:
-        units = self._extract_units(row, prefix="")
-        summary = self._team_summary(units)
+    def _item_features(
+        self,
+        row: Mapping[str, Any],
+        *,
+        _units: Optional[List[Dict[str, Any]]] = None,
+        _summary: Optional[Dict[str, float]] = None,
+    ) -> List[float]:
+        units = _units if _units is not None else self._extract_units(row, prefix="")
+        summary = _summary if _summary is not None else self._team_summary(units)
         normalized_items = [
             _normalize_token(self._canonical_item_name(item))
             for unit in units
@@ -1069,12 +1087,19 @@ class TFTFeatureEngineer:
             "stage_hp_pressure",
         ]
 
-    def _matchup_features(self, row: Mapping[str, Any]) -> List[float]:
-        your_units = self._extract_units(row, prefix="")
+    def _matchup_features(
+        self,
+        row: Mapping[str, Any],
+        *,
+        _units: Optional[List[Dict[str, Any]]] = None,
+        _summary: Optional[Dict[str, float]] = None,
+        _traits: Optional[Dict[str, int]] = None,
+    ) -> List[float]:
+        your_units = _units if _units is not None else self._extract_units(row, prefix="")
         opponent_units = self._extract_units(row, prefix="opponent_")
-        your_traits = self._extract_traits(row, prefix="")
+        your_traits = _traits if _traits is not None else self._extract_traits(row, prefix="")
         opp_traits = self._extract_traits(row, prefix="opponent_")
-        your_summary = self._team_summary(your_units)
+        your_summary = _summary if _summary is not None else self._team_summary(your_units)
         opp_summary = self._team_summary(opponent_units)
 
         hp_you = _safe_float(row.get("hp"))
@@ -1113,11 +1138,17 @@ class TFTFeatureEngineer:
             "item_personal_score",
         ]
 
-    def _personal_features(self, row: Mapping[str, Any]) -> List[float]:
-        units = self._extract_units(row, prefix="")
+    def _personal_features(
+        self,
+        row: Mapping[str, Any],
+        *,
+        _units: Optional[List[Dict[str, Any]]] = None,
+        _summary: Optional[Dict[str, float]] = None,
+    ) -> List[float]:
+        units = _units if _units is not None else self._extract_units(row, prefix="")
         if not units:
             return [0.0, 4.5, 0.0]
-        summary = self._team_summary(units)
+        summary = _summary if _summary is not None else self._team_summary(units)
         carry_name = ""
         best_key = (-1, -1, -1)
         for unit in units:
@@ -1166,21 +1197,26 @@ class TFTFeatureEngineer:
 
     def transform(self, row: Mapping[str, Any]) -> np.ndarray:
         """Transform a single collector row into an ordered feature vector."""
+        # Pre-compute shared intermediates once (avoids 3-4x redundant extraction)
+        units = self._extract_units(row, prefix="")
+        summary = self._team_summary(units)
+        traits = self._extract_traits(row, prefix="")
+
         features: List[float] = []
         if self.config.use_composition:
-            features.extend(self._composition_features(row))
+            features.extend(self._composition_features(row, _units=units, _summary=summary, _traits=traits))
         if self.config.use_economy:
             features.extend(self._economy_features(row))
         if self.config.use_traits:
-            features.extend(self._trait_features(row))
+            features.extend(self._trait_features(row, _traits=traits))
         if self.config.use_items:
-            features.extend(self._item_features(row))
+            features.extend(self._item_features(row, _units=units, _summary=summary))
         if self.config.use_augments:
             features.extend(self._augment_features(row))
         if self.config.use_matchup:
-            features.extend(self._matchup_features(row))
+            features.extend(self._matchup_features(row, _units=units, _summary=summary, _traits=traits))
         if self.config.use_personal_weights:
-            features.extend(self._personal_features(row))
+            features.extend(self._personal_features(row, _units=units, _summary=summary))
         return np.asarray(features, dtype=np.float32)
 
     def feature_names(self) -> List[str]:

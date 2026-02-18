@@ -28,7 +28,7 @@ from .feature_engineering import FeatureConfig, TFTFeatureEngineer
 BASE_TREE_PARAMS = {
     "max_depth": 8,
     "learning_rate": 0.05,
-    "n_estimators": 500,
+    "n_estimators": 300,
     "subsample": 0.8,
     "colsample_bytree": 0.8,
     "min_child_weight": 5,
@@ -57,27 +57,25 @@ def _train_with_fallback(
     y_train: np.ndarray,
     X_valid: np.ndarray,
     y_valid: np.ndarray,
+    *,
+    early_stopping_rounds: Optional[int] = None,
 ) -> Any:
     """Train XGBoost model and gracefully fallback to CPU when needed."""
+    fit_kwargs: Dict[str, Any] = {
+        "eval_set": [(X_valid, y_valid)],
+        "verbose": False,
+    }
+    if early_stopping_rounds is not None:
+        fit_kwargs["early_stopping_rounds"] = early_stopping_rounds
     model = model_class(**params)
     try:
-        model.fit(
-            X_train,
-            y_train,
-            eval_set=[(X_valid, y_valid)],
-            verbose=False,
-        )
+        model.fit(X_train, y_train, **fit_kwargs)
         return model
     except xgb.core.XGBoostError:
         fallback = dict(params)
         fallback["device"] = "cpu"
         model = model_class(**fallback)
-        model.fit(
-            X_train,
-            y_train,
-            eval_set=[(X_valid, y_valid)],
-            verbose=False,
-        )
+        model.fit(X_train, y_train, **fit_kwargs)
         return model
 
 
@@ -619,14 +617,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=str, default="models/checkpoints", help="Output directory")
     parser.add_argument("--test-size", type=float, default=0.2)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--n-estimators", type=int, default=500)
+    parser.add_argument("--n-estimators", type=int, default=300)
     parser.add_argument("--row-batch-size", type=int, default=4096, help="Raw row batch size for parquet/jsonl streaming")
     parser.add_argument("--max-rows", type=int, default=None, help="Optional cap on raw rows scanned before feature building")
     parser.add_argument("--external-memory", action="store_true", help="Use ExtMemQuantileDMatrix training path")
     parser.add_argument("--external-batch-size", type=int, default=8192, help="Examples per external-memory iterator batch")
     parser.add_argument("--external-cache-dir", type=str, default=None, help="Directory for xgboost external-memory cache pages")
     parser.add_argument("--keep-external-cache", action="store_true", help="Keep external-memory cache files after training")
-    parser.add_argument("--early-stopping-rounds", type=int, default=None, help="Optional early stopping rounds for external mode")
+    parser.add_argument("--early-stopping-rounds", type=int, default=50, help="Early stopping rounds (set 0 to disable)")
     parser.add_argument("--ablation", action="store_true", help="Run feature-group ablation study")
     return parser.parse_args()
 
@@ -640,6 +638,8 @@ def main() -> None:
         raise ValueError("--test-size must be in (0, 1)")
     if args.external_memory and args.ablation:
         raise ValueError("--ablation is not supported with --external-memory")
+
+    es_rounds = args.early_stopping_rounds if args.early_stopping_rounds else None
 
     loader = DataLoader(args.data)
     feature_names = loader.feature_engineer.feature_names()
@@ -671,7 +671,7 @@ def main() -> None:
                     "n_estimators": args.n_estimators,
                 }
             )
-            model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test)
+            model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test, early_stopping_rounds=es_rounds)
             metrics = _evaluate_classification("fight", model, X_test, y_test)
             baseline_metric = float(metrics["accuracy"])
             is_higher_better = True
@@ -691,7 +691,7 @@ def main() -> None:
                     "n_estimators": args.n_estimators,
                 }
             )
-            model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test)
+            model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test, early_stopping_rounds=es_rounds)
             metrics = _evaluate_classification("top4", model, X_test, y_test)
             baseline_metric = float(metrics["accuracy"])
             is_higher_better = True
@@ -711,7 +711,7 @@ def main() -> None:
                     "n_estimators": args.n_estimators,
                 }
             )
-            model = _train_with_fallback(xgb.XGBRegressor, params, X_train, y_train, X_test, y_test)
+            model = _train_with_fallback(xgb.XGBRegressor, params, X_train, y_train, X_test, y_test, early_stopping_rounds=es_rounds)
             metrics = _evaluate_regression(model, X_test, y_test)
             baseline_metric = float(metrics["mae"])
             is_higher_better = False
@@ -735,6 +735,7 @@ def main() -> None:
         "top_features": importances[:20],
         "feature_count": len(feature_names),
         "training_mode": "external_memory" if args.external_memory else "in_memory",
+        "early_stopping_rounds": es_rounds,
         "split_stats": split_stats,
         "data_loading": {
             "test_size": args.test_size,

@@ -201,10 +201,13 @@ class DataLoader:
 
     def _vectorize_rows(self, rows: Sequence[Dict[str, Any]]) -> np.ndarray:
         """Transform rows into feature vectors."""
+        n_features = len(self.feature_engineer.feature_names())
         if not rows:
-            return np.zeros((0, len(self.feature_engineer.feature_names())), dtype=np.float32)
-        vectors = [self.feature_engineer.transform(row) for row in rows]
-        return np.vstack(vectors).astype(np.float32)
+            return np.zeros((0, n_features), dtype=np.float32)
+        result = np.empty((len(rows), n_features), dtype=np.float32)
+        for i, row in enumerate(rows):
+            result[i] = self.feature_engineer.transform(row)
+        return result
 
     def _print_dataset_stats(
         self,
