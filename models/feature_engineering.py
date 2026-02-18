@@ -1219,6 +1219,127 @@ class TFTFeatureEngineer:
             features.extend(self._personal_features(row, _units=units, _summary=summary))
         return np.asarray(features, dtype=np.float32)
 
+    def transform_batch(self, rows: Sequence[Mapping[str, Any]]) -> np.ndarray:
+        """Transform multiple rows, vectorizing economy/trait features."""
+        n = len(rows)
+        if n == 0:
+            return np.zeros((0, len(self._feature_names_cache)), dtype=np.float32)
+
+        # Pre-compute shared intermediates once per row
+        all_units = [self._extract_units(row, prefix="") for row in rows]
+        all_summaries = [self._team_summary(units) for units in all_units]
+        all_traits = [self._extract_traits(row, prefix="") for row in rows]
+
+        n_features = len(self._feature_names_cache)
+        result = np.empty((n, n_features), dtype=np.float32)
+        col = 0
+
+        if self.config.use_composition:
+            width = len(self._composition_feature_names())
+            for i in range(n):
+                result[i, col:col + width] = self._composition_features(
+                    rows[i], _units=all_units[i], _summary=all_summaries[i], _traits=all_traits[i]
+                )
+            col += width
+
+        if self.config.use_economy:
+            width = len(self._economy_feature_names())
+            result[:, col:col + width] = self._economy_features_batch(rows)
+            col += width
+
+        if self.config.use_traits:
+            width = len(self._trait_feature_names())
+            result[:, col:col + width] = self._trait_features_batch(all_traits)
+            col += width
+
+        if self.config.use_items:
+            width = len(self._item_feature_names())
+            for i in range(n):
+                result[i, col:col + width] = self._item_features(
+                    rows[i], _units=all_units[i], _summary=all_summaries[i]
+                )
+            col += width
+
+        if self.config.use_augments:
+            width = len(self._augment_feature_names())
+            for i in range(n):
+                result[i, col:col + width] = self._augment_features(rows[i])
+            col += width
+
+        if self.config.use_matchup:
+            width = len(self._matchup_feature_names())
+            for i in range(n):
+                result[i, col:col + width] = self._matchup_features(
+                    rows[i], _units=all_units[i], _summary=all_summaries[i], _traits=all_traits[i]
+                )
+            col += width
+
+        if self.config.use_personal_weights:
+            width = len(self._personal_feature_names())
+            for i in range(n):
+                result[i, col:col + width] = self._personal_features(
+                    rows[i], _units=all_units[i], _summary=all_summaries[i]
+                )
+            col += width
+
+        return result
+
+    def _economy_features_batch(self, rows: Sequence[Mapping[str, Any]]) -> np.ndarray:
+        """Vectorized economy features for a batch of rows."""
+        n = len(rows)
+        levels = np.empty(n, dtype=np.float32)
+        hps = np.empty(n, dtype=np.float32)
+        golds = np.empty(n, dtype=np.float32)
+        round_nums = np.empty(n, dtype=np.float32)
+        streaks = np.empty(n, dtype=np.float32)
+
+        for i, row in enumerate(rows):
+            levels[i] = _safe_float(row.get("level"))
+            hps[i] = _safe_float(row.get("hp"))
+            golds[i] = _safe_float(row.get("gold"))
+            round_nums[i] = _safe_float(row.get("round"))
+            streak = _safe_float(row.get("streak"))
+            if streak == 0.0:
+                streak = _safe_float(row.get("win_streak")) - _safe_float(row.get("loss_streak"))
+            streaks[i] = streak
+
+        stages = np.floor(round_nums / DEFAULT_STAGE_DIVISOR).astype(np.float32) + 1.0
+        interests = np.minimum(5.0, np.maximum(0.0, np.floor(golds / 10.0)))
+        hp_pcts = hps / 100.0
+
+        return np.column_stack([levels, hps, hp_pcts, golds, streaks, round_nums, stages, interests])
+
+    def _trait_features_batch(self, all_traits: Sequence[Dict[str, int]]) -> np.ndarray:
+        """Vectorized trait features for a batch of pre-extracted trait dicts."""
+        n = len(all_traits)
+        n_traits = len(self.traits)
+
+        counts = np.zeros((n, n_traits), dtype=np.float32)
+        for i, active_traits in enumerate(all_traits):
+            for j, trait in enumerate(self.traits):
+                count = active_traits.get(trait.api_name, 0)
+                if count:
+                    counts[i, j] = float(count)
+
+        actives = np.zeros((n, n_traits), dtype=np.float32)
+        tiers = np.zeros((n, n_traits), dtype=np.float32)
+        for j, trait in enumerate(self.traits):
+            col = counts[:, j]
+            if trait.breakpoints:
+                actives[:, j] = (col >= trait.breakpoints[0]).astype(np.float32)
+                for bp in trait.breakpoints:
+                    tiers[:, j] += (col >= bp).astype(np.float32)
+            else:
+                actives[:, j] = (col > 0).astype(np.float32)
+                tiers[:, j] = actives[:, j]
+
+        # Interleave: [count_0, active_0, tier_0, count_1, active_1, tier_1, ...]
+        result = np.empty((n, n_traits * 3), dtype=np.float32)
+        result[:, 0::3] = counts
+        result[:, 1::3] = actives
+        result[:, 2::3] = tiers
+        return result
+
     def feature_names(self) -> List[str]:
         """Return ordered feature names matching :meth:`transform` output."""
         return list(self._feature_names_cache)

@@ -29,10 +29,10 @@ def _init_fe_worker(config: FeatureConfig, repo_root: Path) -> None:
     _worker_fe = TFTFeatureEngineer(config=config, repo_root=repo_root)
 
 
-def _transform_single(row: Dict[str, Any]) -> np.ndarray:
-    """Transform a single row in a worker process."""
+def _transform_chunk(rows: List[Dict[str, Any]]) -> np.ndarray:
+    """Transform a chunk of rows in a worker process."""
     assert _worker_fe is not None
-    return _worker_fe.transform(row)
+    return _worker_fe.transform_batch(rows)
 
 
 class DataLoader:
@@ -48,6 +48,30 @@ class DataLoader:
         self.data_dir = Path(data_dir)
         self.feature_engineer = feature_engineer or TFTFeatureEngineer()
         self.n_workers = n_workers
+        self._pool: Optional[multiprocessing.pool.Pool] = None
+
+    def _effective_workers(self) -> int:
+        if self.n_workers == 0:
+            return min(os.cpu_count() or 1, 64)
+        return self.n_workers
+
+    def _ensure_pool(self) -> multiprocessing.pool.Pool:
+        """Lazily create and return a persistent worker pool."""
+        if self._pool is None:
+            workers = self._effective_workers()
+            self._pool = multiprocessing.Pool(
+                processes=workers,
+                initializer=_init_fe_worker,
+                initargs=(self.feature_engineer.config, self.feature_engineer.repo_root),
+            )
+        return self._pool
+
+    def close(self) -> None:
+        """Shut down the worker pool."""
+        if self._pool is not None:
+            self._pool.close()
+            self._pool.join()
+            self._pool = None
 
     def _iter_parquet_rows(
         self,
@@ -225,25 +249,17 @@ class DataLoader:
         if not rows:
             return np.zeros((0, n_features), dtype=np.float32)
 
-        workers = self.n_workers
-        if workers == 0:
-            workers = min(os.cpu_count() or 1, 64)
+        workers = self._effective_workers()
 
         if workers > 1 and len(rows) >= 500:
-            chunksize = max(1, len(rows) // (workers * 4))
-            print(f"[features] vectorizing {len(rows)} rows with {workers} workers...")
-            with multiprocessing.Pool(
-                processes=workers,
-                initializer=_init_fe_worker,
-                initargs=(self.feature_engineer.config, self.feature_engineer.repo_root),
-            ) as pool:
-                vectors = pool.map(_transform_single, rows, chunksize=chunksize)
-            return np.array(vectors, dtype=np.float32)
+            chunk_size = max(1, len(rows) // (workers * 4))
+            row_chunks = [rows[i:i + chunk_size] for i in range(0, len(rows), chunk_size)]
+            print(f"[features] vectorizing {len(rows)} rows with {workers} workers ({len(row_chunks)} chunks)...")
+            pool = self._ensure_pool()
+            chunk_results = pool.map(_transform_chunk, row_chunks)
+            return np.vstack(chunk_results)
 
-        result = np.empty((len(rows), n_features), dtype=np.float32)
-        for i, row in enumerate(rows):
-            result[i] = self.feature_engineer.transform(row)
-        return result
+        return self.feature_engineer.transform_batch(list(rows))
 
     def _print_dataset_stats(
         self,

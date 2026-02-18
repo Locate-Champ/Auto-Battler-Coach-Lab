@@ -377,7 +377,7 @@ class _ExternalMemoryDataIter(xgb.DataIter):
         self.reset()
 
     def _stream_batches(self) -> Iterator[Tuple[np.ndarray, np.ndarray]]:
-        features: List[np.ndarray] = []
+        batch_rows: List[Dict[str, Any]] = []
         labels: List[float] = []
         for example_index, (row, label, game_id) in enumerate(
             _iter_labeled_examples(
@@ -395,17 +395,17 @@ class _ExternalMemoryDataIter(xgb.DataIter):
             )
             if assigned != self.split:
                 continue
-            features.append(self.loader.feature_engineer.transform(row))
+            batch_rows.append(row)
             labels.append(label)
-            if len(features) >= self.batch_size:
-                X = np.asarray(features, dtype=np.float32)
+            if len(batch_rows) >= self.batch_size:
+                X = self.loader._vectorize_rows(batch_rows)
                 y = np.asarray(labels, dtype=np.float32)
                 yield X, y
-                features = []
+                batch_rows = []
                 labels = []
 
-        if features:
-            X = np.asarray(features, dtype=np.float32)
+        if batch_rows:
+            X = self.loader._vectorize_rows(batch_rows)
             y = np.asarray(labels, dtype=np.float32)
             yield X, y
 
@@ -771,6 +771,8 @@ def main() -> None:
     if args.external_memory and cache_dir is not None and not args.keep_external_cache:
         gc.collect()
         _cleanup_external_cache(cache_dir)
+
+    loader.close()
 
 
 if __name__ == "__main__":
