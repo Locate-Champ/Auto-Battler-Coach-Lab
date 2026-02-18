@@ -3,6 +3,95 @@
 This is a copy/paste runbook you can drop into your repo (example path: `docs/AWS_GATES_RUNBOOK.md`).
 It's written for running the **simulator gates** on an AWS EC2 instance and syncing outputs to **S3**.
 
+## Instance Guide: Simulation vs. Training
+
+> **Rule**: Simulation = CPU cores. ML Training = GPU. Never use a GPU instance for simulation.
+
+| Phase | Right Instance | Wrong Instance |
+|-------|---------------|----------------|
+| Gate runs (simulation) | c8g.48xlarge (192 ARM cores) | Any `g*` GPU type |
+| XGBoost / Transformer training | g5.2xlarge or g6e.2xlarge | c8g (GPU idle, wasteful) |
+
+---
+
+## GPU Instance: ML Training Only
+
+Use a GPU instance **only** after simulation is complete and you have a Gate B/C/D dataset to train on.
+
+| Instance | GPU | VRAM | Spot ~$/hr | Use for |
+|----------|-----|------|-----------|---------|
+| `g5.2xlarge` | A10G | 24 GB | ~$0.25 | XGBoost + small transformer |
+| `g6e.2xlarge` | L40S | 48 GB | ~$0.40 | Large transformer, full training |
+
+### AMI for GPU instances
+
+Search for: `Deep Learning AMI GPU PyTorch` — filter **x86_64**, **Ubuntu 22.04**, owner: Amazon.
+Do **not** use the ARM64 variant — GPU instances (`g*`) are x86_64, not ARM.
+
+### One-time GPU instance setup
+
+```bash
+# Clone repo
+cd /home/ubuntu
+git clone git@github.com:forrestmiller34/tft-coach-234.git
+cd tft-coach-234
+
+# Python venv + ML deps
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements-ml.txt
+pip install pyarrow
+
+# Verify GPU is visible
+python3 -c "import torch; print('CUDA:', torch.cuda.is_available(), torch.cuda.get_device_name(0))"
+```
+
+### Pull data from S3 and train
+
+```bash
+source /home/ubuntu/tft-coach-234/.venv/bin/activate
+cd /home/ubuntu/tft-coach-234
+
+# Pull Gate B data from S3
+aws s3 sync s3://tft-sim-results-forrest/tft-results/gates/gate_b_50k_<DATE>/ results/gate_b/ \
+  --region us-east-1
+
+# XGBoost
+python -m models.train_xgboost \
+  --data results/gate_b/ \
+  --task fight \
+  --output models/checkpoints/gate_b_xgb
+
+# Transformer (if GPU confirmed)
+python -m models.train_transformer \
+  --data results/gate_b/ \
+  --output models/checkpoints/gate_b_transformer
+```
+
+### Deploy key setup (do once per fresh instance)
+
+The GPU instance needs a GitHub deploy key to clone private repos without a PAT.
+
+Generate a key on the instance and add the public key to GitHub repo deploy keys:
+
+```bash
+ssh-keygen -t ed25519 -C "tft-coach-gpu" -f ~/.ssh/id_ed25519 -N ""
+cat ~/.ssh/id_ed25519.pub
+# Copy the output → GitHub repo → Settings → Deploy keys → Add deploy key (read-only)
+
+# Test
+ssh -T git@github.com
+```
+
+Then clone with SSH instead of HTTPS:
+
+```bash
+git clone git@github.com:forrestmiller34/tft-coach-234.git
+```
+
+---
+
 ## Recommended Instance: c8g.48xlarge (Graviton4 ARM)
 
 | Instance | CPU | Real Cores | vCPUs | $/hr (On-Demand) | Est. Games/Hr | Cost per 1M Games |
@@ -44,7 +133,7 @@ bash scripts/run-gates.sh --instance-id i-xxx --gates b --skip-sim
 ### AMI
 
 Use Ubuntu 22.04 LTS **arm64** (the launch script finds this automatically).
-The IAM role `tft-sim-ec2-role` from the original setup works unchanged.
+The IAM role `tft-sim-role` from the original setup works unchanged.
 
 ---
 
@@ -75,6 +164,21 @@ The IAM role `tft-sim-ec2-role` from the original setup works unchanged.
   - **S3 write permissions** to your chosen bucket/prefix
 - Your repo is accessible from the instance (public GitHub, or via deploy key/other auth).
 - If using Graviton4 (ARM): select the **arm64** Ubuntu AMI (not amd64).
+
+---
+
+
+## Common SSM gotchas (so you don’t rediscover them every run)
+
+- **SSM defaults to `/bin/sh`**. If your command uses `source` or `set -o pipefail`, wrap it: `bash -lc '<command>'`.
+- **SSM often runs as `root`**, but your repo + SSH keys live under `ubuntu`. Prefer: `sudo -u ubuntu -H bash -lc '<command>'`.
+- **Git "dubious ownership"** happens when files are owned by root but you run git as ubuntu (or vice versa). Fix once with:
+  ```bash
+  git config --global --add safe.directory /home/ubuntu/tft-coach-234
+  ```
+  Better fix: don’t mix ownership in the first place.
+- **Don’t assume `python` exists**. Use `python3` unless you’ve activated a venv in bash.
+- **No secrets in chat**. Never paste a GitHub PAT into SSM commands. Use deploy keys.
 
 ---
 

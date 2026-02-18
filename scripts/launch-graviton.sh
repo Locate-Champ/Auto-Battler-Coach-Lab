@@ -18,12 +18,15 @@ set -euo pipefail
 # ── CONFIG ──────────────────────────────────────────────────────────────────
 REGION="us-east-1"
 INSTANCE_TYPE="c8g.48xlarge"
-IAM_ROLE="tft-sim-ec2-role"          # existing role from your first instance
+IAM_ROLE="tft-sim-role"              # IAM instance profile name (verified 2026-02-18)
 KEY_PAIR=""                           # leave empty if using SSM only (no SSH)
 SECURITY_GROUP=""                     # leave empty to use default VPC SG
 VOLUME_SIZE_GB=100                    # gp3, enough for Gate D output
-REPO_URL="https://github.com/forrestmiller34/tft-coach-234.git"
+REPO_SSH="git@github.com:forrestmiller34/tft-coach-234.git"
 REPO_REF="main"
+# Deploy key private key (base64-encoded) — public key must be in GitHub Deploy Keys
+# Fingerprint: SHA256:OvWHiiic/kHGzQoDg2qfFf0N5c14zaag3+AhH47w3zY (tft-sim-graviton)
+DEPLOY_KEY_B64="LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFBQUFBQkc1dmJtVUFBQUFFYm05dVpRQUFBQUFBQUFBQkFBQUFNd0FBQUF0emMyZ3RaV1F5TlRVeApPUUFBQUNDQ09yeldnT0xuUXR5dzZpUnRrL0ZSRzYzNkRVL1RQVE5zTVppNXBjRUxRZ0FBQUloUno3VFFVYyswMEFBQUFBdHpjMmd0ClpXUXlOVFV4T1FBQUFDQ0NPcnpXZ09MblF0eXc2aVJ0ay9GUkc2MzZEVS9UUFROc01aaTVwY0VMUWdBQUFFQkxjVDlJK2E4YitQb2YKNnVmWlBmUlIxcXh3ZXAwd2hWRmQ0QXdSdEpMYnpZSTZ2TmFBNHVkQzNMRHFKRzJUOFZFYnJmb05UOU05TTJ3eG1MbWx3UXRDQUFBQQpBQUVDQXdRRgotLS0tLUVORCBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0K"
 USE_SPOT=false
 DRY_RUN=false
 # ────────────────────────────────────────────────────────────────────────────
@@ -68,11 +71,11 @@ fi
 # ── User-data (cloud-init) ──────────────────────────────────────────────────
 # This bootstraps the instance so it's ready for gate runs via SSM.
 # It does NOT run any gates — that's done separately via run-gates.sh.
-USER_DATA=$(cat <<'USERDATA'
+USER_DATA=$(cat <<USERDATA
 #!/bin/bash
 set -euo pipefail
 exec > >(tee -a /var/log/tft-bootstrap.log) 2>&1
-echo "=== TFT Bootstrap started at $(date -u) ==="
+echo "=== TFT Bootstrap started at \$(date -u) ==="
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -87,20 +90,29 @@ apt-get install -y -q \
 mkdir -p /data/tft/results /data/tft/models_checkpoints
 chown -R ubuntu:ubuntu /data/tft
 
+# Install deploy key for private repo access
+mkdir -p /home/ubuntu/.ssh
+echo "${DEPLOY_KEY_B64}" | base64 -d > /home/ubuntu/.ssh/id_ed25519
+chmod 600 /home/ubuntu/.ssh/id_ed25519
+chown ubuntu:ubuntu /home/ubuntu/.ssh/id_ed25519
+# Trust github.com host key
+ssh-keyscan -t ed25519 github.com >> /home/ubuntu/.ssh/known_hosts 2>/dev/null || true
+chown ubuntu:ubuntu /home/ubuntu/.ssh/known_hosts
+
 # Everything below runs as ubuntu
 sudo -u ubuntu -H bash -l <<'ASUSER'
 set -euo pipefail
 
 # Rust toolchain (native ARM — no cross-compile needed)
-if [ ! -f "$HOME/.cargo/env" ]; then
+if [ ! -f "\$HOME/.cargo/env" ]; then
   curl https://sh.rustup.rs -sSf | sh -s -- -y
 fi
-source "$HOME/.cargo/env"
+source "\$HOME/.cargo/env"
 
-# Clone repo
+# Clone repo via SSH deploy key
 cd /home/ubuntu
 if [ ! -d "tft-coach-234" ]; then
-  git clone --filter=blob:none https://github.com/forrestmiller34/tft-coach-234.git
+  git clone --filter=blob:none git@github.com:forrestmiller34/tft-coach-234.git
 fi
 cd tft-coach-234
 git fetch --all --tags
@@ -143,7 +155,7 @@ LAUNCH_ARGS=(
   --iam-instance-profile "Name=${IAM_ROLE}"
   --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"VolumeSize\":${VOLUME_SIZE_GB},\"VolumeType\":\"gp3\",\"Throughput\":250,\"Iops\":3000}}]"
   --user-data "$USER_DATA"
-  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=tft-sim-graviton4},{Key=Project,Value=tft-coach}]"
+  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=tft-sim-graviton4},{Key=Project,Value=tft-coach-234}]"
   --metadata-options "HttpTokens=required,HttpEndpoint=enabled"
 )
 

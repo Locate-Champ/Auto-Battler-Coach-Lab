@@ -1,8 +1,9 @@
-# AGENTS.md - AI Assistant Rules for TFT Coach
+# CLAUDE.md - AI Assistant Rules for TFT Coach
 
 > Universal rules for any AI coding assistant (Claude Code, Codex, Copilot, Cursor, etc.) working on this codebase.
 > This document is self-contained. Read it fully before making any changes.
-> Last updated: 2026-02-15
+> **Keep AGENTS.md and CLAUDE.md in sync** (they should contain the same rules).
+> Last updated: 2026-02-18
 
 ---
 
@@ -19,8 +20,18 @@ These are the rules that break the project if ignored:
 5. **Legacy simulator is off-limits.** Don’t add new features to `simulator/Simulator/` (Set 4). Use `simulator/core/` and `simulator/game/`.
 6. **Measure before scaling.** Benchmark small (10–1000 games) before big runs. Use end-to-end numbers from `cloud_runner`.
 7. **No invented performance/cost claims.** Only report measured numbers from existing docs or fresh benchmarks you ran.
-8. **Docs + continuity are part of the work.** Keep `docs/` consistent, and update `.agent/CONTINUITY.md` on meaningful deltas.
-9. **Close the loop.** Before any “done” response: run the ntfy notification script and end with **Next Improvements**.
+8. **Cloud simulation ≠ GPU.** The simulator is CPU-bound. For any EC2 simulation run:
+   - Read `AWS_GATES_RUNBOOK.md` before touching the console.
+   - Correct instance: `c8g.48xlarge` (192 ARM cores). Wrong instance: any `g*` GPU type.
+   - Always verify the Rust engine is built (`python -c "import tft_combat_engine"`) before a large run.
+   - Always run a ≤100-game smoke test before any run > 1,000 games.
+
+9. **No secrets in chat.** Never request, accept, or use access tokens (GitHub PATs, AWS keys) in plaintext.
+   - Use GitHub deploy keys (SSH) or instance roles instead.
+   - If a secret is pasted, tell the user to revoke/rotate it and do not echo it back.
+
+10. **Docs + continuity are part of the work.** Keep `docs/` consistent, and update `.agent/CONTINUITY.md` on meaningful deltas.
+11. **Close the loop.** Before any “done” response: run the ntfy notification script and end with **Next Improvements**.
 
 ---
 ## Completion Notification Rule
@@ -165,12 +176,17 @@ A task is done when:
 6. **Verify name mappings** before touching champion/item/trait code. There are three champion name formats and the item API names are obfuscated (see Name Mapping section below).
 7. **Test determinism** after any combat engine change. Run `python -m simulator.benchmark` and verify the determinism checks pass.
 8. **Validate output** after any simulator change. Run `python -m simulator.validate_output <dir>` to confirm all 19 quality checks pass.
-9. **Use Parquet** as the preferred output format. Install `pyarrow` before large runs. JSONL is a 6x larger fallback.
-10. **Measure before scaling.** Always benchmark small (10-1000 games) before running large batches. Use end-to-end numbers from `cloud_runner`, not microbenchmark numbers.
-11. **Use absolute file paths** in responses and references. Repo-root-relative paths like `simulator/core/combat_engine.py` are preferred over ambiguous `../` paths.
-12. **Keep the existing section dividers** in large files. The codebase uses ASCII art comment headers like `# -- Section Name ----` to organize long files.
-13. **Split training data by `game_id`**, never by row. Row-level splits leak future game state.
-14. **Use gate-based progression** for any scale-up work: Gate A (1k) -> Gate B (50k) -> Gate C (250k) -> Gate D (1M), each with measurable pass criteria.
+10. **Use Parquet** as the preferred output format. Install `pyarrow` before large runs. JSONL is a 6x larger fallback.
+11. **Measure before scaling.** Always benchmark small (10-1000 games) before running large batches. Use end-to-end numbers from `cloud_runner`, not microbenchmark numbers.
+12. **Use absolute file paths** in responses and references. Repo-root-relative paths like `simulator/core/combat_engine.py` are preferred over ambiguous `../` paths.
+13. **Keep the existing section dividers** in large files. The codebase uses ASCII art comment headers like `# -- Section Name ----` to organize long files.
+14. **Split training data by `game_id`**, never by row. Row-level splits leak future game state.
+15. **Use gate-based progression** for any scale-up work: Gate A (1k) -> Gate B (50k) -> Gate C (250k) -> Gate D (1M), each with measurable pass criteria.
+16. **Read `AWS_GATES_RUNBOOK.md` before any EC2 action.** It has the correct instance type,
+    launch scripts, Rust build steps, and gate commands. Do not recommend or launch an instance
+    without reading it first. If the user requests a GPU instance for simulation, flag the mismatch
+    explicitly before proceeding.
+
 
 ## DON'Ts (Hard Rules)
 
@@ -182,13 +198,22 @@ A task is done when:
 6. **Do NOT assume data formats.** `combat_data.json` ability variables are **lists** `[0, 1star, 2star, 3star]`, NOT dicts. Always use the `_star_val()` helper.
 7. **Do NOT make up performance numbers or cost estimates.** Always derive them from measured benchmarks in `Current Simulation Setup.txt` or `TFT_CLOUD_SIMULATION_PLAN.md`.
 8. **Do NOT commit unless explicitly asked.** Never auto-commit, auto-push, or create PRs without direct instruction.
-9. **Do NOT use `git status -uall`** - it can cause memory issues on large repos.
-10. **Do NOT add emojis** to code, comments, or documentation unless the user explicitly requests them.
-11. **Do NOT introduce backwards-compatibility hacks** like renaming unused `_vars`, re-exporting dead types, or adding `// removed` comments. If something is unused, delete it completely.
-12. **Do NOT skip validation steps** or bypass safety checks with flags like `--no-verify`. If a check fails, fix the root cause.
-13. **Do NOT use relative imports** between the `simulator/game/` and `simulator/core/` packages. Use absolute imports with `sys.path` manipulation as the codebase already does.
-14. **Do NOT add error handling for scenarios that cannot happen.** Trust internal code and framework guarantees. Only validate at system boundaries.
-15. **Do NOT create feature flags or backwards-compatibility shims.** Just change the code directly.
+9. **Do NOT request, accept, or use secrets in plaintext.** No GitHub PATs, no AWS keys, no copying tokens into SSM commands. Use deploy keys / instance roles. If a user posts a secret, instruct them to revoke/rotate it and redact it from any outputs.
+10. **Do NOT use `git status -uall`** - it can cause memory issues on large repos.
+11. **Do NOT add emojis** to code, comments, or documentation unless the user explicitly requests them.
+12. **Do NOT introduce backwards-compatibility hacks** like renaming unused `_vars`, re-exporting dead types, or adding `// removed` comments. If something is unused, delete it completely.
+13. **Do NOT skip validation steps** or bypass safety checks with flags like `--no-verify`. If a check fails, fix the root cause.
+14. **Do NOT use relative imports** between the `simulator/game/` and `simulator/core/` packages. Use absolute imports with `sys.path` manipulation as the codebase already does.
+15. **Do NOT add error handling for scenarios that cannot happen.** Trust internal code and framework guarantees. Only validate at system boundaries.
+16. **Do NOT create feature flags or backwards-compatibility shims.** Just change the code directly.
+17. **Do NOT launch a GPU instance (`g5`, `g6`, `g6e`, `p3`, etc.) for simulation runs.**
+    GPU instances are for ML training only. Simulation is CPU-bound. The cost of the wrong
+    instance is measured in hours and dollars, not seconds.
+18. **Do NOT start a run > 1,000 games without first verifying:**
+    - `import tft_combat_engine` succeeds (Rust engine is built)
+    - A ≤100-game smoke run completes and shows expected throughput
+    - `--engine rust_full` is explicitly set
+
 
 ---
 
@@ -1003,4 +1028,4 @@ Profiles: `random`, `mixed` (50/30/20), `ladder` (20/45/35), or custom `--agent-
 
 ---
 
-*Last updated: 2026-02-12*
+*Last updated: 2026-02-18*

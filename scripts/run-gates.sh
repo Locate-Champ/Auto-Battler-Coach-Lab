@@ -71,6 +71,12 @@ done
 log() { echo "[$(date +%H:%M:%S)] $*"; }
 die() { echo "[ERROR] $*" >&2; exit 1; }
 
+# Windows-compatible python3 resolver
+PYTHON3=$(command -v python3 2>/dev/null || command -v py 2>/dev/null || echo "")
+[ -z "$PYTHON3" ] && die "python3 (or py) not found on PATH"
+# If using 'py' launcher, pass -3 flag
+[[ "$PYTHON3" == *"py"* && "$PYTHON3" != *"python"* ]] && PYTHON3="$PYTHON3 -3"
+
 # ── SSM command runner ───────────────────────────────────────────────────────
 # Sends a shell script to the instance, waits for completion, prints output.
 ssm_run() {
@@ -91,7 +97,7 @@ ssm_run() {
     --instance-ids "$INSTANCE_ID" \
     --region "$REGION" \
     --document-name "AWS-RunShellScript" \
-    --parameters "{\"commands\":[$(echo "$SCRIPT" | python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))")],\"executionTimeout\":[\"${TIMEOUT}\"],\"workingDirectory\":[\"/home/ubuntu\"]}" \
+    --parameters "{\"commands\":[$(echo "$SCRIPT" | $PYTHON3 -c "import sys,json; print(json.dumps(sys.stdin.read()))")],\"executionTimeout\":[\"${TIMEOUT}\"],\"workingDirectory\":[\"/home/ubuntu\"]}" \
     --timeout-seconds 600 \
     --query 'Command.CommandId' --output text)
 
