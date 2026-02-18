@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional
 
+from coach.artifacts import runtime_outputs_dir
 from coach.state import GameState
 
 
@@ -93,7 +94,7 @@ def _default_comps_path() -> Path:
 
 
 def _default_archetype_artifact_path() -> Path:
-    return Path(__file__).resolve().parents[2] / "outputs" / "coach" / "archetypes.json"
+    return runtime_outputs_dir() / "archetypes.json"
 
 
 def _fallback_perf_reference_path() -> Path:

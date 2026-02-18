@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from typing import Optional
 
+from coach.artifacts import runtime_outputs_dir
 from coach.state import GameState
 from coach.scoring.features import board_power, derive_traits, squash01
 
@@ -118,7 +119,7 @@ class LinearEvaluator(BoardEvaluator):
 
 def default_evaluator() -> BoardEvaluator:
     # Optional: prefer a trained evaluator artifact when present.
-    path = Path(__file__).resolve().parents[2] / "outputs" / "coach" / "evaluator_linear.json"
+    path = runtime_outputs_dir() / "evaluator_linear.json"
     if path.exists():
         try:
             return LinearEvaluator.from_json(path)
