@@ -632,6 +632,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--external-cache-dir", type=str, default=None, help="Directory for xgboost external-memory cache pages")
     parser.add_argument("--keep-external-cache", action="store_true", help="Keep external-memory cache files after training")
     parser.add_argument("--early-stopping-rounds", type=int, default=50, help="Early stopping rounds (set 0 to disable)")
+    parser.add_argument("--feature-workers", type=int, default=0, help="Parallel workers for feature engineering (0=auto)")
     parser.add_argument("--ablation", action="store_true", help="Run feature-group ablation study")
     return parser.parse_args()
 
@@ -648,7 +649,7 @@ def main() -> None:
 
     es_rounds = args.early_stopping_rounds if args.early_stopping_rounds else None
 
-    loader = DataLoader(args.data)
+    loader = DataLoader(args.data, n_workers=args.feature_workers)
     feature_names = loader.feature_engineer.feature_names()
     split_stats: Optional[Dict[str, Any]] = None
     cache_dir: Optional[Path] = None

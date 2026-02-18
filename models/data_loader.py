@@ -3,19 +3,36 @@
 from __future__ import annotations
 
 import json
+import multiprocessing
+import os
 from pathlib import Path
 from typing import Any, Dict, Iterator, List, Optional, Sequence, Tuple
 
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-from .feature_engineering import TFTFeatureEngineer
+from .feature_engineering import FeatureConfig, TFTFeatureEngineer
 from snapshot_schema import normalize_jsonish_fields
 
 try:  # pragma: no cover - optional dependency
     import pyarrow.parquet as pq
 except Exception:  # pragma: no cover - optional dependency
     pq = None
+
+
+_worker_fe: Optional[TFTFeatureEngineer] = None
+
+
+def _init_fe_worker(config: FeatureConfig, repo_root: Path) -> None:
+    """Initialize feature engineer in worker process."""
+    global _worker_fe
+    _worker_fe = TFTFeatureEngineer(config=config, repo_root=repo_root)
+
+
+def _transform_single(row: Dict[str, Any]) -> np.ndarray:
+    """Transform a single row in a worker process."""
+    assert _worker_fe is not None
+    return _worker_fe.transform(row)
 
 
 class DataLoader:
@@ -25,9 +42,12 @@ class DataLoader:
         self,
         data_dir: str | Path,
         feature_engineer: Optional[TFTFeatureEngineer] = None,
+        *,
+        n_workers: int = 0,
     ) -> None:
         self.data_dir = Path(data_dir)
         self.feature_engineer = feature_engineer or TFTFeatureEngineer()
+        self.n_workers = n_workers
 
     def _iter_parquet_rows(
         self,
@@ -200,10 +220,26 @@ class DataLoader:
         return train_rows, test_rows, labels[train_idx], labels[test_idx]
 
     def _vectorize_rows(self, rows: Sequence[Dict[str, Any]]) -> np.ndarray:
-        """Transform rows into feature vectors."""
+        """Transform rows into feature vectors, optionally in parallel."""
         n_features = len(self.feature_engineer.feature_names())
         if not rows:
             return np.zeros((0, n_features), dtype=np.float32)
+
+        workers = self.n_workers
+        if workers == 0:
+            workers = min(os.cpu_count() or 1, 64)
+
+        if workers > 1 and len(rows) >= 500:
+            chunksize = max(1, len(rows) // (workers * 4))
+            print(f"[features] vectorizing {len(rows)} rows with {workers} workers...")
+            with multiprocessing.Pool(
+                processes=workers,
+                initializer=_init_fe_worker,
+                initargs=(self.feature_engineer.config, self.feature_engineer.repo_root),
+            ) as pool:
+                vectors = pool.map(_transform_single, rows, chunksize=chunksize)
+            return np.array(vectors, dtype=np.float32)
+
         result = np.empty((len(rows), n_features), dtype=np.float32)
         for i, row in enumerate(rows):
             result[i] = self.feature_engineer.transform(row)
