@@ -1,0 +1,38 @@
+{
+  "plansDirectory": "./.agent/plans",
+  "permissions": {
+    "deny": [
+      "Read(./results/**)",
+      "Read(./live-logs/**)",
+      "Read(./tmp/**)",
+      "Read(./models/checkpoints/**)",
+      "Read(./archive/**)",
+      "Read(./simulator/Simulator/**)",
+      "Read(./outputs/kb/**)",
+      "Read(./outputs/analysis/**)",
+      "Read(./outputs/reports/**)",
+      "Read(./outputs/tmp/**)",
+      "Read(./outputs/metatft_*.json)",
+      "Read(./outputs/metatft_*.csv)",
+      "Read(./app/frontend/images/**)",
+      "Read(./trait_icons_set16/**)",
+      "Read(./**/node_modules/**)",
+      "Read(./.venv/**)",
+      "Read(./venv/**)",
+      "Read(./**/__pycache__/**)",
+      "Read(./.pytest_cache/**)",
+      "Edit(./results/**)",
+      "Edit(./live-logs/**)",
+      "Edit(./tmp/**)",
+      "Edit(./models/checkpoints/**)",
+      "Edit(./archive/**)",
+      "Edit(./simulator/Simulator/**)",
+      "Edit(./outputs/kb/**)",
+      "Edit(./outputs/analysis/**)",
+      "Edit(./outputs/reports/**)",
+      "Edit(./outputs/tmp/**)",
+      "Edit(./outputs/metatft_*.json)",
+      "Edit(./outputs/metatft_*.csv)"
+    ]
+  }
+}
