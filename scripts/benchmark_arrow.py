@@ -56,14 +56,14 @@ def bench_dict(loader: DataLoader) -> dict:
 def bench_arrow_parallel(loader: DataLoader, workers: int) -> dict:
     """Benchmark Arrow parallel vectorization path."""
     # Override worker count for this benchmark
-    old_workers = loader.workers
-    loader.workers = workers
+    old_workers = loader.n_workers
+    loader.n_workers = workers
 
     t0 = time.perf_counter()
     X = loader.vectorize_arrow_parallel()
     elapsed = time.perf_counter() - t0
 
-    loader.workers = old_workers
+    loader.n_workers = old_workers
     total = len(X)
     return {
         "path": f"arrow_parallel(w={workers})",
