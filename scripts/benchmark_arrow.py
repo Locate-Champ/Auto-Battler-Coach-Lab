@@ -55,23 +55,15 @@ def bench_dict(loader: DataLoader) -> dict:
 
 def bench_arrow_parallel(loader: DataLoader, workers: int) -> dict:
     """Benchmark Arrow parallel vectorization path."""
-    from models.data_loader import vectorize_arrow_parallel
-    import pyarrow.parquet as pq
-    from pathlib import Path as P
-
-    data_dir = P(loader.data_dir)
-    parquet_files = sorted(data_dir.glob("*.parquet"))
-    if not parquet_files:
-        return {"path": "arrow_parallel", "error": "no parquet files"}
+    # Override worker count for this benchmark
+    old_workers = loader.workers
+    loader.workers = workers
 
     t0 = time.perf_counter()
-    X, y = vectorize_arrow_parallel(
-        parquet_files=parquet_files,
-        feature_engineer=loader.feature_engineer,
-        label_column="combat_result",
-        workers=workers,
-    )
+    X = loader.vectorize_arrow_parallel()
     elapsed = time.perf_counter() - t0
+
+    loader.workers = old_workers
     total = len(X)
     return {
         "path": f"arrow_parallel(w={workers})",
@@ -85,6 +77,7 @@ def main():
     parser = argparse.ArgumentParser(description="Benchmark Arrow vs Dict loading")
     parser.add_argument("--data", required=True, help="Path to Gate B output dir")
     parser.add_argument("--skip-dict", action="store_true", help="Skip dict benchmark")
+    parser.add_argument("--skip-arrow-single", action="store_true", help="Skip Arrow single-process")
     parser.add_argument("--parallel-workers", type=int, nargs="+", default=[4, 8, 16],
                         help="Worker counts to test for parallel benchmark")
     args = parser.parse_args()
@@ -107,16 +100,17 @@ def main():
     results = []
 
     # Arrow single-process
-    print("=" * 60)
-    print("Benchmark: Arrow (single-process)")
-    print("=" * 60)
-    r = bench_arrow(loader)
-    results.append(r)
-    print(f"  Time:     {r['elapsed']:.1f}s")
-    print(f"  Train:    {r['train_shape']}")
-    print(f"  Test:     {r['test_shape']}")
-    print(f"  Rows/sec: {r['rows_per_sec']:,.0f}")
-    print()
+    if not args.skip_arrow_single:
+        print("=" * 60)
+        print("Benchmark: Arrow (single-process)")
+        print("=" * 60)
+        r = bench_arrow(loader)
+        results.append(r)
+        print(f"  Time:     {r['elapsed']:.1f}s")
+        print(f"  Train:    {r['train_shape']}")
+        print(f"  Test:     {r['test_shape']}")
+        print(f"  Rows/sec: {r['rows_per_sec']:,.0f}")
+        print()
 
     # Arrow parallel (various worker counts)
     for w in args.parallel_workers:
