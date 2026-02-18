@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import functools
 import json
 import math
 from pathlib import Path
@@ -10,6 +11,17 @@ import re
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 import numpy as np
+
+try:
+    from .fe_fast import (
+        team_summary_fast as _cy_team_summary,
+        parse_units_column_fast as _cy_parse_units_column,
+        CYTHON_AVAILABLE as _CYTHON_FE,
+    )
+except ImportError:
+    _cy_team_summary = None
+    _cy_parse_units_column = None
+    _CYTHON_FE = False
 
 EPSILON = 1e-6
 STAR_SCALING_HP = {1: 1.0, 2: 1.8, 3: 3.24}
@@ -76,6 +88,7 @@ class TraitMetadata:
     breakpoints: Tuple[int, ...]
 
 
+@functools.lru_cache(maxsize=2048)
 def _normalize_token(value: Any) -> str:
     """Normalize free-form names into a stable key."""
     if value is None:
@@ -146,6 +159,7 @@ class TFTFeatureEngineer:
 
         self.traits: List[TraitMetadata] = []
         self.trait_lookup: Dict[str, str] = {}
+        self._trait_api_names: frozenset[str] = frozenset()
 
         self.augment_tiers: Dict[str, int] = {}
         self.augment_flags: Dict[str, Tuple[bool, bool, bool]] = {}
@@ -156,6 +170,7 @@ class TFTFeatureEngineer:
         self.personal_item_scores: Dict[str, float] = {}
 
         self._load_reference_data()
+        self._build_fast_lookup_sets()
         self._feature_names_cache = self._build_feature_names()
 
     def _load_reference_data(self) -> None:
@@ -164,6 +179,85 @@ class TFTFeatureEngineer:
         self._load_items()
         self._load_augments()
         self._load_personal_reference()
+
+    def _build_fast_lookup_sets(self) -> None:
+        """Pre-compute sets for fast item/champion flag detection."""
+        # Item flag sets: map canonical item names to boolean flags
+        self._qss_items: set[str] = set()
+        self._guardbreaker_items: set[str] = set()
+        self._blue_buff_items: set[str] = set()
+        self._shojin_items: set[str] = set()
+        self._morello_items: set[str] = set()
+        self._ionic_items: set[str] = set()
+        for item_name in self.item_stats:
+            key = _normalize_token(item_name)
+            if "quicksilver" in key or key == "qss":
+                self._qss_items.add(item_name)
+            if "guardbreaker" in key:
+                self._guardbreaker_items.add(item_name)
+            if "bluebuff" in key:
+                self._blue_buff_items.add(item_name)
+            if "spearofshojin" in key or "shojin" in key:
+                self._shojin_items.add(item_name)
+            if "morello" in key:
+                self._morello_items.add(item_name)
+            if "ionicspark" in key:
+                self._ionic_items.add(item_name)
+
+        # CC-heavy champion set: precompute from champion API names
+        self._cc_heavy_api_names: frozenset[str] = frozenset(
+            api for api in self.champion_costs
+            if any(cc in _normalize_token(api) for cc in _CC_HEAVY_NAME_KEYS)
+        )
+
+        # Packed champion data: api_name → (cost, hp, ad, as, armor, mr, is_cc_heavy)
+        self._champion_packed: Dict[str, Tuple[float, float, float, float, float, float, bool]] = {}
+        for api_name in self.champion_costs:
+            cstats = self.champion_stats.get(api_name, {})
+            self._champion_packed[api_name] = (
+                float(self.champion_costs[api_name]),
+                cstats.get("hp", 0.0),
+                cstats.get("ad", 0.0),
+                cstats.get("attack_speed", 0.7),
+                cstats.get("armor", 0.0),
+                cstats.get("mr", 0.0),
+                api_name in self._cc_heavy_api_names,
+            )
+
+        # Packed item data: canonical → (ad, ap, hp, as, armor, mr, type_code, is_component, flag_bits)
+        # type_code: 0=offensive, 1=defensive, 2=utility
+        # flag_bits: qss=1, guardbreaker=2, blue_buff=4, shojin=8, morello=16, ionic=32
+        self._item_packed: Dict[str, Tuple[float, float, float, float, float, float, int, bool, int]] = {}
+        for item_name in self.item_stats:
+            istats = self.item_stats[item_name]
+            itype = self.item_types.get(item_name, "utility")
+            type_code = 0 if itype == "offensive" else (1 if itype == "defensive" else 2)
+            is_comp = item_name in self.component_items
+            flags = 0
+            if item_name in self._qss_items: flags |= 1
+            if item_name in self._guardbreaker_items: flags |= 2
+            if item_name in self._blue_buff_items: flags |= 4
+            if item_name in self._shojin_items: flags |= 8
+            if item_name in self._morello_items: flags |= 16
+            if item_name in self._ionic_items: flags |= 32
+            self._item_packed[item_name] = (
+                istats.get("ad", 0.0), istats.get("ap", 0.0), istats.get("hp", 0.0),
+                istats.get("attack_speed", 0.0), istats.get("armor", 0.0),
+                istats.get("magic_resist", 0.0),
+                type_code, is_comp, flags,
+            )
+
+        # Pre-computed personal item scores: canonical_item_name → score
+        # Avoids per-row _normalize_token calls in _personal_features_batch
+        self._item_personal_by_canonical: Dict[str, float] = {}
+        for item_name in self.item_stats:
+            normalized = _normalize_token(item_name)
+            if normalized in self.personal_item_scores:
+                self._item_personal_by_canonical[item_name] = self.personal_item_scores[normalized]
+        for _token_key, canonical in self.item_lookup.items():
+            if canonical not in self._item_personal_by_canonical:
+                if _token_key in self.personal_item_scores:
+                    self._item_personal_by_canonical[canonical] = self.personal_item_scores[_token_key]
 
     def _load_json(self, path: Path, fallback: Any) -> Any:
         if not path.exists():
@@ -248,6 +342,7 @@ class TFTFeatureEngineer:
                     self.trait_lookup[key] = metadata.api_name
 
         self.traits = sorted(trait_rows, key=lambda item: item.api_name)
+        self._trait_api_names: frozenset[str] = frozenset(t.api_name for t in self.traits)
 
     def _normalize_item_effects(self, effects: Mapping[str, Any]) -> Dict[str, float]:
         def pick(keys: Sequence[str]) -> float:
@@ -480,9 +575,8 @@ class TFTFeatureEngineer:
         if value is None:
             return ""
         text = str(value)
-        for trait in self.traits:
-            if text == trait.api_name:
-                return trait.api_name
+        if text in self._trait_api_names:
+            return text
         key = _normalize_token(text)
         return self.trait_lookup.get(key, "")
 
@@ -521,7 +615,7 @@ class TFTFeatureEngineer:
     def _extract_traits(self, row: Mapping[str, Any], prefix: str = "") -> Dict[str, int]:
         raw = _decode_maybe_json(row.get(f"{prefix}traits"))
         traits: Dict[str, int] = {}
-        if isinstance(raw, Mapping):
+        if isinstance(raw, dict):
             for trait_name, count in raw.items():
                 api_name = self._canonical_trait_api(trait_name)
                 if not api_name:
@@ -590,20 +684,29 @@ class TFTFeatureEngineer:
         return units
 
     def _parse_unit(self, raw_unit: Any) -> Optional[Dict[str, Any]]:
-        if not isinstance(raw_unit, Mapping):
+        if not isinstance(raw_unit, dict):
             return None
-        champion = (
-            raw_unit.get("champion_id")
-            or raw_unit.get("name")
-            or raw_unit.get("champion")
-            or raw_unit.get("character_id")
-        )
+
+        # Fast path: Parquet data always has champion_id
+        champion = raw_unit.get("champion_id")
+        if champion is None:
+            champion = raw_unit.get("name") or raw_unit.get("champion") or raw_unit.get("character_id")
+        if not champion:
+            return None
+
         api_name = self._canonical_champion_id(champion)
         if not api_name:
             return None
 
-        star_level = max(1, min(3, _safe_int(raw_unit.get("star_level", raw_unit.get("star", raw_unit.get("tier"))), 1)))
-        items_raw = _decode_maybe_json(raw_unit.get("items", raw_unit.get("itemNames", [])))
+        # Fast path: star_level is always int in Parquet data
+        star_raw = raw_unit.get("star_level")
+        if star_raw is None:
+            star_raw = raw_unit.get("star") or raw_unit.get("tier") or 1
+        star_level = star_raw if isinstance(star_raw, int) and 1 <= star_raw <= 3 else max(1, min(3, _safe_int(star_raw, 1)))
+
+        items_raw = raw_unit.get("items") or raw_unit.get("itemNames")
+        if items_raw is not None and isinstance(items_raw, str):
+            items_raw = _decode_maybe_json(items_raw)
         items: List[str] = []
         if isinstance(items_raw, list):
             for item in items_raw[:3]:
@@ -611,11 +714,13 @@ class TFTFeatureEngineer:
                 if canonical:
                     items.append(canonical)
 
-        position_raw = raw_unit.get("position", raw_unit.get("pos"))
+        position_raw = raw_unit.get("position")
+        if position_raw is None:
+            position_raw = raw_unit.get("pos")
         position: Optional[int]
         if isinstance(position_raw, list) and len(position_raw) == 2:
             position = _safe_int(position_raw[0]) * BOARD_COLS + _safe_int(position_raw[1])
-        elif isinstance(position_raw, Mapping):
+        elif isinstance(position_raw, dict):
             position = _safe_int(position_raw.get("row")) * BOARD_COLS + _safe_int(position_raw.get("col"))
         elif position_raw is None:
             position = None
@@ -634,7 +739,12 @@ class TFTFeatureEngineer:
             return None
         return position // BOARD_COLS
 
-    def _team_summary(self, units: Sequence[Mapping[str, Any]]) -> Dict[str, float]:
+    def _team_summary(self, units: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
+        if _CYTHON_FE and self._champion_packed:
+            return _cy_team_summary(
+                list(units), self._champion_packed, self._item_packed,
+                self._canonical_item_name, math.ceil(len(units) / 2) if units else 0,
+            )
         if not units:
             return {
                 "num_units": 0.0,
@@ -674,15 +784,25 @@ class TFTFeatureEngineer:
                 "cc_heavy_units": 0.0,
                 "physical_share": 0.5,
                 "magic_share": 0.5,
+                "has_qss": 0.0,
+                "has_guardbreaker": 0.0,
+                "has_blue_buff": 0.0,
+                "has_shojin": 0.0,
+                "has_morello": 0.0,
+                "has_ionic": 0.0,
+                "carry_api_name": "",
             }
 
-        costs: List[float] = []
-        stars: List[float] = []
+        n_units = 0
+        total_cost = 0.0
+        star_sum = 0.0
+        num_3_stars = 0.0
+        cost_counts: Dict[float, float] = {}
         hp_pool = 0.0
         ad_pool = 0.0
-        attack_speeds: List[float] = []
-        armors: List[float] = []
-        mrs: List[float] = []
+        as_sum = 0.0
+        armor_sum = 0.0
+        mr_sum = 0.0
         team_dps = 0.0
         frontline_hp = 0.0
         backline_damage = 0.0
@@ -700,35 +820,50 @@ class TFTFeatureEngineer:
         item_mr = 0.0
         qss_count = 0.0
         cc_heavy_units = 0.0
+        has_qss = 0.0
+        has_guardbreaker = 0.0
+        has_blue_buff = 0.0
+        has_shojin = 0.0
+        has_morello = 0.0
+        has_ionic = 0.0
 
         best_carry_key = (-1, -1, -1)
         carry_cost = 0.0
         carry_star = 0.0
         carry_item_count = 0.0
+        carry_api_name = ""
+
+        half_count = math.ceil(len(units) / 2)
+        _champion_packed = self._champion_packed
+        _item_packed = self._item_packed
+        _canonical_item = self._canonical_item_name
 
         for unit in units:
-            api_name = str(unit.get("champion_id", ""))
-            stats = self.champion_stats.get(api_name, {})
-            cost = float(self.champion_costs.get(api_name, 0))
-            star = float(max(1, min(3, _safe_int(unit.get("star_level"), default=1))))
-            hp_scale = STAR_SCALING_HP.get(int(star), 1.0)
-            ad_scale = STAR_SCALING_AD.get(int(star), 1.0)
+            api_name = unit.get("champion_id", "")
+            packed = _champion_packed.get(api_name)
+            if packed is None:
+                continue
+            cost, base_hp, base_ad, base_as, base_armor, base_mr, is_cc = packed
 
-            base_hp = stats.get("hp", 0.0)
-            base_ad = stats.get("ad", 0.0)
-            base_as = stats.get("attack_speed", 0.7)
-            base_armor = stats.get("armor", 0.0)
-            base_mr = stats.get("mr", 0.0)
+            star_raw = unit.get("star_level", 1)
+            star_int = star_raw if isinstance(star_raw, int) and 1 <= star_raw <= 3 else max(1, min(3, _safe_int(star_raw, 1)))
+            star = float(star_int)
+            hp_scale = STAR_SCALING_HP.get(star_int, 1.0)
+            ad_scale = STAR_SCALING_AD.get(star_int, 1.0)
 
-            costs.append(cost)
-            stars.append(star)
+            n_units += 1
+            total_cost += cost
+            star_sum += star
+            if star_int >= 3:
+                num_3_stars += 1.0
+            cost_counts[cost] = cost_counts.get(cost, 0.0) + 1.0
 
             scaled_hp = base_hp * hp_scale
             scaled_ad = base_ad * ad_scale
             hp_pool += scaled_hp
             ad_pool += scaled_ad
 
-            unit_items = unit.get("items", []) or []
+            unit_items = unit.get("items") or []
             item_count = len(unit_items)
             total_items += item_count
 
@@ -740,38 +875,44 @@ class TFTFeatureEngineer:
             bonus_mr = 0.0
 
             for raw_item in unit_items:
-                canonical_item = self._canonical_item_name(raw_item)
-                stats_by_item = self.item_stats.get(canonical_item, {})
-                bonus_ad += stats_by_item.get("ad", 0.0)
-                bonus_ap += stats_by_item.get("ap", 0.0)
-                bonus_hp += stats_by_item.get("hp", 0.0)
-                bonus_as += stats_by_item.get("attack_speed", 0.0)
-                bonus_armor += stats_by_item.get("armor", 0.0)
-                bonus_mr += stats_by_item.get("magic_resist", 0.0)
+                canonical_item = _canonical_item(raw_item)
+                ipacked = _item_packed.get(canonical_item)
+                if ipacked is None:
+                    continue
+                i_ad, i_ap, i_hp, i_as, i_armor, i_mr, itype, is_comp, iflags = ipacked
 
-                item_ad += stats_by_item.get("ad", 0.0)
-                item_ap += stats_by_item.get("ap", 0.0)
-                item_hp += stats_by_item.get("hp", 0.0)
-                item_as += stats_by_item.get("attack_speed", 0.0)
-                item_armor += stats_by_item.get("armor", 0.0)
-                item_mr += stats_by_item.get("magic_resist", 0.0)
+                bonus_ad += i_ad;   item_ad += i_ad
+                bonus_ap += i_ap;   item_ap += i_ap
+                bonus_hp += i_hp;   item_hp += i_hp
+                bonus_as += i_as;   item_as += i_as
+                bonus_armor += i_armor; item_armor += i_armor
+                bonus_mr += i_mr;   item_mr += i_mr
 
-                if canonical_item in self.component_items:
+                if is_comp:
                     components += 1.0
                 else:
                     completed_items += 1.0
 
-                item_type = self.item_types.get(canonical_item, "utility")
-                if item_type == "offensive":
+                if itype == 0:
                     item_offensive += 1.0
-                elif item_type == "defensive":
+                elif itype == 1:
                     item_defensive += 1.0
                 else:
                     item_utility += 1.0
 
-                item_key = _normalize_token(canonical_item)
-                if "quicksilver" in item_key or item_key == "qss":
+                if iflags & 1:
                     qss_count += 1.0
+                    has_qss = 1.0
+                if iflags & 2:
+                    has_guardbreaker = 1.0
+                if iflags & 4:
+                    has_blue_buff = 1.0
+                if iflags & 8:
+                    has_shojin = 1.0
+                if iflags & 16:
+                    has_morello = 1.0
+                if iflags & 32:
+                    has_ionic = 1.0
 
             effective_as = min(ATTACK_SPEED_CAP, base_as * (1.0 + max(0.0, bonus_as)))
             effective_armor = base_armor + bonus_armor
@@ -779,28 +920,30 @@ class TFTFeatureEngineer:
             effective_ad = scaled_ad * (1.0 + max(0.0, bonus_ad))
             effective_hp = scaled_hp + bonus_hp
 
-            attack_speeds.append(effective_as)
-            armors.append(effective_armor)
-            mrs.append(effective_mr)
+            as_sum += effective_as
+            armor_sum += effective_armor
+            mr_sum += effective_mr
             team_dps += effective_ad * effective_as
 
-            row_index = self._position_row(unit.get("position"))  # type: ignore[arg-type]
-            if row_index is None:
-                row_index = 1 if len(costs) <= math.ceil(len(units) / 2) else 2
+            pos = unit.get("position")
+            if pos is not None and pos >= 0:
+                row_index = pos // BOARD_COLS
+            else:
+                row_index = 1 if n_units <= half_count else 2
             if row_index <= 1:
                 frontline_hp += effective_hp
             else:
                 backline_damage += effective_ad + bonus_ap
 
-            carry_key = (item_count, int(cost), int(star))
+            carry_key = (item_count, int(cost), star_int)
             if carry_key > best_carry_key:
                 best_carry_key = carry_key
                 carry_cost = cost
                 carry_star = star
                 carry_item_count = float(item_count)
+                carry_api_name = api_name
 
-            unit_key = _normalize_token(api_name)
-            if any(cc in unit_key for cc in _CC_HEAVY_NAME_KEYS):
+            if is_cc:
                 cc_heavy_units += 1.0
 
         total_magic_proxy = item_ap + 1.0
@@ -808,23 +951,23 @@ class TFTFeatureEngineer:
         physical_share = total_physical_proxy / (total_physical_proxy + total_magic_proxy)
         magic_share = 1.0 - physical_share
 
-        counts_by_cost = {cost: costs.count(float(cost)) for cost in (1, 2, 3, 4, 5, 7)}
+        inv_n = 1.0 / max(1, n_units)
         return {
-            "num_units": float(len(units)),
-            "total_cost": float(sum(costs)),
-            "avg_star": float(np.mean(stars)) if stars else 0.0,
-            "num_3_stars": float(sum(1.0 for star in stars if star >= 3.0)),
-            "num_cost_1": float(counts_by_cost[1]),
-            "num_cost_2": float(counts_by_cost[2]),
-            "num_cost_3": float(counts_by_cost[3]),
-            "num_cost_4": float(counts_by_cost[4]),
-            "num_cost_5": float(counts_by_cost[5]),
-            "num_cost_7": float(counts_by_cost[7]),
+            "num_units": float(n_units),
+            "total_cost": total_cost,
+            "avg_star": star_sum * inv_n,
+            "num_3_stars": num_3_stars,
+            "num_cost_1": cost_counts.get(1.0, 0.0),
+            "num_cost_2": cost_counts.get(2.0, 0.0),
+            "num_cost_3": cost_counts.get(3.0, 0.0),
+            "num_cost_4": cost_counts.get(4.0, 0.0),
+            "num_cost_5": cost_counts.get(5.0, 0.0),
+            "num_cost_7": cost_counts.get(7.0, 0.0),
             "total_hp_pool": float(hp_pool),
             "total_ad_pool": float(ad_pool),
-            "avg_attack_speed": float(np.mean(attack_speeds)) if attack_speeds else 0.0,
-            "avg_armor": float(np.mean(armors)) if armors else 0.0,
-            "avg_mr": float(np.mean(mrs)) if mrs else 0.0,
+            "avg_attack_speed": as_sum * inv_n,
+            "avg_armor": armor_sum * inv_n,
+            "avg_mr": mr_sum * inv_n,
             "team_dps": float(team_dps),
             "frontline_hp": float(frontline_hp),
             "backline_damage": float(backline_damage),
@@ -847,6 +990,13 @@ class TFTFeatureEngineer:
             "cc_heavy_units": float(cc_heavy_units),
             "physical_share": float(physical_share),
             "magic_share": float(magic_share),
+            "has_qss": has_qss,
+            "has_guardbreaker": has_guardbreaker,
+            "has_blue_buff": has_blue_buff,
+            "has_shojin": has_shojin,
+            "has_morello": has_morello,
+            "has_ionic": has_ionic,
+            "carry_api_name": carry_api_name,
         }
 
     def _composition_feature_names(self) -> List[str]:
@@ -1005,27 +1155,16 @@ class TFTFeatureEngineer:
     ) -> List[float]:
         units = _units if _units is not None else self._extract_units(row, prefix="")
         summary = _summary if _summary is not None else self._team_summary(units)
-        normalized_items = [
-            _normalize_token(self._canonical_item_name(item))
-            for unit in units
-            for item in unit.get("items", [])
-        ]
-        has_qss = 1.0 if any("quicksilver" in item or item == "qss" for item in normalized_items) else 0.0
-        has_guardbreaker = 1.0 if any("guardbreaker" in item for item in normalized_items) else 0.0
-        has_blue_buff = 1.0 if any("bluebuff" in item for item in normalized_items) else 0.0
-        has_shojin = 1.0 if any("spearofshojin" in item or "shojin" in item for item in normalized_items) else 0.0
-        has_morello = 1.0 if any("morello" in item for item in normalized_items) else 0.0
-        has_ionic = 1.0 if any("ionicspark" in item for item in normalized_items) else 0.0
         carry_has_bis = 1.0 if summary["carry_item_count"] >= 3.0 else 0.0
         return [
             summary["total_completed_items"],
             summary["total_components"],
-            has_qss,
-            has_guardbreaker,
-            has_blue_buff,
-            has_shojin,
-            has_morello,
-            has_ionic,
+            summary["has_qss"],
+            summary["has_guardbreaker"],
+            summary["has_blue_buff"],
+            summary["has_shojin"],
+            summary["has_morello"],
+            summary["has_ionic"],
             summary["carry_item_count"],
             carry_has_bis,
             summary["item_offensive"],
@@ -1236,10 +1375,9 @@ class TFTFeatureEngineer:
 
         if self.config.use_composition:
             width = len(self._composition_feature_names())
-            for i in range(n):
-                result[i, col:col + width] = self._composition_features(
-                    rows[i], _units=all_units[i], _summary=all_summaries[i], _traits=all_traits[i]
-                )
+            result[:, col:col + width] = self._composition_features_batch(
+                rows, all_units, all_summaries, all_traits
+            )
             col += width
 
         if self.config.use_economy:
@@ -1254,32 +1392,290 @@ class TFTFeatureEngineer:
 
         if self.config.use_items:
             width = len(self._item_feature_names())
-            for i in range(n):
-                result[i, col:col + width] = self._item_features(
-                    rows[i], _units=all_units[i], _summary=all_summaries[i]
-                )
+            result[:, col:col + width] = self._item_features_batch(all_summaries)
             col += width
 
         if self.config.use_augments:
             width = len(self._augment_feature_names())
-            for i in range(n):
-                result[i, col:col + width] = self._augment_features(rows[i])
+            result[:, col:col + width] = self._augment_features_batch(rows)
             col += width
 
         if self.config.use_matchup:
             width = len(self._matchup_feature_names())
-            for i in range(n):
-                result[i, col:col + width] = self._matchup_features(
-                    rows[i], _units=all_units[i], _summary=all_summaries[i], _traits=all_traits[i]
-                )
+            result[:, col:col + width] = self._matchup_features_batch(
+                rows, all_summaries, all_traits
+            )
             col += width
 
         if self.config.use_personal_weights:
             width = len(self._personal_feature_names())
-            for i in range(n):
-                result[i, col:col + width] = self._personal_features(
-                    rows[i], _units=all_units[i], _summary=all_summaries[i]
-                )
+            result[:, col:col + width] = self._personal_features_batch(
+                rows, all_units, all_summaries
+            )
+            col += width
+
+        return result
+
+    def _parse_units_column(self, decoded_col: List[Any]) -> List[List[Dict[str, Any]]]:
+        """Parse a column of decoded unit lists into parsed unit dicts.
+
+        Uses Cython fast path when available; otherwise inlines _parse_unit
+        and _canonical_champion_id/_canonical_item_name to avoid per-call
+        method dispatch overhead.
+        """
+        if _CYTHON_FE and _cy_parse_units_column is not None:
+            return _cy_parse_units_column(
+                decoded_col, self.champion_costs, self.champion_lookup,
+                self.item_stats, self.item_lookup,
+            )
+
+        # Inlined Python fallback: avoid method dispatch per unit
+        result: List[List[Dict[str, Any]]] = []
+        _champ_costs = self.champion_costs
+        _champ_lookup = self.champion_lookup
+        _item_stats = self.item_stats
+        _item_lookup = self.item_lookup
+
+        for raw_units in decoded_col:
+            if not isinstance(raw_units, list):
+                result.append([])
+                continue
+            parsed: List[Dict[str, Any]] = []
+            for raw_unit in raw_units:
+                if not isinstance(raw_unit, dict):
+                    continue
+
+                champion = raw_unit.get("champion_id")
+                if champion is None:
+                    champion = raw_unit.get("name") or raw_unit.get("champion") or raw_unit.get("character_id")
+                if not champion:
+                    continue
+
+                api_name = champion if isinstance(champion, str) else str(champion)
+                if api_name not in _champ_costs:
+                    api_name = _champ_lookup.get(_normalize_token(api_name), "")
+                    if not api_name:
+                        continue
+
+                star_raw = raw_unit.get("star_level")
+                if star_raw is None:
+                    star_raw = raw_unit.get("star") or raw_unit.get("tier") or 1
+                if isinstance(star_raw, int) and 1 <= star_raw <= 3:
+                    star_level = star_raw
+                else:
+                    star_level = max(1, min(3, _safe_int(star_raw, 1)))
+
+                items_raw = raw_unit.get("items") or raw_unit.get("itemNames")
+                if items_raw is not None and isinstance(items_raw, str):
+                    items_raw = _decode_maybe_json(items_raw)
+                items: List[str] = []
+                if isinstance(items_raw, list):
+                    for item in items_raw[:3]:
+                        item_str = item if isinstance(item, str) else str(item)
+                        if item_str in _item_stats:
+                            items.append(item_str)
+                        else:
+                            key = _normalize_token(item_str)
+                            canonical = _item_lookup.get(key, item_str)
+                            if canonical:
+                                items.append(canonical)
+
+                position_raw = raw_unit.get("position")
+                if position_raw is None:
+                    position_raw = raw_unit.get("pos")
+                position: Optional[int] = None
+                if isinstance(position_raw, int):
+                    position = position_raw
+                elif isinstance(position_raw, list) and len(position_raw) == 2:
+                    position = _safe_int(position_raw[0]) * BOARD_COLS + _safe_int(position_raw[1])
+                elif isinstance(position_raw, dict):
+                    position = _safe_int(position_raw.get("row")) * BOARD_COLS + _safe_int(position_raw.get("col"))
+                elif position_raw is not None:
+                    position = _safe_int(position_raw)
+
+                parsed.append({
+                    "champion_id": api_name,
+                    "star_level": star_level,
+                    "items": items,
+                    "position": position,
+                })
+            result.append(parsed)
+        return result
+
+    def _parse_traits_column(self, decoded_col: List[Any]) -> List[Dict[str, int]]:
+        """Parse a column of decoded trait dicts into canonical trait counts."""
+        result: List[Dict[str, int]] = []
+        _api_names = self._trait_api_names
+        for raw_traits in decoded_col:
+            traits: Dict[str, int] = {}
+            if isinstance(raw_traits, dict):
+                for k, v in raw_traits.items():
+                    if k in _api_names:
+                        traits[k] = _safe_int(v, 0)
+                    else:
+                        api = self._canonical_trait_api(k)
+                        if api:
+                            traits[api] = _safe_int(v, 0)
+            result.append(traits)
+        return result
+
+    def _augment_features_from_decoded(self, augments_decoded: List[Any]) -> np.ndarray:
+        """Compute augment features from pre-decoded augment lists (Arrow path)."""
+        n = len(augments_decoded)
+        result = np.empty((n, 7), dtype=np.float32)
+        _encoding = self.augment_encoding
+        _tiers = self.augment_tiers
+        _flags_map = self.augment_flags
+        _lookup = self.augment_lookup
+
+        for i in range(n):
+            raw = augments_decoded[i]
+            augments: List[str] = []
+            if isinstance(raw, list):
+                for aug in raw[:3]:
+                    api_name = str(aug)
+                    if api_name in _encoding:
+                        augments.append(api_name)
+                    else:
+                        key = _normalize_token(api_name)
+                        augments.append(_lookup.get(key, api_name))
+            while len(augments) < 3:
+                augments.append("")
+
+            tier_sum = 0.0
+            has_econ = 0.0
+            has_combat = 0.0
+            has_trait = 0.0
+            encoded_0 = 0.0
+            encoded_1 = 0.0
+            encoded_2 = 0.0
+            for idx, aug in enumerate(augments):
+                if not aug:
+                    continue
+                tier_sum += float(_tiers.get(aug, 2))
+                flags = _flags_map.get(aug, (False, True, False))
+                if flags[0]:
+                    has_econ = 1.0
+                if flags[1]:
+                    has_combat = 1.0
+                if flags[2]:
+                    has_trait = 1.0
+                enc = float(_encoding.get(aug, 0))
+                if idx == 0:
+                    encoded_0 = enc
+                elif idx == 1:
+                    encoded_1 = enc
+                else:
+                    encoded_2 = enc
+            result[i, 0] = tier_sum
+            result[i, 1] = has_econ
+            result[i, 2] = has_combat
+            result[i, 3] = has_trait
+            result[i, 4] = encoded_0
+            result[i, 5] = encoded_1
+            result[i, 6] = encoded_2
+        return result
+
+    def transform_arrow_batch(self, batch: Any) -> np.ndarray:
+        """Transform an Arrow RecordBatch without full to_pylist().
+
+        Decodes JSON columns individually and extracts scalar columns to numpy,
+        skipping Python dict creation for scalar columns entirely.  Economy
+        features are computed as pure numpy ops with zero dict access.
+        """
+        n = batch.num_rows
+        if n == 0:
+            return np.zeros((0, len(self._feature_names_cache)), dtype=np.float32)
+
+        schema_names = set(batch.schema.names)
+
+        def _col_np(name: str, default: float = 0.0) -> np.ndarray:
+            if name in schema_names:
+                return batch.column(name).to_numpy(zero_copy_only=False).astype(np.float32)
+            return np.full(n, default, dtype=np.float32)
+
+        def _col_decoded(name: str) -> List[Any]:
+            if name not in schema_names:
+                return [None] * n
+            return [_decode_maybe_json(v) for v in batch.column(name).to_pylist()]
+
+        # -- Scalar columns → numpy (no Python dict creation) --
+        level_arr = _col_np("level")
+        hp_arr = _col_np("hp")
+        gold_arr = _col_np("gold")
+        round_arr = _col_np("round")
+        streak_arr = _col_np("streak")
+        opp_hp_arr = _col_np("opponent_hp")
+
+        # -- JSON columns → per-column decoded Python lists --
+        units_decoded = _col_decoded("units")
+        traits_decoded = _col_decoded("traits")
+        augments_decoded = _col_decoded("augments")
+
+        # -- Pre-parse units, traits, summaries --
+        all_units = self._parse_units_column(units_decoded)
+        all_traits = self._parse_traits_column(traits_decoded)
+        all_summaries = [self._team_summary(u) for u in all_units]
+
+        # -- Build result matrix --
+        n_features = len(self._feature_names_cache)
+        result = np.empty((n, n_features), dtype=np.float32)
+        col = 0
+
+        if self.config.use_composition:
+            width = len(self._composition_feature_names())
+            result[:, col:col + width] = self._composition_features_batch(
+                all_summaries, all_units, all_summaries, all_traits)
+            col += width
+
+        if self.config.use_economy:
+            width = len(self._economy_feature_names())
+            stages = np.floor(round_arr / DEFAULT_STAGE_DIVISOR).astype(np.float32) + 1.0
+            interests = np.minimum(5.0, np.maximum(0.0, np.floor(gold_arr / 10.0)))
+            result[:, col] = level_arr
+            result[:, col + 1] = hp_arr
+            result[:, col + 2] = hp_arr * 0.01
+            result[:, col + 3] = gold_arr
+            result[:, col + 4] = streak_arr
+            result[:, col + 5] = round_arr
+            result[:, col + 6] = stages
+            result[:, col + 7] = interests
+            col += width
+
+        if self.config.use_traits:
+            width = len(self._trait_feature_names())
+            result[:, col:col + width] = self._trait_features_batch(all_traits)
+            col += width
+
+        if self.config.use_items:
+            width = len(self._item_feature_names())
+            result[:, col:col + width] = self._item_features_batch(all_summaries)
+            col += width
+
+        if self.config.use_augments:
+            width = len(self._augment_feature_names())
+            result[:, col:col + width] = self._augment_features_from_decoded(augments_decoded)
+            col += width
+
+        if self.config.use_matchup:
+            width = len(self._matchup_feature_names())
+            opp_units_decoded = _col_decoded("opponent_units")
+            opp_traits_decoded = _col_decoded("opponent_traits")
+            all_opp_units = self._parse_units_column(opp_units_decoded)
+            all_opp_traits = self._parse_traits_column(opp_traits_decoded)
+            all_opp_summaries = [self._team_summary(u) for u in all_opp_units]
+            result[:, col:col + width] = self._matchup_features_batch(
+                [], all_summaries, all_traits,
+                all_opp_summaries=all_opp_summaries,
+                all_opp_traits=all_opp_traits,
+                hp_arr=hp_arr, opp_hp_arr=opp_hp_arr, round_arr=round_arr,
+            )
+            col += width
+
+        if self.config.use_personal_weights:
+            width = len(self._personal_feature_names())
+            result[:, col:col + width] = self._personal_features_batch(
+                all_summaries, all_units, all_summaries)
             col += width
 
         return result
@@ -1338,6 +1734,234 @@ class TFTFeatureEngineer:
         result[:, 0::3] = counts
         result[:, 1::3] = actives
         result[:, 2::3] = tiers
+        return result
+
+    def _composition_features_batch(
+        self,
+        rows: Sequence[Mapping[str, Any]],
+        all_units: List[List[Dict[str, Any]]],
+        all_summaries: List[Dict[str, float]],
+        all_traits: List[Dict[str, int]],
+    ) -> np.ndarray:
+        """Vectorized composition features for a batch."""
+        n = len(rows)
+        result = np.empty((n, 21), dtype=np.float32)
+        for i in range(n):
+            s = all_summaries[i]
+            trait_active_count = float(sum(1 for v in all_traits[i].values() if v > 0))
+            total_ap_pool = s["item_ap"] + (trait_active_count * 5.0)
+            result[i, 0] = s["total_cost"]
+            result[i, 1] = s["avg_star"]
+            result[i, 2] = s["num_3_stars"]
+            result[i, 3] = s["num_units"]
+            result[i, 4] = s["num_cost_1"]
+            result[i, 5] = s["num_cost_2"]
+            result[i, 6] = s["num_cost_3"]
+            result[i, 7] = s["num_cost_4"]
+            result[i, 8] = s["num_cost_5"]
+            result[i, 9] = s["num_cost_7"]
+            result[i, 10] = s["total_hp_pool"]
+            result[i, 11] = s["total_ad_pool"]
+            result[i, 12] = total_ap_pool
+            result[i, 13] = s["avg_attack_speed"]
+            result[i, 14] = s["avg_armor"]
+            result[i, 15] = s["avg_mr"]
+            result[i, 16] = s["team_dps"]
+            result[i, 17] = s["frontline_hp"]
+            result[i, 18] = s["backline_damage"]
+            result[i, 19] = s["carry_cost"]
+            result[i, 20] = s["carry_star"]
+        return result
+
+    def _item_features_batch(
+        self,
+        all_summaries: List[Dict[str, float]],
+    ) -> np.ndarray:
+        """Vectorized item features for a batch (flags pre-computed in summary)."""
+        n = len(all_summaries)
+        result = np.empty((n, 19), dtype=np.float32)
+        for i in range(n):
+            s = all_summaries[i]
+            result[i, 0] = s["total_completed_items"]
+            result[i, 1] = s["total_components"]
+            result[i, 2] = s["has_qss"]
+            result[i, 3] = s["has_guardbreaker"]
+            result[i, 4] = s["has_blue_buff"]
+            result[i, 5] = s["has_shojin"]
+            result[i, 6] = s["has_morello"]
+            result[i, 7] = s["has_ionic"]
+            result[i, 8] = s["carry_item_count"]
+            result[i, 9] = 1.0 if s["carry_item_count"] >= 3.0 else 0.0
+            result[i, 10] = s["item_offensive"]
+            result[i, 11] = s["item_defensive"]
+            result[i, 12] = s["item_utility"]
+            result[i, 13] = s["item_ad"]
+            result[i, 14] = s["item_ap"]
+            result[i, 15] = s["item_hp"]
+            result[i, 16] = s["item_as"]
+            result[i, 17] = s["item_armor"]
+            result[i, 18] = s["item_mr"]
+        return result
+
+    def _augment_features_batch(
+        self,
+        rows: Sequence[Mapping[str, Any]],
+    ) -> np.ndarray:
+        """Vectorized augment features for a batch."""
+        n = len(rows)
+        result = np.empty((n, 7), dtype=np.float32)
+        for i in range(n):
+            augments = self._extract_augments(rows[i])
+            tier_sum = 0.0
+            has_econ = 0.0
+            has_combat = 0.0
+            has_trait = 0.0
+            encoded_0 = 0.0
+            encoded_1 = 0.0
+            encoded_2 = 0.0
+            for idx, augment in enumerate(augments):
+                if not augment:
+                    continue
+                tier_sum += float(self.augment_tiers.get(augment, 2))
+                flags = self.augment_flags.get(augment, (False, True, False))
+                if flags[0]:
+                    has_econ = 1.0
+                if flags[1]:
+                    has_combat = 1.0
+                if flags[2]:
+                    has_trait = 1.0
+                enc = float(self.augment_encoding.get(augment, 0))
+                if idx == 0:
+                    encoded_0 = enc
+                elif idx == 1:
+                    encoded_1 = enc
+                else:
+                    encoded_2 = enc
+            result[i, 0] = tier_sum
+            result[i, 1] = has_econ
+            result[i, 2] = has_combat
+            result[i, 3] = has_trait
+            result[i, 4] = encoded_0
+            result[i, 5] = encoded_1
+            result[i, 6] = encoded_2
+        return result
+
+    def _matchup_features_batch(
+        self,
+        rows: Sequence[Mapping[str, Any]],
+        all_summaries: List[Dict[str, Any]],
+        all_traits: List[Dict[str, int]],
+        *,
+        all_opp_summaries: Optional[List[Dict[str, Any]]] = None,
+        all_opp_traits: Optional[List[Dict[str, int]]] = None,
+        hp_arr: Optional[np.ndarray] = None,
+        opp_hp_arr: Optional[np.ndarray] = None,
+        round_arr: Optional[np.ndarray] = None,
+    ) -> np.ndarray:
+        """Vectorized matchup features for a batch.
+
+        When pre-computed opponent data and numpy scalar arrays are provided
+        (Arrow path), skips per-row extraction and dict access entirely.
+        """
+        n = len(all_summaries)
+        result = np.empty((n, 15), dtype=np.float32)
+        for i in range(n):
+            if all_opp_summaries is not None:
+                opp_summary = all_opp_summaries[i]
+                opp_traits_i = all_opp_traits[i] if all_opp_traits is not None else {}
+            else:
+                row = rows[i]
+                opp_units = self._extract_units(row, prefix="opponent_")
+                opp_traits_i = self._extract_traits(row, prefix="opponent_")
+                opp_summary = self._team_summary(opp_units)
+            your = all_summaries[i]
+
+            if hp_arr is not None:
+                hp_you = float(hp_arr[i])
+                hp_opp = float(opp_hp_arr[i]) if opp_hp_arr is not None else 0.0
+                round_num = float(round_arr[i]) if round_arr is not None else 0.0
+            else:
+                row = rows[i]
+                hp_you = _safe_float(row.get("hp"))
+                hp_opp = _safe_float(row.get("opponent_hp", row.get("enemy_hp")))
+                round_num = _safe_float(row.get("round"))
+            stage = float(int(round_num // DEFAULT_STAGE_DIVISOR) + 1)
+
+            your_active = set(name for name, count in all_traits[i].items() if count > 0)
+            opp_active = set(name for name, count in opp_traits_i.items() if count > 0)
+            trait_overlap = float(len(your_active & opp_active))
+
+            result[i, 0] = your["total_cost"] - opp_summary["total_cost"]
+            result[i, 1] = your["avg_star"] - opp_summary["avg_star"]
+            result[i, 2] = hp_you - hp_opp
+            result[i, 3] = your["total_items"] - opp_summary["total_items"]
+            result[i, 4] = your["frontline_hp"] / max(EPSILON, opp_summary["frontline_hp"])
+            result[i, 5] = your["backline_damage"] / max(EPSILON, opp_summary["backline_damage"] + 1.0)
+            result[i, 6] = your["avg_armor"] - (opp_summary["physical_share"] * 100.0)
+            result[i, 7] = your["avg_mr"] - (opp_summary["magic_share"] * 100.0)
+            result[i, 8] = your["qss_count"] - opp_summary["cc_heavy_units"]
+            result[i, 9] = trait_overlap
+            result[i, 10] = your["carry_cost"] - opp_summary["carry_cost"]
+            result[i, 11] = your["carry_star"] - opp_summary["carry_star"]
+            result[i, 12] = your["team_dps"] - opp_summary["team_dps"]
+            result[i, 13] = your["num_units"] - opp_summary["num_units"]
+            result[i, 14] = max(0.0, stage * 10.0 - hp_you)
+        return result
+
+    def _personal_features_batch(
+        self,
+        rows: Sequence[Mapping[str, Any]],
+        all_units: List[List[Dict[str, Any]]],
+        all_summaries: List[Dict[str, Any]],
+    ) -> np.ndarray:
+        """Vectorized personal features for a batch."""
+        n = len(rows)
+        result = np.empty((n, 3), dtype=np.float32)
+        _personal_carry = self.personal_carry_stats
+        _item_personal = self._item_personal_by_canonical
+        _canonical_item = self._canonical_item_name
+
+        for i in range(n):
+            units = all_units[i]
+            summary = all_summaries[i]
+            if not units:
+                result[i, 0] = 0.0
+                result[i, 1] = 4.5
+                result[i, 2] = 0.0
+                continue
+
+            carry_name = summary.get("carry_api_name", "")
+            if not carry_name:
+                # Fallback for Cython path that may not return carry_api_name
+                best_key = (-1, -1, -1)
+                for unit in units:
+                    packed = self._champion_packed.get(unit.get("champion_id", ""))
+                    if packed is None:
+                        continue
+                    star = unit.get("star_level", 1)
+                    item_count = len(unit.get("items") or ())
+                    key = (item_count, int(packed[0]), star if isinstance(star, int) else 1)
+                    if key > best_key:
+                        best_key = key
+                        carry_name = unit.get("champion_id", "")
+
+            carry_key = _normalize_token(carry_name.replace("TFT16_", "").replace("TFT_", ""))
+            carry_stats = _personal_carry.get(carry_key, (0.0, 4.5))
+
+            item_score_sum = 0.0
+            item_score_count = 0
+            for unit in units:
+                for item in unit.get("items") or ():
+                    canonical = _canonical_item(item)
+                    score = _item_personal.get(canonical)
+                    if score is not None:
+                        item_score_sum += score
+                        item_score_count += 1
+            item_personal_score = item_score_sum / item_score_count if item_score_count else 0.0
+
+            result[i, 0] = float(carry_stats[0])
+            result[i, 1] = float(carry_stats[1])
+            result[i, 2] = item_personal_score + (summary["carry_item_count"] * 0.01)
         return result
 
     def feature_names(self) -> List[str]:

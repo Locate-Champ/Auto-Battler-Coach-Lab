@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import gc
-import hashlib
 import json
 import shutil
 from pathlib import Path
@@ -26,7 +25,7 @@ from .feature_engineering import FeatureConfig, TFTFeatureEngineer
 
 
 BASE_TREE_PARAMS = {
-    "max_depth": 8,
+    "max_depth": 0,
     "learning_rate": 0.05,
     "n_estimators": 300,
     "subsample": 0.8,
@@ -35,6 +34,8 @@ BASE_TREE_PARAMS = {
     "reg_alpha": 0.1,
     "reg_lambda": 1.0,
     "tree_method": "hist",
+    "grow_policy": "lossguide",
+    "max_leaves": 256,
     "random_state": 42,
 }
 
@@ -223,9 +224,9 @@ def _split_for_example(
     split_seed: int,
     test_size: float,
 ) -> str:
-    key = f"{split_seed}:{game_id if game_id is not None else f'row-{example_index}'}"
-    digest = hashlib.sha1(key.encode("utf-8")).hexdigest()
-    bucket = int(digest[:8], 16) / 0xFFFFFFFF
+    raw = game_id if game_id is not None else ~example_index
+    # Knuth multiplicative hash — fast, good distribution for sequential ints
+    bucket = (((raw ^ split_seed) * 2654435761) & 0xFFFFFFFF) / 0xFFFFFFFF
     return "train" if bucket < (1.0 - test_size) else "test"
 
 
@@ -374,11 +375,15 @@ class _ExternalMemoryDataIter(xgb.DataIter):
         self.max_rows = max_rows
         self.batch_size = max(1, int(batch_size))
         self._batch_iter: Optional[Iterator[Tuple[np.ndarray, np.ndarray]]] = None
+        self.examples_seen = 0
+        self.positives_seen = 0
         self.reset()
 
     def _stream_batches(self) -> Iterator[Tuple[np.ndarray, np.ndarray]]:
         batch_rows: List[Dict[str, Any]] = []
         labels: List[float] = []
+        count = 0
+        pos = 0
         for example_index, (row, label, game_id) in enumerate(
             _iter_labeled_examples(
                 self.loader,
@@ -397,6 +402,9 @@ class _ExternalMemoryDataIter(xgb.DataIter):
                 continue
             batch_rows.append(row)
             labels.append(label)
+            count += 1
+            if int(label) == 1:
+                pos += 1
             if len(batch_rows) >= self.batch_size:
                 X = self.loader._vectorize_rows(batch_rows)
                 y = np.asarray(labels, dtype=np.float32)
@@ -408,6 +416,9 @@ class _ExternalMemoryDataIter(xgb.DataIter):
             X = self.loader._vectorize_rows(batch_rows)
             y = np.asarray(labels, dtype=np.float32)
             yield X, y
+
+        self.examples_seen = count
+        self.positives_seen = pos
 
     def reset(self) -> None:
         self._batch_iter = self._stream_batches()
@@ -444,33 +455,6 @@ def _train_external_memory(
     loader: DataLoader,
     output_dir: Path,
 ) -> Tuple[xgb.Booster, Dict[str, Any], Dict[str, Any], Dict[str, Any], Path]:
-    split_stats = _scan_split_stats(
-        loader,
-        args.task,
-        test_size=args.test_size,
-        split_seed=args.seed,
-        row_batch_size=args.row_batch_size,
-        max_rows=args.max_rows,
-    )
-    train_examples = int(split_stats["train_examples"])
-    test_examples = int(split_stats["test_examples"])
-    if train_examples <= 0 or test_examples <= 0:
-        raise ValueError(
-            "External-memory split produced empty train/test data. "
-            "Increase data size or adjust --test-size."
-        )
-
-    print(
-        f"[external] split stats -> train={train_examples} test={test_examples} "
-        f"(seed={args.seed}, test_size={args.test_size})"
-    )
-    if args.task in {"fight", "top4"}:
-        print(
-            "[external] class balance -> "
-            f"train_pos_rate={split_stats['train_positive_rate']:.4f} "
-            f"test_pos_rate={split_stats['test_positive_rate']:.4f}"
-        )
-
     cache_dir = _external_cache_dir(args, output_dir)
     cache_dir.mkdir(parents=True, exist_ok=True)
 
@@ -499,6 +483,33 @@ def _train_external_memory(
         cache_prefix=str(cache_dir / "test_cache"),
     )
     dtest = xgb.ExtMemQuantileDMatrix(test_iter, ref=dtrain)
+
+    # Log split stats collected during iterator consumption (no separate pre-pass)
+    train_examples = train_iter.examples_seen
+    test_examples = test_iter.examples_seen
+    split_stats: Dict[str, Any] = {
+        "train_examples": train_examples,
+        "test_examples": test_examples,
+    }
+    if train_examples <= 0 or test_examples <= 0:
+        raise ValueError(
+            "External-memory split produced empty train/test data. "
+            "Increase data size or adjust --test-size."
+        )
+    print(
+        f"[external] split stats -> train={train_examples} test={test_examples} "
+        f"(seed={args.seed}, test_size={args.test_size})"
+    )
+    if args.task in {"fight", "top4"}:
+        train_pos = train_iter.positives_seen / max(1, train_examples)
+        test_pos = test_iter.positives_seen / max(1, test_examples)
+        split_stats["train_positive_rate"] = train_pos
+        split_stats["test_positive_rate"] = test_pos
+        print(
+            f"[external] class balance -> "
+            f"train_pos_rate={train_pos:.4f} "
+            f"test_pos_rate={test_pos:.4f}"
+        )
 
     params = dict(BASE_TREE_PARAMS)
     if args.task in {"fight", "top4"}:
@@ -634,6 +645,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--early-stopping-rounds", type=int, default=50, help="Early stopping rounds (set 0 to disable)")
     parser.add_argument("--feature-workers", type=int, default=0, help="Parallel workers for feature engineering (0=auto)")
     parser.add_argument("--ablation", action="store_true", help="Run feature-group ablation study")
+    parser.add_argument("--grow-policy", choices=("depthwise", "lossguide"), default=None, help="XGBoost grow policy (default: lossguide)")
+    parser.add_argument("--max-leaves", type=int, default=None, help="Max leaves per tree (lossguide mode)")
+    parser.add_argument("--max-depth", type=int, default=None, help="Max tree depth (depthwise mode, 0=unlimited)")
+    parser.add_argument("--arrow", action="store_true", help="Use Arrow-based data loading (Parquet -> features without row dicts)")
     return parser.parse_args()
 
 
@@ -649,6 +664,14 @@ def main() -> None:
 
     es_rounds = args.early_stopping_rounds if args.early_stopping_rounds else None
 
+    # Apply CLI tree-param overrides
+    if args.grow_policy is not None:
+        BASE_TREE_PARAMS["grow_policy"] = args.grow_policy
+    if args.max_leaves is not None:
+        BASE_TREE_PARAMS["max_leaves"] = args.max_leaves
+    if args.max_depth is not None:
+        BASE_TREE_PARAMS["max_depth"] = args.max_depth
+
     loader = DataLoader(args.data, n_workers=args.feature_workers)
     feature_names = loader.feature_engineer.feature_names()
     split_stats: Optional[Dict[str, Any]] = None
@@ -662,6 +685,25 @@ def main() -> None:
         else:
             baseline_metric = float(metrics["mae"])
             is_higher_better = False
+    elif getattr(args, "arrow", False) and args.task == "fight":
+        X_train, X_test, y_train, y_test = loader.load_fight_prediction_arrow(
+            test_size=args.test_size,
+            seed=args.seed,
+            max_rows=args.max_rows,
+        )
+        params = dict(BASE_TREE_PARAMS)
+        params.update(
+            {
+                "objective": "binary:logistic",
+                "eval_metric": "auc",
+                "device": _best_xgb_device(),
+                "n_estimators": args.n_estimators,
+            }
+        )
+        model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test, early_stopping_rounds=es_rounds)
+        metrics = _evaluate_classification("fight", model, X_test, y_test)
+        baseline_metric = float(metrics["accuracy"])
+        is_higher_better = True
     else:
         if args.task == "fight":
             X_train, X_test, y_train, y_test = loader.load_fight_prediction_data(

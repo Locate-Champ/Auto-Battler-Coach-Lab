@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import multiprocessing
 import os
+import pickle
 from pathlib import Path
 from typing import Any, Dict, Iterator, List, Optional, Sequence, Tuple
 
@@ -24,15 +25,37 @@ _worker_fe: Optional[TFTFeatureEngineer] = None
 
 
 def _init_fe_worker(config: FeatureConfig, repo_root: Path) -> None:
-    """Initialize feature engineer in worker process."""
+    """Initialize feature engineer in worker process (loads from disk)."""
     global _worker_fe
     _worker_fe = TFTFeatureEngineer(config=config, repo_root=repo_root)
+
+
+def _init_fe_worker_pickled(fe_state: bytes) -> None:
+    """Initialize worker from pickled FE state (avoids per-worker disk I/O)."""
+    global _worker_fe
+    _worker_fe = pickle.loads(fe_state)
 
 
 def _transform_chunk(rows: List[Dict[str, Any]]) -> np.ndarray:
     """Transform a chunk of rows in a worker process."""
     assert _worker_fe is not None
     return _worker_fe.transform_batch(rows)
+
+
+def _transform_arrow_file(args: Tuple[str, int]) -> np.ndarray:
+    """Worker: transform a single Parquet file via Arrow path."""
+    path_str, batch_size = args
+    assert _worker_fe is not None
+    import pyarrow.parquet as _pq
+    chunks: List[np.ndarray] = []
+    pf = _pq.ParquetFile(path_str)
+    for batch in pf.iter_batches(batch_size=batch_size):
+        chunk = _worker_fe.transform_arrow_batch(batch)
+        if chunk.shape[0] > 0:
+            chunks.append(chunk)
+    if not chunks:
+        return np.zeros((0, len(_worker_fe.feature_names())), dtype=np.float32)
+    return np.vstack(chunks)
 
 
 class DataLoader:
@@ -56,14 +79,26 @@ class DataLoader:
         return self.n_workers
 
     def _ensure_pool(self) -> multiprocessing.pool.Pool:
-        """Lazily create and return a persistent worker pool."""
+        """Lazily create and return a persistent worker pool.
+
+        Uses pickled FE state to initialize workers (~1ms per worker vs ~30ms
+        loading from disk).  Falls back to disk-based init on pickle failure.
+        """
         if self._pool is None:
             workers = self._effective_workers()
-            self._pool = multiprocessing.Pool(
-                processes=workers,
-                initializer=_init_fe_worker,
-                initargs=(self.feature_engineer.config, self.feature_engineer.repo_root),
-            )
+            try:
+                fe_state = pickle.dumps(self.feature_engineer)
+                self._pool = multiprocessing.Pool(
+                    processes=workers,
+                    initializer=_init_fe_worker_pickled,
+                    initargs=(fe_state,),
+                )
+            except (pickle.PicklingError, TypeError):
+                self._pool = multiprocessing.Pool(
+                    processes=workers,
+                    initializer=_init_fe_worker,
+                    initargs=(self.feature_engineer.config, self.feature_engineer.repo_root),
+                )
         return self._pool
 
     def close(self) -> None:
@@ -84,6 +119,28 @@ class DataLoader:
         for batch in parquet_file.iter_batches(batch_size=row_batch_size):
             for row in batch.to_pylist():
                 yield self._normalize_row(row)
+
+    def _iter_parquet_batches(
+        self,
+        path: Path,
+        batch_size: int = 4096,
+    ) -> Iterator[Any]:
+        """Yield Arrow RecordBatches without dict conversion."""
+        if pq is None:  # pragma: no cover - optional dependency
+            return
+        parquet_file = pq.ParquetFile(path)
+        for batch in parquet_file.iter_batches(batch_size=batch_size):
+            yield batch
+
+    def iter_arrow_batches(
+        self,
+        data_dir: Optional[str | Path] = None,
+        batch_size: int = 4096,
+    ) -> Iterator[Any]:
+        """Stream Arrow RecordBatches from parquet files without dict conversion."""
+        root = Path(data_dir) if data_dir is not None else self.data_dir
+        for path in sorted(root.rglob("*.parquet")):
+            yield from self._iter_parquet_batches(path, batch_size=batch_size)
 
     def _iter_jsonl_rows(self, path: Path) -> Iterator[Dict[str, Any]]:
         with path.open("r", encoding="utf-8") as handle:
@@ -260,6 +317,198 @@ class DataLoader:
             return np.vstack(chunk_results)
 
         return self.feature_engineer.transform_batch(list(rows))
+
+    def vectorize_arrow_parallel(
+        self,
+        data_dir: Optional[str | Path] = None,
+        *,
+        batch_size: int = 4096,
+    ) -> np.ndarray:
+        """Vectorize Parquet files in parallel via Arrow path (no row-dict IPC).
+
+        Each worker opens Parquet files directly and transforms via Arrow,
+        avoiding the expensive pickling of row dicts between processes.
+        Only numpy result arrays are sent back.
+
+        Auto-tunes: uses single-process for small datasets (<300K rows or
+        <4 files) where IPC overhead exceeds compute savings.
+        """
+        if pq is None:
+            raise RuntimeError("pyarrow required for Arrow parallel path")
+        root = Path(data_dir) if data_dir is not None else self.data_dir
+        parquet_files = sorted(root.rglob("*.parquet"))
+        n_features = len(self.feature_engineer.feature_names())
+        if not parquet_files:
+            return np.zeros((0, n_features), dtype=np.float32)
+
+        workers = self._effective_workers()
+
+        # Auto-tune: estimate total rows and decide single vs parallel
+        total_rows = sum(int(pq.ParquetFile(p).metadata.num_rows) for p in parquet_files)
+        use_parallel = (
+            workers > 1
+            and len(parquet_files) >= 4
+            and total_rows >= 300_000
+        )
+
+        if not use_parallel:
+            chunks: List[np.ndarray] = []
+            for path in parquet_files:
+                for batch in self._iter_parquet_batches(path, batch_size=batch_size):
+                    chunk = self.feature_engineer.transform_arrow_batch(batch)
+                    if chunk.shape[0] > 0:
+                        chunks.append(chunk)
+            if not chunks:
+                return np.zeros((0, n_features), dtype=np.float32)
+            return np.vstack(chunks)
+
+        # Cap workers to file count (no benefit from idle workers)
+        effective_workers = min(workers, len(parquet_files))
+        pool = self._ensure_pool()
+        args = [(str(p), batch_size) for p in parquet_files]
+        print(f"[features] Arrow-parallel: {len(parquet_files)} files, {total_rows} rows, {effective_workers} workers...")
+        results = pool.map(_transform_arrow_file, args)
+        non_empty = [r for r in results if r.shape[0] > 0]
+        if not non_empty:
+            return np.zeros((0, n_features), dtype=np.float32)
+        return np.vstack(non_empty)
+
+    def load_fight_prediction_arrow(
+        self,
+        test_size: float = 0.2,
+        seed: int = 42,
+        max_rows: Optional[int] = None,
+        batch_size: int = 8192,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Arrow-based fight prediction: Parquet -> features without row dicts.
+
+        Streams Arrow batches, extracts labels from scalar columns, transforms
+        features via transform_arrow_batch, then splits by game_id.  Avoids
+        building Python dicts for every row.
+        """
+        if pq is None:
+            raise RuntimeError("pyarrow required for Arrow training path")
+
+        import pyarrow as pa
+
+        feature_chunks: List[np.ndarray] = []
+        labels_list: List[int] = []
+        game_ids_list: List[Optional[int]] = []
+        collected = 0
+
+        for batch in self.iter_arrow_batches(batch_size=batch_size):
+            schema_names = set(batch.schema.names)
+            if "combat_result" not in schema_names:
+                continue
+
+            combat_results = batch.column("combat_result").to_pylist()
+            game_ids_raw = batch.column("game_id").to_pylist() if "game_id" in schema_names else [None] * batch.num_rows
+
+            # Filter valid fight rows (combat_result 0 or 1, not 2/draw)
+            valid_indices: List[int] = []
+            batch_labels: List[int] = []
+            batch_game_ids: List[Optional[int]] = []
+            for i, result in enumerate(combat_results):
+                if result is not None and int(result) in (0, 1):
+                    valid_indices.append(i)
+                    batch_labels.append(int(result))
+                    gid = game_ids_raw[i]
+                    batch_game_ids.append(int(gid) if gid is not None else None)
+
+            if not valid_indices:
+                continue
+
+            # Take only valid rows from the batch
+            filtered_batch = batch.take(pa.array(valid_indices, type=pa.int32()))
+
+            features = self.feature_engineer.transform_arrow_batch(filtered_batch)
+            feature_chunks.append(features)
+            labels_list.extend(batch_labels)
+            game_ids_list.extend(batch_game_ids)
+            collected += len(batch_labels)
+
+            if max_rows is not None and collected >= max_rows:
+                excess = collected - max_rows
+                if excess > 0:
+                    feature_chunks[-1] = feature_chunks[-1][:-excess]
+                    labels_list = labels_list[:max_rows]
+                    game_ids_list = game_ids_list[:max_rows]
+                break
+
+        if not feature_chunks:
+            raise ValueError(
+                "No fight examples found. "
+                "Need combat_result=0/1 (draw rows are ignored)."
+            )
+
+        X_all = np.vstack(feature_chunks)
+        y_all = np.asarray(labels_list, dtype=np.int64)
+
+        # Split by game_id
+        if all(gid is not None for gid in game_ids_list):
+            game_to_indices: Dict[Any, List[int]] = {}
+            for i, gid in enumerate(game_ids_list):
+                game_to_indices.setdefault(gid, []).append(i)
+
+            unique_games = np.array(list(game_to_indices.keys()))
+            game_labels = []
+            for gid in unique_games:
+                indices = game_to_indices[gid]
+                avg = float(np.mean(y_all[indices]))
+                game_labels.append(1 if avg >= 0.5 else 0)
+            game_labels_arr = np.asarray(game_labels)
+
+            stratify_arr = game_labels_arr if len(np.unique(game_labels_arr)) > 1 else None
+            try:
+                train_games, test_games = train_test_split(
+                    unique_games,
+                    test_size=test_size,
+                    random_state=seed,
+                    stratify=stratify_arr,
+                )
+            except ValueError:
+                # Stratification failed (e.g. too few members in a class)
+                # Retry without stratification
+                train_games, test_games = train_test_split(
+                    unique_games,
+                    test_size=test_size,
+                    random_state=seed,
+                )
+            train_set = set(train_games.tolist())
+            train_idx = [i for i, gid in enumerate(game_ids_list) if gid in train_set]
+            test_idx = [i for i, gid in enumerate(game_ids_list) if gid not in train_set]
+        else:
+            indices = np.arange(len(y_all))
+            stratify_arr = y_all if len(np.unique(y_all)) > 1 else None
+            try:
+                train_idx_arr, test_idx_arr = train_test_split(
+                    indices,
+                    test_size=test_size,
+                    random_state=seed,
+                    stratify=stratify_arr,
+                )
+                train_idx = train_idx_arr.tolist()
+                test_idx = test_idx_arr.tolist()
+            except ValueError:
+                train_idx = list(range(len(y_all)))
+                test_idx = []
+
+        X_train = X_all[train_idx]
+        X_test = X_all[test_idx]
+        y_train = y_all[train_idx]
+        y_test = y_all[test_idx]
+
+        self._print_dataset_stats(
+            task_name="fight",
+            total_rows=len(y_all),
+            train_rows=X_train.shape[0],
+            test_rows=X_test.shape[0],
+            y_train=y_train,
+            y_test=y_test,
+            feature_count=X_train.shape[1],
+        )
+        print("[fight] labeling=current_round_combat_result")
+        return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
 
     def _print_dataset_stats(
         self,
