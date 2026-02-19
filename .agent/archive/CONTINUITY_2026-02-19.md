@@ -1,4 +1,4 @@
-﻿# Archived continuity snapshot
+# Archived continuity snapshot
 Archived on: 2026-02-19
 Reason: Phase 6B compaction to reduce repetition/context loss.
 

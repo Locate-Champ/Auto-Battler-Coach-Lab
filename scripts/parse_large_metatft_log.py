@@ -18,7 +18,9 @@ from typing import TextIO
 from app.watcher.parser import LogParser
 
 
-def parse_stream(input_stream: TextIO, output_stream: TextIO, max_events: int | None = None) -> int:
+def parse_stream(
+    input_stream: TextIO, output_stream: TextIO, max_events: int | None = None
+) -> int:
     parser = LogParser()
     count = 0
 
@@ -36,8 +38,11 @@ def parse_stream(input_stream: TextIO, output_stream: TextIO, max_events: int | 
 
 def main() -> None:
     arg_parser = argparse.ArgumentParser(
-        description="Stream-parse large MetaTFT log files into JSONL events.")
-    arg_parser.add_argument("--input", required=True, help="Path to the MetaTFT log file")
+        description="Stream-parse large MetaTFT log files into JSONL events."
+    )
+    arg_parser.add_argument(
+        "--input", required=True, help="Path to the MetaTFT log file"
+    )
     arg_parser.add_argument(
         "--output",
         default="outputs/metatft_events.jsonl",

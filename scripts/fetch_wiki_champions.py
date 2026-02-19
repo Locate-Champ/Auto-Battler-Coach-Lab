@@ -174,8 +174,14 @@ def is_real_champion(entry: dict) -> bool:
 
     # Filter out known summons/props
     skip_keywords = [
-        "Soldier", "Voidling", "Tibbers", "Invention",
-        "Atakhan", "Prop", "Carousel", "Dragon"
+        "Soldier",
+        "Voidling",
+        "Tibbers",
+        "Invention",
+        "Atakhan",
+        "Prop",
+        "Carousel",
+        "Dragon",
     ]
     for kw in skip_keywords:
         if kw in api_name:
@@ -327,7 +333,7 @@ def main():
         t = c["cost"]
         by_cost.setdefault(t, []).append(c["name"])
 
-    print(f"\nChampions by cost:")
+    print("\nChampions by cost:")
     for cost in sorted(by_cost.keys()):
         names = sorted(by_cost[cost])
         print(f"  {cost}-cost ({len(names)}): {', '.join(names)}")

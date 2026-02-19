@@ -6,9 +6,12 @@ from pathlib import Path
 MAX_LINES = 250
 CONTINUITY_PATH = Path(".agent/CONTINUITY.md")
 
+
 def main() -> int:
     if not CONTINUITY_PATH.exists():
-        print(f"ERROR: missing {CONTINUITY_PATH}. This file is required.", file=sys.stderr)
+        print(
+            f"ERROR: missing {CONTINUITY_PATH}. This file is required.", file=sys.stderr
+        )
         return 1
 
     text = CONTINUITY_PATH.read_text(encoding="utf-8")
@@ -28,6 +31,7 @@ def main() -> int:
 
     print(f"OK: {CONTINUITY_PATH} is {line_count} lines (<= {MAX_LINES}).")
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

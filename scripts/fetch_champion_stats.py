@@ -20,11 +20,11 @@ Usage:
 
 import argparse
 import json
-import urllib.request
 import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Dict, Optional
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
@@ -46,7 +46,7 @@ DEFAULT_SET = 16
 
 def fetch_cdragon_data() -> Optional[Dict]:
     """Download the full TFT data from CommunityDragon."""
-    print(f"Fetching TFT data from CommunityDragon...")
+    print("Fetching TFT data from CommunityDragon...")
     print(f"  URL: {CDRAGON_TFT_URL}")
 
     request = urllib.request.Request(CDRAGON_TFT_URL, headers=HEADERS)
@@ -55,7 +55,7 @@ def fetch_cdragon_data() -> Optional[Dict]:
         with urllib.request.urlopen(request, timeout=120) as response:
             content = response.read()
             print(f"  Downloaded: {len(content) / 1024 / 1024:.1f} MB")
-            return json.loads(content.decode('utf-8'))
+            return json.loads(content.decode("utf-8"))
     except urllib.error.URLError as e:
         print(f"  Error: {e}")
         return None
@@ -126,7 +126,10 @@ def extract_champions(data: Dict, set_number: int = DEFAULT_SET) -> Dict[str, Di
             "apiName": api_name,
             "name": champ.get("name", api_name.replace(set_prefix, "")),
             "cost": champ.get("cost", 1),
-            "traits": [t if isinstance(t, str) else t.get("name", t.get("id", "")) for t in champ.get("traits", [])],
+            "traits": [
+                t if isinstance(t, str) else t.get("name", t.get("id", ""))
+                for t in champ.get("traits", [])
+            ],
             "stats": {
                 "hp": get_stat("hp", 500),
                 "ad": get_stat("damage", 50),
@@ -178,12 +181,14 @@ def extract_traits(data: Dict, set_number: int = DEFAULT_SET) -> Dict[str, Dict]
 
         effects = []
         for effect in trait.get("effects", []):
-            effects.append({
-                "minUnits": effect.get("minUnits", 0),
-                "maxUnits": effect.get("maxUnits", 0),
-                "style": effect.get("style", 0),
-                "variables": effect.get("variables", {}),
-            })
+            effects.append(
+                {
+                    "minUnits": effect.get("minUnits", 0),
+                    "maxUnits": effect.get("maxUnits", 0),
+                    "style": effect.get("style", 0),
+                    "variables": effect.get("variables", {}),
+                }
+            )
 
         traits[api_name] = {
             "apiName": api_name,
@@ -198,7 +203,7 @@ def merge_with_combat_data(champions: Dict[str, Dict], output_path: Path) -> int
     """Merge new champion data with existing combat_data.json."""
 
     if output_path.exists():
-        with open(output_path, 'r', encoding='utf-8') as f:
+        with open(output_path, "r", encoding="utf-8") as f:
             existing = json.load(f)
     else:
         existing = {
@@ -225,11 +230,14 @@ def merge_with_combat_data(champions: Dict[str, Dict], output_path: Path) -> int
             "traits": new_data["traits"],
             "role": existing_champ.get("role", "Auto"),  # Preserve role
             "stats": new_data["stats"],
-            "timing": existing_champ.get("timing", {  # Preserve timing
-                "attackWindup": 0.3,
-                "windupPercent": 20.0,
-                "isRanged": new_data["stats"]["range"] > 1,
-            }),
+            "timing": existing_champ.get(
+                "timing",
+                {  # Preserve timing
+                    "attackWindup": 0.3,
+                    "windupPercent": 20.0,
+                    "isRanged": new_data["stats"]["range"] > 1,
+                },
+            ),
             "ability": new_data["ability"],
         }
 
@@ -248,7 +256,7 @@ def merge_with_combat_data(champions: Dict[str, Dict], output_path: Path) -> int
     existing["last_updated"] = datetime.now(timezone.utc).isoformat()
     existing["source"] = "CommunityDragon"
 
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(existing, f, indent=2, ensure_ascii=False)
 
     return updated_count
@@ -258,7 +266,7 @@ def merge_with_timing_constants(champions: Dict[str, Dict], output_path: Path) -
     """Merge new champion data with existing timing_constants.json."""
 
     if output_path.exists():
-        with open(output_path, 'r', encoding='utf-8') as f:
+        with open(output_path, "r", encoding="utf-8") as f:
             existing = json.load(f)
     else:
         existing = {}
@@ -286,12 +294,15 @@ def merge_with_timing_constants(champions: Dict[str, Dict], output_path: Path) -
                 "mana": new_data["stats"]["mana"],
                 "initial_mana": new_data["stats"]["startMana"],
             },
-            "timing": existing_champ.get("timing", {  # Preserve timing
-                "attack_windup_frames": None,
-                "attack_windup_seconds": 0.3,
-                "source": "default",
-                "confidence": "low",
-            }),
+            "timing": existing_champ.get(
+                "timing",
+                {  # Preserve timing
+                    "attack_windup_frames": None,
+                    "attack_windup_seconds": 0.3,
+                    "source": "default",
+                    "confidence": "low",
+                },
+            ),
             "ability": {
                 "name": new_data["ability"]["name"],
                 "variables": new_data["ability"]["variables"],
@@ -309,7 +320,7 @@ def merge_with_timing_constants(champions: Dict[str, Dict], output_path: Path) -
         existing[api_name] = merged
         updated_count += 1
 
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(existing, f, indent=2, ensure_ascii=False)
 
     return updated_count
@@ -320,16 +331,19 @@ def main():
         description="Fetch TFT champion stats from CommunityDragon"
     )
     parser.add_argument(
-        "--set", type=int, default=DEFAULT_SET,
-        help=f"TFT set number to fetch (default: {DEFAULT_SET})"
+        "--set",
+        type=int,
+        default=DEFAULT_SET,
+        help=f"TFT set number to fetch (default: {DEFAULT_SET})",
     )
     parser.add_argument(
-        "--dry-run", action="store_true",
-        help="Preview data without saving to files"
+        "--dry-run", action="store_true", help="Preview data without saving to files"
     )
     parser.add_argument(
-        "--output-dir", type=Path, default=SIMULATOR_DATA_DIR,
-        help="Output directory for data files"
+        "--output-dir",
+        type=Path,
+        default=SIMULATOR_DATA_DIR,
+        help="Output directory for data files",
     )
 
     args = parser.parse_args()
@@ -381,7 +395,7 @@ def main():
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     # Save to files
-    print(f"\n[3/3] Saving to files...")
+    print("\n[3/3] Saving to files...")
 
     combat_data_path = args.output_dir / "combat_data.json"
     count1 = merge_with_combat_data(champions, combat_data_path)
@@ -393,12 +407,17 @@ def main():
 
     # Save traits
     traits_path = args.output_dir / "traits.json"
-    with open(traits_path, 'w', encoding='utf-8') as f:
-        json.dump({
-            "set": args.set,
-            "last_updated": datetime.now(timezone.utc).isoformat(),
-            "traits": traits,
-        }, f, indent=2, ensure_ascii=False)
+    with open(traits_path, "w", encoding="utf-8") as f:
+        json.dump(
+            {
+                "set": args.set,
+                "last_updated": datetime.now(timezone.utc).isoformat(),
+                "traits": traits,
+            },
+            f,
+            indent=2,
+            ensure_ascii=False,
+        )
     print(f"  Saved {len(traits)} traits to {traits_path.name}")
 
     print("\n" + "=" * 60)

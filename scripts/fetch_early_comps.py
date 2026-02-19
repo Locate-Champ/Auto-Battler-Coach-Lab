@@ -33,15 +33,11 @@ def fetch_early_comps_data():
     Returns:
         dict: Raw API response or None if fetch fails
     """
-    print(f"Fetching early comps from MetaTFT API...")
+    print("Fetching early comps from MetaTFT API...")
     print(f"URL: {EARLY_COMPS_API_URL}")
 
     try:
-        response = requests.get(
-            EARLY_COMPS_API_URL,
-            headers=HEADERS,
-            timeout=30
-        )
+        response = requests.get(EARLY_COMPS_API_URL, headers=HEADERS, timeout=30)
         response.raise_for_status()
     except requests.RequestException as e:
         print(f"Error fetching Early Comps API: {e}")
@@ -102,10 +98,14 @@ def extract_early_comps(raw_data):
                 if isinstance(prob, (int, float)) and prob > 0:
                     # Index maps to late game cluster ID (387000 + index)
                     target_cluster_id = 387000 + idx
-                    forwards_links.append({
-                        "target_cluster_id": target_cluster_id,
-                        "probability": round(prob / 100, 3) if prob > 1 else round(prob, 3)  # Normalize to 0-1
-                    })
+                    forwards_links.append(
+                        {
+                            "target_cluster_id": target_cluster_id,
+                            "probability": (
+                                round(prob / 100, 3) if prob > 1 else round(prob, 3)
+                            ),  # Normalize to 0-1
+                        }
+                    )
 
             # Sort by probability descending
             forwards_links.sort(key=lambda x: x["probability"], reverse=True)
@@ -170,6 +170,7 @@ def extract_early_comps(raw_data):
     except (KeyError, TypeError) as e:
         print(f"Error extracting early comp data: {e}")
         import traceback
+
         traceback.print_exc()
         return None
 
@@ -183,7 +184,7 @@ def save_early_comps(data):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     output_file = DATA_DIR / "early_comps.json"
 
-    with open(output_file, 'w') as f:
+    with open(output_file, "w") as f:
         json.dump(data, f, indent=2)
 
     print(f"Saved early comp data to {output_file}")

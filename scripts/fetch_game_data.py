@@ -66,7 +66,7 @@ def fetch_json(url: str, params: dict = None) -> Optional[dict]:
 
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
-            return json.loads(response.read().decode('utf-8'))
+            return json.loads(response.read().decode("utf-8"))
     except urllib.error.URLError as e:
         print(f"  Error fetching {url}: {e}")
         return None
@@ -102,7 +102,7 @@ def calculate_stats(places: list) -> dict:
         "avg_place": round(avg_place, 3),
         "top4_rate": round(top4_rate, 4),
         "win_rate": round(win_rate, 4),
-        "games": total
+        "games": total,
     }
 
 
@@ -244,7 +244,11 @@ def fetch_units() -> bool:
     lookup_data = fetch_set16_lookup()
     unit_lookup = {}
     if lookup_data:
-        unit_lookup = {unit.get("apiName"): unit for unit in lookup_data.get("units", []) if unit.get("apiName")}
+        unit_lookup = {
+            unit.get("apiName"): unit
+            for unit in lookup_data.get("units", [])
+            if unit.get("apiName")
+        }
 
     # Process and save as JSONL + processed active set.
     output_path = GAME_DATA_DIR / "champions.jsonl"
@@ -259,7 +263,7 @@ def fetch_units() -> bool:
         if unit.get("unit", "").startswith("TFT")
     }
 
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         for unit in results:
             unit_id = unit.get("unit", "")
             places = unit.get("places", [])
@@ -280,7 +284,7 @@ def fetch_units() -> bool:
                 ),
                 "set": tft_set,
                 "placements": places[:8] if len(places) >= 8 else places,
-                **stats
+                **stats,
             }
             if lookup_entry:
                 if lookup_entry.get("cost") is not None:
@@ -324,12 +328,14 @@ def fetch_units() -> bool:
 
     processed_units.sort(key=lambda unit: unit.get("apiName", ""))
 
-    with open(processed_path, 'w', encoding='utf-8') as f:
+    with open(processed_path, "w", encoding="utf-8") as f:
         json.dump(processed_units, f, indent=2, ensure_ascii=False)
 
     helper_count = sum(1 for unit in processed_units if unit.get("is_helper"))
     print(f"  Saved {count} active champions to {output_path}")
-    print(f"  Saved {len(processed_units)} total units ({helper_count} helper) to {processed_path}")
+    print(
+        f"  Saved {len(processed_units)} total units ({helper_count} helper) to {processed_path}"
+    )
     if missing_lookup:
         print(f"  WARNING: {missing_lookup} active units missing in lookup data")
     return True
@@ -349,7 +355,11 @@ def fetch_items() -> bool:
     lookup_data = fetch_set16_lookup()
     item_lookup = {}
     if lookup_data:
-        item_lookup = {item.get("apiName"): item for item in lookup_data.get("items", []) if item.get("apiName")}
+        item_lookup = {
+            item.get("apiName"): item
+            for item in lookup_data.get("items", [])
+            if item.get("apiName")
+        }
 
     # Process and save as JSONL + processed active set.
     output_path = GAME_DATA_DIR / "items.jsonl"
@@ -376,17 +386,28 @@ def fetch_items() -> bool:
             return "darkin"
         if "Bilgewater" in name:
             return "bilgewater"
-        if name.startswith("TFT_Item_") and not any(x in name for x in ["Radiant", "Artifact"]):
+        if name.startswith("TFT_Item_") and not any(
+            x in name for x in ["Radiant", "Artifact"]
+        ):
             # Check if it's a component
-            components = ["BFSword", "RecurveBow", "NeedlesslyLargeRod", "TearOfTheGoddess",
-                          "ChainVest", "NegatronCloak", "GiantsBelt", "SparringGloves", "Spatula"]
+            components = [
+                "BFSword",
+                "RecurveBow",
+                "NeedlesslyLargeRod",
+                "TearOfTheGoddess",
+                "ChainVest",
+                "NegatronCloak",
+                "GiantsBelt",
+                "SparringGloves",
+                "Spatula",
+            ]
             for comp in components:
                 if comp in name:
                     return "component"
             return "completed"
         return "other"
 
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         for item in results:
             item_name = item.get("itemName", "")
             places = item.get("places", [])
@@ -403,10 +424,20 @@ def fetch_items() -> bool:
                 if lookup_entry and lookup_entry.get("name")
                 else derive_display_name(
                     item_name,
-                    ["TFT16_Item_", "TFT_Item_", "TFT5_Item_", "TFT4_Item_", "TFT7_Item_", "TFT9_Item_", "TFT16_"],
+                    [
+                        "TFT16_Item_",
+                        "TFT_Item_",
+                        "TFT5_Item_",
+                        "TFT4_Item_",
+                        "TFT7_Item_",
+                        "TFT9_Item_",
+                        "TFT16_",
+                    ],
                 )
             )
-            description = render_lookup_description(lookup_entry) if lookup_entry else ""
+            description = (
+                render_lookup_description(lookup_entry) if lookup_entry else ""
+            )
 
             record = {
                 "apiName": item_name,
@@ -415,7 +446,7 @@ def fetch_items() -> bool:
                 "category": category,
                 "set": tft_set,
                 "placements": places[:8] if len(places) >= 8 else places,
-                **stats
+                **stats,
             }
             if lookup_entry and lookup_entry.get("icon"):
                 record["icon"] = lookup_entry.get("icon")
@@ -441,7 +472,7 @@ def fetch_items() -> bool:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
             count += 1
 
-    with open(processed_path, 'w', encoding='utf-8') as f:
+    with open(processed_path, "w", encoding="utf-8") as f:
         json.dump(processed_items, f, indent=2, ensure_ascii=False)
 
     print(f"  Saved {count} items to {output_path}")
@@ -468,7 +499,8 @@ def fetch_traits() -> bool:
         return False
 
     lookup_traits = [
-        trait for trait in lookup_data.get("traits", [])
+        trait
+        for trait in lookup_data.get("traits", [])
         if trait.get("apiName", "").startswith("TFT")
     ]
     if not lookup_traits:
@@ -505,11 +537,11 @@ def fetch_traits() -> bool:
         stats = calculate_stats(places)
         trait_groups[base_name]["tiers"][tier] = {
             "placements": places[:8] if len(places) >= 8 else places,
-            **stats
+            **stats,
         }
 
     # Always keep traits.jsonl aligned with lookup trait roster (active + helper teamups).
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         for trait in sorted(lookup_traits, key=lambda entry: entry.get("apiName", "")):
             api_name = trait.get("apiName", "")
             if not api_name:
@@ -529,10 +561,14 @@ def fetch_traits() -> bool:
                         "games": 0,
                     }
 
-            display_name = (trait.get("name") or "").strip() or derive_display_name(api_name, ["TFT16_", "TFT_"])
+            display_name = (trait.get("name") or "").strip() or derive_display_name(
+                api_name, ["TFT16_", "TFT_"]
+            )
             desc = render_lookup_description(trait)
             effects = trait.get("effects", [])
-            is_unique = bool(effects) and all(effect.get("style") == 4 for effect in effects)
+            is_unique = bool(effects) and all(
+                effect.get("style") == 4 for effect in effects
+            )
 
             record = {
                 "apiName": api_name,
@@ -549,7 +585,7 @@ def fetch_traits() -> bool:
 
     # Trait effects for combat/game-data loaders.
     effect_count = 0
-    with open(effects_path, 'w', encoding='utf-8') as f:
+    with open(effects_path, "w", encoding="utf-8") as f:
         for trait in sorted(lookup_traits, key=lambda entry: entry.get("apiName", "")):
             api_name = trait.get("apiName", "")
             for effect in trait.get("effects", []):
@@ -558,7 +594,9 @@ def fetch_traits() -> bool:
                     "minUnits": effect.get("minUnits"),
                     "maxUnits": effect.get("maxUnits"),
                     "style": effect.get("style"),
-                    "variables_json": json.dumps(effect.get("variables", {}), ensure_ascii=False),
+                    "variables_json": json.dumps(
+                        effect.get("variables", {}), ensure_ascii=False
+                    ),
                 }
                 f.write(json.dumps(record, ensure_ascii=False) + "\n")
                 effect_count += 1
@@ -582,7 +620,7 @@ def fetch_traits() -> bool:
         for key in {api_name, short_name, display_name, slug}:
             trait_mapping[key] = payload
 
-    with open(mapping_path, 'w', encoding='utf-8') as f:
+    with open(mapping_path, "w", encoding="utf-8") as f:
         json.dump(trait_mapping, f, indent=2, ensure_ascii=False)
 
     # Keep processed traits in sync with full lookup data used by app/simulator.
@@ -594,7 +632,7 @@ def fetch_traits() -> bool:
         processed_trait["description"] = desc
         processed_traits.append(processed_trait)
 
-    with open(processed_path, 'w', encoding='utf-8') as f:
+    with open(processed_path, "w", encoding="utf-8") as f:
         json.dump(processed_traits, f, indent=2, ensure_ascii=False)
 
     print(f"  Saved {count} traits to {output_path}")
@@ -620,7 +658,7 @@ def fetch_augments() -> bool:
         print("  Failed to fetch augment lookup data")
         return False
 
-    augments_lookup = {aug['apiName']: aug for aug in lookup_data['augments']}
+    augments_lookup = {aug["apiName"]: aug for aug in lookup_data["augments"]}
     print(f"  Found {len(augments_lookup)} augments in lookup")
 
     # 2. Fetch tier list for rankings
@@ -634,12 +672,12 @@ def fetch_augments() -> bool:
     if tiers_data and "content" in tiers_data:
         tft_set = tiers_data.get("tft_set", "TFTSet16")
         try:
-            tier_list = tiers_data['content']['content']['tierList']
-            tier_labels = ['S', 'A', 'B', 'C', 'D']
+            tier_list = tiers_data["content"]["content"]["tierList"]
+            tier_labels = ["S", "A", "B", "C", "D"]
             for i, tier in enumerate(tier_list):
-                label = tier_labels[i] if i < len(tier_labels) else f'T{i}'
-                for aug in tier['content']:
-                    aug_id = aug.get('id')
+                label = tier_labels[i] if i < len(tier_labels) else f"T{i}"
+                for aug in tier["content"]:
+                    aug_id = aug.get("id")
                     if not aug_id:
                         continue
                     tier_mapping[aug_id] = label
@@ -702,7 +740,9 @@ def fetch_augments() -> bool:
                 return {"Silver": 1, "Gold": 2, "Prismatic": 3}[rarity_name]
 
         # Fallback for odd legacy names
-        if api_name.endswith("PlusPlus") or "_III" in api_name or api_name.endswith("3"):
+        if any(
+            (api_name.endswith("PlusPlus"), "_III" in api_name, api_name.endswith("3"))
+        ):
             return 3
         if api_name.endswith("Plus") or "_II" in api_name or api_name.endswith("2"):
             return 2
@@ -713,7 +753,9 @@ def fetch_augments() -> bool:
         desc = aug_data.get("desc") or aug_data.get("description") or ""
 
         # Replace dynamic unit/trait property placeholders first.
-        for token in set(re.findall(r"\(?@TFTUnitProperty\.*\w*:\w*(?:\*100)?@%?\)?", desc)):
+        for token in set(
+            re.findall(r"\(?@TFTUnitProperty\.*\w*:\w*(?:\*100)?@%?\)?", desc)
+        ):
             replacement = "Varies"
             if "TRA" in token:
                 replacement = ""
@@ -779,9 +821,16 @@ def fetch_augments() -> bool:
         desc = html.unescape(desc)
         desc = re.sub(r"<br\s*/?>", " ", desc, flags=re.IGNORECASE)
         desc = re.sub(r"</?rules>", " ", desc, flags=re.IGNORECASE)
-        desc = re.sub(r"</?expandRowActive>|</?expandRow>", " ", desc, flags=re.IGNORECASE)
+        desc = re.sub(
+            r"</?expandRowActive>|</?expandRow>", " ", desc, flags=re.IGNORECASE
+        )
         desc = re.sub(r"</?row[^>]*>", " ", desc, flags=re.IGNORECASE)
-        desc = re.sub(r"</?tooltipCalculationContainer>|</?tooltipCalculation>", " ", desc, flags=re.IGNORECASE)
+        desc = re.sub(
+            r"</?tooltipCalculationContainer>|</?tooltipCalculation>",
+            " ",
+            desc,
+            flags=re.IGNORECASE,
+        )
         desc = re.sub(r"<[^>]+>", " ", desc)
         desc = desc.replace("???", "Varies")
         desc = re.sub(r"\s+", " ", desc).strip()
@@ -790,13 +839,18 @@ def fetch_augments() -> bool:
     def extract_display_name(api_name: str, lookup_entry: dict) -> str:
         """Get display name from lookup or derive from API name."""
         if lookup_entry:
-            if lookup_entry.get('name'):
-                return lookup_entry['name']
-            if lookup_entry.get('en_name'):
-                return lookup_entry['en_name']
+            if lookup_entry.get("name"):
+                return lookup_entry["name"]
+            if lookup_entry.get("en_name"):
+                return lookup_entry["en_name"]
         name = api_name
-        for prefix in ['TFT16_Augment_', 'TFT9_Augment_', 'TFT6_Augment_', 'TFT_Augment_']:
-            name = name.replace(prefix, '')
+        for prefix in [
+            "TFT16_Augment_",
+            "TFT9_Augment_",
+            "TFT6_Augment_",
+            "TFT_Augment_",
+        ]:
+            name = name.replace(prefix, "")
         return name
 
     # 3. Combine and write augments.jsonl (active augments only)
@@ -805,50 +859,54 @@ def fetch_augments() -> bool:
     missing_from_lookup = 0
     processed_augments = []
 
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         for api_name in active_ids:
             aug_data = augments_lookup.get(api_name)
             if not aug_data:
                 missing_from_lookup += 1
                 continue
 
-            tier = tier_mapping.get(api_name, 'U')
+            tier = tier_mapping.get(api_name, "U")
             rarity = infer_rarity(api_name, aug_data)
-            tags = [tag for tag in aug_data.get('tags', []) if tag in stage_tags]
+            tags = [tag for tag in aug_data.get("tags", []) if tag in stage_tags]
             description = render_description(aug_data)
 
             record = {
-                'apiName': api_name,
-                'name': extract_display_name(api_name, aug_data),
-                'description': description,
-                'tier': tier,
-                'rarity': rarity,
-                'set': tft_set,
-                'effects': aug_data.get('effects', {}),
-                'associatedTraits': aug_data.get('associatedTraits', []),
-                'tags': tags
+                "apiName": api_name,
+                "name": extract_display_name(api_name, aug_data),
+                "description": description,
+                "tier": tier,
+                "rarity": rarity,
+                "set": tft_set,
+                "effects": aug_data.get("effects", {}),
+                "associatedTraits": aug_data.get("associatedTraits", []),
+                "tags": tags,
             }
 
-            f.write(json.dumps(record, ensure_ascii=False) + '\n')
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
             count += 1
-            processed_augments.append({
-                **aug_data,
-                "desc": description,
-                "description": description,
-                "tags": tags,
-                "disabled": False,
-            })
+            processed_augments.append(
+                {
+                    **aug_data,
+                    "desc": description,
+                    "description": description,
+                    "tags": tags,
+                    "disabled": False,
+                }
+            )
 
     # 4. Keep simulator augment source in sync (same active set).
     processed_path = DATA_DIR / "api" / "processed" / "augments_set16.json"
     processed_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(processed_path, 'w', encoding='utf-8') as f:
+    with open(processed_path, "w", encoding="utf-8") as f:
         json.dump(processed_augments, f, indent=2, ensure_ascii=False)
 
     print(f"  Saved {count} augments to {output_path}")
     print(f"  Saved {len(processed_augments)} augments to {processed_path}")
     if missing_from_lookup:
-        print(f"  WARNING: {missing_from_lookup} tier-list augments missing in lookup data")
+        print(
+            f"  WARNING: {missing_from_lookup} tier-list augments missing in lookup data"
+        )
     return True
 
 
@@ -863,7 +921,7 @@ def update_metadata():
             f"{API_BASE}/items",
             f"{API_BASE}/traits",
             f"{DATA_BASE}/lookups/TFTSet16_latest_en_us.json",
-            f"{DATA_BASE}/lookups/trait_mapping.json"
+            f"{DATA_BASE}/lookups/trait_mapping.json",
         ],
         "retrieved_utc": datetime.now(timezone.utc).isoformat(),
         "set_number": 16,
@@ -871,11 +929,11 @@ def update_metadata():
         "notes": [
             "Data fetched from MetaTFT public API",
             "Placements array: [1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th]",
-            "Stats calculated from high-elo ranked games"
-        ]
+            "Stats calculated from high-elo ranked games",
+        ],
     }
 
-    with open(metadata_path, 'w', encoding='utf-8') as f:
+    with open(metadata_path, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
 
     print(f"\nUpdated {metadata_path}")
@@ -889,7 +947,7 @@ def update_processed_index():
     def count_entries(path: Path) -> int:
         if not path.exists():
             return 0
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, "r", encoding="utf-8") as f:
             payload = json.load(f)
         if isinstance(payload, list):
             return len(payload)
@@ -912,17 +970,17 @@ def update_processed_index():
         "counts": counts,
     }
 
-    with open(index_path, 'w', encoding='utf-8') as f:
+    with open(index_path, "w", encoding="utf-8") as f:
         json.dump(index, f, indent=2, ensure_ascii=False)
 
     print(f"Updated processed index: {index_path}")
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Fetch TFT game data from MetaTFT API"
+    parser = argparse.ArgumentParser(description="Fetch TFT game data from MetaTFT API")
+    parser.add_argument(
+        "--units", action="store_true", help="Only fetch units/champions"
     )
-    parser.add_argument("--units", action="store_true", help="Only fetch units/champions")
     parser.add_argument("--items", action="store_true", help="Only fetch items")
     parser.add_argument("--traits", action="store_true", help="Only fetch traits")
     parser.add_argument("--augments", action="store_true", help="Only fetch augments")

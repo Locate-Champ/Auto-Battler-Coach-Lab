@@ -4,7 +4,6 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-import os
 import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -28,7 +27,9 @@ H1_RE = re.compile(r"^#\s+(.*)\s*$")
 H2_RE = re.compile(r"^##\s+(.*)\s*$")
 H3_RE = re.compile(r"^###\s+(.*)\s*$")
 URL_LABEL_RE = re.compile(r"^(Source|URL)\s*:\s*(https?://\S+)\s*$", re.IGNORECASE)
-FRONTMATTER_KEY_RE = re.compile(r"^(url|canonical_url)\s*:\s*(https?://\S+)\s*$", re.IGNORECASE)
+FRONTMATTER_KEY_RE = re.compile(
+    r"^(url|canonical_url)\s*:\s*(https?://\S+)\s*$", re.IGNORECASE
+)
 IMAGE_LINK_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 
 
@@ -173,9 +174,7 @@ def analyze_file(path: Path, canonical_path: Path) -> FileStats:
     raw_html_lines = sum(
         1
         for line in lines
-        if "<table" in line.lower()
-        or "<div" in line.lower()
-        or "<span" in line.lower()
+        if "<table" in line.lower() or "<div" in line.lower() or "<span" in line.lower()
     )
 
     return FileStats(
@@ -207,7 +206,9 @@ def ensure_dirs() -> None:
     OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def build_report(stats: list[FileStats], duplicates: dict[str, list[FileStats]]) -> None:
+def build_report(
+    stats: list[FileStats], duplicates: dict[str, list[FileStats]]
+) -> None:
     total = len(stats)
     empty_files = [s for s in stats if s.size < 200]
     h1_count = sum(1 for s in stats if s.has_h1)
@@ -340,13 +341,25 @@ def build_manifest() -> None:
 
     duplicates = {sha: items for sha, items in sha_groups.items() if len(items) > 1}
 
-    MANIFEST_JSONL.write_text("\n".join(json.dumps(e, ensure_ascii=False) for e in entries) + "\n", encoding="utf-8")
-    MANIFEST_JSON.write_text(json.dumps(entries, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    MANIFEST_JSONL.write_text(
+        "\n".join(json.dumps(e, ensure_ascii=False) for e in entries) + "\n",
+        encoding="utf-8",
+    )
+    MANIFEST_JSON.write_text(
+        json.dumps(entries, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
 
     with SUMMARY_CSV.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
             handle,
-            fieldnames=["id", "title", "original_relpath", "canonical_relpath", "bytes", "sha256"],
+            fieldnames=[
+                "id",
+                "title",
+                "original_relpath",
+                "canonical_relpath",
+                "bytes",
+                "sha256",
+            ],
         )
         writer.writeheader()
         for entry in entries:

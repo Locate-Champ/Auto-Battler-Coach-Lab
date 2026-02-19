@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import json
 import subprocess
-import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -50,7 +49,9 @@ def main() -> int:
         return 1
 
     if run_git_check_ignore(PLANS_README):
-        print("ERROR: .agent/plans/README.md is ignored by gitignore (allowlist broken)")
+        print(
+            "ERROR: .agent/plans/README.md is ignored by gitignore (allowlist broken)"
+        )
         return 1
 
     print("OK: agent plans directory policy is enforced")

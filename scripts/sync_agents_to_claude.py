@@ -20,7 +20,9 @@ def build_claude_from_agents(agents_text: str) -> str:
     lines = text.split("\n")
 
     if not lines or not lines[0].startswith("#"):
-        raise ValueError("AGENTS.md must start with a markdown title line like '# AGENTS'.")
+        raise ValueError(
+            "AGENTS.md must start with a markdown title line like '# AGENTS'."
+        )
 
     # Rewrite the CLAUDE header at the source so it stays deterministic.
     lines[0] = "# CLAUDE"
@@ -39,7 +41,9 @@ def build_claude_from_agents(agents_text: str) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--check", action="store_true", help="Fail if CLAUDE.md is not in sync.")
+    parser.add_argument(
+        "--check", action="store_true", help="Fail if CLAUDE.md is not in sync."
+    )
     args = parser.parse_args()
 
     agents_text = AGENTS.read_text(encoding="utf-8")

@@ -4,7 +4,6 @@ from __future__ import annotations
 import json
 import os
 import subprocess
-import sys
 from pathlib import Path
 
 CODE_EXTS = {".py", ".pyi", ".json", ".yml", ".yaml", ".toml"}
@@ -42,9 +41,13 @@ def main() -> int:
         return 1
 
     # Ensure base commit is available (requires fetch-depth: 0 in checkout)
-    changed = run(["git", "diff", "--name-only", f"{base_sha}...{head_sha}"]).splitlines()
+    changed = run(
+        ["git", "diff", "--name-only", f"{base_sha}...{head_sha}"]
+    ).splitlines()
 
-    src_changes = [p for p in changed if p.startswith("src/models/") and is_code_file(p)]
+    src_changes = [
+        p for p in changed if p.startswith("src/models/") and is_code_file(p)
+    ]
     models_changes = [p for p in changed if p.startswith("models/") and is_code_file(p)]
 
     dual_track = bool(src_changes) and bool(models_changes)
@@ -54,7 +57,9 @@ def main() -> int:
     # Dual track detected
     required_label = "allow-dual-track"
     if required_label not in labels:
-        print("Dual-track change detected (code changes in BOTH src/models and models).")
+        print(
+            "Dual-track change detected (code changes in BOTH src/models and models)."
+        )
         print(f"Add PR label '{required_label}' to proceed.")
         print("Changed files (src/models):")
         for p in src_changes:
@@ -66,7 +71,9 @@ def main() -> int:
 
     # Label present, enforce PR body sections
     if "Dual-Track Reason:" not in body or "Exit Plan:" not in body:
-        print(f"PR label '{required_label}' is present, but PR body is missing required sections.")
+        print(
+            f"PR label '{required_label}' is present, but PR body is missing required sections."
+        )
         print("Include both of the following in the PR description:")
         print("  Dual-Track Reason:")
         print("  Exit Plan:")

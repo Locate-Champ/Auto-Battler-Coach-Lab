@@ -13,7 +13,7 @@ Saves output to data/local_game_data.json
 Usage:
     pip install cdtb
     python scripts/extract_local_tft_data.py
-    python scripts/extract_local_tft_data.py --game-dir "D:\Riot Games\League of Legends"
+    python scripts/extract_local_tft_data.py --game-dir "D:\\Riot Games\\League of Legends"
 """
 
 import argparse
@@ -107,7 +107,9 @@ def extract_character_bins(game_dir, extract_dir, champ_names):
                 break
 
         if not wad_file or not wad_file.exists():
-            print(f"  Warning: WAD not found for {champ_name} (looked for {wad_base}.wad.client)")
+            print(
+                f"  Warning: WAD not found for {champ_name} (looked for {wad_base}.wad.client)"
+            )
             skipped += 1
             continue
 
@@ -117,7 +119,9 @@ def extract_character_bins(game_dir, extract_dir, champ_names):
         target = f"data/characters/{tft_lower}/{tft_lower}.bin"
 
         # First try TFT-specific name, then fall back to base name
-        out_path = os.path.join(extract_dir, "data", "characters", tft_lower, f"{tft_lower}.bin")
+        out_path = os.path.join(
+            extract_dir, "data", "characters", tft_lower, f"{tft_lower}.bin"
+        )
 
         # Try extracting with TFT name from the TFTSet16 WAD first
         tft_wad = game_dir / TFTSET16_WAD
@@ -126,7 +130,9 @@ def extract_character_bins(game_dir, extract_dir, champ_names):
         if size is None:
             # Try from the base champion's WAD with base name
             base_target = f"data/characters/{wad_base}/{wad_base}.bin"
-            base_out = os.path.join(extract_dir, "data", "characters", tft_lower, f"{tft_lower}.bin")
+            base_out = os.path.join(
+                extract_dir, "data", "characters", tft_lower, f"{tft_lower}.bin"
+            )
             size = extract_file_from_wad(wad_file, base_target, base_out)
 
         if size:
@@ -284,8 +290,12 @@ def main():
                     print(f"\nSample - {c.get('name', c.get('apiName'))}:")
                     print(f"  Cost: {c.get('cost')}")
                     stats = c.get("stats", {})
-                    print(f"  HP: {stats.get('hp')}, AD: {stats.get('damage')}, AS: {stats.get('attackSpeed')}")
-                    print(f"  Armor: {stats.get('armor')}, MR: {stats.get('magicResist')}, Range: {stats.get('range')}")
+                    print(
+                        f"  HP: {stats.get('hp')}, AD: {stats.get('damage')}, AS: {stats.get('attackSpeed')}"
+                    )
+                    print(
+                        f"  Armor: {stats.get('armor')}, MR: {stats.get('magicResist')}, Range: {stats.get('range')}"
+                    )
                     ability = c.get("ability", {})
                     print(f"  Ability: {ability.get('name')}")
                     break
@@ -295,9 +305,10 @@ def main():
     finally:
         if not args.keep_temp and not args.temp_dir:
             import shutil
+
             try:
                 shutil.rmtree(extract_dir)
-                print(f"\nCleaned up temp directory")
+                print("\nCleaned up temp directory")
             except Exception:
                 pass
 

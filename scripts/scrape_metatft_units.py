@@ -63,11 +63,11 @@ SPECIAL_URL_SLUGS = {
 
 # Skip these - they're not real champion pages on MetaTFT
 SKIP_UNITS = {
-    "TFT16_AzirSoldier",      # Sand Soldier summon
-    "TFT16_FreljordProp",     # Frozen Tower structure
-    "TFT16_MalzaharVoidling", # Voidling summon
-    "TFT16_PiltoverInvention", # Piltover special
-    "TFT16_Atakhan",          # Darkin encounter
+    "TFT16_AzirSoldier",  # Sand Soldier summon
+    "TFT16_FreljordProp",  # Frozen Tower structure
+    "TFT16_MalzaharVoidling",  # Voidling summon
+    "TFT16_PiltoverInvention",  # Piltover special
+    "TFT16_Atakhan",  # Darkin encounter
 }
 
 
@@ -202,7 +202,9 @@ def scrape_champion(page, api_name, info, retries=2):
                             '[class*="StatsMenu"], [class*="stats-menu"], [class*="UnitStats"]'
                         )
                         if stats_container:
-                            stats_data["raw_text"] = stats_container.inner_text().strip()
+                            stats_data["raw_text"] = (
+                                stats_container.inner_text().strip()
+                            )
 
                     # Switch back to ability tab
                     if tabs:
@@ -316,7 +318,7 @@ def main():
             sorted(champions.items(), key=lambda x: (-x[1]["cost"], x[1]["name"]))
         ):
             print(
-                f"\n[{i+1}/{total}] {info['name']} ({info['cost']}-cost)...", end=" "
+                f"\n[{i + 1}/{total}] {info['name']} ({info['cost']}-cost)...", end=" "
             )
 
             result = scrape_champion(page, api_name, info)
@@ -329,7 +331,9 @@ def main():
                     else 0
                 )
                 has_stats = bool(result["stats"] and result["stats"].get("raw_text"))
-                print(f"OK (desc: {desc_len} chars, stats: {'Y' if has_stats else 'N'})")
+                print(
+                    f"OK (desc: {desc_len} chars, stats: {'Y' if has_stats else 'N'})"
+                )
             else:
                 print(f"FAILED: {result['error']}")
 
@@ -359,13 +363,9 @@ def main():
     print("SUMMARY")
     print("=" * 60)
     success = sum(1 for r in results.values() if r["scraped"])
-    with_desc = sum(
-        1 for r in results.values() if r.get("ability_description")
-    )
+    with_desc = sum(1 for r in results.values() if r.get("ability_description"))
     with_stats = sum(
-        1
-        for r in results.values()
-        if r.get("stats") and r["stats"].get("raw_text")
+        1 for r in results.values() if r.get("stats") and r["stats"].get("raw_text")
     )
     failed = sum(1 for r in results.values() if not r["scraped"])
 

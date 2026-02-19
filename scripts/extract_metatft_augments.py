@@ -88,7 +88,9 @@ def infer_rarity(api_name: str, augment: dict) -> int:
 def render_description(augment: dict) -> str:
     desc = augment.get("desc") or augment.get("description") or ""
 
-    for token in set(re.findall(r"\(?@TFTUnitProperty\.*\w*:\w*(?:\*100)?@%?\)?", desc)):
+    for token in set(
+        re.findall(r"\(?@TFTUnitProperty\.*\w*:\w*(?:\*100)?@%?\)?", desc)
+    ):
         replacement = "Varies"
         if "TRA" in token:
             replacement = ""
@@ -152,7 +154,12 @@ def render_description(augment: dict) -> str:
     desc = re.sub(r"</?rules>", " ", desc, flags=re.IGNORECASE)
     desc = re.sub(r"</?expandRowActive>|</?expandRow>", " ", desc, flags=re.IGNORECASE)
     desc = re.sub(r"</?row[^>]*>", " ", desc, flags=re.IGNORECASE)
-    desc = re.sub(r"</?tooltipCalculationContainer>|</?tooltipCalculation>", " ", desc, flags=re.IGNORECASE)
+    desc = re.sub(
+        r"</?tooltipCalculationContainer>|</?tooltipCalculation>",
+        " ",
+        desc,
+        flags=re.IGNORECASE,
+    )
     desc = re.sub(r"<[^>]+>", " ", desc)
     desc = desc.replace("???", "Varies")
     desc = re.sub(r"\s+", " ", desc).strip()
@@ -239,7 +246,16 @@ def main() -> None:
     with CSV_OUTPUT.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["api_name", "name", "description", "tier", "rarity", "tags", "icon", "metatft_name"],
+            fieldnames=[
+                "api_name",
+                "name",
+                "description",
+                "tier",
+                "rarity",
+                "tags",
+                "icon",
+                "metatft_name",
+            ],
         )
         writer.writeheader()
         writer.writerows(rows)

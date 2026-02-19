@@ -34,7 +34,7 @@ METATFT_STATS_PARAMS = {
     "days": "3",
     "rank": "CHALLENGER,DIAMOND,EMERALD,GRANDMASTER,MASTER",
     "permit_filter_adjustment": "true",
-    "region_hint": "na1"
+    "region_hint": "na1",
 }
 
 # Request headers
@@ -48,9 +48,9 @@ TOP_COMPS_LIMIT = 25
 
 # Tier thresholds based on average placement
 TIER_THRESHOLDS = {
-    "S": 4.0,   # < 4.0 avg placement
-    "A": 4.3,   # 4.0 - 4.3
-    "B": 4.6,   # 4.3 - 4.6
+    "S": 4.0,  # < 4.0 avg placement
+    "A": 4.3,  # 4.0 - 4.3
+    "B": 4.6,  # 4.3 - 4.6
     # C: > 4.6
 }
 
@@ -65,7 +65,7 @@ def load_trait_id_map():
     global TRAIT_ID_MAP
     map_file = GAME_DATA_DIR / "trait_id_map.json"
     if map_file.exists():
-        with open(map_file, 'r') as f:
+        with open(map_file, "r") as f:
             TRAIT_ID_MAP = json.load(f)
         print(f"Loaded {len(TRAIT_ID_MAP)} trait mappings")
     else:
@@ -81,7 +81,7 @@ def load_champion_traits_map():
         return
 
     champion_traits: dict[str, list[str]] = {}
-    with open(traits_file, 'r') as f:
+    with open(traits_file, "r") as f:
         for line in f:
             line = line.strip()
             if not line:
@@ -179,15 +179,12 @@ def fetch_metatft_data():
     Returns:
         dict: Raw API response or None if fetch fails
     """
-    print(f"Fetching comps data from MetaTFT API...")
+    print("Fetching comps data from MetaTFT API...")
     print(f"URL: {METATFT_COMPS_URL}")
 
     try:
         response = requests.get(
-            METATFT_COMPS_URL,
-            params=METATFT_COMPS_PARAMS,
-            headers=HEADERS,
-            timeout=30
+            METATFT_COMPS_URL, params=METATFT_COMPS_PARAMS, headers=HEADERS, timeout=30
         )
         response.raise_for_status()
     except requests.RequestException as e:
@@ -206,15 +203,12 @@ def fetch_metatft_data():
 
 def fetch_metatft_stats():
     """Fetch composition stats from MetaTFT API with rank filter."""
-    print(f"Fetching stats data from MetaTFT API...")
+    print("Fetching stats data from MetaTFT API...")
     print(f"URL: {METATFT_STATS_URL}")
 
     try:
         response = requests.get(
-            METATFT_STATS_URL,
-            params=METATFT_STATS_PARAMS,
-            headers=HEADERS,
-            timeout=30
+            METATFT_STATS_URL, params=METATFT_STATS_PARAMS, headers=HEADERS, timeout=30
         )
         response.raise_for_status()
     except requests.RequestException as e:
@@ -250,7 +244,10 @@ def build_stats_by_cluster(stats_data):
         total_place_count = sum(places) if places else 0
 
         if total_place_count > 0:
-            avg_placement = sum((idx + 1) * place_count for idx, place_count in enumerate(places)) / total_place_count
+            place_sum = sum(
+                (idx + 1) * place_count for idx, place_count in enumerate(places)
+            )
+            avg_placement = place_sum / total_place_count
             top4_rate = (sum(places[:4]) / total_place_count) * 100
             win_rate = (places[0] / total_place_count) * 100
         else:
@@ -269,7 +266,9 @@ def build_stats_by_cluster(stats_data):
     return stats_by_cluster, total_games, stats_data.get("tft_set")
 
 
-def extract_comps_data(raw_data, stats_by_cluster=None, stats_total_games=0, stats_tft_set=None):
+def extract_comps_data(
+    raw_data, stats_by_cluster=None, stats_total_games=0, stats_tft_set=None
+):
     """
     Extract and normalize composition data from MetaTFT API response.
 
@@ -326,13 +325,18 @@ def extract_comps_data(raw_data, stats_by_cluster=None, stats_total_games=0, sta
             # Extract builds (top 3)
             builds = []
             for build in cluster_data.get("builds", [])[:3]:
-                builds.append({
-                    "unit": build.get("unit", "").replace("TFT16_", ""),
-                    "items": [item.replace("TFT_Item_", "") for item in build.get("buildName", [])],
-                    "games": build.get("count", 0),
-                    "avg_placement": round(build.get("avg", 0), 2),
-                    "place_change": round(build.get("place_change", 0), 3),
-                })
+                builds.append(
+                    {
+                        "unit": build.get("unit", "").replace("TFT16_", ""),
+                        "items": [
+                            item.replace("TFT_Item_", "")
+                            for item in build.get("buildName", [])
+                        ],
+                        "games": build.get("count", 0),
+                        "avg_placement": round(build.get("avg", 0), 2),
+                        "place_change": round(build.get("place_change", 0), 3),
+                    }
+                )
 
             top4_rate = round(stats["top4_rate"], 2)
             win_rate = round(stats["win_rate"], 2)
@@ -387,6 +391,7 @@ def extract_comps_data(raw_data, stats_by_cluster=None, stats_total_games=0, sta
     except (KeyError, TypeError) as e:
         print(f"Error extracting comp data: {e}")
         import traceback
+
         traceback.print_exc()
         return None
 
@@ -400,7 +405,7 @@ def save_comps_data(data):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     output_file = DATA_DIR / "comps.json"
 
-    with open(output_file, 'w') as f:
+    with open(output_file, "w") as f:
         json.dump(data, f, indent=2)
 
     print(f"Saved composition data to {output_file}")
@@ -414,11 +419,11 @@ def update_timestamp():
         "last_updated": datetime.now(timezone.utc).isoformat(),
         "source": "metatft",
         "url": METATFT_STATS_URL,
-        "automated": True
+        "automated": True,
     }
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    with open(timestamp_file, 'w') as f:
+    with open(timestamp_file, "w") as f:
         json.dump(data, f, indent=2)
 
     print(f"Updated timestamp: {data['last_updated']}")
@@ -437,7 +442,9 @@ def main():
 
     # Fetch data from MetaTFT API
     stats_data = fetch_metatft_stats()
-    stats_by_cluster, stats_total_games, stats_tft_set = build_stats_by_cluster(stats_data)
+    stats_by_cluster, stats_total_games, stats_tft_set = build_stats_by_cluster(
+        stats_data
+    )
     raw_data = fetch_metatft_data()
 
     if raw_data:

@@ -3,6 +3,7 @@
 Usage:
     python scripts/benchmark_arrow.py --data /path/to/gate_b_50k
 """
+
 from __future__ import annotations
 
 import argparse
@@ -13,15 +14,16 @@ from pathlib import Path
 # Ensure repo root is on path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from models.data_loader import DataLoader
-from models.feature_engineering import TFTFeatureEngineer
+from models.data_loader import DataLoader  # noqa: E402
+from models.feature_engineering import TFTFeatureEngineer  # noqa: E402
 
 
 def bench_arrow(loader: DataLoader) -> dict:
     """Benchmark Arrow streaming path."""
     t0 = time.perf_counter()
     X_tr, X_te, y_tr, y_te = loader.load_fight_prediction_arrow(
-        test_size=0.2, seed=42,
+        test_size=0.2,
+        seed=42,
     )
     elapsed = time.perf_counter() - t0
     total = len(X_tr) + len(X_te)
@@ -39,7 +41,8 @@ def bench_dict(loader: DataLoader) -> dict:
     """Benchmark dict-based path."""
     t0 = time.perf_counter()
     X_tr, X_te, y_tr, y_te = loader.load_fight_prediction_data(
-        test_size=0.2, seed=42,
+        test_size=0.2,
+        seed=42,
     )
     elapsed = time.perf_counter() - t0
     total = len(X_tr) + len(X_te)
@@ -80,9 +83,16 @@ def main():
     parser = argparse.ArgumentParser(description="Benchmark Arrow vs Dict loading")
     parser.add_argument("--data", required=True, help="Path to Gate B output dir")
     parser.add_argument("--skip-dict", action="store_true", help="Skip dict benchmark")
-    parser.add_argument("--skip-arrow-single", action="store_true", help="Skip Arrow single-process")
-    parser.add_argument("--parallel-workers", type=int, nargs="+", default=[4, 8, 16],
-                        help="Worker counts to test for parallel benchmark")
+    parser.add_argument(
+        "--skip-arrow-single", action="store_true", help="Skip Arrow single-process"
+    )
+    parser.add_argument(
+        "--parallel-workers",
+        type=int,
+        nargs="+",
+        default=[4, 8, 16],
+        help="Worker counts to test for parallel benchmark",
+    )
     args = parser.parse_args()
 
     print(f"Data: {args.data}")
@@ -92,6 +102,7 @@ def main():
     # Check Cython
     try:
         from models.fe_fast import CYTHON_AVAILABLE
+
         print(f"Cython FE: {CYTHON_AVAILABLE}")
     except ImportError:
         print("Cython FE: not available")
@@ -158,17 +169,25 @@ def main():
     arrow_time = next((r["elapsed"] for r in results if r["path"] == "arrow"), None)
     dict_time = next((r["elapsed"] for r in results if r["path"] == "dict"), None)
     if arrow_time and dict_time:
-        print(f"\n  Arrow vs Dict speedup: {dict_time/arrow_time:.2f}x")
+        print(f"\n  Arrow vs Dict speedup: {dict_time / arrow_time:.2f}x")
 
     best_parallel = min(
-        (r for r in results if r["path"].startswith("arrow_parallel") and "error" not in r),
+        (
+            r
+            for r in results
+            if r["path"].startswith("arrow_parallel") and "error" not in r
+        ),
         key=lambda r: r["elapsed"],
         default=None,
     )
     if best_parallel and dict_time:
-        print(f"  Best parallel vs Dict speedup: {dict_time/best_parallel['elapsed']:.2f}x")
+        print(
+            f"  Best parallel vs Dict speedup: {dict_time / best_parallel['elapsed']:.2f}x"
+        )
     if best_parallel and arrow_time:
-        print(f"  Parallel vs Arrow single speedup: {arrow_time/best_parallel['elapsed']:.2f}x")
+        print(
+            f"  Parallel vs Arrow single speedup: {arrow_time / best_parallel['elapsed']:.2f}x"
+        )
 
 
 if __name__ == "__main__":

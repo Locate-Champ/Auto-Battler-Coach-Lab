@@ -11,14 +11,13 @@ Usage:
 import os
 import sys
 import time
-import shutil
 from pathlib import Path
 from datetime import datetime
 
 # Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent / 'src'))
+sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from src.metatft_parser import MetaTFTLogParser
+from src.metatft_parser import MetaTFTLogParser  # noqa: E402
 
 
 def find_overwolf_logs() -> Path:
@@ -26,15 +25,15 @@ def find_overwolf_logs() -> Path:
 
     # Standard Windows locations
     possible_paths = [
-        Path(os.environ.get('LOCALAPPDATA', '')) / 'Overwolf' / 'Log',
-        Path(os.environ.get('APPDATA', '')) / 'Overwolf' / 'Log',
-        Path.home() / 'AppData' / 'Local' / 'Overwolf' / 'Log',
-        Path.home() / 'AppData' / 'Roaming' / 'Overwolf' / 'Log',
+        Path(os.environ.get("LOCALAPPDATA", "")) / "Overwolf" / "Log",
+        Path(os.environ.get("APPDATA", "")) / "Overwolf" / "Log",
+        Path.home() / "AppData" / "Local" / "Overwolf" / "Log",
+        Path.home() / "AppData" / "Roaming" / "Overwolf" / "Log",
     ]
 
     # Check each location
     for path in possible_paths:
-        metatft_path = path / 'Apps' / 'MetaTFT'
+        metatft_path = path / "Apps" / "MetaTFT"
         if metatft_path.exists():
             print(f"Found MetaTFT logs at: {metatft_path}")
             return metatft_path
@@ -44,8 +43,8 @@ def find_overwolf_logs() -> Path:
         if path.exists():
             print(f"Found Overwolf logs at: {path}")
             # Look for MetaTFT subdirectory
-            for subdir in path.glob('Apps/*'):
-                if 'metatft' in subdir.name.lower():
+            for subdir in path.glob("Apps/*"):
+                if "metatft" in subdir.name.lower():
                     print(f"Found MetaTFT logs at: {subdir}")
                     return subdir
 
@@ -61,16 +60,18 @@ def sync_augments(log_dir: Path = None, output_dir: Path = None):
 
     if log_dir is None or not log_dir.exists():
         print("ERROR: Could not find MetaTFT logs!")
-        print("Make sure MetaTFT/Overwolf is installed and you've played at least one game.")
+        print(
+            "Make sure MetaTFT/Overwolf is installed and you've played at least one game."
+        )
         print("\nExpected location: %LOCALAPPDATA%\\Overwolf\\Log\\Apps\\MetaTFT")
         return False
 
     # Default output directory
     if output_dir is None:
-        output_dir = Path(__file__).parent / 'data' / 'personal'
+        output_dir = Path(__file__).parent / "data" / "personal"
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_file = output_dir / 'metatft_augments.csv'
+    output_file = output_dir / "metatft_augments.csv"
 
     print(f"\nParsing logs from: {log_dir}")
     print(f"Output file: {output_file}")
@@ -95,9 +96,9 @@ def sync_augments(log_dir: Path = None, output_dir: Path = None):
         # Show recent events
         print("\nRecent augment choices:")
         for event in events[-5:]:
-            ts = event['timestamp'].split()[1][:8]  # Just time
-            opts = ', '.join(event['options'][:3])
-            selected = list(event.get('selected', {}).values())
+            ts = event["timestamp"].split()[1][:8]  # Just time
+            opts = ", ".join(event["options"][:3])
+            selected = list(event.get("selected", {}).values())
             sel_str = f" -> {selected[0]}" if selected else ""
             print(f"  [{ts}] {opts[:50]}{sel_str}")
 
@@ -107,14 +108,16 @@ def sync_augments(log_dir: Path = None, output_dir: Path = None):
         # Show top augments
         print("\nYour most-picked augments:")
         sorted_augs = sorted(
-            stats['augments'].items(),
-            key=lambda x: x[1]['times_selected'],
-            reverse=True
+            stats["augments"].items(),
+            key=lambda x: x[1]["times_selected"],
+            reverse=True,
         )
         for aug, data in sorted_augs[:10]:
-            if data['times_selected'] > 0:
-                print(f"  {aug}: {data['times_selected']}x picked "
-                      f"({data['selection_rate']*100:.0f}% when offered)")
+            if data["times_selected"] > 0:
+                print(
+                    f"  {aug}: {data['times_selected']}x picked "
+                    f"({data['selection_rate'] * 100:.0f}% when offered)"
+                )
 
         print(f"\n✓ Synced {len(events)} events to {output_file}")
         return True
@@ -122,6 +125,7 @@ def sync_augments(log_dir: Path = None, output_dir: Path = None):
     except Exception as e:
         print(f"ERROR: {e}")
         import traceback
+
         traceback.print_exc()
         return False
 
@@ -139,18 +143,26 @@ def watch_mode(interval: int = 60):
 
             if log_dir:
                 # Check if logs have been modified
-                latest_log = max(log_dir.glob('augment_recommendations*.log'),
-                               key=lambda p: p.stat().st_mtime, default=None)
+                latest_log = max(
+                    log_dir.glob("augment_recommendations*.log"),
+                    key=lambda p: p.stat().st_mtime,
+                    default=None,
+                )
 
                 if latest_log:
                     mod_time = datetime.fromtimestamp(latest_log.stat().st_mtime)
 
                     if last_sync is None or mod_time > last_sync:
-                        print(f"\n[{datetime.now().strftime('%H:%M:%S')}] New data detected, syncing...")
+                        print(
+                            f"\n[{datetime.now().strftime('%H:%M:%S')}] New data detected, syncing..."
+                        )
                         sync_augments(log_dir)
                         last_sync = datetime.now()
                     else:
-                        print(f"[{datetime.now().strftime('%H:%M:%S')}] No new data", end='\r')
+                        print(
+                            f"[{datetime.now().strftime('%H:%M:%S')}] No new data",
+                            end="\r",
+                        )
 
             time.sleep(interval)
 
@@ -161,13 +173,19 @@ def watch_mode(interval: int = 60):
 def main():
     import argparse
 
-    parser = argparse.ArgumentParser(description='Sync MetaTFT augment data')
-    parser.add_argument('--watch', action='store_true',
-                       help='Watch for new logs continuously')
-    parser.add_argument('--interval', type=int, default=60,
-                       help='Check interval in seconds (for watch mode)')
-    parser.add_argument('--log-dir', type=str,
-                       help='Manual path to MetaTFT log directory')
+    parser = argparse.ArgumentParser(description="Sync MetaTFT augment data")
+    parser.add_argument(
+        "--watch", action="store_true", help="Watch for new logs continuously"
+    )
+    parser.add_argument(
+        "--interval",
+        type=int,
+        default=60,
+        help="Check interval in seconds (for watch mode)",
+    )
+    parser.add_argument(
+        "--log-dir", type=str, help="Manual path to MetaTFT log directory"
+    )
 
     args = parser.parse_args()
 

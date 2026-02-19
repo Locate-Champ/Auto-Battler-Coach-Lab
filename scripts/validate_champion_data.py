@@ -15,7 +15,7 @@ Usage:
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Set, Any
+from typing import Dict, List, Set
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
@@ -27,7 +27,7 @@ ABILITIES_PATH = SIMULATOR_DIR / "core" / "champion_abilities.py"
 
 def load_combat_data() -> Dict:
     """Load the combat_data.json file."""
-    with open(COMBAT_DATA_PATH, 'r', encoding='utf-8') as f:
+    with open(COMBAT_DATA_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -37,15 +37,15 @@ def find_implemented_handlers() -> Set[str]:
         print(f"Warning: {ABILITIES_PATH} not found")
         return set()
 
-    with open(ABILITIES_PATH, 'r', encoding='utf-8') as f:
+    with open(ABILITIES_PATH, "r", encoding="utf-8") as f:
         content = f.read()
 
     # Find all def _cast_<name> methods
-    pattern = r'def _cast_(\w+)\s*\('
+    pattern = r"def _cast_(\w+)\s*\("
     matches = re.findall(pattern, content)
 
     # Normalize names (lowercase, no underscores)
-    return {m.lower().replace('_', '') for m in matches}
+    return {m.lower().replace("_", "") for m in matches}
 
 
 def normalize_champion_name(api_name: str) -> str:
@@ -123,8 +123,8 @@ def main():
 
     # Track issues
     critical_issues = []  # Missing ability names, zero HP, etc.
-    warnings = []         # Empty variables, high values, etc.
-    unimplemented = []    # No handler in champion_abilities.py
+    warnings = []  # Empty variables, high values, etc.
+    unimplemented = []  # No handler in champion_abilities.py
 
     # Validate each champion
     for api_name, champ in champions.items():
@@ -201,8 +201,12 @@ def main():
     print("\n" + "=" * 70)
     print("SUMMARY")
     print("=" * 70)
-    print(f"  Total champions:    {len([c for c in champions if c.startswith('TFT16_')])}")
-    print(f"  Implemented:        {len([c for c in champions if c.startswith('TFT16_') and normalize_champion_name(c) in implemented])}")
+    print(
+        f"  Total champions:    {len([c for c in champions if c.startswith('TFT16_')])}"
+    )
+    print(
+        f"  Implemented:        {len([c for c in champions if c.startswith('TFT16_') and normalize_champion_name(c) in implemented])}"
+    )
     print(f"  Unimplemented:      {len(unimplemented)}")
     print(f"  Critical issues:    {len(critical_issues)}")
     print(f"  Warnings:           {len(warnings)}")
@@ -212,8 +216,14 @@ def main():
     print("SPOT CHECK: Known complex champions")
     print("-" * 70)
 
-    spot_check = ["TFT16_Taric", "TFT16_AnnieTibbers", "TFT16_LucianSenna",
-                  "TFT16_Senna", "TFT16_Tibbers", "TFT16_Annie"]
+    spot_check = [
+        "TFT16_Taric",
+        "TFT16_AnnieTibbers",
+        "TFT16_LucianSenna",
+        "TFT16_Senna",
+        "TFT16_Tibbers",
+        "TFT16_Annie",
+    ]
 
     for api_name in spot_check:
         if api_name in champions:
@@ -225,7 +235,7 @@ def main():
             if vars:
                 print(f"    Variables: {', '.join(vars.keys())[:60]}...")
             else:
-                print(f"    Variables: NONE")
+                print("    Variables: NONE")
         else:
             print(f"\n  {api_name}: NOT FOUND in combat_data.json")
 

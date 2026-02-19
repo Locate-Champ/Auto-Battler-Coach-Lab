@@ -61,7 +61,7 @@ class SyncResult:
             lines.append("Successful:")
             for s in self.successes:
                 lines.append(f"  ✓ {s['name']}")
-                if s['details']:
+                if s["details"]:
                     lines.append(f"    {s['details']}")
 
         if self.failures:
@@ -78,7 +78,9 @@ class SyncResult:
         return "\n".join(lines)
 
 
-def run_script(script_path: Path, args: list = None, cwd: Path = None) -> tuple[bool, str]:
+def run_script(
+    script_path: Path, args: list = None, cwd: Path = None
+) -> tuple[bool, str]:
     """
     Run a Python script and return success status and output.
 
@@ -95,7 +97,7 @@ def run_script(script_path: Path, args: list = None, cwd: Path = None) -> tuple[
             cwd=str(cwd) if cwd else str(script_path.parent),
             capture_output=True,
             text=True,
-            timeout=300  # 5 minute timeout
+            timeout=300,  # 5 minute timeout
         )
 
         output = result.stdout
@@ -169,9 +171,11 @@ def sync_simulator_items(result: SyncResult, dry_run: bool = False):
     success, output = run_script(script, ["--save-all"], cwd=SIMULATOR_DIR)
 
     if success:
-        result.add_success("fetch_metatft_items.py", "Updated simulator/data/metatft_items.json")
+        result.add_success(
+            "fetch_metatft_items.py", "Updated simulator/data/metatft_items.json"
+        )
         # Print last few lines of output
-        lines = output.strip().split('\n')
+        lines = output.strip().split("\n")
         for line in lines[-10:]:
             print(f"  {line}")
     else:
@@ -205,9 +209,12 @@ def sync_simulator_positions(result: SyncResult, dry_run: bool = False):
     success, output = run_script(script, ["--save-all"], cwd=SIMULATOR_DIR)
 
     if success:
-        result.add_success("fetch_metatft_positions.py", "Updated simulator/data/metatft_positions.json")
+        result.add_success(
+            "fetch_metatft_positions.py",
+            "Updated simulator/data/metatft_positions.json",
+        )
         # Print last few lines of output
-        lines = output.strip().split('\n')
+        lines = output.strip().split("\n")
         for line in lines[-10:]:
             print(f"  {line}")
     else:
@@ -263,7 +270,9 @@ def sync_simulator_reference_data(result: SyncResult, dry_run: bool = False):
     print(f"Running {validate_script.name}...")
     success, output = run_script(validate_script, cwd=SIMULATOR_DATA_DIR)
     if success:
-        result.add_success("validate_reference_data.py", "Reference data validation passed")
+        result.add_success(
+            "validate_reference_data.py", "Reference data validation passed"
+        )
         print(output)
     else:
         result.add_failure("validate_reference_data.py", output[:200])
@@ -308,7 +317,9 @@ def sync_game_data(result: SyncResult, dry_run: bool = False):
         success, output = run_script(script)
 
         if success:
-            result.add_success("fetch_game_data.py", "Updated data/game_data/ (placement stats)")
+            result.add_success(
+                "fetch_game_data.py", "Updated data/game_data/ (placement stats)"
+            )
             print(output)
         else:
             result.add_failure("fetch_game_data.py", output[:200])
@@ -334,9 +345,11 @@ def sync_game_data(result: SyncResult, dry_run: bool = False):
     success, output = run_script(stats_script)
 
     if success:
-        result.add_success("fetch_champion_stats.py", "Updated simulator/data/ (stats + abilities)")
+        result.add_success(
+            "fetch_champion_stats.py", "Updated simulator/data/ (stats + abilities)"
+        )
         # Print last few lines of output
-        lines = output.strip().split('\n')
+        lines = output.strip().split("\n")
         for line in lines[-15:]:
             print(f"  {line}")
     else:
@@ -362,44 +375,49 @@ def update_sync_manifest(result: SyncResult):
             "meta": {
                 "folder": "data/meta/",
                 "source": "MetaTFT API",
-                "files": ["comps.json", "last_updated.json"]
+                "files": ["comps.json", "last_updated.json"],
             },
             "game_data_placements": {
                 "folder": "data/game_data/",
                 "source": "MetaTFT API",
-                "files": ["champions.jsonl", "items.jsonl", "traits.jsonl", "augments.jsonl"],
-                "note": "Placement statistics (win rates, top 4 rates)"
+                "files": [
+                    "champions.jsonl",
+                    "items.jsonl",
+                    "traits.jsonl",
+                    "augments.jsonl",
+                ],
+                "note": "Placement statistics (win rates, top 4 rates)",
             },
             "champion_stats": {
                 "folder": "simulator/data/",
                 "source": "CommunityDragon",
                 "files": ["combat_data.json", "timing_constants.json", "traits.json"],
-                "note": "Full champion stats (HP, AD, abilities, spell variables)"
+                "note": "Full champion stats (HP, AD, abilities, spell variables)",
             },
             "simulator_items": {
                 "folder": "simulator/data/",
                 "source": "MetaTFT API",
-                "file": "metatft_items.json"
+                "file": "metatft_items.json",
             },
             "simulator_positions": {
                 "folder": "simulator/data/",
                 "source": "MetaTFT API",
-                "file": "metatft_positions.json"
+                "file": "metatft_positions.json",
             },
             "simulator_traits": {
                 "folder": "simulator/data/",
                 "source": "data/api/processed/traits_set16.json",
-                "file": "traits.json"
+                "file": "traits.json",
             },
             "simulator_helper_units": {
                 "folder": "simulator/data/",
                 "source": "data/api/processed/units_set16.json",
-                "file": "helper_units.json"
-            }
-        }
+                "file": "helper_units.json",
+            },
+        },
     }
 
-    with open(manifest_path, 'w') as f:
+    with open(manifest_path, "w") as f:
         json.dump(manifest, f, indent=2)
 
     print(f"\nUpdated sync manifest: {manifest_path}")
@@ -416,28 +434,27 @@ Examples:
     python scripts/sync_all_data.py --game    # Only sync game data (champions, items, traits)
     python scripts/sync_all_data.py --sim     # Only sync /simulator/data/
     python scripts/sync_all_data.py --dry-run # Preview what would be synced
-        """
+        """,
     )
     parser.add_argument(
-        "--meta",
-        action="store_true",
-        help="Only sync meta data (comps, builds)"
+        "--meta", action="store_true", help="Only sync meta data (comps, builds)"
     )
     parser.add_argument(
         "--game",
         action="store_true",
-        help="Only sync game data (champions, items, traits, augments)"
+        help="Only sync game data (champions, items, traits, augments)",
     )
     parser.add_argument(
-        "--sim", "--simulator",
+        "--sim",
+        "--simulator",
         action="store_true",
         dest="sim",
-        help="Only sync simulator data (/simulator/data/ folder)"
+        help="Only sync simulator data (/simulator/data/ folder)",
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Show what would be synced without actually syncing"
+        help="Show what would be synced without actually syncing",
     )
 
     args = parser.parse_args()

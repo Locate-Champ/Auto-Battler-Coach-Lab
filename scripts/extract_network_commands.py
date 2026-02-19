@@ -81,7 +81,8 @@ def write_jsonl(records: Iterable[dict], output_path: Path) -> int:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Extract network-like request lines from MetaTFT logs into JSONL.")
+        description="Extract network-like request lines from MetaTFT logs into JSONL."
+    )
     parser.add_argument(
         "--input",
         required=True,
