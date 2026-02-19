@@ -1,21 +1,8 @@
-﻿# Data Directory Policy
+# Data Policy
 
-Tracked data in this repository must be safe, minimal, and non-personal.
+This repository intentionally keeps datasets and raw provider exports local-only.
 
-## Local-only data (gitignored)
-Put real runtime/personal/raw data under:
-- `data/local/**`
-- `data/raw/**`
-- `data/matches/**`
-- `knowledge-base/raw/**`
-- `data/api/raw/**`
-- `data/api/tft_*/**`
+- Tracked under `data/**`: this file only.
+- Untracked under `data/**`: all other files, including generated outputs and local datasets.
 
-## Tracked data
-Tracked files under `data/**` should be:
-- Schema/reference files.
-- Small sanitized examples for tests/docs.
-- Non-personal processed metadata.
-
-## Runtime behavior
-Runtime code should not silently fall back to fake samples. If required local data is missing, fail with a clear, actionable error.
+If a workflow needs data, create or fetch it locally in your own environment.

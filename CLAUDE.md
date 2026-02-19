@@ -21,7 +21,7 @@ Keep the repo focused, deterministic, and fast to navigate for both humans and a
 - Runtime artifact resolver env vars:
   - Preferred: `COACH_OUTPUTS_DIR`, `COACH_CHECKPOINT_DIR`, `COACH_ARTIFACT_ROOT`
   - Legacy fallback env vars remain supported for local compatibility, but should be configured only in local-only overlays (for example `.env.local`), not public docs.
-- Local-only paths that must remain untracked: `.env.local`, `docs/**`, `.agent/local/**`, `.agent/archive/**`, and `archive/**`.
+- Local-only paths that must remain untracked: `.env.local`, `.agent/**`, `.claude/**`, `.mcp.json`, `docs/**`, `archive/**`, `scraper/**`, and `data/**`.
 
 ## Scope and Safety Rules
 1. No drive-by refactors.
@@ -63,9 +63,8 @@ If a PR touches both `src/models/**` and `models/**` with code/config changes, i
 Without all three, the PR fails policy checks.
 
 ## Continuity Rules
-- Canonical continuity file: `.agent/CONTINUITY.md`.
-- Keep it compact and high-signal; if it exceeds ~250 lines, archive and compact.
-- Record only meaningful deltas with timestamp + provenance tags.
+- Continuity notes are local-only under `.agent/**` and must not be tracked.
+- Keep local continuity compact and high-signal.
 
 ## Completion Rules
 Before final response:

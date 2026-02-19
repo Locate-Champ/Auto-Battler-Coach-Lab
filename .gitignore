@@ -1,52 +1,36 @@
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
 *.so
 .Python
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
 .eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
 *.egg-info/
-.installed.cfg
 *.egg
 
 # Virtual environments
 .env
-.venv
-env/
+.venv/
 venv/
+env/
 ENV/
 
-# IDE
+# Node
+node_modules/
+
+# IDE / editor
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# Jupyter
-.ipynb_checkpoints/
-
-# OS
+# OS / notebooks
 .DS_Store
 Thumbs.db
+.ipynb_checkpoints/
 
-# Node
-node_modules/
-
-# Logs and runtime artifacts
-logs/
-
-# Archives and binaries (use external storage)
+# Archives and binaries
 *.zip
 *.rar
 *.7z
@@ -54,54 +38,29 @@ logs/
 *.docx
 *.doc
 
-# Large data dumps (keep sample data in data/, store full dumps externally)
-# Raw log dumps from MetaTFT/Overwolf should not be committed
-scraper/data/
+# Local-only workspace overlays and machine config
+.agent/
+.claude/
+.mcp.json
+archive/
+docs/
+scraper/
+data/**
+!data/README.md
+.env.local
 
-# Local scratch
-/PLAN.md
-/set-16-tables-*.avif
-overlay_list.txt
-nul
-Advanced math for simulation.md
-chatgpt simulator diagnosis.md
-simulator/docs/Session Summary*.md
-.ntfy-topic
-
-# --- Claude: ignore by default ---
-.claude/*
-!.claude/settings.json
-.claude/settings.local.json
-
-# --- Agent state: ignore by default ---
-.agent/*
-!.agent/CONTINUITY.md
-!.agent/plans/
-!.agent/plans/**
-
-# ---- Generated / local run artifacts ----
+# Generated run artifacts
 results/
 live-logs/
 tmp/
 models/checkpoints/**
-data/local/**
-data/raw/**
-data/matches/**
 knowledge-base/raw/**
-data/api/raw/**
-data/api/tft_*/**
-archive/**
-.env.local
-docs/**
-.agent/local/**
-
-# ---- Outputs: track runtime subset only ----
 outputs/**
 !outputs/coach/
 !outputs/coach/**
 
-# ---- Downloaded trait icons (never commit) ----
-trait_icons_*/
-trait_icons_*
-app/frontend/images/trait images/trait_icons_*/
-**/icons/**
+# Local scratch
+/PLAN.md
+.ntfy-topic
+set-16-tables-*.avif
+overlay_list.txt
