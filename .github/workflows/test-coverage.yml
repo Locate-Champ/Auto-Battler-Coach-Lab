@@ -38,11 +38,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Ensure CLAUDE.md matches AGENTS.md
+        run: python scripts/sync_agents_to_claude.py --check
 
       - name: Install test dependencies
         run: pip install pytest
