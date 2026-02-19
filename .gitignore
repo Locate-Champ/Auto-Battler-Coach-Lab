@@ -91,3 +91,7 @@ models/checkpoints/**
 outputs/**
 !outputs/coach/
 !outputs/coach/**
+
+# ---- Downloaded trait icons (never commit) ----
+trait_icons_set*/
+trait_icons_set16/

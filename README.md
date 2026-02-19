@@ -1,34 +1,29 @@
-# TFT Coach
+# Auto?Battler Coach Lab
 
-ML-powered coaching companion for Teamfight Tactics with real-time board integration.
+A research sandbox for deterministic simulation + evaluation + explainable decision support in a hex/grid auto?battler ruleset.
 
-## Quick Start
+This repo focuses on:
+- Fast, deterministic simulation runs for offline experiments
+- Dataset generation (snapshot rows, aggregated reports)
+- Lightweight evaluators (e.g., tree models) for ?board strength? scoring
+- A ?planner + critic? style coach that searches candidate actions and explains recommendations
+
+## Quick start
+
+Run the full stack:
 
 ```bash
-# Single command to run everything
 npm start
-```
 
-Opens at http://localhost:5173
 
-## Prerequisites
+Frontend typically opens at http://localhost:5173.
 
-- Python 3.10+
-- Node.js 18+
-- MetaTFT (Overwolf) for live data
+Prerequisites
 
-## Installation
+Python 3.10+
 
-```bash
+Node.js 18+
+
+Install
 pip install -r requirements.txt
-cd app/frontend && npm install
-```
-
-## Documentation
-
-- **[CLAUDE.md](CLAUDE.md)** - Comprehensive guide (start here)
-- **[docs/INDEX.md](docs/INDEX.md)** - Full documentation index
-
----
-
-*TFT Set 16.3*
+cd app/frontend && npm install 
