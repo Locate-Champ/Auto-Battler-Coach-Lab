@@ -53,28 +53,8 @@ jobs:
         if: github.event_name == 'pull_request'
         run: python scripts/ci/check_dual_track_guard.py
 
-      - name: Verify local-only paths are untracked
-        run: |
-          python - <<'PY'
-          import subprocess
-          import sys
-
-          tracked = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
-          blocked_prefixes = ("docs/", "archive/", ".agent/", ".claude/", "scraper/", "data/")
-          violations = [
-              path
-              for path in tracked
-              if path == ".mcp.json" or path.startswith(blocked_prefixes)
-          ]
-
-          if violations:
-              print("Tracked local-only paths found:")
-              for path in sorted(violations):
-                  print(f"  - {path}")
-              sys.exit(1)
-
-          print("OK: no local-only paths are tracked.")
-          PY
+      - name: Verify public surface allowlist
+        run: python scripts/ci/check_public_surface_allowlist.py
 
       - name: Ensure CLAUDE.md matches AGENTS.md
         run: python scripts/sync_agents_to_claude.py --check

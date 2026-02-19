@@ -21,7 +21,7 @@ Keep the repo focused, deterministic, and fast to navigate for both humans and a
 - Runtime artifact resolver env vars:
   - Preferred: `COACH_OUTPUTS_DIR`, `COACH_CHECKPOINT_DIR`, `COACH_ARTIFACT_ROOT`
   - Legacy fallback env vars remain supported for local compatibility, but should be configured only in local-only overlays (for example `.env.local`), not public docs.
-- Local-only paths that must remain untracked: `.env.local`, `.agent/**`, `.claude/**`, `.mcp.json`, `docs/**`, `archive/**`, `scraper/**`, and `data/**`.
+- Local-only paths that must remain untracked: `.env.local`, `.agent/**`, `.claude/**`, `.mcp.json`, `docs/**`, `archive/**`, `scraper/**`, `data/**` (except `data/README.md`), most of `knowledge-base/**` (skeleton-only tracked), most of `scripts/**` (CI/runtime allowlist only), most of `simulator/**` (active engine allowlist only), plus `src/metatft_parser.py` and `src/tft_diagnostic.py`.
 
 ## Scope and Safety Rules
 1. No drive-by refactors.

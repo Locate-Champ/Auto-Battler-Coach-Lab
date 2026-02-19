@@ -52,9 +52,20 @@ jobs:
         run: pip install flake8 black
 
       - name: Run flake8
-        run: flake8 scripts/ --max-line-length=100 --ignore=E501
+        run: |
+          flake8 \
+            scripts/ci/check_dual_track_guard.py \
+            scripts/ci/check_no_tracked_asset_packs.py \
+            scripts/ci/check_public_surface_allowlist.py \
+            scripts/sync_agents_to_claude.py \
+            --max-line-length=100 --ignore=E501
         continue-on-error: true
 
       - name: Check Python formatting with Black
-        run: black --check scripts/
+        run: |
+          black --check \
+            scripts/ci/check_dual_track_guard.py \
+            scripts/ci/check_no_tracked_asset_packs.py \
+            scripts/ci/check_public_surface_allowlist.py \
+            scripts/sync_agents_to_claude.py
         continue-on-error: true
