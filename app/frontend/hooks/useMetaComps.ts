@@ -90,7 +90,7 @@ export function useMetaComps(options: UseMetaCompsOptions = {}): UseMetaCompsRes
 
       if (!response.ok) {
         if (response.status === 404) {
-          throw new Error('Meta data not available. Run fetch_meta_data.py first.');
+          throw new Error('Meta data not available. Add local data/meta/comps.json first.');
         }
         throw new Error(`Failed to fetch meta comps: ${response.statusText}`);
       }

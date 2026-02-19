@@ -62,6 +62,12 @@ def test_api_server_does_not_import_training_models() -> None:
     bad = [m for m in mods if has_prefix(m, "models")]
     assert not bad, "app/api/server.py must not import training track 'models':\n" + "\n".join(bad)
 
+    provider_specific = [m for m in mods if has_prefix(m, "src.metatft_parser")]
+    assert not provider_specific, (
+        "app/api/server.py must not import provider-specific parser modules:\n"
+        + "\n".join(provider_specific)
+    )
+
 
 def test_training_track_does_not_import_runtime_src_models() -> None:
     base = REPO_ROOT / "models"

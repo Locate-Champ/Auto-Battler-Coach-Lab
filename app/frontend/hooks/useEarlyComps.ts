@@ -87,7 +87,7 @@ export function useEarlyComps(options: UseEarlyCompsOptions = {}): UseEarlyComps
 
       if (!response.ok) {
         if (response.status === 404) {
-          throw new Error('Early comps data not available. Run fetch_early_comps.py first.');
+          throw new Error('Early comps data not available. Add local data/meta/early_comps.json first.');
         }
         throw new Error(`Failed to fetch early comps: ${response.statusText}`);
       }

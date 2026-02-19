@@ -155,7 +155,7 @@ const CompsPanel: React.FC<CompsPanelProps> = ({ className }) => {
           <div className="text-xs text-[#6b7280] text-center py-8">
             No meta data available.
             <br />
-            <span className="text-[10px]">Run fetch_meta_data.py to load data.</span>
+            <span className="text-[10px]">Add local data/meta/comps.json to load data.</span>
           </div>
         )}
 

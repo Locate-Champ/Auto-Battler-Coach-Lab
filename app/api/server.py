@@ -16,7 +16,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from src.models import FeatureEngineer, PlacementModel, TFTRecommender
-from src.metatft_parser import MetaTFTLogParser
 
 app = FastAPI(title="Auto-Battler Coach API", version="1.0.0")
 
@@ -32,12 +31,11 @@ app.add_middleware(
 # Initialize models on startup
 recommender = None
 placement_model = None
-parser = None
 
 
 @app.on_event("startup")
 async def startup():
-    global recommender, placement_model, parser
+    global recommender, placement_model
     print("Loading Auto-Battler Coach models...")
 
     data_dir = Path(__file__).parent.parent.parent
@@ -48,7 +46,6 @@ async def startup():
             "Local runtime data is missing. Populate data/local/** before starting the API."
         ) from exc
     placement_model = PlacementModel(str(data_dir))
-    parser = MetaTFTLogParser()
 
     # Train placement model
     X, y, _ = placement_model.prepare_data()
@@ -163,7 +160,10 @@ async def get_meta_comps(limit: int = 10):
     timestamp_file = data_dir / "data" / "meta" / "last_updated.json"
 
     if not comps_file.exists():
-        raise HTTPException(status_code=404, detail="Meta data not available. Run fetch_meta_data.py first.")
+        raise HTTPException(
+            status_code=404,
+            detail="Meta data not available. Add local data/meta/comps.json to enable this endpoint.",
+        )
 
     with open(comps_file, 'r') as f:
         data = json.load(f)
@@ -191,7 +191,10 @@ async def get_early_comps(limit: int = 20):
     early_file = data_dir / "data" / "meta" / "early_comps.json"
 
     if not early_file.exists():
-        raise HTTPException(status_code=404, detail="Early comps data not available. Run fetch_early_comps.py first.")
+        raise HTTPException(
+            status_code=404,
+            detail="Early comps data not available. Add local data/meta/early_comps.json to enable this endpoint.",
+        )
 
     with open(early_file, 'r') as f:
         data = json.load(f)
