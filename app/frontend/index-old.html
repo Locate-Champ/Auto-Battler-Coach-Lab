@@ -294,6 +294,53 @@
             };
         }
 
+        function createDivWithClass(className, text) {
+            const element = document.createElement('div');
+            element.className = className;
+            element.textContent = text;
+            return element;
+        }
+
+        function setEmptyState(container, message) {
+            container.replaceChildren(createDivWithClass('empty-state', message));
+        }
+
+        function createAugmentElement(augmentValue) {
+            const name = String(augmentValue ?? '').split('_').slice(-1)[0] || 'Unknown';
+            const row = document.createElement('div');
+            row.className = 'augment';
+
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'augment-name';
+            nameSpan.textContent = name;
+
+            const tierSpan = document.createElement('span');
+            tierSpan.className = 'augment-tier tier-B';
+            tierSpan.textContent = '?';
+
+            row.append(nameSpan, tierSpan);
+            return row;
+        }
+
+        function createOpponentElement(opponent) {
+            const row = document.createElement('div');
+            row.className = 'opponent';
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = String(opponent?.name ?? 'Unknown');
+
+            const healthSpan = document.createElement('span');
+            healthSpan.className = 'opponent-health';
+            healthSpan.textContent = `HP ${opponent?.health ?? '?'}`;
+
+            row.append(nameSpan, healthSpan);
+            return row;
+        }
+
+        function createSuggestionElement(suggestion) {
+            return createDivWithClass('suggestion', suggestion);
+        }
+
         function updateUI(state) {
             console.log('Updating UI with state:', state);
 
@@ -320,33 +367,23 @@
             const augmentsContainer = document.getElementById('augments');
             if (state.augment_armory_active && state.augment_options?.length > 0) {
                 augmentsPanel.style.display = 'block';
-                augmentsContainer.innerHTML = state.augment_options.map(aug => {
-                    const name = aug.split('_').slice(-1)[0];
-                    return `
-                        <div class="augment">
-                            <span class="augment-name">${name}</span>
-                            <span class="augment-tier tier-B">?</span>
-                        </div>
-                    `;
-                }).join('');
+                const augmentElements = state.augment_options.map(createAugmentElement);
+                augmentsContainer.replaceChildren(...augmentElements);
             } else {
                 augmentsPanel.style.display = 'none';
+                augmentsContainer.replaceChildren();
             }
 
             // Update opponents
             const opponentsContainer = document.getElementById('opponents');
             console.log('Opponents data:', state.opponents);
             if (state.opponents && Object.keys(state.opponents).length > 0) {
-                opponentsContainer.innerHTML = Object.values(state.opponents)
+                const opponentElements = Object.values(state.opponents)
                     .sort((a, b) => b.health - a.health)
-                    .map(opp => `
-                        <div class="opponent">
-                            <span>${opp.name}</span>
-                            <span class="opponent-health">â¤ï¸ ${opp.health}</span>
-                        </div>
-                    `).join('');
+                    .map(createOpponentElement);
+                opponentsContainer.replaceChildren(...opponentElements);
             } else {
-                opponentsContainer.innerHTML = '<div class="empty-state">No opponent data yet</div>';
+                setEmptyState(opponentsContainer, 'No opponent data yet');
             }
 
             // Update suggestions based on state
@@ -372,15 +409,15 @@
             // Default message if no suggestions
             if (suggestions.length === 0) {
                 if (state.game_phase === 'not_in_game') {
-                    suggestionsContainer.innerHTML = '<div class="empty-state">Waiting for game to start...</div>';
+                    setEmptyState(suggestionsContainer, 'Waiting for game to start...');
                 } else {
-                    suggestionsContainer.innerHTML = '<div class="empty-state">No specific suggestions right now</div>';
+                    setEmptyState(suggestionsContainer, 'No specific suggestions right now');
                 }
-            } else {
-                suggestionsContainer.innerHTML = suggestions
-                    .map(s => `<div class="suggestion">${s}</div>`)
-                    .join('');
+                return;
             }
+
+            const suggestionElements = suggestions.map(createSuggestionElement);
+            suggestionsContainer.replaceChildren(...suggestionElements);
         }
 
         // Start connection
