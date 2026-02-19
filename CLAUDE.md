@@ -1,5 +1,5 @@
 # CLAUDE
-This file is canonical. CLAUDE.md is generated from it.
+This file is generated from AGENTS.md. Do not edit directly.
 
 ## Mission
 Keep the repo focused, deterministic, and fast to navigate for both humans and agents.

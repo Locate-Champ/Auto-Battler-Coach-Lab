@@ -22,8 +22,13 @@ def build_claude_from_agents(agents_text: str) -> str:
     if not lines or not lines[0].startswith("#"):
         raise ValueError("AGENTS.md must start with a markdown title line like '# AGENTS'.")
 
-    # Only rewrite the first title line
+    # Rewrite the CLAUDE header at the source so it stays deterministic.
     lines[0] = "# CLAUDE"
+    generated_notice = "This file is generated from AGENTS.md. Do not edit directly."
+    if len(lines) > 1:
+        lines[1] = generated_notice
+    else:
+        lines.append(generated_notice)
 
     out = "\n".join(lines)
     # Ensure trailing newline

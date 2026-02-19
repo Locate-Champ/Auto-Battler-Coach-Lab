@@ -53,6 +53,9 @@ jobs:
       - name: Verify agent plans directory policy
         run: python scripts/ci/check_agent_plans_dir.py
 
+      - name: Verify continuity compactness
+        run: python scripts/ci/check_continuity_line_limit.py
+
       - name: Ensure CLAUDE.md matches AGENTS.md
         run: python scripts/sync_agents_to_claude.py --check
 
