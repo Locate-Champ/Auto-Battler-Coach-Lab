@@ -184,7 +184,7 @@ This is a "what lives where" guide for the repo root.
     - verification harness (`verify.ps1`)
     - ntfy notifier (`notify-ntfy.ps1`)
 
-- `tft-scraper/`
+- `scraper/`
   - Node-based scraper utilities (separate from the Python simulator and coach runtime).
 
 ### 2.4 Frontend/Overlay Misc
@@ -237,3 +237,4 @@ This is a "what lives where" guide for the repo root.
 - Batch data generation + schema: `e:\VS Code\tft-coach-234\simulator\cloud_runner.py`, `e:\VS Code\tft-coach-234\simulator\game\collector.py`
 - ML training (simulator-trained): `e:\VS Code\tft-coach-234\models\`
 - API server (legacy recommender): `e:\VS Code\tft-coach-234\app\api\server.py`, `e:\VS Code\tft-coach-234\src\models\`
+

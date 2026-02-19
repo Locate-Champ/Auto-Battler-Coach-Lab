@@ -1,5 +1,5 @@
 {
-  "name": "tft-scraper",
+  "name": "scraper",
   "version": "1.0.0",
   "description": "Scrape TFT patch 16.4 match data from tactics.tools",
   "type": "module",
@@ -13,3 +13,4 @@
     "node-fetch": "^3.3.2"
   }
 }
+
