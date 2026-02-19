@@ -50,6 +50,9 @@ jobs:
         if: github.event_name == 'pull_request'
         run: python scripts/ci/check_dual_track_guard.py
 
+      - name: Verify agent plans directory policy
+        run: python scripts/ci/check_agent_plans_dir.py
+
       - name: Ensure CLAUDE.md matches AGENTS.md
         run: python scripts/sync_agents_to_claude.py --check
 
