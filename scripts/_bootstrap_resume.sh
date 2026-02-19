@@ -7,11 +7,11 @@ set -euo pipefail
 cd /home/ubuntu
 
 echo "--- Clone ---"
-if [ ! -d "tft-coach-234" ]; then
+if [ ! -d "auto-battler-coach-lab" ]; then
   GIT_SSH_COMMAND="ssh -i /home/ubuntu/.ssh/id_ed25519 -o StrictHostKeyChecking=yes" \
-    git clone --filter=blob:none git@github.com:forrestmiller34/tft-coach-234.git
+    git clone --filter=blob:none git@github.com:<YOUR_ORG>/<YOUR_REPO>.git
 fi
-cd tft-coach-234
+cd auto-battler-coach-lab
 git checkout main
 echo "Repo: OK ($(git rev-parse --short HEAD))"
 
@@ -29,7 +29,7 @@ echo "--- Rust engine ---"
 source /home/ubuntu/.cargo/env
 cd simulator/core/rust_engine
 maturin develop --release
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 echo "Rust engine: BUILT"
 
 echo "--- Sanity ---"
@@ -38,3 +38,4 @@ echo "nproc: $(nproc)"
 echo "Disk: $(df -h /data | tail -1 | awk '{print $4}') free"
 echo "=== Bootstrap complete ==="
 ASUBUNTU
+

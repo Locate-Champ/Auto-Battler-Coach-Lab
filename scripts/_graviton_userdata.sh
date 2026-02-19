@@ -1,15 +1,15 @@
 #!/bin/bash
 set -euo pipefail
-exec > >(tee -a /var/log/tft-bootstrap.log) 2>&1
-echo "=== TFT Bootstrap started at $(date -u) ==="
+exec > >(tee -a /var/log/coach-bootstrap.log) 2>&1
+echo "=== Simulator Bootstrap started at $(date -u) ==="
 
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update -q
 apt-get install -y -q git curl ca-certificates python3 python3-venv python3-pip python3-dev build-essential pkg-config libssl-dev
 
-mkdir -p /data/tft/results /data/tft/models_checkpoints
-chown -R ubuntu:ubuntu /data/tft
+mkdir -p /data/sim/results /data/sim/models_checkpoints
+chown -R ubuntu:ubuntu /data/sim
 
 # Install deploy key for private repo
 mkdir -p /home/ubuntu/.ssh
@@ -30,11 +30,11 @@ fi
 source "$HOME/.cargo/env"
 
 cd /home/ubuntu
-if [ ! -d "tft-coach-234" ]; then
+if [ ! -d "auto-battler-coach-lab" ]; then
   GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=yes" \
-    git clone --filter=blob:none git@github.com:forrestmiller34/tft-coach-234.git
+    git clone --filter=blob:none git@github.com:<YOUR_ORG>/<YOUR_REPO>.git
 fi
-cd tft-coach-234
+cd auto-battler-coach-lab
 git checkout main
 
 python3 -m venv .venv
@@ -46,12 +46,14 @@ pip install -r requirements-ml.txt 2>&1 || echo "WARNING: ML deps skipped (non-f
 
 cd simulator/core/rust_engine
 maturin develop --release
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 
 python -c "import tft_combat_engine; print('Rust engine OK')" 2>/dev/null \
   || python -c "from simulator.core import rust_engine; print('Rust engine alt-import OK')" 2>/dev/null \
   || echo "WARNING: Rust engine check failed - will verify at gate runtime"
 
 python -m simulator.cloud_runner --help > /dev/null 2>&1 && echo "cloud_runner: OK" || echo "WARNING: cloud_runner broken"
-echo "=== TFT Bootstrap complete at $(date -u) ==="
+echo "=== Simulator Bootstrap complete at $(date -u) ==="
 SETUPBLOCK
+
+

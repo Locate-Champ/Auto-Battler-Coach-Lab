@@ -36,7 +36,7 @@ CDRAGON_TFT_URL = "https://raw.communitydragon.org/16.3/cdragon/tft/en_us.json"
 
 # Headers
 HEADERS = {
-    "User-Agent": "TFT-Coach-Bot/1.0 (https://github.com/forrestmiller34/tft-coach-234)",
+    "User-Agent": "Auto-Battler-Coach/1.0 (https://github.com/<YOUR_ORG>/<YOUR_REPO>)",
     "Accept": "application/json",
 }
 
@@ -429,3 +429,4 @@ def main():
 
 if __name__ == "__main__":
     exit(main())
+

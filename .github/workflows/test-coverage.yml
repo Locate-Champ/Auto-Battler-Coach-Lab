@@ -59,6 +59,17 @@ jobs:
       - name: Verify continuity compactness
         run: python scripts/ci/check_continuity_line_limit.py
 
+      - name: Ensure docs directory is untracked
+        run: |
+          if [ -n "$(git ls-files docs)" ]; then
+            echo "Tracked docs files found (docs/ must stay local-only):"
+            git ls-files docs
+            exit 1
+          fi
+
+      - name: Verify identifier and local-only path policy
+        run: python scripts/ci/check_no_legacy_identifiers.py
+
       - name: Ensure CLAUDE.md matches AGENTS.md
         run: python scripts/sync_agents_to_claude.py --check
 

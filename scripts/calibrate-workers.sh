@@ -38,7 +38,7 @@ log "Running worker calibration on ${INSTANCE_ID} (${GAMES_PER_TEST} games per t
 SCRIPT=$(cat <<REMOTESCRIPT
 #!/bin/bash
 set -euo pipefail
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 source .venv/bin/activate
 
 export OMP_NUM_THREADS=1
@@ -48,11 +48,11 @@ export NUMEXPR_NUM_THREADS=1
 
 NCPU=\$(nproc)
 GAMES=${GAMES_PER_TEST}
-OUTBASE="/tmp/tft_calibrate"
+OUTBASE="/tmp/coach_calibrate"
 rm -rf "\$OUTBASE"
 
 echo "=============================================="
-echo "  TFT Worker Calibration"
+echo "  Simulator Worker Calibration"
 echo "  Instance: \$(curl -s http://169.254.169.254/latest/meta-data/instance-type 2>/dev/null || echo 'unknown')"
 echo "  CPUs: \$NCPU"
 echo "  RAM: \$(free -h | awk '/^Mem:/{print \$2}')"
@@ -215,3 +215,4 @@ while true; do
       ;;
   esac
 done
+

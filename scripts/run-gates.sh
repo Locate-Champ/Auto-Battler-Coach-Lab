@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # run-gates.sh
 #
-# Runs TFT simulator gates on a remote EC2 instance via SSM.
+# Runs simulator gates on a remote EC2 instance via SSM.
 # Each phase (sim, validate, train, upload) is a SEPARATE SSM command
-# with its own timeout — the key lesson from the Codex timeout failure.
+# with its own timeout â€” the key lesson from the Codex timeout failure.
 #
 # Usage:
 #   bash scripts/run-gates.sh --instance-id i-xxx --gates a
@@ -20,10 +20,10 @@
 
 set -euo pipefail
 
-# ── CONFIG ──────────────────────────────────────────────────────────────────
+# â”€â”€ CONFIG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 REGION="us-east-1"
-S3_BUCKET="tft-sim-results-forrest"
-S3_PREFIX="tft-results/gates"
+S3_BUCKET="<YOUR_BUCKET>"
+S3_PREFIX="results/gates"
 
 # Defaults (can be overridden with flags)
 INSTANCE_ID=""
@@ -34,10 +34,10 @@ SKIP_SIM=false    # set to skip simulation (recovery: train+upload only)
 ENGINE="rust_full"
 AGENT_PROFILE="mixed"
 SKIP_TRAIN=false  # set to skip XGBoost training
-# ────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 # Timeouts per phase (seconds)
-# These are generous — better to be safe than hit TimedOut again
+# These are generous â€” better to be safe than hit TimedOut again
 declare -A SIM_TIMEOUT=( [a]=300 [b]=1800 [c]=7200 [d]=28800 )
 declare -A TRAIN_TIMEOUT=( [a]=600 [b]=3600 [c]=10800 [d]=43200 )
 VALIDATE_TIMEOUT=300
@@ -47,7 +47,7 @@ UPLOAD_TIMEOUT=3600
 declare -A GAME_COUNT=( [a]=1000 [b]=50000 [c]=250000 [d]=1000000 )
 declare -A PROGRESS_EVERY=( [a]=100 [b]=500 [c]=2000 [d]=5000 )
 
-# ── Parse args ───────────────────────────────────────────────────────────────
+# â”€â”€ Parse args â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --instance-id)   INSTANCE_ID="$2"; shift 2 ;;
@@ -77,14 +77,14 @@ PYTHON3=$(command -v python3 2>/dev/null || command -v py 2>/dev/null || echo ""
 # If using 'py' launcher, pass -3 flag
 [[ "$PYTHON3" == *"py"* && "$PYTHON3" != *"python"* ]] && PYTHON3="$PYTHON3 -3"
 
-# ── SSM command runner ───────────────────────────────────────────────────────
+# â”€â”€ SSM command runner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 # Sends a shell script to the instance, waits for completion, prints output.
 ssm_run() {
   local LABEL="$1"
   local TIMEOUT="$2"
   local SCRIPT="$3"
 
-  log "── ${LABEL} (timeout: ${TIMEOUT}s) ──"
+  log "â”€â”€ ${LABEL} (timeout: ${TIMEOUT}s) â”€â”€"
 
   if [ "$DRY_RUN" = true ]; then
     log "(dry-run) Would send to ${INSTANCE_ID}:"
@@ -142,7 +142,7 @@ ssm_run() {
   done
 }
 
-# ── Verify instance is ready ────────────────────────────────────────────────
+# â”€â”€ Verify instance is ready â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 log "Checking SSM connectivity for ${INSTANCE_ID}..."
 if [ "$DRY_RUN" = false ]; then
   SSM_STATUS=$(aws ssm describe-instance-information --region "$REGION" \
@@ -154,11 +154,11 @@ if [ "$DRY_RUN" = false ]; then
   log "SSM: Online"
 fi
 
-# ── Verify bootstrap completed ──────────────────────────────────────────────
+# â”€â”€ Verify bootstrap completed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 ssm_run "Check bootstrap" 120 "$(cat <<'SCRIPT'
 #!/bin/bash
 set -euo pipefail
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 source .venv/bin/activate
 
 echo "Python: $(python3 --version)"
@@ -178,10 +178,10 @@ echo "Bootstrap check: PASS"
 SCRIPT
 )"
 
-# ── Worker count setup ───────────────────────────────────────────────────────
+# â”€â”€ Worker count setup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 WORKER_ARG="--workers ${WORKERS}"
 
-# ── Run each gate ────────────────────────────────────────────────────────────
+# â”€â”€ Run each gate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 IFS=',' read -ra GATE_LIST <<< "$GATES"
 
 for GATE in "${GATE_LIST[@]}"; do
@@ -195,18 +195,18 @@ for GATE in "${GATE_LIST[@]}"; do
   PROGRESS="${PROGRESS_EVERY[$GATE]}"
 
   log ""
-  log "═══════════════════════════════════════════════════════════"
+  log "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
   log "  GATE ${GATE^^}: ${GAMES} games"
-  log "═══════════════════════════════════════════════════════════"
+  log "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
 
   RUN_ID="gate_${GATE}_${GAMES}_\$(date +%Y%m%d_%H%M%S)"
 
-  # ── Phase 1: Simulate ──────────────────────────────────────────────
+  # â”€â”€ Phase 1: Simulate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if [ "$SKIP_SIM" = false ]; then
-    ssm_run "Gate ${GATE^^} — Simulate ${GAMES} games" "${SIM_TIMEOUT[$GATE]}" "$(cat <<SCRIPT
+    ssm_run "Gate ${GATE^^} â€” Simulate ${GAMES} games" "${SIM_TIMEOUT[$GATE]}" "$(cat <<SCRIPT
 #!/bin/bash
 set -euo pipefail
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 source .venv/bin/activate
 
 export OMP_NUM_THREADS=1
@@ -215,7 +215,7 @@ export MKL_NUM_THREADS=1
 export NUMEXPR_NUM_THREADS=1
 
 RUN_ID="${RUN_ID}"
-OUTDIR="/data/tft/results/\${RUN_ID}"
+OUTDIR="/data/sim/results/\${RUN_ID}"
 mkdir -p "\$OUTDIR"
 
 echo "=== Gate ${GATE^^}: Simulating ${GAMES} games ==="
@@ -238,44 +238,44 @@ echo "End: \$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "Output size: \$(du -sh "\$OUTDIR" | cut -f1)"
 
 # Save the RUN_ID for subsequent phases
-echo "\$RUN_ID" > /tmp/tft_current_run_id
-echo "\$OUTDIR" > /tmp/tft_current_outdir
+echo "\$RUN_ID" > /tmp/coach_current_run_id
+echo "\$OUTDIR" > /tmp/coach_current_outdir
 SCRIPT
 )"
   else
     log "Skipping simulation (--skip-sim). Finding existing data..."
-    ssm_run "Gate ${GATE^^} — Find existing data" 120 "$(cat <<SCRIPT
+    ssm_run "Gate ${GATE^^} â€” Find existing data" 120 "$(cat <<SCRIPT
 #!/bin/bash
 set -euo pipefail
 # Find the most recent gate_${GATE} directory
-LATEST=\$(ls -dt /data/tft/results/gate_${GATE}_* 2>/dev/null | head -1)
+LATEST=\$(ls -dt /data/sim/results/gate_${GATE}_* 2>/dev/null | head -1)
 if [ -z "\$LATEST" ]; then
-  echo "ERROR: No existing gate_${GATE} data found in /data/tft/results/"
-  ls /data/tft/results/ 2>/dev/null || echo "(empty)"
+  echo "ERROR: No existing gate_${GATE} data found in /data/sim/results/"
+  ls /data/sim/results/ 2>/dev/null || echo "(empty)"
   exit 1
 fi
 echo "Using existing data: \$LATEST"
-echo "\$(basename "\$LATEST")" > /tmp/tft_current_run_id
-echo "\$LATEST" > /tmp/tft_current_outdir
+echo "\$(basename "\$LATEST")" > /tmp/coach_current_run_id
+echo "\$LATEST" > /tmp/coach_current_outdir
 ls -lh "\$LATEST"/*.parquet 2>/dev/null | wc -l | xargs -I{} echo "Parquet chunks: {}"
 SCRIPT
 )"
   fi
 
-  # ── Phase 2: Validate ─────────────────────────────────────────────
-  ssm_run "Gate ${GATE^^} — Validate output" "$VALIDATE_TIMEOUT" "$(cat <<'SCRIPT'
+  # â”€â”€ Phase 2: Validate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  ssm_run "Gate ${GATE^^} â€” Validate output" "$VALIDATE_TIMEOUT" "$(cat <<'SCRIPT'
 #!/bin/bash
 set -euo pipefail
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 source .venv/bin/activate
 
-OUTDIR=$(cat /tmp/tft_current_outdir)
+OUTDIR=$(cat /tmp/coach_current_outdir)
 echo "Validating: $OUTDIR"
 python -m simulator.validate_output "$OUTDIR"
 SCRIPT
 )"
 
-  # ── Phase 3: XGBoost training ──────────────────────────────────────
+  # â”€â”€ Phase 3: XGBoost training â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if [ "$SKIP_TRAIN" = false ]; then
     TRAIN_CMD="python -m models.train_xgboost --data \"\$OUTDIR\" --task fight --output \"\$CKPTDIR\""
     # Use external memory for Gate B and above
@@ -283,15 +283,15 @@ SCRIPT
       TRAIN_CMD="${TRAIN_CMD} --external-memory --external-batch-size 8192"
     fi
 
-    ssm_run "Gate ${GATE^^} — XGBoost training (fight)" "${TRAIN_TIMEOUT[$GATE]}" "$(cat <<SCRIPT
+    ssm_run "Gate ${GATE^^} â€” XGBoost training (fight)" "${TRAIN_TIMEOUT[$GATE]}" "$(cat <<SCRIPT
 #!/bin/bash
 set -euo pipefail
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 source .venv/bin/activate
 
-OUTDIR=\$(cat /tmp/tft_current_outdir)
-RUN_ID=\$(cat /tmp/tft_current_run_id)
-CKPTDIR="/data/tft/models_checkpoints/\${RUN_ID}"
+OUTDIR=\$(cat /tmp/coach_current_outdir)
+RUN_ID=\$(cat /tmp/coach_current_run_id)
+CKPTDIR="/data/sim/models_checkpoints/\${RUN_ID}"
 mkdir -p "\$CKPTDIR"
 
 echo "=== Gate ${GATE^^}: XGBoost Training ==="
@@ -314,22 +314,22 @@ if [ -f "\$CKPTDIR/fight_training_report.json" ]; then
 fi
 
 # Save checkpoint dir for upload
-echo "\$CKPTDIR" > /tmp/tft_current_ckptdir
+echo "\$CKPTDIR" > /tmp/coach_current_ckptdir
 SCRIPT
 )"
   else
     log "Skipping XGBoost training (--skip-train)."
   fi
 
-  # ── Phase 4: Upload to S3 ─────────────────────────────────────────
-  ssm_run "Gate ${GATE^^} — Upload to S3" "$UPLOAD_TIMEOUT" "$(cat <<SCRIPT
+  # â”€â”€ Phase 4: Upload to S3 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  ssm_run "Gate ${GATE^^} â€” Upload to S3" "$UPLOAD_TIMEOUT" "$(cat <<SCRIPT
 #!/bin/bash
 set -euo pipefail
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 source .venv/bin/activate
 
-OUTDIR=\$(cat /tmp/tft_current_outdir)
-RUN_ID=\$(cat /tmp/tft_current_run_id)
+OUTDIR=\$(cat /tmp/coach_current_outdir)
+RUN_ID=\$(cat /tmp/coach_current_run_id)
 S3_DEST="s3://${S3_BUCKET}/${S3_PREFIX}/gate_${GATE}/\${RUN_ID}/"
 
 echo "Uploading simulation data to \${S3_DEST}..."
@@ -339,8 +339,8 @@ aws s3 sync "\$OUTDIR" "\${S3_DEST}" \\
   --region ${REGION}
 
 # Upload XGBoost checkpoints if they exist
-if [ -f /tmp/tft_current_ckptdir ]; then
-  CKPTDIR=\$(cat /tmp/tft_current_ckptdir)
+if [ -f /tmp/coach_current_ckptdir ]; then
+  CKPTDIR=\$(cat /tmp/coach_current_ckptdir)
   if [ -d "\$CKPTDIR" ]; then
     echo "Uploading XGBoost checkpoints..."
     aws s3 sync "\$CKPTDIR" "\${S3_DEST}xgb/" \\
@@ -359,12 +359,13 @@ SCRIPT
   log "Gate ${GATE^^} complete."
 done
 
-# ── Summary ──────────────────────────────────────────────────────────────────
+# â”€â”€ Summary â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 log ""
-log "═══════════════════════════════════════════════════════════"
+log "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
 log "  All gates complete: ${GATES}"
 log "  S3: s3://${S3_BUCKET}/${S3_PREFIX}/"
-log "═══════════════════════════════════════════════════════════"
+log "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
 log ""
 log "Remember to stop the instance when done:"
 log "  aws ec2 stop-instances --instance-ids ${INSTANCE_ID} --region ${REGION}"
+

@@ -1,11 +1,11 @@
 #!/bin/bash
 set -euo pipefail
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/auto-battler-coach-lab
 source .venv/bin/activate
 
-OUTDIR=$(cat /tmp/tft_gate_b_outdir)
-RUN_ID=$(cat /tmp/tft_gate_b_run_id)
-CKPTDIR="/data/tft/models_checkpoints/${RUN_ID}"
+OUTDIR=$(cat /tmp/coach_gate_b_outdir)
+RUN_ID=$(cat /tmp/coach_gate_b_run_id)
+CKPTDIR="/data/sim/models_checkpoints/${RUN_ID}"
 mkdir -p "$CKPTDIR"
 
 echo "=== Gate B: XGBoost Training ==="
@@ -29,5 +29,7 @@ if [ -f "$CKPTDIR/fight_training_report.json" ]; then
   python3 -m json.tool "$CKPTDIR/fight_training_report.json" 2>/dev/null || cat "$CKPTDIR/fight_training_report.json"
 fi
 
-echo "$CKPTDIR" > /tmp/tft_gate_b_ckptdir
+echo "$CKPTDIR" > /tmp/coach_gate_b_ckptdir
 echo "=== XGBoost done ==="
+
+

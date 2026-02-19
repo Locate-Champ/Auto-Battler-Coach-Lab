@@ -14,22 +14,22 @@
 
 set -euo pipefail
 
-# ── CONFIG ──────────────────────────────────────────────────────────────────
+# â”€â”€ CONFIG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 INSTANCE_ID="i-0851c860800286e7c"
 REGION="us-east-1"
-S3_BUCKET="tft-sim-results-forrest"
-S3_PREFIX="tft-results/gates/gate_b"
+S3_BUCKET="<YOUR_BUCKET>"
+S3_PREFIX="results/gates/gate_b"
 
 # Path on the EC2 instance where the 50k sim data lives
-REMOTE_DATA_DIR="/data/tft/results/gate_b_50k_20260217_2056"
-REMOTE_REPO="/home/ubuntu/tft-coach-234"
+REMOTE_DATA_DIR="/data/sim/results/gate_b_50k_20260217_2056"
+REMOTE_REPO="/home/ubuntu/auto-battler-coach-lab"
 REMOTE_VENV="${REMOTE_REPO}/.venv"
 
 # SSM timeouts (seconds) - generous to avoid the timeout that killed Codex's run
 VERIFY_TIMEOUT=120        # 2 min to check data exists
 TRAIN_TIMEOUT=10800       # 3 hours for XGBoost training
 UPLOAD_TIMEOUT=1800       # 30 min for S3 upload
-# ────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 DRY_RUN=false
 NO_STOP=false
@@ -43,7 +43,7 @@ done
 log() { echo "[$(date +%H:%M:%S)] $*"; }
 die() { echo "[ERROR] $*" >&2; exit 1; }
 
-# ── STEP 0: Start the instance and wait for SSM ─────────────────────────────
+# â”€â”€ STEP 0: Start the instance and wait for SSM â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 log "Starting instance ${INSTANCE_ID}..."
 if [ "$DRY_RUN" = true ]; then
   log "(dry-run) aws ec2 start-instances --instance-ids ${INSTANCE_ID}"
@@ -80,7 +80,7 @@ ssm_run() {
   local TIMEOUT="$2"
   local SCRIPT="$3"
 
-  log "── ${LABEL} (timeout: ${TIMEOUT}s) ──"
+  log "â”€â”€ ${LABEL} (timeout: ${TIMEOUT}s) â”€â”€"
 
   if [ "$DRY_RUN" = true ]; then
     log "(dry-run) Would execute on instance:"
@@ -134,12 +134,12 @@ ssm_run() {
   done
 }
 
-# ── STEP 1: Verify Gate B data exists on disk ────────────────────────────────
+# â”€â”€ STEP 1: Verify Gate B data exists on disk â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 ssm_run "Verify Gate B data" "$VERIFY_TIMEOUT" "$(cat <<'REMOTESCRIPT'
 #!/bin/bash
 set -euo pipefail
 
-DATA_DIR="/data/tft/results/gate_b_50k_20260217_2056"
+DATA_DIR="/data/sim/results/gate_b_50k_20260217_2056"
 
 if [ ! -d "$DATA_DIR" ]; then
   echo "ERROR: Data directory not found: $DATA_DIR"
@@ -166,13 +166,13 @@ echo "Data verification: OK"
 REMOTESCRIPT
 )"
 
-# ── STEP 2: Run XGBoost training (fight task, external memory) ───────────────
+# â”€â”€ STEP 2: Run XGBoost training (fight task, external memory) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 ssm_run "XGBoost training (fight)" "$TRAIN_TIMEOUT" "$(cat <<'REMOTESCRIPT'
 #!/bin/bash
 set -euo pipefail
 
-DATA_DIR="/data/tft/results/gate_b_50k_20260217_2056"
-REPO="/home/ubuntu/tft-coach-234"
+DATA_DIR="/data/sim/results/gate_b_50k_20260217_2056"
+REPO="/home/ubuntu/auto-battler-coach-lab"
 CKPT_DIR="${DATA_DIR}/xgb_checkpoints"
 
 cd "$REPO"
@@ -207,7 +207,7 @@ fi
 REMOTESCRIPT
 )"
 
-# ── STEP 3: Upload everything to S3 ─────────────────────────────────────────
+# â”€â”€ STEP 3: Upload everything to S3 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 RUN_NAME="gate_b_50k_20260217_2056"
 S3_DEST="s3://${S3_BUCKET}/${S3_PREFIX}/${RUN_NAME}/"
 
@@ -215,8 +215,8 @@ ssm_run "Upload to S3" "$UPLOAD_TIMEOUT" "$(cat <<REMOTESCRIPT
 #!/bin/bash
 set -euo pipefail
 
-DATA_DIR="/data/tft/results/gate_b_50k_20260217_2056"
-REPO="/home/ubuntu/tft-coach-234"
+DATA_DIR="/data/sim/results/gate_b_50k_20260217_2056"
+REPO="/home/ubuntu/auto-battler-coach-lab"
 S3_DEST="${S3_DEST}"
 
 cd "\$REPO"
@@ -235,7 +235,7 @@ aws s3 ls "\${S3_DEST}" --summarize | tail -5
 REMOTESCRIPT
 )"
 
-# ── STEP 4: Stop instance (unless --no-stop) ────────────────────────────────
+# â”€â”€ STEP 4: Stop instance (unless --no-stop) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 if [ "$NO_STOP" = true ]; then
   log "Skipping instance stop (--no-stop flag set)."
   log "Remember to stop it manually when done!"
@@ -250,7 +250,8 @@ else
 fi
 
 log ""
-log "═══════════════════════════════════════════════════"
+log "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
 log "  Gate B Recovery Complete"
 log "  S3: ${S3_DEST}"
-log "═══════════════════════════════════════════════════"
+log "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
+

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # launch-graviton.sh
 #
-# Launches a c8g.48xlarge (Graviton4 ARM) instance for TFT simulator gates.
+# Launches a c8g.48xlarge (Graviton4 ARM) instance for simulator gates.
 # Run from your local machine. Requires: aws cli configured for us-east-1.
 #
 # Usage:
@@ -15,21 +15,21 @@
 
 set -euo pipefail
 
-# ── CONFIG ──────────────────────────────────────────────────────────────────
+# â”€â”€ CONFIG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 REGION="us-east-1"
 INSTANCE_TYPE="c8g.48xlarge"
-IAM_ROLE="tft-sim-role"              # IAM instance profile name (verified 2026-02-18)
+IAM_ROLE="<INSTANCE_ROLE_NAME>"              # IAM instance profile name (verified 2026-02-18)
 KEY_PAIR=""                           # leave empty if using SSM only (no SSH)
 SECURITY_GROUP=""                     # leave empty to use default VPC SG
 VOLUME_SIZE_GB=100                    # gp3, enough for Gate D output
-REPO_SSH="git@github.com:forrestmiller34/tft-coach-234.git"
+REPO_SSH="git@github.com:<YOUR_ORG>/<YOUR_REPO>.git"
 REPO_REF="main"
-# Deploy key private key (base64-encoded) — public key must be in GitHub Deploy Keys
-# Fingerprint: SHA256:OvWHiiic/kHGzQoDg2qfFf0N5c14zaag3+AhH47w3zY (tft-sim-graviton)
-DEPLOY_KEY_B64="LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFBQUFBQkc1dmJtVUFBQUFFYm05dVpRQUFBQUFBQUFBQkFBQUFNd0FBQUF0emMyZ3RaV1F5TlRVeApPUUFBQUNDQ09yeldnT0xuUXR5dzZpUnRrL0ZSRzYzNkRVL1RQVE5zTVppNXBjRUxRZ0FBQUloUno3VFFVYyswMEFBQUFBdHpjMmd0ClpXUXlOVFV4T1FBQUFDQ0NPcnpXZ09MblF0eXc2aVJ0ay9GUkc2MzZEVS9UUFROc01aaTVwY0VMUWdBQUFFQkxjVDlJK2E4YitQb2YKNnVmWlBmUlIxcXh3ZXAwd2hWRmQ0QXdSdEpMYnpZSTZ2TmFBNHVkQzNMRHFKRzJUOFZFYnJmb05UOU05TTJ3eG1MbWx3UXRDQUFBQQpBQUVDQXdRRgotLS0tLUVORCBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0K"
+REPO_DIR="auto-battler-coach-lab"
+# Deploy key private key (base64-encoded). Must be provided via env var.
+DEPLOY_KEY_B64="${DEPLOY_KEY_B64:-}"
 USE_SPOT=false
 DRY_RUN=false
-# ────────────────────────────────────────────────────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 for arg in "$@"; do
   case "$arg" in
@@ -42,7 +42,11 @@ done
 log() { echo "[$(date +%H:%M:%S)] $*"; }
 die() { echo "[ERROR] $*" >&2; exit 1; }
 
-# ── Find the latest Ubuntu 22.04 ARM64 AMI ──────────────────────────────────
+if [ "$DRY_RUN" = false ] && [ -z "$DEPLOY_KEY_B64" ]; then
+  die "DEPLOY_KEY_B64 is empty. Export a base64-encoded deploy key before launching."
+fi
+
+# â”€â”€ Find the latest Ubuntu 22.04 ARM64 AMI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 log "Finding latest Ubuntu 22.04 arm64 AMI in ${REGION}..."
 AMI_ID=$(aws ec2 describe-images \
   --region "$REGION" \
@@ -59,7 +63,7 @@ if [ -z "$AMI_ID" ] || [ "$AMI_ID" = "None" ]; then
 fi
 log "AMI: ${AMI_ID}"
 
-# ── Find default VPC security group if not specified ─────────────────────────
+# â”€â”€ Find default VPC security group if not specified â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 if [ -z "$SECURITY_GROUP" ]; then
   SECURITY_GROUP=$(aws ec2 describe-security-groups \
     --region "$REGION" \
@@ -68,14 +72,14 @@ if [ -z "$SECURITY_GROUP" ]; then
   log "Using default SG: ${SECURITY_GROUP}"
 fi
 
-# ── User-data (cloud-init) ──────────────────────────────────────────────────
+# â”€â”€ User-data (cloud-init) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 # This bootstraps the instance so it's ready for gate runs via SSM.
-# It does NOT run any gates — that's done separately via run-gates.sh.
+# It does NOT run any gates â€” that's done separately via run-gates.sh.
 USER_DATA=$(cat <<USERDATA
 #!/bin/bash
 set -euo pipefail
-exec > >(tee -a /var/log/tft-bootstrap.log) 2>&1
-echo "=== TFT Bootstrap started at \$(date -u) ==="
+exec > >(tee -a /var/log/coach-bootstrap.log) 2>&1
+echo "=== Simulator Bootstrap started at \$(date -u) ==="
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -87,8 +91,8 @@ apt-get install -y -q \
   build-essential pkg-config libssl-dev
 
 # Create workspace
-mkdir -p /data/tft/results /data/tft/models_checkpoints
-chown -R ubuntu:ubuntu /data/tft
+mkdir -p /data/sim/results /data/sim/models_checkpoints
+chown -R ubuntu:ubuntu /data/sim
 
 # Install deploy key for private repo access
 mkdir -p /home/ubuntu/.ssh
@@ -103,7 +107,7 @@ chown ubuntu:ubuntu /home/ubuntu/.ssh/known_hosts
 sudo -u ubuntu -H bash -l <<'ASUSER'
 set -euo pipefail
 
-# Rust toolchain (native ARM — no cross-compile needed)
+# Rust toolchain (native ARM â€” no cross-compile needed)
 if [ ! -f "\$HOME/.cargo/env" ]; then
   curl https://sh.rustup.rs -sSf | sh -s -- -y
 fi
@@ -111,12 +115,12 @@ source "\$HOME/.cargo/env"
 
 # Clone repo via SSH deploy key
 cd /home/ubuntu
-if [ ! -d "tft-coach-234" ]; then
-  git clone --filter=blob:none git@github.com:forrestmiller34/tft-coach-234.git
+if [ ! -d "${REPO_DIR}" ]; then
+  git clone --filter=blob:none "${REPO_SSH}" "${REPO_DIR}"
 fi
-cd tft-coach-234
+cd "${REPO_DIR}"
 git fetch --all --tags
-git checkout main
+git checkout "${REPO_REF}"
 
 # Python venv + deps
 python3 -m venv .venv
@@ -132,7 +136,7 @@ pip install awscli
 # Build Rust engine (native ARM, release mode)
 cd simulator/core/rust_engine
 maturin develop --release
-cd /home/ubuntu/tft-coach-234
+cd /home/ubuntu/${REPO_DIR}
 
 # Smoke test
 python -c "from simulator.core.rust_engine import rust_combat_engine; print('Rust engine OK')" \
@@ -141,12 +145,12 @@ python -m simulator.cloud_runner --help > /dev/null 2>&1 \
   && echo "cloud_runner OK" \
   || echo "WARNING: cloud_runner --help failed"
 
-echo "=== TFT Bootstrap complete at $(date -u) ==="
+echo "=== Simulator Bootstrap complete at $(date -u) ==="
 ASUSER
 USERDATA
 )
 
-# ── Build launch command ─────────────────────────────────────────────────────
+# â”€â”€ Build launch command â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 LAUNCH_ARGS=(
   aws ec2 run-instances
   --region "$REGION"
@@ -155,7 +159,7 @@ LAUNCH_ARGS=(
   --iam-instance-profile "Name=${IAM_ROLE}"
   --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"VolumeSize\":${VOLUME_SIZE_GB},\"VolumeType\":\"gp3\",\"Throughput\":250,\"Iops\":3000}}]"
   --user-data "$USER_DATA"
-  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=tft-sim-graviton4},{Key=Project,Value=tft-coach-234}]"
+  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=sim-graviton4},{Key=Project,Value=auto-battler-coach-lab}]"
   --metadata-options "HttpTokens=required,HttpEndpoint=enabled"
 )
 
@@ -172,7 +176,7 @@ if [ "$USE_SPOT" = true ]; then
   log "Using SPOT pricing."
 fi
 
-# ── Launch ───────────────────────────────────────────────────────────────────
+# â”€â”€ Launch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 if [ "$DRY_RUN" = true ]; then
   log "(dry-run) Would launch with:"
   echo "  AMI: ${AMI_ID}"
@@ -190,7 +194,7 @@ INSTANCE_ID=$(${LAUNCH_ARGS[@]} \
   --query 'Instances[0].InstanceId' --output text)
 
 if [ -z "$INSTANCE_ID" ]; then
-  die "Launch failed — no instance ID returned."
+  die "Launch failed â€” no instance ID returned."
 fi
 
 log "Instance ID: ${INSTANCE_ID}"
@@ -198,7 +202,7 @@ log "Waiting for 'running' state..."
 aws ec2 wait instance-running --instance-ids "$INSTANCE_ID" --region "$REGION"
 log "Instance is running."
 
-# ── Wait for SSM ────────────────────────────────────────────────────────────
+# â”€â”€ Wait for SSM â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 log "Waiting for SSM agent (up to 5 min)..."
 for i in $(seq 1 30); do
   SSM_STATUS=$(aws ssm describe-instance-information --region "$REGION" \
@@ -215,24 +219,26 @@ for i in $(seq 1 30); do
   sleep 10
 done
 
-# ── Summary ──────────────────────────────────────────────────────────────────
+# â”€â”€ Summary â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 log ""
-log "═══════════════════════════════════════════════════════════"
+log "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
 log "  Instance launched successfully"
 log "  ID:     ${INSTANCE_ID}"
 log "  Type:   ${INSTANCE_TYPE}"
 log "  AMI:    ${AMI_ID} (Ubuntu 22.04 arm64)"
 log "  Region: ${REGION}"
 log "  Spot:   ${USE_SPOT}"
-log "═══════════════════════════════════════════════════════════"
+log "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
 log ""
 log "Bootstrap is running via cloud-init (5-10 min)."
 log "Monitor progress:"
 log "  aws ssm start-session --target ${INSTANCE_ID} --region ${REGION}"
-log "  Then: sudo tail -f /var/log/tft-bootstrap.log"
+log "  Then: sudo tail -f /var/log/coach-bootstrap.log"
 log ""
 log "Once bootstrap is done, run gates:"
 log "  bash scripts/run-gates.sh --instance-id ${INSTANCE_ID} --gates a,b"
 log ""
 log "To stop the instance later:"
 log "  aws ec2 stop-instances --instance-ids ${INSTANCE_ID} --region ${REGION}"
+
+

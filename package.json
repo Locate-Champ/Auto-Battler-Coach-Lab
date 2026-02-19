@@ -1,5 +1,5 @@
 {
-  "name": "tft-coach-234",
+  "name": "auto-battler-coach-lab",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -13,5 +13,6 @@
     "sync:sim": "python scripts/sync_all_data.py --sim",
     "sync:dry": "python scripts/sync_all_data.py --dry-run"
   },
-  "description": "TFT Coach - Personal coaching companion for Teamfight Tactics"
+  "description": "Auto-Battler Coach Lab - Personal coaching companion"
 }
+
