@@ -79,8 +79,8 @@ except ImportError:
 # Champion data: name -> (cost, [internal trait names])
 # Loaded from origin_class_stats
 try:
-    from simulator.Simulator.origin_class_stats import origin_class
-    from simulator.Simulator.pool_stats import COST_1, COST_2, COST_3, COST_4, COST_5, COST_7
+    from simulator.game.stats.origin_class_stats import origin_class
+    from simulator.game.stats.pool_stats import COST_1, COST_2, COST_3, COST_4, COST_5, COST_7
 
     _ALL_COSTS = {}
     for cost, pool in [(1, COST_1), (2, COST_2), (3, COST_3), (4, COST_4), (5, COST_5), (7, COST_7)]:
