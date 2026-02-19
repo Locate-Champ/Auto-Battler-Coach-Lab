@@ -21,6 +21,8 @@ from pathlib import Path
 from enum import Enum
 from copy import deepcopy
 
+from .augment_paths import resolve_augment_data_path
+
 # Import champion ability handlers
 try:
     from .champion_abilities import ChampionAbilities
@@ -1774,7 +1776,7 @@ class TraitManager:
 
 # Try to load augment data
 try:
-    _AUGMENT_DATA_PATH = Path(__file__).parent.parent.parent / "data" / "api" / "processed" / "augments_set16.json"
+    _AUGMENT_DATA_PATH = resolve_augment_data_path()
     if _AUGMENT_DATA_PATH.exists():
         with open(_AUGMENT_DATA_PATH, 'r', encoding='utf-8') as f:
             _RAW_AUGMENTS = json.load(f)

@@ -876,18 +876,10 @@ fn training_rows_to_jsonl(rows: &[TrainingRow]) -> Result<String, String> {
 fn default_augment_path(combat_data_path: &Path) -> PathBuf {
     combat_data_path
         .parent()
-        .and_then(|p| p.parent())
-        .and_then(|p| p.parent())
-        .map(|root| {
-            root.join("data")
-                .join("api")
-                .join("processed")
-                .join("augments_set16.json")
-        })
+        .map(|simulator_dir| simulator_dir.join("augments_set16.json"))
         .unwrap_or_else(|| {
-            PathBuf::from("data")
-                .join("api")
-                .join("processed")
+            PathBuf::from("simulator")
+                .join("data")
                 .join("augments_set16.json")
         })
 }

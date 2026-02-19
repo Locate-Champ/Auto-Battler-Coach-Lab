@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import functools
 import json
 import math
+import os
 from pathlib import Path
 import re
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
@@ -469,9 +470,26 @@ class TFTFeatureEngineer:
         has_combat = any(keyword in text for keyword in _COMBAT_AUGMENT_KEYWORDS) or not has_econ
         return has_econ, has_combat, has_trait
 
+    def _augment_data_candidates(self) -> List[Path]:
+        paths: List[Path] = []
+        override = os.environ.get("SIMULATOR_AUGMENTS_PATH", "").strip()
+        if override:
+            paths.append(Path(override).expanduser())
+        paths.append(self.repo_root / "simulator" / "data" / "augments_set16.json")
+        paths.append(self.repo_root / "data" / "api" / "processed" / "augments_set16.json")
+        return paths
+
     def _load_augments(self) -> None:
-        path = self.repo_root / "data" / "api" / "processed" / "augments_set16.json"
-        augments = self._load_json(path, [])
+        augments: Any = []
+        for path in self._augment_data_candidates():
+            if not path.exists():
+                continue
+            augments = self._load_json(path, [])
+            break
+
+        if not isinstance(augments, list):
+            augments = []
+
         keyed = []
         for augment in augments:
             if not isinstance(augment, Mapping):

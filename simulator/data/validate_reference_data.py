@@ -1,23 +1,22 @@
 #!/usr/bin/env python3
-"""Validate simulator reference data against canonical processed data."""
+"""Validate tracked simulator reference data."""
 
 from __future__ import annotations
 
-import importlib.util
 import json
 from pathlib import Path
 from typing import Any
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-PROCESSED_DIR = PROJECT_ROOT / "data" / "api" / "processed"
 SIMULATOR_DATA_DIR = PROJECT_ROOT / "simulator" / "data"
-REQUIRED_PROCESSED_FILES: dict[str, tuple[str, ...]] = {
-    "traits_set16.json": ("apiName", "effects"),
-    "units_set16.json": ("apiName", "cost", "stats"),
-    "items_set16.json": ("apiName", "name", "effects"),
-    "augments_set16.json": ("apiName", "name", "effects"),
-}
+REQUIRED_SIMULATOR_FILES = (
+    "combat_data.json",
+    "traits.json",
+    "helper_units.json",
+    "timing_constants.json",
+    "augments_set16.json",
+)
 
 
 def _load_json(path: Path) -> Any:
@@ -25,45 +24,13 @@ def _load_json(path: Path) -> Any:
         return json.load(handle)
 
 
-def _normalize_unit_key(api_name: str) -> str:
-    key = api_name
-    for prefix in ("TFT16_", "TFT9_", "TFT6_", "TFT5_", "TFT_"):
-        key = key.replace(prefix, "")
-    return key.replace("_", "").lower()
-
-
-def _load_origin_class_keys() -> set[str]:
-    module_path = PROJECT_ROOT / "simulator" / "Simulator" / "origin_class_stats.py"
-    spec = importlib.util.spec_from_file_location("origin_class_stats", str(module_path))
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"Could not import {module_path}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return set(module.origin_class.keys())
-
-
-def _trait_signature(trait: dict[str, Any]) -> tuple[str, tuple[tuple[Any, Any, Any, tuple[tuple[str, Any], ...]], ...]]:
-    effects = []
-    for effect in trait.get("effects", []):
-        variables = tuple(sorted((effect.get("variables") or {}).items()))
-        effects.append(
-            (
-                effect.get("minUnits"),
-                effect.get("maxUnits"),
-                effect.get("style"),
-                variables,
-            )
-        )
-    return trait.get("apiName"), tuple(effects)
-
-
-def validate_required_processed_files() -> list[str]:
+def validate_required_simulator_files() -> list[str]:
     problems: list[str] = []
 
-    for filename, required_keys in REQUIRED_PROCESSED_FILES.items():
-        path = PROCESSED_DIR / filename
+    for filename in REQUIRED_SIMULATOR_FILES:
+        path = SIMULATOR_DATA_DIR / filename
         if not path.exists():
-            problems.append(f"Missing required processed file: {path}")
+            problems.append(f"Missing required simulator file: {path}")
             continue
 
         try:
@@ -72,104 +39,75 @@ def validate_required_processed_files() -> list[str]:
             problems.append(f"Failed to load {path}: {exc}")
             continue
 
-        if not isinstance(payload, list):
-            problems.append(f"{path} must be a JSON array, got {type(payload).__name__}")
-            continue
-        if not payload:
-            problems.append(f"{path} is empty")
+        if filename == "augments_set16.json":
+            if not isinstance(payload, list):
+                problems.append(f"{path} must be a JSON array, got {type(payload).__name__}")
+                continue
+            if not payload:
+                problems.append(f"{path} is empty")
+                continue
+            for idx, entry in enumerate(payload):
+                if not isinstance(entry, dict):
+                    problems.append(
+                        f"{path} entries must be objects, got {type(entry).__name__} at index {idx}"
+                    )
+                    break
+                missing_keys = [
+                    key for key in ("apiName", "name", "effects") if key not in entry
+                ]
+                if missing_keys:
+                    problems.append(
+                        f"{path} entry index {idx} missing required keys: {missing_keys}"
+                    )
+                    break
             continue
 
-        for idx, entry in enumerate(payload):
-            if not isinstance(entry, dict):
-                problems.append(
-                    f"{path} entries must be objects, got {type(entry).__name__} at index {idx}"
-                )
-                break
-
-            missing_keys = [key for key in required_keys if key not in entry]
-            if missing_keys:
-                problems.append(
-                    f"{path} entry index {idx} missing required keys: {missing_keys}"
-                )
-                break
+        if not isinstance(payload, dict):
+            problems.append(f"{path} must be a JSON object, got {type(payload).__name__}")
 
     return problems
 
 
 def validate_traits() -> list[str]:
+    path = SIMULATOR_DATA_DIR / "traits.json"
+    payload = _load_json(path)
     problems: list[str] = []
-    canonical_traits = _load_json(PROCESSED_DIR / "traits_set16.json")
-    simulator_traits = _load_json(SIMULATOR_DATA_DIR / "traits.json").get("traits", {})
 
-    canonical_map = {
-        trait.get("apiName"): {
-            "apiName": trait.get("apiName"),
-            "effects": [
-                {
-                    "minUnits": effect.get("minUnits"),
-                    "maxUnits": effect.get("maxUnits"),
-                    "style": effect.get("style"),
-                    "variables": effect.get("variables", {}),
-                }
-                for effect in trait.get("effects", [])
-            ],
-        }
-        for trait in canonical_traits
-        if trait.get("apiName")
-    }
+    traits = payload.get("traits")
+    if not isinstance(traits, dict):
+        return [f"{path} must contain an object field 'traits'."]
+    if not traits:
+        return [f"{path} has no trait entries."]
 
-    canonical_ids = set(canonical_map.keys())
-    simulator_ids = set(simulator_traits.keys())
-
-    missing = sorted(canonical_ids - simulator_ids)
-    extra = sorted(simulator_ids - canonical_ids)
-    if missing:
-        problems.append(f"Simulator traits missing {len(missing)} IDs: {missing}")
-    if extra:
-        problems.append(f"Simulator traits has {len(extra)} extra IDs: {extra}")
-
-    for trait_id in sorted(canonical_ids & simulator_ids):
-        canonical_sig = _trait_signature(canonical_map[trait_id])
-        simulator_sig = _trait_signature(simulator_traits[trait_id])
-        if canonical_sig != simulator_sig:
-            problems.append(f"Trait effects mismatch: {trait_id}")
+    for trait_id, trait_payload in traits.items():
+        if not isinstance(trait_payload, dict):
+            problems.append(f"{path} trait '{trait_id}' is not an object.")
+            continue
+        effects = trait_payload.get("effects")
+        if not isinstance(effects, list):
+            problems.append(f"{path} trait '{trait_id}' must define list field 'effects'.")
 
     return problems
 
 
 def validate_helpers() -> list[str]:
+    helper_payload = _load_json(SIMULATOR_DATA_DIR / "helper_units.json")
+    helpers = helper_payload.get("helpers")
     problems: list[str] = []
-    units_payload = _load_json(PROCESSED_DIR / "units_set16.json")
-    helper_payload = _load_json(SIMULATOR_DATA_DIR / "helper_units.json").get("helpers", [])
-    origin_class_keys = _load_origin_class_keys()
 
-    expected_helpers = sorted(
-        unit.get("apiName")
-        for unit in units_payload
-        if unit.get("is_helper", False) and unit.get("apiName")
-    )
-    actual_helpers = sorted(
-        helper.get("apiName")
-        for helper in helper_payload
-        if helper.get("apiName")
-    )
+    if not isinstance(helpers, list):
+        return [f"{SIMULATOR_DATA_DIR / 'helper_units.json'} must contain list field 'helpers'."]
 
-    if expected_helpers != actual_helpers:
-        expected_set = set(expected_helpers)
-        actual_set = set(actual_helpers)
-        missing = sorted(expected_set - actual_set)
-        extra = sorted(actual_set - expected_set)
-        if missing:
-            problems.append(f"helper_units.json missing {len(missing)} IDs: {missing}")
-        if extra:
-            problems.append(f"helper_units.json has {len(extra)} extra IDs: {extra}")
-
-    for api_name in expected_helpers:
-        internal_key = _normalize_unit_key(api_name)
-        if internal_key not in origin_class_keys:
-            problems.append(
-                f"origin_class missing helper mapping for {api_name} -> '{internal_key}'"
-            )
+    helper_ids: set[str] = set()
+    for idx, helper in enumerate(helpers):
+        if not isinstance(helper, dict):
+            problems.append(f"helper_units.json entry index {idx} is not an object.")
+            continue
+        api_name = helper.get("apiName")
+        if not isinstance(api_name, str) or not api_name:
+            problems.append(f"helper_units.json entry index {idx} missing non-empty 'apiName'.")
+            continue
+        helper_ids.add(api_name)
 
     required_combat_helpers = {
         "TFT16_Atakhan",
@@ -179,19 +117,30 @@ def validate_helpers() -> list[str]:
         "TFT16_PiltoverInvention",
         "TFT16_AnnieTibbers",
     }
-    combat_data = _load_json(SIMULATOR_DATA_DIR / "combat_data.json").get("champions", {})
-    missing_from_combat = sorted(required_combat_helpers - set(combat_data.keys()))
-    if missing_from_combat:
+    missing_helper_entries = sorted(required_combat_helpers - helper_ids)
+    if missing_helper_entries:
         problems.append(
-            f"combat_data.json missing required helper champions: {missing_from_combat}"
+            "helper_units.json missing required helper entries: "
+            f"{missing_helper_entries}"
         )
+
+    combat_data = _load_json(SIMULATOR_DATA_DIR / "combat_data.json")
+    champions = combat_data.get("champions", {})
+    if not isinstance(champions, dict):
+        problems.append("combat_data.json must contain object field 'champions'.")
+    else:
+        missing_from_combat = sorted(required_combat_helpers - set(champions.keys()))
+        if missing_from_combat:
+            problems.append(
+                "combat_data.json missing required helper champions: "
+                f"{missing_from_combat}"
+            )
 
     return problems
 
 
 def main() -> int:
-    problems = validate_required_processed_files()
-
+    problems = validate_required_simulator_files()
     if not problems:
         problems.extend(validate_traits())
         problems.extend(validate_helpers())

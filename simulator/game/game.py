@@ -29,12 +29,13 @@ if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
 from simulator.core.combat_engine import CombatEngine
+from simulator.core.augment_paths import resolve_augment_data_path
 
 # Load augment data for augment selection
 import json
 from pathlib import Path
 
-_AUGMENT_PATH = Path(__file__).parent.parent.parent / "data" / "api" / "processed" / "augments_set16.json"
+_AUGMENT_PATH = resolve_augment_data_path()
 _AUGMENTS_BY_ROUND: Dict[str, List[str]] = {'2-1': [], '3-2': [], '4-2': []}
 _AUGMENT_TRAITS: Dict[str, List[str]] = {}  # apiName -> associated trait names
 
