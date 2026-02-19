@@ -46,6 +46,10 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Dual-track guard (PR only)
+        if: github.event_name == 'pull_request'
+        run: python scripts/ci/check_dual_track_guard.py
+
       - name: Ensure CLAUDE.md matches AGENTS.md
         run: python scripts/sync_agents_to_claude.py --check
 
