@@ -1,12 +1,12 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-title TFT Coach Companion - Launcher
+title Auto-Battler Coach Companion - Launcher
 color 0A
 
 echo.
 echo  ========================================
-echo       TFT COACH COMPANION LAUNCHER
+echo    AUTO-BATTLER COACH COMPANION LAUNCHER
 echo  ========================================
 echo.
 
@@ -132,7 +132,7 @@ echo  A NEW WINDOW will open for the backend server.
 echo  Watch that window for any errors!
 echo.
 
-start "TFT Coach - Backend" cmd /k "cd /d %ROOT_DIR% && echo Starting backend... && echo. && python -m uvicorn app.api.server:app --host 127.0.0.1 --port 8000"
+start "Auto-Battler Coach - Backend" cmd /k "cd /d %ROOT_DIR% && echo Starting backend... && echo. && python -m uvicorn app.api.server:app --host 127.0.0.1 --port 8000"
 
 echo  Waiting 8 seconds for backend to initialize...
 timeout /t 8
@@ -162,7 +162,7 @@ echo  A NEW WINDOW will open for the frontend server.
 echo  Watch that window for any errors!
 echo.
 
-start "TFT Coach - Frontend" cmd /k "cd /d %ROOT_DIR%\app\frontend && echo Starting frontend... && echo. && npm run dev"
+start "Auto-Battler Coach - Frontend" cmd /k "cd /d %ROOT_DIR%\app\frontend && echo Starting frontend... && echo. && npm run dev"
 
 echo  Waiting 5 seconds for frontend to start...
 timeout /t 5

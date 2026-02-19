@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-TFT Coach App Launcher
+Auto-Battler Coach App Launcher
 Starts both the FastAPI backend and React frontend development servers.
 """
 
@@ -37,7 +37,7 @@ def main():
     signal.signal(signal.SIGTERM, cleanup)
 
     print("=" * 50)
-    print("TFT Coach Companion")
+    print("Auto-Battler Coach Companion")
     print("=" * 50)
 
     # Check if node_modules exists
@@ -90,3 +90,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

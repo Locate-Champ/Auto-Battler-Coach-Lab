@@ -1,5 +1,5 @@
 """
-TFT Board Recommender
+Auto-Battler Board Recommender
 Provides stage-aware recommendations based on:
 - Meta early game comps
 - Augment tier list
@@ -18,7 +18,7 @@ from .positioning_rules import get_baseline_rules, get_singed_positioning_status
 from .role_rules import is_carry_role, is_frontline_role
 
 class TFTRecommender:
-    """Recommendation engine for TFT board building"""
+    """Recommendation engine for auto-battler board building"""
 
     def __init__(self, data_dir: str = None):
         if data_dir is None:
@@ -43,12 +43,19 @@ class TFTRecommender:
 
     def _load_early_game_comps(self):
         """Load early game comp data by stage"""
-        for stage_file in ['tft_set16_3_early_game_stage2_stage3.csv',
-                           'tft_set16_3_early_game_stage4_stage5.csv']:
-            path = self.data_dir / 'data' / 'personal' / stage_file
+        stage_files = [
+            'early_game_stage2_stage3.csv',
+            'early_game_stage4_stage5.csv',
+        ]
+        local_personal_dir = self.data_dir / 'data' / 'local' / 'personal'
+        found_any = False
+
+        for stage_file in stage_files:
+            path = local_personal_dir / stage_file
             if not path.exists():
                 continue
 
+            found_any = True
             df = pd.read_csv(path)
 
             # Group by stage and comp rank
@@ -76,6 +83,13 @@ class TFTRecommender:
         for stage in self.early_comps:
             self.early_comps[stage].sort(key=lambda x: x['win_rate'], reverse=True)
 
+        if not found_any:
+            expected = ", ".join(str(local_personal_dir / name) for name in stage_files)
+            raise FileNotFoundError(
+                "Local early-comp data is required at runtime but was not found. "
+                f"Expected one of: {expected} (data/local/** is gitignored)."
+            )
+
     def _load_augment_tiers(self):
         """Load augment tier list"""
         path = self.data_dir / 'data' / 'meta' / 'metatft_augment_tierlist_16_3.csv'
@@ -98,7 +112,8 @@ class TFTRecommender:
     def _load_personal_performance(self):
         """Load personal carry and trait performance"""
         # Load carry performance
-        carry_path = self.data_dir / 'data' / 'personal' / 'carry_performance_corrected.csv'
+        local_personal_dir = self.data_dir / 'data' / 'local' / 'personal'
+        carry_path = local_personal_dir / 'carry_performance_corrected.csv'
         if carry_path.exists():
             df = pd.read_csv(carry_path)
             for _, row in df.iterrows():
@@ -109,7 +124,7 @@ class TFTRecommender:
                 }
 
         # Load trait performance
-        trait_path = self.data_dir / 'data' / 'personal' / 'trait_performance_corrected.csv'
+        trait_path = local_personal_dir / 'trait_performance_corrected.csv'
         if trait_path.exists():
             df = pd.read_csv(trait_path)
             for _, row in df.iterrows():
@@ -118,6 +133,13 @@ class TFTRecommender:
                     'top4_rate': row.get('top4_rate', row.get('Top4Rate', 0)),
                     'avg_place': row.get('avg_place', row.get('AvgPlace', 4.5))
                 }
+
+        if not self.personal_carry_stats and not self.personal_trait_stats:
+            raise FileNotFoundError(
+                "Local personal performance data is required at runtime but was not found. "
+                f"Expected files under {local_personal_dir} "
+                "(data/local/** is gitignored)."
+            )
 
     def _load_champion_data(self):
         """Load champion reference data"""
@@ -398,7 +420,7 @@ class TFTRecommender:
         """Format recommendations as readable text"""
         lines = []
         lines.append("=" * 60)
-        lines.append("TFT BOARD RECOMMENDATIONS")
+        lines.append("AUTO-BATTLER BOARD RECOMMENDATIONS")
         lines.append("=" * 60)
 
         # Board analysis
@@ -468,7 +490,7 @@ class TFTRecommender:
 
 def main():
     """Demo the recommender"""
-    print("Initializing TFT Recommender...")
+    print("Initializing Auto-Battler Recommender...")
     rec = TFTRecommender()
 
     # Show what data we have
@@ -520,3 +542,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

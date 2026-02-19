@@ -1,5 +1,5 @@
 """
-TFT Coach API Server
+Auto-Battler Coach API Server
 Serves model predictions and recommendations to the frontend
 """
 
@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from src.models import FeatureEngineer, PlacementModel, TFTRecommender
 from src.metatft_parser import MetaTFTLogParser
 
-app = FastAPI(title="TFT Coach API", version="1.0.0")
+app = FastAPI(title="Auto-Battler Coach API", version="1.0.0")
 
 # CORS for local development
 app.add_middleware(
@@ -38,10 +38,15 @@ parser = None
 @app.on_event("startup")
 async def startup():
     global recommender, placement_model, parser
-    print("Loading TFT Coach models...")
+    print("Loading Auto-Battler Coach models...")
 
     data_dir = Path(__file__).parent.parent.parent
-    recommender = TFTRecommender(str(data_dir))
+    try:
+        recommender = TFTRecommender(str(data_dir))
+    except FileNotFoundError as exc:
+        raise RuntimeError(
+            "Local runtime data is missing. Populate data/local/** before starting the API."
+        ) from exc
     placement_model = PlacementModel(str(data_dir))
     parser = MetaTFTLogParser()
 
@@ -86,7 +91,7 @@ class AugmentFitRequest(BaseModel):
 
 @app.get("/")
 async def root():
-    return {"status": "ok", "message": "TFT Coach API running"}
+    return {"status": "ok", "message": "Auto-Battler Coach API running"}
 
 
 @app.get("/api/stats")
@@ -304,21 +309,20 @@ async def get_priority_units():
 @app.get("/api/items")
 async def get_item_suggestions():
     """Get item build/avoid suggestions based on personal data"""
-    # This would come from item_performance_corrected.csv
-    # For now return placeholder
-    return {
-        'build': [
-            {'name': 'Blue Buff', 'rate': 72},
-            {'name': 'Morellonomicon', 'rate': 68},
-            {'name': 'Jeweled Gauntlet', 'rate': 65},
-            {'name': 'Rabadons', 'rate': 63}
-        ],
-        'avoid': [
-            {'name': 'Infinity Edge', 'rate': 35},
-            {'name': 'Giant Slayer', 'rate': 38},
-            {'name': 'Last Whisper', 'rate': 40}
-        ]
-    }
+    local_file = (
+        Path(__file__).parent.parent.parent
+        / "data"
+        / "local"
+        / "personal"
+        / "item_performance_corrected.csv"
+    )
+    raise HTTPException(
+        status_code=501,
+        detail=(
+            "Item suggestions require local data and are not available by default. "
+            f"Expected local file: {local_file}"
+        ),
+    )
 
 
 @app.post("/api/lobby")

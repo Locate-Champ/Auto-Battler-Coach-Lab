@@ -1,19 +1,29 @@
-# HANDOFF
+﻿# Auto-Battler Coach Lab Repo Handoff
 
-Last updated: 2026-02-19
+Last updated: 2026-02-19 (America/New_York)
 
-## Read Order
-1. `AGENTS.md` (canonical rules and execution protocol)
-2. `CLAUDE.md` (generated mirror)
-3. `.agent/CONTINUITY.md` (current compact state)
+## Purpose
+This file is the quick onboarding handoff for new contributors and coding agents.
 
-## Phase Status
-- Phase 6 completed on 2026-02-19.
-- Outcomes:
-  - In-repo plans directory enforcement added (`.agent/plans`, CI check).
-  - Continuity compaction workflow enforced (archive + compact format + line-limit CI guard).
+## Read order
+1. `AGENTS.md`
+2. `docs/INDEX.md`
+3. `docs/REPO_ARCHITECTURE.md`
+4. `docs/CURRENT_MODEL_AND_SIMULATOR.md`
+5. `docs/runbooks/aws_gates.md` (when doing cloud gate work)
 
-## Previously Observed (Reference)
-- Boundary-test failure was previously observed when active simulator paths imported legacy stats modules from `simulator/Simulator`.
-- Canonical fix is already applied: stats tables now live under `simulator/game/stats`, and active imports point there.
-- Keep `tests/test_track_boundaries.py` strict; do not allowlist legacy imports.
+## Current guardrails
+- `AGENTS.md` is canonical; `CLAUDE.md` is generated from it.
+- Track boundaries are enforced by `tests/test_track_boundaries.py`.
+- Runtime artifact path rules are enforced by `tests/test_no_hardcoded_artifact_paths.py`.
+- Tracked runtime artifacts are limited to `outputs/coach/**`.
+
+## Local data policy
+- Personal and raw runtime data is local-only under `data/local/**`.
+- Asset packs/icons are local-only and must not be tracked.
+- If local runtime data is missing, runtime code should fail with actionable error messages.
+
+## Next improvements
+- Keep `.agent/CONTINUITY.md` compact and archive aggressively.
+- Add any additional guard checks under `scripts/ci/` rather than root-level docs.
+- Continue reducing ambiguous cross-track references in docs.

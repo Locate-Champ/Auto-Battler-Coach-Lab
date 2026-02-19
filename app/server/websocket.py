@@ -71,12 +71,12 @@ class ConnectionManager:
 
 
 class WebSocketServer:
-    """WebSocket server for TFT Coach overlay."""
+    """WebSocket server for the Auto-Battler Coach overlay."""
 
     def __init__(self, host: str = "127.0.0.1", port: int = 8765, *, state_manager: Optional[StateManager] = None):
         self.host = host
         self.port = port
-        self.app = FastAPI(title="TFT Coach")
+        self.app = FastAPI(title="Auto-Battler Coach")
         self.manager = ConnectionManager()
         self._current_state: Optional[AppGameState] = None
         self._current_payload: Optional[dict] = None
@@ -294,7 +294,7 @@ class WebSocketServer:
         async def root():
             """Redirect to overlay."""
             return HTMLResponse(
-                content='<html><body><h1>TFT Coach Server</h1>'
+                content='<html><body><h1>Auto-Battler Coach Server</h1>'
                 '<p>Open <a href="/overlay">overlay</a></p></body></html>'
             )
 

@@ -17,8 +17,8 @@ TIER_BG = {
     None:         "#2C3442",  # inactive/unknown
 }
 
-OUT_CSV = Path("tft_set16_trait_breakpoints.csv")
-OUT_MD  = Path("tft_set16_trait_breakpoints.md")
+OUT_CSV = Path("set16_trait_breakpoints.csv")
+OUT_MD  = Path("set16_trait_breakpoints.md")
 
 def fetch_traits():
     r = requests.get(URL, timeout=30)

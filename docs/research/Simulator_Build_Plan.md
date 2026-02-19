@@ -22,7 +22,7 @@ Why: it’s an excellent protocol for measurement, capture, and cue identificati
 Why: it’s good for onboarding and explaining why error + ordering issues matter. Keep its best parts, but don’t let it dictate build scope or tool sprawl.
 
 **Keep as a short intro/overview (optional):**
-- `TFT_Combat_Timing_Research_Report.md`
+- `AUTO_BATTLER_COMBAT_TIMING_RESEARCH.md`
 
 Why: it’s readable and motivating. It’s useful as an executive summary, but it should link to the canonical spec instead of duplicating it.
 

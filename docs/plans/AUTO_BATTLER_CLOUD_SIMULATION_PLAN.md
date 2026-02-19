@@ -1,4 +1,4 @@
-﻿# TFT Cloud Simulation Plan v2 - Throughput-Calibrated, Gate-Based
+﻿# Auto-Battler Cloud Simulation Plan v2 - Throughput-Calibrated, Gate-Based
 
 > Date: 2026-02-08
 > Purpose: Execution playbook for 50k -> 250k -> 1M simulation scale-up with explicit quality and feasibility gates.
@@ -190,7 +190,7 @@ python -m simulator.validate_output training_data/gate_d_1m
 Implemented now:
 
 - `models/train_transformer.py` defaults to streaming mode.
-- `models/dataset.py` provides `TFTStreamingDataset` and split-count estimation without full materialization.
+- `models/dataset.py` provides `streaming dataset wrapper` and split-count estimation without full materialization.
 - `models/data_loader.py` provides `iter_raw()`, `count_rows()`, and bounded loading (`max_rows`, optional reservoir sampling).
 - `models/train_xgboost.py` provides `--external-memory` using `ExtMemQuantileDMatrix` with disk-backed cache pages.
 
@@ -515,7 +515,7 @@ Run transformer baseline, then scale only if validation gains continue.
    - `--external-memory`
    - `--external-batch-size`, `--external-cache-dir`, `--keep-external-cache`
    - `--row-batch-size`, `--max-rows`, `--early-stopping-rounds`
-4. `models.dataset` now includes `TFTStreamingDataset` and `estimate_streaming_split_counts`.
+4. `models.dataset` now includes `streaming dataset wrapper` and `estimate_streaming_split_counts`.
 5. `models.data_loader` now includes streaming iteration and bounded-row loading options.
 
 ---
@@ -555,3 +555,5 @@ Run transformer baseline, then scale only if validation gains continue.
 3. End-to-end `cloud_runner` throughput is the runtime/cost baseline.
 4. Parquet (`pyarrow`) is the expected production output format.
 5. Transformer training should use streaming mode by default.
+
+

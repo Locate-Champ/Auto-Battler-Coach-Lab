@@ -19,9 +19,8 @@ Keep the repo focused, deterministic, and fast to navigate for both humans and a
 - Tracked runtime artifacts under `outputs/coach/**` only.
 - `results/`, `tmp/`, `live-logs/`, `models/checkpoints/**`, and non-coach `outputs/**` are generated and untracked.
 - Runtime artifact resolver env vars:
-  - `TFT_OUTPUTS_DIR`
-  - `TFT_CHECKPOINT_DIR`
-  - `TFT_ARTIFACT_ROOT`
+  - Preferred: `COACH_OUTPUTS_DIR`, `COACH_CHECKPOINT_DIR`, `COACH_ARTIFACT_ROOT`
+  - Fallback only: `TFT_OUTPUTS_DIR`, `TFT_CHECKPOINT_DIR`, `TFT_ARTIFACT_ROOT`
 
 ## Scope and Safety Rules
 1. No drive-by refactors.

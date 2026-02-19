@@ -1,4 +1,4 @@
-"""TFT Coach - Main entry point."""
+"""Auto-Battler Coach - main entry point."""
 
 import asyncio
 import signal
@@ -12,7 +12,7 @@ from app.state import StateManager, GameState
 from app.server import WebSocketServer
 
 
-class TFTCoach:
+class AutoBattlerCoach:
     """Main application class."""
 
     def __init__(self, with_server: bool = True):
@@ -37,9 +37,9 @@ class TFTCoach:
             self.server.on_state_change(state)
 
     def start(self):
-        """Start the TFT Coach."""
+        """Start the Auto-Battler Coach."""
         print("=" * 50)
-        print("  TFT Coach - Personal Coaching Overlay")
+        print("  Auto-Battler Coach - Personal Coaching Overlay")
         print("=" * 50)
         print()
 
@@ -61,7 +61,7 @@ class TFTCoach:
 
         self._running = True
         print()
-        print("[READY] TFT Coach is running!")
+        print("[READY] Auto-Battler Coach is running!")
         print()
 
         if self.server:
@@ -75,9 +75,9 @@ class TFTCoach:
         return True
 
     def stop(self):
-        """Stop the TFT Coach."""
+        """Stop the Auto-Battler Coach."""
         print()
-        print("[SHUTDOWN] Stopping TFT Coach...")
+        print("[SHUTDOWN] Stopping Auto-Battler Coach...")
         self.watcher.stop()
         self._running = False
         print("[SHUTDOWN] Goodbye!")
@@ -111,7 +111,9 @@ def main():
     """Main entry point."""
     import argparse
 
-    parser = argparse.ArgumentParser(description="TFT Coach - Personal Coaching Overlay")
+    parser = argparse.ArgumentParser(
+        description="Auto-Battler Coach - Personal Coaching Overlay"
+    )
     parser.add_argument("--no-server", action="store_true", help="Run without WebSocket server")
     parser.add_argument("--port", type=int, default=8765, help="Server port (default: 8765)")
     args = parser.parse_args()
@@ -119,7 +121,7 @@ def main():
     if args.port != 8765:
         config.port = args.port
 
-    coach = TFTCoach(with_server=not args.no_server)
+    coach = AutoBattlerCoach(with_server=not args.no_server)
     coach.run()
 
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Script to organize and parse TFT API data files from Meta TFT.
-This script processes the JSON files from the API Data folder and organizes them
-into a structured format for the TFT Coach application.
+Script to organize and parse auto-battler API data files from MetaTFT.
+This script processes JSON files from the API data folder and organizes them
+into a structured format for the coaching application.
 """
 
 import json
@@ -16,7 +16,7 @@ API_DATA_SOURCE = BASE_DIR / "TFT 16.3 API Data" / "API Data"
 DATA_DIR = BASE_DIR / "data"
 
 # Target directories
-API_RAW_DIR = DATA_DIR / "api" / "raw"
+API_RAW_DIR = DATA_DIR / "local" / "api" / "raw"
 API_PROCESSED_DIR = DATA_DIR / "api" / "processed"
 META_DIR = DATA_DIR / "meta"
 GAME_DATA_DIR = DATA_DIR / "game_data"
@@ -31,7 +31,7 @@ def ensure_directories():
 
 
 def copy_raw_files():
-    """Copy raw API files to the api/raw directory for reference."""
+    """Copy raw API files to a local-only directory for reference."""
     if not API_DATA_SOURCE.exists():
         print(f"[WARN] Source directory not found: {API_DATA_SOURCE}")
         return
@@ -41,7 +41,7 @@ def copy_raw_files():
             continue
         dest = API_RAW_DIR / json_file.name
         shutil.copy2(json_file, dest)
-        print(f"[OK] Copied {json_file.name} to api/raw/")
+        print(f"[OK] Copied {json_file.name} to local/api/raw/")
 
 
 def parse_game_data():
@@ -253,11 +253,11 @@ def parse_percentiles():
 def create_summary():
     """Create a summary file documenting the data organization."""
     summary = {
-        "description": "TFT Coach API Data - Organized from Meta TFT",
+        "description": "Auto-Battler Coach API data organized from MetaTFT",
         "source": "TFT 16.3 API Data/API Data",
         "processed_date": datetime.now().isoformat(),
         "structure": {
-            "data/api/raw/": "Original API JSON files for reference",
+            "data/local/api/raw/": "Original API JSON files for local reference",
             "data/api/processed/": "Parsed game data (units, items, augments, traits)",
             "data/meta/": "Meta statistics (compositions, builds, item stats)",
         },
@@ -291,7 +291,7 @@ def create_summary():
 
 def main():
     print("=" * 60)
-    print("TFT API Data Organization Script")
+    print("Auto-Battler API Data Organization Script")
     print("=" * 60)
     print()
 

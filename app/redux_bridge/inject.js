@@ -1,8 +1,8 @@
-/**
+﻿/**
  * Redux Store Bridge for MetaTFT
  *
  * This script intercepts MetaTFT's Redux store and forwards board/bench data
- * to the TFT Coach backend via WebSocket.
+ * to the Auto-Battler Coach backend via WebSocket.
  *
  * USAGE:
  * 1. Open MetaTFT's main window in Overwolf
@@ -392,3 +392,4 @@
   log('  __reduxBridge.stop() - Stop the bridge');
 
 })();
+

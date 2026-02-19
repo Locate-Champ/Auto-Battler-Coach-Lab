@@ -8,12 +8,16 @@ def _repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
+def _env_with_fallback(primary: str, fallback: str) -> str | None:
+    return os.getenv(primary) or os.getenv(fallback)
+
+
 def runtime_outputs_dir() -> Path:
-    direct = os.getenv("TFT_OUTPUTS_DIR")
+    direct = _env_with_fallback("COACH_OUTPUTS_DIR", "TFT_OUTPUTS_DIR")
     if direct:
         return Path(direct)
 
-    artifact_root = os.getenv("TFT_ARTIFACT_ROOT")
+    artifact_root = _env_with_fallback("COACH_ARTIFACT_ROOT", "TFT_ARTIFACT_ROOT")
     if artifact_root:
         return Path(artifact_root) / "outputs" / "coach"
 
@@ -21,11 +25,11 @@ def runtime_outputs_dir() -> Path:
 
 
 def checkpoint_dir() -> Path:
-    direct = os.getenv("TFT_CHECKPOINT_DIR")
+    direct = _env_with_fallback("COACH_CHECKPOINT_DIR", "TFT_CHECKPOINT_DIR")
     if direct:
         return Path(direct)
 
-    artifact_root = os.getenv("TFT_ARTIFACT_ROOT")
+    artifact_root = _env_with_fallback("COACH_ARTIFACT_ROOT", "TFT_ARTIFACT_ROOT")
     if artifact_root:
         return Path(artifact_root) / "checkpoints"
 

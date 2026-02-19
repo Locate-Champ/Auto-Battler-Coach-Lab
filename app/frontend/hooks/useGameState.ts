@@ -1,5 +1,5 @@
 /**
- * WebSocket hook for connecting to TFT Coach backend
+ * WebSocket hook for connecting to the Auto-Battler Coach backend
  * Receives live game state updates including board_units
  */
 

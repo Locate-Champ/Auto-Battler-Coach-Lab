@@ -1,4 +1,4 @@
-# Current Model + Simulator (TFT Coach)
+﻿# Current Model + Simulator (Auto-Battler Coach)
 
 Last updated: 2026-02-16
 
@@ -11,7 +11,7 @@ This document describes what the repo currently implements for:
 It is intended to be source-of-truth aligned with:
 
 - `Current Simulation Setup.txt`
-- `TFT_CLOUD_SIMULATION_PLAN.md`
+- `AUTO_BATTLER_CLOUD_SIMULATION_PLAN.md`
 - `models/` and `simulator/` code as implemented
 - `coach implementation.md` (planning-with-a-critic direction)
 
@@ -49,7 +49,7 @@ Core entry points and tools:
 - `simulator/validate_output.py`: output quality gates (19 checks)
 - `simulator/benchmark.py`: throughput + determinism checks
 - `Current Simulation Setup.txt`: measured performance and coverage snapshot (used for planning)
-- `TFT_CLOUD_SIMULATION_PLAN.md`: gate-based scale-up plan grounded in measured summaries
+- `AUTO_BATTLER_CLOUD_SIMULATION_PLAN.md`: gate-based scale-up plan grounded in measured summaries
 
 Game loop:
 
@@ -211,11 +211,11 @@ Measured (2026-02-07, see `Current Simulation Setup.txt`):
 - Full 8-player game: avg 1.325 sec/game (~2,717 games/hour/core)
 - Determinism checks (1v1, 4v4, full game): PASS
 
-End-to-end throughput planning should use `cloud_runner` measurements (collector + serialization + overhead). See `TFT_CLOUD_SIMULATION_PLAN.md` for the currently measured end-to-end numbers and the gate-based scale plan.
+End-to-end throughput planning should use `cloud_runner` measurements (collector + serialization + overhead). See `AUTO_BATTLER_CLOUD_SIMULATION_PLAN.md` for the currently measured end-to-end numbers and the gate-based scale plan.
 
 ### 1.10 Storage + Scale Planning (Why Parquet Matters)
 
-Observed (see `TFT_CLOUD_SIMULATION_PLAN.md`):
+Observed (see `AUTO_BATTLER_CLOUD_SIMULATION_PLAN.md`):
 
 - Rows per game: ~132
 - Storage per 1,000 games:
@@ -235,7 +235,7 @@ Practical implications:
 
 Simulation is highly useful even if it's not perfect, but the coach must be honest about:
 
-- Augment fidelity: 283 augments are loaded and categorized, but many specific effects/interactions are not guaranteed to match live TFT.
+- Augment fidelity: 283 augments are loaded and categorized, but many specific effects/interactions are not guaranteed to match the live game.
 - PvE rounds: early PvE is simplified; it's primarily economy/item-drop plumbing.
 - Ranged timing: missing or incomplete missile-speed timing data for some ranged champions impacts fine-grained accuracy.
 - Some artifact items: not all artifact interactions are fully modeled (some are stats-only).
@@ -289,7 +289,7 @@ Reference-data dependencies used by feature engineering (as implemented today):
 - Simulator-native item aliases/stats are merged in when available (`simulator/data/set16_items.py`)
 - Personal performance priors are loaded from:
   - `performance_reference.json` or `knowledge-base/performance_reference.json`
-  - CSV fallback: `data/personal/carry_performance_corrected.csv`
+  - CSV fallback: `data/local/personal/carry_performance_corrected.csv`
 
 ### 2.3 Current Baseline Results (Repo Checkpoints)
 
@@ -356,7 +356,7 @@ Scaffolding exists to turn predictions into coach-friendly outputs:
 
 These are not yet wired into the live coach runtime, but the code is present and aligned with the planned "planner + critic" approach.
 
-## 3) How Simulation Benefits TFT Coach Right Now
+## 3) How Simulation Benefits Auto-Battler Coach Right Now
 
 This is the practical reason the simulator is so valuable: it improves coaching quality even before the ML stack is perfect.
 
@@ -501,4 +501,7 @@ python -m models.train_xgboost --data training_data/gate_b_50k --task fight --ou
 python -m models.train_transformer --data results/batch --output models/checkpoints/transformer_smoke --epochs 1 --steps-per-epoch 2 --val-steps 1 --test-steps 1 --max-examples-per-split 256
 ```
 
-For larger runs, keep the default `--label-mode next_round` (or set it explicitly) and use the gate-based data directories described in `TFT_CLOUD_SIMULATION_PLAN.md`.
+For larger runs, keep the default `--label-mode next_round` (or set it explicitly) and use the gate-based data directories described in `AUTO_BATTLER_CLOUD_SIMULATION_PLAN.md`.
+
+
+

@@ -1,4 +1,4 @@
-# CONTINUITY - TFT Coach
+# CONTINUITY - Auto-Battler Coach
 
 If this file exceeds ~250 lines, archive and compact again.
 
@@ -12,8 +12,8 @@ If this file exceeds ~250 lines, archive and compact again.
 ## [DECISIONS]
 - 2026-02-19T01:40Z [CODE] LOCKED: outputs/coach/** is the only tracked subset under outputs/.
 - 2026-02-19T01:40Z [CODE] LOCKED: runtime resolver precedence:
-  - outputs: TFT_OUTPUTS_DIR > TFT_ARTIFACT_ROOT/outputs/coach > `<repo>/outputs/coach`
-  - checkpoints: TFT_CHECKPOINT_DIR > TFT_ARTIFACT_ROOT/checkpoints > `<repo>/models/checkpoints`
+  - outputs: COACH_OUTPUTS_DIR > TFT_OUTPUTS_DIR > COACH_ARTIFACT_ROOT/outputs/coach > TFT_ARTIFACT_ROOT/outputs/coach > `<repo>/outputs/coach`
+  - checkpoints: COACH_CHECKPOINT_DIR > TFT_CHECKPOINT_DIR > COACH_ARTIFACT_ROOT/checkpoints > TFT_ARTIFACT_ROOT/checkpoints > `<repo>/models/checkpoints`
 - 2026-02-19T01:40Z [CODE] LOCKED: no hardcoded outputs/ or models/checkpoints paths in coach/scoring (enforced by tests).
 
 ## [PROGRESS]

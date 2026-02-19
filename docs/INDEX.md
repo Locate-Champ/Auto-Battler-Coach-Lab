@@ -1,4 +1,4 @@
-# TFT Coach Documentation Index
+# Auto-Battler Coach Documentation Index
 
 > Navigation hub for all project documentation.
 
@@ -35,7 +35,7 @@ Data sources and live system integration.
 - [LIVE_DATA_PROGRESS.md](integration/LIVE_DATA_PROGRESS.md) - Status of live data integration
 - [LIVE_BOARD_DATA_GUIDE.md](integration/LIVE_BOARD_DATA_GUIDE.md) - Guide for live board state
 - [METATFT_LOG_DATA_EXTRACTION.md](integration/METATFT_LOG_DATA_EXTRACTION.md) - MetaTFT log parsing
-- [TFT_DATA_INTEGRATION_PLAN.md](integration/TFT_DATA_INTEGRATION_PLAN.md) - Data integration planning
+- [AUTO_BATTLER_DATA_INTEGRATION_PLAN.md](integration/AUTO_BATTLER_DATA_INTEGRATION_PLAN.md) - Data integration planning
 
 ---
 
@@ -44,7 +44,7 @@ Data sources and live system integration.
 UI/UX and visual design documentation.
 
 - [UI_WORKFLOW.md](design/UI_WORKFLOW.md) - User interface workflow
-- [TFT_Coach_Figma_Spec.md](design/TFT_Coach_Figma_Spec.md) - Figma design specifications
+- [AUTO_BATTLER_COACH_FIGMA_SPEC.md](design/AUTO_BATTLER_COACH_FIGMA_SPEC.md) - Figma design specifications
 - [Figma_Resources_Guide.md](design/Figma_Resources_Guide.md) - Design assets and resources
 
 ---
@@ -70,7 +70,7 @@ Combat simulation and game loop documentation.
 
 Research findings and analysis.
 
-- [TFT_Combat_Timing_Research.md](research/TFT_Combat_Timing_Research.md) - Combat timing research
+- [AUTO_BATTLER_COMBAT_TIMING_RESEARCH.md](research/AUTO_BATTLER_COMBAT_TIMING_RESEARCH.md) - Combat timing research
 - [Simulator_Build_Plan.md](research/Simulator_Build_Plan.md) - Simulator build planning
 
 ---
@@ -96,10 +96,7 @@ Operational runbooks for repeatable workflows.
 
 Historical root documents moved out of active root scope.
 
-- [TFT_CODEX_INSTRUCTIONS.md](../archive/docs/root/TFT_CODEX_INSTRUCTIONS.md) - Archived ML pipeline spec
-- [TFT_COACH_TIMELINE_AND_TODO.md](../archive/docs/root/TFT_COACH_TIMELINE_AND_TODO.md) - Archived coach timeline and milestones
-- [coach_implementation.md](../archive/docs/root/coach_implementation.md) - Archived planning-with-a-critic implementation notes
-- [CHAMPION_REVIEW.md](../archive/docs/root/CHAMPION_REVIEW.md) - Archived champion review notes
+- [Root Archive Folder](../archive/docs/root/) - Archived planning, specs, and historical notes
 
 ---
 

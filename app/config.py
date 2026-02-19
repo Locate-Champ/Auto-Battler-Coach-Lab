@@ -1,4 +1,4 @@
-"""Configuration for TFT Coach."""
+"""Configuration for Auto-Battler Coach."""
 
 import os
 from pathlib import Path

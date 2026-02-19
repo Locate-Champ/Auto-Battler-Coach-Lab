@@ -1,5 +1,5 @@
 """
-TFT Feature Engineering Module
+Auto-Battler Feature Engineering Module
 Transforms raw match data into ML-ready features for placement prediction
 """
 
@@ -15,7 +15,7 @@ from .role_rules import is_ad_role, is_ap_role
 
 
 class FeatureEngineer:
-    """Transforms raw TFT match data into ML-ready features"""
+    """Transforms raw auto-battler match data into ML-ready features"""
 
     def __init__(self, data_dir: str = None):
         """Initialize with path to data directory"""
@@ -273,7 +273,15 @@ class FeatureEngineer:
     def load_and_transform(self, csv_path: str = None) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame]:
         """Load CSV and transform to ML-ready features"""
         if csv_path is None:
-            csv_path = self.data_dir / 'data' / 'personal' / 'tft_all_matches.csv'
+            csv_path = self.data_dir / 'data' / 'local' / 'matches' / 'all_matches.csv'
+
+        csv_path = Path(csv_path)
+        if not csv_path.exists():
+            raise FileNotFoundError(
+                f"Local match data not found at '{csv_path}'. "
+                "Generate it with scripts/pull_riot_matches.py and "
+                "scripts/process_riot_matches.py (data/local/** is gitignored)."
+            )
 
         df = pd.read_csv(csv_path)
         return self.get_ml_features(df)
@@ -307,3 +315,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

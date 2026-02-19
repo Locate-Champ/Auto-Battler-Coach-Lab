@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Riot API Match History Fetcher for TFT
-Pulls all TFT matches since December 3, 2025 (Set 16.1 launch)
+Riot API Match History Fetcher for the auto-battler mode.
+Pulls matches since December 3, 2025 (Set 16.1 launch).
 
 Usage:
     Add RIOT_API_KEY to your .env file
@@ -26,8 +26,8 @@ load_dotenv(env_path)
 # CONFIGURATION
 # =============================================================================
 
-GAME_NAME = "Karina Super Fan"
-TAG_LINE = "8148"
+GAME_NAME = os.environ.get("RIOT_GAME_NAME", "")
+TAG_LINE = os.environ.get("RIOT_TAG_LINE", "")
 REGION = "americas"  # NA uses americas routing
 
 # December 3, 2025 00:00:00 UTC in milliseconds
@@ -42,7 +42,7 @@ REQUESTS_PER_SECOND = 15
 REQUEST_DELAY = 1.0 / REQUESTS_PER_SECOND
 
 # Output file
-OUTPUT_FILE = "tft_matches_since_set16.csv"
+OUTPUT_FILE = Path(__file__).parent.parent / "data" / "local" / "matches" / "matches_since_set16.csv"
 
 # =============================================================================
 # API FUNCTIONS
@@ -59,6 +59,22 @@ def get_api_key() -> str:
         print("Add RIOT_API_KEY=your_key to .env file or set environment variable")
         sys.exit(1)
     return api_key
+
+
+def get_riot_id() -> tuple[str, str]:
+    game_name = GAME_NAME.strip()
+    tag_line = TAG_LINE.strip()
+
+    if not game_name:
+        game_name = input("Enter Riot game name: ").strip()
+    if not tag_line:
+        tag_line = input("Enter Riot tag line: ").strip()
+
+    if not game_name or not tag_line:
+        print("Error: Riot game name and tag line are required")
+        sys.exit(1)
+
+    return game_name, tag_line
 
 
 def make_request(url: str, api_key: str, retries: int = 3) -> Optional[dict]:
@@ -216,9 +232,11 @@ def extract_player_data(match: dict, puuid: str) -> Optional[dict]:
 
 
 def main():
+    game_name, tag_line = get_riot_id()
+
     print("=" * 60)
-    print("TFT Match History Fetcher")
-    print(f"Player: {GAME_NAME}#{TAG_LINE}")
+    print("Auto-Battler Match History Fetcher")
+    print(f"Player: {game_name}#{tag_line}")
     print(f"Region: {REGION}")
     print(f"Start Date: {datetime.fromtimestamp(START_DATE_MS / 1000)}")
     print("=" * 60)
@@ -227,7 +245,7 @@ def main():
     api_key = get_api_key()
 
     # Get PUUID
-    puuid = get_puuid(GAME_NAME, TAG_LINE, api_key)
+    puuid = get_puuid(game_name, tag_line, api_key)
     if not puuid:
         print("Error: Could not find player")
         sys.exit(1)
@@ -261,6 +279,7 @@ def main():
 
     # Write CSV
     if matches_data:
+        OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
         print(f"\nWriting {len(matches_data)} matches to {OUTPUT_FILE}...")
 
         fieldnames = [
@@ -283,7 +302,7 @@ def main():
             "final_board_units",
         ]
 
-        with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
+        with OUTPUT_FILE.open("w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(matches_data)

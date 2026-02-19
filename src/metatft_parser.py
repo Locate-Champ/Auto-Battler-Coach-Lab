@@ -155,7 +155,10 @@ class MetaTFTLogParser:
         """Export augment events to CSV for analysis"""
         import csv
 
-        with open(output_path, 'w', newline='', encoding='utf-8') as f:
+        output = Path(output_path)
+        output.parent.mkdir(parents=True, exist_ok=True)
+
+        with output.open('w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerow(['timestamp', 'armory_type', 'option_1', 'option_2', 'option_3',
                            'selected_1', 'selected_2', 'selected_3'])
@@ -171,7 +174,7 @@ class MetaTFTLogParser:
                     *selected
                 ])
 
-        print(f"Exported {len(self.augment_events)} augment events to {output_path}")
+        print(f"Exported {len(self.augment_events)} augment events to {output}")
 
 
 def main():
@@ -215,8 +218,8 @@ def main():
                 print(f"  {aug}: {data['times_offered']}x offered, "
                       f"{data['times_selected']}x selected ({data['selection_rate']*100:.0f}%)")
 
-            # Export to CSV
-            parser.export_to_csv('data/personal/metatft_augments.csv')
+            # Export to local-only CSV
+            parser.export_to_csv('data/local/personal/metatft_augments.csv')
 
     except FileNotFoundError as e:
         print(f"Log directory not found: {e}")

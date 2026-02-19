@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-TFT Match Data Preprocessor
+Auto-Battler Match Data Preprocessor
 
-Normalizes Riot API match data for use with the TFT Coach ML pipeline.
+Normalizes Riot API match data for use with the Auto-Battler Coach ML pipeline.
 Handles:
 - Trait name normalization (strips TFT16_/Set16_ prefixes)
 - Column name standardization
@@ -39,9 +39,11 @@ COLUMN_RENAME_MAP = {
 
 # File paths (relative to project root)
 PROJECT_ROOT = Path(__file__).parent.parent
-INPUT_FILE = PROJECT_ROOT / "tft_matches_since_set16.csv"
-EXISTING_FILE = PROJECT_ROOT / "data" / "personal" / "tft_since_16_2_enhanced.csv"
-OUTPUT_FILE = PROJECT_ROOT / "data" / "personal" / "tft_all_matches.csv"
+INPUT_FILE = PROJECT_ROOT / "data" / "local" / "matches" / "matches_since_set16.csv"
+EXISTING_FILE = (
+    PROJECT_ROOT / "data" / "local" / "matches" / "matches_since_16_2_enhanced.csv"
+)
+OUTPUT_FILE = PROJECT_ROOT / "data" / "local" / "matches" / "all_matches.csv"
 
 
 # =============================================================================
@@ -220,7 +222,7 @@ def print_summary(df: pd.DataFrame):
 
 def main():
     print("=" * 60)
-    print("TFT Match Data Preprocessor")
+    print("Auto-Battler Match Data Preprocessor")
     print("=" * 60)
 
     # Load new data

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Extract TFT champion data from local Riot Games installation.
+Extract auto-battler champion data from a local Riot Games installation.
 
 Uses cdtb (CommunityDragon Toolbox) to:
 1. Read map22.bin from Map22.wad.client (TFT game configuration)
@@ -8,12 +8,12 @@ Uses cdtb (CommunityDragon Toolbox) to:
 3. Read tft.stringtable from localized WAD for English text
 4. Run TftTransformer to produce structured JSON (same format as CommunityDragon)
 
-Saves output to data/local_game_data.json
+Saves output to data/local/game_data.json
 
 Usage:
     pip install cdtb
-    python scripts/extract_local_tft_data.py
-    python scripts/extract_local_tft_data.py --game-dir "D:\\Riot Games\\League of Legends"
+    python scripts/extract_local_game_data.py
+    python scripts/extract_local_game_data.py --game-dir "D:\\Riot Games\\League of Legends"
 """
 
 import argparse
@@ -34,7 +34,7 @@ except ImportError:
 # Paths
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
-OUTPUT_PATH = PROJECT_ROOT / "data" / "local_game_data.json"
+OUTPUT_PATH = PROJECT_ROOT / "data" / "local" / "game_data.json"
 
 # Default game directory
 DEFAULT_GAME_DIR = Path(r"C:\Riot Games\League of Legends")
@@ -145,7 +145,7 @@ def extract_character_bins(game_dir, extract_dir, champ_names):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Extract TFT data from local Riot Games installation"
+        description="Extract auto-battler data from a local Riot Games installation"
     )
     parser.add_argument(
         "--game-dir",
@@ -172,7 +172,7 @@ def main():
     args = parser.parse_args()
 
     print("=" * 60)
-    print("TFT Local Game Data Extractor")
+    print("Auto-Battler Local Game Data Extractor")
     print("=" * 60)
 
     # Validate game directory
@@ -190,7 +190,7 @@ def main():
         extract_dir = str(args.temp_dir)
         os.makedirs(extract_dir, exist_ok=True)
     else:
-        extract_dir = tempfile.mkdtemp(prefix="tft_extract_")
+        extract_dir = tempfile.mkdtemp(prefix="game_extract_")
 
     print(f"Temp directory: {extract_dir}")
 

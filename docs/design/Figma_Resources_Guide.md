@@ -1,4 +1,4 @@
-# Figma Community Resources for TFT Coach Companion
+﻿# Figma Community Resources for Auto-Battler Coach Companion
 
 ## BEST RESOURCES FOR YOUR PROJECT
 
@@ -146,7 +146,7 @@ Your app needs: dark theme, gaming aesthetic, dashboard components, data visuali
 In Figma, you can create hexagons by:
 1. Use the Polygon tool (P)
 2. Set sides to 6
-3. Rotate 90 degrees for flat-top hexagon (TFT style)
+3. Rotate 90 degrees for flat-top hexagon (auto-battler style)
 4. Or use Frame with clip-path in CSS when exporting
 
 ### Auto Layout for Panels
@@ -185,3 +185,4 @@ Use instance swap for:
 | Components Library | https://www.figma.com/community/file/1131119460069711481 |
 | Stepper Component | https://www.figma.com/community/file/1165798487502683301 |
 | Figma Best Practices | https://www.figma.com/best-practices/components-styles-and-shared-libraries |
+

@@ -15,7 +15,7 @@ from pathlib import Path
 from datetime import datetime
 
 # Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.metatft_parser import MetaTFTLogParser  # noqa: E402
 
@@ -68,7 +68,7 @@ def sync_augments(log_dir: Path = None, output_dir: Path = None):
 
     # Default output directory
     if output_dir is None:
-        output_dir = Path(__file__).parent / "data" / "personal"
+        output_dir = Path(__file__).parent.parent / "data" / "local" / "personal"
 
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / "metatft_augments.csv"
@@ -119,7 +119,7 @@ def sync_augments(log_dir: Path = None, output_dir: Path = None):
                     f"({data['selection_rate'] * 100:.0f}% when offered)"
                 )
 
-        print(f"\n✓ Synced {len(events)} events to {output_file}")
+        print(f"\nSynced {len(events)} events to {output_file}")
         return True
 
     except Exception as e:

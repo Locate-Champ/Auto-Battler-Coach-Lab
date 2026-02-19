@@ -1,1 +1,1 @@
-# TFT Coach Source Package
+# Auto-Battler Coach Source Package

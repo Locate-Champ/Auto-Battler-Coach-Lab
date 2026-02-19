@@ -1,5 +1,5 @@
 """
-TFT Placement Prediction Model
+Auto-Battler Placement Prediction Model
 Predicts top4/bottom4 placement based on board composition
 """
 
@@ -23,7 +23,7 @@ from .feature_engineering import FeatureEngineer
 
 
 class PlacementModel:
-    """ML model for predicting TFT placement (top4 vs bottom4)"""
+    """ML model for predicting auto-battler placement (top4 vs bottom4)"""
 
     def __init__(self, data_dir: str = None):
         """Initialize model with data directory"""
@@ -178,7 +178,7 @@ class PlacementModel:
         """Generate human-readable explanation of model insights"""
         lines = []
         lines.append("=" * 60)
-        lines.append("TFT PLACEMENT PREDICTION MODEL INSIGHTS")
+        lines.append("Auto-Battler Placement Prediction Model INSIGHTS")
         lines.append("=" * 60)
 
         # Feature importance
@@ -225,7 +225,7 @@ class PlacementModel:
 def main():
     """Train and evaluate the placement prediction model"""
     print("=" * 60)
-    print("TFT PLACEMENT PREDICTION MODEL")
+    print("Auto-Battler Placement Prediction Model")
     print("=" * 60)
 
     # Initialize model
@@ -298,3 +298,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

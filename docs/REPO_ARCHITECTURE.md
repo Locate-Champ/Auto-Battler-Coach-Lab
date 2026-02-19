@@ -1,4 +1,4 @@
-# Repo Architecture + Folder Guide (TFT Coach)
+﻿# Repo Architecture + Folder Guide (Auto-Battler Coach)
 
 Last updated: 2026-02-13
 
@@ -152,7 +152,7 @@ This is a "what lives where" guide for the repo root.
   - Primary data store for the project (API snapshots, personal stats, meta comp data, raw local dumps).
   - Key subfolders:
     - `data/api/processed/`: normalized set data (units/traits/items/augments, etc)
-    - `data/personal/`: match history + personal performance CSVs
+    - `data/local/personal/`: local-only match history + personal performance CSVs (gitignored)
     - `data/meta/`: meta comps and tier lists (used by recommenders)
     - `data/game_data/`: jsonl sources used by `src/models/`
 
@@ -229,12 +229,13 @@ This is a "what lives where" guide for the repo root.
 
 ## 3) "Where Do I Change X?" Cheatsheet
 
-- Live state parsing / mapping: `e:\VS Code\tft-coach-234\app\watcher\parser.py`, `e:\VS Code\tft-coach-234\app\state\state_manager.py`
-- Live UI: `e:\VS Code\tft-coach-234\app\frontend\src\App.tsx`
-- WebSocket payload shape + coach integration: `e:\VS Code\tft-coach-234\app\server\websocket.py`
-- Coaching logic (candidates/executors/scoring/explanations): `e:\VS Code\tft-coach-234\coach\`
-- Combat simulation fidelity / performance: `e:\VS Code\tft-coach-234\simulator\core\combat_engine.py`, `e:\VS Code\tft-coach-234\simulator\core\champion_abilities.py`, `e:\VS Code\tft-coach-234\simulator\core\item_effects.py`
-- Batch data generation + schema: `e:\VS Code\tft-coach-234\simulator\cloud_runner.py`, `e:\VS Code\tft-coach-234\simulator\game\collector.py`
-- ML training (simulator-trained): `e:\VS Code\tft-coach-234\models\`
-- API server (legacy recommender): `e:\VS Code\tft-coach-234\app\api\server.py`, `e:\VS Code\tft-coach-234\src\models\`
+- Live state parsing / mapping: `e:\\VS Code\\Auto-Battler-Coach-Lab\app\watcher\parser.py`, `e:\\VS Code\\Auto-Battler-Coach-Lab\app\state\state_manager.py`
+- Live UI: `e:\\VS Code\\Auto-Battler-Coach-Lab\app\frontend\src\App.tsx`
+- WebSocket payload shape + coach integration: `e:\\VS Code\\Auto-Battler-Coach-Lab\app\server\websocket.py`
+- Coaching logic (candidates/executors/scoring/explanations): `e:\\VS Code\\Auto-Battler-Coach-Lab\coach\`
+- Combat simulation fidelity / performance: `e:\\VS Code\\Auto-Battler-Coach-Lab\simulator\core\combat_engine.py`, `e:\\VS Code\\Auto-Battler-Coach-Lab\simulator\core\champion_abilities.py`, `e:\\VS Code\\Auto-Battler-Coach-Lab\simulator\core\item_effects.py`
+- Batch data generation + schema: `e:\\VS Code\\Auto-Battler-Coach-Lab\simulator\cloud_runner.py`, `e:\\VS Code\\Auto-Battler-Coach-Lab\simulator\game\collector.py`
+- ML training (simulator-trained): `e:\\VS Code\\Auto-Battler-Coach-Lab\models\`
+- API server (legacy recommender): `e:\\VS Code\\Auto-Battler-Coach-Lab\app\api\server.py`, `e:\\VS Code\\Auto-Battler-Coach-Lab\src\models\`
+
 

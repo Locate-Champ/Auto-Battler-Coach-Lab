@@ -1,6 +1,6 @@
-@echo off
+﻿@echo off
 echo ========================================
-echo TFT Coach Companion
+echo Auto-Battler Coach Companion
 echo ========================================
 echo.
 
@@ -16,3 +16,4 @@ REM Run the launcher
 python "%~dp0run_app.py"
 
 pause
+

@@ -1,8 +1,8 @@
-# TFT Coach Prototype Plan
+﻿# Auto-Battler Coach Prototype Plan
 
 ## Vision
 
-Build a personal TFT coaching overlay that:
+Build a personal Auto-Battler Coaching overlay that:
 1. **Piggybacks off MetaTFT logs** for real-time game data
 2. **Adds your personal strategies** and success patterns
 3. **Provides actionable advice** during games
@@ -12,45 +12,45 @@ Build a personal TFT coaching overlay that:
 ## Architecture Overview
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                         TFT Game                                │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    MetaTFT (Overwolf)                           │
-│              Captures game events via GEP API                   │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ Writes logs
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              MetaTFT Log Files (.log)                           │
-│   C:\Users\<USER>\AppData\Local\Overwolf\Log\Apps\MetaTFT\      │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ File watching
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                 Log Watcher Service (Python)                    │
-│  • Monitors log file changes                                    │
-│  • Parses events into structured data                           │
-│  • Maintains game state                                         │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ WebSocket
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   Coach Engine (Python)                         │
-│  • Applies your personal rules/strategies                       │
-│  • Generates coaching suggestions                               │
-│  • Tracks patterns from your past games                         │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ HTTP/WebSocket
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   Overlay UI (Electron/Web)                     │
-│  • Shows current game state                                     │
-│  • Displays coaching suggestions                                │
-│  • Your personal notes/reminders                                │
-└─────────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                         Game Client                                â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                           â”‚
+                           â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                    MetaTFT (Overwolf)                           â”‚
+â”‚              Captures game events via GEP API                   â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                           â”‚ Writes logs
+                           â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚              MetaTFT Log Files (.log)                           â”‚
+â”‚   C:\Users\<USER>\AppData\Local\Overwolf\Log\Apps\MetaTFT\      â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                           â”‚ File watching
+                           â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                 Log Watcher Service (Python)                    â”‚
+â”‚  â€¢ Monitors log file changes                                    â”‚
+â”‚  â€¢ Parses events into structured data                           â”‚
+â”‚  â€¢ Maintains game state                                         â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                           â”‚ WebSocket
+                           â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                   Coach Engine (Python)                         â”‚
+â”‚  â€¢ Applies your personal rules/strategies                       â”‚
+â”‚  â€¢ Generates coaching suggestions                               â”‚
+â”‚  â€¢ Tracks patterns from your past games                         â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                           â”‚ HTTP/WebSocket
+                           â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                   Overlay UI (Electron/Web)                     â”‚
+â”‚  â€¢ Shows current game state                                     â”‚
+â”‚  â€¢ Displays coaching suggestions                                â”‚
+â”‚  â€¢ Your personal notes/reminders                                â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
@@ -63,12 +63,12 @@ Build a personal TFT coaching overlay that:
 **Files to create:**
 ```
 app/
-├── services/
-│   └── log_watcher/
-│       ├── __init__.py
-│       ├── watcher.py        # File system watcher
-│       ├── parser.py         # Log line parser
-│       └── events.py         # Event type definitions
+â”œâ”€â”€ services/
+â”‚   â””â”€â”€ log_watcher/
+â”‚       â”œâ”€â”€ __init__.py
+â”‚       â”œâ”€â”€ watcher.py        # File system watcher
+â”‚       â”œâ”€â”€ parser.py         # Log line parser
+â”‚       â””â”€â”€ events.py         # Event type definitions
 ```
 
 **Key events to capture:**
@@ -217,18 +217,18 @@ game_history = {
 ### 3.2 Minimal MVP UI
 
 ```
-┌─────────────────────────────────┐
-│ Stage: 2-5 | HP: 78 | Lvl: 5   │
-├─────────────────────────────────┤
-│ 💡 Suggestion:                  │
-│ "Good stage to push levels -    │
-│  you usually do well when       │
-│  hitting 6 before wolves"       │
-├─────────────────────────────────┤
-│ 📝 Your Notes:                  │
-│ "Look for Sivir pairs"          │
-│ "Don't greed carousel"          │
-└─────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ Stage: 2-5 | HP: 78 | Lvl: 5   â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ ðŸ’¡ Suggestion:                  â”‚
+â”‚ "Good stage to push levels -    â”‚
+â”‚  you usually do well when       â”‚
+â”‚  hitting 6 before wolves"       â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ ðŸ“ Your Notes:                  â”‚
+â”‚ "Look for Sivir pairs"          â”‚
+â”‚ "Don't greed carousel"          â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
@@ -265,21 +265,21 @@ game_history = {
 
 ```
 Backend:
-├── Python 3.11+
-├── watchdog          # File system monitoring
-├── FastAPI           # HTTP/WebSocket server
-├── pydantic          # Data validation
-└── SQLite            # Game history storage
+â”œâ”€â”€ Python 3.11+
+â”œâ”€â”€ watchdog          # File system monitoring
+â”œâ”€â”€ FastAPI           # HTTP/WebSocket server
+â”œâ”€â”€ pydantic          # Data validation
+â””â”€â”€ SQLite            # Game history storage
 
 Frontend:
-├── Electron          # Overlay window
-├── React or Svelte   # UI framework
-└── TailwindCSS       # Styling
+â”œâ”€â”€ Electron          # Overlay window
+â”œâ”€â”€ React or Svelte   # UI framework
+â””â”€â”€ TailwindCSS       # Styling
 
 Data:
-├── YAML              # Personal notes/rules
-├── JSON              # Game state
-└── SQLite            # History
+â”œâ”€â”€ YAML              # Personal notes/rules
+â”œâ”€â”€ JSON              # Game state
+â””â”€â”€ SQLite            # History
 ```
 
 ---
@@ -304,40 +304,40 @@ To get something running ASAP, we can start with:
 ## Files to Create First
 
 ```
-tft-coach-234/
-├── app/
-│   ├── __init__.py
-│   ├── main.py                 # Entry point
-│   ├── config.py               # Configuration
-│   │
-│   ├── watcher/
-│   │   ├── __init__.py
-│   │   ├── log_watcher.py      # File monitoring
-│   │   └── parser.py           # Event parsing
-│   │
-│   ├── state/
-│   │   ├── __init__.py
-│   │   ├── game_state.py       # State model
-│   │   └── state_manager.py    # State updates
-│   │
-│   ├── coach/
-│   │   ├── __init__.py
-│   │   ├── rules.py            # Rule engine
-│   │   └── suggestions.py      # Suggestion generator
-│   │
-│   └── server/
-│       ├── __init__.py
-│       └── websocket.py        # WebSocket server
-│
-├── data/
-│   ├── personal_notes.yaml     # Your notes
-│   ├── rules.yaml              # Custom rules
-│   └── history.db              # Game history
-│
-├── overlay/
-│   └── index.html              # Simple test UI
-│
-└── requirements.txt
+Auto-Battler-Coach-Lab/
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ main.py                 # Entry point
+â”‚   â”œâ”€â”€ config.py               # Configuration
+â”‚   â”‚
+â”‚   â”œâ”€â”€ watcher/
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ log_watcher.py      # File monitoring
+â”‚   â”‚   â””â”€â”€ parser.py           # Event parsing
+â”‚   â”‚
+â”‚   â”œâ”€â”€ state/
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ game_state.py       # State model
+â”‚   â”‚   â””â”€â”€ state_manager.py    # State updates
+â”‚   â”‚
+â”‚   â”œâ”€â”€ coach/
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ rules.py            # Rule engine
+â”‚   â”‚   â””â”€â”€ suggestions.py      # Suggestion generator
+â”‚   â”‚
+â”‚   â””â”€â”€ server/
+â”‚       â”œâ”€â”€ __init__.py
+â”‚       â””â”€â”€ websocket.py        # WebSocket server
+â”‚
+â”œâ”€â”€ data/
+â”‚   â”œâ”€â”€ personal_notes.yaml     # Your notes
+â”‚   â”œâ”€â”€ rules.yaml              # Custom rules
+â”‚   â””â”€â”€ history.db              # Game history
+â”‚
+â”œâ”€â”€ overlay/
+â”‚   â””â”€â”€ index.html              # Simple test UI
+â”‚
+â””â”€â”€ requirements.txt
 ```
 
 ---
@@ -369,3 +369,4 @@ tft-coach-234/
    - Second monitor?
    - In-game overlay?
    - Audio cues?
+

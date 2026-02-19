@@ -1,29 +1,25 @@
-# Auto?Battler Coach Lab
+﻿# Auto-Battler Coach Lab
 
-A research sandbox for deterministic simulation + evaluation + explainable decision support in a hex/grid auto?battler ruleset.
+A research sandbox for deterministic simulation, evaluation, and explainable coaching for a hex-grid auto-battler ruleset.
 
-This repo focuses on:
-- Fast, deterministic simulation runs for offline experiments
-- Dataset generation (snapshot rows, aggregated reports)
-- Lightweight evaluators (e.g., tree models) for ?board strength? scoring
-- A ?planner + critic? style coach that searches candidate actions and explains recommendations
+## Repo policy
+- No personal match history or account-linked identifiers in tracked files.
+- No proprietary asset packs (icons/art dumps) in tracked files.
+- Local runtime and personal data must stay under `data/local/**` (gitignored).
+
+## Structure
+- `app/`: runtime API, websocket server, and frontend.
+- `coach/`: planner/scoring modules.
+- `simulator/`: deterministic game and combat simulation.
+- `models/` and `src/`: training track and runtime recommender track.
+- `outputs/coach/`: only tracked runtime artifact subset.
 
 ## Quick start
-
-Run the full stack:
-
 ```bash
 npm start
+```
 
-
-Frontend typically opens at http://localhost:5173.
-
-Prerequisites
-
-Python 3.10+
-
-Node.js 18+
-
-Install
-pip install -r requirements.txt
-cd app/frontend && npm install 
+## Verification
+```bash
+python -m pytest
+```

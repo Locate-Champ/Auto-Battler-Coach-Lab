@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TFT Coach - Overlay</title>
+    <title>Auto-Battler Coach - Overlay</title>
     <style>
         * {
             box-sizing: border-box;
@@ -209,15 +209,15 @@
             <div class="stage" id="stage">--</div>
             <div class="stats">
                 <div class="stat">
-                    <span class="stat-icon">❤️</span>
+                    <span class="stat-icon">â¤ï¸</span>
                     <span id="health">100</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-icon">⭐</span>
+                    <span class="stat-icon">â­</span>
                     <span id="level">1</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-icon">✨</span>
+                    <span class="stat-icon">âœ¨</span>
                     <span id="xp">0/0</span>
                 </div>
             </div>
@@ -231,7 +231,7 @@
 
         <!-- Suggestions -->
         <div class="panel" id="suggestions-panel">
-            <div class="panel-title">💡 Suggestions</div>
+            <div class="panel-title">ðŸ’¡ Suggestions</div>
             <div id="suggestions">
                 <div class="empty-state">Waiting for game events...</div>
             </div>
@@ -239,13 +239,13 @@
 
         <!-- Augment Options -->
         <div class="panel" id="augments-panel" style="display: none;">
-            <div class="panel-title">🎰 Augment Options</div>
+            <div class="panel-title">ðŸŽ° Augment Options</div>
             <div class="augments" id="augments"></div>
         </div>
 
         <!-- Opponents -->
         <div class="panel">
-            <div class="panel-title">👥 Opponents</div>
+            <div class="panel-title">ðŸ‘¥ Opponents</div>
             <div class="opponents" id="opponents">
                 <div class="empty-state">No opponent data yet</div>
             </div>
@@ -263,7 +263,7 @@
             ws = new WebSocket('ws://127.0.0.1:8765/ws');
 
             ws.onopen = () => {
-                console.log('Connected to TFT Coach');
+                console.log('Connected to Auto-Battler Coach');
                 document.getElementById('status').className = 'status status-connected';
                 document.getElementById('status-text').textContent = 'Connected';
                 if (reconnectInterval) {
@@ -273,7 +273,7 @@
             };
 
             ws.onclose = () => {
-                console.log('Disconnected from TFT Coach');
+                console.log('Disconnected from Auto-Battler Coach');
                 document.getElementById('status').className = 'status status-disconnected';
                 document.getElementById('status-text').textContent = 'Disconnected - Reconnecting...';
                 if (!reconnectInterval) {
@@ -342,7 +342,7 @@
                     .map(opp => `
                         <div class="opponent">
                             <span>${opp.name}</span>
-                            <span class="opponent-health">❤️ ${opp.health}</span>
+                            <span class="opponent-health">â¤ï¸ ${opp.health}</span>
                         </div>
                     `).join('');
             } else {
@@ -408,3 +408,4 @@
     </script>
 </body>
 </html>
+

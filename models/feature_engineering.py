@@ -537,7 +537,13 @@ class TFTFeatureEngineer:
                         self.personal_item_scores[key] = score
 
         # CSV fallback from personal exports.
-        carry_csv = self.repo_root / "data" / "personal" / "carry_performance_corrected.csv"
+        carry_csv = (
+            self.repo_root
+            / "data"
+            / "local"
+            / "personal"
+            / "carry_performance_corrected.csv"
+        )
         if carry_csv.exists() and not self.personal_carry_stats:
             with carry_csv.open("r", encoding="utf-8") as handle:
                 header = handle.readline().strip().split(",")
