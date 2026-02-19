@@ -78,8 +78,6 @@ simulator/docs/Session Summary*.md
 !.agent/CONTINUITY.md
 !.agent/plans/
 !.agent/plans/**
-!.agent/archive/
-!.agent/archive/**
 
 # ---- Generated / local run artifacts ----
 results/
@@ -92,6 +90,10 @@ data/matches/**
 knowledge-base/raw/**
 data/api/raw/**
 data/api/tft_*/**
+archive/**
+.env.local
+docs/**
+.agent/local/**
 
 # ---- Outputs: track runtime subset only ----
 outputs/**

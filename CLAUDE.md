@@ -20,7 +20,8 @@ Keep the repo focused, deterministic, and fast to navigate for both humans and a
 - `results/`, `tmp/`, `live-logs/`, `models/checkpoints/**`, and non-coach `outputs/**` are generated and untracked.
 - Runtime artifact resolver env vars:
   - Preferred: `COACH_OUTPUTS_DIR`, `COACH_CHECKPOINT_DIR`, `COACH_ARTIFACT_ROOT`
-  - Fallback only: `TFT_OUTPUTS_DIR`, `TFT_CHECKPOINT_DIR`, `TFT_ARTIFACT_ROOT`
+  - Legacy fallback env vars remain supported for local compatibility, but should be configured only in local-only overlays (for example `.env.local`), not public docs.
+- Local-only paths that must remain untracked: `.env.local`, `docs/**`, `.agent/local/**`, `.agent/archive/**`, and `archive/**`.
 
 ## Scope and Safety Rules
 1. No drive-by refactors.
@@ -73,10 +74,8 @@ Before final response:
 2. End with `Next Improvements`.
 
 ## Canonical Docs
-- Docs hub: `docs/INDEX.md`
-- Architecture: `docs/REPO_ARCHITECTURE.md`
-- Current simulator/model truth: `docs/CURRENT_MODEL_AND_SIMULATOR.md`
-- AWS gates runbook: `docs/runbooks/aws_gates.md`
+- Canonical policy: `AGENTS.md`
+- Local documentation workspace: `docs/**` (intentionally untracked)
 
 ## Quick Commands
 - Start app stack: `npm start`

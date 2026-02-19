@@ -1,1 +1,0 @@
-window.addEventListener('load',function(){var ua=navigator.userAgent.toLowerCase();if(ua.indexOf('safari')!=-1&&ua.indexOf('chrome')==-1){document.documentElement.classList.add('is-safari');}});
