@@ -3,17 +3,23 @@
   "permissions": {
     "deny": [
       "Read(./results/**)",
+      "Edit(./results/**)",
       "Read(./live-logs/**)",
+      "Edit(./live-logs/**)",
       "Read(./tmp/**)",
+      "Edit(./tmp/**)",
       "Read(./models/checkpoints/**)",
-      "Read(./archive/**)",
+      "Edit(./models/checkpoints/**)",
+
       "Read(./simulator/Simulator/**)",
-      "Read(./outputs/kb/**)",
-      "Read(./outputs/analysis/**)",
-      "Read(./outputs/reports/**)",
-      "Read(./outputs/tmp/**)",
-      "Read(./outputs/metatft_*.json)",
-      "Read(./outputs/metatft_*.csv)",
+      "Edit(./simulator/Simulator/**)",
+      "Read(./simulator/Concurrency/**)",
+      "Edit(./simulator/Concurrency/**)",
+      "Read(./simulator/Evaluator/**)",
+      "Edit(./simulator/Evaluator/**)",
+
+      "Read(./archive/**)",
+
       "Read(./app/frontend/images/**)",
       "Read(./trait_icons_set16/**)",
       "Read(./**/node_modules/**)",
@@ -21,17 +27,18 @@
       "Read(./venv/**)",
       "Read(./**/__pycache__/**)",
       "Read(./.pytest_cache/**)",
-      "Edit(./results/**)",
-      "Edit(./live-logs/**)",
-      "Edit(./tmp/**)",
-      "Edit(./models/checkpoints/**)",
-      "Edit(./archive/**)",
-      "Edit(./simulator/Simulator/**)",
+
+      "Read(./outputs/kb/**)",
       "Edit(./outputs/kb/**)",
+      "Read(./outputs/analysis/**)",
       "Edit(./outputs/analysis/**)",
+      "Read(./outputs/reports/**)",
       "Edit(./outputs/reports/**)",
+      "Read(./outputs/tmp/**)",
       "Edit(./outputs/tmp/**)",
+      "Read(./outputs/metatft_*.json)",
       "Edit(./outputs/metatft_*.json)",
+      "Read(./outputs/metatft_*.csv)",
       "Edit(./outputs/metatft_*.csv)"
     ]
   }

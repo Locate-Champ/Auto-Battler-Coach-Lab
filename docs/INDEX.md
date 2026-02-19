@@ -61,6 +61,8 @@ Combat simulation and game loop documentation.
 - [artifact_item_analysis.md](simulator/artifact_item_analysis.md) - Artifact/item analysis
 - [calibration_sources.md](simulator/calibration_sources.md) - Video sources for calibration
 - [calibration_overview.md](simulator/calibration_overview.md) - Calibration system overview
+- [SIMULATOR_AUDIT.md](SIMULATOR_AUDIT.md) - Simulator audit log and findings
+- [AUGMENT_IMPLEMENTATION_PLAN.md](simulator/AUGMENT_IMPLEMENTATION_PLAN.md) - Augment combat implementation plan
 
 ---
 
@@ -79,6 +81,25 @@ Third-party integrations.
 
 - [NOTION_PROJECT.md](external/NOTION_PROJECT.md) - Notion project setup
 - [NOTION_IMPORT_GUIDE.md](external/NOTION_IMPORT_GUIDE.md) - Notion import instructions
+
+---
+
+## Runbooks
+
+Operational runbooks for repeatable workflows.
+
+- [aws_gates.md](runbooks/aws_gates.md) - Canonical AWS gates runbook for cloud simulation
+
+---
+
+## Archive
+
+Historical root documents moved out of active root scope.
+
+- [TFT_CODEX_INSTRUCTIONS.md](../archive/docs/root/TFT_CODEX_INSTRUCTIONS.md) - Archived ML pipeline spec
+- [TFT_COACH_TIMELINE_AND_TODO.md](../archive/docs/root/TFT_COACH_TIMELINE_AND_TODO.md) - Archived coach timeline and milestones
+- [coach_implementation.md](../archive/docs/root/coach_implementation.md) - Archived planning-with-a-critic implementation notes
+- [CHAMPION_REVIEW.md](../archive/docs/root/CHAMPION_REVIEW.md) - Archived champion review notes
 
 ---
 
