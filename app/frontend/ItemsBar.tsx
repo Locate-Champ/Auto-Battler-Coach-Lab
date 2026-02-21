@@ -37,7 +37,7 @@ const ItemsBar: React.FC<ItemsBarProps> = ({ defaultTab = 'Set', onTabChange }) 
               <span
                 className="text-center text-xs font-bold leading-10"
                 style={{
-                  fontFamily: 'Georgia, serif',
+                  fontFamily: 'Google Sans Code, monospace',
                   color: isSelected ? '#fab964' : '#f7f7f7',
                   textShadow: '-2px 2px 2px rgba(0, 0, 0, 1.00)'
                 }}

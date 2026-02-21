@@ -93,7 +93,7 @@ interface ItemGroupProps {
 
 const ItemGroup: React.FC<ItemGroupProps> = ({ title, items, ownedItems, onItemClick }) => (
   <div className="flex flex-col items-center px-1 py-0.5 outline outline-1 outline-offset-[-1px]" style={{ outlineColor: 'rgba(255,255,255,0.2)' }}>
-    <div className="text-sm leading-5" style={{ fontFamily: 'Arial, sans-serif', color: 'rgba(255,255,255,0.87)' }}>
+    <div className="text-sm leading-5" style={{ fontFamily: 'Google Sans Code, monospace', color: 'rgba(255,255,255,0.87)' }}>
       {title}
     </div>
     <div className="flex flex-wrap justify-center gap-0">
