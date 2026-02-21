@@ -92,19 +92,76 @@ class TFTRecommender:
 
     def _load_augment_tiers(self):
         """Load augment tier list"""
-        path = self.data_dir / 'data' / 'meta' / 'metatft_augment_tierlist_16_3.csv'
-        if not path.exists():
+        tier_scores = {'S': 5, 'A': 4, 'B': 3, 'C': 2, 'D': 1, 'F': 0}
+
+        # Primary source: the current MetaTFT-backed game data produced by
+        # scripts/fetch_game_data.py.
+        jsonl_path = self.data_dir / 'data' / 'game_data' / 'augments.jsonl'
+        if jsonl_path.exists():
+            loaded = 0
+            with open(jsonl_path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        row = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
+
+                    name = str(row.get('name', '')).strip()
+                    if not name:
+                        continue
+
+                    tier = str(row.get('tier', 'C')).upper()
+                    rarity_raw = row.get('rarity', 'Unknown')
+                    if isinstance(rarity_raw, (int, float)):
+                        rarity = {1: 'Silver', 2: 'Gold', 3: 'Prismatic'}.get(
+                            int(rarity_raw), 'Unknown'
+                        )
+                    else:
+                        rarity = str(rarity_raw) if rarity_raw else 'Unknown'
+
+                    associated_traits = row.get('associatedTraits') or []
+                    types: List[str] = []
+                    if isinstance(associated_traits, list):
+                        for trait in associated_traits:
+                            if isinstance(trait, str) and trait:
+                                types.append(trait.replace('TFT16_', ''))
+                            elif isinstance(trait, dict):
+                                trait_name = trait.get('name') or trait.get('apiName')
+                                if trait_name:
+                                    types.append(str(trait_name).replace('TFT16_', ''))
+
+                    self.augment_tiers[name] = {
+                        'tier': tier,
+                        'score': tier_scores.get(tier, 2),
+                        'types': types,
+                        'rarity': rarity,
+                    }
+                    loaded += 1
+
+            if loaded:
+                return
+
+        # Legacy fallback: newest historical CSV snapshot under data/meta.
+        meta_dir = self.data_dir / 'data' / 'meta'
+        csv_paths = sorted(
+            meta_dir.glob('metatft_augment_tierlist_*.csv'),
+            key=lambda p: p.stat().st_mtime,
+            reverse=True,
+        )
+        if not csv_paths:
             return
 
-        df = pd.read_csv(path)
-
-        tier_scores = {'S': 5, 'A': 4, 'B': 3, 'C': 2, 'D': 1, 'F': 0}
+        df = pd.read_csv(csv_paths[0])
 
         for _, row in df.iterrows():
             name = row['name']
+            tier = str(row['tier']).upper()
             self.augment_tiers[name] = {
-                'tier': row['tier'],
-                'score': tier_scores.get(row['tier'], 2),
+                'tier': tier,
+                'score': tier_scores.get(tier, 2),
                 'types': str(row.get('types', '')).split(', ') if pd.notna(row.get('types')) else [],
                 'rarity': row.get('rarity', 'Unknown')
             }
@@ -542,4 +599,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
