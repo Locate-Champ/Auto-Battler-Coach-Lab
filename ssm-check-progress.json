@@ -1,0 +1,1 @@
+{"commands":["#!/bin/bash","echo '=== COMPLETION CHECK ==='","test -f /tmp/xgb-training-DONE && echo STATUS:DONE || echo STATUS:RUNNING","echo","echo '=== LAST 15 LINES ==='","tail -15 /tmp/xgb-training-v2.log 2>/dev/null || echo 'no log yet'","echo","echo '=== PROCESS ==='","ps aux | grep 'train_xgboost' | grep -v grep | head -3 || echo 'no process'"]}
