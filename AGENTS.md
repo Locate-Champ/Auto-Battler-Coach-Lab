@@ -1,84 +1,60 @@
-# AGENTS
-This file is canonical. CLAUDE.md is generated from it.
+# AGENTS.md — Auto-Battler Coach Lab (canonical)
 
-## Mission
-Keep the repo focused, deterministic, and fast to navigate for both humans and agents.
+Default behavior: smallest scoped change, deterministic simulator, no surprises.
 
-## Stop First
-1. Pick the right track before editing anything.
-2. Make the smallest possible scoped change.
-3. Run only the required verification for touched code.
+## 0) ScopeLock (required)
+Before editing:
+- ScopeLock: exact files you will touch
+- Non-goals: what you will NOT change
+If scope grows beyond 3 files or ~200 lines, stop and ask.
 
-## Track Map (Non-Negotiable)
-- Runtime API recommender: `app/api/server.py` uses `src/models`.
-- Training and evaluation pipeline: `models/`.
-- Active simulator truth: `simulator/core` and `simulator/game`.
-- Legacy simulator (quarantined): `simulator/Simulator`, `simulator/Concurrency`, `simulator/Evaluator`.
+## 1) Track map (non-negotiable)
+- Active simulator truth: `simulator/core/**` and `simulator/game/**`
+- ML training + eval: `models/**`
+- Runtime recommender API: `app/api/server.py` uses `src/models/**`
+- Legacy/quarantined: `simulator/Simulator/**`, `simulator/Concurrency/**`, `simulator/Evaluator/**` (do not work here)
 
-## Artifact Contract
-- Tracked runtime artifacts under `outputs/coach/**` only.
-- `results/`, `tmp/`, `live-logs/`, `models/checkpoints/**`, and non-coach `outputs/**` are generated and untracked.
-- Runtime artifact resolver env vars:
-  - Preferred: `COACH_OUTPUTS_DIR`, `COACH_CHECKPOINT_DIR`, `COACH_ARTIFACT_ROOT`
-  - Legacy fallback env vars remain supported for local compatibility, but should be configured only in local-only overlays (for example `.env.local`), not public docs.
-- Local-only paths that must remain untracked: `.env.local`, `.agent/**`, `.claude/**`, `.mcp.json`, `docs/**`, `archive/**`, `scraper/**`, `data/**` (except `data/README.md`), most of `knowledge-base/**` (skeleton-only tracked), most of `scripts/**` (CI/runtime allowlist only), most of `simulator/**` (active engine allowlist only), plus `src/metatft_parser.py` and `src/tft_diagnostic.py`.
+## 2) Hard rules (non-negotiable)
+- No drive-by refactors, no “cleanup,” no reformatting unrelated code.
+- Do not touch legacy simulator paths.
+- Do not commit unless explicitly requested.
+- Never paste secrets/tokens. If a token was leaked, recommend rotation immediately.
+- For AWS work: read the repo’s AWS gate/runbook doc first and follow it exactly.
+  - Simulation is CPU-bound.
+  - Training is GPU-bound.
+  If a request conflicts with that, raise the conflict before doing anything.
 
-## Scope and Safety Rules
-1. No drive-by refactors.
-2. No feature work in legacy simulator paths.
-3. No secrets in chat or code.
-4. No destructive git commands.
-5. No commit unless explicitly requested.
-6. If unexpected repo state appears, stop and ask.
+## 3) Parquet / Arrow rule (performance + consistency)
+- Parquet is the default artifact format.
+- Validate `pyarrow` in the SAME Python environment running the command:
+  - `python -c "import pyarrow; print(pyarrow.__version__)"`
+- If pyarrow is missing, install it in that environment before running large jobs.
 
-## Verification Rules
-Run only what applies to your touched paths.
-
-- Combat engine or simulator combat behavior changed:
+## 4) Verification rules (run only what applies)
+- Combat engine behavior changed:
   - `python -m simulator.benchmark` (determinism must pass)
-- Collector/output schema or output formatting changed:
-  - `python -m simulator.validate_output <dir>` (19 checks pass)
+- Output schema/format changed:
+  - `python -m simulator.validate_output <dir>` (19/19 checks pass)
 - Coach/runtime scoring changed:
-  - `python -m pytest tests/test_coach_archetype_library.py tests/test_coach_planner.py tests/test_no_hardcoded_artifact_paths.py`
-- Track-boundary policy changes:
-  - `python -m pytest tests/test_track_boundaries.py`
-- General Python tests:
+  - run the focused pytest targets for coach planner/scoring
+- General:
   - `python -m pytest`
-- Frontend code changed:
+- Frontend changed:
   - `cd app/frontend && npm run build`
 
-## Working Discipline
-1. Keep commits small and single-purpose.
-2. Verify staged files match intended scope before commit:
-   - `git diff --cached --name-only`
-   - `git status --porcelain`
-3. Keep working tree clean between phase commits.
+## 5) Definition of done
+Done means:
+- Requested change implemented
+- Required verification run and results reported
+- What changed + why explained
+- Follow-ups listed (suggestions only, do not implement unless asked)
 
-## Dual-Track Override Policy (Required)
-If a PR touches both `src/models/**` and `models/**` with code/config changes, it must include:
-- PR label: `allow-dual-track`
-- PR body section: `Dual-Track Reason:`
-- PR body section: `Exit Plan:`
+## 6) ## Improvements (anti-bloat rule)
 
-Without all three, the PR fails policy checks.
-
-## Continuity Rules
-- Continuity notes are local-only under `.agent/**` and must not be tracked.
-- Keep local continuity compact and high-signal.
-
-## Completion Rules
-Before final response:
-1. Run completion notification:
-   - `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\notify-ntfy.ps1 -Title "Codex done" -Message "<one-line summary>"`
-2. End with `Next Improvements`.
-
-## Canonical Docs
-- Canonical policy: `AGENTS.md`
-- Local documentation workspace: `docs/**` (intentionally untracked)
-
-## Quick Commands
-- Start app stack: `npm start`
-- Simulator batch: `python -m simulator.cloud_runner --games 1000 --workers 11 --output results/batch`
-- Validate output: `python -m simulator.validate_output results/batch`
-- Benchmark/determinism: `python -m simulator.benchmark`
-- Tests: `python -m pytest`
+- Do NOT propose improvements by default.
+- Only include an "Improvements" section if you found something that:
+  (a) prevents a real bug, (b) reduces complexity, or (c) reduces runtime/cost.
+- Cap: max 2 bullets.
+- Each bullet must include: Benefit (1 sentence) + Effort (S/M/L) + Risk (Low/Med/High).
+- Never suggest “nice to have” refactors, new abstractions, new features, or new dependencies unless the user explicitly asked for them.
+- Never implement an improvement unless the user explicitly approves it.
