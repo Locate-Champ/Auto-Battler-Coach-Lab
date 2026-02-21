@@ -195,6 +195,92 @@ def _compute_seed_end(seed_start: int, num_games: int) -> Optional[int]:
     return seed_start + num_games - 1
 
 
+def _estimate_worker_cpu_share_pct(num_workers: int, logical_cpu_count: int) -> float:
+    """Estimate CPU share based on worker count and logical CPUs."""
+    if logical_cpu_count <= 0:
+        return 0.0
+    share = (float(num_workers) / float(logical_cpu_count)) * 100.0
+    return max(0.0, min(100.0, share))
+
+
+def _sample_cpu_utilization_pct(logical_cpu_count: int) -> Optional[float]:
+    """Best-effort CPU utilization sample (percent)."""
+    try:
+        import psutil  # pragma: no cover - optional dependency
+        # Small interval avoids the initial 0.0 warm-up sample.
+        return float(psutil.cpu_percent(interval=0.1))
+    except Exception:
+        pass
+
+    if hasattr(os, 'getloadavg'):
+        try:
+            load_one = float(os.getloadavg()[0])  # pragma: no cover - not on Windows
+            if logical_cpu_count <= 0:
+                return None
+            return max(0.0, min(100.0, (load_one / float(logical_cpu_count)) * 100.0))
+        except Exception:
+            return None
+    return None
+
+
+def _round_or_none(value: Optional[float], digits: int = 4) -> Optional[float]:
+    if value is None:
+        return None
+    return round(float(value), digits)
+
+
+def _build_cost_telemetry(
+    *,
+    total_time_sec: float,
+    num_games: int,
+    total_rounds: int,
+    num_workers: int,
+    logical_cpu_count: int,
+    instance_hourly_usd: float,
+    cpu_utilization_samples_pct: Optional[List[float]] = None,
+) -> Dict[str, Any]:
+    games_per_sec = (num_games / total_time_sec) if total_time_sec > 0 else 0.0
+    rounds_per_sec = (total_rounds / total_time_sec) if total_time_sec > 0 else 0.0
+    sec_per_game = (total_time_sec / num_games) if num_games > 0 else 0.0
+    sec_per_round = (total_time_sec / total_rounds) if total_rounds > 0 else 0.0
+
+    worker_share_pct_est = _estimate_worker_cpu_share_pct(num_workers, logical_cpu_count)
+    samples = [float(v) for v in (cpu_utilization_samples_pct or [])]
+    sampled_avg = (sum(samples) / len(samples)) if samples else None
+    sampled_min = min(samples) if samples else None
+    sampled_max = max(samples) if samples else None
+
+    total_cost_usd = (total_time_sec / 3600.0) * max(0.0, float(instance_hourly_usd))
+    usd_per_game = (total_cost_usd / num_games) if num_games > 0 else 0.0
+    usd_per_round = (total_cost_usd / total_rounds) if total_rounds > 0 else 0.0
+
+    return {
+        'throughput': {
+            'games_per_sec': round(games_per_sec, 4),
+            'rounds_per_sec': round(rounds_per_sec, 4),
+            'sec_per_game': round(sec_per_game, 4),
+            'sec_per_round': round(sec_per_round, 4),
+        },
+        'cpu_utilization': {
+            'logical_cpu_count': int(logical_cpu_count),
+            'num_workers': int(num_workers),
+            'worker_share_pct_est': round(worker_share_pct_est, 2),
+            'sample_count': int(len(samples)),
+            'sampled_avg_pct': _round_or_none(sampled_avg, 2),
+            'sampled_min_pct': _round_or_none(sampled_min, 2),
+            'sampled_max_pct': _round_or_none(sampled_max, 2),
+        },
+        'cost_estimate_usd': {
+            'instance_hourly_usd': round(max(0.0, float(instance_hourly_usd)), 6),
+            'total_cost_usd': round(total_cost_usd, 6),
+            'usd_per_game': round(usd_per_game, 6),
+            'usd_per_round': round(usd_per_round, 6),
+            'usd_per_1k_games': round(usd_per_game * 1000.0, 6),
+            'usd_per_1k_rounds': round(usd_per_round * 1000.0, 6),
+        },
+    }
+
+
 def _resolve_shard_range(
     seed_start: int,
     num_games: int,
@@ -764,12 +850,26 @@ class StreamingWriter:
                          run_metadata: Dict[str, Any]) -> Dict:
         """Compute aggregate statistics."""
         num_games = len(self._completed_seeds)
+        logical_cpu_count = int(run_metadata.get('logical_cpu_count') or multiprocessing.cpu_count())
+        instance_hourly_usd = float(run_metadata.get('instance_hourly_usd') or 0.0)
+        cpu_util_samples = run_metadata.get('cpu_utilization_samples_pct') or []
+        cost_telemetry = _build_cost_telemetry(
+            total_time_sec=total_time,
+            num_games=num_games,
+            total_rounds=self._total_rounds,
+            num_workers=num_workers,
+            logical_cpu_count=logical_cpu_count,
+            instance_hourly_usd=instance_hourly_usd,
+            cpu_utilization_samples_pct=cpu_util_samples,
+        )
         if num_games == 0:
             return {
                 'num_games': 0,
                 'num_errors': len(self._errors),
                 'num_workers': num_workers,
                 'total_time_sec': round(total_time, 1),
+                'total_rounds': 0,
+                'cost_telemetry': cost_telemetry,
                 'run_config': run_metadata,
             }
 
@@ -841,6 +941,7 @@ class StreamingWriter:
             'total_time_sec': round(total_time, 1),
             'games_per_sec': round(num_games / total_time, 2) if total_time > 0 else 0,
             'avg_game_time_sec': round(self._sum_game_time / num_games, 3),
+            'total_rounds': self._total_rounds,
             'avg_rounds': round(self._total_rounds / num_games, 1),
             'total_training_rows': self._total_rows,
             'total_chunks': self._chunk_idx,
@@ -851,6 +952,7 @@ class StreamingWriter:
             'confidence_method': 'wilson_95',
             'champion_metrics': sorted(champion_metric_rows, key=lambda x: x['avg_placement'])[:20],
             'augment_metrics': sorted(augment_metric_rows, key=lambda x: x['avg_placement'])[:20],
+            'cost_telemetry': cost_telemetry,
             'run_config': run_metadata,
         }
 
@@ -911,6 +1013,8 @@ def run_batch(
     parquet_row_group_size: Optional[int] = None,
     parquet_write_batch_size: Optional[int] = None,
     s3_uri: Optional[str] = None,
+    instance_hourly_usd: float = 0.0,
+    instance_type: Optional[str] = None,
 ) -> Dict:
     """Run num_games in parallel with streaming output and checkpoints.
 
@@ -944,6 +1048,8 @@ def run_batch(
         parquet_row_group_size: Optional parquet row-group size hint for Rust-native parquet paths.
         parquet_write_batch_size: Optional parquet write batch size hint for Rust-native parquet paths.
         s3_uri: Optional S3 URI to stream chunk uploads as they complete.
+        instance_hourly_usd: Hourly cost of the instance used for cost telemetry.
+        instance_type: Optional instance type label for telemetry (for example c7i.2xlarge).
 
     Returns:
         Summary dict with timing and aggregate stats.
@@ -978,7 +1084,13 @@ def run_batch(
         raise ValueError("parquet_row_group_size must be > 0 when provided.")
     if parquet_write_batch_size is not None and parquet_write_batch_size <= 0:
         raise ValueError("parquet_write_batch_size must be > 0 when provided.")
+    if instance_hourly_usd < 0:
+        raise ValueError("instance_hourly_usd must be >= 0.")
     _normalize_parquet_compression(parquet_compression)
+
+    logical_cpu_count = max(1, multiprocessing.cpu_count())
+    worker_cpu_share_pct_est = _estimate_worker_cpu_share_pct(num_workers, logical_cpu_count)
+    cpu_utilization_samples_pct: List[float] = []
 
     requested_seed_start = seed_start
     requested_num_games = num_games
@@ -1106,6 +1218,11 @@ def run_batch(
                 'max_errors': max_errors,
                 'require_parquet': require_parquet,
                 's3_uri': s3_uri,
+                'instance_hourly_usd': instance_hourly_usd,
+                'instance_type': instance_type,
+                'logical_cpu_count': logical_cpu_count,
+                'worker_cpu_share_pct_est': worker_cpu_share_pct_est,
+                'cpu_utilization_samples_pct': cpu_utilization_samples_pct,
                 'aborted': False,
                 'aborted_reason': None,
             },
@@ -1149,9 +1266,14 @@ def run_batch(
             elapsed = time.perf_counter() - start
             rate = done / elapsed if elapsed > 0 else 0
             eta = (remaining - done) / rate if rate > 0 else 0
+            cpu_pct = _sample_cpu_utilization_pct(logical_cpu_count)
+            cpu_str = ""
+            if cpu_pct is not None:
+                cpu_utilization_samples_pct.append(cpu_pct)
+                cpu_str = f", cpu={cpu_pct:.1f}%"
             err_str = f", {writer.num_errors} errors" if writer.num_errors else ""
             print(f"  [{done}/{remaining}] {rate:.1f} games/sec, "
-                  f"ETA: {eta:.0f}s{err_str}", flush=True)
+                  f"ETA: {eta:.0f}s{cpu_str}{err_str}", flush=True)
 
         if max_errors is not None and writer.num_errors >= max_errors:
             raise BatchAbort(f"Reached max error threshold ({writer.num_errors}/{max_errors}).")
@@ -1350,6 +1472,11 @@ def run_batch(
             'max_errors': max_errors,
             'require_parquet': require_parquet,
             's3_uri': s3_uri,
+            'instance_hourly_usd': instance_hourly_usd,
+            'instance_type': instance_type,
+            'logical_cpu_count': logical_cpu_count,
+            'worker_cpu_share_pct_est': worker_cpu_share_pct_est,
+            'cpu_utilization_samples_pct': cpu_utilization_samples_pct,
             'aborted': bool(aborted_reason),
             'aborted_reason': aborted_reason,
         },
@@ -1400,9 +1527,13 @@ Examples:
     parser.add_argument('--games', type=int, default=10,
                         help='Number of games to simulate')
     parser.add_argument('--workers', type=int, default=None,
-                        help='Number of parallel workers (default: CPU count - 1)')
+                        help='Number of parallel workers (default: min(CPU count - 1, 8))')
     parser.add_argument('--output', type=str, default='results/batch',
                         help='Output directory for results')
+    parser.add_argument('--instance-hourly-usd', type=float, default=0.0,
+                        help='Hourly instance cost for summary cost telemetry (for example 0.544)')
+    parser.add_argument('--instance-type', type=str, default=None,
+                        help='Optional instance type label for cost telemetry (for example c7i.2xlarge)')
     parser.add_argument('--seed-start', type=int, default=0,
                         help='Starting seed for deterministic runs')
     parser.add_argument('--agent-mix', type=str, default=None,
@@ -1499,13 +1630,24 @@ Examples:
         parser.error("--parquet-row-group-size must be > 0")
     if args.parquet_write_batch_size is not None and args.parquet_write_batch_size <= 0:
         parser.error("--parquet-write-batch-size must be > 0")
+    if args.instance_hourly_usd < 0:
+        parser.error("--instance-hourly-usd must be >= 0")
     if args.parquet_compression is not None:
         try:
             _normalize_parquet_compression(args.parquet_compression)
         except ValueError as exc:
             parser.error(str(exc))
 
-    num_workers = args.workers or max(1, multiprocessing.cpu_count() - 1)
+    auto_workers = max(1, multiprocessing.cpu_count() - 1)
+    if args.workers is None:
+        num_workers = min(auto_workers, 8)
+        if auto_workers > num_workers:
+            print(
+                f"Auto-capping workers to {num_workers} "
+                f"(detected CPU-derived default {auto_workers})."
+            )
+    else:
+        num_workers = args.workers
 
     raw_cli_args = sys.argv[1:]
     explicit_chunk_size = _cli_flag_present(raw_cli_args, '--chunk-size')
@@ -1645,6 +1787,8 @@ Examples:
             parquet_row_group_size=effective_parquet_row_group_size,
             parquet_write_batch_size=effective_parquet_write_batch_size,
             s3_uri=args.s3_uri,
+            instance_hourly_usd=args.instance_hourly_usd,
+            instance_type=args.instance_type,
         )
     else:
         if args.agent_mix:
@@ -1681,6 +1825,8 @@ Examples:
             parquet_row_group_size=effective_parquet_row_group_size,
             parquet_write_batch_size=effective_parquet_write_batch_size,
             s3_uri=args.s3_uri,
+            instance_hourly_usd=args.instance_hourly_usd,
+            instance_type=args.instance_type,
         )
 
     print(f"\n{'='*50}")
@@ -1690,8 +1836,33 @@ Examples:
     print(f"Errors: {summary.get('num_errors', 0)}")
     print(f"Time:   {summary.get('total_time_sec', 0)}s")
     print(f"Rate:   {summary.get('games_per_sec', 0)} games/sec")
+    print(f"Rounds: {summary.get('total_rounds', 0)}")
     print(f"Rows:   {summary.get('total_training_rows', 0)}")
     print(f"Chunks: {summary.get('total_chunks', 0)}")
+
+    cost_telemetry = summary.get('cost_telemetry') or {}
+    throughput = cost_telemetry.get('throughput') or {}
+    cpu_util = cost_telemetry.get('cpu_utilization') or {}
+    cost = cost_telemetry.get('cost_estimate_usd') or {}
+    if throughput:
+        print(
+            f"Round rate: {throughput.get('rounds_per_sec', 0)} rounds/sec "
+            f"({throughput.get('sec_per_round', 0)} sec/round)"
+        )
+    if cpu_util:
+        cpu_avg = cpu_util.get('sampled_avg_pct')
+        sampled_part = f", sampled avg={cpu_avg}%" if cpu_avg is not None else ""
+        print(
+            f"CPU util est: {cpu_util.get('worker_share_pct_est', 0)}% "
+            f"(workers={cpu_util.get('num_workers', 0)}/cpu={cpu_util.get('logical_cpu_count', 0)}"
+            f"{sampled_part})"
+        )
+    if cost and float(cost.get('instance_hourly_usd', 0.0) or 0.0) > 0:
+        print(
+            f"Cost est: ${cost.get('total_cost_usd', 0)} total, "
+            f"${cost.get('usd_per_1k_games', 0)} per 1k games, "
+            f"${cost.get('usd_per_1k_rounds', 0)} per 1k rounds"
+        )
 
     if summary.get('top_champions'):
         print(f"\nTop 5 champions (avg placement):")
