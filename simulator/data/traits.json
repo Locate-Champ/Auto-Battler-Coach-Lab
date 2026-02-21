@@ -1,7 +1,7 @@
 {
   "set": 16,
   "source": "data/api/processed/traits_set16.json",
-  "last_updated": "2026-02-19T11:46:04.908201+00:00",
+  "last_updated": "2026-02-19T21:05:58.839556+00:00",
   "traits": {
     "TFT16_AatroxUnique": {
       "apiName": "TFT16_AatroxUnique",
@@ -15,7 +15,7 @@
             "Durability": 0.20000000298023224,
             "HealDuration": 2,
             "ManaReduction": 10,
-            "{63ed7d87}": 1.5
+            "{63ed7d87}": 2
           }
         }
       ]
@@ -308,7 +308,7 @@
           "maxUnits": 6,
           "style": 3,
           "variables": {
-            "ArmorMR": 35,
+            "ArmorMR": 30,
             "EnemyTrueDamage": 0.05000000074505806,
             "ManaReductionPct": 0.10000000149011612,
             "MaxHealthLost": 0.25,
@@ -323,7 +323,7 @@
           "maxUnits": 10,
           "style": 5,
           "variables": {
-            "ArmorMR": 35,
+            "ArmorMR": 30,
             "EnemyTrueDamage": 0.05000000074505806,
             "ManaReductionPct": 0.10000000149011612,
             "MaxHealthLost": 0.25,
@@ -1126,7 +1126,7 @@
           "maxUnits": 3,
           "style": 1,
           "variables": {
-            "AllyAP": 18,
+            "AllyAP": 15,
             "BonusAP": 25
           }
         },
@@ -1135,8 +1135,8 @@
           "maxUnits": 5,
           "style": 3,
           "variables": {
-            "AllyAP": 25,
-            "BonusAP": 40
+            "AllyAP": 20,
+            "BonusAP": 50
           }
         },
         {
@@ -1144,8 +1144,8 @@
           "maxUnits": 25000,
           "style": 5,
           "variables": {
-            "AllyAP": 40,
-            "BonusAP": 60
+            "AllyAP": 35,
+            "BonusAP": 70
           }
         }
       ]
@@ -1239,8 +1239,8 @@
           "variables": {
             "JarvanResistDamage1": 1,
             "JarvanResistDamage2": 1.2000000476837158,
-            "JarvanResistDamage3": 1.5499999523162842,
-            "JarvanResistDamage4": 2,
+            "JarvanResistDamage3": 1.399999976158142,
+            "JarvanResistDamage4": 1.75,
             "JarvanShieldShare": 1
           }
         }
