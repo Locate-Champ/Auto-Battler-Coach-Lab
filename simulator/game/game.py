@@ -9,13 +9,14 @@ from __future__ import annotations
 import random
 import sys
 import os
-from typing import Any, List, Dict, Optional, Tuple, Callable
+from typing import Any, List, Dict, Optional, Tuple, Callable, Set
 
 from .types import RoundResult, GamePhase, ChampionInstance
 from .player import Player
 from .champion_pool import ChampionPool
 from .shop import generate_shop, _return_shop_to_pool
 from .actions import random_agent_actions, fast_random_agent, execute_action
+from .unlocks import UnlockRequirementsManager, CombatUnlockContext, PreCombatUnitSnapshot
 from .constants import (
     get_round_damage, STARTING_ROUND_GOLD, BOARD_ROWS,
     ITEM_COMPONENTS_LIST, PVE_ITEM_DROPS, AUGMENT_ROUNDS,
@@ -82,6 +83,36 @@ _TIER_SHIFT_AUGMENTS = {
     'TFT_Augment_AdvancedLoan': -1,     # "Advanced Loan" (2-1) - next tier lower
     'TFT_Augment_AdvancedLoanPlus': -1, # "Advanced Loan+" (3-2) - next tier lower
 }
+
+_TRIALS_OF_TWILIGHT_AUGMENTS = {
+    'TFT16_Augment_XinZhaoCarry',
+    'TFT16_Augment_XinZhaoCarryII',
+}
+
+_IXTAL_QUEST_ROTATION = (
+    "ixtal trait",
+    "buy xp easy",
+    "shop reroll small",
+    "earn interest",
+    "total gold",
+    "champs killed",
+    "champs died",
+    "level up",
+    "lose",
+    "win streak short",
+    "mix streak short",
+    "2 star neeko",
+    "2 star skarner",
+    "2 star milio",
+    "qiyana takedown",
+    "neeko survive",
+    "1 unit alive",
+    "low health",
+    "zero gold",
+    "big health loss",
+    "brock survive",
+    "win late",
+)
 
 # Augments by tier within each round (for weighted selection)
 _AUGMENTS_BY_ROUND_TIER: Dict[str, Dict[str, List[str]]] = {
@@ -185,6 +216,10 @@ class TFTGame:
         self.engine_name = engine
         self.engine: Any = self._create_combat_engine(logging_enabled)
         self.players = [Player(i) for i in range(num_players)]
+        self.unlock_manager = UnlockRequirementsManager()
+        for player in self.players:
+            player.set_unlock_manager(self.unlock_manager)
+            self.unlock_manager.initialize_player(player)
         self._alive_cache: List[Player] = self.players[:]
         self.collector = collector
         self.round_num = 0
@@ -232,6 +267,158 @@ class TFTGame:
 
     def _refresh_alive_cache(self) -> None:
         self._alive_cache = [p for p in self.players if p.alive]
+
+    def _roll_shop_for_player(self, player: Player) -> None:
+        """Generate a player shop with unlock gating and unlock guarantees."""
+        _return_shop_to_pool(player, self.pool)
+        self.unlock_manager.evaluate_noncombat_unlocks(player)
+        allowed_names = self.unlock_manager.allowed_shop_units_for_player(player)
+        guaranteed_names = self.unlock_manager.consume_shop_guarantees_for_player(player)
+        player.shop = generate_shop(
+            self.pool,
+            player.level,
+            allowed_names=allowed_names,
+            guaranteed_names=guaranteed_names,
+        )
+
+    def _assign_ixtal_quest_if_needed(
+        self,
+        player: Player,
+        precombat_units: List[PreCombatUnitSnapshot],
+    ) -> None:
+        if player.ixtal_active_quest is not None:
+            return
+        if player.ixtal_last_completed_round == player.current_round:
+            return
+
+        ixtal_count = sum(1 for unit in precombat_units if "ixtal" in unit.traits)
+        if ixtal_count < 3:
+            return
+
+        available = [
+            quest for quest in _IXTAL_QUEST_ROTATION
+            if quest in self.unlock_manager.ixtal_quest_reward_ladders
+        ]
+        if not available:
+            return
+
+        idx = player.ixtal_quest_rotation_index % len(available)
+        player.ixtal_quest_rotation_index += 1
+        player.ixtal_active_quest = available[idx]
+
+    def _resolve_ixtal_quest_post_combat(
+        self,
+        *,
+        player: Player,
+        precombat_units: List[PreCombatUnitSnapshot],
+        context: CombatUnlockContext,
+        units_killed: int = 0,
+        survivors: int = 0,
+        damage_taken: int = 0,
+    ) -> int:
+        self._assign_ixtal_quest_if_needed(player, precombat_units)
+        quest_name = player.ixtal_active_quest
+        if not quest_name:
+            return 0
+
+        if not self._is_ixtal_quest_complete(
+            player=player,
+            quest_name=quest_name,
+            precombat_units=precombat_units,
+            context=context,
+            units_killed=units_killed,
+            survivors=survivors,
+            damage_taken=damage_taken,
+        ):
+            return 0
+
+        reward = int(player.complete_ixtal_quest(quest_name))
+        if reward <= 0:
+            return 0
+
+        player.ixtal_active_quest = None
+        player.ixtal_last_completed_round = player.current_round
+        player.auto_spend_ixtal_sunshards_for_loot(pool=self.pool, max_rolls=1)
+        return reward
+
+    def _is_ixtal_quest_complete(
+        self,
+        *,
+        player: Player,
+        quest_name: str,
+        precombat_units: List[PreCombatUnitSnapshot],
+        context: CombatUnlockContext,
+        units_killed: int,
+        survivors: int,
+        damage_taken: int,
+    ) -> bool:
+        if quest_name == "ixtal trait":
+            return sum(1 for unit in precombat_units if "ixtal" in unit.traits) >= 3
+        if quest_name == "buy xp easy":
+            return player.round_xp_purchases_this_round >= 1
+        if quest_name == "shop reroll small":
+            return player.round_rerolls_this_round >= 2
+        if quest_name == "earn interest":
+            return player.gold >= 30
+        if quest_name == "total gold":
+            return player.gold >= 50
+        if quest_name == "champs killed":
+            return units_killed >= 3
+        if quest_name == "champs died":
+            return len(context.dead_instance_ids) >= 3
+        if quest_name == "level up":
+            return player.level > player.round_start_level
+        if quest_name == "lose":
+            return context.outcome == "loss"
+        if quest_name == "win streak short":
+            return context.outcome == "win" and player.win_streak >= 2
+        if quest_name == "mix streak short":
+            last = player.ixtal_previous_outcome
+            return (
+                context.outcome in {"win", "loss"}
+                and last in {"win", "loss"}
+                and context.outcome != last
+            )
+        if quest_name == "2 star neeko":
+            return self._has_star_unit(player, "neeko", 2)
+        if quest_name == "2 star skarner":
+            return self._has_star_unit(player, "skarner", 2)
+        if quest_name == "2 star milio":
+            return self._has_star_unit(player, "milio", 2)
+        if quest_name == "qiyana takedown":
+            has_qiyana = any(unit.name == "qiyana" for unit in precombat_units)
+            return has_qiyana and units_killed >= 1
+        if quest_name == "neeko survive":
+            neeko_units = [unit for unit in precombat_units if unit.name == "neeko"]
+            if not neeko_units:
+                return False
+            return all(unit.instance_id not in context.dead_instance_ids for unit in neeko_units)
+        if quest_name == "1 unit alive":
+            return context.outcome == "win" and survivors == 1
+        if quest_name == "low health":
+            return player.hp <= 40
+        if quest_name == "zero gold":
+            return player.gold <= 0
+        if quest_name == "big health loss":
+            return damage_taken >= 12
+        if quest_name == "brock survive":
+            brock_units = [unit for unit in precombat_units if unit.name == "brock"]
+            if not brock_units:
+                return False
+            return all(unit.instance_id not in context.dead_instance_ids for unit in brock_units)
+        if quest_name == "win late":
+            return context.outcome == "win" and player.current_round >= 18
+        return False
+
+    @staticmethod
+    def _has_star_unit(player: Player, name: str, min_star: int) -> bool:
+        for champ in player.board.values():
+            if champ.name == name and champ.star_level >= min_star:
+                return True
+        for champ in player.bench:
+            if champ is not None and champ.name == name and champ.star_level >= min_star:
+                return True
+        return False
 
     def play(self) -> List[Tuple[int, int]]:
         """Run the full game and return placements.
@@ -284,6 +471,7 @@ class TFTGame:
             print(f"\n--- Round {self.round_num} (PvE) ---")
 
         for player in self.alive_players:
+            player.start_round(self.round_num)
             player.add_income(self.round_num)
 
             # Drop item components
@@ -294,11 +482,43 @@ class TFTGame:
                 player.add_item_to_bench(component)
 
             # Generate shop
-            _return_shop_to_pool(player, self.pool)
-            player.shop = generate_shop(self.pool, player.level)
+            self._roll_shop_for_player(player)
+            player.auto_purchase_bilgewater_shop(pool=self.pool)
             # Let agent take actions
             self.agent_fn(player, self.pool)
             player.auto_fill_board()
+
+            precombat_team: List[Any]
+            if self.engine_name == 'python':
+                precombat_team = player.build_combat_team(self.engine, use_rust_engine=False)
+            else:
+                precombat_team = []
+            precombat_snapshot = self.unlock_manager.build_precombat_snapshot(player, precombat_team)
+            trials = bool(
+                _TRIALS_OF_TWILIGHT_AUGMENTS.intersection(
+                    set(self.player_augments.get(player.player_id, []))
+                )
+            )
+            pve_context = CombatUnlockContext(
+                phase='pve',
+                outcome=None,
+                has_trials_of_twilight=trials,
+            )
+            self._resolve_ixtal_quest_post_combat(
+                player=player,
+                precombat_units=precombat_snapshot,
+                context=pve_context,
+                units_killed=0,
+                survivors=0,
+                damage_taken=0,
+            )
+            unlocked_now = self.unlock_manager.evaluate_post_combat(
+                player=player,
+                precombat_units=precombat_snapshot,
+                context=pve_context,
+            )
+            if self.verbose and unlocked_now:
+                print(f"  P{player.player_id} unlocked (PvE): {', '.join(unlocked_now)}")
 
     # ── PvP Rounds ────────────────────────────────────────────────────────
 
@@ -313,6 +533,7 @@ class TFTGame:
 
         # 1. Income phase
         for player in self.alive_players:
+            player.start_round(self.round_num)
             player.add_income(self.round_num)
 
         # 1.5 Round-persistent trait currencies (planning-phase resources)
@@ -322,8 +543,8 @@ class TFTGame:
 
         # 2. Planning phase (shop + actions)
         for player in self.alive_players:
-            _return_shop_to_pool(player, self.pool)
-            player.shop = generate_shop(self.pool, player.level)
+            self._roll_shop_for_player(player)
+            player.auto_purchase_bilgewater_shop(pool=self.pool)
             # Reset placeable structures (player re-places each round)
             player.soldier_positions = []
             player.tower_position = None  # Reset Freljord tower each round
@@ -345,7 +566,7 @@ class TFTGame:
             if not p1.alive:
                 continue
 
-            result, debug_takedowns = self._resolve_combat(p1, p2, is_ghost=is_ghost)
+            result, debug_takedowns, unlock_payload = self._resolve_combat(p1, p2, is_ghost=is_ghost)
 
             if self.collector:
                 combat_results.append({
@@ -358,19 +579,93 @@ class TFTGame:
                     'debug_takedowns': debug_takedowns,
                 })
 
+            p1_outcome = 'draw'
+            p2_outcome = 'draw'
             if result.is_draw:
                 # Both take base damage (ghost owner exempt)
                 p1.take_damage(result.damage_to_loser)
                 if not is_ghost:
                     p2.take_damage(result.damage_to_loser)
             elif result.winner_id == p1.player_id:
+                p1_outcome = 'win'
+                p2_outcome = 'loss'
                 p1.win_round()
                 if not is_ghost:
                     p2.lose_round(result.damage_to_loser)
             else:
+                p1_outcome = 'loss'
+                p2_outcome = 'win'
                 if not is_ghost:
                     p2.win_round()
                 p1.lose_round(result.damage_to_loser)
+
+            p1_damage_taken = result.damage_to_loser if p1_outcome in {'loss', 'draw'} else 0
+            p2_damage_taken = result.damage_to_loser if (not is_ghost and p2_outcome in {'loss', 'draw'}) else 0
+
+            p1_trials = bool(
+                set(self.player_augments.get(p1.player_id, []))
+                .intersection(_TRIALS_OF_TWILIGHT_AUGMENTS)
+            )
+            p1_context = CombatUnlockContext(
+                phase='pvp',
+                outcome=p1_outcome,
+                shadow_souls_gained=unlock_payload.get('p1_shadow_souls', 0),
+                draven_gold_dropped=unlock_payload.get('p1_draven_gold', 0),
+                dead_instance_ids=set(unlock_payload.get('p1_dead_instance_ids', set())),
+                victim_api_names=set(unlock_payload.get('p1_victim_api_names', set())),
+                has_trials_of_twilight=p1_trials,
+            )
+            self._resolve_ixtal_quest_post_combat(
+                player=p1,
+                precombat_units=unlock_payload['p1_precombat'],
+                context=p1_context,
+                units_killed=int(unlock_payload.get('p1_kills', 0) or 0),
+                survivors=int(unlock_payload.get('p1_survivors', 0) or 0),
+                damage_taken=int(p1_damage_taken),
+            )
+            p1_unlocked = self.unlock_manager.evaluate_post_combat(
+                player=p1,
+                precombat_units=unlock_payload['p1_precombat'],
+                context=p1_context,
+            )
+
+            p2_unlocked: List[str] = []
+            if not is_ghost:
+                p2_trials = bool(
+                    set(self.player_augments.get(p2.player_id, []))
+                    .intersection(_TRIALS_OF_TWILIGHT_AUGMENTS)
+                )
+                p2_context = CombatUnlockContext(
+                    phase='pvp',
+                    outcome=p2_outcome,
+                    shadow_souls_gained=unlock_payload.get('p2_shadow_souls', 0),
+                    draven_gold_dropped=unlock_payload.get('p2_draven_gold', 0),
+                    dead_instance_ids=set(unlock_payload.get('p2_dead_instance_ids', set())),
+                    victim_api_names=set(unlock_payload.get('p2_victim_api_names', set())),
+                    has_trials_of_twilight=p2_trials,
+                )
+                self._resolve_ixtal_quest_post_combat(
+                    player=p2,
+                    precombat_units=unlock_payload['p2_precombat'],
+                    context=p2_context,
+                    units_killed=int(unlock_payload.get('p2_kills', 0) or 0),
+                    survivors=int(unlock_payload.get('p2_survivors', 0) or 0),
+                    damage_taken=int(p2_damage_taken),
+                )
+                p2_unlocked = self.unlock_manager.evaluate_post_combat(
+                    player=p2,
+                    precombat_units=unlock_payload['p2_precombat'],
+                    context=p2_context,
+                )
+                if p2_outcome in {"win", "loss"}:
+                    p2.ixtal_previous_outcome = p2_outcome
+            if p1_outcome in {"win", "loss"}:
+                p1.ixtal_previous_outcome = p1_outcome
+
+            if self.verbose and p1_unlocked:
+                print(f"  P{p1.player_id} unlocked: {', '.join(p1_unlocked)}")
+            if self.verbose and p2_unlocked:
+                print(f"  P{p2.player_id} unlocked: {', '.join(p2_unlocked)}")
 
         # 5. Check eliminations
         self._check_eliminations(pre_combat_hp)
@@ -567,11 +862,29 @@ class TFTGame:
         p2: Player,
         *,
         is_ghost: bool,
-    ) -> Tuple[RoundResult, List[Dict[str, Any]]]:
+    ) -> Tuple[RoundResult, List[Dict[str, Any]], Dict[str, Any]]:
         """Resolve combat between two players using the combat engine."""
         use_rust_engine = self.engine_name == 'rust'
         team0 = p1.build_combat_team(self.engine, use_rust_engine=use_rust_engine)
         team1 = p2.build_combat_team(self.engine, use_rust_engine=use_rust_engine)
+        p1_precombat = self.unlock_manager.build_precombat_snapshot(p1, team0)
+        p2_precombat = self.unlock_manager.build_precombat_snapshot(p2, team1)
+        unlock_payload: Dict[str, Any] = {
+            'p1_precombat': p1_precombat,
+            'p2_precombat': p2_precombat,
+            'p1_shadow_souls': 0,
+            'p2_shadow_souls': 0,
+            'p1_draven_gold': 0,
+            'p2_draven_gold': 0,
+            'p1_dead_instance_ids': set(),
+            'p2_dead_instance_ids': set(),
+            'p1_victim_api_names': set(),
+            'p2_victim_api_names': set(),
+            'p1_kills': 0,
+            'p2_kills': 0,
+            'p1_survivors': 0,
+            'p2_survivors': 0,
+        }
 
         # Handle empty boards
         if not team0 and not team1:
@@ -583,6 +896,7 @@ class TFTGame:
                     is_draw=True,
                 ),
                 [],
+                unlock_payload,
             )
         if not team0:
             damage = get_round_damage(self.round_num, len(team1))
@@ -593,6 +907,7 @@ class TFTGame:
                     damage_to_loser=damage,
                 ),
                 [],
+                unlock_payload,
             )
         if not team1:
             damage = get_round_damage(self.round_num, len(team0))
@@ -603,6 +918,7 @@ class TFTGame:
                     damage_to_loser=damage,
                 ),
                 [],
+                unlock_payload,
             )
 
         # Mirror team1 positions (flip rows) for opponent side
@@ -637,6 +953,61 @@ class TFTGame:
             result = self.engine.run_combat(team0, team1, **run_kwargs)
         debug_takedowns = result.get('debug_takedowns', []) or []
 
+        p1_victim_api_names: Set[str] = set()
+        p2_victim_api_names: Set[str] = set()
+        p1_kills = 0
+        p2_kills = 0
+        for takedown in debug_takedowns:
+            victim_api = takedown.get('victim_api_name')
+            victim_team = takedown.get('victim_team')
+            if not isinstance(victim_api, str):
+                continue
+            if victim_team == 0:
+                p1_victim_api_names.add(victim_api)
+                p2_kills += 1
+            elif victim_team == 1:
+                p2_victim_api_names.add(victim_api)
+                p1_kills += 1
+
+        p1_dead_instance_ids: Set[str] = set()
+        p2_dead_instance_ids: Set[str] = set()
+        p1_draven_gold = 0
+        p2_draven_gold = 0
+        p1_shadow_souls = 0
+        p2_shadow_souls = 0
+        if self.engine_name == 'python':
+            for unit in team0:
+                instance_id = getattr(unit, 'instance_id', '')
+                if instance_id and not getattr(unit, 'is_alive', True):
+                    p1_dead_instance_ids.add(instance_id)
+                p1_draven_gold += int(getattr(unit, '_draven_gold', 0) or 0)
+            for unit in team1:
+                instance_id = getattr(unit, 'instance_id', '')
+                if instance_id and not getattr(unit, 'is_alive', True):
+                    p2_dead_instance_ids.add(instance_id)
+                p2_draven_gold += int(getattr(unit, '_draven_gold', 0) or 0)
+
+            p1_shadow_souls = int(self.engine.trait_manager.get_shadow_isles_souls(0) or 0)
+            p2_shadow_souls = int(self.engine.trait_manager.get_shadow_isles_souls(1) or 0)
+        else:
+            p1_shadow_souls = int(result.get('team0_shadow_isles_souls', 0) or 0)
+            p2_shadow_souls = int(result.get('team1_shadow_isles_souls', 0) or 0)
+
+        unlock_payload.update({
+            'p1_shadow_souls': p1_shadow_souls,
+            'p2_shadow_souls': p2_shadow_souls,
+            'p1_draven_gold': p1_draven_gold,
+            'p2_draven_gold': p2_draven_gold,
+            'p1_dead_instance_ids': p1_dead_instance_ids,
+            'p2_dead_instance_ids': p2_dead_instance_ids,
+            'p1_victim_api_names': p1_victim_api_names,
+            'p2_victim_api_names': p2_victim_api_names,
+            'p1_kills': p1_kills,
+            'p2_kills': p2_kills,
+            'p1_survivors': int(result.get('team0_survivors', 0) or 0),
+            'p2_survivors': int(result.get('team1_survivors', 0) or 0),
+        })
+
         if result['winner'] == 0:
             damage = get_round_damage(self.round_num, result['team0_survivors'])
             return (
@@ -647,6 +1018,7 @@ class TFTGame:
                     damage_to_loser=damage,
                 ),
                 debug_takedowns,
+                unlock_payload,
             )
         else:
             damage = get_round_damage(self.round_num, result['team1_survivors'])
@@ -658,6 +1030,7 @@ class TFTGame:
                     damage_to_loser=damage,
                 ),
                 debug_takedowns,
+                unlock_payload,
             )
 
     # ── Matchmaking ───────────────────────────────────────────────────────

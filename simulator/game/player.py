@@ -18,17 +18,24 @@ from .constants import (
     CHAMPION_TRAITS, get_streak_gold,
     is_component, combine_items,
 )
+from .unlocks import UnlockProgress
 
 if TYPE_CHECKING:
     from simulator.core.combat_engine import CombatEngine
     from .champion_pool import ChampionPool
 
 try:
-    from simulator.data.set16_items import ARTIFACT_ITEMS, BASE_COMPLETED, BLACKSMITH_CONFIG
+    from simulator.data.set16_items import (
+        ARTIFACT_ITEMS,
+        BASE_COMPLETED,
+        BLACKSMITH_CONFIG,
+        BILGEWATER_STORE,
+    )
 except ImportError:
     BASE_COMPLETED = ()
     ARTIFACT_ITEMS = {}
     BLACKSMITH_CONFIG = {}
+    BILGEWATER_STORE = {}
 
 _THIEFS_EXCLUDED = frozenset({
     'ThiefsGloves', 'TacticiansCrown', 'TacticiansCape', 'TacticiansShield',
@@ -41,6 +48,20 @@ _BILGEWATER_SERPENTS_PER_ROUND = {
     7: 65,
     10: 150,
 }
+
+_BILGEWATER_UNIT_CATEGORY_TO_COST_TIER = {
+    "tier1_units": 1,
+    "tier2_units": 2,
+    "tier3_units": 3,
+    "tier4_units": 4,
+    "tier5_units": 5,
+}
+
+_API_TO_NAME = {api_name: name for name, api_name in NAME_TO_API.items()}
+
+_IXTAL_SUNSHARDS_PER_LOOT = 100
+_IXTAL_LOOT_ROTATION = ("gold", "component", "champion")
+_IXTAL_GOLD_REWARDS = (2, 3, 4)
 
 
 class Player:
@@ -96,19 +117,91 @@ class Player:
         # Round-persistent trait currencies (stored at the game layer)
         self.bilgewater_serpents: int = 0
         self.bilgewater_purchases: Dict[str, int] = {}
+        self.bilgewater_stat_purchases: Dict[int, int] = {}
         self.blacksmith_progress: Dict[str, int] = {}  # instance_id -> rounds progressed
         self.blacksmith_artifacts: Dict[str, List[str]] = {}  # instance_id -> crafted artifacts
         self.augment_permanent_bonuses: Dict[str, Dict[str, float]] = {}  # instance_id -> bonus_name -> value
+        self.ixtal_sunshards: int = 0
+        self.ixtal_loot_purchases: int = 0
+        self.ixtal_active_quest: Optional[str] = None
+        self.ixtal_last_completed_round: int = -1
+        self.ixtal_quest_rotation_index: int = 0
+        self.ixtal_previous_outcome: Optional[str] = None
+        self.round_rerolls_this_round: int = 0
+        self.round_xp_purchases_this_round: int = 0
+        self.round_start_level: int = STARTING_LEVEL
+
+        # Unlock progression state (Set 16.5 unlock requirements)
+        self.unlock_progress = UnlockProgress()
+        self._unlock_manager: Any = None
+        self.current_round: int = 0
 
     def _alloc_instance_id(self) -> str:
         iid = f"p{self.player_id}_u{self._next_instance_id}"
         self._next_instance_id += 1
         return iid
 
+    def set_unlock_manager(self, manager: Any) -> None:
+        """Attach the game unlock manager for event-driven requirement tracking."""
+        self._unlock_manager = manager
+
+    def start_round(self, round_num: int) -> None:
+        """Reset per-round counters for planning and quest systems."""
+        self.current_round = int(round_num)
+        self.round_rerolls_this_round = 0
+        self.round_xp_purchases_this_round = 0
+        self.round_start_level = self.level
+
+    def record_shop_reroll(self) -> None:
+        """Track rerolls used for unlock requirements."""
+        self.round_rerolls_this_round += 1
+        if self._unlock_manager is None:
+            return
+        self._unlock_manager.record_reroll(self, self.current_round)
+
+    def add_ixtal_sunshards(self, amount: int) -> None:
+        """Track Ixtal Sunshards progress (for Brock unlock)."""
+        if amount <= 0:
+            return
+        self.ixtal_sunshards += int(amount)
+        if self._unlock_manager is not None:
+            self._unlock_manager.record_ixtal_sunshards_gained(self, amount)
+
+    def complete_ixtal_quest(
+        self,
+        quest_name: str,
+        reward_override: Optional[int] = None,
+    ) -> int:
+        """Record an Ixtal quest completion and return Sunshards granted."""
+        if self._unlock_manager is None:
+            return 0
+        reward = int(
+            self._unlock_manager.record_ixtal_quest_completion(
+                self,
+                quest_name=quest_name,
+                reward_override=reward_override,
+            )
+        )
+        if reward > 0:
+            self.ixtal_sunshards += reward
+        return reward
+
     def add_bilgewater_serpents(self, amount: int) -> None:
         if amount <= 0:
             return
         self.bilgewater_serpents += amount
+        if self._unlock_manager is not None:
+            self._unlock_manager.record_bilgewater_serpents_gained(self, amount)
+
+    def spend_bilgewater_serpents(self, amount: int) -> bool:
+        """Spend Bilgewater serpents and track unlock progress."""
+        amount = int(amount)
+        if amount <= 0 or self.bilgewater_serpents < amount:
+            return False
+        self.bilgewater_serpents -= amount
+        if self._unlock_manager is not None:
+            self._unlock_manager.record_bilgewater_serpents_spent(self, amount)
+        return True
 
     def get_augment_permanent_bonus(self, instance_id: str, bonus_name: str, default: float = 0.0) -> float:
         bonuses = self.augment_permanent_bonuses.get(instance_id)
@@ -167,6 +260,312 @@ class Player:
 
         self.add_bilgewater_serpents(reward)
         return reward
+
+    def auto_purchase_bilgewater_shop(
+        self,
+        *,
+        max_purchases: int = 3,
+        pool: Optional['ChampionPool'] = None,
+    ) -> int:
+        """Auto-spend available serpents on Bilgewater shop categories.
+
+        This deterministic fallback resolves real outcomes (stat stacks, items,
+        unit grants, and lesser dupe rolls) so Bilgewater progression is modeled
+        even without an explicit trait-shop action API.
+        """
+        if max_purchases <= 0:
+            return 0
+
+        tier = self._active_bilgewater_shop_tier()
+        if tier is None:
+            return 0
+
+        categories = self._bilgewater_shop_categories_for_tier(tier)
+        if not categories:
+            return 0
+
+        total_spent = 0
+        for _ in range(max_purchases):
+            affordable: List[Tuple[int, str]] = []
+            for offer_key in categories:
+                cost = self._next_bilgewater_offer_cost(offer_key)
+                if cost is None or cost <= 0:
+                    continue
+                if self.bilgewater_serpents >= cost:
+                    affordable.append((cost, offer_key))
+
+            if not affordable:
+                break
+
+            cost, offer_key = min(affordable, key=lambda entry: (entry[0], entry[1]))
+            if not self.spend_bilgewater_serpents(cost):
+                break
+
+            self.bilgewater_purchases[offer_key] = self.bilgewater_purchases.get(offer_key, 0) + 1
+            self._resolve_bilgewater_offer(offer_key, pool=pool)
+            total_spent += cost
+
+        return total_spent
+
+    def _active_bilgewater_shop_tier(self) -> Optional[int]:
+        if not BILGEWATER_STORE:
+            return None
+
+        layout = BILGEWATER_STORE.get("layout", {})
+        if not isinstance(layout, dict) or not layout:
+            return None
+
+        count = int(self.get_active_traits().get("bilgewater", 0) or 0)
+        available_tiers: List[int] = []
+        for tier_key in layout.keys():
+            try:
+                tier = int(tier_key)
+            except (TypeError, ValueError):
+                continue
+            if count >= tier:
+                available_tiers.append(tier)
+
+        if not available_tiers:
+            return None
+        return max(available_tiers)
+
+    def _bilgewater_shop_categories_for_tier(self, tier: int) -> List[str]:
+        layout = BILGEWATER_STORE.get("layout", {})
+        raw = layout.get(tier)
+        if raw is None:
+            raw = layout.get(str(tier))
+        if not isinstance(raw, list):
+            return []
+        return [str(x) for x in raw]
+
+    def _next_bilgewater_offer_cost(self, offer_key: str) -> Optional[int]:
+        costs = BILGEWATER_STORE.get("costs", {})
+        if not isinstance(costs, dict):
+            return None
+
+        # Escalating categories (stats/items/dupe).
+        if offer_key in costs:
+            value = costs[offer_key]
+            if isinstance(value, list):
+                purchase_count = self.bilgewater_purchases.get(offer_key, 0)
+                if purchase_count >= len(value):
+                    return None
+                try:
+                    return int(value[purchase_count])
+                except (TypeError, ValueError):
+                    return None
+            if isinstance(value, (int, float)):
+                return int(value)
+
+        # Unit categories use flat tiered costs in set16 items config.
+        unit_tier = _BILGEWATER_UNIT_CATEGORY_TO_COST_TIER.get(offer_key)
+        if unit_tier is None:
+            return None
+
+        unit_costs = BILGEWATER_STORE.get("unit_costs", {})
+        if not isinstance(unit_costs, dict):
+            return None
+        cost = unit_costs.get(unit_tier)
+        if cost is None:
+            return None
+        try:
+            return int(cost)
+        except (TypeError, ValueError):
+            return None
+
+    def _resolve_bilgewater_offer(self, offer_key: str, *, pool: Optional['ChampionPool']) -> None:
+        if offer_key.startswith("tier") and offer_key.endswith("_stats"):
+            digits = "".join(ch for ch in offer_key if ch.isdigit())
+            if digits:
+                tier = int(digits[0])
+                self.bilgewater_stat_purchases[tier] = self.bilgewater_stat_purchases.get(tier, 0) + 1
+            return
+
+        if offer_key in {"tier1_items", "tier2_items"}:
+            item_tier = 1 if offer_key == "tier1_items" else 2
+            self._grant_bilgewater_item(item_tier)
+            return
+
+        if offer_key in _BILGEWATER_UNIT_CATEGORY_TO_COST_TIER:
+            unit_tier = _BILGEWATER_UNIT_CATEGORY_TO_COST_TIER[offer_key]
+            self._grant_bilgewater_unit(unit_tier, pool=pool)
+            return
+
+        if offer_key == "lesser_dupe":
+            self._grant_bilgewater_lesser_dupe(pool=pool)
+            return
+
+        if offer_key == "shop_reroll":
+            self.record_shop_reroll()
+
+    def _grant_bilgewater_item(self, item_tier: int) -> bool:
+        items_cfg = BILGEWATER_STORE.get("items", {})
+        if not isinstance(items_cfg, dict):
+            return False
+        keys = sorted(
+            key
+            for key, payload in items_cfg.items()
+            if isinstance(payload, dict) and int(payload.get("tier", 0) or 0) == item_tier
+        )
+        if not keys:
+            return False
+
+        # Deterministic rotation by purchase count within this tier.
+        rotation_idx = max(0, self.bilgewater_purchases.get(f"tier{item_tier}_items", 1) - 1)
+        item_key = keys[rotation_idx % len(keys)]
+        item_name = f"Bilgewater_{item_key}"
+
+        if self._equip_item_to_bilgewater_unit(item_name):
+            return True
+        return self.add_item_to_bench(item_name)
+
+    def _grant_bilgewater_unit(self, unit_tier: int, *, pool: Optional['ChampionPool']) -> bool:
+        champions_cfg = BILGEWATER_STORE.get("champions", {})
+        if not isinstance(champions_cfg, dict):
+            return False
+        options = champions_cfg.get(unit_tier)
+        if options is None:
+            options = champions_cfg.get(str(unit_tier))
+        if not isinstance(options, list) or not options:
+            return False
+
+        names: List[str] = []
+        for raw in options:
+            if not isinstance(raw, dict):
+                continue
+            api_name = str(raw.get("api_name", "")).strip()
+            mapped = _API_TO_NAME.get(api_name)
+            if mapped is not None:
+                names.append(mapped)
+        if not names:
+            return False
+
+        names = sorted(names)
+        purchase_count = self.bilgewater_purchases.get(f"tier{unit_tier}_units", 1)
+        target_name = names[(purchase_count - 1) % len(names)]
+        return self._add_unit_copy_to_bench(target_name, pool=pool)
+
+    def _grant_bilgewater_lesser_dupe(self, *, pool: Optional['ChampionPool']) -> bool:
+        owned_units = [champ for champ in self.board.values()]
+        for champ in self.bench:
+            if champ is not None:
+                owned_units.append(champ)
+
+        if not owned_units:
+            return False
+
+        # Prefer duplicating highest-cost owned carry.
+        owned_units.sort(key=lambda champ: (champ.cost, champ.star_level, champ.name), reverse=True)
+        for champ in owned_units:
+            if self._add_unit_copy_to_bench(champ.name, pool=pool):
+                return True
+        return False
+
+    def _add_unit_copy_to_bench(self, unit_name: str, *, pool: Optional['ChampionPool']) -> bool:
+        bench_idx = self._find_empty_bench()
+        if bench_idx is None:
+            return False
+
+        taken_from_pool = False
+        if pool is not None:
+            taken_from_pool = pool.take(unit_name)
+            if not taken_from_pool:
+                return False
+
+        champ = ChampionInstance(
+            instance_id=self._alloc_instance_id(),
+            name=unit_name,
+            api_name=NAME_TO_API.get(unit_name, f"TFT16_{unit_name.capitalize()}"),
+            cost=NAME_TO_COST.get(unit_name, 1),
+            star_level=1,
+        )
+        self.bench[bench_idx] = champ
+        if pool is not None:
+            self._check_upgrade(unit_name, pool)
+        return True
+
+    def _equip_item_to_bilgewater_unit(self, item_name: str) -> bool:
+        candidates: List[ChampionInstance] = []
+        for champ in self.board.values():
+            if "bilgewater" in CHAMPION_TRAITS.get(champ.name, []) and len(champ.items) < MAX_ITEMS_PER_UNIT:
+                candidates.append(champ)
+        for champ in self.bench:
+            if champ is None:
+                continue
+            if "bilgewater" in CHAMPION_TRAITS.get(champ.name, []) and len(champ.items) < MAX_ITEMS_PER_UNIT:
+                candidates.append(champ)
+        if not candidates:
+            return False
+
+        candidates.sort(key=lambda champ: (champ.star_level, champ.cost, champ.name), reverse=True)
+        candidates[0].items.append(item_name)
+        return True
+
+    def _bilgewater_shop_bonus_totals(self) -> Dict[str, float]:
+        stat_buffs = BILGEWATER_STORE.get("stat_buffs", {})
+        if not isinstance(stat_buffs, dict):
+            return {"hp_pct": 0.0, "attack_speed": 0.0, "ad_ap_pct": 0.0}
+
+        totals = {"hp_pct": 0.0, "attack_speed": 0.0, "ad_ap_pct": 0.0}
+        for tier, count in self.bilgewater_stat_purchases.items():
+            if count <= 0:
+                continue
+            payload = stat_buffs.get(tier)
+            if payload is None:
+                payload = stat_buffs.get(str(tier))
+            if not isinstance(payload, dict):
+                continue
+            for key in totals.keys():
+                totals[key] += float(payload.get(key, 0.0) or 0.0) * count
+
+        if int(self.get_active_traits().get("bilgewater", 0) or 0) >= 10:
+            mult = float(BILGEWATER_STORE.get("bg10_stat_multiplier", 1.0) or 1.0)
+            for key in totals.keys():
+                totals[key] *= mult
+
+        return totals
+
+    def auto_spend_ixtal_sunshards_for_loot(
+        self,
+        *,
+        pool: Optional['ChampionPool'] = None,
+        max_rolls: int = 1,
+    ) -> int:
+        """Spend accumulated Ixtal Sunshards on deterministic rotating loot."""
+        if max_rolls <= 0 or self.ixtal_sunshards < _IXTAL_SUNSHARDS_PER_LOOT:
+            return 0
+
+        rolls = 0
+        while rolls < max_rolls and self.ixtal_sunshards >= _IXTAL_SUNSHARDS_PER_LOOT:
+            self.ixtal_sunshards -= _IXTAL_SUNSHARDS_PER_LOOT
+            reward_type = _IXTAL_LOOT_ROTATION[self.ixtal_loot_purchases % len(_IXTAL_LOOT_ROTATION)]
+            self.ixtal_loot_purchases += 1
+            rolls += 1
+            self._grant_ixtal_loot_reward(reward_type, pool=pool)
+
+        return rolls
+
+    def _grant_ixtal_loot_reward(self, reward_type: str, *, pool: Optional['ChampionPool']) -> None:
+        if reward_type == "gold":
+            gold_gain = _IXTAL_GOLD_REWARDS[self.ixtal_loot_purchases % len(_IXTAL_GOLD_REWARDS)]
+            self.gold += int(gold_gain)
+            return
+
+        if reward_type == "component":
+            component = random.choice(ITEM_COMPONENTS_LIST)
+            if not self.add_item_to_bench(component):
+                self.gold += 1
+            return
+
+        if reward_type == "champion":
+            ixtal_units = sorted(
+                name for name, traits in CHAMPION_TRAITS.items()
+                if "ixtal" in traits and NAME_TO_COST.get(name, 0) <= 5
+            )
+            for name in ixtal_units:
+                if self._add_unit_copy_to_bench(name, pool=pool):
+                    return
+            self.gold += 1
 
     def progress_blacksmith(self) -> List[str]:
         """Advance Blacksmith crafting for any on-board Blacksmith unit(s).
@@ -261,6 +660,7 @@ class Player:
         if self.level >= MAX_LEVEL:
             return False
         self.gold -= XP_COST
+        self.round_xp_purchases_this_round += 1
         self.xp += XP_PER_BUY
         self._check_level_up()
         return True
@@ -357,6 +757,8 @@ class Player:
         # Return items to item bench
         self.item_bench.extend(champ.items)
         self.invalidate_max_units()
+        if self._unlock_manager is not None:
+            self._unlock_manager.record_sell(self, champ.name, champ.star_level)
 
     # ── Item Management ──────────────────────────────────────────────────
 
@@ -747,6 +1149,7 @@ class Player:
                     instance_id=champ.instance_id,
                 )
                 if unit is not None:
+                    self._apply_bilgewater_shop_stat_bonuses(champ, unit)
                     self._apply_persistent_augment_bonuses(unit, bonus_stat_map)
                     units.append(unit)
 
@@ -798,6 +1201,23 @@ class Player:
 
         return units
 
+    def _apply_bilgewater_shop_stat_bonuses(self, champ: ChampionInstance, unit: Any) -> None:
+        if "bilgewater" not in CHAMPION_TRAITS.get(champ.name, []):
+            return
+        totals = self._bilgewater_shop_bonus_totals()
+        hp_pct = float(totals.get("hp_pct", 0.0) or 0.0)
+        attack_speed = float(totals.get("attack_speed", 0.0) or 0.0)
+        ad_ap_pct = float(totals.get("ad_ap_pct", 0.0) or 0.0)
+        if hp_pct:
+            bonus_hp = float(unit.base_stats.max_hp) * hp_pct
+            unit.stats.max_hp += bonus_hp
+            unit.stats.hp += bonus_hp
+        if attack_speed:
+            unit.stats.attack_speed += attack_speed
+        if ad_ap_pct:
+            unit.stats.ad += float(unit.base_stats.ad) * ad_ap_pct
+            unit.stats.ap += float(unit.base_stats.ap) * ad_ap_pct
+
     # Thief's Gloves tier odds by player level
     _THIEFS_GLOVES_TIERS = {
         1: [1.0, 0.0, 0.0, 0.0],
@@ -821,14 +1241,20 @@ class Player:
 
     def take_damage(self, amount: int):
         """Take HP damage. Player is eliminated when HP reaches 0."""
+        amount = int(amount)
+        hp_before = self.hp
         raw_hp = self.hp - amount
         if raw_hp <= 0:
             self.elimination_hp = raw_hp
             self.hp = 0
             self.alive = False
+            if self._unlock_manager is not None and hp_before > 0:
+                self._unlock_manager.record_player_hp_lost(self, hp_before)
             return
         self.elimination_hp = 0
         self.hp = raw_hp
+        if self._unlock_manager is not None and amount > 0:
+            self._unlock_manager.record_player_hp_lost(self, amount)
 
     def win_round(self):
         """Record a round win."""

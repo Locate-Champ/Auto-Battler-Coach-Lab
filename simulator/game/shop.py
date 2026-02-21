@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional, TYPE_CHECKING
+from typing import Iterable, List, Optional, TYPE_CHECKING
 
 from .constants import REFRESH_COST, NAME_TO_COST
 
@@ -11,9 +11,19 @@ if TYPE_CHECKING:
     from .champion_pool import ChampionPool
 
 
-def generate_shop(pool: ChampionPool, level: int) -> List[Optional[str]]:
+def generate_shop(
+    pool: ChampionPool,
+    level: int,
+    *,
+    allowed_names: Optional[Iterable[str]] = None,
+    guaranteed_names: Optional[Iterable[str]] = None,
+) -> List[Optional[str]]:
     """Generate a new shop for a player based on their level."""
-    return pool.roll_shop(level)
+    return pool.roll_shop(
+        level,
+        allowed_names=allowed_names,
+        guaranteed_names=guaranteed_names,
+    )
 
 
 def buy_from_shop(player: Player, pool: ChampionPool, slot: int) -> bool:
@@ -54,7 +64,21 @@ def refresh_shop(player: Player, pool: ChampionPool) -> bool:
     _return_shop_to_pool(player, pool)
 
     player.gold -= REFRESH_COST
-    player.shop = generate_shop(pool, player.level)
+    player.record_shop_reroll()
+
+    allowed_names = None
+    guaranteed_names = None
+    unlock_manager = getattr(player, "_unlock_manager", None)
+    if unlock_manager is not None:
+        allowed_names = unlock_manager.allowed_shop_units_for_player(player)
+        guaranteed_names = unlock_manager.consume_shop_guarantees_for_player(player)
+
+    player.shop = generate_shop(
+        pool,
+        player.level,
+        allowed_names=allowed_names,
+        guaranteed_names=guaranteed_names,
+    )
     return True
 
 

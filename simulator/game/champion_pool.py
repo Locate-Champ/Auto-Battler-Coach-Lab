@@ -5,7 +5,7 @@ one copy is removed. When sold or a player is eliminated, copies return.
 """
 
 import random
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Iterable, Set
 
 from .constants import (
     CHAMPIONS_BY_COST, POOL_SIZES, LEVEL_ODDS, SHOP_SIZE,
@@ -56,7 +56,13 @@ class ChampionPool:
             self._cum_weights_by_cost[cost] = cum_weights
             self._total_by_cost[cost] = running_total
 
-    def roll_shop(self, level: int) -> List[Optional[str]]:
+    def roll_shop(
+        self,
+        level: int,
+        *,
+        allowed_names: Optional[Iterable[str]] = None,
+        guaranteed_names: Optional[Iterable[str]] = None,
+    ) -> List[Optional[str]]:
         """Generate a shop of 5 champions based on player level.
 
         Uses level-based odds to determine cost tier, then picks
@@ -64,16 +70,37 @@ class ChampionPool:
 
         Args:
             level: Player level (1-9), used as index into LEVEL_ODDS.
+            allowed_names: Optional subset of unit names allowed to appear.
+            guaranteed_names: Optional list of champions guaranteed to appear
+                in this shop (in order, up to shop size).
 
         Returns:
             List of 5 champion names (or None if tier is empty).
         """
+        allowed_set: Optional[Set[str]] = None
+        if allowed_names is not None:
+            allowed_set = {name for name in allowed_names if name in self.pool}
+
         # Clamp level to valid range
         level_idx = max(0, min(level - 1, len(LEVEL_ODDS) - 1))
         odds = LEVEL_ODDS[level_idx]
 
         shop = []
+        if guaranteed_names:
+            for guaranteed in guaranteed_names:
+                if len(shop) >= SHOP_SIZE:
+                    break
+                if guaranteed not in self.pool:
+                    continue
+                if allowed_set is not None and guaranteed not in allowed_set:
+                    continue
+                if self.pool.get(guaranteed, 0) <= 0:
+                    continue
+                shop.append(guaranteed)
+
         for _ in range(SHOP_SIZE):
+            if len(shop) >= SHOP_SIZE:
+                break
             # Pick a cost tier
             roll = random.random()
             cumulative = 0.0
@@ -85,16 +112,41 @@ class ChampionPool:
                     break
 
             # Pick a champion from that tier, weighted by remaining copies
-            champ = self._pick_from_tier(chosen_cost)
+            champ = self._pick_from_tier(chosen_cost, allowed_names=allowed_set)
             shop.append(champ)
+
+        while len(shop) < SHOP_SIZE:
+            shop.append(None)
 
         return shop
 
-    def _pick_from_tier(self, cost: int) -> Optional[str]:
+    def _pick_from_tier(
+        self,
+        cost: int,
+        *,
+        allowed_names: Optional[Set[str]] = None,
+    ) -> Optional[str]:
         """Pick a random champion from a cost tier, weighted by pool count."""
         names = self._names_by_cost.get(cost, [])
         if not names:
             return None
+
+        if allowed_names is not None:
+            filtered_names: List[str] = []
+            filtered_cum_weights: List[int] = []
+            running = 0
+            for name in names:
+                if name not in allowed_names:
+                    continue
+                weight = max(0, self.pool.get(name, 0))
+                if weight <= 0:
+                    continue
+                running += weight
+                filtered_names.append(name)
+                filtered_cum_weights.append(running)
+            if not filtered_names:
+                return None
+            return random.choices(filtered_names, cum_weights=filtered_cum_weights, k=1)[0]
 
         total = self._total_by_cost.get(cost, 0)
         if total == 0:
