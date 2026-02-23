@@ -13,6 +13,30 @@ _CHAMPION_REF_CACHE: Optional[dict[str, dict]] = None
 _CHAMPIONS_BY_COST_CACHE: Optional[dict[int, tuple[str, ...]]] = None
 
 
+def _fallback_champion_ref() -> dict[str, dict]:
+    """
+    Build a best-effort champion ref from simulator constants when
+    data/game_data/champions.jsonl is unavailable locally.
+    """
+    try:
+        from simulator.game.constants import API_TO_NAME, NAME_TO_COST
+    except Exception:
+        return {}
+
+    ref: dict[str, dict] = {}
+    for api_name, short_name in API_TO_NAME.items():
+        try:
+            cost = int(NAME_TO_COST.get(short_name, 3) or 3)
+        except Exception:
+            cost = 3
+        ref[api_name] = {
+            "name": str(short_name or api_name),
+            "cost": cost,
+            "traits": (),
+        }
+    return ref
+
+
 def _load_champion_ref(data_dir: Optional[Path] = None) -> dict[str, dict]:
     global _CHAMPION_REF_CACHE
     if _CHAMPION_REF_CACHE is not None:
@@ -22,6 +46,7 @@ def _load_champion_ref(data_dir: Optional[Path] = None) -> dict[str, dict]:
     path = root / "data" / "game_data" / "champions.jsonl"
     ref: dict[str, dict] = {}
     if not path.exists():
+        ref = _fallback_champion_ref()
         _CHAMPION_REF_CACHE = ref
         return ref
 
@@ -42,6 +67,9 @@ def _load_champion_ref(data_dir: Optional[Path] = None) -> dict[str, dict]:
                 "cost": int(row.get("cost", 3) or 3),
                 "traits": tuple(row.get("traits", []) or []),
             }
+
+    if not ref:
+        ref = _fallback_champion_ref()
 
     _CHAMPION_REF_CACHE = ref
     return ref

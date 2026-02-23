@@ -5,7 +5,7 @@ import json
 import threading
 import time
 from dataclasses import asdict
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Set, Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
@@ -255,7 +255,7 @@ class WebSocketServer:
 
         payload = {
             "coach_payload_version": 1,
-            "generated_at": datetime.utcnow().isoformat() + "Z",
+            "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "coach_state_schema_version": int(getattr(coach_state, "schema_version", 0) or 0),
             "coach_state_validation_errors": validation_errors or None,
             "config": {
@@ -341,7 +341,7 @@ class WebSocketServer:
             await websocket.accept()
             log_dir = Path(__file__).parent.parent.parent / "outputs" / "network_logs"
             log_dir.mkdir(parents=True, exist_ok=True)
-            timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
             log_path = log_dir / f"metatft_devtools_network_{timestamp}.jsonl"
             print(f"[WS] Network log connected. Writing to {log_path}")
 
@@ -387,7 +387,7 @@ class WebSocketServer:
                 self._last_coach_stage = state.stage
             except Exception as e:
                 self._last_coach_payload = {
-                    "generated_at": datetime.utcnow().isoformat() + "Z",
+                    "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                     "error": str(e),
                 }
             payload["coach"] = self._last_coach_payload

@@ -159,58 +159,63 @@ class ArchetypeLibrary:
                 # Fall back to other sources if artifact is missing/incompatible.
                 pass
 
-        if self._comps_path.exists():
-            data = json.loads(self._comps_path.read_text(encoding="utf-8"))
-            for comp in data.get("comps", []) or []:
-                units = tuple(comp.get("units", []) or [])
-                token_to_api = {
-                    _token_from_api_name(u): u
-                    for u in units
-                    if isinstance(u, str) and u
-                }
-                traits = tuple(
-                    t.get("name")
-                    for t in (comp.get("traits", []) or [])
-                    if isinstance(t, dict) and t.get("name")
-                )
-                builds: list[ArchetypeBuild] = []
-                for b in (comp.get("builds", []) or [])[:25]:
-                    if not isinstance(b, dict):
-                        continue
-                    unit_token = b.get("unit")
-                    unit_id = None
-                    if isinstance(unit_token, str) and unit_token:
-                        unit_id = token_to_api.get(unit_token)
-                        if unit_id is None:
-                            unit_id = unit_token if unit_token.startswith("TFT") else f"TFT16_{unit_token}"
-
-                    items_out: list[str] = []
-                    for it in (b.get("items", []) or []):
-                        if isinstance(it, str) and it.strip():
-                            items_out.append(_to_item_id(it))
-
-                    if unit_id and items_out:
-                        builds.append(
-                            ArchetypeBuild(
-                                unit_id=unit_id,
-                                items=tuple(items_out),
-                                games=_as_int(b.get("games")),
-                                avg_placement=_as_float(b.get("avg_placement")),
-                                place_change=_as_float(b.get("place_change")),
-                            )
-                        )
-                archetypes.append(
-                    Archetype(
-                        archetype_id=str(comp.get("cluster_id", comp.get("name", "unknown"))),
-                        name=str(comp.get("name", "unknown")),
-                        tier=str(comp.get("tier", "C")),
-                        units=units,
-                        traits=traits,
-                        builds=tuple(builds),
-                        top4_rate=float(comp.get("top4_rate")) if comp.get("top4_rate") is not None else None,
-                        avg_placement=float(comp.get("avg_placement")) if comp.get("avg_placement") is not None else None,
+        # comps.json is a fallback source when runtime artifact is unavailable.
+        if not archetypes and self._comps_path.exists():
+            try:
+                data = json.loads(self._comps_path.read_text(encoding="utf-8"))
+                for comp in data.get("comps", []) or []:
+                    units = tuple(comp.get("units", []) or [])
+                    token_to_api = {
+                        _token_from_api_name(u): u
+                        for u in units
+                        if isinstance(u, str) and u
+                    }
+                    traits = tuple(
+                        t.get("name")
+                        for t in (comp.get("traits", []) or [])
+                        if isinstance(t, dict) and t.get("name")
                     )
-                )
+                    builds: list[ArchetypeBuild] = []
+                    for b in (comp.get("builds", []) or [])[:25]:
+                        if not isinstance(b, dict):
+                            continue
+                        unit_token = b.get("unit")
+                        unit_id = None
+                        if isinstance(unit_token, str) and unit_token:
+                            unit_id = token_to_api.get(unit_token)
+                            if unit_id is None:
+                                unit_id = unit_token if unit_token.startswith("TFT") else f"TFT16_{unit_token}"
+
+                        items_out: list[str] = []
+                        for it in (b.get("items", []) or []):
+                            if isinstance(it, str) and it.strip():
+                                items_out.append(_to_item_id(it))
+
+                        if unit_id and items_out:
+                            builds.append(
+                                ArchetypeBuild(
+                                    unit_id=unit_id,
+                                    items=tuple(items_out),
+                                    games=_as_int(b.get("games")),
+                                    avg_placement=_as_float(b.get("avg_placement")),
+                                    place_change=_as_float(b.get("place_change")),
+                                )
+                            )
+                    archetypes.append(
+                        Archetype(
+                            archetype_id=str(comp.get("cluster_id", comp.get("name", "unknown"))),
+                            name=str(comp.get("name", "unknown")),
+                            tier=str(comp.get("tier", "C")),
+                            units=units,
+                            traits=traits,
+                            builds=tuple(builds),
+                            top4_rate=float(comp.get("top4_rate")) if comp.get("top4_rate") is not None else None,
+                            avg_placement=float(comp.get("avg_placement")) if comp.get("avg_placement") is not None else None,
+                        )
+                    )
+            except Exception:
+                # Fall through to perf-reference fallback.
+                pass
 
         # Fallback: small hand-written archetype list.
         if not archetypes:

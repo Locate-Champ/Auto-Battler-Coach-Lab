@@ -1,29 +1,35 @@
 ﻿# Auto-Battler Coach Lab Repo Handoff
 
-Last updated: 2026-02-19 (America/New_York)
+Last updated: 2026-02-22 (America/New_York)
 
 ## Purpose
-This file is the quick onboarding handoff for new contributors and coding agents.
+Use this handoff set to bootstrap a new ChatGPT session with current project truth.
 
 ## Read order
-1. `AGENTS.md`
-2. `docs/INDEX.md`
-3. `docs/REPO_ARCHITECTURE.md`
-4. `docs/CURRENT_MODEL_AND_SIMULATOR.md`
-5. `docs/runbooks/aws_gates.md` (when doing cloud gate work)
+1. `AGENTS.md` (canonical rules)
+2. `docs/CHATGPT_PROJECT_STATE.md` (current architecture + track map)
+3. `docs/CHATGPT_EXECUTION_RULES.md` (execution and verification contract)
+4. `README.md` (quick commands + environment context)
 
-## Current guardrails
-- `AGENTS.md` is canonical; `CLAUDE.md` is generated from it.
-- Track boundaries are enforced by `tests/test_track_boundaries.py`.
-- Runtime artifact path rules are enforced by `tests/test_no_hardcoded_artifact_paths.py`.
-- Tracked runtime artifacts are limited to `outputs/coach/**`.
+## 60-second snapshot
+- Project is a TFT coaching lab with two main workflows:
+  - Live runtime coaching (`app/**`, `coach/**`, `app/frontend/**`)
+  - Offline simulator/training (`simulator/**`, `models/**`)
+- Runtime API (`app/api/server.py`) currently loads recommender classes from `src/models/**`.
+- Active simulator truth is in `simulator/core/**` and `simulator/game/**`.
+- Legacy simulator paths are quarantined:
+  - `simulator/Simulator/**`
+  - `simulator/Concurrency/**`
+  - `simulator/Evaluator/**`
+
+## Fast start commands
+```bash
+npm start
+python -m pytest
+python -m simulator.benchmark
+```
 
 ## Local data policy
-- Personal and raw runtime data is local-only under `data/local/**`.
-- Asset packs/icons are local-only and must not be tracked.
-- If local runtime data is missing, runtime code should fail with actionable error messages.
-
-## Next improvements
-- Keep `.agent/CONTINUITY.md` compact and archive aggressively.
-- Add any additional guard checks under `scripts/ci/` rather than root-level docs.
-- Continue reducing ambiguous cross-track references in docs.
+- Keep personal/raw runtime data under `data/local/**` only.
+- Do not commit asset packs or account-linked data.
+- Runtime should fail with actionable errors when required local files are missing.

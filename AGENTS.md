@@ -2,12 +2,6 @@
 
 Default behavior: smallest scoped change, deterministic simulator, no surprises.
 
-## 0) ScopeLock (required)
-Before editing:
-- ScopeLock: exact files you will touch
-- Non-goals: what you will NOT change
-If scope grows beyond 3 files or ~200 lines, stop and ask.
-
 ## 1) Track map (non-negotiable)
 - Active simulator truth: `simulator/core/**` and `simulator/game/**`
 - ML training + eval: `models/**`
@@ -15,7 +9,7 @@ If scope grows beyond 3 files or ~200 lines, stop and ask.
 - Legacy/quarantined: `simulator/Simulator/**`, `simulator/Concurrency/**`, `simulator/Evaluator/**` (do not work here)
 
 ## 2) Hard rules (non-negotiable)
-- No drive-by refactors, no “cleanup,” no reformatting unrelated code.
+
 - Do not touch legacy simulator paths.
 - Do not commit unless explicitly requested.
 - Never paste secrets/tokens. If a token was leaked, recommend rotation immediately.

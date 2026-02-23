@@ -81,19 +81,31 @@ class LogParser:
         # First shop indicator
         "first_shop": re.compile(r"First Shop"),
 
-        # Board state: tft_board with cell data
-        # Matches: "key":"tft_board","value":"{\"cell_1\":{...},...}"
-        "board": re.compile(r'"key":"tft_board","value":"(\{[^}]+(?:\}[^}]+)*\})"'),
-
-        # Bench state: tft_bench with slot data
-        "bench": re.compile(r'"key":"tft_bench","value":"(\{[^}]+(?:\}[^}]+)*\})"'),
-
-        # Shop state: tft_shop with current shop offerings
-        "shop": re.compile(r'"key":"tft_shop","value":"(\{[^}]+(?:\}[^}]+)*\})"'),
-
-        # Roster state: tft_roster with all 8 players
-        "roster": re.compile(r'"key":"tft_roster","value":"(\[[^\]]+\])"'),
+        # Generic key/value event payload: "key":"...","value":"{...escaped-json...}"
+        # Captures escaped quoted payloads robustly, including nested braces.
+        "kv_payload": re.compile(
+            r'"key"\s*:\s*"(?P<key>[^"]+)"\s*,\s*"value"\s*:\s*"(?P<value>(?:\\.|[^"\\])*)"'
+        ),
     }
+
+    @staticmethod
+    def _extract_kv_payload(line: str, key: str) -> Optional[Any]:
+        for match in LogParser.PATTERNS["kv_payload"].finditer(line):
+            if match.group("key") != key:
+                continue
+
+            raw_escaped = match.group("value")
+            try:
+                # Decode escaped JSON string content first (e.g. {\"cell_1\":...}).
+                decoded = json.loads(f'"{raw_escaped}"')
+            except json.JSONDecodeError:
+                continue
+
+            try:
+                return json.loads(decoded)
+            except json.JSONDecodeError:
+                continue
+        return None
 
     def parse_line(self, line: str) -> Optional[GameEvent]:
         """Parse a single log line and return a GameEvent if relevant."""
@@ -206,61 +218,44 @@ class LogParser:
             )
 
         # Board update: tft_board with cell positions
-        if match := self.PATTERNS["board"].search(line):
-            try:
-                # The value is escaped JSON, need to unescape it
-                board_json = match.group(1).replace('\\"', '"')
-                board_data = json.loads(board_json)
-                return GameEvent(
-                    event_type=EventType.BOARD_UPDATE,
-                    timestamp=timestamp,
-                    data={"board": board_data},
-                    raw_line=line,
-                )
-            except json.JSONDecodeError:
-                pass
+        board_data = self._extract_kv_payload(line, "tft_board")
+        if board_data is not None:
+            return GameEvent(
+                event_type=EventType.BOARD_UPDATE,
+                timestamp=timestamp,
+                data={"board": board_data},
+                raw_line=line,
+            )
 
         # Bench update: tft_bench with slot positions
-        if match := self.PATTERNS["bench"].search(line):
-            try:
-                bench_json = match.group(1).replace('\\"', '"')
-                bench_data = json.loads(bench_json)
-                return GameEvent(
-                    event_type=EventType.BENCH_UPDATE,
-                    timestamp=timestamp,
-                    data={"bench": bench_data},
-                    raw_line=line,
-                )
-            except json.JSONDecodeError:
-                pass
+        bench_data = self._extract_kv_payload(line, "tft_bench")
+        if bench_data is not None:
+            return GameEvent(
+                event_type=EventType.BENCH_UPDATE,
+                timestamp=timestamp,
+                data={"bench": bench_data},
+                raw_line=line,
+            )
 
         # Shop update: tft_shop with store offerings
-        if match := self.PATTERNS["shop"].search(line):
-            try:
-                shop_json = match.group(1).replace('\\"', '"')
-                shop_data = json.loads(shop_json)
-                return GameEvent(
-                    event_type=EventType.SHOP_UPDATE,
-                    timestamp=timestamp,
-                    data={"shop": shop_data},
-                    raw_line=line,
-                )
-            except json.JSONDecodeError:
-                pass
+        shop_data = self._extract_kv_payload(line, "tft_shop")
+        if shop_data is not None:
+            return GameEvent(
+                event_type=EventType.SHOP_UPDATE,
+                timestamp=timestamp,
+                data={"shop": shop_data},
+                raw_line=line,
+            )
 
-        # Roster update: tft_roster with all 8 players
-        if match := self.PATTERNS["roster"].search(line):
-            try:
-                roster_json = match.group(1).replace('\\"', '"')
-                roster_data = json.loads(roster_json)
-                return GameEvent(
-                    event_type=EventType.ROSTER_UPDATE,
-                    timestamp=timestamp,
-                    data={"roster": roster_data},
-                    raw_line=line,
-                )
-            except json.JSONDecodeError:
-                pass
+        # Roster update: tft_roster with all players
+        roster_data = self._extract_kv_payload(line, "tft_roster")
+        if roster_data is not None:
+            return GameEvent(
+                event_type=EventType.ROSTER_UPDATE,
+                timestamp=timestamp,
+                data={"roster": roster_data},
+                raw_line=line,
+            )
 
         return None
 

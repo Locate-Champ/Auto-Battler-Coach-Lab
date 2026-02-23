@@ -72,6 +72,59 @@ def test_suggest_items_for_archetype_uses_builds_from_artifact(tmp_path: Path) -
     assert out == ["TFT_Item_BrambleVest", "TFT_Item_InfinityEdge", "TFT_Item_Redemption"]
 
 
+def test_artifact_is_preferred_over_comps_when_available(tmp_path: Path) -> None:
+    artifact_path = tmp_path / "archetypes.json"
+    artifact = {
+        "schema_version": 1,
+        "archetypes": [
+            {
+                "archetype_id": "artifact_only",
+                "name": "Artifact Only",
+                "tier": "S",
+                "units": ["TFT16_Ashe"],
+                "traits": [],
+                "builds": [],
+                "stats": {},
+            }
+        ],
+    }
+    artifact_path.write_text(json.dumps(artifact), encoding="utf-8")
+
+    comps_path = tmp_path / "comps.json"
+    comps = {
+        "comps": [
+            {
+                "cluster_id": "comps_fallback",
+                "name": "Comps Fallback",
+                "tier": "A",
+                "units": ["TFT16_Leona"],
+                "traits": [],
+                "builds": [],
+            }
+        ]
+    }
+    comps_path.write_text(json.dumps(comps), encoding="utf-8")
+
+    lib = ArchetypeLibrary(comps_path=comps_path)
+    lib._artifact_path = artifact_path
+
+    loaded = lib._load()
+    assert len(loaded) == 1
+    assert loaded[0].archetype_id == "artifact_only"
+
+
+def test_malformed_comps_degrades_gracefully(tmp_path: Path) -> None:
+    comps_path = tmp_path / "comps.json"
+    comps_path.write_text("{bad json", encoding="utf-8")
+
+    lib = ArchetypeLibrary(comps_path=comps_path)
+    lib._artifact_path = tmp_path / "missing_archetypes.json"
+
+    state = _state_for_archetypes()
+    out = lib.closest(state, top_n=3)
+    assert isinstance(out, list)
+
+
 def test_build_archetypes_emits_builds_with_item_ids(tmp_path: Path) -> None:
     input_path = tmp_path / "comps.json"
     output_path = tmp_path / "archetypes.json"

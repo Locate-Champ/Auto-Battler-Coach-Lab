@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import asdict, dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, Optional
 
@@ -106,7 +106,7 @@ def _hash_state(state: GameState) -> str:
 
 def _write_trace(trace: DecisionTrace, out_dir: Path) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
-    day = datetime.utcnow().strftime("%Y%m%d")
+    day = datetime.now(timezone.utc).strftime("%Y%m%d")
     path = out_dir / f"coach_traces_{day}.jsonl"
 
     def _to_jsonable(obj):
@@ -442,7 +442,7 @@ class Coach:
                 unit_id_to_champion_id=dict(sorted(unit_map.items(), key=lambda kv: kv[0])),
             )
             trace = DecisionTrace(
-                generated_at=datetime.utcnow().isoformat() + "Z",
+                generated_at=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                 state_hash=state_hash,
                 decision_type=decision.value,
                 state_summary=summary,
