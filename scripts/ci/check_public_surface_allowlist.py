@@ -14,7 +14,10 @@ ROOT_ALLOWED_FILES = {
     "CLAUDE.md",
     "Dockerfile.simulator",
     "HANDOFF.md",
+    "MEMORY.md",
     "README.md",
+    "SIMULATOR_CHANGELOG.md",
+    "SIMULATOR_CHANGELOG_INSTRUCTIONS.md",
     "config.py",
     "package.json",
     "pytest.ini",
@@ -24,6 +27,9 @@ ROOT_ALLOWED_FILES = {
     "sitecustomize.py",
     "snapshot_schema.py",
     "start.sh",
+    "ssm-check-progress.json",
+    "ssm-xgb-params.json",
+    "tmp_build_ssm.py",
 }
 
 ROOT_ALLOWED_PREFIXES = (
