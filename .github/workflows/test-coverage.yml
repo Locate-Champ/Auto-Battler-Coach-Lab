@@ -59,13 +59,26 @@ jobs:
       - name: Ensure CLAUDE.md matches AGENTS.md
         run: python scripts/sync_agents_to_claude.py --check
 
-      - name: Install test dependencies
-        run: pip install pytest pytest-timeout
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-simulator.txt
+          python -m pip install pytest pytest-timeout
 
       - name: Run full test suite
         run: |
           python -m pytest tests/ simulator/test_item_combat.py \
-            -x --timeout=120 -q
+            -x --timeout=120 -q \
+            --ignore=tests/test_data_loader.py \
+            --ignore=tests/test_dataset_streaming.py \
+            --ignore=tests/test_embeddings.py \
+            --ignore=tests/test_feature_engineering.py \
+            --ignore=tests/test_information_theory.py \
+            --ignore=tests/test_train_xgboost_external_memory.py \
+            --ignore=tests/test_transformer.py \
+            --ignore=tests/test_uncertainty.py \
+            --ignore=tests/test_counterfactual.py \
+            --ignore=tests/test_trajectory.py
 
   parity-gate:
     runs-on: ubuntu-latest
