@@ -160,7 +160,7 @@ def batch_simulate_1v1(
         results = [_worker_simulate_1v1(work_items[0])]
     else:
         with mp.Pool(workers) as pool:
-            results = list(pool.imap_unordered(_worker_simulate_1v1, work_items))
+            results = pool.map(_worker_simulate_1v1, work_items)
 
     # Aggregate results
     total_wins = {champ1: 0, champ2: 0}
@@ -274,4 +274,4 @@ def batch_run_combats(
         return [_worker_run_combat(w) for w in work_items]
 
     with mp.Pool(workers) as pool:
-        return list(pool.imap(_worker_run_combat, work_items))
+        return pool.map(_worker_run_combat, work_items)

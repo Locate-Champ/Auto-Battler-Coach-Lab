@@ -4271,18 +4271,19 @@ class CombatEngine:
         if self._alive_dirty:
             self._alive_team0 = [u for u in self._alive_team0 if u.is_alive]
             self._alive_team1 = [u for u in self._alive_team1 if u.is_alive]
-            self._all_alive = self._alive_team0 + self._alive_team1
             self._alive_dirty = False
 
         team0 = self._alive_team0
         team1 = self._alive_team1
-        all_alive = self._all_alive
+
+        # Build combined list once for this tick (reused below)
+        all_alive = team0 + team1
 
         # Process DOT effects on all alive units
         for unit in all_alive:
             if not unit.dot_effects:
                 continue
-            expired_any = False
+            remaining_dots = []
             for dot in unit.dot_effects:
                 dot.remaining_duration -= tick_rate
                 dot.time_since_last_tick += tick_rate
@@ -4296,10 +4297,9 @@ class CombatEngine:
                             dot.damage_type,
                             dot.source_name,
                         )
-                if dot.remaining_duration <= 0:
-                    expired_any = True
-            if expired_any:
-                unit.dot_effects = [d for d in unit.dot_effects if d.remaining_duration > 0]
+                if dot.remaining_duration > 0:
+                    remaining_dots.append(dot)
+            unit.dot_effects = remaining_dots
 
         # Expire sunder/shred debuffs and restore armor/MR
         current_time = self.time
@@ -4309,11 +4309,10 @@ class CombatEngine:
                 continue
             sunder = getattr(unit, "_sunder_stacks", None)
             if sunder:
-                expired_any = False
+                remaining = []
                 for reduction, expiry, src in sunder:
                     if current_time >= expiry:
                         unit.stats.armor += reduction
-                        expired_any = True
                         if logging_on:
                             self.log_event(
                                 "sunder_expired",
@@ -4321,15 +4320,15 @@ class CombatEngine:
                                 restored=round(reduction, 1),
                                 source=src,
                             )
-                if expired_any:
-                    unit._sunder_stacks = [(r, e, s) for r, e, s in sunder if current_time < e]
+                    else:
+                        remaining.append((reduction, expiry, src))
+                unit._sunder_stacks = remaining
             shred = getattr(unit, "_shred_stacks", None)
             if shred:
-                expired_any = False
+                remaining = []
                 for reduction, expiry, src in shred:
                     if current_time >= expiry:
                         unit.stats.magic_resist += reduction
-                        expired_any = True
                         if logging_on:
                             self.log_event(
                                 "shred_expired",
@@ -4337,8 +4336,9 @@ class CombatEngine:
                                 restored=round(reduction, 1),
                                 source=src,
                             )
-                if expired_any:
-                    unit._shred_stacks = [(r, e, s) for r, e, s in shred if current_time < e]
+                    else:
+                        remaining.append((reduction, expiry, src))
+                unit._shred_stacks = remaining
 
         # Piltover module fire at 8 seconds
         if self._piltover_data and current_time >= 8.0:
@@ -4353,11 +4353,8 @@ class CombatEngine:
             self._check_atakhan_ruin()
 
         # Process units in random order to avoid bias.
-        # Shuffle every 3rd tick (~0.1s game time) to reduce RNG overhead
-        # while maintaining fairness at gameplay-relevant granularity.
-        self._tick_count += 1
-        if self._tick_count % 3 == 0:
-            random.shuffle(all_alive)
+        # Shuffle in-place on the already-built list (avoids extra allocation).
+        random.shuffle(all_alive)
 
         for unit in all_alive:
             enemies = team1 if unit.team == 0 else team0
@@ -4462,8 +4459,10 @@ class CombatEngine:
             ally_team = team0 if team_id == 0 else team1
 
             # Calculate enemy total HP loss
-            if "_enemy_starting_hp" not in data:
-                # Cache starting HP on first check (including dead enemies)
+            if not hasattr(data, "_enemy_starting_hp"):
+                # Cache starting HP on first check
+                total_max_hp = sum(u.stats.max_hp for u in enemy_team)
+                # Include dead enemies (they lost all HP)
                 all_enemies = [u for u in self.units if u.team != team_id]
                 total_max_hp = sum(u.stats.max_hp for u in all_enemies)
                 data["_enemy_starting_hp"] = total_max_hp
@@ -4807,9 +4806,7 @@ class CombatEngine:
             # Initialize cached alive lists for tick() optimization
             self._alive_team0 = list(team0)
             self._alive_team1 = list(team1)
-            self._all_alive = self._alive_team0 + self._alive_team1
             self._alive_dirty = False  # Set True when a unit dies
-            self._tick_count = 0  # Counter for shuffle frequency optimization
             self._occupied_dirty = True  # Rebuild occupied hex cache
             self._has_noxus = bool(noxus_data)  # Skip Atakhan checks when no Noxus
 
@@ -4985,9 +4982,7 @@ class CombatEngine:
 
             self._alive_team0 = list(team0)
             self._alive_team1 = list(team1)
-            self._all_alive = self._alive_team0 + self._alive_team1
             self._alive_dirty = False
-            self._tick_count = 0
             self._occupied_dirty = True
             self._has_noxus = bool(noxus_data)
             self._ionic_spark_units = [u for u in self.units if u._has_ionic_spark]

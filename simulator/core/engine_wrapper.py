@@ -93,40 +93,6 @@ class HybridCombatEngine:
                 seed=seed,
             )
 
-    def run_combat_batch(
-        self, team0, team1, *, seeds: list, rayon_threads: Optional[int] = None
-    ) -> Dict:
-        """Run many combats in parallel (Rust+Rayon) or sequential (Python fallback).
-
-        Returns:
-            {"wins": int, "team1_survivors": list[int], "n": int}
-        """
-        if self.using_rust:
-            t0_specs = _to_specs(team0)
-            t1_specs = _to_specs(team1)
-            return self._rust_engine.run_combat_batch(
-                t0_specs,
-                t1_specs,
-                seeds,
-                rayon_threads=rayon_threads,
-            )
-        # Python fallback — sequential
-        wins = 0
-        winners = []
-        survivors = []
-        for seed in seeds:
-            result = self.python_engine.run_combat(
-                team0,
-                team1,
-                seed=seed,
-            )
-            w = result.get("winner", 1)
-            if w == 0:
-                wins += 1
-            winners.append(int(w))
-            survivors.append(int(result.get("team1_survivors", 0) or 0))
-        return {"wins": wins, "winners": winners, "team1_survivors": survivors, "n": len(seeds)}
-
     def create_unit(self, api_name, star_level, position, team, items=None):
         """Create a unit via the Python engine."""
         return self.python_engine.create_unit(api_name, star_level, position, team, items)

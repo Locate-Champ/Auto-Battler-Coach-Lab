@@ -97,8 +97,6 @@ def _cfg_for_position_regression_gate(stage_number: int) -> CoachConfig:
 
 def _state_for_items_regression_gate() -> GameState:
     # A small, deterministic matchup where a slam should clearly swing the fight.
-    # Calibrated for Rust engine: 1★ pair loses to 2★+1★ pair without items,
-    # but GiantSlayer slam on Draven flips the matchup to 100% win.
     player = PlayerState(level=6, hp=78, gold=22, win_streak=0, loss_streak=2)
     board = (
         UnitState(
@@ -124,17 +122,9 @@ def _state_for_items_regression_gate() -> GameState:
             UnitState(
                 instance_id="o0",
                 champion_id="TFT16_Sion",
-                star_level=2,
+                star_level=3,
                 items=(),
                 position=(3, 3),
-                location="board",
-            ),
-            UnitState(
-                instance_id="o1",
-                champion_id="TFT16_Leona",
-                star_level=1,
-                items=(),
-                position=(3, 0),
                 location="board",
             ),
         ),
@@ -150,8 +140,6 @@ def _state_for_items_regression_gate() -> GameState:
 
 def _state_for_shop_regression_gate() -> GameState:
     # Buying the 3rd copy should upgrade Ekko -> 2★ and swing the fight.
-    # Calibrated for Rust engine: 1★ Ekko+Leona lose to 1★ Sion+Leona pair,
-    # but buying Ekko → 2★ upgrade flips the matchup (delta ≈ 0.85).
     player = PlayerState(level=6, hp=64, gold=10, win_streak=0, loss_streak=0)
     board = (
         UnitState(
@@ -178,17 +166,9 @@ def _state_for_shop_regression_gate() -> GameState:
             UnitState(
                 instance_id="o0",
                 champion_id="TFT16_Sion",
-                star_level=1,
+                star_level=3,
                 items=(),
                 position=(3, 3),
-                location="board",
-            ),
-            UnitState(
-                instance_id="o1",
-                champion_id="TFT16_Leona",
-                star_level=1,
-                items=(),
-                position=(3, 0),
                 location="board",
             ),
         ),
@@ -378,7 +358,7 @@ def test_coach_regression_gate_positioning_improves_tempo() -> None:
     assert top.action.action_id != "position:hold"
     assert top.score.tempo.opponent_policy == "next_opponent"
     assert top.score.tempo.n_sims > 0
-    assert top.score.tempo.win_prob_delta >= 0.10
+    assert top.score.tempo.win_prob_delta >= 0.80
 
 
 def test_monte_carlo_upgrade_lookahead_returns_prob_and_targets() -> None:
