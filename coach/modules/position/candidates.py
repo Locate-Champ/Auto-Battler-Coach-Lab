@@ -7,7 +7,6 @@ from coach.rules import is_valid_board_pos
 from coach.scoring.features import detect_carry
 from coach.state import GameState, UnitState
 
-
 _BACKLINE_PREF = [(0, 0), (0, 3), (0, 6), (1, 1), (1, 5), (1, 3), (0, 2), (0, 4)]
 _FRONTLINE_PREF = [(3, 3), (3, 2), (3, 4), (2, 3), (3, 1), (3, 5), (2, 2), (2, 4), (2, 1), (2, 5)]
 
@@ -180,7 +179,9 @@ def generate_candidates(state: GameState) -> list[ActionPlan]:
             _add(f"{name} (swap frontline)", _canonical(swapped))
 
     for name, pos, front_pref, back_pref in templates:
-        base = _build_assignment(units, carry_pos=pos, frontline_pref=front_pref, backline_pref=back_pref)
+        base = _build_assignment(
+            units, carry_pos=pos, frontline_pref=front_pref, backline_pref=back_pref
+        )
         _add(name, base)
         _perturb(name, base)
 

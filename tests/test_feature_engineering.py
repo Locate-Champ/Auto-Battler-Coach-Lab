@@ -20,7 +20,11 @@ def _sample_row() -> dict:
             {
                 "champion_id": "TFT16_Fiddlesticks",
                 "star_level": 2,
-                "items": ["TFT_Item_BlueBuff", "TFT_Item_Morellonomicon", "TFT_Item_JeweledGauntlet"],
+                "items": [
+                    "TFT_Item_BlueBuff",
+                    "TFT_Item_Morellonomicon",
+                    "TFT_Item_JeweledGauntlet",
+                ],
                 "position": 17,
             },
             {

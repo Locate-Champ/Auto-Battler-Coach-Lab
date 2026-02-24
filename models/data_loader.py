@@ -12,8 +12,9 @@ from typing import Any, Dict, Iterator, List, Optional, Sequence, Tuple
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-from .feature_engineering import FeatureConfig, TFTFeatureEngineer
 from snapshot_schema import normalize_jsonish_fields
+
+from .feature_engineering import FeatureConfig, TFTFeatureEngineer
 
 try:  # pragma: no cover - optional dependency
     import pyarrow.parquet as pq
@@ -47,6 +48,7 @@ def _transform_arrow_file(args: Tuple[str, int]) -> np.ndarray:
     path_str, batch_size = args
     assert _worker_fe is not None
     import pyarrow.parquet as _pq
+
     chunks: List[np.ndarray] = []
     pf = _pq.ParquetFile(path_str)
     for batch in pf.iter_batches(batch_size=batch_size):
@@ -310,8 +312,10 @@ class DataLoader:
 
         if workers > 1 and len(rows) >= 500:
             chunk_size = max(1, len(rows) // (workers * 4))
-            row_chunks = [rows[i:i + chunk_size] for i in range(0, len(rows), chunk_size)]
-            print(f"[features] vectorizing {len(rows)} rows with {workers} workers ({len(row_chunks)} chunks)...")
+            row_chunks = [rows[i : i + chunk_size] for i in range(0, len(rows), chunk_size)]
+            print(
+                f"[features] vectorizing {len(rows)} rows with {workers} workers ({len(row_chunks)} chunks)..."
+            )
             pool = self._ensure_pool()
             chunk_results = pool.map(_transform_chunk, row_chunks)
             return np.vstack(chunk_results)
@@ -345,11 +349,7 @@ class DataLoader:
 
         # Auto-tune: estimate total rows and decide single vs parallel
         total_rows = sum(int(pq.ParquetFile(p).metadata.num_rows) for p in parquet_files)
-        use_parallel = (
-            workers > 1
-            and len(parquet_files) >= 4
-            and total_rows >= 300_000
-        )
+        use_parallel = workers > 1 and len(parquet_files) >= 4 and total_rows >= 300_000
 
         if not use_parallel:
             chunks: List[np.ndarray] = []
@@ -366,7 +366,9 @@ class DataLoader:
         effective_workers = min(workers, len(parquet_files))
         pool = self._ensure_pool()
         args = [(str(p), batch_size) for p in parquet_files]
-        print(f"[features] Arrow-parallel: {len(parquet_files)} files, {total_rows} rows, {effective_workers} workers...")
+        print(
+            f"[features] Arrow-parallel: {len(parquet_files)} files, {total_rows} rows, {effective_workers} workers..."
+        )
         results = pool.map(_transform_arrow_file, args)
         non_empty = [r for r in results if r.shape[0] > 0]
         if not non_empty:
@@ -402,7 +404,11 @@ class DataLoader:
                 continue
 
             combat_results = batch.column("combat_result").to_pylist()
-            game_ids_raw = batch.column("game_id").to_pylist() if "game_id" in schema_names else [None] * batch.num_rows
+            game_ids_raw = (
+                batch.column("game_id").to_pylist()
+                if "game_id" in schema_names
+                else [None] * batch.num_rows
+            )
 
             # Filter valid fight rows (combat_result 0 or 1, not 2/draw)
             valid_indices: List[int] = []
@@ -437,8 +443,7 @@ class DataLoader:
 
         if not feature_chunks:
             raise ValueError(
-                "No fight examples found. "
-                "Need combat_result=0/1 (draw rows are ignored)."
+                "No fight examples found. Need combat_result=0/1 (draw rows are ignored)."
             )
 
         X_all = np.vstack(feature_chunks)
@@ -520,10 +525,16 @@ class DataLoader:
         y_test: np.ndarray,
         feature_count: int,
     ) -> None:
-        print(f"[{task_name}] rows={total_rows} train={train_rows} test={test_rows} features={feature_count}")
+        print(
+            f"[{task_name}] rows={total_rows} train={train_rows} test={test_rows} features={feature_count}"
+        )
         if y_train.size == 0 and y_test.size == 0:
             return
-        y_all = np.concatenate([y_train, y_test]) if y_train.size and y_test.size else (y_train if y_train.size else y_test)
+        y_all = (
+            np.concatenate([y_train, y_test])
+            if y_train.size and y_test.size
+            else (y_train if y_train.size else y_test)
+        )
         unique, counts = np.unique(y_all, return_counts=True)
         balance = ", ".join(f"{int(value)}:{int(count)}" for value, count in zip(unique, counts))
         print(f"[{task_name}] class/target balance -> {balance}")
@@ -598,7 +609,9 @@ class DataLoader:
             test_rows=X_test.shape[0],
             y_train=y_train,
             y_test=y_test,
-            feature_count=X_train.shape[1] if X_train.size else len(self.feature_engineer.feature_names()),
+            feature_count=X_train.shape[1]
+            if X_train.size
+            else len(self.feature_engineer.feature_names()),
         )
         print("[fight] labeling=current_round_combat_result")
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
@@ -653,7 +666,11 @@ class DataLoader:
             seed=seed,
             row_batch_size=row_batch_size,
         )
-        filtered_rows = [row for row in rows if row.get("placement") is not None and int(row.get("placement", 0)) > 0]
+        filtered_rows = [
+            row
+            for row in rows
+            if row.get("placement") is not None and int(row.get("placement", 0)) > 0
+        ]
         if not filtered_rows:
             raise ValueError("No placement labels found in the provided dataset.")
 
@@ -674,7 +691,9 @@ class DataLoader:
             test_rows=X_test.shape[0],
             y_train=y_train,
             y_test=y_test,
-            feature_count=X_train.shape[1] if X_train.size else len(self.feature_engineer.feature_names()),
+            feature_count=X_train.shape[1]
+            if X_train.size
+            else len(self.feature_engineer.feature_names()),
         )
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
 
@@ -693,11 +712,17 @@ class DataLoader:
             seed=seed,
             row_batch_size=row_batch_size,
         )
-        filtered_rows = [row for row in rows if row.get("placement") is not None and int(row.get("placement", 0)) > 0]
+        filtered_rows = [
+            row
+            for row in rows
+            if row.get("placement") is not None and int(row.get("placement", 0)) > 0
+        ]
         if not filtered_rows:
             raise ValueError("No placement labels found in the provided dataset.")
 
-        labels = np.asarray([1 if int(row["placement"]) <= 4 else 0 for row in filtered_rows], dtype=np.int64)
+        labels = np.asarray(
+            [1 if int(row["placement"]) <= 4 else 0 for row in filtered_rows], dtype=np.int64
+        )
         train_rows, test_rows, y_train, y_test = self._split_by_game_id(
             filtered_rows,
             labels,
@@ -714,6 +739,8 @@ class DataLoader:
             test_rows=X_test.shape[0],
             y_train=y_train,
             y_test=y_test,
-            feature_count=X_train.shape[1] if X_train.size else len(self.feature_engineer.feature_names()),
+            feature_count=X_train.shape[1]
+            if X_train.size
+            else len(self.feature_engineer.feature_names()),
         )
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)

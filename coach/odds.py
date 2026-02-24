@@ -3,9 +3,8 @@ from __future__ import annotations
 import random
 from typing import Sequence
 
-from coach.scoring.features import champion_cost, copy_counts, champions_by_cost, lobby_copy_counts
+from coach.scoring.features import champion_cost, champions_by_cost, copy_counts, lobby_copy_counts
 from coach.state import GameState
-
 
 # Shop odds by player level (percentages for each cost tier)
 # Format: level -> [1-cost%, 2-cost%, 3-cost%, 4-cost%, 5-cost%]

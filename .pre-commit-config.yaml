@@ -1,0 +1,45 @@
+# Pre-commit hooks — run `pre-commit install` to activate
+# https://pre-commit.com/
+
+repos:
+  # Ruff: lint + format (replaces flake8 + black + isort)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.7
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+
+  # Secret detection
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: |
+          (?x)^(
+            .*\.lock$|
+            .*package-lock\.json$|
+            .*Cargo\.lock$
+          )$
+
+  # AGENTS.md / CLAUDE.md sync check
+  - repo: local
+    hooks:
+      - id: agents-claude-sync
+        name: AGENTS.md / CLAUDE.md sync
+        entry: python scripts/sync_agents_to_claude.py --check
+        language: system
+        files: ^(AGENTS\.md|CLAUDE\.md)$
+        pass_filenames: false
+
+  # Misc hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=500']

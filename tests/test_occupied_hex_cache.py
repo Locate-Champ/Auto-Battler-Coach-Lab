@@ -25,4 +25,3 @@ def test_occupied_hexes_cache_invalidated_on_dash() -> None:
     occupied_after = engine.get_occupied_hexes()
     assert fizz.position in occupied_after
     assert old_pos not in occupied_after
-

@@ -6,22 +6,22 @@ Usage:
     placements = game.play()
 """
 
+from .actions import execute_action, get_legal_actions, random_agent_actions
+from .champion_pool import ChampionPool
 from .game import TFTGame
 from .player import Player
-from .champion_pool import ChampionPool
-from .types import Action, ActionType, GamePhase, ChampionInstance, RoundResult
-from .actions import get_legal_actions, execute_action, random_agent_actions
+from .types import Action, ActionType, ChampionInstance, GamePhase, RoundResult
 
 __all__ = [
-    'TFTGame',
-    'Player',
-    'ChampionPool',
-    'Action',
-    'ActionType',
-    'GamePhase',
-    'ChampionInstance',
-    'RoundResult',
-    'get_legal_actions',
-    'execute_action',
-    'random_agent_actions',
+    "TFTGame",
+    "Player",
+    "ChampionPool",
+    "Action",
+    "ActionType",
+    "GamePhase",
+    "ChampionInstance",
+    "RoundResult",
+    "get_legal_actions",
+    "execute_action",
+    "random_agent_actions",
 ]

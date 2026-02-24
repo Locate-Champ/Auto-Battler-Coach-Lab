@@ -4,15 +4,16 @@ from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path
 import random
+from pathlib import Path
 from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
 
 import torch
 from torch.utils.data import Dataset, IterableDataset, get_worker_info
 
-from .feature_engineering import TFTFeatureEngineer
 from snapshot_schema import decode_jsonish, normalize_jsonish_fields
+
+from .feature_engineering import TFTFeatureEngineer
 
 try:  # pragma: no cover - optional dependency
     import pyarrow.parquet as pq
@@ -307,9 +308,13 @@ class TFTDataset(Dataset[Dict[str, torch.Tensor]]):
         placement = max(1, min(8, placement)) - 1
         return {
             "fight_result": torch.tensor([fight_result], dtype=torch.float32),
-            "damage_dealt": torch.tensor([float(row.get("damage_dealt", row.get("damage", 0.0)) or 0.0)], dtype=torch.float32),
+            "damage_dealt": torch.tensor(
+                [float(row.get("damage_dealt", row.get("damage", 0.0)) or 0.0)], dtype=torch.float32
+            ),
             "survivors": torch.tensor([float(row.get("survivors", 0) or 0)], dtype=torch.float32),
-            "combat_time": torch.tensor([float(row.get("combat_time", 0.0) or 0.0)], dtype=torch.float32),
+            "combat_time": torch.tensor(
+                [float(row.get("combat_time", 0.0) or 0.0)], dtype=torch.float32
+            ),
             "placement": torch.tensor([placement], dtype=torch.long),
         }
 

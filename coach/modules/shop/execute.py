@@ -2,11 +2,9 @@ from __future__ import annotations
 
 from dataclasses import replace
 
-from simulator.game.constants import BENCH_SIZE
-
 from coach.actions import ActionPlan, HoldDetails, ShopBuyDetails
-from coach.scoring.features import champion_cost
 from coach.state import GameState, PlayerState, UnitState
+from simulator.game.constants import BENCH_SIZE
 
 
 def execute(state: GameState, action: ActionPlan) -> GameState:
@@ -47,7 +45,11 @@ def execute(state: GameState, action: ActionPlan) -> GameState:
     bench = list(state.bench)
     items = list(state.items)
 
-    bench.append(UnitState(instance_id=f"buy_{cid}_{len(bench)}", champion_id=cid, star_level=1, location="bench"))
+    bench.append(
+        UnitState(
+            instance_id=f"buy_{cid}_{len(bench)}", champion_id=cid, star_level=1, location="bench"
+        )
+    )
 
     def _remove_unit(unit_id: str) -> UnitState | None:
         for i, u in enumerate(board):
@@ -59,7 +61,9 @@ def execute(state: GameState, action: ActionPlan) -> GameState:
         return None
 
     def _combine(star_level: int) -> bool:
-        candidates: list[UnitState] = [u for u in board if u.champion_id == cid and u.star_level == star_level]
+        candidates: list[UnitState] = [
+            u for u in board if u.champion_id == cid and u.star_level == star_level
+        ]
         candidates.extend(u for u in bench if u.champion_id == cid and u.star_level == star_level)
         if len(candidates) < 3:
             return False

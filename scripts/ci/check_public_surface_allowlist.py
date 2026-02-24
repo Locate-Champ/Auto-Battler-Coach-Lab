@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import subprocess
-import sys
 from collections.abc import Iterable
 
 ROOT_ALLOWED_FILES = {
@@ -10,6 +9,8 @@ ROOT_ALLOWED_FILES = {
     ".env.example",
     ".gitignore",
     ".ntfy-topic.example",
+    ".pre-commit-config.yaml",
+    ".secrets.baseline",
     "AGENTS.md",
     "CLAUDE.md",
     "Dockerfile.simulator",
@@ -21,9 +22,13 @@ ROOT_ALLOWED_FILES = {
     "config.py",
     "package.json",
     "pytest.ini",
+    "requirements-ml.lock",
     "requirements-ml.txt",
+    "requirements-simulator.lock",
     "requirements-simulator.txt",
+    "requirements.lock",
     "requirements.txt",
+    "ruff.toml",
     "sitecustomize.py",
     "snapshot_schema.py",
     "start.sh",

@@ -57,6 +57,5 @@ def test_validate_required_simulator_files_missing_required_key(
 
     problems = validate_reference_data.validate_required_simulator_files()
     assert any(
-        "augments_set16.json entry index 0 missing required keys" in issue
-        for issue in problems
+        "augments_set16.json entry index 0 missing required keys" in issue for issue in problems
     )

@@ -6,22 +6,28 @@ Provides legal action enumeration and execution for RL agents.
 from __future__ import annotations
 
 import random
-from typing import List, TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
-from .types import Action, ActionType
 from .constants import (
-    BENCH_SIZE, BOARD_ROWS, BOARD_COLS, SHOP_SIZE,
-    REFRESH_COST, XP_COST, MAX_LEVEL, MAX_ITEMS_PER_UNIT,
+    BENCH_SIZE,
+    BOARD_COLS,
+    BOARD_ROWS,
+    MAX_ITEMS_PER_UNIT,
+    MAX_LEVEL,
     NAME_TO_COST,
+    REFRESH_COST,
+    SHOP_SIZE,
+    XP_COST,
 )
-from .shop import buy_from_shop, sell_unit, refresh_shop
+from .shop import buy_from_shop, refresh_shop, sell_unit
+from .types import Action, ActionType
 
 if TYPE_CHECKING:
-    from .player import Player
     from .champion_pool import ChampionPool
+    from .player import Player
 
 
-def get_legal_actions(player: 'Player', pool: 'ChampionPool') -> List[Action]:
+def get_legal_actions(player: "Player", pool: "ChampionPool") -> List[Action]:
     """Get all legal actions for a player in the current state.
 
     Returns a list of valid Action objects the player can take.
@@ -38,7 +44,7 @@ def get_legal_actions(player: 'Player', pool: 'ChampionPool') -> List[Action]:
             actions.append(Action.buy(slot))
 
     # Sell from board
-    for (row, col) in list(player.board.keys()):
+    for row, col in list(player.board.keys()):
         actions.append(Action.sell((row, col)))
 
     # Sell from bench
@@ -107,8 +113,7 @@ def get_legal_actions(player: 'Player', pool: 'ChampionPool') -> List[Action]:
     return actions
 
 
-def execute_action(action: Action, player: 'Player',
-                   pool: 'ChampionPool') -> bool:
+def execute_action(action: Action, player: "Player", pool: "ChampionPool") -> bool:
     """Execute an action for a player. Returns True if successful."""
 
     if action.action_type == ActionType.PASS:
@@ -121,9 +126,9 @@ def execute_action(action: Action, player: 'Player',
     elif action.action_type == ActionType.SELL:
         pos = action.args
         if len(pos) == 2:
-            return sell_unit(player, pool, 'board', pos)
+            return sell_unit(player, pool, "board", pos)
         else:
-            return sell_unit(player, pool, 'bench', pos[0])
+            return sell_unit(player, pool, "bench", pos[0])
 
     elif action.action_type == ActionType.MOVE:
         from_pos, to_pos = action.args
@@ -132,9 +137,7 @@ def execute_action(action: Action, player: 'Player',
             return player.bench_to_board(from_pos[0], to_pos[0], to_pos[1])
         else:
             # Board to board
-            return player.move_on_board(
-                from_pos[0], from_pos[1], to_pos[0], to_pos[1]
-            )
+            return player.move_on_board(from_pos[0], from_pos[1], to_pos[0], to_pos[1])
 
     elif action.action_type == ActionType.LEVEL:
         return player.buy_xp()
@@ -166,8 +169,9 @@ def execute_action(action: Action, player: 'Player',
     return False
 
 
-def random_agent_actions(player: 'Player', pool: 'ChampionPool',
-                         max_actions: int = 10) -> List[Action]:
+def random_agent_actions(
+    player: "Player", pool: "ChampionPool", max_actions: int = 10
+) -> List[Action]:
     """Generate random legal actions for testing (SLOW - enumerates all actions).
 
     Kept for compatibility and RL training. For batch simulation, use
@@ -223,18 +227,21 @@ _FAST_ACTION_TYPES = [
 _FAST_ACTION_WEIGHTS = [10, 8, 5, 3, 1, 1]
 
 
-def _try_buy(player: 'Player', pool: 'ChampionPool') -> bool:
+def _try_buy(player: "Player", pool: "ChampionPool") -> bool:
     """Try to buy a random affordable champion from the shop."""
-    slots = [i for i in range(SHOP_SIZE)
-             if player.shop[i] is not None
-             and player.gold >= NAME_TO_COST.get(player.shop[i], 1)
-             and player._find_empty_bench() is not None]
+    slots = [
+        i
+        for i in range(SHOP_SIZE)
+        if player.shop[i] is not None
+        and player.gold >= NAME_TO_COST.get(player.shop[i], 1)
+        and player._find_empty_bench() is not None
+    ]
     if not slots:
         return False
     return buy_from_shop(player, pool, random.choice(slots))
 
 
-def _try_equip(player: 'Player') -> bool:
+def _try_equip(player: "Player") -> bool:
     """Try to equip a random item onto a random champion."""
     if not player.item_bench:
         return False
@@ -242,22 +249,22 @@ def _try_equip(player: 'Player') -> bool:
     targets = []
     for pos, champ in player.board.items():
         if len(champ.items) < MAX_ITEMS_PER_UNIT:
-            targets.append(('board', pos))
+            targets.append(("board", pos))
     for idx in range(BENCH_SIZE):
         champ = player.bench[idx]
         if champ and len(champ.items) < MAX_ITEMS_PER_UNIT:
-            targets.append(('bench', idx))
+            targets.append(("bench", idx))
     if not targets:
         return False
     item_idx = random.randrange(len(player.item_bench))
     loc, target = random.choice(targets)
-    if loc == 'board':
+    if loc == "board":
         return player.equip_item(item_idx, target)
     else:
         return player.equip_item_bench(item_idx, target)
 
 
-def _try_move(player: 'Player') -> bool:
+def _try_move(player: "Player") -> bool:
     """Try a random move (bench→board or board→board reposition)."""
     # 70% chance bench→board, 30% board→board reposition
     if random.random() < 0.7:
@@ -285,17 +292,18 @@ def _try_move(player: 'Player') -> bool:
         return player.move_on_board(from_pos[0], from_pos[1], to_row, to_col)
 
 
-def _try_sell(player: 'Player', pool: 'ChampionPool') -> bool:
+def _try_sell(player: "Player", pool: "ChampionPool") -> bool:
     """Try to sell a random bench unit (prefer bench over board)."""
     bench_occupied = [i for i in range(BENCH_SIZE) if player.bench[i] is not None]
     if bench_occupied:
         idx = random.choice(bench_occupied)
-        return sell_unit(player, pool, 'bench', idx)
+        return sell_unit(player, pool, "bench", idx)
     return False
 
 
-def fast_random_agent(player: 'Player', pool: 'ChampionPool',
-                      max_actions: int = 10) -> List[Action]:
+def fast_random_agent(
+    player: "Player", pool: "ChampionPool", max_actions: int = 10
+) -> List[Action]:
     """Fast random agent that avoids full legal action enumeration.
 
     Instead of building the full O(board^2) action list, this agent:
@@ -339,7 +347,8 @@ def fast_random_agent(player: 'Player', pool: 'ChampionPool',
 
 # ── Heuristic Agents ────────────────────────────────────────────────────
 
-def _has_copy(player: 'Player', name: str) -> bool:
+
+def _has_copy(player: "Player", name: str) -> bool:
     """Check if the player has any copy of this champion (board or bench)."""
     for champ in player.board.values():
         if champ.name == name:
@@ -350,7 +359,7 @@ def _has_copy(player: 'Player', name: str) -> bool:
     return False
 
 
-def _equip_on_best_unit(player: 'Player') -> int:
+def _equip_on_best_unit(player: "Player") -> int:
     """Equip all items from item bench onto the highest-value board units.
 
     Prefers high-cost, high-star units. Returns number of items equipped.
@@ -375,8 +384,7 @@ def _equip_on_best_unit(player: 'Player') -> int:
     return equipped
 
 
-def econ_agent(player: 'Player', pool: 'ChampionPool',
-               max_actions: int = 10) -> List[Action]:
+def econ_agent(player: "Player", pool: "ChampionPool", max_actions: int = 10) -> List[Action]:
     """Economy agent: saves gold for interest, levels to 8, then rolls excess.
 
     Strategy:
@@ -436,8 +444,7 @@ def econ_agent(player: 'Player', pool: 'ChampionPool',
     return []
 
 
-def slam_agent(player: 'Player', pool: 'ChampionPool',
-               max_actions: int = 10) -> List[Action]:
+def slam_agent(player: "Player", pool: "ChampionPool", max_actions: int = 10) -> List[Action]:
     """Aggressive agent: equips items immediately, buys everything, levels fast.
 
     Strategy:
@@ -476,13 +483,12 @@ def slam_agent(player: 'Player', pool: 'ChampionPool',
                 buy_from_shop(player, pool, slot)
 
     # 5. Sell bench overflow (keep max 3 on bench)
-    bench_units = [(i, player.bench[i]) for i in range(BENCH_SIZE)
-                   if player.bench[i] is not None]
+    bench_units = [(i, player.bench[i]) for i in range(BENCH_SIZE) if player.bench[i] is not None]
     if len(bench_units) > 3:
         # Sort by cost ascending (sell cheapest first)
         bench_units.sort(key=lambda x: x[1].cost)
-        for idx, _ in bench_units[:len(bench_units) - 3]:
-            sell_unit(player, pool, 'bench', idx)
+        for idx, _ in bench_units[: len(bench_units) - 3]:
+            sell_unit(player, pool, "bench", idx)
 
     return []
 
@@ -490,9 +496,9 @@ def slam_agent(player: 'Player', pool: 'ChampionPool',
 # ── Mixed Lobby Agent ───────────────────────────────────────────────────
 
 AGENT_REGISTRY = {
-    'random': fast_random_agent,
-    'econ': econ_agent,
-    'slam': slam_agent,
+    "random": fast_random_agent,
+    "econ": econ_agent,
+    "slam": slam_agent,
 }
 
 
@@ -511,7 +517,7 @@ class MixedLobbyAgent:
 
     def __init__(self, mix: dict = None):
         if mix is None:
-            mix = {'random': 50, 'econ': 30, 'slam': 20}
+            mix = {"random": 50, "econ": 30, "slam": 20}
         self._names = list(mix.keys())
         self._weights = [mix[n] for n in self._names]
         self._player_agents = {}
@@ -523,7 +529,8 @@ class MixedLobbyAgent:
             name = random.choices(self._names, self._weights, k=1)[0]
             self._player_agents[pid] = AGENT_REGISTRY[name]
 
-    def __call__(self, player: 'Player', pool: 'ChampionPool',
-                 max_actions: int = 10) -> List[Action]:
+    def __call__(
+        self, player: "Player", pool: "ChampionPool", max_actions: int = 10
+    ) -> List[Action]:
         agent_fn = self._player_agents.get(player.player_id, fast_random_agent)
         return agent_fn(player, pool, max_actions)

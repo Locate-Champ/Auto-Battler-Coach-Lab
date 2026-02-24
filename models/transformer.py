@@ -56,7 +56,9 @@ class TFTTransformerV2(nn.Module):
             batch_first=True,
         )
         self.self_attention = nn.TransformerEncoder(encoder_layer, num_layers=2)
-        self.cross_attention = nn.MultiheadAttention(embed_dim=64, num_heads=4, dropout=0.1, batch_first=True)
+        self.cross_attention = nn.MultiheadAttention(
+            embed_dim=64, num_heads=4, dropout=0.1, batch_first=True
+        )
 
         self.player_pool = AttentionPooling(embed_dim=64)
         self.opponent_pool = AttentionPooling(embed_dim=64)
@@ -81,7 +83,9 @@ class TFTTransformerV2(nn.Module):
         self.placement_head = nn.Linear(64, 8)
         self.board_strength_head = nn.Linear(64, 1)
 
-    def _encode_side(self, batch: Dict[str, torch.Tensor], prefix: str) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    def _encode_side(
+        self, batch: Dict[str, torch.Tensor], prefix: str
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         return self.board_encoder(
             champion_ids=batch[f"{prefix}_champion_ids"],
             star_levels=batch[f"{prefix}_star_levels"],

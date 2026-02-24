@@ -103,9 +103,7 @@ def test_checkpoint_dir_prefers_coach_artifact_root(monkeypatch, tmp_path: Path)
     assert artifacts.checkpoint_dir() == coach_root / "checkpoints"
 
 
-def test_checkpoint_dir_uses_legacy_artifact_root_fallback(
-    monkeypatch, tmp_path: Path
-) -> None:
+def test_checkpoint_dir_uses_legacy_artifact_root_fallback(monkeypatch, tmp_path: Path) -> None:
     _clear_env(monkeypatch)
     root = tmp_path / "legacy-root"
     monkeypatch.setenv("TFT_ARTIFACT_ROOT", str(root))

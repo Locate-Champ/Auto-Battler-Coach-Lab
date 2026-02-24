@@ -6,14 +6,13 @@ from pathlib import Path
 
 from coach.actions import DecisionType, ItemSlamDetails, ShopBuyDetails
 from coach.coach import Coach
-from coach.modules.shop.candidates import generate_candidates as shop_candidates
-from coach.modules.shop.execute import execute as execute_shop_action
 from coach.modules.items.candidates import generate_candidates as item_candidates
 from coach.modules.items.execute import execute as execute_item_action
-from coach.offline.eval_coach import _compare_reports, _iter_eval_set_states
+from coach.modules.shop.candidates import generate_candidates as shop_candidates
+from coach.modules.shop.execute import execute as execute_shop_action
 from coach.odds import estimate_upgrade_hit_prob
-from coach.state import GameState, OpponentState, PlayerState, UnitState
-from coach.state import ShopUnit
+from coach.offline.eval_coach import _compare_reports, _iter_eval_set_states
+from coach.state import GameState, OpponentState, PlayerState, ShopUnit, UnitState
 from coach.weights import CoachConfig, weights_for_stage
 
 
@@ -257,7 +256,9 @@ def _state_for_econ_regression_gate() -> GameState:
 def test_item_slam_generation_and_execute_consumes_components() -> None:
     state = _state_for_items()
     actions = item_candidates(state)
-    slam = next((a for a in actions if isinstance(getattr(a, "details", None), ItemSlamDetails)), None)
+    slam = next(
+        (a for a in actions if isinstance(getattr(a, "details", None), ItemSlamDetails)), None
+    )
     assert slam is not None
 
     next_state = execute_item_action(state, slam)
@@ -316,7 +317,15 @@ def test_shop_buy_action_spends_gold_and_adds_unit() -> None:
     )
 
     actions = shop_candidates(state)
-    buy = next((a for a in actions if isinstance(getattr(a, "details", None), ShopBuyDetails) and a.details.champion_id == "TFT16_Ekko"), None)
+    buy = next(
+        (
+            a
+            for a in actions
+            if isinstance(getattr(a, "details", None), ShopBuyDetails)
+            and a.details.champion_id == "TFT16_Ekko"
+        ),
+        None,
+    )
     assert buy is not None
 
     next_state = execute_shop_action(state, buy)
@@ -367,7 +376,9 @@ def test_monte_carlo_upgrade_lookahead_returns_prob_and_targets() -> None:
         opponents=(),
     )
 
-    prob_any, per_target, targets = estimate_upgrade_hit_prob(state, level=1, rolls=2, seed=1, num_trials=50)
+    prob_any, per_target, targets = estimate_upgrade_hit_prob(
+        state, level=1, rolls=2, seed=1, num_trials=50
+    )
     assert 0.0 <= prob_any <= 1.0
     assert "TFT16_Ashe" in targets
     assert "TFT16_Ashe" in per_target

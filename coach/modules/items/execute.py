@@ -15,7 +15,9 @@ def _remove_once(items: list[str], value: str) -> bool:
         return False
 
 
-def _replace_unit(units: tuple[UnitState, ...], unit_id: str, new_unit: UnitState) -> tuple[UnitState, ...]:
+def _replace_unit(
+    units: tuple[UnitState, ...], unit_id: str, new_unit: UnitState
+) -> tuple[UnitState, ...]:
     out = []
     replaced = False
     for u in units:
@@ -36,7 +38,9 @@ def execute(state: GameState, action: ActionPlan) -> GameState:
         if not _remove_once(items, action.details.item):
             return state
 
-        target = next((u for u in state.board if u.instance_id == action.details.target_unit_id), None)
+        target = next(
+            (u for u in state.board if u.instance_id == action.details.target_unit_id), None
+        )
         if target is None:
             return state
         if not can_equip_more_items(len(target.items)):
@@ -55,7 +59,9 @@ def execute(state: GameState, action: ActionPlan) -> GameState:
             items.append(action.details.component_a)
             return state
 
-        target = next((u for u in state.board if u.instance_id == action.details.target_unit_id), None)
+        target = next(
+            (u for u in state.board if u.instance_id == action.details.target_unit_id), None
+        )
         if target is None:
             return state
         if not can_equip_more_items(len(target.items)):

@@ -1,8 +1,8 @@
 """Configuration for Auto-Battler Coach."""
 
 import os
-from pathlib import Path
 from dataclasses import dataclass
+from pathlib import Path
 
 
 @dataclass
@@ -10,9 +10,7 @@ class Config:
     """Application configuration."""
 
     # MetaTFT log directory (Windows path)
-    metatft_log_dir: Path = Path(
-        os.path.expandvars(r"%LOCALAPPDATA%\Overwolf\Log\Apps\MetaTFT")
-    )
+    metatft_log_dir: Path = Path(os.path.expandvars(r"%LOCALAPPDATA%\Overwolf\Log\Apps\MetaTFT"))
 
     # Key log files to watch
     log_files: list[str] = None

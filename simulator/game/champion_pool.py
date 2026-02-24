@@ -5,11 +5,14 @@ one copy is removed. When sold or a player is eliminated, copies return.
 """
 
 import random
-from typing import List, Optional, Dict, Iterable, Set
+from typing import Dict, Iterable, List, Optional, Set
 
 from .constants import (
-    CHAMPIONS_BY_COST, POOL_SIZES, LEVEL_ODDS, SHOP_SIZE,
+    CHAMPIONS_BY_COST,
+    LEVEL_ODDS,
     NAME_TO_COST,
+    POOL_SIZES,
+    SHOP_SIZE,
 )
 
 

@@ -64,7 +64,14 @@ class ShopBuyDetails:
     cost: int
 
 
-ActionDetails = HoldDetails | ItemSlamDetails | ItemEquipDetails | PositioningDetails | EconDetails | ShopBuyDetails
+ActionDetails = (
+    HoldDetails
+    | ItemSlamDetails
+    | ItemEquipDetails
+    | PositioningDetails
+    | EconDetails
+    | ShopBuyDetails
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -75,4 +82,3 @@ class ActionPlan:
     details: ActionDetails
     constraints: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
-

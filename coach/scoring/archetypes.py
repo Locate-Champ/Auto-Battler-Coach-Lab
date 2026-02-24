@@ -131,7 +131,9 @@ class ArchetypeLibrary:
                             items = b.get("items", []) or []
                             if not isinstance(items, list):
                                 items = []
-                            items_out = tuple(str(x) for x in items if isinstance(x, str) and x.strip())
+                            items_out = tuple(
+                                str(x) for x in items if isinstance(x, str) and x.strip()
+                            )
                             if not items_out:
                                 continue
                             builds.append(
@@ -151,8 +153,12 @@ class ArchetypeLibrary:
                             units=tuple(a.get("units", []) or []),
                             traits=tuple(a.get("traits", []) or []),
                             builds=tuple(builds),
-                            top4_rate=float(stats.get("top4_rate")) if stats.get("top4_rate") is not None else None,
-                            avg_placement=float(stats.get("avg_placement")) if stats.get("avg_placement") is not None else None,
+                            top4_rate=float(stats.get("top4_rate"))
+                            if stats.get("top4_rate") is not None
+                            else None,
+                            avg_placement=float(stats.get("avg_placement"))
+                            if stats.get("avg_placement") is not None
+                            else None,
                         )
                     )
             except Exception:
@@ -166,9 +172,7 @@ class ArchetypeLibrary:
                 for comp in data.get("comps", []) or []:
                     units = tuple(comp.get("units", []) or [])
                     token_to_api = {
-                        _token_from_api_name(u): u
-                        for u in units
-                        if isinstance(u, str) and u
+                        _token_from_api_name(u): u for u in units if isinstance(u, str) and u
                     }
                     traits = tuple(
                         t.get("name")
@@ -184,10 +188,14 @@ class ArchetypeLibrary:
                         if isinstance(unit_token, str) and unit_token:
                             unit_id = token_to_api.get(unit_token)
                             if unit_id is None:
-                                unit_id = unit_token if unit_token.startswith("TFT") else f"TFT16_{unit_token}"
+                                unit_id = (
+                                    unit_token
+                                    if unit_token.startswith("TFT")
+                                    else f"TFT16_{unit_token}"
+                                )
 
                         items_out: list[str] = []
-                        for it in (b.get("items", []) or []):
+                        for it in b.get("items", []) or []:
                             if isinstance(it, str) and it.strip():
                                 items_out.append(_to_item_id(it))
 
@@ -209,8 +217,12 @@ class ArchetypeLibrary:
                             units=units,
                             traits=traits,
                             builds=tuple(builds),
-                            top4_rate=float(comp.get("top4_rate")) if comp.get("top4_rate") is not None else None,
-                            avg_placement=float(comp.get("avg_placement")) if comp.get("avg_placement") is not None else None,
+                            top4_rate=float(comp.get("top4_rate"))
+                            if comp.get("top4_rate") is not None
+                            else None,
+                            avg_placement=float(comp.get("avg_placement"))
+                            if comp.get("avg_placement") is not None
+                            else None,
                         )
                     )
             except Exception:
@@ -223,6 +235,7 @@ class ArchetypeLibrary:
             if perf_path.exists():
                 data = json.loads(perf_path.read_text(encoding="utf-8"))
                 for comp in data.get("comp_archetypes", []) or []:
+
                     def _to_api_like(name: str) -> str:
                         # Best-effort conversion for fallback artifacts.
                         cleaned = name.replace("'", "").replace(" ", "").replace("&", "")

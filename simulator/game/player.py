@@ -4,32 +4,45 @@ from __future__ import annotations
 
 import math
 import random
-from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, Tuple
 
-from .types import ChampionInstance
 from .constants import (
-    STARTING_HP, STARTING_GOLD, STARTING_LEVEL, MAX_LEVEL,
-    BENCH_SIZE, BOARD_ROWS, BOARD_COLS, MAX_ITEMS_PER_UNIT,
-    ITEM_BENCH_SIZE, ITEM_COMPONENTS_LIST,
-    BASE_INCOME, MAX_INTEREST, PASSIVE_XP_PER_ROUND,
-    REFRESH_COST, XP_COST, XP_PER_BUY,
-    LEVEL_XP_REQUIRED, STARTING_ROUND_GOLD,
-    SELL_VALUES, NAME_TO_API, NAME_TO_COST,
-    CHAMPION_TRAITS, get_streak_gold,
-    is_component, combine_items,
+    BASE_INCOME,
+    BENCH_SIZE,
+    BOARD_COLS,
+    BOARD_ROWS,
+    CHAMPION_TRAITS,
+    ITEM_BENCH_SIZE,
+    ITEM_COMPONENTS_LIST,
+    LEVEL_XP_REQUIRED,
+    MAX_INTEREST,
+    MAX_ITEMS_PER_UNIT,
+    MAX_LEVEL,
+    NAME_TO_API,
+    NAME_TO_COST,
+    PASSIVE_XP_PER_ROUND,
+    STARTING_GOLD,
+    STARTING_HP,
+    STARTING_LEVEL,
+    STARTING_ROUND_GOLD,
+    XP_COST,
+    XP_PER_BUY,
+    combine_items,
+    get_streak_gold,
+    is_component,
 )
+from .types import ChampionInstance
 from .unlocks import UnlockProgress
 
 if TYPE_CHECKING:
-    from simulator.core.combat_engine import CombatEngine
     from .champion_pool import ChampionPool
 
 try:
     from simulator.data.set16_items import (
         ARTIFACT_ITEMS,
         BASE_COMPLETED,
-        BLACKSMITH_CONFIG,
         BILGEWATER_STORE,
+        BLACKSMITH_CONFIG,
     )
 except ImportError:
     BASE_COMPLETED = ()
@@ -37,9 +50,14 @@ except ImportError:
     BLACKSMITH_CONFIG = {}
     BILGEWATER_STORE = {}
 
-_THIEFS_EXCLUDED = frozenset({
-    'ThiefsGloves', 'TacticiansCrown', 'TacticiansCape', 'TacticiansShield',
-})
+_THIEFS_EXCLUDED = frozenset(
+    {
+        "ThiefsGloves",
+        "TacticiansCrown",
+        "TacticiansCape",
+        "TacticiansShield",
+    }
+)
 _THIEFS_POOL = tuple(name for name in BASE_COMPLETED if name not in _THIEFS_EXCLUDED)
 
 _BILGEWATER_SERPENTS_PER_ROUND = {
@@ -80,9 +98,7 @@ class Player:
         # Board: dict mapping (row, col) → ChampionInstance
         self.board: Dict[Tuple[int, int], ChampionInstance] = {}
         self._empty_positions: set[Tuple[int, int]] = {
-            (row, col)
-            for row in range(BOARD_ROWS)
-            for col in range(BOARD_COLS)
+            (row, col) for row in range(BOARD_ROWS) for col in range(BOARD_COLS)
         }
         self._traits_cache: Optional[Dict[str, int]] = None
         # Bench: list of BENCH_SIZE slots (None = empty)
@@ -120,7 +136,9 @@ class Player:
         self.bilgewater_stat_purchases: Dict[int, int] = {}
         self.blacksmith_progress: Dict[str, int] = {}  # instance_id -> rounds progressed
         self.blacksmith_artifacts: Dict[str, List[str]] = {}  # instance_id -> crafted artifacts
-        self.augment_permanent_bonuses: Dict[str, Dict[str, float]] = {}  # instance_id -> bonus_name -> value
+        self.augment_permanent_bonuses: Dict[
+            str, Dict[str, float]
+        ] = {}  # instance_id -> bonus_name -> value
         self.ixtal_sunshards: int = 0
         self.ixtal_loot_purchases: int = 0
         self.ixtal_active_quest: Optional[str] = None
@@ -203,7 +221,9 @@ class Player:
             self._unlock_manager.record_bilgewater_serpents_spent(self, amount)
         return True
 
-    def get_augment_permanent_bonus(self, instance_id: str, bonus_name: str, default: float = 0.0) -> float:
+    def get_augment_permanent_bonus(
+        self, instance_id: str, bonus_name: str, default: float = 0.0
+    ) -> float:
         bonuses = self.augment_permanent_bonuses.get(instance_id)
         if bonuses is None:
             return default
@@ -214,8 +234,8 @@ class Player:
         bonuses[bonus_name] = float(value)
 
     def _augment_bonus_stat_map(self, engine: Any) -> Dict[str, str]:
-        augment_manager = getattr(engine, 'augment_manager', None)
-        effect_map = getattr(augment_manager, 'PERSISTENT_EFFECT_STAT_MAP', {})
+        augment_manager = getattr(engine, "augment_manager", None)
+        effect_map = getattr(augment_manager, "PERSISTENT_EFFECT_STAT_MAP", {})
         bonus_map: Dict[str, str] = {}
         if not isinstance(effect_map, dict):
             return bonus_map
@@ -248,7 +268,7 @@ class Player:
 
     def award_bilgewater_round_serpents(self) -> int:
         traits = self.get_active_traits()
-        count = int(traits.get('bilgewater', 0) or 0)
+        count = int(traits.get("bilgewater", 0) or 0)
         if count < 3:
             return 0
 
@@ -265,7 +285,7 @@ class Player:
         self,
         *,
         max_purchases: int = 3,
-        pool: Optional['ChampionPool'] = None,
+        pool: Optional["ChampionPool"] = None,
     ) -> int:
         """Auto-spend available serpents on Bilgewater shop categories.
 
@@ -373,12 +393,14 @@ class Player:
         except (TypeError, ValueError):
             return None
 
-    def _resolve_bilgewater_offer(self, offer_key: str, *, pool: Optional['ChampionPool']) -> None:
+    def _resolve_bilgewater_offer(self, offer_key: str, *, pool: Optional["ChampionPool"]) -> None:
         if offer_key.startswith("tier") and offer_key.endswith("_stats"):
             digits = "".join(ch for ch in offer_key if ch.isdigit())
             if digits:
                 tier = int(digits[0])
-                self.bilgewater_stat_purchases[tier] = self.bilgewater_stat_purchases.get(tier, 0) + 1
+                self.bilgewater_stat_purchases[tier] = (
+                    self.bilgewater_stat_purchases.get(tier, 0) + 1
+                )
             return
 
         if offer_key in {"tier1_items", "tier2_items"}:
@@ -419,7 +441,7 @@ class Player:
             return True
         return self.add_item_to_bench(item_name)
 
-    def _grant_bilgewater_unit(self, unit_tier: int, *, pool: Optional['ChampionPool']) -> bool:
+    def _grant_bilgewater_unit(self, unit_tier: int, *, pool: Optional["ChampionPool"]) -> bool:
         champions_cfg = BILGEWATER_STORE.get("champions", {})
         if not isinstance(champions_cfg, dict):
             return False
@@ -445,7 +467,7 @@ class Player:
         target_name = names[(purchase_count - 1) % len(names)]
         return self._add_unit_copy_to_bench(target_name, pool=pool)
 
-    def _grant_bilgewater_lesser_dupe(self, *, pool: Optional['ChampionPool']) -> bool:
+    def _grant_bilgewater_lesser_dupe(self, *, pool: Optional["ChampionPool"]) -> bool:
         owned_units = [champ for champ in self.board.values()]
         for champ in self.bench:
             if champ is not None:
@@ -461,7 +483,7 @@ class Player:
                 return True
         return False
 
-    def _add_unit_copy_to_bench(self, unit_name: str, *, pool: Optional['ChampionPool']) -> bool:
+    def _add_unit_copy_to_bench(self, unit_name: str, *, pool: Optional["ChampionPool"]) -> bool:
         bench_idx = self._find_empty_bench()
         if bench_idx is None:
             return False
@@ -487,12 +509,18 @@ class Player:
     def _equip_item_to_bilgewater_unit(self, item_name: str) -> bool:
         candidates: List[ChampionInstance] = []
         for champ in self.board.values():
-            if "bilgewater" in CHAMPION_TRAITS.get(champ.name, []) and len(champ.items) < MAX_ITEMS_PER_UNIT:
+            if (
+                "bilgewater" in CHAMPION_TRAITS.get(champ.name, [])
+                and len(champ.items) < MAX_ITEMS_PER_UNIT
+            ):
                 candidates.append(champ)
         for champ in self.bench:
             if champ is None:
                 continue
-            if "bilgewater" in CHAMPION_TRAITS.get(champ.name, []) and len(champ.items) < MAX_ITEMS_PER_UNIT:
+            if (
+                "bilgewater" in CHAMPION_TRAITS.get(champ.name, [])
+                and len(champ.items) < MAX_ITEMS_PER_UNIT
+            ):
                 candidates.append(champ)
         if not candidates:
             return False
@@ -528,7 +556,7 @@ class Player:
     def auto_spend_ixtal_sunshards_for_loot(
         self,
         *,
-        pool: Optional['ChampionPool'] = None,
+        pool: Optional["ChampionPool"] = None,
         max_rolls: int = 1,
     ) -> int:
         """Spend accumulated Ixtal Sunshards on deterministic rotating loot."""
@@ -538,14 +566,16 @@ class Player:
         rolls = 0
         while rolls < max_rolls and self.ixtal_sunshards >= _IXTAL_SUNSHARDS_PER_LOOT:
             self.ixtal_sunshards -= _IXTAL_SUNSHARDS_PER_LOOT
-            reward_type = _IXTAL_LOOT_ROTATION[self.ixtal_loot_purchases % len(_IXTAL_LOOT_ROTATION)]
+            reward_type = _IXTAL_LOOT_ROTATION[
+                self.ixtal_loot_purchases % len(_IXTAL_LOOT_ROTATION)
+            ]
             self.ixtal_loot_purchases += 1
             rolls += 1
             self._grant_ixtal_loot_reward(reward_type, pool=pool)
 
         return rolls
 
-    def _grant_ixtal_loot_reward(self, reward_type: str, *, pool: Optional['ChampionPool']) -> None:
+    def _grant_ixtal_loot_reward(self, reward_type: str, *, pool: Optional["ChampionPool"]) -> None:
         if reward_type == "gold":
             gold_gain = _IXTAL_GOLD_REWARDS[self.ixtal_loot_purchases % len(_IXTAL_GOLD_REWARDS)]
             self.gold += int(gold_gain)
@@ -559,7 +589,8 @@ class Player:
 
         if reward_type == "champion":
             ixtal_units = sorted(
-                name for name, traits in CHAMPION_TRAITS.items()
+                name
+                for name, traits in CHAMPION_TRAITS.items()
                 if "ixtal" in traits and NAME_TO_COST.get(name, 0) <= 5
             )
             for name in ixtal_units:
@@ -575,14 +606,14 @@ class Player:
         if not ARTIFACT_ITEMS:
             return []
 
-        rounds_to_craft = int(BLACKSMITH_CONFIG.get('rounds_to_craft', 4) or 4)
+        rounds_to_craft = int(BLACKSMITH_CONFIG.get("rounds_to_craft", 4) or 4)
         if rounds_to_craft <= 0:
             rounds_to_craft = 4
 
         crafted: List[str] = []
         for champ in self.board.values():
             traits = CHAMPION_TRAITS.get(champ.name, [])
-            if 'blacksmith' not in traits:
+            if "blacksmith" not in traits:
                 continue
 
             iid = champ.instance_id
@@ -608,7 +639,7 @@ class Player:
             return self._max_units_cache
         bonus = 0
         # Tactician's Crown/Cape/Shield each grant +1 team size
-        tactician_items = {'TacticiansCrown', 'TacticiansCape', 'TacticiansShield'}
+        tactician_items = {"TacticiansCrown", "TacticiansCape", "TacticiansShield"}
         for item in self.item_bench:
             if item in tactician_items:
                 bonus += 1
@@ -680,7 +711,7 @@ class Player:
 
     # ── Shop / Buying ─────────────────────────────────────────────────────
 
-    def buy_champion(self, shop_slot: int, pool: 'ChampionPool') -> bool:
+    def buy_champion(self, shop_slot: int, pool: "ChampionPool") -> bool:
         """Buy a champion from the shop. Returns True if successful."""
         if shop_slot < 0 or shop_slot >= len(self.shop):
             return False
@@ -708,7 +739,7 @@ class Player:
         champ = ChampionInstance(
             instance_id=self._alloc_instance_id(),
             name=name,
-            api_name=NAME_TO_API.get(name, f'TFT16_{name.capitalize()}'),
+            api_name=NAME_TO_API.get(name, f"TFT16_{name.capitalize()}"),
             cost=cost,
             star_level=1,
         )
@@ -727,7 +758,7 @@ class Player:
 
     # ── Selling ───────────────────────────────────────────────────────────
 
-    def sell_from_board(self, row: int, col: int, pool: 'ChampionPool') -> bool:
+    def sell_from_board(self, row: int, col: int, pool: "ChampionPool") -> bool:
         """Sell a champion from the board. Returns True if successful."""
         pos = (row, col)
         champ = self._board_remove(pos)
@@ -736,7 +767,7 @@ class Player:
         self._complete_sell(champ, pool)
         return True
 
-    def sell_from_bench(self, bench_idx: int, pool: 'ChampionPool') -> bool:
+    def sell_from_bench(self, bench_idx: int, pool: "ChampionPool") -> bool:
         """Sell a champion from the bench. Returns True if successful."""
         if bench_idx < 0 or bench_idx >= BENCH_SIZE:
             return False
@@ -747,7 +778,7 @@ class Player:
         self._complete_sell(champ, pool)
         return True
 
-    def _complete_sell(self, champ: ChampionInstance, pool: 'ChampionPool'):
+    def _complete_sell(self, champ: ChampionInstance, pool: "ChampionPool"):
         """Handle gold refund and pool return for a sold champion."""
         self.gold += champ.sell_value
         # Return copies to pool (1-star=1, 2-star=3, 3-star=9)
@@ -901,8 +932,7 @@ class Player:
         self.bench[bench_idx] = removed
         return True
 
-    def move_on_board(self, from_row: int, from_col: int,
-                      to_row: int, to_col: int) -> bool:
+    def move_on_board(self, from_row: int, from_col: int, to_row: int, to_col: int) -> bool:
         """Move or swap a champion on the board. Returns True if successful."""
         from_pos = (from_row, from_col)
         to_pos = (to_row, to_col)
@@ -929,7 +959,7 @@ class Player:
 
     # ── Upgrades ──────────────────────────────────────────────────────────
 
-    def _check_upgrade(self, name: str, pool: 'ChampionPool'):
+    def _check_upgrade(self, name: str, pool: "ChampionPool"):
         """Check if buying this champion triggers an upgrade (3 → star up).
 
         Checks for 1→2 star, then immediately checks for 2→3 star.
@@ -941,17 +971,17 @@ class Player:
             if champ.name != name:
                 continue
             if champ.star_level == 1:
-                star1_copies.append(('board', pos))
+                star1_copies.append(("board", pos))
             elif champ.star_level == 2:
-                star2_copies.append(('board', pos))
+                star2_copies.append(("board", pos))
 
         for idx, champ in enumerate(self.bench):
             if champ is None or champ.name != name:
                 continue
             if champ.star_level == 1:
-                star1_copies.append(('bench', idx))
+                star1_copies.append(("bench", idx))
             elif champ.star_level == 2:
-                star2_copies.append(('bench', idx))
+                star2_copies.append(("bench", idx))
 
         upgraded_to_two = False
         if len(star1_copies) >= 3:
@@ -975,10 +1005,10 @@ class Player:
         copies = []
         for pos, champ in self.board.items():
             if champ.name == name and champ.star_level == star_level:
-                copies.append(('board', pos))
+                copies.append(("board", pos))
         for idx, champ in enumerate(self.bench):
             if champ is not None and champ.name == name and champ.star_level == star_level:
-                copies.append(('bench', idx))
+                copies.append(("bench", idx))
         return copies
 
     def _do_upgrade(self, name: str, star_level: int, copies: list):
@@ -989,7 +1019,7 @@ class Player:
         all_items = []
         merged_instance_ids = []
         for loc_type, loc_key in copies:
-            if loc_type == 'board':
+            if loc_type == "board":
                 champ = self.board[loc_key]
             else:
                 champ = self.bench[loc_key]
@@ -1000,16 +1030,16 @@ class Player:
 
         # Remove all 3 copies
         first_loc = None
-        upgrade_instance_id = ''
+        upgrade_instance_id = ""
         for loc_type, loc_key in copies:
             if first_loc is None:
                 first_loc = (loc_type, loc_key)
-                if loc_type == 'board':
+                if loc_type == "board":
                     upgrade_instance_id = self.board[loc_key].instance_id
                 else:
                     champ = self.bench[loc_key]
-                    upgrade_instance_id = champ.instance_id if champ is not None else ''
-            if loc_type == 'board':
+                    upgrade_instance_id = champ.instance_id if champ is not None else ""
+            if loc_type == "board":
                 self._board_remove(loc_key)
             else:
                 self.bench[loc_key] = None
@@ -1018,7 +1048,7 @@ class Player:
         upgraded = ChampionInstance(
             instance_id=upgrade_instance_id or self._alloc_instance_id(),
             name=name,
-            api_name=NAME_TO_API.get(name, f'TFT16_{name.capitalize()}'),
+            api_name=NAME_TO_API.get(name, f"TFT16_{name.capitalize()}"),
             cost=NAME_TO_COST.get(name, 1),
             star_level=new_star,
             items=all_items[:MAX_ITEMS_PER_UNIT],
@@ -1029,7 +1059,7 @@ class Player:
 
         # Place upgraded champ in first copy's location
         loc_type, loc_key = first_loc
-        if loc_type == 'board':
+        if loc_type == "board":
             self._board_add(loc_key, upgraded)
         else:
             self.bench[loc_key] = upgraded
@@ -1098,14 +1128,14 @@ class Player:
     def has_azir_on_board(self) -> bool:
         """Check if Azir is on the board."""
         for champ in self.board.values():
-            if champ.name == 'azir':
+            if champ.name == "azir":
                 return True
         return False
 
     def has_freljord_active(self) -> bool:
         """Check if Freljord 3+ is active (needed for tower)."""
         traits = self.get_active_traits()
-        return traits.get('freljord', 0) >= 3
+        return traits.get("freljord", 0) >= 3
 
     # ── Combat Bridge ─────────────────────────────────────────────────────
 
@@ -1127,18 +1157,20 @@ class Player:
             items = list(champ.items) if champ.items else None
 
             # Thief's Gloves: replace with 2 random items based on player level
-            if items and any(i in ('ThiefsGloves', 'TFT_Item_ThiefsGloves') for i in items):
+            if items and any(i in ("ThiefsGloves", "TFT_Item_ThiefsGloves") for i in items):
                 items = self._roll_thiefs_gloves_items()
 
             if use_rust_engine:
-                units.append({
-                    'api_name': champ.api_name,
-                    'star_level': champ.star_level,
-                    'position': [pos[0], pos[1]],
-                    'team': 0,
-                    'items': items or [],
-                    'traits': [],
-                })
+                units.append(
+                    {
+                        "api_name": champ.api_name,
+                        "star_level": champ.star_level,
+                        "position": [pos[0], pos[1]],
+                        "team": 0,
+                        "items": items or [],
+                        "traits": [],
+                    }
+                )
             else:
                 unit = engine.create_unit(
                     api_name=champ.api_name,
@@ -1158,43 +1190,43 @@ class Player:
             # Get Azir's star level for soldier scaling
             azir_star = 1
             for champ in self.board.values():
-                if champ.name == 'azir':
+                if champ.name == "azir":
                     azir_star = champ.star_level
                     break
             for pos in self.soldier_positions:
                 if use_rust_engine:
-                    units.append({
-                        'api_name': 'TFT16_AzirSoldier',
-                        'star_level': azir_star,
-                        'position': [pos[0], pos[1]],
-                        'team': 0,
-                        'items': [],
-                        'traits': [],
-                    })
-                else:
-                    soldier = engine.create_unit(
-                        'TFT16_AzirSoldier', azir_star, pos, 0
+                    units.append(
+                        {
+                            "api_name": "TFT16_AzirSoldier",
+                            "star_level": azir_star,
+                            "position": [pos[0], pos[1]],
+                            "team": 0,
+                            "items": [],
+                            "traits": [],
+                        }
                     )
+                else:
+                    soldier = engine.create_unit("TFT16_AzirSoldier", azir_star, pos, 0)
                     if soldier:
                         soldier._is_summon = True
-                        soldier._summoner = 'Azir'
+                        soldier._summoner = "Azir"
                         units.append(soldier)
 
         # Spawn Freljord tower at player-placed position
         if self.tower_position and self.has_freljord_active():
             if use_rust_engine:
-                units.append({
-                    'api_name': 'TFT16_FreljordProp',
-                    'star_level': 1,
-                    'position': [self.tower_position[0], self.tower_position[1]],
-                    'team': 0,
-                    'items': [],
-                    'traits': [],
-                })
-            else:
-                tower = engine.create_unit(
-                    'TFT16_FreljordProp', 1, self.tower_position, 0
+                units.append(
+                    {
+                        "api_name": "TFT16_FreljordProp",
+                        "star_level": 1,
+                        "position": [self.tower_position[0], self.tower_position[1]],
+                        "team": 0,
+                        "items": [],
+                        "traits": [],
+                    }
                 )
+            else:
+                tower = engine.create_unit("TFT16_FreljordProp", 1, self.tower_position, 0)
                 if tower:
                     tower._is_tower = True
                     units.append(tower)
@@ -1293,6 +1325,8 @@ class Player:
             self.bench[idx] = None
 
     def __repr__(self):
-        return (f"Player({self.player_id}, lvl={self.level}, "
-                f"hp={self.hp}, gold={self.gold}, "
-                f"board={self.board_count}/{self.max_units})")
+        return (
+            f"Player({self.player_id}, lvl={self.level}, "
+            f"hp={self.hp}, gold={self.gold}, "
+            f"board={self.board_count}/{self.max_units})"
+        )

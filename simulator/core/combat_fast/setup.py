@@ -14,8 +14,8 @@ The compiled module provides accelerated versions of:
 
 import sys
 
-from setuptools import setup, Extension
 from Cython.Build import cythonize
+from setuptools import Extension, setup
 
 if sys.platform == "win32":
     extra_compile_args = ["/O2"]
@@ -32,10 +32,13 @@ extensions = [
 
 setup(
     name="combat_fast",
-    ext_modules=cythonize(extensions, compiler_directives={
-        "boundscheck": False,
-        "wraparound": False,
-        "cdivision": True,
-        "language_level": "3",
-    }),
+    ext_modules=cythonize(
+        extensions,
+        compiler_directives={
+            "boundscheck": False,
+            "wraparound": False,
+            "cdivision": True,
+            "language_level": "3",
+        },
+    ),
 )

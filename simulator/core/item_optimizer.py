@@ -29,77 +29,68 @@ Usage:
 """
 
 import json
-import random
-from typing import List, Dict, Tuple, Optional, Set
+import sys
 from dataclasses import dataclass
 from pathlib import Path
-import sys
+from typing import Dict, List, Optional, Set
 
 # Add parent directory for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from core.combat_engine import CombatEngine
 
-
 # Item components and their combinations
 COMPONENTS = {
-    'BF_Sword': 'BF',
-    'Recurve_Bow': 'Bow',
-    'Needlessly_Large_Rod': 'Rod',
-    'Tear_of_the_Goddess': 'Tear',
-    'Chain_Vest': 'Vest',
-    'Negatron_Cloak': 'Cloak',
-    'Giants_Belt': 'Belt',
-    'Sparring_Gloves': 'Glove',
-    'Spatula': 'Spat',
+    "BF_Sword": "BF",
+    "Recurve_Bow": "Bow",
+    "Needlessly_Large_Rod": "Rod",
+    "Tear_of_the_Goddess": "Tear",
+    "Chain_Vest": "Vest",
+    "Negatron_Cloak": "Cloak",
+    "Giants_Belt": "Belt",
+    "Sparring_Gloves": "Glove",
+    "Spatula": "Spat",
 }
 
 # Component combinations -> completed items
 # Format: (component1, component2) -> item_name
 ITEM_RECIPES = {
-    ('BF_Sword', 'BF_Sword'): 'TFT_Item_Deathblade',
-    ('BF_Sword', 'Recurve_Bow'): 'TFT_Item_GiantSlayer',
-    ('BF_Sword', 'Needlessly_Large_Rod'): 'TFT_Item_HextechGunblade',
-    ('BF_Sword', 'Tear_of_the_Goddess'): 'TFT_Item_SpearOfShojin',
-    ('BF_Sword', 'Chain_Vest'): 'TFT_Item_GuardianAngel',
-    ('BF_Sword', 'Negatron_Cloak'): 'TFT_Item_Bloodthirster',
-    ('BF_Sword', 'Giants_Belt'): 'TFT_Item_SteraksGage',
-    ('BF_Sword', 'Sparring_Gloves'): 'TFT_Item_InfinityEdge',
-
-    ('Recurve_Bow', 'Recurve_Bow'): 'TFT_Item_RedBuff',
-    ('Recurve_Bow', 'Needlessly_Large_Rod'): 'TFT_Item_GuinsoosRageblade',
-    ('Recurve_Bow', 'Tear_of_the_Goddess'): 'TFT_Item_StatikkShiv',
-    ('Recurve_Bow', 'Chain_Vest'): 'TFT_Item_TitansResolve',
-    ('Recurve_Bow', 'Negatron_Cloak'): 'TFT_Item_RunaansHurricane',
-    ('Recurve_Bow', 'Giants_Belt'): 'TFT_Item_NashorsTooth',
-    ('Recurve_Bow', 'Sparring_Gloves'): 'TFT_Item_LastWhisper',
-
-    ('Needlessly_Large_Rod', 'Needlessly_Large_Rod'): 'TFT_Item_RabadonsDeathcap',
-    ('Needlessly_Large_Rod', 'Tear_of_the_Goddess'): 'TFT_Item_ArchangelsStaff',
-    ('Needlessly_Large_Rod', 'Chain_Vest'): 'TFT_Item_IonicSpark',
-    ('Needlessly_Large_Rod', 'Negatron_Cloak'): 'TFT_Item_Crownguard',
-    ('Needlessly_Large_Rod', 'Giants_Belt'): 'TFT_Item_Morellonomicon',
-    ('Needlessly_Large_Rod', 'Sparring_Gloves'): 'TFT_Item_JeweledGauntlet',
-
-    ('Tear_of_the_Goddess', 'Tear_of_the_Goddess'): 'TFT_Item_BlueBuff',
-    ('Tear_of_the_Goddess', 'Chain_Vest'): 'TFT_Item_FrozenHeart',
-    ('Tear_of_the_Goddess', 'Negatron_Cloak'): 'TFT_Item_AdaptiveHelm',
-    ('Tear_of_the_Goddess', 'Giants_Belt'): 'TFT_Item_Redemption',
-    ('Tear_of_the_Goddess', 'Sparring_Gloves'): 'TFT_Item_HandOfJustice',
-
-    ('Chain_Vest', 'Chain_Vest'): 'TFT_Item_BrambleVest',
-    ('Chain_Vest', 'Negatron_Cloak'): 'TFT_Item_GargoyleStoneplate',
-    ('Chain_Vest', 'Giants_Belt'): 'TFT_Item_SunfireCape',
-    ('Chain_Vest', 'Sparring_Gloves'): 'TFT_Item_SteadfastHeart',
-
-    ('Negatron_Cloak', 'Negatron_Cloak'): 'TFT_Item_DragonsClaw',
-    ('Negatron_Cloak', 'Giants_Belt'): 'TFT_Item_Evenshroud',
-    ('Negatron_Cloak', 'Sparring_Gloves'): 'TFT_Item_Quicksilver',
-
-    ('Giants_Belt', 'Giants_Belt'): 'TFT_Item_WarmogsArmor',
-    ('Giants_Belt', 'Sparring_Gloves'): 'TFT_Item_StrikersFlail',
-
-    ('Sparring_Gloves', 'Sparring_Gloves'): 'TFT_Item_ThiefsGloves',
+    ("BF_Sword", "BF_Sword"): "TFT_Item_Deathblade",
+    ("BF_Sword", "Recurve_Bow"): "TFT_Item_GiantSlayer",
+    ("BF_Sword", "Needlessly_Large_Rod"): "TFT_Item_HextechGunblade",
+    ("BF_Sword", "Tear_of_the_Goddess"): "TFT_Item_SpearOfShojin",
+    ("BF_Sword", "Chain_Vest"): "TFT_Item_GuardianAngel",
+    ("BF_Sword", "Negatron_Cloak"): "TFT_Item_Bloodthirster",
+    ("BF_Sword", "Giants_Belt"): "TFT_Item_SteraksGage",
+    ("BF_Sword", "Sparring_Gloves"): "TFT_Item_InfinityEdge",
+    ("Recurve_Bow", "Recurve_Bow"): "TFT_Item_RedBuff",
+    ("Recurve_Bow", "Needlessly_Large_Rod"): "TFT_Item_GuinsoosRageblade",
+    ("Recurve_Bow", "Tear_of_the_Goddess"): "TFT_Item_StatikkShiv",
+    ("Recurve_Bow", "Chain_Vest"): "TFT_Item_TitansResolve",
+    ("Recurve_Bow", "Negatron_Cloak"): "TFT_Item_RunaansHurricane",
+    ("Recurve_Bow", "Giants_Belt"): "TFT_Item_NashorsTooth",
+    ("Recurve_Bow", "Sparring_Gloves"): "TFT_Item_LastWhisper",
+    ("Needlessly_Large_Rod", "Needlessly_Large_Rod"): "TFT_Item_RabadonsDeathcap",
+    ("Needlessly_Large_Rod", "Tear_of_the_Goddess"): "TFT_Item_ArchangelsStaff",
+    ("Needlessly_Large_Rod", "Chain_Vest"): "TFT_Item_IonicSpark",
+    ("Needlessly_Large_Rod", "Negatron_Cloak"): "TFT_Item_Crownguard",
+    ("Needlessly_Large_Rod", "Giants_Belt"): "TFT_Item_Morellonomicon",
+    ("Needlessly_Large_Rod", "Sparring_Gloves"): "TFT_Item_JeweledGauntlet",
+    ("Tear_of_the_Goddess", "Tear_of_the_Goddess"): "TFT_Item_BlueBuff",
+    ("Tear_of_the_Goddess", "Chain_Vest"): "TFT_Item_FrozenHeart",
+    ("Tear_of_the_Goddess", "Negatron_Cloak"): "TFT_Item_AdaptiveHelm",
+    ("Tear_of_the_Goddess", "Giants_Belt"): "TFT_Item_Redemption",
+    ("Tear_of_the_Goddess", "Sparring_Gloves"): "TFT_Item_HandOfJustice",
+    ("Chain_Vest", "Chain_Vest"): "TFT_Item_BrambleVest",
+    ("Chain_Vest", "Negatron_Cloak"): "TFT_Item_GargoyleStoneplate",
+    ("Chain_Vest", "Giants_Belt"): "TFT_Item_SunfireCape",
+    ("Chain_Vest", "Sparring_Gloves"): "TFT_Item_SteadfastHeart",
+    ("Negatron_Cloak", "Negatron_Cloak"): "TFT_Item_DragonsClaw",
+    ("Negatron_Cloak", "Giants_Belt"): "TFT_Item_Evenshroud",
+    ("Negatron_Cloak", "Sparring_Gloves"): "TFT_Item_Quicksilver",
+    ("Giants_Belt", "Giants_Belt"): "TFT_Item_WarmogsArmor",
+    ("Giants_Belt", "Sparring_Gloves"): "TFT_Item_StrikersFlail",
+    ("Sparring_Gloves", "Sparring_Gloves"): "TFT_Item_ThiefsGloves",
 }
 
 # Make recipe lookup bidirectional
@@ -114,6 +105,7 @@ ITEM_COMPONENTS = {v: k for k, v in ITEM_RECIPES.items()}
 @dataclass
 class ItemRecommendation:
     """A single item recommendation for a unit."""
+
     item: str
     score: float  # Combined score (0-1)
     top4_rate: float
@@ -125,6 +117,7 @@ class ItemRecommendation:
 @dataclass
 class ItemDistribution:
     """An assignment of items to units in a comp."""
+
     assignments: Dict[str, List[str]]  # champion -> [items]
     score: float
     details: Dict[str, List[ItemRecommendation]]
@@ -157,10 +150,14 @@ class ItemOptimizer:
             return {}
         return self.item_data.get(champion_id, {})
 
-    def get_best_items(self, champion_id: str, n: int = 3,
-                       available: List[str] = None,
-                       exclude: Set[str] = None,
-                       include_special: bool = False) -> List[ItemRecommendation]:
+    def get_best_items(
+        self,
+        champion_id: str,
+        n: int = 3,
+        available: List[str] = None,
+        exclude: Set[str] = None,
+        include_special: bool = False,
+    ) -> List[ItemRecommendation]:
         """
         Get the N best items for a champion.
 
@@ -175,8 +172,8 @@ class ItemOptimizer:
             List of ItemRecommendation objects
         """
         unit_data = self.get_unit_item_data(champion_id)
-        best_items = unit_data.get('best_items', [])
-        frequency_ranked = unit_data.get('frequency_ranked', [])
+        best_items = unit_data.get("best_items", [])
+        frequency_ranked = unit_data.get("frequency_ranked", [])
 
         recommendations = []
         exclude = exclude or set()
@@ -184,7 +181,7 @@ class ItemOptimizer:
 
         # First pass: items with win rate data
         for item_info in best_items:
-            item_name = item_info.get('item', '')
+            item_name = item_info.get("item", "")
 
             # Skip if excluded or not available
             if item_name in exclude:
@@ -194,12 +191,15 @@ class ItemOptimizer:
 
             # Skip radiants/artifacts/emblems unless requested
             if not include_special:
-                if any(x in item_name for x in ['Radiant', 'Artifact', 'Emblem', 'Ornn', 'TFT5_', 'TFT4_']):
+                if any(
+                    x in item_name
+                    for x in ["Radiant", "Artifact", "Emblem", "Ornn", "TFT5_", "TFT4_"]
+                ):
                     continue
 
-            top4 = item_info.get('top4_rate', 0)
-            avg = item_info.get('avg_place', 4.5)
-            games = item_info.get('total_games', 0)
+            top4 = item_info.get("top4_rate", 0)
+            avg = item_info.get("avg_place", 4.5)
+            games = item_info.get("total_games", 0)
 
             # Calculate score (weighted: top4 rate most important)
             # Normalize avg_place: 1.0 = avg 1, 0.0 = avg 8
@@ -218,14 +218,16 @@ class ItemOptimizer:
             else:
                 reason = f"Good performance ({top4:.0%} top4)"
 
-            recommendations.append(ItemRecommendation(
-                item=item_name,
-                score=min(score, 1.0),
-                top4_rate=top4,
-                avg_place=avg,
-                games=games,
-                reason=reason
-            ))
+            recommendations.append(
+                ItemRecommendation(
+                    item=item_name,
+                    score=min(score, 1.0),
+                    top4_rate=top4,
+                    avg_place=avg,
+                    games=games,
+                    reason=reason,
+                )
+            )
             seen_items.add(item_name)
 
         # Second pass: add frequency-ranked items if we don't have enough
@@ -241,7 +243,10 @@ class ItemOptimizer:
 
                 # Skip special items
                 if not include_special:
-                    if any(x in item_name for x in ['Radiant', 'Artifact', 'Emblem', 'Ornn', 'TFT5_', 'TFT4_']):
+                    if any(
+                        x in item_name
+                        for x in ["Radiant", "Artifact", "Emblem", "Ornn", "TFT5_", "TFT4_"]
+                    ):
                         continue
 
                 # Estimate score based on frequency rank
@@ -249,14 +254,16 @@ class ItemOptimizer:
                 score = 0.8 - (rank * 0.05)  # Top item = 0.8, 5th = 0.55, etc.
                 score = max(score, 0.3)
 
-                recommendations.append(ItemRecommendation(
-                    item=item_name,
-                    score=score,
-                    top4_rate=0,  # Unknown
-                    avg_place=0,  # Unknown
-                    games=0,
-                    reason=f"Popular choice (#{rank+1} most used)"
-                ))
+                recommendations.append(
+                    ItemRecommendation(
+                        item=item_name,
+                        score=score,
+                        top4_rate=0,  # Unknown
+                        avg_place=0,  # Unknown
+                        games=0,
+                        reason=f"Popular choice (#{rank + 1} most used)",
+                    )
+                )
                 seen_items.add(item_name)
 
         # Sort by score descending
@@ -270,14 +277,14 @@ class ItemOptimizer:
         Returns list of 3 item names or None.
         """
         unit_data = self.get_unit_item_data(champion_id)
-        builds = unit_data.get('best_builds', [])
+        builds = unit_data.get("best_builds", [])
 
         for build in builds:
-            items = build.get('items', [])
+            items = build.get("items", [])
             # Look for 3-item build with craftable items
             if len(items) == 3:
                 # Skip if contains radiants/artifacts
-                if any('Radiant' in i or 'Artifact' in i or 'Ornn' in i for i in items):
+                if any("Radiant" in i or "Artifact" in i or "Ornn" in i for i in items):
                     continue
                 return items
 
@@ -288,30 +295,37 @@ class ItemOptimizer:
         Classify a unit's item needs: 'carry', 'tank', 'support'.
         """
         champ_data = self.engine.champions.get(champion_id, {})
-        traits = champ_data.get('traits', [])
-        cost = champ_data.get('cost', 1)
-        stats = champ_data.get('stats', {})
+        traits = champ_data.get("traits", [])
+        cost = champ_data.get("cost", 1)
+        stats = champ_data.get("stats", {})
 
         # High-cost units with damage traits are carries
-        damage_traits = {'Longshot', 'Arcanist', 'Gunslinger', 'Star Forger',
-                         'Emperor', 'Eternal', 'Sorcerer'}
-        tank_traits = {'Defender', 'Warden', 'Bastion', 'Juggernaut'}
+        damage_traits = {
+            "Longshot",
+            "Arcanist",
+            "Gunslinger",
+            "Star Forger",
+            "Emperor",
+            "Eternal",
+            "Sorcerer",
+        }
+        tank_traits = {"Defender", "Warden", "Bastion", "Juggernaut"}
 
         has_damage = any(t in damage_traits for t in traits)
         has_tank = any(t in tank_traits for t in traits)
 
         if cost >= 4 and has_damage:
-            return 'carry'
+            return "carry"
         elif has_tank:
-            return 'tank'
+            return "tank"
         elif cost >= 4:
-            return 'secondary_carry'
+            return "secondary_carry"
         else:
-            return 'support'
+            return "support"
 
-    def optimize_distribution(self, comp: List[Dict],
-                              available_items: List[str],
-                              max_items_per_unit: int = 3) -> ItemDistribution:
+    def optimize_distribution(
+        self, comp: List[Dict], available_items: List[str], max_items_per_unit: int = 3
+    ) -> ItemDistribution:
         """
         Find optimal distribution of items across a composition.
 
@@ -326,18 +340,18 @@ class ItemOptimizer:
         # Classify units by priority
         unit_priorities = []
         for unit_def in comp:
-            champ = unit_def['champion']
+            champ = unit_def["champion"]
             role = self.classify_unit_for_items(champ)
 
-            priority = {'carry': 0, 'secondary_carry': 1, 'tank': 2, 'support': 3}
+            priority = {"carry": 0, "secondary_carry": 1, "tank": 2, "support": 3}
             unit_priorities.append((champ, priority.get(role, 3), role))
 
         # Sort by priority (carries first)
         unit_priorities.sort(key=lambda x: x[1])
 
         # Greedy assignment: give best items to highest priority units
-        assignments = {unit_def['champion']: [] for unit_def in comp}
-        details = {unit_def['champion']: [] for unit_def in comp}
+        assignments = {unit_def["champion"]: [] for unit_def in comp}
+        details = {unit_def["champion"]: [] for unit_def in comp}
         used_items = set()
         total_score = 0
 
@@ -350,10 +364,7 @@ class ItemOptimizer:
 
             # Get best items for this unit from available
             recs = self.get_best_items(
-                champ,
-                n=remaining_slots,
-                available=remaining_items,
-                exclude=used_items
+                champ, n=remaining_slots, available=remaining_items, exclude=used_items
             )
 
             for rec in recs:
@@ -371,15 +382,11 @@ class ItemOptimizer:
         num_assigned = sum(len(items) for items in assignments.values())
         avg_score = total_score / num_assigned if num_assigned > 0 else 0
 
-        return ItemDistribution(
-            assignments=assignments,
-            score=avg_score,
-            details=details
-        )
+        return ItemDistribution(assignments=assignments, score=avg_score, details=details)
 
-    def recommend_crafts(self, components: List[str],
-                         comp: List[Dict] = None,
-                         n: int = 3) -> List[Dict]:
+    def recommend_crafts(
+        self, components: List[str], comp: List[Dict] = None, n: int = 3
+    ) -> List[Dict]:
         """
         Recommend what items to craft from available components.
 
@@ -410,23 +417,20 @@ class ItemOptimizer:
 
                 item = ITEM_RECIPES.get((c1, c2))
                 if item:
-                    possible_crafts.append({
-                        'item': item,
-                        'components': (c1, c2),
-                        'score': 0,
-                        'reason': ''
-                    })
+                    possible_crafts.append(
+                        {"item": item, "components": (c1, c2), "score": 0, "reason": ""}
+                    )
 
         # Score each craft
         if comp:
             # Score based on how good the item is for units in comp
             for craft in possible_crafts:
-                item_name = craft['item']
+                item_name = craft["item"]
                 best_score = 0
                 best_unit = None
 
                 for unit_def in comp:
-                    champ = unit_def['champion']
+                    champ = unit_def["champion"]
                     recs = self.get_best_items(champ, n=10)
 
                     for rec in recs:
@@ -436,37 +440,40 @@ class ItemOptimizer:
                                 best_unit = champ
                             break
 
-                craft['score'] = best_score
+                craft["score"] = best_score
                 if best_unit:
-                    craft['reason'] = f"Good for {best_unit.replace('TFT16_', '')}"
+                    craft["reason"] = f"Good for {best_unit.replace('TFT16_', '')}"
                 else:
-                    craft['reason'] = "Flexible item"
+                    craft["reason"] = "Flexible item"
         else:
             # Generic scoring based on item type
             for craft in possible_crafts:
-                item_name = craft['item']
+                item_name = craft["item"]
 
                 # Offensive items score higher (generally more impactful)
-                if any(x in item_name for x in ['InfinityEdge', 'JeweledGauntlet',
-                                                  'Deathcap', 'Leviathan', 'Shojin']):
-                    craft['score'] = 0.8
-                    craft['reason'] = "Strong carry item"
-                elif any(x in item_name for x in ['GargoyleStoneplate', 'DragonsClaw',
-                                                   'BrambleVest', 'Redemption']):
-                    craft['score'] = 0.7
-                    craft['reason'] = "Solid tank item"
+                if any(
+                    x in item_name
+                    for x in ["InfinityEdge", "JeweledGauntlet", "Deathcap", "Leviathan", "Shojin"]
+                ):
+                    craft["score"] = 0.8
+                    craft["reason"] = "Strong carry item"
+                elif any(
+                    x in item_name
+                    for x in ["GargoyleStoneplate", "DragonsClaw", "BrambleVest", "Redemption"]
+                ):
+                    craft["score"] = 0.7
+                    craft["reason"] = "Solid tank item"
                 else:
-                    craft['score'] = 0.5
-                    craft['reason'] = "Utility item"
+                    craft["score"] = 0.5
+                    craft["reason"] = "Utility item"
 
         # Sort by score
-        possible_crafts.sort(key=lambda x: -x['score'])
+        possible_crafts.sort(key=lambda x: -x["score"])
         return possible_crafts[:n]
 
-    def should_slam(self, components: List[str],
-                    stage: str,
-                    comp: List[Dict] = None,
-                    current_hp: int = 100) -> Dict:
+    def should_slam(
+        self, components: List[str], stage: str, comp: List[Dict] = None, current_hp: int = 100
+    ) -> Dict:
         """
         Analyze whether to slam (craft) items now or hold components.
 
@@ -480,7 +487,7 @@ class ItemOptimizer:
             Dict with recommendation and reasoning
         """
         # Parse stage
-        stage_num = float(stage.replace('-', '.')) if '-' in stage else float(stage)
+        stage_num = float(stage.replace("-", ".")) if "-" in stage else float(stage)
 
         # Count components
         num_components = len(components)
@@ -522,10 +529,10 @@ class ItemOptimizer:
         # 4. Quality of available crafts
         if crafts:
             best_craft = crafts[0]
-            if best_craft['score'] >= 0.7:
+            if best_craft["score"] >= 0.7:
                 factors.append(f"Strong craft available: {best_craft['item']}")
                 slam_score += 0.2
-            elif best_craft['score'] >= 0.5:
+            elif best_craft["score"] >= 0.5:
                 factors.append(f"Decent craft available: {best_craft['item']}")
                 slam_score += 0.1
             else:
@@ -544,11 +551,11 @@ class ItemOptimizer:
             confidence = 0.5
 
         return {
-            'decision': decision,
-            'confidence': confidence,
-            'factors': factors,
-            'best_crafts': crafts[:3],
-            'slam_score': slam_score
+            "decision": decision,
+            "confidence": confidence,
+            "factors": factors,
+            "best_crafts": crafts[:3],
+            "slam_score": slam_score,
         }
 
 
@@ -570,9 +577,9 @@ def demo():
     # Demo 1: Best items for a unit
     print("1. Best Items for Seraphine")
     print("-" * 40)
-    recs = optimizer.get_best_items('TFT16_Seraphine', n=5)
+    recs = optimizer.get_best_items("TFT16_Seraphine", n=5)
     for rec in recs:
-        item_short = rec.item.replace('TFT_Item_', '')
+        item_short = rec.item.replace("TFT_Item_", "")
         print(f"  {item_short:25} | Score: {rec.score:.2f} | {rec.reason}")
 
     print()
@@ -580,7 +587,7 @@ def demo():
     # Demo 2: Best build
     print("2. Best 3-Item Build for Shyvana")
     print("-" * 40)
-    build = optimizer.get_best_build('TFT16_Shyvana')
+    build = optimizer.get_best_build("TFT16_Shyvana")
     if build:
         print(f"  Build: {[i.replace('TFT_Item_', '') for i in build]}")
     else:
@@ -591,15 +598,20 @@ def demo():
     # Demo 3: Craft recommendations
     print("3. Craft Recommendations")
     print("-" * 40)
-    components = ['BF_Sword', 'Needlessly_Large_Rod', 'Tear_of_the_Goddess',
-                  'Chain_Vest', 'Recurve_Bow']
+    components = [
+        "BF_Sword",
+        "Needlessly_Large_Rod",
+        "Tear_of_the_Goddess",
+        "Chain_Vest",
+        "Recurve_Bow",
+    ]
     print(f"  Components: {components}")
     print()
 
     crafts = optimizer.recommend_crafts(components)
     for craft in crafts:
-        item_short = craft['item'].replace('TFT_Item_', '')
-        c1, c2 = craft['components']
+        item_short = craft["item"].replace("TFT_Item_", "")
+        c1, c2 = craft["components"]
         print(f"  {item_short:25} ({c1} + {c2})")
         print(f"    {craft['reason']}")
 
@@ -608,14 +620,10 @@ def demo():
     # Demo 4: Slam vs Hold
     print("4. Slam vs Hold Analysis")
     print("-" * 40)
-    analysis = optimizer.should_slam(
-        components=components,
-        stage='3-2',
-        current_hp=65
-    )
+    analysis = optimizer.should_slam(components=components, stage="3-2", current_hp=65)
     print(f"  Decision: {analysis['decision']} (confidence: {analysis['confidence']:.0%})")
-    print(f"  Factors:")
-    for factor in analysis['factors']:
+    print("  Factors:")
+    for factor in analysis["factors"]:
         print(f"    - {factor}")
 
     return optimizer

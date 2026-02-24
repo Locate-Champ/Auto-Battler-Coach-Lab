@@ -8,7 +8,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional
 
-
 DATA_DIR = Path(__file__).resolve().parents[2] / "data" / "game_data"
 
 
@@ -108,7 +107,11 @@ def _load_champions(path: Path) -> Dict[str, Any]:
         if not api_name or not name:
             continue
         traits_pipe = row.get("traits_pipe")
-        traits = [trait.strip() for trait in str(traits_pipe).split("|") if trait.strip()] if traits_pipe else []
+        traits = (
+            [trait.strip() for trait in str(traits_pipe).split("|") if trait.strip()]
+            if traits_pipe
+            else []
+        )
 
         champion = {
             "id": CanonicalId(api_name=api_name, name=name),

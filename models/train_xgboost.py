@@ -11,6 +11,7 @@ from typing import Any, Dict, Iterator, List, Optional, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
+import xgboost as xgb
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
@@ -18,11 +19,9 @@ from sklearn.metrics import (
     mean_absolute_error,
     roc_auc_score,
 )
-import xgboost as xgb
 
 from .data_loader import DataLoader
 from .feature_engineering import FeatureConfig, TFTFeatureEngineer
-
 
 BASE_TREE_PARAMS = {
     "max_depth": 0,
@@ -160,7 +159,9 @@ def _safe_auc(y_true: np.ndarray, y_prob: np.ndarray) -> Optional[float]:
         return None
 
 
-def _evaluate_classification(task: str, model: Any, X_test: np.ndarray, y_test: np.ndarray) -> Dict[str, Any]:
+def _evaluate_classification(
+    task: str, model: Any, X_test: np.ndarray, y_test: np.ndarray
+) -> Dict[str, Any]:
     probabilities = model.predict_proba(X_test)[:, 1]
     predictions = (probabilities >= 0.5).astype(np.int64)
     auc_roc = _safe_auc(y_test, probabilities)
@@ -169,7 +170,9 @@ def _evaluate_classification(task: str, model: Any, X_test: np.ndarray, y_test: 
         "accuracy": float(accuracy_score(y_test, predictions)),
         "auc_roc": auc_roc,
         "confusion_matrix": confusion_matrix(y_test, predictions).tolist(),
-        "classification_report": classification_report(y_test, predictions, output_dict=True, zero_division=0),
+        "classification_report": classification_report(
+            y_test, predictions, output_dict=True, zero_division=0
+        ),
     }
     auc_display = f"{auc_roc:.4f}" if auc_roc is not None else "n/a"
     print(f"[{task}] accuracy={metrics['accuracy']:.4f} auc={auc_display}")
@@ -191,7 +194,9 @@ def _predict_booster(booster: xgb.Booster, matrix: xgb.DMatrix) -> np.ndarray:
     return booster.predict(matrix, iteration_range=(0, int(best_iteration) + 1))
 
 
-def _evaluate_booster_classification(task: str, booster: xgb.Booster, dtest: xgb.DMatrix) -> Dict[str, Any]:
+def _evaluate_booster_classification(
+    task: str, booster: xgb.Booster, dtest: xgb.DMatrix
+) -> Dict[str, Any]:
     probabilities = _predict_booster(booster, dtest)
     y_test = dtest.get_label().astype(np.int64)
     predictions = (probabilities >= 0.5).astype(np.int64)
@@ -201,7 +206,9 @@ def _evaluate_booster_classification(task: str, booster: xgb.Booster, dtest: xgb
         "accuracy": float(accuracy_score(y_test, predictions)),
         "auc_roc": auc_roc,
         "confusion_matrix": confusion_matrix(y_test, predictions).tolist(),
-        "classification_report": classification_report(y_test, predictions, output_dict=True, zero_division=0),
+        "classification_report": classification_report(
+            y_test, predictions, output_dict=True, zero_division=0
+        ),
     }
     auc_display = f"{auc_roc:.4f}" if auc_roc is not None else "n/a"
     print(f"[{task}] accuracy={metrics['accuracy']:.4f} auc={auc_display}")
@@ -583,8 +590,12 @@ def _run_ablation(
                     "n_estimators": min(200, args.n_estimators),
                 }
             )
-            model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test)
-            metric = accuracy_score(y_test, (model.predict_proba(X_test)[:, 1] >= 0.5).astype(np.int64))
+            model = _train_with_fallback(
+                xgb.XGBClassifier, params, X_train, y_train, X_test, y_test
+            )
+            metric = accuracy_score(
+                y_test, (model.predict_proba(X_test)[:, 1] >= 0.5).astype(np.int64)
+            )
         elif args.task == "top4":
             X_train, X_test, y_train, y_test = loader.load_top4_classification_data(
                 test_size=args.test_size,
@@ -601,8 +612,12 @@ def _run_ablation(
                     "n_estimators": min(200, args.n_estimators),
                 }
             )
-            model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test)
-            metric = accuracy_score(y_test, (model.predict_proba(X_test)[:, 1] >= 0.5).astype(np.int64))
+            model = _train_with_fallback(
+                xgb.XGBClassifier, params, X_train, y_train, X_test, y_test
+            )
+            metric = accuracy_score(
+                y_test, (model.predict_proba(X_test)[:, 1] >= 0.5).astype(np.int64)
+            )
         else:
             X_train, X_test, y_train, y_test = loader.load_placement_prediction_data(
                 test_size=args.test_size,
@@ -622,7 +637,9 @@ def _run_ablation(
             model = _train_with_fallback(xgb.XGBRegressor, params, X_train, y_train, X_test, y_test)
             metric = mean_absolute_error(y_test, model.predict(X_test))
 
-        delta = float(metric - baseline_metric) if is_higher_better else float(baseline_metric - metric)
+        delta = (
+            float(metric - baseline_metric) if is_higher_better else float(baseline_metric - metric)
+        )
         deltas[toggle] = delta
         print(f"[ablation] disable={toggle} metric={metric:.4f} delta={delta:.4f}")
     return deltas
@@ -630,25 +647,76 @@ def _run_ablation(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train XGBoost TFT models.")
-    parser.add_argument("--data", type=str, required=True, help="Directory containing parquet/jsonl chunks")
+    parser.add_argument(
+        "--data", type=str, required=True, help="Directory containing parquet/jsonl chunks"
+    )
     parser.add_argument("--task", type=str, choices=("fight", "top4", "placement"), required=True)
     parser.add_argument("--output", type=str, default="models/checkpoints", help="Output directory")
     parser.add_argument("--test-size", type=float, default=0.2)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--n-estimators", type=int, default=300)
-    parser.add_argument("--row-batch-size", type=int, default=4096, help="Raw row batch size for parquet/jsonl streaming")
-    parser.add_argument("--max-rows", type=int, default=None, help="Optional cap on raw rows scanned before feature building")
-    parser.add_argument("--external-memory", action="store_true", help="Use ExtMemQuantileDMatrix training path")
-    parser.add_argument("--external-batch-size", type=int, default=8192, help="Examples per external-memory iterator batch")
-    parser.add_argument("--external-cache-dir", type=str, default=None, help="Directory for xgboost external-memory cache pages")
-    parser.add_argument("--keep-external-cache", action="store_true", help="Keep external-memory cache files after training")
-    parser.add_argument("--early-stopping-rounds", type=int, default=50, help="Early stopping rounds (set 0 to disable)")
-    parser.add_argument("--feature-workers", type=int, default=0, help="Parallel workers for feature engineering (0=auto)")
+    parser.add_argument(
+        "--row-batch-size",
+        type=int,
+        default=4096,
+        help="Raw row batch size for parquet/jsonl streaming",
+    )
+    parser.add_argument(
+        "--max-rows",
+        type=int,
+        default=None,
+        help="Optional cap on raw rows scanned before feature building",
+    )
+    parser.add_argument(
+        "--external-memory", action="store_true", help="Use ExtMemQuantileDMatrix training path"
+    )
+    parser.add_argument(
+        "--external-batch-size",
+        type=int,
+        default=8192,
+        help="Examples per external-memory iterator batch",
+    )
+    parser.add_argument(
+        "--external-cache-dir",
+        type=str,
+        default=None,
+        help="Directory for xgboost external-memory cache pages",
+    )
+    parser.add_argument(
+        "--keep-external-cache",
+        action="store_true",
+        help="Keep external-memory cache files after training",
+    )
+    parser.add_argument(
+        "--early-stopping-rounds",
+        type=int,
+        default=50,
+        help="Early stopping rounds (set 0 to disable)",
+    )
+    parser.add_argument(
+        "--feature-workers",
+        type=int,
+        default=0,
+        help="Parallel workers for feature engineering (0=auto)",
+    )
     parser.add_argument("--ablation", action="store_true", help="Run feature-group ablation study")
-    parser.add_argument("--grow-policy", choices=("depthwise", "lossguide"), default=None, help="XGBoost grow policy (default: lossguide)")
-    parser.add_argument("--max-leaves", type=int, default=None, help="Max leaves per tree (lossguide mode)")
-    parser.add_argument("--max-depth", type=int, default=None, help="Max tree depth (depthwise mode, 0=unlimited)")
-    parser.add_argument("--arrow", action="store_true", help="Use Arrow-based data loading (Parquet -> features without row dicts)")
+    parser.add_argument(
+        "--grow-policy",
+        choices=("depthwise", "lossguide"),
+        default=None,
+        help="XGBoost grow policy (default: lossguide)",
+    )
+    parser.add_argument(
+        "--max-leaves", type=int, default=None, help="Max leaves per tree (lossguide mode)"
+    )
+    parser.add_argument(
+        "--max-depth", type=int, default=None, help="Max tree depth (depthwise mode, 0=unlimited)"
+    )
+    parser.add_argument(
+        "--arrow",
+        action="store_true",
+        help="Use Arrow-based data loading (Parquet -> features without row dicts)",
+    )
     return parser.parse_args()
 
 
@@ -678,7 +746,9 @@ def main() -> None:
     cache_dir: Optional[Path] = None
 
     if args.external_memory:
-        model, params, metrics, split_stats, cache_dir = _train_external_memory(args, loader, output_dir)
+        model, params, metrics, split_stats, cache_dir = _train_external_memory(
+            args, loader, output_dir
+        )
         if args.task in {"fight", "top4"}:
             baseline_metric = float(metrics["accuracy"])
             is_higher_better = True
@@ -700,7 +770,15 @@ def main() -> None:
                 "n_estimators": args.n_estimators,
             }
         )
-        model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test, early_stopping_rounds=es_rounds)
+        model = _train_with_fallback(
+            xgb.XGBClassifier,
+            params,
+            X_train,
+            y_train,
+            X_test,
+            y_test,
+            early_stopping_rounds=es_rounds,
+        )
         metrics = _evaluate_classification("fight", model, X_test, y_test)
         baseline_metric = float(metrics["accuracy"])
         is_higher_better = True
@@ -721,7 +799,15 @@ def main() -> None:
                     "n_estimators": args.n_estimators,
                 }
             )
-            model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test, early_stopping_rounds=es_rounds)
+            model = _train_with_fallback(
+                xgb.XGBClassifier,
+                params,
+                X_train,
+                y_train,
+                X_test,
+                y_test,
+                early_stopping_rounds=es_rounds,
+            )
             metrics = _evaluate_classification("fight", model, X_test, y_test)
             baseline_metric = float(metrics["accuracy"])
             is_higher_better = True
@@ -741,7 +827,15 @@ def main() -> None:
                     "n_estimators": args.n_estimators,
                 }
             )
-            model = _train_with_fallback(xgb.XGBClassifier, params, X_train, y_train, X_test, y_test, early_stopping_rounds=es_rounds)
+            model = _train_with_fallback(
+                xgb.XGBClassifier,
+                params,
+                X_train,
+                y_train,
+                X_test,
+                y_test,
+                early_stopping_rounds=es_rounds,
+            )
             metrics = _evaluate_classification("top4", model, X_test, y_test)
             baseline_metric = float(metrics["accuracy"])
             is_higher_better = True
@@ -761,7 +855,15 @@ def main() -> None:
                     "n_estimators": args.n_estimators,
                 }
             )
-            model = _train_with_fallback(xgb.XGBRegressor, params, X_train, y_train, X_test, y_test, early_stopping_rounds=es_rounds)
+            model = _train_with_fallback(
+                xgb.XGBRegressor,
+                params,
+                X_train,
+                y_train,
+                X_test,
+                y_test,
+                early_stopping_rounds=es_rounds,
+            )
             metrics = _evaluate_regression(model, X_test, y_test)
             baseline_metric = float(metrics["mae"])
             is_higher_better = False
@@ -803,7 +905,9 @@ def main() -> None:
     }
 
     if args.ablation:
-        report["ablation"] = _run_ablation(args, baseline_metric=baseline_metric, is_higher_better=is_higher_better)
+        report["ablation"] = _run_ablation(
+            args, baseline_metric=baseline_metric, is_higher_better=is_higher_better
+        )
 
     report_path = output_dir / f"{args.task}_training_report.json"
     with report_path.open("w", encoding="utf-8") as handle:

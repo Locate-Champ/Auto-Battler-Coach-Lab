@@ -24,18 +24,18 @@ from coach.explain import (
     ScoreBreakdown,
     TempoBreakdown,
 )
+from coach.modules.econ import explain as econ_explain
 from coach.modules.econ.candidates import generate_candidates as econ_candidates
 from coach.modules.econ.execute import execute as econ_execute
+from coach.modules.items import explain as item_explain
 from coach.modules.items.candidates import generate_candidates as item_candidates
 from coach.modules.items.execute import execute as item_execute
-from coach.modules.items import explain as item_explain
+from coach.modules.position import explain as position_explain
 from coach.modules.position.candidates import generate_candidates as position_candidates
 from coach.modules.position.execute import execute as position_execute
-from coach.modules.position import explain as position_explain
+from coach.modules.shop import explain as shop_explain
 from coach.modules.shop.candidates import generate_candidates as shop_candidates
 from coach.modules.shop.execute import execute as shop_execute
-from coach.modules.shop import explain as shop_explain
-from coach.modules.econ import explain as econ_explain
 from coach.odds import estimate_upgrade_hit_prob
 from coach.scoring.archetypes import ArchetypeLibrary
 from coach.scoring.combat import CombatEstimate, CombatScorer
@@ -133,7 +133,9 @@ class Coach:
         self.archetypes = archetypes or ArchetypeLibrary()
         self._trace_dir = trace_dir
 
-    def _candidates_executor_explainer(self, decision: DecisionType) -> tuple[Callable, Callable, Callable]:
+    def _candidates_executor_explainer(
+        self, decision: DecisionType
+    ) -> tuple[Callable, Callable, Callable]:
         if decision == DecisionType.ITEMS:
             return item_candidates, item_execute, item_explain
         if decision == DecisionType.POSITION:
@@ -222,16 +224,28 @@ class Coach:
         evaluator = EvaluatorBreakdown(board_score=eval_value)
 
         arch_matches = self.archetypes.closest(candidate, top_n=3)
-        top_arch = tuple(ArchetypeSummary(name=m.archetype.name, similarity=float(m.similarity)) for m in arch_matches)
+        top_arch = tuple(
+            ArchetypeSummary(name=m.archetype.name, similarity=float(m.similarity))
+            for m in arch_matches
+        )
         cand_best = top_arch[0] if top_arch else None
-        baseline_sim = float(baseline_best_arch.similarity) if baseline_best_arch is not None else 0.0
+        baseline_sim = (
+            float(baseline_best_arch.similarity) if baseline_best_arch is not None else 0.0
+        )
         cand_sim = float(cand_best.similarity) if cand_best is not None else 0.0
-        archetype = ArchetypeBreakdown(top_archetypes=top_arch, alignment_delta=cand_sim - baseline_sim)
+        archetype = ArchetypeBreakdown(
+            top_archetypes=top_arch, alignment_delta=cand_sim - baseline_sim
+        )
 
         lookahead_value = 0.0
         lookahead_targets: tuple[tuple[str, float], ...] = ()
         if isinstance(action.details, EconDetails) and int(action.details.rolls or 0) > 0:
-            seed = int(cfg.combat_base_seed) + 10007 + baseline.stage_number * 100 + baseline.round_number
+            seed = (
+                int(cfg.combat_base_seed)
+                + 10007
+                + baseline.stage_number * 100
+                + baseline.round_number
+            )
             prob_any, per_target, _ = estimate_upgrade_hit_prob(
                 baseline,
                 level=candidate.player.level,
@@ -240,7 +254,9 @@ class Coach:
                 num_trials=60,
             )
             lookahead_value = float(prob_any)
-            lookahead_targets = tuple(sorted(per_target.items(), key=lambda kv: kv[1], reverse=True)[:3])
+            lookahead_targets = tuple(
+                sorted(per_target.items(), key=lambda kv: kv[1], reverse=True)[:3]
+            )
 
         econ_value = float(plan_value_score(candidate))
         gold_delta = int(candidate.player.gold) - int(baseline.player.gold)
@@ -312,7 +328,11 @@ class Coach:
         capped: list[ActionPlan] = [hold] + others[: max(0, int(max_candidates) - 1)]
 
         baseline_round_num = _round_num_from_stage(baseline.stage)
-        budgets: list[int] = [int(cfg.sim_budget_pass1), int(cfg.sim_budget_pass2), int(cfg.sim_budget_pass3)]
+        budgets: list[int] = [
+            int(cfg.sim_budget_pass1),
+            int(cfg.sim_budget_pass2),
+            int(cfg.sim_budget_pass3),
+        ]
         budgets = [b for b in budgets if b > 0]
         pass1 = budgets[0] if budgets else 0
 
@@ -327,7 +347,10 @@ class Coach:
 
         baseline_arch_matches = self.archetypes.closest(baseline, top_n=1)
         baseline_best_arch = (
-            ArchetypeSummary(name=baseline_arch_matches[0].archetype.name, similarity=float(baseline_arch_matches[0].similarity))
+            ArchetypeSummary(
+                name=baseline_arch_matches[0].archetype.name,
+                similarity=float(baseline_arch_matches[0].similarity),
+            )
             if baseline_arch_matches
             else None
         )
@@ -400,7 +423,11 @@ class Coach:
         if len(budgets) >= 3 and len(scored) >= 2:
             pass3 = budgets[2]
             top_gap = float(scored[0][1].total_score) - float(scored[1][1].total_score)
-            if pass3 > budgets[1] and abs(top_gap) <= float(cfg.tie_threshold) and total_sims_used < int(cfg.max_total_sims):
+            if (
+                pass3 > budgets[1]
+                and abs(top_gap) <= float(cfg.tie_threshold)
+                and total_sims_used < int(cfg.max_total_sims)
+            ):
                 baseline_tempo_by_budget[pass3] = self._tempo_for_state(
                     baseline,
                     round_num=baseline_round_num,
@@ -433,7 +460,9 @@ class Coach:
         if write_trace and self._trace_dir is not None:
             state_hash = _hash_state(baseline)
             hold_breakdown = next((b for a, b in scored if a.action_id == hold.action_id), None)
-            baseline_total = float(hold_breakdown.total_score) if hold_breakdown is not None else 0.0
+            baseline_total = (
+                float(hold_breakdown.total_score) if hold_breakdown is not None else 0.0
+            )
             unit_map = {u.instance_id: u.champion_id for u in (*baseline.board, *baseline.bench)}
             summary = DecisionTraceStateSummary(
                 stage=str(baseline.stage),
@@ -465,10 +494,16 @@ class Coach:
         write_trace: bool = False,
     ) -> dict[str, list[Recommendation]]:
         return {
-            DecisionType.ITEMS.value: self.recommend(state, DecisionType.ITEMS, top_k=top_k, config=config, write_trace=write_trace),
+            DecisionType.ITEMS.value: self.recommend(
+                state, DecisionType.ITEMS, top_k=top_k, config=config, write_trace=write_trace
+            ),
             DecisionType.POSITION.value: self.recommend(
                 state, DecisionType.POSITION, top_k=top_k, config=config, write_trace=write_trace
             ),
-            DecisionType.ECON.value: self.recommend(state, DecisionType.ECON, top_k=top_k, config=config, write_trace=write_trace),
-            DecisionType.SHOP.value: self.recommend(state, DecisionType.SHOP, top_k=top_k, config=config, write_trace=write_trace),
+            DecisionType.ECON.value: self.recommend(
+                state, DecisionType.ECON, top_k=top_k, config=config, write_trace=write_trace
+            ),
+            DecisionType.SHOP.value: self.recommend(
+                state, DecisionType.SHOP, top_k=top_k, config=config, write_trace=write_trace
+            ),
         }

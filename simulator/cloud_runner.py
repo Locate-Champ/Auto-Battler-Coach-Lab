@@ -36,10 +36,10 @@ _project_root = str(Path(__file__).parent.parent)
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
-from snapshot_schema import JSONISH_COLUMNS
-from simulator.game.game import TFTGame
+from simulator.game.actions import MixedLobbyAgent
 from simulator.game.collector import GameCollector
-from simulator.game.actions import MixedLobbyAgent, fast_random_agent
+from simulator.game.game import TFTGame
+from snapshot_schema import JSONISH_COLUMNS
 
 # 95% Wilson interval z-score
 WILSON_Z_95 = 1.959963984540054
@@ -47,9 +47,9 @@ WILSON_Z_95 = 1.959963984540054
 # Agent profile presets for cloud-scale runs.
 # random -> legacy fast_random behavior (no lobby mixing).
 AGENT_PROFILES = {
-    'random': None,
-    'mixed': {'random': 50, 'econ': 30, 'slam': 20},
-    'ladder': {'random': 20, 'econ': 45, 'slam': 35},
+    "random": None,
+    "mixed": {"random": 50, "econ": 30, "slam": 20},
+    "ladder": {"random": 20, "econ": 45, "slam": 35},
 }
 
 _RUST_FULL_SIMULATOR: Any = None
@@ -63,6 +63,7 @@ class BatchAbort(Exception):
 def _pyarrow_available() -> bool:
     try:  # pragma: no cover - optional dependency
         import pyarrow  # noqa: F401
+
         return True
     except Exception:
         return False
@@ -71,27 +72,34 @@ def _pyarrow_available() -> bool:
 def _normalize_parquet_compression(name: str) -> str:
     value = name.strip().lower()
     mapping = {
-        'uncompressed': 'NONE',
-        'none': 'NONE',
-        'snappy': 'SNAPPY',
-        'gzip': 'GZIP',
-        'brotli': 'BROTLI',
-        'lz4': 'LZ4',
-        'zstd': 'ZSTD',
+        "uncompressed": "NONE",
+        "none": "NONE",
+        "snappy": "SNAPPY",
+        "gzip": "GZIP",
+        "brotli": "BROTLI",
+        "lz4": "LZ4",
+        "zstd": "ZSTD",
     }
     if value not in mapping:
-        valid = ', '.join(sorted(mapping))
+        valid = ", ".join(sorted(mapping))
         raise ValueError(f"Unsupported parquet compression '{name}'. Valid values: {valid}")
     return mapping[value]
 
 
 def _rust_extension_rebuild_hint() -> str:
     python_exe = Path(sys.executable)
-    cargo_toml = Path(__file__).parent / 'core' / 'rust_engine' / 'Cargo.toml'
-    wheel_glob = Path(__file__).parent / 'core' / 'rust_engine' / 'target' / 'wheels' / 'tft_combat_engine-*.whl'
+    cargo_toml = Path(__file__).parent / "core" / "rust_engine" / "Cargo.toml"
+    wheel_glob = (
+        Path(__file__).parent
+        / "core"
+        / "rust_engine"
+        / "target"
+        / "wheels"
+        / "tft_combat_engine-*.whl"
+    )
     return (
-        f"\"{python_exe}\" -m maturin build --release -m \"{cargo_toml}\" --interpreter \"{python_exe}\"\n"
-        f"\"{python_exe}\" -m pip install --force-reinstall \"{wheel_glob}\""
+        f'"{python_exe}" -m maturin build --release -m "{cargo_toml}" --interpreter "{python_exe}"\n'
+        f'"{python_exe}" -m pip install --force-reinstall "{wheel_glob}"'
     )
 
 
@@ -99,17 +107,17 @@ def _extract_signature_parameter_names(method: Any) -> List[str]:
     try:
         return list(inspect.signature(method).parameters.keys())
     except (TypeError, ValueError):
-        text_sig = getattr(method, '__text_signature__', None) or ''
-        if '(' not in text_sig or ')' not in text_sig:
+        text_sig = getattr(method, "__text_signature__", None) or ""
+        if "(" not in text_sig or ")" not in text_sig:
             return []
-        inside = text_sig[text_sig.find('(') + 1:text_sig.rfind(')')]
+        inside = text_sig[text_sig.find("(") + 1 : text_sig.rfind(")")]
         names: List[str] = []
-        for raw_part in inside.split(','):
+        for raw_part in inside.split(","):
             part = raw_part.strip()
             if not part:
                 continue
-            name = part.split('=')[0].strip()
-            if name.startswith('$'):
+            name = part.split("=")[0].strip()
+            if name.startswith("$"):
                 name = name[1:]
             names.append(name)
         return names
@@ -119,11 +127,11 @@ def _ensure_rust_parquet_method_support(
     rust_simulator: Any,
     method_name: str,
     required_kwargs: Tuple[str, ...] = (
-        'compression',
-        'use_dictionary',
-        'write_statistics',
-        'row_group_size',
-        'write_batch_size',
+        "compression",
+        "use_dictionary",
+        "write_statistics",
+        "row_group_size",
+        "write_batch_size",
     ),
 ) -> None:
     global _RUST_PARQUET_API_VALIDATED
@@ -140,7 +148,7 @@ def _ensure_rust_parquet_method_support(
     param_names = set(_extract_signature_parameter_names(method))
     missing_kwargs = [name for name in required_kwargs if name not in param_names]
     if missing_kwargs:
-        missing_text = ', '.join(missing_kwargs)
+        missing_text = ", ".join(missing_kwargs)
         raise RuntimeError(
             f"tft_combat_engine.{method_name} is missing expected kwargs ({missing_text}). "
             f"This usually means the extension was built/installed for a different CPython interpreter than "
@@ -151,8 +159,7 @@ def _ensure_rust_parquet_method_support(
     _RUST_PARQUET_API_VALIDATED.add(method_name)
 
 
-def _wilson_interval(successes: int, trials: int,
-                     z: float = WILSON_Z_95) -> Tuple[float, float]:
+def _wilson_interval(successes: int, trials: int, z: float = WILSON_Z_95) -> Tuple[float, float]:
     """Wilson score interval for Bernoulli metrics."""
     if trials <= 0:
         return 0.0, 0.0
@@ -169,7 +176,7 @@ def _wilson_interval(successes: int, trials: int,
 
 def _validate_reference_data_preflight() -> None:
     """Fail-fast if simulator reference data is out of sync."""
-    validator = Path(__file__).parent / 'data' / 'validate_reference_data.py'
+    validator = Path(__file__).parent / "data" / "validate_reference_data.py"
     if not validator.exists():
         print(f"Warning: reference validator not found at {validator} (skipping)")
         return
@@ -207,12 +214,13 @@ def _sample_cpu_utilization_pct(logical_cpu_count: int) -> Optional[float]:
     """Best-effort CPU utilization sample (percent)."""
     try:
         import psutil  # pragma: no cover - optional dependency
+
         # Small interval avoids the initial 0.0 warm-up sample.
         return float(psutil.cpu_percent(interval=0.1))
     except Exception:
         pass
 
-    if hasattr(os, 'getloadavg'):
+    if hasattr(os, "getloadavg"):
         try:
             load_one = float(os.getloadavg()[0])  # pragma: no cover - not on Windows
             if logical_cpu_count <= 0:
@@ -255,28 +263,28 @@ def _build_cost_telemetry(
     usd_per_round = (total_cost_usd / total_rounds) if total_rounds > 0 else 0.0
 
     return {
-        'throughput': {
-            'games_per_sec': round(games_per_sec, 4),
-            'rounds_per_sec': round(rounds_per_sec, 4),
-            'sec_per_game': round(sec_per_game, 4),
-            'sec_per_round': round(sec_per_round, 4),
+        "throughput": {
+            "games_per_sec": round(games_per_sec, 4),
+            "rounds_per_sec": round(rounds_per_sec, 4),
+            "sec_per_game": round(sec_per_game, 4),
+            "sec_per_round": round(sec_per_round, 4),
         },
-        'cpu_utilization': {
-            'logical_cpu_count': int(logical_cpu_count),
-            'num_workers': int(num_workers),
-            'worker_share_pct_est': round(worker_share_pct_est, 2),
-            'sample_count': int(len(samples)),
-            'sampled_avg_pct': _round_or_none(sampled_avg, 2),
-            'sampled_min_pct': _round_or_none(sampled_min, 2),
-            'sampled_max_pct': _round_or_none(sampled_max, 2),
+        "cpu_utilization": {
+            "logical_cpu_count": int(logical_cpu_count),
+            "num_workers": int(num_workers),
+            "worker_share_pct_est": round(worker_share_pct_est, 2),
+            "sample_count": int(len(samples)),
+            "sampled_avg_pct": _round_or_none(sampled_avg, 2),
+            "sampled_min_pct": _round_or_none(sampled_min, 2),
+            "sampled_max_pct": _round_or_none(sampled_max, 2),
         },
-        'cost_estimate_usd': {
-            'instance_hourly_usd': round(max(0.0, float(instance_hourly_usd)), 6),
-            'total_cost_usd': round(total_cost_usd, 6),
-            'usd_per_game': round(usd_per_game, 6),
-            'usd_per_round': round(usd_per_round, 6),
-            'usd_per_1k_games': round(usd_per_game * 1000.0, 6),
-            'usd_per_1k_rounds': round(usd_per_round * 1000.0, 6),
+        "cost_estimate_usd": {
+            "instance_hourly_usd": round(max(0.0, float(instance_hourly_usd)), 6),
+            "total_cost_usd": round(total_cost_usd, 6),
+            "usd_per_game": round(usd_per_game, 6),
+            "usd_per_round": round(usd_per_round, 6),
+            "usd_per_1k_games": round(usd_per_game * 1000.0, 6),
+            "usd_per_1k_rounds": round(usd_per_round * 1000.0, 6),
         },
     }
 
@@ -316,9 +324,11 @@ def _resolve_shard_range(
 
 def _iter_task_batches(tasks: List[Tuple], batch_size: int):
     for start in range(0, len(tasks), batch_size):
-        yield tasks[start:start + batch_size]
+        yield tasks[start : start + batch_size]
+
 
 # ── Per-Game Runner ──────────────────────────────────────────────────────
+
 
 def run_game(args: Tuple) -> Dict:
     """Run a single game with error handling.
@@ -360,19 +370,19 @@ def run_game(args: Tuple) -> Dict:
         # Seed before agent assignment for determinism
         random.seed(seed)
 
-        if engine == 'rust_full':
+        if engine == "rust_full":
             global _RUST_FULL_SIMULATOR
             global _RUST_PARQUET_API_VALIDATED
             if _RUST_FULL_SIMULATOR is None:
                 from tft_combat_engine import RustGameSimulator
 
-                combat_data_path = Path(__file__).parent / 'data' / 'combat_data.json'
+                combat_data_path = Path(__file__).parent / "data" / "combat_data.json"
                 _RUST_FULL_SIMULATOR = RustGameSimulator(str(combat_data_path))
                 _RUST_PARQUET_API_VALIDATED.clear()
 
             start = time.perf_counter()
             if rust_full_native_parquet and include_training_rows:
-                _ensure_rust_parquet_method_support(_RUST_FULL_SIMULATOR, 'run_game_parquet')
+                _ensure_rust_parquet_method_support(_RUST_FULL_SIMULATOR, "run_game_parquet")
                 rust_result = _RUST_FULL_SIMULATOR.run_game_parquet(
                     game_id,
                     seed,
@@ -393,24 +403,24 @@ def run_game(args: Tuple) -> Dict:
                     include_training_rows,
                 )
             elapsed = time.perf_counter() - start
-            analytics = rust_result.get('analytics') or {
-                'comp_placements': [],
-                'augment_placements': [],
-                'champion_placements': [],
+            analytics = rust_result.get("analytics") or {
+                "comp_placements": [],
+                "augment_placements": [],
+                "champion_placements": [],
             }
 
             return {
-                'status': 'ok',
-                'game_id': game_id,
-                'seed': seed,
-                'elapsed': round(elapsed, 3),
-                'rounds': int(rust_result.get('rounds', 0)),
-                'placements': rust_result.get('placements', []),
-                'training_rows': rust_result.get('training_rows', []),
-                'training_rows_jsonl': rust_result.get('training_rows_jsonl', ''),
-                'training_rows_parquet': rust_result.get('training_rows_parquet', b''),
-                'training_row_count': int(rust_result.get('training_row_count', 0)),
-                'analytics': analytics,
+                "status": "ok",
+                "game_id": game_id,
+                "seed": seed,
+                "elapsed": round(elapsed, 3),
+                "rounds": int(rust_result.get("rounds", 0)),
+                "placements": rust_result.get("placements", []),
+                "training_rows": rust_result.get("training_rows", []),
+                "training_rows_jsonl": rust_result.get("training_rows_jsonl", ""),
+                "training_rows_parquet": rust_result.get("training_rows_parquet", b""),
+                "training_row_count": int(rust_result.get("training_row_count", 0)),
+                "analytics": analytics,
             }
 
         # Build agent
@@ -436,25 +446,26 @@ def run_game(args: Tuple) -> Dict:
         elapsed = time.perf_counter() - start
 
         return {
-            'status': 'ok',
-            'game_id': game_id,
-            'seed': seed,
-            'elapsed': round(elapsed, 3),
-            'rounds': game.round_num,
-            'placements': collector.placements,
-            'training_rows': collector.get_training_rows(),
-            'analytics': collector.get_analytics(),
+            "status": "ok",
+            "game_id": game_id,
+            "seed": seed,
+            "elapsed": round(elapsed, 3),
+            "rounds": game.round_num,
+            "placements": collector.placements,
+            "training_rows": collector.get_training_rows(),
+            "analytics": collector.get_analytics(),
         }
     except Exception:
         return {
-            'status': 'error',
-            'game_id': game_id,
-            'seed': seed,
-            'error': traceback.format_exc(),
+            "status": "error",
+            "game_id": game_id,
+            "seed": seed,
+            "error": traceback.format_exc(),
         }
 
 
 # ── Streaming Writer ─────────────────────────────────────────────────────
+
 
 class StreamingWriter:
     """Writes simulation results incrementally to avoid holding all data in memory.
@@ -470,7 +481,7 @@ class StreamingWriter:
         chunk_size: int = 100,
         resume_state: Optional[Dict] = None,
         require_parquet: bool = False,
-        parquet_compression: str = 'uncompressed',
+        parquet_compression: str = "uncompressed",
         parquet_use_dictionary: bool = False,
         parquet_write_statistics: bool = False,
         s3_uri: Optional[str] = None,
@@ -481,7 +492,7 @@ class StreamingWriter:
         self.parquet_compression = _normalize_parquet_compression(parquet_compression)
         self.parquet_use_dictionary = parquet_use_dictionary
         self.parquet_write_statistics = parquet_write_statistics
-        self.s3_uri = s3_uri.rstrip('/') if s3_uri else None
+        self.s3_uri = s3_uri.rstrip("/") if s3_uri else None
         os.makedirs(output_dir, exist_ok=True)
 
         # Training row buffer (flushed every chunk_size games)
@@ -513,21 +524,21 @@ class StreamingWriter:
 
         # Restore state if resuming
         if resume_state:
-            self._completed_seeds = list(resume_state.get('completed_seeds', []))
-            self._chunk_idx = resume_state.get('chunks_written', 0)
-            self._total_rows = resume_state.get('total_rows', 0)
-            self._sum_game_time = resume_state.get('sum_game_time', 0.0)
-            self._total_rounds = resume_state.get('total_rounds', 0)
-            self._champ_placements = Counter(resume_state.get('champ_placements', {}))
-            self._champ_placements_sq = Counter(resume_state.get('champ_placements_sq', {}))
-            self._champ_counts = Counter(resume_state.get('champ_counts', {}))
-            self._champ_top4_counts = Counter(resume_state.get('champ_top4_counts', {}))
-            self._champ_win_counts = Counter(resume_state.get('champ_win_counts', {}))
-            self._aug_placements = Counter(resume_state.get('aug_placements', {}))
-            self._aug_placements_sq = Counter(resume_state.get('aug_placements_sq', {}))
-            self._aug_counts = Counter(resume_state.get('aug_counts', {}))
-            self._aug_top4_counts = Counter(resume_state.get('aug_top4_counts', {}))
-            self._aug_win_counts = Counter(resume_state.get('aug_win_counts', {}))
+            self._completed_seeds = list(resume_state.get("completed_seeds", []))
+            self._chunk_idx = resume_state.get("chunks_written", 0)
+            self._total_rows = resume_state.get("total_rows", 0)
+            self._sum_game_time = resume_state.get("sum_game_time", 0.0)
+            self._total_rounds = resume_state.get("total_rounds", 0)
+            self._champ_placements = Counter(resume_state.get("champ_placements", {}))
+            self._champ_placements_sq = Counter(resume_state.get("champ_placements_sq", {}))
+            self._champ_counts = Counter(resume_state.get("champ_counts", {}))
+            self._champ_top4_counts = Counter(resume_state.get("champ_top4_counts", {}))
+            self._champ_win_counts = Counter(resume_state.get("champ_win_counts", {}))
+            self._aug_placements = Counter(resume_state.get("aug_placements", {}))
+            self._aug_placements_sq = Counter(resume_state.get("aug_placements_sq", {}))
+            self._aug_counts = Counter(resume_state.get("aug_counts", {}))
+            self._aug_top4_counts = Counter(resume_state.get("aug_top4_counts", {}))
+            self._aug_win_counts = Counter(resume_state.get("aug_win_counts", {}))
 
     @property
     def num_completed(self) -> int:
@@ -543,17 +554,17 @@ class StreamingWriter:
 
     @property
     def next_chunk_name(self) -> str:
-        return f'chunk_{self._chunk_idx:04d}'
+        return f"chunk_{self._chunk_idx:04d}"
 
     def _s3_upload(self, local_path: str) -> None:
         """Upload a local file to S3 if s3_uri is configured."""
         if not self.s3_uri:
             return
         filename = os.path.basename(local_path)
-        s3_dest = f'{self.s3_uri}/{filename}'
+        s3_dest = f"{self.s3_uri}/{filename}"
         try:
             result = subprocess.run(
-                ['aws', 's3', 'cp', local_path, s3_dest, '--only-show-errors'],
+                ["aws", "s3", "cp", local_path, s3_dest, "--only-show-errors"],
                 capture_output=True,
                 text=True,
                 check=False,
@@ -566,36 +577,38 @@ class StreamingWriter:
 
     def add_result(self, result: Dict, *, buffer_training_rows: bool = True):
         """Process a completed game result."""
-        if result['status'] == 'error':
-            self._errors.append({
-                'game_id': result['game_id'],
-                'seed': result['seed'],
-                'error': result['error'],
-            })
+        if result["status"] == "error":
+            self._errors.append(
+                {
+                    "game_id": result["game_id"],
+                    "seed": result["seed"],
+                    "error": result["error"],
+                }
+            )
             return
 
-        self._completed_seeds.append(result['seed'])
-        self._sum_game_time += result['elapsed']
-        self._total_rounds += result['rounds']
+        self._completed_seeds.append(result["seed"])
+        self._sum_game_time += result["elapsed"]
+        self._total_rounds += result["rounds"]
 
         if buffer_training_rows:
             # Buffer training rows
-            training_rows = result.get('training_rows', [])
+            training_rows = result.get("training_rows", [])
             if training_rows:
                 self._row_buffer.extend(training_rows)
                 self._pending_row_count += len(training_rows)
-            training_rows_jsonl = result.get('training_rows_jsonl', '')
+            training_rows_jsonl = result.get("training_rows_jsonl", "")
             if training_rows_jsonl:
                 self._jsonl_blob_buffer.append(training_rows_jsonl)
-                self._pending_row_count += int(result.get('training_row_count', 0))
-            training_rows_parquet = result.get('training_rows_parquet', b'')
+                self._pending_row_count += int(result.get("training_row_count", 0))
+            training_rows_parquet = result.get("training_rows_parquet", b"")
             if training_rows_parquet:
                 self._parquet_blob_buffer.append(training_rows_parquet)
-                self._pending_row_count += int(result.get('training_row_count', 0))
+                self._pending_row_count += int(result.get("training_row_count", 0))
 
         # Accumulate analytics
-        analytics = result['analytics']
-        for name, placement in analytics['champion_placements']:
+        analytics = result["analytics"]
+        for name, placement in analytics["champion_placements"]:
             self._champ_placements[name] += placement
             self._champ_placements_sq[name] += placement * placement
             self._champ_counts[name] += 1
@@ -603,7 +616,7 @@ class StreamingWriter:
                 self._champ_top4_counts[name] += 1
             if placement == 1:
                 self._champ_win_counts[name] += 1
-        for name, placement in analytics['augment_placements']:
+        for name, placement in analytics["augment_placements"]:
             self._aug_placements[name] += placement
             self._aug_placements_sq[name] += placement * placement
             self._aug_counts[name] += 1
@@ -622,8 +635,8 @@ class StreamingWriter:
     def record_external_parquet_chunk(self, row_count: int):
         """Record a chunk file that was already written outside this writer."""
         # Upload the chunk that was just written by Rust
-        chunk_name = f'chunk_{self._chunk_idx:04d}'
-        chunk_path = os.path.join(self.output_dir, chunk_name + '.parquet')
+        chunk_name = f"chunk_{self._chunk_idx:04d}"
+        chunk_path = os.path.join(self.output_dir, chunk_name + ".parquet")
         if os.path.exists(chunk_path):
             self._s3_upload(chunk_path)
 
@@ -636,7 +649,7 @@ class StreamingWriter:
         if not self._row_buffer and not self._jsonl_blob_buffer and not self._parquet_blob_buffer:
             return
 
-        chunk_name = f'chunk_{self._chunk_idx:04d}'
+        chunk_name = f"chunk_{self._chunk_idx:04d}"
         if self._parquet_blob_buffer:
             self._write_parquet_blob_chunk(chunk_name)
         elif self._jsonl_blob_buffer:
@@ -659,7 +672,7 @@ class StreamingWriter:
         self._total_rows += self._pending_row_count
 
         # Stream chunk to S3 immediately
-        for ext in ('.parquet', '.jsonl'):
+        for ext in (".parquet", ".jsonl"):
             chunk_path = os.path.join(self.output_dir, chunk_name + ext)
             if os.path.exists(chunk_path):
                 self._s3_upload(chunk_path)
@@ -684,7 +697,7 @@ class StreamingWriter:
                     row[key] = json.dumps(row[key])
 
         table = pa.Table.from_pylist(rows)
-        path = os.path.join(self.output_dir, chunk_name + '.parquet')
+        path = os.path.join(self.output_dir, chunk_name + ".parquet")
         pq.write_table(
             table,
             path,
@@ -695,21 +708,21 @@ class StreamingWriter:
 
     def _write_jsonl_chunk(self, chunk_name: str):
         """Write chunk as JSON Lines (fallback)."""
-        path = os.path.join(self.output_dir, chunk_name + '.jsonl')
-        with open(path, 'w', encoding='utf-8') as f:
+        path = os.path.join(self.output_dir, chunk_name + ".jsonl")
+        with open(path, "w", encoding="utf-8") as f:
             for row in self._row_buffer:
-                f.write(json.dumps(row) + '\n')
+                f.write(json.dumps(row) + "\n")
 
     def _write_jsonl_blob_chunk(self, chunk_name: str):
         """Write pre-serialized JSONL payloads from Rust."""
-        path = os.path.join(self.output_dir, chunk_name + '.jsonl')
-        with open(path, 'w', encoding='utf-8') as f:
+        path = os.path.join(self.output_dir, chunk_name + ".jsonl")
+        with open(path, "w", encoding="utf-8") as f:
             for blob in self._jsonl_blob_buffer:
                 if not blob:
                     continue
                 f.write(blob)
-                if not blob.endswith('\n'):
-                    f.write('\n')
+                if not blob.endswith("\n"):
+                    f.write("\n")
 
     def _write_parquet_blob_chunk(self, chunk_name: str):
         """Aggregate Rust-prebuilt parquet blobs into one chunk parquet file."""
@@ -721,12 +734,12 @@ class StreamingWriter:
             for idx, blob in enumerate(self._parquet_blob_buffer):
                 if not blob:
                     continue
-                path = os.path.join(self.output_dir, f'{chunk_name}_{idx:04d}.parquet')
-                with open(path, 'wb') as f:
+                path = os.path.join(self.output_dir, f"{chunk_name}_{idx:04d}.parquet")
+                with open(path, "wb") as f:
                     f.write(blob)
             return
 
-        path = os.path.join(self.output_dir, chunk_name + '.parquet')
+        path = os.path.join(self.output_dir, chunk_name + ".parquet")
         writer = None
         schema = None
         try:
@@ -757,8 +770,8 @@ class StreamingWriter:
             for idx, blob in enumerate(self._parquet_blob_buffer):
                 if not blob:
                     continue
-                fallback_path = os.path.join(self.output_dir, f'{chunk_name}_{idx:04d}.parquet')
-                with open(fallback_path, 'wb') as f:
+                fallback_path = os.path.join(self.output_dir, f"{chunk_name}_{idx:04d}.parquet")
+                with open(fallback_path, "wb") as f:
                     f.write(blob)
             return
         finally:
@@ -771,14 +784,14 @@ class StreamingWriter:
         import pyarrow.json as paj
         import pyarrow.parquet as pq
 
-        payload = ''.join(blob for blob in self._jsonl_blob_buffer if blob)
-        if payload and not payload.endswith('\n'):
-            payload += '\n'
+        payload = "".join(blob for blob in self._jsonl_blob_buffer if blob)
+        if payload and not payload.endswith("\n"):
+            payload += "\n"
         if not payload:
             return
 
-        table = paj.read_json(pa.BufferReader(payload.encode('utf-8')))
-        path = os.path.join(self.output_dir, chunk_name + '.parquet')
+        table = paj.read_json(pa.BufferReader(payload.encode("utf-8")))
+        path = os.path.join(self.output_dir, chunk_name + ".parquet")
         pq.write_table(
             table,
             path,
@@ -790,55 +803,56 @@ class StreamingWriter:
     def write_checkpoint(self):
         """Write checkpoint for resume capability."""
         checkpoint = {
-            'completed_seeds': sorted(self._completed_seeds),
-            'num_completed': len(self._completed_seeds),
-            'num_errors': len(self._errors),
-            'chunks_written': self._chunk_idx,
-            'total_rows': self._total_rows,
-            'sum_game_time': self._sum_game_time,
-            'total_rounds': self._total_rounds,
-            'champ_placements': dict(self._champ_placements),
-            'champ_placements_sq': dict(self._champ_placements_sq),
-            'champ_counts': dict(self._champ_counts),
-            'champ_top4_counts': dict(self._champ_top4_counts),
-            'champ_win_counts': dict(self._champ_win_counts),
-            'aug_placements': dict(self._aug_placements),
-            'aug_placements_sq': dict(self._aug_placements_sq),
-            'aug_counts': dict(self._aug_counts),
-            'aug_top4_counts': dict(self._aug_top4_counts),
-            'aug_win_counts': dict(self._aug_win_counts),
+            "completed_seeds": sorted(self._completed_seeds),
+            "num_completed": len(self._completed_seeds),
+            "num_errors": len(self._errors),
+            "chunks_written": self._chunk_idx,
+            "total_rows": self._total_rows,
+            "sum_game_time": self._sum_game_time,
+            "total_rounds": self._total_rounds,
+            "champ_placements": dict(self._champ_placements),
+            "champ_placements_sq": dict(self._champ_placements_sq),
+            "champ_counts": dict(self._champ_counts),
+            "champ_top4_counts": dict(self._champ_top4_counts),
+            "champ_win_counts": dict(self._champ_win_counts),
+            "aug_placements": dict(self._aug_placements),
+            "aug_placements_sq": dict(self._aug_placements_sq),
+            "aug_counts": dict(self._aug_counts),
+            "aug_top4_counts": dict(self._aug_top4_counts),
+            "aug_win_counts": dict(self._aug_win_counts),
         }
-        path = os.path.join(self.output_dir, 'checkpoint.json')
+        path = os.path.join(self.output_dir, "checkpoint.json")
         # Write atomically (write to temp, then rename)
-        tmp_path = path + '.tmp'
-        with open(tmp_path, 'w', encoding='utf-8') as f:
+        tmp_path = path + ".tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(checkpoint, f)
         os.replace(tmp_path, path)
 
-    def finalize(self, total_time: float, num_workers: int,
-                 run_metadata: Optional[Dict[str, Any]] = None) -> Dict:
+    def finalize(
+        self, total_time: float, num_workers: int, run_metadata: Optional[Dict[str, Any]] = None
+    ) -> Dict:
         """Flush remaining data, write errors, summary, and final checkpoint."""
         self._flush_chunk()
 
         # Write errors
         if self._errors:
-            error_path = os.path.join(self.output_dir, 'errors.json')
-            with open(error_path, 'w', encoding='utf-8') as f:
+            error_path = os.path.join(self.output_dir, "errors.json")
+            with open(error_path, "w", encoding="utf-8") as f:
                 json.dump(self._errors, f, indent=2)
             print(f"  Errors: {error_path} ({len(self._errors)} failures)")
             self._s3_upload(error_path)
 
         # Compute and write summary
         summary = self._compute_summary(total_time, num_workers, run_metadata or {})
-        summary_path = os.path.join(self.output_dir, 'summary.json')
-        with open(summary_path, 'w', encoding='utf-8') as f:
+        summary_path = os.path.join(self.output_dir, "summary.json")
+        with open(summary_path, "w", encoding="utf-8") as f:
             json.dump(summary, f, indent=2)
         print(f"  Summary: {summary_path}")
         self._s3_upload(summary_path)
 
         # Final checkpoint
         self.write_checkpoint()
-        checkpoint_path = os.path.join(self.output_dir, 'checkpoint.json')
+        checkpoint_path = os.path.join(self.output_dir, "checkpoint.json")
         self._s3_upload(checkpoint_path)
 
         if self.s3_uri:
@@ -846,13 +860,16 @@ class StreamingWriter:
 
         return summary
 
-    def _compute_summary(self, total_time: float, num_workers: int,
-                         run_metadata: Dict[str, Any]) -> Dict:
+    def _compute_summary(
+        self, total_time: float, num_workers: int, run_metadata: Dict[str, Any]
+    ) -> Dict:
         """Compute aggregate statistics."""
         num_games = len(self._completed_seeds)
-        logical_cpu_count = int(run_metadata.get('logical_cpu_count') or multiprocessing.cpu_count())
-        instance_hourly_usd = float(run_metadata.get('instance_hourly_usd') or 0.0)
-        cpu_util_samples = run_metadata.get('cpu_utilization_samples_pct') or []
+        logical_cpu_count = int(
+            run_metadata.get("logical_cpu_count") or multiprocessing.cpu_count()
+        )
+        instance_hourly_usd = float(run_metadata.get("instance_hourly_usd") or 0.0)
+        cpu_util_samples = run_metadata.get("cpu_utilization_samples_pct") or []
         cost_telemetry = _build_cost_telemetry(
             total_time_sec=total_time,
             num_games=num_games,
@@ -864,13 +881,13 @@ class StreamingWriter:
         )
         if num_games == 0:
             return {
-                'num_games': 0,
-                'num_errors': len(self._errors),
-                'num_workers': num_workers,
-                'total_time_sec': round(total_time, 1),
-                'total_rounds': 0,
-                'cost_telemetry': cost_telemetry,
-                'run_config': run_metadata,
+                "num_games": 0,
+                "num_errors": len(self._errors),
+                "num_workers": num_workers,
+                "total_time_sec": round(total_time, 1),
+                "total_rounds": 0,
+                "cost_telemetry": cost_telemetry,
+                "run_config": run_metadata,
             }
 
         # Champion average placements
@@ -885,9 +902,14 @@ class StreamingWriter:
         bot_champs = sorted(champ_avg.items(), key=lambda x: x[1], reverse=True)[:20]
         top_augs = sorted(aug_avg.items(), key=lambda x: x[1])[:20]
 
-        def _build_rate_rows(names: List[str], counts: Counter, placements: Counter,
-                             placements_sq: Counter, top4_counts: Counter,
-                             win_counts: Counter) -> List[Dict[str, Any]]:
+        def _build_rate_rows(
+            names: List[str],
+            counts: Counter,
+            placements: Counter,
+            placements_sq: Counter,
+            top4_counts: Counter,
+            win_counts: Counter,
+        ) -> List[Dict[str, Any]]:
             rows = []
             for name in names:
                 n = int(counts[name])
@@ -905,16 +927,18 @@ class StreamingWriter:
                 top4_low, top4_high = _wilson_interval(top4, n)
                 win_low, win_high = _wilson_interval(wins, n)
 
-                rows.append({
-                    'name': name,
-                    'samples': n,
-                    'avg_placement': round(avg, 3),
-                    'placement_stddev': round(std_dev, 3),
-                    'top4_rate': round(top4_rate, 4),
-                    'top4_ci95': [round(top4_low, 4), round(top4_high, 4)],
-                    'win_rate': round(win_rate, 4),
-                    'win_ci95': [round(win_low, 4), round(win_high, 4)],
-                })
+                rows.append(
+                    {
+                        "name": name,
+                        "samples": n,
+                        "avg_placement": round(avg, 3),
+                        "placement_stddev": round(std_dev, 3),
+                        "top4_rate": round(top4_rate, 4),
+                        "top4_ci95": [round(top4_low, 4), round(top4_high, 4)],
+                        "win_rate": round(win_rate, 4),
+                        "win_ci95": [round(win_low, 4), round(win_high, 4)],
+                    }
+                )
             return rows
 
         champion_metric_rows = _build_rate_rows(
@@ -935,53 +959,56 @@ class StreamingWriter:
         )
 
         return {
-            'num_games': num_games,
-            'num_errors': len(self._errors),
-            'num_workers': num_workers,
-            'total_time_sec': round(total_time, 1),
-            'games_per_sec': round(num_games / total_time, 2) if total_time > 0 else 0,
-            'avg_game_time_sec': round(self._sum_game_time / num_games, 3),
-            'total_rounds': self._total_rounds,
-            'avg_rounds': round(self._total_rounds / num_games, 1),
-            'total_training_rows': self._total_rows,
-            'total_chunks': self._chunk_idx,
-            'top_champions': top_champs,
-            'bottom_champions': bot_champs,
-            'top_augments': top_augs,
-            'champion_pick_rates': dict(self._champ_counts.most_common(20)),
-            'confidence_method': 'wilson_95',
-            'champion_metrics': sorted(champion_metric_rows, key=lambda x: x['avg_placement'])[:20],
-            'augment_metrics': sorted(augment_metric_rows, key=lambda x: x['avg_placement'])[:20],
-            'cost_telemetry': cost_telemetry,
-            'run_config': run_metadata,
+            "num_games": num_games,
+            "num_errors": len(self._errors),
+            "num_workers": num_workers,
+            "total_time_sec": round(total_time, 1),
+            "games_per_sec": round(num_games / total_time, 2) if total_time > 0 else 0,
+            "avg_game_time_sec": round(self._sum_game_time / num_games, 3),
+            "total_rounds": self._total_rounds,
+            "avg_rounds": round(self._total_rounds / num_games, 1),
+            "total_training_rows": self._total_rows,
+            "total_chunks": self._chunk_idx,
+            "top_champions": top_champs,
+            "bottom_champions": bot_champs,
+            "top_augments": top_augs,
+            "champion_pick_rates": dict(self._champ_counts.most_common(20)),
+            "confidence_method": "wilson_95",
+            "champion_metrics": sorted(champion_metric_rows, key=lambda x: x["avg_placement"])[:20],
+            "augment_metrics": sorted(augment_metric_rows, key=lambda x: x["avg_placement"])[:20],
+            "cost_telemetry": cost_telemetry,
+            "run_config": run_metadata,
         }
 
 
 # ── Worker Init ──────────────────────────────────────────────────────────
 
-def _worker_init(engine: str = 'python'):
+
+def _worker_init(engine: str = "python"):
     """Worker process initializer - pre-loads shared data."""
-    if engine == 'rust':
+    if engine == "rust":
         from tft_combat_engine import RustCombatEngine
 
-        combat_data_path = Path(__file__).parent / 'data' / 'combat_data.json'
+        combat_data_path = Path(__file__).parent / "data" / "combat_data.json"
         RustCombatEngine(str(combat_data_path))
         return
-    if engine == 'rust_full':
+    if engine == "rust_full":
         global _RUST_FULL_SIMULATOR
         global _RUST_PARQUET_API_VALIDATED
         from tft_combat_engine import RustGameSimulator
 
-        combat_data_path = Path(__file__).parent / 'data' / 'combat_data.json'
+        combat_data_path = Path(__file__).parent / "data" / "combat_data.json"
         _RUST_FULL_SIMULATOR = RustGameSimulator(str(combat_data_path))
         _RUST_PARQUET_API_VALIDATED.clear()
         return
 
     from simulator.core.combat_engine import CombatEngine
+
     CombatEngine()  # Warm the cache
 
 
 # ── Batch Runner ─────────────────────────────────────────────────────────
+
 
 def run_batch(
     num_games: int,
@@ -991,7 +1018,7 @@ def run_batch(
     agent_mix: Optional[Dict] = None,
     chunk_size: int = 100,
     resume: bool = False,
-    agent_profile: str = 'random',
+    agent_profile: str = "random",
     checkpoint_every: Optional[int] = None,
     progress_every: Optional[int] = 500,
     max_errors: Optional[int] = None,
@@ -1000,14 +1027,14 @@ def run_batch(
     pool_chunksize_max: Optional[int] = None,
     shard_index: Optional[int] = None,
     num_shards: Optional[int] = None,
-    engine: str = 'python',
+    engine: str = "python",
     rust_full_include_training_rows: bool = True,
     rust_full_native_jsonl: bool = False,
     rust_full_native_parquet: bool = False,
     rust_full_native_parquet_direct: bool = False,
     rust_full_rayon_batch_size: Optional[int] = None,
     rust_full_rayon_threads: Optional[int] = None,
-    parquet_compression: str = 'uncompressed',
+    parquet_compression: str = "uncompressed",
     parquet_use_dictionary: bool = False,
     parquet_write_statistics: bool = False,
     parquet_row_group_size: Optional[int] = None,
@@ -1058,27 +1085,37 @@ def run_batch(
         raise ValueError("pool_chunksize must be > 0 when provided.")
     if pool_chunksize_max is not None and pool_chunksize_max <= 0:
         raise ValueError("pool_chunksize_max must be > 0 when provided.")
-    if rust_full_native_jsonl and engine != 'rust_full':
+    if rust_full_native_jsonl and engine != "rust_full":
         raise ValueError("rust_full_native_jsonl can only be used with engine='rust_full'.")
-    if rust_full_native_parquet and engine != 'rust_full':
+    if rust_full_native_parquet and engine != "rust_full":
         raise ValueError("rust_full_native_parquet can only be used with engine='rust_full'.")
-    if rust_full_native_parquet_direct and engine != 'rust_full':
-        raise ValueError("rust_full_native_parquet_direct can only be used with engine='rust_full'.")
+    if rust_full_native_parquet_direct and engine != "rust_full":
+        raise ValueError(
+            "rust_full_native_parquet_direct can only be used with engine='rust_full'."
+        )
     if rust_full_native_jsonl and rust_full_native_parquet:
-        raise ValueError("rust_full_native_jsonl and rust_full_native_parquet are mutually exclusive.")
+        raise ValueError(
+            "rust_full_native_jsonl and rust_full_native_parquet are mutually exclusive."
+        )
     if rust_full_native_parquet_direct and rust_full_native_jsonl:
-        raise ValueError("rust_full_native_parquet_direct cannot be combined with rust_full_native_jsonl.")
+        raise ValueError(
+            "rust_full_native_parquet_direct cannot be combined with rust_full_native_jsonl."
+        )
     if rust_full_native_parquet_direct and not rust_full_native_parquet:
         raise ValueError("rust_full_native_parquet_direct requires rust_full_native_parquet.")
     if rust_full_native_parquet_direct and not rust_full_include_training_rows:
-        raise ValueError("rust_full_native_parquet_direct requires rust_full_include_training_rows.")
+        raise ValueError(
+            "rust_full_native_parquet_direct requires rust_full_include_training_rows."
+        )
     if rust_full_native_parquet_direct and rust_full_rayon_batch_size is None:
         raise ValueError("rust_full_native_parquet_direct requires rust_full_rayon_batch_size.")
     if rust_full_rayon_batch_size is not None and rust_full_rayon_batch_size <= 0:
         raise ValueError("rust_full_rayon_batch_size must be > 0 when provided.")
     if rust_full_rayon_threads is not None and rust_full_rayon_threads <= 0:
         raise ValueError("rust_full_rayon_threads must be > 0 when provided.")
-    if (rust_full_rayon_batch_size is not None or rust_full_rayon_threads is not None) and engine != 'rust_full':
+    if (
+        rust_full_rayon_batch_size is not None or rust_full_rayon_threads is not None
+    ) and engine != "rust_full":
         raise ValueError("Rust rayon batch options require engine='rust_full'.")
     if parquet_row_group_size is not None and parquet_row_group_size <= 0:
         raise ValueError("parquet_row_group_size must be > 0 when provided.")
@@ -1107,11 +1144,11 @@ def run_batch(
     resume_state = None
     completed_seeds = set()
     if resume:
-        checkpoint_path = os.path.join(output_dir, 'checkpoint.json')
+        checkpoint_path = os.path.join(output_dir, "checkpoint.json")
         if os.path.exists(checkpoint_path):
-            with open(checkpoint_path, 'r', encoding='utf-8') as f:
+            with open(checkpoint_path, "r", encoding="utf-8") as f:
                 resume_state = json.load(f)
-            completed_seeds = set(resume_state.get('completed_seeds', []))
+            completed_seeds = set(resume_state.get("completed_seeds", []))
             print(f"Resuming from checkpoint: {len(completed_seeds)} games already done")
         else:
             print("No checkpoint found, starting fresh")
@@ -1152,7 +1189,8 @@ def run_batch(
             parquet_write_batch_size,
         )
         for s in all_seeds
-             if s not in completed_seeds]
+        if s not in completed_seeds
+    ]
     remaining = len(tasks)
 
     resolved_pool_chunksize: Optional[int] = None
@@ -1163,19 +1201,11 @@ def run_batch(
             resolved_pool_chunksize = min(resolved_pool_chunksize, pool_chunksize_max)
         resolved_pool_chunksize = min(resolved_pool_chunksize, remaining)
 
-    use_rust_rayon_batches = (
-        engine == 'rust_full'
-        and rust_full_rayon_batch_size is not None
-    )
+    use_rust_rayon_batches = engine == "rust_full" and rust_full_rayon_batch_size is not None
     use_rust_batch_parquet_api = (
-        use_rust_rayon_batches
-        and rust_full_include_training_rows
-        and rust_full_native_parquet
+        use_rust_rayon_batches and rust_full_include_training_rows and rust_full_native_parquet
     )
-    use_rust_batch_parquet_file_api = (
-        use_rust_batch_parquet_api
-        and rust_full_native_parquet_direct
-    )
+    use_rust_batch_parquet_file_api = use_rust_batch_parquet_api and rust_full_native_parquet_direct
 
     if remaining == 0:
         print("All games already completed!")
@@ -1183,65 +1213,68 @@ def run_batch(
             0.0,
             num_workers,
             run_metadata={
-                'seed_start': effective_seed_start,
-                'seed_end': effective_seed_end,
-                'effective_seed_start': effective_seed_start,
-                'effective_seed_end': effective_seed_end,
-                'requested_seed_start': requested_seed_start,
-                'requested_seed_end': requested_seed_end,
-                'requested_num_games': requested_num_games,
-                'effective_num_games': effective_num_games,
-                'agent_profile': agent_profile,
-                'agent_mix': agent_mix if agent_mix else {'random': 100},
-                'chunk_size': chunk_size,
-                'pool_chunksize': resolved_pool_chunksize,
-                'pool_chunksize_max': pool_chunksize_max,
-                'shard_index': shard_index,
-                'num_shards': num_shards,
-                'engine': engine,
-                'rust_full_include_training_rows': rust_full_include_training_rows,
-                'rust_full_native_jsonl': rust_full_native_jsonl,
-                'rust_full_native_parquet': rust_full_native_parquet,
-                'rust_full_native_parquet_direct': rust_full_native_parquet_direct,
-                'rust_full_rayon_batch_size': rust_full_rayon_batch_size,
-                'rust_full_rayon_threads': rust_full_rayon_threads,
-                'rust_full_batch_parquet_api': use_rust_batch_parquet_api,
-                'rust_full_batch_parquet_file_api': use_rust_batch_parquet_file_api,
-                'parquet_compression': parquet_compression,
-                'parquet_use_dictionary': parquet_use_dictionary,
-                'parquet_write_statistics': parquet_write_statistics,
-                'parquet_row_group_size': parquet_row_group_size,
-                'parquet_write_batch_size': parquet_write_batch_size,
-                'resume': resume,
-                'checkpoint_every': checkpoint_every,
-                'progress_every': progress_every,
-                'max_errors': max_errors,
-                'require_parquet': require_parquet,
-                's3_uri': s3_uri,
-                'instance_hourly_usd': instance_hourly_usd,
-                'instance_type': instance_type,
-                'logical_cpu_count': logical_cpu_count,
-                'worker_cpu_share_pct_est': worker_cpu_share_pct_est,
-                'cpu_utilization_samples_pct': cpu_utilization_samples_pct,
-                'aborted': False,
-                'aborted_reason': None,
+                "seed_start": effective_seed_start,
+                "seed_end": effective_seed_end,
+                "effective_seed_start": effective_seed_start,
+                "effective_seed_end": effective_seed_end,
+                "requested_seed_start": requested_seed_start,
+                "requested_seed_end": requested_seed_end,
+                "requested_num_games": requested_num_games,
+                "effective_num_games": effective_num_games,
+                "agent_profile": agent_profile,
+                "agent_mix": agent_mix if agent_mix else {"random": 100},
+                "chunk_size": chunk_size,
+                "pool_chunksize": resolved_pool_chunksize,
+                "pool_chunksize_max": pool_chunksize_max,
+                "shard_index": shard_index,
+                "num_shards": num_shards,
+                "engine": engine,
+                "rust_full_include_training_rows": rust_full_include_training_rows,
+                "rust_full_native_jsonl": rust_full_native_jsonl,
+                "rust_full_native_parquet": rust_full_native_parquet,
+                "rust_full_native_parquet_direct": rust_full_native_parquet_direct,
+                "rust_full_rayon_batch_size": rust_full_rayon_batch_size,
+                "rust_full_rayon_threads": rust_full_rayon_threads,
+                "rust_full_batch_parquet_api": use_rust_batch_parquet_api,
+                "rust_full_batch_parquet_file_api": use_rust_batch_parquet_file_api,
+                "parquet_compression": parquet_compression,
+                "parquet_use_dictionary": parquet_use_dictionary,
+                "parquet_write_statistics": parquet_write_statistics,
+                "parquet_row_group_size": parquet_row_group_size,
+                "parquet_write_batch_size": parquet_write_batch_size,
+                "resume": resume,
+                "checkpoint_every": checkpoint_every,
+                "progress_every": progress_every,
+                "max_errors": max_errors,
+                "require_parquet": require_parquet,
+                "s3_uri": s3_uri,
+                "instance_hourly_usd": instance_hourly_usd,
+                "instance_type": instance_type,
+                "logical_cpu_count": logical_cpu_count,
+                "worker_cpu_share_pct_est": worker_cpu_share_pct_est,
+                "cpu_utilization_samples_pct": cpu_utilization_samples_pct,
+                "aborted": False,
+                "aborted_reason": None,
             },
         )
 
-    agent_desc = 'default (fast_random)' if not agent_mix else str(agent_mix)
-    print(f"Running {remaining} games across {num_workers} workers "
-          f"(chunk_size={chunk_size})")
+    agent_desc = "default (fast_random)" if not agent_mix else str(agent_mix)
+    print(f"Running {remaining} games across {num_workers} workers (chunk_size={chunk_size})")
     if effective_seed_end is None:
         seed_span = "none"
     else:
         seed_span = f"{effective_seed_start} to {effective_seed_end}"
     print(f"Seeds: {seed_span} ({len(completed_seeds)} already done)")
     if num_shards is not None and shard_index is not None:
-        print(f"Shard: {shard_index + 1}/{num_shards} "
-              f"(requested_games={requested_num_games}, shard_games={effective_num_games})")
+        print(
+            f"Shard: {shard_index + 1}/{num_shards} "
+            f"(requested_games={requested_num_games}, shard_games={effective_num_games})"
+        )
     if resolved_pool_chunksize is not None:
-        print(f"Pool chunksize: {resolved_pool_chunksize}"
-              f"{'' if pool_chunksize_max is None else f' (cap={pool_chunksize_max})'}")
+        print(
+            f"Pool chunksize: {resolved_pool_chunksize}"
+            f"{'' if pool_chunksize_max is None else f' (cap={pool_chunksize_max})'}"
+        )
     print(f"Agents: {agent_desc}")
     print(f"Engine: {engine}")
     print(f"Output: {output_dir}")
@@ -1250,7 +1283,9 @@ def run_batch(
     print()
 
     start = time.perf_counter()
-    checkpoint_interval = checkpoint_every if checkpoint_every and checkpoint_every > 0 else max(1, remaining // 20)
+    checkpoint_interval = (
+        checkpoint_every if checkpoint_every and checkpoint_every > 0 else max(1, remaining // 20)
+    )
     progress_interval = progress_every if progress_every and progress_every > 0 else 500
     if remaining > 0 and progress_interval > remaining:
         # Avoid small test runs appearing "stuck" until completion.
@@ -1272,8 +1307,10 @@ def run_batch(
                 cpu_utilization_samples_pct.append(cpu_pct)
                 cpu_str = f", cpu={cpu_pct:.1f}%"
             err_str = f", {writer.num_errors} errors" if writer.num_errors else ""
-            print(f"  [{done}/{remaining}] {rate:.1f} games/sec, "
-                  f"ETA: {eta:.0f}s{cpu_str}{err_str}", flush=True)
+            print(
+                f"  [{done}/{remaining}] {rate:.1f} games/sec, ETA: {eta:.0f}s{cpu_str}{err_str}",
+                flush=True,
+            )
 
         if max_errors is not None and writer.num_errors >= max_errors:
             raise BatchAbort(f"Reached max error threshold ({writer.num_errors}/{max_errors}).")
@@ -1282,25 +1319,25 @@ def run_batch(
             writer.write_checkpoint()
 
     if use_rust_rayon_batches:
-        _worker_init('rust_full')
+        _worker_init("rust_full")
         global _RUST_FULL_SIMULATOR
         rayon_threads = rust_full_rayon_threads or num_workers
         if use_rust_batch_parquet_file_api:
             _ensure_rust_parquet_method_support(
                 _RUST_FULL_SIMULATOR,
-                'run_games_batch_parquet_to_file',
+                "run_games_batch_parquet_to_file",
             )
         if use_rust_batch_parquet_api:
             _ensure_rust_parquet_method_support(
                 _RUST_FULL_SIMULATOR,
-                'run_games_batch_parquet',
+                "run_games_batch_parquet",
             )
-        batch_output_mode = 'rows'
+        batch_output_mode = "rows"
         if rust_full_include_training_rows and not use_rust_batch_parquet_api:
             if rust_full_native_parquet:
-                batch_output_mode = 'parquet'
+                batch_output_mode = "parquet"
             elif rust_full_native_jsonl:
-                batch_output_mode = 'jsonl'
+                batch_output_mode = "jsonl"
         print(
             "Rust rayon batch mode: "
             f"batch_size={rust_full_rayon_batch_size}, threads={rayon_threads}, "
@@ -1319,7 +1356,7 @@ def run_batch(
                 elif use_rust_batch_parquet_api:
                     games_until_chunk_flush = max(1, chunk_size - writer.games_in_buffer)
                     next_batch_size = min(next_batch_size, games_until_chunk_flush)
-                task_batch = tasks[task_cursor:task_cursor + next_batch_size]
+                task_batch = tasks[task_cursor : task_cursor + next_batch_size]
                 task_cursor += len(task_batch)
                 batch_game_ids = [task[0] for task in task_batch]
                 batch_seeds = [task[1] for task in task_batch]
@@ -1328,7 +1365,7 @@ def run_batch(
                 try:
                     if use_rust_batch_parquet_file_api:
                         chunk_name = writer.next_chunk_name
-                        chunk_path = os.path.join(output_dir, chunk_name + '.parquet')
+                        chunk_path = os.path.join(output_dir, chunk_name + ".parquet")
                         batch_payload = _RUST_FULL_SIMULATOR.run_games_batch_parquet_to_file(
                             batch_game_ids,
                             batch_seeds,
@@ -1342,9 +1379,9 @@ def run_batch(
                             row_group_size=parquet_row_group_size,
                             write_batch_size=parquet_write_batch_size,
                         )
-                        batch_results = list(batch_payload.get('results', []))
-                        batch_training_row_count = int(batch_payload.get('training_row_count', 0))
-                        batch_wrote_parquet = bool(batch_payload.get('wrote_parquet', False))
+                        batch_results = list(batch_payload.get("results", []))
+                        batch_training_row_count = int(batch_payload.get("training_row_count", 0))
+                        batch_wrote_parquet = bool(batch_payload.get("wrote_parquet", False))
                     elif use_rust_batch_parquet_api:
                         batch_payload = _RUST_FULL_SIMULATOR.run_games_batch_parquet(
                             batch_game_ids,
@@ -1358,14 +1395,14 @@ def run_batch(
                             row_group_size=parquet_row_group_size,
                             write_batch_size=parquet_write_batch_size,
                         )
-                        batch_results = list(batch_payload.get('results', []))
-                        batch_parquet_blob = batch_payload.get('training_rows_parquet', b'')
-                        batch_training_row_count = int(batch_payload.get('training_row_count', 0))
+                        batch_results = list(batch_payload.get("results", []))
+                        batch_parquet_blob = batch_payload.get("training_rows_parquet", b"")
+                        batch_training_row_count = int(batch_payload.get("training_row_count", 0))
                         if batch_parquet_blob:
                             for result in batch_results:
-                                if result.get('status') == 'ok':
-                                    result['training_rows_parquet'] = batch_parquet_blob
-                                    result['training_row_count'] = batch_training_row_count
+                                if result.get("status") == "ok":
+                                    result["training_rows_parquet"] = batch_parquet_blob
+                                    result["training_row_count"] = batch_training_row_count
                                     break
                     else:
                         batch_results = _RUST_FULL_SIMULATOR.run_games_batch(
@@ -1380,10 +1417,10 @@ def run_batch(
                     error_text = traceback.format_exc()
                     batch_results = [
                         {
-                            'status': 'error',
-                            'game_id': game_id,
-                            'seed': seed,
-                            'error': error_text,
+                            "status": "error",
+                            "game_id": game_id,
+                            "seed": seed,
+                            "error": error_text,
                         }
                         for game_id, seed in zip(batch_game_ids, batch_seeds)
                     ]
@@ -1426,8 +1463,10 @@ def run_batch(
         print(f"\nRun aborted early: {aborted_reason}")
         print(f"Processed {done}/{remaining} tasks before stop.")
     else:
-        print(f"\nAll {remaining} games completed in {total_time:.1f}s "
-              f"({remaining / total_time:.1f} games/sec)")
+        print(
+            f"\nAll {remaining} games completed in {total_time:.1f}s "
+            f"({remaining / total_time:.1f} games/sec)"
+        )
     if writer.num_errors:
         print(f"  {writer.num_errors} games failed (see errors.json)")
 
@@ -1437,48 +1476,48 @@ def run_batch(
         total_time,
         num_workers,
         run_metadata={
-            'seed_start': effective_seed_start,
-            'seed_end': effective_seed_end,
-            'effective_seed_start': effective_seed_start,
-            'effective_seed_end': effective_seed_end,
-            'requested_seed_start': requested_seed_start,
-            'requested_seed_end': requested_seed_end,
-            'requested_num_games': requested_num_games,
-            'effective_num_games': effective_num_games,
-            'agent_profile': agent_profile,
-            'agent_mix': agent_mix if agent_mix else {'random': 100},
-            'chunk_size': chunk_size,
-            'pool_chunksize': resolved_pool_chunksize,
-            'pool_chunksize_max': pool_chunksize_max,
-            'shard_index': shard_index,
-            'num_shards': num_shards,
-            'engine': engine,
-            'rust_full_include_training_rows': rust_full_include_training_rows,
-            'rust_full_native_jsonl': rust_full_native_jsonl,
-            'rust_full_native_parquet': rust_full_native_parquet,
-            'rust_full_native_parquet_direct': rust_full_native_parquet_direct,
-            'rust_full_rayon_batch_size': rust_full_rayon_batch_size,
-            'rust_full_rayon_threads': rust_full_rayon_threads,
-            'rust_full_batch_parquet_api': use_rust_batch_parquet_api,
-            'rust_full_batch_parquet_file_api': use_rust_batch_parquet_file_api,
-            'parquet_compression': parquet_compression,
-            'parquet_use_dictionary': parquet_use_dictionary,
-            'parquet_write_statistics': parquet_write_statistics,
-            'parquet_row_group_size': parquet_row_group_size,
-            'parquet_write_batch_size': parquet_write_batch_size,
-            'resume': resume,
-            'checkpoint_every': checkpoint_interval,
-            'progress_every': progress_interval,
-            'max_errors': max_errors,
-            'require_parquet': require_parquet,
-            's3_uri': s3_uri,
-            'instance_hourly_usd': instance_hourly_usd,
-            'instance_type': instance_type,
-            'logical_cpu_count': logical_cpu_count,
-            'worker_cpu_share_pct_est': worker_cpu_share_pct_est,
-            'cpu_utilization_samples_pct': cpu_utilization_samples_pct,
-            'aborted': bool(aborted_reason),
-            'aborted_reason': aborted_reason,
+            "seed_start": effective_seed_start,
+            "seed_end": effective_seed_end,
+            "effective_seed_start": effective_seed_start,
+            "effective_seed_end": effective_seed_end,
+            "requested_seed_start": requested_seed_start,
+            "requested_seed_end": requested_seed_end,
+            "requested_num_games": requested_num_games,
+            "effective_num_games": effective_num_games,
+            "agent_profile": agent_profile,
+            "agent_mix": agent_mix if agent_mix else {"random": 100},
+            "chunk_size": chunk_size,
+            "pool_chunksize": resolved_pool_chunksize,
+            "pool_chunksize_max": pool_chunksize_max,
+            "shard_index": shard_index,
+            "num_shards": num_shards,
+            "engine": engine,
+            "rust_full_include_training_rows": rust_full_include_training_rows,
+            "rust_full_native_jsonl": rust_full_native_jsonl,
+            "rust_full_native_parquet": rust_full_native_parquet,
+            "rust_full_native_parquet_direct": rust_full_native_parquet_direct,
+            "rust_full_rayon_batch_size": rust_full_rayon_batch_size,
+            "rust_full_rayon_threads": rust_full_rayon_threads,
+            "rust_full_batch_parquet_api": use_rust_batch_parquet_api,
+            "rust_full_batch_parquet_file_api": use_rust_batch_parquet_file_api,
+            "parquet_compression": parquet_compression,
+            "parquet_use_dictionary": parquet_use_dictionary,
+            "parquet_write_statistics": parquet_write_statistics,
+            "parquet_row_group_size": parquet_row_group_size,
+            "parquet_write_batch_size": parquet_write_batch_size,
+            "resume": resume,
+            "checkpoint_every": checkpoint_interval,
+            "progress_every": progress_interval,
+            "max_errors": max_errors,
+            "require_parquet": require_parquet,
+            "s3_uri": s3_uri,
+            "instance_hourly_usd": instance_hourly_usd,
+            "instance_type": instance_type,
+            "logical_cpu_count": logical_cpu_count,
+            "worker_cpu_share_pct_est": worker_cpu_share_pct_est,
+            "cpu_utilization_samples_pct": cpu_utilization_samples_pct,
+            "aborted": bool(aborted_reason),
+            "aborted_reason": aborted_reason,
         },
     )
     return summary
@@ -1486,15 +1525,15 @@ def run_batch(
 
 # ── CLI ──────────────────────────────────────────────────────────────────
 
+
 def _parse_agent_mix(s: str) -> Dict[str, int]:
     """Parse agent mix string like 'random:50,econ:30,slam:20'."""
     mix = {}
-    for part in s.split(','):
-        name, weight = part.strip().split(':')
+    for part in s.split(","):
+        name, weight = part.strip().split(":")
         name = name.strip()
-        if name not in ('random', 'econ', 'slam'):
-            raise ValueError(f"Unknown agent type '{name}'. "
-                             f"Valid types: random, econ, slam")
+        if name not in ("random", "econ", "slam"):
+            raise ValueError(f"Unknown agent type '{name}'. Valid types: random, econ, slam")
         parsed_weight = int(weight.strip())
         if parsed_weight < 0:
             raise ValueError(f"Weight for '{name}' cannot be negative")
@@ -1510,7 +1549,7 @@ def _cli_flag_present(argv: List[str], flag: str) -> bool:
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Run batch TFT game simulations',
+        description="Run batch TFT game simulations",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -1524,73 +1563,184 @@ Examples:
   Shard 2/4:        python -m simulator.cloud_runner --games 1000000 --num-shards 4 --shard-index 1
         """,
     )
-    parser.add_argument('--games', type=int, default=10,
-                        help='Number of games to simulate')
-    parser.add_argument('--workers', type=int, default=None,
-                        help='Number of parallel workers (default: min(CPU count - 1, 8))')
-    parser.add_argument('--output', type=str, default='results/batch',
-                        help='Output directory for results')
-    parser.add_argument('--instance-hourly-usd', type=float, default=0.0,
-                        help='Hourly instance cost for summary cost telemetry (for example 0.544)')
-    parser.add_argument('--instance-type', type=str, default=None,
-                        help='Optional instance type label for cost telemetry (for example c7i.2xlarge)')
-    parser.add_argument('--seed-start', type=int, default=0,
-                        help='Starting seed for deterministic runs')
-    parser.add_argument('--agent-mix', type=str, default=None,
-                        help='Agent type distribution, e.g. "random:50,econ:30,slam:20"')
-    parser.add_argument('--agent-profile', type=str, default='random',
-                        choices=sorted(AGENT_PROFILES.keys()),
-                        help='Preset agent behavior profile used when --agent-mix is not provided')
-    parser.add_argument('--chunk-size', type=int, default=100,
-                        help='Games per output chunk (controls memory usage)')
-    parser.add_argument('--resume', type=str, default=None, metavar='DIR',
-                        help='Resume an interrupted batch from checkpoint in DIR')
-    parser.add_argument('--checkpoint-every', type=int, default=None,
-                        help='Write checkpoint every N completed tasks')
-    parser.add_argument('--progress-every', type=int, default=500,
-                        help='Print progress every N completed tasks (default: 500)')
-    parser.add_argument('--max-errors', type=int, default=None,
-                        help='Stop run early after N game errors')
-    parser.add_argument('--require-parquet', action='store_true',
-                        help='Fail run if parquet output is unavailable')
-    parser.add_argument('--pool-chunksize', type=int, default=None,
-                        help='Explicit multiprocessing imap chunk size (default: auto)')
-    parser.add_argument('--pool-chunksize-max', type=int, default=None,
-                        help='Optional upper bound for multiprocessing imap chunk size')
-    parser.add_argument('--shard-index', type=int, default=None,
-                        help='Shard index (0-based) when partitioning a run across machines')
-    parser.add_argument('--num-shards', type=int, default=None,
-                        help='Total number of shards when partitioning a run across machines')
-    parser.add_argument('--engine', type=str, default='python', choices=['python', 'rust', 'rust_full'],
-                        help='Simulation backend (default: python)')
-    parser.add_argument('--no-rust-full-auto-profile', action='store_true',
-                        help='Disable rust_full auto-tuned defaults and use explicit/baseline options')
-    parser.add_argument('--rust-full-summary-only', action='store_true',
-                        help='Skip training row generation in rust_full mode for max throughput')
-    parser.add_argument('--rust-full-native-jsonl', action=argparse.BooleanOptionalAction, default=None,
-                        help='Enable/disable Rust-pre-serialized JSONL rows in rust_full mode')
-    parser.add_argument('--rust-full-native-parquet', action=argparse.BooleanOptionalAction, default=None,
-                        help='Enable/disable Rust-pre-serialized parquet rows in rust_full mode')
-    parser.add_argument('--rust-full-native-parquet-direct', action=argparse.BooleanOptionalAction, default=None,
-                        help='Enable/disable direct Rust chunk parquet file writing in rust_full batch mode')
-    parser.add_argument('--rust-full-rayon-batch-size', type=int, default=None,
-                        help='Use Rust rayon batch API with this per-call batch size (rust_full only)')
-    parser.add_argument('--rust-full-rayon-threads', type=int, default=None,
-                        help='Override rayon thread count for rust_full batch API')
-    parser.add_argument('--parquet-compression', type=str, default=None,
-                        help='Parquet compression codec: uncompressed|snappy|zstd|gzip|brotli|lz4')
-    parser.add_argument('--parquet-use-dictionary', action=argparse.BooleanOptionalAction, default=None,
-                        help='Enable/disable parquet dictionary encoding for chunk writes')
-    parser.add_argument('--parquet-write-statistics', action=argparse.BooleanOptionalAction, default=None,
-                        help='Enable/disable parquet column statistics for chunk writes')
-    parser.add_argument('--parquet-row-group-size', type=int, default=None,
-                        help='Optional parquet row-group size for Rust-native parquet writes')
-    parser.add_argument('--parquet-write-batch-size', type=int, default=None,
-                        help='Optional parquet write batch size for Rust-native parquet writes')
-    parser.add_argument('--s3-uri', type=str, default=None,
-                        help='S3 URI to stream chunk uploads as they complete (e.g. s3://bucket/prefix)')
-    parser.add_argument('--skip-reference-validation', action='store_true',
-                        help='Skip simulator reference preflight validation')
+    parser.add_argument("--games", type=int, default=10, help="Number of games to simulate")
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=None,
+        help="Number of parallel workers (default: min(CPU count - 1, 8))",
+    )
+    parser.add_argument(
+        "--output", type=str, default="results/batch", help="Output directory for results"
+    )
+    parser.add_argument(
+        "--instance-hourly-usd",
+        type=float,
+        default=0.0,
+        help="Hourly instance cost for summary cost telemetry (for example 0.544)",
+    )
+    parser.add_argument(
+        "--instance-type",
+        type=str,
+        default=None,
+        help="Optional instance type label for cost telemetry (for example c7i.2xlarge)",
+    )
+    parser.add_argument(
+        "--seed-start", type=int, default=0, help="Starting seed for deterministic runs"
+    )
+    parser.add_argument(
+        "--agent-mix",
+        type=str,
+        default=None,
+        help='Agent type distribution, e.g. "random:50,econ:30,slam:20"',
+    )
+    parser.add_argument(
+        "--agent-profile",
+        type=str,
+        default="random",
+        choices=sorted(AGENT_PROFILES.keys()),
+        help="Preset agent behavior profile used when --agent-mix is not provided",
+    )
+    parser.add_argument(
+        "--chunk-size", type=int, default=100, help="Games per output chunk (controls memory usage)"
+    )
+    parser.add_argument(
+        "--resume",
+        type=str,
+        default=None,
+        metavar="DIR",
+        help="Resume an interrupted batch from checkpoint in DIR",
+    )
+    parser.add_argument(
+        "--checkpoint-every",
+        type=int,
+        default=None,
+        help="Write checkpoint every N completed tasks",
+    )
+    parser.add_argument(
+        "--progress-every",
+        type=int,
+        default=500,
+        help="Print progress every N completed tasks (default: 500)",
+    )
+    parser.add_argument(
+        "--max-errors", type=int, default=None, help="Stop run early after N game errors"
+    )
+    parser.add_argument(
+        "--require-parquet", action="store_true", help="Fail run if parquet output is unavailable"
+    )
+    parser.add_argument(
+        "--pool-chunksize",
+        type=int,
+        default=None,
+        help="Explicit multiprocessing imap chunk size (default: auto)",
+    )
+    parser.add_argument(
+        "--pool-chunksize-max",
+        type=int,
+        default=None,
+        help="Optional upper bound for multiprocessing imap chunk size",
+    )
+    parser.add_argument(
+        "--shard-index",
+        type=int,
+        default=None,
+        help="Shard index (0-based) when partitioning a run across machines",
+    )
+    parser.add_argument(
+        "--num-shards",
+        type=int,
+        default=None,
+        help="Total number of shards when partitioning a run across machines",
+    )
+    parser.add_argument(
+        "--engine",
+        type=str,
+        default="python",
+        choices=["python", "rust", "rust_full"],
+        help="Simulation backend (default: python)",
+    )
+    parser.add_argument(
+        "--no-rust-full-auto-profile",
+        action="store_true",
+        help="Disable rust_full auto-tuned defaults and use explicit/baseline options",
+    )
+    parser.add_argument(
+        "--rust-full-summary-only",
+        action="store_true",
+        help="Skip training row generation in rust_full mode for max throughput",
+    )
+    parser.add_argument(
+        "--rust-full-native-jsonl",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Enable/disable Rust-pre-serialized JSONL rows in rust_full mode",
+    )
+    parser.add_argument(
+        "--rust-full-native-parquet",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Enable/disable Rust-pre-serialized parquet rows in rust_full mode",
+    )
+    parser.add_argument(
+        "--rust-full-native-parquet-direct",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Enable/disable direct Rust chunk parquet file writing in rust_full batch mode",
+    )
+    parser.add_argument(
+        "--rust-full-rayon-batch-size",
+        type=int,
+        default=None,
+        help="Use Rust rayon batch API with this per-call batch size (rust_full only)",
+    )
+    parser.add_argument(
+        "--rust-full-rayon-threads",
+        type=int,
+        default=None,
+        help="Override rayon thread count for rust_full batch API",
+    )
+    parser.add_argument(
+        "--parquet-compression",
+        type=str,
+        default=None,
+        help="Parquet compression codec: uncompressed|snappy|zstd|gzip|brotli|lz4",
+    )
+    parser.add_argument(
+        "--parquet-use-dictionary",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Enable/disable parquet dictionary encoding for chunk writes",
+    )
+    parser.add_argument(
+        "--parquet-write-statistics",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Enable/disable parquet column statistics for chunk writes",
+    )
+    parser.add_argument(
+        "--parquet-row-group-size",
+        type=int,
+        default=None,
+        help="Optional parquet row-group size for Rust-native parquet writes",
+    )
+    parser.add_argument(
+        "--parquet-write-batch-size",
+        type=int,
+        default=None,
+        help="Optional parquet write batch size for Rust-native parquet writes",
+    )
+    parser.add_argument(
+        "--s3-uri",
+        type=str,
+        default=None,
+        help="S3 URI to stream chunk uploads as they complete (e.g. s3://bucket/prefix)",
+    )
+    parser.add_argument(
+        "--skip-reference-validation",
+        action="store_true",
+        help="Skip simulator reference preflight validation",
+    )
     args = parser.parse_args()
 
     if (args.shard_index is None) != (args.num_shards is None):
@@ -1606,25 +1756,27 @@ Examples:
             parser.error("--num-shards must be > 0")
         if args.shard_index < 0 or args.shard_index >= args.num_shards:
             parser.error(f"--shard-index must be in [0, {args.num_shards - 1}]")
-    if args.rust_full_native_jsonl is True and args.engine != 'rust_full':
+    if args.rust_full_native_jsonl is True and args.engine != "rust_full":
         parser.error("--rust-full-native-jsonl requires --engine rust_full")
-    if args.rust_full_native_parquet is True and args.engine != 'rust_full':
+    if args.rust_full_native_parquet is True and args.engine != "rust_full":
         parser.error("--rust-full-native-parquet requires --engine rust_full")
-    if args.rust_full_native_parquet_direct is True and args.engine != 'rust_full':
+    if args.rust_full_native_parquet_direct is True and args.engine != "rust_full":
         parser.error("--rust-full-native-parquet-direct requires --engine rust_full")
     if args.rust_full_native_jsonl is True and args.rust_full_native_parquet is True:
         parser.error("--rust-full-native-jsonl and --rust-full-native-parquet cannot be combined")
     if args.rust_full_native_parquet_direct is True and args.rust_full_native_jsonl is True:
-        parser.error("--rust-full-native-parquet-direct cannot be combined with --rust-full-native-jsonl")
+        parser.error(
+            "--rust-full-native-parquet-direct cannot be combined with --rust-full-native-jsonl"
+        )
     if args.rust_full_rayon_batch_size is not None:
         if args.rust_full_rayon_batch_size <= 0:
             parser.error("--rust-full-rayon-batch-size must be > 0")
-        if args.engine != 'rust_full':
+        if args.engine != "rust_full":
             parser.error("--rust-full-rayon-batch-size requires --engine rust_full")
     if args.rust_full_rayon_threads is not None:
         if args.rust_full_rayon_threads <= 0:
             parser.error("--rust-full-rayon-threads must be > 0")
-        if args.engine != 'rust_full':
+        if args.engine != "rust_full":
             parser.error("--rust-full-rayon-threads requires --engine rust_full")
     if args.parquet_row_group_size is not None and args.parquet_row_group_size <= 0:
         parser.error("--parquet-row-group-size must be > 0")
@@ -1650,7 +1802,7 @@ Examples:
         num_workers = args.workers
 
     raw_cli_args = sys.argv[1:]
-    explicit_chunk_size = _cli_flag_present(raw_cli_args, '--chunk-size')
+    explicit_chunk_size = _cli_flag_present(raw_cli_args, "--chunk-size")
     explicit_native_jsonl = args.rust_full_native_jsonl is not None
     explicit_native_parquet = args.rust_full_native_parquet is not None
     explicit_native_parquet_direct = args.rust_full_native_parquet_direct is not None
@@ -1661,19 +1813,33 @@ Examples:
     explicit_parquet_write_statistics = args.parquet_write_statistics is not None
 
     effective_chunk_size = args.chunk_size
-    effective_rust_full_native_jsonl = bool(args.rust_full_native_jsonl) if args.rust_full_native_jsonl is not None else False
-    effective_rust_full_native_parquet = bool(args.rust_full_native_parquet) if args.rust_full_native_parquet is not None else False
-    effective_rust_full_native_parquet_direct = bool(args.rust_full_native_parquet_direct) if args.rust_full_native_parquet_direct is not None else False
+    effective_rust_full_native_jsonl = (
+        bool(args.rust_full_native_jsonl) if args.rust_full_native_jsonl is not None else False
+    )
+    effective_rust_full_native_parquet = (
+        bool(args.rust_full_native_parquet) if args.rust_full_native_parquet is not None else False
+    )
+    effective_rust_full_native_parquet_direct = (
+        bool(args.rust_full_native_parquet_direct)
+        if args.rust_full_native_parquet_direct is not None
+        else False
+    )
     effective_rust_full_rayon_batch_size = args.rust_full_rayon_batch_size
     effective_rust_full_rayon_threads = args.rust_full_rayon_threads
-    effective_parquet_compression = args.parquet_compression if args.parquet_compression is not None else 'uncompressed'
-    effective_parquet_use_dictionary = bool(args.parquet_use_dictionary) if args.parquet_use_dictionary is not None else False
-    effective_parquet_write_statistics = bool(args.parquet_write_statistics) if args.parquet_write_statistics is not None else False
+    effective_parquet_compression = (
+        args.parquet_compression if args.parquet_compression is not None else "uncompressed"
+    )
+    effective_parquet_use_dictionary = (
+        bool(args.parquet_use_dictionary) if args.parquet_use_dictionary is not None else False
+    )
+    effective_parquet_write_statistics = (
+        bool(args.parquet_write_statistics) if args.parquet_write_statistics is not None else False
+    )
     effective_parquet_row_group_size = args.parquet_row_group_size
     effective_parquet_write_batch_size = args.parquet_write_batch_size
     auto_profile_applied = False
 
-    if args.engine == 'rust_full' and not args.no_rust_full_auto_profile:
+    if args.engine == "rust_full" and not args.no_rust_full_auto_profile:
         if not explicit_chunk_size and args.chunk_size == 100:
             effective_chunk_size = 1000
             auto_profile_applied = True
@@ -1700,7 +1866,7 @@ Examples:
             effective_rust_full_rayon_threads = num_workers
             auto_profile_applied = True
         if not explicit_parquet_compression:
-            effective_parquet_compression = 'snappy'
+            effective_parquet_compression = "snappy"
             auto_profile_applied = True
         if not explicit_parquet_use_dictionary:
             effective_parquet_use_dictionary = True
@@ -1716,9 +1882,13 @@ Examples:
     if effective_rust_full_native_parquet_direct and not effective_rust_full_native_parquet:
         parser.error("--rust-full-native-parquet-direct requires --rust-full-native-parquet")
     if effective_rust_full_native_parquet_direct and effective_rust_full_native_jsonl:
-        parser.error("--rust-full-native-parquet-direct cannot be combined with --rust-full-native-jsonl")
+        parser.error(
+            "--rust-full-native-parquet-direct cannot be combined with --rust-full-native-jsonl"
+        )
     if effective_rust_full_native_parquet_direct and args.rust_full_summary_only:
-        parser.error("--rust-full-native-parquet-direct requires training rows (do not use --rust-full-summary-only)")
+        parser.error(
+            "--rust-full-native-parquet-direct requires training rows (do not use --rust-full-summary-only)"
+        )
     if effective_rust_full_native_parquet_direct and effective_rust_full_rayon_batch_size is None:
         parser.error("--rust-full-native-parquet-direct requires --rust-full-rayon-batch-size")
 
@@ -1748,7 +1918,7 @@ Examples:
     if args.resume:
         output_dir = args.resume
         # Load checkpoint to get original settings
-        checkpoint_path = os.path.join(output_dir, 'checkpoint.json')
+        checkpoint_path = os.path.join(output_dir, "checkpoint.json")
         if not os.path.exists(checkpoint_path):
             print(f"Error: No checkpoint.json found in {output_dir}")
             sys.exit(1)
@@ -1829,9 +1999,9 @@ Examples:
             instance_type=args.instance_type,
         )
 
-    print(f"\n{'='*50}")
-    print(f"BATCH COMPLETE")
-    print(f"{'='*50}")
+    print(f"\n{'=' * 50}")
+    print("BATCH COMPLETE")
+    print(f"{'=' * 50}")
     print(f"Games:  {summary.get('num_games', 0)}")
     print(f"Errors: {summary.get('num_errors', 0)}")
     print(f"Time:   {summary.get('total_time_sec', 0)}s")
@@ -1840,40 +2010,39 @@ Examples:
     print(f"Rows:   {summary.get('total_training_rows', 0)}")
     print(f"Chunks: {summary.get('total_chunks', 0)}")
 
-    cost_telemetry = summary.get('cost_telemetry') or {}
-    throughput = cost_telemetry.get('throughput') or {}
-    cpu_util = cost_telemetry.get('cpu_utilization') or {}
-    cost = cost_telemetry.get('cost_estimate_usd') or {}
+    cost_telemetry = summary.get("cost_telemetry") or {}
+    throughput = cost_telemetry.get("throughput") or {}
+    cpu_util = cost_telemetry.get("cpu_utilization") or {}
+    cost = cost_telemetry.get("cost_estimate_usd") or {}
     if throughput:
         print(
             f"Round rate: {throughput.get('rounds_per_sec', 0)} rounds/sec "
             f"({throughput.get('sec_per_round', 0)} sec/round)"
         )
     if cpu_util:
-        cpu_avg = cpu_util.get('sampled_avg_pct')
+        cpu_avg = cpu_util.get("sampled_avg_pct")
         sampled_part = f", sampled avg={cpu_avg}%" if cpu_avg is not None else ""
         print(
             f"CPU util est: {cpu_util.get('worker_share_pct_est', 0)}% "
             f"(workers={cpu_util.get('num_workers', 0)}/cpu={cpu_util.get('logical_cpu_count', 0)}"
             f"{sampled_part})"
         )
-    if cost and float(cost.get('instance_hourly_usd', 0.0) or 0.0) > 0:
+    if cost and float(cost.get("instance_hourly_usd", 0.0) or 0.0) > 0:
         print(
             f"Cost est: ${cost.get('total_cost_usd', 0)} total, "
             f"${cost.get('usd_per_1k_games', 0)} per 1k games, "
             f"${cost.get('usd_per_1k_rounds', 0)} per 1k rounds"
         )
 
-    if summary.get('top_champions'):
-        print(f"\nTop 5 champions (avg placement):")
-        for name, avg in summary['top_champions'][:5]:
+    if summary.get("top_champions"):
+        print("\nTop 5 champions (avg placement):")
+        for name, avg in summary["top_champions"][:5]:
             print(f"  {name}: {avg}")
-    if summary.get('bottom_champions'):
-        print(f"\nBottom 5 champions (avg placement):")
-        for name, avg in summary['bottom_champions'][:5]:
+    if summary.get("bottom_champions"):
+        print("\nBottom 5 champions (avg placement):")
+        for name, avg in summary["bottom_champions"][:5]:
             print(f"  {name}: {avg}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

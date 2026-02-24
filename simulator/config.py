@@ -1,11 +1,13 @@
-import numpy as np
 import datetime
-from os import environ, path, cpu_count
+from os import cpu_count, environ, path
+
+import numpy as np
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 BASE_DIR = path.abspath(path.join(path.dirname(__file__), "."))
 load_dotenv(path.join(BASE_DIR, ".env"))
+
 
 def get_bool_env(var_name, default="False"):
     """Converts environment variable to a boolean."""
@@ -21,13 +23,15 @@ def get_int_env(var_name, default=0):
     """Fetches an environment variable and converts it to int."""
     return int(environ.get(var_name, default))
 
-def get_string_env(var_name, default=''):
+
+def get_string_env(var_name, default=""):
     """Fetches an environment variable and converts it to int."""
     return str(environ.get(var_name, default))
 
+
 def get_num_cpus(percentage=0.8):
     """Calculates the number of CPU cores to use based on a percentage of the total available cores.
-    
+
     Args:
         percentage (float): The percentage of total cores to use (80% by default).
 
@@ -36,21 +40,23 @@ def get_num_cpus(percentage=0.8):
     """
     max_cpus = cpu_count() or 1  # Use at least 1 core if os.cpu_count() returns None
     default_cores = max(1, int(max_cpus * percentage))  # Calculate default, ensure at least 1
-    
+
     # Fetch NUM_CPUS from env, falling back to calculated default_cores if not specified
     num_cpus = get_int_env("NUM_CPUS", default_cores)
-    
+
     # Ensure NUM_CPUS does not exceed the actual number of available cores
     return min(num_cpus, max_cpus)
+
 
 # IMPORTANT: Change this value to the percentage of CPU cores you want to use (default 80%)
 NUM_CPUS = get_num_cpus()
 
 try:
     import torch
+
     if torch.cuda.is_available():
         DEVICE = "cuda"
-    elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
+    elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
         DEVICE = "mps"
     else:
         DEVICE = "cpu"
@@ -94,9 +100,32 @@ CHAMP_DECIDER_ACTION_DIM = CHAMPION_ACTION_DIM + [2] + ITEM_CHOICE_DIM
 
 # Team Tiers Vector - Number of categories for each trait tier. Emperor, for example, has 2: no emperors or 1.
 TEAM_TIERS_VECTOR = [
-    4, 5, 4, 4, 4, 3, 3, 3, 2, 4,
-    4, 4, 5, 3, 5, 2, 3, 5, 4, 4,
-    3, 4, 4, 4, 2, 5,
+    4,
+    5,
+    4,
+    4,
+    4,
+    3,
+    3,
+    3,
+    2,
+    4,
+    4,
+    4,
+    5,
+    3,
+    5,
+    2,
+    3,
+    5,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    2,
+    5,
 ]
 TIERS_FLATTEN_LENGTH = 97
 
@@ -164,7 +193,10 @@ MAXIMUM_REWARD = get_float_env("MAXIMUM_REWARD", 300.0)
 VALUE_MAX_DELTA = get_float_env("VALUE_MAX_DELTA", 0.01)
 
 current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-TRAIN_LOG_DIRECTORY = get_string_env("TRAIN_LOG_DICT", "logs/gradient_tape/" + current_time + "/train")
+TRAIN_LOG_DIRECTORY = get_string_env(
+    "TRAIN_LOG_DICT", "logs/gradient_tape/" + current_time + "/train"
+)
+
 
 class ModelConfig:
     # AI RELATED VALUES START HERE
@@ -211,6 +243,7 @@ class ModelConfig:
     # Size of the shop embeddings
     SHOP_EMBEDDING_DIM = get_int_env("SHOP_EMBEDDING_DIM", 64)
     NUM_CONSIDERED_ACTIONS = get_int_env("NUM_CONSIDERED_ACTIONS", 8)
+
 
 # Commenting in the code for PPO Config.
 class PPOConfig:
@@ -264,5 +297,3 @@ class PPOConfig:
     KL_ADJUSTER = 0.5
     MAX_KL_COEF = 1
     MIN_KL_COEF = 0.01
-
-

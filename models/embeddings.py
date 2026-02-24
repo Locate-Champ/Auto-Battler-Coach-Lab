@@ -79,7 +79,9 @@ class UnitEmbedding(nn.Module):
         item_embed_64 = self.item_projection(item_agg)
 
         positions = positions.clamp_min(0)
-        pos_embed = self.position_embedding(positions.clamp_max(self.position_embedding.num_embeddings - 1))
+        pos_embed = self.position_embedding(
+            positions.clamp_max(self.position_embedding.num_embeddings - 1)
+        )
         pos_aux = self.position_aux_projection(self._build_position_features(positions))
         position_embed = pos_embed + pos_aux
 
@@ -158,6 +160,8 @@ class BoardEncoder(nn.Module):
         augment_count = augment_mask.sum(dim=1).clamp_min(1.0)
         augment_context = self.augment_projection(augment_sum / augment_count)
         game_context = self.game_state_encoder(game_state.float())
-        global_context = self.global_fusion(torch.cat([trait_context, augment_context, game_context], dim=-1))
+        global_context = self.global_fusion(
+            torch.cat([trait_context, augment_context, game_context], dim=-1)
+        )
 
         return unit_embeddings, global_context, mask.bool()

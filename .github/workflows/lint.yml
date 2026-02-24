@@ -1,4 +1,4 @@
-# Frontend build + lightweight code quality checks
+# Frontend build + Python lint/format (full codebase)
 # Runs on all PRs and pushes to main
 
 name: Lint & Code Quality
@@ -35,7 +35,7 @@ jobs:
         run: npm run build
         working-directory: ./app/frontend
 
-  # Lint Python scripts
+  # Lint the full Python codebase with ruff
   python-lint:
     runs-on: ubuntu-latest
 
@@ -48,24 +48,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Python linters
-        run: pip install flake8 black
+      - name: Install ruff
+        run: pip install ruff
 
-      - name: Run flake8
-        run: |
-          flake8 \
-            scripts/ci/check_dual_track_guard.py \
-            scripts/ci/check_no_tracked_asset_packs.py \
-            scripts/ci/check_public_surface_allowlist.py \
-            scripts/sync_agents_to_claude.py \
-            --max-line-length=100 --ignore=E501
-        continue-on-error: true
+      - name: Ruff lint (full codebase)
+        run: ruff check .
 
-      - name: Check Python formatting with Black
-        run: |
-          black --check \
-            scripts/ci/check_dual_track_guard.py \
-            scripts/ci/check_no_tracked_asset_packs.py \
-            scripts/ci/check_public_surface_allowlist.py \
-            scripts/sync_agents_to_claude.py
-        continue-on-error: true
+      - name: Ruff format check (full codebase)
+        run: ruff format --check .

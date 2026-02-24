@@ -98,7 +98,11 @@ def _candidate_title(action: Any, unit_map: dict[str, str]) -> str:
         cost_str = f" ({cost}g)" if cost is not None else ""
         return f"Buy {champion_name(str(cid))}{cost_str}"
 
-    if isinstance(details, dict) and "assignments" in details and isinstance(details.get("assignments"), (list, tuple)):
+    if (
+        isinstance(details, dict)
+        and "assignments" in details
+        and isinstance(details.get("assignments"), (list, tuple))
+    ):
         name = details.get("name") or action.get("title") or "Positioning"
         assignments = details.get("assignments") or ()
         shown: list[str] = []
@@ -139,13 +143,23 @@ def _iter_traces(path: Path) -> Any:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Print a readable view of coach DecisionTrace JSONL")
+    parser = argparse.ArgumentParser(
+        description="Print a readable view of coach DecisionTrace JSONL"
+    )
     parser.add_argument("--input", type=Path, required=True, help="Path to coach_traces_*.jsonl")
     parser.add_argument("--limit", type=int, default=5, help="Number of traces to print")
     parser.add_argument("--top", type=int, default=5, help="Top candidates per trace")
-    parser.add_argument("--decision", type=str, default=None, help="Optional filter: items|position|econ|shop")
-    parser.add_argument("--state", type=str, default=None, help="Optional filter: state_hash (prefix ok)")
-    parser.add_argument("--chosen-only", action="store_true", help="Only print the chosen candidate breakdown (no top table)")
+    parser.add_argument(
+        "--decision", type=str, default=None, help="Optional filter: items|position|econ|shop"
+    )
+    parser.add_argument(
+        "--state", type=str, default=None, help="Optional filter: state_hash (prefix ok)"
+    )
+    parser.add_argument(
+        "--chosen-only",
+        action="store_true",
+        help="Only print the chosen candidate breakdown (no top table)",
+    )
     args = parser.parse_args()
 
     if not args.input.exists():
@@ -180,7 +194,9 @@ def main() -> None:
                 f"DecisionTrace decision={decision_type} stage={stage_s} level={level_s} gold={gold_s} state={state_hash} at={t.get('generated_at')}"
             )
         else:
-            print(f"DecisionTrace decision={decision_type} state={state_hash} at={t.get('generated_at')}")
+            print(
+                f"DecisionTrace decision={decision_type} state={state_hash} at={t.get('generated_at')}"
+            )
 
         base_seed = _as_int(t.get("combat_base_seed"))
         budgets = t.get("budgets") or []
@@ -192,11 +208,15 @@ def main() -> None:
         chosen_action_id = str(t.get("chosen_action_id") or "")
 
         seed_str = f"{base_seed}" if base_seed is not None else "--"
-        print(f"seed_base={seed_str} budgets={budgets_int} baseline_total={baseline_total:.3f} chosen={chosen_action_id}")
+        print(
+            f"seed_base={seed_str} budgets={budgets_int} baseline_total={baseline_total:.3f} chosen={chosen_action_id}"
+        )
         if base_seed is not None and budgets_int:
             b = budgets_int[0]
             hi = base_seed + max(0, int(b) - 1)
-            print(f"seed_spec(pass1): per-opponent range = base+opp_idx*1000 .. base+opp_idx*1000+{b-1} ({base_seed}..{hi})")
+            print(
+                f"seed_spec(pass1): per-opponent range = base+opp_idx*1000 .. base+opp_idx*1000+{b - 1} ({base_seed}..{hi})"
+            )
 
         candidates = t.get("candidates") or []
         if not isinstance(candidates, list) or not candidates:
@@ -206,8 +226,17 @@ def main() -> None:
                 break
             continue
 
-        ranked = sorted(((c, _candidate_score_total(c)) for c in candidates), key=lambda x: x[1], reverse=True)
-        chosen = next((c for c, _ in ranked if str(_get(c, "action", "action_id", default="")) == chosen_action_id), None)
+        ranked = sorted(
+            ((c, _candidate_score_total(c)) for c in candidates), key=lambda x: x[1], reverse=True
+        )
+        chosen = next(
+            (
+                c
+                for c, _ in ranked
+                if str(_get(c, "action", "action_id", default="")) == chosen_action_id
+            ),
+            None,
+        )
         if chosen is None:
             chosen = ranked[0][0] if ranked else None
 
@@ -255,7 +284,9 @@ def main() -> None:
                 + _fmt_float(econ.get("hp_risk"), digits=2)
             )
             if econ.get("upgrade_hit_prob") is not None:
-                print(f"  lookahead: upgrade_hit_prob={_fmt_pct(econ.get('upgrade_hit_prob'), digits=0)}")
+                print(
+                    f"  lookahead: upgrade_hit_prob={_fmt_pct(econ.get('upgrade_hit_prob'), digits=0)}"
+                )
             upgrade_targets = econ.get("upgrade_top_targets")
             if isinstance(upgrade_targets, list) and upgrade_targets:
                 top = upgrade_targets[0]

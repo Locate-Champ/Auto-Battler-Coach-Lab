@@ -28,41 +28,41 @@ Each active region gives Ryze a different bonus on cast:
 """
 
 import random
-from typing import Dict, List, Tuple, Optional, Set
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Set
 
 # Region traits that give Ryze bonus effects
 # Maps display name (used in combat) -> minimum count needed
 RYZE_REGION_TRAITS = {
-    'Targon': 2,
-    'Yordle': 3,
-    'Bilgewater': 3,
-    'Void': 2,
-    'Shadow Isles': 2,
-    'Piltover': 2,
-    'Demacia': 2,
-    'Freljord': 2,
-    'Zaun': 2,
-    'Shurima': 2,
-    'Noxus': 3,
-    'Ionia': 3,
+    "Targon": 2,
+    "Yordle": 3,
+    "Bilgewater": 3,
+    "Void": 2,
+    "Shadow Isles": 2,
+    "Piltover": 2,
+    "Demacia": 2,
+    "Freljord": 2,
+    "Zaun": 2,
+    "Shurima": 2,
+    "Noxus": 3,
+    "Ionia": 3,
 }
 
 # Map display trait names to internal (origin_class_stats) names
 _DISPLAY_TO_INTERNAL = {
-    'Targon': 'targon',
-    'Yordle': 'yordle',
-    'Bilgewater': 'bilgewater',
-    'Void': 'void',
-    'Shadow Isles': 'shadow_isles',
-    'Piltover': 'piltover',
-    'Demacia': 'demacia',
-    'Freljord': 'freljord',
-    'Zaun': 'zaun',
-    'Shurima': 'shurima',
-    'Noxus': 'noxus',
-    'Ionia': 'ionia',
-    'Ixtal': 'ixtal',
+    "Targon": "targon",
+    "Yordle": "yordle",
+    "Bilgewater": "bilgewater",
+    "Void": "void",
+    "Shadow Isles": "shadow_isles",
+    "Piltover": "piltover",
+    "Demacia": "demacia",
+    "Freljord": "freljord",
+    "Zaun": "zaun",
+    "Shurima": "shurima",
+    "Noxus": "noxus",
+    "Ionia": "ionia",
+    "Ixtal": "ixtal",
 }
 
 _INTERNAL_TO_DISPLAY = {v: k for k, v in _DISPLAY_TO_INTERNAL.items()}
@@ -72,6 +72,7 @@ _INTERNAL_TO_DISPLAY = {v: k for k, v in _DISPLAY_TO_INTERNAL.items()}
 # Imported from the canonical source in set16_items.py.
 try:
     from simulator.data.set16_items import EMBLEM_TO_TRAIT
+
     ALL_EMBLEMS = dict(EMBLEM_TO_TRAIT)
 except ImportError:
     ALL_EMBLEMS = {}
@@ -83,7 +84,14 @@ try:
     from simulator.game.stats.pool_stats import COST_1, COST_2, COST_3, COST_4, COST_5, COST_7
 
     _ALL_COSTS = {}
-    for cost, pool in [(1, COST_1), (2, COST_2), (3, COST_3), (4, COST_4), (5, COST_5), (7, COST_7)]:
+    for cost, pool in [
+        (1, COST_1),
+        (2, COST_2),
+        (3, COST_3),
+        (4, COST_4),
+        (5, COST_5),
+        (7, COST_7),
+    ]:
         for name in pool:
             _ALL_COSTS[name] = cost
 
@@ -98,13 +106,14 @@ except ImportError:
 @dataclass
 class EmblemAnalysis:
     """Result of analyzing a single emblem's value."""
+
     emblem_name: str
     trait_granted: str
-    is_region: bool           # True if this emblem grants a region trait
+    is_region: bool  # True if this emblem grants a region trait
     new_regions_activated: int
-    regions_reinforced: int   # Existing regions that get +1 count
+    regions_reinforced: int  # Existing regions that get +1 count
     total_active_regions: int
-    class_synergy: bool       # True if trait already active on board
+    class_synergy: bool  # True if trait already active on board
     best_target_unit: Optional[str] = None
     score: float = 0.0
 
@@ -112,6 +121,7 @@ class EmblemAnalysis:
 @dataclass
 class CompRecommendation:
     """A recommended team composition for Ryze."""
+
     units: List[str]
     active_regions: List[str]
     region_count: int
@@ -146,7 +156,7 @@ def get_champion_traits(name: str) -> Set[str]:
             result.add(display)
         else:
             # Class traits: capitalize internal name
-            result.add(t.replace('_', ' ').title())
+            result.add(t.replace("_", " ").title())
     return result
 
 
@@ -197,8 +207,9 @@ def roll_encounter_emblems(count: int = 3) -> List[str]:
     return random.sample(all_emblem_names, count)
 
 
-def analyze_emblem(units: List[str], emblem_name: str,
-                   existing_emblems: List[str] = None) -> EmblemAnalysis:
+def analyze_emblem(
+    units: List[str], emblem_name: str, existing_emblems: List[str] = None
+) -> EmblemAnalysis:
     """Analyze the value of a specific emblem for a Ryze comp.
 
     Evaluates both region activation (for Ryze's ability) and class
@@ -213,7 +224,7 @@ def analyze_emblem(units: List[str], emblem_name: str,
         EmblemAnalysis with scoring
     """
     existing = existing_emblems or []
-    trait_granted = ALL_EMBLEMS.get(emblem_name, '?')
+    trait_granted = ALL_EMBLEMS.get(emblem_name, "?")
     is_region = trait_granted in RYZE_REGION_TRAITS
 
     # Current state
@@ -235,7 +246,7 @@ def analyze_emblem(units: List[str], emblem_name: str,
     class_synergy = False
     if not is_region:
         # Check if any unit on the board already has this trait
-        trait_lower = trait_granted.lower().replace(' ', '_')
+        trait_lower = trait_granted.lower().replace(" ", "_")
         for name in units:
             if name in CHAMPION_DATA:
                 _, unit_traits = CHAMPION_DATA[name]
@@ -260,7 +271,7 @@ def analyze_emblem(units: List[str], emblem_name: str,
     # Find best unit to equip the emblem on
     best_target = None
     for unit in units:
-        if unit == 'ryze':
+        if unit == "ryze":
             continue
         if is_region:
             unit_regions = get_champion_regions(unit)
@@ -271,7 +282,7 @@ def analyze_emblem(units: List[str], emblem_name: str,
             # For class emblems, prefer units without this class trait
             if unit in CHAMPION_DATA:
                 _, unit_traits = CHAMPION_DATA[unit]
-                trait_lower = trait_granted.lower().replace(' ', '_')
+                trait_lower = trait_granted.lower().replace(" ", "_")
                 if trait_lower not in unit_traits:
                     if best_target is None:
                         best_target = unit
@@ -289,8 +300,9 @@ def analyze_emblem(units: List[str], emblem_name: str,
     )
 
 
-def rank_offered_emblems(units: List[str], offered: List[str],
-                         existing_emblems: List[str] = None) -> List[EmblemAnalysis]:
+def rank_offered_emblems(
+    units: List[str], offered: List[str], existing_emblems: List[str] = None
+) -> List[EmblemAnalysis]:
     """Rank a set of offered emblems by value for the current comp.
 
     This is the main entry point for the Ryze encounter: given the 3
@@ -313,8 +325,7 @@ def rank_offered_emblems(units: List[str], offered: List[str],
     return results
 
 
-def rank_all_emblems(units: List[str],
-                     existing_emblems: List[str] = None) -> List[EmblemAnalysis]:
+def rank_all_emblems(units: List[str], existing_emblems: List[str] = None) -> List[EmblemAnalysis]:
     """Rank ALL 22 emblems by value for the current comp.
 
     Useful for general planning (not just a specific encounter offer).
@@ -335,10 +346,12 @@ def rank_all_emblems(units: List[str],
     return results
 
 
-def find_best_ryze_comp(max_team_size: int = 9,
-                        max_cost: int = 50,
-                        required_units: List[str] = None,
-                        available_emblems: List[str] = None) -> List[CompRecommendation]:
+def find_best_ryze_comp(
+    max_team_size: int = 9,
+    max_cost: int = 50,
+    required_units: List[str] = None,
+    available_emblems: List[str] = None,
+) -> List[CompRecommendation]:
     """Find optimal unit combinations for Ryze that maximize region coverage.
 
     Uses greedy search to maximize the number of active region traits.
@@ -352,7 +365,7 @@ def find_best_ryze_comp(max_team_size: int = 9,
     Returns:
         Top 5 comp recommendations sorted by region count
     """
-    required = set(required_units or ['ryze'])
+    required = set(required_units or ["ryze"])
     emblems = available_emblems or []
 
     # Start with required units
@@ -373,29 +386,39 @@ def find_best_ryze_comp(max_team_size: int = 9,
 
     # Greedy: repeatedly add the unit that activates the most new regions
     results = []
-    _greedy_search(comp, used_cost, remaining_slots, max_cost,
-                   candidates, emblems, results, depth=0)
+    _greedy_search(
+        comp, used_cost, remaining_slots, max_cost, candidates, emblems, results, depth=0
+    )
 
     # Sort by region count
     results.sort(key=lambda r: (-r.region_count, r.total_cost))
     return results[:5]
 
 
-def _greedy_search(comp: List[str], used_cost: int, remaining_slots: int,
-                   max_cost: int, candidates: List, emblems: List[str],
-                   results: List[CompRecommendation], depth: int):
+def _greedy_search(
+    comp: List[str],
+    used_cost: int,
+    remaining_slots: int,
+    max_cost: int,
+    candidates: List,
+    emblems: List[str],
+    results: List[CompRecommendation],
+    depth: int,
+):
     """Greedy search for best comp (explores top-3 choices at each step)."""
     if remaining_slots <= 0 or depth > 12:
         # Evaluate this comp
         region_counts = count_active_regions(comp, emblems)
         activated = get_activated_regions(region_counts)
-        results.append(CompRecommendation(
-            units=list(comp),
-            active_regions=activated,
-            region_count=len(activated),
-            total_cost=used_cost,
-            emblem_slots=list(emblems),
-        ))
+        results.append(
+            CompRecommendation(
+                units=list(comp),
+                active_regions=activated,
+                region_count=len(activated),
+                total_cost=used_cost,
+                emblem_slots=list(emblems),
+            )
+        )
         return
 
     # Score each candidate by marginal region value
@@ -436,8 +459,16 @@ def _greedy_search(comp: List[str], used_cost: int, remaining_slots: int,
     # Explore top-3 choices to get variety
     for score, name, cost, regions in scored[:3]:
         comp.append(name)
-        _greedy_search(comp, used_cost + cost, remaining_slots - 1,
-                       max_cost, candidates, emblems, results, depth + 1)
+        _greedy_search(
+            comp,
+            used_cost + cost,
+            remaining_slots - 1,
+            max_cost,
+            candidates,
+            emblems,
+            results,
+            depth + 1,
+        )
         comp.pop()
 
 
@@ -455,9 +486,9 @@ def print_emblem_report(units: List[str], existing_emblems: List[str] = None):
     print(f"\nTeam: {', '.join(units)}")
     if existing:
         print(f"Equipped emblems: {', '.join(existing)}")
-    print(f"\nRegion trait counts:")
+    print("\nRegion trait counts:")
     for region, count in sorted(region_counts.items()):
-        threshold = RYZE_REGION_TRAITS.get(region, '?')
+        threshold = RYZE_REGION_TRAITS.get(region, "?")
         status = "ACTIVE" if region in activated else f"need {threshold}"
         print(f"  {region}: {count} ({status})")
 
@@ -472,12 +503,18 @@ def print_emblem_report(units: List[str], existing_emblems: List[str] = None):
     rankings = rank_all_emblems(units, existing)
     for i, analysis in enumerate(rankings):
         region_tag = "REGION" if analysis.is_region else "CLASS "
-        new_str = f"+{analysis.new_regions_activated} NEW" if analysis.new_regions_activated > 0 else ""
-        reinforce_str = f"+{analysis.regions_reinforced} reinforced" if analysis.regions_reinforced > 0 else ""
+        new_str = (
+            f"+{analysis.new_regions_activated} NEW" if analysis.new_regions_activated > 0 else ""
+        )
+        reinforce_str = (
+            f"+{analysis.regions_reinforced} reinforced" if analysis.regions_reinforced > 0 else ""
+        )
         synergy_str = "class synergy" if analysis.class_synergy else ""
         details = ", ".join(filter(None, [new_str, reinforce_str, synergy_str]))
-        print(f"  {i+1:2d}. [{region_tag}] {analysis.emblem_name:25s} -> {analysis.trait_granted:15s} "
-              f"[{analysis.total_active_regions} regions] {details}")
+        print(
+            f"  {i + 1:2d}. [{region_tag}] {analysis.emblem_name:25s} -> {analysis.trait_granted:15s} "
+            f"[{analysis.total_active_regions} regions] {details}"
+        )
         if analysis.best_target_unit:
             print(f"      Best on: {analysis.best_target_unit}")
 
@@ -493,17 +530,18 @@ def print_encounter_simulation(units: List[str], existing_emblems: List[str] = N
     print(f"Offered: {', '.join(offered)}")
 
     rankings = rank_offered_emblems(units, offered, existing_emblems)
-    print(f"\nRecommended pick order:")
+    print("\nRecommended pick order:")
     for i, analysis in enumerate(rankings):
         region_tag = "REGION" if analysis.is_region else "CLASS "
-        print(f"  {i+1}. [{region_tag}] {analysis.emblem_name} -> {analysis.trait_granted} "
-              f"(score: {analysis.score:.1f})")
+        print(
+            f"  {i + 1}. [{region_tag}] {analysis.emblem_name} -> {analysis.trait_granted} "
+            f"(score: {analysis.score:.1f})"
+        )
         if analysis.best_target_unit:
             print(f"     Best on: {analysis.best_target_unit}")
 
 
-def print_comp_recommendations(max_team_size: int = 9,
-                                available_emblems: List[str] = None):
+def print_comp_recommendations(max_team_size: int = 9, available_emblems: List[str] = None):
     """Print recommended Ryze comps."""
     emblems = available_emblems or []
 
@@ -513,31 +551,30 @@ def print_comp_recommendations(max_team_size: int = 9,
         print(f"With emblems: {', '.join(emblems)}")
     print("=" * 60)
 
-    recs = find_best_ryze_comp(max_team_size=max_team_size,
-                                available_emblems=emblems)
+    recs = find_best_ryze_comp(max_team_size=max_team_size, available_emblems=emblems)
 
     for i, rec in enumerate(recs):
-        print(f"\n--- Comp #{i+1} ({rec.region_count} regions, {rec.total_cost}g) ---")
+        print(f"\n--- Comp #{i + 1} ({rec.region_count} regions, {rec.total_cost}g) ---")
         print(f"  Units: {', '.join(rec.units)}")
         print(f"  Active: {', '.join(rec.active_regions)}")
 
 
 # -- CLI --
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
 
     # Example: analyze a typical Ryze comp
     example_comp = [
-        'ryze',          # Rune Mage (no region)
-        'braum',         # Freljord, Warden
-        'lissandra',     # Freljord, Invoker
-        'diana',         # Targon
-        'leona',         # Targon
-        'aphelios',      # Targon
-        'illaoi',        # Bilgewater, Bruiser
-        'gangplank',     # Bilgewater, Slayer, Vanquisher
-        'graves',        # Bilgewater, Gunslinger
+        "ryze",  # Rune Mage (no region)
+        "braum",  # Freljord, Warden
+        "lissandra",  # Freljord, Invoker
+        "diana",  # Targon
+        "leona",  # Targon
+        "aphelios",  # Targon
+        "illaoi",  # Bilgewater, Bruiser
+        "gangplank",  # Bilgewater, Slayer, Vanquisher
+        "graves",  # Bilgewater, Gunslinger
     ]
 
     print_emblem_report(example_comp)
@@ -548,7 +585,7 @@ if __name__ == '__main__':
     print("\n")
     print_comp_recommendations(max_team_size=9)
 
-    if len(sys.argv) > 1 and sys.argv[1] == '--with-emblems':
+    if len(sys.argv) > 1 and sys.argv[1] == "--with-emblems":
         emblems = sys.argv[2:]
         print("\n")
         print_emblem_report(example_comp, emblems)

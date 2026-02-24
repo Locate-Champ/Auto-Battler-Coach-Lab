@@ -1,15 +1,14 @@
 from __future__ import annotations
 
 import random
-from dataclasses import dataclass
 from collections import OrderedDict
+from dataclasses import dataclass
 from typing import Optional
-
-from simulator.core.combat_engine import CombatEngine
-from simulator.game.constants import BOARD_COLS, BOARD_ROWS, get_round_damage
 
 from coach.rules import is_valid_board_pos
 from coach.state import GameState, UnitState
+from simulator.core.combat_engine import CombatEngine
+from simulator.game.constants import BOARD_COLS, BOARD_ROWS, get_round_damage
 
 
 @dataclass(frozen=True, slots=True)
@@ -117,7 +116,13 @@ class CombatScorer:
         num_seeds: int,
         base_seed: int,
     ) -> CombatEstimate:
-        key = (_team_signature(my_units), _team_signature(opp_units), int(round_num), int(num_seeds), int(base_seed))
+        key = (
+            _team_signature(my_units),
+            _team_signature(opp_units),
+            int(round_num),
+            int(num_seeds),
+            int(base_seed),
+        )
         cached = self._cache.get(key)
         if cached is not None:
             self._cache.move_to_end(key)
@@ -127,7 +132,13 @@ class CombatScorer:
         team1 = self._build_team(opp_units, team_id=1, mirror_rows=True)
 
         if not team0 or not team1 or num_seeds <= 0:
-            metrics = CombatEstimate(win_prob=0.0, expected_hp_delta=0.0, n_sims=0, ci95=None, opponent_policy="proxy_only")
+            metrics = CombatEstimate(
+                win_prob=0.0,
+                expected_hp_delta=0.0,
+                n_sims=0,
+                ci95=None,
+                opponent_policy="proxy_only",
+            )
             self._cache[key] = metrics
             self._cache.move_to_end(key)
             return metrics
@@ -176,10 +187,21 @@ class CombatScorer:
         seeds: list[int],
     ) -> CombatEstimate:
         if not seeds:
-            return CombatEstimate(win_prob=0.0, expected_hp_delta=0.0, n_sims=0, ci95=None, opponent_policy="proxy_only")
+            return CombatEstimate(
+                win_prob=0.0,
+                expected_hp_delta=0.0,
+                n_sims=0,
+                ci95=None,
+                opponent_policy="proxy_only",
+            )
 
         # Cache on the explicit seed list; callers can still use base_seed+num_seeds via simulate_matchup.
-        key = (_team_signature(my_units), _team_signature(opp_units), int(round_num), tuple(int(s) for s in seeds))
+        key = (
+            _team_signature(my_units),
+            _team_signature(opp_units),
+            int(round_num),
+            tuple(int(s) for s in seeds),
+        )
         cached = self._cache.get(key)
         if cached is not None:
             self._cache.move_to_end(key)
@@ -189,7 +211,13 @@ class CombatScorer:
         team1 = self._build_team(opp_units, team_id=1, mirror_rows=True)
 
         if not team0 or not team1:
-            metrics = CombatEstimate(win_prob=0.0, expected_hp_delta=0.0, n_sims=0, ci95=None, opponent_policy="proxy_only")
+            metrics = CombatEstimate(
+                win_prob=0.0,
+                expected_hp_delta=0.0,
+                n_sims=0,
+                ci95=None,
+                opponent_policy="proxy_only",
+            )
             self._cache[key] = metrics
             self._cache.move_to_end(key)
             return metrics
@@ -229,7 +257,9 @@ class CombatScorer:
             self._cache.popitem(last=False)
         return metrics
 
-    def tempo_for_state(self, state: GameState, *, round_num: int, num_seeds: int, base_seed: int) -> Optional[CombatEstimate]:
+    def tempo_for_state(
+        self, state: GameState, *, round_num: int, num_seeds: int, base_seed: int
+    ) -> Optional[CombatEstimate]:
         opponent_boards = [o for o in state.opponents if o.board]
         if not opponent_boards:
             return None

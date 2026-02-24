@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from copy import deepcopy
 import math
+from copy import deepcopy
+from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
 
@@ -31,7 +31,9 @@ class BoardState:
 class CounterfactualEngine:
     """Estimate intervention effects via simulation and model-assisted filtering."""
 
-    def __init__(self, simulator: Any, model: Optional[Any] = None, n_simulations: int = 200) -> None:
+    def __init__(
+        self, simulator: Any, model: Optional[Any] = None, n_simulations: int = 200
+    ) -> None:
         self.simulator = simulator
         self.model = model
         self.n_simulations = n_simulations
@@ -71,7 +73,9 @@ class CounterfactualEngine:
     def _ate(self, baseline_rate: float, treatment_rate: float) -> Dict[str, float]:
         ate = treatment_rate - baseline_rate
         n = self.n_simulations
-        se = math.sqrt((baseline_rate * (1 - baseline_rate) / n) + (treatment_rate * (1 - treatment_rate) / n))
+        se = math.sqrt(
+            (baseline_rate * (1 - baseline_rate) / n) + (treatment_rate * (1 - treatment_rate) / n)
+        )
         ci_low = ate - 1.96 * se
         ci_high = ate + 1.96 * se
         return {"ate": ate, "ci_low": ci_low, "ci_high": ci_high}
@@ -185,7 +189,12 @@ class CounterfactualEngine:
                 proposed = deepcopy(current_board)
                 for idx, unit in enumerate(proposed.units):
                     if unit.champion_id == existing.champion_id:
-                        proposed.units[idx] = BoardUnit(champion_id=candidate, star_level=unit.star_level, items=unit.items[:], position=unit.position)
+                        proposed.units[idx] = BoardUnit(
+                            champion_id=candidate,
+                            star_level=unit.star_level,
+                            items=unit.items[:],
+                            position=unit.position,
+                        )
                         break
                 score = self._fast_swap_score(proposed, opponent_board)
                 candidates.append(
@@ -242,7 +251,9 @@ class CounterfactualEngine:
                 placement_deltas.append(swaps[0]["placement_delta"])
             if not win_rates:
                 continue
-            personal_boost = float(personal_performance.get(candidate, {}).get("top4_rate", 0.0) or 0.0)
+            personal_boost = float(
+                personal_performance.get(candidate, {}).get("top4_rate", 0.0) or 0.0
+            )
             recommendations.append(
                 {
                     "pivot_target": candidate,
@@ -253,7 +264,9 @@ class CounterfactualEngine:
             )
 
         recommendations.sort(
-            key=lambda item: item["expected_placement_improvement"] + (0.1 * item["personal_boost"]),
+            key=lambda item: (
+                item["expected_placement_improvement"] + (0.1 * item["personal_boost"])
+            ),
             reverse=True,
         )
         return recommendations[:3]

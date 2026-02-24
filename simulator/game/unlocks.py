@@ -18,7 +18,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
-from .constants import CHAMPIONS_BY_COST, CHAMPION_TRAITS
+from .constants import CHAMPION_TRAITS, CHAMPIONS_BY_COST
 
 _DEFAULT_UNLOCK_ORDER: List[str] = [
     "aatrox",
@@ -152,25 +152,29 @@ _CSV_UNIT_ALIASES = {
 _RADABONS_ITEM = "rabadonsdeathcap"
 _GARGOYLE_ITEM = "gargoylestoneplate"
 _FIRST_CAROUSEL_ROUND = 3
-_TRIALS_OF_TWILIGHT_AUGMENTS = frozenset({
-    "TFT16_Augment_XinZhaoCarry",
-    "TFT16_Augment_XinZhaoCarryII",
-})
-_REGION_TRAITS = frozenset({
-    "bilgewater",
-    "demacia",
-    "freljord",
-    "ionia",
-    "ixtal",
-    "noxus",
-    "piltover",
-    "shadow_isles",
-    "shurima",
-    "targon",
-    "void",
-    "yordle",
-    "zaun",
-})
+_TRIALS_OF_TWILIGHT_AUGMENTS = frozenset(
+    {
+        "TFT16_Augment_XinZhaoCarry",
+        "TFT16_Augment_XinZhaoCarryII",
+    }
+)
+_REGION_TRAITS = frozenset(
+    {
+        "bilgewater",
+        "demacia",
+        "freljord",
+        "ionia",
+        "ixtal",
+        "noxus",
+        "piltover",
+        "shadow_isles",
+        "shurima",
+        "targon",
+        "void",
+        "yordle",
+        "zaun",
+    }
+)
 _TANK_TRAITS = frozenset({"defender", "bruiser", "warden", "juggernaut", "vanguard"})
 _SHURIMA_UNLOCK_UNITS = frozenset({"nasus", "renekton", "xerath"})
 _SHURIMA_THRESHOLDS = {
@@ -242,7 +246,7 @@ def _normalize_item_name(item_name: str) -> str:
     value = item_name.strip().lower()
     for prefix in ("tft_item_", "artifact_"):
         if value.startswith(prefix):
-            value = value[len(prefix):]
+            value = value[len(prefix) :]
     return re.sub(r"[^a-z0-9]+", "", value)
 
 
@@ -342,9 +346,7 @@ class UnlockRequirementsManager:
         ixtal_quests_csv_path: Optional[Path] = None,
     ):
         self._all_pool_units = {
-            name
-            for champs_by_cost in CHAMPIONS_BY_COST.values()
-            for name in champs_by_cost.keys()
+            name for champs_by_cost in CHAMPIONS_BY_COST.values() for name in champs_by_cost.keys()
         }
         order, level_reqs = self._load_requirements_from_csv(csv_path)
         if not order:
@@ -376,7 +378,9 @@ class UnlockRequirementsManager:
         progress.pending_shop_guarantees.clear()
         return guaranteed
 
-    def build_precombat_snapshot(self, player: Any, combat_team: Iterable[Any]) -> List[PreCombatUnitSnapshot]:
+    def build_precombat_snapshot(
+        self, player: Any, combat_team: Iterable[Any]
+    ) -> List[PreCombatUnitSnapshot]:
         team_by_instance: Dict[str, Any] = {}
         for unit in combat_team:
             instance_id = getattr(unit, "instance_id", "")
@@ -720,8 +724,7 @@ class UnlockRequirementsManager:
             progress.void_active_player_combats += 1
 
         if context.has_trials_of_twilight and any(
-            unit.name == "xinzhao" and unit.star_level >= 3
-            for unit in precombat_units
+            unit.name == "xinzhao" and unit.star_level >= 3 for unit in precombat_units
         ):
             progress.xinzhao_3star_combats += 1
 
@@ -792,7 +795,9 @@ class UnlockRequirementsManager:
         if unit_name == "darius":
             return progress.total_draven_gold_dropped >= 1
         if unit_name == "diana":
-            return self._has_named_unit_with_items(precombat_units, "leona", min_star=2, min_items=3)
+            return self._has_named_unit_with_items(
+                precombat_units, "leona", min_star=2, min_items=3
+            )
         if unit_name == "fizz":
             return len(progress.unique_yordle_or_bilgewater_units) >= 5
         if unit_name == "galio":
@@ -821,7 +826,9 @@ class UnlockRequirementsManager:
         if unit_name == "orianna":
             return self._has_trait_unit_with_items(precombat_units, "piltover", min_items=2)
         if unit_name == "poppy":
-            return self._has_trait_combo_unit_with_items(precombat_units, {"demacia", "yordle"}, min_items=2)
+            return self._has_trait_combo_unit_with_items(
+                precombat_units, {"demacia", "yordle"}, min_items=2
+            )
         if unit_name == "renekton":
             threshold = _SHURIMA_THRESHOLDS["renekton"][min(shurima_unlock_count, 2)]
             return progress.shurima_win_streak_with_azir >= threshold
@@ -860,24 +867,24 @@ class UnlockRequirementsManager:
         if unit_name == "volibear":
             return any(unit.max_hp >= 3800.0 for unit in precombat_units)
         if unit_name == "warwick":
-            return (
-                self._has_named_unit_with_items(precombat_units, "jinx", min_items=1)
-                and self._has_named_unit_with_items(precombat_units, "vi", min_items=1)
-            )
+            return self._has_named_unit_with_items(
+                precombat_units, "jinx", min_items=1
+            ) and self._has_named_unit_with_items(precombat_units, "vi", min_items=1)
         if unit_name == "xerath":
             threshold = _SHURIMA_THRESHOLDS["xerath"][min(shurima_unlock_count, 2)]
             return progress.shurima_alt_streak_with_azir >= threshold
         if unit_name == "yone":
             return self._count_all_copies(player, "yasuo", min_star=3) >= 1
         if unit_name == "yorick":
-            return self._has_named_unit_with_items(precombat_units, "viego", min_star=2, min_items=1)
-        if unit_name == "zaahen":
-            return (
-                context.has_trials_of_twilight
-                and progress.xinzhao_3star_combats >= 5
+            return self._has_named_unit_with_items(
+                precombat_units, "viego", min_star=2, min_items=1
             )
+        if unit_name == "zaahen":
+            return context.has_trials_of_twilight and progress.xinzhao_3star_combats >= 5
         if unit_name == "ziggs":
-            return self._has_trait_combo_unit_with_items(precombat_units, {"yordle", "zaun"}, min_items=3)
+            return self._has_trait_combo_unit_with_items(
+                precombat_units, {"yordle", "zaun"}, min_items=3
+            )
         return False
 
     def _ambessa_death_requirement_met(
@@ -938,8 +945,7 @@ class UnlockRequirementsManager:
         min_items: int,
     ) -> bool:
         return any(
-            trait_name in unit.traits and unit.item_count >= min_items
-            for unit in precombat_units
+            trait_name in unit.traits and unit.item_count >= min_items for unit in precombat_units
         )
 
     @staticmethod

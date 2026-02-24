@@ -17,7 +17,7 @@ def test_parse_board_update_from_escaped_kv_payload() -> None:
     parser_module = _load_parser_module()
     parser = parser_module.LogParser()
     line = (
-        '2026-01-23 19:20:53,124 [DBG] '
+        "2026-01-23 19:20:53,124 [DBG] "
         '{"key":"tft_board","value":"{\\"cell_1\\":{\\"characterID\\":\\"TFT16_Ashe\\",\\"starLevel\\":2}}"}'
     )
     event = parser.parse_line(line)
@@ -31,7 +31,7 @@ def test_parse_bench_update_from_escaped_kv_payload() -> None:
     parser_module = _load_parser_module()
     parser = parser_module.LogParser()
     line = (
-        '2026-01-23 19:20:53,124 [DBG] '
+        "2026-01-23 19:20:53,124 [DBG] "
         '{"key":"tft_bench","value":"{\\"slot_0\\":{\\"characterID\\":\\"TFT16_Leona\\",\\"starLevel\\":1}}"}'
     )
     event = parser.parse_line(line)
@@ -45,7 +45,7 @@ def test_parse_shop_update_from_escaped_kv_payload() -> None:
     parser_module = _load_parser_module()
     parser = parser_module.LogParser()
     line = (
-        '2026-01-23 19:20:53,124 [DBG] '
+        "2026-01-23 19:20:53,124 [DBG] "
         '{"key":"tft_shop","value":"{\\"slot_0\\":{\\"characterID\\":\\"TFT16_Ashe\\",\\"cost\\":1}}"}'
     )
     event = parser.parse_line(line)
@@ -59,7 +59,7 @@ def test_parse_roster_update_from_escaped_kv_payload() -> None:
     parser_module = _load_parser_module()
     parser = parser_module.LogParser()
     line = (
-        '2026-01-23 19:20:53,124 [DBG] '
+        "2026-01-23 19:20:53,124 [DBG] "
         '{"key":"tft_roster","value":"[{\\"name\\":\\"player1\\",\\"hp\\":90}]"}'
     )
     event = parser.parse_line(line)

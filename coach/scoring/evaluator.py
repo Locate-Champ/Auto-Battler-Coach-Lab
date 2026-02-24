@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
 import json
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
 from coach.artifacts import runtime_outputs_dir
-from coach.state import GameState
 from coach.scoring.features import board_power, derive_traits, squash01
+from coach.state import GameState
 
 
 class BoardEvaluator:

@@ -25,9 +25,13 @@ class GameTrajectoryModel:
         self.transition_model = transition_model
         self.n_simulations = n_simulations
 
-    def _simulate_to_end(self, current_game_state: Dict[str, Any], player_index: int) -> Dict[str, Any]:
+    def _simulate_to_end(
+        self, current_game_state: Dict[str, Any], player_index: int
+    ) -> Dict[str, Any]:
         if hasattr(self.transition_model, "simulate_to_end"):
-            return self.transition_model.simulate_to_end(current_game_state, player_index=player_index)
+            return self.transition_model.simulate_to_end(
+                current_game_state, player_index=player_index
+            )
         if callable(self.transition_model):
             return self.transition_model(current_game_state, player_index=player_index)
 
@@ -35,14 +39,18 @@ class GameTrajectoryModel:
         rng = np.random.default_rng()
         placement = int(rng.integers(1, 9))
         rounds_alive = int(rng.integers(1, 20))
-        hp_path = np.maximum(0, 100 - np.cumsum(rng.integers(0, 15, size=rounds_alive + 1))).tolist()
+        hp_path = np.maximum(
+            0, 100 - np.cumsum(rng.integers(0, 15, size=rounds_alive + 1))
+        ).tolist()
         return {
             "placement": placement,
             "rounds_alive": rounds_alive,
             "hp_path": hp_path,
         }
 
-    def compute_top4_probability(self, current_game_state: Dict[str, Any], player_index: int) -> Dict[str, Any]:
+    def compute_top4_probability(
+        self, current_game_state: Dict[str, Any], player_index: int
+    ) -> Dict[str, Any]:
         """Estimate top4 probability and placement distribution from current state."""
         placements = []
         for _ in range(self.n_simulations):
@@ -102,7 +110,9 @@ class GameTrajectoryModel:
             "elimination_probability": elimination_probability.tolist(),
         }
 
-    def survival_analysis(self, current_game_state: Dict[str, Any], player_index: int) -> Dict[str, Any]:
+    def survival_analysis(
+        self, current_game_state: Dict[str, Any], player_index: int
+    ) -> Dict[str, Any]:
         """Compute Kaplan-Meier style survival estimates."""
         elimination_rounds: List[int] = []
         for _ in range(self.n_simulations):
@@ -127,7 +137,9 @@ class GameTrajectoryModel:
                 median_survival = round_idx
 
         return {
-            "survival_function": [{"round": round_idx, "probability": prob} for round_idx, prob in curve],
+            "survival_function": [
+                {"round": round_idx, "probability": prob} for round_idx, prob in curve
+            ],
             "median_survival": median_survival,
             "expected_rounds_remaining": float(expected_rounds_remaining),
         }

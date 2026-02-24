@@ -3,7 +3,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable, Optional
 
-from simulator.game.constants import BOARD_COLS, BOARD_ROWS, BENCH_SIZE, ITEM_BENCH_SIZE, MAX_ITEMS_PER_UNIT
+from simulator.game.constants import (
+    BENCH_SIZE,
+    BOARD_COLS,
+    BOARD_ROWS,
+    ITEM_BENCH_SIZE,
+    MAX_ITEMS_PER_UNIT,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -144,7 +150,9 @@ def validate_coach_state(state: GameState) -> list[str]:
             errors.append(f"unit.items: exceeds max ({u.instance_id} items={len(items)})")
 
         if u.location != "board":
-            errors.append(f"unit.location: expected 'board' ({u.instance_id} location={u.location})")
+            errors.append(
+                f"unit.location: expected 'board' ({u.instance_id} location={u.location})"
+            )
 
         if u.position is None:
             errors.append(f"unit.position: missing ({u.instance_id})")
@@ -173,9 +181,13 @@ def validate_coach_state(state: GameState) -> list[str]:
             errors.append(f"unit.items: exceeds max ({u.instance_id} items={len(items)})")
 
         if u.location != "bench":
-            errors.append(f"unit.location: expected 'bench' ({u.instance_id} location={u.location})")
+            errors.append(
+                f"unit.location: expected 'bench' ({u.instance_id} location={u.location})"
+            )
         if u.position is not None:
-            errors.append(f"unit.position: expected None on bench ({u.instance_id} pos={u.position})")
+            errors.append(
+                f"unit.position: expected None on bench ({u.instance_id} pos={u.position})"
+            )
 
     if len(state.items) > ITEM_BENCH_SIZE:
         errors.append(f"items: exceeds cap ({len(state.items)} > {ITEM_BENCH_SIZE})")

@@ -1,9 +1,9 @@
 from simulator.core.combat_engine import CombatEngine
 from simulator.game.champion_pool import ChampionPool
+from simulator.game.constants import NAME_TO_API, NAME_TO_COST
 from simulator.game.game import TFTGame
 from simulator.game.player import Player
 from simulator.game.types import ChampionInstance
-from simulator.game.constants import NAME_TO_API, NAME_TO_COST
 
 
 def _board_unit(

@@ -8,7 +8,6 @@ from typing import Optional
 
 from coach.state import GameState, UnitState
 
-
 _CHAMPION_REF_CACHE: Optional[dict[str, dict]] = None
 _CHAMPIONS_BY_COST_CACHE: Optional[dict[int, tuple[str, ...]]] = None
 

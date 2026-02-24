@@ -16,10 +16,8 @@ Usage:
     )
 """
 
-import os
 import multiprocessing as mp
-from typing import List, Dict, Optional, Tuple
-from functools import partial
+from typing import Dict, List, Optional, Tuple
 
 
 def _worker_simulate_1v1(args: Tuple) -> Dict:
@@ -27,11 +25,24 @@ def _worker_simulate_1v1(args: Tuple) -> Dict:
 
     Each worker creates its own CombatEngine to avoid pickle overhead.
     """
-    (champ1, champ2, star1, star2, items1, items2,
-     augments1, augments2, sim_range_start, sim_count, base_seed, use_fast) = args
+    (
+        champ1,
+        champ2,
+        star1,
+        star2,
+        items1,
+        items2,
+        augments1,
+        augments2,
+        sim_range_start,
+        sim_count,
+        base_seed,
+        use_fast,
+    ) = args
 
     # Import inside worker to avoid pickling the engine
     from simulator.core.combat_engine import CombatEngine
+
     engine = CombatEngine(logging_enabled=False)
 
     wins = {champ1: 0, champ2: 0}
@@ -49,36 +60,38 @@ def _worker_simulate_1v1(args: Tuple) -> Dict:
 
         if use_fast:
             result = engine.run_combat_adaptive_tick(
-                [unit1], [unit2],
+                [unit1],
+                [unit2],
                 team0_augments=augments1,
                 team1_augments=augments2,
                 seed=sim_seed,
             )
         else:
             result = engine.run_combat(
-                [unit1], [unit2],
+                [unit1],
+                [unit2],
                 team0_augments=augments1,
                 team1_augments=augments2,
                 seed=sim_seed,
             )
 
-        if result['winner'] == 0:
+        if result["winner"] == 0:
             wins[champ1] += 1
         else:
             wins[champ2] += 1
 
-        total_damage[champ1] += result['team0_total_damage']
-        total_damage[champ2] += result['team1_total_damage']
-        abilities_cast[champ1] += result['team0_abilities_cast']
-        abilities_cast[champ2] += result['team1_abilities_cast']
-        combat_times.append(result['combat_time'])
+        total_damage[champ1] += result["team0_total_damage"]
+        total_damage[champ2] += result["team1_total_damage"]
+        abilities_cast[champ1] += result["team0_abilities_cast"]
+        abilities_cast[champ2] += result["team1_abilities_cast"]
+        combat_times.append(result["combat_time"])
 
     return {
-        'wins': wins,
-        'total_damage': total_damage,
-        'abilities_cast': abilities_cast,
-        'combat_times': combat_times,
-        'count': sim_count,
+        "wins": wins,
+        "total_damage": total_damage,
+        "abilities_cast": abilities_cast,
+        "combat_times": combat_times,
+        "count": sim_count,
     }
 
 
@@ -123,12 +136,22 @@ def batch_simulate_1v1(
     offset = 0
     for w in range(workers):
         count = sims_per_worker + (1 if w < remainder else 0)
-        work_items.append((
-            champ1, champ2, star1, star2,
-            items1 or [], items2 or [],
-            augments1, augments2,
-            offset, count, seed, use_fast,
-        ))
+        work_items.append(
+            (
+                champ1,
+                champ2,
+                star1,
+                star2,
+                items1 or [],
+                items2 or [],
+                augments1,
+                augments2,
+                offset,
+                count,
+                seed,
+                use_fast,
+            )
+        )
         offset += count
 
     # Run in parallel
@@ -147,59 +170,63 @@ def batch_simulate_1v1(
 
     for r in results:
         for c in [champ1, champ2]:
-            total_wins[c] += r['wins'][c]
-            total_damage[c] += r['total_damage'][c]
-            total_abilities[c] += r['abilities_cast'][c]
-        all_times.extend(r['combat_times'])
+            total_wins[c] += r["wins"][c]
+            total_damage[c] += r["total_damage"][c]
+            total_abilities[c] += r["abilities_cast"][c]
+        all_times.extend(r["combat_times"])
 
     n = num_simulations
     return {
-        'simulations': n,
-        'workers': workers,
-        'win_rate': {
+        "simulations": n,
+        "workers": workers,
+        "win_rate": {
             champ1: round(total_wins[champ1] / n * 100, 1),
             champ2: round(total_wins[champ2] / n * 100, 1),
         },
-        'avg_damage': {
+        "avg_damage": {
             champ1: round(total_damage[champ1] / n, 1),
             champ2: round(total_damage[champ2] / n, 1),
         },
-        'avg_abilities_cast': {
+        "avg_abilities_cast": {
             champ1: round(total_abilities[champ1] / n, 2),
             champ2: round(total_abilities[champ2] / n, 2),
         },
-        'avg_combat_time': round(sum(all_times) / len(all_times), 2) if all_times else 0,
+        "avg_combat_time": round(sum(all_times) / len(all_times), 2) if all_times else 0,
     }
 
 
 def _worker_run_combat(args: Tuple) -> Dict:
     """Worker function for parallel team combat."""
-    (team0_specs, team1_specs, team0_augments, team1_augments,
-     sim_seed, use_fast) = args
+    (team0_specs, team1_specs, team0_augments, team1_augments, sim_seed, use_fast) = args
 
     from simulator.core.combat_engine import CombatEngine
+
     engine = CombatEngine(logging_enabled=False)
 
-    team0 = [engine.create_unit(s['api_name'], s['star_level'],
-             tuple(s['position']), 0, s.get('items'))
-             for s in team0_specs]
-    team1 = [engine.create_unit(s['api_name'], s['star_level'],
-             tuple(s['position']), 1, s.get('items'))
-             for s in team1_specs]
+    team0 = [
+        engine.create_unit(s["api_name"], s["star_level"], tuple(s["position"]), 0, s.get("items"))
+        for s in team0_specs
+    ]
+    team1 = [
+        engine.create_unit(s["api_name"], s["star_level"], tuple(s["position"]), 1, s.get("items"))
+        for s in team1_specs
+    ]
 
     team0 = [u for u in team0 if u is not None]
     team1 = [u for u in team1 if u is not None]
 
     if use_fast:
         return engine.run_combat_adaptive_tick(
-            team0, team1,
+            team0,
+            team1,
             team0_augments=team0_augments,
             team1_augments=team1_augments,
             seed=sim_seed,
         )
     else:
         return engine.run_combat(
-            team0, team1,
+            team0,
+            team1,
             team0_augments=team0_augments,
             team1_augments=team1_augments,
             seed=sim_seed,
@@ -232,11 +259,16 @@ def batch_run_combats(
 
     work_items = []
     for s in scenarios:
-        work_items.append((
-            s['team0'], s['team1'],
-            s.get('team0_augments'), s.get('team1_augments'),
-            s.get('seed'), use_fast,
-        ))
+        work_items.append(
+            (
+                s["team0"],
+                s["team1"],
+                s.get("team0_augments"),
+                s.get("team1_augments"),
+                s.get("seed"),
+                use_fast,
+            )
+        )
 
     if workers == 1:
         return [_worker_run_combat(w) for w in work_items]

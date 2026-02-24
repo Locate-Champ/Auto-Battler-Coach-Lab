@@ -13,7 +13,6 @@ from sklearn.metrics import accuracy_score
 
 from simulator.game.constants import NAME_TO_COST
 
-
 _STAR_MULT = {1: 1.0, 2: 3.0, 3: 9.0}
 
 
@@ -80,6 +79,7 @@ def _load_snapshots(input_dir: Path) -> list[Snapshot]:
 
     snapshots: list[Snapshot] = []
     for row in snap_df.itertuples(index=False):
+
         def _parse_list(value):
             if value is None:
                 return []
@@ -208,8 +208,12 @@ def train_linear_pairwise(input_dir: Path, output_path: Path, seed: int = 1337) 
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Train a simple linear evaluator from simulator parquet chunks")
-    parser.add_argument("--input-dir", type=Path, required=True, help="Results dir containing chunk_*.parquet")
+    parser = argparse.ArgumentParser(
+        description="Train a simple linear evaluator from simulator parquet chunks"
+    )
+    parser.add_argument(
+        "--input-dir", type=Path, required=True, help="Results dir containing chunk_*.parquet"
+    )
     parser.add_argument(
         "--output",
         type=Path,

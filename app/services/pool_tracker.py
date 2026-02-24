@@ -19,7 +19,7 @@ POOL_SIZES = {
     2: 25,  # 2-cost champions
     3: 18,  # 3-cost champions
     4: 10,  # 4-cost champions
-    5: 9,   # 5-cost champions
+    5: 9,  # 5-cost champions
 }
 
 # Shop odds by player level (percentages for each cost tier)
@@ -48,6 +48,7 @@ class PoolState:
         units_in_play: Count of each champion currently on all boards
         player_level: Current player level (affects shop odds)
     """
+
     champion_costs: dict[str, int] = field(default_factory=dict)
     units_in_play: dict[str, int] = field(default_factory=dict)
     player_level: int = 6
@@ -68,7 +69,7 @@ class PoolState:
             return False
 
         try:
-            with open(champions_file, 'r') as f:
+            with open(champions_file, "r") as f:
                 for line in f:
                     champ = json.loads(line)
                     api_name = champ.get("apiName", "")
@@ -84,10 +85,7 @@ class PoolState:
             return False
 
     def update_from_boards(
-        self,
-        your_board: list,
-        your_bench: list,
-        opponent_boards: dict[str, list]
+        self, your_board: list, your_bench: list, opponent_boards: dict[str, list]
     ):
         """
         Update pool state from all board data.
@@ -120,7 +118,9 @@ class PoolState:
                 self.units_in_play[champ_id] = self.units_in_play.get(champ_id, 0) + copies
 
         total_units = sum(self.units_in_play.values())
-        logger.debug(f"Pool updated: {len(self.units_in_play)} unique champions, {total_units} total units")
+        logger.debug(
+            f"Pool updated: {len(self.units_in_play)} unique champions, {total_units} total units"
+        )
 
     def get_remaining(self, champion: str) -> int:
         """
@@ -209,15 +209,15 @@ class PoolState:
         total = POOL_SIZES.get(cost, 18)
 
         if remaining <= 0:
-            return 'none'
+            return "none"
 
         ratio = remaining / total
 
         if ratio >= 0.66:
-            return 'high'
+            return "high"
         if ratio >= 0.33:
-            return 'medium'
-        return 'low'
+            return "medium"
+        return "low"
 
     def get_pool_summary(self) -> dict:
         """
@@ -246,12 +246,14 @@ class PoolState:
                     in_play = self.units_in_play.get(champ_id, 0)
                     if in_play > 0:
                         cost_data["in_play"] += in_play
-                        cost_data["champions"].append({
-                            "id": champ_id,
-                            "in_play": in_play,
-                            "remaining": self.get_remaining(champ_id),
-                            "availability": self.get_availability(champ_id),
-                        })
+                        cost_data["champions"].append(
+                            {
+                                "id": champ_id,
+                                "in_play": in_play,
+                                "remaining": self.get_remaining(champ_id),
+                                "availability": self.get_availability(champ_id),
+                            }
+                        )
 
             summary["by_cost"][cost] = cost_data
 

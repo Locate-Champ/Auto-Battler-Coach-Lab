@@ -9,11 +9,10 @@ from coach.actions import (
     ItemEquipDetails,
     ItemSlamDetails,
 )
-from coach.rules import combine_components, is_component, can_equip_more_items
-from coach.scoring.features import detect_carry
+from coach.rules import can_equip_more_items, combine_components, is_component
 from coach.scoring.archetypes import ArchetypeLibrary
+from coach.scoring.features import detect_carry
 from coach.state import GameState
-
 
 _DEFENSIVE_ITEM_MARKERS = (
     "Bramble",
@@ -55,14 +54,18 @@ def generate_candidates(state: GameState) -> list[ActionPlan]:
         )
     ]
 
-    board_units = [u for u in state.board if u.location == "board" and can_equip_more_items(len(u.items))]
+    board_units = [
+        u for u in state.board if u.location == "board" and can_equip_more_items(len(u.items))
+    ]
     if not board_units:
         return actions
 
     best_match = _ARCHETYPES.closest(state, top_n=1)
     archetype_items: set[str] = set()
     if best_match:
-        archetype_items = set(_ARCHETYPES.suggest_items_for_archetype(best_match[0].archetype.archetype_id))
+        archetype_items = set(
+            _ARCHETYPES.suggest_items_for_archetype(best_match[0].archetype.archetype_id)
+        )
 
     carry = detect_carry(tuple(board_units))
     carry_id = carry.instance_id if carry is not None else board_units[0].instance_id

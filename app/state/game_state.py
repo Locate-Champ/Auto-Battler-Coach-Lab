@@ -2,12 +2,13 @@
 
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional
 from enum import Enum
+from typing import Optional
 
 
 class GamePhase(Enum):
     """Current phase of the game."""
+
     NOT_IN_GAME = "not_in_game"
     LOADING = "loading"
     CAROUSEL = "carousel"
@@ -20,6 +21,7 @@ class GamePhase(Enum):
 @dataclass
 class Unit:
     """A champion unit on board or bench."""
+
     character_id: str  # e.g., "TFT16_Ekko"
     star_level: int = 1
     items: list[str] = field(default_factory=list)
@@ -37,6 +39,7 @@ class Unit:
 @dataclass
 class ShopUnit:
     """A shop offering."""
+
     character_id: str  # e.g., "TFT16_Ekko"
     cost: Optional[int] = None
 
@@ -51,6 +54,7 @@ class ShopUnit:
 @dataclass
 class PlayerState:
     """State of a player (self or opponent)."""
+
     name: str
     health: int = 100
     level: int = 1
@@ -139,7 +143,9 @@ class GameState:
                     "name": u.name,
                     "stars": u.star_level,
                     "items": u.items,
-                    "position": {"row": u.position[0], "col": u.position[1]} if u.position else None,
+                    "position": {"row": u.position[0], "col": u.position[1]}
+                    if u.position
+                    else None,
                 }
                 for u in self.player.board_units
             ],

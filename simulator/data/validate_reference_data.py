@@ -7,7 +7,6 @@ import json
 from pathlib import Path
 from typing import Any
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SIMULATOR_DATA_DIR = PROJECT_ROOT / "simulator" / "data"
 REQUIRED_SIMULATOR_FILES = (
@@ -52,9 +51,7 @@ def validate_required_simulator_files() -> list[str]:
                         f"{path} entries must be objects, got {type(entry).__name__} at index {idx}"
                     )
                     break
-                missing_keys = [
-                    key for key in ("apiName", "name", "effects") if key not in entry
-                ]
+                missing_keys = [key for key in ("apiName", "name", "effects") if key not in entry]
                 if missing_keys:
                     problems.append(
                         f"{path} entry index {idx} missing required keys: {missing_keys}"
@@ -120,8 +117,7 @@ def validate_helpers() -> list[str]:
     missing_helper_entries = sorted(required_combat_helpers - helper_ids)
     if missing_helper_entries:
         problems.append(
-            "helper_units.json missing required helper entries: "
-            f"{missing_helper_entries}"
+            f"helper_units.json missing required helper entries: {missing_helper_entries}"
         )
 
     combat_data = _load_json(SIMULATOR_DATA_DIR / "combat_data.json")
@@ -132,8 +128,7 @@ def validate_helpers() -> list[str]:
         missing_from_combat = sorted(required_combat_helpers - set(champions.keys()))
         if missing_from_combat:
             problems.append(
-                "combat_data.json missing required helper champions: "
-                f"{missing_from_combat}"
+                f"combat_data.json missing required helper champions: {missing_from_combat}"
             )
 
     return problems

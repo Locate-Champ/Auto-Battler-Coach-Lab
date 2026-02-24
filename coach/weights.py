@@ -67,4 +67,3 @@ def default_config_for_stage(stage_number: int) -> CoachConfig:
             max_total_sims=3072,
         )
     return CoachConfig(weights=weights_for_stage(stage_number))
-

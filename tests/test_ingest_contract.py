@@ -24,16 +24,19 @@ def _install_fastapi_stubs(monkeypatch) -> None:
         def on_event(self, *args, **kwargs):
             def _decorator(fn):
                 return fn
+
             return _decorator
 
         def get(self, *args, **kwargs):
             def _decorator(fn):
                 return fn
+
             return _decorator
 
         def websocket(self, *args, **kwargs):
             def _decorator(fn):
                 return fn
+
             return _decorator
 
     class _FakeWebSocket:
@@ -106,7 +109,9 @@ def test_ingest_contract_parser_state_manager_to_websocket(monkeypatch) -> None:
     from app.state.state_manager import StateManager
     from coach.explain import validate_coach_payload
 
-    websocket_mod = _load_module("ingest_contract_websocket", repo_root / "app" / "server" / "websocket.py")
+    websocket_mod = _load_module(
+        "ingest_contract_websocket", repo_root / "app" / "server" / "websocket.py"
+    )
     WebSocketServer = websocket_mod.WebSocketServer
 
     parser = parser_mod.LogParser()
@@ -153,5 +158,10 @@ def test_ingest_contract_parser_state_manager_to_websocket(monkeypatch) -> None:
     assert isinstance(coach_payload, dict)
     assert coach_payload.get("coach_payload_version") == 1
     assert isinstance(coach_payload.get("generated_at"), str)
-    assert set((coach_payload.get("recommendations") or {}).keys()) == {"items", "position", "econ", "shop"}
+    assert set((coach_payload.get("recommendations") or {}).keys()) == {
+        "items",
+        "position",
+        "econ",
+        "shop",
+    }
     assert validate_coach_payload(coach_payload) == []

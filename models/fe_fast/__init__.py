@@ -5,7 +5,11 @@ Build:
 """
 
 try:
-    from .fe_fast import team_summary_fast, parse_units_column_fast  # type: ignore[import-not-found]
+    from .fe_fast import (  # type: ignore[import-not-found]
+        parse_units_column_fast,
+        team_summary_fast,
+    )
+
     CYTHON_AVAILABLE = True
 except ImportError:
     team_summary_fast = None  # type: ignore[assignment]

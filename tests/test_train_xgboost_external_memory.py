@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 import pytest
 
@@ -38,7 +38,9 @@ def _make_rows(num_games: int = 40) -> list[dict]:
                         "loss_streak": loss_streak,
                         "placement": placement,
                         "combat_result": combat_result,
-                        "board_names": ["fiddlesticks", "jinx"] if player_id == 0 else ["vayne", "ornn"],
+                        "board_names": ["fiddlesticks", "jinx"]
+                        if player_id == 0
+                        else ["vayne", "ornn"],
                         "board_stars": [2, 1],
                         "trait_names": ["harvester", "gunslinger"],
                         "trait_counts": [1, 2],

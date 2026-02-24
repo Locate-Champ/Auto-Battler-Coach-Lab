@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 from coach.actions import ActionPlan, DecisionType, HoldDetails, ShopBuyDetails
-from coach.scoring.features import champion_cost, champion_name, copy_counts
 from coach.scoring.archetypes import ArchetypeLibrary
+from coach.scoring.features import champion_cost, champion_name, copy_counts
 from coach.state import GameState
 from simulator.game.constants import BENCH_SIZE
 
-
 _ARCHETYPES = ArchetypeLibrary()
+
 
 def generate_candidates(state: GameState) -> list[ActionPlan]:
     actions: list[ActionPlan] = [

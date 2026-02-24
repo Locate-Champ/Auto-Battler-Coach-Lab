@@ -101,7 +101,9 @@ def coach_state_from_row(row: dict) -> GameState:
         )
 
     augments = tuple(_parse_json_value(row.get("augments"), []))
-    return GameState(stage=stage, player=player, board=board, augments=augments, opponents=opponents)
+    return GameState(
+        stage=stage, player=player, board=board, augments=augments, opponents=opponents
+    )
 
 
 def _unit_from_dict(unit: Any, *, default_location: str) -> UnitState | None:
@@ -150,7 +152,9 @@ def _opponent_from_dict(opp: Any) -> OpponentState | None:
         oid = "opp"
 
     board_in = _parse_json_value(opp.get("board"), [])
-    board = tuple(u for u in (_unit_from_dict(x, default_location="board") for x in board_in) if u is not None)
+    board = tuple(
+        u for u in (_unit_from_dict(x, default_location="board") for x in board_in) if u is not None
+    )
 
     augments_in = _parse_json_value(opp.get("augments"), [])
     augments = tuple(str(x) for x in augments_in if isinstance(x, (str, int, float)))
@@ -184,9 +188,13 @@ def coach_state_from_dict(data: dict) -> GameState:
     )
 
     board_in = _parse_json_value(data.get("board"), [])
-    board = tuple(u for u in (_unit_from_dict(x, default_location="board") for x in board_in) if u is not None)
+    board = tuple(
+        u for u in (_unit_from_dict(x, default_location="board") for x in board_in) if u is not None
+    )
     bench_in = _parse_json_value(data.get("bench"), [])
-    bench = tuple(u for u in (_unit_from_dict(x, default_location="bench") for x in bench_in) if u is not None)
+    bench = tuple(
+        u for u in (_unit_from_dict(x, default_location="bench") for x in bench_in) if u is not None
+    )
 
     shop_units: list[ShopUnit] = []
     shop_in = _parse_json_value(data.get("shop"), [])
@@ -249,7 +257,9 @@ def _iter_parquet_rows(paths: Iterable[Path]) -> Iterable[dict]:
     try:
         import pyarrow.parquet as pq
     except Exception as e:
-        raise RuntimeError("pyarrow is required to read parquet inputs; install it or use --eval-set") from e
+        raise RuntimeError(
+            "pyarrow is required to read parquet inputs; install it or use --eval-set"
+        ) from e
 
     for p in paths:
         table = pq.read_table(p)
@@ -326,14 +336,35 @@ def _compare_reports(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Offline coach evaluation harness (sample decision-time snapshots)")
+    parser = argparse.ArgumentParser(
+        description="Offline coach evaluation harness (sample decision-time snapshots)"
+    )
     input_group = parser.add_mutually_exclusive_group(required=True)
-    input_group.add_argument("--input-dir", type=Path, default=None, help="Results dir containing chunk_*.parquet")
-    input_group.add_argument("--eval-set", type=Path, default=None, help="JSONL file with coach GameState dicts (from --write-eval-set)")
+    input_group.add_argument(
+        "--input-dir", type=Path, default=None, help="Results dir containing chunk_*.parquet"
+    )
+    input_group.add_argument(
+        "--eval-set",
+        type=Path,
+        default=None,
+        help="JSONL file with coach GameState dicts (from --write-eval-set)",
+    )
     parser.add_argument("--limit", type=int, default=25)
-    parser.add_argument("--output", type=Path, default=Path("outputs/coach/eval_reports/coach_eval_report.json"))
-    parser.add_argument("--write-eval-set", type=Path, default=None, help="Optional JSONL path to save sampled CoachState inputs")
-    parser.add_argument("--baseline-report", type=Path, default=None, help="Optional report JSON to compare against for regression gating")
+    parser.add_argument(
+        "--output", type=Path, default=Path("outputs/coach/eval_reports/coach_eval_report.json")
+    )
+    parser.add_argument(
+        "--write-eval-set",
+        type=Path,
+        default=None,
+        help="Optional JSONL path to save sampled CoachState inputs",
+    )
+    parser.add_argument(
+        "--baseline-report",
+        type=Path,
+        default=None,
+        help="Optional report JSON to compare against for regression gating",
+    )
     parser.add_argument("--max-regress-mean-win-prob-delta", type=float, default=0.01)
     parser.add_argument("--max-regress-pct-positive-win-prob-delta", type=float, default=0.05)
     parser.add_argument("--max-regress-mean-expected-hp-delta", type=float, default=0.5)
@@ -461,7 +492,9 @@ def main() -> None:
             baseline=baseline,
             current=report,
             max_regress_mean_win_prob_delta=float(args.max_regress_mean_win_prob_delta),
-            max_regress_pct_positive_win_prob_delta=float(args.max_regress_pct_positive_win_prob_delta),
+            max_regress_pct_positive_win_prob_delta=float(
+                args.max_regress_pct_positive_win_prob_delta
+            ),
             max_regress_mean_expected_hp_delta=float(args.max_regress_mean_expected_hp_delta),
         )
         if failures:
