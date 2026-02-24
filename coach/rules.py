@@ -6,10 +6,13 @@ from simulator.game.constants import (
     BOARD_COLS,
     BOARD_ROWS,
     MAX_ITEMS_PER_UNIT,
+)
+from simulator.game.constants import (
     combine_items as _combine_items,
+)
+from simulator.game.constants import (
     is_component as _is_component,
 )
-
 
 _COMPONENT_TFT_ITEM_TO_UNDERSCORE = {
     "TFT_Item_BFSword": "BF_Sword",
@@ -43,4 +46,3 @@ def is_valid_board_pos(row: int, col: int) -> bool:
 
 def can_equip_more_items(num_items: int) -> bool:
     return num_items < MAX_ITEMS_PER_UNIT
-

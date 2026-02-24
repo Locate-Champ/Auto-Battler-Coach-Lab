@@ -58,7 +58,9 @@ def generate_candidates(state: GameState) -> list[ActionPlan]:
         )
 
     if state.player.gold >= 16 and state.player.level < 10 and state.stage_number >= 4:
-        details = EconDetails(name="Push level (est. 1 level)", gold_spent=16, levels_gained=1, rolls=0)
+        details = EconDetails(
+            name="Push level (est. 1 level)", gold_spent=16, levels_gained=1, rolls=0
+        )
         actions.append(
             ActionPlan(
                 decision_type=DecisionType.ECON,
@@ -100,7 +102,12 @@ def generate_candidates(state: GameState) -> list[ActionPlan]:
         rolls = max(0, (state.player.gold - floor) // 2)
         rolls = min(rolls, 30)
         if rolls >= 4:
-            details = EconDetails(name=f"Stabilize: roll to {floor}g (~{rolls}x)", gold_spent=0, levels_gained=0, rolls=int(rolls))
+            details = EconDetails(
+                name=f"Stabilize: roll to {floor}g (~{rolls}x)",
+                gold_spent=0,
+                levels_gained=0,
+                rolls=int(rolls),
+            )
             actions.append(
                 ActionPlan(
                     decision_type=DecisionType.ECON,

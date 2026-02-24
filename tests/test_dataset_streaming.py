@@ -28,7 +28,9 @@ def _rows() -> list[dict]:
             "units": [{"champion_id": "TFT16_Jinx", "star_level": 2, "items": [], "position": 1}],
             "traits": {"TFT16_Gunslinger": 2},
             "augments": [],
-            "opponent_units": [{"champion_id": "TFT16_Vayne", "star_level": 1, "items": [], "position": 2}],
+            "opponent_units": [
+                {"champion_id": "TFT16_Vayne", "star_level": 1, "items": [], "position": 2}
+            ],
             "opponent_traits": {"TFT16_Longshot": 2},
         },
         {
@@ -45,7 +47,9 @@ def _rows() -> list[dict]:
             "units": [{"champion_id": "TFT16_Jinx", "star_level": 2, "items": [], "position": 1}],
             "traits": {"TFT16_Gunslinger": 2},
             "augments": [],
-            "opponent_units": [{"champion_id": "TFT16_Vayne", "star_level": 1, "items": [], "position": 2}],
+            "opponent_units": [
+                {"champion_id": "TFT16_Vayne", "star_level": 1, "items": [], "position": 2}
+            ],
             "opponent_traits": {"TFT16_Longshot": 2},
         },
         {
@@ -62,7 +66,9 @@ def _rows() -> list[dict]:
             "units": [{"champion_id": "TFT16_Vayne", "star_level": 1, "items": [], "position": 2}],
             "traits": {"TFT16_Longshot": 2},
             "augments": [],
-            "opponent_units": [{"champion_id": "TFT16_Jinx", "star_level": 2, "items": [], "position": 1}],
+            "opponent_units": [
+                {"champion_id": "TFT16_Jinx", "star_level": 2, "items": [], "position": 1}
+            ],
             "opponent_traits": {"TFT16_Gunslinger": 2},
         },
         {
@@ -79,7 +85,9 @@ def _rows() -> list[dict]:
             "units": [{"champion_id": "TFT16_Vayne", "star_level": 1, "items": [], "position": 2}],
             "traits": {"TFT16_Longshot": 2},
             "augments": [],
-            "opponent_units": [{"champion_id": "TFT16_Jinx", "star_level": 2, "items": [], "position": 1}],
+            "opponent_units": [
+                {"champion_id": "TFT16_Jinx", "star_level": 2, "items": [], "position": 1}
+            ],
             "opponent_traits": {"TFT16_Gunslinger": 2},
         },
     ]

@@ -7,15 +7,17 @@ Provides stage-aware recommendations based on:
 - Current board state analysis
 """
 
-import pandas as pd
-import numpy as np
 import json
-from pathlib import Path
-from typing import Dict, List, Tuple, Optional
 from collections import defaultdict
+from pathlib import Path
+from typing import Dict, List, Optional
+
+import numpy as np
+import pandas as pd
 
 from .positioning_rules import get_baseline_rules, get_singed_positioning_status
 from .role_rules import is_carry_role, is_frontline_role
+
 
 class TFTRecommender:
     """Recommendation engine for auto-battler board building"""
@@ -44,10 +46,10 @@ class TFTRecommender:
     def _load_early_game_comps(self):
         """Load early game comp data by stage"""
         stage_files = [
-            'early_game_stage2_stage3.csv',
-            'early_game_stage4_stage5.csv',
+            "early_game_stage2_stage3.csv",
+            "early_game_stage4_stage5.csv",
         ]
-        local_personal_dir = self.data_dir / 'data' / 'local' / 'personal'
+        local_personal_dir = self.data_dir / "data" / "local" / "personal"
         found_any = False
 
         for stage_file in stage_files:
@@ -59,29 +61,26 @@ class TFTRecommender:
             df = pd.read_csv(path)
 
             # Group by stage and comp rank
-            for (stage, comp_rank), group in df.groupby(['Stage', 'CompRank']):
+            for (stage, comp_rank), group in df.groupby(["Stage", "CompRank"]):
                 if stage not in self.early_comps:
                     self.early_comps[stage] = []
 
                 units = []
                 for _, row in group.iterrows():
-                    units.append({
-                        'name': row['Unit'],
-                        'star': row['StarLevel']
-                    })
+                    units.append({"name": row["Unit"], "star": row["StarLevel"]})
 
                 comp_info = {
-                    'rank': comp_rank,
-                    'win_rate': group['WinRatePct'].iloc[0],
-                    'avg_place': group['FinalPlace'].iloc[0],
-                    'play_rate': group['PlayRate'].iloc[0],
-                    'units': units
+                    "rank": comp_rank,
+                    "win_rate": group["WinRatePct"].iloc[0],
+                    "avg_place": group["FinalPlace"].iloc[0],
+                    "play_rate": group["PlayRate"].iloc[0],
+                    "units": units,
                 }
                 self.early_comps[stage].append(comp_info)
 
         # Sort by win rate within each stage
         for stage in self.early_comps:
-            self.early_comps[stage].sort(key=lambda x: x['win_rate'], reverse=True)
+            self.early_comps[stage].sort(key=lambda x: x["win_rate"], reverse=True)
 
         if not found_any:
             expected = ", ".join(str(local_personal_dir / name) for name in stage_files)
@@ -92,14 +91,14 @@ class TFTRecommender:
 
     def _load_augment_tiers(self):
         """Load augment tier list"""
-        tier_scores = {'S': 5, 'A': 4, 'B': 3, 'C': 2, 'D': 1, 'F': 0}
+        tier_scores = {"S": 5, "A": 4, "B": 3, "C": 2, "D": 1, "F": 0}
 
         # Primary source: the current MetaTFT-backed game data produced by
         # scripts/fetch_game_data.py.
-        jsonl_path = self.data_dir / 'data' / 'game_data' / 'augments.jsonl'
+        jsonl_path = self.data_dir / "data" / "game_data" / "augments.jsonl"
         if jsonl_path.exists():
             loaded = 0
-            with open(jsonl_path, 'r', encoding='utf-8') as f:
+            with open(jsonl_path, "r", encoding="utf-8") as f:
                 for line in f:
                     line = line.strip()
                     if not line:
@@ -109,35 +108,35 @@ class TFTRecommender:
                     except json.JSONDecodeError:
                         continue
 
-                    name = str(row.get('name', '')).strip()
+                    name = str(row.get("name", "")).strip()
                     if not name:
                         continue
 
-                    tier = str(row.get('tier', 'C')).upper()
-                    rarity_raw = row.get('rarity', 'Unknown')
+                    tier = str(row.get("tier", "C")).upper()
+                    rarity_raw = row.get("rarity", "Unknown")
                     if isinstance(rarity_raw, (int, float)):
-                        rarity = {1: 'Silver', 2: 'Gold', 3: 'Prismatic'}.get(
-                            int(rarity_raw), 'Unknown'
+                        rarity = {1: "Silver", 2: "Gold", 3: "Prismatic"}.get(
+                            int(rarity_raw), "Unknown"
                         )
                     else:
-                        rarity = str(rarity_raw) if rarity_raw else 'Unknown'
+                        rarity = str(rarity_raw) if rarity_raw else "Unknown"
 
-                    associated_traits = row.get('associatedTraits') or []
+                    associated_traits = row.get("associatedTraits") or []
                     types: List[str] = []
                     if isinstance(associated_traits, list):
                         for trait in associated_traits:
                             if isinstance(trait, str) and trait:
-                                types.append(trait.replace('TFT16_', ''))
+                                types.append(trait.replace("TFT16_", ""))
                             elif isinstance(trait, dict):
-                                trait_name = trait.get('name') or trait.get('apiName')
+                                trait_name = trait.get("name") or trait.get("apiName")
                                 if trait_name:
-                                    types.append(str(trait_name).replace('TFT16_', ''))
+                                    types.append(str(trait_name).replace("TFT16_", ""))
 
                     self.augment_tiers[name] = {
-                        'tier': tier,
-                        'score': tier_scores.get(tier, 2),
-                        'types': types,
-                        'rarity': rarity,
+                        "tier": tier,
+                        "score": tier_scores.get(tier, 2),
+                        "types": types,
+                        "rarity": rarity,
                     }
                     loaded += 1
 
@@ -145,9 +144,9 @@ class TFTRecommender:
                 return
 
         # Legacy fallback: newest historical CSV snapshot under data/meta.
-        meta_dir = self.data_dir / 'data' / 'meta'
+        meta_dir = self.data_dir / "data" / "meta"
         csv_paths = sorted(
-            meta_dir.glob('metatft_augment_tierlist_*.csv'),
+            meta_dir.glob("metatft_augment_tierlist_*.csv"),
             key=lambda p: p.stat().st_mtime,
             reverse=True,
         )
@@ -157,38 +156,40 @@ class TFTRecommender:
         df = pd.read_csv(csv_paths[0])
 
         for _, row in df.iterrows():
-            name = row['name']
-            tier = str(row['tier']).upper()
+            name = row["name"]
+            tier = str(row["tier"]).upper()
             self.augment_tiers[name] = {
-                'tier': tier,
-                'score': tier_scores.get(tier, 2),
-                'types': str(row.get('types', '')).split(', ') if pd.notna(row.get('types')) else [],
-                'rarity': row.get('rarity', 'Unknown')
+                "tier": tier,
+                "score": tier_scores.get(tier, 2),
+                "types": str(row.get("types", "")).split(", ")
+                if pd.notna(row.get("types"))
+                else [],
+                "rarity": row.get("rarity", "Unknown"),
             }
 
     def _load_personal_performance(self):
         """Load personal carry and trait performance"""
         # Load carry performance
-        local_personal_dir = self.data_dir / 'data' / 'local' / 'personal'
-        carry_path = local_personal_dir / 'carry_performance_corrected.csv'
+        local_personal_dir = self.data_dir / "data" / "local" / "personal"
+        carry_path = local_personal_dir / "carry_performance_corrected.csv"
         if carry_path.exists():
             df = pd.read_csv(carry_path)
             for _, row in df.iterrows():
                 self.personal_carry_stats[row.iloc[0]] = {
-                    'games': row.get('games', row.get('Games', 0)),
-                    'top4_rate': row.get('top4_rate', row.get('Top4Rate', 0)),
-                    'avg_place': row.get('avg_place', row.get('AvgPlace', 4.5))
+                    "games": row.get("games", row.get("Games", 0)),
+                    "top4_rate": row.get("top4_rate", row.get("Top4Rate", 0)),
+                    "avg_place": row.get("avg_place", row.get("AvgPlace", 4.5)),
                 }
 
         # Load trait performance
-        trait_path = local_personal_dir / 'trait_performance_corrected.csv'
+        trait_path = local_personal_dir / "trait_performance_corrected.csv"
         if trait_path.exists():
             df = pd.read_csv(trait_path)
             for _, row in df.iterrows():
                 self.personal_trait_stats[row.iloc[0]] = {
-                    'games': row.get('games', row.get('Games', 0)),
-                    'top4_rate': row.get('top4_rate', row.get('Top4Rate', 0)),
-                    'avg_place': row.get('avg_place', row.get('AvgPlace', 4.5))
+                    "games": row.get("games", row.get("Games", 0)),
+                    "top4_rate": row.get("top4_rate", row.get("Top4Rate", 0)),
+                    "avg_place": row.get("avg_place", row.get("AvgPlace", 4.5)),
                 }
 
         if not self.personal_carry_stats and not self.personal_trait_stats:
@@ -200,21 +201,21 @@ class TFTRecommender:
 
     def _load_champion_data(self):
         """Load champion reference data"""
-        champ_path = self.data_dir / 'data' / 'game_data' / 'champions.jsonl'
+        champ_path = self.data_dir / "data" / "game_data" / "champions.jsonl"
         if not champ_path.exists():
             return
 
-        with open(champ_path, 'r') as f:
+        with open(champ_path, "r") as f:
             for line in f:
                 c = json.loads(line)
-                api_name = c.get('apiName', '')
-                if not api_name.startswith('TFT16_'):
+                api_name = c.get("apiName", "")
+                if not api_name.startswith("TFT16_"):
                     continue
-                name = c.get('name', '')
+                name = c.get("name", "")
                 self.champions[name] = {
-                    'cost': c.get('cost', 0),
-                    'role': c.get('role', ''),
-                    'traits': c.get('traits_pipe', '').split('|') if c.get('traits_pipe') else []
+                    "cost": c.get("cost", 0),
+                    "role": c.get("role", ""),
+                    "traits": c.get("traits_pipe", "").split("|") if c.get("traits_pipe") else [],
                 }
 
     def get_best_early_comps(self, stage: int, top_n: int = 5) -> List[Dict]:
@@ -233,40 +234,45 @@ class TFTRecommender:
             if augment_name.lower() in name.lower() or name.lower() in augment_name.lower():
                 return info
 
-        return {'tier': 'Unknown', 'score': 2, 'types': [], 'rarity': 'Unknown'}
+        return {"tier": "Unknown", "score": 2, "types": [], "rarity": "Unknown"}
 
-    def get_augment_recommendations(self, rarity: str = None,
-                                    prefer_types: List[str] = None,
-                                    top_n: int = 10) -> List[Dict]:
+    def get_augment_recommendations(
+        self, rarity: str = None, prefer_types: List[str] = None, top_n: int = 10
+    ) -> List[Dict]:
         """Get recommended augments, optionally filtered"""
         augments = []
 
         for name, info in self.augment_tiers.items():
-            if rarity and info['rarity'] != rarity:
+            if rarity and info["rarity"] != rarity:
                 continue
 
-            score = info['score']
+            score = info["score"]
 
             # Boost score if matches preferred types
             if prefer_types:
-                matching_types = set(info['types']) & set(prefer_types)
+                matching_types = set(info["types"]) & set(prefer_types)
                 score += len(matching_types) * 0.5
 
-            augments.append({
-                'name': name,
-                'tier': info['tier'],
-                'score': score,
-                'types': info['types'],
-                'rarity': info['rarity']
-            })
+            augments.append(
+                {
+                    "name": name,
+                    "tier": info["tier"],
+                    "score": score,
+                    "types": info["types"],
+                    "rarity": info["rarity"],
+                }
+            )
 
-        augments.sort(key=lambda x: x['score'], reverse=True)
+        augments.sort(key=lambda x: x["score"], reverse=True)
         return augments[:top_n]
 
-    def get_augment_fit(self, traits: List[str],
-                        trait_frequency: Optional[Dict[str, int]] = None,
-                        total_comps: int = 0,
-                        top_n: int = 3) -> List[Dict]:
+    def get_augment_fit(
+        self,
+        traits: List[str],
+        trait_frequency: Optional[Dict[str, int]] = None,
+        total_comps: int = 0,
+        top_n: int = 3,
+    ) -> List[Dict]:
         """Rank augments by trait fit and estimated enemy benefit."""
         if trait_frequency is None:
             trait_frequency = {}
@@ -280,25 +286,27 @@ class TFTRecommender:
 
         ranked = []
         for augment in augment_pool:
-            matching_types = [t for t in augment['types'] if t in normalized_traits]
+            matching_types = [t for t in augment["types"] if t in normalized_traits]
             match_count = len(matching_types)
             contested_count = sum(trait_frequency.get(t, 0) for t in matching_types)
             contested_share = contested_count / total_comps if total_comps else 0
-            fit_score = augment['score'] + match_count * 0.6
-            enemy_benefit = 'Low'
+            fit_score = augment["score"] + match_count * 0.6
+            enemy_benefit = "Low"
             if contested_share >= 0.35:
-                enemy_benefit = 'High'
+                enemy_benefit = "High"
             elif contested_share >= 0.2:
-                enemy_benefit = 'Medium'
+                enemy_benefit = "Medium"
 
-            ranked.append({
-                **augment,
-                'matching_types': matching_types,
-                'fit_score': fit_score,
-                'enemy_benefit': enemy_benefit,
-            })
+            ranked.append(
+                {
+                    **augment,
+                    "matching_types": matching_types,
+                    "fit_score": fit_score,
+                    "enemy_benefit": enemy_benefit,
+                }
+            )
 
-        ranked.sort(key=lambda x: x['fit_score'], reverse=True)
+        ranked.sort(key=lambda x: x["fit_score"], reverse=True)
         return ranked[:top_n]
 
     def analyze_board(self, units: List[Dict]) -> Dict:
@@ -312,91 +320,91 @@ class TFTRecommender:
             Analysis dict with gaps and recommendations
         """
         analysis = {
-            'unit_count': len(units),
-            'total_cost': 0,
-            'avg_star': 0,
-            'traits': defaultdict(int),
-            'roles': defaultdict(int),
-            'has_frontline': False,
-            'has_carry': False,
-            'has_cc': False,
-            'item_count': 0,
-            'gaps': [],
-            'suggestions': [],
-            'positioning_baseline': get_baseline_rules(),
-            'singed_positioning': get_singed_positioning_status(),
+            "unit_count": len(units),
+            "total_cost": 0,
+            "avg_star": 0,
+            "traits": defaultdict(int),
+            "roles": defaultdict(int),
+            "has_frontline": False,
+            "has_carry": False,
+            "has_cc": False,
+            "item_count": 0,
+            "gaps": [],
+            "suggestions": [],
+            "positioning_baseline": get_baseline_rules(),
+            "singed_positioning": get_singed_positioning_status(),
         }
 
         if not units:
-            analysis['gaps'].append("Empty board - need units!")
+            analysis["gaps"].append("Empty board - need units!")
             return analysis
 
         stars = []
         itemized_units = []
 
         for unit in units:
-            name = unit.get('name', '')
-            star = unit.get('star', 1)
-            items = unit.get('items', [])
+            name = unit.get("name", "")
+            star = unit.get("star", 1)
+            items = unit.get("items", [])
 
             stars.append(star)
-            analysis['item_count'] += len(items)
+            analysis["item_count"] += len(items)
 
             if len(items) >= 2:
                 itemized_units.append(name)
 
             # Get champion info
             champ_info = self.champions.get(name, {})
-            cost = champ_info.get('cost', 0)
-            role = champ_info.get('role', '')
-            traits = champ_info.get('traits', [])
+            cost = champ_info.get("cost", 0)
+            role = champ_info.get("role", "")
+            traits = champ_info.get("traits", [])
 
-            analysis['total_cost'] += cost
+            analysis["total_cost"] += cost
 
             # Track roles
             if role:
-                analysis['roles'][role] += 1
+                analysis["roles"][role] += 1
                 if is_frontline_role(role):
-                    analysis['has_frontline'] = True
+                    analysis["has_frontline"] = True
                 if is_carry_role(role):
-                    analysis['has_carry'] = True
+                    analysis["has_carry"] = True
 
             # Track traits
             for trait in traits:
-                analysis['traits'][trait] += 1
+                analysis["traits"][trait] += 1
 
-        analysis['avg_star'] = np.mean(stars) if stars else 0
+        analysis["avg_star"] = np.mean(stars) if stars else 0
 
         # Identify gaps
-        if not analysis['has_frontline']:
-            analysis['gaps'].append("Missing frontline (tanks/fighters)")
-            analysis['suggestions'].append("Add: Shen, Sion, Illaoi, or Poppy")
+        if not analysis["has_frontline"]:
+            analysis["gaps"].append("Missing frontline (tanks/fighters)")
+            analysis["suggestions"].append("Add: Shen, Sion, Illaoi, or Poppy")
 
-        if not analysis['has_carry']:
-            analysis['gaps'].append("Missing primary carry")
-            analysis['suggestions'].append("Need a unit with 3 items to carry damage")
+        if not analysis["has_carry"]:
+            analysis["gaps"].append("Missing primary carry")
+            analysis["suggestions"].append("Need a unit with 3 items to carry damage")
 
-        if analysis['item_count'] < 6:
-            analysis['gaps'].append(f"Low item count ({analysis['item_count']}/9 optimal)")
+        if analysis["item_count"] < 6:
+            analysis["gaps"].append(f"Low item count ({analysis['item_count']}/9 optimal)")
 
-        if analysis['avg_star'] < 1.5:
-            analysis['gaps'].append("Low star levels - need upgrades")
+        if analysis["avg_star"] < 1.5:
+            analysis["gaps"].append("Low star levels - need upgrades")
 
         # Check trait synergies
-        active_traits = {t: c for t, c in analysis['traits'].items() if c >= 2}
+        active_traits = {t: c for t, c in analysis["traits"].items() if c >= 2}
         if len(active_traits) < 2:
-            analysis['gaps'].append("Weak trait synergies")
-            analysis['suggestions'].append("Focus on activating 2+ traits at higher levels")
+            analysis["gaps"].append("Weak trait synergies")
+            analysis["suggestions"].append("Focus on activating 2+ traits at higher levels")
 
         # Convert defaultdicts to regular dicts
-        analysis['traits'] = dict(analysis['traits'])
-        analysis['roles'] = dict(analysis['roles'])
+        analysis["traits"] = dict(analysis["traits"])
+        analysis["roles"] = dict(analysis["roles"])
 
         return analysis
 
-    def recommend_for_board(self, current_units: List[Dict],
-                           stage: int = 3,
-                           available_gold: int = 50) -> Dict:
+    def recommend_for_board(
+        self, current_units: List[Dict], stage: int = 3, available_gold: int = 50
+    ) -> Dict:
         """
         Get personalized recommendations based on current board
 
@@ -406,70 +414,75 @@ class TFTRecommender:
             available_gold: Gold available for rolling/leveling
         """
         recommendations = {
-            'board_analysis': self.analyze_board(current_units),
-            'meta_comps': [],
-            'personal_carries': [],
-            'transition_targets': [],
-            'priority_actions': []
+            "board_analysis": self.analyze_board(current_units),
+            "meta_comps": [],
+            "personal_carries": [],
+            "transition_targets": [],
+            "priority_actions": [],
         }
 
         # Get relevant stage comps
         if stage in self.early_comps:
-            recommendations['meta_comps'] = self.get_best_early_comps(stage, top_n=3)
+            recommendations["meta_comps"] = self.get_best_early_comps(stage, top_n=3)
 
         # Find current unit names
-        current_names = {u.get('name', '').lower() for u in current_units}
+        current_names = {u.get("name", "").lower() for u in current_units}
 
         # Check personal carry performance
         for carry, stats in self.personal_carry_stats.items():
-            if stats.get('games', 0) >= 3:
-                top4_rate = stats.get('top4_rate', 0)
+            if stats.get("games", 0) >= 3:
+                top4_rate = stats.get("top4_rate", 0)
                 if isinstance(top4_rate, str):
-                    top4_rate = float(top4_rate.replace('%', '')) / 100
+                    top4_rate = float(top4_rate.replace("%", "")) / 100
                 elif top4_rate > 1:
                     top4_rate = top4_rate / 100
 
                 if top4_rate >= 0.5:  # 50%+ top 4 rate
-                    recommendations['personal_carries'].append({
-                        'name': carry,
-                        'top4_rate': f"{top4_rate*100:.0f}%",
-                        'games': stats.get('games', 0),
-                        'on_board': carry.lower() in current_names
-                    })
+                    recommendations["personal_carries"].append(
+                        {
+                            "name": carry,
+                            "top4_rate": f"{top4_rate * 100:.0f}%",
+                            "games": stats.get("games", 0),
+                            "on_board": carry.lower() in current_names,
+                        }
+                    )
 
         # Sort personal carries by top4 rate
-        recommendations['personal_carries'].sort(
-            key=lambda x: float(x['top4_rate'].replace('%', '')),
-            reverse=True
+        recommendations["personal_carries"].sort(
+            key=lambda x: float(x["top4_rate"].replace("%", "")), reverse=True
         )
 
         # Generate priority actions
-        analysis = recommendations['board_analysis']
+        analysis = recommendations["board_analysis"]
 
-        if analysis['gaps']:
-            for gap in analysis['gaps'][:3]:
-                recommendations['priority_actions'].append(f"FIX: {gap}")
+        if analysis["gaps"]:
+            for gap in analysis["gaps"][:3]:
+                recommendations["priority_actions"].append(f"FIX: {gap}")
 
         if stage <= 3 and available_gold >= 10:
-            recommendations['priority_actions'].append("Consider: Save for level 6 at stage 3-2")
+            recommendations["priority_actions"].append("Consider: Save for level 6 at stage 3-2")
         elif stage == 4 and available_gold >= 30:
-            recommendations['priority_actions'].append("Consider: Roll for upgrades or push level 7")
+            recommendations["priority_actions"].append(
+                "Consider: Roll for upgrades or push level 7"
+            )
 
         # Suggest transition based on meta comps
-        if recommendations['meta_comps']:
-            best_comp = recommendations['meta_comps'][0]
-            comp_units = {u['name'].lower() for u in best_comp['units']}
+        if recommendations["meta_comps"]:
+            best_comp = recommendations["meta_comps"][0]
+            comp_units = {u["name"].lower() for u in best_comp["units"]}
             overlap = current_names & comp_units
 
             if len(overlap) >= 2:
                 missing = comp_units - current_names
                 if missing:
-                    recommendations['transition_targets'].append({
-                        'comp_rank': best_comp['rank'],
-                        'win_rate': f"{best_comp['win_rate']}%",
-                        'you_have': list(overlap),
-                        'you_need': list(missing)[:4]
-                    })
+                    recommendations["transition_targets"].append(
+                        {
+                            "comp_rank": best_comp["rank"],
+                            "win_rate": f"{best_comp['win_rate']}%",
+                            "you_have": list(overlap),
+                            "you_need": list(missing)[:4],
+                        }
+                    )
 
         return recommendations
 
@@ -481,68 +494,74 @@ class TFTRecommender:
         lines.append("=" * 60)
 
         # Board analysis
-        analysis = recs['board_analysis']
-        lines.append(f"\nBOARD STATE: {analysis['unit_count']} units, "
-                    f"{analysis['item_count']} items, "
-                    f"avg {analysis['avg_star']:.1f}* star level")
+        analysis = recs["board_analysis"]
+        lines.append(
+            f"\nBOARD STATE: {analysis['unit_count']} units, "
+            f"{analysis['item_count']} items, "
+            f"avg {analysis['avg_star']:.1f}* star level"
+        )
 
-        if analysis['traits']:
-            trait_str = ", ".join(f"{t}:{c}" for t, c in
-                                 sorted(analysis['traits'].items(), key=lambda x: -x[1])[:5])
+        if analysis["traits"]:
+            trait_str = ", ".join(
+                f"{t}:{c}" for t, c in sorted(analysis["traits"].items(), key=lambda x: -x[1])[:5]
+            )
             lines.append(f"Active traits: {trait_str}")
 
         # Positioning baseline
-        if analysis.get('positioning_baseline'):
+        if analysis.get("positioning_baseline"):
             lines.append("\nPOSITIONING BASELINE (Set 16):")
-            for rule in analysis['positioning_baseline'][:6]:
+            for rule in analysis["positioning_baseline"][:6]:
                 lines.append(f"  - {rule}")
 
-        singed_status = analysis.get('singed_positioning', {})
+        singed_status = analysis.get("singed_positioning", {})
         if singed_status:
             lines.append("\nSINGED POSITIONING STATUS:")
             lines.append(f"  - {singed_status.get('status', 'unknown')}")
-            reason = singed_status.get('reason')
+            reason = singed_status.get("reason")
             if reason:
                 lines.append(f"    {reason}")
 
         # Gaps
-        if analysis['gaps']:
+        if analysis["gaps"]:
             lines.append("\nGAPS TO ADDRESS:")
-            for gap in analysis['gaps']:
+            for gap in analysis["gaps"]:
                 lines.append(f"  ! {gap}")
 
         # Personal best carries
-        if recs['personal_carries']:
+        if recs["personal_carries"]:
             lines.append("\nYOUR BEST CARRIES (based on your history):")
-            for carry in recs['personal_carries'][:5]:
-                status = "[ON BOARD]" if carry['on_board'] else ""
-                lines.append(f"  - {carry['name']}: {carry['top4_rate']} top4 "
-                           f"({carry['games']} games) {status}")
+            for carry in recs["personal_carries"][:5]:
+                status = "[ON BOARD]" if carry["on_board"] else ""
+                lines.append(
+                    f"  - {carry['name']}: {carry['top4_rate']} top4 "
+                    f"({carry['games']} games) {status}"
+                )
 
         # Meta comps
-        if recs['meta_comps']:
-            lines.append(f"\nMETA COMPS FOR THIS STAGE:")
-            for comp in recs['meta_comps'][:3]:
-                unit_names = [f"{u['name']}_{u['star']}*" for u in comp['units']]
-                lines.append(f"  #{comp['rank']}: {comp['win_rate']}% WR, "
-                           f"avg {comp['avg_place']:.1f} place")
+        if recs["meta_comps"]:
+            lines.append("\nMETA COMPS FOR THIS STAGE:")
+            for comp in recs["meta_comps"][:3]:
+                unit_names = [f"{u['name']}_{u['star']}*" for u in comp["units"]]
+                lines.append(
+                    f"  #{comp['rank']}: {comp['win_rate']}% WR, avg {comp['avg_place']:.1f} place"
+                )
                 lines.append(f"      Units: {', '.join(unit_names)}")
 
         # Transition targets
-        if recs['transition_targets']:
+        if recs["transition_targets"]:
             lines.append("\nTRANSITION OPPORTUNITY:")
-            for target in recs['transition_targets']:
+            for target in recs["transition_targets"]:
                 lines.append(f"  Comp #{target['comp_rank']} ({target['win_rate']} WR)")
                 lines.append(f"    You have: {', '.join(target['you_have'])}")
                 lines.append(f"    You need: {', '.join(target['you_need'])}")
 
         # Priority actions
-        if recs['priority_actions']:
+        if recs["priority_actions"]:
             lines.append("\nPRIORITY ACTIONS:")
-            for action in recs['priority_actions']:
+            for action in recs["priority_actions"]:
                 lines.append(f"  >> {action}")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
 
 def main():
@@ -551,7 +570,7 @@ def main():
     rec = TFTRecommender()
 
     # Show what data we have
-    print(f"\nLoaded data:")
+    print("\nLoaded data:")
     print(f"  - Early comps for stages: {list(rec.early_comps.keys())}")
     print(f"  - Augments in tier list: {len(rec.augment_tiers)}")
     print(f"  - Personal carry stats: {len(rec.personal_carry_stats)}")
@@ -563,7 +582,7 @@ def main():
     print("BEST STAGE 2 COMPS (meta)")
     print("=" * 60)
     for comp in rec.get_best_early_comps(2, top_n=5):
-        units = [f"{u['name']}_{u['star']}*" for u in comp['units']]
+        units = [f"{u['name']}_{u['star']}*" for u in comp["units"]]
         print(f"  #{comp['rank']}: {comp['win_rate']}% WR -> {', '.join(units)}")
 
     # Example: Get best stage 4 comps
@@ -571,7 +590,7 @@ def main():
     print("BEST STAGE 4 COMPS (meta)")
     print("=" * 60)
     for comp in rec.get_best_early_comps(4, top_n=5):
-        units = [f"{u['name']}_{u['star']}*" for u in comp['units']]
+        units = [f"{u['name']}_{u['star']}*" for u in comp["units"]]
         print(f"  #{comp['rank']}: {comp['win_rate']}% WR -> {', '.join(units)}")
 
     # Example: Top augments
@@ -579,7 +598,7 @@ def main():
     print("TOP S-TIER AUGMENTS")
     print("=" * 60)
     for aug in rec.get_augment_recommendations(top_n=10):
-        if aug['tier'] == 'S':
+        if aug["tier"] == "S":
             print(f"  {aug['name']} ({aug['rarity']}): {', '.join(aug['types']) or 'General'}")
 
     # Example: Analyze a sample board
@@ -587,10 +606,10 @@ def main():
     print("EXAMPLE BOARD ANALYSIS")
     print("=" * 60)
     sample_board = [
-        {'name': 'Viego', 'star': 2, 'items': ['Bloodthirster', 'Titans Resolve']},
-        {'name': 'Shen', 'star': 2, 'items': ['Warmogs']},
-        {'name': 'Twisted Fate', 'star': 1, 'items': []},
-        {'name': 'Yorick', 'star': 1, 'items': []},
+        {"name": "Viego", "star": 2, "items": ["Bloodthirster", "Titans Resolve"]},
+        {"name": "Shen", "star": 2, "items": ["Warmogs"]},
+        {"name": "Twisted Fate", "star": 1, "items": []},
+        {"name": "Yorick", "star": 1, "items": []},
     ]
 
     recs = rec.recommend_for_board(sample_board, stage=3, available_gold=30)

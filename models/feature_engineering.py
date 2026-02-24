@@ -2,22 +2,26 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import functools
 import json
 import math
 import os
-from pathlib import Path
 import re
+from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 import numpy as np
 
 try:
     from .fe_fast import (
-        team_summary_fast as _cy_team_summary,
-        parse_units_column_fast as _cy_parse_units_column,
         CYTHON_AVAILABLE as _CYTHON_FE,
+    )
+    from .fe_fast import (
+        parse_units_column_fast as _cy_parse_units_column,
+    )
+    from .fe_fast import (
+        team_summary_fast as _cy_team_summary,
     )
 except ImportError:
     _cy_team_summary = None
@@ -207,7 +211,8 @@ class TFTFeatureEngineer:
 
         # CC-heavy champion set: precompute from champion API names
         self._cc_heavy_api_names: frozenset[str] = frozenset(
-            api for api in self.champion_costs
+            api
+            for api in self.champion_costs
             if any(cc in _normalize_token(api) for cc in _CC_HEAVY_NAME_KEYS)
         )
 
@@ -228,24 +233,37 @@ class TFTFeatureEngineer:
         # Packed item data: canonical → (ad, ap, hp, as, armor, mr, type_code, is_component, flag_bits)
         # type_code: 0=offensive, 1=defensive, 2=utility
         # flag_bits: qss=1, guardbreaker=2, blue_buff=4, shojin=8, morello=16, ionic=32
-        self._item_packed: Dict[str, Tuple[float, float, float, float, float, float, int, bool, int]] = {}
+        self._item_packed: Dict[
+            str, Tuple[float, float, float, float, float, float, int, bool, int]
+        ] = {}
         for item_name in self.item_stats:
             istats = self.item_stats[item_name]
             itype = self.item_types.get(item_name, "utility")
             type_code = 0 if itype == "offensive" else (1 if itype == "defensive" else 2)
             is_comp = item_name in self.component_items
             flags = 0
-            if item_name in self._qss_items: flags |= 1
-            if item_name in self._guardbreaker_items: flags |= 2
-            if item_name in self._blue_buff_items: flags |= 4
-            if item_name in self._shojin_items: flags |= 8
-            if item_name in self._morello_items: flags |= 16
-            if item_name in self._ionic_items: flags |= 32
+            if item_name in self._qss_items:
+                flags |= 1
+            if item_name in self._guardbreaker_items:
+                flags |= 2
+            if item_name in self._blue_buff_items:
+                flags |= 4
+            if item_name in self._shojin_items:
+                flags |= 8
+            if item_name in self._morello_items:
+                flags |= 16
+            if item_name in self._ionic_items:
+                flags |= 32
             self._item_packed[item_name] = (
-                istats.get("ad", 0.0), istats.get("ap", 0.0), istats.get("hp", 0.0),
-                istats.get("attack_speed", 0.0), istats.get("armor", 0.0),
+                istats.get("ad", 0.0),
+                istats.get("ap", 0.0),
+                istats.get("hp", 0.0),
+                istats.get("attack_speed", 0.0),
+                istats.get("armor", 0.0),
                 istats.get("magic_resist", 0.0),
-                type_code, is_comp, flags,
+                type_code,
+                is_comp,
+                flags,
             )
 
         # Pre-computed personal item scores: canonical_item_name → score
@@ -258,7 +276,9 @@ class TFTFeatureEngineer:
         for _token_key, canonical in self.item_lookup.items():
             if canonical not in self._item_personal_by_canonical:
                 if _token_key in self.personal_item_scores:
-                    self._item_personal_by_canonical[canonical] = self.personal_item_scores[_token_key]
+                    self._item_personal_by_canonical[canonical] = self.personal_item_scores[
+                        _token_key
+                    ]
 
     def _load_json(self, path: Path, fallback: Any) -> Any:
         if not path.exists():
@@ -377,8 +397,14 @@ class TFTFeatureEngineer:
         if "emblem" in tag_key or "trait" in tag_key:
             return "utility"
         offensive_signal = stats["ad"] + stats["ap"] + stats["attack_speed"] * 50.0
-        defensive_signal = stats["hp"] / 100.0 + stats["armor"] / 20.0 + stats["magic_resist"] / 20.0
-        if "damage" in desc_key or "execute" in desc_key or offensive_signal >= defensive_signal + 0.2:
+        defensive_signal = (
+            stats["hp"] / 100.0 + stats["armor"] / 20.0 + stats["magic_resist"] / 20.0
+        )
+        if (
+            "damage" in desc_key
+            or "execute" in desc_key
+            or offensive_signal >= defensive_signal + 0.2
+        ):
             return "offensive"
         if "shield" in desc_key or "heal" in desc_key or defensive_signal >= offensive_signal + 0.2:
             return "defensive"
@@ -390,7 +416,9 @@ class TFTFeatureEngineer:
         return "offensive" if offensive_signal >= defensive_signal else "defensive"
 
     def _load_items(self) -> None:
-        api_items = self._load_json(self.repo_root / "data" / "api" / "processed" / "items_set16.json", [])
+        api_items = self._load_json(
+            self.repo_root / "data" / "api" / "processed" / "items_set16.json", []
+        )
         for item in api_items:
             if not isinstance(item, Mapping):
                 continue
@@ -404,7 +432,9 @@ class TFTFeatureEngineer:
             stats = self._normalize_item_effects(effects)
 
             self.item_stats[api_name] = stats
-            self.item_types[api_name] = self._classify_item_type(display_name, tags, stats, description)
+            self.item_types[api_name] = self._classify_item_type(
+                display_name, tags, stats, description
+            )
 
             aliases = {api_name, display_name, item.get("en_name", display_name)}
             for alias in aliases:
@@ -465,7 +495,9 @@ class TFTFeatureEngineer:
     def _infer_augment_flags(self, augment: Mapping[str, Any]) -> Tuple[bool, bool, bool]:
         text = f"{augment.get('name', '')} {augment.get('description', augment.get('desc', ''))}".lower()
         associated_traits = augment.get("associatedTraits", []) or []
-        has_trait = bool(associated_traits) or any(keyword in text for keyword in _TRAIT_AUGMENT_KEYWORDS)
+        has_trait = bool(associated_traits) or any(
+            keyword in text for keyword in _TRAIT_AUGMENT_KEYWORDS
+        )
         has_econ = any(keyword in text for keyword in _ECON_AUGMENT_KEYWORDS)
         has_combat = any(keyword in text for keyword in _COMBAT_AUGMENT_KEYWORDS) or not has_econ
         return has_econ, has_combat, has_trait
@@ -531,7 +563,9 @@ class TFTFeatureEngineer:
                     top4 = _safe_float(carry.get("top4", carry.get("top4_rate")), default=0.0)
                     if top4 > 1.0:
                         top4 /= 100.0
-                    avg_place = _safe_float(carry.get("avgPlace", carry.get("avg_placement")), default=4.5)
+                    avg_place = _safe_float(
+                        carry.get("avgPlace", carry.get("avg_placement")), default=4.5
+                    )
                     key = _normalize_token(name)
                     if key:
                         self.personal_carry_stats[key] = (top4, avg_place)
@@ -548,7 +582,9 @@ class TFTFeatureEngineer:
                     top4 = _safe_float(item.get("top4", item.get("top4_rate")), default=0.0)
                     if top4 > 1.0:
                         top4 /= 100.0
-                    avg_place = _safe_float(item.get("avgPlace", item.get("avg_placement")), default=4.5)
+                    avg_place = _safe_float(
+                        item.get("avgPlace", item.get("avg_placement")), default=4.5
+                    )
                     score = top4 + ((4.5 - avg_place) / 8.0)
                     key = _normalize_token(name)
                     if key:
@@ -556,11 +592,7 @@ class TFTFeatureEngineer:
 
         # CSV fallback from personal exports.
         carry_csv = (
-            self.repo_root
-            / "data"
-            / "local"
-            / "personal"
-            / "carry_performance_corrected.csv"
+            self.repo_root / "data" / "local" / "personal" / "carry_performance_corrected.csv"
         )
         if carry_csv.exists() and not self.personal_carry_stats:
             with carry_csv.open("r", encoding="utf-8") as handle:
@@ -714,7 +746,9 @@ class TFTFeatureEngineer:
         # Fast path: Parquet data always has champion_id
         champion = raw_unit.get("champion_id")
         if champion is None:
-            champion = raw_unit.get("name") or raw_unit.get("champion") or raw_unit.get("character_id")
+            champion = (
+                raw_unit.get("name") or raw_unit.get("champion") or raw_unit.get("character_id")
+            )
         if not champion:
             return None
 
@@ -726,7 +760,11 @@ class TFTFeatureEngineer:
         star_raw = raw_unit.get("star_level")
         if star_raw is None:
             star_raw = raw_unit.get("star") or raw_unit.get("tier") or 1
-        star_level = star_raw if isinstance(star_raw, int) and 1 <= star_raw <= 3 else max(1, min(3, _safe_int(star_raw, 1)))
+        star_level = (
+            star_raw
+            if isinstance(star_raw, int) and 1 <= star_raw <= 3
+            else max(1, min(3, _safe_int(star_raw, 1)))
+        )
 
         items_raw = raw_unit.get("items") or raw_unit.get("itemNames")
         if items_raw is not None and isinstance(items_raw, str):
@@ -745,7 +783,9 @@ class TFTFeatureEngineer:
         if isinstance(position_raw, list) and len(position_raw) == 2:
             position = _safe_int(position_raw[0]) * BOARD_COLS + _safe_int(position_raw[1])
         elif isinstance(position_raw, dict):
-            position = _safe_int(position_raw.get("row")) * BOARD_COLS + _safe_int(position_raw.get("col"))
+            position = _safe_int(position_raw.get("row")) * BOARD_COLS + _safe_int(
+                position_raw.get("col")
+            )
         elif position_raw is None:
             position = None
         else:
@@ -766,8 +806,11 @@ class TFTFeatureEngineer:
     def _team_summary(self, units: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
         if _CYTHON_FE and self._champion_packed:
             return _cy_team_summary(
-                list(units), self._champion_packed, self._item_packed,
-                self._canonical_item_name, math.ceil(len(units) / 2) if units else 0,
+                list(units),
+                self._champion_packed,
+                self._item_packed,
+                self._canonical_item_name,
+                math.ceil(len(units) / 2) if units else 0,
             )
         if not units:
             return {
@@ -870,7 +913,11 @@ class TFTFeatureEngineer:
             cost, base_hp, base_ad, base_as, base_armor, base_mr, is_cc = packed
 
             star_raw = unit.get("star_level", 1)
-            star_int = star_raw if isinstance(star_raw, int) and 1 <= star_raw <= 3 else max(1, min(3, _safe_int(star_raw, 1)))
+            star_int = (
+                star_raw
+                if isinstance(star_raw, int) and 1 <= star_raw <= 3
+                else max(1, min(3, _safe_int(star_raw, 1)))
+            )
             star = float(star_int)
             hp_scale = STAR_SCALING_HP.get(star_int, 1.0)
             ad_scale = STAR_SCALING_AD.get(star_int, 1.0)
@@ -905,12 +952,18 @@ class TFTFeatureEngineer:
                     continue
                 i_ad, i_ap, i_hp, i_as, i_armor, i_mr, itype, is_comp, iflags = ipacked
 
-                bonus_ad += i_ad;   item_ad += i_ad
-                bonus_ap += i_ap;   item_ap += i_ap
-                bonus_hp += i_hp;   item_hp += i_hp
-                bonus_as += i_as;   item_as += i_as
-                bonus_armor += i_armor; item_armor += i_armor
-                bonus_mr += i_mr;   item_mr += i_mr
+                bonus_ad += i_ad
+                item_ad += i_ad
+                bonus_ap += i_ap
+                item_ap += i_ap
+                bonus_hp += i_hp
+                item_hp += i_hp
+                bonus_as += i_as
+                item_as += i_as
+                bonus_armor += i_armor
+                item_armor += i_armor
+                bonus_mr += i_mr
+                item_mr += i_mr
 
                 if is_comp:
                     components += 1.0
@@ -1367,7 +1420,9 @@ class TFTFeatureEngineer:
 
         features: List[float] = []
         if self.config.use_composition:
-            features.extend(self._composition_features(row, _units=units, _summary=summary, _traits=traits))
+            features.extend(
+                self._composition_features(row, _units=units, _summary=summary, _traits=traits)
+            )
         if self.config.use_economy:
             features.extend(self._economy_features(row))
         if self.config.use_traits:
@@ -1377,7 +1432,9 @@ class TFTFeatureEngineer:
         if self.config.use_augments:
             features.extend(self._augment_features(row))
         if self.config.use_matchup:
-            features.extend(self._matchup_features(row, _units=units, _summary=summary, _traits=traits))
+            features.extend(
+                self._matchup_features(row, _units=units, _summary=summary, _traits=traits)
+            )
         if self.config.use_personal_weights:
             features.extend(self._personal_features(row, _units=units, _summary=summary))
         return np.asarray(features, dtype=np.float32)
@@ -1399,41 +1456,41 @@ class TFTFeatureEngineer:
 
         if self.config.use_composition:
             width = len(self._composition_feature_names())
-            result[:, col:col + width] = self._composition_features_batch(
+            result[:, col : col + width] = self._composition_features_batch(
                 rows, all_units, all_summaries, all_traits
             )
             col += width
 
         if self.config.use_economy:
             width = len(self._economy_feature_names())
-            result[:, col:col + width] = self._economy_features_batch(rows)
+            result[:, col : col + width] = self._economy_features_batch(rows)
             col += width
 
         if self.config.use_traits:
             width = len(self._trait_feature_names())
-            result[:, col:col + width] = self._trait_features_batch(all_traits)
+            result[:, col : col + width] = self._trait_features_batch(all_traits)
             col += width
 
         if self.config.use_items:
             width = len(self._item_feature_names())
-            result[:, col:col + width] = self._item_features_batch(all_summaries)
+            result[:, col : col + width] = self._item_features_batch(all_summaries)
             col += width
 
         if self.config.use_augments:
             width = len(self._augment_feature_names())
-            result[:, col:col + width] = self._augment_features_batch(rows)
+            result[:, col : col + width] = self._augment_features_batch(rows)
             col += width
 
         if self.config.use_matchup:
             width = len(self._matchup_feature_names())
-            result[:, col:col + width] = self._matchup_features_batch(
+            result[:, col : col + width] = self._matchup_features_batch(
                 rows, all_summaries, all_traits
             )
             col += width
 
         if self.config.use_personal_weights:
             width = len(self._personal_feature_names())
-            result[:, col:col + width] = self._personal_features_batch(
+            result[:, col : col + width] = self._personal_features_batch(
                 rows, all_units, all_summaries
             )
             col += width
@@ -1449,8 +1506,11 @@ class TFTFeatureEngineer:
         """
         if _CYTHON_FE and _cy_parse_units_column is not None:
             return _cy_parse_units_column(
-                decoded_col, self.champion_costs, self.champion_lookup,
-                self.item_stats, self.item_lookup,
+                decoded_col,
+                self.champion_costs,
+                self.champion_lookup,
+                self.item_stats,
+                self.item_lookup,
             )
 
         # Inlined Python fallback: avoid method dispatch per unit
@@ -1471,7 +1531,11 @@ class TFTFeatureEngineer:
 
                 champion = raw_unit.get("champion_id")
                 if champion is None:
-                    champion = raw_unit.get("name") or raw_unit.get("champion") or raw_unit.get("character_id")
+                    champion = (
+                        raw_unit.get("name")
+                        or raw_unit.get("champion")
+                        or raw_unit.get("character_id")
+                    )
                 if not champion:
                     continue
 
@@ -1513,16 +1577,20 @@ class TFTFeatureEngineer:
                 elif isinstance(position_raw, list) and len(position_raw) == 2:
                     position = _safe_int(position_raw[0]) * BOARD_COLS + _safe_int(position_raw[1])
                 elif isinstance(position_raw, dict):
-                    position = _safe_int(position_raw.get("row")) * BOARD_COLS + _safe_int(position_raw.get("col"))
+                    position = _safe_int(position_raw.get("row")) * BOARD_COLS + _safe_int(
+                        position_raw.get("col")
+                    )
                 elif position_raw is not None:
                     position = _safe_int(position_raw)
 
-                parsed.append({
-                    "champion_id": api_name,
-                    "star_level": star_level,
-                    "items": items,
-                    "position": position,
-                })
+                parsed.append(
+                    {
+                        "champion_id": api_name,
+                        "star_level": star_level,
+                        "items": items,
+                        "position": position,
+                    }
+                )
             result.append(parsed)
         return result
 
@@ -1648,8 +1716,9 @@ class TFTFeatureEngineer:
 
         if self.config.use_composition:
             width = len(self._composition_feature_names())
-            result[:, col:col + width] = self._composition_features_batch(
-                all_summaries, all_units, all_summaries, all_traits)
+            result[:, col : col + width] = self._composition_features_batch(
+                all_summaries, all_units, all_summaries, all_traits
+            )
             col += width
 
         if self.config.use_economy:
@@ -1668,17 +1737,17 @@ class TFTFeatureEngineer:
 
         if self.config.use_traits:
             width = len(self._trait_feature_names())
-            result[:, col:col + width] = self._trait_features_batch(all_traits)
+            result[:, col : col + width] = self._trait_features_batch(all_traits)
             col += width
 
         if self.config.use_items:
             width = len(self._item_feature_names())
-            result[:, col:col + width] = self._item_features_batch(all_summaries)
+            result[:, col : col + width] = self._item_features_batch(all_summaries)
             col += width
 
         if self.config.use_augments:
             width = len(self._augment_feature_names())
-            result[:, col:col + width] = self._augment_features_from_decoded(augments_decoded)
+            result[:, col : col + width] = self._augment_features_from_decoded(augments_decoded)
             col += width
 
         if self.config.use_matchup:
@@ -1688,18 +1757,23 @@ class TFTFeatureEngineer:
             all_opp_units = self._parse_units_column(opp_units_decoded)
             all_opp_traits = self._parse_traits_column(opp_traits_decoded)
             all_opp_summaries = [self._team_summary(u) for u in all_opp_units]
-            result[:, col:col + width] = self._matchup_features_batch(
-                [], all_summaries, all_traits,
+            result[:, col : col + width] = self._matchup_features_batch(
+                [],
+                all_summaries,
+                all_traits,
                 all_opp_summaries=all_opp_summaries,
                 all_opp_traits=all_opp_traits,
-                hp_arr=hp_arr, opp_hp_arr=opp_hp_arr, round_arr=round_arr,
+                hp_arr=hp_arr,
+                opp_hp_arr=opp_hp_arr,
+                round_arr=round_arr,
             )
             col += width
 
         if self.config.use_personal_weights:
             width = len(self._personal_feature_names())
-            result[:, col:col + width] = self._personal_features_batch(
-                all_summaries, all_units, all_summaries)
+            result[:, col : col + width] = self._personal_features_batch(
+                all_summaries, all_units, all_summaries
+            )
             col += width
 
         return result
@@ -1727,7 +1801,9 @@ class TFTFeatureEngineer:
         interests = np.minimum(5.0, np.maximum(0.0, np.floor(golds / 10.0)))
         hp_pcts = hps / 100.0
 
-        return np.column_stack([levels, hps, hp_pcts, golds, streaks, round_nums, stages, interests])
+        return np.column_stack(
+            [levels, hps, hp_pcts, golds, streaks, round_nums, stages, interests]
+        )
 
     def _trait_features_batch(self, all_traits: Sequence[Dict[str, int]]) -> np.ndarray:
         """Vectorized trait features for a batch of pre-extracted trait dicts."""
@@ -1920,7 +1996,9 @@ class TFTFeatureEngineer:
             result[i, 2] = hp_you - hp_opp
             result[i, 3] = your["total_items"] - opp_summary["total_items"]
             result[i, 4] = your["frontline_hp"] / max(EPSILON, opp_summary["frontline_hp"])
-            result[i, 5] = your["backline_damage"] / max(EPSILON, opp_summary["backline_damage"] + 1.0)
+            result[i, 5] = your["backline_damage"] / max(
+                EPSILON, opp_summary["backline_damage"] + 1.0
+            )
             result[i, 6] = your["avg_armor"] - (opp_summary["physical_share"] * 100.0)
             result[i, 7] = your["avg_mr"] - (opp_summary["magic_share"] * 100.0)
             result[i, 8] = your["qss_count"] - opp_summary["cc_heavy_units"]

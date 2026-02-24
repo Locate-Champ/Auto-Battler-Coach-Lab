@@ -11,4 +11,3 @@ __all__ = [
     "derive_traits",
     "with_derived_traits",
 ]
-

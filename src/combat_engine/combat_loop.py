@@ -199,7 +199,11 @@ def run_combat(
             state = world.states[entity_id]
             stats = world.stats[entity_id]
 
-            if state.target is None or state.target not in world.stats or world.stats[state.target].hp <= 0:
+            if (
+                state.target is None
+                or state.target not in world.stats
+                or world.stats[state.target].hp <= 0
+            ):
                 state.target = _select_target(world, entity_id)
                 state.state = StateType.ACQUIRING_TARGET
 

@@ -35,4 +35,3 @@ def test_combat_scorer_is_deterministic_and_uses_cache() -> None:
 
     assert m1 == m2
     assert cache_len_2 == cache_len_1
-

@@ -104,7 +104,9 @@ def explain_action(action: ActionPlan, score: ScoreBreakdown) -> Explanation:
 
     # Tempo lines
     if score.tempo.opponent_policy != "proxy_only":
-        lines.append(f"Tempo (in sims): {score.tempo.win_prob*100:.1f}% ({score.tempo.win_prob_delta:+.1%})")
+        lines.append(
+            f"Tempo (in sims): {score.tempo.win_prob * 100:.1f}% ({score.tempo.win_prob_delta:+.1%})"
+        )
         lines.append(f"Expected HP delta: {score.tempo.expected_hp_delta:+.1f}")
     else:
         lines.append("Tempo: opponent unknown (proxy score only)")
@@ -122,21 +124,32 @@ def explain_action(action: ActionPlan, score: ScoreBreakdown) -> Explanation:
         lines.insert(0, f"Shop: {action.details.name}")
 
     # Econ summary
-    if score.econ.gold_delta or score.econ.interest_delta or score.econ.level_delta or score.econ.roll_delta:
+    if (
+        score.econ.gold_delta
+        or score.econ.interest_delta
+        or score.econ.level_delta
+        or score.econ.roll_delta
+    ):
         lines.append(
             f"Econ delta: gold {score.econ.gold_delta:+d}, interest {score.econ.interest_delta:+d}, "
             f"level {score.econ.level_delta:+d}, rolls {score.econ.roll_delta:+d}"
         )
-    if isinstance(action.details, EconDetails) and score.econ.upgrade_hit_prob is not None and action.details.rolls > 0:
-        lines.append(f"Lookahead: {score.econ.upgrade_hit_prob*100:.0f}% to hit a 1-copy upgrade in ~{action.details.rolls} rolls")
+    if (
+        isinstance(action.details, EconDetails)
+        and score.econ.upgrade_hit_prob is not None
+        and action.details.rolls > 0
+    ):
+        lines.append(
+            f"Lookahead: {score.econ.upgrade_hit_prob * 100:.0f}% to hit a 1-copy upgrade in ~{action.details.rolls} rolls"
+        )
         if score.econ.upgrade_top_targets:
             cid, p = score.econ.upgrade_top_targets[0]
-            lines.append(f"Top hit: {champion_name(cid)} ({p*100:.0f}%)")
+            lines.append(f"Top hit: {champion_name(cid)} ({p * 100:.0f}%)")
 
     # Archetype summary (top-1)
     if score.archetype.top_archetypes:
         best = score.archetype.top_archetypes[0]
-        lines.append(f"Archetype: {best.name} ({best.similarity*100:.0f}%)")
+        lines.append(f"Archetype: {best.name} ({best.similarity * 100:.0f}%)")
 
     # Penalties
     for p in score.penalties[:3]:

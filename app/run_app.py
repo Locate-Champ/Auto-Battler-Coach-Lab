@@ -4,17 +4,17 @@ Auto-Battler Coach App Launcher
 Starts both the FastAPI backend and React frontend development servers.
 """
 
+import os
+import signal
 import subprocess
 import sys
-import os
 import time
-import signal
 from pathlib import Path
 
 # Get the app directory
 APP_DIR = Path(__file__).parent
-FRONTEND_DIR = APP_DIR / 'frontend'
-BACKEND_DIR = APP_DIR / 'api'
+FRONTEND_DIR = APP_DIR / "frontend"
+BACKEND_DIR = APP_DIR / "api"
 
 processes = []
 
@@ -26,7 +26,7 @@ def cleanup(sig=None, frame=None):
         try:
             p.terminate()
             p.wait(timeout=5)
-        except:
+        except Exception:
             p.kill()
     sys.exit(0)
 
@@ -41,16 +41,26 @@ def main():
     print("=" * 50)
 
     # Check if node_modules exists
-    if not (FRONTEND_DIR / 'node_modules').exists():
+    if not (FRONTEND_DIR / "node_modules").exists():
         print("\nInstalling frontend dependencies...")
-        subprocess.run(['npm', 'install'], cwd=FRONTEND_DIR, check=True)
+        subprocess.run(["npm", "install"], cwd=FRONTEND_DIR, check=True)
 
     # Start backend
     print("\n[1/2] Starting FastAPI backend on http://127.0.0.1:8000")
     backend_proc = subprocess.Popen(
-        [sys.executable, '-m', 'uvicorn', 'server:app', '--reload', '--host', '127.0.0.1', '--port', '8000'],
+        [
+            sys.executable,
+            "-m",
+            "uvicorn",
+            "server:app",
+            "--reload",
+            "--host",
+            "127.0.0.1",
+            "--port",
+            "8000",
+        ],
         cwd=BACKEND_DIR,
-        env={**os.environ, 'PYTHONPATH': str(APP_DIR.parent)}
+        env={**os.environ, "PYTHONPATH": str(APP_DIR.parent)},
     )
     processes.append(backend_proc)
 
@@ -59,10 +69,7 @@ def main():
 
     # Start frontend
     print("[2/2] Starting React frontend on http://localhost:5173")
-    frontend_proc = subprocess.Popen(
-        ['npm', 'run', 'dev'],
-        cwd=FRONTEND_DIR
-    )
+    frontend_proc = subprocess.Popen(["npm", "run", "dev"], cwd=FRONTEND_DIR)
     processes.append(frontend_proc)
 
     print("\n" + "=" * 50)
@@ -90,4 +97,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

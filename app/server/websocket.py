@@ -6,27 +6,27 @@ import threading
 import time
 from dataclasses import asdict
 from datetime import datetime, timezone
-from typing import Set, Optional
+from pathlib import Path
+from typing import Optional, Set
+
+import uvicorn
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
-import uvicorn
-from pathlib import Path
 
+from app.redux_bridge.handler import ReduxBridgeHandler
 from app.state import GameState as AppGameState
 from app.state import StateManager
-
-from coach.coach import Coach
 from coach.actions import DecisionType as CoachDecisionType
+from coach.coach import Coach
+from coach.explain import validate_coach_payload
+from coach.scoring.features import champion_cost as coach_champion_cost
 from coach.state import GameState as CoachGameState
 from coach.state import OpponentState as CoachOpponentState
 from coach.state import PlayerState as CoachPlayerState
 from coach.state import ShopUnit as CoachShopUnit
 from coach.state import UnitState as CoachUnitState
 from coach.state import validate_coach_state
-from coach.explain import validate_coach_payload
-from coach.scoring.features import champion_cost as coach_champion_cost
 from coach.weights import CoachConfig, weights_for_stage
-from app.redux_bridge.handler import ReduxBridgeHandler
 
 
 class ConnectionManager:
@@ -73,7 +73,13 @@ class ConnectionManager:
 class WebSocketServer:
     """WebSocket server for the Auto-Battler Coach overlay."""
 
-    def __init__(self, host: str = "127.0.0.1", port: int = 8765, *, state_manager: Optional[StateManager] = None):
+    def __init__(
+        self,
+        host: str = "127.0.0.1",
+        port: int = 8765,
+        *,
+        state_manager: Optional[StateManager] = None,
+    ):
         self.host = host
         self.port = port
         self.app = FastAPI(title="Auto-Battler Coach")
@@ -170,7 +176,9 @@ class WebSocketServer:
 
         opponents: list[CoachOpponentState] = []
         for opp_id, units in state.opponent_boards.items():
-            opp_units = self._to_coach_units(board_units=units, bench_units=[], prefix=f"opp_{opp_id}")
+            opp_units = self._to_coach_units(
+                board_units=units, bench_units=[], prefix=f"opp_{opp_id}"
+            )
             opp_board = tuple(u for u in opp_units if u.location == "board")
             opp_meta = state.opponents.get(opp_id)
             opponents.append(
@@ -240,7 +248,9 @@ class WebSocketServer:
         errors_by_decision: dict[str, str] = {}
         for decision in decisions:
             try:
-                recs = self._coach.recommend(coach_state, decision, config=cfg, write_trace=write_trace)
+                recs = self._coach.recommend(
+                    coach_state, decision, config=cfg, write_trace=write_trace
+                )
                 recs_by_decision[decision.value] = [
                     {
                         "action": asdict(r.action),
@@ -294,7 +304,7 @@ class WebSocketServer:
         async def root():
             """Redirect to overlay."""
             return HTMLResponse(
-                content='<html><body><h1>Auto-Battler Coach Server</h1>'
+                content="<html><body><h1>Auto-Battler Coach Server</h1>"
                 '<p>Open <a href="/overlay">overlay</a></p></body></html>'
             )
 
@@ -400,15 +410,16 @@ class WebSocketServer:
         if self._event_loop and self._event_loop.is_running():
             # Use run_coroutine_threadsafe for cross-thread async scheduling
             future = asyncio.run_coroutine_threadsafe(
-                self.manager.broadcast(payload),
-                self._event_loop
+                self.manager.broadcast(payload), self._event_loop
             )
+
             # Optional: log errors from the broadcast
             def handle_broadcast_error(f):
                 try:
                     f.result()
                 except Exception as e:
                     print(f"[WS] Broadcast error: {e}")
+
             future.add_done_callback(handle_broadcast_error)
         else:
             print("[WS] Warning: No event loop available for broadcast")
@@ -422,11 +433,6 @@ class WebSocketServer:
 
     async def run_async(self):
         """Run the server asynchronously."""
-        config = uvicorn.Config(
-            self.app,
-            host=self.host,
-            port=self.port,
-            log_level="warning"
-        )
+        config = uvicorn.Config(self.app, host=self.host, port=self.port, log_level="warning")
         server = uvicorn.Server(config)
         await server.serve()

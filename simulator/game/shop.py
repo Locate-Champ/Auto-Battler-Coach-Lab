@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Iterable, List, Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, Iterable, List, Optional
 
-from .constants import REFRESH_COST, NAME_TO_COST
+from .constants import REFRESH_COST
 
 if TYPE_CHECKING:
-    from .player import Player
     from .champion_pool import ChampionPool
+    from .player import Player
 
 
 def generate_shop(
@@ -35,18 +35,17 @@ def buy_from_shop(player: Player, pool: ChampionPool, slot: int) -> bool:
     return player.buy_champion(slot, pool)
 
 
-def sell_unit(player: Player, pool: ChampionPool,
-              location: str, index) -> bool:
+def sell_unit(player: Player, pool: ChampionPool, location: str, index) -> bool:
     """Sell a unit from board or bench.
 
     Args:
         location: 'board' or 'bench'
         index: (row, col) tuple for board, int for bench
     """
-    if location == 'board':
+    if location == "board":
         row, col = index
         return player.sell_from_board(row, col, pool)
-    elif location == 'bench':
+    elif location == "bench":
         return player.sell_from_bench(index, pool)
     return False
 

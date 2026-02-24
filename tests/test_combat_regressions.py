@@ -60,7 +60,9 @@ def test_trait_scoping_bilgewater_serpents_award_to_attacker_team_only() -> None
     before_team0 = sink0.bilgewater_serpents
     before_team1 = sink1.bilgewater_serpents
 
-    engine.apply_damage(attacker, defender, defender.stats.hp + 9999, DamageType.TRUE, source="test")
+    engine.apply_damage(
+        attacker, defender, defender.stats.hp + 9999, DamageType.TRUE, source="test"
+    )
 
     after_team0 = sink0.bilgewater_serpents
     after_team1 = sink1.bilgewater_serpents
@@ -82,7 +84,9 @@ def test_trait_scoping_bilgewater_serpents_award_to_attacker_team_only() -> None
     engine2._alive_team1 = [defender2]
     engine2.trait_manager.set_bilgewater_count(attacker2.team, 3)
     before = sink2_0.bilgewater_serpents
-    engine2.apply_damage(attacker2, defender2, defender2.stats.hp + 9999, DamageType.TRUE, source="test")
+    engine2.apply_damage(
+        attacker2, defender2, defender2.stats.hp + 9999, DamageType.TRUE, source="test"
+    )
     assert sink2_0.bilgewater_serpents == before
 
 
@@ -104,7 +108,9 @@ def test_trait_scoping_shadow_isles_souls_award_to_attacker_team_only() -> None:
     before_team0 = engine.trait_manager.get_team_state(0).shadow_isles_souls
     before_team1 = engine.trait_manager.get_team_state(1).shadow_isles_souls
 
-    engine.apply_damage(attacker, defender, defender.stats.hp + 9999, DamageType.TRUE, source="test")
+    engine.apply_damage(
+        attacker, defender, defender.stats.hp + 9999, DamageType.TRUE, source="test"
+    )
 
     after_team0 = engine.trait_manager.get_team_state(0).shadow_isles_souls
     after_team1 = engine.trait_manager.get_team_state(1).shadow_isles_souls
@@ -123,7 +129,9 @@ def test_trait_scoping_shadow_isles_souls_award_to_attacker_team_only() -> None:
     engine2._alive_team1 = [defender2]
     engine2.trait_manager.set_shadow_isles_count(attacker2.team, 2)
     before = engine2.trait_manager.get_team_state(0).shadow_isles_souls
-    engine2.apply_damage(attacker2, defender2, defender2.stats.hp + 9999, DamageType.TRUE, source="test")
+    engine2.apply_damage(
+        attacker2, defender2, defender2.stats.hp + 9999, DamageType.TRUE, source="test"
+    )
     assert engine2.trait_manager.get_team_state(0).shadow_isles_souls == before
 
 
@@ -251,7 +259,9 @@ def test_item_conditional_augment_persists_effect_by_instance_id_without_double_
     assert abs(float(getattr(unit.stats, stat_name)) - first_stat_value) < 1e-6
 
 
-def test_instance_id_augment_bonus_persists_through_upgrade_and_clears_on_sell_replacement() -> None:
+def test_instance_id_augment_bonus_persists_through_upgrade_and_clears_on_sell_replacement() -> (
+    None
+):
     engine = CombatEngine(logging_enabled=False)
     player = Player(player_id=0)
     pool = ChampionPool()
@@ -325,7 +335,9 @@ def test_parity_hp_item_and_takedown_trait_counters_python_vs_rust() -> None:
     pytest.importorskip("tft_combat_engine")
     from tft_combat_engine import RustCombatEngine
 
-    combat_data_path = str((Path(__file__).resolve().parents[1] / "simulator" / "data" / "combat_data.json"))
+    combat_data_path = str(
+        (Path(__file__).resolve().parents[1] / "simulator" / "data" / "combat_data.json")
+    )
     rust = RustCombatEngine(combat_data_path)
 
     # -- HP item parity: Warmog's should swing the duel outcome consistently.
@@ -337,8 +349,26 @@ def test_parity_hp_item_and_takedown_trait_counters_python_vs_rust() -> None:
     py_res = py.run_combat(py_team0, py_team1, seed=4242)
 
     rust_res = rust.run_combat(
-        [{'api_name': 'TFT16_Braum', 'star_level': 1, 'position': [0, 0], 'team': 0, 'items': ['WarmogsArmor'], 'traits': []}],
-        [{'api_name': 'TFT16_Braum', 'star_level': 1, 'position': [3, 3], 'team': 1, 'items': [], 'traits': []}],
+        [
+            {
+                "api_name": "TFT16_Braum",
+                "star_level": 1,
+                "position": [0, 0],
+                "team": 0,
+                "items": ["WarmogsArmor"],
+                "traits": [],
+            }
+        ],
+        [
+            {
+                "api_name": "TFT16_Braum",
+                "star_level": 1,
+                "position": [3, 3],
+                "team": 1,
+                "items": [],
+                "traits": [],
+            }
+        ],
         seed=4242,
     )
     assert py_res["winner"] == rust_res["winner"] == 0
@@ -381,11 +411,41 @@ def test_parity_hp_item_and_takedown_trait_counters_python_vs_rust() -> None:
 
     rust_res2 = rust.run_combat(
         [
-            {'api_name': 'TFT16_Draven', 'star_level': 3, 'position': [0, 3], 'team': 0, 'items': [], 'traits': ['Bilgewater', 'Shadow Isles']},
-            {'api_name': 'TFT16_Braum', 'star_level': 1, 'position': [0, 0], 'team': 0, 'items': [], 'traits': ['Bilgewater', 'Shadow Isles']},
-            {'api_name': 'TFT16_Braum', 'star_level': 1, 'position': [0, 1], 'team': 0, 'items': [], 'traits': ['Bilgewater', 'Shadow Isles']},
+            {
+                "api_name": "TFT16_Draven",
+                "star_level": 3,
+                "position": [0, 3],
+                "team": 0,
+                "items": [],
+                "traits": ["Bilgewater", "Shadow Isles"],
+            },
+            {
+                "api_name": "TFT16_Braum",
+                "star_level": 1,
+                "position": [0, 0],
+                "team": 0,
+                "items": [],
+                "traits": ["Bilgewater", "Shadow Isles"],
+            },
+            {
+                "api_name": "TFT16_Braum",
+                "star_level": 1,
+                "position": [0, 1],
+                "team": 0,
+                "items": [],
+                "traits": ["Bilgewater", "Shadow Isles"],
+            },
         ],
-        [{'api_name': 'TFT16_Draven', 'star_level': 1, 'position': [3, 3], 'team': 1, 'items': [], 'traits': []}],
+        [
+            {
+                "api_name": "TFT16_Draven",
+                "star_level": 1,
+                "position": [3, 3],
+                "team": 1,
+                "items": [],
+                "traits": [],
+            }
+        ],
         seed=1337,
     )
 

@@ -20,7 +20,9 @@ def test_marginal_mi_ranks_informative_feature_first() -> None:
     y = signal.astype(np.int64)
 
     analyzer = FeatureInformationAnalyzer(random_state=42)
-    ranking = analyzer.marginal_mutual_information(X, y, ["signal", "noise_1", "noise_2"], task="fight")
+    ranking = analyzer.marginal_mutual_information(
+        X, y, ["signal", "noise_1", "noise_2"], task="fight"
+    )
     assert ranking[0][0] == "signal"
 
 

@@ -1,15 +1,12 @@
 """Auto-Battler Coach - main entry point."""
 
-import asyncio
 import signal
 import sys
-import threading
-from pathlib import Path
 
 from app.config import config
-from app.watcher import LogWatcher, GameEvent
-from app.state import StateManager, GameState
 from app.server import WebSocketServer
+from app.state import GameState, StateManager
+from app.watcher import GameEvent, LogWatcher
 
 
 class AutoBattlerCoach:
@@ -22,7 +19,11 @@ class AutoBattlerCoach:
             file_patterns=config.log_files,
         )
         self.with_server = with_server
-        self.server = WebSocketServer(host=config.host, port=config.port, state_manager=self.state_manager) if with_server else None
+        self.server = (
+            WebSocketServer(host=config.host, port=config.port, state_manager=self.state_manager)
+            if with_server
+            else None
+        )
         self._running = False
 
     def _on_game_event(self, event: GameEvent):
@@ -102,6 +103,7 @@ class AutoBattlerCoach:
             try:
                 while self._running:
                     import time
+
                     time.sleep(1)
             except KeyboardInterrupt:
                 self.stop()
@@ -111,9 +113,7 @@ def main():
     """Main entry point."""
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Auto-Battler Coach - Personal Coaching Overlay"
-    )
+    parser = argparse.ArgumentParser(description="Auto-Battler Coach - Personal Coaching Overlay")
     parser.add_argument("--no-server", action="store_true", help="Run without WebSocket server")
     parser.add_argument("--port", type=int, default=8765, help="Server port (default: 8765)")
     args = parser.parse_args()

@@ -1,15 +1,14 @@
 from __future__ import annotations
 
 import random
-from dataclasses import dataclass
 from collections import OrderedDict
+from dataclasses import dataclass
 from typing import Optional
-
-from simulator.core.combat_engine import CombatEngine
-from simulator.game.constants import BOARD_COLS, BOARD_ROWS, get_round_damage
 
 from coach.rules import is_valid_board_pos
 from coach.state import GameState, UnitState
+from simulator.core.engine_wrapper import get_engine
+from simulator.game.constants import BOARD_COLS, BOARD_ROWS, get_round_damage
 
 
 @dataclass(frozen=True, slots=True)
@@ -19,6 +18,22 @@ class CombatEstimate:
     n_sims: int
     ci95: Optional[tuple[float, float]] = None
     opponent_policy: str = "proxy_only"  # "next_opponent" | "scouted_set" | "proxy_only"
+
+
+def _damage_from_batch(batch: dict, round_num: int) -> float:
+    """Compute total damage taken from a batch result dict.
+
+    Uses per-seed 'winners' and 'team1_survivors' lists.
+    When team0 wins (winner==0), damage is 0.
+    When team1 wins (winner!=0), damage = f(round_num, team1_survivors).
+    """
+    damage = 0.0
+    winners = batch["winners"]
+    survivors = batch["team1_survivors"]
+    for w, s in zip(winners, survivors):
+        if int(w) != 0:
+            damage += float(get_round_damage(round_num, int(s)))
+    return damage
 
 
 def _team_signature(units: tuple[UnitState, ...]) -> tuple:
@@ -69,8 +84,8 @@ def _assign_positions_deterministically(units: tuple[UnitState, ...]) -> tuple[U
 
 
 class CombatScorer:
-    def __init__(self):
-        self.engine = CombatEngine(logging_enabled=False)
+    def __init__(self, *, engine=None):
+        self.engine = engine if engine is not None else get_engine(logging_enabled=False)
         self._cache: OrderedDict[tuple, CombatEstimate] = OrderedDict()
         self._cache_max_entries = 4096
 
@@ -117,7 +132,13 @@ class CombatScorer:
         num_seeds: int,
         base_seed: int,
     ) -> CombatEstimate:
-        key = (_team_signature(my_units), _team_signature(opp_units), int(round_num), int(num_seeds), int(base_seed))
+        key = (
+            _team_signature(my_units),
+            _team_signature(opp_units),
+            int(round_num),
+            int(num_seeds),
+            int(base_seed),
+        )
         cached = self._cache.get(key)
         if cached is not None:
             self._cache.move_to_end(key)
@@ -127,30 +148,39 @@ class CombatScorer:
         team1 = self._build_team(opp_units, team_id=1, mirror_rows=True)
 
         if not team0 or not team1 or num_seeds <= 0:
-            metrics = CombatEstimate(win_prob=0.0, expected_hp_delta=0.0, n_sims=0, ci95=None, opponent_policy="proxy_only")
+            metrics = CombatEstimate(
+                win_prob=0.0,
+                expected_hp_delta=0.0,
+                n_sims=0,
+                ci95=None,
+                opponent_policy="proxy_only",
+            )
             self._cache[key] = metrics
             self._cache.move_to_end(key)
             return metrics
 
-        wins = 0
-        damage_taken = 0.0
+        seed_list = [int(base_seed) + i for i in range(int(num_seeds))]
 
-        for i in range(int(num_seeds)):
-            seed = int(base_seed) + i
-            rng_state = random.getstate()
-            try:
-                result = self.engine.run_combat(team0, team1, seed=seed)
-            finally:
-                random.setstate(rng_state)
-
-            winner = result.get("winner")
-            if winner == 0:
-                wins += 1
-                dmg = 0
-            else:
-                survivors = int(result.get("team1_survivors", 0) or 0)
-                dmg = int(get_round_damage(int(round_num), survivors))
-            damage_taken += float(dmg)
+        # Batch path: Rust+Rayon parallel, or Python sequential fallback via engine
+        if hasattr(self.engine, "run_combat_batch"):
+            batch = self.engine.run_combat_batch(team0, team1, seeds=seed_list)
+            wins = int(batch["wins"])
+            damage_taken = _damage_from_batch(batch, int(round_num))
+        else:
+            wins = 0
+            damage_taken = 0.0
+            for seed in seed_list:
+                rng_state = random.getstate()
+                try:
+                    result = self.engine.run_combat(team0, team1, seed=seed)
+                finally:
+                    random.setstate(rng_state)
+                winner = result.get("winner")
+                if winner == 0:
+                    wins += 1
+                else:
+                    survivors = int(result.get("team1_survivors", 0) or 0)
+                    damage_taken += float(get_round_damage(int(round_num), survivors))
 
         win_prob = wins / num_seeds
         expected_hp_delta = -(damage_taken / num_seeds)
@@ -176,10 +206,21 @@ class CombatScorer:
         seeds: list[int],
     ) -> CombatEstimate:
         if not seeds:
-            return CombatEstimate(win_prob=0.0, expected_hp_delta=0.0, n_sims=0, ci95=None, opponent_policy="proxy_only")
+            return CombatEstimate(
+                win_prob=0.0,
+                expected_hp_delta=0.0,
+                n_sims=0,
+                ci95=None,
+                opponent_policy="proxy_only",
+            )
 
         # Cache on the explicit seed list; callers can still use base_seed+num_seeds via simulate_matchup.
-        key = (_team_signature(my_units), _team_signature(opp_units), int(round_num), tuple(int(s) for s in seeds))
+        key = (
+            _team_signature(my_units),
+            _team_signature(opp_units),
+            int(round_num),
+            tuple(int(s) for s in seeds),
+        )
         cached = self._cache.get(key)
         if cached is not None:
             self._cache.move_to_end(key)
@@ -189,31 +230,41 @@ class CombatScorer:
         team1 = self._build_team(opp_units, team_id=1, mirror_rows=True)
 
         if not team0 or not team1:
-            metrics = CombatEstimate(win_prob=0.0, expected_hp_delta=0.0, n_sims=0, ci95=None, opponent_policy="proxy_only")
+            metrics = CombatEstimate(
+                win_prob=0.0,
+                expected_hp_delta=0.0,
+                n_sims=0,
+                ci95=None,
+                opponent_policy="proxy_only",
+            )
             self._cache[key] = metrics
             self._cache.move_to_end(key)
             return metrics
 
-        wins = 0
-        damage_taken = 0.0
+        int_seeds = [int(s) for s in seeds]
 
-        for seed in seeds:
-            rng_state = random.getstate()
-            try:
-                result = self.engine.run_combat(team0, team1, seed=int(seed))
-            finally:
-                random.setstate(rng_state)
+        # Batch path: Rust+Rayon parallel, or Python sequential fallback via engine
+        if hasattr(self.engine, "run_combat_batch"):
+            batch = self.engine.run_combat_batch(team0, team1, seeds=int_seeds)
+            wins = int(batch["wins"])
+            damage_taken = _damage_from_batch(batch, int(round_num))
+        else:
+            wins = 0
+            damage_taken = 0.0
+            for seed in int_seeds:
+                rng_state = random.getstate()
+                try:
+                    result = self.engine.run_combat(team0, team1, seed=seed)
+                finally:
+                    random.setstate(rng_state)
+                winner = result.get("winner")
+                if winner == 0:
+                    wins += 1
+                else:
+                    survivors = int(result.get("team1_survivors", 0) or 0)
+                    damage_taken += float(get_round_damage(int(round_num), survivors))
 
-            winner = result.get("winner")
-            if winner == 0:
-                wins += 1
-                dmg = 0
-            else:
-                survivors = int(result.get("team1_survivors", 0) or 0)
-                dmg = int(get_round_damage(int(round_num), survivors))
-            damage_taken += float(dmg)
-
-        n = len(seeds)
+        n = len(int_seeds)
         win_prob = wins / n
         expected_hp_delta = -(damage_taken / n)
         metrics = CombatEstimate(
@@ -229,7 +280,9 @@ class CombatScorer:
             self._cache.popitem(last=False)
         return metrics
 
-    def tempo_for_state(self, state: GameState, *, round_num: int, num_seeds: int, base_seed: int) -> Optional[CombatEstimate]:
+    def tempo_for_state(
+        self, state: GameState, *, round_num: int, num_seeds: int, base_seed: int
+    ) -> Optional[CombatEstimate]:
         opponent_boards = [o for o in state.opponents if o.board]
         if not opponent_boards:
             return None

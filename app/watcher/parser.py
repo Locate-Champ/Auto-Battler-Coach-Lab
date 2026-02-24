@@ -1,15 +1,16 @@
 """Parser for MetaTFT log events."""
 
-import re
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional, Any
 from enum import Enum
+from typing import Any, Optional
 
 
 class EventType(Enum):
     """Types of game events we can detect."""
+
     STAGE_CHANGE = "stage_change"
     XP_CHANGE = "xp_change"
     HEALTH_UPDATE = "health_update"
@@ -30,6 +31,7 @@ class EventType(Enum):
 @dataclass
 class GameEvent:
     """Represents a parsed game event."""
+
     event_type: EventType
     timestamp: datetime
     data: dict = field(default_factory=dict)
@@ -50,37 +52,28 @@ class LogParser:
     PATTERNS = {
         # Stage change: [EVT] stage: 2-1
         "stage": re.compile(r"\[EVT\] stage: (\d+-\d+)"),
-
         # XP change: XP: 0/6 -> 2/6
         "xp": re.compile(r"XP: (\d+/\d+) -> (\d+/\d+)"),
-
         # Health correction: Correcting health for player: Name 93 100
         "health": re.compile(r"Correcting health for player: (.+?) (\d+) (\d+)"),
-
         # Win chance: WinChanceNumber: ~96%
         "win_chance": re.compile(r"WinChanceNumber:\s+~?(\d+)%"),
-
         # Scouting: Scouting: PlayerName
         "scouting": re.compile(r"Scouting: (.+)$"),
-
         # Augment armory JSON
-        "augment_armory": re.compile(r'\[AugmentStats\] augment_armory data: ({.+?}) ({.+})'),
-
+        "augment_armory": re.compile(r"\[AugmentStats\] augment_armory data: ({.+?}) ({.+})"),
         # Item select JSON
-        "item_select": re.compile(r'\[ItemStats\] item_select data: ({.+})'),
-
+        "item_select": re.compile(r"\[ItemStats\] item_select data: ({.+})"),
         # Game start indicators
-        "game_start": re.compile(r"(TFT starting|GameEventManager\.setGameStarted|registered features.+board)"),
-
+        "game_start": re.compile(
+            r"(TFT starting|GameEventManager\.setGameStarted|registered features.+board)"
+        ),
         # Timestamp at start of log line: 2026-01-23 19:20:53,124
         "timestamp": re.compile(r"^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3})"),
-
         # New stage
         "new_stage": re.compile(r'New Stage: "(\d+-\d+)"'),
-
         # First shop indicator
         "first_shop": re.compile(r"First Shop"),
-
         # Generic key/value event payload: "key":"...","value":"{...escaped-json...}"
         # Captures escaped quoted payloads robustly, including nested braces.
         "kv_payload": re.compile(

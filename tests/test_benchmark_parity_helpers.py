@@ -738,7 +738,14 @@ def test_infer_divergence_origin_zero_takedowns_both_sides_avoids_last_hit_drift
 
 
 @pytest.mark.parametrize(
-    ("baseline_row", "candidate_row", "baseline_context", "candidate_context", "field_diffs", "expected"),
+    (
+        "baseline_row",
+        "candidate_row",
+        "baseline_context",
+        "candidate_context",
+        "field_diffs",
+        "expected",
+    ),
     [
         pytest.param(
             None,

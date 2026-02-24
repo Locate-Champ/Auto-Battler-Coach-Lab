@@ -47,14 +47,10 @@ def build_archetypes(input_path: Path, output_path: Path) -> dict:
     archetypes = []
     for comp in comps:
         units = list(comp.get("units", []) or [])
-        token_to_api = {
-            _token_from_api_name(u): u
-            for u in units
-            if isinstance(u, str) and u
-        }
+        token_to_api = {_token_from_api_name(u): u for u in units if isinstance(u, str) and u}
 
         builds: list[dict[str, Any]] = []
-        for b in (comp.get("builds", []) or []):
+        for b in comp.get("builds", []) or []:
             if not isinstance(b, dict):
                 continue
             unit_token = b.get("unit")
@@ -65,7 +61,7 @@ def build_archetypes(input_path: Path, output_path: Path) -> dict:
                     unit_api = unit_token if unit_token.startswith("TFT") else f"TFT16_{unit_token}"
 
             items_out: list[str] = []
-            for it in (b.get("items", []) or []):
+            for it in b.get("items", []) or []:
                 if isinstance(it, str) and it.strip():
                     items_out.append(_to_item_id(it))
 
@@ -87,7 +83,11 @@ def build_archetypes(input_path: Path, output_path: Path) -> dict:
                 "name": str(comp.get("name", "unknown")),
                 "tier": str(comp.get("tier", "C")),
                 "units": units,
-                "traits": [t.get("name") for t in (comp.get("traits", []) or []) if isinstance(t, dict) and t.get("name")],
+                "traits": [
+                    t.get("name")
+                    for t in (comp.get("traits", []) or [])
+                    if isinstance(t, dict) and t.get("name")
+                ],
                 "builds": builds,
                 "stats": {
                     "avg_placement": comp.get("avg_placement"),
@@ -112,7 +112,9 @@ def build_archetypes(input_path: Path, output_path: Path) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build coach archetype artifact from meta comps JSON")
+    parser = argparse.ArgumentParser(
+        description="Build coach archetype artifact from meta comps JSON"
+    )
     parser.add_argument(
         "--input",
         type=Path,

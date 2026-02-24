@@ -22,19 +22,18 @@ Usage:
     print(result['best_positions'])
 """
 
-import random
 import itertools
 import json
-from typing import List, Dict, Tuple, Optional
+import random
+import sys
 from dataclasses import dataclass
 from pathlib import Path
-import sys
+from typing import Dict, List, Optional, Tuple
 
 # Add parent directory for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from core.combat_engine import CombatEngine, Unit
-
 
 # TFT board is 7 columns x 4 rows (28 hexes)
 BOARD_WIDTH = 7
@@ -45,6 +44,7 @@ ALL_POSITIONS = [(x, y) for y in range(BOARD_HEIGHT) for x in range(BOARD_WIDTH)
 @dataclass
 class PositionConfig:
     """A specific positioning configuration for a team."""
+
     positions: Tuple[Tuple[int, int], ...]  # Position for each unit
 
     def __hash__(self):
@@ -57,6 +57,7 @@ class PositionConfig:
 @dataclass
 class EvaluationResult:
     """Result of evaluating a position configuration."""
+
     config: PositionConfig
     win_rate: float
     avg_damage_dealt: float
@@ -110,7 +111,7 @@ class PositioningOptimizer:
             return []
 
         champ_data = self.metatft_positions.get(champion_id, {})
-        best_positions = champ_data.get('best_positions', [])
+        best_positions = champ_data.get("best_positions", [])
 
         # Convert to tuples if stored as lists
         return [tuple(p) if isinstance(p, list) else p for p in best_positions[:n]]
@@ -121,7 +122,7 @@ class PositioningOptimizer:
             return None
 
         champ_data = self.metatft_positions.get(champion_id, {})
-        return champ_data.get('role')
+        return champ_data.get("role")
 
     def _create_default_opponents(self) -> List[List[Dict]]:
         """
@@ -132,32 +133,40 @@ class PositioningOptimizer:
         opponents = []
 
         # Opponent 1: Frontline + backline (standard)
-        opponents.append([
-            {'champion': 'TFT16_Leona', 'star': 2, 'items': [], 'position': (1, 0)},
-            {'champion': 'TFT16_Leona', 'star': 2, 'items': [], 'position': (5, 0)},
-            {'champion': 'TFT16_Draven', 'star': 2, 'items': [], 'position': (3, 3)},
-        ])
+        opponents.append(
+            [
+                {"champion": "TFT16_Leona", "star": 2, "items": [], "position": (1, 0)},
+                {"champion": "TFT16_Leona", "star": 2, "items": [], "position": (5, 0)},
+                {"champion": "TFT16_Draven", "star": 2, "items": [], "position": (3, 3)},
+            ]
+        )
 
         # Opponent 2: Corner stack (assassin-style)
-        opponents.append([
-            {'champion': 'TFT16_Yasuo', 'star': 2, 'items': [], 'position': (0, 3)},
-            {'champion': 'TFT16_Yasuo', 'star': 2, 'items': [], 'position': (1, 3)},
-            {'champion': 'TFT16_Lux', 'star': 2, 'items': [], 'position': (0, 2)},
-        ])
+        opponents.append(
+            [
+                {"champion": "TFT16_Yasuo", "star": 2, "items": [], "position": (0, 3)},
+                {"champion": "TFT16_Yasuo", "star": 2, "items": [], "position": (1, 3)},
+                {"champion": "TFT16_Lux", "star": 2, "items": [], "position": (0, 2)},
+            ]
+        )
 
         # Opponent 3: Spread formation
-        opponents.append([
-            {'champion': 'TFT16_Draven', 'star': 2, 'items': [], 'position': (0, 2)},
-            {'champion': 'TFT16_Draven', 'star': 2, 'items': [], 'position': (6, 2)},
-            {'champion': 'TFT16_Leona', 'star': 2, 'items': [], 'position': (3, 0)},
-        ])
+        opponents.append(
+            [
+                {"champion": "TFT16_Draven", "star": 2, "items": [], "position": (0, 2)},
+                {"champion": "TFT16_Draven", "star": 2, "items": [], "position": (6, 2)},
+                {"champion": "TFT16_Leona", "star": 2, "items": [], "position": (3, 0)},
+            ]
+        )
 
         # Opponent 4: Clumped (AOE bait)
-        opponents.append([
-            {'champion': 'TFT16_Leona', 'star': 2, 'items': [], 'position': (3, 0)},
-            {'champion': 'TFT16_Lux', 'star': 2, 'items': [], 'position': (3, 1)},
-            {'champion': 'TFT16_Draven', 'star': 2, 'items': [], 'position': (4, 1)},
-        ])
+        opponents.append(
+            [
+                {"champion": "TFT16_Leona", "star": 2, "items": [], "position": (3, 0)},
+                {"champion": "TFT16_Lux", "star": 2, "items": [], "position": (3, 1)},
+                {"champion": "TFT16_Draven", "star": 2, "items": [], "position": (4, 1)},
+            ]
+        )
 
         return opponents
 
@@ -175,9 +184,9 @@ class PositioningOptimizer:
             configs.append(PositionConfig(positions=positions))
         return configs
 
-    def generate_positions_sampled(self, num_units: int,
-                                   num_samples: int = 1000,
-                                   seed: int = None) -> List[PositionConfig]:
+    def generate_positions_sampled(
+        self, num_units: int, num_samples: int = 1000, seed: int = None
+    ) -> List[PositionConfig]:
         """
         Generate a random sample of position configurations.
 
@@ -204,36 +213,46 @@ class PositioningOptimizer:
         Based on traits, range, and HP.
         """
         champ_data = self.engine.champions.get(champion_id, {})
-        traits = champ_data.get('traits', [])
-        stats = champ_data.get('stats', {})
-        range_val = stats.get('range', 1)
-        hp = stats.get('hp', 600)
+        traits = champ_data.get("traits", [])
+        stats = champ_data.get("stats", {})
+        range_val = stats.get("range", 1)
+        hp = stats.get("hp", 600)
 
         # Frontline traits (tanks)
-        frontline_traits = {'Defender', 'Bruiser', 'Warden', 'Juggernaut', 'Colossus', 'Bastion'}
+        frontline_traits = {"Defender", "Bruiser", "Warden", "Juggernaut", "Colossus", "Bastion"}
 
         # Backline traits (carries/mages)
-        backline_traits = {'Gunslinger', 'Longshot', 'Arcanist', 'Invoker', 'Star Forger',
-                          'Sorcerer', 'Eternal', 'Sage', 'Disruptor', 'Emperor'}
+        backline_traits = {
+            "Gunslinger",
+            "Longshot",
+            "Arcanist",
+            "Invoker",
+            "Star Forger",
+            "Sorcerer",
+            "Eternal",
+            "Sage",
+            "Disruptor",
+            "Emperor",
+        }
 
         # Check traits
         has_frontline = any(t in frontline_traits for t in traits)
         has_backline = any(t in backline_traits for t in traits)
 
         if has_frontline and not has_backline:
-            return 'frontline'
+            return "frontline"
         if has_backline and not has_frontline:
-            return 'backline'
+            return "backline"
 
         # Fall back to range + HP
         if range_val <= 1:
-            return 'frontline'
+            return "frontline"
         elif range_val >= 4:
-            return 'backline'
+            return "backline"
         elif hp >= 900:  # Tanky unit
-            return 'frontline'
+            return "frontline"
         else:
-            return 'flexible'
+            return "flexible"
 
     def _get_adjacent_positions(self, pos: Tuple[int, int]) -> List[Tuple[int, int]]:
         """Get all adjacent hex positions (6 neighbors in hex grid)."""
@@ -241,18 +260,25 @@ class PositioningOptimizer:
         # Hex grid adjacency depends on row parity
         if y % 2 == 0:  # Even row
             neighbors = [
-                (x-1, y), (x+1, y),      # Left, Right
-                (x-1, y-1), (x, y-1),    # Bottom-left, Bottom-right
-                (x-1, y+1), (x, y+1),    # Top-left, Top-right
+                (x - 1, y),
+                (x + 1, y),  # Left, Right
+                (x - 1, y - 1),
+                (x, y - 1),  # Bottom-left, Bottom-right
+                (x - 1, y + 1),
+                (x, y + 1),  # Top-left, Top-right
             ]
         else:  # Odd row
             neighbors = [
-                (x-1, y), (x+1, y),      # Left, Right
-                (x, y-1), (x+1, y-1),    # Bottom-left, Bottom-right
-                (x, y+1), (x+1, y+1),    # Top-left, Top-right
+                (x - 1, y),
+                (x + 1, y),  # Left, Right
+                (x, y - 1),
+                (x + 1, y - 1),  # Bottom-left, Bottom-right
+                (x, y + 1),
+                (x + 1, y + 1),  # Top-left, Top-right
             ]
-        return [(nx, ny) for nx, ny in neighbors
-                if 0 <= nx < BOARD_WIDTH and 0 <= ny < BOARD_HEIGHT]
+        return [
+            (nx, ny) for nx, ny in neighbors if 0 <= nx < BOARD_WIDTH and 0 <= ny < BOARD_HEIGHT
+        ]
 
     def _is_spread(self, positions: List[Tuple[int, int]]) -> bool:
         """Check if no units are adjacent to each other."""
@@ -263,7 +289,9 @@ class PositioningOptimizer:
                     return False
         return True
 
-    def generate_solo_tank_configs(self, comp: List[Dict], num_samples: int = 100) -> List[PositionConfig]:
+    def generate_solo_tank_configs(
+        self, comp: List[Dict], num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate 'solo tank' configurations.
 
@@ -276,10 +304,10 @@ class PositioningOptimizer:
         # Find the tankiest unit (highest HP with frontline traits)
         tank_indices = []
         for i, unit_def in enumerate(comp):
-            role = self.classify_unit_role(unit_def['champion'])
-            if role == 'frontline':
-                champ_data = self.engine.champions.get(unit_def['champion'], {})
-                hp = champ_data.get('stats', {}).get('hp', 0)
+            role = self.classify_unit_role(unit_def["champion"])
+            if role == "frontline":
+                champ_data = self.engine.champions.get(unit_def["champion"], {})
+                hp = champ_data.get("stats", {}).get("hp", 0)
                 tank_indices.append((i, hp))
 
         # Sort by HP descending
@@ -321,7 +349,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_spread_configs(self, num_units: int, num_samples: int = 100) -> List[PositionConfig]:
+    def generate_spread_configs(
+        self, num_units: int, num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate 'spread' configurations (anti-AOE).
 
@@ -363,7 +393,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_corner_stack_configs(self, num_units: int, num_samples: int = 100) -> List[PositionConfig]:
+    def generate_corner_stack_configs(
+        self, num_units: int, num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate 'corner stack' configurations.
 
@@ -376,10 +408,10 @@ class PositioningOptimizer:
 
         # Define corner regions (3x3 areas in each corner)
         corners = {
-            'bottom_left': [(x, y) for x in range(3) for y in range(2)],
-            'bottom_right': [(x, y) for x in range(4, 7) for y in range(2)],
-            'top_left': [(x, y) for x in range(3) for y in range(2, 4)],
-            'top_right': [(x, y) for x in range(4, 7) for y in range(2, 4)],
+            "bottom_left": [(x, y) for x in range(3) for y in range(2)],
+            "bottom_right": [(x, y) for x in range(4, 7) for y in range(2)],
+            "top_left": [(x, y) for x in range(3) for y in range(2, 4)],
+            "top_right": [(x, y) for x in range(4, 7) for y in range(2, 4)],
         }
 
         samples_per_corner = max(1, num_samples // 4)
@@ -394,7 +426,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_diagonal_configs(self, num_units: int, num_samples: int = 100) -> List[PositionConfig]:
+    def generate_diagonal_configs(
+        self, num_units: int, num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate diagonal line configurations.
 
@@ -436,7 +470,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_bait_configs(self, comp: List[Dict], num_samples: int = 100) -> List[PositionConfig]:
+    def generate_bait_configs(
+        self, comp: List[Dict], num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate 'bait' configurations.
 
@@ -449,22 +485,23 @@ class PositioningOptimizer:
         # Find weakest unit (lowest HP non-carry) and main carry (highest cost backline)
         unit_info = []
         for i, unit_def in enumerate(comp):
-            role = self.classify_unit_role(unit_def['champion'])
-            champ_data = self.engine.champions.get(unit_def['champion'], {})
-            hp = champ_data.get('stats', {}).get('hp', 0)
-            cost = champ_data.get('cost', 1)
-            unit_info.append({'idx': i, 'role': role, 'hp': hp, 'cost': cost})
+            role = self.classify_unit_role(unit_def["champion"])
+            champ_data = self.engine.champions.get(unit_def["champion"], {})
+            hp = champ_data.get("stats", {}).get("hp", 0)
+            cost = champ_data.get("cost", 1)
+            unit_info.append({"idx": i, "role": role, "hp": hp, "cost": cost})
 
         # Find bait (lowest HP) and carry (highest cost backline)
-        bait_candidates = sorted(unit_info, key=lambda x: x['hp'])
-        carry_candidates = sorted([u for u in unit_info if u['role'] == 'backline'],
-                                  key=lambda x: -x['cost'])
+        bait_candidates = sorted(unit_info, key=lambda x: x["hp"])
+        carry_candidates = sorted(
+            [u for u in unit_info if u["role"] == "backline"], key=lambda x: -x["cost"]
+        )
 
         if not bait_candidates or not carry_candidates:
             return []
 
-        bait_idx = bait_candidates[0]['idx']
-        carry_idx = carry_candidates[0]['idx']
+        bait_idx = bait_candidates[0]["idx"]
+        carry_idx = carry_candidates[0]["idx"]
 
         # Bait positions (front corners)
         bait_positions = [(0, 0), (6, 0), (0, 1), (6, 1)]
@@ -507,7 +544,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_anti_zephyr_configs(self, comp: List[Dict], num_samples: int = 100) -> List[PositionConfig]:
+    def generate_anti_zephyr_configs(
+        self, comp: List[Dict], num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate 'anti-Zephyr' configurations.
 
@@ -520,37 +559,43 @@ class PositioningOptimizer:
 
         # Common Zephyr target positions (where enemies typically aim)
         zephyr_bait_positions = [
-            (0, 0), (6, 0),  # Front corners (most common)
-            (0, 3), (6, 3),  # Back corners
-            (3, 0),          # Front center
+            (0, 0),
+            (6, 0),  # Front corners (most common)
+            (0, 3),
+            (6, 3),  # Back corners
+            (3, 0),  # Front center
         ]
 
         # Safe positions (less commonly Zephyred)
         safe_carry_positions = [
-            (2, 3), (4, 3),  # Back row but not corners
-            (1, 2), (5, 2),  # Mid-back, off-center
-            (3, 2),          # Center back
+            (2, 3),
+            (4, 3),  # Back row but not corners
+            (1, 2),
+            (5, 2),  # Mid-back, off-center
+            (3, 2),  # Center back
         ]
 
         # Find carry (highest cost backline) and a tank for bait
         unit_info = []
         for i, unit_def in enumerate(comp):
-            role = self.classify_unit_role(unit_def['champion'])
-            champ_data = self.engine.champions.get(unit_def['champion'], {})
-            cost = champ_data.get('cost', 1)
-            hp = champ_data.get('stats', {}).get('hp', 0)
-            unit_info.append({'idx': i, 'role': role, 'cost': cost, 'hp': hp})
+            role = self.classify_unit_role(unit_def["champion"])
+            champ_data = self.engine.champions.get(unit_def["champion"], {})
+            cost = champ_data.get("cost", 1)
+            hp = champ_data.get("stats", {}).get("hp", 0)
+            unit_info.append({"idx": i, "role": role, "cost": cost, "hp": hp})
 
-        carry_candidates = sorted([u for u in unit_info if u['role'] == 'backline'],
-                                  key=lambda x: -x['cost'])
-        tank_candidates = sorted([u for u in unit_info if u['role'] == 'frontline'],
-                                 key=lambda x: -x['hp'])
+        carry_candidates = sorted(
+            [u for u in unit_info if u["role"] == "backline"], key=lambda x: -x["cost"]
+        )
+        tank_candidates = sorted(
+            [u for u in unit_info if u["role"] == "frontline"], key=lambda x: -x["hp"]
+        )
 
         if not carry_candidates:
             return []
 
-        carry_idx = carry_candidates[0]['idx']
-        tank_idx = tank_candidates[0]['idx'] if tank_candidates else None
+        carry_idx = carry_candidates[0]["idx"]
+        tank_idx = tank_candidates[0]["idx"] if tank_candidates else None
 
         for _ in range(num_samples):
             positions = [None] * num_units
@@ -581,7 +626,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_clump_for_buffs_configs(self, comp: List[Dict], num_samples: int = 100) -> List[PositionConfig]:
+    def generate_clump_for_buffs_configs(
+        self, comp: List[Dict], num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate 'clump for buffs' configurations.
 
@@ -595,14 +642,15 @@ class PositioningOptimizer:
         # Find carries and support units
         unit_info = []
         for i, unit_def in enumerate(comp):
-            role = self.classify_unit_role(unit_def['champion'])
-            champ_data = self.engine.champions.get(unit_def['champion'], {})
-            cost = champ_data.get('cost', 1)
-            unit_info.append({'idx': i, 'role': role, 'cost': cost})
+            role = self.classify_unit_role(unit_def["champion"])
+            champ_data = self.engine.champions.get(unit_def["champion"], {})
+            cost = champ_data.get("cost", 1)
+            unit_info.append({"idx": i, "role": role, "cost": cost})
 
-        carries = sorted([u for u in unit_info if u['role'] == 'backline'],
-                        key=lambda x: -x['cost'])
-        tanks = [u for u in unit_info if u['role'] == 'frontline']
+        carries = sorted(
+            [u for u in unit_info if u["role"] == "backline"], key=lambda x: -x["cost"]
+        )
+        tanks = [u for u in unit_info if u["role"] == "frontline"]
 
         if len(carries) < 2:
             return []
@@ -624,16 +672,16 @@ class PositioningOptimizer:
             clump_positions = list(clump)
             random.shuffle(clump_positions)
 
-            for i, carry in enumerate(carries[:len(clump_positions)]):
-                positions[carry['idx']] = clump_positions[i]
+            for i, carry in enumerate(carries[: len(clump_positions)]):
+                positions[carry["idx"]] = clump_positions[i]
 
             # Place tanks in front
             front_positions = [(x, 0) for x in range(BOARD_WIDTH)]
             random.shuffle(front_positions)
 
-            for i, tank in enumerate(tanks[:len(front_positions)]):
-                if positions[tank['idx']] is None:
-                    positions[tank['idx']] = front_positions[i]
+            for i, tank in enumerate(tanks[: len(front_positions)]):
+                if positions[tank["idx"]] is None:
+                    positions[tank["idx"]] = front_positions[i]
 
             # Fill remaining
             all_used = [p for p in positions if p is not None]
@@ -651,7 +699,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_v_shape_frontline_configs(self, comp: List[Dict], num_samples: int = 100) -> List[PositionConfig]:
+    def generate_v_shape_frontline_configs(
+        self, comp: List[Dict], num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate 'V-shape frontline' configurations.
 
@@ -664,22 +714,22 @@ class PositioningOptimizer:
         # V-shape patterns (point facing enemy)
         v_patterns = [
             # V pointing forward (enemies funnel to center)
-            {'tanks': [(3, 0), (2, 1), (4, 1)], 'carries': [(2, 3), (3, 3), (4, 3)]},
+            {"tanks": [(3, 0), (2, 1), (4, 1)], "carries": [(2, 3), (3, 3), (4, 3)]},
             # Wide V
-            {'tanks': [(3, 0), (1, 1), (5, 1)], 'carries': [(2, 3), (3, 3), (4, 3)]},
+            {"tanks": [(3, 0), (1, 1), (5, 1)], "carries": [(2, 3), (3, 3), (4, 3)]},
             # Offset V left
-            {'tanks': [(2, 0), (1, 1), (3, 1)], 'carries': [(4, 3), (5, 3), (6, 3)]},
+            {"tanks": [(2, 0), (1, 1), (3, 1)], "carries": [(4, 3), (5, 3), (6, 3)]},
             # Offset V right
-            {'tanks': [(4, 0), (3, 1), (5, 1)], 'carries': [(0, 3), (1, 3), (2, 3)]},
+            {"tanks": [(4, 0), (3, 1), (5, 1)], "carries": [(0, 3), (1, 3), (2, 3)]},
         ]
 
         unit_info = []
         for i, unit_def in enumerate(comp):
-            role = self.classify_unit_role(unit_def['champion'])
-            unit_info.append({'idx': i, 'role': role})
+            role = self.classify_unit_role(unit_def["champion"])
+            unit_info.append({"idx": i, "role": role})
 
-        tanks = [u['idx'] for u in unit_info if u['role'] == 'frontline']
-        carries = [u['idx'] for u in unit_info if u['role'] == 'backline']
+        tanks = [u["idx"] for u in unit_info if u["role"] == "frontline"]
+        carries = [u["idx"] for u in unit_info if u["role"] == "backline"]
 
         for _ in range(num_samples):
             positions = [None] * num_units
@@ -687,15 +737,15 @@ class PositioningOptimizer:
             pattern = random.choice(v_patterns)
 
             # Place tanks in V
-            tank_spots = list(pattern['tanks'])
+            tank_spots = list(pattern["tanks"])
             random.shuffle(tank_spots)
-            for i, tank_idx in enumerate(tanks[:len(tank_spots)]):
+            for i, tank_idx in enumerate(tanks[: len(tank_spots)]):
                 positions[tank_idx] = tank_spots[i]
 
             # Place carries in back
-            carry_spots = list(pattern['carries'])
+            carry_spots = list(pattern["carries"])
             random.shuffle(carry_spots)
-            for i, carry_idx in enumerate(carries[:len(carry_spots)]):
+            for i, carry_idx in enumerate(carries[: len(carry_spots)]):
                 positions[carry_idx] = carry_spots[i]
 
             # Fill remaining
@@ -714,7 +764,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_split_carry_configs(self, comp: List[Dict], num_samples: int = 100) -> List[PositionConfig]:
+    def generate_split_carry_configs(
+        self, comp: List[Dict], num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate 'split carry' configurations.
 
@@ -727,22 +779,23 @@ class PositioningOptimizer:
 
         unit_info = []
         for i, unit_def in enumerate(comp):
-            role = self.classify_unit_role(unit_def['champion'])
-            champ_data = self.engine.champions.get(unit_def['champion'], {})
-            cost = champ_data.get('cost', 1)
-            unit_info.append({'idx': i, 'role': role, 'cost': cost})
+            role = self.classify_unit_role(unit_def["champion"])
+            champ_data = self.engine.champions.get(unit_def["champion"], {})
+            cost = champ_data.get("cost", 1)
+            unit_info.append({"idx": i, "role": role, "cost": cost})
 
-        carries = sorted([u for u in unit_info if u['role'] == 'backline'],
-                        key=lambda x: -x['cost'])
+        carries = sorted(
+            [u for u in unit_info if u["role"] == "backline"], key=lambda x: -x["cost"]
+        )
 
         if len(carries) < 2:
             return []
 
         # Split positions (opposite corners/sides)
         split_pairs = [
-            ((0, 3), (6, 3)),   # Back corners
-            ((0, 2), (6, 2)),   # Mid-back sides
-            ((1, 3), (5, 3)),   # Near-corner back
+            ((0, 3), (6, 3)),  # Back corners
+            ((0, 2), (6, 2)),  # Mid-back sides
+            ((1, 3), (5, 3)),  # Near-corner back
         ]
 
         for _ in range(num_samples):
@@ -750,8 +803,8 @@ class PositioningOptimizer:
 
             # Place top 2 carries on opposite sides
             pair = random.choice(split_pairs)
-            positions[carries[0]['idx']] = pair[0]
-            positions[carries[1]['idx']] = pair[1]
+            positions[carries[0]["idx"]] = pair[0]
+            positions[carries[1]["idx"]] = pair[1]
 
             # Fill remaining
             all_used = [p for p in positions if p is not None]
@@ -769,7 +822,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_metatft_guided_configs(self, comp: List[Dict], num_samples: int = 100) -> List[PositionConfig]:
+    def generate_metatft_guided_configs(
+        self, comp: List[Dict], num_samples: int = 100
+    ) -> List[PositionConfig]:
         """
         Generate configurations guided by MetaTFT real-world positioning data.
 
@@ -785,16 +840,16 @@ class PositioningOptimizer:
         # Get best positions for each champion from MetaTFT data
         unit_best_positions = []
         for unit_def in comp:
-            champion_id = unit_def['champion']
+            champion_id = unit_def["champion"]
             best_pos = self.get_metatft_best_positions(champion_id, n=8)  # Get top 8 positions
             if best_pos:
                 unit_best_positions.append(best_pos)
             else:
                 # Fall back to role-based positions
                 role = self.classify_unit_role(champion_id)
-                if role == 'frontline':
+                if role == "frontline":
                     unit_best_positions.append([(x, y) for y in [0, 1] for x in range(BOARD_WIDTH)])
-                elif role == 'backline':
+                elif role == "backline":
                     unit_best_positions.append([(x, y) for y in [2, 3] for x in range(BOARD_WIDTH)])
                 else:
                     unit_best_positions.append(list(ALL_POSITIONS))
@@ -814,7 +869,7 @@ class PositioningOptimizer:
                 if candidates:
                     # Weight selection toward better positions (first in list = higher win rate)
                     weights = [1.0 / (j + 1) for j in range(len(candidates))]
-                    pos = random.choices(candidates, weights=weights[:len(candidates)])[0]
+                    pos = random.choices(candidates, weights=weights[: len(candidates)])[0]
                     positions.append(pos)
                     used_positions.add(pos)
                 else:
@@ -825,9 +880,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def generate_positions_strategic(self, num_units: int,
-                                     num_samples: int = 500,
-                                     comp: List[Dict] = None) -> List[PositionConfig]:
+    def generate_positions_strategic(
+        self, num_units: int, num_samples: int = 500, comp: List[Dict] = None
+    ) -> List[PositionConfig]:
         """
         Generate position configurations using multiple strategic approaches.
 
@@ -853,30 +908,30 @@ class PositioningOptimizer:
 
             if has_metatft:
                 # With MetaTFT data, give it priority
-                samples_metatft = int(num_samples * 0.20)        # 20% MetaTFT-guided
-                samples_standard = int(num_samples * 0.18)       # 18% standard
-                samples_solo_tank = int(num_samples * 0.08)      # 8% solo tank
-                samples_spread = int(num_samples * 0.08)         # 8% spread
-                samples_corner = int(num_samples * 0.06)         # 6% corner
-                samples_diagonal = int(num_samples * 0.06)       # 6% diagonal
-                samples_bait = int(num_samples * 0.07)           # 7% bait
-                samples_anti_zephyr = int(num_samples * 0.07)    # 7% anti-zephyr
-                samples_clump = int(num_samples * 0.07)          # 7% clump for buffs
-                samples_v_shape = int(num_samples * 0.07)        # 7% V-shape
-                samples_split = int(num_samples * 0.06)          # 6% split carry
+                samples_metatft = int(num_samples * 0.20)  # 20% MetaTFT-guided
+                samples_standard = int(num_samples * 0.18)  # 18% standard
+                samples_solo_tank = int(num_samples * 0.08)  # 8% solo tank
+                samples_spread = int(num_samples * 0.08)  # 8% spread
+                samples_corner = int(num_samples * 0.06)  # 6% corner
+                samples_diagonal = int(num_samples * 0.06)  # 6% diagonal
+                samples_bait = int(num_samples * 0.07)  # 7% bait
+                samples_anti_zephyr = int(num_samples * 0.07)  # 7% anti-zephyr
+                samples_clump = int(num_samples * 0.07)  # 7% clump for buffs
+                samples_v_shape = int(num_samples * 0.07)  # 7% V-shape
+                samples_split = int(num_samples * 0.06)  # 6% split carry
             else:
                 # Without MetaTFT, use original distribution
                 samples_metatft = 0
-                samples_standard = int(num_samples * 0.25)       # 25% standard
-                samples_solo_tank = int(num_samples * 0.10)      # 10% solo tank
-                samples_spread = int(num_samples * 0.10)         # 10% spread
-                samples_corner = int(num_samples * 0.08)         # 8% corner
-                samples_diagonal = int(num_samples * 0.07)       # 7% diagonal
-                samples_bait = int(num_samples * 0.08)           # 8% bait
-                samples_anti_zephyr = int(num_samples * 0.08)    # 8% anti-zephyr
-                samples_clump = int(num_samples * 0.08)          # 8% clump for buffs
-                samples_v_shape = int(num_samples * 0.08)        # 8% V-shape
-                samples_split = int(num_samples * 0.08)          # 8% split carry
+                samples_standard = int(num_samples * 0.25)  # 25% standard
+                samples_solo_tank = int(num_samples * 0.10)  # 10% solo tank
+                samples_spread = int(num_samples * 0.10)  # 10% spread
+                samples_corner = int(num_samples * 0.08)  # 8% corner
+                samples_diagonal = int(num_samples * 0.07)  # 7% diagonal
+                samples_bait = int(num_samples * 0.08)  # 8% bait
+                samples_anti_zephyr = int(num_samples * 0.08)  # 8% anti-zephyr
+                samples_clump = int(num_samples * 0.08)  # 8% clump for buffs
+                samples_v_shape = int(num_samples * 0.08)  # 8% V-shape
+                samples_split = int(num_samples * 0.08)  # 8% split carry
         else:
             # Without comp, skip role-dependent strategies
             samples_metatft = 0
@@ -928,8 +983,9 @@ class PositioningOptimizer:
 
         return list(configs)
 
-    def _generate_standard_configs(self, num_units: int, num_samples: int,
-                                   comp: List[Dict] = None) -> set:
+    def _generate_standard_configs(
+        self, num_units: int, num_samples: int, comp: List[Dict] = None
+    ) -> set:
         """Generate standard tank-front, carry-back configurations."""
         configs = set()
 
@@ -941,7 +997,7 @@ class PositioningOptimizer:
         unit_roles = []
         if comp:
             for unit_def in comp:
-                role = self.classify_unit_role(unit_def['champion'])
+                role = self.classify_unit_role(unit_def["champion"])
                 unit_roles.append(role)
 
         for _ in range(num_samples):
@@ -951,11 +1007,11 @@ class PositioningOptimizer:
             for i in range(num_units):
                 if unit_roles and i < len(unit_roles):
                     role = unit_roles[i]
-                    if role == 'frontline':
+                    if role == "frontline":
                         candidates = [p for p in front_rows if p in available]
                         if not candidates or random.random() < 0.1:
                             candidates = available
-                    elif role == 'backline':
+                    elif role == "backline":
                         candidates = [p for p in back_rows if p in available]
                         if not candidates or random.random() < 0.1:
                             candidates = available
@@ -980,18 +1036,17 @@ class PositioningOptimizer:
 
         return configs
 
-    def _create_team(self, comp: List[Dict], positions: PositionConfig,
-                     team_id: int) -> List[Unit]:
+    def _create_team(self, comp: List[Dict], positions: PositionConfig, team_id: int) -> List[Unit]:
         """Create a list of Unit objects from comp definition and positions."""
         units = []
         for i, unit_def in enumerate(comp):
             pos = positions.positions[i]
             unit = self.engine.create_unit(
-                api_name=unit_def['champion'],
-                star_level=unit_def.get('star', 1),
+                api_name=unit_def["champion"],
+                star_level=unit_def.get("star", 1),
                 team=team_id,
                 position=pos,
-                items=unit_def.get('items', [])
+                items=unit_def.get("items", []),
             )
             if unit:
                 units.append(unit)
@@ -1002,20 +1057,24 @@ class PositioningOptimizer:
         units = []
         for unit_def in opponent_def:
             unit = self.engine.create_unit(
-                api_name=unit_def['champion'],
-                star_level=unit_def.get('star', 1),
+                api_name=unit_def["champion"],
+                star_level=unit_def.get("star", 1),
                 team=team_id,
-                position=unit_def['position'],
-                items=unit_def.get('items', [])
+                position=unit_def["position"],
+                items=unit_def.get("items", []),
             )
             if unit:
                 units.append(unit)
         return units
 
-    def evaluate_config(self, comp: List[Dict], config: PositionConfig,
-                       opponents: List[List[Dict]] = None,
-                       sims_per_opponent: int = 10,
-                       seed: int = None) -> EvaluationResult:
+    def evaluate_config(
+        self,
+        comp: List[Dict],
+        config: PositionConfig,
+        opponents: List[List[Dict]] = None,
+        sims_per_opponent: int = 10,
+        seed: int = None,
+    ) -> EvaluationResult:
         """
         Evaluate a single position configuration.
 
@@ -1040,17 +1099,13 @@ class PositioningOptimizer:
                     sim_seed = seed + opp_idx * sims_per_opponent + sim_idx
 
                 # Run combat
-                result = self.engine.run_combat(
-                    my_team, opp_team,
-                    verbose=False,
-                    seed=sim_seed
-                )
+                result = self.engine.run_combat(my_team, opp_team, verbose=False, seed=sim_seed)
 
                 # Aggregate results
-                if result['winner'] == 0:
+                if result["winner"] == 0:
                     total_wins += 1
-                total_damage += result['total_damage_dealt']['team0']
-                total_survivors += result['team0_survivors']
+                total_damage += result["total_damage_dealt"]["team0"]
+                total_survivors += result["team0_survivors"]
                 total_sims += 1
 
         return EvaluationResult(
@@ -1058,16 +1113,19 @@ class PositioningOptimizer:
             win_rate=total_wins / total_sims if total_sims > 0 else 0,
             avg_damage_dealt=total_damage / total_sims if total_sims > 0 else 0,
             avg_survivors=total_survivors / total_sims if total_sims > 0 else 0,
-            num_simulations=total_sims
+            num_simulations=total_sims,
         )
 
-    def optimize(self, comp: List[Dict],
-                 opponents: List[List[Dict]] = None,
-                 strategy: str = 'strategic',
-                 num_configs: int = 500,
-                 sims_per_opponent: int = 10,
-                 seed: int = None,
-                 verbose: bool = True) -> Dict:
+    def optimize(
+        self,
+        comp: List[Dict],
+        opponents: List[List[Dict]] = None,
+        strategy: str = "strategic",
+        num_configs: int = 500,
+        sims_per_opponent: int = 10,
+        seed: int = None,
+        verbose: bool = True,
+    ) -> Dict:
         """
         Find optimal positions for a team composition.
 
@@ -1087,16 +1145,18 @@ class PositioningOptimizer:
 
         if verbose:
             print(f"Optimizing positions for {num_units} units...")
-            print(f"Strategy: {strategy}, Configs: {num_configs}, Sims/opponent: {sims_per_opponent}")
+            print(
+                f"Strategy: {strategy}, Configs: {num_configs}, Sims/opponent: {sims_per_opponent}"
+            )
 
         # Generate position configurations
-        if strategy == 'exhaustive':
+        if strategy == "exhaustive":
             if num_units > 4:
                 print(f"Warning: Exhaustive search with {num_units} units is very slow!")
             configs = self.generate_positions_exhaustive(num_units)
             if verbose:
                 print(f"Generated {len(configs)} exhaustive configurations")
-        elif strategy == 'sampled':
+        elif strategy == "sampled":
             configs = self.generate_positions_sampled(num_units, num_configs, seed)
             if verbose:
                 print(f"Generated {len(configs)} sampled configurations")
@@ -1112,10 +1172,7 @@ class PositioningOptimizer:
                 print(f"  Evaluated {i + 1}/{len(configs)} configurations...")
 
             eval_result = self.evaluate_config(
-                comp, config,
-                opponents=opponents,
-                sims_per_opponent=sims_per_opponent,
-                seed=seed
+                comp, config, opponents=opponents, sims_per_opponent=sims_per_opponent, seed=seed
             )
             results.append(eval_result)
 
@@ -1129,40 +1186,35 @@ class PositioningOptimizer:
         best_positions = {}
         for i, unit_def in enumerate(comp):
             pos = best.config.positions[i]
-            best_positions[unit_def['champion']] = {
-                'position': pos,
-                'row': pos[1],
-                'col': pos[0]
-            }
+            best_positions[unit_def["champion"]] = {"position": pos, "row": pos[1], "col": pos[0]}
 
         if verbose:
-            print(f"\nBest configuration:")
+            print("\nBest configuration:")
             print(f"  Win rate: {best.win_rate:.1%}")
             print(f"  Avg damage: {best.avg_damage_dealt:.0f}")
             print(f"  Avg survivors: {best.avg_survivors:.2f}")
-            print(f"\nPositions:")
+            print("\nPositions:")
             for champ, pos_info in best_positions.items():
                 print(f"  {champ}: col={pos_info['col']}, row={pos_info['row']}")
 
         return {
-            'best_positions': best_positions,
-            'best_result': {
-                'win_rate': best.win_rate,
-                'avg_damage': best.avg_damage_dealt,
-                'avg_survivors': best.avg_survivors,
-                'positions': best.config.positions
+            "best_positions": best_positions,
+            "best_result": {
+                "win_rate": best.win_rate,
+                "avg_damage": best.avg_damage_dealt,
+                "avg_survivors": best.avg_survivors,
+                "positions": best.config.positions,
             },
-            'all_results': results[:100],  # Top 100 results
-            'statistics': {
-                'configs_evaluated': len(configs),
-                'total_simulations': sum(r.num_simulations for r in results),
-                'win_rate_range': (results[-1].win_rate, results[0].win_rate),
-                'avg_win_rate': sum(r.win_rate for r in results) / len(results)
-            }
+            "all_results": results[:100],  # Top 100 results
+            "statistics": {
+                "configs_evaluated": len(configs),
+                "total_simulations": sum(r.num_simulations for r in results),
+                "win_rate_range": (results[-1].win_rate, results[0].win_rate),
+                "avg_win_rate": sum(r.win_rate for r in results) / len(results),
+            },
         }
 
-    def visualize_board(self, positions: Dict[str, Dict],
-                        title: str = "Board Position") -> str:
+    def visualize_board(self, positions: Dict[str, Dict], title: str = "Board Position") -> str:
         """
         Create ASCII visualization of board positions.
 
@@ -1174,28 +1226,28 @@ class PositioningOptimizer:
             ASCII string representation
         """
         # Create empty board
-        board = [['.  ' for _ in range(BOARD_WIDTH)] for _ in range(BOARD_HEIGHT)]
+        board = [[".  " for _ in range(BOARD_WIDTH)] for _ in range(BOARD_HEIGHT)]
 
         # Place units
         for champ, pos_info in positions.items():
-            col, row = pos_info['col'], pos_info['row']
+            col, row = pos_info["col"], pos_info["row"]
             # Use first 3 chars of champion name (strip TFT16_ prefix)
-            name = champ.replace('TFT16_', '')[:3]
-            board[row][col] = f'{name}'
+            name = champ.replace("TFT16_", "")[:3]
+            board[row][col] = f"{name}"
 
         # Build output
-        lines = [title, '=' * 30]
-        lines.append('    ' + '  '.join(str(i) for i in range(BOARD_WIDTH)))
-        lines.append('   ' + '-' * 22)
+        lines = [title, "=" * 30]
+        lines.append("    " + "  ".join(str(i) for i in range(BOARD_WIDTH)))
+        lines.append("   " + "-" * 22)
 
         for row_idx in range(BOARD_HEIGHT - 1, -1, -1):  # Top to bottom
-            row_str = f'{row_idx} | ' + ' '.join(f'{cell:3}' for cell in board[row_idx])
+            row_str = f"{row_idx} | " + " ".join(f"{cell:3}" for cell in board[row_idx])
             lines.append(row_str)
 
-        lines.append('')
-        lines.append('Legend: Row 0 = front, Row 3 = back')
+        lines.append("")
+        lines.append("Legend: Row 0 = front, Row 3 = back")
 
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
 
 def demo():
@@ -1209,9 +1261,9 @@ def demo():
 
     # Define a sample comp
     comp = [
-        {'champion': 'TFT16_Leona', 'star': 2, 'items': []},      # Tank
-        {'champion': 'TFT16_Draven', 'star': 2, 'items': []},     # Carry
-        {'champion': 'TFT16_Lux', 'star': 2, 'items': []},        # Support
+        {"champion": "TFT16_Leona", "star": 2, "items": []},  # Tank
+        {"champion": "TFT16_Draven", "star": 2, "items": []},  # Carry
+        {"champion": "TFT16_Lux", "star": 2, "items": []},  # Support
     ]
 
     print("Comp:")
@@ -1221,25 +1273,20 @@ def demo():
 
     # Run optimization
     result = optimizer.optimize(
-        comp,
-        strategy='strategic',
-        num_configs=200,
-        sims_per_opponent=5,
-        seed=42,
-        verbose=True
+        comp, strategy="strategic", num_configs=200, sims_per_opponent=5, seed=42, verbose=True
     )
 
     # Visualize result
     print()
-    print(optimizer.visualize_board(result['best_positions'], "Optimal Positions"))
+    print(optimizer.visualize_board(result["best_positions"], "Optimal Positions"))
 
     # Show top 5 configurations
     print()
     print("Top 5 Configurations:")
     print("-" * 50)
-    for i, res in enumerate(result['all_results'][:5]):
-        positions_str = ', '.join(f'({p[0]},{p[1]})' for p in res.config.positions)
-        print(f"{i+1}. Win rate: {res.win_rate:.1%} - Positions: {positions_str}")
+    for i, res in enumerate(result["all_results"][:5]):
+        positions_str = ", ".join(f"({p[0]},{p[1]})" for p in res.config.positions)
+        print(f"{i + 1}. Win rate: {res.win_rate:.1%} - Positions: {positions_str}")
 
     return result
 

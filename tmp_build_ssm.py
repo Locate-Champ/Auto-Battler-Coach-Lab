@@ -5,6 +5,7 @@ vectorization alone took ~56 minutes. This version writes a self-contained
 training script to the instance and runs it via nohup so it survives any
 SSM timeout.
 """
+
 import json
 import pathlib
 

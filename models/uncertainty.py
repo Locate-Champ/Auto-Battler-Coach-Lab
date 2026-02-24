@@ -17,7 +17,9 @@ class BayesianPredictor:
 
     def _confidence_bucket(self, uncertainty: torch.Tensor, probability: torch.Tensor) -> List[str]:
         labels: List[str] = []
-        for unc, prob in zip(uncertainty.detach().cpu().tolist(), probability.detach().cpu().tolist()):
+        for unc, prob in zip(
+            uncertainty.detach().cpu().tolist(), probability.detach().cpu().tolist()
+        ):
             if 0.45 <= prob <= 0.55 and unc > 0.1:
                 labels.append("coin_flip")
             elif unc < 0.05:
@@ -28,7 +30,9 @@ class BayesianPredictor:
                 labels.append("low_confidence")
         return labels
 
-    def predict_with_uncertainty(self, batch: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor | List[str]]:
+    def predict_with_uncertainty(
+        self, batch: Dict[str, torch.Tensor]
+    ) -> Dict[str, torch.Tensor | List[str]]:
         """Run stochastic forward passes and return uncertainty signals."""
         was_training = self.model.training
         self.model.train()

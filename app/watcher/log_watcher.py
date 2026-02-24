@@ -1,20 +1,19 @@
 """File system watcher for MetaTFT log files."""
 
-import asyncio
-import os
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Optional
-from dataclasses import dataclass, field
 
+from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler, FileModifiedEvent
 
-from .parser import LogParser, GameEvent
+from .parser import GameEvent, LogParser
 
 
 @dataclass
 class FilePosition:
     """Track read position in a file."""
+
     path: Path
     position: int = 0
     last_size: int = 0

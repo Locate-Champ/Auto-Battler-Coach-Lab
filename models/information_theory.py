@@ -7,10 +7,10 @@ from pathlib import Path
 from typing import Any, Dict, List, Sequence, Tuple
 
 import numpy as np
+import xgboost as xgb
 from sklearn.feature_selection import mutual_info_classif, mutual_info_regression
 from sklearn.metrics import accuracy_score, mean_absolute_error, mutual_info_score
 from sklearn.model_selection import train_test_split
-import xgboost as xgb
 
 from .train_xgboost import BASE_TREE_PARAMS, _best_xgb_device
 
@@ -132,7 +132,7 @@ class FeatureInformationAnalyzer:
     ) -> Dict[str, Any]:
         """Run the full information-theory analysis and save the report."""
         mi_pairs = self.marginal_mutual_information(X, y, feature_names, task=task)
-        top_features = mi_pairs[: top_k_pairs]
+        top_features = mi_pairs[:top_k_pairs]
         top_indices = [feature_names.index(name) for name, _ in top_features]
 
         redundant_pairs: List[List[Any]] = []

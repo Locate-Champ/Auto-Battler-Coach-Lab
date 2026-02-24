@@ -3,17 +3,17 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict, dataclass
 import json
 import math
 import os
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, Optional, Tuple
 
 import numpy as np
+import torch
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import train_test_split
-import torch
 from torch.nn.utils import clip_grad_norm_
 from torch.utils.data import DataLoader, Subset
 from torch.utils.tensorboard import SummaryWriter
@@ -91,7 +91,9 @@ def _evaluate(
             return 0.0
         return float(np.mean((y_prob - y_true) ** 2))
 
-    def _expected_calibration_error(y_true: np.ndarray, y_prob: np.ndarray, n_bins: int = 10) -> float:
+    def _expected_calibration_error(
+        y_true: np.ndarray, y_prob: np.ndarray, n_bins: int = 10
+    ) -> float:
         if y_true.size == 0:
             return 0.0
         bins = np.linspace(0.0, 1.0, n_bins + 1)

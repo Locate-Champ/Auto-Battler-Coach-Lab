@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import pytest
+
 pytest.importorskip("torch")
 
 import torch
@@ -53,4 +54,12 @@ def test_multitask_loss_computes() -> None:
     outputs = model(batch)
     losses = model.compute_loss(outputs, batch)
     assert losses["total"].item() >= 0
-    assert set(losses.keys()) == {"total", "fight", "damage", "survivors", "time", "placement", "strength"}
+    assert set(losses.keys()) == {
+        "total",
+        "fight",
+        "damage",
+        "survivors",
+        "time",
+        "placement",
+        "strength",
+    }

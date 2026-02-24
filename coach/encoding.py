@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from .state import GameState, UnitState
+from .state import GameState
 
 
 @dataclass(frozen=True, slots=True)
@@ -52,4 +52,3 @@ def encode_state_set_based(state: GameState, include_position: bool = False) -> 
         traits=tuple(state.traits),
         scalars=tuple(scalars),
     )
-

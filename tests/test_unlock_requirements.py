@@ -1,4 +1,5 @@
 from simulator.game.champion_pool import ChampionPool
+from simulator.game.constants import NAME_TO_API, NAME_TO_COST
 from simulator.game.player import Player
 from simulator.game.types import ChampionInstance
 from simulator.game.unlocks import (
@@ -6,7 +7,6 @@ from simulator.game.unlocks import (
     PreCombatUnitSnapshot,
     UnlockRequirementsManager,
 )
-from simulator.game.constants import NAME_TO_API, NAME_TO_COST
 
 
 def _snap(

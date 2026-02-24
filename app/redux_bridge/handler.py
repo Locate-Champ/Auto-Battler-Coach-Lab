@@ -7,8 +7,8 @@ and updates the game state accordingly.
 
 import json
 import logging
-from typing import Optional, Callable, Any
 from dataclasses import dataclass
+from typing import Any, Callable, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ReduxBoardUnit:
     """Unit data from Redux board_pieces."""
+
     id: str
     character_id: str
     name: str
@@ -27,6 +28,7 @@ class ReduxBoardUnit:
 @dataclass
 class ReduxPlayerInfo:
     """Player info from Redux 'me' state."""
+
     gold: str
     health: str
     xp: dict
@@ -101,7 +103,6 @@ class ReduxBridgeHandler:
             or current_shop_hash != self.last_shop_hash
             or current_player_hash != self.last_player_hash
         ):
-
             self.last_board_hash = current_board_hash
             self.last_bench_hash = current_bench_hash
             self.last_shop_hash = current_shop_hash
@@ -127,14 +128,16 @@ class ReduxBridgeHandler:
         for unit in units:
             if not isinstance(unit, dict):
                 continue
-            parsed.append({
-                "id": unit.get("id"),
-                "character_id": unit.get("character_id", ""),
-                "name": unit.get("name", ""),
-                "stars": unit.get("stars", 1),
-                "items": unit.get("items", []),
-                "position": unit.get("position"),
-            })
+            parsed.append(
+                {
+                    "id": unit.get("id"),
+                    "character_id": unit.get("character_id", ""),
+                    "name": unit.get("name", ""),
+                    "stars": unit.get("stars", 1),
+                    "items": unit.get("items", []),
+                    "position": unit.get("position"),
+                }
+            )
         return parsed
 
     def _parse_bench_units(self, units: list) -> list[dict]:
@@ -143,13 +146,15 @@ class ReduxBridgeHandler:
         for unit in units:
             if not isinstance(unit, dict):
                 continue
-            parsed.append({
-                "id": unit.get("id"),
-                "character_id": unit.get("character_id", ""),
-                "name": unit.get("name", ""),
-                "stars": unit.get("stars", 1),
-                "items": unit.get("items", []),
-            })
+            parsed.append(
+                {
+                    "id": unit.get("id"),
+                    "character_id": unit.get("character_id", ""),
+                    "name": unit.get("name", ""),
+                    "stars": unit.get("stars", 1),
+                    "items": unit.get("items", []),
+                }
+            )
         return parsed
 
     def _parse_shop_units(self, shop_units: Any, raw_shop: Any) -> list[dict]:
@@ -248,7 +253,9 @@ class ReduxBridgeHandler:
             if units:
                 parsed[board_key] = units
 
-        logger.debug(f"Parsed {len(parsed)} opponent boards with {sum(len(u) for u in parsed.values())} total units")
+        logger.debug(
+            f"Parsed {len(parsed)} opponent boards with {sum(len(u) for u in parsed.values())} total units"
+        )
         return parsed
 
 
@@ -262,11 +269,13 @@ def integrate_with_state_manager(handler: ReduxBridgeHandler, state_manager: Any
         handler: ReduxBridgeHandler instance
         state_manager: StateManager instance from app/state/state_manager.py
     """
+
     def on_redux_update(state: dict):
         """Callback when Redux state updates."""
         # Update board units
         if state.get("board_units"):
             from app.state.game_state import Unit
+
             board_units = []
             for unit_data in state["board_units"]:
                 unit = Unit(
@@ -283,6 +292,7 @@ def integrate_with_state_manager(handler: ReduxBridgeHandler, state_manager: Any
         # Update bench units
         if state.get("bench_units"):
             from app.state.game_state import Unit
+
             bench_units = []
             for unit_data in state["bench_units"]:
                 unit = Unit(
@@ -305,6 +315,7 @@ def integrate_with_state_manager(handler: ReduxBridgeHandler, state_manager: Any
         # Update opponent boards for pool tracking
         if state.get("opponent_boards"):
             from app.state.game_state import Unit
+
             opponent_boards = {}
             for board_id, units_data in state["opponent_boards"].items():
                 units = []

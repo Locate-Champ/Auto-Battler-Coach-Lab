@@ -1,12 +1,13 @@
 """Manages game state by processing log events."""
 
+import re
 import threading
 from datetime import datetime
-import re
-from typing import Callable, Optional
+from typing import Callable
 
-from app.watcher.parser import GameEvent, EventType
-from .game_state import GameState, GamePhase, PlayerState, ShopUnit, Unit
+from app.watcher.parser import GameEvent
+
+from .game_state import GamePhase, GameState, PlayerState, ShopUnit, Unit
 
 
 class StateManager:
@@ -130,12 +131,14 @@ class StateManager:
 
     def _record_evaluation_checkpoint(self, timestamp: datetime, reason: str):
         """Record a checkpoint for evaluation timing."""
-        self.state.evaluation_checkpoints.append({
-            "timestamp": timestamp.isoformat(),
-            "stage": self.state.stage,
-            "phase": self.state.game_phase.value,
-            "reason": reason,
-        })
+        self.state.evaluation_checkpoints.append(
+            {
+                "timestamp": timestamp.isoformat(),
+                "stage": self.state.stage,
+                "phase": self.state.game_phase.value,
+                "reason": reason,
+            }
+        )
 
     def _handle_item_select(self, event: GameEvent):
         """Handle item selection event."""
@@ -185,10 +188,7 @@ class StateManager:
                 col = cell_id % 7
 
                 # Parse items (filter empty strings)
-                items = [
-                    unit_data.get(f"item_{i}", "")
-                    for i in range(1, 4)
-                ]
+                items = [unit_data.get(f"item_{i}", "") for i in range(1, 4)]
                 items = [item for item in items if item]
 
                 # Create Unit
@@ -204,7 +204,9 @@ class StateManager:
 
         if self.state.currently_scouting:
             self.state.opponent_boards[self.state.currently_scouting] = units
-            print(f"[STATE] Scouted board updated: {self.state.currently_scouting} ({len(units)} units)")
+            print(
+                f"[STATE] Scouted board updated: {self.state.currently_scouting} ({len(units)} units)"
+            )
         else:
             self.state.player.board_units = units
             print(f"[STATE] Board updated: {len(units)} units")
@@ -217,10 +219,7 @@ class StateManager:
         for slot_key, unit_data in bench_data.items():
             try:
                 # Parse items (filter empty strings)
-                items = [
-                    unit_data.get(f"item_{i}", "")
-                    for i in range(1, 4)
-                ]
+                items = [unit_data.get(f"item_{i}", "") for i in range(1, 4)]
                 items = [item for item in items if item]
 
                 # Create Unit (no position for bench)
@@ -246,7 +245,9 @@ class StateManager:
             for _, unit_data in shop_data.items():
                 if isinstance(unit_data, dict):
                     character_id = unit_data.get("name") or unit_data.get("character_id") or ""
-                    cost_raw = unit_data.get("cost") or unit_data.get("tier") or unit_data.get("price")
+                    cost_raw = (
+                        unit_data.get("cost") or unit_data.get("tier") or unit_data.get("price")
+                    )
                 elif isinstance(unit_data, str):
                     character_id = unit_data
                     cost_raw = None

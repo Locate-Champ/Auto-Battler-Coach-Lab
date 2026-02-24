@@ -164,7 +164,9 @@ def test_load_and_split_by_game_id(tmp_path: Path) -> None:
 
     loaded = loader.load_raw()
     labels = np.asarray([1 if int(row["placement"]) <= 4 else 0 for row in loaded], dtype=np.int64)
-    train_rows, test_rows, _, _ = loader._split_by_game_id(loaded, labels, test_size=0.5, seed=42, stratify=True)  # noqa: SLF001
+    train_rows, test_rows, _, _ = loader._split_by_game_id(
+        loaded, labels, test_size=0.5, seed=42, stratify=True
+    )  # noqa: SLF001
 
     train_games = {row["game_id"] for row in train_rows}
     test_games = {row["game_id"] for row in test_rows}

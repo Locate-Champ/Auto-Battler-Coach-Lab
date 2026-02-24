@@ -61,9 +61,7 @@ def _sample_state() -> GameState:
         ),
     )
 
-    opponents = (
-        OpponentState(opponent_id="opp_0", board=opponent_board, level=7, hp=74),
-    )
+    opponents = (OpponentState(opponent_id="opp_0", board=opponent_board, level=7, hp=74),)
 
     items = (
         "BF_Sword",
@@ -95,7 +93,9 @@ def main() -> None:
         recs = coach.recommend(state, decision, top_k=3)
         print(f"[{decision.value.upper()}] Top recommendations")
         for r in recs:
-            print(f"  - score={r.score.total_score:.3f} action_id={r.action.action_id} title={r.action.title}")
+            print(
+                f"  - score={r.score.total_score:.3f} action_id={r.action.action_id} title={r.action.title}"
+            )
             print(f"    confidence={r.explanation.confidence}")
             for line in r.explanation.lines:
                 print(f"      {line}")

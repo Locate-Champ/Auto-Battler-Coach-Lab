@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import subprocess
-import sys
 from collections.abc import Iterable
 
 ROOT_ALLOWED_FILES = {

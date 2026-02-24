@@ -11,8 +11,22 @@ from coach.state import GameState, PlayerState, UnitState
 def _state_for_archetypes() -> GameState:
     player = PlayerState(level=7, hp=62, gold=28, win_streak=2, loss_streak=0)
     board = (
-        UnitState(instance_id="u0", champion_id="TFT16_Fiddlesticks", star_level=2, items=(), position=(0, 3), location="board"),
-        UnitState(instance_id="u1", champion_id="TFT16_Sion", star_level=2, items=(), position=(3, 3), location="board"),
+        UnitState(
+            instance_id="u0",
+            champion_id="TFT16_Fiddlesticks",
+            star_level=2,
+            items=(),
+            position=(0, 3),
+            location="board",
+        ),
+        UnitState(
+            instance_id="u1",
+            champion_id="TFT16_Sion",
+            star_level=2,
+            items=(),
+            position=(3, 3),
+            location="board",
+        ),
     )
     return GameState(stage="4-2", player=player, board=board)
 
@@ -22,7 +36,9 @@ def test_archetype_library_is_stable_for_same_state() -> None:
     state = _state_for_archetypes()
     m1 = lib.closest(state, top_n=3)
     m2 = lib.closest(state, top_n=3)
-    assert [(m.archetype.archetype_id, m.similarity) for m in m1] == [(m.archetype.archetype_id, m.similarity) for m in m2]
+    assert [(m.archetype.archetype_id, m.similarity) for m in m1] == [
+        (m.archetype.archetype_id, m.similarity) for m in m2
+    ]
 
 
 def test_archetype_library_missing_artifacts_degrades_gracefully(tmp_path: Path) -> None:

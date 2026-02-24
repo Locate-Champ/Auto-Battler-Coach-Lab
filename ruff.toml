@@ -1,0 +1,44 @@
+# Ruff configuration — replaces flake8 + black + isort
+# https://docs.astral.sh/ruff/
+
+target-version = "py311"
+line-length = 100
+
+[lint]
+# Start conservative: pyflakes (F) + pycodestyle errors (E) + warnings (W) + isort (I)
+select = ["E", "F", "W", "I"]
+
+# Ignore rules that conflict with the existing codebase style
+ignore = [
+    "E501",   # line-too-long (enforced by formatter, not linter)
+    "E741",   # ambiguous variable name (common in math-heavy sim code)
+    "F841",   # local variable assigned but never used (revisit later)
+]
+
+# Legacy dirs — never lint these
+[lint.extend-per-file-ignores]
+"simulator/Simulator/**" = ["E", "F", "W", "I"]
+"simulator/Concurrency/**" = ["E", "F", "W", "I"]
+"simulator/Evaluator/**" = ["E", "F", "W", "I"]
+# Intentional sys.path / module shim / warnings.filterwarnings patterns
+"config.py" = ["E402"]
+"simulator/benchmark.py" = ["E402"]
+"simulator/main.py" = ["E402"]
+"simulator/perf_benchmark.py" = ["E402"]
+"simulator/cloud_runner.py" = ["E402"]
+"simulator/game/constants.py" = ["E402"]
+"simulator/game/game.py" = ["E402"]
+"src/models/placement_model.py" = ["E402"]
+"sitecustomize.py" = ["E402"]
+# Re-exports in __init__.py (F401 expected — these are public API)
+"src/models/__init__.py" = ["F401"]
+"simulator/core/combat_fast/__init__.py" = ["F401"]
+# Hot-path bitflag/accumulator style (compact single-line intentional)
+"models/feature_engineering.py" = ["E701", "E702"]
+
+[lint.isort]
+known-first-party = ["simulator", "coach", "app", "models", "src"]
+
+[format]
+quote-style = "double"
+indent-style = "space"

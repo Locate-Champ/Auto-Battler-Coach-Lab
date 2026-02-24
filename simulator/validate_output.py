@@ -28,7 +28,6 @@ from typing import Any, Dict, Iterator, List, Optional
 
 from snapshot_schema import decode_jsonish
 
-
 DUPLICATE_PLACEMENT_SEVERE_MAX = 3
 DUPLICATE_PLACEMENT_SEVERE_RATE_LIMIT = 0.01
 
@@ -202,9 +201,9 @@ class ValidationReport:
         return self.failed == 0
 
     def print_report(self, verbose: bool = False):
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print("VALIDATION REPORT")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
         for c in self.checks:
             status = "[PASS]" if c["passed"] else "[FAIL]"
@@ -218,10 +217,10 @@ class ValidationReport:
             for w in self.warnings:
                 print(f"  [WARN] {w}")
 
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         result = "ALL CHECKS PASSED" if self.all_passed else f"{self.failed} CHECK(S) FAILED"
         print(f"Result: {result} ({self.passed} passed, {self.failed} failed)")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
 
 def validate_output(

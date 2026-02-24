@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 from typing import Any, Final, Mapping
 
-
 JSONISH_COLUMNS: Final[tuple[str, ...]] = (
     "board_names",
     "board_stars",

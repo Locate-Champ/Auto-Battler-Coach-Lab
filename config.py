@@ -5,9 +5,9 @@ modules import `config` directly. Expose the simulator module under this name
 so local runs and Ray workers resolve the same module object.
 """
 
-from pathlib import Path as _Path
 import os as _os
 import sys as _sys
+from pathlib import Path as _Path
 
 _simulator_root = _Path(__file__).resolve().parent / "simulator"
 _simulator_path = str(_simulator_root)

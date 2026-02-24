@@ -6,38 +6,46 @@ Uses the existing combat engine for fight resolution.
 
 from __future__ import annotations
 
+import os
 import random
 import sys
-import os
-from typing import Any, List, Dict, Optional, Tuple, Callable, Set
+from typing import Any, Callable, Dict, List, Set, Tuple
 
-from .types import RoundResult, GamePhase, ChampionInstance
-from .player import Player
+from .actions import fast_random_agent
 from .champion_pool import ChampionPool
-from .shop import generate_shop, _return_shop_to_pool
-from .actions import random_agent_actions, fast_random_agent, execute_action
-from .unlocks import UnlockRequirementsManager, CombatUnlockContext, PreCombatUnitSnapshot
 from .constants import (
-    get_round_damage, STARTING_ROUND_GOLD, BOARD_ROWS,
-    ITEM_COMPONENTS_LIST, PVE_ITEM_DROPS, AUGMENT_ROUNDS,
-    CAROUSEL_ROUNDS, CAROUSEL_CHAMPION_ODDS, CAROUSEL_ITEM_WEIGHTS,
-    CAROUSEL_SIZE, CHAMPIONS_BY_COST, NAME_TO_API,
+    AUGMENT_ROUNDS,
+    BOARD_ROWS,
+    CAROUSEL_CHAMPION_ODDS,
+    CAROUSEL_ITEM_WEIGHTS,
+    CAROUSEL_ROUNDS,
+    CAROUSEL_SIZE,
+    CHAMPIONS_BY_COST,
+    ITEM_COMPONENTS_LIST,
+    NAME_TO_API,
+    PVE_ITEM_DROPS,
+    STARTING_ROUND_GOLD,
+    get_round_damage,
 )
+from .player import Player
+from .shop import _return_shop_to_pool, generate_shop
+from .types import ChampionInstance, RoundResult
+from .unlocks import CombatUnlockContext, PreCombatUnitSnapshot, UnlockRequirementsManager
 
 # Import combat engine
-_project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+_project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
-
-from simulator.core.combat_engine import CombatEngine
-from simulator.core.augment_paths import resolve_augment_data_path
 
 # Load augment data for augment selection
 import json
 from pathlib import Path
 
+from simulator.core.augment_paths import resolve_augment_data_path
+from simulator.core.combat_engine import CombatEngine
+
 _AUGMENT_PATH = resolve_augment_data_path()
-_AUGMENTS_BY_ROUND: Dict[str, List[str]] = {'2-1': [], '3-2': [], '4-2': []}
+_AUGMENTS_BY_ROUND: Dict[str, List[str]] = {"2-1": [], "3-2": [], "4-2": []}
 _AUGMENT_TRAITS: Dict[str, List[str]] = {}  # apiName -> associated trait names
 
 # Augment tier inference from stage availability:
@@ -51,42 +59,42 @@ _AUGMENT_TIERS: Dict[str, str] = {}  # apiName -> 'silver'|'gold'|'prismatic'
 # Each entry is (stage_1_tier, stage_2_tier, stage_3_tier, percent).
 # The 18 entries sum to 100%. Tiers are dependent across stages.
 _AUGMENT_TIER_SEQUENCES = [
-    ('silver', 'silver', 'gold', 5),
-    ('silver', 'silver', 'prismatic', 5),
-    ('silver', 'gold', 'gold', 12),
-    ('silver', 'gold', 'prismatic', 5),
-    ('silver', 'prismatic', 'prismatic', 1),
-    ('gold', 'silver', 'gold', 18),
-    ('gold', 'silver', 'prismatic', 2),
-    ('gold', 'gold', 'gold', 22),
-    ('gold', 'gold', 'prismatic', 3),
-    ('gold', 'prismatic', 'silver', 6),
-    ('gold', 'prismatic', 'gold', 10),
-    ('gold', 'prismatic', 'prismatic', 1),
-    ('prismatic', 'silver', 'gold', 4),
-    ('prismatic', 'silver', 'prismatic', 1),
-    ('prismatic', 'gold', 'gold', 2),
-    ('prismatic', 'gold', 'prismatic', 1),
-    ('prismatic', 'prismatic', 'gold', 1),
-    ('prismatic', 'prismatic', 'prismatic', 1),
+    ("silver", "silver", "gold", 5),
+    ("silver", "silver", "prismatic", 5),
+    ("silver", "gold", "gold", 12),
+    ("silver", "gold", "prismatic", 5),
+    ("silver", "prismatic", "prismatic", 1),
+    ("gold", "silver", "gold", 18),
+    ("gold", "silver", "prismatic", 2),
+    ("gold", "gold", "gold", 22),
+    ("gold", "gold", "prismatic", 3),
+    ("gold", "prismatic", "silver", 6),
+    ("gold", "prismatic", "gold", 10),
+    ("gold", "prismatic", "prismatic", 1),
+    ("prismatic", "silver", "gold", 4),
+    ("prismatic", "silver", "prismatic", 1),
+    ("prismatic", "gold", "gold", 2),
+    ("prismatic", "gold", "prismatic", 1),
+    ("prismatic", "prismatic", "gold", 1),
+    ("prismatic", "prismatic", "prismatic", 1),
 ]
 
 # Marginal probabilities for stage 1 (derived from joint table)
-_TIER_ODDS_STAGE_1 = {'silver': 28, 'gold': 62, 'prismatic': 10}
+_TIER_ODDS_STAGE_1 = {"silver": 28, "gold": 62, "prismatic": 10}
 
 # Tier ordering for tier-shift augments
-_TIER_ORDER = ['silver', 'gold', 'prismatic']
+_TIER_ORDER = ["silver", "gold", "prismatic"]
 
 # Augments that shift the NEXT augment tier for the player who chose them
 _TIER_SHIFT_AUGMENTS = {
-    'TFT_Augment_PowerUp': +1,          # "Augmented Power" - next tier higher
-    'TFT_Augment_AdvancedLoan': -1,     # "Advanced Loan" (2-1) - next tier lower
-    'TFT_Augment_AdvancedLoanPlus': -1, # "Advanced Loan+" (3-2) - next tier lower
+    "TFT_Augment_PowerUp": +1,  # "Augmented Power" - next tier higher
+    "TFT_Augment_AdvancedLoan": -1,  # "Advanced Loan" (2-1) - next tier lower
+    "TFT_Augment_AdvancedLoanPlus": -1,  # "Advanced Loan+" (3-2) - next tier lower
 }
 
 _TRIALS_OF_TWILIGHT_AUGMENTS = {
-    'TFT16_Augment_XinZhaoCarry',
-    'TFT16_Augment_XinZhaoCarryII',
+    "TFT16_Augment_XinZhaoCarry",
+    "TFT16_Augment_XinZhaoCarryII",
 }
 
 _IXTAL_QUEST_ROTATION = (
@@ -116,38 +124,38 @@ _IXTAL_QUEST_ROTATION = (
 
 # Augments by tier within each round (for weighted selection)
 _AUGMENTS_BY_ROUND_TIER: Dict[str, Dict[str, List[str]]] = {
-    '2-1': {'silver': [], 'gold': [], 'prismatic': []},
-    '3-2': {'silver': [], 'gold': [], 'prismatic': []},
-    '4-2': {'silver': [], 'gold': [], 'prismatic': []},
+    "2-1": {"silver": [], "gold": [], "prismatic": []},
+    "3-2": {"silver": [], "gold": [], "prismatic": []},
+    "4-2": {"silver": [], "gold": [], "prismatic": []},
 }
 
 try:
     if _AUGMENT_PATH.exists():
-        with open(_AUGMENT_PATH, 'r', encoding='utf-8') as _f:
+        with open(_AUGMENT_PATH, "r", encoding="utf-8") as _f:
             _raw = json.load(_f)
-        _round_tags = {'2-1', '3-2', '4-2'}
+        _round_tags = {"2-1", "3-2", "4-2"}
         for _aug in _raw:
-            if _aug.get('disabled'):
+            if _aug.get("disabled"):
                 continue
-            _api = _aug['apiName']
-            _stages = sorted(t for t in _aug.get('tags', []) if t in _round_tags)
+            _api = _aug["apiName"]
+            _stages = sorted(t for t in _aug.get("tags", []) if t in _round_tags)
 
             # Store trait associations
-            if _aug.get('associatedTraits'):
-                _AUGMENT_TRAITS[_api] = _aug['associatedTraits']
+            if _aug.get("associatedTraits"):
+                _AUGMENT_TRAITS[_api] = _aug["associatedTraits"]
 
             # Infer tier from stage availability
             _stage_key = tuple(_stages)
-            if _stage_key == ('2-1',):
-                _AUGMENT_TIERS[_api] = 'silver'
-            elif _stage_key in (('3-2',), ('2-1', '3-2')):
-                _AUGMENT_TIERS[_api] = 'gold'
-            elif _stage_key in (('4-2',), ('3-2', '4-2')):
-                _AUGMENT_TIERS[_api] = 'prismatic'
-            elif _stage_key == ('2-1', '3-2', '4-2'):
-                _AUGMENT_TIERS[_api] = 'gold'  # Flexible → default gold
+            if _stage_key == ("2-1",):
+                _AUGMENT_TIERS[_api] = "silver"
+            elif _stage_key in (("3-2",), ("2-1", "3-2")):
+                _AUGMENT_TIERS[_api] = "gold"
+            elif _stage_key in (("4-2",), ("3-2", "4-2")):
+                _AUGMENT_TIERS[_api] = "prismatic"
+            elif _stage_key == ("2-1", "3-2", "4-2"):
+                _AUGMENT_TIERS[_api] = "gold"  # Flexible → default gold
             else:
-                _AUGMENT_TIERS[_api] = 'gold'
+                _AUGMENT_TIERS[_api] = "gold"
 
             # Add to round + tier pools
             for _tag in _stages:
@@ -170,7 +178,9 @@ def _mix_u64(x: int) -> int:
     return x & _MASK64
 
 
-def _derive_combat_seed(game_seed: int, round_num: int, p1_id: int, p2_id: int, is_ghost: bool) -> int:
+def _derive_combat_seed(
+    game_seed: int, round_num: int, p1_id: int, p2_id: int, is_ghost: bool
+) -> int:
     """Derive a deterministic combat seed without using Python's randomized hash()."""
     x = int(game_seed) & _MASK64
     x = _mix_u64(x ^ int(round_num))
@@ -187,10 +197,16 @@ class TFTGame:
         # placements = [(player_id, placement), ...]
     """
 
-    def __init__(self, num_players: int = 8, seed: int = None,
-                 agent_fn: Callable = None, verbose: bool = False,
-                 logging_enabled: bool = True, collector=None,
-                 engine: str = 'python'):
+    def __init__(
+        self,
+        num_players: int = 8,
+        seed: int = None,
+        agent_fn: Callable = None,
+        verbose: bool = False,
+        logging_enabled: bool = True,
+        collector=None,
+        engine: str = "python",
+    ):
         """Initialize a new TFT game.
 
         Args:
@@ -236,15 +252,13 @@ class TFTGame:
 
         # Matchmaking weights: tracks recent opponents to avoid repeats
         # weights[i][j] = weight for player i fighting player j
-        self._matchmaking_weights = [
-            [10] * num_players for _ in range(num_players)
-        ]
+        self._matchmaking_weights = [[10] * num_players for _ in range(num_players)]
         for i in range(num_players):
             self._matchmaking_weights[i][i] = 0  # Can't fight yourself
 
     def _create_combat_engine(self, logging_enabled: bool) -> Any:
         """Create the selected combat engine backend."""
-        if self.engine_name == 'rust':
+        if self.engine_name == "rust":
             try:
                 from tft_combat_engine import RustCombatEngine
             except Exception as exc:
@@ -253,10 +267,10 @@ class TFTGame:
                     "Build/install it via maturin first."
                 ) from exc
 
-            combat_data_path = Path(__file__).parent.parent / 'data' / 'combat_data.json'
+            combat_data_path = Path(__file__).parent.parent / "data" / "combat_data.json"
             return RustCombatEngine(str(combat_data_path))
 
-        if self.engine_name != 'python':
+        if self.engine_name != "python":
             raise ValueError(f"Unknown engine '{self.engine_name}'. Expected 'python' or 'rust'.")
 
         return CombatEngine(logging_enabled=logging_enabled)
@@ -296,7 +310,8 @@ class TFTGame:
             return
 
         available = [
-            quest for quest in _IXTAL_QUEST_ROTATION
+            quest
+            for quest in _IXTAL_QUEST_ROTATION
             if quest in self.unlock_manager.ixtal_quest_reward_ladders
         ]
         if not available:
@@ -489,18 +504,20 @@ class TFTGame:
             player.auto_fill_board()
 
             precombat_team: List[Any]
-            if self.engine_name == 'python':
+            if self.engine_name == "python":
                 precombat_team = player.build_combat_team(self.engine, use_rust_engine=False)
             else:
                 precombat_team = []
-            precombat_snapshot = self.unlock_manager.build_precombat_snapshot(player, precombat_team)
+            precombat_snapshot = self.unlock_manager.build_precombat_snapshot(
+                player, precombat_team
+            )
             trials = bool(
                 _TRIALS_OF_TWILIGHT_AUGMENTS.intersection(
                     set(self.player_augments.get(player.player_id, []))
                 )
             )
             pve_context = CombatUnlockContext(
-                phase='pve',
+                phase="pve",
                 outcome=None,
                 has_trials_of_twilight=trials,
             )
@@ -566,95 +583,104 @@ class TFTGame:
             if not p1.alive:
                 continue
 
-            result, debug_takedowns, unlock_payload = self._resolve_combat(p1, p2, is_ghost=is_ghost)
+            result, debug_takedowns, unlock_payload = self._resolve_combat(
+                p1, p2, is_ghost=is_ghost
+            )
 
             if self.collector:
-                combat_results.append({
-                    'p1': p1_id, 'p2': p2_id,
-                    'is_ghost': is_ghost,
-                    'winner': result.winner_id,
-                    'damage': result.damage_to_loser,
-                    'survivors': result.survivors,
-                    'combat_time': result.combat_time,
-                    'debug_takedowns': debug_takedowns,
-                })
+                combat_results.append(
+                    {
+                        "p1": p1_id,
+                        "p2": p2_id,
+                        "is_ghost": is_ghost,
+                        "winner": result.winner_id,
+                        "damage": result.damage_to_loser,
+                        "survivors": result.survivors,
+                        "combat_time": result.combat_time,
+                        "debug_takedowns": debug_takedowns,
+                    }
+                )
 
-            p1_outcome = 'draw'
-            p2_outcome = 'draw'
+            p1_outcome = "draw"
+            p2_outcome = "draw"
             if result.is_draw:
                 # Both take base damage (ghost owner exempt)
                 p1.take_damage(result.damage_to_loser)
                 if not is_ghost:
                     p2.take_damage(result.damage_to_loser)
             elif result.winner_id == p1.player_id:
-                p1_outcome = 'win'
-                p2_outcome = 'loss'
+                p1_outcome = "win"
+                p2_outcome = "loss"
                 p1.win_round()
                 if not is_ghost:
                     p2.lose_round(result.damage_to_loser)
             else:
-                p1_outcome = 'loss'
-                p2_outcome = 'win'
+                p1_outcome = "loss"
+                p2_outcome = "win"
                 if not is_ghost:
                     p2.win_round()
                 p1.lose_round(result.damage_to_loser)
 
-            p1_damage_taken = result.damage_to_loser if p1_outcome in {'loss', 'draw'} else 0
-            p2_damage_taken = result.damage_to_loser if (not is_ghost and p2_outcome in {'loss', 'draw'}) else 0
+            p1_damage_taken = result.damage_to_loser if p1_outcome in {"loss", "draw"} else 0
+            p2_damage_taken = (
+                result.damage_to_loser if (not is_ghost and p2_outcome in {"loss", "draw"}) else 0
+            )
 
             p1_trials = bool(
-                set(self.player_augments.get(p1.player_id, []))
-                .intersection(_TRIALS_OF_TWILIGHT_AUGMENTS)
+                set(self.player_augments.get(p1.player_id, [])).intersection(
+                    _TRIALS_OF_TWILIGHT_AUGMENTS
+                )
             )
             p1_context = CombatUnlockContext(
-                phase='pvp',
+                phase="pvp",
                 outcome=p1_outcome,
-                shadow_souls_gained=unlock_payload.get('p1_shadow_souls', 0),
-                draven_gold_dropped=unlock_payload.get('p1_draven_gold', 0),
-                dead_instance_ids=set(unlock_payload.get('p1_dead_instance_ids', set())),
-                victim_api_names=set(unlock_payload.get('p1_victim_api_names', set())),
+                shadow_souls_gained=unlock_payload.get("p1_shadow_souls", 0),
+                draven_gold_dropped=unlock_payload.get("p1_draven_gold", 0),
+                dead_instance_ids=set(unlock_payload.get("p1_dead_instance_ids", set())),
+                victim_api_names=set(unlock_payload.get("p1_victim_api_names", set())),
                 has_trials_of_twilight=p1_trials,
             )
             self._resolve_ixtal_quest_post_combat(
                 player=p1,
-                precombat_units=unlock_payload['p1_precombat'],
+                precombat_units=unlock_payload["p1_precombat"],
                 context=p1_context,
-                units_killed=int(unlock_payload.get('p1_kills', 0) or 0),
-                survivors=int(unlock_payload.get('p1_survivors', 0) or 0),
+                units_killed=int(unlock_payload.get("p1_kills", 0) or 0),
+                survivors=int(unlock_payload.get("p1_survivors", 0) or 0),
                 damage_taken=int(p1_damage_taken),
             )
             p1_unlocked = self.unlock_manager.evaluate_post_combat(
                 player=p1,
-                precombat_units=unlock_payload['p1_precombat'],
+                precombat_units=unlock_payload["p1_precombat"],
                 context=p1_context,
             )
 
             p2_unlocked: List[str] = []
             if not is_ghost:
                 p2_trials = bool(
-                    set(self.player_augments.get(p2.player_id, []))
-                    .intersection(_TRIALS_OF_TWILIGHT_AUGMENTS)
+                    set(self.player_augments.get(p2.player_id, [])).intersection(
+                        _TRIALS_OF_TWILIGHT_AUGMENTS
+                    )
                 )
                 p2_context = CombatUnlockContext(
-                    phase='pvp',
+                    phase="pvp",
                     outcome=p2_outcome,
-                    shadow_souls_gained=unlock_payload.get('p2_shadow_souls', 0),
-                    draven_gold_dropped=unlock_payload.get('p2_draven_gold', 0),
-                    dead_instance_ids=set(unlock_payload.get('p2_dead_instance_ids', set())),
-                    victim_api_names=set(unlock_payload.get('p2_victim_api_names', set())),
+                    shadow_souls_gained=unlock_payload.get("p2_shadow_souls", 0),
+                    draven_gold_dropped=unlock_payload.get("p2_draven_gold", 0),
+                    dead_instance_ids=set(unlock_payload.get("p2_dead_instance_ids", set())),
+                    victim_api_names=set(unlock_payload.get("p2_victim_api_names", set())),
                     has_trials_of_twilight=p2_trials,
                 )
                 self._resolve_ixtal_quest_post_combat(
                     player=p2,
-                    precombat_units=unlock_payload['p2_precombat'],
+                    precombat_units=unlock_payload["p2_precombat"],
                     context=p2_context,
-                    units_killed=int(unlock_payload.get('p2_kills', 0) or 0),
-                    survivors=int(unlock_payload.get('p2_survivors', 0) or 0),
+                    units_killed=int(unlock_payload.get("p2_kills", 0) or 0),
+                    survivors=int(unlock_payload.get("p2_survivors", 0) or 0),
                     damage_taken=int(p2_damage_taken),
                 )
                 p2_unlocked = self.unlock_manager.evaluate_post_combat(
                     player=p2,
-                    precombat_units=unlock_payload['p2_precombat'],
+                    precombat_units=unlock_payload["p2_precombat"],
                     context=p2_context,
                 )
                 if p2_outcome in {"win", "loss"}:
@@ -677,13 +703,15 @@ class TFTGame:
         if self.verbose:
             for p in self.players:
                 status = "DEAD" if not p.alive else f"HP={p.hp}"
-                print(f"  P{p.player_id}: {status}, gold={p.gold}, "
-                      f"lvl={p.level}, board={p.board_count}")
+                print(
+                    f"  P{p.player_id}: {status}, gold={p.gold}, "
+                    f"lvl={p.level}, board={p.board_count}"
+                )
 
     # ── Augment Selection ──────────────────────────────────────────────────
 
     # Map from game round number to augment tag in data
-    _ROUND_TO_TAG = {4: '2-1', 11: '3-2', 18: '4-2'}
+    _ROUND_TO_TAG = {4: "2-1", 11: "3-2", 18: "4-2"}
 
     def _augment_selection_phase(self):
         """Offer each player 3 augments of the same lobby-wide tier.
@@ -724,13 +752,11 @@ class TFTGame:
                 player_tier = _TIER_ORDER[idx]
                 self.player_tier_shifts[pid] = 0  # Consume the shift
 
-            pool = [a for a in tier_pools.get(player_tier, [])
-                    if a not in already_chosen]
+            pool = [a for a in tier_pools.get(player_tier, []) if a not in already_chosen]
 
             if not pool:
                 # Fallback: try any augment available at this stage
-                pool = [a for a in _AUGMENTS_BY_ROUND.get(tag, [])
-                        if a not in already_chosen]
+                pool = [a for a in _AUGMENTS_BY_ROUND.get(tag, []) if a not in already_chosen]
 
             if not pool:
                 continue
@@ -751,8 +777,7 @@ class TFTGame:
                 tier_info = f"[{player_tier}]"
                 if player_tier != lobby_tier:
                     tier_info += f" (shifted from {lobby_tier})"
-                print(f"  P{pid} chose augment: {chosen} "
-                      f"{tier_info} (from {len(choices)} options)")
+                print(f"  P{pid} chose augment: {chosen} {tier_info} (from {len(choices)} options)")
 
     def _roll_lobby_tier(self, stage_idx: int) -> str:
         """Roll the lobby augment tier using dependent conditional probabilities.
@@ -837,7 +862,7 @@ class TFTGame:
             champ = ChampionInstance(
                 instance_id=player._alloc_instance_id(),
                 name=champ_name,
-                api_name=NAME_TO_API.get(champ_name, f'TFT16_{champ_name.capitalize()}'),
+                api_name=NAME_TO_API.get(champ_name, f"TFT16_{champ_name.capitalize()}"),
                 cost=cost,
                 star_level=1,
                 items=[item],
@@ -851,8 +876,7 @@ class TFTGame:
                 player._check_upgrade(champ_name, self.pool)
 
             if self.verbose:
-                print(f"  P{player.player_id} (HP={player.hp}) picks "
-                      f"{champ_name} [{item}]")
+                print(f"  P{player.player_id} (HP={player.hp}) picks {champ_name} [{item}]")
 
     # ── Combat Resolution ─────────────────────────────────────────────────
 
@@ -864,26 +888,26 @@ class TFTGame:
         is_ghost: bool,
     ) -> Tuple[RoundResult, List[Dict[str, Any]], Dict[str, Any]]:
         """Resolve combat between two players using the combat engine."""
-        use_rust_engine = self.engine_name == 'rust'
+        use_rust_engine = self.engine_name == "rust"
         team0 = p1.build_combat_team(self.engine, use_rust_engine=use_rust_engine)
         team1 = p2.build_combat_team(self.engine, use_rust_engine=use_rust_engine)
         p1_precombat = self.unlock_manager.build_precombat_snapshot(p1, team0)
         p2_precombat = self.unlock_manager.build_precombat_snapshot(p2, team1)
         unlock_payload: Dict[str, Any] = {
-            'p1_precombat': p1_precombat,
-            'p2_precombat': p2_precombat,
-            'p1_shadow_souls': 0,
-            'p2_shadow_souls': 0,
-            'p1_draven_gold': 0,
-            'p2_draven_gold': 0,
-            'p1_dead_instance_ids': set(),
-            'p2_dead_instance_ids': set(),
-            'p1_victim_api_names': set(),
-            'p2_victim_api_names': set(),
-            'p1_kills': 0,
-            'p2_kills': 0,
-            'p1_survivors': 0,
-            'p2_survivors': 0,
+            "p1_precombat": p1_precombat,
+            "p2_precombat": p2_precombat,
+            "p1_shadow_souls": 0,
+            "p2_shadow_souls": 0,
+            "p1_draven_gold": 0,
+            "p2_draven_gold": 0,
+            "p1_dead_instance_ids": set(),
+            "p2_dead_instance_ids": set(),
+            "p1_victim_api_names": set(),
+            "p2_victim_api_names": set(),
+            "p1_kills": 0,
+            "p2_kills": 0,
+            "p1_survivors": 0,
+            "p2_survivors": 0,
         }
 
         # Handle empty boards
@@ -891,8 +915,11 @@ class TFTGame:
             base_damage = get_round_damage(self.round_num, 0)
             return (
                 RoundResult(
-                    winner_id=p1.player_id, loser_id=p2.player_id,
-                    survivors=0, combat_time=0, damage_to_loser=base_damage,
+                    winner_id=p1.player_id,
+                    loser_id=p2.player_id,
+                    survivors=0,
+                    combat_time=0,
+                    damage_to_loser=base_damage,
                     is_draw=True,
                 ),
                 [],
@@ -902,8 +929,10 @@ class TFTGame:
             damage = get_round_damage(self.round_num, len(team1))
             return (
                 RoundResult(
-                    winner_id=p2.player_id, loser_id=p1.player_id,
-                    survivors=len(team1), combat_time=0,
+                    winner_id=p2.player_id,
+                    loser_id=p1.player_id,
+                    survivors=len(team1),
+                    combat_time=0,
                     damage_to_loser=damage,
                 ),
                 [],
@@ -913,8 +942,10 @@ class TFTGame:
             damage = get_round_damage(self.round_num, len(team0))
             return (
                 RoundResult(
-                    winner_id=p1.player_id, loser_id=p2.player_id,
-                    survivors=len(team0), combat_time=0,
+                    winner_id=p1.player_id,
+                    loser_id=p2.player_id,
+                    survivors=len(team0),
+                    combat_time=0,
                     damage_to_loser=damage,
                 ),
                 [],
@@ -924,9 +955,9 @@ class TFTGame:
         # Mirror team1 positions (flip rows) for opponent side
         for unit in team1:
             if use_rust_engine:
-                unit['team'] = 1
-                row, col = unit['position']
-                unit['position'] = [BOARD_ROWS - 1 - row, col]
+                unit["team"] = 1
+                row, col = unit["position"]
+                unit["position"] = [BOARD_ROWS - 1 - row, col]
             else:
                 unit.team = 1
                 row, col = unit.position
@@ -937,13 +968,15 @@ class TFTGame:
         p2_augments = self.player_augments.get(p2.player_id, [])
 
         run_kwargs: Dict[str, Any] = {
-            'team0_augments': p1_augments if p1_augments else None,
-            'team1_augments': p2_augments if p2_augments else None,
+            "team0_augments": p1_augments if p1_augments else None,
+            "team1_augments": p2_augments if p2_augments else None,
         }
-        if self.engine_name in ('python', 'rust') and self.seed is not None:
-            run_kwargs['seed'] = _derive_combat_seed(self.seed, self.round_num, p1.player_id, p2.player_id, is_ghost)
+        if self.engine_name in ("python", "rust") and self.seed is not None:
+            run_kwargs["seed"] = _derive_combat_seed(
+                self.seed, self.round_num, p1.player_id, p2.player_id, is_ghost
+            )
 
-        if self.engine_name == 'python':
+        if self.engine_name == "python":
             self.engine.set_round_persistent_players(p1, None if is_ghost else p2)
             try:
                 result = self.engine.run_combat(team0, team1, **run_kwargs)
@@ -951,15 +984,15 @@ class TFTGame:
                 self.engine.set_round_persistent_players(None, None)
         else:
             result = self.engine.run_combat(team0, team1, **run_kwargs)
-        debug_takedowns = result.get('debug_takedowns', []) or []
+        debug_takedowns = result.get("debug_takedowns", []) or []
 
         p1_victim_api_names: Set[str] = set()
         p2_victim_api_names: Set[str] = set()
         p1_kills = 0
         p2_kills = 0
         for takedown in debug_takedowns:
-            victim_api = takedown.get('victim_api_name')
-            victim_team = takedown.get('victim_team')
+            victim_api = takedown.get("victim_api_name")
+            victim_team = takedown.get("victim_team")
             if not isinstance(victim_api, str):
                 continue
             if victim_team == 0:
@@ -975,58 +1008,62 @@ class TFTGame:
         p2_draven_gold = 0
         p1_shadow_souls = 0
         p2_shadow_souls = 0
-        if self.engine_name == 'python':
+        if self.engine_name == "python":
             for unit in team0:
-                instance_id = getattr(unit, 'instance_id', '')
-                if instance_id and not getattr(unit, 'is_alive', True):
+                instance_id = getattr(unit, "instance_id", "")
+                if instance_id and not getattr(unit, "is_alive", True):
                     p1_dead_instance_ids.add(instance_id)
-                p1_draven_gold += int(getattr(unit, '_draven_gold', 0) or 0)
+                p1_draven_gold += int(getattr(unit, "_draven_gold", 0) or 0)
             for unit in team1:
-                instance_id = getattr(unit, 'instance_id', '')
-                if instance_id and not getattr(unit, 'is_alive', True):
+                instance_id = getattr(unit, "instance_id", "")
+                if instance_id and not getattr(unit, "is_alive", True):
                     p2_dead_instance_ids.add(instance_id)
-                p2_draven_gold += int(getattr(unit, '_draven_gold', 0) or 0)
+                p2_draven_gold += int(getattr(unit, "_draven_gold", 0) or 0)
 
             p1_shadow_souls = int(self.engine.trait_manager.get_shadow_isles_souls(0) or 0)
             p2_shadow_souls = int(self.engine.trait_manager.get_shadow_isles_souls(1) or 0)
         else:
-            p1_shadow_souls = int(result.get('team0_shadow_isles_souls', 0) or 0)
-            p2_shadow_souls = int(result.get('team1_shadow_isles_souls', 0) or 0)
+            p1_shadow_souls = int(result.get("team0_shadow_isles_souls", 0) or 0)
+            p2_shadow_souls = int(result.get("team1_shadow_isles_souls", 0) or 0)
 
-        unlock_payload.update({
-            'p1_shadow_souls': p1_shadow_souls,
-            'p2_shadow_souls': p2_shadow_souls,
-            'p1_draven_gold': p1_draven_gold,
-            'p2_draven_gold': p2_draven_gold,
-            'p1_dead_instance_ids': p1_dead_instance_ids,
-            'p2_dead_instance_ids': p2_dead_instance_ids,
-            'p1_victim_api_names': p1_victim_api_names,
-            'p2_victim_api_names': p2_victim_api_names,
-            'p1_kills': p1_kills,
-            'p2_kills': p2_kills,
-            'p1_survivors': int(result.get('team0_survivors', 0) or 0),
-            'p2_survivors': int(result.get('team1_survivors', 0) or 0),
-        })
+        unlock_payload.update(
+            {
+                "p1_shadow_souls": p1_shadow_souls,
+                "p2_shadow_souls": p2_shadow_souls,
+                "p1_draven_gold": p1_draven_gold,
+                "p2_draven_gold": p2_draven_gold,
+                "p1_dead_instance_ids": p1_dead_instance_ids,
+                "p2_dead_instance_ids": p2_dead_instance_ids,
+                "p1_victim_api_names": p1_victim_api_names,
+                "p2_victim_api_names": p2_victim_api_names,
+                "p1_kills": p1_kills,
+                "p2_kills": p2_kills,
+                "p1_survivors": int(result.get("team0_survivors", 0) or 0),
+                "p2_survivors": int(result.get("team1_survivors", 0) or 0),
+            }
+        )
 
-        if result['winner'] == 0:
-            damage = get_round_damage(self.round_num, result['team0_survivors'])
+        if result["winner"] == 0:
+            damage = get_round_damage(self.round_num, result["team0_survivors"])
             return (
                 RoundResult(
-                    winner_id=p1.player_id, loser_id=p2.player_id,
-                    survivors=result['team0_survivors'],
-                    combat_time=result['combat_time'],
+                    winner_id=p1.player_id,
+                    loser_id=p2.player_id,
+                    survivors=result["team0_survivors"],
+                    combat_time=result["combat_time"],
                     damage_to_loser=damage,
                 ),
                 debug_takedowns,
                 unlock_payload,
             )
         else:
-            damage = get_round_damage(self.round_num, result['team1_survivors'])
+            damage = get_round_damage(self.round_num, result["team1_survivors"])
             return (
                 RoundResult(
-                    winner_id=p2.player_id, loser_id=p1.player_id,
-                    survivors=result['team1_survivors'],
-                    combat_time=result['combat_time'],
+                    winner_id=p2.player_id,
+                    loser_id=p1.player_id,
+                    survivors=result["team1_survivors"],
+                    combat_time=result["combat_time"],
                     damage_to_loser=damage,
                 ),
                 debug_takedowns,
@@ -1053,9 +1090,7 @@ class TFTGame:
 
             # Find best opponent based on weights
             candidates = [
-                p for p in alive
-                if p.player_id != player.player_id
-                and p.player_id not in paired
+                p for p in alive if p.player_id != player.player_id and p.player_id not in paired
             ]
 
             if not candidates:
@@ -1063,25 +1098,18 @@ class TFTGame:
                 ghost_opponent = random.choice(
                     [p for p in alive if p.player_id != player.player_id]
                 )
-                matchups.append(
-                    (player.player_id, ghost_opponent.player_id, True)
-                )
+                matchups.append((player.player_id, ghost_opponent.player_id, True))
                 paired.add(player.player_id)
                 continue
 
             # Weight-based selection
-            weights = [
-                self._matchmaking_weights[player.player_id][c.player_id]
-                for c in candidates
-            ]
+            weights = [self._matchmaking_weights[player.player_id][c.player_id] for c in candidates]
             total = sum(weights)
             if total == 0:
                 weights = [1] * len(candidates)
 
             opponent = random.choices(candidates, weights=weights, k=1)[0]
-            matchups.append(
-                (player.player_id, opponent.player_id, False)
-            )
+            matchups.append((player.player_id, opponent.player_id, False))
             paired.add(player.player_id)
             paired.add(opponent.player_id)
 
@@ -1126,8 +1154,9 @@ class TFTGame:
             placement += 1
 
             if self.verbose:
-                print(f"  ** Player {player.player_id} eliminated "
-                      f"(placement: {player.placement}) **")
+                print(
+                    f"  ** Player {player.player_id} eliminated (placement: {player.placement}) **"
+                )
 
     # ── State Inspection ──────────────────────────────────────────────────
 
@@ -1135,49 +1164,50 @@ class TFTGame:
         """Get observable game state for a player (for RL agents)."""
         player = self.players[player_id]
         return {
-            'round': self.round_num,
-            'phase': 'combat',
-            'player': {
-                'id': player.player_id,
-                'hp': player.hp,
-                'gold': player.gold,
-                'level': player.level,
-                'xp': player.xp,
-                'win_streak': player.win_streak,
-                'loss_streak': player.loss_streak,
-                'board': {
+            "round": self.round_num,
+            "phase": "combat",
+            "player": {
+                "id": player.player_id,
+                "hp": player.hp,
+                "gold": player.gold,
+                "level": player.level,
+                "xp": player.xp,
+                "win_streak": player.win_streak,
+                "loss_streak": player.loss_streak,
+                "board": {
                     f"{r},{c}": {
-                        'name': ch.name,
-                        'star': ch.star_level,
-                        'items': ch.items,
+                        "name": ch.name,
+                        "star": ch.star_level,
+                        "items": ch.items,
                     }
                     for (r, c), ch in player.board.items()
                 },
-                'bench': [
-                    {'name': ch.name, 'star': ch.star_level, 'items': ch.items}
-                    if ch else None
+                "bench": [
+                    {"name": ch.name, "star": ch.star_level, "items": ch.items} if ch else None
                     for ch in player.bench
                 ],
-                'shop': player.shop,
-                'item_bench': player.item_bench[:],
-                'augments': self.player_augments.get(player.player_id, []),
-                'traits': player.get_active_traits(),
+                "shop": player.shop,
+                "item_bench": player.item_bench[:],
+                "augments": self.player_augments.get(player.player_id, []),
+                "traits": player.get_active_traits(),
             },
-            'opponents': [
+            "opponents": [
                 {
-                    'id': p.player_id,
-                    'hp': p.hp,
-                    'level': p.level,
-                    'board_count': p.board_count,
-                    'traits': p.get_active_traits(),
+                    "id": p.player_id,
+                    "hp": p.hp,
+                    "level": p.level,
+                    "board_count": p.board_count,
+                    "traits": p.get_active_traits(),
                 }
-                for p in self.players if p.alive and p.player_id != player_id
+                for p in self.players
+                if p.alive and p.player_id != player_id
             ],
-            'alive_count': len(self.alive_players),
+            "alive_count": len(self.alive_players),
         }
 
 
 # ── CLI Entry Point ───────────────────────────────────────────────────────
+
 
 def main():
     """Run a sample game and print results."""
@@ -1192,11 +1222,13 @@ def main():
     print("=" * 50)
     for player_id, placement in placements:
         p = game.players[player_id]
-        print(f"  #{placement}: Player {player_id} "
-              f"(HP={p.hp}, Level={p.level}, Board={p.board_count})")
+        print(
+            f"  #{placement}: Player {player_id} "
+            f"(HP={p.hp}, Level={p.level}, Board={p.board_count})"
+        )
 
     print(f"\nGame ended after {game.round_num} rounds")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

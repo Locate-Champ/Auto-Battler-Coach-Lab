@@ -2,8 +2,8 @@
 This is here to tell pytest that this is the source folder.
 """
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 _simulator_root = Path(__file__).resolve().parent
 _simulator_path = str(_simulator_root)

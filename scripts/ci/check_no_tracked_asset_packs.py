@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import subprocess
-import sys
 
 FORBIDDEN_SUBSTRINGS = (
     "trait_icons_",

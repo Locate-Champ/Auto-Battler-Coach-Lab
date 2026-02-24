@@ -5,8 +5,8 @@ packages. Add `<repo>/simulator` to `sys.path` early so those imports work in
 workers and local tests consistently.
 """
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 _repo_root = Path(__file__).resolve().parent
 _simulator_root = _repo_root / "simulator"
