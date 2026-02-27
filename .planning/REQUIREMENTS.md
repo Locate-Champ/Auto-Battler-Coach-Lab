@@ -9,8 +9,8 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Exception Handling
 
-- [ ] **EXCP-01**: All 39 bare/broad exception handlers narrowed to specific exception types (per-site audit, not mass replacement)
-- [ ] **EXCP-02**: Models layer exceptions (feature_engineering.py, data_loader.py, train_xgboost.py) use `except ImportError`, `except (ImportError, OSError)` for extensions, or other specific types
+- [x] **EXCP-01**: All 39 bare/broad exception handlers narrowed to specific exception types (per-site audit, not mass replacement)
+- [x] **EXCP-02**: Models layer exceptions (feature_engineering.py, data_loader.py, train_xgboost.py) use `except ImportError`, `except (ImportError, OSError)` for extensions, or other specific types
 - [ ] **EXCP-03**: Simulator layer exceptions narrowed with determinism-safe fallback preservation
 - [ ] **EXCP-04**: Coach layer exceptions narrowed; intentional fallbacks converted to logged `except SpecificError` + `log.warning`
 - [ ] **EXCP-05**: Ruff rules `BLE` and `B` enabled in ruff.toml to statically detect future broad exceptions
@@ -96,8 +96,8 @@ Deferred to future milestone. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXCP-01 | Phase 1 | Pending |
-| EXCP-02 | Phase 1 | Pending |
+| EXCP-01 | Phase 1 | Complete |
+| EXCP-02 | Phase 1 | Complete |
 | EXCP-03 | Phase 9 | Pending |
 | EXCP-04 | Phase 9 | Pending |
 | EXCP-05 | Phase 6 | Pending |
