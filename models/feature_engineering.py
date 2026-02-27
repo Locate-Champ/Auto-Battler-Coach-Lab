@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import functools
 import json
+import logging
 import math
 import os
 import re
@@ -27,6 +28,8 @@ except ImportError:
     _cy_team_summary = None
     _cy_parse_units_column = None
     _CYTHON_FE = False
+
+_log = logging.getLogger(__name__)
 
 EPSILON = 1e-6
 STAR_SCALING_HP = {1: 1.0, 2: 1.8, 3: 3.24}
@@ -175,6 +178,35 @@ class TFTFeatureEngineer:
         self.personal_item_scores: Dict[str, float] = {}
 
         self._load_reference_data()
+        self._build_fast_lookup_sets()
+        self._feature_names_cache = self._build_feature_names()
+
+    # --- Pickle optimization: exclude large derived caches from serialization ---
+    # The packed dicts (_champion_packed, _item_packed, flag sets) and
+    # _feature_names_cache are all derived from the base reference dicts.
+    # Excluding them reduces pickle size by ~70% and they are rebuilt on unpickle.
+    _DERIVED_ATTRS = (
+        "_champion_packed",
+        "_item_packed",
+        "_qss_items",
+        "_guardbreaker_items",
+        "_blue_buff_items",
+        "_shojin_items",
+        "_morello_items",
+        "_ionic_items",
+        "_cc_heavy_api_names",
+        "_item_personal_by_canonical",
+        "_feature_names_cache",
+    )
+
+    def __getstate__(self) -> Dict[str, Any]:
+        state = self.__dict__.copy()
+        for attr in self._DERIVED_ATTRS:
+            state.pop(attr, None)
+        return state
+
+    def __setstate__(self, state: Dict[str, Any]) -> None:
+        self.__dict__.update(state)
         self._build_fast_lookup_sets()
         self._feature_names_cache = self._build_feature_names()
 
@@ -473,9 +505,8 @@ class TFTFeatureEngineer:
             for component in set16_items.BASE_COMPONENTS.keys():
                 self.component_items.add(component)
                 self.component_items.add(f"TFT_Item_{component}")
-        except Exception:
-            # Keep running even when simulator package import fails.
-            pass
+        except (ImportError, ModuleNotFoundError):
+            _log.debug("simulator.data.set16_items not available; skipping native item merge")
 
     def _infer_augment_tier(self, augment: Mapping[str, Any]) -> int:
         texture = str(augment.get("texture", "")) + " " + str(augment.get("icon", ""))

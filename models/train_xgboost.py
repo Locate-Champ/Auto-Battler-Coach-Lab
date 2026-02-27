@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import gc
 import json
+import logging
 import shutil
 from pathlib import Path
 from typing import Any, Dict, Iterator, List, Optional, Tuple
@@ -22,6 +23,8 @@ from sklearn.metrics import (
 
 from .data_loader import DataLoader
 from .feature_engineering import FeatureConfig, TFTFeatureEngineer
+
+_log = logging.getLogger(__name__)
 
 BASE_TREE_PARAMS = {
     "max_depth": 0,
@@ -45,8 +48,8 @@ def _best_xgb_device() -> str:
 
         if torch.cuda.is_available():
             return "cuda"
-    except Exception:
-        pass
+    except ImportError:
+        _log.info("torch not available; XGBoost will use CPU device")
     return "cpu"
 
 
@@ -755,33 +758,68 @@ def main() -> None:
         else:
             baseline_metric = float(metrics["mae"])
             is_higher_better = False
-    elif getattr(args, "arrow", False) and args.task == "fight":
-        X_train, X_test, y_train, y_test = loader.load_fight_prediction_arrow(
-            test_size=args.test_size,
-            seed=args.seed,
-            max_rows=args.max_rows,
-        )
+    elif getattr(args, "arrow", False) and args.task in {"fight", "top4", "placement"}:
+        if args.task == "fight":
+            X_train, X_test, y_train, y_test = loader.load_fight_prediction_arrow(
+                test_size=args.test_size,
+                seed=args.seed,
+                max_rows=args.max_rows,
+            )
+        elif args.task == "top4":
+            X_train, X_test, y_train, y_test = loader.load_top4_classification_arrow(
+                test_size=args.test_size,
+                seed=args.seed,
+                max_rows=args.max_rows,
+            )
+        else:
+            X_train, X_test, y_train, y_test = loader.load_placement_prediction_arrow(
+                test_size=args.test_size,
+                seed=args.seed,
+                max_rows=args.max_rows,
+            )
         params = dict(BASE_TREE_PARAMS)
-        params.update(
-            {
-                "objective": "binary:logistic",
-                "eval_metric": "auc",
-                "device": _best_xgb_device(),
-                "n_estimators": args.n_estimators,
-            }
-        )
-        model = _train_with_fallback(
-            xgb.XGBClassifier,
-            params,
-            X_train,
-            y_train,
-            X_test,
-            y_test,
-            early_stopping_rounds=es_rounds,
-        )
-        metrics = _evaluate_classification("fight", model, X_test, y_test)
-        baseline_metric = float(metrics["accuracy"])
-        is_higher_better = True
+        if args.task in {"fight", "top4"}:
+            params.update(
+                {
+                    "objective": "binary:logistic",
+                    "eval_metric": "auc",
+                    "device": _best_xgb_device(),
+                    "n_estimators": args.n_estimators,
+                }
+            )
+            model = _train_with_fallback(
+                xgb.XGBClassifier,
+                params,
+                X_train,
+                y_train,
+                X_test,
+                y_test,
+                early_stopping_rounds=es_rounds,
+            )
+            metrics = _evaluate_classification(args.task, model, X_test, y_test)
+            baseline_metric = float(metrics["accuracy"])
+            is_higher_better = True
+        else:
+            params.update(
+                {
+                    "objective": "reg:squarederror",
+                    "eval_metric": "mae",
+                    "device": _best_xgb_device(),
+                    "n_estimators": args.n_estimators,
+                }
+            )
+            model = _train_with_fallback(
+                xgb.XGBRegressor,
+                params,
+                X_train,
+                y_train,
+                X_test,
+                y_test,
+                early_stopping_rounds=es_rounds,
+            )
+            metrics = _evaluate_regression(model, X_test, y_test)
+            baseline_metric = float(metrics["mae"])
+            is_higher_better = False
     else:
         if args.task == "fight":
             X_train, X_test, y_train, y_test = loader.load_fight_prediction_data(

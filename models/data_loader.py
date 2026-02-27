@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import multiprocessing
 import os
 import pickle
@@ -18,9 +19,10 @@ from .feature_engineering import FeatureConfig, TFTFeatureEngineer
 
 try:  # pragma: no cover - optional dependency
     import pyarrow.parquet as pq
-except Exception:  # pragma: no cover - optional dependency
+except (ImportError, OSError):  # pragma: no cover - optional dependency
     pq = None
 
+_log = logging.getLogger(__name__)
 
 _worker_fe: Optional[TFTFeatureEngineer] = None
 
@@ -95,7 +97,12 @@ class DataLoader:
                     initializer=_init_fe_worker_pickled,
                     initargs=(fe_state,),
                 )
-            except (pickle.PicklingError, TypeError):
+            except (pickle.PicklingError, TypeError) as exc:
+                _log.warning(
+                    "FeatureEngineer pickle failed (%s); falling back to disk-based worker init "
+                    "(~30ms per worker vs ~1ms). Consider fixing __getstate__ if this persists.",
+                    exc,
+                )
                 self._pool = multiprocessing.Pool(
                     processes=workers,
                     initializer=_init_fe_worker,
@@ -514,6 +521,258 @@ class DataLoader:
         )
         print("[fight] labeling=current_round_combat_result")
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
+
+    def load_top4_classification_arrow(
+        self,
+        test_size: float = 0.2,
+        seed: int = 42,
+        max_rows: Optional[int] = None,
+        batch_size: int = 8192,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Arrow-based top4 classification: Parquet -> features without row dicts.
+
+        Streams Arrow batches, extracts placement labels from scalar columns,
+        transforms features via transform_arrow_batch, then splits by game_id.
+        Label: 1 if placement <= 4, else 0.
+        """
+        if pq is None:
+            raise RuntimeError("pyarrow required for Arrow training path")
+
+        import pyarrow as pa
+
+        feature_chunks: List[np.ndarray] = []
+        labels_list: List[int] = []
+        game_ids_list: List[Optional[int]] = []
+        collected = 0
+
+        for batch in self.iter_arrow_batches(batch_size=batch_size):
+            schema_names = set(batch.schema.names)
+            if "placement" not in schema_names:
+                continue
+
+            placements = batch.column("placement").to_pylist()
+            game_ids_raw = (
+                batch.column("game_id").to_pylist()
+                if "game_id" in schema_names
+                else [None] * batch.num_rows
+            )
+
+            # Filter rows with valid placement (1-8)
+            valid_indices: List[int] = []
+            batch_labels: List[int] = []
+            batch_game_ids: List[Optional[int]] = []
+            for i, placement in enumerate(placements):
+                if placement is not None and int(placement) > 0:
+                    valid_indices.append(i)
+                    batch_labels.append(1 if int(placement) <= 4 else 0)
+                    gid = game_ids_raw[i]
+                    batch_game_ids.append(int(gid) if gid is not None else None)
+
+            if not valid_indices:
+                continue
+
+            filtered_batch = batch.take(pa.array(valid_indices, type=pa.int32()))
+            features = self.feature_engineer.transform_arrow_batch(filtered_batch)
+            feature_chunks.append(features)
+            labels_list.extend(batch_labels)
+            game_ids_list.extend(batch_game_ids)
+            collected += len(batch_labels)
+
+            if max_rows is not None and collected >= max_rows:
+                excess = collected - max_rows
+                if excess > 0:
+                    feature_chunks[-1] = feature_chunks[-1][:-excess]
+                    labels_list = labels_list[:max_rows]
+                    game_ids_list = game_ids_list[:max_rows]
+                break
+
+        if not feature_chunks:
+            raise ValueError("No top4 examples found. Need rows with placement > 0.")
+
+        X_all = np.vstack(feature_chunks)
+        y_all = np.asarray(labels_list, dtype=np.int64)
+
+        # Split by game_id using the same Knuth-hash split as load_fight_prediction_arrow
+        if all(gid is not None for gid in game_ids_list):
+            game_to_indices: Dict[Any, List[int]] = {}
+            for i, gid in enumerate(game_ids_list):
+                game_to_indices.setdefault(gid, []).append(i)
+
+            unique_games = np.array(list(game_to_indices.keys()))
+            game_labels = []
+            for gid in unique_games:
+                indices = game_to_indices[gid]
+                avg = float(np.mean(y_all[indices]))
+                game_labels.append(1 if avg >= 0.5 else 0)
+            game_labels_arr = np.asarray(game_labels)
+
+            stratify_arr = game_labels_arr if len(np.unique(game_labels_arr)) > 1 else None
+            try:
+                train_games, test_games = train_test_split(
+                    unique_games,
+                    test_size=test_size,
+                    random_state=seed,
+                    stratify=stratify_arr,
+                )
+            except ValueError:
+                train_games, test_games = train_test_split(
+                    unique_games,
+                    test_size=test_size,
+                    random_state=seed,
+                )
+            train_set = set(train_games.tolist())
+            train_idx = [i for i, gid in enumerate(game_ids_list) if gid in train_set]
+            test_idx = [i for i, gid in enumerate(game_ids_list) if gid not in train_set]
+        else:
+            indices = np.arange(len(y_all))
+            stratify_arr = y_all if len(np.unique(y_all)) > 1 else None
+            try:
+                train_idx_arr, test_idx_arr = train_test_split(
+                    indices,
+                    test_size=test_size,
+                    random_state=seed,
+                    stratify=stratify_arr,
+                )
+                train_idx = train_idx_arr.tolist()
+                test_idx = test_idx_arr.tolist()
+            except ValueError:
+                train_idx = list(range(len(y_all)))
+                test_idx = []
+
+        X_train = X_all[train_idx]
+        X_test = X_all[test_idx]
+        y_train = y_all[train_idx]
+        y_test = y_all[test_idx]
+
+        self._print_dataset_stats(
+            task_name="top4",
+            total_rows=len(y_all),
+            train_rows=X_train.shape[0],
+            test_rows=X_test.shape[0],
+            y_train=y_train,
+            y_test=y_test,
+            feature_count=X_train.shape[1],
+        )
+        print("[top4] labeling=placement<=4")
+        return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
+
+    def load_placement_prediction_arrow(
+        self,
+        test_size: float = 0.2,
+        seed: int = 42,
+        max_rows: Optional[int] = None,
+        batch_size: int = 8192,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Arrow-based placement regression: Parquet -> features without row dicts.
+
+        Streams Arrow batches, extracts placement as a float regression label,
+        transforms features via transform_arrow_batch, then splits by game_id.
+        """
+        if pq is None:
+            raise RuntimeError("pyarrow required for Arrow training path")
+
+        import pyarrow as pa
+
+        feature_chunks: List[np.ndarray] = []
+        labels_list: List[float] = []
+        game_ids_list: List[Optional[int]] = []
+        collected = 0
+
+        for batch in self.iter_arrow_batches(batch_size=batch_size):
+            schema_names = set(batch.schema.names)
+            if "placement" not in schema_names:
+                continue
+
+            placements = batch.column("placement").to_pylist()
+            game_ids_raw = (
+                batch.column("game_id").to_pylist()
+                if "game_id" in schema_names
+                else [None] * batch.num_rows
+            )
+
+            # Filter rows with valid placement (1-8)
+            valid_indices: List[int] = []
+            batch_labels: List[float] = []
+            batch_game_ids: List[Optional[int]] = []
+            for i, placement in enumerate(placements):
+                if placement is not None and int(placement) > 0:
+                    valid_indices.append(i)
+                    batch_labels.append(float(placement))
+                    gid = game_ids_raw[i]
+                    batch_game_ids.append(int(gid) if gid is not None else None)
+
+            if not valid_indices:
+                continue
+
+            filtered_batch = batch.take(pa.array(valid_indices, type=pa.int32()))
+            features = self.feature_engineer.transform_arrow_batch(filtered_batch)
+            feature_chunks.append(features)
+            labels_list.extend(batch_labels)
+            game_ids_list.extend(batch_game_ids)
+            collected += len(batch_labels)
+
+            if max_rows is not None and collected >= max_rows:
+                excess = collected - max_rows
+                if excess > 0:
+                    feature_chunks[-1] = feature_chunks[-1][:-excess]
+                    labels_list = labels_list[:max_rows]
+                    game_ids_list = game_ids_list[:max_rows]
+                break
+
+        if not feature_chunks:
+            raise ValueError("No placement examples found. Need rows with placement > 0.")
+
+        X_all = np.vstack(feature_chunks)
+        y_all = np.asarray(labels_list, dtype=np.float32)
+
+        # Split by game_id (no stratification for regression)
+        if all(gid is not None for gid in game_ids_list):
+            game_to_indices: Dict[Any, List[int]] = {}
+            for i, gid in enumerate(game_ids_list):
+                game_to_indices.setdefault(gid, []).append(i)
+
+            unique_games = np.array(list(game_to_indices.keys()))
+            try:
+                train_games, test_games = train_test_split(
+                    unique_games,
+                    test_size=test_size,
+                    random_state=seed,
+                )
+            except ValueError:
+                train_games, test_games = unique_games, np.array([], dtype=unique_games.dtype)
+            train_set = set(train_games.tolist())
+            train_idx = [i for i, gid in enumerate(game_ids_list) if gid in train_set]
+            test_idx = [i for i, gid in enumerate(game_ids_list) if gid not in train_set]
+        else:
+            indices = np.arange(len(y_all))
+            try:
+                train_idx_arr, test_idx_arr = train_test_split(
+                    indices,
+                    test_size=test_size,
+                    random_state=seed,
+                )
+                train_idx = train_idx_arr.tolist()
+                test_idx = test_idx_arr.tolist()
+            except ValueError:
+                train_idx = list(range(len(y_all)))
+                test_idx = []
+
+        X_train = X_all[train_idx]
+        X_test = X_all[test_idx]
+        y_train = y_all[train_idx]
+        y_test = y_all[test_idx]
+
+        self._print_dataset_stats(
+            task_name="placement",
+            total_rows=len(y_all),
+            train_rows=X_train.shape[0],
+            test_rows=X_test.shape[0],
+            y_train=y_train,
+            y_test=y_test,
+            feature_count=X_train.shape[1],
+        )
+        print("[placement] labeling=final_placement_regression")
+        return X_train, X_test, y_train, y_test
 
     def _print_dataset_stats(
         self,

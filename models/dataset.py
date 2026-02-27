@@ -17,7 +17,7 @@ from .feature_engineering import TFTFeatureEngineer
 
 try:  # pragma: no cover - optional dependency
     import pyarrow.parquet as pq
-except Exception:  # pragma: no cover - optional dependency
+except (ImportError, OSError):  # pragma: no cover - optional dependency
     pq = None
 
 
@@ -56,6 +56,66 @@ def _iter_rows_from_files(
 ) -> Iterator[Dict[str, Any]]:
     for path in files:
         yield from _iter_file_rows(path, row_batch_size=row_batch_size)
+
+
+def _iter_file_rows_split_filtered(
+    path: Path,
+    *,
+    target_split: str,
+    split_seed: int = 42,
+    train_ratio: float = 0.8,
+    val_ratio: float = 0.1,
+    row_batch_size: int = 4096,
+) -> Iterator[Dict[str, Any]]:
+    """Like _iter_file_rows but pre-filters Parquet rows by split using game_id column projection."""
+    if path.suffix != ".parquet" or pq is None:
+        # Fallback: no optimization for JSONL
+        for row in _iter_file_rows(path, row_batch_size=row_batch_size):
+            yield row
+        return
+
+    parquet_file = pq.ParquetFile(path)
+    for batch in parquet_file.iter_batches(batch_size=row_batch_size):
+        # Get game_ids for the batch using zero-copy Arrow access
+        game_ids = batch.column("game_id")
+        rows_list = None  # Lazy - only materialize if needed
+
+        for i in range(len(game_ids)):
+            gid = game_ids[i].as_py()
+            if gid is None:
+                continue
+            split = assign_split_for_game_id(
+                int(gid),
+                split_seed=split_seed,
+                train_ratio=train_ratio,
+                val_ratio=val_ratio,
+            )
+            if split != target_split:
+                continue
+            # Only now materialize the full row
+            if rows_list is None:
+                rows_list = batch.to_pylist()
+            yield _normalize_row(rows_list[i])
+
+
+def _iter_rows_from_files_filtered(
+    files: Iterable[Path],
+    *,
+    target_split: str,
+    split_seed: int = 42,
+    train_ratio: float = 0.8,
+    val_ratio: float = 0.1,
+    row_batch_size: int = 4096,
+) -> Iterator[Dict[str, Any]]:
+    for path in files:
+        yield from _iter_file_rows_split_filtered(
+            path,
+            target_split=target_split,
+            split_seed=split_seed,
+            train_ratio=train_ratio,
+            val_ratio=val_ratio,
+            row_batch_size=row_batch_size,
+        )
 
 
 def _infer_binary_fight_result(row: Dict[str, Any]) -> Optional[int]:
@@ -101,7 +161,17 @@ def estimate_streaming_split_counts(
     row_batch_size: int = 4096,
     max_rows: Optional[int] = None,
 ) -> Dict[str, int]:
-    """Count train/val/test examples without loading all rows into memory."""
+    """Count train/val/test examples without loading all rows into memory.
+
+    For Parquet files:
+    - ``label_mode="current"``: reads only the ``game_id`` column, so each
+      file requires a single column-projection scan instead of full row reads.
+    - ``label_mode="next_round"``: reads only ``game_id``, ``player_id``,
+      ``round``, and ``combat_result`` / streak columns to count valid fight
+      pairs without deserialising the full row payload.
+
+    For JSONL files the original row-iteration path is retained.
+    """
     if label_mode not in {"current", "next_round"}:
         raise ValueError("label_mode must be 'current' or 'next_round'")
 
@@ -109,8 +179,92 @@ def estimate_streaming_split_counts(
     files = _discover_chunk_files(root)
     counts = {"train": 0, "val": 0, "test": 0}
 
+    # Fast path: all files are Parquet and pyarrow is available.
+    all_parquet = bool(files) and all(f.suffix == ".parquet" for f in files) and pq is not None
+
+    if all_parquet and label_mode == "current":
+        # Read only the game_id column — column projection avoids decoding the
+        # rest of the row data.
+        seen_rows = 0
+        for path in files:
+            pf = pq.ParquetFile(path)
+            for batch in pf.iter_batches(batch_size=row_batch_size, columns=["game_id"]):
+                for game_id_raw in batch.column("game_id").to_pylist():
+                    if game_id_raw is None:
+                        continue
+                    seen_rows += 1
+                    if max_rows is not None and seen_rows > max_rows:
+                        return counts
+                    split = assign_split_for_game_id(
+                        int(game_id_raw),
+                        split_seed=split_seed,
+                        train_ratio=train_ratio,
+                        val_ratio=val_ratio,
+                    )
+                    counts[split] += 1
+        return counts
+
+    if all_parquet and label_mode == "next_round":
+        # Read only the minimal columns needed to identify valid fight pairs.
+        # combat_result and streak columns may not be present in all files, so
+        # we fall back gracefully when they are absent.
+        _NEXT_ROUND_COLS = [
+            "game_id",
+            "player_id",
+            "round",
+            "combat_result",
+            "win_streak",
+            "loss_streak",
+        ]
+        seen_rows = 0
+        current_game_id: Optional[int] = None
+        # Maps player_id -> (round_int,) for the previous row seen.
+        prev_round_by_player: Dict[int, int] = {}
+
+        for path in files:
+            pf = pq.ParquetFile(path)
+            # Only request columns that actually exist in this file.
+            available = {name for name in pf.schema_arrow.names}
+            cols = [c for c in _NEXT_ROUND_COLS if c in available]
+            for batch in pf.iter_batches(batch_size=row_batch_size, columns=cols):
+                rows_py = batch.to_pylist()
+                for row in rows_py:
+                    seen_rows += 1
+                    if max_rows is not None and seen_rows > max_rows:
+                        return counts
+
+                    game_id_raw = row.get("game_id")
+                    player_id_raw = row.get("player_id")
+                    round_raw = row.get("round")
+                    if game_id_raw is None or player_id_raw is None or round_raw is None:
+                        continue
+
+                    game_id_int = int(game_id_raw)
+                    split = assign_split_for_game_id(
+                        game_id_int,
+                        split_seed=split_seed,
+                        train_ratio=train_ratio,
+                        val_ratio=val_ratio,
+                    )
+
+                    if current_game_id is None or game_id_int != current_game_id:
+                        current_game_id = game_id_int
+                        prev_round_by_player = {}
+
+                    player_id_int = int(player_id_raw)
+                    round_int = int(round_raw)
+                    prev_round = prev_round_by_player.get(player_id_int)
+                    if prev_round is not None and round_int > prev_round:
+                        # Check whether this row has a valid fight result.
+                        next_result = _infer_binary_fight_result(row)
+                        if next_result is not None:
+                            counts[split] += 1
+                    prev_round_by_player[player_id_int] = round_int
+        return counts
+
+    # --- Fallback: JSONL files or pyarrow unavailable ---
     seen_rows = 0
-    current_game_id: Optional[int] = None
+    current_game_id_fb: Optional[int] = None
     prev_rows_by_player: Dict[int, Dict[str, Any]] = {}
 
     for row in _iter_rows_from_files(files, row_batch_size=row_batch_size):
@@ -138,8 +292,8 @@ def estimate_streaming_split_counts(
         if player_id is None or round_num is None:
             continue
 
-        if current_game_id is None or game_id_int != current_game_id:
-            current_game_id = game_id_int
+        if current_game_id_fb is None or game_id_int != current_game_id_fb:
+            current_game_id_fb = game_id_int
             prev_rows_by_player = {}
 
         player_id_int = int(player_id)
@@ -439,7 +593,14 @@ class TFTStreamingDataset(IterableDataset[Dict[str, torch.Tensor]]):
         emitted = 0
 
         if self.label_mode == "current":
-            for row in _iter_rows_from_files(files, row_batch_size=self.row_batch_size):
+            for row in _iter_rows_from_files_filtered(
+                files,
+                target_split=self.split,
+                split_seed=self.split_seed,
+                train_ratio=self.train_ratio,
+                val_ratio=self.val_ratio,
+                row_batch_size=self.row_batch_size,
+            ):
                 split = self._split_for_row(row)
                 if split != self.split:
                     continue
@@ -451,7 +612,14 @@ class TFTStreamingDataset(IterableDataset[Dict[str, torch.Tensor]]):
 
         current_game_id: Optional[int] = None
         prev_rows_by_player: Dict[int, Dict[str, Any]] = {}
-        for row in _iter_rows_from_files(files, row_batch_size=self.row_batch_size):
+        for row in _iter_rows_from_files_filtered(
+            files,
+            target_split=self.split,
+            split_seed=self.split_seed,
+            train_ratio=self.train_ratio,
+            val_ratio=self.val_ratio,
+            row_batch_size=self.row_batch_size,
+        ):
             split = self._split_for_row(row)
             if split != self.split:
                 continue
@@ -483,3 +651,56 @@ class TFTStreamingDataset(IterableDataset[Dict[str, torch.Tensor]]):
                         if self.max_examples is not None and emitted >= self.max_examples:
                             return
             prev_rows_by_player[player_id_int] = row
+
+
+class PreEncodedTFTDataset(Dataset):
+    """Map-style dataset loading pre-encoded .pt tensor chunks.
+
+    Created by ``python -m models.preprocess_tensors``.
+    Each chunk is a list of sample dicts (str -> Tensor).
+    """
+
+    def __init__(self, data_dir: str | Path, split: str = "train") -> None:
+        root = Path(data_dir) / split
+        if not root.is_dir():
+            raise FileNotFoundError(f"Split directory not found: {root}")
+
+        meta_path = Path(data_dir) / "metadata.json"
+        if not meta_path.exists():
+            raise FileNotFoundError(f"metadata.json not found in {data_dir}")
+
+        with meta_path.open("r") as f:
+            meta = json.load(f)
+
+        self._split = split
+        self._total = meta["splits"][split]["count"]
+        self._chunk_size = meta["chunk_size"]
+        self._chunk_files = sorted(root.glob("chunk_*.pt"))
+        if not self._chunk_files:
+            raise FileNotFoundError(f"No chunk_*.pt files in {root}")
+
+        # LRU cache for loaded chunks
+        self._cache: Dict[int, list] = {}
+        self._cache_order: list = []
+        self._max_cache = 16
+
+    def __len__(self) -> int:
+        return self._total
+
+    def _load_chunk(self, chunk_idx: int) -> list:
+        if chunk_idx in self._cache:
+            return self._cache[chunk_idx]
+        data = torch.load(self._chunk_files[chunk_idx], map_location="cpu", weights_only=False)
+        # Evict oldest if cache full
+        if len(self._cache) >= self._max_cache:
+            oldest = self._cache_order.pop(0)
+            self._cache.pop(oldest, None)
+        self._cache[chunk_idx] = data
+        self._cache_order.append(chunk_idx)
+        return data
+
+    def __getitem__(self, index: int) -> Dict[str, torch.Tensor]:
+        chunk_idx = index // self._chunk_size
+        offset = index % self._chunk_size
+        chunk = self._load_chunk(chunk_idx)
+        return chunk[offset]
