@@ -38,6 +38,23 @@ ATTACK_SPEED_CAP = 5.0
 BOARD_COLS = 7
 DEFAULT_STAGE_DIVISOR = 7
 
+# Required columns for transform_batch() and transform_arrow_batch().
+# These are the columns that MUST be present after normalization.
+# Both dict and Arrow paths access these columns — missing ones produce
+# silent zero-filled features that corrupt training.
+REQUIRED_COLUMNS: frozenset = frozenset(
+    {
+        "level",
+        "hp",
+        "gold",
+        "round",
+        "streak",
+        "units",
+        "traits",
+        "augments",
+    }
+)
+
 _ECON_AUGMENT_KEYWORDS = (
     "gold",
     "interest",
@@ -1470,11 +1487,28 @@ class TFTFeatureEngineer:
             features.extend(self._personal_features(row, _units=units, _summary=summary))
         return np.asarray(features, dtype=np.float32)
 
+    def _validate_columns(self, present: set, *, path_name: str) -> None:
+        """Raise ValueError if required columns are missing.
+
+        Called at entry to transform_batch() and transform_arrow_batch()
+        after normalization, before any computation.
+        """
+        missing = REQUIRED_COLUMNS - present
+        if missing:
+            raise ValueError(
+                f"Missing required columns in {path_name} input: {sorted(missing)}. "
+                f"Present columns: {sorted(present)}. "
+                f"Required columns: {sorted(REQUIRED_COLUMNS)}."
+            )
+
     def transform_batch(self, rows: Sequence[Mapping[str, Any]]) -> np.ndarray:
         """Transform multiple rows, vectorizing economy/trait features."""
         n = len(rows)
         if n == 0:
             return np.zeros((0, len(self._feature_names_cache)), dtype=np.float32)
+
+        # Validate required columns are present (after normalization).
+        self._validate_columns(set(rows[0].keys()), path_name="dict")
 
         # Pre-compute shared intermediates once per row
         all_units = [self._extract_units(row, prefix="") for row in rows]
@@ -1711,6 +1745,9 @@ class TFTFeatureEngineer:
             return np.zeros((0, len(self._feature_names_cache)), dtype=np.float32)
 
         schema_names = set(batch.schema.names)
+
+        # Validate required columns are present (after normalization).
+        self._validate_columns(schema_names, path_name="Arrow")
 
         def _col_np(name: str, default: float = 0.0) -> np.ndarray:
             if name in schema_names:
