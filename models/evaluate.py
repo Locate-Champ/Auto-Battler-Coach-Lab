@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import math
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -26,6 +27,22 @@ from sklearn.model_selection import KFold, StratifiedKFold
 
 from .data_loader import DataLoader
 from .train_xgboost import BASE_TREE_PARAMS, _best_xgb_device
+
+_log = logging.getLogger(__name__)
+
+MI_SUBSAMPLE_CAP = 15_000
+
+
+def _subsample_for_mi(
+    X: np.ndarray, y: np.ndarray, max_rows: int = MI_SUBSAMPLE_CAP, seed: int = 42
+) -> tuple:
+    """Subsample data for mutual information computation if too large."""
+    if len(X) <= max_rows:
+        return X, y
+    _log.info("Subsampling %d -> %d rows for mutual information", len(X), max_rows)
+    rng = np.random.RandomState(seed)
+    idx = rng.choice(len(X), size=max_rows, replace=False)
+    return X[idx], y[idx]
 
 
 def wilson_interval(successes: int, n: int, z: float = 1.96) -> Tuple[float, float]:
@@ -119,10 +136,11 @@ def _mutual_information(
     feature_names: List[str],
     task: str,
 ) -> List[Tuple[str, float]]:
+    X_mi, y_mi = _subsample_for_mi(X, y)
     if task in {"fight", "top4"}:
-        scores = mutual_info_classif(X, y, random_state=42)
+        scores = mutual_info_classif(X_mi, y_mi, random_state=42)
     else:
-        scores = mutual_info_regression(X, y, random_state=42)
+        scores = mutual_info_regression(X_mi, y_mi, random_state=42)
     table = list(zip(feature_names, scores.astype(float).tolist()))
     table.sort(key=lambda item: item[1], reverse=True)
     return table
@@ -244,7 +262,7 @@ def main() -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as handle:
         json.dump(report, handle, indent=2)
-    print(f"Saved evaluation report -> {output_path}")
+    _log.info("Saved evaluation report -> %s", output_path)
 
 
 if __name__ == "__main__":

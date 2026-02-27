@@ -23,7 +23,7 @@ from torch.utils.tensorboard import SummaryWriter
 from .dataset import TFTDataset, TFTStreamingDataset, estimate_streaming_split_counts
 from .transformer import TFTTransformerV2
 
-logger = logging.getLogger(__name__)
+_log = logging.getLogger(__name__)
 
 # Optional schedule-free optimizer (pip install schedulefree)
 try:
@@ -287,8 +287,11 @@ def main() -> None:
             "val": len(val_dataset),
             "test": len(test_dataset),
         }
-        print(
-            f"pre-encoded split sizes -> train={dataset_sizes['train']} val={dataset_sizes['val']} test={dataset_sizes['test']}"
+        _log.info(
+            "pre-encoded split sizes -> train=%d val=%d test=%d",
+            dataset_sizes["train"],
+            dataset_sizes["val"],
+            dataset_sizes["test"],
         )
 
         train_loader = DataLoader(
@@ -313,9 +316,11 @@ def main() -> None:
             "val": split_counts.get("val", 0),
             "test": split_counts.get("test", 0),
         }
-        print(
-            f"streaming split counts -> train={dataset_sizes['train']} "
-            f"val={dataset_sizes['val']} test={dataset_sizes['test']}"
+        _log.info(
+            "streaming split counts -> train=%d val=%d test=%d",
+            dataset_sizes["train"],
+            dataset_sizes["val"],
+            dataset_sizes["test"],
         )
 
         train_dataset = TFTStreamingDataset(
@@ -398,16 +403,16 @@ def main() -> None:
     if hasattr(torch, "compile"):
         try:
             model = torch.compile(model, mode="reduce-overhead")
-            logger.info("Model compiled with torch.compile (reduce-overhead)")
+            _log.info("Model compiled with torch.compile (reduce-overhead)")
         except RuntimeError as e:
-            logger.warning("torch.compile failed, using eager mode: %s", e)
+            _log.warning("torch.compile failed, using eager mode: %s", e)
 
     # Optimization D: optimizer selection.
     use_schedule_free = config.optimizer == "schedule_free"
     if use_schedule_free:
         if not _SCHEDULEFREE_AVAILABLE:
-            print(
-                "WARNING: schedulefree package not installed "
+            _log.warning(
+                "schedulefree package not installed "
                 "(pip install schedulefree). Falling back to AdamW."
             )
             use_schedule_free = False
@@ -495,7 +500,9 @@ def main() -> None:
             global_step += 1
 
             if batch_idx % 100 == 0:
-                print(f"epoch={epoch} batch={batch_idx}/{steps_per_epoch} loss={loss_value:.4f}")
+                _log.info(
+                    "epoch=%d batch=%d/%d loss=%.4f", epoch, batch_idx, steps_per_epoch, loss_value
+                )
 
             writer.add_scalar("train/loss", loss_value, global_step)
             if scheduler is not None:
@@ -521,12 +528,14 @@ def main() -> None:
         writer.add_scalar("val/auc", val_metrics["auc"], epoch)
         writer.add_scalar("val/brier", val_metrics["brier"], epoch)
         writer.add_scalar("val/ece", val_metrics["ece"], epoch)
-        print(
-            f"epoch={epoch} train_loss={train_loss:.4f} "
-            f"val_loss={val_metrics['loss']:.4f} "
-            f"val_auc={val_metrics['auc']:.4f} "
-            f"val_brier={val_metrics['brier']:.4f} "
-            f"val_ece={val_metrics['ece']:.4f}"
+        _log.info(
+            "epoch=%d train_loss=%.4f val_loss=%.4f val_auc=%.4f val_brier=%.4f val_ece=%.4f",
+            epoch,
+            train_loss,
+            val_metrics["loss"],
+            val_metrics["auc"],
+            val_metrics["brier"],
+            val_metrics["ece"],
         )
 
         if val_metrics["auc"] > best_auc:
@@ -539,7 +548,7 @@ def main() -> None:
         else:
             epochs_without_improvement += 1
             if epochs_without_improvement >= config.early_stopping_patience:
-                print("Early stopping triggered.")
+                _log.info("Early stopping triggered.")
                 break
 
     # Ensure the last async checkpoint write has finished before we load it.
@@ -573,8 +582,12 @@ def main() -> None:
     }
     with (output_dir / "training_summary.json").open("w", encoding="utf-8") as handle:
         json.dump(summary, handle, indent=2)
-    print(f"Saved training summary -> {output_dir / 'training_summary.json'}")
+    _log.info("Saved training summary -> %s", output_dir / "training_summary.json")
 
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    )
     main()
