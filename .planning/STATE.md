@@ -82,5 +82,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Phase 2 execution complete (2/2 plans done). Needs: verify_phase_goal + update_roadmap (mark phase complete). Then proceed to Phase 3.
-Resume file: .planning/phases/02-observable-fallbacks/02-02-SUMMARY.md
+Stopped at: Phase 3 context gathered. Ready for /gsd:plan-phase 3.
+Resume file: .planning/phases/03-dependency-validation-and-resource-management/03-CONTEXT.md
