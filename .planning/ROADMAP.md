@@ -12,7 +12,7 @@ This milestone systematically eliminates the 18 reliability concerns identified 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [x] **Phase 1: Models Exception Hardening** - Narrow all broad/bare exception handlers in the ML models layer (feature_engineering, data_loader, train_xgboost) (completed 2026-02-27)
+- [x] **Phase 1: Models Exception Hardening** - Narrow all broad/bare exception handlers in the ML models layer (feature_engineering, data_loader, train_xgboost) (completed 2026-02-27)
 - [ ] **Phase 2: Observable Fallbacks** - Wire logging.WARNING for all silent degradation paths (Cython, pickle, module loggers)
 - [ ] **Phase 3: Dependency Validation and Resource Management** - Add explicit startup errors for missing pyarrow and combat_data.json; DataLoader context manager; Rust pre-flight check
 - [ ] **Phase 4: Type Contracts and Schema Validation** - Fix check_compatibility() return type; document BoardEvaluator contract; add transform_batch() schema validation for both dict and Arrow paths
@@ -49,7 +49,10 @@ Plans:
   2. When DataLoader activates the pickle fallback disk-I/O path, a WARNING-level log entry is emitted identifying the ~30x slowdown
   3. Every module that previously used print() or silent pass now has a `logging.getLogger(__name__)` logger and routes all diagnostic output through it
   4. The Python log output during a Gate A smoke test contains no unlogged fallback activations
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — Wire fallback WARNING logging for Cython/pickle/GPU paths + convert print() in data_loader and train_xgboost
+- [ ] 02-02-PLAN.md — Complete logging standardization: rename logger->_log, add loggers to 7 modules, convert remaining print()
 
 ### Phase 3: Dependency Validation and Resource Management
 **Goal**: Missing runtime dependencies (pyarrow, combat_data.json, Rust extension) are caught at startup with actionable error messages, not at use-time as silent empty results; DataLoader cleans up worker pools automatically
@@ -169,7 +172,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Models Exception Hardening | 0/1 | Complete    | 2026-02-27 |
-| 2. Observable Fallbacks | 0/TBD | Not started | - |
+| 2. Observable Fallbacks | 0/2 | Not started | - |
 | 3. Dependency Validation and Resource Management | 0/TBD | Not started | - |
 | 4. Type Contracts and Schema Validation | 0/TBD | Not started | - |
 | 5. API Server Hardening | 0/TBD | Not started | - |
