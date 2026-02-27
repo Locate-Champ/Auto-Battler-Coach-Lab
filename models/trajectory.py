@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import logging
 import math
 from typing import Any, Dict, List, Tuple
 
 import numpy as np
+
+_log = logging.getLogger(__name__)
 
 
 def _wilson_interval(successes: int, n: int, z: float = 1.96) -> Tuple[float, float]:

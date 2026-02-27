@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import logging
 from typing import Dict, List
 
 import torch
 import torch.nn.functional as F
+
+_log = logging.getLogger(__name__)
 
 
 class BayesianPredictor:

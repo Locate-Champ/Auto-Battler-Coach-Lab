@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List, Sequence, Tuple
 
@@ -13,6 +14,8 @@ from sklearn.metrics import accuracy_score, mean_absolute_error, mutual_info_sco
 from sklearn.model_selection import train_test_split
 
 from .train_xgboost import BASE_TREE_PARAMS, _best_xgb_device
+
+_log = logging.getLogger(__name__)
 
 
 def _discretize(values: np.ndarray, bins: int = 10) -> np.ndarray:

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import random
 from pathlib import Path
 from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
@@ -14,6 +15,8 @@ from torch.utils.data import Dataset, IterableDataset, get_worker_info
 from snapshot_schema import decode_jsonish, normalize_jsonish_fields
 
 from .feature_engineering import TFTFeatureEngineer
+
+_log = logging.getLogger(__name__)
 
 try:  # pragma: no cover - optional dependency
     import pyarrow.parquet as pq
