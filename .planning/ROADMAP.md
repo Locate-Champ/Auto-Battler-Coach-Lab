@@ -104,7 +104,10 @@ Plans:
   2. FeatureConfig can be imported and instantiated in a test with overridden values, verifying constants are not hardcoded at use sites
   3. ruff.toml includes `"BLE", "B"` in the select list and `ruff check .` passes with zero violations across the entire codebase
   4. A deliberately introduced `except Exception:` in any Python file causes `ruff check .` to fail with a BLE001 error
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 06-01-PLAN.md — Extract magic numbers to frozen NumericFeatureConfig dataclass with tests
+- [ ] 06-02-PLAN.md — Fix all 82 BLE+B violations and enable ruff BLE+B rule enforcement
 
 ### Phase 7: SklearnEvaluator Wiring
 **Goal**: SklearnEvaluator extracts features from GameState using the same schema as the XGBoost training pipeline, and the wiring is verified with an integration test
@@ -184,7 +187,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 3. Dependency Validation and Resource Management | 0/2 | Not started | - |
 | 4. Type Contracts and Schema Validation | 0/2 | Not started | - |
 | 5. API Server Hardening | 0/1 | Not started | - |
-| 6. Configuration Extraction and Ruff Gates | 0/TBD | Not started | - |
+| 6. Configuration Extraction and Ruff Gates | 0/2 | Not started | - |
 | 7. SklearnEvaluator Wiring | 0/TBD | Not started | - |
 | 8. Global State Elimination | 0/TBD | Not started | - |
 | 9. Simulator and Coach Exception Hardening | 0/TBD | Not started | - |
