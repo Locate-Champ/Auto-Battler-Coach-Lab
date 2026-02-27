@@ -117,5 +117,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 07-01-PLAN.md (SklearnEvaluator wiring)
-Resume file: .planning/phases/07-sklearnevaluator-wiring/07-01-SUMMARY.md
+Stopped at: Phase 8 context gathered — ready for planning
+Resume file: .planning/phases/08-global-state-elimination/08-CONTEXT.md
