@@ -24,8 +24,8 @@ Requirements for this milestone. Each maps to roadmap phases.
 ### Dependency Validation
 
 - [ ] **DEPV-01**: Missing pyarrow raises explicit error at DataLoader startup (not silent empty iterator)
-- [ ] **DEPV-02**: Missing combat_data.json raises actionable error at import time with file path and resolution steps
-- [ ] **DEPV-03**: Rust extension pre-flight check validates architecture and Python interpreter match at import time
+- [x] **DEPV-02**: Missing combat_data.json raises actionable error at import time with file path and resolution steps
+- [x] **DEPV-03**: Rust extension pre-flight check validates architecture and Python interpreter match at import time
 
 ### Resource Management
 
@@ -105,8 +105,8 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | OBSV-02 | Phase 2 | Complete |
 | OBSV-03 | Phase 2 | Complete |
 | DEPV-01 | Phase 3 | Pending |
-| DEPV-02 | Phase 3 | Pending |
-| DEPV-03 | Phase 3 | Pending |
+| DEPV-02 | Phase 3 | Complete |
+| DEPV-03 | Phase 3 | Complete |
 | RSMG-01 | Phase 3 | Pending |
 | RSMG-02 | Phase 3 | Pending |
 | TYPE-01 | Phase 4 | Pending |
