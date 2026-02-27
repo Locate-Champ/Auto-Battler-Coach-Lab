@@ -91,7 +91,9 @@ Plans:
   2. If model loading fails during startup, the server process exits with a non-zero code before any endpoint becomes reachable — no endpoint ever serves a None model
   3. All module-level globals in app/api/server.py are replaced by `app.state` attributes populated inside the lifespan function
   4. `uvicorn --reload` restarts cleanly without carrying stale module-level state across reloads
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 05-01-PLAN.md — Lifespan migration, app.state + Depends() injection, startup failure gate, global exception handler, test suite
 
 ### Phase 6: Configuration Extraction and Ruff Gates
 **Goal**: Magic numbers in feature_engineering.py are documented and importable via a typed dataclass; ruff BLE/B rules are enforced so future broad exception handlers are caught statically at CI time
@@ -181,7 +183,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 2. Observable Fallbacks | 0/2 | Not started | - |
 | 3. Dependency Validation and Resource Management | 0/2 | Not started | - |
 | 4. Type Contracts and Schema Validation | 0/2 | Not started | - |
-| 5. API Server Hardening | 0/TBD | Not started | - |
+| 5. API Server Hardening | 0/1 | Not started | - |
 | 6. Configuration Extraction and Ruff Gates | 0/TBD | Not started | - |
 | 7. SklearnEvaluator Wiring | 0/TBD | Not started | - |
 | 8. Global State Elimination | 0/TBD | Not started | - |
