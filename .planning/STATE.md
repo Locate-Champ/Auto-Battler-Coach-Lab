@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-27T15:18:48Z"
+last_updated: "2026-02-27T15:20:31Z"
 progress:
   total_phases: 3
-  completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  completed_phases: 3
+  total_plans: 5
+  completed_plans: 5
 ---
 
 # Project State
@@ -22,19 +22,19 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 
 ## Current Position
 
-Phase: 3 of 12 (Dependency Validation and Resource Management)
+Phase: 3 of 12 (Dependency Validation and Resource Management) -- COMPLETE
 Plan: 2 of 2 in current phase
-Status: Completed 03-02-PLAN.md (dependency diagnostics)
-Last activity: 2026-02-27 — Completed 03-02-PLAN.md (combat_data.json and Rust extension pre-flight)
+Status: Completed 03-01-PLAN.md (phase complete)
+Last activity: 2026-02-27 — Completed 03-01-PLAN.md (hard pyarrow import + DataLoader context manager)
 
-Progress: [###░░░░░░░] 33%
+Progress: [####░░░░░░] 42%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 3.5 min
-- Total execution time: 0.23 hours
+- Total plans completed: 5
+- Average duration: 3.4 min
+- Total execution time: 0.28 hours
 
 **By Phase:**
 
@@ -42,10 +42,10 @@ Progress: [###░░░░░░░] 33%
 |-------|-------|-------|----------|
 | 01-models-exception-hardening | 1 | 5 min | 5 min |
 | 02-observable-fallbacks | 2 | 7 min | 3.5 min |
-| 03-dependency-validation-and-resource-management | 1 | 2 min | 2 min |
+| 03-dependency-validation-and-resource-management | 2 | 6 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5 min), 02-01 (4 min), 02-02 (3 min), 03-02 (2 min)
+- Last 5 plans: 01-01 (5 min), 02-01 (4 min), 02-02 (3 min), 03-02 (2 min), 03-01 (4 min)
 - Trend: stable/improving
 
 *Updated after each plan completion*
@@ -72,6 +72,9 @@ Recent decisions affecting current work:
 - [03-02]: File existence check in _load_combat_data() not at module level -- avoids breaking test imports while failing before game logic
 - [03-02]: ImportError and OSError caught separately with distinct diagnostic messages per user decision
 - [03-02]: engine_version() lookup wrapped in try/except so pre-flight works even without Rust rebuild
+- [03-01]: pyarrow changed from optional to hard dependency -- silent empty iterators were causing invisible training failures
+- [03-01]: __exit__ wraps close() in try/except, logs cleanup failure, never suppresses original exception
+- [03-01]: __del__ uses getattr for partially-initialized safety and local warnings import for interpreter shutdown
 
 ### Pending Todos
 
@@ -86,5 +89,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 03-02-PLAN.md
-Resume file: .planning/phases/03-dependency-validation-and-resource-management/03-02-SUMMARY.md
+Stopped at: Completed 03-01-PLAN.md (phase 3 complete)
+Resume file: .planning/phases/03-dependency-validation-and-resource-management/03-01-SUMMARY.md

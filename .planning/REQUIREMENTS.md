@@ -23,14 +23,14 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Dependency Validation
 
-- [ ] **DEPV-01**: Missing pyarrow raises explicit error at DataLoader startup (not silent empty iterator)
+- [x] **DEPV-01**: Missing pyarrow raises explicit error at DataLoader startup (not silent empty iterator)
 - [x] **DEPV-02**: Missing combat_data.json raises actionable error at import time with file path and resolution steps
 - [x] **DEPV-03**: Rust extension pre-flight check validates architecture and Python interpreter match at import time
 
 ### Resource Management
 
-- [ ] **RSMG-01**: DataLoader implements `__enter__`/`__exit__` context manager for automatic pool cleanup
-- [ ] **RSMG-02**: DataLoader `__exit__` handles cleanup exceptions without masking the original exception
+- [x] **RSMG-01**: DataLoader implements `__enter__`/`__exit__` context manager for automatic pool cleanup
+- [x] **RSMG-02**: DataLoader `__exit__` handles cleanup exceptions without masking the original exception
 
 ### Type Contracts
 
@@ -104,11 +104,11 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | OBSV-01 | Phase 2 | Complete |
 | OBSV-02 | Phase 2 | Complete |
 | OBSV-03 | Phase 2 | Complete |
-| DEPV-01 | Phase 3 | Pending |
+| DEPV-01 | Phase 3 | Complete |
 | DEPV-02 | Phase 3 | Complete |
 | DEPV-03 | Phase 3 | Complete |
-| RSMG-01 | Phase 3 | Pending |
-| RSMG-02 | Phase 3 | Pending |
+| RSMG-01 | Phase 3 | Complete |
+| RSMG-02 | Phase 3 | Complete |
 | TYPE-01 | Phase 4 | Pending |
 | TYPE-02 | Phase 4 | Pending |
 | SCHM-01 | Phase 4 | Pending |
