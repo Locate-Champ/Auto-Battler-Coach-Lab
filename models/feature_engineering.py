@@ -24,7 +24,7 @@ try:
     from .fe_fast import (
         team_summary_fast as _cy_team_summary,
     )
-except ImportError:
+except (ImportError, OSError):
     _cy_team_summary = None
     _cy_parse_units_column = None
     _CYTHON_FE = False
