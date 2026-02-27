@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import logging
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -9,8 +11,11 @@ from coach.artifacts import runtime_outputs_dir
 from coach.scoring.features import board_power, derive_traits, squash01
 from coach.state import GameState
 
+_log = logging.getLogger(__name__)
 
-class BoardEvaluator:
+
+class BoardEvaluator(ABC):
+    @abstractmethod
     def score(self, state: GameState) -> float:
         raise NotImplementedError
 
@@ -132,9 +137,18 @@ def default_evaluator() -> BoardEvaluator:
 class RuntimeEvaluator:
     evaluator: BoardEvaluator
 
-    def check_compatibility(self) -> None:
-        # LinearEvaluator.from_json already enforces schema_version + feature order.
-        return None
+    def check_compatibility(self) -> bool:
+        """Return True if the evaluator is a valid BoardEvaluator, False otherwise."""
+        if self.evaluator is None:
+            _log.debug("check_compatibility: evaluator is None")
+            return False
+        if not isinstance(self.evaluator, BoardEvaluator):
+            _log.debug(
+                "check_compatibility: evaluator is %s, not a BoardEvaluator",
+                type(self.evaluator).__name__,
+            )
+            return False
+        return True
 
     def predict_board_strength(self, state: GameState) -> float:
         return float(self.evaluator.score(state))
