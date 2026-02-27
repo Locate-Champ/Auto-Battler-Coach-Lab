@@ -14,6 +14,8 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 import numpy as np
 
+from .feature_config import DEFAULT_CONFIG, NumericFeatureConfig
+
 try:
     from .fe_fast import (
         CYTHON_AVAILABLE as _CYTHON_FE,
@@ -176,8 +178,10 @@ class TFTFeatureEngineer:
         self,
         config: Optional[FeatureConfig] = None,
         repo_root: Optional[Path] = None,
+        numeric_config: Optional[NumericFeatureConfig] = None,
     ) -> None:
         self.config = config or FeatureConfig()
+        self._numeric_config = numeric_config or DEFAULT_CONFIG
         self.repo_root = (repo_root or Path(__file__).resolve().parents[1]).resolve()
 
         self.champion_costs: Dict[str, int] = {}
@@ -423,12 +427,14 @@ class TFTFeatureEngineer:
         self._trait_api_names: frozenset[str] = frozenset(t.api_name for t in self.traits)
 
     def _normalize_item_effects(self, effects: Mapping[str, Any]) -> Dict[str, float]:
+        _as_threshold = self._numeric_config.attack_speed_pct_threshold
+
         def pick(keys: Sequence[str]) -> float:
             for key in keys:
                 if key in effects:
                     value = _safe_float(effects.get(key))
                     # Riot data mixes absolute and percentage attack speed values.
-                    if key in {"AS", "AttackSpeed"} and value > 1.0:
+                    if key in {"AS", "AttackSpeed"} and value > _as_threshold:
                         return value / 100.0
                     return value
             return 0.0
@@ -453,17 +459,26 @@ class TFTFeatureEngineer:
         desc_key = description.lower()
         if "emblem" in tag_key or "trait" in tag_key:
             return "utility"
-        offensive_signal = stats["ad"] + stats["ap"] + stats["attack_speed"] * 50.0
+        nc = self._numeric_config
+        offensive_signal = (
+            stats["ad"] + stats["ap"] + stats["attack_speed"] * nc.attack_speed_weight
+        )
         defensive_signal = (
-            stats["hp"] / 100.0 + stats["armor"] / 20.0 + stats["magic_resist"] / 20.0
+            stats["hp"] / nc.hp_divisor
+            + stats["armor"] / nc.armor_divisor
+            + stats["magic_resist"] / nc.mr_divisor
         )
         if (
             "damage" in desc_key
             or "execute" in desc_key
-            or offensive_signal >= defensive_signal + 0.2
+            or offensive_signal >= defensive_signal + nc.classification_threshold
         ):
             return "offensive"
-        if "shield" in desc_key or "heal" in desc_key or defensive_signal >= offensive_signal + 0.2:
+        if (
+            "shield" in desc_key
+            or "heal" in desc_key
+            or defensive_signal >= offensive_signal + nc.classification_threshold
+        ):
             return "defensive"
         # Utility catches emblems, economy, and hybrid items.
         if any(token in desc_key for token in ("mana", "sunder", "shred", "gold", "stun")):
@@ -620,7 +635,8 @@ class TFTFeatureEngineer:
                     if top4 > 1.0:
                         top4 /= 100.0
                     avg_place = _safe_float(
-                        carry.get("avgPlace", carry.get("avg_placement")), default=4.5
+                        carry.get("avgPlace", carry.get("avg_placement")),
+                        default=self._numeric_config.default_avg_placement,
                     )
                     key = _normalize_token(name)
                     if key:
@@ -639,9 +655,13 @@ class TFTFeatureEngineer:
                     if top4 > 1.0:
                         top4 /= 100.0
                     avg_place = _safe_float(
-                        item.get("avgPlace", item.get("avg_placement")), default=4.5
+                        item.get("avgPlace", item.get("avg_placement")),
+                        default=self._numeric_config.default_avg_placement,
                     )
-                    score = top4 + ((4.5 - avg_place) / 8.0)
+                    score = top4 + (
+                        (self._numeric_config.default_avg_placement - avg_place)
+                        / self._numeric_config.personal_score_placement_divisor
+                    )
                     key = _normalize_token(name)
                     if key:
                         self.personal_item_scores[key] = score
@@ -662,7 +682,10 @@ class TFTFeatureEngineer:
                     top4 = _safe_float(parts[row_map["top4_rate"]], default=0.0)
                     if top4 > 1.0:
                         top4 /= 100.0
-                    avg_place = _safe_float(parts[row_map["avg_placement"]], default=4.5)
+                    avg_place = _safe_float(
+                        parts[row_map["avg_placement"]],
+                        default=self._numeric_config.default_avg_placement,
+                    )
                     self.personal_carry_stats[_normalize_token(name)] = (top4, avg_place)
 
     def _canonical_champion_id(self, value: Any) -> str:
@@ -1080,7 +1103,9 @@ class TFTFeatureEngineer:
                 cc_heavy_units += 1.0
 
         total_magic_proxy = item_ap + 1.0
-        total_physical_proxy = ad_pool + team_dps * 0.01 + 1.0
+        total_physical_proxy = (
+            ad_pool + team_dps * self._numeric_config.dps_weight_in_physical_proxy + 1.0
+        )
         physical_share = total_physical_proxy / (total_physical_proxy + total_magic_proxy)
         magic_share = 1.0 - physical_share
 
@@ -1169,7 +1194,9 @@ class TFTFeatureEngineer:
         traits = _traits if _traits is not None else self._extract_traits(row, prefix="")
         summary = _summary if _summary is not None else self._team_summary(units)
         trait_active_count = float(sum(1 for value in traits.values() if value > 0))
-        total_ap_pool = summary["item_ap"] + (trait_active_count * 5.0)
+        total_ap_pool = summary["item_ap"] + (
+            trait_active_count * self._numeric_config.trait_ap_proxy_per_trait
+        )
         return [
             summary["total_cost"],
             summary["avg_star"],
@@ -1217,11 +1244,12 @@ class TFTFeatureEngineer:
             win_streak = _safe_float(row.get("win_streak"))
             loss_streak = _safe_float(row.get("loss_streak"))
             streak = win_streak - loss_streak
-        interest = min(5.0, max(0.0, math.floor(gold / 10.0)))
+        nc = self._numeric_config
+        interest = min(nc.max_interest, max(0.0, math.floor(gold / nc.interest_gold_divisor)))
         return [
             level,
             hp,
-            hp / 100.0,
+            hp / nc.hp_divisor,
             gold,
             streak,
             round_num,
@@ -1288,7 +1316,9 @@ class TFTFeatureEngineer:
     ) -> List[float]:
         units = _units if _units is not None else self._extract_units(row, prefix="")
         summary = _summary if _summary is not None else self._team_summary(units)
-        carry_has_bis = 1.0 if summary["carry_item_count"] >= 3.0 else 0.0
+        carry_has_bis = (
+            1.0 if summary["carry_item_count"] >= self._numeric_config.bis_item_threshold else 0.0
+        )
         return [
             summary["total_completed_items"],
             summary["total_components"],
@@ -1378,7 +1408,8 @@ class TFTFeatureEngineer:
         hp_opp = _safe_float(row.get("opponent_hp", row.get("enemy_hp")))
         round_num = _safe_float(row.get("round"))
         stage = float(int(round_num // DEFAULT_STAGE_DIVISOR) + 1)
-        stage_hp_pressure = max(0.0, stage * 10.0 - hp_you)
+        nc = self._numeric_config
+        stage_hp_pressure = max(0.0, stage * nc.stage_hp_pressure_multiplier - hp_you)
 
         shared_traits = set(name for name, count in your_traits.items() if count > 0).intersection(
             set(name for name, count in opp_traits.items() if count > 0)
@@ -1392,8 +1423,9 @@ class TFTFeatureEngineer:
             your_summary["total_items"] - opp_summary["total_items"],
             your_summary["frontline_hp"] / max(EPSILON, opp_summary["frontline_hp"]),
             your_summary["backline_damage"] / max(EPSILON, opp_summary["backline_damage"] + 1.0),
-            your_summary["avg_armor"] - (opp_summary["physical_share"] * 100.0),
-            your_summary["avg_mr"] - (opp_summary["magic_share"] * 100.0),
+            your_summary["avg_armor"]
+            - (opp_summary["physical_share"] * nc.share_to_percent_multiplier),
+            your_summary["avg_mr"] - (opp_summary["magic_share"] * nc.share_to_percent_multiplier),
             your_summary["qss_count"] - opp_summary["cc_heavy_units"],
             trait_overlap,
             your_summary["carry_cost"] - opp_summary["carry_cost"],
@@ -1417,9 +1449,10 @@ class TFTFeatureEngineer:
         _units: Optional[List[Dict[str, Any]]] = None,
         _summary: Optional[Dict[str, float]] = None,
     ) -> List[float]:
+        nc = self._numeric_config
         units = _units if _units is not None else self._extract_units(row, prefix="")
         if not units:
-            return [0.0, 4.5, 0.0]
+            return [0.0, nc.default_avg_placement, 0.0]
         summary = _summary if _summary is not None else self._team_summary(units)
         carry_name = ""
         best_key = (-1, -1, -1)
@@ -1433,7 +1466,7 @@ class TFTFeatureEngineer:
                 carry_name = str(unit.get("champion_id", ""))
 
         carry_key = _normalize_token(carry_name.replace("TFT16_", "").replace("TFT_", ""))
-        carry_stats = self.personal_carry_stats.get(carry_key, (0.0, 4.5))
+        carry_stats = self.personal_carry_stats.get(carry_key, (0.0, nc.default_avg_placement))
 
         item_scores: List[float] = []
         for unit in units:
@@ -1446,7 +1479,7 @@ class TFTFeatureEngineer:
         return [
             float(carry_stats[0]),
             float(carry_stats[1]),
-            item_personal_score + (summary["carry_item_count"] * 0.01),
+            item_personal_score + (summary["carry_item_count"] * nc.carry_item_score_weight),
         ]
 
     def _build_feature_names(self) -> List[str]:
@@ -1812,11 +1845,14 @@ class TFTFeatureEngineer:
 
         if self.config.use_economy:
             width = len(self._economy_feature_names())
+            nc = self._numeric_config
             stages = np.floor(round_arr / DEFAULT_STAGE_DIVISOR).astype(np.float32) + 1.0
-            interests = np.minimum(5.0, np.maximum(0.0, np.floor(gold_arr / 10.0)))
+            interests = np.minimum(
+                nc.max_interest, np.maximum(0.0, np.floor(gold_arr / nc.interest_gold_divisor))
+            )
             result[:, col] = level_arr
             result[:, col + 1] = hp_arr
-            result[:, col + 2] = hp_arr * 0.01
+            result[:, col + 2] = hp_arr / nc.hp_divisor
             result[:, col + 3] = gold_arr
             result[:, col + 4] = streak_arr
             result[:, col + 5] = round_arr
@@ -1886,9 +1922,12 @@ class TFTFeatureEngineer:
                 streak = _safe_float(row.get("win_streak")) - _safe_float(row.get("loss_streak"))
             streaks[i] = streak
 
+        nc = self._numeric_config
         stages = np.floor(round_nums / DEFAULT_STAGE_DIVISOR).astype(np.float32) + 1.0
-        interests = np.minimum(5.0, np.maximum(0.0, np.floor(golds / 10.0)))
-        hp_pcts = hps / 100.0
+        interests = np.minimum(
+            nc.max_interest, np.maximum(0.0, np.floor(golds / nc.interest_gold_divisor))
+        )
+        hp_pcts = hps / nc.hp_divisor
 
         return np.column_stack(
             [levels, hps, hp_pcts, golds, streaks, round_nums, stages, interests]
@@ -1938,7 +1977,9 @@ class TFTFeatureEngineer:
         for i in range(n):
             s = all_summaries[i]
             trait_active_count = float(sum(1 for v in all_traits[i].values() if v > 0))
-            total_ap_pool = s["item_ap"] + (trait_active_count * 5.0)
+            total_ap_pool = s["item_ap"] + (
+                trait_active_count * self._numeric_config.trait_ap_proxy_per_trait
+            )
             result[i, 0] = s["total_cost"]
             result[i, 1] = s["avg_star"]
             result[i, 2] = s["num_3_stars"]
@@ -1980,7 +2021,9 @@ class TFTFeatureEngineer:
             result[i, 6] = s["has_morello"]
             result[i, 7] = s["has_ionic"]
             result[i, 8] = s["carry_item_count"]
-            result[i, 9] = 1.0 if s["carry_item_count"] >= 3.0 else 0.0
+            result[i, 9] = (
+                1.0 if s["carry_item_count"] >= self._numeric_config.bis_item_threshold else 0.0
+            )
             result[i, 10] = s["item_offensive"]
             result[i, 11] = s["item_defensive"]
             result[i, 12] = s["item_utility"]
@@ -2088,15 +2131,20 @@ class TFTFeatureEngineer:
             result[i, 5] = your["backline_damage"] / max(
                 EPSILON, opp_summary["backline_damage"] + 1.0
             )
-            result[i, 6] = your["avg_armor"] - (opp_summary["physical_share"] * 100.0)
-            result[i, 7] = your["avg_mr"] - (opp_summary["magic_share"] * 100.0)
+            nc = self._numeric_config
+            result[i, 6] = your["avg_armor"] - (
+                opp_summary["physical_share"] * nc.share_to_percent_multiplier
+            )
+            result[i, 7] = your["avg_mr"] - (
+                opp_summary["magic_share"] * nc.share_to_percent_multiplier
+            )
             result[i, 8] = your["qss_count"] - opp_summary["cc_heavy_units"]
             result[i, 9] = trait_overlap
             result[i, 10] = your["carry_cost"] - opp_summary["carry_cost"]
             result[i, 11] = your["carry_star"] - opp_summary["carry_star"]
             result[i, 12] = your["team_dps"] - opp_summary["team_dps"]
             result[i, 13] = your["num_units"] - opp_summary["num_units"]
-            result[i, 14] = max(0.0, stage * 10.0 - hp_you)
+            result[i, 14] = max(0.0, stage * nc.stage_hp_pressure_multiplier - hp_you)
         return result
 
     def _personal_features_batch(
@@ -2117,7 +2165,7 @@ class TFTFeatureEngineer:
             summary = all_summaries[i]
             if not units:
                 result[i, 0] = 0.0
-                result[i, 1] = 4.5
+                result[i, 1] = self._numeric_config.default_avg_placement
                 result[i, 2] = 0.0
                 continue
 
@@ -2137,7 +2185,9 @@ class TFTFeatureEngineer:
                         carry_name = unit.get("champion_id", "")
 
             carry_key = _normalize_token(carry_name.replace("TFT16_", "").replace("TFT_", ""))
-            carry_stats = _personal_carry.get(carry_key, (0.0, 4.5))
+            carry_stats = _personal_carry.get(
+                carry_key, (0.0, self._numeric_config.default_avg_placement)
+            )
 
             item_score_sum = 0.0
             item_score_count = 0
@@ -2152,7 +2202,9 @@ class TFTFeatureEngineer:
 
             result[i, 0] = float(carry_stats[0])
             result[i, 1] = float(carry_stats[1])
-            result[i, 2] = item_personal_score + (summary["carry_item_count"] * 0.01)
+            result[i, 2] = item_personal_score + (
+                summary["carry_item_count"] * self._numeric_config.carry_item_score_weight
+            )
         return result
 
     def feature_names(self) -> List[str]:
