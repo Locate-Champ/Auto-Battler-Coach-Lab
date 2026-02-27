@@ -68,6 +68,12 @@ def _load_combat_data(path: Path) -> dict:
     """Load combat data from JSON, using module-level cache."""
     key = str(path)
     if key not in _COMBAT_DATA_CACHE:
+        if not path.is_file():
+            raise FileNotFoundError(
+                f"combat_data.json not found at {path}. "
+                f"This file is required for the combat simulator and is part of the repository. "
+                f"Restore it with: git checkout -- {path}"
+            )
         with open(path, "r", encoding="utf-8") as f:
             _COMBAT_DATA_CACHE[key] = json.load(f)
     return _COMBAT_DATA_CACHE[key]
