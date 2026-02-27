@@ -77,6 +77,10 @@ def _train_with_fallback(
         )
         return model
     except xgb.core.XGBoostError:
+        _log.warning(
+            "XGBoost GPU training failed; falling back to CPU device. "
+            "This may significantly increase training time."
+        )
         fallback = dict(merged)
         fallback["device"] = "cpu"
         model = model_class(**fallback)
@@ -107,6 +111,10 @@ def _train_booster_with_fallback(
             verbose_eval=False,
         )
     except xgb.core.XGBoostError:
+        _log.warning(
+            "XGBoost GPU booster training failed; falling back to CPU device. "
+            "This may significantly increase training time."
+        )
         fallback = dict(params)
         fallback["device"] = "cpu"
         return xgb.train(

@@ -4,7 +4,9 @@ Build:
     cd models/fe_fast && python setup.py build_ext --inplace
 """
 
-import warnings
+import logging
+
+_log = logging.getLogger(__name__)
 
 try:
     from .fe_fast import (  # type: ignore[import-not-found]
@@ -17,9 +19,7 @@ except (ImportError, OSError):
     team_summary_fast = None  # type: ignore[assignment]
     parse_units_column_fast = None  # type: ignore[assignment]
     CYTHON_AVAILABLE = False
-    warnings.warn(
-        "Cython fe_fast module not available. Feature extraction will use slower Python path. "
-        "Build with: cd models/fe_fast && python setup.py build_ext --inplace",
-        RuntimeWarning,
-        stacklevel=2,
+    _log.warning(
+        "Cython fe_fast module not available; feature extraction will use pure-Python path "
+        "(~2x slower). Build with: cd models/fe_fast && python setup.py build_ext --inplace"
     )

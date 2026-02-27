@@ -99,8 +99,9 @@ class DataLoader:
                 )
             except (pickle.PicklingError, TypeError) as exc:
                 _log.warning(
-                    "FeatureEngineer pickle failed (%s); falling back to disk-based worker init "
-                    "(~30ms per worker vs ~1ms). Consider fixing __getstate__ if this persists.",
+                    "FeatureEngineer pickle failed (%s); falling back to ~30x slower disk-based "
+                    "worker init (~30ms per worker vs ~1ms). Fix: ensure FeatureEngineer is "
+                    "picklable, or check __getstate__/__setstate__.",
                     exc,
                 )
                 self._pool = multiprocessing.Pool(
