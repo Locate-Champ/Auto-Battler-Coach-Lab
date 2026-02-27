@@ -76,5 +76,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 01-01-PLAN.md — Phase 1 complete (1/1 plans done)
-Resume file: .planning/phases/01-models-exception-hardening/01-01-SUMMARY.md
+Stopped at: Phase 2 context gathered — ready for /gsd:plan-phase 2
+Resume file: .planning/phases/02-observable-fallbacks/02-CONTEXT.md
