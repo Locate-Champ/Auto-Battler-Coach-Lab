@@ -31,16 +31,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 4: Type Contracts and Schema Validation
+**Current focus:** Phase 5: API Server Hardening
 
 ## Current Position
 
-Phase: 4 of 12 (Type Contracts and Schema Validation) -- COMPLETE
-Plan: 2 of 2 in current phase (04-01 complete, 04-02 complete)
-Status: Phase 4 complete -- all plans executed
-Last activity: 2026-02-27 — Completed 04-02-PLAN.md (schema validation on transform_batch/transform_arrow_batch)
+Phase: 5 of 12 (API Server Hardening) -- COMPLETE
+Plan: 1 of 1 in current phase (05-01 complete)
+Status: Phase 5 complete -- all plans executed
+Last activity: 2026-02-27 — Completed 05-01-PLAN.md (FastAPI lifespan migration with DI and test suite)
 
-Progress: [#######░░░] 58%
+Progress: [########░░] 67%
 
 ## Performance Metrics
 
@@ -57,10 +57,11 @@ Progress: [#######░░░] 58%
 | 02-observable-fallbacks | 2 | 7 min | 3.5 min |
 | 03-dependency-validation-and-resource-management | 2 | 6 min | 3 min |
 | 04-type-contracts-and-schema-validation | 2 | 5 min | 2.5 min |
+| 05-api-server-hardening | 1 | 12 min | 12 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (3 min), 03-02 (2 min), 03-01 (4 min), 04-01 (2 min), 04-02 (3 min)
-- Trend: stable/improving
+- Last 5 plans: 03-01 (4 min), 03-02 (2 min), 04-01 (2 min), 04-02 (3 min), 05-01 (12 min)
+- Trend: stable (05-01 larger scope — lifespan migration + full test suite)
 
 *Updated after each plan completion*
 
@@ -108,5 +109,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 04-02-PLAN.md (Phase 4 complete)
-Resume file: .planning/phases/04-type-contracts-and-schema-validation/04-02-SUMMARY.md
+Stopped at: Completed 05-01-PLAN.md (Phase 5 complete)
+Resume file: .planning/phases/05-api-server-hardening/05-01-SUMMARY.md
