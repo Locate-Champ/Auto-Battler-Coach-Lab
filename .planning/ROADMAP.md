@@ -36,7 +36,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A deliberately bad input to the models pipeline raises a specific, named exception (not Exception or bare except) that surfaces in the caller's stack trace
   3. Cython and Rust extension imports in models use `except (ImportError, OSError)` so architecture-mismatched extensions fall back rather than crash
   4. No silent pass or broad except in the models layer absorbs an error without re-raising or logging
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 01-01-PLAN.md — Create exceptions module, narrow all BLE001 violations, widen extension import handlers
 
 ### Phase 2: Observable Fallbacks
 **Goal**: Every silent performance-degradation path in the codebase emits a logging.WARNING so developers can see when the system is running on a slower fallback
@@ -166,7 +168,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Models Exception Hardening | 0/TBD | Not started | - |
+| 1. Models Exception Hardening | 0/1 | Planned | - |
 | 2. Observable Fallbacks | 0/TBD | Not started | - |
 | 3. Dependency Validation and Resource Management | 0/TBD | Not started | - |
 | 4. Type Contracts and Schema Validation | 0/TBD | Not started | - |
