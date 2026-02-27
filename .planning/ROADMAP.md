@@ -63,7 +63,10 @@ Plans:
   2. Starting the simulator with a missing combat_data.json raises an actionable error at import time that includes the expected file path and the command to regenerate it
   3. Importing the Rust extension on a mismatched architecture raises a pre-flight error with a rebuild hint, not a cryptic OSError at first use
   4. DataLoader used as a context manager (`with DataLoader(...) as dl:`) cleans up all worker processes on both normal exit and exception exit without masking the original exception
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 03-01-PLAN.md — Hard pyarrow ImportError + DataLoader context manager with safe cleanup
+- [ ] 03-02-PLAN.md — Actionable combat_data.json error + Rust extension pre-flight with version and logging
 
 ### Phase 4: Type Contracts and Schema Validation
 **Goal**: API contracts at module boundaries are honest — check_compatibility() returns a real bool, BoardEvaluator documents what implementers must provide, and transform_batch() validates its inputs before processing
@@ -173,7 +176,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 |-------|----------------|--------|-----------|
 | 1. Models Exception Hardening | 0/1 | Complete    | 2026-02-27 |
 | 2. Observable Fallbacks | 0/2 | Not started | - |
-| 3. Dependency Validation and Resource Management | 0/TBD | Not started | - |
+| 3. Dependency Validation and Resource Management | 0/2 | Not started | - |
 | 4. Type Contracts and Schema Validation | 0/TBD | Not started | - |
 | 5. API Server Hardening | 0/TBD | Not started | - |
 | 6. Configuration Extraction and Ruff Gates | 0/TBD | Not started | - |
