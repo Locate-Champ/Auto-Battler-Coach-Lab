@@ -34,8 +34,8 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Type Contracts
 
-- [ ] **TYPE-01**: `RuntimeEvaluator.check_compatibility()` returns bool (not None)
-- [ ] **TYPE-02**: `BoardEvaluator` base class documents abstract contract clearly
+- [x] **TYPE-01**: `RuntimeEvaluator.check_compatibility()` returns bool (not None)
+- [x] **TYPE-02**: `BoardEvaluator` base class documents abstract contract clearly
 
 ### Schema Validation
 
@@ -109,8 +109,8 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | DEPV-03 | Phase 3 | Complete |
 | RSMG-01 | Phase 3 | Complete |
 | RSMG-02 | Phase 3 | Complete |
-| TYPE-01 | Phase 4 | Pending |
-| TYPE-02 | Phase 4 | Pending |
+| TYPE-01 | Phase 4 | Complete |
+| TYPE-02 | Phase 4 | Complete |
 | SCHM-01 | Phase 4 | Pending |
 | SCHM-02 | Phase 4 | Pending |
 | GLBL-01 | Phase 8 | Pending |
