@@ -3,15 +3,67 @@ from __future__ import annotations
 import json
 import logging
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 from coach.artifacts import runtime_outputs_dir
 from coach.scoring.features import board_power, derive_traits, squash01
 from coach.state import GameState
 
 _log = logging.getLogger(__name__)
+
+
+def _round_num_from_stage(stage: str) -> int:
+    """Compute absolute round number from a stage string like '4-2'.
+
+    Replicates the logic in :func:`coach.coach._round_num_from_stage` to avoid
+    a circular import.
+    """
+    try:
+        stage_num = int(stage.split("-")[0])
+        round_in_stage = int(stage.split("-")[1])
+    except (ValueError, IndexError):
+        return 4
+
+    if stage_num <= 1:
+        return max(0, round_in_stage - 1)
+
+    base = 4 + (stage_num - 2) * 7 + (round_in_stage - 1)
+    if stage_num >= 3:
+        base -= 1
+    return max(0, int(base))
+
+
+def _gamestate_to_row(state: GameState) -> dict[str, Any]:
+    """Convert a *GameState* into the dict format ``TFTFeatureEngineer.transform()`` expects."""
+    return {
+        "level": state.player.level,
+        "hp": state.player.hp,
+        "gold": state.player.gold,
+        "round": _round_num_from_stage(state.stage),
+        "streak": state.player.streak,
+        "augments": list(state.augments),
+        "units": [
+            {
+                "champion_id": u.champion_id,
+                "star_level": u.star_level,
+                "items": list(u.items),
+                "position": u.position,
+            }
+            for u in state.board
+        ],
+        "traits": dict(state.traits) if state.traits else {},
+    }
+
+
+def _placement_to_score(placement: float) -> float:
+    """Map a predicted placement (1-8) to a 0-1 board strength score.
+
+    Placement 1 (best) maps to 1.0, placement 8 (worst) maps to 0.0.
+    Values outside [1, 8] are clamped.
+    """
+    return max(0.0, min(1.0, (8.0 - placement) / 7.0))
 
 
 class BoardEvaluator(ABC):
@@ -50,7 +102,8 @@ class HeuristicEvaluator(BoardEvaluator):
 @dataclass(frozen=True, slots=True)
 class SklearnEvaluator(BoardEvaluator):
     model_path: str
-    _model: Optional[object] = None
+    _model: Optional[object] = field(default=None, repr=False)
+    _feature_engineer: Optional[object] = field(default=None, repr=False)
 
     def _load(self) -> object:
         if self._model is not None:
@@ -61,15 +114,42 @@ class SklearnEvaluator(BoardEvaluator):
         except (ImportError, OSError) as e:  # pragma: no cover
             raise RuntimeError("joblib is required to load sklearn evaluator models") from e
 
-        self._model = joblib.load(self.model_path)
-        return self._model
+        try:
+            model = joblib.load(self.model_path)
+        except Exception as e:
+            raise RuntimeError(f"Failed to load sklearn model from {self.model_path}: {e}") from e
+
+        object.__setattr__(self, "_model", model)
+        return model
 
     def score(self, state: GameState) -> float:
-        # Placeholder: integration expects a feature vector consistent with the training script.
         model = self._load()
-        if not hasattr(model, "predict_proba"):
-            raise RuntimeError("Loaded evaluator model missing predict_proba()")
-        raise NotImplementedError("SklearnEvaluator feature extraction is not wired yet")
+
+        # Lazily initialise the feature engineer on first call.
+        if self._feature_engineer is None:
+            from models.feature_engineering import TFTFeatureEngineer
+
+            fe = TFTFeatureEngineer()
+            if len(fe.feature_names()) == 0:
+                raise RuntimeError(
+                    "TFTFeatureEngineer produced no features -- combat_data.json may be missing"
+                )
+            object.__setattr__(self, "_feature_engineer", fe)
+
+        fe = self._feature_engineer
+        row = _gamestate_to_row(state)
+
+        try:
+            features = fe.transform(row)  # type: ignore[union-attr]
+        except Exception as e:
+            raise ValueError(
+                f"Feature extraction failed: {e}. "
+                f"GameState stage={state.stage}, board_size={len(state.board)}"
+            ) from e
+
+        features = features.reshape(1, -1)
+        placement = float(model.predict(features)[0])
+        return _placement_to_score(placement)
 
 
 @dataclass(frozen=True, slots=True)
@@ -123,13 +203,38 @@ class LinearEvaluator(BoardEvaluator):
 
 
 def default_evaluator() -> BoardEvaluator:
-    # Optional: prefer a trained evaluator artifact when present.
-    path = runtime_outputs_dir() / "evaluator_linear.json"
-    if path.exists():
+    """Select the best available evaluator: Sklearn > Linear > Heuristic."""
+    # 1. Try SklearnEvaluator (highest priority).
+    sklearn_path = runtime_outputs_dir() / "evaluator_sklearn.joblib"
+    if sklearn_path.exists():
         try:
-            return LinearEvaluator.from_json(path)
+            evaluator = SklearnEvaluator(model_path=str(sklearn_path))
+            evaluator._load()  # validate the model loads
+            _log.info("Evaluator selected: SklearnEvaluator from %s", sklearn_path)
+            return evaluator
         except (OSError, ValueError, KeyError, RuntimeError):
-            pass
+            _log.warning(
+                "SklearnEvaluator failed to load from %s, trying next",
+                sklearn_path,
+                exc_info=True,
+            )
+
+    # 2. Try LinearEvaluator.
+    linear_path = runtime_outputs_dir() / "evaluator_linear.json"
+    if linear_path.exists():
+        try:
+            evaluator = LinearEvaluator.from_json(linear_path)
+            _log.info("Evaluator selected: LinearEvaluator from %s", linear_path)
+            return evaluator
+        except (OSError, ValueError, KeyError, RuntimeError):
+            _log.warning(
+                "LinearEvaluator failed to load from %s, trying next",
+                linear_path,
+                exc_info=True,
+            )
+
+    # 3. Fallback to heuristic.
+    _log.info("Evaluator selected: HeuristicEvaluator (no trained model found)")
     return HeuristicEvaluator()
 
 
