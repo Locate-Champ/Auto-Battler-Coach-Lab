@@ -1671,7 +1671,9 @@ def run_seed_parity_harness(
 
         l1 = sum(
             abs(int(a) - int(b))
-            for a, b in zip(baseline["placement_vector"], candidate["placement_vector"])
+            for a, b in zip(
+                baseline["placement_vector"], candidate["placement_vector"], strict=True
+            )
         )
         total_l1 += l1
         round_delta = abs(int(baseline["round_num"]) - int(candidate["round_num"]))

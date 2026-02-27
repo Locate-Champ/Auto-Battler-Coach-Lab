@@ -2670,7 +2670,7 @@ class AbilityDatabase:
 
         # Fallback to first variable with star values
         if not damage_var:
-            for key, val in variables.items():
+            for _key, val in variables.items():
                 if isinstance(val, list) and len(val) >= 4:
                     damage_var = val
                     break
@@ -3505,7 +3505,7 @@ class CombatEngine:
             target._sunder_stacks = []
         expiry = self.time + duration
         # Refresh existing sunder from same source instead of stacking
-        for i, (red, exp, src) in enumerate(target._sunder_stacks):
+        for i, (red, _exp, src) in enumerate(target._sunder_stacks):
             if src == source:
                 target._sunder_stacks[i] = (red, expiry, src)
                 self.log_event("sunder_refresh", target=target.name, source=source)
@@ -3528,7 +3528,7 @@ class CombatEngine:
             target._shred_stacks = []
         expiry = self.time + duration
         # Refresh existing shred from same source
-        for i, (red, exp, src) in enumerate(target._shred_stacks):
+        for i, (red, _exp, src) in enumerate(target._shred_stacks):
             if src == source:
                 target._shred_stacks[i] = (red, expiry, src)
                 self.log_event("shred_refresh", target=target.name, source=source)
@@ -4348,7 +4348,7 @@ class CombatEngine:
 
         # Piltover module fire at 8 seconds
         if self._piltover_data and current_time >= 8.0:
-            for team_id, pdata in self._piltover_data.items():
+            for _team_id, pdata in self._piltover_data.items():
                 if not pdata["fired"]:
                     pdata["fired"] = True
                     self._fire_piltover_module(pdata, team0, team1)

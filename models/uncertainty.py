@@ -21,7 +21,7 @@ class BayesianPredictor:
     def _confidence_bucket(self, uncertainty: torch.Tensor, probability: torch.Tensor) -> List[str]:
         labels: List[str] = []
         for unc, prob in zip(
-            uncertainty.detach().cpu().tolist(), probability.detach().cpu().tolist()
+            uncertainty.detach().cpu().tolist(), probability.detach().cpu().tolist(), strict=True
         ):
             if 0.45 <= prob <= 0.55 and unc > 0.1:
                 labels.append("coin_flip")

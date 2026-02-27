@@ -108,7 +108,7 @@ class PoolState:
             self.units_in_play[champ_id] = self.units_in_play.get(champ_id, 0) + copies
 
         # Count opponent units
-        for board_id, units in opponent_boards.items():
+        for _board_id, units in opponent_boards.items():
             for unit in units:
                 champ_id = unit.get("character_id", "")
                 if not champ_id:

@@ -118,7 +118,7 @@ def _classification_metrics(y_true: np.ndarray, y_prob: np.ndarray) -> Dict[str,
         "ece": ece,
         "precision_wilson_95": [lower, upper],
         "calibration_curve": [
-            {"pred": float(p), "true": float(t)} for p, t in zip(cal_pred, cal_true)
+            {"pred": float(p), "true": float(t)} for p, t in zip(cal_pred, cal_true, strict=True)
         ],
     }
 
@@ -141,7 +141,7 @@ def _mutual_information(
         scores = mutual_info_classif(X_mi, y_mi, random_state=42)
     else:
         scores = mutual_info_regression(X_mi, y_mi, random_state=42)
-    table = list(zip(feature_names, scores.astype(float).tolist()))
+    table = list(zip(feature_names, scores.astype(float).tolist(), strict=True))
     table.sort(key=lambda item: item[1], reverse=True)
     return table
 

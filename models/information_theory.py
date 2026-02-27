@@ -55,7 +55,7 @@ class FeatureInformationAnalyzer:
         xd = _discretize(x)
         yd = _discretize(y)
         zd = _discretize(z)
-        xz = np.asarray([f"{a}|{b}" for a, b in zip(xd.tolist(), zd.tolist())])
+        xz = np.asarray([f"{a}|{b}" for a, b in zip(xd.tolist(), zd.tolist(), strict=True)])
         return float(mutual_info_score(xz, yd) - mutual_info_score(zd, yd))
 
     def interaction_information(self, xi: np.ndarray, xj: np.ndarray, y: np.ndarray) -> float:
@@ -63,7 +63,7 @@ class FeatureInformationAnalyzer:
         xid = _discretize(xi)
         xjd = _discretize(xj)
         yd = _discretize(y)
-        pair = np.asarray([f"{a}|{b}" for a, b in zip(xid.tolist(), xjd.tolist())])
+        pair = np.asarray([f"{a}|{b}" for a, b in zip(xid.tolist(), xjd.tolist(), strict=True)])
         return float(
             mutual_info_score(pair, yd)
             - mutual_info_score(xid, yd)

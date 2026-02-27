@@ -823,7 +823,9 @@ class DataLoader:
             else (y_train if y_train.size else y_test)
         )
         unique, counts = np.unique(y_all, return_counts=True)
-        balance = ", ".join(f"{int(value)}:{int(count)}" for value, count in zip(unique, counts))
+        balance = ", ".join(
+            f"{int(value)}:{int(count)}" for value, count in zip(unique, counts, strict=True)
+        )
         _log.info("[%s] class/target balance -> %s", task_name, balance)
 
     def _infer_binary_fight_result(self, row: Dict[str, Any]) -> Optional[int]:

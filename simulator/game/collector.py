@@ -85,7 +85,7 @@ class GameCollector:
             player = game.players[player_id]
             # Final board composition
             board_champs = []
-            for (r, c), ch in player.board.items():
+            for (_r, _c), ch in player.board.items():
                 board_champs.append(
                     {
                         "name": ch.name,

@@ -821,7 +821,7 @@ class ChampionAbilities:
         total_damage = damage_per_attack * num_attacks * num_minions
 
         # Deal damage over multiple hits
-        for i in range(num_minions * num_attacks):
+        for _i in range(num_minions * num_attacks):
             if not target.is_alive:
                 target = self._find_nearest_enemy(unit, enemies)
                 if not target:
@@ -2899,7 +2899,7 @@ class ChampionAbilities:
             target.stats.armor = max(0, target.stats.armor - armor_reduction)
 
         # Primary target spears
-        for i in range(primary_spears):
+        for _i in range(primary_spears):
             if not primary_target.is_alive:
                 break
             self._deal_damage(

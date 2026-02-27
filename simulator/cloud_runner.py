@@ -1422,7 +1422,7 @@ def run_batch(
                             "seed": seed,
                             "error": error_text,
                         }
-                        for game_id, seed in zip(batch_game_ids, batch_seeds)
+                        for game_id, seed in zip(batch_game_ids, batch_seeds, strict=True)
                     ]
 
                 for result in batch_results:
