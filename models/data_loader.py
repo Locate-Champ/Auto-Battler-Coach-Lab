@@ -321,8 +321,11 @@ class DataLoader:
         if workers > 1 and len(rows) >= 500:
             chunk_size = max(1, len(rows) // (workers * 4))
             row_chunks = [rows[i : i + chunk_size] for i in range(0, len(rows), chunk_size)]
-            print(
-                f"[features] vectorizing {len(rows)} rows with {workers} workers ({len(row_chunks)} chunks)..."
+            _log.info(
+                "[features] vectorizing %d rows with %d workers (%d chunks)...",
+                len(rows),
+                workers,
+                len(row_chunks),
             )
             pool = self._ensure_pool()
             chunk_results = pool.map(_transform_chunk, row_chunks)
@@ -374,8 +377,11 @@ class DataLoader:
         effective_workers = min(workers, len(parquet_files))
         pool = self._ensure_pool()
         args = [(str(p), batch_size) for p in parquet_files]
-        print(
-            f"[features] Arrow-parallel: {len(parquet_files)} files, {total_rows} rows, {effective_workers} workers..."
+        _log.info(
+            "[features] Arrow-parallel: %d files, %d rows, %d workers...",
+            len(parquet_files),
+            total_rows,
+            effective_workers,
         )
         results = pool.map(_transform_arrow_file, args)
         non_empty = [r for r in results if r.shape[0] > 0]
@@ -520,7 +526,7 @@ class DataLoader:
             y_test=y_test,
             feature_count=X_train.shape[1],
         )
-        print("[fight] labeling=current_round_combat_result")
+        _log.info("[fight] labeling=current_round_combat_result")
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
 
     def load_top4_classification_arrow(
@@ -654,7 +660,7 @@ class DataLoader:
             y_test=y_test,
             feature_count=X_train.shape[1],
         )
-        print("[top4] labeling=placement<=4")
+        _log.info("[top4] labeling=placement<=4")
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
 
     def load_placement_prediction_arrow(
@@ -772,7 +778,7 @@ class DataLoader:
             y_test=y_test,
             feature_count=X_train.shape[1],
         )
-        print("[placement] labeling=final_placement_regression")
+        _log.info("[placement] labeling=final_placement_regression")
         return X_train, X_test, y_train, y_test
 
     def _print_dataset_stats(
@@ -785,8 +791,13 @@ class DataLoader:
         y_test: np.ndarray,
         feature_count: int,
     ) -> None:
-        print(
-            f"[{task_name}] rows={total_rows} train={train_rows} test={test_rows} features={feature_count}"
+        _log.info(
+            "[%s] rows=%d train=%d test=%d features=%d",
+            task_name,
+            total_rows,
+            train_rows,
+            test_rows,
+            feature_count,
         )
         if y_train.size == 0 and y_test.size == 0:
             return
@@ -797,7 +808,7 @@ class DataLoader:
         )
         unique, counts = np.unique(y_all, return_counts=True)
         balance = ", ".join(f"{int(value)}:{int(count)}" for value, count in zip(unique, counts))
-        print(f"[{task_name}] class/target balance -> {balance}")
+        _log.info("[%s] class/target balance -> %s", task_name, balance)
 
     def _infer_binary_fight_result(self, row: Dict[str, Any]) -> Optional[int]:
         """Infer binary fight result from a row if possible.
@@ -873,7 +884,7 @@ class DataLoader:
             if X_train.size
             else len(self.feature_engineer.feature_names()),
         )
-        print("[fight] labeling=current_round_combat_result")
+        _log.info("[fight] labeling=current_round_combat_result")
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
 
     def _build_temporal_fight_examples(

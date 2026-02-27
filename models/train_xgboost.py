@@ -186,15 +186,15 @@ def _evaluate_classification(
         ),
     }
     auc_display = f"{auc_roc:.4f}" if auc_roc is not None else "n/a"
-    print(f"[{task}] accuracy={metrics['accuracy']:.4f} auc={auc_display}")
-    print(f"[{task}] confusion_matrix={metrics['confusion_matrix']}")
+    _log.info("[%s] accuracy=%.4f auc=%s", task, metrics["accuracy"], auc_display)
+    _log.info("[%s] confusion_matrix=%s", task, metrics["confusion_matrix"])
     return metrics
 
 
 def _evaluate_regression(model: Any, X_test: np.ndarray, y_test: np.ndarray) -> Dict[str, Any]:
     predictions = model.predict(X_test)
     mae = float(mean_absolute_error(y_test, predictions))
-    print(f"[placement] mae={mae:.4f}")
+    _log.info("[placement] mae=%.4f", mae)
     return {"task": "placement", "mae": mae}
 
 
@@ -222,8 +222,8 @@ def _evaluate_booster_classification(
         ),
     }
     auc_display = f"{auc_roc:.4f}" if auc_roc is not None else "n/a"
-    print(f"[{task}] accuracy={metrics['accuracy']:.4f} auc={auc_display}")
-    print(f"[{task}] confusion_matrix={metrics['confusion_matrix']}")
+    _log.info("[%s] accuracy=%.4f auc=%s", task, metrics["accuracy"], auc_display)
+    _log.info("[%s] confusion_matrix=%s", task, metrics["confusion_matrix"])
     return metrics
 
 
@@ -231,7 +231,7 @@ def _evaluate_booster_regression(booster: xgb.Booster, dtest: xgb.DMatrix) -> Di
     y_test = dtest.get_label()
     predictions = _predict_booster(booster, dtest)
     mae = float(mean_absolute_error(y_test, predictions))
-    print(f"[placement] mae={mae:.4f}")
+    _log.info("[placement] mae=%.4f", mae)
     return {"task": "placement", "mae": mae}
 
 
@@ -465,7 +465,7 @@ def _cleanup_external_cache(cache_dir: Path) -> None:
     try:
         shutil.rmtree(cache_dir)
     except OSError as exc:
-        print(f"Warning: unable to remove external cache directory {cache_dir}: {exc}")
+        _log.warning("Unable to remove XGBoost cache dir %s: %s", cache_dir, exc)
 
 
 def _train_external_memory(
@@ -514,19 +514,22 @@ def _train_external_memory(
             "External-memory split produced empty train/test data. "
             "Increase data size or adjust --test-size."
         )
-    print(
-        f"[external] split stats -> train={train_examples} test={test_examples} "
-        f"(seed={args.seed}, test_size={args.test_size})"
+    _log.info(
+        "[external] split stats -> train=%d test=%d (seed=%d, test_size=%.2f)",
+        train_examples,
+        test_examples,
+        args.seed,
+        args.test_size,
     )
     if args.task in {"fight", "top4"}:
         train_pos = train_iter.positives_seen / max(1, train_examples)
         test_pos = test_iter.positives_seen / max(1, test_examples)
         split_stats["train_positive_rate"] = train_pos
         split_stats["test_positive_rate"] = test_pos
-        print(
-            f"[external] class balance -> "
-            f"train_pos_rate={train_pos:.4f} "
-            f"test_pos_rate={test_pos:.4f}"
+        _log.info(
+            "[external] class balance -> train_pos_rate=%.4f test_pos_rate=%.4f",
+            train_pos,
+            test_pos,
         )
 
     params = dict(BASE_TREE_PARAMS)
@@ -652,7 +655,7 @@ def _run_ablation(
             float(metric - baseline_metric) if is_higher_better else float(baseline_metric - metric)
         )
         deltas[toggle] = delta
-        print(f"[ablation] disable={toggle} metric={metric:.4f} delta={delta:.4f}")
+        _log.info("[ablation] disable=%s metric=%.4f delta=%.4f", toggle, metric, delta)
     return deltas
 
 
@@ -915,16 +918,16 @@ def main() -> None:
             is_higher_better = False
 
     importances = _extract_feature_importance(model, feature_names)
-    print("Top 20 feature importances:")
+    _log.info("Top 20 feature importances:")
     for feature, score in importances[:20]:
-        print(f"  {feature}: {score:.4f}")
+        _log.info("  %s: %.4f", feature, score)
 
     model_path = output_dir / f"{args.task}_xgboost.json"
     model.save_model(model_path)
     chart_path = output_dir / f"{args.task}_feature_importance.png"
     _save_feature_chart(importances, chart_path)
-    print(f"Saved model -> {model_path}")
-    print(f"Saved chart -> {chart_path}")
+    _log.info("Saved model -> %s", model_path)
+    _log.info("Saved chart -> %s", chart_path)
 
     report = {
         "task": args.task,
@@ -958,7 +961,7 @@ def main() -> None:
     report_path = output_dir / f"{args.task}_training_report.json"
     with report_path.open("w", encoding="utf-8") as handle:
         json.dump(report, handle, indent=2)
-    print(f"Saved report -> {report_path}")
+    _log.info("Saved report -> %s", report_path)
 
     if args.external_memory and cache_dir is not None and not args.keep_external_cache:
         gc.collect()
@@ -968,4 +971,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    )
     main()
