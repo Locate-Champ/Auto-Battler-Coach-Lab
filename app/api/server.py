@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
 
     try:
         recommender = TFTRecommender(str(data_dir))
-    except Exception:
+    except (OSError, ImportError, RuntimeError, ValueError):
         _log.critical("Failed to load TFTRecommender", exc_info=True)
         sys.exit(1)
 
@@ -42,7 +42,7 @@ async def lifespan(app: FastAPI):
         placement_model = PlacementModel(str(data_dir))
         X, y, _ = placement_model.prepare_data()
         placement_model.train(X, y, model_type="gradient_boosting")
-    except Exception:
+    except (OSError, ImportError, RuntimeError, ValueError):
         _log.critical("Failed to load PlacementModel", exc_info=True)
         sys.exit(1)
 

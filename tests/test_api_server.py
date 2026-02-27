@@ -67,7 +67,7 @@ def test_startup_failure_exits():
         try:
             with TestClient(app):
                 pass  # pragma: no cover -- never reached
-        except Exception:
+        except (RuntimeError, OSError, SystemExit):
             pass  # TestClient may raise when lifespan fails
 
     mock_exit.assert_called_once_with(1)
@@ -88,7 +88,7 @@ def test_startup_failure_placement_model_exits():
         try:
             with TestClient(app):
                 pass  # pragma: no cover
-        except Exception:
+        except (RuntimeError, OSError, SystemExit):
             pass  # TestClient may raise when lifespan fails
 
     mock_exit.assert_called_once_with(1)

@@ -62,7 +62,7 @@ class ConnectionManager:
         for connection in connections:
             try:
                 await connection.send_text(message_json)
-            except Exception:
+            except (ConnectionError, RuntimeError, OSError):
                 disconnected.add(connection)
 
         # Clean up disconnected clients
@@ -154,7 +154,7 @@ class WebSocketServer:
         player_xp = None
         try:
             player_xp = int(str(state.xp).split("/", 1)[0])
-        except Exception:
+        except (ValueError, TypeError, IndexError, AttributeError):
             player_xp = None
 
         player = CoachPlayerState(
@@ -259,7 +259,7 @@ class WebSocketServer:
                     }
                     for r in recs
                 ]
-            except Exception as e:
+            except (ValueError, KeyError, TypeError, RuntimeError) as e:
                 errors_by_decision[decision.value] = str(e)
                 recs_by_decision[decision.value] = []
 
@@ -395,7 +395,7 @@ class WebSocketServer:
                 self._last_coach_payload = coach_payload
                 self._last_coach_compute_mono = time.monotonic()
                 self._last_coach_stage = state.stage
-            except Exception as e:
+            except (ValueError, KeyError, TypeError, RuntimeError) as e:
                 self._last_coach_payload = {
                     "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                     "error": str(e),
@@ -417,7 +417,7 @@ class WebSocketServer:
             def handle_broadcast_error(f):
                 try:
                     f.result()
-                except Exception as e:
+                except (ConnectionError, RuntimeError, OSError) as e:
                     print(f"[WS] Broadcast error: {e}")
 
             future.add_done_callback(handle_broadcast_error)

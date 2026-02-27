@@ -14,7 +14,7 @@ def _as_int(value: Any) -> int | None:
         if value is None:
             return None
         return int(value)
-    except Exception:
+    except (ValueError, TypeError):
         return None
 
 
@@ -23,7 +23,7 @@ def _as_float(value: Any) -> float | None:
         if value is None:
             return None
         return float(value)
-    except Exception:
+    except (ValueError, TypeError):
         return None
 
 

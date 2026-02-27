@@ -128,7 +128,7 @@ class DataLoader:
     def __exit__(self, exc_type, exc_val, exc_tb) -> bool:
         try:
             self.close()
-        except Exception as cleanup_err:
+        except (OSError, RuntimeError) as cleanup_err:
             _log.warning(
                 "DataLoader worker pool cleanup failed during __exit__: %s. "
                 "Original exception (if any) takes priority.",
@@ -148,7 +148,7 @@ class DataLoader:
             )
             try:
                 self.close()
-            except Exception:
+            except (OSError, RuntimeError):
                 pass
 
     def _iter_parquet_rows(

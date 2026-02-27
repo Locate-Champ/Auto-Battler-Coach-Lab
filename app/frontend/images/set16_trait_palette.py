@@ -75,7 +75,7 @@ def trait_rows_set16(traits):
         # min_units may be "", keep those last
         try:
             mu = int(r["breakpoint_min_units"])
-        except Exception:
+        except (ValueError, TypeError):
             mu = 10**9
         return (r["display_name"].lower(), mu)
 

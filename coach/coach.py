@@ -83,7 +83,7 @@ def _round_num_from_stage(stage: str) -> int:
     try:
         stage_num = int(stage.split("-")[0])
         round_in_stage = int(stage.split("-")[1])
-    except Exception:
+    except (ValueError, IndexError):
         return 4
 
     if stage_num <= 1:

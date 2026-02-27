@@ -65,7 +65,7 @@ def _pyarrow_available() -> bool:
         import pyarrow  # noqa: F401
 
         return True
-    except Exception:
+    except (ImportError, OSError):
         return False
 
 
@@ -217,7 +217,7 @@ def _sample_cpu_utilization_pct(logical_cpu_count: int) -> Optional[float]:
 
         # Small interval avoids the initial 0.0 warm-up sample.
         return float(psutil.cpu_percent(interval=0.1))
-    except Exception:
+    except (ImportError, OSError, RuntimeError):
         pass
 
     if hasattr(os, "getloadavg"):
@@ -226,7 +226,7 @@ def _sample_cpu_utilization_pct(logical_cpu_count: int) -> Optional[float]:
             if logical_cpu_count <= 0:
                 return None
             return max(0.0, min(100.0, (load_one / float(logical_cpu_count)) * 100.0))
-        except Exception:
+        except (OSError, ValueError):
             return None
     return None
 
@@ -455,7 +455,7 @@ def run_game(args: Tuple) -> Dict:
             "training_rows": collector.get_training_rows(),
             "analytics": collector.get_analytics(),
         }
-    except Exception:
+    except (ValueError, KeyError, TypeError, RuntimeError, OSError):
         return {
             "status": "error",
             "game_id": game_id,
@@ -572,7 +572,7 @@ class StreamingWriter:
             )
             if result.returncode != 0:
                 print(f"  [WARN] S3 upload failed for {filename}: {result.stderr.strip()}")
-        except Exception as exc:
+        except (OSError, subprocess.SubprocessError, ValueError) as exc:
             print(f"  [WARN] S3 upload failed for {filename}: {exc}")
 
     def add_result(self, result: Dict, *, buffer_training_rows: bool = True):
@@ -658,7 +658,7 @@ class StreamingWriter:
             else:
                 try:
                     self._write_parquet_from_jsonl_blob_chunk(chunk_name)
-                except (ImportError, Exception):
+                except (ImportError, OSError, ValueError, RuntimeError):
                     self._write_jsonl_blob_chunk(chunk_name)
         else:
             if self.require_parquet:
@@ -666,7 +666,7 @@ class StreamingWriter:
             else:
                 try:
                     self._write_parquet_chunk(chunk_name)
-                except (ImportError, Exception):
+                except (ImportError, OSError, ValueError, RuntimeError):
                     self._write_jsonl_chunk(chunk_name)
 
         self._total_rows += self._pending_row_count
@@ -729,7 +729,7 @@ class StreamingWriter:
         try:
             import pyarrow as pa
             import pyarrow.parquet as pq
-        except Exception:
+        except (ImportError, OSError):
             # Fallback: preserve behavior if pyarrow is unavailable.
             for idx, blob in enumerate(self._parquet_blob_buffer):
                 if not blob:
@@ -759,7 +759,7 @@ class StreamingWriter:
                 elif not table.schema.equals(schema, check_metadata=False):
                     table = table.cast(schema)
                 writer.write_table(table)
-        except Exception:
+        except (OSError, ValueError, RuntimeError):
             if writer is not None:
                 writer.close()
                 writer = None
@@ -1413,7 +1413,7 @@ def run_batch(
                             batch_output_mode,
                             rayon_threads,
                         )
-                except Exception:
+                except (RuntimeError, ValueError, OSError):
                     error_text = traceback.format_exc()
                     batch_results = [
                         {

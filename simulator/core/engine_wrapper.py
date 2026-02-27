@@ -66,7 +66,7 @@ def _try_rust_engine():
     try:
         engine = RustCombatEngine(_COMBAT_DATA_PATH)
         return engine
-    except Exception as exc:
+    except (OSError, RuntimeError, ValueError) as exc:
         _log.warning(
             "Rust combat engine import succeeded but instantiation failed (%s). "
             "Falling back to Python engine (~10-50x slower).",

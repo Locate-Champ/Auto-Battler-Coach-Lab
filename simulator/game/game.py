@@ -162,7 +162,7 @@ try:
                 _AUGMENTS_BY_ROUND[_tag].append(_api)
                 _tier = _AUGMENT_TIERS[_api]
                 _AUGMENTS_BY_ROUND_TIER[_tag][_tier].append(_api)
-except Exception:
+except (OSError, ValueError, KeyError, TypeError):
     pass
 
 

@@ -132,7 +132,7 @@ class LogWatcher:
         for callback in self.event_callbacks:
             try:
                 callback(event)
-            except Exception as e:
+            except (ValueError, KeyError, TypeError, AttributeError, RuntimeError) as e:
                 print(f"Error in event callback: {e}")
 
     def start(self):

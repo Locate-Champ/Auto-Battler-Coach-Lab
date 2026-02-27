@@ -243,7 +243,7 @@ class FeatureEngineer:
                 features = self.extract_game_features(row)
                 features["match_id"] = row.get("match_id", idx)
                 all_features.append(features)
-            except Exception as e:
+            except (ValueError, KeyError, TypeError, AttributeError) as e:
                 print(f"Error processing row {idx}: {e}")
                 continue
 

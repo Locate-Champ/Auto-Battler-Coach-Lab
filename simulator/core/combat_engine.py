@@ -1893,7 +1893,7 @@ try:
     else:
         _AUGMENTS_DATA = {}
         _AUGMENTS_LOADED = False
-except Exception:
+except (OSError, ValueError, KeyError, TypeError):
     _AUGMENTS_DATA = {}
     _AUGMENTS_LOADED = False
 

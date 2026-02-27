@@ -58,7 +58,7 @@ class SklearnEvaluator(BoardEvaluator):
 
         try:
             import joblib
-        except Exception as e:  # pragma: no cover
+        except (ImportError, OSError) as e:  # pragma: no cover
             raise RuntimeError("joblib is required to load sklearn evaluator models") from e
 
         self._model = joblib.load(self.model_path)
@@ -128,7 +128,7 @@ def default_evaluator() -> BoardEvaluator:
     if path.exists():
         try:
             return LinearEvaluator.from_json(path)
-        except Exception:
+        except (OSError, ValueError, KeyError, RuntimeError):
             pass
     return HeuristicEvaluator()
 

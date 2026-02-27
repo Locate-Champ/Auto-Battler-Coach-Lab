@@ -26,7 +26,7 @@ def cleanup(sig=None, frame=None):
         try:
             p.terminate()
             p.wait(timeout=5)
-        except Exception:
+        except (OSError, RuntimeError):
             p.kill()
     sys.exit(0)
 

@@ -28,7 +28,7 @@ class StateManager:
         for callback in self.state_callbacks:
             try:
                 callback(self.state)
-            except Exception as e:
+            except (ValueError, KeyError, TypeError, AttributeError, RuntimeError) as e:
                 print(f"Error in state callback: {e}")
 
     def process_event(self, event: GameEvent):
@@ -332,7 +332,7 @@ class StateManager:
         if isinstance(ts, str) and ts:
             try:
                 last_update = datetime.fromisoformat(ts.replace("Z", "+00:00"))
-            except Exception:
+            except (ValueError, TypeError):
                 last_update = now
 
         player = redux_state.get("player") if isinstance(redux_state.get("player"), dict) else {}
@@ -373,7 +373,7 @@ class StateManager:
                     mx_i = int(mx)
                     self.state.xp = f"{cur_i}/{mx_i}"
                     self.state.player.level = self._get_level_from_xp(self.state.xp)
-                except Exception:
+                except (ValueError, TypeError):
                     pass
             elif isinstance(xp, str) and xp:
                 self.state.xp = xp
@@ -391,7 +391,7 @@ class StateManager:
                     if isinstance(pos, dict):
                         try:
                             pos_tuple = (int(pos.get("row")), int(pos.get("col")))
-                        except Exception:
+                        except (ValueError, TypeError):
                             pos_tuple = None
                     board_units.append(
                         Unit(
@@ -476,7 +476,7 @@ class StateManager:
                         stars_raw = unit_data.get("stars") or unit_data.get("level") or 1
                         try:
                             stars = int(stars_raw)
-                        except Exception:
+                        except (ValueError, TypeError):
                             stars = 1
 
                         pos_tuple = None
@@ -490,7 +490,7 @@ class StateManager:
                         elif isinstance(pos_raw, dict):
                             try:
                                 pos_tuple = (int(pos_raw.get("row")), int(pos_raw.get("col")))
-                            except Exception:
+                            except (ValueError, TypeError):
                                 pos_tuple = None
 
                         units.append(
