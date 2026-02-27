@@ -96,44 +96,44 @@ Deferred to future milestone. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXCP-01 | — | Pending |
-| EXCP-02 | — | Pending |
-| EXCP-03 | — | Pending |
-| EXCP-04 | — | Pending |
-| EXCP-05 | — | Pending |
-| OBSV-01 | — | Pending |
-| OBSV-02 | — | Pending |
-| OBSV-03 | — | Pending |
-| DEPV-01 | — | Pending |
-| DEPV-02 | — | Pending |
-| DEPV-03 | — | Pending |
-| RSMG-01 | — | Pending |
-| RSMG-02 | — | Pending |
-| TYPE-01 | — | Pending |
-| TYPE-02 | — | Pending |
-| SCHM-01 | — | Pending |
-| SCHM-02 | — | Pending |
-| GLBL-01 | — | Pending |
-| GLBL-02 | — | Pending |
-| GLBL-03 | — | Pending |
-| GLBL-04 | — | Pending |
-| CONF-01 | — | Pending |
-| CONF-02 | — | Pending |
-| SKLR-01 | — | Pending |
-| SKLR-02 | — | Pending |
-| SPLT-01 | — | Pending |
-| SPLT-02 | — | Pending |
-| SPLT-03 | — | Pending |
-| SPLT-04 | — | Pending |
-| SPLT-05 | — | Pending |
-| SPLT-06 | — | Pending |
-| BNCH-01 | — | Pending |
+| EXCP-01 | Phase 1 | Pending |
+| EXCP-02 | Phase 1 | Pending |
+| EXCP-03 | Phase 9 | Pending |
+| EXCP-04 | Phase 9 | Pending |
+| EXCP-05 | Phase 6 | Pending |
+| OBSV-01 | Phase 2 | Pending |
+| OBSV-02 | Phase 2 | Pending |
+| OBSV-03 | Phase 2 | Pending |
+| DEPV-01 | Phase 3 | Pending |
+| DEPV-02 | Phase 3 | Pending |
+| DEPV-03 | Phase 3 | Pending |
+| RSMG-01 | Phase 3 | Pending |
+| RSMG-02 | Phase 3 | Pending |
+| TYPE-01 | Phase 4 | Pending |
+| TYPE-02 | Phase 4 | Pending |
+| SCHM-01 | Phase 4 | Pending |
+| SCHM-02 | Phase 4 | Pending |
+| GLBL-01 | Phase 8 | Pending |
+| GLBL-02 | Phase 8 | Pending |
+| GLBL-03 | Phase 5 | Pending |
+| GLBL-04 | Phase 5 | Pending |
+| CONF-01 | Phase 6 | Pending |
+| CONF-02 | Phase 6 | Pending |
+| SKLR-01 | Phase 7 | Pending |
+| SKLR-02 | Phase 7 | Pending |
+| SPLT-01 | Phase 10 | Pending |
+| SPLT-02 | Phase 10 | Pending |
+| SPLT-03 | Phase 11 | Pending |
+| SPLT-04 | Phase 12 | Pending |
+| SPLT-05 | Phase 10 | Pending |
+| SPLT-06 | Phase 11 | Pending |
+| BNCH-01 | Phase 12 | Pending |
 
 **Coverage:**
 - v1 requirements: 32 total
-- Mapped to phases: 0
-- Unmapped: 32 (pending roadmap creation)
+- Mapped to phases: 32
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-27*
-*Last updated: 2026-02-27 after initial definition*
+*Last updated: 2026-02-27 after roadmap creation — all 32 requirements mapped*
