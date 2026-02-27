@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 4: Type Contracts and Schema Validation** - Fix check_compatibility() return type; document BoardEvaluator contract; add transform_batch() schema validation for both dict and Arrow paths
 - [ ] **Phase 5: API Server Hardening** - Migrate FastAPI to lifespan context manager; enforce startup failure gate; replace module globals with app.state
 - [ ] **Phase 6: Configuration Extraction and Ruff Gates** - Extract magic numbers to FeatureConfig dataclass; enable ruff BLE/B rules to statically enforce exception hygiene
-- [ ] **Phase 7: SklearnEvaluator Wiring** - Implement feature extraction matching training schema; integration test with mock sklearn model
+- [x] **Phase 7: SklearnEvaluator Wiring** - Implement feature extraction matching training schema; integration test with mock sklearn model (completed 2026-02-27)
 - [ ] **Phase 8: Global State Elimination** - Refactor cloud_runner module globals to class-based BatchRunner; fix DataLoader worker initargs; multiprocessing integration test
 - [ ] **Phase 9: Simulator and Coach Exception Hardening** - Second-pass exception narrowing for simulator and coach layers; convert intentional fallbacks to logged specific exceptions
 - [ ] **Phase 10: Infrastructure File Splits** - Split cloud_runner.py and feature_engineering.py into focused sub-modules (no determinism dependency)
@@ -117,7 +117,9 @@ Plans:
   1. Calling `SklearnEvaluator.evaluate(game_state)` on a well-formed GameState returns a numeric score without raising NotImplementedError
   2. The feature vector produced by SklearnEvaluator matches the column order and normalization expected by the XGBoost model trained in train_xgboost.py (verified by comparing column names in a test)
   3. An integration test using a mock sklearn model passes in CI, confirming the full evaluate() call path without requiring a real trained model artifact
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [x] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
 
 ### Phase 8: Global State Elimination
 **Goal**: cloud_runner.py module-level globals are replaced by a class-based BatchRunner with instance-scoped state; DataLoader worker pool uses explicit initargs; multiprocessing integration confirms Windows spawn semantics work correctly
@@ -128,7 +130,9 @@ Plans:
   2. Worker processes spawned by BatchRunner receive the simulator by value through initargs, not by inheriting module-level globals — verified on Windows where spawn is the default start method
   3. DataLoader worker pool initialization uses explicit initargs to pass shared resources, with no module-level global mutation after pool creation
   4. An integration test runs a real `multiprocessing.Pool` with the new BatchRunner and confirms workers produce correct results without a stale-global failure
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
 
 ### Phase 9: Simulator and Coach Exception Hardening
 **Goal**: All broad and bare exception handlers in the simulator and coach layers are narrowed to specific types; intentional fallbacks are converted to logged specific-exception handlers
@@ -139,7 +143,9 @@ Plans:
   2. Every intentional fallback in simulator and coach layers uses `except SpecificErrorType` followed by a `log.warning()` call that names the fallback and the reason
   3. The simulator determinism benchmark passes after all exception handler changes — `python -m simulator.benchmark` exits zero with the same output as before
   4. No simulator fallback path silently degrades behavior without a logged warning visible in coach output
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
 
 ### Phase 10: Infrastructure File Splits
 **Goal**: cloud_runner.py and feature_engineering.py are split into focused sub-modules under 1k LOC each, with all external import paths preserved via facade re-exports; no determinism risk because neither file is simulator-core
@@ -150,7 +156,9 @@ Plans:
   2. `from models.feature_engineering import FeatureEngineer` and all existing import paths resolve correctly after the split
   3. cloud_runner.py and feature_engineering.py each contain fewer than 1000 LOC after the split (the remainder lives in underscore-prefixed sub-modules)
   4. The full test suite passes without modification after both splits — `python -m pytest` exits zero
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
 
 ### Phase 11: Combat Engine Split
 **Goal**: combat_engine.py (5.3k LOC) is split into a CombatEngine facade plus private sub-modules for types, hex grid, trait manager, augment manager, and item database; determinism is verified by benchmark after every individual structural change
@@ -161,7 +169,9 @@ Plans:
   2. combat_engine.py is reduced to a CombatEngine class facade under 800 LOC with all types and managers in private underscore-prefixed sub-modules
   3. `python -m simulator.benchmark` passes with identical output (fixed seed) after every individual sub-module extraction step — each step is gated on a passing benchmark before the next begins
   4. The five target sub-modules exist and are independently importable: `_combat_types.py`, `_hex_grid.py`, `_trait_manager.py`, `_augment_manager.py`, `_item_database.py`
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
 
 ### Phase 12: Champion Abilities Split
 **Goal**: champion_abilities.py (5.9k LOC) is split into AbilitiesBase plus systems and cost-tier mixins using the mixin composition pattern; AbilitiesBase is extracted first as a hard prerequisite; determinism is verified after every step
@@ -173,7 +183,9 @@ Plans:
   3. `python -m simulator.benchmark` passes with identical output (fixed seed) after every individual split step including AbilitiesBase, each systems file, and each cost-tier mixin file
   4. Cross-engine parity tests in the benchmark suite are batched to reduce CI overhead per BNCH-01, and the batched suite passes with the same result set as the unbatched baseline
   5. champion_abilities.py is reduced to a thin facade under 250 LOC with all ability implementation in underscore-prefixed mixin sub-modules
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
 
 ## Progress
 
@@ -188,7 +200,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 4. Type Contracts and Schema Validation | 0/2 | Not started | - |
 | 5. API Server Hardening | 0/1 | Not started | - |
 | 6. Configuration Extraction and Ruff Gates | 1/2 | In progress | - |
-| 7. SklearnEvaluator Wiring | 0/TBD | Not started | - |
+| 7. SklearnEvaluator Wiring | 1/1 | Complete | 2026-02-27 |
 | 8. Global State Elimination | 0/TBD | Not started | - |
 | 9. Simulator and Coach Exception Hardening | 0/TBD | Not started | - |
 | 10. Infrastructure File Splits | 0/TBD | Not started | - |

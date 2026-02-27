@@ -56,8 +56,8 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### SklearnEvaluator
 
-- [ ] **SKLR-01**: SklearnEvaluator feature extraction implemented (matches training schema from train_xgboost.py)
-- [ ] **SKLR-02**: SklearnEvaluator integration tested with mock sklearn model
+- [x] **SKLR-01**: SklearnEvaluator feature extraction implemented (matches training schema from train_xgboost.py)
+- [x] **SKLR-02**: SklearnEvaluator integration tested with mock sklearn model
 
 ### Monolithic File Splits
 
@@ -119,8 +119,8 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | GLBL-04 | Phase 5 | Pending |
 | CONF-01 | Phase 6 | Complete |
 | CONF-02 | Phase 6 | Complete |
-| SKLR-01 | Phase 7 | Pending |
-| SKLR-02 | Phase 7 | Pending |
+| SKLR-01 | Phase 7 | Complete |
+| SKLR-02 | Phase 7 | Complete |
 | SPLT-01 | Phase 10 | Pending |
 | SPLT-02 | Phase 10 | Pending |
 | SPLT-03 | Phase 11 | Pending |

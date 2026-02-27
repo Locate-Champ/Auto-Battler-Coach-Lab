@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-02-27T19:35:46.918Z"
-progress:
-  total_phases: 6
-  completed_phases: 6
-  total_plans: 10
-  completed_plans: 10
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-27T19:12:08Z"
+last_updated: "2026-02-27T20:21:35Z"
 progress:
-  total_phases: 6
-  completed_phases: 5
-  total_plans: 10
-  completed_plans: 9
+  total_phases: 7
+  completed_phases: 7
+  total_plans: 11
+  completed_plans: 11
 ---
 
 # Project State
@@ -31,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 6: Configuration Extraction and Ruff Gates
+**Current focus:** Phase 7: SklearnEvaluator Wiring (complete)
 
 ## Current Position
 
-Phase: 6 of 12 (Configuration Extraction and Ruff Gates)
-Plan: 1 of 2 in current phase (06-01 complete, 06-02 pending)
-Status: 06-01 complete -- NumericFeatureConfig extracted and wired
-Last activity: 2026-02-27 — Completed 06-01-PLAN.md (frozen dataclass config extraction with 16 fields and tests)
+Phase: 7 of 12 (SklearnEvaluator Wiring)
+Plan: 1 of 1 in current phase (07-01 complete)
+Status: 07-01 complete -- SklearnEvaluator wired with TFTFeatureEngineer adapter
+Last activity: 2026-02-27 — Completed 07-01-PLAN.md (ML-backed evaluator with placement-to-score mapping and 11 tests)
 
-Progress: [#########░] 75%
+Progress: [##########] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
-- Average duration: 4.4 min
-- Total execution time: 0.67 hours
+- Total plans completed: 11
+- Average duration: 4.3 min
+- Total execution time: 0.78 hours
 
 **By Phase:**
 
@@ -58,10 +45,11 @@ Progress: [#########░] 75%
 | 03-dependency-validation-and-resource-management | 2 | 6 min | 3 min |
 | 04-type-contracts-and-schema-validation | 2 | 5 min | 2.5 min |
 | 05-api-server-hardening | 1 | 12 min | 12 min |
-| 06-configuration-extraction-and-ruff-gates | 1/2 | 5 min | 5 min |
+| 06-configuration-extraction-and-ruff-gates | 2 | 8 min | 4 min |
+| 07-sklearnevaluator-wiring | 1 | 4 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (2 min), 04-02 (3 min), 05-01 (12 min), 06-01 (5 min)
+- Last 5 plans: 05-01 (12 min), 06-01 (5 min), 06-02 (3 min), 07-01 (4 min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -99,6 +87,9 @@ Recent decisions affecting current work:
 - [06-01]: Named class NumericFeatureConfig to avoid collision with existing FeatureConfig (boolean toggles)
 - [06-01]: Placed config in models/feature_config.py alongside feature_engineering.py, not src/models/
 - [06-01]: Used local nc = self._numeric_config shorthand in methods with multiple config references
+- [07-01]: Always use model.predict() (not predict_proba) with placement-to-score linear mapping for simplicity across model types
+- [07-01]: Replicate _round_num_from_stage() inline in evaluator.py to avoid circular import from coach.coach
+- [07-01]: Fixed frozen dataclass mutation bug in _load() using object.__setattr__() pattern
 
 ### Pending Todos
 
@@ -113,5 +104,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 06-01-PLAN.md (NumericFeatureConfig extraction)
-Resume file: .planning/phases/06-configuration-extraction-and-ruff-gates/06-01-SUMMARY.md
+Stopped at: Completed 07-01-PLAN.md (SklearnEvaluator wiring)
+Resume file: .planning/phases/07-sklearnevaluator-wiring/07-01-SUMMARY.md
