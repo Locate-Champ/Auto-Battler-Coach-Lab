@@ -48,11 +48,19 @@ REQUIRED_COLUMNS: frozenset = frozenset(
         "hp",
         "gold",
         "round",
-        "streak",
-        "units",
-        "traits",
         "augments",
     }
+)
+
+# Columns where the code supports alternative names from raw simulation output.
+# At least ONE name from each group must be present.
+_REQUIRED_COLUMN_GROUPS: tuple = (
+    (
+        "streak",
+        "win_streak",
+    ),  # _economy_features tries streak, falls back to win_streak - loss_streak
+    ("units", "board", "board_names"),  # _extract_units tries units, board, then board_names
+    ("traits", "trait_names"),  # _extract_traits tries traits, then trait_names/trait_counts
 )
 
 _ECON_AUGMENT_KEYWORDS = (
@@ -1492,13 +1500,26 @@ class TFTFeatureEngineer:
 
         Called at entry to transform_batch() and transform_arrow_batch()
         after normalization, before any computation.
+
+        Checks both strict required columns and column groups where the
+        code accepts alternative names (e.g. ``streak`` vs
+        ``win_streak``/``loss_streak``).
         """
-        missing = REQUIRED_COLUMNS - present
-        if missing:
+        missing = sorted(REQUIRED_COLUMNS - present)
+        missing_groups = []
+        for group in _REQUIRED_COLUMN_GROUPS:
+            if not any(name in present for name in group):
+                missing_groups.append(group)
+        if missing or missing_groups:
+            parts = []
+            if missing:
+                parts.append(f"Missing required columns: {missing}")
+            for group in missing_groups:
+                parts.append(f"Missing column group (need at least one of {list(group)})")
             raise ValueError(
-                f"Missing required columns in {path_name} input: {sorted(missing)}. "
-                f"Present columns: {sorted(present)}. "
-                f"Required columns: {sorted(REQUIRED_COLUMNS)}."
+                f"Missing required columns in {path_name} input. "
+                + "; ".join(parts)
+                + f". Present columns: {sorted(present)}."
             )
 
     def transform_batch(self, rows: Sequence[Mapping[str, Any]]) -> np.ndarray:
