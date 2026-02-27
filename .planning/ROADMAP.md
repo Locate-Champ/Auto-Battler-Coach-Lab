@@ -77,7 +77,10 @@ Plans:
   2. `BoardEvaluator` base class has a documented abstract contract (either ABC abstractmethod or explicit docstring contract) so implementers know what to override
   3. `FeatureEngineer.transform_batch()` raises a descriptive ValueError listing missing column names when required columns are absent, before any computation runs
   4. Schema validation passes for both the JSONL/dict input path and the Rust Parquet Arrow path — validation runs after normalization, not before, so valid Rust-generated data is not rejected
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 04-01-PLAN.md — Fix evaluator type contracts: BoardEvaluator ABC + check_compatibility() -> bool
+- [ ] 04-02-PLAN.md — Add schema validation to transform_batch() and transform_arrow_batch()
 
 ### Phase 5: API Server Hardening
 **Goal**: The FastAPI server uses the official lifespan pattern, fails loudly if models do not load at startup, and stores all shared state in app.state rather than module-level globals
@@ -177,7 +180,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 1. Models Exception Hardening | 0/1 | Complete    | 2026-02-27 |
 | 2. Observable Fallbacks | 0/2 | Not started | - |
 | 3. Dependency Validation and Resource Management | 0/2 | Not started | - |
-| 4. Type Contracts and Schema Validation | 0/TBD | Not started | - |
+| 4. Type Contracts and Schema Validation | 0/2 | Not started | - |
 | 5. API Server Hardening | 0/TBD | Not started | - |
 | 6. Configuration Extraction and Ruff Gates | 0/TBD | Not started | - |
 | 7. SklearnEvaluator Wiring | 0/TBD | Not started | - |
