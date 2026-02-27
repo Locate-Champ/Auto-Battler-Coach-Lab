@@ -17,10 +17,14 @@ from snapshot_schema import normalize_jsonish_fields
 
 from .feature_engineering import FeatureConfig, TFTFeatureEngineer
 
-try:  # pragma: no cover - optional dependency
+try:
     import pyarrow.parquet as pq
-except (ImportError, OSError):  # pragma: no cover - optional dependency
-    pq = None
+except (ImportError, OSError) as _pyarrow_err:
+    raise ImportError(
+        "pyarrow is required for DataLoader but could not be imported. "
+        "Install: pip install 'pyarrow>=14.0'. "
+        "Without pyarrow, the data pipeline silently returns empty iterators."
+    ) from _pyarrow_err
 
 _log = logging.getLogger(__name__)
 
@@ -123,8 +127,6 @@ class DataLoader:
         path: Path,
         row_batch_size: int = 4096,
     ) -> Iterator[Dict[str, Any]]:
-        if pq is None:  # pragma: no cover - optional dependency
-            return
         parquet_file = pq.ParquetFile(path)
         for batch in parquet_file.iter_batches(batch_size=row_batch_size):
             for row in batch.to_pylist():
@@ -136,8 +138,6 @@ class DataLoader:
         batch_size: int = 4096,
     ) -> Iterator[Any]:
         """Yield Arrow RecordBatches without dict conversion."""
-        if pq is None:  # pragma: no cover - optional dependency
-            return
         parquet_file = pq.ParquetFile(path)
         for batch in parquet_file.iter_batches(batch_size=batch_size):
             yield batch
@@ -170,9 +170,8 @@ class DataLoader:
         parquet_files = sorted(root.rglob("*.parquet"))
         jsonl_files = sorted(root.rglob("*.jsonl"))
 
-        if pq is not None:
-            for path in parquet_files:
-                yield from self._iter_parquet_rows(path, row_batch_size=row_batch_size)
+        for path in parquet_files:
+            yield from self._iter_parquet_rows(path, row_batch_size=row_batch_size)
 
         for path in jsonl_files:
             yield from self._iter_jsonl_rows(path)
@@ -224,9 +223,8 @@ class DataLoader:
         jsonl_files = sorted(root.rglob("*.jsonl"))
         total = 0
 
-        if pq is not None:
-            for path in parquet_files:
-                total += int(pq.ParquetFile(path).metadata.num_rows)
+        for path in parquet_files:
+            total += int(pq.ParquetFile(path).metadata.num_rows)
 
         for path in jsonl_files:
             with path.open("r", encoding="utf-8") as handle:
@@ -348,8 +346,6 @@ class DataLoader:
         Auto-tunes: uses single-process for small datasets (<300K rows or
         <4 files) where IPC overhead exceeds compute savings.
         """
-        if pq is None:
-            raise RuntimeError("pyarrow required for Arrow parallel path")
         root = Path(data_dir) if data_dir is not None else self.data_dir
         parquet_files = sorted(root.rglob("*.parquet"))
         n_features = len(self.feature_engineer.feature_names())
@@ -402,9 +398,6 @@ class DataLoader:
         features via transform_arrow_batch, then splits by game_id.  Avoids
         building Python dicts for every row.
         """
-        if pq is None:
-            raise RuntimeError("pyarrow required for Arrow training path")
-
         import pyarrow as pa
 
         feature_chunks: List[np.ndarray] = []
@@ -542,9 +535,6 @@ class DataLoader:
         transforms features via transform_arrow_batch, then splits by game_id.
         Label: 1 if placement <= 4, else 0.
         """
-        if pq is None:
-            raise RuntimeError("pyarrow required for Arrow training path")
-
         import pyarrow as pa
 
         feature_chunks: List[np.ndarray] = []
@@ -675,9 +665,6 @@ class DataLoader:
         Streams Arrow batches, extracts placement as a float regression label,
         transforms features via transform_arrow_batch, then splits by game_id.
         """
-        if pq is None:
-            raise RuntimeError("pyarrow required for Arrow training path")
-
         import pyarrow as pa
 
         feature_chunks: List[np.ndarray] = []
