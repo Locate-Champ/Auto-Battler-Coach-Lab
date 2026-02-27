@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from models.data_loader import DataLoader
 
@@ -223,3 +224,36 @@ def test_normalize_row_decodes_opponent_augments_json_string(tmp_path: Path) -> 
         }
     )
     assert normalized["opponent_augments"] == ["TFT_Augment_PowerUp", "TFT16_Augment_AirAxiom"]
+
+
+def test_context_manager_normal_exit(tmp_path: Path) -> None:
+    """DataLoader as context manager calls close() on normal exit."""
+    dl = DataLoader(data_dir=tmp_path)
+    with dl as loader:
+        assert loader is dl
+    assert dl._pool is None  # noqa: SLF001
+
+
+def test_context_manager_exception_exit(tmp_path: Path) -> None:
+    """DataLoader as context manager re-raises original exception after cleanup."""
+    dl = DataLoader(data_dir=tmp_path)
+    with pytest.raises(ValueError, match="test error"):
+        with dl as loader:
+            raise ValueError("test error")
+    assert dl._pool is None  # noqa: SLF001
+
+
+def test_resource_warning_on_unclosed(tmp_path: Path) -> None:
+    """DataLoader emits ResourceWarning when garbage-collected without close()."""
+    import gc
+
+    dl = DataLoader(data_dir=tmp_path, n_workers=1)
+    # Force pool creation by calling _ensure_pool (creates but does not use)
+    # Skip if pool creation fails (CI environments may restrict multiprocessing)
+    try:
+        dl._ensure_pool()  # noqa: SLF001
+    except OSError:
+        pytest.skip("multiprocessing pool creation not available")
+    with pytest.warns(ResourceWarning, match="garbage-collected without being closed"):
+        del dl
+        gc.collect()

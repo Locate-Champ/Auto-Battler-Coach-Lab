@@ -122,6 +122,35 @@ class DataLoader:
             self._pool.join()
             self._pool = None
 
+    def __enter__(self) -> "DataLoader":
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb) -> bool:
+        try:
+            self.close()
+        except Exception as cleanup_err:
+            _log.warning(
+                "DataLoader worker pool cleanup failed during __exit__: %s. "
+                "Original exception (if any) takes priority.",
+                cleanup_err,
+            )
+        return False  # Never suppress the original exception
+
+    def __del__(self) -> None:
+        if getattr(self, "_pool", None) is not None:
+            import warnings
+
+            warnings.warn(
+                "DataLoader was garbage-collected without being closed. "
+                "Use 'with DataLoader(...) as dl:' or call dl.close() explicitly.",
+                ResourceWarning,
+                stacklevel=2,
+            )
+            try:
+                self.close()
+            except Exception:
+                pass
+
     def _iter_parquet_rows(
         self,
         path: Path,
