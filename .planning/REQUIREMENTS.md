@@ -51,8 +51,8 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Configuration
 
-- [ ] **CONF-01**: Magic numbers in feature_engineering.py extracted to frozen FeatureConfig dataclass with documented rationale
-- [ ] **CONF-02**: Constants are importable and overridable for testing
+- [x] **CONF-01**: Magic numbers in feature_engineering.py extracted to frozen FeatureConfig dataclass with documented rationale
+- [x] **CONF-02**: Constants are importable and overridable for testing
 
 ### SklearnEvaluator
 
@@ -117,8 +117,8 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | GLBL-02 | Phase 8 | Pending |
 | GLBL-03 | Phase 5 | Pending |
 | GLBL-04 | Phase 5 | Pending |
-| CONF-01 | Phase 6 | Pending |
-| CONF-02 | Phase 6 | Pending |
+| CONF-01 | Phase 6 | Complete |
+| CONF-02 | Phase 6 | Complete |
 | SKLR-01 | Phase 7 | Pending |
 | SKLR-02 | Phase 7 | Pending |
 | SPLT-01 | Phase 10 | Pending |

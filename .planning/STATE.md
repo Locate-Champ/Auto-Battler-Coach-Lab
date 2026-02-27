@@ -2,39 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-02-27T18:05:51.419Z"
-progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 8
-  completed_plans: 8
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: unknown
-last_updated: "2026-02-27T16:34:36.073Z"
-progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 7
-  completed_plans: 7
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-27T16:29:51Z"
+last_updated: "2026-02-27T19:12:08Z"
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 7
-  completed_plans: 7
+  total_phases: 6
+  completed_phases: 5
+  total_plans: 10
+  completed_plans: 9
 ---
 
 # Project State
@@ -44,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 5: API Server Hardening
+**Current focus:** Phase 6: Configuration Extraction and Ruff Gates
 
 ## Current Position
 
-Phase: 5 of 12 (API Server Hardening) -- COMPLETE
-Plan: 1 of 1 in current phase (05-01 complete)
-Status: Phase 5 complete -- all plans executed
-Last activity: 2026-02-27 — Completed 05-01-PLAN.md (FastAPI lifespan migration with DI and test suite)
+Phase: 6 of 12 (Configuration Extraction and Ruff Gates)
+Plan: 1 of 2 in current phase (06-01 complete, 06-02 pending)
+Status: 06-01 complete -- NumericFeatureConfig extracted and wired
+Last activity: 2026-02-27 — Completed 06-01-PLAN.md (frozen dataclass config extraction with 16 fields and tests)
 
-Progress: [########░░] 67%
+Progress: [#########░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 3.1 min
-- Total execution time: 0.37 hours
+- Total plans completed: 9
+- Average duration: 4.4 min
+- Total execution time: 0.67 hours
 
 **By Phase:**
 
@@ -71,10 +45,11 @@ Progress: [########░░] 67%
 | 03-dependency-validation-and-resource-management | 2 | 6 min | 3 min |
 | 04-type-contracts-and-schema-validation | 2 | 5 min | 2.5 min |
 | 05-api-server-hardening | 1 | 12 min | 12 min |
+| 06-configuration-extraction-and-ruff-gates | 1/2 | 5 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (4 min), 03-02 (2 min), 04-01 (2 min), 04-02 (3 min), 05-01 (12 min)
-- Trend: stable (05-01 larger scope — lifespan migration + full test suite)
+- Last 5 plans: 04-01 (2 min), 04-02 (3 min), 05-01 (12 min), 06-01 (5 min)
+- Trend: stable
 
 *Updated after each plan completion*
 
@@ -108,6 +83,9 @@ Recent decisions affecting current work:
 - [04-01]: Kept raise NotImplementedError body in BoardEvaluator.score() -- standard ABC convention alongside @abstractmethod
 - [04-02]: REQUIRED_COLUMNS split into strict (5 columns) + _REQUIRED_COLUMN_GROUPS (3 groups with alternatives) to support both normalized and raw simulation data formats
 - [04-02]: Column groups use any-of semantics: streak OR win_streak, units OR board OR board_names, traits OR trait_names
+- [06-01]: Named class NumericFeatureConfig to avoid collision with existing FeatureConfig (boolean toggles)
+- [06-01]: Placed config in models/feature_config.py alongside feature_engineering.py, not src/models/
+- [06-01]: Used local nc = self._numeric_config shorthand in methods with multiple config references
 
 ### Pending Todos
 
@@ -122,5 +100,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 05-01-PLAN.md (Phase 5 complete)
-Resume file: .planning/phases/05-api-server-hardening/05-01-SUMMARY.md
+Stopped at: Completed 06-01-PLAN.md (NumericFeatureConfig extraction)
+Resume file: .planning/phases/06-configuration-extraction-and-ruff-gates/06-01-SUMMARY.md
