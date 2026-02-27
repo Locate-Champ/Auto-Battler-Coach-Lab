@@ -12,7 +12,7 @@ This milestone systematically eliminates the 18 reliability concerns identified 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Models Exception Hardening** - Narrow all broad/bare exception handlers in the ML models layer (feature_engineering, data_loader, train_xgboost)
+- [x] **Phase 1: Models Exception Hardening** - Narrow all broad/bare exception handlers in the ML models layer (feature_engineering, data_loader, train_xgboost) (completed 2026-02-27)
 - [ ] **Phase 2: Observable Fallbacks** - Wire logging.WARNING for all silent degradation paths (Cython, pickle, module loggers)
 - [ ] **Phase 3: Dependency Validation and Resource Management** - Add explicit startup errors for missing pyarrow and combat_data.json; DataLoader context manager; Rust pre-flight check
 - [ ] **Phase 4: Type Contracts and Schema Validation** - Fix check_compatibility() return type; document BoardEvaluator contract; add transform_batch() schema validation for both dict and Arrow paths
@@ -36,7 +36,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A deliberately bad input to the models pipeline raises a specific, named exception (not Exception or bare except) that surfaces in the caller's stack trace
   3. Cython and Rust extension imports in models use `except (ImportError, OSError)` so architecture-mismatched extensions fall back rather than crash
   4. No silent pass or broad except in the models layer absorbs an error without re-raising or logging
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
 - [ ] 01-01-PLAN.md — Create exceptions module, narrow all BLE001 violations, widen extension import handlers
 
@@ -168,7 +168,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Models Exception Hardening | 0/1 | Planned | - |
+| 1. Models Exception Hardening | 0/1 | Complete    | 2026-02-27 |
 | 2. Observable Fallbacks | 0/TBD | Not started | - |
 | 3. Dependency Validation and Resource Management | 0/TBD | Not started | - |
 | 4. Type Contracts and Schema Validation | 0/TBD | Not started | - |
