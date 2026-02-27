@@ -39,8 +39,8 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Schema Validation
 
-- [ ] **SCHM-01**: `FeatureEngineer.transform_batch()` validates required column names at entry point
-- [ ] **SCHM-02**: Schema validation accounts for both JSONL/dict path and Rust Parquet Arrow path (validate after normalization)
+- [x] **SCHM-01**: `FeatureEngineer.transform_batch()` validates required column names at entry point
+- [x] **SCHM-02**: Schema validation accounts for both JSONL/dict path and Rust Parquet Arrow path (validate after normalization)
 
 ### Global State Elimination
 
@@ -111,8 +111,8 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | RSMG-02 | Phase 3 | Complete |
 | TYPE-01 | Phase 4 | Complete |
 | TYPE-02 | Phase 4 | Complete |
-| SCHM-01 | Phase 4 | Pending |
-| SCHM-02 | Phase 4 | Pending |
+| SCHM-01 | Phase 4 | Complete |
+| SCHM-02 | Phase 4 | Complete |
 | GLBL-01 | Phase 8 | Pending |
 | GLBL-02 | Phase 8 | Pending |
 | GLBL-03 | Phase 5 | Pending |
