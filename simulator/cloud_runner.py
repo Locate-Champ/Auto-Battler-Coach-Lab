@@ -28,6 +28,7 @@ import sys
 import time
 import traceback
 from collections import Counter
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -52,8 +53,49 @@ AGENT_PROFILES = {
     "ladder": {"random": 20, "econ": 45, "slam": 35},
 }
 
-_RUST_FULL_SIMULATOR: Any = None
-_RUST_PARQUET_API_VALIDATED: set[str] = set()
+# Worker-process state (set by Pool initializer, process-local -- NOT shared mutable state)
+_worker_sim: Any = None
+_worker_parquet_validated: set[str] = set()
+
+
+@dataclass(frozen=True)
+class BatchRunnerConfig:
+    """Immutable configuration for a batch simulation run.
+
+    Use dataclasses.replace() for test overrides.
+    """
+
+    num_games: int
+    num_workers: int
+    output_dir: str
+    seed_start: int = 0
+    agent_mix: Optional[Dict[str, int]] = None
+    chunk_size: int = 100
+    resume: bool = False
+    agent_profile: str = "random"
+    checkpoint_every: Optional[int] = None
+    progress_every: Optional[int] = 500
+    max_errors: Optional[int] = None
+    require_parquet: bool = False
+    pool_chunksize: Optional[int] = None
+    pool_chunksize_max: Optional[int] = None
+    shard_index: Optional[int] = None
+    num_shards: Optional[int] = None
+    engine: str = "python"
+    rust_full_include_training_rows: bool = True
+    rust_full_native_jsonl: bool = False
+    rust_full_native_parquet: bool = False
+    rust_full_native_parquet_direct: bool = False
+    rust_full_rayon_batch_size: Optional[int] = None
+    rust_full_rayon_threads: Optional[int] = None
+    parquet_compression: str = "uncompressed"
+    parquet_use_dictionary: bool = False
+    parquet_write_statistics: bool = False
+    parquet_row_group_size: Optional[int] = None
+    parquet_write_batch_size: Optional[int] = None
+    s3_uri: Optional[str] = None
+    instance_hourly_usd: float = 0.0
+    instance_type: Optional[str] = None
 
 
 class BatchAbort(Exception):
@@ -126,6 +168,7 @@ def _extract_signature_parameter_names(method: Any) -> List[str]:
 def _ensure_rust_parquet_method_support(
     rust_simulator: Any,
     method_name: str,
+    validated_set: set[str],
     required_kwargs: Tuple[str, ...] = (
         "compression",
         "use_dictionary",
@@ -134,8 +177,7 @@ def _ensure_rust_parquet_method_support(
         "write_batch_size",
     ),
 ) -> None:
-    global _RUST_PARQUET_API_VALIDATED
-    if method_name in _RUST_PARQUET_API_VALIDATED:
+    if method_name in validated_set:
         return
 
     method = getattr(rust_simulator, method_name, None)
@@ -156,7 +198,7 @@ def _ensure_rust_parquet_method_support(
             f"{_rust_extension_rebuild_hint()}"
         )
 
-    _RUST_PARQUET_API_VALIDATED.add(method_name)
+    validated_set.add(method_name)
 
 
 def _wilson_interval(successes: int, trials: int, z: float = WILSON_Z_95) -> Tuple[float, float]:
