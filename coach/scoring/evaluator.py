@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import pickle
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -116,7 +117,15 @@ class SklearnEvaluator(BoardEvaluator):
 
         try:
             model = joblib.load(self.model_path)
-        except Exception as e:
+        except (
+            OSError,
+            EOFError,
+            ValueError,
+            KeyError,
+            AttributeError,
+            ImportError,
+            pickle.UnpicklingError,
+        ) as e:
             raise RuntimeError(f"Failed to load sklearn model from {self.model_path}: {e}") from e
 
         object.__setattr__(self, "_model", model)
@@ -141,7 +150,7 @@ class SklearnEvaluator(BoardEvaluator):
 
         try:
             features = fe.transform(row)  # type: ignore[union-attr]
-        except Exception as e:
+        except (TypeError, ValueError, KeyError, AttributeError) as e:
             raise ValueError(
                 f"Feature extraction failed: {e}. "
                 f"GameState stage={state.stage}, board_size={len(state.board)}"
