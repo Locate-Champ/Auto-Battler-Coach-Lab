@@ -37,7 +37,7 @@ def _create_engine(engine_name: str) -> Any:
     if engine_name in ("rust", "rust_full"):
         try:
             from tft_combat_engine import RustCombatEngine
-        except Exception as exc:
+        except (ImportError, OSError) as exc:
             raise RuntimeError(
                 "Rust engine requested but tft_combat_engine is unavailable. "
                 "Build/install simulator/core/rust_engine via maturin first."

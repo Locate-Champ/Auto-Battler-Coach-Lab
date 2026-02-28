@@ -261,7 +261,7 @@ class TFTGame:
         if self.engine_name == "rust":
             try:
                 from tft_combat_engine import RustCombatEngine
-            except Exception as exc:
+            except (ImportError, OSError) as exc:
                 raise RuntimeError(
                     "Rust engine selected but tft_combat_engine is unavailable. "
                     "Build/install it via maturin first."
