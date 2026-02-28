@@ -31,23 +31,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 7: SklearnEvaluator Wiring (complete)
+**Current focus:** Phase 8: Global State Elimination
 
 ## Current Position
 
-Phase: 7 of 12 (SklearnEvaluator Wiring)
-Plan: 1 of 1 in current phase (07-01 complete)
-Status: 07-01 complete -- SklearnEvaluator wired with TFTFeatureEngineer adapter
-Last activity: 2026-02-27 — Completed 07-01-PLAN.md (ML-backed evaluator with placement-to-score mapping and 11 tests)
+Phase: 8 of 12 (Global State Elimination)
+Plan: 1 of 2 in current phase (08-01 complete)
+Status: 08-01 complete -- BatchRunnerConfig frozen dataclass + BatchRunner class replacing run_batch() and module globals
+Last activity: 2026-02-27 — Completed 08-01-PLAN.md (BatchRunnerConfig + BatchRunner with instance-scoped state)
 
 Progress: [##########] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
-- Average duration: 4.3 min
-- Total execution time: 0.78 hours
+- Total plans completed: 12
+- Average duration: 4.7 min
+- Total execution time: 0.93 hours
 
 **By Phase:**
 
@@ -60,9 +60,10 @@ Progress: [##########] 80%
 | 05-api-server-hardening | 1 | 12 min | 12 min |
 | 06-configuration-extraction-and-ruff-gates | 2 | 8 min | 4 min |
 | 07-sklearnevaluator-wiring | 1 | 4 min | 4 min |
+| 08-global-state-elimination | 1 | 9 min | 9 min |
 
 **Recent Trend:**
-- Last 5 plans: 05-01 (12 min), 06-01 (5 min), 06-02 (3 min), 07-01 (4 min)
+- Last 5 plans: 06-01 (5 min), 06-02 (3 min), 07-01 (4 min), 08-01 (9 min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -103,6 +104,9 @@ Recent decisions affecting current work:
 - [07-01]: Always use model.predict() (not predict_proba) with placement-to-score linear mapping for simplicity across model types
 - [07-01]: Replicate _round_num_from_stage() inline in evaluator.py to avoid circular import from coach.coach
 - [07-01]: Fixed frozen dataclass mutation bug in _load() using object.__setattr__() pattern
+- [08-01]: Worker-local globals (_worker_sim, _worker_parquet_validated) preserved as process-local state -- standard multiprocessing pattern
+- [08-01]: Parallel path uses mp.get_context("spawn").Pool() for Windows compatibility
+- [08-01]: Clean break: run_batch() removed entirely, no backward compatibility shim per CONTEXT.md
 
 ### Pending Todos
 
@@ -110,12 +114,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 8 risk: multiprocessing integration test must cover Windows spawn semantics (fork semantics do not apply on Windows)
 - Phase 12 risk: _abilities_systems.py cross-method call audit required before writing the file — audit self._cast_, self.engine., and self._deal_damage() calls in the special systems section
 - Phase 4 risk: pandera Arrow Table validation path behavior for Arrow Tables with schema metadata may differ from pandas DataFrames — verify with synthetic fixture before production use
+- Pre-existing: test_api_server.py::test_startup_failure_exits fails on Python 3.14 (concurrent.futures + SystemExit in mocked context)
 
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Phase 8 context gathered — ready for planning
-Resume file: .planning/phases/08-global-state-elimination/08-CONTEXT.md
+Stopped at: Completed 08-01-PLAN.md
+Resume file: .planning/phases/08-global-state-elimination/08-01-SUMMARY.md

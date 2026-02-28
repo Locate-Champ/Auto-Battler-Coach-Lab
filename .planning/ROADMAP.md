@@ -130,9 +130,10 @@ Plans:
   2. Worker processes spawned by BatchRunner receive the simulator by value through initargs, not by inheriting module-level globals — verified on Windows where spawn is the default start method
   3. DataLoader worker pool initialization uses explicit initargs to pass shared resources, with no module-level global mutation after pool creation
   4. An integration test runs a real `multiprocessing.Pool` with the new BatchRunner and confirms workers produce correct results without a stale-global failure
-**Plans**: 1 plan
+**Plans**: 2 plans
 Plans:
-- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
+- [ ] 08-01-PLAN.md — BatchRunnerConfig dataclass + BatchRunner class refactoring, eliminate main-process globals, rewrite main(), update existing tests
+- [ ] 08-02-PLAN.md — DataLoader spawn context, BatchRunner integration tests (isolation, parallel spawn), DataLoader initargs verification
 
 ### Phase 9: Simulator and Coach Exception Hardening
 **Goal**: All broad and bare exception handlers in the simulator and coach layers are narrowed to specific types; intentional fallbacks are converted to logged specific-exception handlers
