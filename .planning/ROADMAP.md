@@ -146,7 +146,7 @@ Plans:
   4. No simulator fallback path silently degrades behavior without a logged warning visible in coach output
 **Plans**: 1 plan
 Plans:
-- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
+- [ ] 09-01-PLAN.md — Narrow 5 BLE001 sites across simulator and coach layers; benchmark gate after game.py change
 
 ### Phase 10: Infrastructure File Splits
 **Goal**: cloud_runner.py and feature_engineering.py are split into focused sub-modules under 1k LOC each, with all external import paths preserved via facade re-exports; no determinism risk because neither file is simulator-core
@@ -159,7 +159,7 @@ Plans:
   4. The full test suite passes without modification after both splits — `python -m pytest` exits zero
 **Plans**: 1 plan
 Plans:
-- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
+- [ ] 10-01-PLAN.md — Split cloud_runner.py and feature_engineering.py into focused sub-modules with facade re-exports
 
 ### Phase 11: Combat Engine Split
 **Goal**: combat_engine.py (5.3k LOC) is split into a CombatEngine facade plus private sub-modules for types, hex grid, trait manager, augment manager, and item database; determinism is verified by benchmark after every individual structural change
@@ -172,7 +172,7 @@ Plans:
   4. The five target sub-modules exist and are independently importable: `_combat_types.py`, `_hex_grid.py`, `_trait_manager.py`, `_augment_manager.py`, `_item_database.py`
 **Plans**: 1 plan
 Plans:
-- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
+- [ ] 11-01-PLAN.md — Split combat_engine.py into facade + 5 private sub-modules; benchmark after each extraction step
 
 ### Phase 12: Champion Abilities Split
 **Goal**: champion_abilities.py (5.9k LOC) is split into AbilitiesBase plus systems and cost-tier mixins using the mixin composition pattern; AbilitiesBase is extracted first as a hard prerequisite; determinism is verified after every step
@@ -186,7 +186,7 @@ Plans:
   5. champion_abilities.py is reduced to a thin facade under 250 LOC with all ability implementation in underscore-prefixed mixin sub-modules
 **Plans**: 1 plan
 Plans:
-- [ ] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests� Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
+- [ ] 12-01-PLAN.md — Split champion_abilities.py into AbilitiesBase + systems + cost-tier mixins; benchmark after each step
 
 ## Progress
 
@@ -203,7 +203,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 6. Configuration Extraction and Ruff Gates | 1/2 | In progress | - |
 | 7. SklearnEvaluator Wiring | 1/1 | Complete | 2026-02-27 |
 | 8. Global State Elimination | 0/TBD | Not started | - |
-| 9. Simulator and Coach Exception Hardening | 0/TBD | Not started | - |
+| 9. Simulator and Coach Exception Hardening | 0/1 | Not started | - |
 | 10. Infrastructure File Splits | 0/TBD | Not started | - |
 | 11. Combat Engine Split | 0/TBD | Not started | - |
 | 12. Champion Abilities Split | 0/TBD | Not started | - |
