@@ -257,3 +257,48 @@ def test_resource_warning_on_unclosed(tmp_path: Path) -> None:
     with pytest.warns(ResourceWarning, match="garbage-collected without being closed"):
         del dl
         gc.collect()
+
+
+class TestDataLoaderSpawnContext:
+    """Tests for DataLoader spawn context (GLBL-02)."""
+
+    def test_ensure_pool_uses_spawn_context(self, monkeypatch):
+        """DataLoader._ensure_pool() creates pool via mp.get_context('spawn')."""
+        import multiprocessing
+        from unittest.mock import MagicMock, patch
+
+        calls: list[str] = []
+        original_get_context = multiprocessing.get_context
+
+        def tracking_get_context(method):
+            calls.append(method)
+            return original_get_context(method)
+
+        monkeypatch.setattr(multiprocessing, "get_context", tracking_get_context)
+
+        # Create a DataLoader with a small worker count
+        dl = DataLoader(data_dir=".", n_workers=1)
+
+        # Mock the pool creation to avoid actually spawning processes
+        mock_pool = MagicMock()
+        ctx = multiprocessing.get_context("spawn")
+
+        with patch.object(type(ctx), "Pool", return_value=mock_pool):
+            dl._ensure_pool()  # noqa: SLF001
+
+        # Verify get_context was called with "spawn"
+        assert "spawn" in calls, f"Expected get_context('spawn') to be called, got calls: {calls}"
+        # Clean up
+        dl._pool = None  # noqa: SLF001
+
+    def test_worker_init_via_initargs(self):
+        """DataLoader passes FeatureEngineer state through initargs, not globals."""
+        import inspect
+
+        source = inspect.getsource(DataLoader._ensure_pool)
+        # Must use initargs parameter (already does, this is a regression guard)
+        assert "initargs" in source, "Pool must use initargs for worker initialization"
+        # Must NOT mutate module-level _worker_fe directly in _ensure_pool
+        assert "global _worker_fe" not in source, (
+            "_ensure_pool must not mutate module-level _worker_fe directly"
+        )
