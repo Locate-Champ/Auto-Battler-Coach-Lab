@@ -2,39 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-02-28T04:20:59.769Z"
-progress:
-  total_phases: 8
-  completed_phases: 8
-  total_plans: 13
-  completed_plans: 13
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: unknown
-last_updated: "2026-02-27T20:27:58.533Z"
-progress:
-  total_phases: 7
-  completed_phases: 7
-  total_plans: 11
-  completed_plans: 11
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-27T20:21:35Z"
+last_updated: "2026-02-28T07:43:44Z"
 progress:
-  total_phases: 7
-  completed_phases: 7
-  total_plans: 11
-  completed_plans: 11
+  total_phases: 9
+  completed_phases: 9
+  total_plans: 14
+  completed_plans: 14
 ---
 
 # Project State
@@ -44,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 8: Global State Elimination
+**Current focus:** Phase 9: Simulator and Coach Exception Hardening
 
 ## Current Position
 
-Phase: 8 of 12 (Global State Elimination) -- PHASE COMPLETE
-Plan: 2 of 2 in current phase (08-01, 08-02 complete)
-Status: Phase 8 complete -- DataLoader spawn context + BatchRunner integration tests
-Last activity: 2026-02-27 — Completed 08-02-PLAN.md (DataLoader spawn context, BatchRunner integration tests)
+Phase: 9 of 12 (Simulator and Coach Exception Hardening) -- PHASE COMPLETE
+Plan: 1 of 1 in current phase (09-01 complete)
+Status: Phase 9 complete -- narrowed 5 broad except-Exception handlers to specific types
+Last activity: 2026-02-28 — Completed 09-01-PLAN.md (simulator and coach exception hardening)
 
-Progress: [###########] 85%
+Progress: [############] 92%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
-- Average duration: 4.7 min
-- Total execution time: 1.01 hours
+- Total plans completed: 14
+- Average duration: 4.5 min
+- Total execution time: 1.05 hours
 
 **By Phase:**
 
@@ -74,9 +48,10 @@ Progress: [###########] 85%
 | 06-configuration-extraction-and-ruff-gates | 2 | 8 min | 4 min |
 | 07-sklearnevaluator-wiring | 1 | 4 min | 4 min |
 | 08-global-state-elimination | 2 | 14 min | 7 min |
+| 09-simulator-and-coach-exception-hardening | 1 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 06-02 (3 min), 07-01 (4 min), 08-01 (9 min), 08-02 (5 min)
+- Last 5 plans: 07-01 (4 min), 08-01 (9 min), 08-02 (5 min), 09-01 (3 min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -122,6 +97,9 @@ Recent decisions affecting current work:
 - [08-01]: Clean break: run_batch() removed entirely, no backward compatibility shim per CONTEXT.md
 - [08-02]: DataLoader uses mp.get_context("spawn") for cross-platform consistency -- Windows requires spawn, Linux 3.14 changes default
 - [08-02]: BatchRunner parallel test uses real multiprocessing.Pool (not mocked) to prove spawn+serialize+run works on Windows
+- [09-01]: Applied CCG-widened exception tuples for joblib.load (7 types) and fe.transform (4 types) based on empirical Codex testing
+- [09-01]: Used (ImportError, OSError) for all 3 simulator C extension import sites -- same pattern as Phase 1
+- [09-01]: Added import pickle to evaluator.py for pickle.UnpicklingError reference
 
 ### Pending Todos
 
@@ -136,5 +114,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Phase 9 context gathered
-Resume file: .planning/phases/09-simulator-and-coach-exception-hardening/09-CONTEXT.md
+Stopped at: Completed 09-01-PLAN.md
+Resume file: .planning/phases/09-simulator-and-coach-exception-hardening/09-01-SUMMARY.md
