@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: SklearnEvaluator Wiring** - Implement feature extraction matching training schema; integration test with mock sklearn model (completed 2026-02-27)
 - [ ] **Phase 8: Global State Elimination** - Refactor cloud_runner module globals to class-based BatchRunner; fix DataLoader worker initargs; multiprocessing integration test
 - [ ] **Phase 9: Simulator and Coach Exception Hardening** - Second-pass exception narrowing for simulator and coach layers; convert intentional fallbacks to logged specific exceptions
-- [ ] **Phase 10: Infrastructure File Splits** - Split cloud_runner.py and feature_engineering.py into focused sub-modules (no determinism dependency)
+- [x] **Phase 10: Infrastructure File Splits** - Split cloud_runner.py and feature_engineering.py into focused sub-modules (no determinism dependency) (completed 2026-02-28)
 - [ ] **Phase 11: Combat Engine Split** - Split combat_engine.py (5.3k LOC) into facade + types, hex grid, trait manager, augment manager, item database; benchmark after each step
 - [ ] **Phase 12: Champion Abilities Split** - Split champion_abilities.py (5.9k LOC): AbilitiesBase first, then systems, then cost-tier mixins; benchmark after each step
 
@@ -205,6 +205,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 7. SklearnEvaluator Wiring | 1/1 | Complete | 2026-02-27 |
 | 8. Global State Elimination | 0/TBD | Not started | - |
 | 9. Simulator and Coach Exception Hardening | 0/1 | Not started | - |
-| 10. Infrastructure File Splits | 1/2 | In Progress|  |
+| 10. Infrastructure File Splits | 2/2 | Complete   | 2026-02-28 |
 | 11. Combat Engine Split | 0/TBD | Not started | - |
 | 12. Champion Abilities Split | 0/TBD | Not started | - |
