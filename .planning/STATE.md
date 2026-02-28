@@ -35,19 +35,19 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 
 ## Current Position
 
-Phase: 8 of 12 (Global State Elimination)
-Plan: 1 of 2 in current phase (08-01 complete)
-Status: 08-01 complete -- BatchRunnerConfig frozen dataclass + BatchRunner class replacing run_batch() and module globals
-Last activity: 2026-02-27 — Completed 08-01-PLAN.md (BatchRunnerConfig + BatchRunner with instance-scoped state)
+Phase: 8 of 12 (Global State Elimination) -- PHASE COMPLETE
+Plan: 2 of 2 in current phase (08-01, 08-02 complete)
+Status: Phase 8 complete -- DataLoader spawn context + BatchRunner integration tests
+Last activity: 2026-02-27 — Completed 08-02-PLAN.md (DataLoader spawn context, BatchRunner integration tests)
 
-Progress: [##########] 80%
+Progress: [###########] 85%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
+- Total plans completed: 13
 - Average duration: 4.7 min
-- Total execution time: 0.93 hours
+- Total execution time: 1.01 hours
 
 **By Phase:**
 
@@ -60,10 +60,10 @@ Progress: [##########] 80%
 | 05-api-server-hardening | 1 | 12 min | 12 min |
 | 06-configuration-extraction-and-ruff-gates | 2 | 8 min | 4 min |
 | 07-sklearnevaluator-wiring | 1 | 4 min | 4 min |
-| 08-global-state-elimination | 1 | 9 min | 9 min |
+| 08-global-state-elimination | 2 | 14 min | 7 min |
 
 **Recent Trend:**
-- Last 5 plans: 06-01 (5 min), 06-02 (3 min), 07-01 (4 min), 08-01 (9 min)
+- Last 5 plans: 06-02 (3 min), 07-01 (4 min), 08-01 (9 min), 08-02 (5 min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -107,6 +107,8 @@ Recent decisions affecting current work:
 - [08-01]: Worker-local globals (_worker_sim, _worker_parquet_validated) preserved as process-local state -- standard multiprocessing pattern
 - [08-01]: Parallel path uses mp.get_context("spawn").Pool() for Windows compatibility
 - [08-01]: Clean break: run_batch() removed entirely, no backward compatibility shim per CONTEXT.md
+- [08-02]: DataLoader uses mp.get_context("spawn") for cross-platform consistency -- Windows requires spawn, Linux 3.14 changes default
+- [08-02]: BatchRunner parallel test uses real multiprocessing.Pool (not mocked) to prove spawn+serialize+run works on Windows
 
 ### Pending Todos
 
@@ -121,5 +123,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-27
-Stopped at: Completed 08-01-PLAN.md
-Resume file: .planning/phases/08-global-state-elimination/08-01-SUMMARY.md
+Stopped at: Completed 08-02-PLAN.md (Phase 8 complete)
+Resume file: .planning/phases/08-global-state-elimination/08-02-SUMMARY.md

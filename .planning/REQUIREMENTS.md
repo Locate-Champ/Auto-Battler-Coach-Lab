@@ -45,7 +45,7 @@ Requirements for this milestone. Each maps to roadmap phases.
 ### Global State Elimination
 
 - [x] **GLBL-01**: cloud_runner.py module-level globals refactored to class-based BatchRunner with instance state
-- [ ] **GLBL-02**: DataLoader worker state uses pool context manager with explicit initargs (not module-level global mutation)
+- [x] **GLBL-02**: DataLoader worker state uses pool context manager with explicit initargs (not module-level global mutation)
 - [ ] **GLBL-03**: FastAPI server migrated from deprecated `@app.on_event("startup")` to lifespan context manager
 - [ ] **GLBL-04**: FastAPI model loading raises on startup failure (endpoints never serve None models)
 
@@ -114,7 +114,7 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | SCHM-01 | Phase 4 | Complete |
 | SCHM-02 | Phase 4 | Complete |
 | GLBL-01 | Phase 8 | Complete |
-| GLBL-02 | Phase 8 | Pending |
+| GLBL-02 | Phase 8 | Complete |
 | GLBL-03 | Phase 5 | Pending |
 | GLBL-04 | Phase 5 | Pending |
 | CONF-01 | Phase 6 | Complete |
