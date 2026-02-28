@@ -91,12 +91,16 @@ class DataLoader:
 
         Uses pickled FE state to initialize workers (~1ms per worker vs ~30ms
         loading from disk).  Falls back to disk-based init on pickle failure.
+
+        Always uses spawn context for cross-platform consistency (Windows
+        requires spawn; Linux defaults changed in Python 3.14).
         """
         if self._pool is None:
             workers = self._effective_workers()
+            ctx = multiprocessing.get_context("spawn")
             try:
                 fe_state = pickle.dumps(self.feature_engineer)
-                self._pool = multiprocessing.Pool(
+                self._pool = ctx.Pool(
                     processes=workers,
                     initializer=_init_fe_worker_pickled,
                     initargs=(fe_state,),
@@ -108,7 +112,7 @@ class DataLoader:
                     "picklable, or check __getstate__/__setstate__.",
                     exc,
                 )
-                self._pool = multiprocessing.Pool(
+                self._pool = ctx.Pool(
                     processes=workers,
                     initializer=_init_fe_worker,
                     initargs=(self.feature_engineer.config, self.feature_engineer.repo_root),
