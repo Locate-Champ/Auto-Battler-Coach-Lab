@@ -135,6 +135,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-27
-Stopped at: Completed 08-02-PLAN.md (Phase 8 complete)
-Resume file: .planning/phases/08-global-state-elimination/08-02-SUMMARY.md
+Last session: 2026-02-28
+Stopped at: Phase 9 context gathered
+Resume file: .planning/phases/09-simulator-and-coach-exception-hardening/09-CONTEXT.md
