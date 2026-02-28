@@ -91,7 +91,7 @@ Plans:
   2. If model loading fails during startup, the server process exits with a non-zero code before any endpoint becomes reachable — no endpoint ever serves a None model
   3. All module-level globals in app/api/server.py are replaced by `app.state` attributes populated inside the lifespan function
   4. `uvicorn --reload` restarts cleanly without carrying stale module-level state across reloads
-**Plans**: 1 plan
+**Plans**: 2 plans
 Plans:
 - [ ] 05-01-PLAN.md — Lifespan migration, app.state + Depends() injection, startup failure gate, global exception handler, test suite
 
@@ -117,7 +117,7 @@ Plans:
   1. Calling `SklearnEvaluator.evaluate(game_state)` on a well-formed GameState returns a numeric score without raising NotImplementedError
   2. The feature vector produced by SklearnEvaluator matches the column order and normalization expected by the XGBoost model trained in train_xgboost.py (verified by comparing column names in a test)
   3. An integration test using a mock sklearn model passes in CI, confirming the full evaluate() call path without requiring a real trained model artifact
-**Plans**: 1 plan
+**Plans**: 2 plans
 Plans:
 - [x] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
 
@@ -144,7 +144,7 @@ Plans:
   2. Every intentional fallback in simulator and coach layers uses `except SpecificErrorType` followed by a `log.warning()` call that names the fallback and the reason
   3. The simulator determinism benchmark passes after all exception handler changes — `python -m simulator.benchmark` exits zero with the same output as before
   4. No simulator fallback path silently degrades behavior without a logged warning visible in coach output
-**Plans**: 1 plan
+**Plans**: 2 plans
 Plans:
 - [ ] 09-01-PLAN.md — Narrow 5 BLE001 sites across simulator and coach layers; benchmark gate after game.py change
 
@@ -157,9 +157,10 @@ Plans:
   2. `from models.feature_engineering import FeatureEngineer` and all existing import paths resolve correctly after the split
   3. cloud_runner.py and feature_engineering.py each contain fewer than 1000 LOC after the split (the remainder lives in underscore-prefixed sub-modules)
   4. The full test suite passes without modification after both splits — `python -m pytest` exits zero
-**Plans**: 1 plan
+**Plans**: 2 plans
 Plans:
-- [ ] 10-01-PLAN.md — Split cloud_runner.py and feature_engineering.py into focused sub-modules with facade re-exports
+- [ ] 10-01-PLAN.md — Split cloud_runner.py into 3 sub-modules with facade re-exports and CI allowlist update
+- [ ] 10-02-PLAN.md — Split feature_engineering.py into 4 mixin sub-modules with facade class
 
 ### Phase 11: Combat Engine Split
 **Goal**: combat_engine.py (5.3k LOC) is split into a CombatEngine facade plus private sub-modules for types, hex grid, trait manager, augment manager, and item database; determinism is verified by benchmark after every individual structural change
@@ -170,7 +171,7 @@ Plans:
   2. combat_engine.py is reduced to a CombatEngine class facade under 800 LOC with all types and managers in private underscore-prefixed sub-modules
   3. `python -m simulator.benchmark` passes with identical output (fixed seed) after every individual sub-module extraction step — each step is gated on a passing benchmark before the next begins
   4. The five target sub-modules exist and are independently importable: `_combat_types.py`, `_hex_grid.py`, `_trait_manager.py`, `_augment_manager.py`, `_item_database.py`
-**Plans**: 1 plan
+**Plans**: 2 plans
 Plans:
 - [ ] 11-01-PLAN.md — Split combat_engine.py into facade + 5 private sub-modules; benchmark after each extraction step
 
@@ -184,7 +185,7 @@ Plans:
   3. `python -m simulator.benchmark` passes with identical output (fixed seed) after every individual split step including AbilitiesBase, each systems file, and each cost-tier mixin file
   4. Cross-engine parity tests in the benchmark suite are batched to reduce CI overhead per BNCH-01, and the batched suite passes with the same result set as the unbatched baseline
   5. champion_abilities.py is reduced to a thin facade under 250 LOC with all ability implementation in underscore-prefixed mixin sub-modules
-**Plans**: 1 plan
+**Plans**: 2 plans
 Plans:
 - [ ] 12-01-PLAN.md — Split champion_abilities.py into AbilitiesBase + systems + cost-tier mixins; benchmark after each step
 
@@ -204,6 +205,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 7. SklearnEvaluator Wiring | 1/1 | Complete | 2026-02-27 |
 | 8. Global State Elimination | 0/TBD | Not started | - |
 | 9. Simulator and Coach Exception Hardening | 0/1 | Not started | - |
-| 10. Infrastructure File Splits | 0/TBD | Not started | - |
+| 10. Infrastructure File Splits | 0/2 | Not started | - |
 | 11. Combat Engine Split | 0/TBD | Not started | - |
 | 12. Champion Abilities Split | 0/TBD | Not started | - |
