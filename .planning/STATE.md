@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-02-28T07:50:59.628Z"
-progress:
-  total_phases: 9
-  completed_phases: 9
-  total_plans: 14
-  completed_plans: 14
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-28T07:43:44Z"
+last_updated: "2026-02-28T16:52:21Z"
 progress:
-  total_phases: 9
+  total_phases: 10
   completed_phases: 9
-  total_plans: 14
-  completed_plans: 14
+  total_plans: 16
+  completed_plans: 16
 ---
 
 # Project State
@@ -31,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 9: Simulator and Coach Exception Hardening
+**Current focus:** Phase 10: Infrastructure File Splits
 
 ## Current Position
 
-Phase: 9 of 12 (Simulator and Coach Exception Hardening) -- PHASE COMPLETE
-Plan: 1 of 1 in current phase (09-01 complete)
-Status: Phase 9 complete -- narrowed 5 broad except-Exception handlers to specific types
-Last activity: 2026-02-28 — Completed 09-01-PLAN.md (simulator and coach exception hardening)
+Phase: 10 of 12 (Infrastructure File Splits) -- IN PROGRESS
+Plan: 2 of 2 in current phase (10-01 complete, 10-02 complete)
+Status: Phase 10 plans complete -- split cloud_runner.py and feature_engineering.py into sub-modules
+Last activity: 2026-02-28 — Completed 10-02-PLAN.md (feature engineering file split)
 
-Progress: [############] 92%
+Progress: [#############] 95%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
-- Average duration: 4.5 min
-- Total execution time: 1.05 hours
+- Total plans completed: 16
+- Average duration: 4.7 min
+- Total execution time: 1.25 hours
 
 **By Phase:**
 
@@ -62,9 +49,10 @@ Progress: [############] 92%
 | 07-sklearnevaluator-wiring | 1 | 4 min | 4 min |
 | 08-global-state-elimination | 2 | 14 min | 7 min |
 | 09-simulator-and-coach-exception-hardening | 1 | 3 min | 3 min |
+| 10-infrastructure-file-splits | 2 | 12 min | 6 min |
 
 **Recent Trend:**
-- Last 5 plans: 07-01 (4 min), 08-01 (9 min), 08-02 (5 min), 09-01 (3 min)
+- Last 5 plans: 08-02 (5 min), 09-01 (3 min), 10-01 (4 min), 10-02 (8 min)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -113,6 +101,9 @@ Recent decisions affecting current work:
 - [09-01]: Applied CCG-widened exception tuples for joblib.load (7 types) and fe.transform (4 types) based on empirical Codex testing
 - [09-01]: Used (ImportError, OSError) for all 3 simulator C extension import sites -- same pattern as Phase 1
 - [09-01]: Added import pickle to evaluator.py for pickle.UnpicklingError reference
+- [10-02]: MRO order _LoaderMixin, _TransformMixin, _BatchTransformMixin -- loaders first for __init__ call order
+- [10-02]: TFTFeatureEngineer class defined in facade (not sub-module) to preserve pickle __module__ path
+- [10-02]: Cython try/except import block placed in both _transform and _batch modules independently
 
 ### Pending Todos
 
@@ -127,5 +118,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Completed 09-01-PLAN.md
-Resume file: .planning/phases/09-simulator-and-coach-exception-hardening/09-01-SUMMARY.md
+Stopped at: Completed 10-02-PLAN.md
+Resume file: .planning/phases/10-infrastructure-file-splits/10-02-SUMMARY.md

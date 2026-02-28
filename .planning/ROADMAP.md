@@ -205,6 +205,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 7. SklearnEvaluator Wiring | 1/1 | Complete | 2026-02-27 |
 | 8. Global State Elimination | 0/TBD | Not started | - |
 | 9. Simulator and Coach Exception Hardening | 0/1 | Not started | - |
-| 10. Infrastructure File Splits | 0/2 | Not started | - |
+| 10. Infrastructure File Splits | 1/2 | In Progress|  |
 | 11. Combat Engine Split | 0/TBD | Not started | - |
 | 12. Champion Abilities Split | 0/TBD | Not started | - |
