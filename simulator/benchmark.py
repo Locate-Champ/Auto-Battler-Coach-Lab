@@ -317,7 +317,7 @@ def test_determinism_team_combat(engine: Any, engine_name: str, num_runs: int = 
 def _create_rust_game_simulator() -> Any:
     try:
         from tft_combat_engine import RustGameSimulator
-    except Exception as exc:
+    except (ImportError, OSError) as exc:
         raise RuntimeError(
             "Rust full-game engine requested but RustGameSimulator is unavailable. "
             "Build/install simulator/core/rust_engine via maturin first."
