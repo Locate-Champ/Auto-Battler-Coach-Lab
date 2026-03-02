@@ -139,5 +139,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 11-02-PLAN.md (Phase 11 complete)
-Resume file: .planning/phases/11-combat-engine-split/11-02-SUMMARY.md
+Stopped at: Phase 12 context gathered
+Resume file: .planning/phases/12-champion-abilities-split/12-CONTEXT.md
