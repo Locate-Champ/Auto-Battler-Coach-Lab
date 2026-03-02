@@ -209,4 +209,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 9. Simulator and Coach Exception Hardening | 0/1 | Not started | - |
 | 10. Infrastructure File Splits | 2/2 | Complete    | 2026-02-28 |
 | 11. Combat Engine Split | 2/2 | Complete    | 2026-03-02 |
-| 12. Champion Abilities Split | 2/2 | Complete   | 2026-03-02 |
+| 12. Champion Abilities Split | 2/2 | Complete    | 2026-03-02 |
