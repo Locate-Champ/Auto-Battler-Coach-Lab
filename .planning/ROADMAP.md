@@ -24,6 +24,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 10: Infrastructure File Splits** - Split cloud_runner.py and feature_engineering.py into focused sub-modules (no determinism dependency) (completed 2026-02-28)
 - [x] **Phase 11: Combat Engine Split** - Split combat_engine.py (5.3k LOC) into facade + types, hex grid, trait manager, augment manager, item database; benchmark after each step (completed 2026-03-02)
 - [x] **Phase 12: Champion Abilities Split** - Split champion_abilities.py (5.9k LOC): AbilitiesBase first, then systems, then cost-tier mixins; benchmark after each step (completed 2026-03-02)
+- [ ] **Phase 13: OBSV Verification & Logging Regression Fix** - Retroactively verify OBSV-01/02, fix OBSV-03 regression from Phase 10 splits (add _log to 4 sub-modules, convert print()→_log)
+- [ ] **Phase 14: Integration Polish & Documentation Sync** - Wire DataLoader context manager in production, resolve exceptions.py dead code, fix stale checkboxes and ROADMAP progress table
 
 ## Phase Details
 
@@ -191,22 +193,48 @@ Plans:
 - [ ] 12-01-PLAN.md — Extract AbilitiesBase + Systems mixins with individual benchmark gates; resolve duplicate methods
 - [ ] 12-02-PLAN.md — Extract hero augments, alphabetical, cost-tier mixins; finalize facade (<250 LOC); consolidate CI parity gate (BNCH-01)
 
+### Phase 13: OBSV Verification & Logging Regression Fix
+**Goal**: The 3 orphaned OBSV requirements are formally verified, and the OBSV-03 regression introduced by Phase 10 file splits is fixed — all sub-modules use `_log` loggers instead of `print()`
+**Depends on**: Phase 12
+**Requirements**: OBSV-01, OBSV-02, OBSV-03
+**Gap Closure:** Closes requirement gaps from v1.0 audit
+**Success Criteria** (what must be TRUE):
+  1. OBSV-01 retroactive verification confirms Cython fe_fast fallback emits WARNING log when pure Python path activates
+  2. OBSV-02 retroactive verification confirms DataLoader pickle fallback emits WARNING log when disk I/O path activates
+  3. All 4 Phase 10 sub-modules (`_cloud_runner_core.py`, `_cloud_runner_utils.py`, `_feature_engineering_transform.py`, `_feature_engineering_batch.py`) have `_log = logging.getLogger(__name__)` and zero `print()` calls
+  4. Phase 02 VERIFICATION.md exists and confirms OBSV-01, OBSV-02, OBSV-03 satisfied
+**Plans:** 0/TBD
+
+### Phase 14: Integration Polish & Documentation Sync
+**Goal**: Production code exercises the DataLoader context manager; models/exceptions.py dead code is resolved; all stale REQUIREMENTS.md checkboxes and ROADMAP progress entries are corrected
+**Depends on**: Phase 13
+**Requirements**: RSMG-01, RSMG-02, EXCP-02
+**Gap Closure:** Closes integration gaps from v1.0 audit
+**Success Criteria** (what must be TRUE):
+  1. `train_xgboost.py` uses `with DataLoader(...) as dl:` in the production training entrypoint, ensuring worker pool cleanup on both normal and abnormal exit
+  2. `models/exceptions.py` hierarchy is either wired into production raise sites or removed as dead code (decision made during planning)
+  3. REQUIREMENTS.md checkboxes for EXCP-05, GLBL-03, GLBL-04 show `[x] Complete` with traceability status "Complete"
+  4. ROADMAP.md progress table accurately reflects completion status for all 14 phases
+**Plans:** 0/TBD
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12 → 13 → 14
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Models Exception Hardening | 0/1 | Complete    | 2026-02-27 |
-| 2. Observable Fallbacks | 0/2 | Not started | - |
-| 3. Dependency Validation and Resource Management | 0/2 | Not started | - |
-| 4. Type Contracts and Schema Validation | 0/2 | Not started | - |
-| 5. API Server Hardening | 0/1 | Not started | - |
-| 6. Configuration Extraction and Ruff Gates | 1/2 | In progress | - |
+| 1. Models Exception Hardening | 1/1 | Complete | 2026-02-27 |
+| 2. Observable Fallbacks | 2/2 | Complete | 2026-02-27 |
+| 3. Dependency Validation and Resource Management | 2/2 | Complete | 2026-02-27 |
+| 4. Type Contracts and Schema Validation | 2/2 | Complete | 2026-02-27 |
+| 5. API Server Hardening | 1/1 | Complete | 2026-02-27 |
+| 6. Configuration Extraction and Ruff Gates | 2/2 | Complete | 2026-02-27 |
 | 7. SklearnEvaluator Wiring | 1/1 | Complete | 2026-02-27 |
-| 8. Global State Elimination | 0/TBD | Not started | - |
-| 9. Simulator and Coach Exception Hardening | 0/1 | Not started | - |
-| 10. Infrastructure File Splits | 2/2 | Complete    | 2026-02-28 |
-| 11. Combat Engine Split | 2/2 | Complete    | 2026-03-02 |
-| 12. Champion Abilities Split | 2/2 | Complete    | 2026-03-02 |
+| 8. Global State Elimination | 2/2 | Complete | 2026-02-28 |
+| 9. Simulator and Coach Exception Hardening | 1/1 | Complete | 2026-02-28 |
+| 10. Infrastructure File Splits | 2/2 | Complete | 2026-02-28 |
+| 11. Combat Engine Split | 2/2 | Complete | 2026-03-02 |
+| 12. Champion Abilities Split | 2/2 | Complete | 2026-03-02 |
+| 13. OBSV Verification & Logging Fix | 0/TBD | Not started | - |
+| 14. Integration Polish & Doc Sync | 0/TBD | Not started | - |

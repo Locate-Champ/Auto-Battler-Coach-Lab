@@ -13,13 +13,13 @@ Requirements for this milestone. Each maps to roadmap phases.
 - [x] **EXCP-02**: Models layer exceptions (feature_engineering.py, data_loader.py, train_xgboost.py) use `except ImportError`, `except (ImportError, OSError)` for extensions, or other specific types
 - [x] **EXCP-03**: Simulator layer exceptions narrowed with determinism-safe fallback preservation
 - [x] **EXCP-04**: Coach layer exceptions narrowed; intentional fallbacks converted to logged `except SpecificError` + `log.warning`
-- [ ] **EXCP-05**: Ruff rules `BLE` and `B` enabled in ruff.toml to statically detect future broad exceptions
+- [x] **EXCP-05**: Ruff rules `BLE` and `B` enabled in ruff.toml to statically detect future broad exceptions
 
 ### Observable Fallbacks
 
-- [x] **OBSV-01**: Cython fe_fast fallback logs at WARNING level when pure Python path activates
-- [x] **OBSV-02**: DataLoader pickle fallback logs at WARNING level when disk I/O path activates (~30x slower)
-- [x] **OBSV-03**: All modules use `logging.getLogger(__name__)` instead of print() or silent pass
+- [ ] **OBSV-01**: Cython fe_fast fallback logs at WARNING level when pure Python path activates
+- [ ] **OBSV-02**: DataLoader pickle fallback logs at WARNING level when disk I/O path activates (~30x slower)
+- [ ] **OBSV-03**: All modules use `logging.getLogger(__name__)` instead of print() or silent pass
 
 ### Dependency Validation
 
@@ -46,8 +46,8 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 - [x] **GLBL-01**: cloud_runner.py module-level globals refactored to class-based BatchRunner with instance state
 - [x] **GLBL-02**: DataLoader worker state uses pool context manager with explicit initargs (not module-level global mutation)
-- [ ] **GLBL-03**: FastAPI server migrated from deprecated `@app.on_event("startup")` to lifespan context manager
-- [ ] **GLBL-04**: FastAPI model loading raises on startup failure (endpoints never serve None models)
+- [x] **GLBL-03**: FastAPI server migrated from deprecated `@app.on_event("startup")` to lifespan context manager
+- [x] **GLBL-04**: FastAPI model loading raises on startup failure (endpoints never serve None models)
 
 ### Configuration
 
@@ -100,10 +100,10 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | EXCP-02 | Phase 1 | Complete |
 | EXCP-03 | Phase 9 | Complete |
 | EXCP-04 | Phase 9 | Complete |
-| EXCP-05 | Phase 6 | Pending |
-| OBSV-01 | Phase 2 | Complete |
-| OBSV-02 | Phase 2 | Complete |
-| OBSV-03 | Phase 2 | Complete |
+| EXCP-05 | Phase 6 | Complete |
+| OBSV-01 | Phase 13 | Pending |
+| OBSV-02 | Phase 13 | Pending |
+| OBSV-03 | Phase 13 | Pending |
 | DEPV-01 | Phase 3 | Complete |
 | DEPV-02 | Phase 3 | Complete |
 | DEPV-03 | Phase 3 | Complete |
@@ -115,8 +115,8 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | SCHM-02 | Phase 4 | Complete |
 | GLBL-01 | Phase 8 | Complete |
 | GLBL-02 | Phase 8 | Complete |
-| GLBL-03 | Phase 5 | Pending |
-| GLBL-04 | Phase 5 | Pending |
+| GLBL-03 | Phase 5 | Complete |
+| GLBL-04 | Phase 5 | Complete |
 | CONF-01 | Phase 6 | Complete |
 | CONF-02 | Phase 6 | Complete |
 | SKLR-01 | Phase 7 | Complete |
@@ -133,7 +133,9 @@ Deferred to future milestone. Tracked but not in current roadmap.
 - v1 requirements: 32 total
 - Mapped to phases: 32
 - Unmapped: 0
+- Complete: 29
+- Pending: 3 (OBSV-01, OBSV-02, OBSV-03 — Phase 13)
 
 ---
 *Requirements defined: 2026-02-27*
-*Last updated: 2026-02-27 after roadmap creation — all 32 requirements mapped*
+*Last updated: 2026-03-02 — gap closure phases 13-14 added; stale checkboxes fixed; OBSV requirements reassigned*
