@@ -24,7 +24,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 10: Infrastructure File Splits** - Split cloud_runner.py and feature_engineering.py into focused sub-modules (no determinism dependency) (completed 2026-02-28)
 - [x] **Phase 11: Combat Engine Split** - Split combat_engine.py (5.3k LOC) into facade + types, hex grid, trait manager, augment manager, item database; benchmark after each step (completed 2026-03-02)
 - [x] **Phase 12: Champion Abilities Split** - Split champion_abilities.py (5.9k LOC): AbilitiesBase first, then systems, then cost-tier mixins; benchmark after each step (completed 2026-03-02)
-- [ ] **Phase 13: OBSV Verification & Logging Regression Fix** - Retroactively verify OBSV-01/02, fix OBSV-03 regression from Phase 10 splits (add _log to 4 sub-modules, convert print()→_log)
+- [x] **Phase 13: OBSV Verification & Logging Regression Fix** - Retroactively verify OBSV-01/02, fix OBSV-03 regression from Phase 10 splits (add _log to 4 sub-modules, convert print()→_log) (completed 2026-03-02)
 - [ ] **Phase 14: Integration Polish & Documentation Sync** - Wire DataLoader context manager in production, resolve exceptions.py dead code, fix stale checkboxes and ROADMAP progress table
 
 ## Phase Details
@@ -203,7 +203,7 @@ Plans:
   2. OBSV-02 retroactive verification confirms DataLoader pickle fallback emits WARNING log when disk I/O path activates
   3. All 4 Phase 10 sub-modules (`_cloud_runner_core.py`, `_cloud_runner_utils.py`, `_feature_engineering_transform.py`, `_feature_engineering_batch.py`) have `_log = logging.getLogger(__name__)` and zero `print()` calls
   4. Phase 02 VERIFICATION.md exists and confirms OBSV-01, OBSV-02, OBSV-03 satisfied
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
 - [ ] 13-01-PLAN.md — Fix OBSV-03 logging regression in 5 Phase 10 sub-modules + create retroactive 02-VERIFICATION.md
 
@@ -238,5 +238,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 10. Infrastructure File Splits | 2/2 | Complete | 2026-02-28 |
 | 11. Combat Engine Split | 2/2 | Complete | 2026-03-02 |
 | 12. Champion Abilities Split | 2/2 | Complete | 2026-03-02 |
-| 13. OBSV Verification & Logging Fix | 0/1 | Not started | - |
+| 13. OBSV Verification & Logging Fix | 1/1 | Complete   | 2026-03-02 |
 | 14. Integration Polish & Doc Sync | 0/TBD | Not started | - |

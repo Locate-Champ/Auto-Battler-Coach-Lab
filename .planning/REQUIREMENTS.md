@@ -17,9 +17,9 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Observable Fallbacks
 
-- [ ] **OBSV-01**: Cython fe_fast fallback logs at WARNING level when pure Python path activates
-- [ ] **OBSV-02**: DataLoader pickle fallback logs at WARNING level when disk I/O path activates (~30x slower)
-- [ ] **OBSV-03**: All modules use `logging.getLogger(__name__)` instead of print() or silent pass
+- [x] **OBSV-01**: Cython fe_fast fallback logs at WARNING level when pure Python path activates
+- [x] **OBSV-02**: DataLoader pickle fallback logs at WARNING level when disk I/O path activates (~30x slower)
+- [x] **OBSV-03**: All modules use `logging.getLogger(__name__)` instead of print() or silent pass
 
 ### Dependency Validation
 
@@ -101,9 +101,9 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | EXCP-03 | Phase 9 | Complete |
 | EXCP-04 | Phase 9 | Complete |
 | EXCP-05 | Phase 6 | Complete |
-| OBSV-01 | Phase 13 | Pending |
-| OBSV-02 | Phase 13 | Pending |
-| OBSV-03 | Phase 13 | Pending |
+| OBSV-01 | Phase 13 | Complete |
+| OBSV-02 | Phase 13 | Complete |
+| OBSV-03 | Phase 13 | Complete |
 | DEPV-01 | Phase 3 | Complete |
 | DEPV-02 | Phase 3 | Complete |
 | DEPV-03 | Phase 3 | Complete |
