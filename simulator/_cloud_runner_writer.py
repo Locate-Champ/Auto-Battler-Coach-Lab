@@ -7,6 +7,7 @@ One-way dependency: writer -> utils (never the reverse).
 from __future__ import annotations
 
 import json
+import logging
 import math
 import multiprocessing
 import os
@@ -20,6 +21,8 @@ from simulator._cloud_runner_utils import (
     _wilson_interval,
 )
 from snapshot_schema import JSONISH_COLUMNS
+
+_log = logging.getLogger(__name__)
 
 
 class StreamingWriter:
@@ -126,9 +129,9 @@ class StreamingWriter:
                 timeout=300,
             )
             if result.returncode != 0:
-                print(f"  [WARN] S3 upload failed for {filename}: {result.stderr.strip()}")
+                _log.warning("S3 upload failed for %s: %s", filename, result.stderr.strip())
         except (OSError, subprocess.SubprocessError, ValueError) as exc:
-            print(f"  [WARN] S3 upload failed for {filename}: {exc}")
+            _log.warning("S3 upload failed for %s: %s", filename, exc)
 
     def add_result(self, result: Dict, *, buffer_training_rows: bool = True):
         """Process a completed game result."""
@@ -394,7 +397,7 @@ class StreamingWriter:
             error_path = os.path.join(self.output_dir, "errors.json")
             with open(error_path, "w", encoding="utf-8") as f:
                 json.dump(self._errors, f, indent=2)
-            print(f"  Errors: {error_path} ({len(self._errors)} failures)")
+            _log.info("Errors: %s (%d failures)", error_path, len(self._errors))
             self._s3_upload(error_path)
 
         # Compute and write summary
@@ -402,7 +405,7 @@ class StreamingWriter:
         summary_path = os.path.join(self.output_dir, "summary.json")
         with open(summary_path, "w", encoding="utf-8") as f:
             json.dump(summary, f, indent=2)
-        print(f"  Summary: {summary_path}")
+        _log.info("Summary: %s", summary_path)
         self._s3_upload(summary_path)
 
         # Final checkpoint
@@ -411,7 +414,7 @@ class StreamingWriter:
         self._s3_upload(checkpoint_path)
 
         if self.s3_uri:
-            print(f"  S3: All files uploaded to {self.s3_uri}/")
+            _log.info("S3: All files uploaded to %s/", self.s3_uri)
 
         return summary
 

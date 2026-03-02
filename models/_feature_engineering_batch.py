@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 from typing import Any, Dict, List, Mapping, Optional, Sequence
 
 import numpy as np
@@ -28,6 +29,8 @@ try:
 except (ImportError, OSError):
     _cy_parse_units_column = None
     _CYTHON_FE = False
+
+_log = logging.getLogger(__name__)
 
 
 class _BatchTransformMixin:

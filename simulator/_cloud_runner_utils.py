@@ -7,12 +7,15 @@ This is a leaf dependency -- it does NOT import from other _cloud_runner_* modul
 from __future__ import annotations
 
 import inspect
+import logging
 import math
 import os
 import subprocess
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
+
+_log = logging.getLogger(__name__)
 
 # 95% Wilson interval z-score
 WILSON_Z_95 = 1.959963984540054
@@ -144,7 +147,7 @@ def _validate_reference_data_preflight() -> None:
     """Fail-fast if simulator reference data is out of sync."""
     validator = Path(__file__).parent / "data" / "validate_reference_data.py"
     if not validator.exists():
-        print(f"Warning: reference validator not found at {validator} (skipping)")
+        _log.warning("Reference validator not found at %s (skipping)", validator)
         return
 
     result = subprocess.run(
@@ -154,9 +157,9 @@ def _validate_reference_data_preflight() -> None:
         check=False,
     )
     if result.stdout.strip():
-        print(result.stdout.strip())
+        _log.info("%s", result.stdout.strip())
     if result.stderr.strip():
-        print(result.stderr.strip())
+        _log.warning("%s", result.stderr.strip())
     if result.returncode != 0:
         raise RuntimeError("Simulator reference validation failed before batch run.")
 

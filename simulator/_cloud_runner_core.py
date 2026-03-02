@@ -6,6 +6,7 @@ One-way dependency: core -> {utils, writer} (never the reverse).
 from __future__ import annotations
 
 import json
+import logging
 import multiprocessing
 import os
 import random
@@ -28,6 +29,8 @@ from simulator._cloud_runner_writer import StreamingWriter
 from simulator.game.actions import MixedLobbyAgent
 from simulator.game.collector import GameCollector
 from simulator.game.game import TFTGame
+
+_log = logging.getLogger(__name__)
 
 # Worker-process state (set by Pool initializer, process-local -- NOT shared mutable state)
 _worker_sim: Any = None
@@ -339,9 +342,9 @@ class BatchRunner:
                 with open(checkpoint_path, "r", encoding="utf-8") as f:
                     resume_state = json.load(f)
                 completed_seeds = set(resume_state.get("completed_seeds", []))
-                print(f"Resuming from checkpoint: {len(completed_seeds)} games already done")
+                _log.info("Resuming from checkpoint: %d games already done", len(completed_seeds))
             else:
-                print("No checkpoint found, starting fresh")
+                _log.info("No checkpoint found, starting fresh")
 
         if cfg.require_parquet and not _pyarrow_available():
             raise RuntimeError(
@@ -404,7 +407,7 @@ class BatchRunner:
         )
 
         if remaining == 0:
-            print("All games already completed!")
+            _log.info("All games already completed!")
             return writer.finalize(
                 0.0,
                 cfg.num_workers,
@@ -455,31 +458,33 @@ class BatchRunner:
             )
 
         agent_desc = "default (fast_random)" if not cfg.agent_mix else str(cfg.agent_mix)
-        print(
-            f"Running {remaining} games across {cfg.num_workers} workers "
-            f"(chunk_size={cfg.chunk_size})"
+        _log.info(
+            "Running %d games across %d workers (chunk_size=%d)",
+            remaining,
+            cfg.num_workers,
+            cfg.chunk_size,
         )
         if effective_seed_end is None:
             seed_span = "none"
         else:
-            seed_span = f"{effective_seed_start} to {effective_seed_end}"
-        print(f"Seeds: {seed_span} ({len(completed_seeds)} already done)")
+            seed_span = "%d to %d" % (effective_seed_start, effective_seed_end)
+        _log.info("Seeds: %s (%d already done)", seed_span, len(completed_seeds))
         if cfg.num_shards is not None and cfg.shard_index is not None:
-            print(
-                f"Shard: {cfg.shard_index + 1}/{cfg.num_shards} "
-                f"(requested_games={requested_num_games}, shard_games={effective_num_games})"
+            _log.info(
+                "Shard: %d/%d (requested_games=%d, shard_games=%d)",
+                cfg.shard_index + 1,
+                cfg.num_shards,
+                requested_num_games,
+                effective_num_games,
             )
         if resolved_pool_chunksize is not None:
-            print(
-                f"Pool chunksize: {resolved_pool_chunksize}"
-                f"{'' if cfg.pool_chunksize_max is None else f' (cap={cfg.pool_chunksize_max})'}"
-            )
-        print(f"Agents: {agent_desc}")
-        print(f"Engine: {cfg.engine}")
-        print(f"Output: {cfg.output_dir}")
+            cap_str = "" if cfg.pool_chunksize_max is None else " (cap=%d)" % cfg.pool_chunksize_max
+            _log.info("Pool chunksize: %d%s", resolved_pool_chunksize, cap_str)
+        _log.info("Agents: %s", agent_desc)
+        _log.info("Engine: %s", cfg.engine)
+        _log.info("Output: %s", cfg.output_dir)
         if cfg.s3_uri:
-            print(f"S3:     {cfg.s3_uri} (streaming upload)")
-        print()
+            _log.info("S3:     %s (streaming upload)", cfg.s3_uri)
 
         start = time.perf_counter()
         checkpoint_interval = (
@@ -508,12 +513,16 @@ class BatchRunner:
                 cpu_str = ""
                 if cpu_pct is not None:
                     cpu_utilization_samples_pct.append(cpu_pct)
-                    cpu_str = f", cpu={cpu_pct:.1f}%"
-                err_str = f", {writer.num_errors} errors" if writer.num_errors else ""
-                print(
-                    f"  [{done}/{remaining}] {rate:.1f} games/sec, "
-                    f"ETA: {eta:.0f}s{cpu_str}{err_str}",
-                    flush=True,
+                    cpu_str = ", cpu=%.1f%%" % cpu_pct
+                err_str = ", %d errors" % writer.num_errors if writer.num_errors else ""
+                _log.info(
+                    "  [%d/%d] %.1f games/sec, ETA: %.0fs%s%s",
+                    done,
+                    remaining,
+                    rate,
+                    eta,
+                    cpu_str,
+                    err_str,
                 )
 
             if cfg.max_errors is not None and writer.num_errors >= cfg.max_errors:
@@ -545,12 +554,14 @@ class BatchRunner:
                     batch_output_mode = "parquet"
                 elif cfg.rust_full_native_jsonl:
                     batch_output_mode = "jsonl"
-            print(
-                "Rust rayon batch mode: "
-                f"batch_size={cfg.rust_full_rayon_batch_size}, threads={rayon_threads}, "
-                f"output_mode={batch_output_mode}, "
-                f"batch_parquet_api={use_rust_batch_parquet_api}, "
-                f"batch_parquet_file_api={use_rust_batch_parquet_file_api}"
+            _log.info(
+                "Rust rayon batch mode: batch_size=%s, threads=%d, "
+                "output_mode=%s, batch_parquet_api=%s, batch_parquet_file_api=%s",
+                cfg.rust_full_rayon_batch_size,
+                rayon_threads,
+                batch_output_mode,
+                use_rust_batch_parquet_api,
+                use_rust_batch_parquet_file_api,
             )
 
             try:
@@ -672,18 +683,20 @@ class BatchRunner:
 
         total_time = time.perf_counter() - start
         if aborted_reason:
-            print(f"\nRun aborted early: {aborted_reason}")
-            print(f"Processed {done}/{remaining} tasks before stop.")
+            _log.warning("Run aborted early: %s", aborted_reason)
+            _log.warning("Processed %d/%d tasks before stop.", done, remaining)
         else:
-            print(
-                f"\nAll {remaining} games completed in {total_time:.1f}s "
-                f"({remaining / total_time:.1f} games/sec)"
+            _log.info(
+                "All %d games completed in %.1fs (%.1f games/sec)",
+                remaining,
+                total_time,
+                remaining / total_time if total_time > 0 else 0,
             )
         if writer.num_errors:
-            print(f"  {writer.num_errors} games failed (see errors.json)")
+            _log.warning("  %d games failed (see errors.json)", writer.num_errors)
 
         writer.write_checkpoint()
-        print("Writing final results...")
+        _log.info("Writing final results...")
         summary = writer.finalize(
             total_time,
             cfg.num_workers,
