@@ -203,7 +203,9 @@ Plans:
   2. OBSV-02 retroactive verification confirms DataLoader pickle fallback emits WARNING log when disk I/O path activates
   3. All 4 Phase 10 sub-modules (`_cloud_runner_core.py`, `_cloud_runner_utils.py`, `_feature_engineering_transform.py`, `_feature_engineering_batch.py`) have `_log = logging.getLogger(__name__)` and zero `print()` calls
   4. Phase 02 VERIFICATION.md exists and confirms OBSV-01, OBSV-02, OBSV-03 satisfied
-**Plans:** 0/TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 13-01-PLAN.md — Fix OBSV-03 logging regression in 5 Phase 10 sub-modules + create retroactive 02-VERIFICATION.md
 
 ### Phase 14: Integration Polish & Documentation Sync
 **Goal**: Production code exercises the DataLoader context manager; models/exceptions.py dead code is resolved; all stale REQUIREMENTS.md checkboxes and ROADMAP progress entries are corrected
@@ -236,5 +238,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 10. Infrastructure File Splits | 2/2 | Complete | 2026-02-28 |
 | 11. Combat Engine Split | 2/2 | Complete | 2026-03-02 |
 | 12. Champion Abilities Split | 2/2 | Complete | 2026-03-02 |
-| 13. OBSV Verification & Logging Fix | 0/TBD | Not started | - |
+| 13. OBSV Verification & Logging Fix | 0/1 | Not started | - |
 | 14. Integration Polish & Doc Sync | 0/TBD | Not started | - |
