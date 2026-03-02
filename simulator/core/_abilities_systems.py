@@ -1147,8 +1147,6 @@ class _AbilitiesSystemsMixin:
                     best_pos = pos
 
         if best_pos:
-            from .combat_engine import DamageType, UnitState
-
             bench_galio.position = best_pos
             bench_galio.is_alive = True
             bench_galio.state = UnitState.IDLE
@@ -1665,8 +1663,6 @@ class _AbilitiesSystemsMixin:
             self._apply_stun(target, impale_duration, "skarner_impale")
 
             # Drag target to adjacent hex (pull towards Skarner)
-            from .combat_engine import HexGrid
-
             neighbors = HexGrid.get_neighbors(unit.position)
             valid_spots = [n for n in neighbors if n not in self.engine.get_occupied_hexes()]
             if valid_spots:
