@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in-progress
-last_updated: "2026-03-02T22:03:19Z"
+status: complete
+last_updated: "2026-03-02T22:13:09Z"
 progress:
   total_phases: 12
-  completed_phases: 11
+  completed_phases: 12
   total_plans: 20
-  completed_plans: 19
+  completed_plans: 20
 ---
 
 # Project State
@@ -22,19 +22,19 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 
 ## Current Position
 
-Phase: 12 of 12 (Champion Abilities Split)
-Plan: 1 of 2 in current phase (12-01 complete)
-Status: AbilitiesBase + Systems extracted -- champion_abilities.py reduced from 5,911 to 3,472 LOC
-Last activity: 2026-03-02 -- Completed 12-01-PLAN.md (base + systems extraction)
+Phase: 12 of 12 (Champion Abilities Split) -- COMPLETE
+Plan: 2 of 2 in current phase (12-02 complete)
+Status: All phases complete -- champion_abilities.py split into 5-mixin facade (31 LOC) from 5,911 LOC monolith
+Last activity: 2026-03-02 -- Completed 12-02-PLAN.md (final 3-mixin extraction + CI consolidation)
 
-Progress: [##############-] 95%
+Progress: [################] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 19
+- Total plans completed: 20
 - Average duration: 5.5 min
-- Total execution time: 1.96 hours
+- Total execution time: 2.08 hours
 
 **By Phase:**
 
@@ -51,11 +51,11 @@ Progress: [##############-] 95%
 | 09-simulator-and-coach-exception-hardening | 1 | 3 min | 3 min |
 | 10-infrastructure-file-splits | 2 | 12 min | 6 min |
 | 11-combat-engine-split | 2 | 34 min | 17 min |
-| 12-champion-abilities-split | 1/2 | 9 min | 9 min |
+| 12-champion-abilities-split | 2/2 | 16 min | 8 min |
 
 **Recent Trend:**
-- Last 5 plans: 10-02 (8 min), 11-01 (14 min), 11-02 (20 min), 12-01 (9 min)
-- Trend: 12-01 faster than expected (mechanical extraction with well-documented boundaries)
+- Last 5 plans: 10-02 (8 min), 11-01 (14 min), 11-02 (20 min), 12-01 (9 min), 12-02 (7 min)
+- Trend: 12-02 fastest of the split phases (mechanical extraction with well-documented boundaries from 12-01)
 
 *Updated after each plan completion*
 
@@ -117,6 +117,9 @@ Recent decisions affecting current work:
 - [12-01]: _AbilitiesSystemsMixin left of base in MRO -- its _cast_leona/_cast_skarner/_cast_xerath/_cast_zilean override dead alphabetical copies
 - [12-01]: Deferred from .item_effects import kept in _apply_stun (cross-module circular risk) -- all other deferred imports replaced with module-level
 - [12-01]: Dead duplicate definitions removed during base extraction (Task 1) rather than during systems extraction -- simplifies subsequent steps
+- [12-02]: MRO order finalized: CostTiers (leftmost), Alphabetical, HeroAugments, Systems, Base (rightmost)
+- [12-02]: Removed 2 missed deferred imports in _abilities_systems.py (galio bench DamageType/UnitState, skarner impale HexGrid)
+- [12-02]: CI parity gate consolidated by removing redundant single-test pytest invocation per BNCH-01
 
 ### Pending Todos
 
@@ -131,5 +134,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 12-01-PLAN.md (base + systems extraction)
-Resume file: .planning/phases/12-champion-abilities-split/12-01-SUMMARY.md
+Stopped at: Completed 12-02-PLAN.md (final 3-mixin extraction + CI consolidation) -- ALL PHASES COMPLETE
+Resume file: .planning/phases/12-champion-abilities-split/12-02-SUMMARY.md

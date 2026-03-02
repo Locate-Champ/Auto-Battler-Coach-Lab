@@ -70,7 +70,7 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Cross-Engine Benchmark
 
-- [ ] **BNCH-01**: Cross-engine parity tests batched for reduced CI overhead
+- [x] **BNCH-01**: Cross-engine parity tests batched for reduced CI overhead
 
 ## v2 Requirements
 
@@ -127,7 +127,7 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | SPLT-04 | Phase 12 | Complete |
 | SPLT-05 | Phase 10 | Complete |
 | SPLT-06 | Phase 11 | Complete |
-| BNCH-01 | Phase 12 | Pending |
+| BNCH-01 | Phase 12 | Complete |
 
 **Coverage:**
 - v1 requirements: 32 total
