@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-02-28T17:00:48.819Z"
-progress:
-  total_phases: 10
-  completed_phases: 10
-  total_plans: 16
-  completed_plans: 16
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-28T16:52:21Z"
+last_updated: "2026-03-02T06:06:57Z"
 progress:
-  total_phases: 10
-  completed_phases: 9
-  total_plans: 16
-  completed_plans: 16
+  total_phases: 12
+  completed_phases: 10
+  total_plans: 18
+  completed_plans: 17
 ---
 
 # Project State
@@ -31,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 10: Infrastructure File Splits
+**Current focus:** Phase 11: Combat Engine Split
 
 ## Current Position
 
-Phase: 10 of 12 (Infrastructure File Splits) -- IN PROGRESS
-Plan: 2 of 2 in current phase (10-01 complete, 10-02 complete)
-Status: Phase 10 plans complete -- split cloud_runner.py and feature_engineering.py into sub-modules
-Last activity: 2026-02-28 — Completed 10-02-PLAN.md (feature engineering file split)
+Phase: 11 of 12 (Combat Engine Split) -- IN PROGRESS
+Plan: 1 of 2 in current phase (11-01 complete)
+Status: 11-01 complete -- extracted 5 sub-modules from combat_engine.py (types, hex grid, item DB, augment mgr, trait mgr)
+Last activity: 2026-03-02 -- Completed 11-01-PLAN.md (sub-module extraction)
 
-Progress: [#############] 95%
+Progress: [##############] 96%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16
-- Average duration: 4.7 min
-- Total execution time: 1.25 hours
+- Total plans completed: 17
+- Average duration: 5.1 min
+- Total execution time: 1.48 hours
 
 **By Phase:**
 
@@ -63,10 +50,11 @@ Progress: [#############] 95%
 | 08-global-state-elimination | 2 | 14 min | 7 min |
 | 09-simulator-and-coach-exception-hardening | 1 | 3 min | 3 min |
 | 10-infrastructure-file-splits | 2 | 12 min | 6 min |
+| 11-combat-engine-split | 1 | 14 min | 14 min |
 
 **Recent Trend:**
-- Last 5 plans: 08-02 (5 min), 09-01 (3 min), 10-01 (4 min), 10-02 (8 min)
-- Trend: stable
+- Last 5 plans: 09-01 (3 min), 10-01 (4 min), 10-02 (8 min), 11-01 (14 min)
+- Trend: increasing (larger file splits take more time)
 
 *Updated after each plan completion*
 
@@ -117,6 +105,9 @@ Recent decisions affecting current work:
 - [10-02]: MRO order _LoaderMixin, _TransformMixin, _BatchTransformMixin -- loaders first for __init__ call order
 - [10-02]: TFTFeatureEngineer class defined in facade (not sub-module) to preserve pickle __module__ path
 - [10-02]: Cython try/except import block placed in both _transform and _batch modules independently
+- [11-01]: Item effects import block moved to _item_database.py (primary consumer) rather than staying in facade
+- [11-01]: TYPE_CHECKING pattern used for Unit type hints in _augment_manager.py and _trait_manager.py to avoid circular imports
+- [11-01]: AugmentManager augment loading try/except block travels with AugmentManager class to _augment_manager.py
 
 ### Pending Todos
 
@@ -130,6 +121,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-01
-Stopped at: Phase 11 context gathered
-Resume file: .planning/phases/11-combat-engine-split/11-CONTEXT.md
+Last session: 2026-03-02
+Stopped at: Completed 11-01-PLAN.md
+Resume file: .planning/phases/11-combat-engine-split/11-01-SUMMARY.md
