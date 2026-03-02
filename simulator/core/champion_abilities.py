@@ -9,157 +9,16 @@ or False if it should fall through to default ability processing.
 """
 
 import random
-from typing import TYPE_CHECKING, Dict, List, Optional, Tuple
+from typing import TYPE_CHECKING, Dict, List
+
+from ._abilities_base import _AbilitiesBaseMixin
 
 if TYPE_CHECKING:
-    from .combat_engine import CombatEngine, Unit
+    from .combat_engine import Unit
 
 
-class ChampionAbilities:
+class ChampionAbilities(_AbilitiesBaseMixin):
     """Handler for champion-specific ability mechanics."""
-
-    def __init__(self, engine: "CombatEngine"):
-        self.engine = engine
-
-    def cast(
-        self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
-    ) -> bool:
-        """
-        Handle champion-specific ability casting.
-
-        Returns True if ability was fully handled, False to continue to default processing.
-        """
-        handler = getattr(self, f"_cast_{unit.api_name.replace('TFT16_', '').lower()}", None)
-        if handler:
-            return handler(unit, enemies, allies, ability_vars)
-        return False
-
-    # =========================================================================
-    # HELPER METHODS
-    # =========================================================================
-
-    def _get_var(self, ability_vars: Dict, key: str, star_level: int, default: float = 0) -> float:
-        """Get ability variable for star level.
-
-        Handles both list format [0, 1star, 2star, 3star, ...] and
-        dict format {'1star': val, '2star': val, ...}.
-        """
-        var_data = ability_vars.get(key)
-        if var_data is None:
-            return default
-        if isinstance(var_data, list):
-            if star_level < len(var_data):
-                return var_data[star_level] if var_data[star_level] else default
-            return default
-        if isinstance(var_data, dict):
-            return var_data.get(f"{star_level}star", default) or default
-        # Scalar value
-        return var_data if var_data else default
-
-    def _find_farthest_enemy(
-        self, unit: "Unit", enemies: List["Unit"], max_range: int = 99
-    ) -> Optional["Unit"]:
-        """Find farthest targetable enemy within range."""
-        from .combat_engine import HexGrid
-
-        valid = [
-            e
-            for e in enemies
-            if e.is_alive
-            and e.is_targetable
-            and HexGrid.hex_distance(unit.position, e.position) <= max_range
-        ]
-        if not valid:
-            return None
-        return max(valid, key=lambda e: HexGrid.hex_distance(unit.position, e.position))
-
-    def _find_nearest_enemy(self, unit: "Unit", enemies: List["Unit"]) -> Optional["Unit"]:
-        """Find nearest targetable enemy."""
-        from .combat_engine import HexGrid
-
-        valid = [e for e in enemies if e.is_alive and e.is_targetable]
-        if not valid:
-            return None
-        return min(valid, key=lambda e: HexGrid.hex_distance(unit.position, e.position))
-
-    def _find_lowest_hp_enemy(self, unit: "Unit", enemies: List["Unit"]) -> Optional["Unit"]:
-        """Find enemy with lowest current HP."""
-        valid = [e for e in enemies if e.is_alive and e.is_targetable]
-        if not valid:
-            return None
-        return min(valid, key=lambda e: e.stats.hp)
-
-    def _get_enemies_in_radius(
-        self, center: Tuple[int, int], radius: int, enemies: List["Unit"]
-    ) -> List["Unit"]:
-        """Get all enemies within radius of a position."""
-        from .combat_engine import HexGrid
-
-        return [
-            e
-            for e in enemies
-            if e.is_alive and e.is_targetable and HexGrid.hex_distance(center, e.position) <= radius
-        ]
-
-    def _dash_to_position(self, unit: "Unit", target_pos: Tuple[int, int]) -> bool:
-        """Move unit to target position (or adjacent hex if occupied)."""
-        from .combat_engine import HexGrid
-
-        occupied = self.engine.get_occupied_hexes()
-
-        if target_pos not in occupied:
-            old_pos = unit.position
-            self.engine.set_unit_position(unit, target_pos)
-            self.engine.log_event("dash", unit=unit.name, from_pos=old_pos, to_pos=target_pos)
-            return True
-
-        # Find adjacent hex
-        neighbors = HexGrid.get_neighbors(target_pos)
-        valid = [n for n in neighbors if n not in occupied]
-        if valid:
-            old_pos = unit.position
-            self.engine.set_unit_position(unit, valid[0])
-            self.engine.log_event("dash", unit=unit.name, from_pos=old_pos, to_pos=valid[0])
-            return True
-        return False
-
-    def _apply_stun(self, target: "Unit", duration: float, source: str):
-        """Apply stun to a target. Blocked by Quicksilver or Titan's Resolve (25 stacks)."""
-        from .combat_engine import UnitState
-        from .item_effects import get_item_data
-
-        # Quicksilver CC immunity (18s from combat start)
-        qs_until = get_item_data(target, "Quicksilver", "immune_until", 0)
-        if qs_until and self.engine.time < qs_until:
-            self.engine.log_event("cc_immune", target=target.name, source="Quicksilver")
-            return
-
-        # Titan's Resolve CC immunity (at 25 stacks)
-        if get_item_data(target, "TitansResolve", "cc_immune", False):
-            self.engine.log_event("cc_immune", target=target.name, source="TitansResolve")
-            return
-
-        target.stun_duration = max(target.stun_duration, duration)
-        target.state = UnitState.STUNNED
-        self.engine.log_event("stun", target=target.name, duration=duration, source=source)
-
-    def _deal_damage(
-        self,
-        attacker: "Unit",
-        target: "Unit",
-        damage: float,
-        damage_type,
-        source: str,
-        can_crit: bool = True,
-    ) -> Tuple[float, float]:
-        """Deal damage and return (actual_damage, excess_damage)."""
-        final_damage, did_crit = self.engine.calculate_damage(
-            attacker, target, damage, damage_type, can_crit=can_crit, is_ability=True
-        )
-        hp_before = target.stats.hp
-        actual = self.engine.apply_damage(attacker, target, final_damage, damage_type, source)
-        excess = max(0, final_damage - hp_before) if not target.is_alive else 0
-        return actual, excess
 
     # =========================================================================
     # CHAMPION ABILITY HANDLERS (alphabetical order)
@@ -502,82 +361,6 @@ class ChampionAbilities:
         unit.stats.mana = 0
         return True
 
-    def _cast_diana(
-        self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
-    ) -> bool:
-        """Diana - Lunar Rush: Dash to target, deal damage, shield self. Leona synergy."""
-        from .combat_engine import DamageType, HexGrid
-
-        shield_amount = self._get_var(ability_vars, "Shield", unit.star_level, 100)
-        shield_duration = self._get_var(ability_vars, "ShieldDuration", unit.star_level, 2.0)
-        hex_limit = int(self._get_var(ability_vars, "HexLimit", unit.star_level, 4))
-        target_damage = self._get_var(ability_vars, "TargetDamage", unit.star_level, 125)
-        secondary_damage = self._get_var(ability_vars, "SecondaryDamage", unit.star_level, 140)
-        moonlight_dr = self._get_var(ability_vars, "MoonlightDamageReduction", unit.star_level, 0.1)
-
-        # Check for Leona synergy - if Leona is on team, Diana gets bonus damage reduction
-        has_leona = any(a.api_name == "TFT16_Leona" and a.is_alive for a in allies)
-        if has_leona and not getattr(unit, "_diana_leona_dr_applied", False):
-            unit._diana_leona_dr_applied = True
-            unit.stats.damage_reduction += moonlight_dr
-            self.engine.log_event("diana_leona_synergy", unit=unit.name, dr_bonus=moonlight_dr)
-
-        target = unit.target or self._find_nearest_enemy(unit, enemies)
-        if not target:
-            return False
-
-        # Check range limit
-        distance = HexGrid.hex_distance(unit.position, target.position)
-        if distance > hex_limit:
-            # Find nearest enemy within range
-            valid = [
-                e
-                for e in enemies
-                if e.is_alive
-                and e.is_targetable
-                and HexGrid.hex_distance(unit.position, e.position) <= hex_limit
-            ]
-            if not valid:
-                return False
-            target = min(valid, key=lambda e: HexGrid.hex_distance(unit.position, e.position))
-
-        # Dash to target
-        self._dash_to_position(unit, target.position)
-
-        # Apply shield
-        unit.stats.shield += shield_amount + unit.stats.ap
-        if not hasattr(unit, "_diana_shield_timer"):
-            unit._diana_shield_timer = 0
-        unit._diana_shield_timer = shield_duration
-        self.engine.log_event("shield", unit=unit.name, amount=shield_amount + unit.stats.ap)
-
-        # Deal damage to primary target
-        self._deal_damage(
-            unit, target, target_damage + unit.stats.ap, DamageType.MAGIC, "diana_lunar_rush"
-        )
-
-        # Deal secondary damage to enemies around target (pull effect)
-        nearby = self._get_enemies_in_radius(target.position, 2, enemies)
-        for enemy in nearby:
-            if enemy != target and enemy.is_alive:
-                self._deal_damage(
-                    unit,
-                    enemy,
-                    secondary_damage + unit.stats.ap * 0.5,
-                    DamageType.MAGIC,
-                    "diana_moonfall",
-                )
-
-        unit.stats.mana = 0
-        self.engine.log_event(
-            "ability_cast",
-            unit=unit.name,
-            ability="Lunar Rush",
-            has_leona=has_leona,
-            nearby_hit=len(nearby) - 1,
-        )
-        return True
-
     def _cast_draven(
         self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
     ) -> bool:
@@ -658,63 +441,6 @@ class ChampionAbilities:
         unit.stats.mana = 0
         self.engine.log_event(
             "ability_cast", unit=unit.name, ability="Frozen Tomb", excess_used=excess > 0
-        )
-        return True
-
-    def _cast_leona(
-        self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
-    ) -> bool:
-        """Leona - Solar Flare: AOE stun + damage, passive flat DR. Diana synergy."""
-        from .combat_engine import DamageType
-
-        flat_dr = self._get_var(ability_vars, "FlatDR", unit.star_level, 15)
-        num_enemies = int(self._get_var(ability_vars, "NumEnemies", unit.star_level, 3))
-        stun_duration = self._get_var(ability_vars, "StunDuration", unit.star_level, 1.0)
-        damage = self._get_var(ability_vars, "Damage", unit.star_level, 80)
-        ignite_duration = self._get_var(ability_vars, "IgniteDuration", unit.star_level, 4.0)
-        passive_timer = self._get_var(ability_vars, "PassiveTimer", unit.star_level, 4.0)
-        diana_ap = self._get_var(ability_vars, "DianaAP", unit.star_level, 3)
-
-        # Apply passive flat DR on first cast
-        if not getattr(unit, "_leona_dr_applied", False):
-            unit._leona_dr_applied = True
-            unit._leona_flat_dr = flat_dr
-            self.engine.log_event("leona_passive", unit=unit.name, flat_dr=flat_dr)
-
-        # Check for Diana synergy - if Diana is on team, grant her bonus AP
-        diana = next((a for a in allies if a.api_name == "TFT16_Diana" and a.is_alive), None)
-        if diana and not getattr(unit, "_leona_diana_ap_applied", False):
-            unit._leona_diana_ap_applied = True
-            diana.stats.ap += diana_ap
-            self.engine.log_event(
-                "leona_diana_synergy", unit=unit.name, diana=diana.name, ap_bonus=diana_ap
-            )
-
-        target = unit.target or self._find_nearest_enemy(unit, enemies)
-        if not target:
-            return False
-
-        # Solar Flare: AOE damage + stun centered on target
-        targets_hit = self._get_enemies_in_radius(target.position, 2, enemies)[:num_enemies]
-
-        for enemy in targets_hit:
-            # Deal damage
-            self._deal_damage(
-                unit, enemy, damage + unit.stats.ap, DamageType.MAGIC, "leona_solar_flare"
-            )
-            # Apply stun
-            self._apply_stun(enemy, stun_duration, "leona_stun")
-            # Apply ignite (burn damage, total = dps * duration)
-            ignite_total = damage * 0.25 * ignite_duration
-            self.engine.apply_damage(unit, enemy, ignite_total, DamageType.TRUE, "leona_ignite")
-
-        unit.stats.mana = 0
-        self.engine.log_event(
-            "ability_cast",
-            unit=unit.name,
-            ability="Solar Flare",
-            targets=len(targets_hit),
-            has_diana=diana is not None,
         )
         return True
 
@@ -1571,12 +1297,6 @@ class ChampionAbilities:
         )
         return True
 
-    def _hex_distance(self, pos1: Tuple[int, int], pos2: Tuple[int, int]) -> int:
-        """Helper to calculate hex distance."""
-        from .combat_engine import HexGrid
-
-        return HexGrid.hex_distance(pos1, pos2)
-
     def _cast_gangplank(
         self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
     ) -> bool:
@@ -1695,39 +1415,6 @@ class ChampionAbilities:
 
             # Stun
             self._apply_stun(target, stun_duration, "leblanc_stun")
-
-        unit.stats.mana = 0
-        return True
-
-    def _cast_leona(
-        self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
-    ) -> bool:
-        """Leona - Solar Eclipse: Passive DR + taunt."""
-
-        flat_dr = self._get_var(ability_vars, "FlatDR", unit.star_level, 15)
-        moonlight_dr = self._get_var(
-            ability_vars, "MoonlightDamageReduction", unit.star_level, 0.10
-        )
-
-        # Check for Diana synergy
-        has_diana = any(
-            u.api_name == "TFT16_Diana" and u.is_alive
-            for u in self.engine.units
-            if u.team == unit.team
-        )
-
-        # Apply passive damage reduction
-        unit.stats.damage_reduction += flat_dr / 100  # Convert to percentage
-
-        if has_diana:
-            unit.stats.damage_reduction += moonlight_dr
-            self.engine.log_event("leona_diana_synergy", unit=unit.name, bonus_dr=moonlight_dr)
-
-        # Taunt nearby enemies (make them target Leona)
-        for enemy in enemies:
-            if enemy.is_alive and self._hex_distance(unit.position, enemy.position) <= 2:
-                enemy.target = unit
-                self.engine.log_event("leona_taunt", taunted=enemy.name)
 
         unit.stats.mana = 0
         return True
@@ -2040,94 +1727,6 @@ class ChampionAbilities:
         unit.stats.mana = 0
         return True
 
-    def _cast_xerath(
-        self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
-    ) -> bool:
-        """Xerath - Rite of the Arcane: Multiple blasts across random enemies."""
-        from .combat_engine import DamageType
-
-        num_blasts = int(self._get_var(ability_vars, "NumberOfBlasts", unit.star_level, 10))
-        damage = self._get_var(ability_vars, "Damage", unit.star_level, 390)
-        range_enemies = int(self._get_var(ability_vars, "SpellRangeInEnemies", unit.star_level, 4))
-        charm_bonus = int(self._get_var(ability_vars, "XerathCharmExtraBlasts", unit.star_level, 3))
-
-        # Check for charm item (simplified)
-        has_charm = any(i.name == "XerathCharm" for i in unit.items)
-        if has_charm:
-            num_blasts += charm_bonus
-
-        valid_targets = [e for e in enemies if e.is_alive and e.is_targetable][:range_enemies]
-
-        if not valid_targets:
-            return False
-
-        # Distribute blasts evenly
-        blasts_per_target = num_blasts // len(valid_targets)
-        remainder = num_blasts % len(valid_targets)
-
-        for i, target in enumerate(valid_targets):
-            target_blasts = blasts_per_target + (1 if i < remainder else 0)
-            for _ in range(target_blasts):
-                if not target.is_alive:
-                    break
-                self._deal_damage(
-                    unit, target, damage + unit.stats.ap, DamageType.MAGIC, "xerath_blast"
-                )
-
-        unit.stats.mana = 0
-        self.engine.log_event(
-            "ability_cast", unit=unit.name, ability="Rite of the Arcane", blasts=num_blasts
-        )
-        return True
-
-    def _cast_zilean(
-        self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
-    ) -> bool:
-        """Zilean - Time Bomb: Distance-based targeting with chain explosions."""
-        from .combat_engine import DamageType
-
-        magic_damage = self._get_var(ability_vars, "MagicDamage", unit.star_level, 75)
-        explosion_damage = self._get_var(ability_vars, "ExplosionDamage", unit.star_level, 150)
-        mana_on_kill = self._get_var(ability_vars, "ManaOnKill", unit.star_level, 15)
-
-        # Target farthest enemy
-        target = self._find_farthest_enemy(unit, enemies)
-        if not target:
-            return False
-
-        # Track bombs on target
-        if not hasattr(target, "_zilean_bombs"):
-            target._zilean_bombs = 0
-        target._zilean_bombs += 1
-
-        # Apply initial damage
-        self._deal_damage(
-            unit, target, magic_damage + unit.stats.ap, DamageType.MAGIC, "zilean_bomb"
-        )
-
-        # Check for double bomb explosion
-        if target._zilean_bombs >= 2:
-            target._zilean_bombs = 0
-
-            # Big explosion
-            self._deal_damage(
-                unit, target, explosion_damage + unit.stats.ap, DamageType.MAGIC, "zilean_explosion"
-            )
-
-            # Chain to nearby enemies
-            nearby = self._get_enemies_in_radius(target.position, 2, enemies)
-            for enemy in nearby:
-                if enemy != target and enemy.is_alive:
-                    self._deal_damage(
-                        unit, enemy, explosion_damage * 0.5, DamageType.MAGIC, "zilean_chain"
-                    )
-
-        unit.stats.mana = 0
-        # Mana on kill (refund after spending mana)
-        if not target.is_alive:
-            self.engine.gain_mana(unit, mana_on_kill, source="zilean_kill_refund")
-        return True
-
     def _cast_loris(
         self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
     ) -> bool:
@@ -2156,45 +1755,6 @@ class ChampionAbilities:
             nearby = self._get_enemies_in_radius(unit.position, 2, enemies)
             for enemy in nearby:
                 enemy.target = unit
-
-        unit.stats.mana = 0
-        return True
-
-    def _cast_skarner(
-        self, unit: "Unit", enemies: List["Unit"], allies: List["Unit"], ability_vars: Dict
-    ) -> bool:
-        """Skarner - Impale: Grab multiple enemies, armor aura."""
-        from .combat_engine import DamageType
-
-        armor_for_allies = self._get_var(ability_vars, "ArmorForAllies", unit.star_level, 10)
-        impale_duration = self._get_var(ability_vars, "ImpaleDuration", unit.star_level, 2)
-        damage_pct_armor = self._get_var(ability_vars, "DamagePercentArmor", unit.star_level, 1.2)
-        max_targets = int(self._get_var(ability_vars, "ImpaleMaxTargets", unit.star_level, 3))
-
-        # Apply armor aura to allies
-        for ally in allies:
-            if ally.is_alive:
-                ally.stats.armor += armor_for_allies
-
-        # Grab multiple enemies
-        targets = sorted(
-            [e for e in enemies if e.is_alive and e.is_targetable],
-            key=lambda e: self._hex_distance(unit.position, e.position),
-        )[:max_targets]
-
-        for target in targets:
-            # Pull to Skarner (impale)
-            old_pos = target.position
-            self._dash_to_position(target, unit.position)
-
-            # Stun during impale
-            self._apply_stun(target, impale_duration, "skarner_impale")
-
-            # Armor-scaling damage
-            damage = unit.stats.armor * damage_pct_armor
-            self._deal_damage(unit, target, damage, DamageType.PHYSICAL, "skarner_impale")
-
-            self.engine.log_event("skarner_grab", target=target.name, from_pos=old_pos)
 
         unit.stats.mana = 0
         return True
@@ -2254,29 +1814,6 @@ class ChampionAbilities:
                 )
 
         unit.stats.mana = 0
-        return True
-
-    # =========================================================================
-    # IMMORTAL TRAIT - Resurrection for Zaahen
-    # =========================================================================
-
-    def check_immortal_resurrection(self, unit: "Unit") -> bool:
-        """Check if unit should resurrect via Immortal trait."""
-        if "Immortal" not in unit.traits:
-            return False
-
-        if hasattr(unit, "_immortal_used"):
-            return False
-
-        # Resurrect with 60% HP
-        unit._immortal_used = True
-        unit.is_alive = True
-        unit.stats.hp = unit.stats.max_hp * 0.6
-        from .combat_engine import UnitState
-
-        unit.state = UnitState.IDLE
-
-        self.engine.log_event("immortal_resurrect", unit=unit.name, hp=unit.stats.hp)
         return True
 
     # =========================================================================
