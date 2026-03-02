@@ -217,7 +217,9 @@ Plans:
   2. `models/exceptions.py` hierarchy is either wired into production raise sites or removed as dead code (decision made during planning)
   3. REQUIREMENTS.md checkboxes for EXCP-05, GLBL-03, GLBL-04 show `[x] Complete` with traceability status "Complete"
   4. ROADMAP.md progress table accurately reflects completion status for all 14 phases
-**Plans:** 0/TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 14-01-PLAN.md — Wire DataLoader context manager, remove dead exceptions.py, fix stale documentation
 
 ## Progress
 
