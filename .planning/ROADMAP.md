@@ -171,9 +171,10 @@ Plans:
   2. combat_engine.py is reduced to a CombatEngine class facade under 800 LOC with all types and managers in private underscore-prefixed sub-modules
   3. `python -m simulator.benchmark` passes with identical output (fixed seed) after every individual sub-module extraction step — each step is gated on a passing benchmark before the next begins
   4. The five target sub-modules exist and are independently importable: `_combat_types.py`, `_hex_grid.py`, `_trait_manager.py`, `_augment_manager.py`, `_item_database.py`
-**Plans**: 2 plans
+**Plans:** 2 plans
 Plans:
-- [ ] 11-01-PLAN.md — Split combat_engine.py into facade + 5 private sub-modules; benchmark after each extraction step
+- [ ] 11-01-PLAN.md — Extract 5 standalone sub-modules (_combat_types, _hex_grid, _item_database, _augment_manager, _trait_manager) with benchmark gating
+- [ ] 11-02-PLAN.md — Extract 3 CombatEngine mixin sub-modules (_combat_actions, _combat_processing, _combat_runners) and finalize <800 LOC facade
 
 ### Phase 12: Champion Abilities Split
 **Goal**: champion_abilities.py (5.9k LOC) is split into AbilitiesBase plus systems and cost-tier mixins using the mixin composition pattern; AbilitiesBase is extracted first as a hard prerequisite; determinism is verified after every step
