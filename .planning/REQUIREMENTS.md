@@ -64,7 +64,7 @@ Requirements for this milestone. Each maps to roadmap phases.
 - [x] **SPLT-01**: `feature_engineering.py` (2.1k LOC) split into config, loaders, and transform sub-modules
 - [x] **SPLT-02**: `cloud_runner.py` (2k LOC) split into runner core, utilities, and writer sub-modules
 - [x] **SPLT-03**: `combat_engine.py` (5.3k LOC) split into facade + types, hex grid, trait manager, augment manager, item database sub-modules
-- [ ] **SPLT-04**: `champion_abilities.py` (5.9k LOC) split into AbilitiesBase + systems + cost-tier mixin sub-modules
+- [x] **SPLT-04**: `champion_abilities.py` (5.9k LOC) split into AbilitiesBase + systems + cost-tier mixin sub-modules
 - [x] **SPLT-05**: All splits maintain backward-compatible imports via facade re-exports
 - [x] **SPLT-06**: Determinism benchmark passes after each individual combat_engine/champion_abilities split step
 
@@ -124,7 +124,7 @@ Deferred to future milestone. Tracked but not in current roadmap.
 | SPLT-01 | Phase 10 | Complete |
 | SPLT-02 | Phase 10 | Complete |
 | SPLT-03 | Phase 11 | Complete |
-| SPLT-04 | Phase 12 | Pending |
+| SPLT-04 | Phase 12 | Complete |
 | SPLT-05 | Phase 10 | Complete |
 | SPLT-06 | Phase 11 | Complete |
 | BNCH-01 | Phase 12 | Pending |

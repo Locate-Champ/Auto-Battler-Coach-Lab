@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-02T06:38:56.521Z"
-progress:
-  total_phases: 11
-  completed_phases: 11
-  total_plans: 18
-  completed_plans: 18
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T07:30:00Z"
+last_updated: "2026-03-02T22:03:19Z"
 progress:
   total_phases: 12
   completed_phases: 11
-  total_plans: 18
-  completed_plans: 18
+  total_plans: 20
+  completed_plans: 19
 ---
 
 # Project State
@@ -31,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 11: Combat Engine Split
+**Current focus:** Phase 12: Champion Abilities Split
 
 ## Current Position
 
-Phase: 11 of 12 (Combat Engine Split) -- COMPLETE
-Plan: 2 of 2 in current phase (11-02 complete -- phase done)
-Status: Phase 11 complete -- combat_engine.py split into 8 sub-modules + thin facade (548 LOC)
-Last activity: 2026-03-02 -- Completed 11-02-PLAN.md (mixin extraction)
+Phase: 12 of 12 (Champion Abilities Split)
+Plan: 1 of 2 in current phase (12-01 complete)
+Status: AbilitiesBase + Systems extracted -- champion_abilities.py reduced from 5,911 to 3,472 LOC
+Last activity: 2026-03-02 -- Completed 12-01-PLAN.md (base + systems extraction)
 
-Progress: [###############] 100%
+Progress: [##############-] 95%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
-- Average duration: 5.4 min
-- Total execution time: 1.81 hours
+- Total plans completed: 19
+- Average duration: 5.5 min
+- Total execution time: 1.96 hours
 
 **By Phase:**
 
@@ -64,10 +51,11 @@ Progress: [###############] 100%
 | 09-simulator-and-coach-exception-hardening | 1 | 3 min | 3 min |
 | 10-infrastructure-file-splits | 2 | 12 min | 6 min |
 | 11-combat-engine-split | 2 | 34 min | 17 min |
+| 12-champion-abilities-split | 1/2 | 9 min | 9 min |
 
 **Recent Trend:**
-- Last 5 plans: 10-01 (4 min), 10-02 (8 min), 11-01 (14 min), 11-02 (20 min)
-- Trend: increasing (larger file splits take more time)
+- Last 5 plans: 10-02 (8 min), 11-01 (14 min), 11-02 (20 min), 12-01 (9 min)
+- Trend: 12-01 faster than expected (mechanical extraction with well-documented boundaries)
 
 *Updated after each plan completion*
 
@@ -125,6 +113,10 @@ Recent decisions affecting current work:
 - [11-02]: Cython import block placed in _combat_actions.py (sole consumer of _cy_calculate_damage)
 - [11-02]: Each mixin uses only self.* for cross-method calls -- no mixin-to-mixin imports
 - [11-02]: Removed unused random/deepcopy from facade after runner extraction (moved to _combat_runners.py)
+- [12-01]: _AbilitiesBaseMixin rightmost in MRO -- provides __init__, helpers, dispatch for all other mixins
+- [12-01]: _AbilitiesSystemsMixin left of base in MRO -- its _cast_leona/_cast_skarner/_cast_xerath/_cast_zilean override dead alphabetical copies
+- [12-01]: Deferred from .item_effects import kept in _apply_stun (cross-module circular risk) -- all other deferred imports replaced with module-level
+- [12-01]: Dead duplicate definitions removed during base extraction (Task 1) rather than during systems extraction -- simplifies subsequent steps
 
 ### Pending Todos
 
@@ -132,12 +124,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 12 risk: _abilities_systems.py cross-method call audit required before writing the file — audit self._cast_, self.engine., and self._deal_damage() calls in the special systems section
+- Phase 12 risk: RESOLVED (12-01) -- _abilities_systems.py cross-method call audit completed in RESEARCH.md, all self.* calls resolve through MRO to _AbilitiesBaseMixin
 - Phase 4 risk: pandera Arrow Table validation path behavior for Arrow Tables with schema metadata may differ from pandas DataFrames — verify with synthetic fixture before production use
 - Pre-existing: test_api_server.py::test_startup_failure_exits fails on Python 3.14 (concurrent.futures + SystemExit in mocked context)
 
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Phase 12 context gathered
-Resume file: .planning/phases/12-champion-abilities-split/12-CONTEXT.md
+Stopped at: Completed 12-01-PLAN.md (base + systems extraction)
+Resume file: .planning/phases/12-champion-abilities-split/12-01-SUMMARY.md

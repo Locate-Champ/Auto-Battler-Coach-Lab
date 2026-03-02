@@ -186,7 +186,7 @@ Plans:
   3. `python -m simulator.benchmark` passes with identical output (fixed seed) after every individual split step including AbilitiesBase, each systems file, and each cost-tier mixin file
   4. Cross-engine parity tests in the benchmark suite are batched to reduce CI overhead per BNCH-01, and the batched suite passes with the same result set as the unbatched baseline
   5. champion_abilities.py is reduced to a thin facade under 250 LOC with all ability implementation in underscore-prefixed mixin sub-modules
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 12-01-PLAN.md — Extract AbilitiesBase + Systems mixins with individual benchmark gates; resolve duplicate methods
 - [ ] 12-02-PLAN.md — Extract hero augments, alphabetical, cost-tier mixins; finalize facade (<250 LOC); consolidate CI parity gate (BNCH-01)
@@ -209,4 +209,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 9. Simulator and Coach Exception Hardening | 0/1 | Not started | - |
 | 10. Infrastructure File Splits | 2/2 | Complete    | 2026-02-28 |
 | 11. Combat Engine Split | 2/2 | Complete    | 2026-03-02 |
-| 12. Champion Abilities Split | 0/TBD | Not started | - |
+| 12. Champion Abilities Split | 1/2 | In Progress|  |
