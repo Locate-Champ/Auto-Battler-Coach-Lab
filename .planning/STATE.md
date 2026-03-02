@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T06:06:57Z"
+last_updated: "2026-03-02T07:30:00Z"
 progress:
   total_phases: 12
-  completed_phases: 10
+  completed_phases: 11
   total_plans: 18
-  completed_plans: 17
+  completed_plans: 18
 ---
 
 # Project State
@@ -22,19 +22,19 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 
 ## Current Position
 
-Phase: 11 of 12 (Combat Engine Split) -- IN PROGRESS
-Plan: 1 of 2 in current phase (11-01 complete)
-Status: 11-01 complete -- extracted 5 sub-modules from combat_engine.py (types, hex grid, item DB, augment mgr, trait mgr)
-Last activity: 2026-03-02 -- Completed 11-01-PLAN.md (sub-module extraction)
+Phase: 11 of 12 (Combat Engine Split) -- COMPLETE
+Plan: 2 of 2 in current phase (11-02 complete -- phase done)
+Status: Phase 11 complete -- combat_engine.py split into 8 sub-modules + thin facade (548 LOC)
+Last activity: 2026-03-02 -- Completed 11-02-PLAN.md (mixin extraction)
 
-Progress: [##############] 96%
+Progress: [###############] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
-- Average duration: 5.1 min
-- Total execution time: 1.48 hours
+- Total plans completed: 18
+- Average duration: 5.4 min
+- Total execution time: 1.81 hours
 
 **By Phase:**
 
@@ -50,10 +50,10 @@ Progress: [##############] 96%
 | 08-global-state-elimination | 2 | 14 min | 7 min |
 | 09-simulator-and-coach-exception-hardening | 1 | 3 min | 3 min |
 | 10-infrastructure-file-splits | 2 | 12 min | 6 min |
-| 11-combat-engine-split | 1 | 14 min | 14 min |
+| 11-combat-engine-split | 2 | 34 min | 17 min |
 
 **Recent Trend:**
-- Last 5 plans: 09-01 (3 min), 10-01 (4 min), 10-02 (8 min), 11-01 (14 min)
+- Last 5 plans: 10-01 (4 min), 10-02 (8 min), 11-01 (14 min), 11-02 (20 min)
 - Trend: increasing (larger file splits take more time)
 
 *Updated after each plan completion*
@@ -108,6 +108,10 @@ Recent decisions affecting current work:
 - [11-01]: Item effects import block moved to _item_database.py (primary consumer) rather than staying in facade
 - [11-01]: TYPE_CHECKING pattern used for Unit type hints in _augment_manager.py and _trait_manager.py to avoid circular imports
 - [11-01]: AugmentManager augment loading try/except block travels with AugmentManager class to _augment_manager.py
+- [11-02]: MRO order CombatEngine(_CombatRunnersMixin, _CombatProcessingMixin, _CombatActionsMixin) -- Actions rightmost (lowest-level), Runners leftmost (highest-level)
+- [11-02]: Cython import block placed in _combat_actions.py (sole consumer of _cy_calculate_damage)
+- [11-02]: Each mixin uses only self.* for cross-method calls -- no mixin-to-mixin imports
+- [11-02]: Removed unused random/deepcopy from facade after runner extraction (moved to _combat_runners.py)
 
 ### Pending Todos
 
@@ -122,5 +126,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 11-01-PLAN.md
-Resume file: .planning/phases/11-combat-engine-split/11-01-SUMMARY.md
+Stopped at: Completed 11-02-PLAN.md (Phase 11 complete)
+Resume file: .planning/phases/11-combat-engine-split/11-02-SUMMARY.md

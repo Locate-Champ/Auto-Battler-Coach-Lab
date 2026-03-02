@@ -22,7 +22,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 8: Global State Elimination** - Refactor cloud_runner module globals to class-based BatchRunner; fix DataLoader worker initargs; multiprocessing integration test
 - [ ] **Phase 9: Simulator and Coach Exception Hardening** - Second-pass exception narrowing for simulator and coach layers; convert intentional fallbacks to logged specific exceptions
 - [x] **Phase 10: Infrastructure File Splits** - Split cloud_runner.py and feature_engineering.py into focused sub-modules (no determinism dependency) (completed 2026-02-28)
-- [ ] **Phase 11: Combat Engine Split** - Split combat_engine.py (5.3k LOC) into facade + types, hex grid, trait manager, augment manager, item database; benchmark after each step
+- [x] **Phase 11: Combat Engine Split** - Split combat_engine.py (5.3k LOC) into facade + types, hex grid, trait manager, augment manager, item database; benchmark after each step (completed 2026-03-02)
 - [ ] **Phase 12: Champion Abilities Split** - Split champion_abilities.py (5.9k LOC): AbilitiesBase first, then systems, then cost-tier mixins; benchmark after each step
 
 ## Phase Details
@@ -171,7 +171,7 @@ Plans:
   2. combat_engine.py is reduced to a CombatEngine class facade under 800 LOC with all types and managers in private underscore-prefixed sub-modules
   3. `python -m simulator.benchmark` passes with identical output (fixed seed) after every individual sub-module extraction step — each step is gated on a passing benchmark before the next begins
   4. The five target sub-modules exist and are independently importable: `_combat_types.py`, `_hex_grid.py`, `_trait_manager.py`, `_augment_manager.py`, `_item_database.py`
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 11-01-PLAN.md — Extract 5 standalone sub-modules (_combat_types, _hex_grid, _item_database, _augment_manager, _trait_manager) with benchmark gating
 - [ ] 11-02-PLAN.md — Extract 3 CombatEngine mixin sub-modules (_combat_actions, _combat_processing, _combat_runners) and finalize <800 LOC facade
@@ -207,5 +207,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 8. Global State Elimination | 0/TBD | Not started | - |
 | 9. Simulator and Coach Exception Hardening | 0/1 | Not started | - |
 | 10. Infrastructure File Splits | 2/2 | Complete    | 2026-02-28 |
-| 11. Combat Engine Split | 1/2 | In Progress|  |
+| 11. Combat Engine Split | 2/2 | Complete   | 2026-03-02 |
 | 12. Champion Abilities Split | 0/TBD | Not started | - |
