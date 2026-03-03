@@ -133,8 +133,8 @@ Deferred to future milestone. Tracked but not in current roadmap.
 - v1 requirements: 32 total
 - Mapped to phases: 32
 - Unmapped: 0
-- Complete: 29
-- Pending: 3 (OBSV-01, OBSV-02, OBSV-03 — Phase 13)
+- Complete: 32
+- Pending: 0
 
 ---
 *Requirements defined: 2026-02-27*

@@ -13,19 +13,19 @@ This milestone systematically eliminates the 18 reliability concerns identified 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Models Exception Hardening** - Narrow all broad/bare exception handlers in the ML models layer (feature_engineering, data_loader, train_xgboost) (completed 2026-02-27)
-- [ ] **Phase 2: Observable Fallbacks** - Wire logging.WARNING for all silent degradation paths (Cython, pickle, module loggers)
-- [ ] **Phase 3: Dependency Validation and Resource Management** - Add explicit startup errors for missing pyarrow and combat_data.json; DataLoader context manager; Rust pre-flight check
-- [ ] **Phase 4: Type Contracts and Schema Validation** - Fix check_compatibility() return type; document BoardEvaluator contract; add transform_batch() schema validation for both dict and Arrow paths
-- [ ] **Phase 5: API Server Hardening** - Migrate FastAPI to lifespan context manager; enforce startup failure gate; replace module globals with app.state
-- [ ] **Phase 6: Configuration Extraction and Ruff Gates** - Extract magic numbers to FeatureConfig dataclass; enable ruff BLE/B rules to statically enforce exception hygiene
+- [x] **Phase 2: Observable Fallbacks** - Wire logging.WARNING for all silent degradation paths (Cython, pickle, module loggers) (completed 2026-02-27)
+- [x] **Phase 3: Dependency Validation and Resource Management** - Add explicit startup errors for missing pyarrow and combat_data.json; DataLoader context manager; Rust pre-flight check (completed 2026-02-27)
+- [x] **Phase 4: Type Contracts and Schema Validation** - Fix check_compatibility() return type; document BoardEvaluator contract; add transform_batch() schema validation for both dict and Arrow paths (completed 2026-02-27)
+- [x] **Phase 5: API Server Hardening** - Migrate FastAPI to lifespan context manager; enforce startup failure gate; replace module globals with app.state (completed 2026-02-27)
+- [x] **Phase 6: Configuration Extraction and Ruff Gates** - Extract magic numbers to FeatureConfig dataclass; enable ruff BLE/B rules to statically enforce exception hygiene (completed 2026-02-27)
 - [x] **Phase 7: SklearnEvaluator Wiring** - Implement feature extraction matching training schema; integration test with mock sklearn model (completed 2026-02-27)
-- [ ] **Phase 8: Global State Elimination** - Refactor cloud_runner module globals to class-based BatchRunner; fix DataLoader worker initargs; multiprocessing integration test
-- [ ] **Phase 9: Simulator and Coach Exception Hardening** - Second-pass exception narrowing for simulator and coach layers; convert intentional fallbacks to logged specific exceptions
+- [x] **Phase 8: Global State Elimination** - Refactor cloud_runner module globals to class-based BatchRunner; fix DataLoader worker initargs; multiprocessing integration test (completed 2026-02-28)
+- [x] **Phase 9: Simulator and Coach Exception Hardening** - Second-pass exception narrowing for simulator and coach layers; convert intentional fallbacks to logged specific exceptions (completed 2026-02-28)
 - [x] **Phase 10: Infrastructure File Splits** - Split cloud_runner.py and feature_engineering.py into focused sub-modules (no determinism dependency) (completed 2026-02-28)
 - [x] **Phase 11: Combat Engine Split** - Split combat_engine.py (5.3k LOC) into facade + types, hex grid, trait manager, augment manager, item database; benchmark after each step (completed 2026-03-02)
 - [x] **Phase 12: Champion Abilities Split** - Split champion_abilities.py (5.9k LOC): AbilitiesBase first, then systems, then cost-tier mixins; benchmark after each step (completed 2026-03-02)
 - [x] **Phase 13: OBSV Verification & Logging Regression Fix** - Retroactively verify OBSV-01/02, fix OBSV-03 regression from Phase 10 splits (add _log to 4 sub-modules, convert print()→_log) (completed 2026-03-02)
-- [ ] **Phase 14: Integration Polish & Documentation Sync** - Wire DataLoader context manager in production, resolve exceptions.py dead code, fix stale checkboxes and ROADMAP progress table
+- [x] **Phase 14: Integration Polish & Documentation Sync** - Wire DataLoader context manager in production, resolve exceptions.py dead code, fix stale checkboxes and ROADMAP progress table (completed 2026-03-03)
 
 ## Phase Details
 
@@ -40,7 +40,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. No silent pass or broad except in the models layer absorbs an error without re-raising or logging
 **Plans:** 1/1 plans complete
 Plans:
-- [ ] 01-01-PLAN.md — Create exceptions module, narrow all BLE001 violations, widen extension import handlers
+- [x] 01-01-PLAN.md — Create exceptions module, narrow all BLE001 violations, widen extension import handlers
 
 ### Phase 2: Observable Fallbacks
 **Goal**: Every silent performance-degradation path in the codebase emits a logging.WARNING so developers can see when the system is running on a slower fallback
@@ -51,10 +51,10 @@ Plans:
   2. When DataLoader activates the pickle fallback disk-I/O path, a WARNING-level log entry is emitted identifying the ~30x slowdown
   3. Every module that previously used print() or silent pass now has a `logging.getLogger(__name__)` logger and routes all diagnostic output through it
   4. The Python log output during a Gate A smoke test contains no unlogged fallback activations
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 Plans:
-- [ ] 02-01-PLAN.md — Wire fallback WARNING logging for Cython/pickle/GPU paths + convert print() in data_loader and train_xgboost
-- [ ] 02-02-PLAN.md — Complete logging standardization: rename logger->_log, add loggers to 7 modules, convert remaining print()
+- [x] 02-01-PLAN.md — Wire fallback WARNING logging for Cython/pickle/GPU paths + convert print() in data_loader and train_xgboost
+- [x] 02-02-PLAN.md — Complete logging standardization: rename logger->_log, add loggers to 7 modules, convert remaining print()
 
 ### Phase 3: Dependency Validation and Resource Management
 **Goal**: Missing runtime dependencies (pyarrow, combat_data.json, Rust extension) are caught at startup with actionable error messages, not at use-time as silent empty results; DataLoader cleans up worker pools automatically
@@ -65,10 +65,10 @@ Plans:
   2. Starting the simulator with a missing combat_data.json raises an actionable error at import time that includes the expected file path and the command to regenerate it
   3. Importing the Rust extension on a mismatched architecture raises a pre-flight error with a rebuild hint, not a cryptic OSError at first use
   4. DataLoader used as a context manager (`with DataLoader(...) as dl:`) cleans up all worker processes on both normal exit and exception exit without masking the original exception
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 Plans:
-- [ ] 03-01-PLAN.md — Hard pyarrow ImportError + DataLoader context manager with safe cleanup
-- [ ] 03-02-PLAN.md — Actionable combat_data.json error + Rust extension pre-flight with version and logging
+- [x] 03-01-PLAN.md — Hard pyarrow ImportError + DataLoader context manager with safe cleanup
+- [x] 03-02-PLAN.md — Actionable combat_data.json error + Rust extension pre-flight with version and logging
 
 ### Phase 4: Type Contracts and Schema Validation
 **Goal**: API contracts at module boundaries are honest — check_compatibility() returns a real bool, BoardEvaluator documents what implementers must provide, and transform_batch() validates its inputs before processing
@@ -79,10 +79,10 @@ Plans:
   2. `BoardEvaluator` base class has a documented abstract contract (either ABC abstractmethod or explicit docstring contract) so implementers know what to override
   3. `FeatureEngineer.transform_batch()` raises a descriptive ValueError listing missing column names when required columns are absent, before any computation runs
   4. Schema validation passes for both the JSONL/dict input path and the Rust Parquet Arrow path — validation runs after normalization, not before, so valid Rust-generated data is not rejected
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 Plans:
-- [ ] 04-01-PLAN.md — Fix evaluator type contracts: BoardEvaluator ABC + check_compatibility() -> bool
-- [ ] 04-02-PLAN.md — Add schema validation to transform_batch() and transform_arrow_batch()
+- [x] 04-01-PLAN.md — Fix evaluator type contracts: BoardEvaluator ABC + check_compatibility() -> bool
+- [x] 04-02-PLAN.md — Add schema validation to transform_batch() and transform_arrow_batch()
 
 ### Phase 5: API Server Hardening
 **Goal**: The FastAPI server uses the official lifespan pattern, fails loudly if models do not load at startup, and stores all shared state in app.state rather than module-level globals
@@ -93,9 +93,9 @@ Plans:
   2. If model loading fails during startup, the server process exits with a non-zero code before any endpoint becomes reachable — no endpoint ever serves a None model
   3. All module-level globals in app/api/server.py are replaced by `app.state` attributes populated inside the lifespan function
   4. `uvicorn --reload` restarts cleanly without carrying stale module-level state across reloads
-**Plans**: 2 plans
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 05-01-PLAN.md — Lifespan migration, app.state + Depends() injection, startup failure gate, global exception handler, test suite
+- [x] 05-01-PLAN.md — Lifespan migration, app.state + Depends() injection, startup failure gate, global exception handler, test suite
 
 ### Phase 6: Configuration Extraction and Ruff Gates
 **Goal**: Magic numbers in feature_engineering.py are documented and importable via a typed dataclass; ruff BLE/B rules are enforced so future broad exception handlers are caught statically at CI time
@@ -106,10 +106,10 @@ Plans:
   2. FeatureConfig can be imported and instantiated in a test with overridden values, verifying constants are not hardcoded at use sites
   3. ruff.toml includes `"BLE", "B"` in the select list and `ruff check .` passes with zero violations across the entire codebase
   4. A deliberately introduced `except Exception:` in any Python file causes `ruff check .` to fail with a BLE001 error
-**Plans**: 2 plans
+**Plans:** 2/2 plans complete
 Plans:
 - [x] 06-01-PLAN.md — Extract magic numbers to frozen NumericFeatureConfig dataclass with tests
-- [ ] 06-02-PLAN.md — Fix all 82 BLE+B violations and enable ruff BLE+B rule enforcement
+- [x] 06-02-PLAN.md — Fix all 82 BLE+B violations and enable ruff BLE+B rule enforcement
 
 ### Phase 7: SklearnEvaluator Wiring
 **Goal**: SklearnEvaluator extracts features from GameState using the same schema as the XGBoost training pipeline, and the wiring is verified with an integration test
@@ -119,7 +119,7 @@ Plans:
   1. Calling `SklearnEvaluator.evaluate(game_state)` on a well-formed GameState returns a numeric score without raising NotImplementedError
   2. The feature vector produced by SklearnEvaluator matches the column order and normalization expected by the XGBoost model trained in train_xgboost.py (verified by comparing column names in a test)
   3. An integration test using a mock sklearn model passes in CI, confirming the full evaluate() call path without requiring a real trained model artifact
-**Plans**: 2 plans
+**Plans:** 1/1 plans complete
 Plans:
 - [x] 07-01-PLAN.md — Wire SklearnEvaluator.score() with TFTFeatureEngineer adapter, update default_evaluator() chain, integration tests
 
@@ -132,10 +132,10 @@ Plans:
   2. Worker processes spawned by BatchRunner receive the simulator by value through initargs, not by inheriting module-level globals — verified on Windows where spawn is the default start method
   3. DataLoader worker pool initialization uses explicit initargs to pass shared resources, with no module-level global mutation after pool creation
   4. An integration test runs a real `multiprocessing.Pool` with the new BatchRunner and confirms workers produce correct results without a stale-global failure
-**Plans**: 2 plans
+**Plans:** 2/2 plans complete
 Plans:
-- [ ] 08-01-PLAN.md — BatchRunnerConfig dataclass + BatchRunner class refactoring, eliminate main-process globals, rewrite main(), update existing tests
-- [ ] 08-02-PLAN.md — DataLoader spawn context, BatchRunner integration tests (isolation, parallel spawn), DataLoader initargs verification
+- [x] 08-01-PLAN.md — BatchRunnerConfig dataclass + BatchRunner class refactoring, eliminate main-process globals, rewrite main(), update existing tests
+- [x] 08-02-PLAN.md — DataLoader spawn context, BatchRunner integration tests (isolation, parallel spawn), DataLoader initargs verification
 
 ### Phase 9: Simulator and Coach Exception Hardening
 **Goal**: All broad and bare exception handlers in the simulator and coach layers are narrowed to specific types; intentional fallbacks are converted to logged specific-exception handlers
@@ -146,9 +146,9 @@ Plans:
   2. Every intentional fallback in simulator and coach layers uses `except SpecificErrorType` followed by a `log.warning()` call that names the fallback and the reason
   3. The simulator determinism benchmark passes after all exception handler changes — `python -m simulator.benchmark` exits zero with the same output as before
   4. No simulator fallback path silently degrades behavior without a logged warning visible in coach output
-**Plans**: 2 plans
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 09-01-PLAN.md — Narrow 5 BLE001 sites across simulator and coach layers; benchmark gate after game.py change
+- [x] 09-01-PLAN.md — Narrow 5 BLE001 sites across simulator and coach layers; benchmark gate after game.py change
 
 ### Phase 10: Infrastructure File Splits
 **Goal**: cloud_runner.py and feature_engineering.py are split into focused sub-modules under 1k LOC each, with all external import paths preserved via facade re-exports; no determinism risk because neither file is simulator-core
@@ -159,10 +159,10 @@ Plans:
   2. `from models.feature_engineering import FeatureEngineer` and all existing import paths resolve correctly after the split
   3. cloud_runner.py and feature_engineering.py each contain fewer than 1000 LOC after the split (the remainder lives in underscore-prefixed sub-modules)
   4. The full test suite passes without modification after both splits — `python -m pytest` exits zero
-**Plans**: 2 plans
+**Plans:** 2/2 plans complete
 Plans:
-- [ ] 10-01-PLAN.md — Split cloud_runner.py into 3 sub-modules with facade re-exports and CI allowlist update
-- [ ] 10-02-PLAN.md — Split feature_engineering.py into 4 mixin sub-modules with facade class
+- [x] 10-01-PLAN.md — Split cloud_runner.py into 3 sub-modules with facade re-exports and CI allowlist update
+- [x] 10-02-PLAN.md — Split feature_engineering.py into 4 mixin sub-modules with facade class
 
 ### Phase 11: Combat Engine Split
 **Goal**: combat_engine.py (5.3k LOC) is split into a CombatEngine facade plus private sub-modules for types, hex grid, trait manager, augment manager, and item database; determinism is verified by benchmark after every individual structural change
@@ -175,8 +175,8 @@ Plans:
   4. The five target sub-modules exist and are independently importable: `_combat_types.py`, `_hex_grid.py`, `_trait_manager.py`, `_augment_manager.py`, `_item_database.py`
 **Plans:** 2/2 plans complete
 Plans:
-- [ ] 11-01-PLAN.md — Extract 5 standalone sub-modules (_combat_types, _hex_grid, _item_database, _augment_manager, _trait_manager) with benchmark gating
-- [ ] 11-02-PLAN.md — Extract 3 CombatEngine mixin sub-modules (_combat_actions, _combat_processing, _combat_runners) and finalize <800 LOC facade
+- [x] 11-01-PLAN.md — Extract 5 standalone sub-modules (_combat_types, _hex_grid, _item_database, _augment_manager, _trait_manager) with benchmark gating
+- [x] 11-02-PLAN.md — Extract 3 CombatEngine mixin sub-modules (_combat_actions, _combat_processing, _combat_runners) and finalize <800 LOC facade
 
 ### Phase 12: Champion Abilities Split
 **Goal**: champion_abilities.py (5.9k LOC) is split into AbilitiesBase plus systems and cost-tier mixins using the mixin composition pattern; AbilitiesBase is extracted first as a hard prerequisite; determinism is verified after every step
@@ -190,8 +190,8 @@ Plans:
   5. champion_abilities.py is reduced to a thin facade under 250 LOC with all ability implementation in underscore-prefixed mixin sub-modules
 **Plans:** 2/2 plans complete
 Plans:
-- [ ] 12-01-PLAN.md — Extract AbilitiesBase + Systems mixins with individual benchmark gates; resolve duplicate methods
-- [ ] 12-02-PLAN.md — Extract hero augments, alphabetical, cost-tier mixins; finalize facade (<250 LOC); consolidate CI parity gate (BNCH-01)
+- [x] 12-01-PLAN.md — Extract AbilitiesBase + Systems mixins with individual benchmark gates; resolve duplicate methods
+- [x] 12-02-PLAN.md — Extract hero augments, alphabetical, cost-tier mixins; finalize facade (<250 LOC); consolidate CI parity gate (BNCH-01)
 
 ### Phase 13: OBSV Verification & Logging Regression Fix
 **Goal**: The 3 orphaned OBSV requirements are formally verified, and the OBSV-03 regression introduced by Phase 10 file splits is fixed — all sub-modules use `_log` loggers instead of `print()`
@@ -205,7 +205,7 @@ Plans:
   4. Phase 02 VERIFICATION.md exists and confirms OBSV-01, OBSV-02, OBSV-03 satisfied
 **Plans:** 1/1 plans complete
 Plans:
-- [ ] 13-01-PLAN.md — Fix OBSV-03 logging regression in 5 Phase 10 sub-modules + create retroactive 02-VERIFICATION.md
+- [x] 13-01-PLAN.md — Fix OBSV-03 logging regression in 5 Phase 10 sub-modules + create retroactive 02-VERIFICATION.md
 
 ### Phase 14: Integration Polish & Documentation Sync
 **Goal**: Production code exercises the DataLoader context manager; models/exceptions.py dead code is resolved; all stale REQUIREMENTS.md checkboxes and ROADMAP progress entries are corrected
@@ -217,9 +217,9 @@ Plans:
   2. `models/exceptions.py` hierarchy is either wired into production raise sites or removed as dead code (decision made during planning)
   3. REQUIREMENTS.md checkboxes for EXCP-05, GLBL-03, GLBL-04 show `[x] Complete` with traceability status "Complete"
   4. ROADMAP.md progress table accurately reflects completion status for all 14 phases
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 14-01-PLAN.md — Wire DataLoader context manager, remove dead exceptions.py, fix stale documentation
+- [x] 14-01-PLAN.md — Wire DataLoader context manager, remove dead exceptions.py, fix stale documentation
 
 ## Progress
 
@@ -241,4 +241,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 11. Combat Engine Split | 2/2 | Complete | 2026-03-02 |
 | 12. Champion Abilities Split | 2/2 | Complete | 2026-03-02 |
 | 13. OBSV Verification & Logging Fix | 1/1 | Complete    | 2026-03-02 |
-| 14. Integration Polish & Doc Sync | 0/TBD | Not started | - |
+| 14. Integration Polish & Doc Sync | 1/1 | Complete | 2026-03-03 |
