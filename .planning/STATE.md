@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-02T23:05:33.360Z"
+status: complete
+last_updated: "2026-03-03T00:26:17Z"
 progress:
   total_phases: 14
-  completed_phases: 13
-  total_plans: 21
-  completed_plans: 21
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: complete
-last_updated: "2026-03-02T22:59:39Z"
-progress:
-  total_phases: 13
-  completed_phases: 13
-  total_plans: 21
-  completed_plans: 21
+  completed_phases: 14
+  total_plans: 22
+  completed_plans: 22
 ---
 
 # Project State
@@ -31,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** Stop silent failures — every error path must be explicit, every fallback must be logged
-**Current focus:** Phase 13: OBSV Verification and Logging Fix (gap closure)
+**Current focus:** v1.0 milestone COMPLETE
 
 ## Current Position
 
-Phase: 13 of 13 (OBSV Verification and Logging Fix) -- COMPLETE
-Plan: 1 of 1 in current phase (13-01 complete)
-Status: All OBSV requirements satisfied -- 27 print() calls converted to _log, retroactive Phase 02 VERIFICATION.md created
-Last activity: 2026-03-02 -- Completed 13-01-PLAN.md (OBSV-03 fix + retroactive verification)
+Phase: 14 of 14 (Integration Polish & Documentation Sync) -- COMPLETE
+Plan: 1 of 1 in current phase (14-01 complete)
+Status: v1.0 milestone complete -- all 32 requirements satisfied, 14 phases executed, 22 plans done
+Last activity: 2026-03-03 -- Completed 14-01-PLAN.md (DataLoader context manager wiring + dead code removal + doc sync)
 
 Progress: [################] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
+- Total plans completed: 22
 - Average duration: 5.4 min
-- Total execution time: 2.17 hours
+- Total execution time: 2.27 hours
 
 **By Phase:**
 
@@ -66,10 +53,11 @@ Progress: [################] 100%
 | 11-combat-engine-split | 2 | 34 min | 17 min |
 | 12-champion-abilities-split | 2/2 | 16 min | 8 min |
 | 13-obsv-verification-and-logging-fix | 1/1 | 5 min | 5 min |
+| 14-integration-polish-and-doc-sync | 1/1 | 6 min | 6 min |
 
 **Recent Trend:**
-- Last 5 plans: 11-01 (14 min), 11-02 (20 min), 12-01 (9 min), 12-02 (7 min), 13-01 (5 min)
-- Trend: 13-01 fast gap-closure plan (mechanical print-to-log conversion + verification doc)
+- Last 5 plans: 11-02 (20 min), 12-01 (9 min), 12-02 (7 min), 13-01 (5 min), 14-01 (6 min)
+- Trend: Gap-closure plans consistently fast (5-6 min); structural splits slower (9-20 min)
 
 *Updated after each plan completion*
 
@@ -134,6 +122,7 @@ Recent decisions affecting current work:
 - [12-02]: MRO order finalized: CostTiers (leftmost), Alphabetical, HeroAugments, Systems, Base (rightmost)
 - [12-02]: Removed 2 missed deferred imports in _abilities_systems.py (galio bench DamageType/UnitState, skarner impale HexGrid)
 - [12-02]: CI parity gate consolidated by removing redundant single-test pytest invocation per BNCH-01
+- [14-01]: Removed models/exceptions.py as dead code -- zero production imports, stdlib exceptions already work, no concrete future use case
 
 ### Pending Todos
 
@@ -147,6 +136,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-02
-Stopped at: Completed 13-01-PLAN.md (OBSV-03 fix + retroactive Phase 02 verification)
-Resume file: .planning/phases/13-obsv-verification-and-logging-fix/13-01-SUMMARY.md
+Last session: 2026-03-03
+Stopped at: Completed 14-01-PLAN.md -- v1.0 milestone fully complete (all 32 requirements, 14 phases, 22 plans)
+Resume file: .planning/phases/14-integration-polish-and-doc-sync/14-01-SUMMARY.md
