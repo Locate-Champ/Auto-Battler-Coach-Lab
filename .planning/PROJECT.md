@@ -1,8 +1,8 @@
-# Codebase Reliability & Cleanup
+# Auto-Battler Coach Lab
 
 ## What This Is
 
-A systematic effort to fix all 18 concerns identified in the codebase audit — silent failures, tech debt, missing error handling, monolithic file splits, and incomplete implementations. The goal is a more reliable, maintainable, and observable codebase across the simulator, models, coach, and API layers.
+A TFT (Teamfight Tactics) auto-battler coaching system with deterministic combat simulation (Python + Rust engines), ML-based placement prediction (XGBoost), real-time coaching via WebSocket, and a React frontend. The v1.0 reliability milestone eliminated all 18 concerns from the original codebase audit — the codebase now has explicit error paths, observable fallbacks, validated dependencies, and modular file structure.
 
 ## Core Value
 
@@ -21,34 +21,48 @@ Stop silent failures. Every error path must be explicit, every fallback must be 
 - ✓ Coach system with heuristic/linear evaluators — existing
 - ✓ WebSocket-based real-time game state sync — existing
 - ✓ React frontend with Vite/Tailwind — existing
+- ✓ All 39 bare/broad exception handlers narrowed to specific types — v1.0
+- ✓ Observable fallback logging for Cython, pickle, DataLoader paths — v1.0
+- ✓ Explicit startup errors for missing pyarrow, combat_data.json, Rust extension — v1.0
+- ✓ DataLoader context manager with automatic pool cleanup — v1.0
+- ✓ Type contracts: check_compatibility() returns bool, BoardEvaluator ABC — v1.0
+- ✓ Schema validation for transform_batch() (dict + Arrow paths) — v1.0
+- ✓ FastAPI lifespan pattern with startup failure gate and app.state DI — v1.0
+- ✓ NumericFeatureConfig frozen dataclass replacing magic numbers — v1.0
+- ✓ Ruff BLE+B rules enforced statically across entire codebase — v1.0
+- ✓ SklearnEvaluator wired with TFTFeatureEngineer integration — v1.0
+- ✓ BatchRunner class replacing cloud_runner module globals — v1.0
+- ✓ DataLoader spawn context for cross-platform multiprocessing — v1.0
+- ✓ combat_engine.py split into facade + 8 sub-modules (<550 LOC facade) — v1.0
+- ✓ champion_abilities.py split into facade + 5 mixin sub-modules (31 LOC facade) — v1.0
+- ✓ cloud_runner.py split into facade + 3 sub-modules — v1.0
+- ✓ feature_engineering.py split into facade + 4 mixin sub-modules — v1.0
+- ✓ Cross-engine parity tests batched for CI performance — v1.0
 
 ### Active
 
-- [ ] Fix all silent failure paths (bare except, missing pyarrow, pickle fallback)
-- [ ] Wire SklearnEvaluator feature extraction
-- [ ] Fix type contracts (check_compatibility returns None)
-- [ ] Add explicit error messages for missing dependencies (combat_data.json, pyarrow)
-- [ ] Refactor global state (cloud_runner, DataLoader, API server)
-- [ ] Split monolithic files (champion_abilities, combat_engine, feature_engineering, cloud_runner)
-- [ ] Add schema validation for feature engineering inputs
-- [ ] Make DataLoader a context manager
-- [ ] Add logging for Cython fallback paths
-- [ ] Extract magic numbers to config dataclass
-- [ ] Add Rust extension pre-flight check
-- [ ] Improve benchmark cross-engine validation performance
+(No active requirements — next milestone not yet planned)
 
 ### Out of Scope
 
-- New features or gameplay mechanics — this is cleanup only
-- Champion ability registry/plugin system — noted but deferred beyond split
-- Mobile or alternative frontends — not relevant to reliability work
-- Model architecture changes — only fixing the plumbing around models
+- Champion ability registry/plugin system — noted but deferred beyond structural split
+- Mobile or alternative frontends — not relevant to current focus
+- Model architecture changes — only fixing plumbing around models
+- Third-party logging library (structlog/loguru) — stdlib logging sufficient
+- Formal DI framework — manual constructor injection solves the problem
 
 ## Context
 
-This is a brownfield project with a mature codebase spanning simulation (Python+Rust), ML training, real-time coaching, and a web frontend. The codebase audit identified 18 concerns across 7 categories. The simulator core (`simulator/core/**`, `simulator/game/**`) is the active truth and must remain deterministic after any changes. Legacy paths (`simulator/Simulator/**`, `simulator/Concurrency/**`, `simulator/Evaluator/**`) are quarantined and must not be touched.
+Shipped v1.0 with 66,107 LOC Python across simulation, ML training, coaching, and web frontend layers. Tech stack: Python 3.14, Rust (PyO3), XGBoost, FastAPI, React/Vite/Tailwind. The v1.0 milestone resolved all 18 codebase audit concerns in 14 phases over 5 days, touching 175 files (+34.7k/-15.1k lines).
 
-Key risk: the monolithic file splits (champion_abilities at 5.9k LOC, combat_engine at 5.3k LOC) touch the simulator core. These require determinism verification via `python -m simulator.benchmark` after every structural change.
+Key architectural patterns established:
+- Mixin composition for monolithic file splits (facade + underscore-prefixed sub-modules)
+- Spawn-safe multiprocessing with explicit initargs (BatchRunner, DataLoader)
+- Observable fallbacks via `_log = logging.getLogger(__name__)` in every module
+
+Known issues:
+- 2 pre-existing test failures on Python 3.14 (concurrent.futures + SystemExit in mocked context)
+- Deferred EXTD-01: Champion ability handler registry for plugin-style dispatch
 
 ## Constraints
 
@@ -56,15 +70,17 @@ Key risk: the monolithic file splits (champion_abilities at 5.9k LOC, combat_eng
 - **No legacy paths**: Do not touch `simulator/Simulator/**`, `simulator/Concurrency/**`, `simulator/Evaluator/**`
 - **Verification**: All Python changes must pass `ruff check .` and `ruff format --check .`
 - **Parquet rule**: PyArrow must be validated in the same environment running the command
-- **Priority**: Reliability first — silent failures before refactors before new wiring
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Include monolithic file splits | User wants full cleanup, accepts higher risk | — Pending |
-| Reliability as top priority | Silent failures are the most dangerous class of bugs | — Pending |
-| All 18 concerns in scope | Comprehensive cleanup pass rather than incremental | — Pending |
+| Include monolithic file splits | User wants full cleanup, accepts higher risk | ✓ Good — all 4 splits completed with determinism preserved |
+| Reliability as top priority | Silent failures are the most dangerous class of bugs | ✓ Good — risk-ordered execution caught issues early |
+| All 18 concerns in scope | Comprehensive cleanup pass rather than incremental | ✓ Good — 32/32 requirements satisfied in 5 days |
+| Mixin composition for splits | Preserves backward-compatible imports via facade re-exports | ✓ Good — zero callers required changes |
+| spawn context for multiprocessing | Windows requires spawn, Linux 3.14 changes default | ✓ Good — cross-platform consistency |
+| Delete models/exceptions.py | Zero production imports, stdlib exceptions sufficient | ✓ Good — removed 26 LOC dead code |
 
 ---
-*Last updated: 2026-02-27 after initialization*
+*Last updated: 2026-03-03 after v1.0 milestone*
