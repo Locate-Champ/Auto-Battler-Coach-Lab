@@ -587,69 +587,71 @@ def _run_ablation(
     for toggle in toggles:
         config = FeatureConfig()
         setattr(config, toggle, False)
-        loader = DataLoader(args.data, feature_engineer=TFTFeatureEngineer(config=config))
-        if args.task == "fight":
-            X_train, X_test, y_train, y_test = loader.load_fight_prediction_data(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
-                row_batch_size=args.row_batch_size,
-            )
-            params = dict(BASE_TREE_PARAMS)
-            params.update(
-                {
-                    "objective": "binary:logistic",
-                    "eval_metric": "auc",
-                    "device": _best_xgb_device(),
-                    "n_estimators": min(200, args.n_estimators),
-                }
-            )
-            model = _train_with_fallback(
-                xgb.XGBClassifier, params, X_train, y_train, X_test, y_test
-            )
-            metric = accuracy_score(
-                y_test, (model.predict_proba(X_test)[:, 1] >= 0.5).astype(np.int64)
-            )
-        elif args.task == "top4":
-            X_train, X_test, y_train, y_test = loader.load_top4_classification_data(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
-                row_batch_size=args.row_batch_size,
-            )
-            params = dict(BASE_TREE_PARAMS)
-            params.update(
-                {
-                    "objective": "binary:logistic",
-                    "eval_metric": "auc",
-                    "device": _best_xgb_device(),
-                    "n_estimators": min(200, args.n_estimators),
-                }
-            )
-            model = _train_with_fallback(
-                xgb.XGBClassifier, params, X_train, y_train, X_test, y_test
-            )
-            metric = accuracy_score(
-                y_test, (model.predict_proba(X_test)[:, 1] >= 0.5).astype(np.int64)
-            )
-        else:
-            X_train, X_test, y_train, y_test = loader.load_placement_prediction_data(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
-                row_batch_size=args.row_batch_size,
-            )
-            params = dict(BASE_TREE_PARAMS)
-            params.update(
-                {
-                    "objective": "reg:squarederror",
-                    "eval_metric": "mae",
-                    "device": _best_xgb_device(),
-                    "n_estimators": min(200, args.n_estimators),
-                }
-            )
-            model = _train_with_fallback(xgb.XGBRegressor, params, X_train, y_train, X_test, y_test)
-            metric = mean_absolute_error(y_test, model.predict(X_test))
+        with DataLoader(args.data, feature_engineer=TFTFeatureEngineer(config=config)) as loader:
+            if args.task == "fight":
+                X_train, X_test, y_train, y_test = loader.load_fight_prediction_data(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                    row_batch_size=args.row_batch_size,
+                )
+                params = dict(BASE_TREE_PARAMS)
+                params.update(
+                    {
+                        "objective": "binary:logistic",
+                        "eval_metric": "auc",
+                        "device": _best_xgb_device(),
+                        "n_estimators": min(200, args.n_estimators),
+                    }
+                )
+                model = _train_with_fallback(
+                    xgb.XGBClassifier, params, X_train, y_train, X_test, y_test
+                )
+                metric = accuracy_score(
+                    y_test, (model.predict_proba(X_test)[:, 1] >= 0.5).astype(np.int64)
+                )
+            elif args.task == "top4":
+                X_train, X_test, y_train, y_test = loader.load_top4_classification_data(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                    row_batch_size=args.row_batch_size,
+                )
+                params = dict(BASE_TREE_PARAMS)
+                params.update(
+                    {
+                        "objective": "binary:logistic",
+                        "eval_metric": "auc",
+                        "device": _best_xgb_device(),
+                        "n_estimators": min(200, args.n_estimators),
+                    }
+                )
+                model = _train_with_fallback(
+                    xgb.XGBClassifier, params, X_train, y_train, X_test, y_test
+                )
+                metric = accuracy_score(
+                    y_test, (model.predict_proba(X_test)[:, 1] >= 0.5).astype(np.int64)
+                )
+            else:
+                X_train, X_test, y_train, y_test = loader.load_placement_prediction_data(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                    row_batch_size=args.row_batch_size,
+                )
+                params = dict(BASE_TREE_PARAMS)
+                params.update(
+                    {
+                        "objective": "reg:squarederror",
+                        "eval_metric": "mae",
+                        "device": _best_xgb_device(),
+                        "n_estimators": min(200, args.n_estimators),
+                    }
+                )
+                model = _train_with_fallback(
+                    xgb.XGBRegressor, params, X_train, y_train, X_test, y_test
+                )
+                metric = mean_absolute_error(y_test, model.predict(X_test))
 
         delta = (
             float(metric - baseline_metric) if is_higher_better else float(baseline_metric - metric)
@@ -754,220 +756,220 @@ def main() -> None:
     if args.max_depth is not None:
         BASE_TREE_PARAMS["max_depth"] = args.max_depth
 
-    loader = DataLoader(args.data, n_workers=args.feature_workers)
-    feature_names = loader.feature_engineer.feature_names()
-    split_stats: Optional[Dict[str, Any]] = None
-    cache_dir: Optional[Path] = None
+    with DataLoader(args.data, n_workers=args.feature_workers) as loader:
+        feature_names = loader.feature_engineer.feature_names()
+        split_stats: Optional[Dict[str, Any]] = None
+        cache_dir: Optional[Path] = None
 
-    if args.external_memory:
-        model, params, metrics, split_stats, cache_dir = _train_external_memory(
-            args, loader, output_dir
-        )
-        if args.task in {"fight", "top4"}:
-            baseline_metric = float(metrics["accuracy"])
-            is_higher_better = True
-        else:
-            baseline_metric = float(metrics["mae"])
-            is_higher_better = False
-    elif getattr(args, "arrow", False) and args.task in {"fight", "top4", "placement"}:
-        if args.task == "fight":
-            X_train, X_test, y_train, y_test = loader.load_fight_prediction_arrow(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
+        if args.external_memory:
+            model, params, metrics, split_stats, cache_dir = _train_external_memory(
+                args, loader, output_dir
             )
-        elif args.task == "top4":
-            X_train, X_test, y_train, y_test = loader.load_top4_classification_arrow(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
-            )
-        else:
-            X_train, X_test, y_train, y_test = loader.load_placement_prediction_arrow(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
-            )
-        params = dict(BASE_TREE_PARAMS)
-        if args.task in {"fight", "top4"}:
-            params.update(
-                {
-                    "objective": "binary:logistic",
-                    "eval_metric": "auc",
-                    "device": _best_xgb_device(),
-                    "n_estimators": args.n_estimators,
-                }
-            )
-            model = _train_with_fallback(
-                xgb.XGBClassifier,
-                params,
-                X_train,
-                y_train,
-                X_test,
-                y_test,
-                early_stopping_rounds=es_rounds,
-            )
-            metrics = _evaluate_classification(args.task, model, X_test, y_test)
-            baseline_metric = float(metrics["accuracy"])
-            is_higher_better = True
-        else:
-            params.update(
-                {
-                    "objective": "reg:squarederror",
-                    "eval_metric": "mae",
-                    "device": _best_xgb_device(),
-                    "n_estimators": args.n_estimators,
-                }
-            )
-            model = _train_with_fallback(
-                xgb.XGBRegressor,
-                params,
-                X_train,
-                y_train,
-                X_test,
-                y_test,
-                early_stopping_rounds=es_rounds,
-            )
-            metrics = _evaluate_regression(model, X_test, y_test)
-            baseline_metric = float(metrics["mae"])
-            is_higher_better = False
-    else:
-        if args.task == "fight":
-            X_train, X_test, y_train, y_test = loader.load_fight_prediction_data(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
-                row_batch_size=args.row_batch_size,
-            )
+            if args.task in {"fight", "top4"}:
+                baseline_metric = float(metrics["accuracy"])
+                is_higher_better = True
+            else:
+                baseline_metric = float(metrics["mae"])
+                is_higher_better = False
+        elif getattr(args, "arrow", False) and args.task in {"fight", "top4", "placement"}:
+            if args.task == "fight":
+                X_train, X_test, y_train, y_test = loader.load_fight_prediction_arrow(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                )
+            elif args.task == "top4":
+                X_train, X_test, y_train, y_test = loader.load_top4_classification_arrow(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                )
+            else:
+                X_train, X_test, y_train, y_test = loader.load_placement_prediction_arrow(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                )
             params = dict(BASE_TREE_PARAMS)
-            params.update(
-                {
-                    "objective": "binary:logistic",
-                    "eval_metric": "auc",
-                    "device": _best_xgb_device(),
-                    "n_estimators": args.n_estimators,
-                }
-            )
-            model = _train_with_fallback(
-                xgb.XGBClassifier,
-                params,
-                X_train,
-                y_train,
-                X_test,
-                y_test,
-                early_stopping_rounds=es_rounds,
-            )
-            metrics = _evaluate_classification("fight", model, X_test, y_test)
-            baseline_metric = float(metrics["accuracy"])
-            is_higher_better = True
-        elif args.task == "top4":
-            X_train, X_test, y_train, y_test = loader.load_top4_classification_data(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
-                row_batch_size=args.row_batch_size,
-            )
-            params = dict(BASE_TREE_PARAMS)
-            params.update(
-                {
-                    "objective": "binary:logistic",
-                    "eval_metric": "auc",
-                    "device": _best_xgb_device(),
-                    "n_estimators": args.n_estimators,
-                }
-            )
-            model = _train_with_fallback(
-                xgb.XGBClassifier,
-                params,
-                X_train,
-                y_train,
-                X_test,
-                y_test,
-                early_stopping_rounds=es_rounds,
-            )
-            metrics = _evaluate_classification("top4", model, X_test, y_test)
-            baseline_metric = float(metrics["accuracy"])
-            is_higher_better = True
+            if args.task in {"fight", "top4"}:
+                params.update(
+                    {
+                        "objective": "binary:logistic",
+                        "eval_metric": "auc",
+                        "device": _best_xgb_device(),
+                        "n_estimators": args.n_estimators,
+                    }
+                )
+                model = _train_with_fallback(
+                    xgb.XGBClassifier,
+                    params,
+                    X_train,
+                    y_train,
+                    X_test,
+                    y_test,
+                    early_stopping_rounds=es_rounds,
+                )
+                metrics = _evaluate_classification(args.task, model, X_test, y_test)
+                baseline_metric = float(metrics["accuracy"])
+                is_higher_better = True
+            else:
+                params.update(
+                    {
+                        "objective": "reg:squarederror",
+                        "eval_metric": "mae",
+                        "device": _best_xgb_device(),
+                        "n_estimators": args.n_estimators,
+                    }
+                )
+                model = _train_with_fallback(
+                    xgb.XGBRegressor,
+                    params,
+                    X_train,
+                    y_train,
+                    X_test,
+                    y_test,
+                    early_stopping_rounds=es_rounds,
+                )
+                metrics = _evaluate_regression(model, X_test, y_test)
+                baseline_metric = float(metrics["mae"])
+                is_higher_better = False
         else:
-            X_train, X_test, y_train, y_test = loader.load_placement_prediction_data(
-                test_size=args.test_size,
-                seed=args.seed,
-                max_rows=args.max_rows,
-                row_batch_size=args.row_batch_size,
+            if args.task == "fight":
+                X_train, X_test, y_train, y_test = loader.load_fight_prediction_data(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                    row_batch_size=args.row_batch_size,
+                )
+                params = dict(BASE_TREE_PARAMS)
+                params.update(
+                    {
+                        "objective": "binary:logistic",
+                        "eval_metric": "auc",
+                        "device": _best_xgb_device(),
+                        "n_estimators": args.n_estimators,
+                    }
+                )
+                model = _train_with_fallback(
+                    xgb.XGBClassifier,
+                    params,
+                    X_train,
+                    y_train,
+                    X_test,
+                    y_test,
+                    early_stopping_rounds=es_rounds,
+                )
+                metrics = _evaluate_classification("fight", model, X_test, y_test)
+                baseline_metric = float(metrics["accuracy"])
+                is_higher_better = True
+            elif args.task == "top4":
+                X_train, X_test, y_train, y_test = loader.load_top4_classification_data(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                    row_batch_size=args.row_batch_size,
+                )
+                params = dict(BASE_TREE_PARAMS)
+                params.update(
+                    {
+                        "objective": "binary:logistic",
+                        "eval_metric": "auc",
+                        "device": _best_xgb_device(),
+                        "n_estimators": args.n_estimators,
+                    }
+                )
+                model = _train_with_fallback(
+                    xgb.XGBClassifier,
+                    params,
+                    X_train,
+                    y_train,
+                    X_test,
+                    y_test,
+                    early_stopping_rounds=es_rounds,
+                )
+                metrics = _evaluate_classification("top4", model, X_test, y_test)
+                baseline_metric = float(metrics["accuracy"])
+                is_higher_better = True
+            else:
+                X_train, X_test, y_train, y_test = loader.load_placement_prediction_data(
+                    test_size=args.test_size,
+                    seed=args.seed,
+                    max_rows=args.max_rows,
+                    row_batch_size=args.row_batch_size,
+                )
+                params = dict(BASE_TREE_PARAMS)
+                params.update(
+                    {
+                        "objective": "reg:squarederror",
+                        "eval_metric": "mae",
+                        "device": _best_xgb_device(),
+                        "n_estimators": args.n_estimators,
+                    }
+                )
+                model = _train_with_fallback(
+                    xgb.XGBRegressor,
+                    params,
+                    X_train,
+                    y_train,
+                    X_test,
+                    y_test,
+                    early_stopping_rounds=es_rounds,
+                )
+                metrics = _evaluate_regression(model, X_test, y_test)
+                baseline_metric = float(metrics["mae"])
+                is_higher_better = False
+
+        importances = _extract_feature_importance(model, feature_names)
+        _log.info("Top 20 feature importances:")
+        for feature, score in importances[:20]:
+            _log.info("  %s: %.4f", feature, score)
+
+        model_path = output_dir / f"{args.task}_xgboost.json"
+        model.save_model(model_path)
+        chart_path = output_dir / f"{args.task}_feature_importance.png"
+        _save_feature_chart(importances, chart_path)
+        _log.info("Saved model -> %s", model_path)
+        _log.info("Saved chart -> %s", chart_path)
+
+        report = {
+            "task": args.task,
+            "params": params,
+            "metrics": metrics,
+            "top_features": importances[:20],
+            "feature_count": len(feature_names),
+            "training_mode": "external_memory" if args.external_memory else "in_memory",
+            "early_stopping_rounds": es_rounds,
+            "split_stats": split_stats,
+            "data_loading": {
+                "test_size": args.test_size,
+                "seed": args.seed,
+                "row_batch_size": args.row_batch_size,
+                "max_rows": args.max_rows,
+            },
+            "external_memory": {
+                "enabled": bool(args.external_memory),
+                "batch_size": args.external_batch_size if args.external_memory else None,
+                "cache_dir": str(cache_dir) if cache_dir else None,
+                "keep_cache": bool(args.keep_external_cache) if args.external_memory else None,
+                "early_stopping_rounds": (
+                    args.early_stopping_rounds if args.external_memory else None
+                ),
+            },
+        }
+
+        if args.ablation:
+            report["ablation"] = _run_ablation(
+                args, baseline_metric=baseline_metric, is_higher_better=is_higher_better
             )
-            params = dict(BASE_TREE_PARAMS)
-            params.update(
-                {
-                    "objective": "reg:squarederror",
-                    "eval_metric": "mae",
-                    "device": _best_xgb_device(),
-                    "n_estimators": args.n_estimators,
-                }
-            )
-            model = _train_with_fallback(
-                xgb.XGBRegressor,
-                params,
-                X_train,
-                y_train,
-                X_test,
-                y_test,
-                early_stopping_rounds=es_rounds,
-            )
-            metrics = _evaluate_regression(model, X_test, y_test)
-            baseline_metric = float(metrics["mae"])
-            is_higher_better = False
 
-    importances = _extract_feature_importance(model, feature_names)
-    _log.info("Top 20 feature importances:")
-    for feature, score in importances[:20]:
-        _log.info("  %s: %.4f", feature, score)
+        report_path = output_dir / f"{args.task}_training_report.json"
+        with report_path.open("w", encoding="utf-8") as handle:
+            json.dump(report, handle, indent=2)
+        _log.info("Saved report -> %s", report_path)
 
-    model_path = output_dir / f"{args.task}_xgboost.json"
-    model.save_model(model_path)
-    chart_path = output_dir / f"{args.task}_feature_importance.png"
-    _save_feature_chart(importances, chart_path)
-    _log.info("Saved model -> %s", model_path)
-    _log.info("Saved chart -> %s", chart_path)
-
-    report = {
-        "task": args.task,
-        "params": params,
-        "metrics": metrics,
-        "top_features": importances[:20],
-        "feature_count": len(feature_names),
-        "training_mode": "external_memory" if args.external_memory else "in_memory",
-        "early_stopping_rounds": es_rounds,
-        "split_stats": split_stats,
-        "data_loading": {
-            "test_size": args.test_size,
-            "seed": args.seed,
-            "row_batch_size": args.row_batch_size,
-            "max_rows": args.max_rows,
-        },
-        "external_memory": {
-            "enabled": bool(args.external_memory),
-            "batch_size": args.external_batch_size if args.external_memory else None,
-            "cache_dir": str(cache_dir) if cache_dir else None,
-            "keep_cache": bool(args.keep_external_cache) if args.external_memory else None,
-            "early_stopping_rounds": args.early_stopping_rounds if args.external_memory else None,
-        },
-    }
-
-    if args.ablation:
-        report["ablation"] = _run_ablation(
-            args, baseline_metric=baseline_metric, is_higher_better=is_higher_better
-        )
-
-    report_path = output_dir / f"{args.task}_training_report.json"
-    with report_path.open("w", encoding="utf-8") as handle:
-        json.dump(report, handle, indent=2)
-    _log.info("Saved report -> %s", report_path)
-
-    if args.external_memory and cache_dir is not None and not args.keep_external_cache:
-        gc.collect()
-        _cleanup_external_cache(cache_dir)
-
-    loader.close()
+        if args.external_memory and cache_dir is not None and not args.keep_external_cache:
+            gc.collect()
+            _cleanup_external_cache(cache_dir)
 
 
 if __name__ == "__main__":
