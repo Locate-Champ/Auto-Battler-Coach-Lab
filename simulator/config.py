@@ -1,3 +1,4 @@
+import ast
 import datetime
 from os import cpu_count, environ, path
 
@@ -227,7 +228,7 @@ class ModelConfig:
     MAX_GRAD_NORM = get_int_env("MAX_GRAD_NORM", 5)
     SELECTED_SAMPLES = environ.get("SELECTED_SAMPLES", True)
     if isinstance(SELECTED_SAMPLES, str):
-        SELECTED_SAMPLES = eval(SELECTED_SAMPLES)
+        SELECTED_SAMPLES = ast.literal_eval(SELECTED_SAMPLES)
 
     # Used in a few experiments but need cleaning up
     N_HEAD_HIDDEN_LAYERS = 2
