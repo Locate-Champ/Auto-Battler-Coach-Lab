@@ -6,7 +6,7 @@ line-length = 100
 
 [lint]
 # Start conservative: pyflakes (F) + pycodestyle errors (E) + warnings (W) + isort (I)
-select = ["E", "F", "W", "I"]
+select = ["E", "F", "W", "I", "BLE", "B"]
 
 # Ignore rules that conflict with the existing codebase style
 ignore = [
@@ -17,9 +17,9 @@ ignore = [
 
 # Legacy dirs — never lint these
 [lint.extend-per-file-ignores]
-"simulator/Simulator/**" = ["E", "F", "W", "I"]
-"simulator/Concurrency/**" = ["E", "F", "W", "I"]
-"simulator/Evaluator/**" = ["E", "F", "W", "I"]
+"simulator/Simulator/**" = ["E", "F", "W", "I", "BLE", "B"]
+"simulator/Concurrency/**" = ["E", "F", "W", "I", "BLE", "B"]
+"simulator/Evaluator/**" = ["E", "F", "W", "I", "BLE", "B"]
 # Intentional sys.path / module shim / warnings.filterwarnings patterns
 "config.py" = ["E402"]
 "simulator/benchmark.py" = ["E402"]

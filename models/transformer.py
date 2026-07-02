@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import math
 from typing import Dict, Optional, Tuple
 
@@ -10,6 +11,17 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from .embeddings import BoardEncoder
+
+_log = logging.getLogger(__name__)
+
+# Enable optimized attention backends (Flash Attention, memory-efficient SDPA) and TF32.
+# These are no-ops on CPU and on older GPUs that lack the hardware support.
+if hasattr(torch.backends.cuda, "enable_flash_sdp"):
+    torch.backends.cuda.enable_flash_sdp(True)
+if hasattr(torch.backends.cuda, "enable_mem_efficient_sdp"):
+    torch.backends.cuda.enable_mem_efficient_sdp(True)
+torch.backends.cuda.matmul.allow_tf32 = True
+torch.backends.cudnn.allow_tf32 = True
 
 
 class AttentionPooling(nn.Module):

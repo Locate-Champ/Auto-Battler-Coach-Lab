@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from models.data_loader import DataLoader
 
@@ -223,3 +224,81 @@ def test_normalize_row_decodes_opponent_augments_json_string(tmp_path: Path) -> 
         }
     )
     assert normalized["opponent_augments"] == ["TFT_Augment_PowerUp", "TFT16_Augment_AirAxiom"]
+
+
+def test_context_manager_normal_exit(tmp_path: Path) -> None:
+    """DataLoader as context manager calls close() on normal exit."""
+    dl = DataLoader(data_dir=tmp_path)
+    with dl as loader:
+        assert loader is dl
+    assert dl._pool is None  # noqa: SLF001
+
+
+def test_context_manager_exception_exit(tmp_path: Path) -> None:
+    """DataLoader as context manager re-raises original exception after cleanup."""
+    dl = DataLoader(data_dir=tmp_path)
+    with pytest.raises(ValueError, match="test error"):
+        with dl as loader:
+            raise ValueError("test error")
+    assert dl._pool is None  # noqa: SLF001
+
+
+def test_resource_warning_on_unclosed(tmp_path: Path) -> None:
+    """DataLoader emits ResourceWarning when garbage-collected without close()."""
+    import gc
+
+    dl = DataLoader(data_dir=tmp_path, n_workers=1)
+    # Force pool creation by calling _ensure_pool (creates but does not use)
+    # Skip if pool creation fails (CI environments may restrict multiprocessing)
+    try:
+        dl._ensure_pool()  # noqa: SLF001
+    except OSError:
+        pytest.skip("multiprocessing pool creation not available")
+    with pytest.warns(ResourceWarning, match="garbage-collected without being closed"):
+        del dl
+        gc.collect()
+
+
+class TestDataLoaderSpawnContext:
+    """Tests for DataLoader spawn context (GLBL-02)."""
+
+    def test_ensure_pool_uses_spawn_context(self, monkeypatch):
+        """DataLoader._ensure_pool() creates pool via mp.get_context('spawn')."""
+        import multiprocessing
+        from unittest.mock import MagicMock, patch
+
+        calls: list[str] = []
+        original_get_context = multiprocessing.get_context
+
+        def tracking_get_context(method):
+            calls.append(method)
+            return original_get_context(method)
+
+        monkeypatch.setattr(multiprocessing, "get_context", tracking_get_context)
+
+        # Create a DataLoader with a small worker count
+        dl = DataLoader(data_dir=".", n_workers=1)
+
+        # Mock the pool creation to avoid actually spawning processes
+        mock_pool = MagicMock()
+        ctx = multiprocessing.get_context("spawn")
+
+        with patch.object(type(ctx), "Pool", return_value=mock_pool):
+            dl._ensure_pool()  # noqa: SLF001
+
+        # Verify get_context was called with "spawn"
+        assert "spawn" in calls, f"Expected get_context('spawn') to be called, got calls: {calls}"
+        # Clean up
+        dl._pool = None  # noqa: SLF001
+
+    def test_worker_init_via_initargs(self):
+        """DataLoader passes FeatureEngineer state through initargs, not globals."""
+        import inspect
+
+        source = inspect.getsource(DataLoader._ensure_pool)
+        # Must use initargs parameter (already does, this is a regression guard)
+        assert "initargs" in source, "Pool must use initargs for worker initialization"
+        # Must NOT mutate module-level _worker_fe directly in _ensure_pool
+        assert "global _worker_fe" not in source, (
+            "_ensure_pool must not mutate module-level _worker_fe directly"
+        )

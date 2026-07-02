@@ -221,7 +221,7 @@ def print_ranged_timing_table():
     )
     print("-" * 70)
 
-    for api_name, champ in sorted(data.items(), key=lambda x: -x[1]["stats"]["range"]):
+    for _api_name, champ in sorted(data.items(), key=lambda x: -x[1]["stats"]["range"]):
         stats = champ["stats"]
         timing = champ["timing"]
 

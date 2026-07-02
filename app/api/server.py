@@ -4,20 +4,60 @@ Serves model predictions and recommendations to the frontend
 """
 
 import json
+import logging
 import sys
+from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Annotated, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+from starlette.requests import Request
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
+from app.api.deps import get_placement_model, get_recommender  # noqa: F401
 from src.models import PlacementModel, TFTRecommender
 
-app = FastAPI(title="Auto-Battler Coach API", version="1.0.0")
+_log = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Load models on startup, release on shutdown. Exits on failure."""
+    _log.info("Loading Auto-Battler Coach models...")
+
+    data_dir = Path(__file__).parent.parent.parent
+
+    try:
+        recommender = TFTRecommender(str(data_dir))
+    except (OSError, ImportError, RuntimeError, ValueError):
+        _log.critical("Failed to load TFTRecommender", exc_info=True)
+        sys.exit(1)
+
+    try:
+        placement_model = PlacementModel(str(data_dir))
+        X, y, _ = placement_model.prepare_data()
+        placement_model.train(X, y, model_type="gradient_boosting")
+    except (OSError, ImportError, RuntimeError, ValueError):
+        _log.critical("Failed to load PlacementModel", exc_info=True)
+        sys.exit(1)
+
+    app.state.recommender = recommender
+    app.state.placement_model = placement_model
+    _log.info("All models loaded, server ready")
+
+    yield
+
+    del app.state.recommender
+    del app.state.placement_model
+    _log.info("Server shutdown complete, resources released")
+
+
+app = FastAPI(title="Auto-Battler Coach API", version="1.0.0", lifespan=lifespan)
 
 # CORS for local development
 app.add_middleware(
@@ -28,30 +68,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize models on startup
-recommender = None
-placement_model = None
 
-
-@app.on_event("startup")
-async def startup():
-    global recommender, placement_model
-    print("Loading Auto-Battler Coach models...")
-
-    data_dir = Path(__file__).parent.parent.parent
-    try:
-        recommender = TFTRecommender(str(data_dir))
-    except FileNotFoundError as exc:
-        raise RuntimeError(
-            "Local runtime data is missing. Populate data/local/** before starting the API."
-        ) from exc
-    placement_model = PlacementModel(str(data_dir))
-
-    # Train placement model
-    X, y, _ = placement_model.prepare_data()
-    placement_model.train(X, y, model_type="gradient_boosting")
-
-    print("Models loaded successfully!")
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    _log.exception("Unhandled error in %s %s", request.method, request.url.path)
+    return JSONResponse(
+        status_code=500,
+        content={
+            "error": "internal_error",
+            "detail": "An internal error occurred",
+            "status": 500,
+        },
+    )
 
 
 # ============== Data Models ==============
@@ -94,11 +122,10 @@ async def root():
 
 
 @app.get("/api/stats")
-async def get_stats():
+async def get_stats(
+    recommender: Annotated[TFTRecommender, Depends(get_recommender)],
+):
     """Get personal performance stats"""
-    if not recommender:
-        raise HTTPException(status_code=503, detail="Models not loaded")
-
     # Get carry stats
     carry_stats = []
     for carry, stats in recommender.personal_carry_stats.items():
@@ -133,11 +160,11 @@ async def get_stats():
 
 
 @app.get("/api/comps/{stage}")
-async def get_stage_comps(stage: int):
+async def get_stage_comps(
+    stage: int,
+    recommender: Annotated[TFTRecommender, Depends(get_recommender)],
+):
     """Get best comps for a stage"""
-    if not recommender:
-        raise HTTPException(status_code=503, detail="Models not loaded")
-
     comps = recommender.get_best_early_comps(stage, top_n=5)
     return {"stage": stage, "comps": comps}
 
@@ -201,11 +228,12 @@ async def get_early_comps(limit: int = 20):
 
 
 @app.get("/api/augments")
-async def get_augments(tier: Optional[str] = None, rarity: Optional[str] = None):
+async def get_augments(
+    recommender: Annotated[TFTRecommender, Depends(get_recommender)],
+    tier: Optional[str] = None,
+    rarity: Optional[str] = None,
+):
     """Get augment recommendations"""
-    if not recommender:
-        raise HTTPException(status_code=503, detail="Models not loaded")
-
     augments = recommender.get_augment_recommendations(rarity=rarity, top_n=20)
 
     if tier:
@@ -215,11 +243,11 @@ async def get_augments(tier: Optional[str] = None, rarity: Optional[str] = None)
 
 
 @app.post("/api/augment-fit")
-async def get_augment_fit(request: AugmentFitRequest):
+async def get_augment_fit(
+    request: AugmentFitRequest,
+    recommender: Annotated[TFTRecommender, Depends(get_recommender)],
+):
     """Get augment fit rankings for a trait set."""
-    if not recommender:
-        raise HTTPException(status_code=503, detail="Models not loaded")
-
     ranked = recommender.get_augment_fit(
         traits=request.traits,
         trait_frequency=request.trait_frequency,
@@ -231,11 +259,11 @@ async def get_augment_fit(request: AugmentFitRequest):
 
 
 @app.post("/api/recommend")
-async def get_recommendations(board: BoardState):
+async def get_recommendations(
+    board: BoardState,
+    recommender: Annotated[TFTRecommender, Depends(get_recommender)],
+):
     """Get recommendations for current board state"""
-    if not recommender:
-        raise HTTPException(status_code=503, detail="Models not loaded")
-
     # Convert units to format expected by recommender
     units = [{"name": u.name, "star": u.star, "items": u.items} for u in board.units]
 
@@ -247,11 +275,11 @@ async def get_recommendations(board: BoardState):
 
 
 @app.post("/api/analyze")
-async def analyze_board(board: BoardState):
+async def analyze_board(
+    board: BoardState,
+    recommender: Annotated[TFTRecommender, Depends(get_recommender)],
+):
     """Analyze board and return detailed breakdown"""
-    if not recommender:
-        raise HTTPException(status_code=503, detail="Models not loaded")
-
     units = [{"name": u.name, "star": u.star, "items": u.items} for u in board.units]
     analysis = recommender.analyze_board(units)
 
@@ -259,11 +287,10 @@ async def analyze_board(board: BoardState):
 
 
 @app.get("/api/priority-units")
-async def get_priority_units():
+async def get_priority_units(
+    recommender: Annotated[TFTRecommender, Depends(get_recommender)],
+):
     """Get priority units to look for based on personal stats"""
-    if not recommender:
-        raise HTTPException(status_code=503, detail="Models not loaded")
-
     priority = []
     for carry, stats in recommender.personal_carry_stats.items():
         games = stats.get("games", 0)

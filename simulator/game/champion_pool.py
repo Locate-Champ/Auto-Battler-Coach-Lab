@@ -22,7 +22,7 @@ class ChampionPool:
     def __init__(self):
         # pool[name] = remaining copies
         self.pool: Dict[str, int] = {}
-        for cost, champs in CHAMPIONS_BY_COST.items():
+        for _cost, champs in CHAMPIONS_BY_COST.items():
             for name, count in champs.items():
                 self.pool[name] = count
 

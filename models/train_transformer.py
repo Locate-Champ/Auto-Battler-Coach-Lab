@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import math
 import os
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, Optional, Tuple
@@ -21,6 +23,17 @@ from torch.utils.tensorboard import SummaryWriter
 from .dataset import TFTDataset, TFTStreamingDataset, estimate_streaming_split_counts
 from .transformer import TFTTransformerV2
 
+_log = logging.getLogger(__name__)
+
+# Optional schedule-free optimizer (pip install schedulefree)
+try:
+    from schedulefree import AdamWScheduleFree as _AdamWScheduleFree  # type: ignore
+
+    _SCHEDULEFREE_AVAILABLE = True
+except ImportError:
+    _AdamWScheduleFree = None  # type: ignore
+    _SCHEDULEFREE_AVAILABLE = False
+
 
 @dataclass
 class TrainConfig:
@@ -35,7 +48,7 @@ class TrainConfig:
     betas: Tuple[float, float] = (0.9, 0.98)
     early_stopping_patience: int = 10
     max_grad_norm: float = 1.0
-    num_workers: int = 4
+    num_workers: int = 8
     seed: int = 42
     streaming: bool = True
     label_mode: str = "next_round"
@@ -45,6 +58,8 @@ class TrainConfig:
     scan_max_rows: Optional[int] = None
     max_examples_per_split: Optional[int] = None
     shuffle_files: bool = True
+    optimizer: str = "adamw"
+    preencoded_dir: Optional[str] = None
 
 
 def _select_device() -> torch.device:
@@ -191,6 +206,25 @@ def parse_args() -> TrainConfig:
         action="store_true",
         help="Disable per-epoch streaming file-order shuffling.",
     )
+    parser.add_argument(
+        "--optimizer",
+        type=str,
+        choices=["adamw", "schedule_free"],
+        default="adamw",
+        help="Optimizer to use. 'schedule_free' requires pip install schedulefree.",
+    )
+    parser.add_argument(
+        "--num-workers",
+        type=int,
+        default=8,
+        help="Number of DataLoader workers",
+    )
+    parser.add_argument(
+        "--preencoded-dir",
+        type=str,
+        default=None,
+        help="Path to pre-encoded .pt tensor directory (from preprocess_tensors.py)",
+    )
     args = parser.parse_args()
     return TrainConfig(
         data=args.data,
@@ -207,6 +241,9 @@ def parse_args() -> TrainConfig:
         scan_max_rows=args.scan_max_rows,
         max_examples_per_split=args.max_examples_per_split,
         shuffle_files=not args.no_shuffle_files,
+        optimizer=args.optimizer,
+        num_workers=args.num_workers,
+        preencoded_dir=args.preencoded_dir,
     )
 
 
@@ -218,9 +255,56 @@ def main() -> None:
     output_dir = Path(config.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    workers = min(config.num_workers, max(0, (os.cpu_count() or 1) - 1))
+    # Single-worker executor for async checkpoint I/O.  max_workers=1 ensures
+    # that a new save waits for the previous one to finish naturally.
+    checkpoint_executor = ThreadPoolExecutor(max_workers=1)
+
+    device = _select_device()
+    # On GPU the main process is mostly idle during data loading, so we can
+    # use all available CPUs.  On CPU we leave one core for the main process.
+    if device.type == "cuda":
+        workers = min(config.num_workers, os.cpu_count() or 4)
+    else:
+        workers = min(config.num_workers, max(0, (os.cpu_count() or 1) - 1))
+    # DataLoader kwargs shared across all three loaders.
+    _dl_kwargs: Dict[str, object] = {
+        "pin_memory": device.type == "cuda",
+        "num_workers": workers,
+    }
+    if workers > 0:
+        _dl_kwargs["prefetch_factor"] = 4
+        _dl_kwargs["persistent_workers"] = True
     dataset_sizes: Dict[str, int]
-    if config.streaming:
+    if config.preencoded_dir:
+        from .dataset import PreEncodedTFTDataset
+
+        # Use pre-encoded datasets (no streaming, standard DataLoader with shuffle)
+        train_dataset = PreEncodedTFTDataset(config.preencoded_dir, split="train")
+        val_dataset = PreEncodedTFTDataset(config.preencoded_dir, split="val")
+        test_dataset = PreEncodedTFTDataset(config.preencoded_dir, split="test")
+        dataset_sizes = {
+            "train": len(train_dataset),
+            "val": len(val_dataset),
+            "test": len(test_dataset),
+        }
+        _log.info(
+            "pre-encoded split sizes -> train=%d val=%d test=%d",
+            dataset_sizes["train"],
+            dataset_sizes["val"],
+            dataset_sizes["test"],
+        )
+
+        train_loader = DataLoader(
+            train_dataset, batch_size=config.batch_size, shuffle=True, **_dl_kwargs
+        )
+        val_loader = DataLoader(
+            val_dataset, batch_size=config.batch_size, shuffle=False, **_dl_kwargs
+        )
+        test_loader = DataLoader(
+            test_dataset, batch_size=config.batch_size, shuffle=False, **_dl_kwargs
+        )
+        steps_per_epoch = config.steps_per_epoch or max(1, len(train_loader))
+    elif config.streaming:
         split_counts = estimate_streaming_split_counts(
             config.data,
             split_seed=config.seed,
@@ -232,9 +316,11 @@ def main() -> None:
             "val": split_counts.get("val", 0),
             "test": split_counts.get("test", 0),
         }
-        print(
-            f"streaming split counts -> train={dataset_sizes['train']} "
-            f"val={dataset_sizes['val']} test={dataset_sizes['test']}"
+        _log.info(
+            "streaming split counts -> train=%d val=%d test=%d",
+            dataset_sizes["train"],
+            dataset_sizes["val"],
+            dataset_sizes["test"],
         )
 
         train_dataset = TFTStreamingDataset(
@@ -266,22 +352,19 @@ def main() -> None:
             train_dataset,
             batch_size=config.batch_size,
             shuffle=False,
-            num_workers=workers,
-            pin_memory=True,
+            **_dl_kwargs,
         )
         val_loader = DataLoader(
             val_dataset,
             batch_size=config.batch_size,
             shuffle=False,
-            num_workers=workers,
-            pin_memory=True,
+            **_dl_kwargs,
         )
         test_loader = DataLoader(
             test_dataset,
             batch_size=config.batch_size,
             shuffle=False,
-            num_workers=workers,
-            pin_memory=True,
+            **_dl_kwargs,
         )
         inferred_steps = max(1, math.ceil(max(1, dataset_sizes["train"]) / config.batch_size))
         steps_per_epoch = config.steps_per_epoch or inferred_steps
@@ -297,49 +380,87 @@ def main() -> None:
             train_dataset,
             batch_size=config.batch_size,
             shuffle=True,
-            num_workers=workers,
-            pin_memory=True,
+            **_dl_kwargs,
         )
         val_loader = DataLoader(
             val_dataset,
             batch_size=config.batch_size,
             shuffle=False,
-            num_workers=workers,
-            pin_memory=True,
+            **_dl_kwargs,
         )
         test_loader = DataLoader(
             test_dataset,
             batch_size=config.batch_size,
             shuffle=False,
-            num_workers=workers,
-            pin_memory=True,
+            **_dl_kwargs,
         )
         steps_per_epoch = config.steps_per_epoch or max(1, len(train_loader))
 
-    device = _select_device()
     model = TFTTransformerV2().to(device)
-    optimizer = torch.optim.AdamW(
-        model.parameters(),
-        lr=config.lr,
-        weight_decay=config.weight_decay,
-        betas=config.betas,
-    )
-    scheduler = torch.optim.lr_scheduler.OneCycleLR(
-        optimizer,
-        max_lr=config.lr,
-        epochs=config.epochs,
-        steps_per_epoch=steps_per_epoch,
-        pct_start=0.1,
-        anneal_strategy="cos",
-    )
 
+    # Optimization A: torch.compile (PyTorch >= 2.0, no-op on older versions or
+    # platforms without triton support such as bare Windows).
+    if hasattr(torch, "compile"):
+        try:
+            model = torch.compile(model, mode="reduce-overhead")
+            _log.info("Model compiled with torch.compile (reduce-overhead)")
+        except RuntimeError as e:
+            _log.warning("torch.compile failed, using eager mode: %s", e)
+
+    # Optimization D: optimizer selection.
+    use_schedule_free = config.optimizer == "schedule_free"
+    if use_schedule_free:
+        if not _SCHEDULEFREE_AVAILABLE:
+            _log.warning(
+                "schedulefree package not installed "
+                "(pip install schedulefree). Falling back to AdamW."
+            )
+            use_schedule_free = False
+
+    scheduler: Optional[torch.optim.lr_scheduler.OneCycleLR]
+    if use_schedule_free:
+        optimizer = _AdamWScheduleFree(
+            model.parameters(),
+            lr=config.lr,
+            betas=config.betas,
+            weight_decay=config.weight_decay,
+        )
+        scheduler = None
+    else:
+        optimizer = torch.optim.AdamW(
+            model.parameters(),
+            lr=config.lr,
+            weight_decay=config.weight_decay,
+            betas=config.betas,
+        )
+        scheduler = torch.optim.lr_scheduler.OneCycleLR(
+            optimizer,
+            max_lr=config.lr,
+            epochs=config.epochs,
+            steps_per_epoch=steps_per_epoch,
+            pct_start=0.1,
+            anneal_strategy="cos",
+        )
+
+    # Optimization B: use bfloat16 on Ampere+ GPUs (compute capability >= 8.0).
+    # GradScaler is only needed for float16; bfloat16 has sufficient dynamic range.
     amp_enabled = device.type == "cuda"
-    scaler = torch.cuda.amp.GradScaler(enabled=amp_enabled)
+    use_bfloat16 = False
+    if amp_enabled:
+        cap = torch.cuda.get_device_capability()
+        use_bfloat16 = cap[0] >= 8  # Ampere+ supports bfloat16 natively
+    amp_dtype = torch.bfloat16 if use_bfloat16 else torch.float16
+    scaler = torch.cuda.amp.GradScaler(enabled=amp_enabled and not use_bfloat16)
+
     writer = SummaryWriter(log_dir=str(output_dir / "tb"))
 
     best_auc = -1.0
     epochs_without_improvement = 0
     global_step = 0
+
+    # D: schedule-free requires optimizer.train() before the training loop.
+    if use_schedule_free:
+        optimizer.train()
 
     for epoch in range(1, config.epochs + 1):
         if config.streaming and isinstance(train_loader.dataset, TFTStreamingDataset):
@@ -353,58 +474,92 @@ def main() -> None:
             batch = _move_batch(batch, device)
             optimizer.zero_grad(set_to_none=True)
 
-            with torch.cuda.amp.autocast(enabled=amp_enabled):
+            # Optimization B: device-type autocast with bfloat16/float16 selection.
+            with torch.autocast(device_type="cuda", dtype=amp_dtype, enabled=amp_enabled):
                 outputs = model(batch)
                 loss_dict = model.compute_loss(outputs, batch)
                 loss = loss_dict["total"]
 
-            scaler.scale(loss).backward()
-            scaler.unscale_(optimizer)
-            clip_grad_norm_(model.parameters(), max_norm=config.max_grad_norm)
-            scaler.step(optimizer)
-            scaler.update()
-            scheduler.step()
+            if use_schedule_free:
+                # Schedule-free handles its own step; no scaler wrapping.
+                loss.backward()
+                clip_grad_norm_(model.parameters(), max_norm=config.max_grad_norm)
+                optimizer.step()
+            else:
+                scaler.scale(loss).backward()
+                scaler.unscale_(optimizer)
+                clip_grad_norm_(model.parameters(), max_norm=config.max_grad_norm)
+                scaler.step(optimizer)
+                scaler.update()
+                if scheduler is not None:
+                    scheduler.step()
 
-            loss_value = float(loss.detach().cpu())
+            # Optimization B: float() implicitly moves to CPU; .cpu() is redundant.
+            loss_value = float(loss.detach())
             epoch_losses.append(loss_value)
             global_step += 1
 
             if batch_idx % 100 == 0:
-                print(f"epoch={epoch} batch={batch_idx}/{steps_per_epoch} loss={loss_value:.4f}")
+                _log.info(
+                    "epoch=%d batch=%d/%d loss=%.4f", epoch, batch_idx, steps_per_epoch, loss_value
+                )
 
             writer.add_scalar("train/loss", loss_value, global_step)
-            writer.add_scalar("train/lr", scheduler.get_last_lr()[0], global_step)
+            if scheduler is not None:
+                writer.add_scalar("train/lr", scheduler.get_last_lr()[0], global_step)
 
         train_loss = float(np.mean(epoch_losses)) if epoch_losses else 0.0
+
+        # D: switch to eval mode before validation so schedule-free uses EMA weights.
+        if use_schedule_free:
+            optimizer.eval()
+
         val_metrics = (
             _evaluate(model, val_loader, device, max_steps=config.val_steps)
             if dataset_sizes["val"] > 0
             else {"loss": 0.0, "auc": 0.5, "brier": 0.0, "ece": 0.0}
         )
+
+        # D: resume training mode after validation.
+        if use_schedule_free:
+            optimizer.train()
+
         writer.add_scalar("val/loss", val_metrics["loss"], epoch)
         writer.add_scalar("val/auc", val_metrics["auc"], epoch)
         writer.add_scalar("val/brier", val_metrics["brier"], epoch)
         writer.add_scalar("val/ece", val_metrics["ece"], epoch)
-        print(
-            f"epoch={epoch} train_loss={train_loss:.4f} "
-            f"val_loss={val_metrics['loss']:.4f} "
-            f"val_auc={val_metrics['auc']:.4f} "
-            f"val_brier={val_metrics['brier']:.4f} "
-            f"val_ece={val_metrics['ece']:.4f}"
+        _log.info(
+            "epoch=%d train_loss=%.4f val_loss=%.4f val_auc=%.4f val_brier=%.4f val_ece=%.4f",
+            epoch,
+            train_loss,
+            val_metrics["loss"],
+            val_metrics["auc"],
+            val_metrics["brier"],
+            val_metrics["ece"],
         )
 
         if val_metrics["auc"] > best_auc:
             best_auc = val_metrics["auc"]
             epochs_without_improvement = 0
-            torch.save(model.state_dict(), output_dir / "best_model.pt")
+            # Copy state dict to CPU before handing off to the background
+            # thread so that training can continue modifying GPU tensors.
+            _state_dict_cpu = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+            checkpoint_executor.submit(torch.save, _state_dict_cpu, output_dir / "best_model.pt")
         else:
             epochs_without_improvement += 1
             if epochs_without_improvement >= config.early_stopping_patience:
-                print("Early stopping triggered.")
+                _log.info("Early stopping triggered.")
                 break
+
+    # Ensure the last async checkpoint write has finished before we load it.
+    checkpoint_executor.shutdown(wait=True)
 
     if (output_dir / "best_model.pt").exists():
         model.load_state_dict(torch.load(output_dir / "best_model.pt", map_location=device))
+
+    # D: eval mode for final test evaluation.
+    if use_schedule_free:
+        optimizer.eval()
 
     test_metrics = (
         _evaluate(model, test_loader, device, max_steps=config.test_steps)
@@ -427,8 +582,12 @@ def main() -> None:
     }
     with (output_dir / "training_summary.json").open("w", encoding="utf-8") as handle:
         json.dump(summary, handle, indent=2)
-    print(f"Saved training summary -> {output_dir / 'training_summary.json'}")
+    _log.info("Saved training summary -> %s", output_dir / "training_summary.json")
 
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    )
     main()

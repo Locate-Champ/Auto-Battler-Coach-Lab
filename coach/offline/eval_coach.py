@@ -130,7 +130,7 @@ def _unit_from_dict(unit: Any, *, default_location: str) -> UnitState | None:
     if isinstance(pos, (list, tuple)) and len(pos) == 2:
         try:
             position = (int(pos[0]), int(pos[1]))
-        except Exception:
+        except (ValueError, TypeError, IndexError):
             position = None
 
     return UnitState(
@@ -256,7 +256,7 @@ def coach_state_from_dict(data: dict) -> GameState:
 def _iter_parquet_rows(paths: Iterable[Path]) -> Iterable[dict]:
     try:
         import pyarrow.parquet as pq
-    except Exception as e:
+    except (ImportError, OSError) as e:
         raise RuntimeError(
             "pyarrow is required to read parquet inputs; install it or use --eval-set"
         ) from e
@@ -323,7 +323,7 @@ def _compare_reports(
             try:
                 base_v = float(base_metrics[metric])
                 cur_v = float(cur_metrics[metric])
-            except Exception:
+            except (ValueError, TypeError):
                 failures.append(f"{decision}.{metric}: non-numeric baseline/current value")
                 continue
 

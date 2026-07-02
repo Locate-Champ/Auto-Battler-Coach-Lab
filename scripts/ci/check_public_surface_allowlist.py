@@ -66,6 +66,9 @@ SCRIPTS_ALLOWED_FILES = {
 
 SIMULATOR_ALLOWED_FILES = {
     "simulator/__init__.py",
+    "simulator/_cloud_runner_core.py",
+    "simulator/_cloud_runner_utils.py",
+    "simulator/_cloud_runner_writer.py",
     "simulator/benchmark.py",
     "simulator/cloud_runner.py",
     "simulator/config.py",

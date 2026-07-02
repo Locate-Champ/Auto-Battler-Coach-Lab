@@ -355,7 +355,7 @@ class ItemOptimizer:
         used_items = set()
         total_score = 0
 
-        for champ, _, role in unit_priorities:
+        for champ, _, _role in unit_priorities:
             remaining_slots = max_items_per_unit - len(assignments[champ])
             remaining_items = [i for i in available_items if i not in used_items]
 

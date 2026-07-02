@@ -37,7 +37,7 @@ def _as_int(value: Any) -> Optional[int]:
             return None
         try:
             return int(float(s))
-        except Exception:
+        except (ValueError, TypeError):
             return None
     return None
 
@@ -55,7 +55,7 @@ def _as_float(value: Any) -> Optional[float]:
             return None
         try:
             return float(s)
-        except Exception:
+        except (ValueError, TypeError):
             return None
     return None
 
@@ -161,7 +161,7 @@ class ArchetypeLibrary:
                             else None,
                         )
                     )
-            except Exception:
+            except (OSError, ValueError, KeyError, TypeError):
                 # Fall back to other sources if artifact is missing/incompatible.
                 pass
 
@@ -225,7 +225,7 @@ class ArchetypeLibrary:
                             else None,
                         )
                     )
-            except Exception:
+            except (OSError, ValueError, KeyError, TypeError):
                 # Fall through to perf-reference fallback.
                 pass
 

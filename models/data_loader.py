@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import multiprocessing
 import os
 import pickle
@@ -16,11 +17,16 @@ from snapshot_schema import normalize_jsonish_fields
 
 from .feature_engineering import FeatureConfig, TFTFeatureEngineer
 
-try:  # pragma: no cover - optional dependency
+try:
     import pyarrow.parquet as pq
-except Exception:  # pragma: no cover - optional dependency
-    pq = None
+except (ImportError, OSError) as _pyarrow_err:
+    raise ImportError(
+        "pyarrow is required for DataLoader but could not be imported. "
+        "Install: pip install 'pyarrow>=14.0'. "
+        "Without pyarrow, the data pipeline silently returns empty iterators."
+    ) from _pyarrow_err
 
+_log = logging.getLogger(__name__)
 
 _worker_fe: Optional[TFTFeatureEngineer] = None
 
@@ -85,18 +91,28 @@ class DataLoader:
 
         Uses pickled FE state to initialize workers (~1ms per worker vs ~30ms
         loading from disk).  Falls back to disk-based init on pickle failure.
+
+        Always uses spawn context for cross-platform consistency (Windows
+        requires spawn; Linux defaults changed in Python 3.14).
         """
         if self._pool is None:
             workers = self._effective_workers()
+            ctx = multiprocessing.get_context("spawn")
             try:
                 fe_state = pickle.dumps(self.feature_engineer)
-                self._pool = multiprocessing.Pool(
+                self._pool = ctx.Pool(
                     processes=workers,
                     initializer=_init_fe_worker_pickled,
                     initargs=(fe_state,),
                 )
-            except (pickle.PicklingError, TypeError):
-                self._pool = multiprocessing.Pool(
+            except (pickle.PicklingError, TypeError) as exc:
+                _log.warning(
+                    "FeatureEngineer pickle failed (%s); falling back to ~30x slower disk-based "
+                    "worker init (~30ms per worker vs ~1ms). Fix: ensure FeatureEngineer is "
+                    "picklable, or check __getstate__/__setstate__.",
+                    exc,
+                )
+                self._pool = ctx.Pool(
                     processes=workers,
                     initializer=_init_fe_worker,
                     initargs=(self.feature_engineer.config, self.feature_engineer.repo_root),
@@ -110,13 +126,40 @@ class DataLoader:
             self._pool.join()
             self._pool = None
 
+    def __enter__(self) -> "DataLoader":
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb) -> bool:
+        try:
+            self.close()
+        except (OSError, RuntimeError) as cleanup_err:
+            _log.warning(
+                "DataLoader worker pool cleanup failed during __exit__: %s. "
+                "Original exception (if any) takes priority.",
+                cleanup_err,
+            )
+        return False  # Never suppress the original exception
+
+    def __del__(self) -> None:
+        if getattr(self, "_pool", None) is not None:
+            import warnings
+
+            warnings.warn(
+                "DataLoader was garbage-collected without being closed. "
+                "Use 'with DataLoader(...) as dl:' or call dl.close() explicitly.",
+                ResourceWarning,
+                stacklevel=2,
+            )
+            try:
+                self.close()
+            except (OSError, RuntimeError):
+                pass
+
     def _iter_parquet_rows(
         self,
         path: Path,
         row_batch_size: int = 4096,
     ) -> Iterator[Dict[str, Any]]:
-        if pq is None:  # pragma: no cover - optional dependency
-            return
         parquet_file = pq.ParquetFile(path)
         for batch in parquet_file.iter_batches(batch_size=row_batch_size):
             for row in batch.to_pylist():
@@ -128,8 +171,6 @@ class DataLoader:
         batch_size: int = 4096,
     ) -> Iterator[Any]:
         """Yield Arrow RecordBatches without dict conversion."""
-        if pq is None:  # pragma: no cover - optional dependency
-            return
         parquet_file = pq.ParquetFile(path)
         for batch in parquet_file.iter_batches(batch_size=batch_size):
             yield batch
@@ -162,9 +203,8 @@ class DataLoader:
         parquet_files = sorted(root.rglob("*.parquet"))
         jsonl_files = sorted(root.rglob("*.jsonl"))
 
-        if pq is not None:
-            for path in parquet_files:
-                yield from self._iter_parquet_rows(path, row_batch_size=row_batch_size)
+        for path in parquet_files:
+            yield from self._iter_parquet_rows(path, row_batch_size=row_batch_size)
 
         for path in jsonl_files:
             yield from self._iter_jsonl_rows(path)
@@ -216,9 +256,8 @@ class DataLoader:
         jsonl_files = sorted(root.rglob("*.jsonl"))
         total = 0
 
-        if pq is not None:
-            for path in parquet_files:
-                total += int(pq.ParquetFile(path).metadata.num_rows)
+        for path in parquet_files:
+            total += int(pq.ParquetFile(path).metadata.num_rows)
 
         for path in jsonl_files:
             with path.open("r", encoding="utf-8") as handle:
@@ -313,8 +352,11 @@ class DataLoader:
         if workers > 1 and len(rows) >= 500:
             chunk_size = max(1, len(rows) // (workers * 4))
             row_chunks = [rows[i : i + chunk_size] for i in range(0, len(rows), chunk_size)]
-            print(
-                f"[features] vectorizing {len(rows)} rows with {workers} workers ({len(row_chunks)} chunks)..."
+            _log.info(
+                "[features] vectorizing %d rows with %d workers (%d chunks)...",
+                len(rows),
+                workers,
+                len(row_chunks),
             )
             pool = self._ensure_pool()
             chunk_results = pool.map(_transform_chunk, row_chunks)
@@ -337,8 +379,6 @@ class DataLoader:
         Auto-tunes: uses single-process for small datasets (<300K rows or
         <4 files) where IPC overhead exceeds compute savings.
         """
-        if pq is None:
-            raise RuntimeError("pyarrow required for Arrow parallel path")
         root = Path(data_dir) if data_dir is not None else self.data_dir
         parquet_files = sorted(root.rglob("*.parquet"))
         n_features = len(self.feature_engineer.feature_names())
@@ -366,8 +406,11 @@ class DataLoader:
         effective_workers = min(workers, len(parquet_files))
         pool = self._ensure_pool()
         args = [(str(p), batch_size) for p in parquet_files]
-        print(
-            f"[features] Arrow-parallel: {len(parquet_files)} files, {total_rows} rows, {effective_workers} workers..."
+        _log.info(
+            "[features] Arrow-parallel: %d files, %d rows, %d workers...",
+            len(parquet_files),
+            total_rows,
+            effective_workers,
         )
         results = pool.map(_transform_arrow_file, args)
         non_empty = [r for r in results if r.shape[0] > 0]
@@ -388,9 +431,6 @@ class DataLoader:
         features via transform_arrow_batch, then splits by game_id.  Avoids
         building Python dicts for every row.
         """
-        if pq is None:
-            raise RuntimeError("pyarrow required for Arrow training path")
-
         import pyarrow as pa
 
         feature_chunks: List[np.ndarray] = []
@@ -512,8 +552,254 @@ class DataLoader:
             y_test=y_test,
             feature_count=X_train.shape[1],
         )
-        print("[fight] labeling=current_round_combat_result")
+        _log.info("[fight] labeling=current_round_combat_result")
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
+
+    def load_top4_classification_arrow(
+        self,
+        test_size: float = 0.2,
+        seed: int = 42,
+        max_rows: Optional[int] = None,
+        batch_size: int = 8192,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Arrow-based top4 classification: Parquet -> features without row dicts.
+
+        Streams Arrow batches, extracts placement labels from scalar columns,
+        transforms features via transform_arrow_batch, then splits by game_id.
+        Label: 1 if placement <= 4, else 0.
+        """
+        import pyarrow as pa
+
+        feature_chunks: List[np.ndarray] = []
+        labels_list: List[int] = []
+        game_ids_list: List[Optional[int]] = []
+        collected = 0
+
+        for batch in self.iter_arrow_batches(batch_size=batch_size):
+            schema_names = set(batch.schema.names)
+            if "placement" not in schema_names:
+                continue
+
+            placements = batch.column("placement").to_pylist()
+            game_ids_raw = (
+                batch.column("game_id").to_pylist()
+                if "game_id" in schema_names
+                else [None] * batch.num_rows
+            )
+
+            # Filter rows with valid placement (1-8)
+            valid_indices: List[int] = []
+            batch_labels: List[int] = []
+            batch_game_ids: List[Optional[int]] = []
+            for i, placement in enumerate(placements):
+                if placement is not None and int(placement) > 0:
+                    valid_indices.append(i)
+                    batch_labels.append(1 if int(placement) <= 4 else 0)
+                    gid = game_ids_raw[i]
+                    batch_game_ids.append(int(gid) if gid is not None else None)
+
+            if not valid_indices:
+                continue
+
+            filtered_batch = batch.take(pa.array(valid_indices, type=pa.int32()))
+            features = self.feature_engineer.transform_arrow_batch(filtered_batch)
+            feature_chunks.append(features)
+            labels_list.extend(batch_labels)
+            game_ids_list.extend(batch_game_ids)
+            collected += len(batch_labels)
+
+            if max_rows is not None and collected >= max_rows:
+                excess = collected - max_rows
+                if excess > 0:
+                    feature_chunks[-1] = feature_chunks[-1][:-excess]
+                    labels_list = labels_list[:max_rows]
+                    game_ids_list = game_ids_list[:max_rows]
+                break
+
+        if not feature_chunks:
+            raise ValueError("No top4 examples found. Need rows with placement > 0.")
+
+        X_all = np.vstack(feature_chunks)
+        y_all = np.asarray(labels_list, dtype=np.int64)
+
+        # Split by game_id using the same Knuth-hash split as load_fight_prediction_arrow
+        if all(gid is not None for gid in game_ids_list):
+            game_to_indices: Dict[Any, List[int]] = {}
+            for i, gid in enumerate(game_ids_list):
+                game_to_indices.setdefault(gid, []).append(i)
+
+            unique_games = np.array(list(game_to_indices.keys()))
+            game_labels = []
+            for gid in unique_games:
+                indices = game_to_indices[gid]
+                avg = float(np.mean(y_all[indices]))
+                game_labels.append(1 if avg >= 0.5 else 0)
+            game_labels_arr = np.asarray(game_labels)
+
+            stratify_arr = game_labels_arr if len(np.unique(game_labels_arr)) > 1 else None
+            try:
+                train_games, test_games = train_test_split(
+                    unique_games,
+                    test_size=test_size,
+                    random_state=seed,
+                    stratify=stratify_arr,
+                )
+            except ValueError:
+                train_games, test_games = train_test_split(
+                    unique_games,
+                    test_size=test_size,
+                    random_state=seed,
+                )
+            train_set = set(train_games.tolist())
+            train_idx = [i for i, gid in enumerate(game_ids_list) if gid in train_set]
+            test_idx = [i for i, gid in enumerate(game_ids_list) if gid not in train_set]
+        else:
+            indices = np.arange(len(y_all))
+            stratify_arr = y_all if len(np.unique(y_all)) > 1 else None
+            try:
+                train_idx_arr, test_idx_arr = train_test_split(
+                    indices,
+                    test_size=test_size,
+                    random_state=seed,
+                    stratify=stratify_arr,
+                )
+                train_idx = train_idx_arr.tolist()
+                test_idx = test_idx_arr.tolist()
+            except ValueError:
+                train_idx = list(range(len(y_all)))
+                test_idx = []
+
+        X_train = X_all[train_idx]
+        X_test = X_all[test_idx]
+        y_train = y_all[train_idx]
+        y_test = y_all[test_idx]
+
+        self._print_dataset_stats(
+            task_name="top4",
+            total_rows=len(y_all),
+            train_rows=X_train.shape[0],
+            test_rows=X_test.shape[0],
+            y_train=y_train,
+            y_test=y_test,
+            feature_count=X_train.shape[1],
+        )
+        _log.info("[top4] labeling=placement<=4")
+        return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
+
+    def load_placement_prediction_arrow(
+        self,
+        test_size: float = 0.2,
+        seed: int = 42,
+        max_rows: Optional[int] = None,
+        batch_size: int = 8192,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Arrow-based placement regression: Parquet -> features without row dicts.
+
+        Streams Arrow batches, extracts placement as a float regression label,
+        transforms features via transform_arrow_batch, then splits by game_id.
+        """
+        import pyarrow as pa
+
+        feature_chunks: List[np.ndarray] = []
+        labels_list: List[float] = []
+        game_ids_list: List[Optional[int]] = []
+        collected = 0
+
+        for batch in self.iter_arrow_batches(batch_size=batch_size):
+            schema_names = set(batch.schema.names)
+            if "placement" not in schema_names:
+                continue
+
+            placements = batch.column("placement").to_pylist()
+            game_ids_raw = (
+                batch.column("game_id").to_pylist()
+                if "game_id" in schema_names
+                else [None] * batch.num_rows
+            )
+
+            # Filter rows with valid placement (1-8)
+            valid_indices: List[int] = []
+            batch_labels: List[float] = []
+            batch_game_ids: List[Optional[int]] = []
+            for i, placement in enumerate(placements):
+                if placement is not None and int(placement) > 0:
+                    valid_indices.append(i)
+                    batch_labels.append(float(placement))
+                    gid = game_ids_raw[i]
+                    batch_game_ids.append(int(gid) if gid is not None else None)
+
+            if not valid_indices:
+                continue
+
+            filtered_batch = batch.take(pa.array(valid_indices, type=pa.int32()))
+            features = self.feature_engineer.transform_arrow_batch(filtered_batch)
+            feature_chunks.append(features)
+            labels_list.extend(batch_labels)
+            game_ids_list.extend(batch_game_ids)
+            collected += len(batch_labels)
+
+            if max_rows is not None and collected >= max_rows:
+                excess = collected - max_rows
+                if excess > 0:
+                    feature_chunks[-1] = feature_chunks[-1][:-excess]
+                    labels_list = labels_list[:max_rows]
+                    game_ids_list = game_ids_list[:max_rows]
+                break
+
+        if not feature_chunks:
+            raise ValueError("No placement examples found. Need rows with placement > 0.")
+
+        X_all = np.vstack(feature_chunks)
+        y_all = np.asarray(labels_list, dtype=np.float32)
+
+        # Split by game_id (no stratification for regression)
+        if all(gid is not None for gid in game_ids_list):
+            game_to_indices: Dict[Any, List[int]] = {}
+            for i, gid in enumerate(game_ids_list):
+                game_to_indices.setdefault(gid, []).append(i)
+
+            unique_games = np.array(list(game_to_indices.keys()))
+            try:
+                train_games, test_games = train_test_split(
+                    unique_games,
+                    test_size=test_size,
+                    random_state=seed,
+                )
+            except ValueError:
+                train_games, test_games = unique_games, np.array([], dtype=unique_games.dtype)
+            train_set = set(train_games.tolist())
+            train_idx = [i for i, gid in enumerate(game_ids_list) if gid in train_set]
+            test_idx = [i for i, gid in enumerate(game_ids_list) if gid not in train_set]
+        else:
+            indices = np.arange(len(y_all))
+            try:
+                train_idx_arr, test_idx_arr = train_test_split(
+                    indices,
+                    test_size=test_size,
+                    random_state=seed,
+                )
+                train_idx = train_idx_arr.tolist()
+                test_idx = test_idx_arr.tolist()
+            except ValueError:
+                train_idx = list(range(len(y_all)))
+                test_idx = []
+
+        X_train = X_all[train_idx]
+        X_test = X_all[test_idx]
+        y_train = y_all[train_idx]
+        y_test = y_all[test_idx]
+
+        self._print_dataset_stats(
+            task_name="placement",
+            total_rows=len(y_all),
+            train_rows=X_train.shape[0],
+            test_rows=X_test.shape[0],
+            y_train=y_train,
+            y_test=y_test,
+            feature_count=X_train.shape[1],
+        )
+        _log.info("[placement] labeling=final_placement_regression")
+        return X_train, X_test, y_train, y_test
 
     def _print_dataset_stats(
         self,
@@ -525,8 +811,13 @@ class DataLoader:
         y_test: np.ndarray,
         feature_count: int,
     ) -> None:
-        print(
-            f"[{task_name}] rows={total_rows} train={train_rows} test={test_rows} features={feature_count}"
+        _log.info(
+            "[%s] rows=%d train=%d test=%d features=%d",
+            task_name,
+            total_rows,
+            train_rows,
+            test_rows,
+            feature_count,
         )
         if y_train.size == 0 and y_test.size == 0:
             return
@@ -536,8 +827,10 @@ class DataLoader:
             else (y_train if y_train.size else y_test)
         )
         unique, counts = np.unique(y_all, return_counts=True)
-        balance = ", ".join(f"{int(value)}:{int(count)}" for value, count in zip(unique, counts))
-        print(f"[{task_name}] class/target balance -> {balance}")
+        balance = ", ".join(
+            f"{int(value)}:{int(count)}" for value, count in zip(unique, counts, strict=True)
+        )
+        _log.info("[%s] class/target balance -> %s", task_name, balance)
 
     def _infer_binary_fight_result(self, row: Dict[str, Any]) -> Optional[int]:
         """Infer binary fight result from a row if possible.
@@ -613,7 +906,7 @@ class DataLoader:
             if X_train.size
             else len(self.feature_engineer.feature_names()),
         )
-        print("[fight] labeling=current_round_combat_result")
+        _log.info("[fight] labeling=current_round_combat_result")
         return X_train, X_test, y_train.astype(np.int64), y_test.astype(np.int64)
 
     def _build_temporal_fight_examples(

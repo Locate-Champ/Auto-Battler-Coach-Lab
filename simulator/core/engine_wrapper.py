@@ -10,22 +10,68 @@ Usage:
     result = engine.run_combat(team0, team1, seed=42)
 """
 
+import logging
+import platform
+import struct
 from pathlib import Path
 from typing import Dict, List, Optional
+
+_log = logging.getLogger(__name__)
 
 _COMBAT_DATA_PATH = str(Path(__file__).parent.parent / "data" / "combat_data.json")
 
 
 def _try_rust_engine():
-    """Attempt to import and instantiate the Rust combat engine."""
+    """Attempt to import and instantiate the Rust combat engine with pre-flight checks.
+
+    Separates ImportError (not installed) from OSError (architecture mismatch)
+    and logs actionable rebuild instructions on failure. When successful, logs
+    the engine version at DEBUG level for diagnostics.
+    """
     try:
         from tft_combat_engine import RustCombatEngine
+    except ImportError as exc:
+        _log.warning(
+            "Rust combat engine not available (%s). Falling back to Python engine "
+            "(~10-50x slower). Build: cd simulator/core/rust_engine && maturin develop --release",
+            exc,
+        )
+        return None
+    except OSError as exc:
+        _log.warning(
+            "Rust combat engine failed to load (%s). This usually means the extension "
+            "was built for a different architecture (%s) or Python version (%s). "
+            "Falling back to Python engine (~10-50x slower). "
+            "Rebuild: cd simulator/core/rust_engine && maturin develop --release",
+            exc,
+            platform.machine(),
+            platform.python_version(),
+        )
+        return None
 
+    # Log version for diagnostics (graceful if engine_version not yet available)
+    try:
+        from tft_combat_engine import engine_version
+
+        rust_ver = engine_version()
+        _log.debug(
+            "Rust combat engine version: %s (arch=%s, pointer=%dbit)",
+            rust_ver,
+            platform.machine(),
+            struct.calcsize("P") * 8,
+        )
+    except (ImportError, AttributeError):
+        _log.debug("Rust combat engine loaded (version info not available)")
+
+    try:
         engine = RustCombatEngine(_COMBAT_DATA_PATH)
         return engine
-    except ImportError:
-        return None
-    except Exception:
+    except (OSError, RuntimeError, ValueError) as exc:
+        _log.warning(
+            "Rust combat engine import succeeded but instantiation failed (%s). "
+            "Falling back to Python engine (~10-50x slower).",
+            exc,
+        )
         return None
 
 
@@ -208,4 +254,5 @@ def get_engine(prefer_rust: bool = True, logging_enabled: bool = False) -> Hybri
     """
     engine = HybridCombatEngine(prefer_rust=prefer_rust, logging_enabled=logging_enabled)
     backend = "Rust" if engine.using_rust else "Python"
+    _log.info("Combat engine backend: %s", backend)
     return engine

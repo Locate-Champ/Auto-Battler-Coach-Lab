@@ -109,9 +109,13 @@ class PlacementModel:
 
         # Feature importance
         if hasattr(self.model, "feature_importances_"):
-            self.feature_importance = dict(zip(self.feature_names, self.model.feature_importances_))
+            self.feature_importance = dict(
+                zip(self.feature_names, self.model.feature_importances_, strict=True)
+            )
         elif hasattr(self.model, "coef_"):
-            self.feature_importance = dict(zip(self.feature_names, np.abs(self.model.coef_[0])))
+            self.feature_importance = dict(
+                zip(self.feature_names, np.abs(self.model.coef_[0]), strict=True)
+            )
 
         return metrics
 

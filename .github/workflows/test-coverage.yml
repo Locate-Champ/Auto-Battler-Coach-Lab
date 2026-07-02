@@ -114,10 +114,6 @@ jobs:
         run: |
           python -m pytest tests/test_benchmark_parity_helpers.py -q
 
-      - name: Run parity dump compactness regression
-        run: |
-          python -m pytest tests/test_benchmark_parity_helpers.py::test_cli_parity_dump_signatures_only_artifact_is_smaller -q
-
       - name: Build and install Rust engine
         run: |
           cd simulator/core/rust_engine
@@ -189,3 +185,26 @@ jobs:
       - name: Import smoke test
         run: |
           python -c "from simulator.core.combat_fast import CYTHON_AVAILABLE, hex_distance_fast; assert CYTHON_AVAILABLE; assert hex_distance_fast(0,0,3,6) > 0"
+
+  cython-fe-fast:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build fe_fast extension
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install cython setuptools wheel
+          cd models/fe_fast
+          python setup.py build_ext --inplace
+
+      - name: Import smoke test
+        run: |
+          python -c "from models.fe_fast.fe_fast import team_summary_fast; print('Cython OK')"

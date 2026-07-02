@@ -416,7 +416,7 @@ class PositioningOptimizer:
 
         samples_per_corner = max(1, num_samples // 4)
 
-        for corner_name, corner_positions in corners.items():
+        for _corner_name, corner_positions in corners.items():
             if len(corner_positions) < num_units:
                 continue  # Skip if corner can't fit all units
 

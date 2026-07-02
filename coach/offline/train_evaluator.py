@@ -100,17 +100,17 @@ def _load_snapshots(input_dir: Path) -> list[Snapshot]:
         power = _board_power(board_names, board_stars)
         num_2plus = _num_traits_2plus(trait_counts)
 
-        gold = int(getattr(row, "gold") or 0)
+        gold = int(row.gold or 0)
         interest = min(max(gold, 0) // 10, 5)
 
         feats = np.array(
             [
                 float(power),
-                float(getattr(row, "level") or 0),
+                float(row.level or 0),
                 float(gold),
-                float(getattr(row, "hp") or 0),
+                float(row.hp or 0),
                 float(interest),
-                float(getattr(row, "streak") or 0),
+                float(row.streak or 0),
                 float(num_2plus),
             ],
             dtype=np.float32,
@@ -118,9 +118,9 @@ def _load_snapshots(input_dir: Path) -> list[Snapshot]:
 
         snapshots.append(
             Snapshot(
-                game_id=int(getattr(row, "game_id")),
-                player_id=int(getattr(row, "player_id")),
-                placement=int(getattr(row, "placement") or 0),
+                game_id=int(row.game_id),
+                player_id=int(row.player_id),
+                placement=int(row.placement or 0),
                 features=feats,
             )
         )
@@ -135,7 +135,7 @@ def _build_pairwise_dataset(snaps: list[Snapshot]) -> tuple[np.ndarray, np.ndarr
 
     x_list = []
     y_list = []
-    for game_id, players in by_game.items():
+    for _game_id, players in by_game.items():
         if len(players) < 2:
             continue
         players = sorted(players, key=lambda s: s.player_id)

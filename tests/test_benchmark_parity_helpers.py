@@ -859,18 +859,16 @@ def test_infer_divergence_origin_known_labels(
     assert observed == expected
 
 
-def test_cloud_runner_parquet_guard_missing_method_includes_rebuild_hint(
-    monkeypatch,
-) -> None:
-    monkeypatch.setattr(cloud_runner, "_RUST_PARQUET_API_VALIDATED", set())
-
+def test_cloud_runner_parquet_guard_missing_method_includes_rebuild_hint() -> None:
     class MissingMethodSimulator:
         pass
 
+    validated = set()
     with pytest.raises(RuntimeError) as exc:
         cloud_runner._ensure_rust_parquet_method_support(
             MissingMethodSimulator(),
             "run_games_batch_parquet_to_file",
+            validated,
         )
 
     message = str(exc.value)
@@ -879,11 +877,7 @@ def test_cloud_runner_parquet_guard_missing_method_includes_rebuild_hint(
     assert str(Path(sys.executable)) in message
 
 
-def test_cloud_runner_parquet_guard_missing_kwargs_reports_names(
-    monkeypatch,
-) -> None:
-    monkeypatch.setattr(cloud_runner, "_RUST_PARQUET_API_VALIDATED", set())
-
+def test_cloud_runner_parquet_guard_missing_kwargs_reports_names() -> None:
     class LegacySimulator:
         def run_games_batch_parquet_to_file(
             self,
@@ -897,10 +891,12 @@ def test_cloud_runner_parquet_guard_missing_kwargs_reports_names(
             del game_ids, seeds, output_path, compression, use_dictionary, write_statistics
             return None
 
+    validated = set()
     with pytest.raises(RuntimeError) as exc:
         cloud_runner._ensure_rust_parquet_method_support(
             LegacySimulator(),
             "run_games_batch_parquet_to_file",
+            validated,
         )
 
     message = str(exc.value)
@@ -909,11 +905,7 @@ def test_cloud_runner_parquet_guard_missing_kwargs_reports_names(
     assert "write_batch_size" in message
 
 
-def test_cloud_runner_parquet_guard_accepts_current_signature(
-    monkeypatch,
-) -> None:
-    monkeypatch.setattr(cloud_runner, "_RUST_PARQUET_API_VALIDATED", set())
-
+def test_cloud_runner_parquet_guard_accepts_current_signature() -> None:
     class CurrentSimulator:
         def run_games_batch_parquet_to_file(
             self,
@@ -944,16 +936,19 @@ def test_cloud_runner_parquet_guard_accepts_current_signature(
             )
             return None
 
+    validated = set()
     simulator = CurrentSimulator()
     cloud_runner._ensure_rust_parquet_method_support(
         simulator,
         "run_games_batch_parquet_to_file",
+        validated,
     )
     cloud_runner._ensure_rust_parquet_method_support(
         simulator,
         "run_games_batch_parquet_to_file",
+        validated,
     )
-    assert "run_games_batch_parquet_to_file" in cloud_runner._RUST_PARQUET_API_VALIDATED
+    assert "run_games_batch_parquet_to_file" in validated
 
 
 def test_cloud_runner_extract_signature_uses_text_signature_fallback(

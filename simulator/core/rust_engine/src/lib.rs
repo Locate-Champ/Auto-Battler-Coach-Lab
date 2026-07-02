@@ -1200,10 +1200,17 @@ fn json_to_py(py: Python<'_>, value: &Value) -> PyResult<PyObject> {
     }
 }
 
+/// Return the version of the Rust combat engine (from Cargo.toml).
+#[pyfunction]
+fn engine_version() -> &'static str {
+    env!("CARGO_PKG_VERSION")
+}
+
 /// Python module definition.
 #[pymodule]
 fn tft_combat_engine(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<RustCombatEngine>()?;
     m.add_class::<RustGameSimulator>()?;
+    m.add_function(wrap_pyfunction!(engine_version, m)?)?;
     Ok(())
 }

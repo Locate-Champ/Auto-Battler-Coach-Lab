@@ -644,7 +644,7 @@ class Player:
             if item in tactician_items:
                 bonus += 1
         # Also check items equipped on board/bench units
-        for row_col, champ in self.board.items():
+        for _row_col, champ in self.board.items():
             for item in champ.items:
                 if item in tactician_items:
                     bonus += 1

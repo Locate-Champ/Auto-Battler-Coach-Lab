@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List, Sequence, Tuple
 
@@ -13,6 +14,8 @@ from sklearn.metrics import accuracy_score, mean_absolute_error, mutual_info_sco
 from sklearn.model_selection import train_test_split
 
 from .train_xgboost import BASE_TREE_PARAMS, _best_xgb_device
+
+_log = logging.getLogger(__name__)
 
 
 def _discretize(values: np.ndarray, bins: int = 10) -> np.ndarray:
@@ -52,7 +55,7 @@ class FeatureInformationAnalyzer:
         xd = _discretize(x)
         yd = _discretize(y)
         zd = _discretize(z)
-        xz = np.asarray([f"{a}|{b}" for a, b in zip(xd.tolist(), zd.tolist())])
+        xz = np.asarray([f"{a}|{b}" for a, b in zip(xd.tolist(), zd.tolist(), strict=True)])
         return float(mutual_info_score(xz, yd) - mutual_info_score(zd, yd))
 
     def interaction_information(self, xi: np.ndarray, xj: np.ndarray, y: np.ndarray) -> float:
@@ -60,7 +63,7 @@ class FeatureInformationAnalyzer:
         xid = _discretize(xi)
         xjd = _discretize(xj)
         yd = _discretize(y)
-        pair = np.asarray([f"{a}|{b}" for a, b in zip(xid.tolist(), xjd.tolist())])
+        pair = np.asarray([f"{a}|{b}" for a, b in zip(xid.tolist(), xjd.tolist(), strict=True)])
         return float(
             mutual_info_score(pair, yd)
             - mutual_info_score(xid, yd)

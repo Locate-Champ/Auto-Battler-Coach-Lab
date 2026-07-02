@@ -35,7 +35,7 @@ def _num(value: Any) -> int | float | None:
             if "." in s:
                 return float(s)
             return int(s)
-        except Exception:
+        except (ValueError, TypeError):
             return None
     return None
 

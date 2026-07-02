@@ -37,7 +37,7 @@ def _create_engine(engine_name: str) -> Any:
     if engine_name in ("rust", "rust_full"):
         try:
             from tft_combat_engine import RustCombatEngine
-        except Exception as exc:
+        except (ImportError, OSError) as exc:
             raise RuntimeError(
                 "Rust engine requested but tft_combat_engine is unavailable. "
                 "Build/install simulator/core/rust_engine via maturin first."
@@ -317,7 +317,7 @@ def test_determinism_team_combat(engine: Any, engine_name: str, num_runs: int = 
 def _create_rust_game_simulator() -> Any:
     try:
         from tft_combat_engine import RustGameSimulator
-    except Exception as exc:
+    except (ImportError, OSError) as exc:
         raise RuntimeError(
             "Rust full-game engine requested but RustGameSimulator is unavailable. "
             "Build/install simulator/core/rust_engine via maturin first."
@@ -1671,7 +1671,9 @@ def run_seed_parity_harness(
 
         l1 = sum(
             abs(int(a) - int(b))
-            for a, b in zip(baseline["placement_vector"], candidate["placement_vector"])
+            for a, b in zip(
+                baseline["placement_vector"], candidate["placement_vector"], strict=True
+            )
         )
         total_l1 += l1
         round_delta = abs(int(baseline["round_num"]) - int(candidate["round_num"]))

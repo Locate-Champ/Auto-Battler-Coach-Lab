@@ -19,14 +19,14 @@ def _fallback_champion_ref() -> dict[str, dict]:
     """
     try:
         from simulator.game.constants import API_TO_NAME, NAME_TO_COST
-    except Exception:
+    except (ImportError, OSError):
         return {}
 
     ref: dict[str, dict] = {}
     for api_name, short_name in API_TO_NAME.items():
         try:
             cost = int(NAME_TO_COST.get(short_name, 3) or 3)
-        except Exception:
+        except (ValueError, TypeError):
             cost = 3
         ref[api_name] = {
             "name": str(short_name or api_name),
@@ -84,7 +84,7 @@ def champions_by_cost() -> dict[int, tuple[str, ...]]:
     for api_name, info in ref.items():
         try:
             cost = int(info.get("cost", 3) or 3)
-        except Exception:
+        except (ValueError, TypeError):
             cost = 3
         grouped.setdefault(cost, []).append(api_name)
 

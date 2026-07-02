@@ -551,7 +551,7 @@ class UnlockRequirementsManager:
                 raw_level = (row.get("Level Req") or "").strip()
                 digits = re.findall(r"\d+", raw_level)
                 level_reqs[unit_name] = int(digits[0]) if digits else None
-        except Exception:
+        except (OSError, ValueError, KeyError):
             return [], {}
         return order, level_reqs
 
@@ -591,7 +591,7 @@ class UnlockRequirementsManager:
 
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
-        except Exception:
+        except (OSError, ValueError):
             return {}
 
         if not isinstance(payload, dict):
@@ -660,7 +660,7 @@ class UnlockRequirementsManager:
 
                 if rewards:
                     ladders[quest_name] = tuple(rewards)
-        except Exception:
+        except (OSError, ValueError, KeyError):
             return {}
 
         return ladders
